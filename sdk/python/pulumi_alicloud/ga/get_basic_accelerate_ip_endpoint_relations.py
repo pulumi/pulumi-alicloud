@@ -139,6 +139,7 @@ def get_basic_accelerate_ip_endpoint_relations(accelerate_ip_id: Optional[str] =
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -147,6 +148,7 @@ def get_basic_accelerate_ip_endpoint_relations(accelerate_ip_id: Optional[str] =
         accelerator_id="example_id")
     pulumi.export("gaBasicAccelerateIpEndpointRelationsId1", ids.relations[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str accelerate_ip_id: The ID of the Basic Accelerate IP.
@@ -194,6 +196,7 @@ def get_basic_accelerate_ip_endpoint_relations_output(accelerate_ip_id: Optional
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -202,6 +205,7 @@ def get_basic_accelerate_ip_endpoint_relations_output(accelerate_ip_id: Optional
         accelerator_id="example_id")
     pulumi.export("gaBasicAccelerateIpEndpointRelationsId1", ids.relations[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str accelerate_ip_id: The ID of the Basic Accelerate IP.

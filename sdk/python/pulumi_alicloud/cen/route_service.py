@@ -263,6 +263,7 @@ class RouteService(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -286,6 +287,7 @@ class RouteService(pulumi.CustomResource):
             cen_id=example_instance_attachment.instance_id,
             host="100.118.28.52/32")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -325,6 +327,7 @@ class RouteService(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -348,6 +351,7 @@ class RouteService(pulumi.CustomResource):
             cen_id=example_instance_attachment.instance_id,
             host="100.118.28.52/32")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

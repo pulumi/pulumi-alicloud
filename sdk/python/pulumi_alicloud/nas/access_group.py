@@ -295,6 +295,7 @@ class AccessGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -305,6 +306,7 @@ class AccessGroup(pulumi.CustomResource):
             description="terraform-example",
             file_system_type="extreme")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -344,6 +346,7 @@ class AccessGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -354,6 +357,7 @@ class AccessGroup(pulumi.CustomResource):
             description="terraform-example",
             file_system_type="extreme")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -162,6 +162,7 @@ def get_policy_attachments(language: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -169,6 +170,7 @@ def get_policy_attachments(language: Optional[str] = None,
     example = alicloud.resourcemanager.get_policy_attachments()
     pulumi.export("firstAttachmentId", example.attachments[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str language: The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
@@ -219,6 +221,7 @@ def get_policy_attachments_output(language: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -226,6 +229,7 @@ def get_policy_attachments_output(language: Optional[pulumi.Input[Optional[str]]
     example = alicloud.resourcemanager.get_policy_attachments()
     pulumi.export("firstAttachmentId", example.attachments[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str language: The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.

@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const output = mySyncRules.then(mySyncRules => mySyncRules.rules.map(__item => __item.id));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRegistryEnterpriseSyncRules(args: GetRegistryEnterpriseSyncRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseSyncRulesResult> {
 
@@ -121,6 +123,7 @@ export interface GetRegistryEnterpriseSyncRulesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -134,6 +137,7 @@ export interface GetRegistryEnterpriseSyncRulesResult {
  * });
  * export const output = mySyncRules.then(mySyncRules => mySyncRules.rules.map(__item => __item.id));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRegistryEnterpriseSyncRulesOutput(args: GetRegistryEnterpriseSyncRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseSyncRulesResult> {
     return pulumi.output(args).apply((a: any) => getRegistryEnterpriseSyncRules(a, opts))

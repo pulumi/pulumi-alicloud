@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.EipAnycast
         /// 
         /// &gt; **NOTE:** Available in v1.113.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,8 +44,7 @@ namespace Pulumi.AliCloud.EipAnycast
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAnycastEipAddressesResult> InvokeAsync(GetAnycastEipAddressesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAnycastEipAddressesResult>("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", args ?? new GetAnycastEipAddressesArgs(), options.WithDefaults());
@@ -56,12 +54,11 @@ namespace Pulumi.AliCloud.EipAnycast
         /// 
         /// &gt; **NOTE:** Available in v1.113.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,8 +82,7 @@ namespace Pulumi.AliCloud.EipAnycast
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAnycastEipAddressesResult> Invoke(GetAnycastEipAddressesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAnycastEipAddressesResult>("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", args ?? new GetAnycastEipAddressesInvokeArgs(), options.WithDefaults());

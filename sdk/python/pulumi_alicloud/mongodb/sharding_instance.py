@@ -873,8 +873,10 @@ class ShardingInstance(pulumi.CustomResource):
         > **NOTE:**  Create MongoDB Sharding instance or change instance type and storage would cost 10~20 minutes. Please make full preparation.
 
         ## Example Usage
+
         ### Create a Mongodb Sharding instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -918,6 +920,8 @@ class ShardingInstance(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use to the existing mongodb-sharding module
@@ -978,8 +982,10 @@ class ShardingInstance(pulumi.CustomResource):
         > **NOTE:**  Create MongoDB Sharding instance or change instance type and storage would cost 10~20 minutes. Please make full preparation.
 
         ## Example Usage
+
         ### Create a Mongodb Sharding instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1023,6 +1029,8 @@ class ShardingInstance(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use to the existing mongodb-sharding module

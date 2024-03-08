@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudNasFileSystemsId = fs.then(fs => fs.systems?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFileSystems(args?: GetFileSystemsArgs, opts?: pulumi.InvokeOptions): Promise<GetFileSystemsResult> {
     args = args || {};
@@ -105,6 +107,7 @@ export interface GetFileSystemsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -115,6 +118,7 @@ export interface GetFileSystemsResult {
  * });
  * export const alicloudNasFileSystemsId = fs.then(fs => fs.systems?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFileSystemsOutput(args?: GetFileSystemsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileSystemsResult> {
     return pulumi.output(args).apply((a: any) => getFileSystems(a, opts))

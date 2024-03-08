@@ -155,6 +155,7 @@ def get_quota_applications(dimensions: Optional[Sequence[pulumi.InputType['GetQu
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -163,6 +164,7 @@ def get_quota_applications(dimensions: Optional[Sequence[pulumi.InputType['GetQu
         ids=["4621F886-81E9-xxxx-xxxx"])
     pulumi.export("firstQuotasQuotaApplicationId", example.applications[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetQuotaApplicationsDimensionArgs']] dimensions: The quota dimensions.
@@ -221,6 +223,7 @@ def get_quota_applications_output(dimensions: Optional[pulumi.Input[Optional[Seq
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -229,6 +232,7 @@ def get_quota_applications_output(dimensions: Optional[pulumi.Input[Optional[Seq
         ids=["4621F886-81E9-xxxx-xxxx"])
     pulumi.export("firstQuotasQuotaApplicationId", example.applications[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetQuotaApplicationsDimensionArgs']] dimensions: The quota dimensions.

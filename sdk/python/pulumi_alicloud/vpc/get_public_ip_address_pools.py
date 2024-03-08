@@ -143,6 +143,7 @@ def get_public_ip_address_pools(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -152,6 +153,7 @@ def get_public_ip_address_pools(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.vpc.get_public_ip_address_pools(name_regex="example_name")
     pulumi.export("vpcPublicIpAddressPoolId2", name_regex.pools[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Vpc Public Ip Address Pool IDs.
@@ -204,6 +206,7 @@ def get_public_ip_address_pools_output(ids: Optional[pulumi.Input[Optional[Seque
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -213,6 +216,7 @@ def get_public_ip_address_pools_output(ids: Optional[pulumi.Input[Optional[Seque
     name_regex = alicloud.vpc.get_public_ip_address_pools(name_regex="example_name")
     pulumi.export("vpcPublicIpAddressPoolId2", name_regex.pools[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Vpc Public Ip Address Pool IDs.

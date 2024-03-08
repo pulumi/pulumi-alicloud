@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetSimpleOfficeSites(ctx *pulumi.Context, args *GetSimpleOfficeSitesArgs, opts ...pulumi.InvokeOption) (*GetSimpleOfficeSitesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSimpleOfficeSitesResult

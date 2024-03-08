@@ -103,6 +103,7 @@ def get_tags(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -112,6 +113,7 @@ def get_tags(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.directmail.get_tags(name_regex="^my-Tag")
     pulumi.export("directMailTagId2", name_regex.tags[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Tag IDs.
@@ -148,6 +150,7 @@ def get_tags_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -157,6 +160,7 @@ def get_tags_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
     name_regex = alicloud.directmail.get_tags(name_regex="^my-Tag")
     pulumi.export("directMailTagId2", name_regex.tags[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Tag IDs.

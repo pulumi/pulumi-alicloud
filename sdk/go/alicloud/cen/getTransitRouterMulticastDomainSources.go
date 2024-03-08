@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetTransitRouterMulticastDomainSources(ctx *pulumi.Context, args *GetTransitRouterMulticastDomainSourcesArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterMulticastDomainSourcesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouterMulticastDomainSourcesResult

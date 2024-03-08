@@ -13,6 +13,103 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.2.0.
  *
+ * ## Example Usage
+ *
+ * Private Bucket
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const bucket_acl = new alicloud.oss.Bucket("bucket-acl", {
+ *     acl: "private",
+ *     bucket: pulumi.interpolate`example-value-${_default.result}`,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * Static Website
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const bucket_website = new alicloud.oss.Bucket("bucket-website", {
+ *     bucket: pulumi.interpolate`example-value-${_default.result}`,
+ *     website: {
+ *         errorDocument: "error.html",
+ *         indexDocument: "index.html",
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * Enable Logging
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const bucket_target = new alicloud.oss.Bucket("bucket-target", {
+ *     bucket: pulumi.interpolate`example-value-${_default.result}`,
+ *     acl: "public-read",
+ * });
+ * const bucket_logging = new alicloud.oss.Bucket("bucket-logging", {
+ *     bucket: pulumi.interpolate`example-logging-${_default.result}`,
+ *     logging: {
+ *         targetBucket: bucket_target.id,
+ *         targetPrefix: "log/",
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * Referer configuration
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const bucket_referer = new alicloud.oss.Bucket("bucket-referer", {
+ *     acl: "private",
+ *     bucket: pulumi.interpolate`example-value-${_default.result}`,
+ *     refererConfig: {
+ *         allowEmpty: false,
+ *         referers: [
+ *             "http://www.aliyun.com",
+ *             "https://www.aliyun.com",
+ *         ],
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * Set lifecycle rule
+ *
  * ## Import
  *
  * OSS bucket can be imported using the bucket name, e.g.

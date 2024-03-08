@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -31,6 +32,7 @@ import * as utilities from "../utilities";
  * });
  * export const vpcTrafficMirrorFilterIngressRuleId2 = status.then(status => status.rules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTrafficMirrorFilterIngressRules(args: GetTrafficMirrorFilterIngressRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMirrorFilterIngressRulesResult> {
 
@@ -88,6 +90,7 @@ export interface GetTrafficMirrorFilterIngressRulesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -104,6 +107,7 @@ export interface GetTrafficMirrorFilterIngressRulesResult {
  * });
  * export const vpcTrafficMirrorFilterIngressRuleId2 = status.then(status => status.rules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTrafficMirrorFilterIngressRulesOutput(args: GetTrafficMirrorFilterIngressRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorFilterIngressRulesResult> {
     return pulumi.output(args).apply((a: any) => getTrafficMirrorFilterIngressRules(a, opts))

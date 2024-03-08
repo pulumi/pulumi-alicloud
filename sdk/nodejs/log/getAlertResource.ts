@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  *     type: "project",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAlertResource(args: GetAlertResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertResourceResult> {
 
@@ -76,6 +78,7 @@ export interface GetAlertResourceResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -89,6 +92,7 @@ export interface GetAlertResourceResult {
  *     type: "project",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAlertResourceOutput(args: GetAlertResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertResourceResult> {
     return pulumi.output(args).apply((a: any) => getAlertResource(a, opts))

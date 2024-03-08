@@ -141,6 +141,7 @@ def get_resolution_lines(domain_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -149,6 +150,7 @@ def get_resolution_lines(domain_name: Optional[str] = None,
         output_file="support_lines.txt")
     pulumi.export("firstLineCode", resolution_lines_ds.lines[0].line_code)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str domain_name: Domain Name.
@@ -197,6 +199,7 @@ def get_resolution_lines_output(domain_name: Optional[pulumi.Input[Optional[str]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -205,6 +208,7 @@ def get_resolution_lines_output(domain_name: Optional[pulumi.Input[Optional[str]
         output_file="support_lines.txt")
     pulumi.export("firstLineCode", resolution_lines_ds.lines[0].line_code)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str domain_name: Domain Name.

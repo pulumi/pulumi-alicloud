@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -77,6 +78,7 @@ import * as utilities from "../utilities";
  *     targetPath: "/",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * > **NOTE:** This resource can only be created, cannot be modified or deleted. Therefore, any modification of the resource attribute will not affect exist resource.
  *

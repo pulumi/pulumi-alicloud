@@ -878,8 +878,10 @@ class Cluster(pulumi.CustomResource):
         > **NOTE:** Available in v1.71.0+.
 
         ## Example Usage
+
         ### Create a ADB MySQL cluster
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -910,6 +912,7 @@ class Cluster(pulumi.CustomResource):
             description=name,
             vswitch_id=default_switch.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -958,8 +961,10 @@ class Cluster(pulumi.CustomResource):
         > **NOTE:** Available in v1.71.0+.
 
         ## Example Usage
+
         ### Create a ADB MySQL cluster
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -990,6 +995,7 @@ class Cluster(pulumi.CustomResource):
             description=name,
             vswitch_id=default_switch.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

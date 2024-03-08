@@ -123,6 +123,7 @@ def get_host_share_keys(enable_details: Optional[bool] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -137,6 +138,7 @@ def get_host_share_keys(enable_details: Optional[bool] = None,
         name_regex="^my-HostShareKey")
     pulumi.export("bastionhostHostShareKeyId2", name_regex.keys[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -181,6 +183,7 @@ def get_host_share_keys_output(enable_details: Optional[pulumi.Input[Optional[bo
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -195,6 +198,7 @@ def get_host_share_keys_output(enable_details: Optional[pulumi.Input[Optional[bo
         name_regex="^my-HostShareKey")
     pulumi.export("bastionhostHostShareKeyId2", name_regex.keys[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

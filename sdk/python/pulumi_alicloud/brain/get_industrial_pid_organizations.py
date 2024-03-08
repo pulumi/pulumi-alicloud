@@ -113,6 +113,7 @@ def get_industrial_pid_organizations(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -121,6 +122,7 @@ def get_industrial_pid_organizations(ids: Optional[Sequence[str]] = None,
         name_regex="tf-testAcc")
     pulumi.export("firstBrainIndustrialPidOrganizationId", example.organizations[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Pid Organization IDs.
@@ -161,6 +163,7 @@ def get_industrial_pid_organizations_output(ids: Optional[pulumi.Input[Optional[
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -169,6 +172,7 @@ def get_industrial_pid_organizations_output(ids: Optional[pulumi.Input[Optional[
         name_regex="tf-testAcc")
     pulumi.export("firstBrainIndustrialPidOrganizationId", example.organizations[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Pid Organization IDs.

@@ -104,6 +104,7 @@ def get_gateway_smb_users(gateway_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -130,6 +131,7 @@ def get_gateway_smb_users(gateway_id: Optional[str] = None,
         ids=[default_gateway_smb_user.id])
     pulumi.export("cloudStorageGatewayGatewaySmbUserId1", ids.users[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str gateway_id: The Gateway ID.
@@ -169,6 +171,7 @@ def get_gateway_smb_users_output(gateway_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -195,6 +198,7 @@ def get_gateway_smb_users_output(gateway_id: Optional[pulumi.Input[str]] = None,
         ids=[default_gateway_smb_user.id])
     pulumi.export("cloudStorageGatewayGatewaySmbUserId1", ids.users[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str gateway_id: The Gateway ID.

@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -18,6 +19,8 @@ import * as utilities from "../utilities";
  * const sampleDs = alicloud.slb.getAcls({});
  * export const firstSlbAclId = sampleDs.then(sampleDs => sampleDs.acls?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Entry Block
  *
  * The entry mapping supports the following:
@@ -109,6 +112,7 @@ export interface GetAclsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -116,6 +120,8 @@ export interface GetAclsResult {
  * const sampleDs = alicloud.slb.getAcls({});
  * export const firstSlbAclId = sampleDs.then(sampleDs => sampleDs.acls?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Entry Block
  *
  * The entry mapping supports the following:

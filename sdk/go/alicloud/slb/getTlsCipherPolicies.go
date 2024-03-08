@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,6 +54,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetTlsCipherPolicies(ctx *pulumi.Context, args *GetTlsCipherPoliciesArgs, opts ...pulumi.InvokeOption) (*GetTlsCipherPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTlsCipherPoliciesResult

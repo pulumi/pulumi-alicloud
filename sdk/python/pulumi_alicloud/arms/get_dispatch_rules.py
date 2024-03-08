@@ -123,6 +123,7 @@ def get_dispatch_rules(dispatch_rule_name: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -132,6 +133,7 @@ def get_dispatch_rules(dispatch_rule_name: Optional[str] = None,
     name_regex = alicloud.arms.get_dispatch_rules(name_regex="^my-DispatchRule")
     pulumi.export("armsDispatchRuleId2", name_regex.rules[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str dispatch_rule_name: The name of the dispatch rule.
@@ -176,6 +178,7 @@ def get_dispatch_rules_output(dispatch_rule_name: Optional[pulumi.Input[Optional
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -185,6 +188,7 @@ def get_dispatch_rules_output(dispatch_rule_name: Optional[pulumi.Input[Optional
     name_regex = alicloud.arms.get_dispatch_rules(name_regex="^my-DispatchRule")
     pulumi.export("armsDispatchRuleId2", name_regex.rules[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str dispatch_rule_name: The name of the dispatch rule.

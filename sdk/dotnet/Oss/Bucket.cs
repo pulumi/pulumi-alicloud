@@ -16,6 +16,145 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// &gt; **NOTE:** Available since v1.2.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Private Bucket
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var bucket_acl = new AliCloud.Oss.Bucket("bucket-acl", new()
+    ///     {
+    ///         Acl = "private",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-value-{result}"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// Static Website
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var bucket_website = new AliCloud.Oss.Bucket("bucket-website", new()
+    ///     {
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-value-{result}"),
+    ///         Website = new AliCloud.Oss.Inputs.BucketWebsiteArgs
+    ///         {
+    ///             ErrorDocument = "error.html",
+    ///             IndexDocument = "index.html",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// Enable Logging
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var bucket_target = new AliCloud.Oss.Bucket("bucket-target", new()
+    ///     {
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-value-{result}"),
+    ///         Acl = "public-read",
+    ///     });
+    /// 
+    ///     var bucket_logging = new AliCloud.Oss.Bucket("bucket-logging", new()
+    ///     {
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-logging-{result}"),
+    ///         Logging = new AliCloud.Oss.Inputs.BucketLoggingArgs
+    ///         {
+    ///             TargetBucket = bucket_target.Id,
+    ///             TargetPrefix = "log/",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// Referer configuration
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var bucket_referer = new AliCloud.Oss.Bucket("bucket-referer", new()
+    ///     {
+    ///         Acl = "private",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-value-{result}"),
+    ///         RefererConfig = new AliCloud.Oss.Inputs.BucketRefererConfigArgs
+    ///         {
+    ///             AllowEmpty = false,
+    ///             Referers = new[]
+    ///             {
+    ///                 "http://www.aliyun.com",
+    ///                 "https://www.aliyun.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// Set lifecycle rule
+    /// 
     /// ## Import
     /// 
     /// OSS bucket can be imported using the bucket name, e.g.

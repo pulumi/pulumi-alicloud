@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const cmsEventRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEventRules(args?: GetEventRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetEventRulesResult> {
     args = args || {};
@@ -99,6 +101,7 @@ export interface GetEventRulesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -112,6 +115,7 @@ export interface GetEventRulesResult {
  * });
  * export const cmsEventRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEventRulesOutput(args?: GetEventRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventRulesResult> {
     return pulumi.output(args).apply((a: any) => getEventRules(a, opts))

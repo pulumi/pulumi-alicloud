@@ -187,6 +187,7 @@ class Subscription(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -207,6 +208,7 @@ class Subscription(pulumi.CustomResource):
             topic_name=example_topic.name,
             comment="created by terraform")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -237,6 +239,7 @@ class Subscription(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -257,6 +260,7 @@ class Subscription(pulumi.CustomResource):
             topic_name=example_topic.name,
             comment="created by terraform")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

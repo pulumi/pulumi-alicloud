@@ -140,6 +140,7 @@ class GrantRuleToCen(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -170,6 +171,7 @@ class GrantRuleToCen(pulumi.CustomResource):
             cen_owner_id=default.id,
             instance_id=example_virtual_border_router.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -202,6 +204,7 @@ class GrantRuleToCen(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -232,6 +235,7 @@ class GrantRuleToCen(pulumi.CustomResource):
             cen_owner_id=default.id,
             instance_id=example_virtual_border_router.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

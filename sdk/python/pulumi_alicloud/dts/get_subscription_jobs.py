@@ -133,6 +133,7 @@ def get_subscription_jobs(enable_details: Optional[bool] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -140,6 +141,7 @@ def get_subscription_jobs(enable_details: Optional[bool] = None,
     ids = alicloud.dts.get_subscription_jobs()
     pulumi.export("dtsSubscriptionJobId1", ids.jobs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Subscription Job IDs.
@@ -187,6 +189,7 @@ def get_subscription_jobs_output(enable_details: Optional[pulumi.Input[Optional[
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -194,6 +197,7 @@ def get_subscription_jobs_output(enable_details: Optional[pulumi.Input[Optional[
     ids = alicloud.dts.get_subscription_jobs()
     pulumi.export("dtsSubscriptionJobId1", ids.jobs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Subscription Job IDs.

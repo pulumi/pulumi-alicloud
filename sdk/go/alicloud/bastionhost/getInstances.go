@@ -19,6 +19,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,6 +48,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult
@@ -66,6 +68,7 @@ type GetInstancesArgs struct {
 	// File name to persist data source output.
 	OutputFile *string `pulumi:"outputFile"`
 	// A map of tags assigned to the bastionhost instance. It must be in the format:
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -88,6 +91,7 @@ type GetInstancesArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -127,6 +131,7 @@ type GetInstancesOutputArgs struct {
 	// File name to persist data source output.
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A map of tags assigned to the bastionhost instance. It must be in the format:
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -149,6 +154,7 @@ type GetInstancesOutputArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	Tags pulumi.MapInput `pulumi:"tags"`
 }
 

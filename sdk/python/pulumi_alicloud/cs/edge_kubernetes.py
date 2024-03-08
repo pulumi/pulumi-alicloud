@@ -1556,6 +1556,7 @@ class EdgeKubernetes(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1597,9 +1598,11 @@ class EdgeKubernetes(pulumi.CustomResource):
                 encrypted="false",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         You could create a professional kubernetes edge cluster now.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1651,6 +1654,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                 version="1.5.10",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1742,6 +1746,7 @@ class EdgeKubernetes(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1783,9 +1788,11 @@ class EdgeKubernetes(pulumi.CustomResource):
                 encrypted="false",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         You could create a professional kubernetes edge cluster now.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1837,6 +1844,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                 version="1.5.10",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -253,6 +253,7 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -264,6 +265,7 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
                 "35617920",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -296,6 +298,7 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -307,6 +310,7 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
                 "35617920",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

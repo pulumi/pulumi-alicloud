@@ -353,6 +353,7 @@ class Disk(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -367,6 +368,7 @@ class Disk(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             size=20)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -408,6 +410,7 @@ class Disk(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -422,6 +425,7 @@ class Disk(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             size=20)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const ehpcJobTemplateId1 = ids.apply(ids => ids.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getJobTemplates(args?: GetJobTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetJobTemplatesResult> {
     args = args || {};
@@ -74,6 +76,7 @@ export interface GetJobTemplatesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -87,6 +90,7 @@ export interface GetJobTemplatesResult {
  * });
  * export const ehpcJobTemplateId1 = ids.apply(ids => ids.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getJobTemplatesOutput(args?: GetJobTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobTemplatesResult> {
     return pulumi.output(args).apply((a: any) => getJobTemplates(a, opts))

@@ -463,7 +463,7 @@ class GetBackupJobsJobResult(dict):
         :param Sequence[str] paths: List of backup path. e.g. `["/home", "/var"]`.
         :param str plan_id: The ID of a backup plan.
         :param str prefix: The prefix of Oss bucket files.
-        :param str progress: Backup progress. The value is 100%*100.
+        :param str progress: Backup progress. The value is 100%!(BADWIDTH)%!1(MISSING)00.
         :param str source_type: The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
         :param str start_time: The scheduled backup start time. UNIX time seconds.
         :param str status: The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
@@ -712,7 +712,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter
     def progress(self) -> str:
         """
-        Backup progress. The value is 100%*100.
+        Backup progress. The value is 100%!(BADWIDTH)%!1(MISSING)00.
         """
         return pulumi.get(self, "progress")
 

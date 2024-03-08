@@ -1327,6 +1327,7 @@ class SubscriptionJob(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1399,6 +1400,7 @@ class SubscriptionJob(pulumi.CustomResource):
             subscription_instance_vswitch_id=example_switch.id,
             status="Normal")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1467,6 +1469,7 @@ class SubscriptionJob(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1539,6 +1542,7 @@ class SubscriptionJob(pulumi.CustomResource):
             subscription_instance_vswitch_id=example_switch.id,
             status="Normal")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const cenTransitRouterPrefixListAssociationId = _default.then(_default => _default.associations?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterPrefixListAssociations(args: GetTransitRouterPrefixListAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterPrefixListAssociationsResult> {
 
@@ -106,6 +108,7 @@ export interface GetTransitRouterPrefixListAssociationsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -116,6 +119,7 @@ export interface GetTransitRouterPrefixListAssociationsResult {
  * });
  * export const cenTransitRouterPrefixListAssociationId = _default.then(_default => _default.associations?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterPrefixListAssociationsOutput(args: GetTransitRouterPrefixListAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterPrefixListAssociationsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterPrefixListAssociations(a, opts))

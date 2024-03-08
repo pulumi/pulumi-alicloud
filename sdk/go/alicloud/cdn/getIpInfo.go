@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +43,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetIpInfo(ctx *pulumi.Context, args *GetIpInfoArgs, opts ...pulumi.InvokeOption) (*GetIpInfoResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpInfoResult

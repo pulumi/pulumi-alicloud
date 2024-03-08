@@ -19,15 +19,18 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.ecs.SecurityGroup("default", {description: "New security group"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Basic Usage for VPC
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -38,6 +41,8 @@ import * as utilities from "../utilities";
  * });
  * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Module Support
  *
  * You can use the existing security-group module

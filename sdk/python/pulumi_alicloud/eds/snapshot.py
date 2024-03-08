@@ -189,6 +189,7 @@ class Snapshot(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -237,6 +238,7 @@ class Snapshot(pulumi.CustomResource):
             snapshot_name=name,
             source_disk_type="SYSTEM")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -270,6 +272,7 @@ class Snapshot(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -318,6 +321,7 @@ class Snapshot(pulumi.CustomResource):
             snapshot_name=name,
             source_disk_type="SYSTEM")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

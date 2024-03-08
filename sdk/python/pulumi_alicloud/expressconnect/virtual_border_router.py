@@ -715,6 +715,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -739,6 +740,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
             min_tx_interval=1000,
             detect_multiplier=10)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -788,6 +790,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -812,6 +815,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
             min_tx_interval=1000,
             detect_multiplier=10)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

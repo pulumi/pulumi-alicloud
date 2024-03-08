@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetScalingRules(ctx *pulumi.Context, args *GetScalingRulesArgs, opts ...pulumi.InvokeOption) (*GetScalingRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetScalingRulesResult

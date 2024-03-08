@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAdConnectorDirectories(ctx *pulumi.Context, args *GetAdConnectorDirectoriesArgs, opts ...pulumi.InvokeOption) (*GetAdConnectorDirectoriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAdConnectorDirectoriesResult

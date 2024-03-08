@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,6 +28,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstTunnelId = tunnelsDs.then(tunnelsDs => tunnelsDs.tunnels?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTunnels(args: GetTunnelsArgs, opts?: pulumi.InvokeOptions): Promise<GetTunnelsResult> {
 
@@ -106,6 +108,7 @@ export interface GetTunnelsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,6 +121,7 @@ export interface GetTunnelsResult {
  * });
  * export const firstTunnelId = tunnelsDs.then(tunnelsDs => tunnelsDs.tunnels?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTunnelsOutput(args: GetTunnelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelsResult> {
     return pulumi.output(args).apply((a: any) => getTunnels(a, opts))

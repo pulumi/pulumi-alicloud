@@ -132,6 +132,7 @@ def get_accelerators(bandwidth_billing_type: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -139,6 +140,7 @@ def get_accelerators(bandwidth_billing_type: Optional[str] = None,
     example = alicloud.ga.get_accelerators(name_regex="tf")
     pulumi.export("firstGaAcceleratorId", example.accelerators[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
@@ -183,6 +185,7 @@ def get_accelerators_output(bandwidth_billing_type: Optional[pulumi.Input[Option
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -190,6 +193,7 @@ def get_accelerators_output(bandwidth_billing_type: Optional[pulumi.Input[Option
     example = alicloud.ga.get_accelerators(name_regex="tf")
     pulumi.export("firstGaAcceleratorId", example.accelerators[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:

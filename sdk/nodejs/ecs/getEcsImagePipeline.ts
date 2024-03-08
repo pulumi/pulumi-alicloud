@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const ecsImagePipelineId2 = nameRegex.then(nameRegex => nameRegex.pipelines?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEcsImagePipeline(args?: GetEcsImagePipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsImagePipelineResult> {
     args = args || {};
@@ -99,6 +101,7 @@ export interface GetEcsImagePipelineResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -112,6 +115,7 @@ export interface GetEcsImagePipelineResult {
  * });
  * export const ecsImagePipelineId2 = nameRegex.then(nameRegex => nameRegex.pipelines?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEcsImagePipelineOutput(args?: GetEcsImagePipelineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsImagePipelineResult> {
     return pulumi.output(args).apply((a: any) => getEcsImagePipeline(a, opts))

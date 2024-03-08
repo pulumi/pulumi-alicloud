@@ -220,6 +220,7 @@ class CaCertificate(pulumi.CustomResource):
 
         * using CA certificate content
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -248,9 +249,11 @@ class CaCertificate(pulumi.CustomResource):
         \"\"\",
             ca_certificate_name="tf-testAccSlbCACertificate")
         ```
+        <!--End PulumiCodeChooser -->
 
         * using CA certificate file
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -259,6 +262,7 @@ class CaCertificate(pulumi.CustomResource):
             ca_certificate_name="tf-testAccSlbCACertificate",
             ca_certificate=(lambda path: open(path).read())(f"{path['module']}/ca_certificate.pem"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -293,6 +297,7 @@ class CaCertificate(pulumi.CustomResource):
 
         * using CA certificate content
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -321,9 +326,11 @@ class CaCertificate(pulumi.CustomResource):
         \"\"\",
             ca_certificate_name="tf-testAccSlbCACertificate")
         ```
+        <!--End PulumiCodeChooser -->
 
         * using CA certificate file
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -332,6 +339,7 @@ class CaCertificate(pulumi.CustomResource):
             ca_certificate_name="tf-testAccSlbCACertificate",
             ca_certificate=(lambda path: open(path).read())(f"{path['module']}/ca_certificate.pem"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

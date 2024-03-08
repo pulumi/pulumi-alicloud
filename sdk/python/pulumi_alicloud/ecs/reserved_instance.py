@@ -664,6 +664,7 @@ class ReservedInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -679,6 +680,7 @@ class ReservedInstance(pulumi.CustomResource):
             zone_id=default_instance_types.instance_types[0].availability_zones[0],
             scope="Zone")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -724,6 +726,7 @@ class ReservedInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -739,6 +742,7 @@ class ReservedInstance(pulumi.CustomResource):
             zone_id=default_instance_types.instance_types[0].availability_zones[0],
             scope="Zone")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

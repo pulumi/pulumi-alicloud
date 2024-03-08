@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in 1.35.0+ .
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -55,6 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * @deprecated
  * This resource has been deprecated in favour of ServiceCertificate

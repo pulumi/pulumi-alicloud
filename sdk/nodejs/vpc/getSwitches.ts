@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -32,6 +33,7 @@ import * as utilities from "../utilities";
  *     nameRegex: vswitch.vswitchName,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSwitches(args?: GetSwitchesArgs, opts?: pulumi.InvokeOptions): Promise<GetSwitchesResult> {
     args = args || {};
@@ -183,6 +185,7 @@ export interface GetSwitchesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -204,6 +207,7 @@ export interface GetSwitchesResult {
  *     nameRegex: vswitch.vswitchName,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSwitchesOutput(args?: GetSwitchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSwitchesResult> {
     return pulumi.output(args).apply((a: any) => getSwitches(a, opts))

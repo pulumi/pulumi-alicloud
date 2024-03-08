@@ -109,6 +109,7 @@ class AlertContactGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -122,6 +123,7 @@ class AlertContactGroup(pulumi.CustomResource):
             alert_contact_group_name="example_value",
             contact_ids=[example_alert_contact.id])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -153,6 +155,7 @@ class AlertContactGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -166,6 +169,7 @@ class AlertContactGroup(pulumi.CustomResource):
             alert_contact_group_name="example_value",
             contact_ids=[example_alert_contact.id])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

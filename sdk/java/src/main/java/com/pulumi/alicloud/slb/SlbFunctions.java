@@ -57,6 +57,8 @@ public final class SlbFunctions {
      * This data source provides the acls in the region.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -84,6 +86,8 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Entry Block
      * 
      * The entry mapping supports the following:
@@ -108,6 +112,8 @@ public final class SlbFunctions {
      * This data source provides the acls in the region.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -135,6 +141,8 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Entry Block
      * 
      * The entry mapping supports the following:
@@ -159,6 +167,8 @@ public final class SlbFunctions {
      * This data source provides the acls in the region.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -186,6 +196,8 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Entry Block
      * 
      * The entry mapping supports the following:
@@ -210,6 +222,8 @@ public final class SlbFunctions {
      * This data source provides the acls in the region.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -237,6 +251,8 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Entry Block
      * 
      * The entry mapping supports the following:
@@ -261,6 +277,8 @@ public final class SlbFunctions {
      * This data source provides the acls in the region.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -288,6 +306,8 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Entry Block
      * 
      * The entry mapping supports the following:
@@ -312,6 +332,8 @@ public final class SlbFunctions {
      * This data source provides the acls in the region.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -339,6 +361,8 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Entry Block
      * 
      * The entry mapping supports the following:
@@ -365,6 +389,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in 1.123.1+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -398,6 +424,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationLoadBalancersResult> getApplicationLoadBalancers() {
@@ -409,6 +436,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in 1.123.1+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -442,6 +471,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationLoadBalancersResult> getApplicationLoadBalancersPlain() {
@@ -453,6 +483,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in 1.123.1+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -486,6 +518,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationLoadBalancersResult> getApplicationLoadBalancers(GetApplicationLoadBalancersArgs args) {
@@ -497,6 +530,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in 1.123.1+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -530,6 +565,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationLoadBalancersResult> getApplicationLoadBalancersPlain(GetApplicationLoadBalancersPlainArgs args) {
@@ -541,6 +577,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in 1.123.1+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -574,6 +612,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationLoadBalancersResult> getApplicationLoadBalancers(GetApplicationLoadBalancersArgs args, InvokeOptions options) {
@@ -585,6 +624,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in 1.123.1+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -618,6 +659,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationLoadBalancersResult> getApplicationLoadBalancersPlain(GetApplicationLoadBalancersPlainArgs args, InvokeOptions options) {
@@ -627,6 +669,8 @@ public final class SlbFunctions {
      * This data source provides the server load balancer attachments of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -656,6 +700,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAttachmentsResult> getAttachments(GetAttachmentsArgs args) {
@@ -665,6 +710,8 @@ public final class SlbFunctions {
      * This data source provides the server load balancer attachments of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -694,6 +741,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAttachmentsResult> getAttachmentsPlain(GetAttachmentsPlainArgs args) {
@@ -703,6 +751,8 @@ public final class SlbFunctions {
      * This data source provides the server load balancer attachments of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -732,6 +782,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAttachmentsResult> getAttachments(GetAttachmentsArgs args, InvokeOptions options) {
@@ -741,6 +792,8 @@ public final class SlbFunctions {
      * This data source provides the server load balancer attachments of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -770,6 +823,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAttachmentsResult> getAttachmentsPlain(GetAttachmentsPlainArgs args, InvokeOptions options) {
@@ -781,6 +835,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in 1.53.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -810,6 +866,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBackendServersResult> getBackendServers(GetBackendServersArgs args) {
@@ -821,6 +878,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in 1.53.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -850,6 +909,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBackendServersResult> getBackendServersPlain(GetBackendServersPlainArgs args) {
@@ -861,6 +921,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in 1.53.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -890,6 +952,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBackendServersResult> getBackendServers(GetBackendServersArgs args, InvokeOptions options) {
@@ -901,6 +964,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in 1.53.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -930,6 +995,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBackendServersResult> getBackendServersPlain(GetBackendServersPlainArgs args, InvokeOptions options) {
@@ -939,6 +1005,8 @@ public final class SlbFunctions {
      * This data source provides the CA certificate list.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -966,6 +1034,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCaCertificatesResult> getCaCertificates() {
@@ -975,6 +1044,8 @@ public final class SlbFunctions {
      * This data source provides the CA certificate list.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1002,6 +1073,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCaCertificatesResult> getCaCertificatesPlain() {
@@ -1011,6 +1083,8 @@ public final class SlbFunctions {
      * This data source provides the CA certificate list.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1038,6 +1112,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCaCertificatesResult> getCaCertificates(GetCaCertificatesArgs args) {
@@ -1047,6 +1122,8 @@ public final class SlbFunctions {
      * This data source provides the CA certificate list.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1074,6 +1151,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCaCertificatesResult> getCaCertificatesPlain(GetCaCertificatesPlainArgs args) {
@@ -1083,6 +1161,8 @@ public final class SlbFunctions {
      * This data source provides the CA certificate list.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1110,6 +1190,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCaCertificatesResult> getCaCertificates(GetCaCertificatesArgs args, InvokeOptions options) {
@@ -1119,6 +1200,8 @@ public final class SlbFunctions {
      * This data source provides the CA certificate list.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1146,6 +1229,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCaCertificatesResult> getCaCertificatesPlain(GetCaCertificatesPlainArgs args, InvokeOptions options) {
@@ -1157,6 +1241,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in 1.60.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1187,6 +1273,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainExtensionsResult> getDomainExtensions(GetDomainExtensionsArgs args) {
@@ -1198,6 +1285,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in 1.60.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1228,6 +1317,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainExtensionsResult> getDomainExtensionsPlain(GetDomainExtensionsPlainArgs args) {
@@ -1239,6 +1329,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in 1.60.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1269,6 +1361,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainExtensionsResult> getDomainExtensions(GetDomainExtensionsArgs args, InvokeOptions options) {
@@ -1280,6 +1373,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in 1.60.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1310,6 +1405,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainExtensionsResult> getDomainExtensionsPlain(GetDomainExtensionsPlainArgs args, InvokeOptions options) {
@@ -1319,6 +1415,8 @@ public final class SlbFunctions {
      * This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1374,6 +1472,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListenersResult> getListeners(GetListenersArgs args) {
@@ -1383,6 +1482,8 @@ public final class SlbFunctions {
      * This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1438,6 +1539,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListenersResult> getListenersPlain(GetListenersPlainArgs args) {
@@ -1447,6 +1549,8 @@ public final class SlbFunctions {
      * This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1502,6 +1606,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListenersResult> getListeners(GetListenersArgs args, InvokeOptions options) {
@@ -1511,6 +1616,8 @@ public final class SlbFunctions {
      * This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1566,6 +1673,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListenersResult> getListenersPlain(GetListenersPlainArgs args, InvokeOptions options) {
@@ -1577,6 +1685,8 @@ public final class SlbFunctions {
      * This data source provides the server load balancers of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1609,6 +1719,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLoadBalancersResult> getLoadBalancers() {
@@ -1620,6 +1731,8 @@ public final class SlbFunctions {
      * This data source provides the server load balancers of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1652,6 +1765,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLoadBalancersResult> getLoadBalancersPlain() {
@@ -1663,6 +1777,8 @@ public final class SlbFunctions {
      * This data source provides the server load balancers of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1695,6 +1811,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLoadBalancersResult> getLoadBalancers(GetLoadBalancersArgs args) {
@@ -1706,6 +1823,8 @@ public final class SlbFunctions {
      * This data source provides the server load balancers of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1738,6 +1857,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLoadBalancersResult> getLoadBalancersPlain(GetLoadBalancersPlainArgs args) {
@@ -1749,6 +1869,8 @@ public final class SlbFunctions {
      * This data source provides the server load balancers of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1781,6 +1903,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLoadBalancersResult> getLoadBalancers(GetLoadBalancersArgs args, InvokeOptions options) {
@@ -1792,6 +1915,8 @@ public final class SlbFunctions {
      * This data source provides the server load balancers of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1824,6 +1949,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLoadBalancersResult> getLoadBalancersPlain(GetLoadBalancersPlainArgs args, InvokeOptions options) {
@@ -1869,6 +1995,8 @@ public final class SlbFunctions {
      * This data source provides the rules associated with a server load balancer listener.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1957,6 +2085,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args) {
@@ -1966,6 +2095,8 @@ public final class SlbFunctions {
      * This data source provides the rules associated with a server load balancer listener.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2054,6 +2185,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args) {
@@ -2063,6 +2195,8 @@ public final class SlbFunctions {
      * This data source provides the rules associated with a server load balancer listener.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2151,6 +2285,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRulesResult> getRules(GetRulesArgs args, InvokeOptions options) {
@@ -2160,6 +2295,8 @@ public final class SlbFunctions {
      * This data source provides the rules associated with a server load balancer listener.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2248,6 +2385,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRulesResult> getRulesPlain(GetRulesPlainArgs args, InvokeOptions options) {
@@ -2257,6 +2395,8 @@ public final class SlbFunctions {
      * This data source provides the server certificate list.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2284,6 +2424,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerCertificatesResult> getServerCertificates() {
@@ -2293,6 +2434,8 @@ public final class SlbFunctions {
      * This data source provides the server certificate list.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2320,6 +2463,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerCertificatesResult> getServerCertificatesPlain() {
@@ -2329,6 +2473,8 @@ public final class SlbFunctions {
      * This data source provides the server certificate list.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2356,6 +2502,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerCertificatesResult> getServerCertificates(GetServerCertificatesArgs args) {
@@ -2365,6 +2512,8 @@ public final class SlbFunctions {
      * This data source provides the server certificate list.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2392,6 +2541,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerCertificatesResult> getServerCertificatesPlain(GetServerCertificatesPlainArgs args) {
@@ -2401,6 +2551,8 @@ public final class SlbFunctions {
      * This data source provides the server certificate list.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2428,6 +2580,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerCertificatesResult> getServerCertificates(GetServerCertificatesArgs args, InvokeOptions options) {
@@ -2437,6 +2590,8 @@ public final class SlbFunctions {
      * This data source provides the server certificate list.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2464,6 +2619,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerCertificatesResult> getServerCertificatesPlain(GetServerCertificatesPlainArgs args, InvokeOptions options) {
@@ -2473,6 +2629,8 @@ public final class SlbFunctions {
      * This data source provides the VServer groups related to a server load balancer.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2540,6 +2698,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerGroupsResult> getServerGroups(GetServerGroupsArgs args) {
@@ -2549,6 +2708,8 @@ public final class SlbFunctions {
      * This data source provides the VServer groups related to a server load balancer.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2616,6 +2777,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerGroupsResult> getServerGroupsPlain(GetServerGroupsPlainArgs args) {
@@ -2625,6 +2787,8 @@ public final class SlbFunctions {
      * This data source provides the VServer groups related to a server load balancer.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2692,6 +2856,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerGroupsResult> getServerGroups(GetServerGroupsArgs args, InvokeOptions options) {
@@ -2701,6 +2866,8 @@ public final class SlbFunctions {
      * This data source provides the VServer groups related to a server load balancer.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2768,6 +2935,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerGroupsResult> getServerGroupsPlain(GetServerGroupsPlainArgs args, InvokeOptions options) {
@@ -2781,6 +2949,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2817,6 +2987,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTlsCipherPoliciesResult> getTlsCipherPolicies() {
@@ -2830,6 +3001,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2866,6 +3039,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTlsCipherPoliciesResult> getTlsCipherPoliciesPlain() {
@@ -2879,6 +3053,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2915,6 +3091,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTlsCipherPoliciesResult> getTlsCipherPolicies(GetTlsCipherPoliciesArgs args) {
@@ -2928,6 +3105,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2964,6 +3143,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTlsCipherPoliciesResult> getTlsCipherPoliciesPlain(GetTlsCipherPoliciesPlainArgs args) {
@@ -2977,6 +3157,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3013,6 +3195,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTlsCipherPoliciesResult> getTlsCipherPolicies(GetTlsCipherPoliciesArgs args, InvokeOptions options) {
@@ -3026,6 +3209,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3062,6 +3247,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTlsCipherPoliciesResult> getTlsCipherPoliciesPlain(GetTlsCipherPoliciesPlainArgs args, InvokeOptions options) {
@@ -3073,6 +3259,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3102,6 +3290,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -3113,6 +3302,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3142,6 +3333,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -3153,6 +3345,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3182,6 +3376,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -3193,6 +3388,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3222,6 +3419,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -3233,6 +3431,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3262,6 +3462,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -3273,6 +3474,8 @@ public final class SlbFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3302,6 +3505,7 @@ public final class SlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

@@ -284,6 +284,7 @@ class ImageImport(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -301,6 +302,8 @@ class ImageImport(pulumi.CustomResource):
             os_type="linux",
             platform="Ubuntu")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes Reference0
 
          The following attributes are exported:
@@ -344,6 +347,7 @@ class ImageImport(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -361,6 +365,8 @@ class ImageImport(pulumi.CustomResource):
             os_type="linux",
             platform="Ubuntu")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes Reference0
 
          The following attributes are exported:

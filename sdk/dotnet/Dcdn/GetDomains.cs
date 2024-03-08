@@ -15,6 +15,33 @@ namespace Pulumi.AliCloud.Dcdn
         /// Provides a collection of DCDN Domains to the specified filters.
         /// 
         /// &gt; **NOTE:** Available in 1.94.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        ///  &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Dcdn.GetDomains.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example.com",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["domainId"] = example.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dcdn/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
@@ -23,6 +50,33 @@ namespace Pulumi.AliCloud.Dcdn
         /// Provides a collection of DCDN Domains to the specified filters.
         /// 
         /// &gt; **NOTE:** Available in 1.94.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        ///  &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Dcdn.GetDomains.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "example.com",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["domainId"] = example.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:dcdn/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());

@@ -75,6 +75,7 @@ def get_resource_directories(output_file: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -82,6 +83,7 @@ def get_resource_directories(output_file: Optional[str] = None,
     default = alicloud.resourcemanager.get_resource_directories()
     pulumi.export("resourceDirectoryId", default.directories[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -107,6 +109,7 @@ def get_resource_directories_output(output_file: Optional[pulumi.Input[Optional[
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -114,6 +117,7 @@ def get_resource_directories_output(output_file: Optional[pulumi.Input[Optional[
     default = alicloud.resourcemanager.get_resource_directories()
     pulumi.export("resourceDirectoryId", default.directories[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

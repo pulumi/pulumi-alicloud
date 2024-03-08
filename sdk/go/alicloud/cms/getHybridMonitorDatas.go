@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetHybridMonitorDatas(ctx *pulumi.Context, args *GetHybridMonitorDatasArgs, opts ...pulumi.InvokeOption) (*GetHybridMonitorDatasResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHybridMonitorDatasResult

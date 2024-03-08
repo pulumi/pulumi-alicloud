@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const ecsImageComponentId2 = nameRegex.then(nameRegex => nameRegex.components?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEcsImageComponents(args?: GetEcsImageComponentsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsImageComponentsResult> {
     args = args || {};
@@ -105,6 +107,7 @@ export interface GetEcsImageComponentsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,6 +121,7 @@ export interface GetEcsImageComponentsResult {
  * });
  * export const ecsImageComponentId2 = nameRegex.then(nameRegex => nameRegex.components?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEcsImageComponentsOutput(args?: GetEcsImageComponentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsImageComponentsResult> {
     return pulumi.output(args).apply((a: any) => getEcsImageComponents(a, opts))

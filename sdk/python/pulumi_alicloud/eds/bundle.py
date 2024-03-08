@@ -345,6 +345,7 @@ class Bundle(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -369,6 +370,7 @@ class Bundle(pulumi.CustomResource):
             root_disk_performance_level="PL1",
             user_disk_performance_level="PL1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -409,6 +411,7 @@ class Bundle(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -433,6 +436,7 @@ class Bundle(pulumi.CustomResource):
             root_disk_performance_level="PL1",
             user_disk_performance_level="PL1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

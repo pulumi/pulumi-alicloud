@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// 
         /// &gt; **NOTE:** Available in v1.143.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,8 +49,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServerCustomImagesResult> InvokeAsync(GetServerCustomImagesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerCustomImagesResult>("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args ?? new GetServerCustomImagesArgs(), options.WithDefaults());
@@ -61,12 +59,11 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// 
         /// &gt; **NOTE:** Available in v1.143.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -95,8 +92,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServerCustomImagesResult> Invoke(GetServerCustomImagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerCustomImagesResult>("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args ?? new GetServerCustomImagesInvokeArgs(), options.WithDefaults());

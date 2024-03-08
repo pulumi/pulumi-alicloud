@@ -292,6 +292,7 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * A map of tags assigned to the disks. It must be in the format:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -323,6 +324,7 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="tags")
@@ -330,6 +332,7 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return A map of tags assigned to the disks. It must be in the format:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -361,6 +364,7 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Map<String,Object>> tags() {
@@ -663,6 +667,7 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param tags A map of tags assigned to the disks. It must be in the format:
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -694,6 +699,7 @@ public final class GetDisksPlainArgs extends com.pulumi.resources.InvokeArgs {
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

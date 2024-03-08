@@ -9,13 +9,16 @@ import * as utilities from "../utilities";
  *
  * Empty resource sets defaults values for every property.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.ram.AccountPasswordPolicy("default", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -32,13 +35,14 @@ import * as utilities from "../utilities";
  *     requireUppercaseCharacters: false,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * For not specified values sets defaults.
  *
  * ## Import
  *
  * RAM account password policy can be imported using the `id`, e.g.
  *
- *  bash
+ * bash
  *
  * ```sh
  * $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy

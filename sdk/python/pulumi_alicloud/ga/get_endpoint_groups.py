@@ -155,6 +155,7 @@ def get_endpoint_groups(accelerator_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -216,6 +217,7 @@ def get_endpoint_groups(accelerator_id: Optional[str] = None,
         ids=[default_endpoint_group.id])
     pulumi.export("firstGaEndpointGroupId", default_endpoint_groups.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
@@ -268,6 +270,7 @@ def get_endpoint_groups_output(accelerator_id: Optional[pulumi.Input[str]] = Non
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -329,6 +332,7 @@ def get_endpoint_groups_output(accelerator_id: Optional[pulumi.Input[str]] = Non
         ids=[default_endpoint_group.id])
     pulumi.export("firstGaEndpointGroupId", default_endpoint_groups.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.

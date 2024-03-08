@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const hbrVaultId1 = ids.then(ids => ids.vaults?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVaults(args?: GetVaultsArgs, opts?: pulumi.InvokeOptions): Promise<GetVaultsResult> {
     args = args || {};
@@ -89,6 +91,7 @@ export interface GetVaultsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -98,6 +101,7 @@ export interface GetVaultsResult {
  * });
  * export const hbrVaultId1 = ids.then(ids => ids.vaults?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVaultsOutput(args?: GetVaultsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVaultsResult> {
     return pulumi.output(args).apply((a: any) => getVaults(a, opts))

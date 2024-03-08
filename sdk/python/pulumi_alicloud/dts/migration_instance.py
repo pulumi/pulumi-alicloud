@@ -401,6 +401,7 @@ class MigrationInstance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -415,6 +416,7 @@ class MigrationInstance(pulumi.CustomResource):
             instance_class="small",
             sync_architecture="oneway")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -454,6 +456,7 @@ class MigrationInstance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -468,6 +471,7 @@ class MigrationInstance(pulumi.CustomResource):
             instance_class="small",
             sync_architecture="oneway")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

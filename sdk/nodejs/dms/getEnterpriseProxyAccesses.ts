@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,6 +30,7 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudDmsProxyAccesesExampleId = defaultEnterpriseProxyAccesses.apply(defaultEnterpriseProxyAccesses => defaultEnterpriseProxyAccesses.accesses?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEnterpriseProxyAccesses(args: GetEnterpriseProxyAccessesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseProxyAccessesResult> {
 
@@ -90,6 +92,7 @@ export interface GetEnterpriseProxyAccessesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -106,6 +109,7 @@ export interface GetEnterpriseProxyAccessesResult {
  * });
  * export const alicloudDmsProxyAccesesExampleId = defaultEnterpriseProxyAccesses.apply(defaultEnterpriseProxyAccesses => defaultEnterpriseProxyAccesses.accesses?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEnterpriseProxyAccessesOutput(args: GetEnterpriseProxyAccessesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseProxyAccessesResult> {
     return pulumi.output(args).apply((a: any) => getEnterpriseProxyAccesses(a, opts))

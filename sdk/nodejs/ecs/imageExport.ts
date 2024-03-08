@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -68,6 +69,7 @@ import * as utilities from "../utilities";
  *     ossPrefix: "ecsExport",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class ImageExport extends pulumi.CustomResource {
     /**

@@ -117,7 +117,7 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
      * Host login password, which can be set later. The password must meet the following requirements:
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-     * - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+     * - Special symbol '()\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
      * > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      */
     public readonly osPassword!: pulumi.Output<string | undefined>;
@@ -343,7 +343,7 @@ export interface DedicatedPropreHostState {
      * Host login password, which can be set later. The password must meet the following requirements:
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-     * - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+     * - Special symbol '()\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
      * > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      */
     osPassword?: pulumi.Input<string>;
@@ -470,7 +470,7 @@ export interface DedicatedPropreHostArgs {
      * Host login password, which can be set later. The password must meet the following requirements:
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-     * - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+     * - Special symbol '()\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
      * > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      */
     osPassword?: pulumi.Input<string>;

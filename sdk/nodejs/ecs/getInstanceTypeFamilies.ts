@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * export const firstInstanceTypeFamilyId = _default.then(_default => _default.families?.[0]?.id);
  * export const instanceIds = _default.then(_default => _default.ids);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceTypeFamilies(args?: GetInstanceTypeFamiliesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypeFamiliesResult> {
     args = args || {};
@@ -92,6 +94,7 @@ export interface GetInstanceTypeFamiliesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -102,6 +105,7 @@ export interface GetInstanceTypeFamiliesResult {
  * export const firstInstanceTypeFamilyId = _default.then(_default => _default.families?.[0]?.id);
  * export const instanceIds = _default.then(_default => _default.ids);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstanceTypeFamiliesOutput(args?: GetInstanceTypeFamiliesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypeFamiliesResult> {
     return pulumi.output(args).apply((a: any) => getInstanceTypeFamilies(a, opts))

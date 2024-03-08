@@ -111,6 +111,7 @@ def get_main_versions(cluster_types: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -123,6 +124,7 @@ def get_main_versions(cluster_types: Optional[Sequence[str]] = None,
     pulumi.export("firstMainVersion", default.main_versions[0].emr_version)
     pulumi.export("thisClusterTypes", default.main_versions[0].cluster_types)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] cluster_types: The supported clusterType of this emr version.
@@ -159,6 +161,7 @@ def get_main_versions_output(cluster_types: Optional[pulumi.Input[Optional[Seque
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -171,6 +174,7 @@ def get_main_versions_output(cluster_types: Optional[pulumi.Input[Optional[Seque
     pulumi.export("firstMainVersion", default.main_versions[0].emr_version)
     pulumi.export("thisClusterTypes", default.main_versions[0].cluster_types)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] cluster_types: The supported clusterType of this emr version.

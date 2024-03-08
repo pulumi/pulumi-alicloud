@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const configDeliveryId1 = ids.then(ids => ids.deliveries?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDeliveries(args?: GetDeliveriesArgs, opts?: pulumi.InvokeOptions): Promise<GetDeliveriesResult> {
     args = args || {};
@@ -83,6 +85,7 @@ export interface GetDeliveriesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -92,6 +95,7 @@ export interface GetDeliveriesResult {
  * });
  * export const configDeliveryId1 = ids.then(ids => ids.deliveries?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDeliveriesOutput(args?: GetDeliveriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeliveriesResult> {
     return pulumi.output(args).apply((a: any) => getDeliveries(a, opts))

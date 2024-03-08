@@ -113,6 +113,7 @@ def get_config_maps(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import json
@@ -136,6 +137,7 @@ def get_config_maps(ids: Optional[Sequence[str]] = None,
         name_regex="^example")
     pulumi.export("saeConfigMapId", name_regex.maps[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Config Map IDs.
@@ -176,6 +178,7 @@ def get_config_maps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import json
@@ -199,6 +202,7 @@ def get_config_maps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
         name_regex="^example")
     pulumi.export("saeConfigMapId", name_regex.maps[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Config Map IDs.

@@ -109,6 +109,7 @@ class Project(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -139,6 +140,7 @@ class Project(pulumi.CustomResource):
             project=name,
             service_role=role.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -170,6 +172,7 @@ class Project(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -200,6 +203,7 @@ class Project(pulumi.CustomResource):
             project=name,
             service_role=role.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

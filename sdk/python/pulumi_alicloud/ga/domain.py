@@ -124,6 +124,7 @@ class Domain(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -136,6 +137,7 @@ class Domain(pulumi.CustomResource):
             domain="changes.com.cn",
             accelerator_id=default_accelerator.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -167,6 +169,7 @@ class Domain(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -179,6 +182,7 @@ class Domain(pulumi.CustomResource):
             domain="changes.com.cn",
             accelerator_id=default_accelerator.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

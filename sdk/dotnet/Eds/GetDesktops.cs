@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// &gt; **NOTE:** Available in v1.144.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -110,8 +109,7 @@ namespace Pulumi.AliCloud.Eds
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDesktopsResult> InvokeAsync(GetDesktopsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDesktopsResult>("alicloud:eds/getDesktops:getDesktops", args ?? new GetDesktopsArgs(), options.WithDefaults());
@@ -121,12 +119,11 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// &gt; **NOTE:** Available in v1.144.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -215,8 +212,7 @@ namespace Pulumi.AliCloud.Eds
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDesktopsResult> Invoke(GetDesktopsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDesktopsResult>("alicloud:eds/getDesktops:getDesktops", args ?? new GetDesktopsInvokeArgs(), options.WithDefaults());

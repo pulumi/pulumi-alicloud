@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  *     plaintext: "example",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCiphertext(args: GetCiphertextArgs, opts?: pulumi.InvokeOptions): Promise<GetCiphertextResult> {
 
@@ -72,6 +74,7 @@ export interface GetCiphertextResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -85,6 +88,7 @@ export interface GetCiphertextResult {
  *     plaintext: "example",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCiphertextOutput(args: GetCiphertextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCiphertextResult> {
     return pulumi.output(args).apply((a: any) => getCiphertext(a, opts))

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -43,6 +44,7 @@ import * as utilities from "../utilities";
  * });
  * export const vpcIpv6EgressRuleId4 = ipv6EgressRuleName.then(ipv6EgressRuleName => ipv6EgressRuleName.rules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIpv6EgressRules(args: GetIpv6EgressRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetIpv6EgressRulesResult> {
 
@@ -119,6 +121,7 @@ export interface GetIpv6EgressRulesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -147,6 +150,7 @@ export interface GetIpv6EgressRulesResult {
  * });
  * export const vpcIpv6EgressRuleId4 = ipv6EgressRuleName.then(ipv6EgressRuleName => ipv6EgressRuleName.rules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIpv6EgressRulesOutput(args: GetIpv6EgressRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6EgressRulesResult> {
     return pulumi.output(args).apply((a: any) => getIpv6EgressRules(a, opts))

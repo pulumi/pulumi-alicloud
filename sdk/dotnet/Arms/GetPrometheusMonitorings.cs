@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// &gt; **NOTE:** Available since v1.210.0.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,8 +51,7 @@ namespace Pulumi.AliCloud.Arms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPrometheusMonitoringsResult> InvokeAsync(GetPrometheusMonitoringsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrometheusMonitoringsResult>("alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings", args ?? new GetPrometheusMonitoringsArgs(), options.WithDefaults());
@@ -63,12 +61,11 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// &gt; **NOTE:** Available since v1.210.0.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -99,8 +96,7 @@ namespace Pulumi.AliCloud.Arms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPrometheusMonitoringsResult> Invoke(GetPrometheusMonitoringsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrometheusMonitoringsResult>("alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings", args ?? new GetPrometheusMonitoringsInvokeArgs(), options.WithDefaults());

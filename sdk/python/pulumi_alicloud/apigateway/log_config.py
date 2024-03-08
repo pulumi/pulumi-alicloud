@@ -140,6 +140,7 @@ class LogConfig(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -167,6 +168,7 @@ class LogConfig(pulumi.CustomResource):
             sls_log_store=example_store.logstore_name,
             log_type="PROVIDER")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -199,6 +201,7 @@ class LogConfig(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -226,6 +229,7 @@ class LogConfig(pulumi.CustomResource):
             sls_log_store=example_store.logstore_name,
             log_type="PROVIDER")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -110,6 +110,7 @@ def get_projects(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -127,6 +128,7 @@ def get_projects(ids: Optional[Sequence[str]] = None,
         name_regex=default_project.name))
     pulumi.export("alicloudMaxcomputeProjectExampleId", default_projects.projects[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Project IDs.
@@ -161,6 +163,7 @@ def get_projects_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -178,6 +181,7 @@ def get_projects_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
         name_regex=default_project.name))
     pulumi.export("alicloudMaxcomputeProjectExampleId", default_projects.projects[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Project IDs.

@@ -13,8 +13,10 @@ namespace Pulumi.AliCloud.Oss
     /// Provides a resource to put a object(content or file) to a oss bucket.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Uploading a file to a bucket
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,8 +47,11 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Uploading a content to a bucket
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -77,6 +82,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [AliCloudResourceType("alicloud:oss/bucketObject:BucketObject")]
     public partial class BucketObject : global::Pulumi.CustomResource

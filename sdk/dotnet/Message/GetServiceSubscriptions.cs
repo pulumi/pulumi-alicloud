@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Message
         /// 
         /// &gt; **NOTE:** Available in v1.188.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -49,8 +48,7 @@ namespace Pulumi.AliCloud.Message
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServiceSubscriptionsResult> InvokeAsync(GetServiceSubscriptionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceSubscriptionsResult>("alicloud:message/getServiceSubscriptions:getServiceSubscriptions", args ?? new GetServiceSubscriptionsArgs(), options.WithDefaults());
@@ -60,10 +58,9 @@ namespace Pulumi.AliCloud.Message
         /// 
         /// &gt; **NOTE:** Available in v1.188.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -93,8 +90,7 @@ namespace Pulumi.AliCloud.Message
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServiceSubscriptionsResult> Invoke(GetServiceSubscriptionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceSubscriptionsResult>("alicloud:message/getServiceSubscriptions:getServiceSubscriptions", args ?? new GetServiceSubscriptionsInvokeArgs(), options.WithDefaults());

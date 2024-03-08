@@ -122,6 +122,7 @@ def get_address_books(group_type: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -142,6 +143,7 @@ def get_address_books(group_type: Optional[str] = None,
     ids = alicloud.cloudfirewall.get_address_books_output(ids=[default.id])
     pulumi.export("cloudFirewallAddressBookId1", ids.books[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
@@ -183,6 +185,7 @@ def get_address_books_output(group_type: Optional[pulumi.Input[Optional[str]]] =
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -203,6 +206,7 @@ def get_address_books_output(group_type: Optional[pulumi.Input[Optional[str]]] =
     ids = alicloud.cloudfirewall.get_address_books_output(ids=[default.id])
     pulumi.export("cloudFirewallAddressBookId1", ids.books[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.

@@ -286,6 +286,7 @@ def get_eips(address_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -293,6 +294,7 @@ def get_eips(address_name: Optional[str] = None,
     eips_ds = alicloud.ecs.get_eips()
     pulumi.export("firstEipId", eips_ds.eips[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of EIP IDs.
@@ -378,6 +380,7 @@ def get_eips_output(address_name: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -385,6 +388,7 @@ def get_eips_output(address_name: Optional[pulumi.Input[Optional[str]]] = None,
     eips_ds = alicloud.ecs.get_eips()
     pulumi.export("firstEipId", eips_ds.eips[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of EIP IDs.

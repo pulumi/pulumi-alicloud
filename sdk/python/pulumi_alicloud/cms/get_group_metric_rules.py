@@ -173,6 +173,7 @@ def get_group_metric_rules(dimensions: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -181,6 +182,7 @@ def get_group_metric_rules(dimensions: Optional[str] = None,
         name_regex="the_resource_name")
     pulumi.export("firstCmsGroupMetricRuleId", example.rules[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str dimensions: The dimensions that specify the resources to be associated with the alert rule.
@@ -245,6 +247,7 @@ def get_group_metric_rules_output(dimensions: Optional[pulumi.Input[Optional[str
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -253,6 +256,7 @@ def get_group_metric_rules_output(dimensions: Optional[pulumi.Input[Optional[str
         name_regex="the_resource_name")
     pulumi.export("firstCmsGroupMetricRuleId", example.rules[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str dimensions: The dimensions that specify the resources to be associated with the alert rule.

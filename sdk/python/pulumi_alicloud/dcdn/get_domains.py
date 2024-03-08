@@ -194,6 +194,18 @@ def get_domains(change_end_time: Optional[str] = None,
 
     > **NOTE:** Available in 1.94.0+.
 
+    ## Example Usage
+
+     <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.dcdn.get_domains(ids=["example.com"])
+    pulumi.export("domainId", example.domains[0].id)
+    ```
+    <!--End PulumiCodeChooser -->
+
 
     :param str change_end_time: The end time of the update. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
     :param str change_start_time: The start time of the update. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
@@ -255,6 +267,18 @@ def get_domains_output(change_end_time: Optional[pulumi.Input[Optional[str]]] = 
     Provides a collection of DCDN Domains to the specified filters.
 
     > **NOTE:** Available in 1.94.0+.
+
+    ## Example Usage
+
+     <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.dcdn.get_domains(ids=["example.com"])
+    pulumi.export("domainId", example.domains[0].id)
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str change_end_time: The end time of the update. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.

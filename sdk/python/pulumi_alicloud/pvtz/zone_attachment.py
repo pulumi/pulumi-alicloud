@@ -204,6 +204,7 @@ class ZoneAttachment(pulumi.CustomResource):
 
         Using `vpc_ids` to attach being in same region several vpc instances to a private zone
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -222,9 +223,11 @@ class ZoneAttachment(pulumi.CustomResource):
                 second.id,
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         Using `vpcs` to attach being in same region several vpc instances to a private zone
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -247,9 +250,11 @@ class ZoneAttachment(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         Using `vpcs` to attach being in different regions several vpc instances to a private zone
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -281,6 +286,7 @@ class ZoneAttachment(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -309,6 +315,7 @@ class ZoneAttachment(pulumi.CustomResource):
 
         Using `vpc_ids` to attach being in same region several vpc instances to a private zone
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -327,9 +334,11 @@ class ZoneAttachment(pulumi.CustomResource):
                 second.id,
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         Using `vpcs` to attach being in same region several vpc instances to a private zone
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -352,9 +361,11 @@ class ZoneAttachment(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         Using `vpcs` to attach being in different regions several vpc instances to a private zone
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -386,6 +397,7 @@ class ZoneAttachment(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

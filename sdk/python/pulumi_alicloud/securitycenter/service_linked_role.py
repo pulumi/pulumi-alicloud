@@ -61,12 +61,14 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         service_linked_role = alicloud.securitycenter.ServiceLinkedRole("serviceLinkedRole")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -96,12 +98,14 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         service_linked_role = alicloud.securitycenter.ServiceLinkedRole("serviceLinkedRole")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -2062,6 +2062,7 @@ type RuleTargetParamList struct {
 	//
 	// > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -2075,6 +2076,7 @@ type RuleTargetParamList struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	//
 	// In order to fix the diff, from version 1.160.0,
 	// this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
@@ -2104,6 +2106,7 @@ type RuleTargetParamListArgs struct {
 	//
 	// > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
 	//
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -2117,6 +2120,7 @@ type RuleTargetParamListArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	//
 	// In order to fix the diff, from version 1.160.0,
 	// this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
@@ -2194,6 +2198,7 @@ func (o RuleTargetParamListOutput) Template() pulumi.StringPtrOutput {
 //
 // > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -2210,6 +2215,7 @@ func (o RuleTargetParamListOutput) Template() pulumi.StringPtrOutput {
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // In order to fix the diff, from version 1.160.0,
 // this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.

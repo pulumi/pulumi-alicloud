@@ -264,7 +264,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<ImmutableArray<Outputs.InstanceParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ &amp; * ( ) _ + - =`
+        /// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ %!^(MISSING) &amp; * ( ) _ + - =`
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -714,7 +714,7 @@ namespace Pulumi.AliCloud.KVStore
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ &amp; * ( ) _ + - =`
+        /// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ %!^(MISSING) &amp; * ( ) _ + - =`
         /// </summary>
         public Input<string>? Password
         {
@@ -1153,7 +1153,7 @@ namespace Pulumi.AliCloud.KVStore
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ &amp; * ( ) _ + - =`
+        /// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ %!^(MISSING) &amp; * ( ) _ + - =`
         /// </summary>
         public Input<string>? Password
         {

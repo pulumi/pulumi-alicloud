@@ -317,6 +317,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -357,6 +358,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
                 config_rule_id=default_aggregate_config_rule.config_rule_id,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -393,6 +395,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -433,6 +436,7 @@ class AggregateCompliancePack(pulumi.CustomResource):
                 config_rule_id=default_aggregate_config_rule.config_rule_id,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

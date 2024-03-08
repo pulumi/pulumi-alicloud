@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  *     enable: "On",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterService(args?: GetTransitRouterServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterServiceResult> {
     args = args || {};
@@ -66,6 +68,7 @@ export interface GetTransitRouterServiceResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -74,6 +77,7 @@ export interface GetTransitRouterServiceResult {
  *     enable: "On",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterServiceOutput(args?: GetTransitRouterServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterServiceResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterService(a, opts))

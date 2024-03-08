@@ -223,6 +223,7 @@ class TransitRouterCidr(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -240,6 +241,7 @@ class TransitRouterCidr(pulumi.CustomResource):
             description="tf_example",
             publish_cidr_route=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -274,6 +276,7 @@ class TransitRouterCidr(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -291,6 +294,7 @@ class TransitRouterCidr(pulumi.CustomResource):
             description="tf_example",
             publish_cidr_route=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

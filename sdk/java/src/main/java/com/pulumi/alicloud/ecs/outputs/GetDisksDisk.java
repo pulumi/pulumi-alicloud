@@ -120,6 +120,7 @@ public final class GetDisksDisk {
     private String status;
     /**
      * @return A map of tags assigned to the disks. It must be in the format:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -151,6 +152,7 @@ public final class GetDisksDisk {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private Map<String,Object> tags;
@@ -339,6 +341,7 @@ public final class GetDisksDisk {
     }
     /**
      * @return A map of tags assigned to the disks. It must be in the format:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -370,6 +373,7 @@ public final class GetDisksDisk {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Map<String,Object> tags() {

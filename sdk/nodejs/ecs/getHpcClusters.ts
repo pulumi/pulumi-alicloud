@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstEcsHpcClusterId = example.then(example => example.clusters?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHpcClusters(args?: GetHpcClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetHpcClustersResult> {
     args = args || {};
@@ -78,6 +80,7 @@ export interface GetHpcClustersResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -88,6 +91,7 @@ export interface GetHpcClustersResult {
  * });
  * export const firstEcsHpcClusterId = example.then(example => example.clusters?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHpcClustersOutput(args?: GetHpcClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHpcClustersResult> {
     return pulumi.output(args).apply((a: any) => getHpcClusters(a, opts))

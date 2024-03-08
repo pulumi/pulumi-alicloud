@@ -103,6 +103,7 @@ def get_hpc_clusters(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -111,6 +112,7 @@ def get_hpc_clusters(ids: Optional[Sequence[str]] = None,
         name_regex="tf-testAcc")
     pulumi.export("firstEcsHpcClusterId", example.clusters[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Hpc Cluster IDs.
@@ -147,6 +149,7 @@ def get_hpc_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -155,6 +158,7 @@ def get_hpc_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
         name_regex="tf-testAcc")
     pulumi.export("firstEcsHpcClusterId", example.clusters[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Hpc Cluster IDs.

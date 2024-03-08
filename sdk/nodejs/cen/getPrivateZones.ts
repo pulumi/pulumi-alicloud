@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstCenPrivateZonesId = _this.then(_this => _this.zones?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPrivateZones(args: GetPrivateZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateZonesResult> {
 
@@ -103,6 +105,7 @@ export interface GetPrivateZonesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -114,6 +117,7 @@ export interface GetPrivateZonesResult {
  * });
  * export const firstCenPrivateZonesId = _this.then(_this => _this.zones?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPrivateZonesOutput(args: GetPrivateZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateZonesResult> {
     return pulumi.output(args).apply((a: any) => getPrivateZones(a, opts))

@@ -184,6 +184,7 @@ class DbNode(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -230,6 +231,7 @@ class DbNode(pulumi.CustomResource):
             class_code=default_instance.instance_type,
             zone_id=default_switch.zone_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -258,6 +260,7 @@ class DbNode(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -304,6 +307,7 @@ class DbNode(pulumi.CustomResource):
             class_code=default_instance.instance_type,
             zone_id=default_switch.zone_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

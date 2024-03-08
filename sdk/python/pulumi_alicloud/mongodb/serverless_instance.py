@@ -38,7 +38,7 @@ class ServerlessInstanceArgs:
         The set of arguments for constructing a ServerlessInstance resource.
         :param pulumi.Input[str] account_password: The password of the database logon account.
                * The password length is `8` to `32` bits.
-               * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+               * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
         :param pulumi.Input[int] capacity_unit: The I/O throughput consumed by the instance. Valid values: `100` to `8000`.
         :param pulumi.Input[int] db_instance_storage: The db instance storage. Valid values: `1` to `100`.
         :param pulumi.Input[str] engine_version: The database version number. Valid values: `4.2`.
@@ -93,7 +93,7 @@ class ServerlessInstanceArgs:
         """
         The password of the database logon account.
         * The password length is `8` to `32` bits.
-        * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+        * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
         """
         return pulumi.get(self, "account_password")
 
@@ -332,7 +332,7 @@ class _ServerlessInstanceState:
         Input properties used for looking up and filtering ServerlessInstance resources.
         :param pulumi.Input[str] account_password: The password of the database logon account.
                * The password length is `8` to `32` bits.
-               * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+               * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
         :param pulumi.Input[bool] auto_renew: Set whether the instance is automatically renewed.
         :param pulumi.Input[int] capacity_unit: The I/O throughput consumed by the instance. Valid values: `100` to `8000`.
         :param pulumi.Input[str] db_instance_description: The db instance description.
@@ -397,7 +397,7 @@ class _ServerlessInstanceState:
         """
         The password of the database logon account.
         * The password length is `8` to `32` bits.
-        * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+        * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
         """
         return pulumi.get(self, "account_password")
 
@@ -659,6 +659,7 @@ class ServerlessInstance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -692,6 +693,7 @@ class ServerlessInstance(pulumi.CustomResource):
                 security_ip_list="192.168.0.1",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -705,7 +707,7 @@ class ServerlessInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_password: The password of the database logon account.
                * The password length is `8` to `32` bits.
-               * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+               * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
         :param pulumi.Input[bool] auto_renew: Set whether the instance is automatically renewed.
         :param pulumi.Input[int] capacity_unit: The I/O throughput consumed by the instance. Valid values: `100` to `8000`.
         :param pulumi.Input[str] db_instance_description: The db instance description.
@@ -743,6 +745,7 @@ class ServerlessInstance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -776,6 +779,7 @@ class ServerlessInstance(pulumi.CustomResource):
                 security_ip_list="192.168.0.1",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -900,7 +904,7 @@ class ServerlessInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_password: The password of the database logon account.
                * The password length is `8` to `32` bits.
-               * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+               * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
         :param pulumi.Input[bool] auto_renew: Set whether the instance is automatically renewed.
         :param pulumi.Input[int] capacity_unit: The I/O throughput consumed by the instance. Valid values: `100` to `8000`.
         :param pulumi.Input[str] db_instance_description: The db instance description.
@@ -951,7 +955,7 @@ class ServerlessInstance(pulumi.CustomResource):
         """
         The password of the database logon account.
         * The password length is `8` to `32` bits.
-        * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+        * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
         """
         return pulumi.get(self, "account_password")
 

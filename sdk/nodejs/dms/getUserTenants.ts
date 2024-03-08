@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * });
  * export const tid = _default.then(_default => _default.ids?.[0]);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getUserTenants(args?: GetUserTenantsArgs, opts?: pulumi.InvokeOptions): Promise<GetUserTenantsResult> {
     args = args || {};
@@ -85,6 +87,7 @@ export interface GetUserTenantsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -94,6 +97,7 @@ export interface GetUserTenantsResult {
  * });
  * export const tid = _default.then(_default => _default.ids?.[0]);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getUserTenantsOutput(args?: GetUserTenantsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserTenantsResult> {
     return pulumi.output(args).apply((a: any) => getUserTenants(a, opts))

@@ -61,6 +61,7 @@ class ServiceBasicPublic(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -71,6 +72,7 @@ class ServiceBasicPublic(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.cloudmonitor.ServiceBasicPublic("default")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -100,6 +102,7 @@ class ServiceBasicPublic(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -110,6 +113,7 @@ class ServiceBasicPublic(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.cloudmonitor.ServiceBasicPublic("default")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

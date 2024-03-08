@@ -133,6 +133,7 @@ def get_domains(domain_search_type: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -156,6 +157,7 @@ def get_domains(domain_search_type: Optional[str] = None,
         })
     pulumi.export("vodDomain", default_domains.domains[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str domain_search_type: The search method. Valid values:
@@ -204,6 +206,7 @@ def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -227,6 +230,7 @@ def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]]
         })
     pulumi.export("vodDomain", default_domains.domains[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str domain_search_type: The search method. Valid values:

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -36,6 +37,7 @@ import * as utilities from "../utilities";
  * });
  * export const cloudFirewallAddressBookId1 = ids.apply(ids => ids.books?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAddressBooks(args?: GetAddressBooksArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressBooksResult> {
     args = args || {};
@@ -105,6 +107,7 @@ export interface GetAddressBooksResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -126,6 +129,7 @@ export interface GetAddressBooksResult {
  * });
  * export const cloudFirewallAddressBookId1 = ids.apply(ids => ids.books?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAddressBooksOutput(args?: GetAddressBooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressBooksResult> {
     return pulumi.output(args).apply((a: any) => getAddressBooks(a, opts))

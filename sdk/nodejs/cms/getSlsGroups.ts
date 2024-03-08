@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const cmsSlsGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSlsGroups(args?: GetSlsGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSlsGroupsResult> {
     args = args || {};
@@ -93,6 +95,7 @@ export interface GetSlsGroupsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -106,6 +109,7 @@ export interface GetSlsGroupsResult {
  * });
  * export const cmsSlsGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSlsGroupsOutput(args?: GetSlsGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSlsGroupsResult> {
     return pulumi.output(args).apply((a: any) => getSlsGroups(a, opts))

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const tagMetaTagDefault1 = _default.then(_default => _default.tags?.valueName);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMetaTags(args?: GetMetaTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetMetaTagsResult> {
     args = args || {};
@@ -70,6 +72,7 @@ export interface GetMetaTagsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -79,6 +82,7 @@ export interface GetMetaTagsResult {
  * });
  * export const tagMetaTagDefault1 = _default.then(_default => _default.tags?.valueName);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMetaTagsOutput(args?: GetMetaTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetaTagsResult> {
     return pulumi.output(args).apply((a: any) => getMetaTags(a, opts))

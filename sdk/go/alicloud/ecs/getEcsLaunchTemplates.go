@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetEcsLaunchTemplates(ctx *pulumi.Context, args *GetEcsLaunchTemplatesArgs, opts ...pulumi.InvokeOption) (*GetEcsLaunchTemplatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsLaunchTemplatesResult

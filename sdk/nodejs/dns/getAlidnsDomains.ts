@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstDomainId = domainsDs.then(domainsDs => domainsDs.domains?.[0]?.domainId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAlidnsDomains(args?: GetAlidnsDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlidnsDomainsResult> {
     args = args || {};
@@ -77,7 +79,7 @@ export interface GetAlidnsDomainsArgs {
      */
     instanceId?: string;
     /**
-     * The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+     * The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
      */
     keyWord?: string;
     /**
@@ -167,6 +169,7 @@ export interface GetAlidnsDomainsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -177,6 +180,7 @@ export interface GetAlidnsDomainsResult {
  * });
  * export const firstDomainId = domainsDs.then(domainsDs => domainsDs.domains?.[0]?.domainId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAlidnsDomainsOutput(args?: GetAlidnsDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsDomainsResult> {
     return pulumi.output(args).apply((a: any) => getAlidnsDomains(a, opts))
@@ -212,7 +216,7 @@ export interface GetAlidnsDomainsOutputArgs {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+     * The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
      */
     keyWord?: pulumi.Input<string>;
     /**

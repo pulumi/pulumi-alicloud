@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstLogStoreId = example.then(example => example.stores?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getStores(args: GetStoresArgs, opts?: pulumi.InvokeOptions): Promise<GetStoresResult> {
 
@@ -80,6 +82,7 @@ export interface GetStoresResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -90,6 +93,7 @@ export interface GetStoresResult {
  * });
  * export const firstLogStoreId = example.then(example => example.stores?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getStoresOutput(args: GetStoresOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStoresResult> {
     return pulumi.output(args).apply((a: any) => getStores(a, opts))

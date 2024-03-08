@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetIndustrialPidProjects(ctx *pulumi.Context, args *GetIndustrialPidProjectsArgs, opts ...pulumi.InvokeOption) (*GetIndustrialPidProjectsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIndustrialPidProjectsResult

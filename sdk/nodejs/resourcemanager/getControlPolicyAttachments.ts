@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstResourceManagerControlPolicyAttachmentId = example.then(example => example.attachments?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getControlPolicyAttachments(args: GetControlPolicyAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetControlPolicyAttachmentsResult> {
 
@@ -82,6 +84,7 @@ export interface GetControlPolicyAttachmentsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -91,6 +94,7 @@ export interface GetControlPolicyAttachmentsResult {
  * });
  * export const firstResourceManagerControlPolicyAttachmentId = example.then(example => example.attachments?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getControlPolicyAttachmentsOutput(args: GetControlPolicyAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetControlPolicyAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getControlPolicyAttachments(a, opts))

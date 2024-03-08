@@ -420,6 +420,7 @@ class HaVipv2(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -452,6 +453,7 @@ class HaVipv2(pulumi.CustomResource):
             ip_address="192.168.1.101",
             resource_group_id=default_rg.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -488,6 +490,7 @@ class HaVipv2(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -520,6 +523,7 @@ class HaVipv2(pulumi.CustomResource):
             ip_address="192.168.1.101",
             resource_group_id=default_rg.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

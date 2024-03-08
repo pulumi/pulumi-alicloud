@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available since v1.149.0+.
  *
  * ## Example Usage
+ *
  * ### Create an RDS MySQL clone instance
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -66,6 +68,7 @@ import * as utilities from "../utilities";
  *     backupId: exampleRdsBackup.backupId,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

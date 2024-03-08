@@ -123,6 +123,7 @@ def get_application_groups(application_name: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -137,6 +138,7 @@ def get_application_groups(application_name: Optional[str] = None,
         name_regex="^my-ApplicationGroup")
     pulumi.export("oosApplicationGroupId2", name_regex.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str application_name: The name of the Application.
@@ -181,6 +183,7 @@ def get_application_groups_output(application_name: Optional[pulumi.Input[str]] 
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -195,6 +198,7 @@ def get_application_groups_output(application_name: Optional[pulumi.Input[str]] 
         name_regex="^my-ApplicationGroup")
     pulumi.export("oosApplicationGroupId2", name_regex.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str application_name: The name of the Application.

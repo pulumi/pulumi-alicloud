@@ -182,6 +182,7 @@ def get_records(domain_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -193,6 +194,7 @@ def get_records(domain_name: Optional[str] = None,
         type="A")
     pulumi.export("firstRecordId", records_ds.records[0].record_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str domain_name: The domain name associated to the records.
@@ -251,6 +253,7 @@ def get_records_output(domain_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -262,6 +265,7 @@ def get_records_output(domain_name: Optional[pulumi.Input[str]] = None,
         type="A")
     pulumi.export("firstRecordId", records_ds.records[0].record_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str domain_name: The domain name associated to the records.

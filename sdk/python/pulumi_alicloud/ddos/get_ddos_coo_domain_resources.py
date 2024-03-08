@@ -104,6 +104,7 @@ def get_ddos_coo_domain_resources(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -111,6 +112,7 @@ def get_ddos_coo_domain_resources(ids: Optional[Sequence[str]] = None,
     example = alicloud.ddos.get_ddos_coo_domain_resources(ids=["tftestacc1234.abc"])
     pulumi.export("firstDdoscooDomainResourceId", example.resources[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Domain Resource IDs.
@@ -150,6 +152,7 @@ def get_ddos_coo_domain_resources_output(ids: Optional[pulumi.Input[Optional[Seq
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -157,6 +160,7 @@ def get_ddos_coo_domain_resources_output(ids: Optional[pulumi.Input[Optional[Seq
     example = alicloud.ddos.get_ddos_coo_domain_resources(ids=["tftestacc1234.abc"])
     pulumi.export("firstDdoscooDomainResourceId", example.resources[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Domain Resource IDs.

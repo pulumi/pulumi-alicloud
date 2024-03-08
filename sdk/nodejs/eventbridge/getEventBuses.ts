@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const eventBridgeEventBusId2 = nameRegex.then(nameRegex => nameRegex.buses?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEventBuses(args?: GetEventBusesArgs, opts?: pulumi.InvokeOptions): Promise<GetEventBusesResult> {
     args = args || {};
@@ -91,6 +93,7 @@ export interface GetEventBusesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -102,6 +105,7 @@ export interface GetEventBusesResult {
  * });
  * export const eventBridgeEventBusId2 = nameRegex.then(nameRegex => nameRegex.buses?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEventBusesOutput(args?: GetEventBusesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventBusesResult> {
     return pulumi.output(args).apply((a: any) => getEventBuses(a, opts))

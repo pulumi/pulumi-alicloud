@@ -121,6 +121,7 @@ def get_scaling_configurations(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -133,6 +134,7 @@ def get_scaling_configurations(ids: Optional[Sequence[str]] = None,
         scaling_group_id="scaling_group_id")
     pulumi.export("firstScalingRule", scalingconfigurations_ds.configurations[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of scaling configuration IDs.
@@ -169,6 +171,7 @@ def get_scaling_configurations_output(ids: Optional[pulumi.Input[Optional[Sequen
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -181,6 +184,7 @@ def get_scaling_configurations_output(ids: Optional[pulumi.Input[Optional[Sequen
         scaling_group_id="scaling_group_id")
     pulumi.export("firstScalingRule", scalingconfigurations_ds.configurations[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of scaling configuration IDs.

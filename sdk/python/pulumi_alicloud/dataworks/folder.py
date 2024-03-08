@@ -146,6 +146,7 @@ class Folder(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -154,6 +155,7 @@ class Folder(pulumi.CustomResource):
             folder_path="Business Flow/tfTestAcc/folderDi/tftest1",
             project_id="320687")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -185,6 +187,7 @@ class Folder(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -193,6 +196,7 @@ class Folder(pulumi.CustomResource):
             folder_path="Business Flow/tfTestAcc/folderDi/tftest1",
             project_id="320687")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,6 +49,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupKubernetesPermission(ctx *pulumi.Context, args *LookupKubernetesPermissionArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesPermissionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubernetesPermissionResult

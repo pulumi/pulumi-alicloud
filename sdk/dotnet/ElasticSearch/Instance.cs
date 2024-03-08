@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string?> MasterNodeSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&amp;*()_+-=`).
+        /// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&amp;*()_+-=`).
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -465,7 +465,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&amp;*()_+-=`).
+        /// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&amp;*()_+-=`).
         /// </summary>
         public Input<string>? Password
         {
@@ -747,7 +747,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&amp;*()_+-=`).
+        /// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&amp;*()_+-=`).
         /// </summary>
         public Input<string>? Password
         {

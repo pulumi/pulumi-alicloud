@@ -283,6 +283,7 @@ class ServiceSubscription(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -304,6 +305,7 @@ class ServiceSubscription(pulumi.CustomResource):
             notify_content_format="XML",
             notify_strategy="BACKOFF_RETRY")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -343,6 +345,7 @@ class ServiceSubscription(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -364,6 +367,7 @@ class ServiceSubscription(pulumi.CustomResource):
             notify_content_format="XML",
             notify_strategy="BACKOFF_RETRY")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -113,6 +113,7 @@ def get_gateway_file_shares(gateway_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -127,6 +128,7 @@ def get_gateway_file_shares(gateway_id: Optional[str] = None,
         name_regex="^my-GatewayFileShare")
     pulumi.export("cloudStorageGatewayGatewayFileShareId2", name_regex.shares[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str gateway_id: The ID of the gateway.
@@ -167,6 +169,7 @@ def get_gateway_file_shares_output(gateway_id: Optional[pulumi.Input[str]] = Non
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -181,6 +184,7 @@ def get_gateway_file_shares_output(gateway_id: Optional[pulumi.Input[str]] = Non
         name_regex="^my-GatewayFileShare")
     pulumi.export("cloudStorageGatewayGatewayFileShareId2", name_regex.shares[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str gateway_id: The ID of the gateway.

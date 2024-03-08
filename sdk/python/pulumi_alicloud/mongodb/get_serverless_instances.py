@@ -184,6 +184,7 @@ def get_serverless_instances(db_instance_class: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -203,6 +204,7 @@ def get_serverless_instances(db_instance_class: Optional[str] = None,
         })
     pulumi.export("mongodbServerlessInstanceId1", example.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_class: The db instance class.
@@ -274,6 +276,7 @@ def get_serverless_instances_output(db_instance_class: Optional[pulumi.Input[Opt
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -293,6 +296,7 @@ def get_serverless_instances_output(db_instance_class: Optional[pulumi.Input[Opt
         })
     pulumi.export("mongodbServerlessInstanceId1", example.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_class: The db instance class.

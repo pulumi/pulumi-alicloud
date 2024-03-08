@@ -117,6 +117,7 @@ def get_account_deletion_check_task(account_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -124,6 +125,7 @@ def get_account_deletion_check_task(account_id: Optional[str] = None,
     task = alicloud.resourcemanager.get_account_deletion_check_task(account_id="your_account_id")
     pulumi.export("abandonAbleChecksIds", [__item.check_id for __item in task.abandon_able_checks])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The ID of the member that you want to delete.
@@ -158,6 +160,7 @@ def get_account_deletion_check_task_output(account_id: Optional[pulumi.Input[str
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -165,6 +168,7 @@ def get_account_deletion_check_task_output(account_id: Optional[pulumi.Input[str
     task = alicloud.resourcemanager.get_account_deletion_check_task(account_id="your_account_id")
     pulumi.export("abandonAbleChecksIds", [__item.check_id for __item in task.abandon_able_checks])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The ID of the member that you want to delete.

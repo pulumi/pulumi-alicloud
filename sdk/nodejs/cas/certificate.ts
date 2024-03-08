@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  *     key: fs.readFileSync(`${path.module}/test.key`, "utf8"),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * @deprecated This resource has been deprecated in favour of ServiceCertificate
  */

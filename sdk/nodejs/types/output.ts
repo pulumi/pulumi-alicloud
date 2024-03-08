@@ -1244,7 +1244,7 @@ export namespace alb {
          */
         healthCheckMethod: string;
         /**
-         * The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: ` _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/)`.
+         * The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: ` _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/)`.
          */
         healthCheckPath: string;
         /**
@@ -2560,7 +2560,7 @@ export namespace alb {
          */
         httpCode?: string;
         /**
-         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " %!;(MISSING) ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
          */
         path?: string;
         /**
@@ -2592,7 +2592,7 @@ export namespace alb {
          */
         host?: string;
         /**
-         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " %!;(MISSING) ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
          */
         path?: string;
         /**
@@ -4785,6 +4785,7 @@ export namespace bastionhost {
         securityGroupIds: string[];
         /**
          * A map of tags assigned to the bastionhost instance. It must be in the format:
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -4795,6 +4796,7 @@ export namespace bastionhost {
          *     },
          * });
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         tags?: {[key: string]: any};
         /**
@@ -13844,9 +13846,6 @@ export namespace cs {
          * `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
          *
          * The `main.tf`:
-         *
-         *
-         * The `varibales.tf`:
          */
         disabled?: boolean;
         /**
@@ -13910,9 +13909,11 @@ export namespace cs {
          * Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
          *
          * for example:
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         weeklyPeriod: string;
     }
@@ -20670,6 +20671,7 @@ export namespace ecs {
         status: string;
         /**
          * A map of tags assigned to the disks. It must be in the format:
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -20681,6 +20683,7 @@ export namespace ecs {
          *     },
          * });
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         tags: {[key: string]: any};
         /**
@@ -22643,6 +22646,7 @@ export namespace ecs {
         status: string;
         /**
          * A map of tags assigned to the ECS instances. It must be in the format:
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -22654,6 +22658,7 @@ export namespace ecs {
          *     },
          * });
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         tags?: {[key: string]: any};
         /**
@@ -22986,6 +22991,7 @@ export namespace ecs {
         securityGroupType: string;
         /**
          * A map of tags assigned to the ECS instances. It must be in the format:
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -22997,6 +23003,7 @@ export namespace ecs {
          *     },
          * });
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         tags?: {[key: string]: any};
         /**
@@ -27664,9 +27671,11 @@ export namespace eventbridge {
          *
          * > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
          *
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
+         * <!--End PulumiCodeChooser -->
          *
          * In order to fix the diff, from version 1.160.0,
          * this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
@@ -31033,7 +31042,7 @@ export namespace hbr {
          */
         prefix: string;
         /**
-         * Backup progress. The value is 100%*100.
+         * Backup progress. The value is 100%!(BADWIDTH)%!1(MISSING)00.
          */
         progress: string;
         /**
@@ -37289,6 +37298,7 @@ export namespace oss {
         status: string;
         /**
          * A map of tags assigned to the instance. It must be in the format:
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -37300,6 +37310,7 @@ export namespace oss {
          *     },
          * });
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         tags: {[key: string]: any};
         /**
@@ -37423,6 +37434,7 @@ export namespace ots {
         status: string;
         /**
          * A map of tags assigned to the instance. It must be in the format:
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -37434,6 +37446,7 @@ export namespace ots {
          *     },
          * });
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         tags: {[key: string]: any};
         /**
@@ -40304,7 +40317,7 @@ export namespace rds {
          */
         babelfishEnabled: string;
         /**
-         * The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
+         * The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ %!^(MISSING) & * () _ + - =
          */
         masterUserPassword: string;
         /**
@@ -45638,6 +45651,7 @@ export namespace slb {
         status: string;
         /**
          * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -45649,6 +45663,7 @@ export namespace slb {
          *     },
          * });
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         tags: {[key: string]: any};
         /**
@@ -45724,6 +45739,7 @@ export namespace slb {
         status: string;
         /**
          * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -45735,6 +45751,7 @@ export namespace slb {
          *     },
          * });
          * ```
+         * <!--End PulumiCodeChooser -->
          */
         tags: {[key: string]: any};
         /**
@@ -50121,6 +50138,7 @@ export namespace waf {
         version: number;
         /**
          * The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
+         * ```
          */
         writeTime: number;
     }

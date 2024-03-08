@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  * const default = alicloud.actiontrail.getGlobalEventsStorageRegion({});
  * export const alicloudActiontrailGlobalEventsStorageRegion1 = _default.then(_default => _default.storageRegion);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGlobalEventsStorageRegion(opts?: pulumi.InvokeOptions): Promise<GetGlobalEventsStorageRegionResult> {
 
@@ -47,6 +49,7 @@ export interface GetGlobalEventsStorageRegionResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -54,6 +57,7 @@ export interface GetGlobalEventsStorageRegionResult {
  * const default = alicloud.actiontrail.getGlobalEventsStorageRegion({});
  * export const alicloudActiontrailGlobalEventsStorageRegion1 = _default.then(_default => _default.storageRegion);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGlobalEventsStorageRegionOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalEventsStorageRegionResult> {
     return pulumi.output(getGlobalEventsStorageRegion(opts))

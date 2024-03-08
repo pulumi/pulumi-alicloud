@@ -80,6 +80,7 @@ def get_kubernetes_permission(permissions: Optional[Sequence[pulumi.InputType['G
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -88,6 +89,7 @@ def get_kubernetes_permission(permissions: Optional[Sequence[pulumi.InputType['G
     default = alicloud.cs.get_kubernetes_permission(uid=users_ds.users[0].id)
     pulumi.export("permissions", default.permissions)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetKubernetesPermissionPermissionArgs']] permissions: A list of user permission.
@@ -116,6 +118,7 @@ def get_kubernetes_permission_output(permissions: Optional[pulumi.Input[Optional
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -124,6 +127,7 @@ def get_kubernetes_permission_output(permissions: Optional[pulumi.Input[Optional
     default = alicloud.cs.get_kubernetes_permission(uid=users_ds.users[0].id)
     pulumi.export("permissions", default.permissions)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetKubernetesPermissionPermissionArgs']] permissions: A list of user permission.

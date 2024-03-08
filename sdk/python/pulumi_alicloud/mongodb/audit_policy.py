@@ -141,6 +141,7 @@ class AuditPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -177,6 +178,7 @@ class AuditPolicy(pulumi.CustomResource):
             db_instance_id=default_instance.id,
             audit_status="disabled")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -209,6 +211,7 @@ class AuditPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -245,6 +248,7 @@ class AuditPolicy(pulumi.CustomResource):
             db_instance_id=default_instance.id,
             audit_status="disabled")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

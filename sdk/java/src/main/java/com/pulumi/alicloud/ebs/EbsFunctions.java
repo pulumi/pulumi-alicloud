@@ -29,6 +29,8 @@ public final class EbsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -59,6 +61,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDedicatedBlockStorageClustersResult> getDedicatedBlockStorageClusters() {
@@ -70,6 +73,8 @@ public final class EbsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -100,6 +105,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDedicatedBlockStorageClustersResult> getDedicatedBlockStorageClustersPlain() {
@@ -111,6 +117,8 @@ public final class EbsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -141,6 +149,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDedicatedBlockStorageClustersResult> getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs args) {
@@ -152,6 +161,8 @@ public final class EbsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -182,6 +193,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDedicatedBlockStorageClustersResult> getDedicatedBlockStorageClustersPlain(GetDedicatedBlockStorageClustersPlainArgs args) {
@@ -193,6 +205,8 @@ public final class EbsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -223,6 +237,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDedicatedBlockStorageClustersResult> getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs args, InvokeOptions options) {
@@ -234,6 +249,8 @@ public final class EbsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -264,6 +281,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDedicatedBlockStorageClustersResult> getDedicatedBlockStorageClustersPlain(GetDedicatedBlockStorageClustersPlainArgs args, InvokeOptions options) {
@@ -277,6 +295,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -306,6 +326,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDiskReplicaGroupsResult> getDiskReplicaGroups() {
@@ -319,6 +340,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -348,6 +371,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDiskReplicaGroupsResult> getDiskReplicaGroupsPlain() {
@@ -361,6 +385,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -390,6 +416,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDiskReplicaGroupsResult> getDiskReplicaGroups(GetDiskReplicaGroupsArgs args) {
@@ -403,6 +430,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -432,6 +461,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDiskReplicaGroupsResult> getDiskReplicaGroupsPlain(GetDiskReplicaGroupsPlainArgs args) {
@@ -445,6 +475,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -474,6 +506,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDiskReplicaGroupsResult> getDiskReplicaGroups(GetDiskReplicaGroupsArgs args, InvokeOptions options) {
@@ -487,6 +520,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -516,6 +551,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDiskReplicaGroupsResult> getDiskReplicaGroupsPlain(GetDiskReplicaGroupsPlainArgs args, InvokeOptions options) {
@@ -527,6 +563,8 @@ public final class EbsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -556,6 +594,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDiskReplicaPairsResult> getDiskReplicaPairs() {
@@ -567,6 +606,8 @@ public final class EbsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -596,6 +637,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDiskReplicaPairsResult> getDiskReplicaPairsPlain() {
@@ -607,6 +649,8 @@ public final class EbsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -636,6 +680,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDiskReplicaPairsResult> getDiskReplicaPairs(GetDiskReplicaPairsArgs args) {
@@ -647,6 +692,8 @@ public final class EbsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -676,6 +723,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDiskReplicaPairsResult> getDiskReplicaPairsPlain(GetDiskReplicaPairsPlainArgs args) {
@@ -687,6 +735,8 @@ public final class EbsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -716,6 +766,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDiskReplicaPairsResult> getDiskReplicaPairs(GetDiskReplicaPairsArgs args, InvokeOptions options) {
@@ -727,6 +778,8 @@ public final class EbsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -756,6 +809,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDiskReplicaPairsResult> getDiskReplicaPairsPlain(GetDiskReplicaPairsPlainArgs args, InvokeOptions options) {
@@ -769,6 +823,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -798,6 +854,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionsResult> getRegions() {
@@ -811,6 +868,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -840,6 +899,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain() {
@@ -853,6 +913,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -882,6 +944,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args) {
@@ -895,6 +958,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -924,6 +989,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args) {
@@ -937,6 +1003,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -966,6 +1034,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOptions options) {
@@ -979,6 +1048,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1008,6 +1079,7 @@ public final class EbsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {

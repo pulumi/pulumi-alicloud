@@ -208,6 +208,7 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -222,6 +223,7 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
                 "For": "DDH_Cluster_Test",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -256,6 +258,7 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -270,6 +273,7 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
                 "For": "DDH_Cluster_Test",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

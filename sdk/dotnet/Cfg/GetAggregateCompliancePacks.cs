@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Cfg
         /// 
         /// &gt; **NOTE:** Available in v1.124.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -46,8 +45,7 @@ namespace Pulumi.AliCloud.Cfg
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAggregateCompliancePacksResult> InvokeAsync(GetAggregateCompliancePacksArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAggregateCompliancePacksResult>("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", args ?? new GetAggregateCompliancePacksArgs(), options.WithDefaults());
@@ -57,12 +55,11 @@ namespace Pulumi.AliCloud.Cfg
         /// 
         /// &gt; **NOTE:** Available in v1.124.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,8 +84,7 @@ namespace Pulumi.AliCloud.Cfg
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAggregateCompliancePacksResult> Invoke(GetAggregateCompliancePacksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAggregateCompliancePacksResult>("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", args ?? new GetAggregateCompliancePacksInvokeArgs(), options.WithDefaults());

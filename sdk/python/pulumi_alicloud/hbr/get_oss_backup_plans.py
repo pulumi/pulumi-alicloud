@@ -123,6 +123,7 @@ def get_oss_backup_plans(bucket: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -130,6 +131,7 @@ def get_oss_backup_plans(bucket: Optional[str] = None,
     ids = alicloud.hbr.get_oss_backup_plans(name_regex="^my-OssBackupPlan")
     pulumi.export("hbrOssBackupPlanId", ids.plans[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bucket: The name of OSS bucket.
@@ -174,6 +176,7 @@ def get_oss_backup_plans_output(bucket: Optional[pulumi.Input[Optional[str]]] = 
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -181,6 +184,7 @@ def get_oss_backup_plans_output(bucket: Optional[pulumi.Input[Optional[str]]] = 
     ids = alicloud.hbr.get_oss_backup_plans(name_regex="^my-OssBackupPlan")
     pulumi.export("hbrOssBackupPlanId", ids.plans[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bucket: The name of OSS bucket.

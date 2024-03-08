@@ -207,6 +207,7 @@ class EcsPrefixList(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -221,6 +222,7 @@ class EcsPrefixList(pulumi.CustomResource):
             max_entries=2,
             prefix_list_name="tftest")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -255,6 +257,7 @@ class EcsPrefixList(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -269,6 +272,7 @@ class EcsPrefixList(pulumi.CustomResource):
             max_entries=2,
             prefix_list_name="tftest")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

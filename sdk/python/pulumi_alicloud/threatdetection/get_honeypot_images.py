@@ -120,6 +120,7 @@ def get_honeypot_images(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -128,6 +129,7 @@ def get_honeypot_images(ids: Optional[Sequence[str]] = None,
         name_regex="^meta")
     pulumi.export("alicloudThreatDetectionHoneypotImageExampleId", default.images[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Honeypot Image IDs.
@@ -165,6 +167,7 @@ def get_honeypot_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -173,6 +176,7 @@ def get_honeypot_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
         name_regex="^meta")
     pulumi.export("alicloudThreatDetectionHoneypotImageExampleId", default.images[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Honeypot Image IDs.

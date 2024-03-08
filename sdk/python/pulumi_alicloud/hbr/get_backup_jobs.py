@@ -125,6 +125,7 @@ def get_backup_jobs(filters: Optional[Sequence[pulumi.InputType['GetBackupJobsFi
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -173,6 +174,7 @@ def get_backup_jobs(filters: Optional[Sequence[pulumi.InputType['GetBackupJobsFi
     pulumi.export("alicloudHbrBackupJobsDefault1", default_backup_jobs.jobs[0].id)
     pulumi.export("alicloudHbrBackupJobsExample1", example.jobs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Backup Job IDs.
@@ -219,6 +221,7 @@ def get_backup_jobs_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -267,6 +270,7 @@ def get_backup_jobs_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
     pulumi.export("alicloudHbrBackupJobsDefault1", default_backup_jobs.jobs[0].id)
     pulumi.export("alicloudHbrBackupJobsExample1", example.jobs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Backup Job IDs.

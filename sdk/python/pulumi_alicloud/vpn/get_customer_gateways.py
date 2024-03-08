@@ -108,6 +108,7 @@ def get_customer_gateways(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -119,6 +120,7 @@ def get_customer_gateways(ids: Optional[Sequence[str]] = None,
         name_regex="testAcc*",
         output_file="/tmp/cgws")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: ID of the VPN customer gateways.
@@ -151,6 +153,7 @@ def get_customer_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[st
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -162,6 +165,7 @@ def get_customer_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[st
         name_regex="testAcc*",
         output_file="/tmp/cgws")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: ID of the VPN customer gateways.

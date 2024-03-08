@@ -20,8 +20,10 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
  *
  * ## Example Usage
+ *
  * ### Create a hbase instance
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -52,6 +54,7 @@ import * as utilities from "../utilities";
  *     deletionProtection: false,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * this is a example for class netType instance. you can find more detail with the examples/hbase dir.
  *

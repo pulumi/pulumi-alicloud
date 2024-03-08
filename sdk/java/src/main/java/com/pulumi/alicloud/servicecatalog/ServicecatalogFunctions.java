@@ -35,6 +35,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -64,6 +66,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndUserProductsResult> getEndUserProducts() {
@@ -75,6 +78,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -104,6 +109,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndUserProductsResult> getEndUserProductsPlain() {
@@ -115,6 +121,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -144,6 +152,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndUserProductsResult> getEndUserProducts(GetEndUserProductsArgs args) {
@@ -155,6 +164,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -184,6 +195,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndUserProductsResult> getEndUserProductsPlain(GetEndUserProductsPlainArgs args) {
@@ -195,6 +207,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -224,6 +238,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndUserProductsResult> getEndUserProducts(GetEndUserProductsArgs args, InvokeOptions options) {
@@ -235,6 +250,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -264,6 +281,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndUserProductsResult> getEndUserProductsPlain(GetEndUserProductsPlainArgs args, InvokeOptions options) {
@@ -277,6 +295,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -311,6 +331,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLaunchOptionsResult> getLaunchOptions(GetLaunchOptionsArgs args) {
@@ -324,6 +345,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -358,6 +381,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLaunchOptionsResult> getLaunchOptionsPlain(GetLaunchOptionsPlainArgs args) {
@@ -371,6 +395,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -405,6 +431,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLaunchOptionsResult> getLaunchOptions(GetLaunchOptionsArgs args, InvokeOptions options) {
@@ -418,6 +445,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -452,6 +481,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLaunchOptionsResult> getLaunchOptionsPlain(GetLaunchOptionsPlainArgs args, InvokeOptions options) {
@@ -463,6 +493,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.204.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -493,6 +525,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortfoliosResult> getPortfolios() {
@@ -504,6 +537,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.204.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -534,6 +569,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortfoliosResult> getPortfoliosPlain() {
@@ -545,6 +581,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.204.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -575,6 +613,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortfoliosResult> getPortfolios(GetPortfoliosArgs args) {
@@ -586,6 +625,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.204.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -616,6 +657,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortfoliosResult> getPortfoliosPlain(GetPortfoliosPlainArgs args) {
@@ -627,6 +669,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.204.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -657,6 +701,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortfoliosResult> getPortfolios(GetPortfoliosArgs args, InvokeOptions options) {
@@ -668,6 +713,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.204.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -698,6 +745,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortfoliosResult> getPortfoliosPlain(GetPortfoliosPlainArgs args, InvokeOptions options) {
@@ -712,6 +760,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -741,6 +791,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProductAsEndUsersResult> getProductAsEndUsers() {
@@ -755,6 +806,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -784,6 +837,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProductAsEndUsersResult> getProductAsEndUsersPlain() {
@@ -798,6 +852,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -827,6 +883,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProductAsEndUsersResult> getProductAsEndUsers(GetProductAsEndUsersArgs args) {
@@ -841,6 +898,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -870,6 +929,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProductAsEndUsersResult> getProductAsEndUsersPlain(GetProductAsEndUsersPlainArgs args) {
@@ -884,6 +944,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -913,6 +975,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProductAsEndUsersResult> getProductAsEndUsers(GetProductAsEndUsersArgs args, InvokeOptions options) {
@@ -927,6 +990,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -956,6 +1021,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProductAsEndUsersResult> getProductAsEndUsersPlain(GetProductAsEndUsersPlainArgs args, InvokeOptions options) {
@@ -967,6 +1033,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -997,6 +1065,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProductVersionsResult> getProductVersions(GetProductVersionsArgs args) {
@@ -1008,6 +1077,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1038,6 +1109,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProductVersionsResult> getProductVersionsPlain(GetProductVersionsPlainArgs args) {
@@ -1049,6 +1121,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1079,6 +1153,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProductVersionsResult> getProductVersions(GetProductVersionsArgs args, InvokeOptions options) {
@@ -1090,6 +1165,8 @@ public final class ServicecatalogFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1120,6 +1197,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProductVersionsResult> getProductVersionsPlain(GetProductVersionsPlainArgs args, InvokeOptions options) {
@@ -1133,6 +1211,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1163,6 +1243,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProvisionedProductsResult> getProvisionedProducts() {
@@ -1176,6 +1257,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1206,6 +1289,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProvisionedProductsResult> getProvisionedProductsPlain() {
@@ -1219,6 +1303,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1249,6 +1335,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProvisionedProductsResult> getProvisionedProducts(GetProvisionedProductsArgs args) {
@@ -1262,6 +1349,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1292,6 +1381,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProvisionedProductsResult> getProvisionedProductsPlain(GetProvisionedProductsPlainArgs args) {
@@ -1305,6 +1395,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1335,6 +1427,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProvisionedProductsResult> getProvisionedProducts(GetProvisionedProductsArgs args, InvokeOptions options) {
@@ -1348,6 +1441,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1378,6 +1473,7 @@ public final class ServicecatalogFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProvisionedProductsResult> getProvisionedProductsPlain(GetProvisionedProductsPlainArgs args, InvokeOptions options) {

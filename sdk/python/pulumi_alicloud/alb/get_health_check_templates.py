@@ -123,6 +123,7 @@ def get_health_check_templates(health_check_template_ids: Optional[Sequence[str]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -132,6 +133,7 @@ def get_health_check_templates(health_check_template_ids: Optional[Sequence[str]
     name_regex = alicloud.alb.get_health_check_templates(name_regex="^my-HealthCheckTemplate")
     pulumi.export("albHealthCheckTemplateId2", name_regex.templates[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] health_check_template_ids: The health check template ids.
@@ -176,6 +178,7 @@ def get_health_check_templates_output(health_check_template_ids: Optional[pulumi
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -185,6 +188,7 @@ def get_health_check_templates_output(health_check_template_ids: Optional[pulumi
     name_regex = alicloud.alb.get_health_check_templates(name_regex="^my-HealthCheckTemplate")
     pulumi.export("albHealthCheckTemplateId2", name_regex.templates[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] health_check_template_ids: The health check template ids.

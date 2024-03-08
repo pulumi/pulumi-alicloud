@@ -221,6 +221,7 @@ class BackupPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -232,6 +233,7 @@ class BackupPolicy(pulumi.CustomResource):
             policy_version="2.0.0",
             uuid_lists=[default_assets.ids[0]])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -266,6 +268,7 @@ class BackupPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -277,6 +280,7 @@ class BackupPolicy(pulumi.CustomResource):
             policy_version="2.0.0",
             uuid_lists=[default_assets.ids[0]])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

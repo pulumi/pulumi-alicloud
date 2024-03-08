@@ -142,6 +142,7 @@ class Project(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -152,6 +153,7 @@ class Project(pulumi.CustomResource):
             name = "tf_example"
         example = alicloud.datahub.Project("example", comment="created by terraform")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -183,6 +185,7 @@ class Project(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -193,6 +196,7 @@ class Project(pulumi.CustomResource):
             name = "tf_example"
         example = alicloud.datahub.Project("example", comment="created by terraform")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

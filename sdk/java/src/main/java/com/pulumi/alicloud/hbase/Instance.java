@@ -36,7 +36,10 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
  * 
  * ## Example Usage
+ * 
  * ### Create a hbase instance
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -95,6 +98,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * this is a example for class netType instance. you can find more detail with the examples/hbase dir.
  * 

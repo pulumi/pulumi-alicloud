@@ -206,6 +206,7 @@ class Fileset(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -232,6 +233,7 @@ class Fileset(pulumi.CustomResource):
             description="terraform-example",
             file_system_path="/example_path/")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -265,6 +267,7 @@ class Fileset(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -291,6 +294,7 @@ class Fileset(pulumi.CustomResource):
             description="terraform-example",
             file_system_path="/example_path/")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

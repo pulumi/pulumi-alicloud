@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Ros
         /// 
         /// &gt; **NOTE:** Available in v1.145.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,8 +70,7 @@ namespace Pulumi.AliCloud.Ros
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetStackInstancesResult> InvokeAsync(GetStackInstancesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStackInstancesResult>("alicloud:ros/getStackInstances:getStackInstances", args ?? new GetStackInstancesArgs(), options.WithDefaults());
@@ -82,12 +80,11 @@ namespace Pulumi.AliCloud.Ros
         /// 
         /// &gt; **NOTE:** Available in v1.145.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -137,8 +134,7 @@ namespace Pulumi.AliCloud.Ros
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetStackInstancesResult> Invoke(GetStackInstancesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStackInstancesResult>("alicloud:ros/getStackInstances:getStackInstances", args ?? new GetStackInstancesInvokeArgs(), options.WithDefaults());

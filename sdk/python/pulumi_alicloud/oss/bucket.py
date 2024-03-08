@@ -720,6 +720,94 @@ class Bucket(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.2.0.
 
+        ## Example Usage
+
+        Private Bucket
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        bucket_acl = alicloud.oss.Bucket("bucket-acl",
+            acl="private",
+            bucket=default.result.apply(lambda result: f"example-value-{result}"))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Static Website
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        bucket_website = alicloud.oss.Bucket("bucket-website",
+            bucket=default.result.apply(lambda result: f"example-value-{result}"),
+            website=alicloud.oss.BucketWebsiteArgs(
+                error_document="error.html",
+                index_document="index.html",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Enable Logging
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        bucket_target = alicloud.oss.Bucket("bucket-target",
+            bucket=default.result.apply(lambda result: f"example-value-{result}"),
+            acl="public-read")
+        bucket_logging = alicloud.oss.Bucket("bucket-logging",
+            bucket=default.result.apply(lambda result: f"example-logging-{result}"),
+            logging=alicloud.oss.BucketLoggingArgs(
+                target_bucket=bucket_target.id,
+                target_prefix="log/",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Referer configuration
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        bucket_referer = alicloud.oss.Bucket("bucket-referer",
+            acl="private",
+            bucket=default.result.apply(lambda result: f"example-value-{result}"),
+            referer_config=alicloud.oss.BucketRefererConfigArgs(
+                allow_empty=False,
+                referers=[
+                    "http://www.aliyun.com",
+                    "https://www.aliyun.com",
+                ],
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Set lifecycle rule
+
         ## Import
 
         OSS bucket can be imported using the bucket name, e.g.
@@ -760,6 +848,94 @@ class Bucket(pulumi.CustomResource):
         > **NOTE:** The bucket namespace is shared by all users of the OSS system. Please set bucket name as unique as possible.
 
         > **NOTE:** Available since v1.2.0.
+
+        ## Example Usage
+
+        Private Bucket
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        bucket_acl = alicloud.oss.Bucket("bucket-acl",
+            acl="private",
+            bucket=default.result.apply(lambda result: f"example-value-{result}"))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Static Website
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        bucket_website = alicloud.oss.Bucket("bucket-website",
+            bucket=default.result.apply(lambda result: f"example-value-{result}"),
+            website=alicloud.oss.BucketWebsiteArgs(
+                error_document="error.html",
+                index_document="index.html",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Enable Logging
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        bucket_target = alicloud.oss.Bucket("bucket-target",
+            bucket=default.result.apply(lambda result: f"example-value-{result}"),
+            acl="public-read")
+        bucket_logging = alicloud.oss.Bucket("bucket-logging",
+            bucket=default.result.apply(lambda result: f"example-logging-{result}"),
+            logging=alicloud.oss.BucketLoggingArgs(
+                target_bucket=bucket_target.id,
+                target_prefix="log/",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Referer configuration
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        bucket_referer = alicloud.oss.Bucket("bucket-referer",
+            acl="private",
+            bucket=default.result.apply(lambda result: f"example-value-{result}"),
+            referer_config=alicloud.oss.BucketRefererConfigArgs(
+                allow_empty=False,
+                referers=[
+                    "http://www.aliyun.com",
+                    "https://www.aliyun.com",
+                ],
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
+        Set lifecycle rule
 
         ## Import
 

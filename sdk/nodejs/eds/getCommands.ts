@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -60,6 +61,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.eds.getCommands({});
  * export const ecdCommandId1 = ids.then(ids => ids.commands?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCommands(args?: GetCommandsArgs, opts?: pulumi.InvokeOptions): Promise<GetCommandsResult> {
     args = args || {};
@@ -130,6 +132,7 @@ export interface GetCommandsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -175,6 +178,7 @@ export interface GetCommandsResult {
  * const ids = alicloud.eds.getCommands({});
  * export const ecdCommandId1 = ids.then(ids => ids.commands?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCommandsOutput(args?: GetCommandsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCommandsResult> {
     return pulumi.output(args).apply((a: any) => getCommands(a, opts))

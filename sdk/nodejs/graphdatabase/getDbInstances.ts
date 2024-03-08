@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -34,6 +35,7 @@ import * as utilities from "../utilities";
  * });
  * export const graphDatabaseDbInstanceId3 = description.then(description => description.instances?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDbInstances(args?: GetDbInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDbInstancesResult> {
     args = args || {};
@@ -98,6 +100,7 @@ export interface GetDbInstancesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -117,6 +120,7 @@ export interface GetDbInstancesResult {
  * });
  * export const graphDatabaseDbInstanceId3 = description.then(description => description.instances?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDbInstancesOutput(args?: GetDbInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbInstancesResult> {
     return pulumi.output(args).apply((a: any) => getDbInstances(a, opts))

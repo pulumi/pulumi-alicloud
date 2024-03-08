@@ -23,6 +23,8 @@ public final class EfloFunctions {
      * &gt; **NOTE:** Available in 1.204.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -55,6 +57,7 @@ public final class EfloFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubnetsResult> getSubnets() {
@@ -66,6 +69,8 @@ public final class EfloFunctions {
      * &gt; **NOTE:** Available in 1.204.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -98,6 +103,7 @@ public final class EfloFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubnetsResult> getSubnetsPlain() {
@@ -109,6 +115,8 @@ public final class EfloFunctions {
      * &gt; **NOTE:** Available in 1.204.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -141,6 +149,7 @@ public final class EfloFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubnetsResult> getSubnets(GetSubnetsArgs args) {
@@ -152,6 +161,8 @@ public final class EfloFunctions {
      * &gt; **NOTE:** Available in 1.204.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -184,6 +195,7 @@ public final class EfloFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubnetsResult> getSubnetsPlain(GetSubnetsPlainArgs args) {
@@ -195,6 +207,8 @@ public final class EfloFunctions {
      * &gt; **NOTE:** Available in 1.204.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -227,6 +241,7 @@ public final class EfloFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubnetsResult> getSubnets(GetSubnetsArgs args, InvokeOptions options) {
@@ -238,6 +253,8 @@ public final class EfloFunctions {
      * &gt; **NOTE:** Available in 1.204.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -270,6 +287,7 @@ public final class EfloFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubnetsResult> getSubnetsPlain(GetSubnetsPlainArgs args, InvokeOptions options) {
@@ -281,6 +299,8 @@ public final class EfloFunctions {
      * &gt; **NOTE:** Available in 1.201.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -312,6 +332,7 @@ public final class EfloFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpdsResult> getVpds() {
@@ -323,6 +344,8 @@ public final class EfloFunctions {
      * &gt; **NOTE:** Available in 1.201.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -354,6 +377,7 @@ public final class EfloFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpdsResult> getVpdsPlain() {
@@ -365,6 +389,8 @@ public final class EfloFunctions {
      * &gt; **NOTE:** Available in 1.201.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -396,6 +422,7 @@ public final class EfloFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpdsResult> getVpds(GetVpdsArgs args) {
@@ -407,6 +434,8 @@ public final class EfloFunctions {
      * &gt; **NOTE:** Available in 1.201.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -438,6 +467,7 @@ public final class EfloFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpdsResult> getVpdsPlain(GetVpdsPlainArgs args) {
@@ -449,6 +479,8 @@ public final class EfloFunctions {
      * &gt; **NOTE:** Available in 1.201.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -480,6 +512,7 @@ public final class EfloFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpdsResult> getVpds(GetVpdsArgs args, InvokeOptions options) {
@@ -491,6 +524,8 @@ public final class EfloFunctions {
      * &gt; **NOTE:** Available in 1.201.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -522,6 +557,7 @@ public final class EfloFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpdsResult> getVpdsPlain(GetVpdsPlainArgs args, InvokeOptions options) {

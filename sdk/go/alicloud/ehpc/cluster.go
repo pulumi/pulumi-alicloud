@@ -22,6 +22,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -125,6 +126,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -196,7 +198,7 @@ type Cluster struct {
 	ManagerInstanceType pulumi.StringOutput `pulumi:"managerInstanceType"`
 	// The image tag of the operating system.
 	OsTag pulumi.StringOutput `pulumi:"osTag"`
-	// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
+	// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The duration of the subscription. The unit of the duration is specified by the `periodUnit` parameter. Default value: `1`.
 	// * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
@@ -384,7 +386,7 @@ type clusterState struct {
 	ManagerInstanceType *string `pulumi:"managerInstanceType"`
 	// The image tag of the operating system.
 	OsTag *string `pulumi:"osTag"`
-	// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
+	// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
 	Password *string `pulumi:"password"`
 	// The duration of the subscription. The unit of the duration is specified by the `periodUnit` parameter. Default value: `1`.
 	// * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
@@ -515,7 +517,7 @@ type ClusterState struct {
 	ManagerInstanceType pulumi.StringPtrInput
 	// The image tag of the operating system.
 	OsTag pulumi.StringPtrInput
-	// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
+	// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
 	Password pulumi.StringPtrInput
 	// The duration of the subscription. The unit of the duration is specified by the `periodUnit` parameter. Default value: `1`.
 	// * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
@@ -650,7 +652,7 @@ type clusterArgs struct {
 	ManagerInstanceType string `pulumi:"managerInstanceType"`
 	// The image tag of the operating system.
 	OsTag string `pulumi:"osTag"`
-	// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
+	// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
 	Password *string `pulumi:"password"`
 	// The duration of the subscription. The unit of the duration is specified by the `periodUnit` parameter. Default value: `1`.
 	// * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
@@ -780,7 +782,7 @@ type ClusterArgs struct {
 	ManagerInstanceType pulumi.StringInput
 	// The image tag of the operating system.
 	OsTag pulumi.StringInput
-	// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
+	// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
 	Password pulumi.StringPtrInput
 	// The duration of the subscription. The unit of the duration is specified by the `periodUnit` parameter. Default value: `1`.
 	// * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
@@ -1085,7 +1087,7 @@ func (o ClusterOutput) OsTag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.OsTag }).(pulumi.StringOutput)
 }
 
-// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
+// The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
 func (o ClusterOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }

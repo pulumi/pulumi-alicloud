@@ -536,6 +536,7 @@ class Rule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -551,6 +552,7 @@ class Rule(pulumi.CustomResource):
             risk_level_id="4",
             product_code="OSS")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -595,6 +597,7 @@ class Rule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -610,6 +613,7 @@ class Rule(pulumi.CustomResource):
             risk_level_id="4",
             product_code="OSS")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

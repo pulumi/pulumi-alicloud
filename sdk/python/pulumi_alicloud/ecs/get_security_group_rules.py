@@ -163,6 +163,7 @@ def get_security_group_rules(direction: Optional[str] = None,
 
     The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -177,6 +178,7 @@ def get_security_group_rules(direction: Optional[str] = None,
     # Pass port_range to the backend service
     backend = alicloud.ecs.Instance("backend", user_data=f"config_service.sh --portrange={ingress_rules_ds.rules[0].port_range}")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str direction: Authorization direction. Valid values are: `ingress` or `egress`.
@@ -226,6 +228,7 @@ def get_security_group_rules_output(direction: Optional[pulumi.Input[Optional[st
 
     The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -240,6 +243,7 @@ def get_security_group_rules_output(direction: Optional[pulumi.Input[Optional[st
     # Pass port_range to the backend service
     backend = alicloud.ecs.Instance("backend", user_data=f"config_service.sh --portrange={ingress_rules_ds.rules[0].port_range}")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str direction: Authorization direction. Valid values are: `ingress` or `egress`.

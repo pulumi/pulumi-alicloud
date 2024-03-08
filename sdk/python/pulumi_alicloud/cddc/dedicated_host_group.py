@@ -343,6 +343,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -364,6 +365,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
             host_replace_policy="Manual",
             dedicated_host_group_desc=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -403,6 +405,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -424,6 +427,7 @@ class DedicatedHostGroup(pulumi.CustomResource):
             host_replace_policy="Manual",
             dedicated_host_group_desc=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

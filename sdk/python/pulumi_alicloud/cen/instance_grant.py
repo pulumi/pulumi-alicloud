@@ -140,6 +140,7 @@ class InstanceGrant(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -186,6 +187,7 @@ class InstanceGrant(pulumi.CustomResource):
             child_instance_owner_id=child_account_account.id,
             opts=pulumi.ResourceOptions(provider=alicloud["your_account"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -218,6 +220,7 @@ class InstanceGrant(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -264,6 +267,7 @@ class InstanceGrant(pulumi.CustomResource):
             child_instance_owner_id=child_account_account.id,
             opts=pulumi.ResourceOptions(provider=alicloud["your_account"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

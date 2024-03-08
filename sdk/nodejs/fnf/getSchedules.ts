@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstFnfScheduleId = example.then(example => example.schedules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSchedules(args: GetSchedulesArgs, opts?: pulumi.InvokeOptions): Promise<GetSchedulesResult> {
 
@@ -90,6 +92,7 @@ export interface GetSchedulesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -101,6 +104,7 @@ export interface GetSchedulesResult {
  * });
  * export const firstFnfScheduleId = example.then(example => example.schedules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSchedulesOutput(args: GetSchedulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSchedulesResult> {
     return pulumi.output(args).apply((a: any) => getSchedules(a, opts))

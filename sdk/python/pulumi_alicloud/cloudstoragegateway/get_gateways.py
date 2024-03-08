@@ -152,6 +152,7 @@ def get_gateways(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -161,6 +162,7 @@ def get_gateways(ids: Optional[Sequence[str]] = None,
         name_regex="^my-Gateway")
     pulumi.export("cloudStorageGatewayGatewayId", name_regex.gateways[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Gateway IDs.
@@ -212,6 +214,7 @@ def get_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -221,6 +224,7 @@ def get_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
         name_regex="^my-Gateway")
     pulumi.export("cloudStorageGatewayGatewayId", name_regex.gateways[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Gateway IDs.

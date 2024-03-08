@@ -110,6 +110,7 @@ def get_alidns_domain_groups(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -117,6 +118,7 @@ def get_alidns_domain_groups(ids: Optional[Sequence[str]] = None,
     example = alicloud.dns.get_alidns_domain_groups(ids=["c5ef2bc43064445787adf182af2****"])
     pulumi.export("firstDomainGroupId", example.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of instance IDs.
@@ -151,6 +153,7 @@ def get_alidns_domain_groups_output(ids: Optional[pulumi.Input[Optional[Sequence
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -158,6 +161,7 @@ def get_alidns_domain_groups_output(ids: Optional[pulumi.Input[Optional[Sequence
     example = alicloud.dns.get_alidns_domain_groups(ids=["c5ef2bc43064445787adf182af2****"])
     pulumi.export("firstDomainGroupId", example.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of instance IDs.

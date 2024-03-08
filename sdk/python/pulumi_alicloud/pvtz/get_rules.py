@@ -113,6 +113,7 @@ def get_rules(endpoint_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -122,6 +123,7 @@ def get_rules(endpoint_id: Optional[str] = None,
     name_regex = alicloud.pvtz.get_rules(name_regex="^my-Rule")
     pulumi.export("pvtzRuleId2", name_regex.rules[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_id: The ID of the Endpoint.
@@ -162,6 +164,7 @@ def get_rules_output(endpoint_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -171,6 +174,7 @@ def get_rules_output(endpoint_id: Optional[pulumi.Input[Optional[str]]] = None,
     name_regex = alicloud.pvtz.get_rules(name_regex="^my-Rule")
     pulumi.export("pvtzRuleId2", name_regex.rules[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_id: The ID of the Endpoint.

@@ -104,6 +104,7 @@ def get_data_limits(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -111,6 +112,7 @@ def get_data_limits(ids: Optional[Sequence[str]] = None,
     ids = alicloud.sddp.get_data_limits()
     pulumi.export("sddpDataLimitId1", ids.limits[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Data Limit IDs.
@@ -150,6 +152,7 @@ def get_data_limits_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -157,6 +160,7 @@ def get_data_limits_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     ids = alicloud.sddp.get_data_limits()
     pulumi.export("sddpDataLimitId1", ids.limits[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Data Limit IDs.

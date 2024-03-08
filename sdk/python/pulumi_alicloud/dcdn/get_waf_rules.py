@@ -115,6 +115,7 @@ def get_waf_rules(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -122,6 +123,7 @@ def get_waf_rules(ids: Optional[Sequence[str]] = None,
     default = alicloud.dcdn.get_waf_rules(ids=[alicloud_dcdn_waf_rule["default"]["id"]])
     pulumi.export("alicloudDcdnWafRuleExampleId", default.waf_rules[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Waf Rule IDs.
@@ -161,6 +163,7 @@ def get_waf_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -168,6 +171,7 @@ def get_waf_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     default = alicloud.dcdn.get_waf_rules(ids=[alicloud_dcdn_waf_rule["default"]["id"]])
     pulumi.export("alicloudDcdnWafRuleExampleId", default.waf_rules[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Waf Rule IDs.

@@ -141,6 +141,7 @@ class DiskInstanceAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -175,6 +176,7 @@ class DiskInstanceAttachment(pulumi.CustomResource):
             delete_with_instance="false",
             disk_id=default_disk.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -207,6 +209,7 @@ class DiskInstanceAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -241,6 +244,7 @@ class DiskInstanceAttachment(pulumi.CustomResource):
             delete_with_instance="false",
             disk_id=default_disk.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

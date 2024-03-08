@@ -23,8 +23,10 @@ namespace Pulumi.AliCloud.Hbase
     /// &gt; **NOTE:**  Create HBase instance or change instance type and storage would cost 15 minutes. Please make full preparation
     /// 
     /// ## Example Usage
+    /// 
     /// ### Create a hbase instance
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -67,6 +69,7 @@ namespace Pulumi.AliCloud.Hbase
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// this is a example for class netType instance. you can find more detail with the examples/hbase dir.
     /// 

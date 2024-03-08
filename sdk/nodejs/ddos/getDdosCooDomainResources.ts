@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstDdoscooDomainResourceId = example.then(example => example.resources?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDdosCooDomainResources(args?: GetDdosCooDomainResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosCooDomainResourcesResult> {
     args = args || {};
@@ -82,6 +84,7 @@ export interface GetDdosCooDomainResourcesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -91,6 +94,7 @@ export interface GetDdosCooDomainResourcesResult {
  * });
  * export const firstDdoscooDomainResourceId = example.then(example => example.resources?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDdosCooDomainResourcesOutput(args?: GetDdosCooDomainResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooDomainResourcesResult> {
     return pulumi.output(args).apply((a: any) => getDdosCooDomainResources(a, opts))

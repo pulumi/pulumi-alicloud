@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  * const default = alicloud.getMscSubSubscriptions({});
  * export const mscSubSubscriptionId1 = _default.then(_default => _default.subscriptions?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMscSubSubscriptions(args?: GetMscSubSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetMscSubSubscriptionsResult> {
     args = args || {};
@@ -62,6 +64,7 @@ export interface GetMscSubSubscriptionsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -69,6 +72,7 @@ export interface GetMscSubSubscriptionsResult {
  * const default = alicloud.getMscSubSubscriptions({});
  * export const mscSubSubscriptionId1 = _default.then(_default => _default.subscriptions?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMscSubSubscriptionsOutput(args?: GetMscSubSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubSubscriptionsResult> {
     return pulumi.output(args).apply((a: any) => getMscSubSubscriptions(a, opts))

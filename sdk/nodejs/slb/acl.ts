@@ -33,12 +33,15 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const acl = new alicloud.slb.Acl("acl", {ipVersion: "ipv4"});
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Entry Block
  *
  * The entry mapping supports the following:

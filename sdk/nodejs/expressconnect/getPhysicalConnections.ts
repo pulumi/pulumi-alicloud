@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const expressConnectPhysicalConnectionId2 = nameRegex.then(nameRegex => nameRegex.connections?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPhysicalConnections(args?: GetPhysicalConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetPhysicalConnectionsResult> {
     args = args || {};
@@ -93,6 +95,7 @@ export interface GetPhysicalConnectionsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -106,6 +109,7 @@ export interface GetPhysicalConnectionsResult {
  * });
  * export const expressConnectPhysicalConnectionId2 = nameRegex.then(nameRegex => nameRegex.connections?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPhysicalConnectionsOutput(args?: GetPhysicalConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPhysicalConnectionsResult> {
     return pulumi.output(args).apply((a: any) => getPhysicalConnections(a, opts))

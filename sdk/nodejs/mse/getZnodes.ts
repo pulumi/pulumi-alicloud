@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -35,6 +36,7 @@ import * as utilities from "../utilities";
  * });
  * export const mseZnodeId2 = nameRegex.then(nameRegex => nameRegex.znodes?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getZnodes(args: GetZnodesArgs, opts?: pulumi.InvokeOptions): Promise<GetZnodesResult> {
 
@@ -105,6 +107,7 @@ export interface GetZnodesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -125,6 +128,7 @@ export interface GetZnodesResult {
  * });
  * export const mseZnodeId2 = nameRegex.then(nameRegex => nameRegex.znodes?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getZnodesOutput(args: GetZnodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZnodesResult> {
     return pulumi.output(args).apply((a: any) => getZnodes(a, opts))

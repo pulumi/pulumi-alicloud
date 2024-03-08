@@ -36,6 +36,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Only `tags` support batch modification.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -120,6 +122,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="alicloud:ecs/ecsInstanceSet:EcsInstanceSet")

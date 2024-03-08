@@ -133,6 +133,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -167,6 +169,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBgpGroupsResult> getBgpGroups() {
@@ -180,6 +183,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -214,6 +219,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBgpGroupsResult> getBgpGroupsPlain() {
@@ -227,6 +233,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -261,6 +269,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBgpGroupsResult> getBgpGroups(GetBgpGroupsArgs args) {
@@ -274,6 +283,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -308,6 +319,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBgpGroupsResult> getBgpGroupsPlain(GetBgpGroupsPlainArgs args) {
@@ -321,6 +333,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -355,6 +369,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBgpGroupsResult> getBgpGroups(GetBgpGroupsArgs args, InvokeOptions options) {
@@ -368,6 +383,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -402,6 +419,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBgpGroupsResult> getBgpGroupsPlain(GetBgpGroupsPlainArgs args, InvokeOptions options) {
@@ -415,6 +433,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -454,6 +474,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBgpNetworksResult> getBgpNetworks() {
@@ -467,6 +488,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -506,6 +529,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBgpNetworksResult> getBgpNetworksPlain() {
@@ -519,6 +543,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -558,6 +584,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBgpNetworksResult> getBgpNetworks(GetBgpNetworksArgs args) {
@@ -571,6 +598,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -610,6 +639,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBgpNetworksResult> getBgpNetworksPlain(GetBgpNetworksPlainArgs args) {
@@ -623,6 +653,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -662,6 +694,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBgpNetworksResult> getBgpNetworks(GetBgpNetworksArgs args, InvokeOptions options) {
@@ -675,6 +708,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -714,6 +749,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBgpNetworksResult> getBgpNetworksPlain(GetBgpNetworksPlainArgs args, InvokeOptions options) {
@@ -727,6 +763,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -773,6 +811,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBgpPeersResult> getBgpPeers() {
@@ -786,6 +825,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -832,6 +873,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBgpPeersResult> getBgpPeersPlain() {
@@ -845,6 +887,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -891,6 +935,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBgpPeersResult> getBgpPeers(GetBgpPeersArgs args) {
@@ -904,6 +949,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -950,6 +997,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBgpPeersResult> getBgpPeersPlain(GetBgpPeersPlainArgs args) {
@@ -963,6 +1011,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1009,6 +1059,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBgpPeersResult> getBgpPeers(GetBgpPeersArgs args, InvokeOptions options) {
@@ -1022,6 +1073,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1068,6 +1121,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBgpPeersResult> getBgpPeersPlain(GetBgpPeersPlainArgs args, InvokeOptions options) {
@@ -1079,6 +1133,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1115,6 +1171,8 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Public ip addresses Block
      * 
      *   The public ip addresses mapping supports the following:
@@ -1133,6 +1191,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1169,6 +1229,8 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Public ip addresses Block
      * 
      *   The public ip addresses mapping supports the following:
@@ -1187,6 +1249,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1223,6 +1287,8 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Public ip addresses Block
      * 
      *   The public ip addresses mapping supports the following:
@@ -1241,6 +1307,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1277,6 +1345,8 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Public ip addresses Block
      * 
      *   The public ip addresses mapping supports the following:
@@ -1295,6 +1365,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1331,6 +1403,8 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Public ip addresses Block
      * 
      *   The public ip addresses mapping supports the following:
@@ -1349,6 +1423,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1385,6 +1461,8 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Public ip addresses Block
      * 
      *   The public ip addresses mapping supports the following:
@@ -1405,6 +1483,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1456,6 +1536,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDhcpOptionsSetsResult> getDhcpOptionsSets() {
@@ -1469,6 +1550,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1520,6 +1603,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDhcpOptionsSetsResult> getDhcpOptionsSetsPlain() {
@@ -1533,6 +1617,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1584,6 +1670,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDhcpOptionsSetsResult> getDhcpOptionsSets(GetDhcpOptionsSetsArgs args) {
@@ -1597,6 +1684,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1648,6 +1737,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDhcpOptionsSetsResult> getDhcpOptionsSetsPlain(GetDhcpOptionsSetsPlainArgs args) {
@@ -1661,6 +1751,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1712,6 +1804,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDhcpOptionsSetsResult> getDhcpOptionsSets(GetDhcpOptionsSetsArgs args, InvokeOptions options) {
@@ -1725,6 +1818,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1776,6 +1871,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDhcpOptionsSetsResult> getDhcpOptionsSetsPlain(GetDhcpOptionsSetsPlainArgs args, InvokeOptions options) {
@@ -1809,6 +1905,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1837,6 +1935,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFlowLogServiceResult> getFlowLogService() {
@@ -1852,6 +1951,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1880,6 +1981,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFlowLogServiceResult> getFlowLogServicePlain() {
@@ -1895,6 +1997,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1923,6 +2027,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFlowLogServiceResult> getFlowLogService(GetFlowLogServiceArgs args) {
@@ -1938,6 +2043,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1966,6 +2073,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFlowLogServiceResult> getFlowLogServicePlain(GetFlowLogServicePlainArgs args) {
@@ -1981,6 +2089,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2009,6 +2119,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFlowLogServiceResult> getFlowLogService(GetFlowLogServiceArgs args, InvokeOptions options) {
@@ -2024,6 +2135,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2052,6 +2165,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFlowLogServiceResult> getFlowLogServicePlain(GetFlowLogServicePlainArgs args, InvokeOptions options) {
@@ -2063,6 +2177,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2149,6 +2265,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetForwardEntriesResult> getForwardEntries(GetForwardEntriesArgs args) {
@@ -2160,6 +2277,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2246,6 +2365,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetForwardEntriesResult> getForwardEntriesPlain(GetForwardEntriesPlainArgs args) {
@@ -2257,6 +2377,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2343,6 +2465,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetForwardEntriesResult> getForwardEntries(GetForwardEntriesArgs args, InvokeOptions options) {
@@ -2354,6 +2477,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2440,6 +2565,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetForwardEntriesResult> getForwardEntriesPlain(GetForwardEntriesPlainArgs args, InvokeOptions options) {
@@ -2453,6 +2579,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2483,6 +2611,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHavipsResult> getHavips() {
@@ -2496,6 +2625,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2526,6 +2657,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHavipsResult> getHavipsPlain() {
@@ -2539,6 +2671,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2569,6 +2703,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHavipsResult> getHavips(GetHavipsArgs args) {
@@ -2582,6 +2717,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2612,6 +2749,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHavipsResult> getHavipsPlain(GetHavipsPlainArgs args) {
@@ -2625,6 +2763,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2655,6 +2795,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHavipsResult> getHavips(GetHavipsArgs args, InvokeOptions options) {
@@ -2668,6 +2809,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2698,6 +2841,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHavipsResult> getHavipsPlain(GetHavipsPlainArgs args, InvokeOptions options) {
@@ -2711,6 +2855,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2745,6 +2891,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpsecServersResult> getIpsecServers() {
@@ -2758,6 +2905,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2792,6 +2941,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpsecServersResult> getIpsecServersPlain() {
@@ -2805,6 +2955,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2839,6 +2991,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpsecServersResult> getIpsecServers(GetIpsecServersArgs args) {
@@ -2852,6 +3005,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2886,6 +3041,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpsecServersResult> getIpsecServersPlain(GetIpsecServersPlainArgs args) {
@@ -2899,6 +3055,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2933,6 +3091,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpsecServersResult> getIpsecServers(GetIpsecServersArgs args, InvokeOptions options) {
@@ -2946,6 +3105,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2980,6 +3141,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpsecServersResult> getIpsecServersPlain(GetIpsecServersPlainArgs args, InvokeOptions options) {
@@ -2993,6 +3155,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3025,6 +3189,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv4GatewaysResult> getIpv4Gateways() {
@@ -3038,6 +3203,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3070,6 +3237,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv4GatewaysResult> getIpv4GatewaysPlain() {
@@ -3083,6 +3251,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3115,6 +3285,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv4GatewaysResult> getIpv4Gateways(GetIpv4GatewaysArgs args) {
@@ -3128,6 +3299,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3160,6 +3333,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv4GatewaysResult> getIpv4GatewaysPlain(GetIpv4GatewaysPlainArgs args) {
@@ -3173,6 +3347,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3205,6 +3381,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv4GatewaysResult> getIpv4Gateways(GetIpv4GatewaysArgs args, InvokeOptions options) {
@@ -3218,6 +3395,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3250,6 +3429,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv4GatewaysResult> getIpv4GatewaysPlain(GetIpv4GatewaysPlainArgs args, InvokeOptions options) {
@@ -3263,6 +3443,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3307,6 +3489,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv6AddressesResult> getIpv6Addresses() {
@@ -3320,6 +3503,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3364,6 +3549,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv6AddressesResult> getIpv6AddressesPlain() {
@@ -3377,6 +3563,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3421,6 +3609,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv6AddressesResult> getIpv6Addresses(GetIpv6AddressesArgs args) {
@@ -3434,6 +3623,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3478,6 +3669,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv6AddressesResult> getIpv6AddressesPlain(GetIpv6AddressesPlainArgs args) {
@@ -3491,6 +3683,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3535,6 +3729,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv6AddressesResult> getIpv6Addresses(GetIpv6AddressesArgs args, InvokeOptions options) {
@@ -3548,6 +3743,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3592,6 +3789,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv6AddressesResult> getIpv6AddressesPlain(GetIpv6AddressesPlainArgs args, InvokeOptions options) {
@@ -3605,6 +3803,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3655,6 +3855,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv6EgressRulesResult> getIpv6EgressRules(GetIpv6EgressRulesArgs args) {
@@ -3668,6 +3869,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3718,6 +3921,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv6EgressRulesResult> getIpv6EgressRulesPlain(GetIpv6EgressRulesPlainArgs args) {
@@ -3731,6 +3935,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3781,6 +3987,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv6EgressRulesResult> getIpv6EgressRules(GetIpv6EgressRulesArgs args, InvokeOptions options) {
@@ -3794,6 +4001,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3844,6 +4053,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv6EgressRulesResult> getIpv6EgressRulesPlain(GetIpv6EgressRulesPlainArgs args, InvokeOptions options) {
@@ -3857,6 +4067,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3903,6 +4115,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv6GatewaysResult> getIpv6Gateways() {
@@ -3916,6 +4129,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3962,6 +4177,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv6GatewaysResult> getIpv6GatewaysPlain() {
@@ -3975,6 +4191,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4021,6 +4239,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv6GatewaysResult> getIpv6Gateways(GetIpv6GatewaysArgs args) {
@@ -4034,6 +4253,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4080,6 +4301,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv6GatewaysResult> getIpv6GatewaysPlain(GetIpv6GatewaysPlainArgs args) {
@@ -4093,6 +4315,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4139,6 +4363,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv6GatewaysResult> getIpv6Gateways(GetIpv6GatewaysArgs args, InvokeOptions options) {
@@ -4152,6 +4377,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4198,6 +4425,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv6GatewaysResult> getIpv6GatewaysPlain(GetIpv6GatewaysPlainArgs args, InvokeOptions options) {
@@ -4211,6 +4439,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4255,6 +4485,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv6InternetBandwidthsResult> getIpv6InternetBandwidths() {
@@ -4268,6 +4499,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4312,6 +4545,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv6InternetBandwidthsResult> getIpv6InternetBandwidthsPlain() {
@@ -4325,6 +4559,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4369,6 +4605,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv6InternetBandwidthsResult> getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs args) {
@@ -4382,6 +4619,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4426,6 +4665,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv6InternetBandwidthsResult> getIpv6InternetBandwidthsPlain(GetIpv6InternetBandwidthsPlainArgs args) {
@@ -4439,6 +4679,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4483,6 +4725,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpv6InternetBandwidthsResult> getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs args, InvokeOptions options) {
@@ -4496,6 +4739,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4540,6 +4785,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpv6InternetBandwidthsResult> getIpv6InternetBandwidthsPlain(GetIpv6InternetBandwidthsPlainArgs args, InvokeOptions options) {
@@ -4552,6 +4798,7 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4605,6 +4852,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNatGatewaysResult> getNatGateways() {
@@ -4617,6 +4865,7 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4670,6 +4919,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNatGatewaysResult> getNatGatewaysPlain() {
@@ -4682,6 +4932,7 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4735,6 +4986,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNatGatewaysResult> getNatGateways(GetNatGatewaysArgs args) {
@@ -4747,6 +4999,7 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4800,6 +5053,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNatGatewaysResult> getNatGatewaysPlain(GetNatGatewaysPlainArgs args) {
@@ -4812,6 +5066,7 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4865,6 +5120,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNatGatewaysResult> getNatGateways(GetNatGatewaysArgs args, InvokeOptions options) {
@@ -4877,6 +5133,7 @@ public final class VpcFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4930,6 +5187,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNatGatewaysResult> getNatGatewaysPlain(GetNatGatewaysPlainArgs args, InvokeOptions options) {
@@ -4943,6 +5201,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5000,6 +5260,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNatIpCidrsResult> getNatIpCidrs(GetNatIpCidrsArgs args) {
@@ -5013,6 +5274,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5070,6 +5333,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNatIpCidrsResult> getNatIpCidrsPlain(GetNatIpCidrsPlainArgs args) {
@@ -5083,6 +5347,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5140,6 +5406,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNatIpCidrsResult> getNatIpCidrs(GetNatIpCidrsArgs args, InvokeOptions options) {
@@ -5153,6 +5420,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5210,6 +5479,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNatIpCidrsResult> getNatIpCidrsPlain(GetNatIpCidrsPlainArgs args, InvokeOptions options) {
@@ -5223,6 +5493,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5289,6 +5561,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNatIpsResult> getNatIps(GetNatIpsArgs args) {
@@ -5302,6 +5575,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5368,6 +5643,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNatIpsResult> getNatIpsPlain(GetNatIpsPlainArgs args) {
@@ -5381,6 +5657,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5447,6 +5725,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNatIpsResult> getNatIps(GetNatIpsArgs args, InvokeOptions options) {
@@ -5460,6 +5739,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5526,6 +5807,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNatIpsResult> getNatIpsPlain(GetNatIpsPlainArgs args, InvokeOptions options) {
@@ -5539,6 +5821,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5569,6 +5853,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkAclsResult> getNetworkAcls() {
@@ -5582,6 +5867,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5612,6 +5899,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkAclsResult> getNetworkAclsPlain() {
@@ -5625,6 +5913,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5655,6 +5945,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkAclsResult> getNetworkAcls(GetNetworkAclsArgs args) {
@@ -5668,6 +5959,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5698,6 +5991,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkAclsResult> getNetworkAclsPlain(GetNetworkAclsPlainArgs args) {
@@ -5711,6 +6005,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5741,6 +6037,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkAclsResult> getNetworkAcls(GetNetworkAclsArgs args, InvokeOptions options) {
@@ -5754,6 +6051,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5784,6 +6083,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkAclsResult> getNetworkAclsPlain(GetNetworkAclsPlainArgs args, InvokeOptions options) {
@@ -5793,6 +6093,8 @@ public final class VpcFunctions {
      * This data source provides VPCs available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5824,6 +6126,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworksResult> getNetworks() {
@@ -5833,6 +6136,8 @@ public final class VpcFunctions {
      * This data source provides VPCs available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5864,6 +6169,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain() {
@@ -5873,6 +6179,8 @@ public final class VpcFunctions {
      * This data source provides VPCs available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5904,6 +6212,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args) {
@@ -5913,6 +6222,8 @@ public final class VpcFunctions {
      * This data source provides VPCs available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5944,6 +6255,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain(GetNetworksPlainArgs args) {
@@ -5953,6 +6265,8 @@ public final class VpcFunctions {
      * This data source provides VPCs available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5984,6 +6298,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args, InvokeOptions options) {
@@ -5993,6 +6308,8 @@ public final class VpcFunctions {
      * This data source provides VPCs available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6024,6 +6341,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain(GetNetworksPlainArgs args, InvokeOptions options) {
@@ -6035,6 +6353,8 @@ public final class VpcFunctions {
      * The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6065,6 +6385,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPbrRouteEntriesResult> getPbrRouteEntries(GetPbrRouteEntriesArgs args) {
@@ -6076,6 +6397,8 @@ public final class VpcFunctions {
      * The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6106,6 +6429,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPbrRouteEntriesResult> getPbrRouteEntriesPlain(GetPbrRouteEntriesPlainArgs args) {
@@ -6117,6 +6441,8 @@ public final class VpcFunctions {
      * The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6147,6 +6473,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPbrRouteEntriesResult> getPbrRouteEntries(GetPbrRouteEntriesArgs args, InvokeOptions options) {
@@ -6158,6 +6485,8 @@ public final class VpcFunctions {
      * The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6188,6 +6517,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPbrRouteEntriesResult> getPbrRouteEntriesPlain(GetPbrRouteEntriesPlainArgs args, InvokeOptions options) {
@@ -6201,6 +6531,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6233,6 +6565,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPeerConnectionsResult> getPeerConnections() {
@@ -6246,6 +6579,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6278,6 +6613,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPeerConnectionsResult> getPeerConnectionsPlain() {
@@ -6291,6 +6627,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6323,6 +6661,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPeerConnectionsResult> getPeerConnections(GetPeerConnectionsArgs args) {
@@ -6336,6 +6675,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6368,6 +6709,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPeerConnectionsResult> getPeerConnectionsPlain(GetPeerConnectionsPlainArgs args) {
@@ -6381,6 +6723,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6413,6 +6757,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPeerConnectionsResult> getPeerConnections(GetPeerConnectionsArgs args, InvokeOptions options) {
@@ -6426,6 +6771,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6458,6 +6805,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPeerConnectionsResult> getPeerConnectionsPlain(GetPeerConnectionsPlainArgs args, InvokeOptions options) {
@@ -6471,6 +6819,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6503,6 +6853,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrefixListsResult> getPrefixLists() {
@@ -6516,6 +6867,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6548,6 +6901,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrefixListsResult> getPrefixListsPlain() {
@@ -6561,6 +6915,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6593,6 +6949,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrefixListsResult> getPrefixLists(GetPrefixListsArgs args) {
@@ -6606,6 +6963,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6638,6 +6997,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrefixListsResult> getPrefixListsPlain(GetPrefixListsPlainArgs args) {
@@ -6651,6 +7011,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6683,6 +7045,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrefixListsResult> getPrefixLists(GetPrefixListsArgs args, InvokeOptions options) {
@@ -6696,6 +7059,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6728,6 +7093,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrefixListsResult> getPrefixListsPlain(GetPrefixListsPlainArgs args, InvokeOptions options) {
@@ -6743,6 +7109,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6779,6 +7147,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPublicIpAddressPoolCidrBlocksResult> getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs args) {
@@ -6794,6 +7163,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6830,6 +7201,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPublicIpAddressPoolCidrBlocksResult> getPublicIpAddressPoolCidrBlocksPlain(GetPublicIpAddressPoolCidrBlocksPlainArgs args) {
@@ -6845,6 +7217,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6881,6 +7255,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPublicIpAddressPoolCidrBlocksResult> getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs args, InvokeOptions options) {
@@ -6896,6 +7271,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6932,6 +7309,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPublicIpAddressPoolCidrBlocksResult> getPublicIpAddressPoolCidrBlocksPlain(GetPublicIpAddressPoolCidrBlocksPlainArgs args, InvokeOptions options) {
@@ -6945,6 +7323,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6979,6 +7359,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPublicIpAddressPoolsResult> getPublicIpAddressPools() {
@@ -6992,6 +7373,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7026,6 +7409,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPublicIpAddressPoolsResult> getPublicIpAddressPoolsPlain() {
@@ -7039,6 +7423,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7073,6 +7459,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPublicIpAddressPoolsResult> getPublicIpAddressPools(GetPublicIpAddressPoolsArgs args) {
@@ -7086,6 +7473,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7120,6 +7509,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPublicIpAddressPoolsResult> getPublicIpAddressPoolsPlain(GetPublicIpAddressPoolsPlainArgs args) {
@@ -7133,6 +7523,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7167,6 +7559,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPublicIpAddressPoolsResult> getPublicIpAddressPools(GetPublicIpAddressPoolsArgs args, InvokeOptions options) {
@@ -7180,6 +7573,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7214,6 +7609,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPublicIpAddressPoolsResult> getPublicIpAddressPoolsPlain(GetPublicIpAddressPoolsPlainArgs args, InvokeOptions options) {
@@ -7225,6 +7621,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7335,6 +7733,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouteEntriesResult> getRouteEntries(GetRouteEntriesArgs args) {
@@ -7346,6 +7745,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7456,6 +7857,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouteEntriesResult> getRouteEntriesPlain(GetRouteEntriesPlainArgs args) {
@@ -7467,6 +7869,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7577,6 +7981,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouteEntriesResult> getRouteEntries(GetRouteEntriesArgs args, InvokeOptions options) {
@@ -7588,6 +7993,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7698,6 +8105,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouteEntriesResult> getRouteEntriesPlain(GetRouteEntriesPlainArgs args, InvokeOptions options) {
@@ -7709,6 +8117,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7755,6 +8165,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouteTablesResult> getRouteTables() {
@@ -7766,6 +8177,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7812,6 +8225,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouteTablesResult> getRouteTablesPlain() {
@@ -7823,6 +8237,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7869,6 +8285,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouteTablesResult> getRouteTables(GetRouteTablesArgs args) {
@@ -7880,6 +8297,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7926,6 +8345,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouteTablesResult> getRouteTablesPlain(GetRouteTablesPlainArgs args) {
@@ -7937,6 +8357,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7983,6 +8405,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouteTablesResult> getRouteTables(GetRouteTablesArgs args, InvokeOptions options) {
@@ -7994,6 +8417,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.36.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8040,6 +8465,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouteTablesResult> getRouteTablesPlain(GetRouteTablesPlainArgs args, InvokeOptions options) {
@@ -8052,6 +8478,8 @@ public final class VpcFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8082,6 +8510,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouterInterfacesResult> getRouterInterfaces() {
@@ -8094,6 +8523,8 @@ public final class VpcFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8124,6 +8555,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouterInterfacesResult> getRouterInterfacesPlain() {
@@ -8136,6 +8568,8 @@ public final class VpcFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8166,6 +8600,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouterInterfacesResult> getRouterInterfaces(GetRouterInterfacesArgs args) {
@@ -8178,6 +8613,8 @@ public final class VpcFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8208,6 +8645,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouterInterfacesResult> getRouterInterfacesPlain(GetRouterInterfacesPlainArgs args) {
@@ -8220,6 +8658,8 @@ public final class VpcFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8250,6 +8690,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouterInterfacesResult> getRouterInterfaces(GetRouterInterfacesArgs args, InvokeOptions options) {
@@ -8262,6 +8703,8 @@ public final class VpcFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8292,6 +8735,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouterInterfacesResult> getRouterInterfacesPlain(GetRouterInterfacesPlainArgs args, InvokeOptions options) {
@@ -8303,6 +8747,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8382,6 +8828,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnatEntriesResult> getSnatEntries(GetSnatEntriesArgs args) {
@@ -8393,6 +8840,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8472,6 +8921,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnatEntriesResult> getSnatEntriesPlain(GetSnatEntriesPlainArgs args) {
@@ -8483,6 +8933,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8562,6 +9014,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnatEntriesResult> getSnatEntries(GetSnatEntriesArgs args, InvokeOptions options) {
@@ -8573,6 +9026,8 @@ public final class VpcFunctions {
      * &gt; **NOTE:** Available in 1.37.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8652,6 +9107,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnatEntriesResult> getSnatEntriesPlain(GetSnatEntriesPlainArgs args, InvokeOptions options) {
@@ -8661,6 +9117,8 @@ public final class VpcFunctions {
      * The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8692,6 +9150,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSslVpnClientCertsResult> getSslVpnClientCerts() {
@@ -8701,6 +9160,8 @@ public final class VpcFunctions {
      * The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8732,6 +9193,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSslVpnClientCertsResult> getSslVpnClientCertsPlain() {
@@ -8741,6 +9203,8 @@ public final class VpcFunctions {
      * The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8772,6 +9236,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSslVpnClientCertsResult> getSslVpnClientCerts(GetSslVpnClientCertsArgs args) {
@@ -8781,6 +9246,8 @@ public final class VpcFunctions {
      * The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8812,6 +9279,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSslVpnClientCertsResult> getSslVpnClientCertsPlain(GetSslVpnClientCertsPlainArgs args) {
@@ -8821,6 +9289,8 @@ public final class VpcFunctions {
      * The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8852,6 +9322,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSslVpnClientCertsResult> getSslVpnClientCerts(GetSslVpnClientCertsArgs args, InvokeOptions options) {
@@ -8861,6 +9332,8 @@ public final class VpcFunctions {
      * The SSL-VPN client certificates data source lists lots of SSL-VPN client certificates resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8892,6 +9365,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSslVpnClientCertsResult> getSslVpnClientCertsPlain(GetSslVpnClientCertsPlainArgs args, InvokeOptions options) {
@@ -8901,6 +9375,8 @@ public final class VpcFunctions {
      * The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8932,6 +9408,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSslVpnServersResult> getSslVpnServers() {
@@ -8941,6 +9418,8 @@ public final class VpcFunctions {
      * The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8972,6 +9451,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSslVpnServersResult> getSslVpnServersPlain() {
@@ -8981,6 +9461,8 @@ public final class VpcFunctions {
      * The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9012,6 +9494,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSslVpnServersResult> getSslVpnServers(GetSslVpnServersArgs args) {
@@ -9021,6 +9504,8 @@ public final class VpcFunctions {
      * The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9052,6 +9537,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSslVpnServersResult> getSslVpnServersPlain(GetSslVpnServersPlainArgs args) {
@@ -9061,6 +9547,8 @@ public final class VpcFunctions {
      * The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9092,6 +9580,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSslVpnServersResult> getSslVpnServers(GetSslVpnServersArgs args, InvokeOptions options) {
@@ -9101,6 +9590,8 @@ public final class VpcFunctions {
      * The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9132,6 +9623,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSslVpnServersResult> getSslVpnServersPlain(GetSslVpnServersPlainArgs args, InvokeOptions options) {
@@ -9141,6 +9633,8 @@ public final class VpcFunctions {
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9191,6 +9685,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSwitchesResult> getSwitches() {
@@ -9200,6 +9695,8 @@ public final class VpcFunctions {
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9250,6 +9747,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSwitchesResult> getSwitchesPlain() {
@@ -9259,6 +9757,8 @@ public final class VpcFunctions {
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9309,6 +9809,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSwitchesResult> getSwitches(GetSwitchesArgs args) {
@@ -9318,6 +9819,8 @@ public final class VpcFunctions {
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9368,6 +9871,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSwitchesResult> getSwitchesPlain(GetSwitchesPlainArgs args) {
@@ -9377,6 +9881,8 @@ public final class VpcFunctions {
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9427,6 +9933,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSwitchesResult> getSwitches(GetSwitchesArgs args, InvokeOptions options) {
@@ -9436,6 +9943,8 @@ public final class VpcFunctions {
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9486,6 +9995,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSwitchesResult> getSwitchesPlain(GetSwitchesPlainArgs args, InvokeOptions options) {
@@ -9499,6 +10009,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9536,6 +10048,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrafficMirrorFilterEgressRulesResult> getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs args) {
@@ -9549,6 +10062,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9586,6 +10101,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrafficMirrorFilterEgressRulesResult> getTrafficMirrorFilterEgressRulesPlain(GetTrafficMirrorFilterEgressRulesPlainArgs args) {
@@ -9599,6 +10115,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9636,6 +10154,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrafficMirrorFilterEgressRulesResult> getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs args, InvokeOptions options) {
@@ -9649,6 +10168,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9686,6 +10207,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrafficMirrorFilterEgressRulesResult> getTrafficMirrorFilterEgressRulesPlain(GetTrafficMirrorFilterEgressRulesPlainArgs args, InvokeOptions options) {
@@ -9699,6 +10221,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9736,6 +10260,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrafficMirrorFilterIngressRulesResult> getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs args) {
@@ -9749,6 +10274,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9786,6 +10313,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrafficMirrorFilterIngressRulesResult> getTrafficMirrorFilterIngressRulesPlain(GetTrafficMirrorFilterIngressRulesPlainArgs args) {
@@ -9799,6 +10327,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9836,6 +10366,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrafficMirrorFilterIngressRulesResult> getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs args, InvokeOptions options) {
@@ -9849,6 +10380,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9886,6 +10419,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrafficMirrorFilterIngressRulesResult> getTrafficMirrorFilterIngressRulesPlain(GetTrafficMirrorFilterIngressRulesPlainArgs args, InvokeOptions options) {
@@ -9899,6 +10433,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9943,6 +10479,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrafficMirrorFiltersResult> getTrafficMirrorFilters() {
@@ -9956,6 +10493,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10000,6 +10539,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrafficMirrorFiltersResult> getTrafficMirrorFiltersPlain() {
@@ -10013,6 +10553,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10057,6 +10599,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrafficMirrorFiltersResult> getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs args) {
@@ -10070,6 +10613,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10114,6 +10659,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrafficMirrorFiltersResult> getTrafficMirrorFiltersPlain(GetTrafficMirrorFiltersPlainArgs args) {
@@ -10127,6 +10673,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10171,6 +10719,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrafficMirrorFiltersResult> getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs args, InvokeOptions options) {
@@ -10184,6 +10733,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10228,6 +10779,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrafficMirrorFiltersResult> getTrafficMirrorFiltersPlain(GetTrafficMirrorFiltersPlainArgs args, InvokeOptions options) {
@@ -10243,6 +10795,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10271,6 +10825,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrafficMirrorServiceResult> getTrafficMirrorService() {
@@ -10286,6 +10841,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10314,6 +10871,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrafficMirrorServiceResult> getTrafficMirrorServicePlain() {
@@ -10329,6 +10887,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10357,6 +10917,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrafficMirrorServiceResult> getTrafficMirrorService(GetTrafficMirrorServiceArgs args) {
@@ -10372,6 +10933,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10400,6 +10963,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrafficMirrorServiceResult> getTrafficMirrorServicePlain(GetTrafficMirrorServicePlainArgs args) {
@@ -10415,6 +10979,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10443,6 +11009,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrafficMirrorServiceResult> getTrafficMirrorService(GetTrafficMirrorServiceArgs args, InvokeOptions options) {
@@ -10458,6 +11025,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10486,6 +11055,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrafficMirrorServiceResult> getTrafficMirrorServicePlain(GetTrafficMirrorServicePlainArgs args, InvokeOptions options) {
@@ -10499,6 +11069,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10575,6 +11147,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrafficMirrorSessionsResult> getTrafficMirrorSessions() {
@@ -10588,6 +11161,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10664,6 +11239,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrafficMirrorSessionsResult> getTrafficMirrorSessionsPlain() {
@@ -10677,6 +11253,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10753,6 +11331,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrafficMirrorSessionsResult> getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs args) {
@@ -10766,6 +11345,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10842,6 +11423,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrafficMirrorSessionsResult> getTrafficMirrorSessionsPlain(GetTrafficMirrorSessionsPlainArgs args) {
@@ -10855,6 +11437,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -10931,6 +11515,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrafficMirrorSessionsResult> getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs args, InvokeOptions options) {
@@ -10944,6 +11529,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11020,6 +11607,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrafficMirrorSessionsResult> getTrafficMirrorSessionsPlain(GetTrafficMirrorSessionsPlainArgs args, InvokeOptions options) {
@@ -11033,6 +11621,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11063,6 +11653,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcFlowLogsResult> getVpcFlowLogs() {
@@ -11076,6 +11667,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11106,6 +11699,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcFlowLogsResult> getVpcFlowLogsPlain() {
@@ -11119,6 +11713,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11149,6 +11745,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcFlowLogsResult> getVpcFlowLogs(GetVpcFlowLogsArgs args) {
@@ -11162,6 +11759,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11192,6 +11791,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcFlowLogsResult> getVpcFlowLogsPlain(GetVpcFlowLogsPlainArgs args) {
@@ -11205,6 +11805,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11235,6 +11837,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVpcFlowLogsResult> getVpcFlowLogs(GetVpcFlowLogsArgs args, InvokeOptions options) {
@@ -11248,6 +11851,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -11278,6 +11883,7 @@ public final class VpcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVpcFlowLogsResult> getVpcFlowLogsPlain(GetVpcFlowLogsPlainArgs args, InvokeOptions options) {

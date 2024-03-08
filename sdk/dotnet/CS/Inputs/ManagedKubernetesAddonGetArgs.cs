@@ -30,9 +30,6 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
         /// 
         /// The `main.tf`:
-        /// 
-        /// 
-        /// The `varibales.tf`:
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

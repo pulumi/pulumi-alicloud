@@ -22,6 +22,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -107,6 +108,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -130,7 +132,7 @@ type Account struct {
 	// * Be up to 16 characters in length.
 	// * Contains no reserved keywords.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
-	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) & * ( ) _ + - =`.
 	AccountPassword pulumi.StringOutput `pulumi:"accountPassword"`
 	// The ID of the instance.
 	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
@@ -189,7 +191,7 @@ type accountState struct {
 	// * Be up to 16 characters in length.
 	// * Contains no reserved keywords.
 	AccountName *string `pulumi:"accountName"`
-	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) & * ( ) _ + - =`.
 	AccountPassword *string `pulumi:"accountPassword"`
 	// The ID of the instance.
 	DbInstanceId *string `pulumi:"dbInstanceId"`
@@ -210,7 +212,7 @@ type AccountState struct {
 	// * Be up to 16 characters in length.
 	// * Contains no reserved keywords.
 	AccountName pulumi.StringPtrInput
-	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) & * ( ) _ + - =`.
 	AccountPassword pulumi.StringPtrInput
 	// The ID of the instance.
 	DbInstanceId pulumi.StringPtrInput
@@ -235,7 +237,7 @@ type accountArgs struct {
 	// * Be up to 16 characters in length.
 	// * Contains no reserved keywords.
 	AccountName string `pulumi:"accountName"`
-	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) & * ( ) _ + - =`.
 	AccountPassword string `pulumi:"accountPassword"`
 	// The ID of the instance.
 	DbInstanceId string `pulumi:"dbInstanceId"`
@@ -255,7 +257,7 @@ type AccountArgs struct {
 	// * Be up to 16 characters in length.
 	// * Contains no reserved keywords.
 	AccountName pulumi.StringInput
-	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+	// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) & * ( ) _ + - =`.
 	AccountPassword pulumi.StringInput
 	// The ID of the instance.
 	DbInstanceId pulumi.StringInput
@@ -366,7 +368,7 @@ func (o AccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
 
-// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
+// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) & * ( ) _ + - =`.
 func (o AccountOutput) AccountPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
 }

@@ -33,6 +33,8 @@ public final class EmrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -202,6 +204,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClustersResult> getClusters() {
@@ -217,6 +220,8 @@ public final class EmrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -386,6 +391,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain() {
@@ -401,6 +407,8 @@ public final class EmrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -570,6 +578,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args) {
@@ -585,6 +594,8 @@ public final class EmrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -754,6 +765,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args) {
@@ -769,6 +781,8 @@ public final class EmrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -938,6 +952,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
@@ -953,6 +968,8 @@ public final class EmrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1122,6 +1139,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {
@@ -1134,6 +1152,8 @@ public final class EmrFunctions {
      * &gt; **NOTE:** Available in 1.60.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1167,6 +1187,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDiskTypesResult> getDiskTypes(GetDiskTypesArgs args) {
@@ -1179,6 +1200,8 @@ public final class EmrFunctions {
      * &gt; **NOTE:** Available in 1.60.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1212,6 +1235,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDiskTypesResult> getDiskTypesPlain(GetDiskTypesPlainArgs args) {
@@ -1224,6 +1248,8 @@ public final class EmrFunctions {
      * &gt; **NOTE:** Available in 1.60.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1257,6 +1283,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDiskTypesResult> getDiskTypes(GetDiskTypesArgs args, InvokeOptions options) {
@@ -1269,6 +1296,8 @@ public final class EmrFunctions {
      * &gt; **NOTE:** Available in 1.60.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1302,6 +1331,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDiskTypesResult> getDiskTypesPlain(GetDiskTypesPlainArgs args, InvokeOptions options) {
@@ -1314,6 +1344,8 @@ public final class EmrFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1350,6 +1382,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes(GetInstanceTypesArgs args) {
@@ -1362,6 +1395,8 @@ public final class EmrFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1398,6 +1433,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain(GetInstanceTypesPlainArgs args) {
@@ -1410,6 +1446,8 @@ public final class EmrFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1446,6 +1484,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes(GetInstanceTypesArgs args, InvokeOptions options) {
@@ -1458,6 +1497,8 @@ public final class EmrFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1494,6 +1535,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain(GetInstanceTypesPlainArgs args, InvokeOptions options) {
@@ -1506,6 +1548,8 @@ public final class EmrFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1539,6 +1583,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMainVersionsResult> getMainVersions() {
@@ -1551,6 +1596,8 @@ public final class EmrFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1584,6 +1631,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMainVersionsResult> getMainVersionsPlain() {
@@ -1596,6 +1644,8 @@ public final class EmrFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1629,6 +1679,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMainVersionsResult> getMainVersions(GetMainVersionsArgs args) {
@@ -1641,6 +1692,8 @@ public final class EmrFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1674,6 +1727,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMainVersionsResult> getMainVersionsPlain(GetMainVersionsPlainArgs args) {
@@ -1686,6 +1740,8 @@ public final class EmrFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1719,6 +1775,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMainVersionsResult> getMainVersions(GetMainVersionsArgs args, InvokeOptions options) {
@@ -1731,6 +1788,8 @@ public final class EmrFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1764,6 +1823,7 @@ public final class EmrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMainVersionsResult> getMainVersionsPlain(GetMainVersionsPlainArgs args, InvokeOptions options) {

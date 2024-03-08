@@ -110,6 +110,7 @@ def get_applications(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -118,6 +119,7 @@ def get_applications(ids: Optional[Sequence[str]] = None,
         output_file="application.txt")
     pulumi.export("firstApplicationName", applications.applications[0].app_name)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: An ids string to filter results by the application id.
@@ -152,6 +154,7 @@ def get_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -160,6 +163,7 @@ def get_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
         output_file="application.txt")
     pulumi.export("firstApplicationName", applications.applications[0].app_name)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: An ids string to filter results by the application id.

@@ -226,6 +226,7 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -263,6 +264,7 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
             resource_id=example_application_load_balancer.id,
             resource_type="slb")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -302,6 +304,7 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -339,6 +342,7 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
             resource_id=example_application_load_balancer.id,
             resource_type="slb")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

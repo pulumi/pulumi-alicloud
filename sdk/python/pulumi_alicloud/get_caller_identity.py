@@ -88,6 +88,7 @@ def get_caller_identity(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -95,6 +96,7 @@ def get_caller_identity(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     current = alicloud.get_caller_identity()
     pulumi.export("currentUserArn", current.id)
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -116,6 +118,7 @@ def get_caller_identity_output(opts: Optional[pulumi.InvokeOptions] = None) -> p
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -123,5 +126,6 @@ def get_caller_identity_output(opts: Optional[pulumi.InvokeOptions] = None) -> p
     current = alicloud.get_caller_identity()
     pulumi.export("currentUserArn", current.id)
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

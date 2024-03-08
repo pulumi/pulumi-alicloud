@@ -29,9 +29,6 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
         /// 
         /// The `main.tf`:
-        /// 
-        /// 
-        /// The `varibales.tf`:
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>

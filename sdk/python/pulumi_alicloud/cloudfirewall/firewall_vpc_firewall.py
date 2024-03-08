@@ -304,6 +304,7 @@ class FirewallVpcFirewall(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -336,6 +337,7 @@ class FirewallVpcFirewall(pulumi.CustomResource):
             ),
             status="open")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -371,6 +373,7 @@ class FirewallVpcFirewall(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -403,6 +406,7 @@ class FirewallVpcFirewall(pulumi.CustomResource):
             ),
             status="open")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

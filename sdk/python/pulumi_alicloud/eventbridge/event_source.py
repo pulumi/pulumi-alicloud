@@ -292,6 +292,7 @@ class EventSource(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -312,6 +313,7 @@ class EventSource(pulumi.CustomResource):
                 "QueueName": example_queue.name,
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -360,6 +362,7 @@ class EventSource(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -380,6 +383,7 @@ class EventSource(pulumi.CustomResource):
                 "QueueName": example_queue.name,
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

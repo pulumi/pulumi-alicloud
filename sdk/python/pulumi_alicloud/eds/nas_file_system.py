@@ -257,6 +257,7 @@ class NasFileSystem(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -279,6 +280,7 @@ class NasFileSystem(pulumi.CustomResource):
             office_site_id=default_simple_office_site.id,
             description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -314,6 +316,7 @@ class NasFileSystem(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -336,6 +339,7 @@ class NasFileSystem(pulumi.CustomResource):
             office_site_id=default_simple_office_site.id,
             description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -237,6 +237,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -285,6 +286,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         default_peer_connection_accepter = alicloud.vpc.PeerConnectionAccepter("defaultPeerConnectionAccepter", instance_id=default_peer_connection.id,
         opts=pulumi.ResourceOptions(provider=alicloud["accepting"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -316,6 +318,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -364,6 +367,7 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         default_peer_connection_accepter = alicloud.vpc.PeerConnectionAccepter("defaultPeerConnectionAccepter", instance_id=default_peer_connection.id,
         opts=pulumi.ResourceOptions(provider=alicloud["accepting"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -243,6 +243,7 @@ class IpSet(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -270,6 +271,7 @@ class IpSet(pulumi.CustomResource):
             bandwidth=5,
             accelerator_id=default_bandwidth_package_attachment.accelerator_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -305,6 +307,7 @@ class IpSet(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -332,6 +335,7 @@ class IpSet(pulumi.CustomResource):
             bandwidth=5,
             accelerator_id=default_bandwidth_package_attachment.accelerator_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

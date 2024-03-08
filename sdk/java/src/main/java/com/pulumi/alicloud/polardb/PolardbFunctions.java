@@ -42,6 +42,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.70.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -123,6 +125,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args) {
@@ -135,6 +138,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.70.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -216,6 +221,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args) {
@@ -228,6 +234,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.70.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -309,6 +317,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOptions options) {
@@ -321,6 +330,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.70.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -402,6 +413,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args, InvokeOptions options) {
@@ -414,6 +426,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.66.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -479,6 +493,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClustersResult> getClusters() {
@@ -491,6 +506,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.66.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -556,6 +573,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain() {
@@ -568,6 +586,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.66.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -633,6 +653,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args) {
@@ -645,6 +666,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.66.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -710,6 +733,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args) {
@@ -722,6 +746,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.66.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -787,6 +813,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
@@ -799,6 +826,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.66.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -864,6 +893,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {
@@ -876,6 +906,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.70.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -955,6 +987,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args) {
@@ -967,6 +1000,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.70.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1046,6 +1081,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args) {
@@ -1058,6 +1094,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.70.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1137,6 +1175,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args, InvokeOptions options) {
@@ -1149,6 +1188,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.70.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1228,6 +1269,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args, InvokeOptions options) {
@@ -1240,6 +1282,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.68.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1310,6 +1354,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndpointsResult> getEndpoints(GetEndpointsArgs args) {
@@ -1322,6 +1367,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.68.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1392,6 +1439,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndpointsResult> getEndpointsPlain(GetEndpointsPlainArgs args) {
@@ -1404,6 +1452,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.68.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1474,6 +1524,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndpointsResult> getEndpoints(GetEndpointsArgs args, InvokeOptions options) {
@@ -1486,6 +1537,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.68.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1556,6 +1609,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndpointsResult> getEndpointsPlain(GetEndpointsPlainArgs args, InvokeOptions options) {
@@ -1569,6 +1623,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1645,6 +1701,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGlobalDatabaseNetworksResult> getGlobalDatabaseNetworks() {
@@ -1658,6 +1715,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1734,6 +1793,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGlobalDatabaseNetworksResult> getGlobalDatabaseNetworksPlain() {
@@ -1747,6 +1807,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1823,6 +1885,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGlobalDatabaseNetworksResult> getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs args) {
@@ -1836,6 +1899,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1912,6 +1977,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGlobalDatabaseNetworksResult> getGlobalDatabaseNetworksPlain(GetGlobalDatabaseNetworksPlainArgs args) {
@@ -1925,6 +1991,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2001,6 +2069,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGlobalDatabaseNetworksResult> getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs args, InvokeOptions options) {
@@ -2014,6 +2083,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2090,6 +2161,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGlobalDatabaseNetworksResult> getGlobalDatabaseNetworksPlain(GetGlobalDatabaseNetworksPlainArgs args, InvokeOptions options) {
@@ -2101,6 +2173,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.81.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2133,6 +2207,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodeClassesResult> getNodeClasses(GetNodeClassesArgs args) {
@@ -2144,6 +2219,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.81.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2176,6 +2253,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodeClassesResult> getNodeClassesPlain(GetNodeClassesPlainArgs args) {
@@ -2187,6 +2265,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.81.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2219,6 +2299,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodeClassesResult> getNodeClasses(GetNodeClassesArgs args, InvokeOptions options) {
@@ -2230,6 +2311,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available since v1.81.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2262,6 +2345,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodeClassesResult> getNodeClassesPlain(GetNodeClassesPlainArgs args, InvokeOptions options) {
@@ -2275,6 +2359,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2314,6 +2400,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetParameterGroupsResult> getParameterGroups() {
@@ -2327,6 +2414,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2366,6 +2455,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetParameterGroupsResult> getParameterGroupsPlain() {
@@ -2379,6 +2469,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2418,6 +2510,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetParameterGroupsResult> getParameterGroups(GetParameterGroupsArgs args) {
@@ -2431,6 +2524,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2470,6 +2565,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetParameterGroupsResult> getParameterGroupsPlain(GetParameterGroupsPlainArgs args) {
@@ -2483,6 +2579,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2522,6 +2620,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetParameterGroupsResult> getParameterGroups(GetParameterGroupsArgs args, InvokeOptions options) {
@@ -2535,6 +2634,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2574,6 +2675,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetParameterGroupsResult> getParameterGroupsPlain(GetParameterGroupsPlainArgs args, InvokeOptions options) {
@@ -2585,6 +2687,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2611,6 +2715,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -2622,6 +2727,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2648,6 +2755,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -2659,6 +2767,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2685,6 +2795,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -2696,6 +2807,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2722,6 +2835,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -2733,6 +2847,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2759,6 +2875,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -2770,6 +2887,8 @@ public final class PolardbFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2796,6 +2915,7 @@ public final class PolardbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

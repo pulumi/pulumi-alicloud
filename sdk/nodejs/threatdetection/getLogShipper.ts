@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  *     enable: "On",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLogShipper(args?: GetLogShipperArgs, opts?: pulumi.InvokeOptions): Promise<GetLogShipperResult> {
     args = args || {};
@@ -90,6 +92,7 @@ export interface GetLogShipperResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -98,6 +101,7 @@ export interface GetLogShipperResult {
  *     enable: "On",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLogShipperOutput(args?: GetLogShipperOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogShipperResult> {
     return pulumi.output(args).apply((a: any) => getLogShipper(a, opts))

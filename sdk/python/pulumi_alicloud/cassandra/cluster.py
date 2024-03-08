@@ -742,8 +742,10 @@ class Cluster(pulumi.CustomResource):
         > **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
 
         ## Example Usage
+
         ### Create a cassandra cluster
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -763,6 +765,7 @@ class Cluster(pulumi.CustomResource):
             pay_type="PayAsYouGo",
             vswitch_id="vsw-xxxx")
         ```
+        <!--End PulumiCodeChooser -->
 
         This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
 
@@ -817,8 +820,10 @@ class Cluster(pulumi.CustomResource):
         > **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
 
         ## Example Usage
+
         ### Create a cassandra cluster
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -838,6 +843,7 @@ class Cluster(pulumi.CustomResource):
             pay_type="PayAsYouGo",
             vswitch_id="vsw-xxxx")
         ```
+        <!--End PulumiCodeChooser -->
 
         This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
 

@@ -166,6 +166,7 @@ class Namespace(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -175,6 +176,7 @@ class Namespace(pulumi.CustomResource):
             namespace="tf-example",
             specification="cms.s1.large")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -213,6 +215,7 @@ class Namespace(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -222,6 +225,7 @@ class Namespace(pulumi.CustomResource):
             namespace="tf-example",
             specification="cms.s1.large")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

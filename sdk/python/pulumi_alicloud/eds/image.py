@@ -158,6 +158,7 @@ class Image(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -205,6 +206,7 @@ class Image(pulumi.CustomResource):
             desktop_id=default_desktop.id,
             description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -237,6 +239,7 @@ class Image(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -284,6 +287,7 @@ class Image(pulumi.CustomResource):
             desktop_id=default_desktop.id,
             description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

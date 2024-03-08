@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -18,6 +19,7 @@ import * as utilities from "../utilities";
  * // Add a new Domain group.
  * const group = new alicloud.dns.Group("group", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class Group extends pulumi.CustomResource {
     /**

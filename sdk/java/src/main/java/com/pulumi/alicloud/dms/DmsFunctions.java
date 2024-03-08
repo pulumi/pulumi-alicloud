@@ -40,6 +40,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -70,6 +72,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseDatabasesResult> getEnterpriseDatabases(GetEnterpriseDatabasesArgs args) {
@@ -83,6 +86,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -113,6 +118,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseDatabasesResult> getEnterpriseDatabasesPlain(GetEnterpriseDatabasesPlainArgs args) {
@@ -126,6 +132,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -156,6 +164,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseDatabasesResult> getEnterpriseDatabases(GetEnterpriseDatabasesArgs args, InvokeOptions options) {
@@ -169,6 +178,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -199,6 +210,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseDatabasesResult> getEnterpriseDatabasesPlain(GetEnterpriseDatabasesPlainArgs args, InvokeOptions options) {
@@ -210,6 +222,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.88.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -243,6 +257,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseInstancesResult> getEnterpriseInstances() {
@@ -254,6 +269,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.88.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -287,6 +304,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseInstancesResult> getEnterpriseInstancesPlain() {
@@ -298,6 +316,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.88.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -331,6 +351,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseInstancesResult> getEnterpriseInstances(GetEnterpriseInstancesArgs args) {
@@ -342,6 +363,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.88.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -375,6 +398,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseInstancesResult> getEnterpriseInstancesPlain(GetEnterpriseInstancesPlainArgs args) {
@@ -386,6 +410,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.88.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -419,6 +445,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseInstancesResult> getEnterpriseInstances(GetEnterpriseInstancesArgs args, InvokeOptions options) {
@@ -430,6 +457,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.88.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -463,6 +492,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseInstancesResult> getEnterpriseInstancesPlain(GetEnterpriseInstancesPlainArgs args, InvokeOptions options) {
@@ -477,6 +507,7 @@ public final class DmsFunctions {
      * 
      * Basic Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -512,6 +543,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabases() {
@@ -526,6 +558,7 @@ public final class DmsFunctions {
      * 
      * Basic Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -561,6 +594,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabasesPlain() {
@@ -575,6 +609,7 @@ public final class DmsFunctions {
      * 
      * Basic Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -610,6 +645,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs args) {
@@ -624,6 +660,7 @@ public final class DmsFunctions {
      * 
      * Basic Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -659,6 +696,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabasesPlain(GetEnterpriseLogicDatabasesPlainArgs args) {
@@ -673,6 +711,7 @@ public final class DmsFunctions {
      * 
      * Basic Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -708,6 +747,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs args, InvokeOptions options) {
@@ -722,6 +762,7 @@ public final class DmsFunctions {
      * 
      * Basic Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -757,6 +798,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseLogicDatabasesResult> getEnterpriseLogicDatabasesPlain(GetEnterpriseLogicDatabasesPlainArgs args, InvokeOptions options) {
@@ -770,6 +812,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -797,6 +841,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseProxiesResult> getEnterpriseProxies() {
@@ -810,6 +855,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -837,6 +884,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseProxiesResult> getEnterpriseProxiesPlain() {
@@ -850,6 +898,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -877,6 +927,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseProxiesResult> getEnterpriseProxies(GetEnterpriseProxiesArgs args) {
@@ -890,6 +941,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -917,6 +970,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseProxiesResult> getEnterpriseProxiesPlain(GetEnterpriseProxiesPlainArgs args) {
@@ -930,6 +984,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -957,6 +1013,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseProxiesResult> getEnterpriseProxies(GetEnterpriseProxiesArgs args, InvokeOptions options) {
@@ -970,6 +1027,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -997,6 +1056,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseProxiesResult> getEnterpriseProxiesPlain(GetEnterpriseProxiesPlainArgs args, InvokeOptions options) {
@@ -1008,6 +1068,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1047,6 +1109,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseProxyAccessesResult> getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs args) {
@@ -1058,6 +1121,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1097,6 +1162,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseProxyAccessesResult> getEnterpriseProxyAccessesPlain(GetEnterpriseProxyAccessesPlainArgs args) {
@@ -1108,6 +1174,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1147,6 +1215,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseProxyAccessesResult> getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs args, InvokeOptions options) {
@@ -1158,6 +1227,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1197,6 +1268,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseProxyAccessesResult> getEnterpriseProxyAccessesPlain(GetEnterpriseProxyAccessesPlainArgs args, InvokeOptions options) {
@@ -1208,6 +1280,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.90.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1239,6 +1313,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseUsersResult> getEnterpriseUsers() {
@@ -1250,6 +1325,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.90.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1281,6 +1358,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseUsersResult> getEnterpriseUsersPlain() {
@@ -1292,6 +1370,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.90.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1323,6 +1403,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseUsersResult> getEnterpriseUsers(GetEnterpriseUsersArgs args) {
@@ -1334,6 +1415,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.90.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1365,6 +1448,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseUsersResult> getEnterpriseUsersPlain(GetEnterpriseUsersPlainArgs args) {
@@ -1376,6 +1460,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.90.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1407,6 +1493,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEnterpriseUsersResult> getEnterpriseUsers(GetEnterpriseUsersArgs args, InvokeOptions options) {
@@ -1418,6 +1505,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.90.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1449,6 +1538,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEnterpriseUsersResult> getEnterpriseUsersPlain(GetEnterpriseUsersPlainArgs args, InvokeOptions options) {
@@ -1460,6 +1550,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.161.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1489,6 +1581,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserTenantsResult> getUserTenants() {
@@ -1500,6 +1593,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.161.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1529,6 +1624,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserTenantsResult> getUserTenantsPlain() {
@@ -1540,6 +1636,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.161.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1569,6 +1667,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserTenantsResult> getUserTenants(GetUserTenantsArgs args) {
@@ -1580,6 +1679,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.161.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1609,6 +1710,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserTenantsResult> getUserTenantsPlain(GetUserTenantsPlainArgs args) {
@@ -1620,6 +1722,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.161.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1649,6 +1753,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserTenantsResult> getUserTenants(GetUserTenantsArgs args, InvokeOptions options) {
@@ -1660,6 +1765,8 @@ public final class DmsFunctions {
      * &gt; **NOTE:** Available in 1.161.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1689,6 +1796,7 @@ public final class DmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserTenantsResult> getUserTenantsPlain(GetUserTenantsPlainArgs args, InvokeOptions options) {

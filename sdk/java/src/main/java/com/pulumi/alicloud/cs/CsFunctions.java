@@ -61,6 +61,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -90,6 +92,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAckServiceResult> getAckService(GetAckServiceArgs args) {
@@ -103,6 +106,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -132,6 +137,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAckServiceResult> getAckServicePlain(GetAckServicePlainArgs args) {
@@ -145,6 +151,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -174,6 +182,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAckServiceResult> getAckService(GetAckServiceArgs args, InvokeOptions options) {
@@ -187,6 +196,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.113.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -216,6 +227,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAckServiceResult> getAckServicePlain(GetAckServicePlainArgs args, InvokeOptions options) {
@@ -228,6 +240,40 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var auth = CsFunctions.getClusterCredential(GetClusterCredentialArgs.builder()
+     *             .clusterId(&#34;cluster-id&#34;)
+     *             .temporaryDurationMinutes(60)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args) {
         return getClusterCredential(args, InvokeOptions.Empty);
@@ -238,6 +284,40 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.187.0+
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var auth = CsFunctions.getClusterCredential(GetClusterCredentialArgs.builder()
+     *             .clusterId(&#34;cluster-id&#34;)
+     *             .temporaryDurationMinutes(60)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterCredentialResult> getClusterCredentialPlain(GetClusterCredentialPlainArgs args) {
@@ -250,6 +330,40 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var auth = CsFunctions.getClusterCredential(GetClusterCredentialArgs.builder()
+     *             .clusterId(&#34;cluster-id&#34;)
+     *             .temporaryDurationMinutes(60)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getClusterCredential:getClusterCredential", TypeShape.of(GetClusterCredentialResult.class), args, Utilities.withVersion(options));
@@ -261,6 +375,40 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cs.CsFunctions;
+     * import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var auth = CsFunctions.getClusterCredential(GetClusterCredentialArgs.builder()
+     *             .clusterId(&#34;cluster-id&#34;)
+     *             .temporaryDurationMinutes(60)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static CompletableFuture<GetClusterCredentialResult> getClusterCredentialPlain(GetClusterCredentialPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cs/getClusterCredential:getClusterCredential", TypeShape.of(GetClusterCredentialResult.class), args, Utilities.withVersion(options));
@@ -271,6 +419,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.103.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -301,6 +451,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEdgeKubernetesClustersResult> getEdgeKubernetesClusters() {
@@ -312,6 +463,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.103.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -342,6 +495,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEdgeKubernetesClustersResult> getEdgeKubernetesClustersPlain() {
@@ -353,6 +507,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.103.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -383,6 +539,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEdgeKubernetesClustersResult> getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs args) {
@@ -394,6 +551,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.103.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -424,6 +583,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEdgeKubernetesClustersResult> getEdgeKubernetesClustersPlain(GetEdgeKubernetesClustersPlainArgs args) {
@@ -435,6 +595,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.103.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -465,6 +627,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEdgeKubernetesClustersResult> getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs args, InvokeOptions options) {
@@ -476,6 +639,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.103.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -506,6 +671,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEdgeKubernetesClustersResult> getEdgeKubernetesClustersPlain(GetEdgeKubernetesClustersPlainArgs args, InvokeOptions options) {
@@ -517,6 +683,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.166.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -548,6 +716,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs args) {
@@ -559,6 +728,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.166.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -590,6 +761,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadataPlain(GetKubernetesAddonMetadataPlainArgs args) {
@@ -601,6 +773,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.166.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -632,6 +806,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs args, InvokeOptions options) {
@@ -643,6 +818,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.166.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -674,6 +851,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadataPlain(GetKubernetesAddonMetadataPlainArgs args, InvokeOptions options) {
@@ -727,6 +905,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -758,6 +938,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubernetesClustersResult> getKubernetesClusters() {
@@ -771,6 +952,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -802,6 +985,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesClustersResult> getKubernetesClustersPlain() {
@@ -815,6 +999,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -846,6 +1032,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubernetesClustersResult> getKubernetesClusters(GetKubernetesClustersArgs args) {
@@ -859,6 +1046,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -890,6 +1079,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesClustersResult> getKubernetesClustersPlain(GetKubernetesClustersPlainArgs args) {
@@ -903,6 +1093,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -934,6 +1126,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubernetesClustersResult> getKubernetesClusters(GetKubernetesClustersArgs args, InvokeOptions options) {
@@ -947,6 +1140,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -978,6 +1173,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesClustersResult> getKubernetesClustersPlain(GetKubernetesClustersPlainArgs args, InvokeOptions options) {
@@ -989,6 +1185,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1024,6 +1222,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubernetesPermissionResult> getKubernetesPermission(GetKubernetesPermissionArgs args) {
@@ -1035,6 +1234,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1070,6 +1271,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesPermissionResult> getKubernetesPermissionPlain(GetKubernetesPermissionPlainArgs args) {
@@ -1081,6 +1283,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1116,6 +1320,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubernetesPermissionResult> getKubernetesPermission(GetKubernetesPermissionArgs args, InvokeOptions options) {
@@ -1127,6 +1332,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.122.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1162,6 +1369,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesPermissionResult> getKubernetesPermissionPlain(GetKubernetesPermissionPlainArgs args, InvokeOptions options) {
@@ -1173,6 +1381,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.170.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1204,6 +1414,9 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1235,6 +1448,9 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1266,6 +1482,9 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1297,6 +1516,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubernetesVersionResult> getKubernetesVersion(GetKubernetesVersionArgs args) {
@@ -1308,6 +1528,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.170.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1339,6 +1561,9 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1370,6 +1595,9 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1401,6 +1629,9 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1432,6 +1663,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesVersionResult> getKubernetesVersionPlain(GetKubernetesVersionPlainArgs args) {
@@ -1443,6 +1675,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.170.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1474,6 +1708,9 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1505,6 +1742,9 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1536,6 +1776,9 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1567,6 +1810,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKubernetesVersionResult> getKubernetesVersion(GetKubernetesVersionArgs args, InvokeOptions options) {
@@ -1578,6 +1822,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in 1.170.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1609,6 +1855,9 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1640,6 +1889,9 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1671,6 +1923,9 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1702,6 +1957,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesVersionResult> getKubernetesVersionPlain(GetKubernetesVersionPlainArgs args, InvokeOptions options) {
@@ -1715,6 +1971,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1746,6 +2004,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetManagedKubernetesClustersResult> getManagedKubernetesClusters() {
@@ -1759,6 +2018,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1790,6 +2051,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetManagedKubernetesClustersResult> getManagedKubernetesClustersPlain() {
@@ -1803,6 +2065,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1834,6 +2098,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetManagedKubernetesClustersResult> getManagedKubernetesClusters(GetManagedKubernetesClustersArgs args) {
@@ -1847,6 +2112,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1878,6 +2145,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetManagedKubernetesClustersResult> getManagedKubernetesClustersPlain(GetManagedKubernetesClustersPlainArgs args) {
@@ -1891,6 +2159,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1922,6 +2192,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetManagedKubernetesClustersResult> getManagedKubernetesClusters(GetManagedKubernetesClustersArgs args, InvokeOptions options) {
@@ -1935,6 +2206,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1966,6 +2239,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetManagedKubernetesClustersResult> getManagedKubernetesClustersPlain(GetManagedKubernetesClustersPlainArgs args, InvokeOptions options) {
@@ -1977,6 +2251,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2007,6 +2283,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryEnterpriseInstancesResult> getRegistryEnterpriseInstances() {
@@ -2018,6 +2295,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2048,6 +2327,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseInstancesResult> getRegistryEnterpriseInstancesPlain() {
@@ -2059,6 +2339,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2089,6 +2371,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryEnterpriseInstancesResult> getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs args) {
@@ -2100,6 +2383,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2130,6 +2415,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseInstancesResult> getRegistryEnterpriseInstancesPlain(GetRegistryEnterpriseInstancesPlainArgs args) {
@@ -2141,6 +2427,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2171,6 +2459,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryEnterpriseInstancesResult> getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs args, InvokeOptions options) {
@@ -2182,6 +2471,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2212,6 +2503,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseInstancesResult> getRegistryEnterpriseInstancesPlain(GetRegistryEnterpriseInstancesPlainArgs args, InvokeOptions options) {
@@ -2223,6 +2515,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2254,6 +2548,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryEnterpriseNamespacesResult> getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs args) {
@@ -2265,6 +2560,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2296,6 +2593,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseNamespacesResult> getRegistryEnterpriseNamespacesPlain(GetRegistryEnterpriseNamespacesPlainArgs args) {
@@ -2307,6 +2605,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2338,6 +2638,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryEnterpriseNamespacesResult> getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs args, InvokeOptions options) {
@@ -2349,6 +2650,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.86.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2380,6 +2683,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseNamespacesResult> getRegistryEnterpriseNamespacesPlain(GetRegistryEnterpriseNamespacesPlainArgs args, InvokeOptions options) {
@@ -2391,6 +2695,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.87.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2422,6 +2728,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryEnterpriseReposResult> getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs args) {
@@ -2433,6 +2740,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.87.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2464,6 +2773,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseReposResult> getRegistryEnterpriseReposPlain(GetRegistryEnterpriseReposPlainArgs args) {
@@ -2475,6 +2785,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.87.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2506,6 +2818,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryEnterpriseReposResult> getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs args, InvokeOptions options) {
@@ -2517,6 +2830,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.87.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2548,6 +2863,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseReposResult> getRegistryEnterpriseReposPlain(GetRegistryEnterpriseReposPlainArgs args, InvokeOptions options) {
@@ -2559,6 +2875,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.90.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2592,6 +2910,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryEnterpriseSyncRulesResult> getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs args) {
@@ -2603,6 +2922,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.90.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2636,6 +2957,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseSyncRulesResult> getRegistryEnterpriseSyncRulesPlain(GetRegistryEnterpriseSyncRulesPlainArgs args) {
@@ -2647,6 +2969,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.90.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2680,6 +3004,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegistryEnterpriseSyncRulesResult> getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs args, InvokeOptions options) {
@@ -2691,6 +3016,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** Available in v1.90.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2724,6 +3051,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegistryEnterpriseSyncRulesResult> getRegistryEnterpriseSyncRulesPlain(GetRegistryEnterpriseSyncRulesPlainArgs args, InvokeOptions options) {
@@ -2737,6 +3065,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2768,6 +3098,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerlessKubernetesClustersResult> getServerlessKubernetesClusters() {
@@ -2781,6 +3112,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2812,6 +3145,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerlessKubernetesClustersResult> getServerlessKubernetesClustersPlain() {
@@ -2825,6 +3159,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2856,6 +3192,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerlessKubernetesClustersResult> getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs args) {
@@ -2869,6 +3206,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2900,6 +3239,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerlessKubernetesClustersResult> getServerlessKubernetesClustersPlain(GetServerlessKubernetesClustersPlainArgs args) {
@@ -2913,6 +3253,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2944,6 +3286,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerlessKubernetesClustersResult> getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs args, InvokeOptions options) {
@@ -2957,6 +3300,8 @@ public final class CsFunctions {
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2988,6 +3333,7 @@ public final class CsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerlessKubernetesClustersResult> getServerlessKubernetesClustersPlain(GetServerlessKubernetesClustersPlainArgs args, InvokeOptions options) {

@@ -98,6 +98,7 @@ class HistoryDeliveryJob(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -120,6 +121,7 @@ class HistoryDeliveryJob(pulumi.CustomResource):
             sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
         example_history_delivery_job = alicloud.actiontrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", trail_name=example_trail.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -156,6 +158,7 @@ class HistoryDeliveryJob(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -178,6 +181,7 @@ class HistoryDeliveryJob(pulumi.CustomResource):
             sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
         example_history_delivery_job = alicloud.actiontrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", trail_name=example_trail.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

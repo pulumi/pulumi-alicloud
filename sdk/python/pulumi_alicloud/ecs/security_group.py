@@ -332,15 +332,18 @@ class SecurityGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.ecs.SecurityGroup("default", description="New security group")
         ```
+        <!--End PulumiCodeChooser -->
 
         Basic Usage for VPC
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -350,6 +353,8 @@ class SecurityGroup(pulumi.CustomResource):
             cidr_block="10.1.0.0/21")
         group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use the existing security-group module
@@ -397,15 +402,18 @@ class SecurityGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.ecs.SecurityGroup("default", description="New security group")
         ```
+        <!--End PulumiCodeChooser -->
 
         Basic Usage for VPC
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -415,6 +423,8 @@ class SecurityGroup(pulumi.CustomResource):
             cidr_block="10.1.0.0/21")
         group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use the existing security-group module

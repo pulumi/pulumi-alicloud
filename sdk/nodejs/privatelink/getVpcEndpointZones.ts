@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstPrivatelinkVpcEndpointZoneId = example.then(example => example.zones?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVpcEndpointZones(args: GetVpcEndpointZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointZonesResult> {
 
@@ -76,6 +78,7 @@ export interface GetVpcEndpointZonesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -85,6 +88,7 @@ export interface GetVpcEndpointZonesResult {
  * });
  * export const firstPrivatelinkVpcEndpointZoneId = example.then(example => example.zones?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVpcEndpointZonesOutput(args: GetVpcEndpointZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointZonesResult> {
     return pulumi.output(args).apply((a: any) => getVpcEndpointZones(a, opts))

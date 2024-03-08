@@ -119,16 +119,6 @@ def get_instance_class_infos(commodity_code: Optional[str] = None,
 
     ## Example Usage
 
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    resources = alicloud.rds.get_instance_class_infos(commodity_code="bards",
-        order_type="BUY",
-        output_file="./classes.txt")
-    pulumi.export("firstDbInstanceClass", resources.infos[0])
-    ```
-
 
     :param str commodity_code: The commodity code of the instance. Valid values:
            * **bards**: The instance is a pay-as-you-go primary instance. This value is available on the China site (aliyun.com).
@@ -182,16 +172,6 @@ def get_instance_class_infos_output(commodity_code: Optional[pulumi.Input[str]] 
     > **NOTE:** Available in v1.196.0+
 
     ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    resources = alicloud.rds.get_instance_class_infos(commodity_code="bards",
-        order_type="BUY",
-        output_file="./classes.txt")
-    pulumi.export("firstDbInstanceClass", resources.infos[0])
-    ```
 
 
     :param str commodity_code: The commodity code of the instance. Valid values:

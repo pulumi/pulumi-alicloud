@@ -30,8 +30,6 @@ public final class ManagedKubernetesAddon {
      * 
      * The `main.tf`:
      * 
-     * The `varibales.tf`:
-     * 
      */
     private @Nullable Boolean disabled;
     /**
@@ -65,8 +63,6 @@ public final class ManagedKubernetesAddon {
      * `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
      * 
      * The `main.tf`:
-     * 
-     * The `varibales.tf`:
      * 
      */
     public Optional<Boolean> disabled() {

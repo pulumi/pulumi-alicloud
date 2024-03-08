@@ -22,6 +22,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,6 +50,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetDeliveryChannels(ctx *pulumi.Context, args *GetDeliveryChannelsArgs, opts ...pulumi.InvokeOption) (*GetDeliveryChannelsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDeliveryChannelsResult

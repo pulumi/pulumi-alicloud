@@ -262,6 +262,7 @@ def get_networks(cidr_block: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -271,6 +272,7 @@ def get_networks(cidr_block: Optional[str] = None,
         status="Available")
     pulumi.export("firstVpcId", vpcs_ds.vpcs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
@@ -354,6 +356,7 @@ def get_networks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -363,6 +366,7 @@ def get_networks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
         status="Available")
     pulumi.export("firstVpcId", vpcs_ds.vpcs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".

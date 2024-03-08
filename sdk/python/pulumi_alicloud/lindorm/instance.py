@@ -1544,6 +1544,7 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1569,6 +1570,7 @@ class Instance(pulumi.CustomResource):
             table_engine_node_count=2,
             instance_storage="1920")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1643,6 +1645,7 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1668,6 +1671,7 @@ class Instance(pulumi.CustomResource):
             table_engine_node_count=2,
             instance_storage="1920")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

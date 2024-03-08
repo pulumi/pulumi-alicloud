@@ -19,8 +19,10 @@ import (
 // > **NOTE:** Available since v1.153.0+.
 //
 // ## Example Usage
+//
 // ### Create a RDS PostgreSQL upgrade instance
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -110,6 +112,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

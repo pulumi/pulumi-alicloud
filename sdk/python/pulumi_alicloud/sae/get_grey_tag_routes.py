@@ -113,6 +113,7 @@ def get_grey_tag_routes(app_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -121,6 +122,7 @@ def get_grey_tag_routes(app_id: Optional[str] = None,
         name_regex="^my-GreyTagRoute")
     pulumi.export("saeGreyTagRoutesId", name_regex.routes[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str app_id: The ID  of the SAE Application.
@@ -161,6 +163,7 @@ def get_grey_tag_routes_output(app_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -169,6 +172,7 @@ def get_grey_tag_routes_output(app_id: Optional[pulumi.Input[str]] = None,
         name_regex="^my-GreyTagRoute")
     pulumi.export("saeGreyTagRoutesId", name_regex.routes[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str app_id: The ID  of the SAE Application.

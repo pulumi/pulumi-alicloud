@@ -150,6 +150,7 @@ def get_domains(backend: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -162,6 +163,7 @@ def get_domains(backend: Optional[str] = None,
         domain="zctest12.wafqax.top")
     pulumi.export("wafv3DomainsId2", default_domains.domains[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str backend: The address type of the origin server. The address can be an IP address or a domain name. You can specify only one type of address.
@@ -215,6 +217,7 @@ def get_domains_output(backend: Optional[pulumi.Input[Optional[str]]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -227,6 +230,7 @@ def get_domains_output(backend: Optional[pulumi.Input[Optional[str]]] = None,
         domain="zctest12.wafqax.top")
     pulumi.export("wafv3DomainsId2", default_domains.domains[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str backend: The address type of the origin server. The address can be an IP address or a domain name. You can specify only one type of address.

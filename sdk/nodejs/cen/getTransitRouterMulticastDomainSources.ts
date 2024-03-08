@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudCenTransitRouterMulticastDomainSourceExampleId = _default.then(_default => _default.sources?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterMulticastDomainSources(args: GetTransitRouterMulticastDomainSourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterMulticastDomainSourcesResult> {
 
@@ -77,6 +79,7 @@ export interface GetTransitRouterMulticastDomainSourcesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -86,6 +89,7 @@ export interface GetTransitRouterMulticastDomainSourcesResult {
  * });
  * export const alicloudCenTransitRouterMulticastDomainSourceExampleId = _default.then(_default => _default.sources?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterMulticastDomainSourcesOutput(args: GetTransitRouterMulticastDomainSourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterMulticastDomainSourcesResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterMulticastDomainSources(a, opts))

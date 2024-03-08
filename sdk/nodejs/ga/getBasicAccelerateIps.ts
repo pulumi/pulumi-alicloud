@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const gaBasicAccelerateIpId1 = ids.then(ids => ids.ips?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBasicAccelerateIps(args: GetBasicAccelerateIpsArgs, opts?: pulumi.InvokeOptions): Promise<GetBasicAccelerateIpsResult> {
 
@@ -109,6 +111,7 @@ export interface GetBasicAccelerateIpsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -119,6 +122,7 @@ export interface GetBasicAccelerateIpsResult {
  * });
  * export const gaBasicAccelerateIpId1 = ids.then(ids => ids.ips?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBasicAccelerateIpsOutput(args: GetBasicAccelerateIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBasicAccelerateIpsResult> {
     return pulumi.output(args).apply((a: any) => getBasicAccelerateIps(a, opts))

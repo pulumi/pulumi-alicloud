@@ -95,6 +95,7 @@ def get_kubernetes_version(cluster_type: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -104,7 +105,9 @@ def get_kubernetes_version(cluster_type: Optional[str] = None,
         profile="Default")
     pulumi.export("metadata", default.metadatas)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -114,7 +117,9 @@ def get_kubernetes_version(cluster_type: Optional[str] = None,
         profile="Default")
     pulumi.export("metadata", default.metadatas)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -124,7 +129,9 @@ def get_kubernetes_version(cluster_type: Optional[str] = None,
         profile="Serverless")
     pulumi.export("metadata", default.metadatas)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -134,6 +141,7 @@ def get_kubernetes_version(cluster_type: Optional[str] = None,
         profile="Edge")
     pulumi.export("metadata", default.metadatas)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_type: The type of cluster. Its valid value are `Kubernetes` and `ManagedKubernetes`.
@@ -167,6 +175,7 @@ def get_kubernetes_version_output(cluster_type: Optional[pulumi.Input[str]] = No
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -176,7 +185,9 @@ def get_kubernetes_version_output(cluster_type: Optional[pulumi.Input[str]] = No
         profile="Default")
     pulumi.export("metadata", default.metadatas)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -186,7 +197,9 @@ def get_kubernetes_version_output(cluster_type: Optional[pulumi.Input[str]] = No
         profile="Default")
     pulumi.export("metadata", default.metadatas)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -196,7 +209,9 @@ def get_kubernetes_version_output(cluster_type: Optional[pulumi.Input[str]] = No
         profile="Serverless")
     pulumi.export("metadata", default.metadatas)
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -206,6 +221,7 @@ def get_kubernetes_version_output(cluster_type: Optional[pulumi.Input[str]] = No
         profile="Edge")
     pulumi.export("metadata", default.metadatas)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_type: The type of cluster. Its valid value are `Kubernetes` and `ManagedKubernetes`.

@@ -2669,6 +2669,7 @@ class Instance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -2716,6 +2717,8 @@ class Instance(pulumi.CustomResource):
                 kms_key_id=key.id,
             )])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use the existing ecs-instance module
@@ -2862,6 +2865,7 @@ class Instance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -2909,6 +2913,8 @@ class Instance(pulumi.CustomResource):
                 kms_key_id=key.id,
             )])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use the existing ecs-instance module

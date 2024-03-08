@@ -107,6 +107,7 @@ def get_vul_whitelists(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -114,6 +115,7 @@ def get_vul_whitelists(ids: Optional[Sequence[str]] = None,
     default = alicloud.threatdetection.get_vul_whitelists(ids=["example_id"])
     pulumi.export("alicloudThreatDetectionVulWhitelistExampleId", default.whitelists[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Threat Detection Vul Whitelist IDs.
@@ -151,6 +153,7 @@ def get_vul_whitelists_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -158,6 +161,7 @@ def get_vul_whitelists_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     default = alicloud.threatdetection.get_vul_whitelists(ids=["example_id"])
     pulumi.export("alicloudThreatDetectionVulWhitelistExampleId", default.whitelists[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Threat Detection Vul Whitelist IDs.

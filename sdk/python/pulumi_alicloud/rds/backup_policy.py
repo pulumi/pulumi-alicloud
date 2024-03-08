@@ -883,6 +883,7 @@ class BackupPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -910,6 +911,7 @@ class BackupPolicy(pulumi.CustomResource):
             instance_name=name)
         policy = alicloud.rds.BackupPolicy("policy", instance_id=instance.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -973,6 +975,7 @@ class BackupPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1000,6 +1003,7 @@ class BackupPolicy(pulumi.CustomResource):
             instance_name=name)
         policy = alicloud.rds.BackupPolicy("policy", instance_id=instance.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

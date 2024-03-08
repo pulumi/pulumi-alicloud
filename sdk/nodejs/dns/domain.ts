@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  * // Add a new Domain.
  * const dns = new alicloud.dns.Domain("dns", {groupId: "85ab8713-4a30-4de4-9d20-155ff830f651"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

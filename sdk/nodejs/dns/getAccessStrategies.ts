@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -30,6 +31,7 @@ import * as utilities from "../utilities";
  * });
  * export const alidnsAccessStrategyId1 = ids.then(ids => ids.strategies?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccessStrategies(args: GetAccessStrategiesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessStrategiesResult> {
 
@@ -106,6 +108,7 @@ export interface GetAccessStrategiesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -121,6 +124,7 @@ export interface GetAccessStrategiesResult {
  * });
  * export const alidnsAccessStrategyId1 = ids.then(ids => ids.strategies?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccessStrategiesOutput(args: GetAccessStrategiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessStrategiesResult> {
     return pulumi.output(args).apply((a: any) => getAccessStrategies(a, opts))

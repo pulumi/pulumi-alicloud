@@ -133,6 +133,7 @@ def get_system_groups(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -146,6 +147,7 @@ def get_system_groups(ids: Optional[Sequence[str]] = None,
     default_system_groups = alicloud.videosurveillance.get_system_groups_output(ids=[default_system_group.id])
     pulumi.export("vsGroup", default_system_groups.ids[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Group IDs.
@@ -194,6 +196,7 @@ def get_system_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -207,6 +210,7 @@ def get_system_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     default_system_groups = alicloud.videosurveillance.get_system_groups_output(ids=[default_system_group.id])
     pulumi.export("vsGroup", default_system_groups.ids[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Group IDs.

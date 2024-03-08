@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * **NOTE:** The primary endpoint and the default cluster endpoint can not be created or deleted manually.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -90,6 +92,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

@@ -236,6 +236,7 @@ class EndpointAddress(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -266,6 +267,7 @@ class EndpointAddress(pulumi.CustomResource):
             connection_prefix="polardbexample",
             net_type="Public")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -297,6 +299,7 @@ class EndpointAddress(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -327,6 +330,7 @@ class EndpointAddress(pulumi.CustomResource):
             connection_prefix="polardbexample",
             net_type="Public")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -79,6 +79,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -111,6 +113,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAcceleratorSpareIpAttachmentsResult> getAcceleratorSpareIpAttachments(GetAcceleratorSpareIpAttachmentsArgs args) {
@@ -124,6 +127,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -156,6 +161,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAcceleratorSpareIpAttachmentsResult> getAcceleratorSpareIpAttachmentsPlain(GetAcceleratorSpareIpAttachmentsPlainArgs args) {
@@ -169,6 +175,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -201,6 +209,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAcceleratorSpareIpAttachmentsResult> getAcceleratorSpareIpAttachments(GetAcceleratorSpareIpAttachmentsArgs args, InvokeOptions options) {
@@ -214,6 +223,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -246,6 +257,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAcceleratorSpareIpAttachmentsResult> getAcceleratorSpareIpAttachmentsPlain(GetAcceleratorSpareIpAttachmentsPlainArgs args, InvokeOptions options) {
@@ -259,6 +271,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -288,6 +302,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAcceleratorsResult> getAccelerators() {
@@ -301,6 +316,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -330,6 +347,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAcceleratorsResult> getAcceleratorsPlain() {
@@ -343,6 +361,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -372,6 +392,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAcceleratorsResult> getAccelerators(GetAcceleratorsArgs args) {
@@ -385,6 +406,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -414,6 +437,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAcceleratorsResult> getAcceleratorsPlain(GetAcceleratorsPlainArgs args) {
@@ -427,6 +451,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -456,6 +482,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAcceleratorsResult> getAccelerators(GetAcceleratorsArgs args, InvokeOptions options) {
@@ -469,6 +496,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -498,6 +527,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAcceleratorsResult> getAcceleratorsPlain(GetAcceleratorsPlainArgs args, InvokeOptions options) {
@@ -511,6 +541,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -543,6 +575,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclsResult> getAcls() {
@@ -556,6 +589,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -588,6 +623,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain() {
@@ -601,6 +637,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -633,6 +671,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args) {
@@ -646,6 +685,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -678,6 +719,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args) {
@@ -691,6 +733,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -723,6 +767,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args, InvokeOptions options) {
@@ -736,6 +781,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -768,6 +815,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args, InvokeOptions options) {
@@ -781,6 +829,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -814,6 +864,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAdditionalCertificatesResult> getAdditionalCertificates(GetAdditionalCertificatesArgs args) {
@@ -827,6 +878,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -860,6 +913,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAdditionalCertificatesResult> getAdditionalCertificatesPlain(GetAdditionalCertificatesPlainArgs args) {
@@ -873,6 +927,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -906,6 +962,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAdditionalCertificatesResult> getAdditionalCertificates(GetAdditionalCertificatesArgs args, InvokeOptions options) {
@@ -919,6 +976,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -952,6 +1011,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAdditionalCertificatesResult> getAdditionalCertificatesPlain(GetAdditionalCertificatesPlainArgs args, InvokeOptions options) {
@@ -965,6 +1025,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -995,6 +1057,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBandwidthPackagesResult> getBandwidthPackages() {
@@ -1008,6 +1071,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1038,6 +1103,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBandwidthPackagesResult> getBandwidthPackagesPlain() {
@@ -1051,6 +1117,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1081,6 +1149,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBandwidthPackagesResult> getBandwidthPackages(GetBandwidthPackagesArgs args) {
@@ -1094,6 +1163,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1124,6 +1195,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBandwidthPackagesResult> getBandwidthPackagesPlain(GetBandwidthPackagesPlainArgs args) {
@@ -1137,6 +1209,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1167,6 +1241,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBandwidthPackagesResult> getBandwidthPackages(GetBandwidthPackagesArgs args, InvokeOptions options) {
@@ -1180,6 +1255,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1210,6 +1287,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBandwidthPackagesResult> getBandwidthPackagesPlain(GetBandwidthPackagesPlainArgs args, InvokeOptions options) {
@@ -1223,6 +1301,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1253,6 +1333,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBasicAccelerateIpEndpointRelationsResult> getBasicAccelerateIpEndpointRelations(GetBasicAccelerateIpEndpointRelationsArgs args) {
@@ -1266,6 +1347,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1296,6 +1379,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBasicAccelerateIpEndpointRelationsResult> getBasicAccelerateIpEndpointRelationsPlain(GetBasicAccelerateIpEndpointRelationsPlainArgs args) {
@@ -1309,6 +1393,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1339,6 +1425,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBasicAccelerateIpEndpointRelationsResult> getBasicAccelerateIpEndpointRelations(GetBasicAccelerateIpEndpointRelationsArgs args, InvokeOptions options) {
@@ -1352,6 +1439,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1382,6 +1471,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBasicAccelerateIpEndpointRelationsResult> getBasicAccelerateIpEndpointRelationsPlain(GetBasicAccelerateIpEndpointRelationsPlainArgs args, InvokeOptions options) {
@@ -1395,6 +1485,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1425,6 +1517,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBasicAccelerateIpsResult> getBasicAccelerateIps(GetBasicAccelerateIpsArgs args) {
@@ -1438,6 +1531,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1468,6 +1563,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBasicAccelerateIpsResult> getBasicAccelerateIpsPlain(GetBasicAccelerateIpsPlainArgs args) {
@@ -1481,6 +1577,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1511,6 +1609,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBasicAccelerateIpsResult> getBasicAccelerateIps(GetBasicAccelerateIpsArgs args, InvokeOptions options) {
@@ -1524,6 +1623,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1554,6 +1655,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBasicAccelerateIpsResult> getBasicAccelerateIpsPlain(GetBasicAccelerateIpsPlainArgs args, InvokeOptions options) {
@@ -1567,6 +1669,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1601,6 +1705,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBasicAcceleratorsResult> getBasicAccelerators() {
@@ -1614,6 +1719,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1648,6 +1755,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBasicAcceleratorsResult> getBasicAcceleratorsPlain() {
@@ -1661,6 +1769,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1695,6 +1805,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBasicAcceleratorsResult> getBasicAccelerators(GetBasicAcceleratorsArgs args) {
@@ -1708,6 +1819,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1742,6 +1855,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBasicAcceleratorsResult> getBasicAcceleratorsPlain(GetBasicAcceleratorsPlainArgs args) {
@@ -1755,6 +1869,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1789,6 +1905,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBasicAcceleratorsResult> getBasicAccelerators(GetBasicAcceleratorsArgs args, InvokeOptions options) {
@@ -1802,6 +1919,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1836,6 +1955,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBasicAcceleratorsResult> getBasicAcceleratorsPlain(GetBasicAcceleratorsPlainArgs args, InvokeOptions options) {
@@ -1849,6 +1969,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1885,6 +2007,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBasicEndpointsResult> getBasicEndpoints(GetBasicEndpointsArgs args) {
@@ -1898,6 +2021,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1934,6 +2059,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBasicEndpointsResult> getBasicEndpointsPlain(GetBasicEndpointsPlainArgs args) {
@@ -1947,6 +2073,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1983,6 +2111,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBasicEndpointsResult> getBasicEndpoints(GetBasicEndpointsArgs args, InvokeOptions options) {
@@ -1996,6 +2125,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2032,6 +2163,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBasicEndpointsResult> getBasicEndpointsPlain(GetBasicEndpointsPlainArgs args, InvokeOptions options) {
@@ -2045,6 +2177,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2075,6 +2209,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomRoutingEndpointGroupDestinationsResult> getCustomRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsArgs args) {
@@ -2088,6 +2223,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2118,6 +2255,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomRoutingEndpointGroupDestinationsResult> getCustomRoutingEndpointGroupDestinationsPlain(GetCustomRoutingEndpointGroupDestinationsPlainArgs args) {
@@ -2131,6 +2269,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2161,6 +2301,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomRoutingEndpointGroupDestinationsResult> getCustomRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsArgs args, InvokeOptions options) {
@@ -2174,6 +2315,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2204,6 +2347,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomRoutingEndpointGroupDestinationsResult> getCustomRoutingEndpointGroupDestinationsPlain(GetCustomRoutingEndpointGroupDestinationsPlainArgs args, InvokeOptions options) {
@@ -2217,6 +2361,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2253,6 +2399,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomRoutingEndpointGroupsResult> getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs args) {
@@ -2266,6 +2413,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2302,6 +2451,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomRoutingEndpointGroupsResult> getCustomRoutingEndpointGroupsPlain(GetCustomRoutingEndpointGroupsPlainArgs args) {
@@ -2315,6 +2465,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2351,6 +2503,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomRoutingEndpointGroupsResult> getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs args, InvokeOptions options) {
@@ -2364,6 +2517,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2400,6 +2555,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomRoutingEndpointGroupsResult> getCustomRoutingEndpointGroupsPlain(GetCustomRoutingEndpointGroupsPlainArgs args, InvokeOptions options) {
@@ -2413,6 +2569,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2443,6 +2601,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomRoutingEndpointTrafficPoliciesResult> getCustomRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesArgs args) {
@@ -2456,6 +2615,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2486,6 +2647,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomRoutingEndpointTrafficPoliciesResult> getCustomRoutingEndpointTrafficPoliciesPlain(GetCustomRoutingEndpointTrafficPoliciesPlainArgs args) {
@@ -2499,6 +2661,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2529,6 +2693,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomRoutingEndpointTrafficPoliciesResult> getCustomRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesArgs args, InvokeOptions options) {
@@ -2542,6 +2707,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2572,6 +2739,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomRoutingEndpointTrafficPoliciesResult> getCustomRoutingEndpointTrafficPoliciesPlain(GetCustomRoutingEndpointTrafficPoliciesPlainArgs args, InvokeOptions options) {
@@ -2585,6 +2753,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2615,6 +2785,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomRoutingEndpointsResult> getCustomRoutingEndpoints(GetCustomRoutingEndpointsArgs args) {
@@ -2628,6 +2799,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2658,6 +2831,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomRoutingEndpointsResult> getCustomRoutingEndpointsPlain(GetCustomRoutingEndpointsPlainArgs args) {
@@ -2671,6 +2845,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2701,6 +2877,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomRoutingEndpointsResult> getCustomRoutingEndpoints(GetCustomRoutingEndpointsArgs args, InvokeOptions options) {
@@ -2714,6 +2891,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2744,6 +2923,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomRoutingEndpointsResult> getCustomRoutingEndpointsPlain(GetCustomRoutingEndpointsPlainArgs args, InvokeOptions options) {
@@ -2757,6 +2937,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2786,6 +2968,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomRoutingPortMappingsResult> getCustomRoutingPortMappings(GetCustomRoutingPortMappingsArgs args) {
@@ -2799,6 +2982,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2828,6 +3013,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomRoutingPortMappingsResult> getCustomRoutingPortMappingsPlain(GetCustomRoutingPortMappingsPlainArgs args) {
@@ -2841,6 +3027,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2870,6 +3058,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomRoutingPortMappingsResult> getCustomRoutingPortMappings(GetCustomRoutingPortMappingsArgs args, InvokeOptions options) {
@@ -2883,6 +3072,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2912,6 +3103,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomRoutingPortMappingsResult> getCustomRoutingPortMappingsPlain(GetCustomRoutingPortMappingsPlainArgs args, InvokeOptions options) {
@@ -2979,6 +3171,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3008,6 +3202,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndpointGroupIpAddressCidrBlocksResult> getEndpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksArgs args) {
@@ -3021,6 +3216,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3050,6 +3247,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndpointGroupIpAddressCidrBlocksResult> getEndpointGroupIpAddressCidrBlocksPlain(GetEndpointGroupIpAddressCidrBlocksPlainArgs args) {
@@ -3063,6 +3261,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3092,6 +3292,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndpointGroupIpAddressCidrBlocksResult> getEndpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksArgs args, InvokeOptions options) {
@@ -3105,6 +3306,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3134,6 +3337,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndpointGroupIpAddressCidrBlocksResult> getEndpointGroupIpAddressCidrBlocksPlain(GetEndpointGroupIpAddressCidrBlocksPlainArgs args, InvokeOptions options) {
@@ -3147,6 +3351,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3253,6 +3459,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndpointGroupsResult> getEndpointGroups(GetEndpointGroupsArgs args) {
@@ -3266,6 +3473,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3372,6 +3581,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndpointGroupsResult> getEndpointGroupsPlain(GetEndpointGroupsPlainArgs args) {
@@ -3385,6 +3595,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3491,6 +3703,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEndpointGroupsResult> getEndpointGroups(GetEndpointGroupsArgs args, InvokeOptions options) {
@@ -3504,6 +3717,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3610,6 +3825,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEndpointGroupsResult> getEndpointGroupsPlain(GetEndpointGroupsPlainArgs args, InvokeOptions options) {
@@ -3623,6 +3839,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3654,6 +3872,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetForwardingRulesResult> getForwardingRules(GetForwardingRulesArgs args) {
@@ -3667,6 +3886,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3698,6 +3919,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetForwardingRulesResult> getForwardingRulesPlain(GetForwardingRulesPlainArgs args) {
@@ -3711,6 +3933,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3742,6 +3966,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetForwardingRulesResult> getForwardingRules(GetForwardingRulesArgs args, InvokeOptions options) {
@@ -3755,6 +3980,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3786,6 +4013,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetForwardingRulesResult> getForwardingRulesPlain(GetForwardingRulesPlainArgs args, InvokeOptions options) {
@@ -3799,6 +4027,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3829,6 +4059,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpSetsResult> getIpSets(GetIpSetsArgs args) {
@@ -3842,6 +4073,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3872,6 +4105,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpSetsResult> getIpSetsPlain(GetIpSetsPlainArgs args) {
@@ -3885,6 +4119,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3915,6 +4151,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpSetsResult> getIpSets(GetIpSetsArgs args, InvokeOptions options) {
@@ -3928,6 +4165,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3958,6 +4197,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpSetsResult> getIpSetsPlain(GetIpSetsPlainArgs args, InvokeOptions options) {
@@ -3971,6 +4211,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4002,6 +4244,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListenersResult> getListeners(GetListenersArgs args) {
@@ -4015,6 +4258,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4046,6 +4291,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListenersResult> getListenersPlain(GetListenersPlainArgs args) {
@@ -4059,6 +4305,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4090,6 +4338,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListenersResult> getListeners(GetListenersArgs args, InvokeOptions options) {
@@ -4103,6 +4352,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4134,6 +4385,7 @@ public final class GaFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListenersResult> getListenersPlain(GetListenersPlainArgs args, InvokeOptions options) {

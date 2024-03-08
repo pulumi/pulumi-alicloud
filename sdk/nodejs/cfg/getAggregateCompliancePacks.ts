@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstConfigAggregateCompliancePackId = example.then(example => example.packs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAggregateCompliancePacks(args: GetAggregateCompliancePacksArgs, opts?: pulumi.InvokeOptions): Promise<GetAggregateCompliancePacksResult> {
 
@@ -105,6 +107,7 @@ export interface GetAggregateCompliancePacksResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -116,6 +119,7 @@ export interface GetAggregateCompliancePacksResult {
  * });
  * export const firstConfigAggregateCompliancePackId = example.then(example => example.packs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAggregateCompliancePacksOutput(args: GetAggregateCompliancePacksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateCompliancePacksResult> {
     return pulumi.output(args).apply((a: any) => getAggregateCompliancePacks(a, opts))

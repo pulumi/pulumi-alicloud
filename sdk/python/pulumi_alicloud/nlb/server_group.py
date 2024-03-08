@@ -594,6 +594,7 @@ class ServerGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -636,6 +637,7 @@ class ServerGroup(pulumi.CustomResource):
                 "For": "example",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -694,6 +696,7 @@ class ServerGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -736,6 +739,7 @@ class ServerGroup(pulumi.CustomResource):
                 "For": "example",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

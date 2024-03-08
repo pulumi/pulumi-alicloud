@@ -566,6 +566,7 @@ class RouterInterface(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -581,6 +582,7 @@ class RouterInterface(pulumi.CustomResource):
             specification="Large.2",
             description="test1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -624,6 +626,7 @@ class RouterInterface(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -639,6 +642,7 @@ class RouterInterface(pulumi.CustomResource):
             specification="Large.2",
             description="test1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

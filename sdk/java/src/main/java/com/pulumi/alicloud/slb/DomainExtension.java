@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** The instance with shared loadBalancerSpec doesn&#39;t support domainExtension.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -166,6 +168,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

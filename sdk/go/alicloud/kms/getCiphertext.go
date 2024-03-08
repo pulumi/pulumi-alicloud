@@ -15,6 +15,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupCiphertext(ctx *pulumi.Context, args *LookupCiphertextArgs, opts ...pulumi.InvokeOption) (*LookupCiphertextResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCiphertextResult

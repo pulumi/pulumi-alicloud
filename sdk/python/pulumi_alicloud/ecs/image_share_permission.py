@@ -110,6 +110,7 @@ class ImageSharePermission(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -147,6 +148,8 @@ class ImageSharePermission(pulumi.CustomResource):
             image_id=default_image.id,
             account_id=account_id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes Reference0
 
          The following attributes are exported:
@@ -185,6 +188,7 @@ class ImageSharePermission(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -222,6 +226,8 @@ class ImageSharePermission(pulumi.CustomResource):
             image_id=default_image.id,
             account_id=account_id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes Reference0
 
          The following attributes are exported:

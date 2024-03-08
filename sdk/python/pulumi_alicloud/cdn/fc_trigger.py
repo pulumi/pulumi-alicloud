@@ -269,6 +269,7 @@ class FcTrigger(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -283,6 +284,7 @@ class FcTrigger(pulumi.CustomResource):
             source_arn=f"acs:cdn:*:{default_account.id}:domain/example.com",
             trigger_arn=f"acs:fc:{default_regions.regions[0].id}:{default_account.id}:services/FCTestService/functions/printEvent/triggers/testtrigger")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -319,6 +321,7 @@ class FcTrigger(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -333,6 +336,7 @@ class FcTrigger(pulumi.CustomResource):
             source_arn=f"acs:cdn:*:{default_account.id}:domain/example.com",
             trigger_arn=f"acs:fc:{default_regions.regions[0].id}:{default_account.id}:services/FCTestService/functions/printEvent/triggers/testtrigger")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

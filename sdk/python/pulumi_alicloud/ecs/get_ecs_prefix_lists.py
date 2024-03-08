@@ -123,6 +123,7 @@ def get_ecs_prefix_lists(address_family: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,6 +132,7 @@ def get_ecs_prefix_lists(address_family: Optional[str] = None,
         name_regex="tf-testAcc")
     pulumi.export("outputId", example.lists[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str address_family: The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
@@ -174,6 +176,7 @@ def get_ecs_prefix_lists_output(address_family: Optional[pulumi.Input[Optional[s
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -182,6 +185,7 @@ def get_ecs_prefix_lists_output(address_family: Optional[pulumi.Input[Optional[s
         name_regex="tf-testAcc")
     pulumi.export("outputId", example.lists[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str address_family: The address family of the prefix list. Valid values:`IPv4`,`IPv6`.

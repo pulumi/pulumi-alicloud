@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 // })
 // }
 // ```
+// <!--End PulumiCodeChooser -->
 func GetVpds(ctx *pulumi.Context, args *GetVpdsArgs, opts ...pulumi.InvokeOption) (*GetVpdsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpdsResult

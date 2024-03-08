@@ -20,6 +20,7 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// Basic Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,6 +52,7 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -60,7 +62,7 @@ namespace Pulumi.AliCloud.Kms
     /// $ pulumi import alicloud:kms/clientKey:ClientKey example &lt;id&gt;
     /// ```
     /// 
-    ///  Resource attributes such as `password`, `private_key_data_file` are not available for imported resources as this information cannot be read from the KMS API.
+    /// Resource attributes such as `password`, `private_key_data_file` are not available for imported resources as this information cannot be read from the KMS API.
     /// </summary>
     [AliCloudResourceType("alicloud:kms/clientKey:ClientKey")]
     public partial class ClientKey : global::Pulumi.CustomResource

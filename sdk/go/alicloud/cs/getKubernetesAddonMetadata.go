@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetKubernetesAddonMetadata(ctx *pulumi.Context, args *GetKubernetesAddonMetadataArgs, opts ...pulumi.InvokeOption) (*GetKubernetesAddonMetadataResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKubernetesAddonMetadataResult

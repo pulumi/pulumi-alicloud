@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetOpenApiPricingModules(ctx *pulumi.Context, args *GetOpenApiPricingModulesArgs, opts ...pulumi.InvokeOption) (*GetOpenApiPricingModulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOpenApiPricingModulesResult

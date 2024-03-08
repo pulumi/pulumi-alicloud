@@ -153,6 +153,7 @@ def get_secrets(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -165,6 +166,7 @@ def get_secrets(enable_details: Optional[bool] = None,
         })
     pulumi.export("firstSecretId", kms_secrets_ds.secrets[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
@@ -216,6 +218,7 @@ def get_secrets_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -228,6 +231,7 @@ def get_secrets_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
         })
     pulumi.export("firstSecretId", kms_secrets_ds.secrets[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.

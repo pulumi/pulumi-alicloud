@@ -133,6 +133,7 @@ def get_domains(enable_details: Optional[bool] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -146,6 +147,7 @@ def get_domains(enable_details: Optional[bool] = None,
         ids=["example_id"])
     pulumi.export("directMailDomainId3", example.domains[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -194,6 +196,7 @@ def get_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -207,6 +210,7 @@ def get_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
         ids=["example_id"])
     pulumi.export("directMailDomainId3", example.domains[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

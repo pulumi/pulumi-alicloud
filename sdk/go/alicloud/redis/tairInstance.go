@@ -38,7 +38,7 @@ type TairInstance struct {
 	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
 	// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
-	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
@@ -138,7 +138,7 @@ type tairInstanceState struct {
 	InstanceClass *string `pulumi:"instanceClass"`
 	// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
 	InstanceType *string `pulumi:"instanceType"`
-	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
 	Password *string `pulumi:"password"`
 	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
 	PaymentType *string `pulumi:"paymentType"`
@@ -187,7 +187,7 @@ type TairInstanceState struct {
 	InstanceClass pulumi.StringPtrInput
 	// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
 	InstanceType pulumi.StringPtrInput
-	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
 	Password pulumi.StringPtrInput
 	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
 	PaymentType pulumi.StringPtrInput
@@ -238,7 +238,7 @@ type tairInstanceArgs struct {
 	InstanceClass string `pulumi:"instanceClass"`
 	// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
 	InstanceType string `pulumi:"instanceType"`
-	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
 	Password *string `pulumi:"password"`
 	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
 	PaymentType *string `pulumi:"paymentType"`
@@ -284,7 +284,7 @@ type TairInstanceArgs struct {
 	InstanceClass pulumi.StringInput
 	// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
 	InstanceType pulumi.StringInput
-	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
 	Password pulumi.StringPtrInput
 	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
 	PaymentType pulumi.StringPtrInput
@@ -441,7 +441,7 @@ func (o TairInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
 func (o TairInstanceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }

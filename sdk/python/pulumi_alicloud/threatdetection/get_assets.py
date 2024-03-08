@@ -158,6 +158,7 @@ def get_assets(criteria: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -165,6 +166,7 @@ def get_assets(criteria: Optional[str] = None,
     default = alicloud.threatdetection.get_assets()
     pulumi.export("alicloudThreatDetectionAssetExampleId", default.assets[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str criteria: Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
@@ -227,6 +229,7 @@ def get_assets_output(criteria: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -234,6 +237,7 @@ def get_assets_output(criteria: Optional[pulumi.Input[Optional[str]]] = None,
     default = alicloud.threatdetection.get_assets()
     pulumi.export("alicloudThreatDetectionAssetExampleId", default.assets[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str criteria: Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.

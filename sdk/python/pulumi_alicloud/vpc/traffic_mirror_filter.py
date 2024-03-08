@@ -301,6 +301,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -338,6 +339,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
                 source_port_range="80/80",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -376,6 +378,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -413,6 +416,7 @@ class TrafficMirrorFilter(pulumi.CustomResource):
                 source_port_range="80/80",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

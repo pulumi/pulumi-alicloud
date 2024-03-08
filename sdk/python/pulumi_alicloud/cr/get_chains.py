@@ -157,6 +157,7 @@ def get_chains(enable_details: Optional[bool] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -171,6 +172,7 @@ def get_chains(enable_details: Optional[bool] = None,
         name_regex="^my-Chain")
     pulumi.export("crChainId2", name_regex.chains[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Chain IDs.
@@ -224,6 +226,7 @@ def get_chains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -238,6 +241,7 @@ def get_chains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
         name_regex="^my-Chain")
     pulumi.export("crChainId2", name_regex.chains[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Chain IDs.

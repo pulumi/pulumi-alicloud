@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const directMailTagId2 = nameRegex.then(nameRegex => nameRegex.tags?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTags(args?: GetTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetTagsResult> {
     args = args || {};
@@ -81,6 +83,7 @@ export interface GetTagsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -94,6 +97,7 @@ export interface GetTagsResult {
  * });
  * export const directMailTagId2 = nameRegex.then(nameRegex => nameRegex.tags?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTagsOutput(args?: GetTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagsResult> {
     return pulumi.output(args).apply((a: any) => getTags(a, opts))

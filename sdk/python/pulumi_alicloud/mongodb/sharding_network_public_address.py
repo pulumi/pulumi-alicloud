@@ -128,6 +128,7 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -174,6 +175,7 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
             db_instance_id=default_sharding_instance.id,
             node_id=default_sharding_instance.mongo_lists[0].node_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -207,6 +209,7 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -253,6 +256,7 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
             db_instance_id=default_sharding_instance.id,
             node_id=default_sharding_instance.mongo_lists[0].node_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

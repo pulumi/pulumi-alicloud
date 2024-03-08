@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const vpcPublicIpAddressPoolId2 = nameRegex.then(nameRegex => nameRegex.pools?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPublicIpAddressPools(args?: GetPublicIpAddressPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetPublicIpAddressPoolsResult> {
     args = args || {};
@@ -105,6 +107,7 @@ export interface GetPublicIpAddressPoolsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,6 +121,7 @@ export interface GetPublicIpAddressPoolsResult {
  * });
  * export const vpcPublicIpAddressPoolId2 = nameRegex.then(nameRegex => nameRegex.pools?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPublicIpAddressPoolsOutput(args?: GetPublicIpAddressPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPublicIpAddressPoolsResult> {
     return pulumi.output(args).apply((a: any) => getPublicIpAddressPools(a, opts))

@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * }));
  * export const permissions = _default.then(_default => _default.permissions);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKubernetesPermission(args: GetKubernetesPermissionArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesPermissionResult> {
 
@@ -73,6 +75,7 @@ export interface GetKubernetesPermissionResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -85,6 +88,7 @@ export interface GetKubernetesPermissionResult {
  * }));
  * export const permissions = _default.then(_default => _default.permissions);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKubernetesPermissionOutput(args: GetKubernetesPermissionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesPermissionResult> {
     return pulumi.output(args).apply((a: any) => getKubernetesPermission(a, opts))

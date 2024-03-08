@@ -156,6 +156,7 @@ class ShortUrl(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -165,6 +166,7 @@ class ShortUrl(pulumi.CustomResource):
             short_url_name="example_value",
             source_url="example_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -197,6 +199,7 @@ class ShortUrl(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -206,6 +209,7 @@ class ShortUrl(pulumi.CustomResource):
             short_url_name="example_value",
             source_url="example_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -169,6 +169,7 @@ def get_common_bandwidth_packages(bandwidth_package_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -179,6 +180,8 @@ def get_common_bandwidth_packages(bandwidth_package_name: Optional[str] = None,
     foo_common_bandwidth_packages = alicloud.vpc.get_common_bandwidth_packages_output(ids=[foo_common_bandwith_package.id],
         name_regex="^tf-testAcc.*")
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Public ip addresses Block
 
       The public ip addresses mapping supports the following:
@@ -240,6 +243,7 @@ def get_common_bandwidth_packages_output(bandwidth_package_name: Optional[pulumi
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -250,6 +254,8 @@ def get_common_bandwidth_packages_output(bandwidth_package_name: Optional[pulumi
     foo_common_bandwidth_packages = alicloud.vpc.get_common_bandwidth_packages_output(ids=[foo_common_bandwith_package.id],
         name_regex="^tf-testAcc.*")
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Public ip addresses Block
 
       The public ip addresses mapping supports the following:

@@ -37,6 +37,40 @@ public final class DcdnFunctions {
      * 
      * &gt; **NOTE:** Available in 1.94.0+.
      * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DcdnFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;domainId&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetDomainsResult> getDomains() {
         return getDomains(GetDomainsArgs.Empty, InvokeOptions.Empty);
@@ -45,6 +79,40 @@ public final class DcdnFunctions {
      * Provides a collection of DCDN Domains to the specified filters.
      * 
      * &gt; **NOTE:** Available in 1.94.0+.
+     * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DcdnFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;domainId&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain() {
@@ -55,6 +123,40 @@ public final class DcdnFunctions {
      * 
      * &gt; **NOTE:** Available in 1.94.0+.
      * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DcdnFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;domainId&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args) {
         return getDomains(args, InvokeOptions.Empty);
@@ -63,6 +165,40 @@ public final class DcdnFunctions {
      * Provides a collection of DCDN Domains to the specified filters.
      * 
      * &gt; **NOTE:** Available in 1.94.0+.
+     * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DcdnFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;domainId&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args) {
@@ -73,6 +209,40 @@ public final class DcdnFunctions {
      * 
      * &gt; **NOTE:** Available in 1.94.0+.
      * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DcdnFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;domainId&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:dcdn/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
@@ -81,6 +251,40 @@ public final class DcdnFunctions {
      * Provides a collection of DCDN Domains to the specified filters.
      * 
      * &gt; **NOTE:** Available in 1.94.0+.
+     * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.dcdn.DcdnFunctions;
+     * import com.pulumi.alicloud.dcdn.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DcdnFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(&#34;example.com&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;domainId&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
@@ -94,6 +298,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -131,6 +337,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpaDomainsResult> getIpaDomains() {
@@ -144,6 +351,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -181,6 +390,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpaDomainsResult> getIpaDomainsPlain() {
@@ -194,6 +404,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -231,6 +443,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpaDomainsResult> getIpaDomains(GetIpaDomainsArgs args) {
@@ -244,6 +457,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -281,6 +496,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpaDomainsResult> getIpaDomainsPlain(GetIpaDomainsPlainArgs args) {
@@ -294,6 +510,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -331,6 +549,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpaDomainsResult> getIpaDomains(GetIpaDomainsArgs args, InvokeOptions options) {
@@ -344,6 +563,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -381,6 +602,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpaDomainsResult> getIpaDomainsPlain(GetIpaDomainsPlainArgs args, InvokeOptions options) {
@@ -392,6 +614,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -420,6 +644,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKvAccountResult> getKvAccount() {
@@ -431,6 +656,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -459,6 +686,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKvAccountResult> getKvAccountPlain() {
@@ -470,6 +698,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -498,6 +728,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKvAccountResult> getKvAccount(GetKvAccountArgs args) {
@@ -509,6 +740,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -537,6 +770,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKvAccountResult> getKvAccountPlain(GetKvAccountPlainArgs args) {
@@ -548,6 +782,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -576,6 +812,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKvAccountResult> getKvAccount(GetKvAccountArgs args, InvokeOptions options) {
@@ -587,6 +824,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -615,6 +854,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKvAccountResult> getKvAccountPlain(GetKvAccountPlainArgs args, InvokeOptions options) {
@@ -628,6 +868,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -656,6 +898,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -669,6 +912,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -697,6 +942,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -710,6 +956,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -738,6 +986,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -751,6 +1000,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -779,6 +1030,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -792,6 +1044,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -820,6 +1074,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -833,6 +1088,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -861,6 +1118,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -874,6 +1132,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -901,6 +1161,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWafDomainsResult> getWafDomains() {
@@ -914,6 +1175,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -941,6 +1204,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWafDomainsResult> getWafDomainsPlain() {
@@ -954,6 +1218,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -981,6 +1247,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWafDomainsResult> getWafDomains(GetWafDomainsArgs args) {
@@ -994,6 +1261,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1021,6 +1290,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWafDomainsResult> getWafDomainsPlain(GetWafDomainsPlainArgs args) {
@@ -1034,6 +1304,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1061,6 +1333,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWafDomainsResult> getWafDomains(GetWafDomainsArgs args, InvokeOptions options) {
@@ -1074,6 +1347,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1101,6 +1376,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWafDomainsResult> getWafDomainsPlain(GetWafDomainsPlainArgs args, InvokeOptions options) {
@@ -1114,6 +1390,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1141,6 +1419,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWafPoliciesResult> getWafPolicies() {
@@ -1154,6 +1433,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1181,6 +1462,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWafPoliciesResult> getWafPoliciesPlain() {
@@ -1194,6 +1476,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1221,6 +1505,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWafPoliciesResult> getWafPolicies(GetWafPoliciesArgs args) {
@@ -1234,6 +1519,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1261,6 +1548,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWafPoliciesResult> getWafPoliciesPlain(GetWafPoliciesPlainArgs args) {
@@ -1274,6 +1562,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1301,6 +1591,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWafPoliciesResult> getWafPolicies(GetWafPoliciesArgs args, InvokeOptions options) {
@@ -1314,6 +1605,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1341,6 +1634,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWafPoliciesResult> getWafPoliciesPlain(GetWafPoliciesPlainArgs args, InvokeOptions options) {
@@ -1352,6 +1646,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available since v1.201.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1381,6 +1677,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWafRulesResult> getWafRules() {
@@ -1392,6 +1689,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available since v1.201.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1421,6 +1720,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWafRulesResult> getWafRulesPlain() {
@@ -1432,6 +1732,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available since v1.201.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1461,6 +1763,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWafRulesResult> getWafRules(GetWafRulesArgs args) {
@@ -1472,6 +1775,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available since v1.201.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1501,6 +1806,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWafRulesResult> getWafRulesPlain(GetWafRulesPlainArgs args) {
@@ -1512,6 +1818,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available since v1.201.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1541,6 +1849,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWafRulesResult> getWafRules(GetWafRulesArgs args, InvokeOptions options) {
@@ -1552,6 +1861,8 @@ public final class DcdnFunctions {
      * &gt; **NOTE:** Available since v1.201.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1581,6 +1892,7 @@ public final class DcdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWafRulesResult> getWafRulesPlain(GetWafRulesPlainArgs args, InvokeOptions options) {

@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** Available in 1.166.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,7 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetKubernetesAddonMetadataResult> InvokeAsync(GetKubernetesAddonMetadataArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesAddonMetadataResult>("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", args ?? new GetKubernetesAddonMetadataArgs(), options.WithDefaults());
@@ -52,10 +50,9 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** Available in 1.166.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +74,7 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetKubernetesAddonMetadataResult> Invoke(GetKubernetesAddonMetadataInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesAddonMetadataResult>("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", args ?? new GetKubernetesAddonMetadataInvokeArgs(), options.WithDefaults());

@@ -123,6 +123,7 @@ def get_nas_backup_plans(file_system_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -130,6 +131,7 @@ def get_nas_backup_plans(file_system_id: Optional[str] = None,
     ids = alicloud.hbr.get_nas_backup_plans(name_regex="^my-NasBackupPlan")
     pulumi.export("hbrNasBackupPlanId", ids.plans[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str file_system_id: The File System ID of Nas.
@@ -174,6 +176,7 @@ def get_nas_backup_plans_output(file_system_id: Optional[pulumi.Input[Optional[s
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -181,6 +184,7 @@ def get_nas_backup_plans_output(file_system_id: Optional[pulumi.Input[Optional[s
     ids = alicloud.hbr.get_nas_backup_plans(name_regex="^my-NasBackupPlan")
     pulumi.export("hbrNasBackupPlanId", ids.plans[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str file_system_id: The File System ID of Nas.

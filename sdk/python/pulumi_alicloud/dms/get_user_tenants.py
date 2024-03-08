@@ -113,6 +113,7 @@ def get_user_tenants(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -120,6 +121,7 @@ def get_user_tenants(ids: Optional[Sequence[str]] = None,
     default = alicloud.dms.get_user_tenants(status="ACTIVE")
     pulumi.export("tid", default.ids[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of DMS User Tenant IDs (TID).
@@ -154,6 +156,7 @@ def get_user_tenants_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -161,6 +164,7 @@ def get_user_tenants_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     default = alicloud.dms.get_user_tenants(status="ACTIVE")
     pulumi.export("tid", default.ids[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of DMS User Tenant IDs (TID).

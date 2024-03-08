@@ -349,6 +349,7 @@ class BaselineStrategy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -362,6 +363,7 @@ class BaselineStrategy(pulumi.CustomResource):
             start_time="05:00:00",
             target_type="groupId")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -407,6 +409,7 @@ class BaselineStrategy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -420,6 +423,7 @@ class BaselineStrategy(pulumi.CustomResource):
             start_time="05:00:00",
             target_type="groupId")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

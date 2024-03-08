@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudEbsDiskReplicaPairExampleId = _default.then(_default => _default.pairs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDiskReplicaPairs(args?: GetDiskReplicaPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskReplicaPairsResult> {
     args = args || {};
@@ -84,6 +86,7 @@ export interface GetDiskReplicaPairsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -93,6 +96,7 @@ export interface GetDiskReplicaPairsResult {
  * });
  * export const alicloudEbsDiskReplicaPairExampleId = _default.then(_default => _default.pairs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDiskReplicaPairsOutput(args?: GetDiskReplicaPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskReplicaPairsResult> {
     return pulumi.output(args).apply((a: any) => getDiskReplicaPairs(a, opts))

@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,6 +49,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetDispatchRules(ctx *pulumi.Context, args *GetDispatchRulesArgs, opts ...pulumi.InvokeOption) (*GetDispatchRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDispatchRulesResult

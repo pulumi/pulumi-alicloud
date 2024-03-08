@@ -43,6 +43,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.56.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -74,6 +76,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConsumerGroupsResult> getConsumerGroups(GetConsumerGroupsArgs args) {
@@ -85,6 +88,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.56.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -116,6 +121,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConsumerGroupsResult> getConsumerGroupsPlain(GetConsumerGroupsPlainArgs args) {
@@ -127,6 +133,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.56.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -158,6 +166,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConsumerGroupsResult> getConsumerGroups(GetConsumerGroupsArgs args, InvokeOptions options) {
@@ -169,6 +178,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.56.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -200,6 +211,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConsumerGroupsResult> getConsumerGroupsPlain(GetConsumerGroupsPlainArgs args, InvokeOptions options) {
@@ -213,6 +225,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -239,6 +253,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegion() {
@@ -252,6 +267,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -278,6 +295,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegionPlain() {
@@ -291,6 +309,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -317,6 +337,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegion(InvokeArgs args) {
@@ -330,6 +351,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -356,6 +379,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegionPlain(InvokeArgs args) {
@@ -369,6 +393,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -395,6 +421,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegion(InvokeArgs args, InvokeOptions options) {
@@ -408,6 +435,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -434,6 +463,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGlobalEventsStorageRegionResult> getGlobalEventsStorageRegionPlain(InvokeArgs args, InvokeOptions options) {
@@ -447,6 +477,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -482,6 +514,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHistoryDeliveryJobsResult> getHistoryDeliveryJobs() {
@@ -495,6 +528,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -530,6 +565,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHistoryDeliveryJobsResult> getHistoryDeliveryJobsPlain() {
@@ -543,6 +579,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -578,6 +616,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHistoryDeliveryJobsResult> getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs args) {
@@ -591,6 +630,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -626,6 +667,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHistoryDeliveryJobsResult> getHistoryDeliveryJobsPlain(GetHistoryDeliveryJobsPlainArgs args) {
@@ -639,6 +681,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -674,6 +718,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHistoryDeliveryJobsResult> getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs args, InvokeOptions options) {
@@ -687,6 +732,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -722,6 +769,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHistoryDeliveryJobsResult> getHistoryDeliveryJobsPlain(GetHistoryDeliveryJobsPlainArgs args, InvokeOptions options) {
@@ -733,6 +781,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -796,6 +846,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -807,6 +858,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -870,6 +923,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -881,6 +935,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -944,6 +1000,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -955,6 +1012,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1018,6 +1077,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -1029,6 +1089,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1092,6 +1154,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -1103,6 +1166,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.59.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1166,6 +1231,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -1177,6 +1243,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.66.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1210,6 +1278,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSaslAclsResult> getSaslAcls(GetSaslAclsArgs args) {
@@ -1221,6 +1290,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.66.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1254,6 +1325,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSaslAclsResult> getSaslAclsPlain(GetSaslAclsPlainArgs args) {
@@ -1265,6 +1337,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.66.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1298,6 +1372,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSaslAclsResult> getSaslAcls(GetSaslAclsArgs args, InvokeOptions options) {
@@ -1309,6 +1384,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.66.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1342,6 +1419,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSaslAclsResult> getSaslAclsPlain(GetSaslAclsPlainArgs args, InvokeOptions options) {
@@ -1353,6 +1431,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.66.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1384,6 +1464,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSaslUsersResult> getSaslUsers(GetSaslUsersArgs args) {
@@ -1395,6 +1476,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.66.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1426,6 +1509,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSaslUsersResult> getSaslUsersPlain(GetSaslUsersPlainArgs args) {
@@ -1437,6 +1521,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.66.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1468,6 +1554,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSaslUsersResult> getSaslUsers(GetSaslUsersArgs args, InvokeOptions options) {
@@ -1479,6 +1566,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.66.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1510,6 +1599,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSaslUsersResult> getSaslUsersPlain(GetSaslUsersPlainArgs args, InvokeOptions options) {
@@ -1521,6 +1611,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.56.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1552,6 +1644,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTopicsResult> getTopics(GetTopicsArgs args) {
@@ -1563,6 +1656,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.56.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1594,6 +1689,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTopicsResult> getTopicsPlain(GetTopicsPlainArgs args) {
@@ -1605,6 +1701,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.56.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1636,6 +1734,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTopicsResult> getTopics(GetTopicsArgs args, InvokeOptions options) {
@@ -1647,6 +1746,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.56.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1678,6 +1779,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTopicsResult> getTopicsPlain(GetTopicsPlainArgs args, InvokeOptions options) {
@@ -1689,6 +1791,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.95.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1718,6 +1822,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrailsResult> getTrails() {
@@ -1729,6 +1834,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.95.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1758,6 +1865,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrailsResult> getTrailsPlain() {
@@ -1769,6 +1877,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.95.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1798,6 +1908,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrailsResult> getTrails(GetTrailsArgs args) {
@@ -1809,6 +1920,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.95.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1838,6 +1951,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrailsResult> getTrailsPlain(GetTrailsPlainArgs args) {
@@ -1849,6 +1963,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.95.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1878,6 +1994,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrailsResult> getTrails(GetTrailsArgs args, InvokeOptions options) {
@@ -1889,6 +2006,8 @@ public final class ActiontrailFunctions {
      * &gt; **NOTE:** Available in 1.95.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1918,6 +2037,7 @@ public final class ActiontrailFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrailsResult> getTrailsPlain(GetTrailsPlainArgs args, InvokeOptions options) {

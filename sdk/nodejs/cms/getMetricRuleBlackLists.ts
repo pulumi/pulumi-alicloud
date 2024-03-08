@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudCmsRuleBlackListExampleId = data.alicloud_cms_metric_rule_black_lists.lists[0].id;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMetricRuleBlackLists(args?: GetMetricRuleBlackListsArgs, opts?: pulumi.InvokeOptions): Promise<GetMetricRuleBlackListsResult> {
     args = args || {};
@@ -120,6 +122,7 @@ export interface GetMetricRuleBlackListsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -131,6 +134,7 @@ export interface GetMetricRuleBlackListsResult {
  * });
  * export const alicloudCmsRuleBlackListExampleId = data.alicloud_cms_metric_rule_black_lists.lists[0].id;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMetricRuleBlackListsOutput(args?: GetMetricRuleBlackListsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetricRuleBlackListsResult> {
     return pulumi.output(args).apply((a: any) => getMetricRuleBlackLists(a, opts))

@@ -153,6 +153,7 @@ def get_service_subscriptions(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -163,6 +164,7 @@ def get_service_subscriptions(ids: Optional[Sequence[str]] = None,
     name = alicloud.message.get_service_subscriptions(topic_name="tf-example")
     pulumi.export("subscriptionId2", name.subscriptions[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Subscription IDs.
@@ -211,6 +213,7 @@ def get_service_subscriptions_output(ids: Optional[pulumi.Input[Optional[Sequenc
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -221,6 +224,7 @@ def get_service_subscriptions_output(ids: Optional[pulumi.Input[Optional[Sequenc
     name = alicloud.message.get_service_subscriptions(topic_name="tf-example")
     pulumi.export("subscriptionId2", name.subscriptions[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Subscription IDs.

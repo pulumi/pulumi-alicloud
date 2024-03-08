@@ -133,6 +133,7 @@ def get_peer_connections(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -142,6 +143,7 @@ def get_peer_connections(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.vpc.get_peer_connections(name_regex="^my-PeerConnection")
     pulumi.export("vpcPeerConnectionId2", name_regex.connections[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of PeerConnection IDs.
@@ -190,6 +192,7 @@ def get_peer_connections_output(ids: Optional[pulumi.Input[Optional[Sequence[str
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -199,6 +202,7 @@ def get_peer_connections_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     name_regex = alicloud.vpc.get_peer_connections(name_regex="^my-PeerConnection")
     pulumi.export("vpcPeerConnectionId2", name_regex.connections[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of PeerConnection IDs.

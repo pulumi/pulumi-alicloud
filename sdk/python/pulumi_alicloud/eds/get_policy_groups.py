@@ -113,6 +113,7 @@ def get_policy_groups(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -139,6 +140,7 @@ def get_policy_groups(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.eds.get_policy_groups(name_regex="^my-policy")
     pulumi.export("ecdPolicyGroupId", name_regex.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Policy Group IDs.
@@ -179,6 +181,7 @@ def get_policy_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -205,6 +208,7 @@ def get_policy_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     name_regex = alicloud.eds.get_policy_groups(name_regex="^my-policy")
     pulumi.export("ecdPolicyGroupId", name_regex.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Policy Group IDs.

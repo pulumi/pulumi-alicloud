@@ -47,7 +47,7 @@ class TairInstanceArgs:
         :param pulumi.Input[str] effective_time: The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
         :param pulumi.Input[str] engine_version: Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
         :param pulumi.Input[bool] force_upgrade: Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
-        :param pulumi.Input[str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+        :param pulumi.Input[str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
         :param pulumi.Input[str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
         :param pulumi.Input[int] period: The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
         :param pulumi.Input[int] port: The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
@@ -221,7 +221,7 @@ class TairInstanceArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+        The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
         """
         return pulumi.get(self, "password")
 
@@ -386,7 +386,7 @@ class _TairInstanceState:
         :param pulumi.Input[bool] force_upgrade: Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
         :param pulumi.Input[str] instance_class: The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
         :param pulumi.Input[str] instance_type: The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
-        :param pulumi.Input[str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+        :param pulumi.Input[str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
         :param pulumi.Input[str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
         :param pulumi.Input[int] period: The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
         :param pulumi.Input[int] port: The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
@@ -549,7 +549,7 @@ class _TairInstanceState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+        The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
         """
         return pulumi.get(self, "password")
 
@@ -771,7 +771,7 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.Input[bool] force_upgrade: Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
         :param pulumi.Input[str] instance_class: The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
         :param pulumi.Input[str] instance_type: The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
-        :param pulumi.Input[str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+        :param pulumi.Input[str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
         :param pulumi.Input[str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
         :param pulumi.Input[int] period: The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
         :param pulumi.Input[int] port: The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
@@ -929,7 +929,7 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.Input[bool] force_upgrade: Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
         :param pulumi.Input[str] instance_class: The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
         :param pulumi.Input[str] instance_type: The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
-        :param pulumi.Input[str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+        :param pulumi.Input[str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
         :param pulumi.Input[str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
         :param pulumi.Input[int] period: The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
         :param pulumi.Input[int] port: The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
@@ -1042,7 +1042,7 @@ class TairInstance(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
-        The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+        The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
         """
         return pulumi.get(self, "password")
 

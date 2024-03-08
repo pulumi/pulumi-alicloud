@@ -12,6 +12,7 @@ namespace Pulumi.AliCloud.Kms
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,6 +36,7 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [AliCloudResourceType("alicloud:kms/ciphertext:Ciphertext")]
     public partial class Ciphertext : global::Pulumi.CustomResource

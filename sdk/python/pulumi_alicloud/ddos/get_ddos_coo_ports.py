@@ -114,6 +114,7 @@ def get_ddos_coo_ports(frontend_port: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -122,6 +123,7 @@ def get_ddos_coo_ports(frontend_port: Optional[str] = None,
         ids=["ddoscoo-cn-6ja1rl4j****:7001:tcp"])
     pulumi.export("firstDdoscooPortId", example.ports[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str frontend_port: The forwarding port.
@@ -165,6 +167,7 @@ def get_ddos_coo_ports_output(frontend_port: Optional[pulumi.Input[Optional[str]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -173,6 +176,7 @@ def get_ddos_coo_ports_output(frontend_port: Optional[pulumi.Input[Optional[str]
         ids=["ddoscoo-cn-6ja1rl4j****:7001:tcp"])
     pulumi.export("firstDdoscooPortId", example.ports[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str frontend_port: The forwarding port.

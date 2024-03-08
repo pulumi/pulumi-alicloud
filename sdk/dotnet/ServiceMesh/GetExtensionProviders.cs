@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// 
         /// &gt; **NOTE:** Available in v1.191.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -54,8 +53,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetExtensionProvidersResult> InvokeAsync(GetExtensionProvidersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExtensionProvidersResult>("alicloud:servicemesh/getExtensionProviders:getExtensionProviders", args ?? new GetExtensionProvidersArgs(), options.WithDefaults());
@@ -65,12 +63,11 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// 
         /// &gt; **NOTE:** Available in v1.191.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -103,8 +100,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetExtensionProvidersResult> Invoke(GetExtensionProvidersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExtensionProvidersResult>("alicloud:servicemesh/getExtensionProviders:getExtensionProviders", args ?? new GetExtensionProvidersInvokeArgs(), options.WithDefaults());

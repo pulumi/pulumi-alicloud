@@ -65,6 +65,8 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
      * The value of param.
      * 
      * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -87,6 +89,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * In order to fix the diff, from version 1.160.0,
      * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
@@ -100,6 +103,8 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
      * @return The value of param.
      * 
      * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -122,6 +127,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * In order to fix the diff, from version 1.160.0,
      * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
@@ -226,6 +232,8 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
          * @param value The value of param.
          * 
          * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -248,6 +256,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * In order to fix the diff, from version 1.160.0,
          * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
@@ -265,6 +274,8 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
          * @param value The value of param.
          * 
          * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -287,6 +298,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * In order to fix the diff, from version 1.160.0,
          * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.

@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudCenChildInstanceRouteEntryToAttachmentExampleId = _default.then(_default => _default.attachments?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getChildInstanceRouteEntryToAttachments(args: GetChildInstanceRouteEntryToAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetChildInstanceRouteEntryToAttachmentsResult> {
 
@@ -108,6 +110,7 @@ export interface GetChildInstanceRouteEntryToAttachmentsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,6 +121,7 @@ export interface GetChildInstanceRouteEntryToAttachmentsResult {
  * });
  * export const alicloudCenChildInstanceRouteEntryToAttachmentExampleId = _default.then(_default => _default.attachments?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getChildInstanceRouteEntryToAttachmentsOutput(args: GetChildInstanceRouteEntryToAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChildInstanceRouteEntryToAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getChildInstanceRouteEntryToAttachments(a, opts))

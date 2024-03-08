@@ -649,6 +649,7 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -672,6 +673,7 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
             vlan_id=vlan_id.id,
             vpconn_ali_uid=default.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -713,6 +715,7 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -736,6 +739,7 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
             vlan_id=vlan_id.id,
             vpconn_ali_uid=default.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

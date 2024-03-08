@@ -143,6 +143,7 @@ def get_industrial_pid_loops(enable_details: Optional[bool] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -152,6 +153,7 @@ def get_industrial_pid_loops(enable_details: Optional[bool] = None,
         name_regex="tf-testACC")
     pulumi.export("firstBrainIndustrialPidLoopId", example.loops[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Pid Loop IDs.
@@ -203,6 +205,7 @@ def get_industrial_pid_loops_output(enable_details: Optional[pulumi.Input[Option
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -212,6 +215,7 @@ def get_industrial_pid_loops_output(enable_details: Optional[pulumi.Input[Option
         name_regex="tf-testACC")
     pulumi.export("firstBrainIndustrialPidLoopId", example.loops[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Pid Loop IDs.

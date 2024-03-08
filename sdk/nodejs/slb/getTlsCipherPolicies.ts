@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -31,6 +32,7 @@ import * as utilities from "../utilities";
  * });
  * export const slbTlsCipherPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTlsCipherPolicies(args?: GetTlsCipherPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetTlsCipherPoliciesResult> {
     args = args || {};
@@ -102,6 +104,7 @@ export interface GetTlsCipherPoliciesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,6 +121,7 @@ export interface GetTlsCipherPoliciesResult {
  * });
  * export const slbTlsCipherPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTlsCipherPoliciesOutput(args?: GetTlsCipherPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTlsCipherPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getTlsCipherPolicies(a, opts))
