@@ -14,10 +14,9 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +60,7 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetListenersResult> InvokeAsync(GetListenersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetListenersResult>("alicloud:slb/getListeners:getListeners", args ?? new GetListenersArgs(), options.WithDefaults());
@@ -70,10 +68,9 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -117,8 +114,7 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetListenersResult> Invoke(GetListenersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetListenersResult>("alicloud:slb/getListeners:getListeners", args ?? new GetListenersInvokeArgs(), options.WithDefaults());

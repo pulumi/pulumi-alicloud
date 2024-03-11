@@ -143,6 +143,7 @@ def get_nat_ip_cidrs(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -167,6 +168,7 @@ def get_nat_ip_cidrs(ids: Optional[Sequence[str]] = None,
         nat_ip_cidr_names=["example_value-1"])
     pulumi.export("vpcNatIpCidrId5", at_ip_cidr_name.cidrs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Nat Ip Cidr IDs.
@@ -219,6 +221,7 @@ def get_nat_ip_cidrs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -243,6 +246,7 @@ def get_nat_ip_cidrs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
         nat_ip_cidr_names=["example_value-1"])
     pulumi.export("vpcNatIpCidrId5", at_ip_cidr_name.cidrs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Nat Ip Cidr IDs.

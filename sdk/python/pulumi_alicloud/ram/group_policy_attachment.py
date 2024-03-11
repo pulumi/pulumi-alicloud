@@ -136,6 +136,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -166,6 +167,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
             policy_type=policy.type,
             group_name=group.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -194,6 +196,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -224,6 +227,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
             policy_type=policy.type,
             group_name=group.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

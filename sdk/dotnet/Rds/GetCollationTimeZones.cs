@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// &gt; **NOTE:** Available in v1.198.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,7 @@ namespace Pulumi.AliCloud.Rds
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCollationTimeZonesResult> InvokeAsync(GetCollationTimeZonesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCollationTimeZonesResult>("alicloud:rds/getCollationTimeZones:getCollationTimeZones", args ?? new GetCollationTimeZonesArgs(), options.WithDefaults());
@@ -52,12 +50,11 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// &gt; **NOTE:** Available in v1.198.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +74,7 @@ namespace Pulumi.AliCloud.Rds
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCollationTimeZonesResult> Invoke(GetCollationTimeZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCollationTimeZonesResult>("alicloud:rds/getCollationTimeZones:getCollationTimeZones", args ?? new GetCollationTimeZonesInvokeArgs(), options.WithDefaults());

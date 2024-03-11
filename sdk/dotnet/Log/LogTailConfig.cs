@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// Basic Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -69,6 +70,8 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Module Support
     /// 
     /// You can use the existing sls-logtail module

@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud
         /// 
         /// &gt; **NOTE:** Available in v1.132.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,8 +43,7 @@ namespace Pulumi.AliCloud
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMscSubContactsResult> InvokeAsync(GetMscSubContactsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMscSubContactsResult>("alicloud:index/getMscSubContacts:getMscSubContacts", args ?? new GetMscSubContactsArgs(), options.WithDefaults());
@@ -55,12 +53,11 @@ namespace Pulumi.AliCloud
         /// 
         /// &gt; **NOTE:** Available in v1.132.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +80,7 @@ namespace Pulumi.AliCloud
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMscSubContactsResult> Invoke(GetMscSubContactsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMscSubContactsResult>("alicloud:index/getMscSubContacts:getMscSubContacts", args ?? new GetMscSubContactsInvokeArgs(), options.WithDefaults());

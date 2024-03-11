@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetDeliveries(ctx *pulumi.Context, args *GetDeliveriesArgs, opts ...pulumi.InvokeOption) (*GetDeliveriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDeliveriesResult

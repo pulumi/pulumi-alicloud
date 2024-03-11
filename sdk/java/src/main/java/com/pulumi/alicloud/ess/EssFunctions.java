@@ -92,6 +92,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -122,6 +124,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLifecycleHooksResult> getLifecycleHooks() {
@@ -133,6 +136,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -163,6 +168,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLifecycleHooksResult> getLifecycleHooksPlain() {
@@ -174,6 +180,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -204,6 +212,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLifecycleHooksResult> getLifecycleHooks(GetLifecycleHooksArgs args) {
@@ -215,6 +224,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -245,6 +256,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLifecycleHooksResult> getLifecycleHooksPlain(GetLifecycleHooksPlainArgs args) {
@@ -256,6 +268,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -286,6 +300,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLifecycleHooksResult> getLifecycleHooks(GetLifecycleHooksArgs args, InvokeOptions options) {
@@ -297,6 +312,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -327,6 +344,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLifecycleHooksResult> getLifecycleHooksPlain(GetLifecycleHooksPlainArgs args, InvokeOptions options) {
@@ -338,6 +356,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -367,6 +387,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNotificationsResult> getNotifications(GetNotificationsArgs args) {
@@ -378,6 +399,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -407,6 +430,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNotificationsResult> getNotificationsPlain(GetNotificationsPlainArgs args) {
@@ -418,6 +442,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -447,6 +473,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNotificationsResult> getNotifications(GetNotificationsArgs args, InvokeOptions options) {
@@ -458,6 +485,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -487,6 +516,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNotificationsResult> getNotificationsPlain(GetNotificationsPlainArgs args, InvokeOptions options) {
@@ -496,6 +526,8 @@ public final class EssFunctions {
      * This data source provides available scaling configuration resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -529,6 +561,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetScalingConfigurationsResult> getScalingConfigurations() {
@@ -538,6 +571,8 @@ public final class EssFunctions {
      * This data source provides available scaling configuration resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -571,6 +606,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetScalingConfigurationsResult> getScalingConfigurationsPlain() {
@@ -580,6 +616,8 @@ public final class EssFunctions {
      * This data source provides available scaling configuration resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -613,6 +651,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetScalingConfigurationsResult> getScalingConfigurations(GetScalingConfigurationsArgs args) {
@@ -622,6 +661,8 @@ public final class EssFunctions {
      * This data source provides available scaling configuration resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -655,6 +696,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetScalingConfigurationsResult> getScalingConfigurationsPlain(GetScalingConfigurationsPlainArgs args) {
@@ -664,6 +706,8 @@ public final class EssFunctions {
      * This data source provides available scaling configuration resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -697,6 +741,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetScalingConfigurationsResult> getScalingConfigurations(GetScalingConfigurationsArgs args, InvokeOptions options) {
@@ -706,6 +751,8 @@ public final class EssFunctions {
      * This data source provides available scaling configuration resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -739,6 +786,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetScalingConfigurationsResult> getScalingConfigurationsPlain(GetScalingConfigurationsPlainArgs args, InvokeOptions options) {
@@ -748,6 +796,8 @@ public final class EssFunctions {
      * This data source provides available scaling group resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -780,6 +830,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetScalingGroupsResult> getScalingGroups() {
@@ -789,6 +840,8 @@ public final class EssFunctions {
      * This data source provides available scaling group resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -821,6 +874,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetScalingGroupsResult> getScalingGroupsPlain() {
@@ -830,6 +884,8 @@ public final class EssFunctions {
      * This data source provides available scaling group resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -862,6 +918,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetScalingGroupsResult> getScalingGroups(GetScalingGroupsArgs args) {
@@ -871,6 +928,8 @@ public final class EssFunctions {
      * This data source provides available scaling group resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -903,6 +962,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetScalingGroupsResult> getScalingGroupsPlain(GetScalingGroupsPlainArgs args) {
@@ -912,6 +972,8 @@ public final class EssFunctions {
      * This data source provides available scaling group resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -944,6 +1006,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetScalingGroupsResult> getScalingGroups(GetScalingGroupsArgs args, InvokeOptions options) {
@@ -953,6 +1016,8 @@ public final class EssFunctions {
      * This data source provides available scaling group resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -985,6 +1050,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetScalingGroupsResult> getScalingGroupsPlain(GetScalingGroupsPlainArgs args, InvokeOptions options) {
@@ -994,6 +1060,8 @@ public final class EssFunctions {
      * This data source provides available scaling rule resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1027,6 +1095,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetScalingRulesResult> getScalingRules() {
@@ -1036,6 +1105,8 @@ public final class EssFunctions {
      * This data source provides available scaling rule resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1069,6 +1140,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetScalingRulesResult> getScalingRulesPlain() {
@@ -1078,6 +1150,8 @@ public final class EssFunctions {
      * This data source provides available scaling rule resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1111,6 +1185,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetScalingRulesResult> getScalingRules(GetScalingRulesArgs args) {
@@ -1120,6 +1195,8 @@ public final class EssFunctions {
      * This data source provides available scaling rule resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1153,6 +1230,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetScalingRulesResult> getScalingRulesPlain(GetScalingRulesPlainArgs args) {
@@ -1162,6 +1240,8 @@ public final class EssFunctions {
      * This data source provides available scaling rule resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1195,6 +1275,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetScalingRulesResult> getScalingRules(GetScalingRulesArgs args, InvokeOptions options) {
@@ -1204,6 +1285,8 @@ public final class EssFunctions {
      * This data source provides available scaling rule resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1237,6 +1320,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetScalingRulesResult> getScalingRulesPlain(GetScalingRulesPlainArgs args, InvokeOptions options) {
@@ -1248,6 +1332,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1278,6 +1364,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetScheduledTasksResult> getScheduledTasks() {
@@ -1289,6 +1376,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1319,6 +1408,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetScheduledTasksResult> getScheduledTasksPlain() {
@@ -1330,6 +1420,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1360,6 +1452,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetScheduledTasksResult> getScheduledTasks(GetScheduledTasksArgs args) {
@@ -1371,6 +1464,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1401,6 +1496,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetScheduledTasksResult> getScheduledTasksPlain(GetScheduledTasksPlainArgs args) {
@@ -1412,6 +1508,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1442,6 +1540,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetScheduledTasksResult> getScheduledTasks(GetScheduledTasksArgs args, InvokeOptions options) {
@@ -1453,6 +1552,8 @@ public final class EssFunctions {
      * &gt; **NOTE:** Available in 1.72.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1483,6 +1584,7 @@ public final class EssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetScheduledTasksResult> getScheduledTasksPlain(GetScheduledTasksPlainArgs args, InvokeOptions options) {

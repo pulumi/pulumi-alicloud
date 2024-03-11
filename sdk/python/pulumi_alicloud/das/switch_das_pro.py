@@ -158,6 +158,7 @@ class SwitchDasPro(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -197,6 +198,7 @@ class SwitchDasPro(pulumi.CustomResource):
             sql_retention=30,
             user_id=default_account.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -229,6 +231,7 @@ class SwitchDasPro(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -268,6 +271,7 @@ class SwitchDasPro(pulumi.CustomResource):
             sql_retention=30,
             user_id=default_account.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

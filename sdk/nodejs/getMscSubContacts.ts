@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "./utilities";
  * });
  * export const mscSubContactId2 = nameRegex.then(nameRegex => nameRegex.contacts?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMscSubContacts(args?: GetMscSubContactsArgs, opts?: pulumi.InvokeOptions): Promise<GetMscSubContactsResult> {
     args = args || {};
@@ -79,6 +81,7 @@ export interface GetMscSubContactsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -90,6 +93,7 @@ export interface GetMscSubContactsResult {
  * });
  * export const mscSubContactId2 = nameRegex.then(nameRegex => nameRegex.contacts?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMscSubContactsOutput(args?: GetMscSubContactsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubContactsResult> {
     return pulumi.output(args).apply((a: any) => getMscSubContacts(a, opts))

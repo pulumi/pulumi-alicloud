@@ -24,8 +24,10 @@ import (
 // > **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
 //
 // ## Example Usage
+//
 // ### Create a Mongodb instance
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -89,6 +91,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Module Support
 //
 // You can use to the existing mongodb module

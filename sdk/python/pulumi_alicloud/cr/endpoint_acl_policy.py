@@ -206,6 +206,7 @@ class EndpointAclPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -231,6 +232,7 @@ class EndpointAclPolicy(pulumi.CustomResource):
             module_name="Registry",
             endpoint_type="internet")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -265,6 +267,7 @@ class EndpointAclPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -290,6 +293,7 @@ class EndpointAclPolicy(pulumi.CustomResource):
             module_name="Registry",
             endpoint_type="internet")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

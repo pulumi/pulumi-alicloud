@@ -110,6 +110,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -137,6 +139,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAssetsResult> getAssets() {
@@ -148,6 +151,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -175,6 +180,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAssetsResult> getAssetsPlain() {
@@ -186,6 +192,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -213,6 +221,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAssetsResult> getAssets(GetAssetsArgs args) {
@@ -224,6 +233,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -251,6 +262,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAssetsResult> getAssetsPlain(GetAssetsPlainArgs args) {
@@ -262,6 +274,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -289,6 +303,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAssetsResult> getAssets(GetAssetsArgs args, InvokeOptions options) {
@@ -300,6 +315,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -327,6 +344,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAssetsResult> getAssetsPlain(GetAssetsPlainArgs args, InvokeOptions options) {
@@ -340,6 +358,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -374,6 +394,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBackupPoliciesResult> getBackupPolicies() {
@@ -387,6 +408,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -421,6 +444,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBackupPoliciesResult> getBackupPoliciesPlain() {
@@ -434,6 +458,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -468,6 +494,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBackupPoliciesResult> getBackupPolicies(GetBackupPoliciesArgs args) {
@@ -481,6 +508,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -515,6 +544,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBackupPoliciesResult> getBackupPoliciesPlain(GetBackupPoliciesPlainArgs args) {
@@ -528,6 +558,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -562,6 +594,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBackupPoliciesResult> getBackupPolicies(GetBackupPoliciesArgs args, InvokeOptions options) {
@@ -575,6 +608,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -609,6 +644,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBackupPoliciesResult> getBackupPoliciesPlain(GetBackupPoliciesPlainArgs args, InvokeOptions options) {
@@ -676,6 +712,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -707,6 +745,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHoneyPotsResult> getHoneyPots() {
@@ -720,6 +759,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -751,6 +792,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHoneyPotsResult> getHoneyPotsPlain() {
@@ -764,6 +806,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -795,6 +839,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHoneyPotsResult> getHoneyPots(GetHoneyPotsArgs args) {
@@ -808,6 +853,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -839,6 +886,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHoneyPotsResult> getHoneyPotsPlain(GetHoneyPotsPlainArgs args) {
@@ -852,6 +900,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -883,6 +933,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHoneyPotsResult> getHoneyPots(GetHoneyPotsArgs args, InvokeOptions options) {
@@ -896,6 +947,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -927,6 +980,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHoneyPotsResult> getHoneyPotsPlain(GetHoneyPotsPlainArgs args, InvokeOptions options) {
@@ -938,6 +992,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -968,6 +1024,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHoneypotImagesResult> getHoneypotImages() {
@@ -979,6 +1036,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1009,6 +1068,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHoneypotImagesResult> getHoneypotImagesPlain() {
@@ -1020,6 +1080,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1050,6 +1112,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHoneypotImagesResult> getHoneypotImages(GetHoneypotImagesArgs args) {
@@ -1061,6 +1124,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1091,6 +1156,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHoneypotImagesResult> getHoneypotImagesPlain(GetHoneypotImagesPlainArgs args) {
@@ -1102,6 +1168,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1132,6 +1200,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHoneypotImagesResult> getHoneypotImages(GetHoneypotImagesArgs args, InvokeOptions options) {
@@ -1143,6 +1212,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1173,6 +1244,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHoneypotImagesResult> getHoneypotImagesPlain(GetHoneypotImagesPlainArgs args, InvokeOptions options) {
@@ -1184,6 +1256,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1213,6 +1287,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHoneypotNodesResult> getHoneypotNodes() {
@@ -1224,6 +1299,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1253,6 +1330,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHoneypotNodesResult> getHoneypotNodesPlain() {
@@ -1264,6 +1342,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1293,6 +1373,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHoneypotNodesResult> getHoneypotNodes(GetHoneypotNodesArgs args) {
@@ -1304,6 +1385,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1333,6 +1416,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHoneypotNodesResult> getHoneypotNodesPlain(GetHoneypotNodesPlainArgs args) {
@@ -1344,6 +1428,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1373,6 +1459,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHoneypotNodesResult> getHoneypotNodes(GetHoneypotNodesArgs args, InvokeOptions options) {
@@ -1384,6 +1471,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1413,6 +1502,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHoneypotNodesResult> getHoneypotNodesPlain(GetHoneypotNodesPlainArgs args, InvokeOptions options) {
@@ -1424,6 +1514,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1456,6 +1548,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHoneypotPresetsResult> getHoneypotPresets() {
@@ -1467,6 +1560,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1499,6 +1594,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHoneypotPresetsResult> getHoneypotPresetsPlain() {
@@ -1510,6 +1606,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1542,6 +1640,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHoneypotPresetsResult> getHoneypotPresets(GetHoneypotPresetsArgs args) {
@@ -1553,6 +1652,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1585,6 +1686,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHoneypotPresetsResult> getHoneypotPresetsPlain(GetHoneypotPresetsPlainArgs args) {
@@ -1596,6 +1698,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1628,6 +1732,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHoneypotPresetsResult> getHoneypotPresets(GetHoneypotPresetsArgs args, InvokeOptions options) {
@@ -1639,6 +1744,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1671,6 +1778,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHoneypotPresetsResult> getHoneypotPresetsPlain(GetHoneypotPresetsPlainArgs args, InvokeOptions options) {
@@ -1682,6 +1790,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1735,6 +1845,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHoneypotProbesResult> getHoneypotProbes() {
@@ -1746,6 +1857,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1799,6 +1912,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHoneypotProbesResult> getHoneypotProbesPlain() {
@@ -1810,6 +1924,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1863,6 +1979,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHoneypotProbesResult> getHoneypotProbes(GetHoneypotProbesArgs args) {
@@ -1874,6 +1991,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1927,6 +2046,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHoneypotProbesResult> getHoneypotProbesPlain(GetHoneypotProbesPlainArgs args) {
@@ -1938,6 +2058,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1991,6 +2113,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHoneypotProbesResult> getHoneypotProbes(GetHoneypotProbesArgs args, InvokeOptions options) {
@@ -2002,6 +2125,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2055,6 +2180,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHoneypotProbesResult> getHoneypotProbesPlain(GetHoneypotProbesPlainArgs args, InvokeOptions options) {
@@ -2066,6 +2192,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.199.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2095,6 +2223,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -2106,6 +2235,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.199.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2135,6 +2266,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -2146,6 +2278,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.199.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2175,6 +2309,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -2186,6 +2321,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.199.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2215,6 +2352,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -2226,6 +2364,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.199.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2255,6 +2395,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -2266,6 +2407,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available in 1.199.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2295,6 +2438,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -2310,6 +2454,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2338,6 +2484,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLogShipperResult> getLogShipper() {
@@ -2353,6 +2500,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2381,6 +2530,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLogShipperResult> getLogShipperPlain() {
@@ -2396,6 +2546,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2424,6 +2576,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLogShipperResult> getLogShipper(GetLogShipperArgs args) {
@@ -2439,6 +2592,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2467,6 +2622,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLogShipperResult> getLogShipperPlain(GetLogShipperPlainArgs args) {
@@ -2482,6 +2638,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2510,6 +2668,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLogShipperResult> getLogShipper(GetLogShipperArgs args, InvokeOptions options) {
@@ -2525,6 +2684,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2553,6 +2714,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLogShipperResult> getLogShipperPlain(GetLogShipperPlainArgs args, InvokeOptions options) {
@@ -2566,6 +2728,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2595,6 +2759,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVulWhitelistsResult> getVulWhitelists() {
@@ -2608,6 +2773,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2637,6 +2804,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVulWhitelistsResult> getVulWhitelistsPlain() {
@@ -2650,6 +2818,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2679,6 +2849,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVulWhitelistsResult> getVulWhitelists(GetVulWhitelistsArgs args) {
@@ -2692,6 +2863,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2721,6 +2894,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVulWhitelistsResult> getVulWhitelistsPlain(GetVulWhitelistsPlainArgs args) {
@@ -2734,6 +2908,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2763,6 +2939,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVulWhitelistsResult> getVulWhitelists(GetVulWhitelistsArgs args, InvokeOptions options) {
@@ -2776,6 +2953,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2805,6 +2984,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVulWhitelistsResult> getVulWhitelistsPlain(GetVulWhitelistsPlainArgs args, InvokeOptions options) {
@@ -2816,6 +2996,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2845,6 +3027,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebLockConfigsResult> getWebLockConfigs() {
@@ -2856,6 +3039,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2885,6 +3070,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebLockConfigsResult> getWebLockConfigsPlain() {
@@ -2896,6 +3082,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2925,6 +3113,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebLockConfigsResult> getWebLockConfigs(GetWebLockConfigsArgs args) {
@@ -2936,6 +3125,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2965,6 +3156,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebLockConfigsResult> getWebLockConfigsPlain(GetWebLockConfigsPlainArgs args) {
@@ -2976,6 +3168,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3005,6 +3199,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetWebLockConfigsResult> getWebLockConfigs(GetWebLockConfigsArgs args, InvokeOptions options) {
@@ -3016,6 +3211,8 @@ public final class ThreatdetectionFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3045,6 +3242,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetWebLockConfigsResult> getWebLockConfigsPlain(GetWebLockConfigsPlainArgs args, InvokeOptions options) {

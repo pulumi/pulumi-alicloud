@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// &gt; **NOTE:** Available in 1.66.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,8 +42,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSaslAclsResult> InvokeAsync(GetSaslAclsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSaslAclsResult>("alicloud:actiontrail/getSaslAcls:getSaslAcls", args ?? new GetSaslAclsArgs(), options.WithDefaults());
@@ -54,10 +52,9 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// &gt; **NOTE:** Available in 1.66.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -81,8 +78,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSaslAclsResult> Invoke(GetSaslAclsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSaslAclsResult>("alicloud:actiontrail/getSaslAcls:getSaslAcls", args ?? new GetSaslAclsInvokeArgs(), options.WithDefaults());

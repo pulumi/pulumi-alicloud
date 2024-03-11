@@ -24,8 +24,10 @@ import (
 // > **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
 //
 // ## Example Usage
+//
 // ### Create a cassandra cluster
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,6 +63,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
 //

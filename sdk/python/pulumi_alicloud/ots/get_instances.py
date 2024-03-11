@@ -121,6 +121,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -129,12 +130,14 @@ def get_instances(ids: Optional[Sequence[str]] = None,
         output_file="instances.txt")
     pulumi.export("firstInstanceId", instances_ds.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of instance IDs.
     :param str name_regex: A regex string to filter results by instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
+           <!--Start PulumiCodeChooser -->
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -144,6 +147,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
                "tagKey2": "tagValue2",
            })
            ```
+           <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -174,6 +178,7 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -182,12 +187,14 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
         output_file="instances.txt")
     pulumi.export("firstInstanceId", instances_ds.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of instance IDs.
     :param str name_regex: A regex string to filter results by instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
+           <!--Start PulumiCodeChooser -->
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -197,5 +204,6 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
                "tagKey2": "tagValue2",
            })
            ```
+           <!--End PulumiCodeChooser -->
     """
     ...

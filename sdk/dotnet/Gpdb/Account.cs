@@ -20,6 +20,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// Basic Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -86,6 +87,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -119,7 +121,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ &amp; * ( ) _ + - =`.
+        /// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) &amp; * ( ) _ + - =`.
         /// </summary>
         [Output("accountPassword")]
         public Output<string> AccountPassword { get; private set; } = null!;
@@ -203,7 +205,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string> AccountName { get; set; } = null!;
 
         /// <summary>
-        /// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ &amp; * ( ) _ + - =`.
+        /// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) &amp; * ( ) _ + - =`.
         /// </summary>
         [Input("accountPassword", required: true)]
         public Input<string> AccountPassword { get; set; } = null!;
@@ -243,7 +245,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? AccountName { get; set; }
 
         /// <summary>
-        /// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ &amp; * ( ) _ + - =`.
+        /// The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) &amp; * ( ) _ + - =`.
         /// </summary>
         [Input("accountPassword")]
         public Input<string>? AccountPassword { get; set; }

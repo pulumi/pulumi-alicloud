@@ -2867,6 +2867,7 @@ class GetDisksDiskResult(dict):
         :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
         :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
         :param Mapping[str, Any] tags: A map of tags assigned to the disks. It must be in the format:
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -2876,6 +2877,7 @@ class GetDisksDiskResult(dict):
                    "tagKey2": "tagValue2",
                })
                ```
+               <!--End PulumiCodeChooser -->
         :param str type: Disk type. Possible values: `system` and `data`.
         """
         pulumi.set(__self__, "attached_time", attached_time)
@@ -3157,6 +3159,7 @@ class GetDisksDiskResult(dict):
     def tags(self) -> Mapping[str, Any]:
         """
         A map of tags assigned to the disks. It must be in the format:
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -3166,6 +3169,7 @@ class GetDisksDiskResult(dict):
             "tagKey2": "tagValue2",
         })
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "tags")
 
@@ -8573,6 +8577,7 @@ class GetInstancesInstanceResult(dict):
         :param str vpc_id: ID of the VPC linked to the instances.
         :param str vswitch_id: ID of the VSwitch linked to the instances.
         :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -8582,6 +8587,7 @@ class GetInstancesInstanceResult(dict):
                    "tagKey2": "tagValue2",
                })
                ```
+               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -8798,6 +8804,7 @@ class GetInstancesInstanceResult(dict):
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
         A map of tags assigned to the ECS instances. It must be in the format:
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -8807,6 +8814,7 @@ class GetInstancesInstanceResult(dict):
             "tagKey2": "tagValue2",
         })
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "tags")
 
@@ -9722,6 +9730,7 @@ class GetSecurityGroupsGroupResult(dict):
         :param str security_group_type: The type of the security group.
         :param str vpc_id: Used to retrieve security groups that belong to the specified VPC ID.
         :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -9731,6 +9740,7 @@ class GetSecurityGroupsGroupResult(dict):
                    "tagKey2": "tagValue2",
                })
                ```
+               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
@@ -9812,6 +9822,7 @@ class GetSecurityGroupsGroupResult(dict):
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
         A map of tags assigned to the ECS instances. It must be in the format:
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -9821,6 +9832,7 @@ class GetSecurityGroupsGroupResult(dict):
             "tagKey2": "tagValue2",
         })
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "tags")
 

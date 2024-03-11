@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.BastionHost
         /// 
         /// &gt; **NOTE:** Available in v1.134.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,8 +52,7 @@ namespace Pulumi.AliCloud.BastionHost
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHostGroupsResult> InvokeAsync(GetHostGroupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostGroupsResult>("alicloud:bastionhost/getHostGroups:getHostGroups", args ?? new GetHostGroupsArgs(), options.WithDefaults());
@@ -64,12 +62,11 @@ namespace Pulumi.AliCloud.BastionHost
         /// 
         /// &gt; **NOTE:** Available in v1.134.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -101,8 +98,7 @@ namespace Pulumi.AliCloud.BastionHost
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHostGroupsResult> Invoke(GetHostGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostGroupsResult>("alicloud:bastionhost/getHostGroups:getHostGroups", args ?? new GetHostGroupsInvokeArgs(), options.WithDefaults());

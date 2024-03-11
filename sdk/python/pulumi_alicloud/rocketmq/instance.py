@@ -262,6 +262,7 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -278,6 +279,7 @@ class Instance(pulumi.CustomResource):
             instance_name=default.result.apply(lambda result: f"{name}-{result}"),
             remark=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -315,6 +317,7 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -331,6 +334,7 @@ class Instance(pulumi.CustomResource):
             instance_name=default.result.apply(lambda result: f"{name}-{result}"),
             remark=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

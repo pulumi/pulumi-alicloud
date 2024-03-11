@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** From version 1.10.1, this resource supports creating &#34;PrePaid&#34; EIP. In addition, it supports setting EIP name and description.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -59,6 +61,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Module Support
  * 
  * You can use the existing eip module

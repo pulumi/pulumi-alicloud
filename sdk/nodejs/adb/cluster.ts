@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.71.0+.
  *
  * ## Example Usage
+ *
  * ### Create a ADB MySQL cluster
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -47,6 +49,7 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

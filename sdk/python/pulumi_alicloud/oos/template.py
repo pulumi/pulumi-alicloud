@@ -412,6 +412,7 @@ class Template(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -448,6 +449,7 @@ class Template(pulumi.CustomResource):
             template_name="test-name",
             version_name="test")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -479,6 +481,7 @@ class Template(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -515,6 +518,7 @@ class Template(pulumi.CustomResource):
             template_name="test-name",
             version_name="test")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

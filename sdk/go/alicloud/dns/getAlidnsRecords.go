@@ -16,36 +16,6 @@ import (
 // > **NOTE:**  Available in 1.86.0+.
 //
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			recordsDs, err := dns.GetAlidnsRecords(ctx, &dns.GetAlidnsRecordsArgs{
-//				DomainName: "xiaozhu.top",
-//				Ids: []string{
-//					"1978593525779****",
-//				},
-//				OutputFile: pulumi.StringRef("records.txt"),
-//				Type:       pulumi.StringRef("A"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstRecordId", recordsDs.Records[0].RecordId)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAlidnsRecords(ctx *pulumi.Context, args *GetAlidnsRecordsArgs, opts ...pulumi.InvokeOption) (*GetAlidnsRecordsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAlidnsRecordsResult
@@ -76,7 +46,7 @@ type GetAlidnsRecordsArgs struct {
 	OrderBy *string `pulumi:"orderBy"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
+	// The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
 	RrKeyWord *string `pulumi:"rrKeyWord"`
 	// Host record regex.
 	RrRegex *string `pulumi:"rrRegex"`
@@ -88,7 +58,7 @@ type GetAlidnsRecordsArgs struct {
 	Type *string `pulumi:"type"`
 	// Analyze type keywords, search by full match, not case sensitive.
 	TypeKeyWord *string `pulumi:"typeKeyWord"`
-	// The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
+	// The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
 	ValueKeyWord *string `pulumi:"valueKeyWord"`
 	// Host record value regex.
 	ValueRegex *string `pulumi:"valueRegex"`
@@ -157,7 +127,7 @@ type GetAlidnsRecordsOutputArgs struct {
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
+	// The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
 	RrKeyWord pulumi.StringPtrInput `pulumi:"rrKeyWord"`
 	// Host record regex.
 	RrRegex pulumi.StringPtrInput `pulumi:"rrRegex"`
@@ -169,7 +139,7 @@ type GetAlidnsRecordsOutputArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Analyze type keywords, search by full match, not case sensitive.
 	TypeKeyWord pulumi.StringPtrInput `pulumi:"typeKeyWord"`
-	// The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
+	// The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
 	ValueKeyWord pulumi.StringPtrInput `pulumi:"valueKeyWord"`
 	// Host record value regex.
 	ValueRegex pulumi.StringPtrInput `pulumi:"valueRegex"`

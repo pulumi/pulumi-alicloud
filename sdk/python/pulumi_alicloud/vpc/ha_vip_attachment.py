@@ -250,6 +250,7 @@ class HAVipAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -293,6 +294,7 @@ class HAVipAttachment(pulumi.CustomResource):
             havip_id=example_ha_vip.id,
             instance_id=example_instance.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -326,6 +328,7 @@ class HAVipAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -369,6 +372,7 @@ class HAVipAttachment(pulumi.CustomResource):
             havip_id=example_ha_vip.id,
             instance_id=example_instance.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

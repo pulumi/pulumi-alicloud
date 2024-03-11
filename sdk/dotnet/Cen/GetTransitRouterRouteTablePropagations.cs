@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// &gt; **NOTE:** Available in 1.126.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,8 +38,7 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTransitRouterRouteTablePropagationsResult> InvokeAsync(GetTransitRouterRouteTablePropagationsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterRouteTablePropagationsResult>("alicloud:cen/getTransitRouterRouteTablePropagations:getTransitRouterRouteTablePropagations", args ?? new GetTransitRouterRouteTablePropagationsArgs(), options.WithDefaults());
@@ -50,10 +48,9 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// &gt; **NOTE:** Available in 1.126.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,8 +70,7 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTransitRouterRouteTablePropagationsResult> Invoke(GetTransitRouterRouteTablePropagationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteTablePropagationsResult>("alicloud:cen/getTransitRouterRouteTablePropagations:getTransitRouterRouteTablePropagations", args ?? new GetTransitRouterRouteTablePropagationsInvokeArgs(), options.WithDefaults());

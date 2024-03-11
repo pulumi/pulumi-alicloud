@@ -20,6 +20,7 @@ namespace Pulumi.AliCloud.Ocean
     /// 
     /// Basic Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -69,6 +70,7 @@ namespace Pulumi.AliCloud.Ocean
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

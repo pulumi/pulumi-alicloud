@@ -143,6 +143,7 @@ def get_ecs_image_components(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -152,6 +153,7 @@ def get_ecs_image_components(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.ecs.get_ecs_image_components(name_regex="^my-ImageComponent")
     pulumi.export("ecsImageComponentId2", name_regex.components[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Image Component IDs.
@@ -204,6 +206,7 @@ def get_ecs_image_components_output(ids: Optional[pulumi.Input[Optional[Sequence
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -213,6 +216,7 @@ def get_ecs_image_components_output(ids: Optional[pulumi.Input[Optional[Sequence
     name_regex = alicloud.ecs.get_ecs_image_components(name_regex="^my-ImageComponent")
     pulumi.export("ecsImageComponentId2", name_regex.components[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Image Component IDs.

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const cmsHybridMonitorFcTaskId1 = ids.then(ids => ids.tasks?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHybridMonitorFcTasks(args?: GetHybridMonitorFcTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridMonitorFcTasksResult> {
     args = args || {};
@@ -82,6 +84,7 @@ export interface GetHybridMonitorFcTasksResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -91,6 +94,7 @@ export interface GetHybridMonitorFcTasksResult {
  * });
  * export const cmsHybridMonitorFcTaskId1 = ids.then(ids => ids.tasks?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHybridMonitorFcTasksOutput(args?: GetHybridMonitorFcTasksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridMonitorFcTasksResult> {
     return pulumi.output(args).apply((a: any) => getHybridMonitorFcTasks(a, opts))

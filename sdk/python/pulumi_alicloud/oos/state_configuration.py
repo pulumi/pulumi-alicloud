@@ -370,6 +370,7 @@ class StateConfiguration(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -389,6 +390,7 @@ class StateConfiguration(pulumi.CustomResource):
                 "For": "example",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -428,6 +430,7 @@ class StateConfiguration(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -447,6 +450,7 @@ class StateConfiguration(pulumi.CustomResource):
                 "For": "example",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetHybridMonitorFcTasks(ctx *pulumi.Context, args *GetHybridMonitorFcTasksArgs, opts ...pulumi.InvokeOption) (*GetHybridMonitorFcTasksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHybridMonitorFcTasksResult

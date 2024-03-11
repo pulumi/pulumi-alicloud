@@ -1044,6 +1044,7 @@ class Alert(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1105,9 +1106,11 @@ class Alert(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         Basic Usage for new alert
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1223,9 +1226,11 @@ class Alert(pulumi.CustomResource):
                 condition="",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         Basic Usage for alert template
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1275,6 +1280,7 @@ class Alert(pulumi.CustomResource):
                 },
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1332,6 +1338,7 @@ class Alert(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1393,9 +1400,11 @@ class Alert(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         Basic Usage for new alert
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1511,9 +1520,11 @@ class Alert(pulumi.CustomResource):
                 condition="",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         Basic Usage for alert template
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1563,6 +1574,7 @@ class Alert(pulumi.CustomResource):
                 },
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

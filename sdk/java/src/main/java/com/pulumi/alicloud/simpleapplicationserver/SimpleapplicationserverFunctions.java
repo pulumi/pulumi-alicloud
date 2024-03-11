@@ -41,6 +41,7 @@ public final class SimpleapplicationserverFunctions {
      * 
      * Basic Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -70,6 +71,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
      * 
@@ -92,6 +94,7 @@ public final class SimpleapplicationserverFunctions {
      * 
      * Basic Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -121,6 +124,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
      * 
@@ -143,6 +147,7 @@ public final class SimpleapplicationserverFunctions {
      * 
      * Basic Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -172,6 +177,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
      * 
@@ -194,6 +200,7 @@ public final class SimpleapplicationserverFunctions {
      * 
      * Basic Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -223,6 +230,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
      * 
@@ -245,6 +253,7 @@ public final class SimpleapplicationserverFunctions {
      * 
      * Basic Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -274,6 +283,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
      * 
@@ -296,6 +306,7 @@ public final class SimpleapplicationserverFunctions {
      * 
      * Basic Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -325,6 +336,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
      * 
@@ -346,6 +358,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -380,6 +394,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -393,6 +408,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -427,6 +444,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -440,6 +458,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -474,6 +494,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -487,6 +508,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -521,6 +544,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -534,6 +558,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -568,6 +594,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -581,6 +608,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -615,6 +644,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -628,6 +658,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -662,6 +694,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerCustomImagesResult> getServerCustomImages() {
@@ -675,6 +708,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -709,6 +744,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerCustomImagesResult> getServerCustomImagesPlain() {
@@ -722,6 +758,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -756,6 +794,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerCustomImagesResult> getServerCustomImages(GetServerCustomImagesArgs args) {
@@ -769,6 +808,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -803,6 +844,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerCustomImagesResult> getServerCustomImagesPlain(GetServerCustomImagesPlainArgs args) {
@@ -816,6 +858,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -850,6 +894,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerCustomImagesResult> getServerCustomImages(GetServerCustomImagesArgs args, InvokeOptions options) {
@@ -863,6 +908,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -897,6 +944,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerCustomImagesResult> getServerCustomImagesPlain(GetServerCustomImagesPlainArgs args, InvokeOptions options) {
@@ -910,6 +958,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -959,6 +1009,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerDisksResult> getServerDisks() {
@@ -972,6 +1023,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1021,6 +1074,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerDisksResult> getServerDisksPlain() {
@@ -1034,6 +1088,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1083,6 +1139,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerDisksResult> getServerDisks(GetServerDisksArgs args) {
@@ -1096,6 +1153,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1145,6 +1204,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerDisksResult> getServerDisksPlain(GetServerDisksPlainArgs args) {
@@ -1158,6 +1218,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1207,6 +1269,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerDisksResult> getServerDisks(GetServerDisksArgs args, InvokeOptions options) {
@@ -1220,6 +1283,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1269,6 +1334,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerDisksResult> getServerDisksPlain(GetServerDisksPlainArgs args, InvokeOptions options) {
@@ -1282,6 +1348,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1314,6 +1382,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerFirewallRulesResult> getServerFirewallRules(GetServerFirewallRulesArgs args) {
@@ -1327,6 +1396,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1359,6 +1430,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerFirewallRulesResult> getServerFirewallRulesPlain(GetServerFirewallRulesPlainArgs args) {
@@ -1372,6 +1444,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1404,6 +1478,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerFirewallRulesResult> getServerFirewallRules(GetServerFirewallRulesArgs args, InvokeOptions options) {
@@ -1417,6 +1492,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1449,6 +1526,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerFirewallRulesResult> getServerFirewallRulesPlain(GetServerFirewallRulesPlainArgs args, InvokeOptions options) {
@@ -1462,6 +1540,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1495,6 +1575,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerPlansResult> getServerPlans() {
@@ -1508,6 +1589,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1541,6 +1624,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerPlansResult> getServerPlansPlain() {
@@ -1554,6 +1638,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1587,6 +1673,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerPlansResult> getServerPlans(GetServerPlansArgs args) {
@@ -1600,6 +1687,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1633,6 +1722,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerPlansResult> getServerPlansPlain(GetServerPlansPlainArgs args) {
@@ -1646,6 +1736,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1679,6 +1771,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerPlansResult> getServerPlans(GetServerPlansArgs args, InvokeOptions options) {
@@ -1692,6 +1785,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1725,6 +1820,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerPlansResult> getServerPlansPlain(GetServerPlansPlainArgs args, InvokeOptions options) {
@@ -1738,6 +1834,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1784,6 +1882,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerSnapshotsResult> getServerSnapshots() {
@@ -1797,6 +1896,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1843,6 +1944,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerSnapshotsResult> getServerSnapshotsPlain() {
@@ -1856,6 +1958,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1902,6 +2006,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerSnapshotsResult> getServerSnapshots(GetServerSnapshotsArgs args) {
@@ -1915,6 +2020,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1961,6 +2068,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerSnapshotsResult> getServerSnapshotsPlain(GetServerSnapshotsPlainArgs args) {
@@ -1974,6 +2082,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2020,6 +2130,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerSnapshotsResult> getServerSnapshots(GetServerSnapshotsArgs args, InvokeOptions options) {
@@ -2033,6 +2144,8 @@ public final class SimpleapplicationserverFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2079,6 +2192,7 @@ public final class SimpleapplicationserverFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerSnapshotsResult> getServerSnapshotsPlain(GetServerSnapshotsPlainArgs args, InvokeOptions options) {

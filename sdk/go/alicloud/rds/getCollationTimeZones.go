@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetCollationTimeZones(ctx *pulumi.Context, args *GetCollationTimeZonesArgs, opts ...pulumi.InvokeOption) (*GetCollationTimeZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCollationTimeZonesResult

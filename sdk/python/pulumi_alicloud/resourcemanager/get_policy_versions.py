@@ -118,6 +118,7 @@ def get_policy_versions(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -126,6 +127,7 @@ def get_policy_versions(enable_details: Optional[bool] = None,
         policy_type="Custom")
     pulumi.export("firstPolicyVersionId", default.versions[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
@@ -167,6 +169,7 @@ def get_policy_versions_output(enable_details: Optional[pulumi.Input[Optional[bo
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -175,6 +178,7 @@ def get_policy_versions_output(enable_details: Optional[pulumi.Input[Optional[bo
         policy_type="Custom")
     pulumi.export("firstPolicyVersionId", default.versions[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.

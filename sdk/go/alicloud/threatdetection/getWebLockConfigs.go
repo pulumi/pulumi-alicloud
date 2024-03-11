@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 // })
 // }
 // ```
+// <!--End PulumiCodeChooser -->
 func GetWebLockConfigs(ctx *pulumi.Context, args *GetWebLockConfigsArgs, opts ...pulumi.InvokeOption) (*GetWebLockConfigsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetWebLockConfigsResult

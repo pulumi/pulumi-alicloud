@@ -105,6 +105,7 @@ def get_domain_extensions(frontend_port: Optional[int] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -113,6 +114,7 @@ def get_domain_extensions(frontend_port: Optional[int] = None,
         ids=["fake-de-id"],
         load_balancer_id="fake-lb-id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
@@ -149,6 +151,7 @@ def get_domain_extensions_output(frontend_port: Optional[pulumi.Input[int]] = No
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -157,6 +160,7 @@ def get_domain_extensions_output(frontend_port: Optional[pulumi.Input[int]] = No
         ids=["fake-de-id"],
         load_balancer_id="fake-lb-id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int frontend_port: The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.

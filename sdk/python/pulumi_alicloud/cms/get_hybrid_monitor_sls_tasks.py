@@ -124,6 +124,7 @@ def get_hybrid_monitor_sls_tasks(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,6 +132,7 @@ def get_hybrid_monitor_sls_tasks(ids: Optional[Sequence[str]] = None,
     ids = alicloud.cms.get_hybrid_monitor_sls_tasks(ids=["example_value"])
     pulumi.export("cmsHybridMonitorSlsTaskId1", ids.tasks[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Hybrid Monitor Sls Task IDs.
@@ -176,6 +178,7 @@ def get_hybrid_monitor_sls_tasks_output(ids: Optional[pulumi.Input[Optional[Sequ
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -183,6 +186,7 @@ def get_hybrid_monitor_sls_tasks_output(ids: Optional[pulumi.Input[Optional[Sequ
     ids = alicloud.cms.get_hybrid_monitor_sls_tasks(ids=["example_value"])
     pulumi.export("cmsHybridMonitorSlsTaskId1", ids.tasks[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Hybrid Monitor Sls Task IDs.

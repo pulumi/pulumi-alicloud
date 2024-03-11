@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * const default = alicloud.eds.getZones({});
  * export const alicloudEcdZones = _default.then(_default => _default.zones?.[0]?.zoneId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
@@ -63,6 +65,7 @@ export interface GetZonesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -70,6 +73,7 @@ export interface GetZonesResult {
  * const default = alicloud.eds.getZones({});
  * export const alicloudEcdZones = _default.then(_default => _default.zones?.[0]?.zoneId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
     return pulumi.output(args).apply((a: any) => getZones(a, opts))

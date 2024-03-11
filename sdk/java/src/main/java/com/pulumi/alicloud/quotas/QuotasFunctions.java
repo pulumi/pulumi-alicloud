@@ -46,6 +46,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -76,6 +78,7 @@ public final class QuotasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQuotaAlarmsResult> getQuotaAlarms() {
@@ -89,6 +92,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -119,6 +124,7 @@ public final class QuotasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQuotaAlarmsResult> getQuotaAlarmsPlain() {
@@ -132,6 +138,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -162,6 +170,7 @@ public final class QuotasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQuotaAlarmsResult> getQuotaAlarms(GetQuotaAlarmsArgs args) {
@@ -175,6 +184,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -205,6 +216,7 @@ public final class QuotasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQuotaAlarmsResult> getQuotaAlarmsPlain(GetQuotaAlarmsPlainArgs args) {
@@ -218,6 +230,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -248,6 +262,7 @@ public final class QuotasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQuotaAlarmsResult> getQuotaAlarms(GetQuotaAlarmsArgs args, InvokeOptions options) {
@@ -261,6 +276,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -291,6 +308,7 @@ public final class QuotasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQuotaAlarmsResult> getQuotaAlarmsPlain(GetQuotaAlarmsPlainArgs args, InvokeOptions options) {
@@ -304,6 +322,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -334,6 +354,7 @@ public final class QuotasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQuotaApplicationsResult> getQuotaApplications(GetQuotaApplicationsArgs args) {
@@ -347,6 +368,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -377,6 +400,7 @@ public final class QuotasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQuotaApplicationsResult> getQuotaApplicationsPlain(GetQuotaApplicationsPlainArgs args) {
@@ -390,6 +414,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -420,6 +446,7 @@ public final class QuotasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQuotaApplicationsResult> getQuotaApplications(GetQuotaApplicationsArgs args, InvokeOptions options) {
@@ -433,6 +460,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -463,6 +492,7 @@ public final class QuotasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQuotaApplicationsResult> getQuotaApplicationsPlain(GetQuotaApplicationsPlainArgs args, InvokeOptions options) {
@@ -476,6 +506,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -506,6 +538,7 @@ public final class QuotasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQuotasResult> getQuotas(GetQuotasArgs args) {
@@ -519,6 +552,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -549,6 +584,7 @@ public final class QuotasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQuotasResult> getQuotasPlain(GetQuotasPlainArgs args) {
@@ -562,6 +598,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -592,6 +630,7 @@ public final class QuotasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQuotasResult> getQuotas(GetQuotasArgs args, InvokeOptions options) {
@@ -605,6 +644,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -635,6 +676,7 @@ public final class QuotasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQuotasResult> getQuotasPlain(GetQuotasPlainArgs args, InvokeOptions options) {

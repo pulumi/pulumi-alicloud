@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,6 +56,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetTrafficMarkingPolicies(ctx *pulumi.Context, args *GetTrafficMarkingPoliciesArgs, opts ...pulumi.InvokeOption) (*GetTrafficMarkingPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTrafficMarkingPoliciesResult

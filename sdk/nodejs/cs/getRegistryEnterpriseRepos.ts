@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const output = myRepos.then(myRepos => myRepos.repos);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRegistryEnterpriseRepos(args: GetRegistryEnterpriseReposArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseReposResult> {
 
@@ -107,6 +109,7 @@ export interface GetRegistryEnterpriseReposResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,6 +121,7 @@ export interface GetRegistryEnterpriseReposResult {
  * });
  * export const output = myRepos.then(myRepos => myRepos.repos);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRegistryEnterpriseReposOutput(args: GetRegistryEnterpriseReposOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseReposResult> {
     return pulumi.output(args).apply((a: any) => getRegistryEnterpriseRepos(a, opts))

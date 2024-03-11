@@ -121,6 +121,7 @@ def get_ssl_vpn_servers(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -130,6 +131,7 @@ def get_ssl_vpn_servers(ids: Optional[Sequence[str]] = None,
         output_file="/tmp/sslserver",
         vpn_gateway_id="fake-vpn-id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: IDs of the SSL-VPN servers.
@@ -166,6 +168,7 @@ def get_ssl_vpn_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -175,6 +178,7 @@ def get_ssl_vpn_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
         output_file="/tmp/sslserver",
         vpn_gateway_id="fake-vpn-id")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: IDs of the SSL-VPN servers.

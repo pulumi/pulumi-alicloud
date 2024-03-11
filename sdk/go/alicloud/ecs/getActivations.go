@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetActivations(ctx *pulumi.Context, args *GetActivationsArgs, opts ...pulumi.InvokeOption) (*GetActivationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetActivationsResult

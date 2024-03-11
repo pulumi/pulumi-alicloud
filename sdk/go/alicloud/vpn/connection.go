@@ -12,6 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// # Basic Usage
+//
 // ## Import
 //
 // VPN connection can be imported using the id, e.g.

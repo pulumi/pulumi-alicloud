@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,6 +74,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetSharedTargets(ctx *pulumi.Context, args *GetSharedTargetsArgs, opts ...pulumi.InvokeOption) (*GetSharedTargetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSharedTargetsResult

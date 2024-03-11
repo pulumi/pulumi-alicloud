@@ -14,10 +14,9 @@ namespace Pulumi.AliCloud.FC
         /// <summary>
         /// This data source provides the Function Compute services of the current Alibaba Cloud user.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,8 +36,7 @@ namespace Pulumi.AliCloud.FC
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServicesResult> InvokeAsync(GetServicesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("alicloud:fc/getServices:getServices", args ?? new GetServicesArgs(), options.WithDefaults());
@@ -46,10 +44,9 @@ namespace Pulumi.AliCloud.FC
         /// <summary>
         /// This data source provides the Function Compute services of the current Alibaba Cloud user.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,8 +66,7 @@ namespace Pulumi.AliCloud.FC
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServicesResult> Invoke(GetServicesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicesResult>("alicloud:fc/getServices:getServices", args ?? new GetServicesInvokeArgs(), options.WithDefaults());

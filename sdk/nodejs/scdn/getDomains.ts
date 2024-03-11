@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const scdnDomainId = nameRegex.then(nameRegex => nameRegex.domains?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
@@ -95,6 +97,7 @@ export interface GetDomainsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -104,6 +107,7 @@ export interface GetDomainsResult {
  * });
  * export const scdnDomainId = nameRegex.then(nameRegex => nameRegex.domains?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
     return pulumi.output(args).apply((a: any) => getDomains(a, opts))

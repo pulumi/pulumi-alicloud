@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -74,6 +75,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetConfigMaps(ctx *pulumi.Context, args *GetConfigMapsArgs, opts ...pulumi.InvokeOption) (*GetConfigMapsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetConfigMapsResult

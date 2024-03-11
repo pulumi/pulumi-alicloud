@@ -97,6 +97,7 @@ def get_topics(name_prefix: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -104,6 +105,7 @@ def get_topics(name_prefix: Optional[str] = None,
     topics = alicloud.mns.get_topics(name_prefix="tf-")
     pulumi.export("firstTopicId", topics.topics[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name_prefix: A string to filter resulting topics by their name prefixs.
@@ -134,6 +136,7 @@ def get_topics_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -141,6 +144,7 @@ def get_topics_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
     topics = alicloud.mns.get_topics(name_prefix="tf-")
     pulumi.export("firstTopicId", topics.topics[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name_prefix: A string to filter resulting topics by their name prefixs.

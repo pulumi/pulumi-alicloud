@@ -483,6 +483,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -498,6 +499,8 @@ class SecurityGroupRule(pulumi.CustomResource):
             security_group_id=default.id,
             cidr_ip="0.0.0.0/0")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use the existing security-group module
@@ -540,6 +543,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -555,6 +559,8 @@ class SecurityGroupRule(pulumi.CustomResource):
             security_group_id=default.id,
             cidr_ip="0.0.0.0/0")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use the existing security-group module

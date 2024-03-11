@@ -253,6 +253,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -264,6 +265,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
             span=10,
             uuid_lists=["032b618f-b220-4a0d-bd37-fbdc6ef58b6a"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -299,6 +301,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -310,6 +313,7 @@ class AntiBruteForceRule(pulumi.CustomResource):
             span=10,
             uuid_lists=["032b618f-b220-4a0d-bd37-fbdc6ef58b6a"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

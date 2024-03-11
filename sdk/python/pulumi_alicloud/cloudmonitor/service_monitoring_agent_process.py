@@ -157,6 +157,7 @@ class ServiceMonitoringAgentProcess(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -197,6 +198,7 @@ class ServiceMonitoringAgentProcess(pulumi.CustomResource):
             process_name=name,
             process_user="root")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -229,6 +231,7 @@ class ServiceMonitoringAgentProcess(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -269,6 +272,7 @@ class ServiceMonitoringAgentProcess(pulumi.CustomResource):
             process_name=name,
             process_user="root")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

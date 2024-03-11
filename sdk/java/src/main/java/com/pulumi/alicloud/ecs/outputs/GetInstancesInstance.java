@@ -123,6 +123,7 @@ public final class GetInstancesInstance {
     private String status;
     /**
      * @return A map of tags assigned to the ECS instances. It must be in the format:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -154,6 +155,7 @@ public final class GetInstancesInstance {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable Map<String,Object> tags;
@@ -318,6 +320,7 @@ public final class GetInstancesInstance {
     }
     /**
      * @return A map of tags assigned to the ECS instances. It must be in the format:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -349,6 +352,7 @@ public final class GetInstancesInstance {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Map<String,Object> tags() {

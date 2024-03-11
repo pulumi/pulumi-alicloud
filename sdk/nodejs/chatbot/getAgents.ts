@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudChatbotAgentsId1 = nameRegex.then(nameRegex => nameRegex.agents?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAgents(args?: GetAgentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAgentsResult> {
     args = args || {};
@@ -89,6 +91,7 @@ export interface GetAgentsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -98,6 +101,7 @@ export interface GetAgentsResult {
  * });
  * export const alicloudChatbotAgentsId1 = nameRegex.then(nameRegex => nameRegex.agents?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAgentsOutput(args?: GetAgentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAgentsResult> {
     return pulumi.output(args).apply((a: any) => getAgents(a, opts))

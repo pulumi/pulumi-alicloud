@@ -41,6 +41,8 @@ public final class ElasticsearchFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -67,6 +69,7 @@ public final class ElasticsearchFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -78,6 +81,8 @@ public final class ElasticsearchFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -104,6 +109,7 @@ public final class ElasticsearchFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -115,6 +121,8 @@ public final class ElasticsearchFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -141,6 +149,7 @@ public final class ElasticsearchFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -152,6 +161,8 @@ public final class ElasticsearchFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -178,6 +189,7 @@ public final class ElasticsearchFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -189,6 +201,8 @@ public final class ElasticsearchFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -215,6 +229,7 @@ public final class ElasticsearchFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -226,6 +241,8 @@ public final class ElasticsearchFunctions {
      * &gt; **NOTE:** Available in v1.73.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -252,6 +269,7 @@ public final class ElasticsearchFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

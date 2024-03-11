@@ -173,6 +173,7 @@ class SamlProvider(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -184,6 +185,7 @@ class SamlProvider(pulumi.CustomResource):
         \"\"\",
             saml_provider_name="terraform-example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -216,6 +218,7 @@ class SamlProvider(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -227,6 +230,7 @@ class SamlProvider(pulumi.CustomResource):
         \"\"\",
             saml_provider_name="terraform-example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const gaCustomRoutingPortMappingsAcceleratorId1 = _default.then(_default => _default.customRoutingPortMappings?.[0]?.acceleratorId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCustomRoutingPortMappings(args: GetCustomRoutingPortMappingsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomRoutingPortMappingsResult> {
 
@@ -108,6 +110,7 @@ export interface GetCustomRoutingPortMappingsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -117,6 +120,7 @@ export interface GetCustomRoutingPortMappingsResult {
  * });
  * export const gaCustomRoutingPortMappingsAcceleratorId1 = _default.then(_default => _default.customRoutingPortMappings?.[0]?.acceleratorId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCustomRoutingPortMappingsOutput(args: GetCustomRoutingPortMappingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomRoutingPortMappingsResult> {
     return pulumi.output(args).apply((a: any) => getCustomRoutingPortMappings(a, opts))

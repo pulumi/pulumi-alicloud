@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -31,6 +32,7 @@ import * as utilities from "../utilities";
  * }));
  * export const hbrServerBackupPlanId1 = ids.then(ids => ids.plans?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServerBackupPlans(args?: GetServerBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetServerBackupPlansResult> {
     args = args || {};
@@ -83,6 +85,7 @@ export interface GetServerBackupPlansResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -99,6 +102,7 @@ export interface GetServerBackupPlansResult {
  * }));
  * export const hbrServerBackupPlanId1 = ids.then(ids => ids.plans?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServerBackupPlansOutput(args?: GetServerBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerBackupPlansResult> {
     return pulumi.output(args).apply((a: any) => getServerBackupPlans(a, opts))

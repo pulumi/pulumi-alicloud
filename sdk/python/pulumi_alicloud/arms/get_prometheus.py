@@ -145,6 +145,7 @@ def get_prometheus(enable_details: Optional[bool] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -172,6 +173,7 @@ def get_prometheus(enable_details: Optional[bool] = None,
     name_regex = alicloud.arms.get_prometheus_output(name_regex=default_prometheus.cluster_name)
     pulumi.export("armsPrometheusId", name_regex.prometheis[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Whether to query details about the instance.
@@ -220,6 +222,7 @@ def get_prometheus_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -247,6 +250,7 @@ def get_prometheus_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
     name_regex = alicloud.arms.get_prometheus_output(name_regex=default_prometheus.cluster_name)
     pulumi.export("armsPrometheusId", name_regex.prometheis[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Whether to query details about the instance.

@@ -207,17 +207,6 @@ def get_instance_classes(category: Optional[str] = None,
 
     ## Example Usage
 
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    resources = alicloud.rds.get_instance_classes(engine="MySQL",
-        engine_version="5.6",
-        instance_charge_type="PostPaid",
-        output_file="./classes.txt")
-    pulumi.export("firstDbInstanceClass", resources.instance_classes[0].instance_class)
-    ```
-
 
     :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
     :param str commodity_code: The commodity code of the instance. Valid values:
@@ -303,17 +292,6 @@ def get_instance_classes_output(category: Optional[pulumi.Input[Optional[str]]] 
     > **NOTE:** Available in v1.46.0+
 
     ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    resources = alicloud.rds.get_instance_classes(engine="MySQL",
-        engine_version="5.6",
-        instance_charge_type="PostPaid",
-        output_file="./classes.txt")
-    pulumi.export("firstDbInstanceClass", resources.instance_classes[0].instance_class)
-    ```
 
 
     :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).

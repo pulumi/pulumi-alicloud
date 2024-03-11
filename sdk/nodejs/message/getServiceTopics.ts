@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const topicId2 = name.then(name => name.topics?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServiceTopics(args?: GetServiceTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceTopicsResult> {
     args = args || {};
@@ -98,6 +100,7 @@ export interface GetServiceTopicsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -111,6 +114,7 @@ export interface GetServiceTopicsResult {
  * });
  * export const topicId2 = name.then(name => name.topics?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServiceTopicsOutput(args?: GetServiceTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceTopicsResult> {
     return pulumi.output(args).apply((a: any) => getServiceTopics(a, opts))

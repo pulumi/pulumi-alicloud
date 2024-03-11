@@ -18,12 +18,11 @@ namespace Pulumi.AliCloud.CloudSso
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,8 +54,7 @@ namespace Pulumi.AliCloud.CloudSso
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:cloudsso/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithDefaults());
@@ -68,12 +66,11 @@ namespace Pulumi.AliCloud.CloudSso
         /// 
         /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -105,8 +102,7 @@ namespace Pulumi.AliCloud.CloudSso
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:cloudsso/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());

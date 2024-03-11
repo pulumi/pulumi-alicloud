@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const impAppTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAppTemplates(args?: GetAppTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetAppTemplatesResult> {
     args = args || {};
@@ -85,6 +87,7 @@ export interface GetAppTemplatesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -96,6 +99,7 @@ export interface GetAppTemplatesResult {
  * });
  * export const impAppTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAppTemplatesOutput(args?: GetAppTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppTemplatesResult> {
     return pulumi.output(args).apply((a: any) => getAppTemplates(a, opts))

@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetGrantRuleToCens(ctx *pulumi.Context, args *GetGrantRuleToCensArgs, opts ...pulumi.InvokeOption) (*GetGrantRuleToCensResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGrantRuleToCensResult

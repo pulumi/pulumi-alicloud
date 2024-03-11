@@ -502,6 +502,7 @@ class Cluster(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -620,6 +621,7 @@ class Cluster(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             cluster_type="DATAFLOW")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -663,6 +665,7 @@ class Cluster(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -781,6 +784,7 @@ class Cluster(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             cluster_type="DATAFLOW")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

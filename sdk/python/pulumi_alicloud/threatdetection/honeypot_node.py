@@ -206,6 +206,7 @@ class HoneypotNode(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -219,6 +220,7 @@ class HoneypotNode(pulumi.CustomResource):
             available_probe_num=20,
             security_group_probe_ip_lists=["0.0.0.0/0"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -252,6 +254,7 @@ class HoneypotNode(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -265,6 +268,7 @@ class HoneypotNode(pulumi.CustomResource):
             available_probe_num=20,
             security_group_probe_ip_lists=["0.0.0.0/0"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

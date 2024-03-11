@@ -317,6 +317,7 @@ class SnapshotPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -334,6 +335,7 @@ class SnapshotPolicy(pulumi.CustomResource):
                 "23",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -375,6 +377,7 @@ class SnapshotPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -392,6 +395,7 @@ class SnapshotPolicy(pulumi.CustomResource):
                 "23",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -74,7 +74,7 @@ export class TairInstance extends pulumi.CustomResource {
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
-     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -255,7 +255,7 @@ export interface TairInstanceState {
      */
     instanceType?: pulumi.Input<string>;
     /**
-     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
      */
     password?: pulumi.Input<string>;
     /**
@@ -349,7 +349,7 @@ export interface TairInstanceArgs {
      */
     instanceType: pulumi.Input<string>;
     /**
-     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) & * ( ) _ + - =.
      */
     password?: pulumi.Input<string>;
     /**

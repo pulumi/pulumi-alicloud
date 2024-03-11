@@ -689,6 +689,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -713,6 +714,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
             usb_redirect="off",
             watermark="off")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -761,6 +763,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -785,6 +788,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
             usb_redirect="off",
             watermark="off")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

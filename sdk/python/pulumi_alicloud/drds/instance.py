@@ -381,6 +381,7 @@ class Instance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -400,6 +401,7 @@ class Instance(pulumi.CustomResource):
             instance_series=instance_series,
             specification="drds.sn1.4c8g.8C16G")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -450,6 +452,7 @@ class Instance(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -469,6 +472,7 @@ class Instance(pulumi.CustomResource):
             instance_series=instance_series,
             specification="drds.sn1.4c8g.8C16G")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

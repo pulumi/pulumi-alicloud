@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstLineCode = resolutionLinesDs.then(resolutionLinesDs => resolutionLinesDs.lines?.[0]?.lineCode);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getResolutionLines(args?: GetResolutionLinesArgs, opts?: pulumi.InvokeOptions): Promise<GetResolutionLinesResult> {
     args = args || {};
@@ -103,6 +105,7 @@ export interface GetResolutionLinesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -113,6 +116,7 @@ export interface GetResolutionLinesResult {
  * });
  * export const firstLineCode = resolutionLinesDs.then(resolutionLinesDs => resolutionLinesDs.lines?.[0]?.lineCode);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getResolutionLinesOutput(args?: GetResolutionLinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResolutionLinesResult> {
     return pulumi.output(args).apply((a: any) => getResolutionLines(a, opts))

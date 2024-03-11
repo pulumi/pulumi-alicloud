@@ -173,6 +173,7 @@ class EnterpriseProxy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -247,6 +248,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             username="tfexamplename",
             tid=default_user_tenants.ids[0])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -280,6 +282,7 @@ class EnterpriseProxy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -354,6 +357,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             username="tfexamplename",
             tid=default_user_tenants.ids[0])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

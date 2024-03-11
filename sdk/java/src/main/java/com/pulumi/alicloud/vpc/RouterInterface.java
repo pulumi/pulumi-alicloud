@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** The router interface is not connected when it is created. It can be connected by means of resource alicloud_router_interface_connection.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -65,6 +67,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

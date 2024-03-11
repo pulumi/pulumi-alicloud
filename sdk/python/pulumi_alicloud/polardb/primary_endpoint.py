@@ -360,6 +360,7 @@ class PrimaryEndpoint(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -385,6 +386,7 @@ class PrimaryEndpoint(pulumi.CustomResource):
             description="terraform-example")
         default_primary_endpoint = alicloud.polardb.PrimaryEndpoint("defaultPrimaryEndpoint", db_cluster_id=default_cluster.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -421,6 +423,7 @@ class PrimaryEndpoint(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -446,6 +449,7 @@ class PrimaryEndpoint(pulumi.CustomResource):
             description="terraform-example")
         default_primary_endpoint = alicloud.polardb.PrimaryEndpoint("defaultPrimaryEndpoint", db_cluster_id=default_cluster.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

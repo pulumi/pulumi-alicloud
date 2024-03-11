@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * });
  * export const addonConfigSchema = data.alicloud_cs_kubernetes_addons["default"].config_schema;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKubernetesAddonMetadata(args: GetKubernetesAddonMetadataArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesAddonMetadataResult> {
 
@@ -74,6 +76,7 @@ export interface GetKubernetesAddonMetadataResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -85,6 +88,7 @@ export interface GetKubernetesAddonMetadataResult {
  * });
  * export const addonConfigSchema = data.alicloud_cs_kubernetes_addons["default"].config_schema;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKubernetesAddonMetadataOutput(args: GetKubernetesAddonMetadataOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesAddonMetadataResult> {
     return pulumi.output(args).apply((a: any) => getKubernetesAddonMetadata(a, opts))

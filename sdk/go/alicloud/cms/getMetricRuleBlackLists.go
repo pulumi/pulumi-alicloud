@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 // })
 // }
 // ```
+// <!--End PulumiCodeChooser -->
 func GetMetricRuleBlackLists(ctx *pulumi.Context, args *GetMetricRuleBlackListsArgs, opts ...pulumi.InvokeOption) (*GetMetricRuleBlackListsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMetricRuleBlackListsResult

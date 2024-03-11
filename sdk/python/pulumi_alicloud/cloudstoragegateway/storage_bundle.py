@@ -109,12 +109,14 @@ class StorageBundle(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -146,12 +148,14 @@ class StorageBundle(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

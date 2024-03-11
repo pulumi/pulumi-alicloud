@@ -108,6 +108,7 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -145,6 +146,7 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
             domain_name=example_waf_domain.domain_name,
             policy_id=example_waf_policy.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -176,6 +178,7 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -213,6 +216,7 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
             domain_name=example_waf_domain.domain_name,
             policy_id=example_waf_policy.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

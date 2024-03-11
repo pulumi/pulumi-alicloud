@@ -140,6 +140,7 @@ def get_service_topics(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -149,6 +150,7 @@ def get_service_topics(ids: Optional[Sequence[str]] = None,
     name = alicloud.message.get_service_topics(topic_name="tf-example")
     pulumi.export("topicId2", name.topics[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Topic IDs. Its element value is same as Topic Name.
@@ -193,6 +195,7 @@ def get_service_topics_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -202,6 +205,7 @@ def get_service_topics_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     name = alicloud.message.get_service_topics(topic_name="tf-example")
     pulumi.export("topicId2", name.topics[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Topic IDs. Its element value is same as Topic Name.

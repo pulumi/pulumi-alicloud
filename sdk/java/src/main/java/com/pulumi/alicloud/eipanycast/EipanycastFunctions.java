@@ -22,6 +22,8 @@ public final class EipanycastFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -52,6 +54,7 @@ public final class EipanycastFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAnycastEipAddressesResult> getAnycastEipAddresses() {
@@ -65,6 +68,8 @@ public final class EipanycastFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -95,6 +100,7 @@ public final class EipanycastFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAnycastEipAddressesResult> getAnycastEipAddressesPlain() {
@@ -108,6 +114,8 @@ public final class EipanycastFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -138,6 +146,7 @@ public final class EipanycastFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAnycastEipAddressesResult> getAnycastEipAddresses(GetAnycastEipAddressesArgs args) {
@@ -151,6 +160,8 @@ public final class EipanycastFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -181,6 +192,7 @@ public final class EipanycastFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAnycastEipAddressesResult> getAnycastEipAddressesPlain(GetAnycastEipAddressesPlainArgs args) {
@@ -194,6 +206,8 @@ public final class EipanycastFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -224,6 +238,7 @@ public final class EipanycastFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAnycastEipAddressesResult> getAnycastEipAddresses(GetAnycastEipAddressesArgs args, InvokeOptions options) {
@@ -237,6 +252,8 @@ public final class EipanycastFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -267,6 +284,7 @@ public final class EipanycastFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAnycastEipAddressesResult> getAnycastEipAddressesPlain(GetAnycastEipAddressesPlainArgs args, InvokeOptions options) {

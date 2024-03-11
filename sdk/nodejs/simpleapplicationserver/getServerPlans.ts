@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const simpleApplicationServerPlanId1 = data.alicloud_simple_application_server_plans.ids.plans[0].id;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServerPlans(args?: GetServerPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetServerPlansResult> {
     args = args || {};
@@ -110,6 +112,7 @@ export interface GetServerPlansResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -123,6 +126,7 @@ export interface GetServerPlansResult {
  * });
  * export const simpleApplicationServerPlanId1 = data.alicloud_simple_application_server_plans.ids.plans[0].id;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServerPlansOutput(args?: GetServerPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerPlansResult> {
     return pulumi.output(args).apply((a: any) => getServerPlans(a, opts))

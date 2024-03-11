@@ -37,6 +37,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -66,6 +68,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBindingsResult> getBindings(GetBindingsArgs args) {
@@ -79,6 +82,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -108,6 +113,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBindingsResult> getBindingsPlain(GetBindingsPlainArgs args) {
@@ -121,6 +127,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -150,6 +158,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBindingsResult> getBindings(GetBindingsArgs args, InvokeOptions options) {
@@ -163,6 +172,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -192,6 +203,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBindingsResult> getBindingsPlain(GetBindingsPlainArgs args, InvokeOptions options) {
@@ -205,6 +217,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -245,6 +259,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetExchangesResult> getExchanges(GetExchangesArgs args) {
@@ -258,6 +273,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -298,6 +315,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetExchangesResult> getExchangesPlain(GetExchangesPlainArgs args) {
@@ -311,6 +329,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -351,6 +371,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetExchangesResult> getExchanges(GetExchangesArgs args, InvokeOptions options) {
@@ -364,6 +385,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -404,6 +427,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetExchangesResult> getExchangesPlain(GetExchangesPlainArgs args, InvokeOptions options) {
@@ -417,6 +441,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -453,6 +479,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -466,6 +493,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -502,6 +531,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -515,6 +545,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -551,6 +583,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -564,6 +597,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -600,6 +635,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -613,6 +649,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -649,6 +687,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -662,6 +701,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -698,6 +739,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -711,6 +753,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -751,6 +795,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQueuesResult> getQueues(GetQueuesArgs args) {
@@ -764,6 +809,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -804,6 +851,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQueuesResult> getQueuesPlain(GetQueuesPlainArgs args) {
@@ -817,6 +865,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -857,6 +907,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQueuesResult> getQueues(GetQueuesArgs args, InvokeOptions options) {
@@ -870,6 +921,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -910,6 +963,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQueuesResult> getQueuesPlain(GetQueuesPlainArgs args, InvokeOptions options) {
@@ -921,6 +975,8 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -950,6 +1006,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStaticAccountsResult> getStaticAccounts() {
@@ -961,6 +1018,8 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -990,6 +1049,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStaticAccountsResult> getStaticAccountsPlain() {
@@ -1001,6 +1061,8 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1030,6 +1092,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStaticAccountsResult> getStaticAccounts(GetStaticAccountsArgs args) {
@@ -1041,6 +1104,8 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1070,6 +1135,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStaticAccountsResult> getStaticAccountsPlain(GetStaticAccountsPlainArgs args) {
@@ -1081,6 +1147,8 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1110,6 +1178,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetStaticAccountsResult> getStaticAccounts(GetStaticAccountsArgs args, InvokeOptions options) {
@@ -1121,6 +1190,8 @@ public final class AmqpFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1150,6 +1221,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetStaticAccountsResult> getStaticAccountsPlain(GetStaticAccountsPlainArgs args, InvokeOptions options) {
@@ -1163,6 +1235,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1201,6 +1275,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualHostsResult> getVirtualHosts(GetVirtualHostsArgs args) {
@@ -1214,6 +1289,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1252,6 +1329,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualHostsResult> getVirtualHostsPlain(GetVirtualHostsPlainArgs args) {
@@ -1265,6 +1343,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1303,6 +1383,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualHostsResult> getVirtualHosts(GetVirtualHostsArgs args, InvokeOptions options) {
@@ -1316,6 +1397,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1354,6 +1437,7 @@ public final class AmqpFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualHostsResult> getVirtualHostsPlain(GetVirtualHostsPlainArgs args, InvokeOptions options) {

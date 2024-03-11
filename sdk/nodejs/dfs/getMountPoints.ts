@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const dfsMountPointId1 = ids.then(ids => ids.points?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMountPoints(args: GetMountPointsArgs, opts?: pulumi.InvokeOptions): Promise<GetMountPointsResult> {
 
@@ -85,6 +87,7 @@ export interface GetMountPointsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -98,6 +101,7 @@ export interface GetMountPointsResult {
  * });
  * export const dfsMountPointId1 = ids.then(ids => ids.points?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMountPointsOutput(args: GetMountPointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMountPointsResult> {
     return pulumi.output(args).apply((a: any) => getMountPoints(a, opts))

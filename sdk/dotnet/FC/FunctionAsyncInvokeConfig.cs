@@ -16,10 +16,12 @@ namespace Pulumi.AliCloud.FC
     /// &gt; **NOTE:** Available since v1.100.0.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Destination Configuration
     /// 
     /// &gt; **NOTE** Ensure the FC Function RAM Role has necessary permissions for the destination, such as `mns:SendMessage`, `mns:PublishMessage` or `fc:InvokeFunction`, otherwise the API will return a generic error.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -160,6 +162,7 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

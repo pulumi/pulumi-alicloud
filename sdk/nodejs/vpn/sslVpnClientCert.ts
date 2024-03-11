@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
  * ## Import
  *
  * SSL-VPN client certificates can be imported using the id, e.g.

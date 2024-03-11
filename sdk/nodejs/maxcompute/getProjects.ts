@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -31,6 +32,7 @@ import * as utilities from "../utilities";
  * }));
  * export const alicloudMaxcomputeProjectExampleId = defaultProjects.apply(defaultProjects => defaultProjects.projects?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
@@ -91,6 +93,7 @@ export interface GetProjectsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -109,6 +112,7 @@ export interface GetProjectsResult {
  * }));
  * export const alicloudMaxcomputeProjectExampleId = defaultProjects.apply(defaultProjects => defaultProjects.projects?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
     return pulumi.output(args).apply((a: any) => getProjects(a, opts))

@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         /// &gt; **NOTE:** Available since v1.196.0.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -46,8 +45,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetLaunchOptionsResult> InvokeAsync(GetLaunchOptionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLaunchOptionsResult>("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", args ?? new GetLaunchOptionsArgs(), options.WithDefaults());
@@ -57,12 +55,11 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         /// &gt; **NOTE:** Available since v1.196.0.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,8 +84,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetLaunchOptionsResult> Invoke(GetLaunchOptionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLaunchOptionsResult>("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", args ?? new GetLaunchOptionsInvokeArgs(), options.WithDefaults());

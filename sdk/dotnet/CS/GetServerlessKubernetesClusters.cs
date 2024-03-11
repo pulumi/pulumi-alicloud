@@ -18,10 +18,9 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,8 +42,7 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServerlessKubernetesClustersResult> InvokeAsync(GetServerlessKubernetesClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerlessKubernetesClustersResult>("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args ?? new GetServerlessKubernetesClustersArgs(), options.WithDefaults());
@@ -56,10 +54,9 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -81,8 +78,7 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServerlessKubernetesClustersResult> Invoke(GetServerlessKubernetesClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerlessKubernetesClustersResult>("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args ?? new GetServerlessKubernetesClustersInvokeArgs(), options.WithDefaults());

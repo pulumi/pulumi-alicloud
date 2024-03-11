@@ -23,6 +23,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -88,6 +89,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type NetworkAclAttachment struct {
 	pulumi.CustomResourceState
 

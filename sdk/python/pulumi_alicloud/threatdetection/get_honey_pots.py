@@ -149,6 +149,7 @@ def get_honey_pots(honeypot_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -158,6 +159,7 @@ def get_honey_pots(honeypot_id: Optional[str] = None,
         node_id="a44e1ab3-6945-444c-889d-5bacee7056e8")
     pulumi.export("alicloudThreatDetectionHoneyPotExampleId", default.pots[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str honeypot_id: Honeypot ID.
@@ -209,6 +211,7 @@ def get_honey_pots_output(honeypot_id: Optional[pulumi.Input[Optional[str]]] = N
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -218,6 +221,7 @@ def get_honey_pots_output(honeypot_id: Optional[pulumi.Input[Optional[str]]] = N
         node_id="a44e1ab3-6945-444c-889d-5bacee7056e8")
     pulumi.export("alicloudThreatDetectionHoneyPotExampleId", default.pots[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str honeypot_id: Honeypot ID.

@@ -245,6 +245,7 @@ def get_alidns_domains(ali_domain: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -253,6 +254,7 @@ def get_alidns_domains(ali_domain: Optional[bool] = None,
         output_file="domains.txt")
     pulumi.export("firstDomainId", domains_ds.domains[0].domain_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.
@@ -261,7 +263,7 @@ def get_alidns_domains(ali_domain: Optional[bool] = None,
     :param str group_name_regex: A regex string to filter results by the group name.
     :param Sequence[str] ids: A list of domain IDs.
     :param str instance_id: Cloud analysis product ID.
-    :param str key_word: The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+    :param str key_word: The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
     :param str lang: User language.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the dns belongs.
@@ -334,6 +336,7 @@ def get_alidns_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -342,6 +345,7 @@ def get_alidns_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]]
         output_file="domains.txt")
     pulumi.export("firstDomainId", domains_ds.domains[0].domain_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool ali_domain: Specifies whether the domain is from Alibaba Cloud or not.
@@ -350,7 +354,7 @@ def get_alidns_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]]
     :param str group_name_regex: A regex string to filter results by the group name.
     :param Sequence[str] ids: A list of domain IDs.
     :param str instance_id: Cloud analysis product ID.
-    :param str key_word: The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
+    :param str key_word: The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
     :param str lang: User language.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the dns belongs.

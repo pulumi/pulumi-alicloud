@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// &gt; **NOTE:** Available in v1.152.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -48,8 +47,7 @@ namespace Pulumi.AliCloud.Dns
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccessStrategiesResult> InvokeAsync(GetAccessStrategiesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessStrategiesResult>("alicloud:dns/getAccessStrategies:getAccessStrategies", args ?? new GetAccessStrategiesArgs(), options.WithDefaults());
@@ -59,12 +57,11 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// &gt; **NOTE:** Available in v1.152.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -91,8 +88,7 @@ namespace Pulumi.AliCloud.Dns
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccessStrategiesResult> Invoke(GetAccessStrategiesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessStrategiesResult>("alicloud:dns/getAccessStrategies:getAccessStrategies", args ?? new GetAccessStrategiesInvokeArgs(), options.WithDefaults());

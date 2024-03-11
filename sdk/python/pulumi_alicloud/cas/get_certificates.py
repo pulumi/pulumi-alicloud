@@ -132,6 +132,7 @@ def get_certificates(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -140,6 +141,7 @@ def get_certificates(enable_details: Optional[bool] = None,
         output_file=f"{path['module']}/cas_certificates.json")
     pulumi.export("cert", certs.certificates[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of cert IDs.
@@ -181,6 +183,7 @@ def get_certificates_output(enable_details: Optional[pulumi.Input[Optional[bool]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -189,6 +192,7 @@ def get_certificates_output(enable_details: Optional[pulumi.Input[Optional[bool]
         output_file=f"{path['module']}/cas_certificates.json")
     pulumi.export("cert", certs.certificates[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of cert IDs.

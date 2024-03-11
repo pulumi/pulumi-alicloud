@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.ApiGateway
         /// 
         /// &gt; **NOTE:** Available in v1.187.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,8 +43,7 @@ namespace Pulumi.AliCloud.ApiGateway
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPluginsResult> InvokeAsync(GetPluginsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPluginsResult>("alicloud:apigateway/getPlugins:getPlugins", args ?? new GetPluginsArgs(), options.WithDefaults());
@@ -55,12 +53,11 @@ namespace Pulumi.AliCloud.ApiGateway
         /// 
         /// &gt; **NOTE:** Available in v1.187.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +80,7 @@ namespace Pulumi.AliCloud.ApiGateway
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPluginsResult> Invoke(GetPluginsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPluginsResult>("alicloud:apigateway/getPlugins:getPlugins", args ?? new GetPluginsInvokeArgs(), options.WithDefaults());

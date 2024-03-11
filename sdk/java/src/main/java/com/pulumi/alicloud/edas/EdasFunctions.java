@@ -32,6 +32,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -62,6 +64,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationsResult> getApplications() {
@@ -73,6 +76,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -103,6 +108,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain() {
@@ -114,6 +120,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -144,6 +152,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationsResult> getApplications(GetApplicationsArgs args) {
@@ -155,6 +164,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -185,6 +196,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain(GetApplicationsPlainArgs args) {
@@ -196,6 +208,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -226,6 +240,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationsResult> getApplications(GetApplicationsArgs args, InvokeOptions options) {
@@ -237,6 +252,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -267,6 +284,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationsResult> getApplicationsPlain(GetApplicationsPlainArgs args, InvokeOptions options) {
@@ -278,6 +296,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -309,6 +329,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args) {
@@ -320,6 +341,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -351,6 +374,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args) {
@@ -362,6 +386,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -393,6 +419,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
@@ -404,6 +431,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** Available in 1.82.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -435,6 +464,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {
@@ -447,6 +477,7 @@ public final class EdasFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -478,6 +509,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeployGroupsResult> getDeployGroups(GetDeployGroupsArgs args) {
@@ -490,6 +522,7 @@ public final class EdasFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -521,6 +554,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeployGroupsResult> getDeployGroupsPlain(GetDeployGroupsPlainArgs args) {
@@ -533,6 +567,7 @@ public final class EdasFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -564,6 +599,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDeployGroupsResult> getDeployGroups(GetDeployGroupsArgs args, InvokeOptions options) {
@@ -576,6 +612,7 @@ public final class EdasFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -607,6 +644,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDeployGroupsResult> getDeployGroupsPlain(GetDeployGroupsPlainArgs args, InvokeOptions options) {
@@ -620,6 +658,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -654,6 +694,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces() {
@@ -667,6 +708,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -701,6 +744,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain() {
@@ -714,6 +758,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -748,6 +794,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args) {
@@ -761,6 +808,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -795,6 +844,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args) {
@@ -808,6 +858,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -842,6 +894,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args, InvokeOptions options) {
@@ -855,6 +908,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -889,6 +944,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args, InvokeOptions options) {
@@ -904,6 +960,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -932,6 +990,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -947,6 +1006,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -975,6 +1036,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -990,6 +1052,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1018,6 +1082,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -1033,6 +1098,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1061,6 +1128,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -1076,6 +1144,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1104,6 +1174,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -1119,6 +1190,8 @@ public final class EdasFunctions {
      * &gt; **NOTE:** The EDAS service is not support to be open automatically in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1147,6 +1220,7 @@ public final class EdasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {

@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,8 +44,7 @@ namespace Pulumi.AliCloud.Alb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAscriptsResult> InvokeAsync(GetAscriptsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAscriptsResult>("alicloud:alb/getAscripts:getAscripts", args ?? new GetAscriptsArgs(), options.WithDefaults());
@@ -56,10 +54,9 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,8 +82,7 @@ namespace Pulumi.AliCloud.Alb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAscriptsResult> Invoke(GetAscriptsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAscriptsResult>("alicloud:alb/getAscripts:getAscripts", args ?? new GetAscriptsInvokeArgs(), options.WithDefaults());

@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudServiceCatalogPortfolioExampleId = _default.then(_default => _default.portfolios?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPortfolios(args?: GetPortfoliosArgs, opts?: pulumi.InvokeOptions): Promise<GetPortfoliosResult> {
     args = args || {};
@@ -113,6 +115,7 @@ export interface GetPortfoliosResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -123,6 +126,7 @@ export interface GetPortfoliosResult {
  * });
  * export const alicloudServiceCatalogPortfolioExampleId = _default.then(_default => _default.portfolios?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPortfoliosOutput(args?: GetPortfoliosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortfoliosResult> {
     return pulumi.output(args).apply((a: any) => getPortfolios(a, opts))

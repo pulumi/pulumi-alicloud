@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.dcdn.getWafPolicies({});
  * export const dcdnWafPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWafPolicies(args?: GetWafPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetWafPoliciesResult> {
     args = args || {};
@@ -84,6 +86,7 @@ export interface GetWafPoliciesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -91,6 +94,7 @@ export interface GetWafPoliciesResult {
  * const ids = alicloud.dcdn.getWafPolicies({});
  * export const dcdnWafPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWafPoliciesOutput(args?: GetWafPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWafPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getWafPolicies(a, opts))

@@ -26,6 +26,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -60,6 +62,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceQueuesResult> getServiceQueues() {
@@ -71,6 +74,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -105,6 +110,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceQueuesResult> getServiceQueuesPlain() {
@@ -116,6 +122,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -150,6 +158,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceQueuesResult> getServiceQueues(GetServiceQueuesArgs args) {
@@ -161,6 +170,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -195,6 +206,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceQueuesResult> getServiceQueuesPlain(GetServiceQueuesPlainArgs args) {
@@ -206,6 +218,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -240,6 +254,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceQueuesResult> getServiceQueues(GetServiceQueuesArgs args, InvokeOptions options) {
@@ -251,6 +266,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -285,6 +302,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceQueuesResult> getServiceQueuesPlain(GetServiceQueuesPlainArgs args, InvokeOptions options) {
@@ -296,6 +314,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -331,6 +351,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceSubscriptionsResult> getServiceSubscriptions(GetServiceSubscriptionsArgs args) {
@@ -342,6 +363,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -377,6 +400,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceSubscriptionsResult> getServiceSubscriptionsPlain(GetServiceSubscriptionsPlainArgs args) {
@@ -388,6 +412,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -423,6 +449,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceSubscriptionsResult> getServiceSubscriptions(GetServiceSubscriptionsArgs args, InvokeOptions options) {
@@ -434,6 +461,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -469,6 +498,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceSubscriptionsResult> getServiceSubscriptionsPlain(GetServiceSubscriptionsPlainArgs args, InvokeOptions options) {
@@ -480,6 +510,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -514,6 +546,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceTopicsResult> getServiceTopics() {
@@ -525,6 +558,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -559,6 +594,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceTopicsResult> getServiceTopicsPlain() {
@@ -570,6 +606,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -604,6 +642,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceTopicsResult> getServiceTopics(GetServiceTopicsArgs args) {
@@ -615,6 +654,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -649,6 +690,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceTopicsResult> getServiceTopicsPlain(GetServiceTopicsPlainArgs args) {
@@ -660,6 +702,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -694,6 +738,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceTopicsResult> getServiceTopics(GetServiceTopicsArgs args, InvokeOptions options) {
@@ -705,6 +750,8 @@ public final class MessageFunctions {
      * &gt; **NOTE:** Available in v1.188.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -739,6 +786,7 @@ public final class MessageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceTopicsResult> getServiceTopicsPlain(GetServiceTopicsPlainArgs args, InvokeOptions options) {

@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const abandonAbleChecksIds = task.then(task => task.abandonAbleChecks.map(__item => __item.checkId));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountDeletionCheckTask(args: GetAccountDeletionCheckTaskArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountDeletionCheckTaskResult> {
 
@@ -86,6 +88,7 @@ export interface GetAccountDeletionCheckTaskResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -95,6 +98,7 @@ export interface GetAccountDeletionCheckTaskResult {
  * });
  * export const abandonAbleChecksIds = task.then(task => task.abandonAbleChecks.map(__item => __item.checkId));
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountDeletionCheckTaskOutput(args: GetAccountDeletionCheckTaskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountDeletionCheckTaskResult> {
     return pulumi.output(args).apply((a: any) => getAccountDeletionCheckTask(a, opts))

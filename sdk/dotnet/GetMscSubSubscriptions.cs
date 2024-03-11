@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud
         /// 
         /// &gt; **NOTE:** Available in v1.135.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,8 +37,7 @@ namespace Pulumi.AliCloud
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMscSubSubscriptionsResult> InvokeAsync(GetMscSubSubscriptionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMscSubSubscriptionsResult>("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", args ?? new GetMscSubSubscriptionsArgs(), options.WithDefaults());
@@ -49,12 +47,11 @@ namespace Pulumi.AliCloud
         /// 
         /// &gt; **NOTE:** Available in v1.135.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,8 +68,7 @@ namespace Pulumi.AliCloud
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMscSubSubscriptionsResult> Invoke(GetMscSubSubscriptionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMscSubSubscriptionsResult>("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", args ?? new GetMscSubSubscriptionsInvokeArgs(), options.WithDefaults());

@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// &gt; **NOTE:** Available in v1.195.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,8 +43,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVulWhitelistsResult> InvokeAsync(GetVulWhitelistsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVulWhitelistsResult>("alicloud:threatdetection/getVulWhitelists:getVulWhitelists", args ?? new GetVulWhitelistsArgs(), options.WithDefaults());
@@ -55,12 +53,11 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// &gt; **NOTE:** Available in v1.195.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +80,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVulWhitelistsResult> Invoke(GetVulWhitelistsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVulWhitelistsResult>("alicloud:threatdetection/getVulWhitelists:getVulWhitelists", args ?? new GetVulWhitelistsInvokeArgs(), options.WithDefaults());

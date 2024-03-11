@@ -32,7 +32,10 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:**  Create Cassandra cluster or change cluster type and storage would cost 30 minutes. Please make full preparation.
  * 
  * ## Example Usage
+ * 
  * ### Create a cassandra cluster
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -73,6 +76,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
  * 

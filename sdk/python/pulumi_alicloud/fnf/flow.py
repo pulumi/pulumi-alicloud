@@ -238,6 +238,7 @@ class Flow(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -268,6 +269,7 @@ class Flow(pulumi.CustomResource):
             description="Test for terraform fnf_flow.",
             type="FDL")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -302,6 +304,7 @@ class Flow(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -332,6 +335,7 @@ class Flow(pulumi.CustomResource):
             description="Test for terraform fnf_flow.",
             type="FDL")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

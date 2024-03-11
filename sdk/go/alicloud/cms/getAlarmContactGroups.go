@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +43,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAlarmContactGroups(ctx *pulumi.Context, args *GetAlarmContactGroupsArgs, opts ...pulumi.InvokeOption) (*GetAlarmContactGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAlarmContactGroupsResult

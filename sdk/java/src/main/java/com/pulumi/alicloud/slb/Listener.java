@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available since v1.0.0.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -125,6 +127,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Listener fields and protocol mapping
  * 
  * load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
@@ -501,14 +505,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.healthCheckType);
     }
     /**
-     * URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
+     * URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
      * 
      */
     @Export(name="healthCheckUri", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckUri;
 
     /**
-     * @return URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
+     * @return URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
      * 
      */
     public Output<Optional<String>> healthCheckUri() {

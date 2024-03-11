@@ -68,6 +68,7 @@ public final class GetLoadBalancersBalancer {
     private String status;
     /**
      * @return A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -99,6 +100,7 @@ public final class GetLoadBalancersBalancer {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private Map<String,Object> tags;
@@ -223,6 +225,7 @@ public final class GetLoadBalancersBalancer {
     }
     /**
      * @return A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -254,6 +257,7 @@ public final class GetLoadBalancersBalancer {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Map<String,Object> tags() {

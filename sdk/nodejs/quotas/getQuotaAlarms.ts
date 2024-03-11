@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstQuotasQuotaAlarmId = example.then(example => example.alarms?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getQuotaAlarms(args?: GetQuotaAlarmsArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotaAlarmsResult> {
     args = args || {};
@@ -108,6 +110,7 @@ export interface GetQuotaAlarmsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,6 +121,7 @@ export interface GetQuotaAlarmsResult {
  * });
  * export const firstQuotasQuotaAlarmId = example.then(example => example.alarms?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getQuotaAlarmsOutput(args?: GetQuotaAlarmsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaAlarmsResult> {
     return pulumi.output(args).apply((a: any) => getQuotaAlarms(a, opts))

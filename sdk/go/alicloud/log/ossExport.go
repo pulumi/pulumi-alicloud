@@ -21,6 +21,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -88,6 +89,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -138,7 +140,7 @@ type OssExport struct {
 	LogReadRoleArn pulumi.StringPtrOutput `pulumi:"logReadRoleArn"`
 	// The name of the log logstore.
 	LogstoreName pulumi.StringOutput `pulumi:"logstoreName"`
-	// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+	// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
 	PathFormat pulumi.StringOutput `pulumi:"pathFormat"`
 	// The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
 	Prefix pulumi.StringPtrOutput `pulumi:"prefix"`
@@ -248,7 +250,7 @@ type ossExportState struct {
 	LogReadRoleArn *string `pulumi:"logReadRoleArn"`
 	// The name of the log logstore.
 	LogstoreName *string `pulumi:"logstoreName"`
-	// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+	// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
 	PathFormat *string `pulumi:"pathFormat"`
 	// The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
 	Prefix *string `pulumi:"prefix"`
@@ -302,7 +304,7 @@ type OssExportState struct {
 	LogReadRoleArn pulumi.StringPtrInput
 	// The name of the log logstore.
 	LogstoreName pulumi.StringPtrInput
-	// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+	// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
 	PathFormat pulumi.StringPtrInput
 	// The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
 	Prefix pulumi.StringPtrInput
@@ -360,7 +362,7 @@ type ossExportArgs struct {
 	LogReadRoleArn *string `pulumi:"logReadRoleArn"`
 	// The name of the log logstore.
 	LogstoreName string `pulumi:"logstoreName"`
-	// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+	// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
 	PathFormat string `pulumi:"pathFormat"`
 	// The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
 	Prefix *string `pulumi:"prefix"`
@@ -415,7 +417,7 @@ type OssExportArgs struct {
 	LogReadRoleArn pulumi.StringPtrInput
 	// The name of the log logstore.
 	LogstoreName pulumi.StringInput
-	// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+	// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
 	PathFormat pulumi.StringInput
 	// The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
 	Prefix pulumi.StringPtrInput
@@ -612,7 +614,7 @@ func (o OssExportOutput) LogstoreName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OssExport) pulumi.StringOutput { return v.LogstoreName }).(pulumi.StringOutput)
 }
 
-// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
 func (o OssExportOutput) PathFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v *OssExport) pulumi.StringOutput { return v.PathFormat }).(pulumi.StringOutput)
 }

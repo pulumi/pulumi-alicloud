@@ -173,6 +173,7 @@ class Portfolio(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -185,6 +186,7 @@ class Portfolio(pulumi.CustomResource):
             portfolio_name=name,
             provider_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -217,6 +219,7 @@ class Portfolio(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -229,6 +232,7 @@ class Portfolio(pulumi.CustomResource):
             portfolio_name=name,
             provider_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

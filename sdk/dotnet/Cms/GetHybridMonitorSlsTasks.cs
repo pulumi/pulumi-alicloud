@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// &gt; **NOTE:** Available in v1.179.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,8 +43,7 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHybridMonitorSlsTasksResult> InvokeAsync(GetHybridMonitorSlsTasksArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHybridMonitorSlsTasksResult>("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", args ?? new GetHybridMonitorSlsTasksArgs(), options.WithDefaults());
@@ -55,12 +53,11 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// &gt; **NOTE:** Available in v1.179.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +80,7 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHybridMonitorSlsTasksResult> Invoke(GetHybridMonitorSlsTasksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHybridMonitorSlsTasksResult>("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", args ?? new GetHybridMonitorSlsTasksInvokeArgs(), options.WithDefaults());

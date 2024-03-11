@@ -133,6 +133,7 @@ def get_dedicated_host_accounts(dedicated_host_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -140,6 +141,7 @@ def get_dedicated_host_accounts(dedicated_host_id: Optional[str] = None,
     ids = alicloud.cddc.get_dedicated_host_accounts()
     pulumi.export("cddcDedicatedHostAccountId1", ids.accounts[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str dedicated_host_id: The ID of the Dedicated host.
@@ -186,6 +188,7 @@ def get_dedicated_host_accounts_output(dedicated_host_id: Optional[pulumi.Input[
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -193,6 +196,7 @@ def get_dedicated_host_accounts_output(dedicated_host_id: Optional[pulumi.Input[
     ids = alicloud.cddc.get_dedicated_host_accounts()
     pulumi.export("cddcDedicatedHostAccountId1", ids.accounts[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str dedicated_host_id: The ID of the Dedicated host.

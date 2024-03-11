@@ -347,6 +347,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -404,6 +405,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
                 weight=25,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -436,6 +438,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -493,6 +496,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
                 weight=25,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

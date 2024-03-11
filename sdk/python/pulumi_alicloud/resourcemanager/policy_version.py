@@ -154,6 +154,7 @@ class PolicyVersion(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -185,6 +186,7 @@ class PolicyVersion(pulumi.CustomResource):
         		}
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -218,6 +220,7 @@ class PolicyVersion(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -249,6 +252,7 @@ class PolicyVersion(pulumi.CustomResource):
         		}
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

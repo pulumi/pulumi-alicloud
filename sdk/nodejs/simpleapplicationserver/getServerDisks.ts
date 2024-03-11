@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -40,6 +41,7 @@ import * as utilities from "../utilities";
  * });
  * export const simpleApplicationServerDiskId5 = diskType.then(diskType => diskType.disks?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServerDisks(args?: GetServerDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetServerDisksResult> {
     args = args || {};
@@ -111,6 +113,7 @@ export interface GetServerDisksResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -136,6 +139,7 @@ export interface GetServerDisksResult {
  * });
  * export const simpleApplicationServerDiskId5 = diskType.then(diskType => diskType.disks?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServerDisksOutput(args?: GetServerDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerDisksResult> {
     return pulumi.output(args).apply((a: any) => getServerDisks(a, opts))

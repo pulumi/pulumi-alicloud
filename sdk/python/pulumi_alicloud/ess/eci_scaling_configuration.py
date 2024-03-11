@@ -1256,6 +1256,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1303,6 +1304,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                 image="registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1381,6 +1383,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1428,6 +1431,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                 image="registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

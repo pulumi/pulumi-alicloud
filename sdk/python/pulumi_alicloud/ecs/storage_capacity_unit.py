@@ -265,6 +265,7 @@ class StorageCapacityUnit(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -274,6 +275,7 @@ class StorageCapacityUnit(pulumi.CustomResource):
             description="tftestdescription",
             storage_capacity_unit_name="tftestname")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -311,6 +313,7 @@ class StorageCapacityUnit(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -320,6 +323,7 @@ class StorageCapacityUnit(pulumi.CustomResource):
             description="tftestdescription",
             storage_capacity_unit_name="tftestname")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

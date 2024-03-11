@@ -93,12 +93,14 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.wafv3.Instance("default")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -128,12 +130,14 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.wafv3.Instance("default")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const dtsMigrationJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMigrationJobs(args?: GetMigrationJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetMigrationJobsResult> {
     args = args || {};
@@ -83,6 +85,7 @@ export interface GetMigrationJobsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -92,6 +95,7 @@ export interface GetMigrationJobsResult {
  * });
  * export const dtsMigrationJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMigrationJobsOutput(args?: GetMigrationJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMigrationJobsResult> {
     return pulumi.output(args).apply((a: any) => getMigrationJobs(a, opts))

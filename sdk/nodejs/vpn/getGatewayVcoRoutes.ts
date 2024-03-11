@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -94,6 +95,7 @@ import * as utilities from "../utilities";
  * });
  * export const vpnGatewayVcoRouteId1 = data.alicloud_vpn_gateway_vco_routes.ids.routes[0].id;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGatewayVcoRoutes(args: GetGatewayVcoRoutesArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayVcoRoutesResult> {
 
@@ -163,6 +165,7 @@ export interface GetGatewayVcoRoutesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -242,6 +245,7 @@ export interface GetGatewayVcoRoutesResult {
  * });
  * export const vpnGatewayVcoRouteId1 = data.alicloud_vpn_gateway_vco_routes.ids.routes[0].id;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGatewayVcoRoutesOutput(args: GetGatewayVcoRoutesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayVcoRoutesResult> {
     return pulumi.output(args).apply((a: any) => getGatewayVcoRoutes(a, opts))

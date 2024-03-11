@@ -103,12 +103,14 @@ def get_alarm_contact_groups(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     example = alicloud.cms.get_alarm_contact_groups(name_regex="tf-testacc")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Alarm Contact Group IDs.
@@ -145,12 +147,14 @@ def get_alarm_contact_groups_output(ids: Optional[pulumi.Input[Optional[Sequence
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     example = alicloud.cms.get_alarm_contact_groups(name_regex="tf-testacc")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Alarm Contact Group IDs.

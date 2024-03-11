@@ -106,6 +106,7 @@ class SuspendProcess(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -155,6 +156,7 @@ class SuspendProcess(pulumi.CustomResource):
             scaling_group_id=default_scaling_configuration.scaling_group_id,
             process="ScaleIn")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -184,6 +186,7 @@ class SuspendProcess(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -233,6 +236,7 @@ class SuspendProcess(pulumi.CustomResource):
             scaling_group_id=default_scaling_configuration.scaling_group_id,
             process="ScaleIn")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

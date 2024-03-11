@@ -222,6 +222,7 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -284,6 +285,7 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
             ],
             inter_region_traffic_qos_queue_description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -318,6 +320,7 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -380,6 +383,7 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
             ],
             inter_region_traffic_qos_queue_description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

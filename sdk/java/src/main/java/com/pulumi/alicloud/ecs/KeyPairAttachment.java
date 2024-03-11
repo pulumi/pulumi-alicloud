@@ -27,6 +27,7 @@ import javax.annotation.Nullable;
  * 
  * Basic Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -128,6 +129,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="alicloud:ecs/keyPairAttachment:KeyPairAttachment")

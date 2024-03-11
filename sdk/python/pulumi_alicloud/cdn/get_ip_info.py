@@ -109,12 +109,14 @@ def get_ip_info(ip: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     ip_test = alicloud.cdn.get_ip_info(ip="114.114.114.114")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str ip: Specify IP address.
@@ -146,12 +148,14 @@ def get_ip_info_output(ip: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     ip_test = alicloud.cdn.get_ip_info(ip="114.114.114.114")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str ip: Specify IP address.

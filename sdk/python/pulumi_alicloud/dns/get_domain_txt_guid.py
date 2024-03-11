@@ -116,6 +116,7 @@ def get_domain_txt_guid(domain_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -125,6 +126,7 @@ def get_domain_txt_guid(domain_name: Optional[str] = None,
     pulumi.export("rr", this.rr)
     pulumi.export("value", this.value)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str domain_name: Verified domain name.
@@ -163,6 +165,7 @@ def get_domain_txt_guid_output(domain_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -172,6 +175,7 @@ def get_domain_txt_guid_output(domain_name: Optional[pulumi.Input[str]] = None,
     pulumi.export("rr", this.rr)
     pulumi.export("value", this.value)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str domain_name: Verified domain name.

@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,6 +49,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAlertContacts(ctx *pulumi.Context, args *GetAlertContactsArgs, opts ...pulumi.InvokeOption) (*GetAlertContactsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAlertContactsResult

@@ -133,6 +133,7 @@ def get_sls_groups(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -142,6 +143,7 @@ def get_sls_groups(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.cms.get_sls_groups(name_regex="^my-SlsGroup")
     pulumi.export("cmsSlsGroupId2", name_regex.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Sls Group IDs. Its element value is same as Sls Group Name.
@@ -188,6 +190,7 @@ def get_sls_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -197,6 +200,7 @@ def get_sls_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     name_regex = alicloud.cms.get_sls_groups(name_regex="^my-SlsGroup")
     pulumi.export("cmsSlsGroupId2", name_regex.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Sls Group IDs. Its element value is same as Sls Group Name.

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * * using CA certificate content
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -44,9 +45,11 @@ import * as utilities from "../utilities";
  *     caCertificateName: "tf-testAccSlbCACertificate",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * * using CA certificate file
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -57,6 +60,7 @@ import * as utilities from "../utilities";
  *     caCertificate: fs.readFileSync(`${path.module}/ca_certificate.pem`, "utf8"),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

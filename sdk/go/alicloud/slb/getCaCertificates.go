@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,6 +38,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetCaCertificates(ctx *pulumi.Context, args *GetCaCertificatesArgs, opts ...pulumi.InvokeOption) (*GetCaCertificatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCaCertificatesResult

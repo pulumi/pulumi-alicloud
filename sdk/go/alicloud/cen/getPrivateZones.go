@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetPrivateZones(ctx *pulumi.Context, args *GetPrivateZonesArgs, opts ...pulumi.InvokeOption) (*GetPrivateZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrivateZonesResult

@@ -174,6 +174,7 @@ class Backend(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -187,6 +188,7 @@ class Backend(pulumi.CustomResource):
             description=name,
             backend_type="HTTP")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -220,6 +222,7 @@ class Backend(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -233,6 +236,7 @@ class Backend(pulumi.CustomResource):
             description=name,
             backend_type="HTTP")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

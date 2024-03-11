@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetCustomRoutingPortMappings(ctx *pulumi.Context, args *GetCustomRoutingPortMappingsArgs, opts ...pulumi.InvokeOption) (*GetCustomRoutingPortMappingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCustomRoutingPortMappingsResult

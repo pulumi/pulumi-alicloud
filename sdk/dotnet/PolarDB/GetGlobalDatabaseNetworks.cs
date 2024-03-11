@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// &gt; **NOTE:** Available since v1.181.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -88,8 +87,7 @@ namespace Pulumi.AliCloud.PolarDB
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGlobalDatabaseNetworksResult> InvokeAsync(GetGlobalDatabaseNetworksArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalDatabaseNetworksResult>("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", args ?? new GetGlobalDatabaseNetworksArgs(), options.WithDefaults());
@@ -99,12 +97,11 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// &gt; **NOTE:** Available since v1.181.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -171,8 +168,7 @@ namespace Pulumi.AliCloud.PolarDB
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGlobalDatabaseNetworksResult> Invoke(GetGlobalDatabaseNetworksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGlobalDatabaseNetworksResult>("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", args ?? new GetGlobalDatabaseNetworksInvokeArgs(), options.WithDefaults());

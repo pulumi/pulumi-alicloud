@@ -287,6 +287,7 @@ class HostAccount(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -325,6 +326,7 @@ class HostAccount(pulumi.CustomResource):
             protocol_name="SSH",
             password="YourPassword12345")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -361,6 +363,7 @@ class HostAccount(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -399,6 +402,7 @@ class HostAccount(pulumi.CustomResource):
             protocol_name="SSH",
             password="YourPassword12345")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -123,6 +123,7 @@ def get_vaults(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -130,6 +131,7 @@ def get_vaults(ids: Optional[Sequence[str]] = None,
     ids = alicloud.hbr.get_vaults(name_regex="^my-Vault")
     pulumi.export("hbrVaultId1", ids.vaults[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Vault IDs.
@@ -174,6 +176,7 @@ def get_vaults_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -181,6 +184,7 @@ def get_vaults_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     ids = alicloud.hbr.get_vaults(name_regex="^my-Vault")
     pulumi.export("hbrVaultId1", ids.vaults[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Vault IDs.

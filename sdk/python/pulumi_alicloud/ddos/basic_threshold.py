@@ -236,6 +236,7 @@ class BasicThreshold(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -278,6 +279,7 @@ class BasicThreshold(pulumi.CustomResource):
             bps=100,
             pps=60000)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -312,6 +314,7 @@ class BasicThreshold(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -354,6 +357,7 @@ class BasicThreshold(pulumi.CustomResource):
             bps=100,
             pps=60000)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

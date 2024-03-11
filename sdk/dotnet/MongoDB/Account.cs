@@ -20,6 +20,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// Basic Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -78,6 +79,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -106,7 +108,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The Password of the Account.
-        /// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
+        /// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&amp;*()_+-=`.
         /// * The password must be `8` to `32` characters in length.
         /// </summary>
         [Output("accountPassword")]
@@ -193,7 +195,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The Password of the Account.
-        /// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
+        /// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&amp;*()_+-=`.
         /// * The password must be `8` to `32` characters in length.
         /// </summary>
         public Input<string>? AccountPassword
@@ -239,7 +241,7 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The Password of the Account.
-        /// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
+        /// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&amp;*()_+-=`.
         /// * The password must be `8` to `32` characters in length.
         /// </summary>
         public Input<string>? AccountPassword

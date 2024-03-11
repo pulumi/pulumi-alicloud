@@ -123,6 +123,7 @@ def get_event_buses(event_bus_type: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -132,6 +133,7 @@ def get_event_buses(event_bus_type: Optional[str] = None,
     name_regex = alicloud.eventbridge.get_event_buses(name_regex="^my-EventBus")
     pulumi.export("eventBridgeEventBusId2", name_regex.buses[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str event_bus_type: The event bus type.
@@ -176,6 +178,7 @@ def get_event_buses_output(event_bus_type: Optional[pulumi.Input[Optional[str]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -185,6 +188,7 @@ def get_event_buses_output(event_bus_type: Optional[pulumi.Input[Optional[str]]]
     name_regex = alicloud.eventbridge.get_event_buses(name_regex="^my-EventBus")
     pulumi.export("eventBridgeEventBusId2", name_regex.buses[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str event_bus_type: The event bus type.

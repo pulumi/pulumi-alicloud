@@ -124,6 +124,7 @@ def get_hybrid_monitor_datas(end: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -134,6 +135,7 @@ def get_hybrid_monitor_datas(end: Optional[str] = None,
         end="1657520065")
     pulumi.export("cmsMetricRuleTemplateId1", default.datas[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str end: The timestamp that specifies the end of the time range to query.
@@ -181,6 +183,7 @@ def get_hybrid_monitor_datas_output(end: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -191,6 +194,7 @@ def get_hybrid_monitor_datas_output(end: Optional[pulumi.Input[str]] = None,
         end="1657520065")
     pulumi.export("cmsMetricRuleTemplateId1", default.datas[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str end: The timestamp that specifies the end of the time range to query.

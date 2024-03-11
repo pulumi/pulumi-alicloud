@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetGreyTagRoutes(ctx *pulumi.Context, args *GetGreyTagRoutesArgs, opts ...pulumi.InvokeOption) (*GetGreyTagRoutesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGreyTagRoutesResult

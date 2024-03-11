@@ -182,6 +182,7 @@ def get_snat_entries(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -210,6 +211,7 @@ def get_snat_entries(ids: Optional[Sequence[str]] = None,
         snat_ip=foo_eip_address.ip_address)
     foo_snat_entries = alicloud.vpc.get_snat_entries_output(snat_table_id=foo_snat_entry.snat_table_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Snat Entries IDs.
@@ -268,6 +270,7 @@ def get_snat_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -296,6 +299,7 @@ def get_snat_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
         snat_ip=foo_eip_address.ip_address)
     foo_snat_entries = alicloud.vpc.get_snat_entries_output(snat_table_id=foo_snat_entry.snat_table_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Snat Entries IDs.

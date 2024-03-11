@@ -140,6 +140,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -152,6 +153,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
             authorized_user_id=authorized_user_id,
             auth_channel="RESOURCE_DIRECTORY")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -182,6 +184,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -194,6 +197,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
             authorized_user_id=authorized_user_id,
             auth_channel="RESOURCE_DIRECTORY")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

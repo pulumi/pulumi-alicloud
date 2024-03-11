@@ -321,6 +321,7 @@ class SiteMonitor(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -352,6 +353,7 @@ class SiteMonitor(pulumi.CustomResource):
             task_name="tf-example",
             task_type="HTTP")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -387,6 +389,7 @@ class SiteMonitor(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -418,6 +421,7 @@ class SiteMonitor(pulumi.CustomResource):
             task_name="tf-example",
             task_type="HTTP")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

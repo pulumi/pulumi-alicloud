@@ -14,6 +14,7 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// Empty resource sets defaults values for every property.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -26,7 +27,9 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -50,13 +53,14 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// For not specified values sets defaults.
     /// 
     /// ## Import
     /// 
     /// RAM account password policy can be imported using the `id`, e.g.
     /// 
-    ///  bash
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy

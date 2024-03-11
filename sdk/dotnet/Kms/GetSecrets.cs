@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Kms
         ///  
         /// &gt; **NOTE:** Available in v1.86.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,8 +44,7 @@ namespace Pulumi.AliCloud.Kms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSecretsResult> InvokeAsync(GetSecretsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretsResult>("alicloud:kms/getSecrets:getSecrets", args ?? new GetSecretsArgs(), options.WithDefaults());
@@ -56,10 +54,9 @@ namespace Pulumi.AliCloud.Kms
         ///  
         /// &gt; **NOTE:** Available in v1.86.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,8 +82,7 @@ namespace Pulumi.AliCloud.Kms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSecretsResult> Invoke(GetSecretsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretsResult>("alicloud:kms/getSecrets:getSecrets", args ?? new GetSecretsInvokeArgs(), options.WithDefaults());

@@ -130,6 +130,7 @@ def get_auto_snap_shot_policies(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -137,6 +138,7 @@ def get_auto_snap_shot_policies(ids: Optional[Sequence[str]] = None,
     default = alicloud.databasefilesystem.get_auto_snap_shot_policies(ids=[alicloud_dbfs_auto_snap_shot_policy["default"]["id"]])
     pulumi.export("alicloudDbfsAutoSnapShotPolicyExampleId", default.auto_snap_shot_policies[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Auto Snap Shot Policy IDs.
@@ -177,6 +179,7 @@ def get_auto_snap_shot_policies_output(ids: Optional[pulumi.Input[Optional[Seque
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -184,6 +187,7 @@ def get_auto_snap_shot_policies_output(ids: Optional[pulumi.Input[Optional[Seque
     default = alicloud.databasefilesystem.get_auto_snap_shot_policies(ids=[alicloud_dbfs_auto_snap_shot_policy["default"]["id"]])
     pulumi.export("alicloudDbfsAutoSnapShotPolicyExampleId", default.auto_snap_shot_policies[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Auto Snap Shot Policy IDs.

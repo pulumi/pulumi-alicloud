@@ -28,6 +28,8 @@ public final class ServicemeshFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -66,6 +68,7 @@ public final class ServicemeshFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetExtensionProvidersResult> getExtensionProviders(GetExtensionProvidersArgs args) {
@@ -79,6 +82,8 @@ public final class ServicemeshFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -117,6 +122,7 @@ public final class ServicemeshFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetExtensionProvidersResult> getExtensionProvidersPlain(GetExtensionProvidersPlainArgs args) {
@@ -130,6 +136,8 @@ public final class ServicemeshFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -168,6 +176,7 @@ public final class ServicemeshFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetExtensionProvidersResult> getExtensionProviders(GetExtensionProvidersArgs args, InvokeOptions options) {
@@ -181,6 +190,8 @@ public final class ServicemeshFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -219,6 +230,7 @@ public final class ServicemeshFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetExtensionProvidersResult> getExtensionProvidersPlain(GetExtensionProvidersPlainArgs args, InvokeOptions options) {
@@ -286,6 +298,8 @@ public final class ServicemeshFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -315,6 +329,7 @@ public final class ServicemeshFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVersionsResult> getVersions() {
@@ -328,6 +343,8 @@ public final class ServicemeshFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -357,6 +374,7 @@ public final class ServicemeshFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVersionsResult> getVersionsPlain() {
@@ -370,6 +388,8 @@ public final class ServicemeshFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -399,6 +419,7 @@ public final class ServicemeshFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVersionsResult> getVersions(GetVersionsArgs args) {
@@ -412,6 +433,8 @@ public final class ServicemeshFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -441,6 +464,7 @@ public final class ServicemeshFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVersionsResult> getVersionsPlain(GetVersionsPlainArgs args) {
@@ -454,6 +478,8 @@ public final class ServicemeshFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -483,6 +509,7 @@ public final class ServicemeshFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVersionsResult> getVersions(GetVersionsArgs args, InvokeOptions options) {
@@ -496,6 +523,8 @@ public final class ServicemeshFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -525,6 +554,7 @@ public final class ServicemeshFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVersionsResult> getVersionsPlain(GetVersionsPlainArgs args, InvokeOptions options) {

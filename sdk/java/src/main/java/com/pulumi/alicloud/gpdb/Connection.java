@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  *  To avoid unnecessary conflict, please specified a internet connection prefix before applying the resource.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -104,6 +106,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

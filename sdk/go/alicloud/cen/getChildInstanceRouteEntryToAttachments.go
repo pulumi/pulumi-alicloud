@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +43,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetChildInstanceRouteEntryToAttachments(ctx *pulumi.Context, args *GetChildInstanceRouteEntryToAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetChildInstanceRouteEntryToAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetChildInstanceRouteEntryToAttachmentsResult

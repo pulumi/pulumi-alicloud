@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetStocks(ctx *pulumi.Context, args *GetStocksArgs, opts ...pulumi.InvokeOption) (*GetStocksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStocksResult

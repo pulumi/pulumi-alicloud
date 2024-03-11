@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -33,6 +34,7 @@ import * as utilities from "../utilities";
  * });
  * export const cloudStorageGatewayGatewayFileShareId2 = nameRegex.then(nameRegex => nameRegex.shares?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGatewayFileShares(args: GetGatewayFileSharesArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayFileSharesResult> {
 
@@ -91,6 +93,7 @@ export interface GetGatewayFileSharesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -109,6 +112,7 @@ export interface GetGatewayFileSharesResult {
  * });
  * export const cloudStorageGatewayGatewayFileShareId2 = nameRegex.then(nameRegex => nameRegex.shares?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGatewayFileSharesOutput(args: GetGatewayFileSharesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayFileSharesResult> {
     return pulumi.output(args).apply((a: any) => getGatewayFileShares(a, opts))

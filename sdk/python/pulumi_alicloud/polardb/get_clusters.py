@@ -147,6 +147,7 @@ def get_clusters(db_type: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -174,6 +175,7 @@ def get_clusters(db_type: Optional[str] = None,
         status="Running")
     pulumi.export("firstPolardbClusterId", polardb_clusters_ds.clusters[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_type: Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
@@ -223,6 +225,7 @@ def get_clusters_output(db_type: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -250,6 +253,7 @@ def get_clusters_output(db_type: Optional[pulumi.Input[Optional[str]]] = None,
         status="Running")
     pulumi.export("firstPolardbClusterId", polardb_clusters_ds.clusters[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_type: Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.

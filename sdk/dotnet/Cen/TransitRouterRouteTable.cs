@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// Basic Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,12 +46,11 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// CEN transit router route table
-    /// 
-    /// can be imported using the id, e.g.
+    /// CEN transit router route table  can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********

@@ -1159,6 +1159,7 @@ type GetInstancesInstance struct {
 	// The instance's security group configuration.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A map of tags assigned to the bastionhost instance. It must be in the format:
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -1181,6 +1182,7 @@ type GetInstancesInstance struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The instance's vSwitch ID.
 	UserVswitchId string `pulumi:"userVswitchId"`
@@ -1214,6 +1216,7 @@ type GetInstancesInstanceArgs struct {
 	// The instance's security group configuration.
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
 	// A map of tags assigned to the bastionhost instance. It must be in the format:
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -1236,6 +1239,7 @@ type GetInstancesInstanceArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// The instance's vSwitch ID.
 	UserVswitchId pulumi.StringInput `pulumi:"userVswitchId"`
@@ -1332,6 +1336,7 @@ func (o GetInstancesInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput 
 }
 
 // A map of tags assigned to the bastionhost instance. It must be in the format:
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1357,6 +1362,7 @@ func (o GetInstancesInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput 
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }

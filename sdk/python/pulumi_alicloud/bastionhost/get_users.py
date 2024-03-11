@@ -173,6 +173,7 @@ def get_users(display_name: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -187,6 +188,7 @@ def get_users(display_name: Optional[str] = None,
         name_regex="^my-User")
     pulumi.export("bastionhostUserId2", name_regex.users[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str display_name: Specify the New Created the User's Display Name. Supports up to 128 Characters.
@@ -251,6 +253,7 @@ def get_users_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -265,6 +268,7 @@ def get_users_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
         name_regex="^my-User")
     pulumi.export("bastionhostUserId2", name_regex.users[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str display_name: Specify the New Created the User's Display Name. Supports up to 128 Characters.

@@ -142,6 +142,7 @@ class NetworkRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -159,6 +160,7 @@ class NetworkRule(pulumi.CustomResource):
             ],
             network_rule_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -191,6 +193,7 @@ class NetworkRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -208,6 +211,7 @@ class NetworkRule(pulumi.CustomResource):
             ],
             network_rule_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

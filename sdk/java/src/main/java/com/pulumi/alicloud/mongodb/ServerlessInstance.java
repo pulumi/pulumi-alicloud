@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -102,6 +104,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -117,7 +120,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
     /**
      * The password of the database logon account.
      * * The password length is `8` to `32` bits.
-     * * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&amp;*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+     * * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&amp;*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
      * 
      */
     @Export(name="accountPassword", refs={String.class}, tree="[0]")
@@ -126,7 +129,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
     /**
      * @return The password of the database logon account.
      * * The password length is `8` to `32` bits.
-     * * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&amp;*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+     * * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&amp;*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
      * 
      */
     public Output<String> accountPassword() {

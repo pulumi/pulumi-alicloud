@@ -133,6 +133,7 @@ def get_rules(event_bus_name: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -142,6 +143,7 @@ def get_rules(event_bus_name: Optional[str] = None,
         name_regex="the_resource_name")
     pulumi.export("firstEventBridgeRuleId", example.rules[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str event_bus_name: The name of event bus.
@@ -190,6 +192,7 @@ def get_rules_output(event_bus_name: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -199,6 +202,7 @@ def get_rules_output(event_bus_name: Optional[pulumi.Input[str]] = None,
         name_regex="the_resource_name")
     pulumi.export("firstEventBridgeRuleId", example.rules[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str event_bus_name: The name of event bus.

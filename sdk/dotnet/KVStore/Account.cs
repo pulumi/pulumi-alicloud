@@ -20,6 +20,7 @@ namespace Pulumi.AliCloud.KVStore
     /// 
     /// Basic Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -85,6 +86,7 @@ namespace Pulumi.AliCloud.KVStore
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -107,7 +109,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        /// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) &amp; * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         /// </summary>
         [Output("accountPassword")]
         public Output<string?> AccountPassword { get; private set; } = null!;
@@ -219,7 +221,7 @@ namespace Pulumi.AliCloud.KVStore
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        /// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) &amp; * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         /// </summary>
         public Input<string>? AccountPassword
         {
@@ -296,7 +298,7 @@ namespace Pulumi.AliCloud.KVStore
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ &amp; * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        /// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) &amp; * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         /// </summary>
         public Input<string>? AccountPassword
         {

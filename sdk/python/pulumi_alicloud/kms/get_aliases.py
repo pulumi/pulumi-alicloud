@@ -110,6 +110,7 @@ def get_aliases(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -118,6 +119,7 @@ def get_aliases(ids: Optional[Sequence[str]] = None,
         name_regex="alias/tf-testKmsAlias_123")
     pulumi.export("firstKeyId", data["alicloud_kms_keys"]["kms_keys_ds"]["keys"][0]["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of KMS aliases IDs. The value is same as KMS alias_name.
@@ -152,6 +154,7 @@ def get_aliases_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -160,6 +163,7 @@ def get_aliases_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
         name_regex="alias/tf-testKmsAlias_123")
     pulumi.export("firstKeyId", data["alicloud_kms_keys"]["kms_keys_ds"]["keys"][0]["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of KMS aliases IDs. The value is same as KMS alias_name.

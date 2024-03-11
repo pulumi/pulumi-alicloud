@@ -268,6 +268,7 @@ class LogTailConfig(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -301,6 +302,8 @@ class LogTailConfig(pulumi.CustomResource):
         	}
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use the existing sls-logtail module
@@ -339,6 +342,7 @@ class LogTailConfig(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -372,6 +376,8 @@ class LogTailConfig(pulumi.CustomResource):
         	}
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use the existing sls-logtail module

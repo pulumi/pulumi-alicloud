@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetVbrPconnAssociations(ctx *pulumi.Context, args *GetVbrPconnAssociationsArgs, opts ...pulumi.InvokeOption) (*GetVbrPconnAssociationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVbrPconnAssociationsResult

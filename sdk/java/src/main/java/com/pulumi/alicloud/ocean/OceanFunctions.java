@@ -22,6 +22,8 @@ public final class OceanFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -54,6 +56,7 @@ public final class OceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBaseInstancesResult> getBaseInstances() {
@@ -67,6 +70,8 @@ public final class OceanFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -99,6 +104,7 @@ public final class OceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBaseInstancesResult> getBaseInstancesPlain() {
@@ -112,6 +118,8 @@ public final class OceanFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -144,6 +152,7 @@ public final class OceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBaseInstancesResult> getBaseInstances(GetBaseInstancesArgs args) {
@@ -157,6 +166,8 @@ public final class OceanFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -189,6 +200,7 @@ public final class OceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBaseInstancesResult> getBaseInstancesPlain(GetBaseInstancesPlainArgs args) {
@@ -202,6 +214,8 @@ public final class OceanFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -234,6 +248,7 @@ public final class OceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBaseInstancesResult> getBaseInstances(GetBaseInstancesArgs args, InvokeOptions options) {
@@ -247,6 +262,8 @@ public final class OceanFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -279,6 +296,7 @@ public final class OceanFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBaseInstancesResult> getBaseInstancesPlain(GetBaseInstancesPlainArgs args, InvokeOptions options) {

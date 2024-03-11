@@ -533,8 +533,10 @@ class DataCenter(pulumi.CustomResource):
         > **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
 
         ## Example Usage
+
         ### Create a cassandra dataCenter
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -564,6 +566,7 @@ class DataCenter(pulumi.CustomResource):
             disk_size=160,
             disk_type="cloud_ssd")
         ```
+        <!--End PulumiCodeChooser -->
 
         This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
 
@@ -571,7 +574,7 @@ class DataCenter(pulumi.CustomResource):
 
         If you need full function, please import Cassandra cluster first.
 
-         Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
+        Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
 
         ```sh
         $ pulumi import alicloud:cassandra/dataCenter:DataCenter dc_2 cn-shenxxxx-x:cds-wz933ryoaurxxxxx
@@ -616,8 +619,10 @@ class DataCenter(pulumi.CustomResource):
         > **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
 
         ## Example Usage
+
         ### Create a cassandra dataCenter
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -647,6 +652,7 @@ class DataCenter(pulumi.CustomResource):
             disk_size=160,
             disk_type="cloud_ssd")
         ```
+        <!--End PulumiCodeChooser -->
 
         This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
 
@@ -654,7 +660,7 @@ class DataCenter(pulumi.CustomResource):
 
         If you need full function, please import Cassandra cluster first.
 
-         Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
+        Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
 
         ```sh
         $ pulumi import alicloud:cassandra/dataCenter:DataCenter dc_2 cn-shenxxxx-x:cds-wz933ryoaurxxxxx

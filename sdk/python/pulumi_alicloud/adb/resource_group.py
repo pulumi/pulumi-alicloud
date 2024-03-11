@@ -234,6 +234,7 @@ class ResourceGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -282,6 +283,7 @@ class ResourceGroup(pulumi.CustomResource):
             node_num=1,
             db_cluster_id=default_db_cluster.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -318,6 +320,7 @@ class ResourceGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -366,6 +369,7 @@ class ResourceGroup(pulumi.CustomResource):
             node_num=1,
             db_cluster_id=default_db_cluster.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -103,6 +103,7 @@ def get_face_configs(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -114,6 +115,7 @@ def get_face_configs(ids: Optional[Sequence[str]] = None,
         name_regex=default_face_config.biz_name)
     pulumi.export("faceConfig", default_face_configs.configs[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Face Config IDs.
@@ -150,6 +152,7 @@ def get_face_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -161,6 +164,7 @@ def get_face_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
         name_regex=default_face_config.biz_name)
     pulumi.export("faceConfig", default_face_configs.configs[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Face Config IDs.

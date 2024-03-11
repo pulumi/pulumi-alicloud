@@ -187,6 +187,7 @@ class ApplicationScale(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -244,6 +245,7 @@ class ApplicationScale(pulumi.CustomResource):
             deploy_group=default_deploy_groups.groups[0].group_id,
             ecu_infos=[pulumi.Output.all(default_instance_cluster_attachment.ecu_map, default_instance.id).apply(lambda ecu_map, id: ecu_map[id])])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -267,6 +269,7 @@ class ApplicationScale(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -324,6 +327,7 @@ class ApplicationScale(pulumi.CustomResource):
             deploy_group=default_deploy_groups.groups[0].group_id,
             ecu_infos=[pulumi.Output.all(default_instance_cluster_attachment.ecu_map, default_instance.id).apply(lambda ecu_map, id: ecu_map[id])])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ApplicationScaleArgs args: The arguments to use to populate this resource's properties.

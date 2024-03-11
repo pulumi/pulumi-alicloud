@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * export const firstMainVersion = _default.then(_default => _default.mainVersions?.[0]?.emrVersion);
  * export const thisClusterTypes = _default.then(_default => _default.mainVersions?.[0]?.clusterTypes);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMainVersions(args?: GetMainVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetMainVersionsResult> {
     args = args || {};
@@ -90,6 +92,7 @@ export interface GetMainVersionsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -104,6 +107,7 @@ export interface GetMainVersionsResult {
  * export const firstMainVersion = _default.then(_default => _default.mainVersions?.[0]?.emrVersion);
  * export const thisClusterTypes = _default.then(_default => _default.mainVersions?.[0]?.clusterTypes);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMainVersionsOutput(args?: GetMainVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMainVersionsResult> {
     return pulumi.output(args).apply((a: any) => getMainVersions(a, opts))

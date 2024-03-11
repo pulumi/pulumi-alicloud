@@ -16,37 +16,20 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// &gt; **NOTE:**  Available in 1.86.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
+        /// ```terraform 
+        /// data "alicloud_alidns_records" "records_ds" {
+        ///   domain_name = "xiaozhu.top"
+        ///   ids         = ["1978593525779****"]
+        ///   type        = "A"
+        ///   output_file = "records.txt"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var recordsDs = AliCloud.Dns.GetAlidnsRecords.Invoke(new()
-        ///     {
-        ///         DomainName = "xiaozhu.top",
-        ///         Ids = new[]
-        ///         {
-        ///             "1978593525779****",
-        ///         },
-        ///         OutputFile = "records.txt",
-        ///         Type = "A",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstRecordId"] = recordsDs.Apply(getAlidnsRecordsResult =&gt; getAlidnsRecordsResult.Records[0]?.RecordId),
-        ///     };
-        /// });
+        /// output "first_record_id" {
+        ///   value = "${data.alicloud_alidns_records.records_ds.records.0.record_id}"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAlidnsRecordsResult> InvokeAsync(GetAlidnsRecordsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlidnsRecordsResult>("alicloud:dns/getAlidnsRecords:getAlidnsRecords", args ?? new GetAlidnsRecordsArgs(), options.WithDefaults());
@@ -56,37 +39,20 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// &gt; **NOTE:**  Available in 1.86.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
+        /// ```terraform 
+        /// data "alicloud_alidns_records" "records_ds" {
+        ///   domain_name = "xiaozhu.top"
+        ///   ids         = ["1978593525779****"]
+        ///   type        = "A"
+        ///   output_file = "records.txt"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var recordsDs = AliCloud.Dns.GetAlidnsRecords.Invoke(new()
-        ///     {
-        ///         DomainName = "xiaozhu.top",
-        ///         Ids = new[]
-        ///         {
-        ///             "1978593525779****",
-        ///         },
-        ///         OutputFile = "records.txt",
-        ///         Type = "A",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstRecordId"] = recordsDs.Apply(getAlidnsRecordsResult =&gt; getAlidnsRecordsResult.Records[0]?.RecordId),
-        ///     };
-        /// });
+        /// output "first_record_id" {
+        ///   value = "${data.alicloud_alidns_records.records_ds.records.0.record_id}"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAlidnsRecordsResult> Invoke(GetAlidnsRecordsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlidnsRecordsResult>("alicloud:dns/getAlidnsRecords:getAlidnsRecords", args ?? new GetAlidnsRecordsInvokeArgs(), options.WithDefaults());
@@ -156,7 +122,7 @@ namespace Pulumi.AliCloud.Dns
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
+        /// The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
         /// </summary>
         [Input("rrKeyWord")]
         public string? RrKeyWord { get; set; }
@@ -192,7 +158,7 @@ namespace Pulumi.AliCloud.Dns
         public string? TypeKeyWord { get; set; }
 
         /// <summary>
-        /// The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
+        /// The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
         /// </summary>
         [Input("valueKeyWord")]
         public string? ValueKeyWord { get; set; }
@@ -272,7 +238,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
+        /// The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
         /// </summary>
         [Input("rrKeyWord")]
         public Input<string>? RrKeyWord { get; set; }
@@ -308,7 +274,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? TypeKeyWord { get; set; }
 
         /// <summary>
-        /// The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
+        /// The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
         /// </summary>
         [Input("valueKeyWord")]
         public Input<string>? ValueKeyWord { get; set; }

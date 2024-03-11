@@ -295,6 +295,7 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -312,6 +313,7 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
             target_type="SELECTION_KEY",
             target_value="123")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -349,6 +351,7 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -366,6 +369,7 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
             target_type="SELECTION_KEY",
             target_value="123")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

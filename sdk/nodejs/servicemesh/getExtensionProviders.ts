@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -32,6 +33,7 @@ import * as utilities from "../utilities";
  * });
  * export const serviceMeshExtensionProvidersId2 = nameRegex.then(nameRegex => nameRegex.providers?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getExtensionProviders(args: GetExtensionProvidersArgs, opts?: pulumi.InvokeOptions): Promise<GetExtensionProvidersResult> {
 
@@ -108,6 +110,7 @@ export interface GetExtensionProvidersResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -125,6 +128,7 @@ export interface GetExtensionProvidersResult {
  * });
  * export const serviceMeshExtensionProvidersId2 = nameRegex.then(nameRegex => nameRegex.providers?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getExtensionProvidersOutput(args: GetExtensionProvidersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExtensionProvidersResult> {
     return pulumi.output(args).apply((a: any) => getExtensionProviders(a, opts))

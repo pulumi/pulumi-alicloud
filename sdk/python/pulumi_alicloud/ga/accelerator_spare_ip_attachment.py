@@ -157,6 +157,7 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -184,6 +185,7 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             spare_ip="127.0.0.1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -216,6 +218,7 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -243,6 +246,7 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             spare_ip="127.0.0.1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

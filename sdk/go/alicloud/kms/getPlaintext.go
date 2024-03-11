@@ -13,6 +13,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,6 +52,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetPlaintext(ctx *pulumi.Context, args *GetPlaintextArgs, opts ...pulumi.InvokeOption) (*GetPlaintextResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPlaintextResult

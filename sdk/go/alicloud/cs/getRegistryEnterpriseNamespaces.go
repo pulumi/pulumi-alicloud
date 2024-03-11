@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetRegistryEnterpriseNamespaces(ctx *pulumi.Context, args *GetRegistryEnterpriseNamespacesArgs, opts ...pulumi.InvokeOption) (*GetRegistryEnterpriseNamespacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegistryEnterpriseNamespacesResult

@@ -123,6 +123,7 @@ def get_lifecycle_hooks(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,6 +132,7 @@ def get_lifecycle_hooks(ids: Optional[Sequence[str]] = None,
         scaling_group_id="scaling_group_id")
     pulumi.export("firstLifecycleHook", ds.hooks[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of lifecycle hook IDs.
@@ -169,6 +171,7 @@ def get_lifecycle_hooks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -177,6 +180,7 @@ def get_lifecycle_hooks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
         scaling_group_id="scaling_group_id")
     pulumi.export("firstLifecycleHook", ds.hooks[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of lifecycle hook IDs.

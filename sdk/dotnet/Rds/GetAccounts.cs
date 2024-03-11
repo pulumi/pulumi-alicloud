@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// &gt; **NOTE:** Available in v1.120.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,8 +41,7 @@ namespace Pulumi.AliCloud.Rds
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(GetAccountsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:rds/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
@@ -53,12 +51,11 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// &gt; **NOTE:** Available in v1.120.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,8 +76,7 @@ namespace Pulumi.AliCloud.Rds
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountsResult> Invoke(GetAccountsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("alicloud:rds/getAccounts:getAccounts", args ?? new GetAccountsInvokeArgs(), options.WithDefaults());

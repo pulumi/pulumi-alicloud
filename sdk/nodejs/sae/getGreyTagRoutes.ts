@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const saeGreyTagRoutesId = nameRegex.then(nameRegex => nameRegex.routes?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGreyTagRoutes(args: GetGreyTagRoutesArgs, opts?: pulumi.InvokeOptions): Promise<GetGreyTagRoutesResult> {
 
@@ -83,6 +85,7 @@ export interface GetGreyTagRoutesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -93,6 +96,7 @@ export interface GetGreyTagRoutesResult {
  * });
  * export const saeGreyTagRoutesId = nameRegex.then(nameRegex => nameRegex.routes?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGreyTagRoutesOutput(args: GetGreyTagRoutesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGreyTagRoutesResult> {
     return pulumi.output(args).apply((a: any) => getGreyTagRoutes(a, opts))

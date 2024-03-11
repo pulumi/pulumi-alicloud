@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// &gt; **NOTE:** Available in v1.149.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,7 @@ namespace Pulumi.AliCloud.Rds
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRdsBackupsResult> InvokeAsync(GetRdsBackupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRdsBackupsResult>("alicloud:rds/getRdsBackups:getRdsBackups", args ?? new GetRdsBackupsArgs(), options.WithDefaults());
@@ -52,12 +50,11 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// &gt; **NOTE:** Available in v1.149.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +74,7 @@ namespace Pulumi.AliCloud.Rds
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRdsBackupsResult> Invoke(GetRdsBackupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRdsBackupsResult>("alicloud:rds/getRdsBackups:getRdsBackups", args ?? new GetRdsBackupsInvokeArgs(), options.WithDefaults());

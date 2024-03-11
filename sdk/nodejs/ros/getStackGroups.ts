@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstRosStackGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getStackGroups(args?: GetStackGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetStackGroupsResult> {
     args = args || {};
@@ -90,6 +92,7 @@ export interface GetStackGroupsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -100,6 +103,7 @@ export interface GetStackGroupsResult {
  * });
  * export const firstRosStackGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getStackGroupsOutput(args?: GetStackGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackGroupsResult> {
     return pulumi.output(args).apply((a: any) => getStackGroups(a, opts))

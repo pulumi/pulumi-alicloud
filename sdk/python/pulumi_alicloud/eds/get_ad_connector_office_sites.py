@@ -113,6 +113,7 @@ def get_ad_connector_office_sites(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -122,6 +123,7 @@ def get_ad_connector_office_sites(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.eds.get_ad_connector_office_sites(name_regex="^my-AdConnectorOfficeSite")
     pulumi.export("ecdAdConnectorOfficeSiteId2", name_regex.sites[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ad Connector Office Site IDs.
@@ -162,6 +164,7 @@ def get_ad_connector_office_sites_output(ids: Optional[pulumi.Input[Optional[Seq
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -171,6 +174,7 @@ def get_ad_connector_office_sites_output(ids: Optional[pulumi.Input[Optional[Seq
     name_regex = alicloud.eds.get_ad_connector_office_sites(name_regex="^my-AdConnectorOfficeSite")
     pulumi.export("ecdAdConnectorOfficeSiteId2", name_regex.sites[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ad Connector Office Site IDs.

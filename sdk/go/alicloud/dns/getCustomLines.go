@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetCustomLines(ctx *pulumi.Context, args *GetCustomLinesArgs, opts ...pulumi.InvokeOption) (*GetCustomLinesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCustomLinesResult

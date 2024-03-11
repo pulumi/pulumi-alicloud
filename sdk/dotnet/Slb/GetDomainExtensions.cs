@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; **NOTE:** Available in 1.60.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,8 +39,7 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDomainExtensionsResult> InvokeAsync(GetDomainExtensionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainExtensionsResult>("alicloud:slb/getDomainExtensions:getDomainExtensions", args ?? new GetDomainExtensionsArgs(), options.WithDefaults());
@@ -51,10 +49,9 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// &gt; **NOTE:** Available in 1.60.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,8 +72,7 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDomainExtensionsResult> Invoke(GetDomainExtensionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainExtensionsResult>("alicloud:slb/getDomainExtensions:getDomainExtensions", args ?? new GetDomainExtensionsInvokeArgs(), options.WithDefaults());

@@ -18,10 +18,9 @@ namespace Pulumi.AliCloud.Ots
         /// 
         /// &gt; **NOTE:** Available in v1.172.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,8 +43,7 @@ namespace Pulumi.AliCloud.Ots
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTunnelsResult> InvokeAsync(GetTunnelsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTunnelsResult>("alicloud:ots/getTunnels:getTunnels", args ?? new GetTunnelsArgs(), options.WithDefaults());
@@ -57,10 +55,9 @@ namespace Pulumi.AliCloud.Ots
         /// 
         /// &gt; **NOTE:** Available in v1.172.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +80,7 @@ namespace Pulumi.AliCloud.Ots
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTunnelsResult> Invoke(GetTunnelsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTunnelsResult>("alicloud:ots/getTunnels:getTunnels", args ?? new GetTunnelsInvokeArgs(), options.WithDefaults());

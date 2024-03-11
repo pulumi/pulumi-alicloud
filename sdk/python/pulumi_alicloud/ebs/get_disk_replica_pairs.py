@@ -108,6 +108,7 @@ def get_disk_replica_pairs(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -115,6 +116,7 @@ def get_disk_replica_pairs(ids: Optional[Sequence[str]] = None,
     default = alicloud.ebs.get_disk_replica_pairs(ids=[alicloud_ebs_disk_replica_pair["default"]["id"]])
     pulumi.export("alicloudEbsDiskReplicaPairExampleId", default.pairs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Disk Replica Pair IDs.
@@ -152,6 +154,7 @@ def get_disk_replica_pairs_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -159,6 +162,7 @@ def get_disk_replica_pairs_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     default = alicloud.ebs.get_disk_replica_pairs(ids=[alicloud_ebs_disk_replica_pair["default"]["id"]])
     pulumi.export("alicloudEbsDiskReplicaPairExampleId", default.pairs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Disk Replica Pair IDs.

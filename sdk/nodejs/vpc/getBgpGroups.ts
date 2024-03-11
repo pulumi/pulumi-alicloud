@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const vpcBgpGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBgpGroups(args?: GetBgpGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetBgpGroupsResult> {
     args = args || {};
@@ -93,6 +95,7 @@ export interface GetBgpGroupsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -106,6 +109,7 @@ export interface GetBgpGroupsResult {
  * });
  * export const vpcBgpGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBgpGroupsOutput(args?: GetBgpGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBgpGroupsResult> {
     return pulumi.output(args).apply((a: any) => getBgpGroups(a, opts))

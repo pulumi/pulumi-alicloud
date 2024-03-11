@@ -157,6 +157,7 @@ class SavedQuery(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -170,6 +171,7 @@ class SavedQuery(pulumi.CustomResource):
             expression="select * from resources limit 1;",
             saved_query_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -202,6 +204,7 @@ class SavedQuery(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -215,6 +218,7 @@ class SavedQuery(pulumi.CustomResource):
             expression="select * from resources limit 1;",
             saved_query_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

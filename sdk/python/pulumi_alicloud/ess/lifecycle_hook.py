@@ -269,6 +269,7 @@ class LifecycleHook(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -317,6 +318,8 @@ class LifecycleHook(pulumi.CustomResource):
             heartbeat_timeout=400,
             notification_metadata="example")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use to the existing autoscaling module
@@ -353,6 +356,7 @@ class LifecycleHook(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -401,6 +405,8 @@ class LifecycleHook(pulumi.CustomResource):
             heartbeat_timeout=400,
             notification_metadata="example")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use to the existing autoscaling module

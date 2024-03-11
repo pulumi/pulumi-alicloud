@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupReceivers(ctx *pulumi.Context, args *LookupReceiversArgs, opts ...pulumi.InvokeOption) (*LookupReceiversResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReceiversResult

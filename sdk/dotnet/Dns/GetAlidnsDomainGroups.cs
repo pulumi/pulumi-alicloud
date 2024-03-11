@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// &gt; **NOTE:**  Available in 1.85.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,8 +41,7 @@ namespace Pulumi.AliCloud.Dns
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAlidnsDomainGroupsResult> InvokeAsync(GetAlidnsDomainGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlidnsDomainGroupsResult>("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", args ?? new GetAlidnsDomainGroupsArgs(), options.WithDefaults());
@@ -53,10 +51,9 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// &gt; **NOTE:**  Available in 1.85.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,8 +76,7 @@ namespace Pulumi.AliCloud.Dns
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAlidnsDomainGroupsResult> Invoke(GetAlidnsDomainGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlidnsDomainGroupsResult>("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", args ?? new GetAlidnsDomainGroupsInvokeArgs(), options.WithDefaults());

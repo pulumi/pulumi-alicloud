@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Oos
         ///  
         /// &gt; **NOTE:** Available in v1.93.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,8 +43,7 @@ namespace Pulumi.AliCloud.Oos
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetExecutionsResult> InvokeAsync(GetExecutionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExecutionsResult>("alicloud:oos/getExecutions:getExecutions", args ?? new GetExecutionsArgs(), options.WithDefaults());
@@ -55,10 +53,9 @@ namespace Pulumi.AliCloud.Oos
         ///  
         /// &gt; **NOTE:** Available in v1.93.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +80,7 @@ namespace Pulumi.AliCloud.Oos
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetExecutionsResult> Invoke(GetExecutionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExecutionsResult>("alicloud:oos/getExecutions:getExecutions", args ?? new GetExecutionsInvokeArgs(), options.WithDefaults());

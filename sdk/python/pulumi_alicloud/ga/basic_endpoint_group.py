@@ -289,6 +289,7 @@ class BasicEndpointGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -330,6 +331,7 @@ class BasicEndpointGroup(pulumi.CustomResource):
             basic_endpoint_group_name="terraform-example",
             description="terraform-example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -366,6 +368,7 @@ class BasicEndpointGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -407,6 +410,7 @@ class BasicEndpointGroup(pulumi.CustomResource):
             basic_endpoint_group_name="terraform-example",
             description="terraform-example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

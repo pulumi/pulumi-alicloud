@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,6 +56,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetGatewayFileShares(ctx *pulumi.Context, args *GetGatewayFileSharesArgs, opts ...pulumi.InvokeOption) (*GetGatewayFileSharesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewayFileSharesResult

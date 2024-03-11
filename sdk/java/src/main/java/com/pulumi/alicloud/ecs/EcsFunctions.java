@@ -121,6 +121,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -148,6 +150,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetActivationsResult> getActivations() {
@@ -161,6 +164,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -188,6 +193,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetActivationsResult> getActivationsPlain() {
@@ -201,6 +207,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -228,6 +236,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetActivationsResult> getActivations(GetActivationsArgs args) {
@@ -241,6 +250,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -268,6 +279,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetActivationsResult> getActivationsPlain(GetActivationsPlainArgs args) {
@@ -281,6 +293,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -308,6 +322,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetActivationsResult> getActivations(GetActivationsArgs args, InvokeOptions options) {
@@ -321,6 +336,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -348,6 +365,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetActivationsResult> getActivationsPlain(GetActivationsPlainArgs args, InvokeOptions options) {
@@ -361,6 +379,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -391,6 +411,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAutoSnapshotPoliciesResult> getAutoSnapshotPolicies() {
@@ -404,6 +425,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -434,6 +457,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAutoSnapshotPoliciesResult> getAutoSnapshotPoliciesPlain() {
@@ -447,6 +471,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -477,6 +503,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAutoSnapshotPoliciesResult> getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs args) {
@@ -490,6 +517,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -520,6 +549,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAutoSnapshotPoliciesResult> getAutoSnapshotPoliciesPlain(GetAutoSnapshotPoliciesPlainArgs args) {
@@ -533,6 +563,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -563,6 +595,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAutoSnapshotPoliciesResult> getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs args, InvokeOptions options) {
@@ -576,6 +609,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -606,6 +641,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAutoSnapshotPoliciesResult> getAutoSnapshotPoliciesPlain(GetAutoSnapshotPoliciesPlainArgs args, InvokeOptions options) {
@@ -617,6 +653,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -649,6 +687,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCapacityReservationsResult> getCapacityReservations() {
@@ -660,6 +699,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -692,6 +733,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCapacityReservationsResult> getCapacityReservationsPlain() {
@@ -703,6 +745,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -735,6 +779,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCapacityReservationsResult> getCapacityReservations(GetCapacityReservationsArgs args) {
@@ -746,6 +791,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -778,6 +825,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCapacityReservationsResult> getCapacityReservationsPlain(GetCapacityReservationsPlainArgs args) {
@@ -789,6 +837,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -821,6 +871,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCapacityReservationsResult> getCapacityReservations(GetCapacityReservationsArgs args, InvokeOptions options) {
@@ -832,6 +883,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -864,6 +917,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCapacityReservationsResult> getCapacityReservationsPlain(GetCapacityReservationsPlainArgs args, InvokeOptions options) {
@@ -877,6 +931,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -907,6 +963,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCommandsResult> getCommands() {
@@ -920,6 +977,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -950,6 +1009,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCommandsResult> getCommandsPlain() {
@@ -963,6 +1023,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -993,6 +1055,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCommandsResult> getCommands(GetCommandsArgs args) {
@@ -1006,6 +1069,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1036,6 +1101,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCommandsResult> getCommandsPlain(GetCommandsPlainArgs args) {
@@ -1049,6 +1115,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1079,6 +1147,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCommandsResult> getCommands(GetCommandsArgs args, InvokeOptions options) {
@@ -1092,6 +1161,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1122,6 +1193,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCommandsResult> getCommandsPlain(GetCommandsPlainArgs args, InvokeOptions options) {
@@ -1133,6 +1205,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.91.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1164,6 +1238,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDedicatedHostsResult> getDedicatedHosts() {
@@ -1175,6 +1250,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.91.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1206,6 +1283,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDedicatedHostsResult> getDedicatedHostsPlain() {
@@ -1217,6 +1295,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.91.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1248,6 +1328,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDedicatedHostsResult> getDedicatedHosts(GetDedicatedHostsArgs args) {
@@ -1259,6 +1340,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.91.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1290,6 +1373,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDedicatedHostsResult> getDedicatedHostsPlain(GetDedicatedHostsPlainArgs args) {
@@ -1301,6 +1385,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.91.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1332,6 +1418,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDedicatedHostsResult> getDedicatedHosts(GetDedicatedHostsArgs args, InvokeOptions options) {
@@ -1343,6 +1430,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.91.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1374,6 +1463,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDedicatedHostsResult> getDedicatedHostsPlain(GetDedicatedHostsPlainArgs args, InvokeOptions options) {
@@ -1385,6 +1475,8 @@ public final class EcsFunctions {
      * This data source provides the disks of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1414,6 +1506,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDisksResult> getDisks() {
@@ -1425,6 +1518,8 @@ public final class EcsFunctions {
      * This data source provides the disks of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1454,6 +1549,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDisksResult> getDisksPlain() {
@@ -1465,6 +1561,8 @@ public final class EcsFunctions {
      * This data source provides the disks of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1494,6 +1592,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDisksResult> getDisks(GetDisksArgs args) {
@@ -1505,6 +1604,8 @@ public final class EcsFunctions {
      * This data source provides the disks of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1534,6 +1635,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDisksResult> getDisksPlain(GetDisksPlainArgs args) {
@@ -1545,6 +1647,8 @@ public final class EcsFunctions {
      * This data source provides the disks of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1574,6 +1678,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDisksResult> getDisks(GetDisksArgs args, InvokeOptions options) {
@@ -1585,6 +1690,8 @@ public final class EcsFunctions {
      * This data source provides the disks of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1614,6 +1721,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDisksResult> getDisksPlain(GetDisksPlainArgs args, InvokeOptions options) {
@@ -1627,6 +1735,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1676,6 +1786,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsDedicatedHostClustersResult> getEcsDedicatedHostClusters() {
@@ -1689,6 +1800,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1738,6 +1851,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsDedicatedHostClustersResult> getEcsDedicatedHostClustersPlain() {
@@ -1751,6 +1865,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1800,6 +1916,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsDedicatedHostClustersResult> getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs args) {
@@ -1813,6 +1930,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1862,6 +1981,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsDedicatedHostClustersResult> getEcsDedicatedHostClustersPlain(GetEcsDedicatedHostClustersPlainArgs args) {
@@ -1875,6 +1995,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1924,6 +2046,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsDedicatedHostClustersResult> getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs args, InvokeOptions options) {
@@ -1937,6 +2060,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1986,6 +2111,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsDedicatedHostClustersResult> getEcsDedicatedHostClustersPlain(GetEcsDedicatedHostClustersPlainArgs args, InvokeOptions options) {
@@ -1999,6 +2125,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2033,6 +2161,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsDeploymentSetsResult> getEcsDeploymentSets() {
@@ -2046,6 +2175,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2080,6 +2211,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsDeploymentSetsResult> getEcsDeploymentSetsPlain() {
@@ -2093,6 +2225,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2127,6 +2261,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsDeploymentSetsResult> getEcsDeploymentSets(GetEcsDeploymentSetsArgs args) {
@@ -2140,6 +2275,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2174,6 +2311,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsDeploymentSetsResult> getEcsDeploymentSetsPlain(GetEcsDeploymentSetsPlainArgs args) {
@@ -2187,6 +2325,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2221,6 +2361,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsDeploymentSetsResult> getEcsDeploymentSets(GetEcsDeploymentSetsArgs args, InvokeOptions options) {
@@ -2234,6 +2375,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2268,6 +2411,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsDeploymentSetsResult> getEcsDeploymentSetsPlain(GetEcsDeploymentSetsPlainArgs args, InvokeOptions options) {
@@ -2281,6 +2425,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2311,6 +2457,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsDisksResult> getEcsDisks() {
@@ -2324,6 +2471,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2354,6 +2503,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsDisksResult> getEcsDisksPlain() {
@@ -2367,6 +2517,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2397,6 +2549,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsDisksResult> getEcsDisks(GetEcsDisksArgs args) {
@@ -2410,6 +2563,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2440,6 +2595,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsDisksResult> getEcsDisksPlain(GetEcsDisksPlainArgs args) {
@@ -2453,6 +2609,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2483,6 +2641,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsDisksResult> getEcsDisks(GetEcsDisksArgs args, InvokeOptions options) {
@@ -2496,6 +2655,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2526,6 +2687,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsDisksResult> getEcsDisksPlain(GetEcsDisksPlainArgs args, InvokeOptions options) {
@@ -2539,6 +2701,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2573,6 +2737,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsImageComponentsResult> getEcsImageComponents() {
@@ -2586,6 +2751,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2620,6 +2787,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsImageComponentsResult> getEcsImageComponentsPlain() {
@@ -2633,6 +2801,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2667,6 +2837,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsImageComponentsResult> getEcsImageComponents(GetEcsImageComponentsArgs args) {
@@ -2680,6 +2851,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2714,6 +2887,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsImageComponentsResult> getEcsImageComponentsPlain(GetEcsImageComponentsPlainArgs args) {
@@ -2727,6 +2901,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2761,6 +2937,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsImageComponentsResult> getEcsImageComponents(GetEcsImageComponentsArgs args, InvokeOptions options) {
@@ -2774,6 +2951,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2808,6 +2987,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsImageComponentsResult> getEcsImageComponentsPlain(GetEcsImageComponentsPlainArgs args, InvokeOptions options) {
@@ -2821,6 +3001,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2855,6 +3037,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsImagePipelineResult> getEcsImagePipeline() {
@@ -2868,6 +3051,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2902,6 +3087,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsImagePipelineResult> getEcsImagePipelinePlain() {
@@ -2915,6 +3101,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2949,6 +3137,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsImagePipelineResult> getEcsImagePipeline(GetEcsImagePipelineArgs args) {
@@ -2962,6 +3151,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2996,6 +3187,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsImagePipelineResult> getEcsImagePipelinePlain(GetEcsImagePipelinePlainArgs args) {
@@ -3009,6 +3201,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3043,6 +3237,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsImagePipelineResult> getEcsImagePipeline(GetEcsImagePipelineArgs args, InvokeOptions options) {
@@ -3056,6 +3251,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3090,6 +3287,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsImagePipelineResult> getEcsImagePipelinePlain(GetEcsImagePipelinePlainArgs args, InvokeOptions options) {
@@ -3103,6 +3301,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3132,6 +3332,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsInvocationsResult> getEcsInvocations() {
@@ -3145,6 +3346,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3174,6 +3377,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsInvocationsResult> getEcsInvocationsPlain() {
@@ -3187,6 +3391,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3216,6 +3422,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsInvocationsResult> getEcsInvocations(GetEcsInvocationsArgs args) {
@@ -3229,6 +3436,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3258,6 +3467,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsInvocationsResult> getEcsInvocationsPlain(GetEcsInvocationsPlainArgs args) {
@@ -3271,6 +3481,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3300,6 +3512,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsInvocationsResult> getEcsInvocations(GetEcsInvocationsArgs args, InvokeOptions options) {
@@ -3313,6 +3526,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3342,6 +3557,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsInvocationsResult> getEcsInvocationsPlain(GetEcsInvocationsPlainArgs args, InvokeOptions options) {
@@ -3355,6 +3571,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3385,6 +3603,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsKeyPairsResult> getEcsKeyPairs() {
@@ -3398,6 +3617,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3428,6 +3649,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsKeyPairsResult> getEcsKeyPairsPlain() {
@@ -3441,6 +3663,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3471,6 +3695,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsKeyPairsResult> getEcsKeyPairs(GetEcsKeyPairsArgs args) {
@@ -3484,6 +3709,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3514,6 +3741,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsKeyPairsResult> getEcsKeyPairsPlain(GetEcsKeyPairsPlainArgs args) {
@@ -3527,6 +3755,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3557,6 +3787,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsKeyPairsResult> getEcsKeyPairs(GetEcsKeyPairsArgs args, InvokeOptions options) {
@@ -3570,6 +3801,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3600,6 +3833,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsKeyPairsResult> getEcsKeyPairsPlain(GetEcsKeyPairsPlainArgs args, InvokeOptions options) {
@@ -3613,6 +3847,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3643,6 +3879,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsLaunchTemplatesResult> getEcsLaunchTemplates() {
@@ -3656,6 +3893,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3686,6 +3925,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsLaunchTemplatesResult> getEcsLaunchTemplatesPlain() {
@@ -3699,6 +3939,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3729,6 +3971,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsLaunchTemplatesResult> getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs args) {
@@ -3742,6 +3985,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3772,6 +4017,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsLaunchTemplatesResult> getEcsLaunchTemplatesPlain(GetEcsLaunchTemplatesPlainArgs args) {
@@ -3785,6 +4031,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3815,6 +4063,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsLaunchTemplatesResult> getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs args, InvokeOptions options) {
@@ -3828,6 +4077,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3858,6 +4109,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsLaunchTemplatesResult> getEcsLaunchTemplatesPlain(GetEcsLaunchTemplatesPlainArgs args, InvokeOptions options) {
@@ -3871,6 +4123,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3901,6 +4155,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsNetworkInterfacePermissionsResult> getEcsNetworkInterfacePermissions(GetEcsNetworkInterfacePermissionsArgs args) {
@@ -3914,6 +4169,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3944,6 +4201,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsNetworkInterfacePermissionsResult> getEcsNetworkInterfacePermissionsPlain(GetEcsNetworkInterfacePermissionsPlainArgs args) {
@@ -3957,6 +4215,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3987,6 +4247,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsNetworkInterfacePermissionsResult> getEcsNetworkInterfacePermissions(GetEcsNetworkInterfacePermissionsArgs args, InvokeOptions options) {
@@ -4000,6 +4261,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4030,6 +4293,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsNetworkInterfacePermissionsResult> getEcsNetworkInterfacePermissionsPlain(GetEcsNetworkInterfacePermissionsPlainArgs args, InvokeOptions options) {
@@ -4043,6 +4307,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4073,6 +4339,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsNetworkInterfacesResult> getEcsNetworkInterfaces() {
@@ -4086,6 +4353,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4116,6 +4385,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsNetworkInterfacesResult> getEcsNetworkInterfacesPlain() {
@@ -4129,6 +4399,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4159,6 +4431,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsNetworkInterfacesResult> getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs args) {
@@ -4172,6 +4445,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4202,6 +4477,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsNetworkInterfacesResult> getEcsNetworkInterfacesPlain(GetEcsNetworkInterfacesPlainArgs args) {
@@ -4215,6 +4491,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4245,6 +4523,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsNetworkInterfacesResult> getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs args, InvokeOptions options) {
@@ -4258,6 +4537,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4288,6 +4569,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsNetworkInterfacesResult> getEcsNetworkInterfacesPlain(GetEcsNetworkInterfacesPlainArgs args, InvokeOptions options) {
@@ -4301,6 +4583,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4331,6 +4615,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsPrefixListsResult> getEcsPrefixLists() {
@@ -4344,6 +4629,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4374,6 +4661,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsPrefixListsResult> getEcsPrefixListsPlain() {
@@ -4387,6 +4675,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4417,6 +4707,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsPrefixListsResult> getEcsPrefixLists(GetEcsPrefixListsArgs args) {
@@ -4430,6 +4721,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4460,6 +4753,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsPrefixListsResult> getEcsPrefixListsPlain(GetEcsPrefixListsPlainArgs args) {
@@ -4473,6 +4767,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4503,6 +4799,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsPrefixListsResult> getEcsPrefixLists(GetEcsPrefixListsArgs args, InvokeOptions options) {
@@ -4516,6 +4813,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4546,6 +4845,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsPrefixListsResult> getEcsPrefixListsPlain(GetEcsPrefixListsPlainArgs args, InvokeOptions options) {
@@ -4559,6 +4859,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4603,6 +4905,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsSnapshotGroupsResult> getEcsSnapshotGroups() {
@@ -4616,6 +4919,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4660,6 +4965,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsSnapshotGroupsResult> getEcsSnapshotGroupsPlain() {
@@ -4673,6 +4979,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4717,6 +5025,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsSnapshotGroupsResult> getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs args) {
@@ -4730,6 +5039,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4774,6 +5085,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsSnapshotGroupsResult> getEcsSnapshotGroupsPlain(GetEcsSnapshotGroupsPlainArgs args) {
@@ -4787,6 +5099,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4831,6 +5145,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsSnapshotGroupsResult> getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs args, InvokeOptions options) {
@@ -4844,6 +5159,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4888,6 +5205,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsSnapshotGroupsResult> getEcsSnapshotGroupsPlain(GetEcsSnapshotGroupsPlainArgs args, InvokeOptions options) {
@@ -4901,6 +5219,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4931,6 +5251,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsSnapshotsResult> getEcsSnapshots() {
@@ -4944,6 +5265,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4974,6 +5297,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsSnapshotsResult> getEcsSnapshotsPlain() {
@@ -4987,6 +5311,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5017,6 +5343,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsSnapshotsResult> getEcsSnapshots(GetEcsSnapshotsArgs args) {
@@ -5030,6 +5357,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5060,6 +5389,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsSnapshotsResult> getEcsSnapshotsPlain(GetEcsSnapshotsPlainArgs args) {
@@ -5073,6 +5403,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5103,6 +5435,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsSnapshotsResult> getEcsSnapshots(GetEcsSnapshotsArgs args, InvokeOptions options) {
@@ -5116,6 +5449,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5146,6 +5481,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsSnapshotsResult> getEcsSnapshotsPlain(GetEcsSnapshotsPlainArgs args, InvokeOptions options) {
@@ -5159,6 +5495,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5191,6 +5529,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsStorageCapacityUnitsResult> getEcsStorageCapacityUnits() {
@@ -5204,6 +5543,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5236,6 +5577,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsStorageCapacityUnitsResult> getEcsStorageCapacityUnitsPlain() {
@@ -5249,6 +5591,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5281,6 +5625,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsStorageCapacityUnitsResult> getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs args) {
@@ -5294,6 +5639,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5326,6 +5673,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsStorageCapacityUnitsResult> getEcsStorageCapacityUnitsPlain(GetEcsStorageCapacityUnitsPlainArgs args) {
@@ -5339,6 +5687,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5371,6 +5721,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsStorageCapacityUnitsResult> getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs args, InvokeOptions options) {
@@ -5384,6 +5735,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5416,6 +5769,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsStorageCapacityUnitsResult> getEcsStorageCapacityUnitsPlain(GetEcsStorageCapacityUnitsPlainArgs args, InvokeOptions options) {
@@ -5429,6 +5783,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5459,6 +5815,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEipAddressesResult> getEipAddresses() {
@@ -5472,6 +5829,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5502,6 +5861,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEipAddressesResult> getEipAddressesPlain() {
@@ -5515,6 +5875,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5545,6 +5907,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEipAddressesResult> getEipAddresses(GetEipAddressesArgs args) {
@@ -5558,6 +5921,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5588,6 +5953,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEipAddressesResult> getEipAddressesPlain(GetEipAddressesPlainArgs args) {
@@ -5601,6 +5967,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5631,6 +5999,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEipAddressesResult> getEipAddresses(GetEipAddressesArgs args, InvokeOptions options) {
@@ -5644,6 +6013,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5674,6 +6045,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEipAddressesResult> getEipAddressesPlain(GetEipAddressesPlainArgs args, InvokeOptions options) {
@@ -5685,6 +6057,8 @@ public final class EcsFunctions {
      * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5712,6 +6086,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * This function has been deprecated in favour of the getEipAddresses function
@@ -5727,6 +6102,8 @@ public final class EcsFunctions {
      * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5754,6 +6131,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * This function has been deprecated in favour of the getEipAddresses function
@@ -5769,6 +6147,8 @@ public final class EcsFunctions {
      * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5796,6 +6176,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * This function has been deprecated in favour of the getEipAddresses function
@@ -5811,6 +6192,8 @@ public final class EcsFunctions {
      * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5838,6 +6221,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * This function has been deprecated in favour of the getEipAddresses function
@@ -5853,6 +6237,8 @@ public final class EcsFunctions {
      * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5880,6 +6266,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * This function has been deprecated in favour of the getEipAddresses function
@@ -5895,6 +6282,8 @@ public final class EcsFunctions {
      * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5922,6 +6311,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * This function has been deprecated in favour of the getEipAddresses function
@@ -5937,6 +6327,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5966,6 +6358,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetElasticityAssurancesResult> getElasticityAssurances() {
@@ -5977,6 +6370,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6006,6 +6401,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetElasticityAssurancesResult> getElasticityAssurancesPlain() {
@@ -6017,6 +6413,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6046,6 +6444,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetElasticityAssurancesResult> getElasticityAssurances(GetElasticityAssurancesArgs args) {
@@ -6057,6 +6456,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6086,6 +6487,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetElasticityAssurancesResult> getElasticityAssurancesPlain(GetElasticityAssurancesPlainArgs args) {
@@ -6097,6 +6499,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6126,6 +6530,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetElasticityAssurancesResult> getElasticityAssurances(GetElasticityAssurancesArgs args, InvokeOptions options) {
@@ -6137,6 +6542,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6166,6 +6573,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetElasticityAssurancesResult> getElasticityAssurancesPlain(GetElasticityAssurancesPlainArgs args, InvokeOptions options) {
@@ -6179,6 +6587,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6209,6 +6619,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHpcClustersResult> getHpcClusters() {
@@ -6222,6 +6633,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6252,6 +6665,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHpcClustersResult> getHpcClustersPlain() {
@@ -6265,6 +6679,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6295,6 +6711,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHpcClustersResult> getHpcClusters(GetHpcClustersArgs args) {
@@ -6308,6 +6725,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6338,6 +6757,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHpcClustersResult> getHpcClustersPlain(GetHpcClustersPlainArgs args) {
@@ -6351,6 +6771,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6381,6 +6803,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHpcClustersResult> getHpcClusters(GetHpcClustersArgs args, InvokeOptions options) {
@@ -6394,6 +6817,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6424,6 +6849,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHpcClustersResult> getHpcClustersPlain(GetHpcClustersPlainArgs args, InvokeOptions options) {
@@ -6434,6 +6860,8 @@ public final class EcsFunctions {
      * other public images and the ones available on the image market.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6464,6 +6892,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImagesResult> getImages() {
@@ -6474,6 +6903,8 @@ public final class EcsFunctions {
      * other public images and the ones available on the image market.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6504,6 +6935,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImagesResult> getImagesPlain() {
@@ -6514,6 +6946,8 @@ public final class EcsFunctions {
      * other public images and the ones available on the image market.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6544,6 +6978,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImagesResult> getImages(GetImagesArgs args) {
@@ -6554,6 +6989,8 @@ public final class EcsFunctions {
      * other public images and the ones available on the image market.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6584,6 +7021,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args) {
@@ -6594,6 +7032,8 @@ public final class EcsFunctions {
      * other public images and the ones available on the image market.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6624,6 +7064,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImagesResult> getImages(GetImagesArgs args, InvokeOptions options) {
@@ -6634,6 +7075,8 @@ public final class EcsFunctions {
      * other public images and the ones available on the image market.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6664,6 +7107,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args, InvokeOptions options) {
@@ -6675,6 +7119,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6705,6 +7151,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceKeywordsResult> getInstanceKeywords(GetInstanceKeywordsArgs args) {
@@ -6716,6 +7163,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6746,6 +7195,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceKeywordsResult> getInstanceKeywordsPlain(GetInstanceKeywordsPlainArgs args) {
@@ -6757,6 +7207,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6787,6 +7239,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceKeywordsResult> getInstanceKeywords(GetInstanceKeywordsArgs args, InvokeOptions options) {
@@ -6798,6 +7251,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in v1.196.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6828,6 +7283,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceKeywordsResult> getInstanceKeywordsPlain(GetInstanceKeywordsPlainArgs args, InvokeOptions options) {
@@ -6839,6 +7295,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.54.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6869,6 +7327,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceTypeFamiliesResult> getInstanceTypeFamilies() {
@@ -6880,6 +7339,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.54.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6910,6 +7371,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceTypeFamiliesResult> getInstanceTypeFamiliesPlain() {
@@ -6921,6 +7383,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.54.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6951,6 +7415,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceTypeFamiliesResult> getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs args) {
@@ -6962,6 +7427,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.54.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6992,6 +7459,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceTypeFamiliesResult> getInstanceTypeFamiliesPlain(GetInstanceTypeFamiliesPlainArgs args) {
@@ -7003,6 +7471,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.54.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7033,6 +7503,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceTypeFamiliesResult> getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs args, InvokeOptions options) {
@@ -7044,6 +7515,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** Available in 1.54.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7074,6 +7547,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceTypeFamiliesResult> getInstanceTypeFamiliesPlain(GetInstanceTypeFamiliesPlainArgs args, InvokeOptions options) {
@@ -7087,6 +7561,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7122,6 +7598,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes() {
@@ -7135,6 +7612,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7170,6 +7649,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain() {
@@ -7183,6 +7663,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7218,6 +7700,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes(GetInstanceTypesArgs args) {
@@ -7231,6 +7714,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7266,6 +7751,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain(GetInstanceTypesPlainArgs args) {
@@ -7279,6 +7765,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7314,6 +7802,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes(GetInstanceTypesArgs args, InvokeOptions options) {
@@ -7327,6 +7816,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7362,6 +7853,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain(GetInstanceTypesPlainArgs args, InvokeOptions options) {
@@ -7371,6 +7863,8 @@ public final class EcsFunctions {
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7402,6 +7896,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -7411,6 +7906,8 @@ public final class EcsFunctions {
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7442,6 +7939,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -7451,6 +7949,8 @@ public final class EcsFunctions {
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7482,6 +7982,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -7491,6 +7992,8 @@ public final class EcsFunctions {
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7522,6 +8025,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -7531,6 +8035,8 @@ public final class EcsFunctions {
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7562,6 +8068,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -7571,6 +8078,8 @@ public final class EcsFunctions {
      * The Instances data source list ECS instance resources according to their ID, name regex, image id, status and other fields.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7602,6 +8111,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -7613,6 +8123,8 @@ public final class EcsFunctions {
      * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7647,6 +8159,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKeyPairsResult> getKeyPairs() {
@@ -7658,6 +8171,8 @@ public final class EcsFunctions {
      * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7692,6 +8207,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKeyPairsResult> getKeyPairsPlain() {
@@ -7703,6 +8219,8 @@ public final class EcsFunctions {
      * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7737,6 +8255,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKeyPairsResult> getKeyPairs(GetKeyPairsArgs args) {
@@ -7748,6 +8267,8 @@ public final class EcsFunctions {
      * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7782,6 +8303,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKeyPairsResult> getKeyPairsPlain(GetKeyPairsPlainArgs args) {
@@ -7793,6 +8315,8 @@ public final class EcsFunctions {
      * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7827,6 +8351,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKeyPairsResult> getKeyPairs(GetKeyPairsArgs args, InvokeOptions options) {
@@ -7838,6 +8363,8 @@ public final class EcsFunctions {
      * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7872,6 +8399,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKeyPairsResult> getKeyPairsPlain(GetKeyPairsPlainArgs args, InvokeOptions options) {
@@ -7885,6 +8413,8 @@ public final class EcsFunctions {
      * For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7982,6 +8512,8 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -8011,6 +8543,8 @@ public final class EcsFunctions {
      * For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8108,6 +8642,8 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -8137,6 +8673,8 @@ public final class EcsFunctions {
      * For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8234,6 +8772,8 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -8263,6 +8803,8 @@ public final class EcsFunctions {
      * For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8360,6 +8902,8 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -8389,6 +8933,8 @@ public final class EcsFunctions {
      * For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8486,6 +9032,8 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -8515,6 +9063,8 @@ public final class EcsFunctions {
      * For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8612,6 +9162,8 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -8641,6 +9193,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8685,6 +9239,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecurityGroupRulesResult> getSecurityGroupRules(GetSecurityGroupRulesArgs args) {
@@ -8698,6 +9253,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8742,6 +9299,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecurityGroupRulesResult> getSecurityGroupRulesPlain(GetSecurityGroupRulesPlainArgs args) {
@@ -8755,6 +9313,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8799,6 +9359,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecurityGroupRulesResult> getSecurityGroupRules(GetSecurityGroupRulesArgs args, InvokeOptions options) {
@@ -8812,6 +9373,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8856,6 +9419,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecurityGroupRulesResult> getSecurityGroupRulesPlain(GetSecurityGroupRulesPlainArgs args, InvokeOptions options) {
@@ -8865,6 +9429,8 @@ public final class EcsFunctions {
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8902,6 +9468,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecurityGroupsResult> getSecurityGroups() {
@@ -8911,6 +9478,8 @@ public final class EcsFunctions {
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8948,6 +9517,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecurityGroupsResult> getSecurityGroupsPlain() {
@@ -8957,6 +9527,8 @@ public final class EcsFunctions {
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8994,6 +9566,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecurityGroupsResult> getSecurityGroups(GetSecurityGroupsArgs args) {
@@ -9003,6 +9576,8 @@ public final class EcsFunctions {
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9040,6 +9615,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecurityGroupsResult> getSecurityGroupsPlain(GetSecurityGroupsPlainArgs args) {
@@ -9049,6 +9625,8 @@ public final class EcsFunctions {
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9086,6 +9664,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecurityGroupsResult> getSecurityGroups(GetSecurityGroupsArgs args, InvokeOptions options) {
@@ -9095,6 +9674,8 @@ public final class EcsFunctions {
      * This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9132,6 +9713,7 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecurityGroupsResult> getSecurityGroupsPlain(GetSecurityGroupsPlainArgs args, InvokeOptions options) {
@@ -9147,6 +9729,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:**  Available in 1.40.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9176,6 +9760,8 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -9219,6 +9805,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:**  Available in 1.40.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9248,6 +9836,8 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -9291,6 +9881,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:**  Available in 1.40.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9320,6 +9912,8 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -9363,6 +9957,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:**  Available in 1.40.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9392,6 +9988,8 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -9435,6 +10033,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:**  Available in 1.40.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9464,6 +10064,8 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Argument Reference
      * 
      * The following arguments are supported:
@@ -9507,6 +10109,8 @@ public final class EcsFunctions {
      * &gt; **NOTE:**  Available in 1.40.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -9536,6 +10140,8 @@ public final class EcsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Argument Reference
      * 
      * The following arguments are supported:

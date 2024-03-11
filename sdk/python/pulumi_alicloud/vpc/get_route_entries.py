@@ -127,6 +127,7 @@ def get_route_entries(cidr_block: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -178,6 +179,7 @@ def get_route_entries(cidr_block: Optional[str] = None,
         type="ingress")
     foo_route_entries = alicloud.vpc.get_route_entries_output(route_table_id=foo_route_entry.route_table_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cidr_block: The destination CIDR block of the route entry.
@@ -219,6 +221,7 @@ def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[str]]] =
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -270,6 +273,7 @@ def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[str]]] =
         type="ingress")
     foo_route_entries = alicloud.vpc.get_route_entries_output(route_table_id=foo_route_entry.route_table_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cidr_block: The destination CIDR block of the route entry.

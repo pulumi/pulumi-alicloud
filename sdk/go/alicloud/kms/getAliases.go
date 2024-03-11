@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAliases(ctx *pulumi.Context, args *GetAliasesArgs, opts ...pulumi.InvokeOption) (*GetAliasesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAliasesResult

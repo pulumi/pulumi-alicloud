@@ -74,6 +74,7 @@ def get_instance_types(output_file: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -81,6 +82,7 @@ def get_instance_types(output_file: Optional[str] = None,
     default = alicloud.ecp.get_instance_types()
     pulumi.export("firstEcpInstanceTypesInstanceType", default.instance_types[0].instance_type)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -108,6 +110,7 @@ def get_instance_types_output(output_file: Optional[pulumi.Input[Optional[str]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -115,6 +118,7 @@ def get_instance_types_output(output_file: Optional[pulumi.Input[Optional[str]]]
     default = alicloud.ecp.get_instance_types()
     pulumi.export("firstEcpInstanceTypesInstanceType", default.instance_types[0].instance_type)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

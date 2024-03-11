@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,6 +30,7 @@ import * as utilities from "../utilities";
  * });
  * export const sddpConfigId = defaultConfigs.apply(defaultConfigs => defaultConfigs.ids);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConfigs(args?: GetConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigsResult> {
     args = args || {};
@@ -78,6 +80,7 @@ export interface GetConfigsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -92,6 +95,7 @@ export interface GetConfigsResult {
  * });
  * export const sddpConfigId = defaultConfigs.apply(defaultConfigs => defaultConfigs.ids);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConfigsOutput(args?: GetConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigsResult> {
     return pulumi.output(args).apply((a: any) => getConfigs(a, opts))

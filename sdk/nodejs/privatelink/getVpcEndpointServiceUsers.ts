@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstPrivatelinkVpcEndpointServiceUserId = example.then(example => example.users?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVpcEndpointServiceUsers(args: GetVpcEndpointServiceUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointServiceUsersResult> {
 
@@ -76,6 +78,7 @@ export interface GetVpcEndpointServiceUsersResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -85,6 +88,7 @@ export interface GetVpcEndpointServiceUsersResult {
  * });
  * export const firstPrivatelinkVpcEndpointServiceUserId = example.then(example => example.users?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVpcEndpointServiceUsersOutput(args: GetVpcEndpointServiceUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointServiceUsersResult> {
     return pulumi.output(args).apply((a: any) => getVpcEndpointServiceUsers(a, opts))

@@ -207,6 +207,7 @@ class Alias(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -224,6 +225,7 @@ class Alias(pulumi.CustomResource):
             service_name=default_service.name,
             service_version="1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -257,6 +259,7 @@ class Alias(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -274,6 +277,7 @@ class Alias(pulumi.CustomResource):
             service_name=default_service.name,
             service_version="1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

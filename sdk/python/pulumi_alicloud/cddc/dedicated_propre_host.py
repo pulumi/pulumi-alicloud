@@ -75,7 +75,7 @@ class DedicatedPropreHostArgs:
         :param pulumi.Input[str] os_password: Host login password, which can be set later. The password must meet the following requirements:
                - Length is 8~30 characters.
                - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-               - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+               - Special symbol '()\\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
                > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         :param pulumi.Input[str] password_inherit: Whether to use the default password of the image.
                - **false**: (default)Do not use
@@ -367,7 +367,7 @@ class DedicatedPropreHostArgs:
         Host login password, which can be set later. The password must meet the following requirements:
         - Length is 8~30 characters.
         - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-        - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+        - Special symbol '()\\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
         > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         """
         return pulumi.get(self, "os_password")
@@ -524,7 +524,7 @@ class _DedicatedPropreHostState:
         :param pulumi.Input[str] os_password: Host login password, which can be set later. The password must meet the following requirements:
                - Length is 8~30 characters.
                - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-               - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+               - Special symbol '()\\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
                > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         :param pulumi.Input[str] password_inherit: Whether to use the default password of the image.
                - **false**: (default)Do not use
@@ -793,7 +793,7 @@ class _DedicatedPropreHostState:
         Host login password, which can be set later. The password must meet the following requirements:
         - Length is 8~30 characters.
         - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-        - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+        - Special symbol '()\\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
         > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         """
         return pulumi.get(self, "os_password")
@@ -1008,7 +1008,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         :param pulumi.Input[str] os_password: Host login password, which can be set later. The password must meet the following requirements:
                - Length is 8~30 characters.
                - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-               - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+               - Special symbol '()\\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
                > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         :param pulumi.Input[str] password_inherit: Whether to use the default password of the image.
                - **false**: (default)Do not use
@@ -1203,7 +1203,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         :param pulumi.Input[str] os_password: Host login password, which can be set later. The password must meet the following requirements:
                - Length is 8~30 characters.
                - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-               - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+               - Special symbol '()\\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
                > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         :param pulumi.Input[str] password_inherit: Whether to use the default password of the image.
                - **false**: (default)Do not use
@@ -1390,7 +1390,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         Host login password, which can be set later. The password must meet the following requirements:
         - Length is 8~30 characters.
         - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-        - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+        - Special symbol '()\\' ~! @#$%!^(MISSING)& *-_+ =|{}[]:;',.? /'
         > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         """
         return pulumi.get(self, "os_password")

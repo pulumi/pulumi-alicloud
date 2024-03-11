@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetEnterpriseDatabases(ctx *pulumi.Context, args *GetEnterpriseDatabasesArgs, opts ...pulumi.InvokeOption) (*GetEnterpriseDatabasesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEnterpriseDatabasesResult

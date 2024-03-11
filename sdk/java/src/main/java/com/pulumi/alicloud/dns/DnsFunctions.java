@@ -67,6 +67,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -101,6 +103,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessStrategiesResult> getAccessStrategies(GetAccessStrategiesArgs args) {
@@ -114,6 +117,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -148,6 +153,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessStrategiesResult> getAccessStrategiesPlain(GetAccessStrategiesPlainArgs args) {
@@ -161,6 +167,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -195,6 +203,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessStrategiesResult> getAccessStrategies(GetAccessStrategiesArgs args, InvokeOptions options) {
@@ -208,6 +217,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -242,6 +253,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessStrategiesResult> getAccessStrategiesPlain(GetAccessStrategiesPlainArgs args, InvokeOptions options) {
@@ -255,6 +267,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -293,6 +307,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAddressPoolsResult> getAddressPools(GetAddressPoolsArgs args) {
@@ -306,6 +321,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -344,6 +361,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAddressPoolsResult> getAddressPoolsPlain(GetAddressPoolsPlainArgs args) {
@@ -357,6 +375,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -395,6 +415,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAddressPoolsResult> getAddressPools(GetAddressPoolsArgs args, InvokeOptions options) {
@@ -408,6 +429,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -446,6 +469,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAddressPoolsResult> getAddressPoolsPlain(GetAddressPoolsPlainArgs args, InvokeOptions options) {
@@ -457,6 +481,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -486,6 +512,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlidnsDomainGroupsResult> getAlidnsDomainGroups() {
@@ -497,6 +524,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -526,6 +555,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlidnsDomainGroupsResult> getAlidnsDomainGroupsPlain() {
@@ -537,6 +567,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -566,6 +598,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlidnsDomainGroupsResult> getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs args) {
@@ -577,6 +610,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -606,6 +641,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlidnsDomainGroupsResult> getAlidnsDomainGroupsPlain(GetAlidnsDomainGroupsPlainArgs args) {
@@ -617,6 +653,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -646,6 +684,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlidnsDomainGroupsResult> getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs args, InvokeOptions options) {
@@ -657,6 +696,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.85.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -686,6 +727,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlidnsDomainGroupsResult> getAlidnsDomainGroupsPlain(GetAlidnsDomainGroupsPlainArgs args, InvokeOptions options) {
@@ -697,6 +739,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -727,6 +771,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlidnsDomainsResult> getAlidnsDomains() {
@@ -738,6 +783,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -768,6 +815,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlidnsDomainsResult> getAlidnsDomainsPlain() {
@@ -779,6 +827,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -809,6 +859,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlidnsDomainsResult> getAlidnsDomains(GetAlidnsDomainsArgs args) {
@@ -820,6 +871,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -850,6 +903,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlidnsDomainsResult> getAlidnsDomainsPlain(GetAlidnsDomainsPlainArgs args) {
@@ -861,6 +915,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -891,6 +947,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlidnsDomainsResult> getAlidnsDomains(GetAlidnsDomainsArgs args, InvokeOptions options) {
@@ -902,6 +959,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -932,6 +991,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlidnsDomainsResult> getAlidnsDomainsPlain(GetAlidnsDomainsPlainArgs args, InvokeOptions options) {
@@ -943,6 +1003,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -972,6 +1034,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlidnsInstancesResult> getAlidnsInstances() {
@@ -983,6 +1046,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1012,6 +1077,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlidnsInstancesResult> getAlidnsInstancesPlain() {
@@ -1023,6 +1089,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1052,6 +1120,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlidnsInstancesResult> getAlidnsInstances(GetAlidnsInstancesArgs args) {
@@ -1063,6 +1132,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1092,6 +1163,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlidnsInstancesResult> getAlidnsInstancesPlain(GetAlidnsInstancesPlainArgs args) {
@@ -1103,6 +1175,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1132,6 +1206,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlidnsInstancesResult> getAlidnsInstances(GetAlidnsInstancesArgs args, InvokeOptions options) {
@@ -1143,6 +1218,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.95.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1172,6 +1249,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlidnsInstancesResult> getAlidnsInstancesPlain(GetAlidnsInstancesPlainArgs args, InvokeOptions options) {
@@ -1183,38 +1261,6 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.dns.inputs.GetAlidnsRecordsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var recordsDs = DnsFunctions.getAlidnsRecords(GetAlidnsRecordsArgs.builder()
-     *             .domainName(&#34;xiaozhu.top&#34;)
-     *             .ids(&#34;1978593525779****&#34;)
-     *             .outputFile(&#34;records.txt&#34;)
-     *             .type(&#34;A&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getAlidnsRecordsResult -&gt; getAlidnsRecordsResult.records()[0].recordId()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetAlidnsRecordsResult> getAlidnsRecords(GetAlidnsRecordsArgs args) {
@@ -1226,38 +1272,6 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.dns.inputs.GetAlidnsRecordsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var recordsDs = DnsFunctions.getAlidnsRecords(GetAlidnsRecordsArgs.builder()
-     *             .domainName(&#34;xiaozhu.top&#34;)
-     *             .ids(&#34;1978593525779****&#34;)
-     *             .outputFile(&#34;records.txt&#34;)
-     *             .type(&#34;A&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getAlidnsRecordsResult -&gt; getAlidnsRecordsResult.records()[0].recordId()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetAlidnsRecordsResult> getAlidnsRecordsPlain(GetAlidnsRecordsPlainArgs args) {
@@ -1269,38 +1283,6 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.dns.inputs.GetAlidnsRecordsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var recordsDs = DnsFunctions.getAlidnsRecords(GetAlidnsRecordsArgs.builder()
-     *             .domainName(&#34;xiaozhu.top&#34;)
-     *             .ids(&#34;1978593525779****&#34;)
-     *             .outputFile(&#34;records.txt&#34;)
-     *             .type(&#34;A&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getAlidnsRecordsResult -&gt; getAlidnsRecordsResult.records()[0].recordId()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetAlidnsRecordsResult> getAlidnsRecords(GetAlidnsRecordsArgs args, InvokeOptions options) {
@@ -1312,38 +1294,6 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.86.0+.
      * 
      * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.dns.DnsFunctions;
-     * import com.pulumi.alicloud.dns.inputs.GetAlidnsRecordsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var recordsDs = DnsFunctions.getAlidnsRecords(GetAlidnsRecordsArgs.builder()
-     *             .domainName(&#34;xiaozhu.top&#34;)
-     *             .ids(&#34;1978593525779****&#34;)
-     *             .outputFile(&#34;records.txt&#34;)
-     *             .type(&#34;A&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getAlidnsRecordsResult -&gt; getAlidnsRecordsResult.records()[0].recordId()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetAlidnsRecordsResult> getAlidnsRecordsPlain(GetAlidnsRecordsPlainArgs args, InvokeOptions options) {
@@ -1357,6 +1307,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1387,6 +1339,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomLinesResult> getCustomLines(GetCustomLinesArgs args) {
@@ -1400,6 +1353,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1430,6 +1385,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomLinesResult> getCustomLinesPlain(GetCustomLinesPlainArgs args) {
@@ -1443,6 +1399,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1473,6 +1431,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomLinesResult> getCustomLines(GetCustomLinesArgs args, InvokeOptions options) {
@@ -1486,6 +1445,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1516,6 +1477,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomLinesResult> getCustomLinesPlain(GetCustomLinesPlainArgs args, InvokeOptions options) {
@@ -1597,6 +1559,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in v1.80.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1628,6 +1592,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainTxtGuidResult> getDomainTxtGuid(GetDomainTxtGuidArgs args) {
@@ -1639,6 +1604,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in v1.80.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1670,6 +1637,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainTxtGuidResult> getDomainTxtGuidPlain(GetDomainTxtGuidPlainArgs args) {
@@ -1681,6 +1649,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in v1.80.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1712,6 +1682,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainTxtGuidResult> getDomainTxtGuid(GetDomainTxtGuidArgs args, InvokeOptions options) {
@@ -1723,6 +1694,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in v1.80.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1754,6 +1727,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainTxtGuidResult> getDomainTxtGuidPlain(GetDomainTxtGuidPlainArgs args, InvokeOptions options) {
@@ -1765,6 +1739,8 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1795,6 +1771,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainsResult> getDomains() {
@@ -1806,6 +1783,8 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1836,6 +1815,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain() {
@@ -1847,6 +1827,8 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1877,6 +1859,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args) {
@@ -1888,6 +1871,8 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1918,6 +1903,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args) {
@@ -1929,6 +1915,8 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1959,6 +1947,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
@@ -1970,6 +1959,8 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2000,6 +1991,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
@@ -2009,6 +2001,8 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2039,6 +2033,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupsResult> getGroups() {
@@ -2048,6 +2043,8 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2078,6 +2075,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain() {
@@ -2087,6 +2085,8 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2117,6 +2117,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args) {
@@ -2126,6 +2127,8 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2156,6 +2159,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args) {
@@ -2165,6 +2169,8 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2195,6 +2201,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
@@ -2204,6 +2211,8 @@ public final class DnsFunctions {
      * This data source provides a list of DNS Domain Groups in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2234,6 +2243,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
@@ -2247,6 +2257,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2274,6 +2286,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGtmInstancesResult> getGtmInstances() {
@@ -2287,6 +2300,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2314,6 +2329,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGtmInstancesResult> getGtmInstancesPlain() {
@@ -2327,6 +2343,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2354,6 +2372,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGtmInstancesResult> getGtmInstances(GetGtmInstancesArgs args) {
@@ -2367,6 +2386,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2394,6 +2415,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGtmInstancesResult> getGtmInstancesPlain(GetGtmInstancesPlainArgs args) {
@@ -2407,6 +2429,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2434,6 +2458,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGtmInstancesResult> getGtmInstances(GetGtmInstancesArgs args, InvokeOptions options) {
@@ -2447,6 +2472,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2474,6 +2501,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGtmInstancesResult> getGtmInstancesPlain(GetGtmInstancesPlainArgs args, InvokeOptions options) {
@@ -2487,6 +2515,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.84.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2516,6 +2546,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -2529,6 +2560,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.84.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2558,6 +2591,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -2571,6 +2605,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.84.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2600,6 +2636,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -2613,6 +2650,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.84.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2642,6 +2681,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -2655,6 +2695,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.84.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2684,6 +2726,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -2697,6 +2740,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:**  Available in 1.84.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2726,6 +2771,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -2737,6 +2783,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2770,6 +2818,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRecordsResult> getRecords(GetRecordsArgs args) {
@@ -2781,6 +2830,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2814,6 +2865,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRecordsResult> getRecordsPlain(GetRecordsPlainArgs args) {
@@ -2825,6 +2877,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2858,6 +2912,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRecordsResult> getRecords(GetRecordsArgs args, InvokeOptions options) {
@@ -2869,6 +2924,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2902,6 +2959,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRecordsResult> getRecordsPlain(GetRecordsPlainArgs args, InvokeOptions options) {
@@ -2913,6 +2971,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in 1.60.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2943,6 +3003,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResolutionLinesResult> getResolutionLines() {
@@ -2954,6 +3015,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in 1.60.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2984,6 +3047,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResolutionLinesResult> getResolutionLinesPlain() {
@@ -2995,6 +3059,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in 1.60.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3025,6 +3091,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResolutionLinesResult> getResolutionLines(GetResolutionLinesArgs args) {
@@ -3036,6 +3103,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in 1.60.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3066,6 +3135,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResolutionLinesResult> getResolutionLinesPlain(GetResolutionLinesPlainArgs args) {
@@ -3077,6 +3147,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in 1.60.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3107,6 +3179,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetResolutionLinesResult> getResolutionLines(GetResolutionLinesArgs args, InvokeOptions options) {
@@ -3118,6 +3191,8 @@ public final class DnsFunctions {
      * &gt; **NOTE:** Available in 1.60.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3148,6 +3223,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetResolutionLinesResult> getResolutionLinesPlain(GetResolutionLinesPlainArgs args, InvokeOptions options) {

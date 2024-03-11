@@ -24,8 +24,10 @@ namespace Pulumi.AliCloud.Cassandra
     /// &gt; **NOTE:**  Create Cassandra dataCenter or change dataCenter type and storage would cost 30 minutes. Please make full preparation.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Create a cassandra dataCenter
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -66,6 +68,7 @@ namespace Pulumi.AliCloud.Cassandra
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
     /// 
@@ -73,7 +76,7 @@ namespace Pulumi.AliCloud.Cassandra
     /// 
     /// If you need full function, please import Cassandra cluster first.
     /// 
-    ///  Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
+    /// Cassandra dataCenter can be imported using the dcId:clusterId, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cassandra/dataCenter:DataCenter dc_2 cn-shenxxxx-x:cds-wz933ryoaurxxxxx

@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Eflo
         /// 
         /// &gt; **NOTE:** Available in 1.204.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,8 +41,7 @@ namespace Pulumi.AliCloud.Eflo
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSubnetsResult> InvokeAsync(GetSubnetsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubnetsResult>("alicloud:eflo/getSubnets:getSubnets", args ?? new GetSubnetsArgs(), options.WithDefaults());
@@ -53,10 +51,9 @@ namespace Pulumi.AliCloud.Eflo
         /// 
         /// &gt; **NOTE:** Available in 1.204.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,8 +76,7 @@ namespace Pulumi.AliCloud.Eflo
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSubnetsResult> Invoke(GetSubnetsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSubnetsResult>("alicloud:eflo/getSubnets:getSubnets", args ?? new GetSubnetsInvokeArgs(), options.WithDefaults());

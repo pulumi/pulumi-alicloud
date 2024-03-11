@@ -158,6 +158,7 @@ def get_trails(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -165,6 +166,7 @@ def get_trails(ids: Optional[Sequence[str]] = None,
     default = alicloud.actiontrail.get_trails(name_regex="tf-testacc-actiontrail")
     pulumi.export("trailName", default.trails[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of ActionTrail Trail IDs. It is the same as trail name.
@@ -212,6 +214,7 @@ def get_trails_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -219,6 +222,7 @@ def get_trails_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     default = alicloud.actiontrail.get_trails(name_regex="tf-testacc-actiontrail")
     pulumi.export("trailName", default.trails[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of ActionTrail Trail IDs. It is the same as trail name.

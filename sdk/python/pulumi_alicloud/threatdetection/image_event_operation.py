@@ -242,6 +242,7 @@ class ImageEventOperation(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -271,6 +272,7 @@ class ImageEventOperation(pulumi.CustomResource):
 
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -306,6 +308,7 @@ class ImageEventOperation(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -335,6 +338,7 @@ class ImageEventOperation(pulumi.CustomResource):
 
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

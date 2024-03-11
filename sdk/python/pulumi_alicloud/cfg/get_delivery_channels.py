@@ -128,6 +128,7 @@ def get_delivery_channels(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -136,6 +137,7 @@ def get_delivery_channels(ids: Optional[Sequence[str]] = None,
         name_regex="tftest")
     pulumi.export("firstConfigDeliveryChannelId", example.channels[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Config Delivery Channel IDs.
@@ -179,6 +181,7 @@ def get_delivery_channels_output(ids: Optional[pulumi.Input[Optional[Sequence[st
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -187,6 +190,7 @@ def get_delivery_channels_output(ids: Optional[pulumi.Input[Optional[Sequence[st
         name_regex="tftest")
     pulumi.export("firstConfigDeliveryChannelId", example.channels[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Config Delivery Channel IDs.

@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,6 +48,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetServerPlans(ctx *pulumi.Context, args *GetServerPlansArgs, opts ...pulumi.InvokeOption) (*GetServerPlansResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerPlansResult

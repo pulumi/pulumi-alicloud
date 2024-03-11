@@ -74,12 +74,14 @@ def get_blocked_regions(language: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     example = alicloud.cdn.get_blocked_regions(language="zh")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str language: The language. Valid values: `zh`, `en`, `jp`.
@@ -107,12 +109,14 @@ def get_blocked_regions_output(language: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     example = alicloud.cdn.get_blocked_regions(language="zh")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str language: The language. Valid values: `zh`, `en`, `jp`.

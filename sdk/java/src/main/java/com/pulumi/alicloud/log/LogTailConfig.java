@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -89,6 +91,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Module Support
  * 
  * You can use the existing sls-logtail module

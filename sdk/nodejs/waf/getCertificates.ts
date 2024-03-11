@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const wafCertificate = _default.then(_default => _default.certificates?.[0]);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCertificates(args: GetCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatesResult> {
 
@@ -90,6 +92,7 @@ export interface GetCertificatesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -101,6 +104,7 @@ export interface GetCertificatesResult {
  * });
  * export const wafCertificate = _default.then(_default => _default.certificates?.[0]);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCertificatesOutput(args: GetCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificatesResult> {
     return pulumi.output(args).apply((a: any) => getCertificates(a, opts))

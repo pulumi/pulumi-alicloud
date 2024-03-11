@@ -305,6 +305,7 @@ class GatewayEndpoint(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -337,6 +338,7 @@ class GatewayEndpoint(pulumi.CustomResource):
               }
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -373,6 +375,7 @@ class GatewayEndpoint(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -405,6 +408,7 @@ class GatewayEndpoint(pulumi.CustomResource):
               }
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

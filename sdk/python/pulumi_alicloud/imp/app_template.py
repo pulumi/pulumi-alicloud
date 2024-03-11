@@ -233,6 +233,7 @@ class AppTemplate(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -246,6 +247,7 @@ class AppTemplate(pulumi.CustomResource):
             integration_mode="paasSDK",
             scene="business")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -282,6 +284,7 @@ class AppTemplate(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -295,6 +298,7 @@ class AppTemplate(pulumi.CustomResource):
             integration_mode="paasSDK",
             scene="business")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

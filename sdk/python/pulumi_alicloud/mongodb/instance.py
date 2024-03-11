@@ -1482,8 +1482,10 @@ class Instance(pulumi.CustomResource):
         > **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
 
         ## Example Usage
+
         ### Create a Mongodb instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1517,6 +1519,8 @@ class Instance(pulumi.CustomResource):
                 "For": "example",
             })
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use to the existing mongodb module
@@ -1598,8 +1602,10 @@ class Instance(pulumi.CustomResource):
         > **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
 
         ## Example Usage
+
         ### Create a Mongodb instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1633,6 +1639,8 @@ class Instance(pulumi.CustomResource):
                 "For": "example",
             })
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use to the existing mongodb module

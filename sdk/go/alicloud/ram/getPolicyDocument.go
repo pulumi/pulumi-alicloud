@@ -16,8 +16,10 @@ import (
 // > **NOTE:** Available since v1.184.0+.
 //
 // ## Example Usage
+//
 // ### Basic Example
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,27 +63,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Example Multiple Condition Keys and Values
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -165,27 +153,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Example Assume-Role Policy with RAM Principal
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -231,27 +205,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Example Assume-Role Policy with Service Principal
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -297,27 +257,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Example Assume-Role Policy with Federated Principal
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -372,25 +318,9 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetPolicyDocument(ctx *pulumi.Context, args *GetPolicyDocumentArgs, opts ...pulumi.InvokeOption) (*GetPolicyDocumentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPolicyDocumentResult

@@ -387,6 +387,7 @@ class Trigger(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -482,9 +483,11 @@ class Trigger(pulumi.CustomResource):
           
         \"\"\"))
         ```
+        <!--End PulumiCodeChooser -->
 
         MNS topic trigger:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -552,9 +555,11 @@ class Trigger(pulumi.CustomResource):
           }
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         CDN events trigger:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -653,9 +658,11 @@ class Trigger(pulumi.CustomResource):
             }}
         \"\"\"))
         ```
+        <!--End PulumiCodeChooser -->
 
         EventBridge trigger:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -802,6 +809,8 @@ class Trigger(pulumi.CustomResource):
             }}
         \"\"\"))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use to the existing fc module
@@ -849,6 +858,7 @@ class Trigger(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -944,9 +954,11 @@ class Trigger(pulumi.CustomResource):
           
         \"\"\"))
         ```
+        <!--End PulumiCodeChooser -->
 
         MNS topic trigger:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1014,9 +1026,11 @@ class Trigger(pulumi.CustomResource):
           }
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         CDN events trigger:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1115,9 +1129,11 @@ class Trigger(pulumi.CustomResource):
             }}
         \"\"\"))
         ```
+        <!--End PulumiCodeChooser -->
 
         EventBridge trigger:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1264,6 +1280,8 @@ class Trigger(pulumi.CustomResource):
             }}
         \"\"\"))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use to the existing fc module

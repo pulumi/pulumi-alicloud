@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,6 +30,7 @@ import * as utilities from "../utilities";
  * });
  * export const mhubProductId2 = nameRegex.then(nameRegex => nameRegex.products?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProducts(args?: GetProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetProductsResult> {
     args = args || {};
@@ -82,6 +84,7 @@ export interface GetProductsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -96,6 +99,7 @@ export interface GetProductsResult {
  * });
  * export const mhubProductId2 = nameRegex.then(nameRegex => nameRegex.products?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProductsOutput(args?: GetProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductsResult> {
     return pulumi.output(args).apply((a: any) => getProducts(a, opts))

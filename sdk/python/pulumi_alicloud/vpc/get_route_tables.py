@@ -227,6 +227,7 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -245,6 +246,7 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
     foo_route_tables = alicloud.vpc.get_route_tables_output(ids=[foo_route_table.id])
     pulumi.export("routeTableIds", foo_route_tables.ids)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Route Tables IDs.
@@ -314,6 +316,7 @@ def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -332,6 +335,7 @@ def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     foo_route_tables = alicloud.vpc.get_route_tables_output(ids=[foo_route_table.id])
     pulumi.export("routeTableIds", foo_route_tables.ids)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Route Tables IDs.

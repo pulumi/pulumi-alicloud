@@ -34,6 +34,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -61,6 +63,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConsumerChannelsResult> getConsumerChannels(GetConsumerChannelsArgs args) {
@@ -74,6 +77,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -101,6 +106,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConsumerChannelsResult> getConsumerChannelsPlain(GetConsumerChannelsPlainArgs args) {
@@ -114,6 +120,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -141,6 +149,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConsumerChannelsResult> getConsumerChannels(GetConsumerChannelsArgs args, InvokeOptions options) {
@@ -154,6 +163,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -181,6 +192,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConsumerChannelsResult> getConsumerChannelsPlain(GetConsumerChannelsPlainArgs args, InvokeOptions options) {
@@ -192,6 +204,8 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in 1.198.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -222,6 +236,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -233,6 +248,8 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in 1.198.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -263,6 +280,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -274,6 +292,8 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in 1.198.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -304,6 +324,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -315,6 +336,8 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in 1.198.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -345,6 +368,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -356,6 +380,8 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in 1.198.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -386,6 +412,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -397,6 +424,8 @@ public final class DtsFunctions {
      * &gt; **NOTE:** Available in 1.198.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -427,6 +456,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -440,6 +470,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -469,6 +501,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMigrationJobsResult> getMigrationJobs() {
@@ -482,6 +515,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -511,6 +546,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMigrationJobsResult> getMigrationJobsPlain() {
@@ -524,6 +560,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -553,6 +591,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMigrationJobsResult> getMigrationJobs(GetMigrationJobsArgs args) {
@@ -566,6 +605,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -595,6 +636,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMigrationJobsResult> getMigrationJobsPlain(GetMigrationJobsPlainArgs args) {
@@ -608,6 +650,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -637,6 +681,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMigrationJobsResult> getMigrationJobs(GetMigrationJobsArgs args, InvokeOptions options) {
@@ -650,6 +695,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -679,6 +726,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMigrationJobsResult> getMigrationJobsPlain(GetMigrationJobsPlainArgs args, InvokeOptions options) {
@@ -692,6 +740,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -719,6 +769,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubscriptionJobsResult> getSubscriptionJobs() {
@@ -732,6 +783,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -759,6 +812,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubscriptionJobsResult> getSubscriptionJobsPlain() {
@@ -772,6 +826,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -799,6 +855,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubscriptionJobsResult> getSubscriptionJobs(GetSubscriptionJobsArgs args) {
@@ -812,6 +869,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -839,6 +898,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubscriptionJobsResult> getSubscriptionJobsPlain(GetSubscriptionJobsPlainArgs args) {
@@ -852,6 +912,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -879,6 +941,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubscriptionJobsResult> getSubscriptionJobs(GetSubscriptionJobsArgs args, InvokeOptions options) {
@@ -892,6 +955,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -919,6 +984,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubscriptionJobsResult> getSubscriptionJobsPlain(GetSubscriptionJobsPlainArgs args, InvokeOptions options) {
@@ -932,6 +998,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -959,6 +1027,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSynchronizationJobsResult> getSynchronizationJobs() {
@@ -972,6 +1041,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -999,6 +1070,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSynchronizationJobsResult> getSynchronizationJobsPlain() {
@@ -1012,6 +1084,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1039,6 +1113,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSynchronizationJobsResult> getSynchronizationJobs(GetSynchronizationJobsArgs args) {
@@ -1052,6 +1127,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1079,6 +1156,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSynchronizationJobsResult> getSynchronizationJobsPlain(GetSynchronizationJobsPlainArgs args) {
@@ -1092,6 +1170,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1119,6 +1199,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSynchronizationJobsResult> getSynchronizationJobs(GetSynchronizationJobsArgs args, InvokeOptions options) {
@@ -1132,6 +1213,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1159,6 +1242,7 @@ public final class DtsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSynchronizationJobsResult> getSynchronizationJobsPlain(GetSynchronizationJobsPlainArgs args, InvokeOptions options) {

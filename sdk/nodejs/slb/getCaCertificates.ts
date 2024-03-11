@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -18,6 +19,7 @@ import * as utilities from "../utilities";
  * const sampleDs = alicloud.slb.getCaCertificates({});
  * export const firstSlbCaCertificateId = sampleDs.then(sampleDs => sampleDs.certificates?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCaCertificates(args?: GetCaCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCaCertificatesResult> {
     args = args || {};
@@ -94,6 +96,7 @@ export interface GetCaCertificatesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -101,6 +104,7 @@ export interface GetCaCertificatesResult {
  * const sampleDs = alicloud.slb.getCaCertificates({});
  * export const firstSlbCaCertificateId = sampleDs.then(sampleDs => sampleDs.certificates?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCaCertificatesOutput(args?: GetCaCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaCertificatesResult> {
     return pulumi.output(args).apply((a: any) => getCaCertificates(a, opts))

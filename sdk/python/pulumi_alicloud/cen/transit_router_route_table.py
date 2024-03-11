@@ -254,6 +254,7 @@ class TransitRouterRouteTable(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -266,12 +267,11 @@ class TransitRouterRouteTable(pulumi.CustomResource):
             cen_id=example_instance.id)
         example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        CEN transit router route table
-
-        can be imported using the id, e.g.
+        CEN transit router route table  can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********
@@ -300,6 +300,7 @@ class TransitRouterRouteTable(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -312,12 +313,11 @@ class TransitRouterRouteTable(pulumi.CustomResource):
             cen_id=example_instance.id)
         example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        CEN transit router route table
-
-        can be imported using the id, e.g.
+        CEN transit router route table  can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********

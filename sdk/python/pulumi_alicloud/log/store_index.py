@@ -173,6 +173,7 @@ class StoreIndex(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -204,6 +205,8 @@ class StoreIndex(pulumi.CustomResource):
         	\"\"\",
             )])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use the existing sls module
@@ -238,6 +241,7 @@ class StoreIndex(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -269,6 +273,8 @@ class StoreIndex(pulumi.CustomResource):
         	\"\"\",
             )])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use the existing sls module

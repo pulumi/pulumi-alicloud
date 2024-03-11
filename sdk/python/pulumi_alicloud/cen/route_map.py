@@ -997,6 +997,7 @@ class RouteMap(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1060,6 +1061,7 @@ class RouteMap(pulumi.CustomResource):
             preference=20,
             prepend_as_paths=["65501"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1119,6 +1121,7 @@ class RouteMap(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1182,6 +1185,7 @@ class RouteMap(pulumi.CustomResource):
             preference=20,
             prepend_as_paths=["65501"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

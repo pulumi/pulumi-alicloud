@@ -94,6 +94,7 @@ def get_server_firewall_rules(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -105,6 +106,7 @@ def get_server_firewall_rules(ids: Optional[Sequence[str]] = None,
         ])
     pulumi.export("simpleApplicationServerFirewallRuleId1", ids.rules[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Firewall Rule IDs.
@@ -140,6 +142,7 @@ def get_server_firewall_rules_output(ids: Optional[pulumi.Input[Optional[Sequenc
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -151,6 +154,7 @@ def get_server_firewall_rules_output(ids: Optional[pulumi.Input[Optional[Sequenc
         ])
     pulumi.export("simpleApplicationServerFirewallRuleId1", ids.rules[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Firewall Rule IDs.

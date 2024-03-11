@@ -129,6 +129,7 @@ def get_keys(description_regex: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -137,6 +138,7 @@ def get_keys(description_regex: Optional[str] = None,
         output_file="kms_keys.json")
     pulumi.export("firstKeyId", kms_keys_ds.keys[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description_regex: A regex string to filter the results by the KMS key description.
@@ -180,6 +182,7 @@ def get_keys_output(description_regex: Optional[pulumi.Input[Optional[str]]] = N
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -188,6 +191,7 @@ def get_keys_output(description_regex: Optional[pulumi.Input[Optional[str]]] = N
         output_file="kms_keys.json")
     pulumi.export("firstKeyId", kms_keys_ds.keys[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description_regex: A regex string to filter the results by the KMS key description.

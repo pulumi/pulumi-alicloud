@@ -134,6 +134,7 @@ def get_desktop_types(cpu_count: Optional[int] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -141,6 +142,7 @@ def get_desktop_types(cpu_count: Optional[int] = None,
     ids = alicloud.eds.get_desktop_types(instance_type_family="eds.hf")
     pulumi.export("ecdDesktopTypeId1", ids.types[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int cpu_count: The CPU cores.
@@ -192,6 +194,7 @@ def get_desktop_types_output(cpu_count: Optional[pulumi.Input[Optional[int]]] = 
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -199,6 +202,7 @@ def get_desktop_types_output(cpu_count: Optional[pulumi.Input[Optional[int]]] = 
     ids = alicloud.eds.get_desktop_types(instance_type_family="eds.hf")
     pulumi.export("ecdDesktopTypeId1", ids.types[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int cpu_count: The CPU cores.

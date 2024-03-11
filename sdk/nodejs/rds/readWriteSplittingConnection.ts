@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -71,6 +72,7 @@ import * as utilities from "../utilities";
  *     distributionType: "Standard",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * > **NOTE:** Resource `alicloud.rds.ReadWriteSplittingConnection` should be created after `alicloud.rds.ReadOnlyInstance`, so the `dependsOn` statement is necessary.
  *

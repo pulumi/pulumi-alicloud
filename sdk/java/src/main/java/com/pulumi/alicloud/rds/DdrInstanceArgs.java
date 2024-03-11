@@ -203,7 +203,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
-     * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
+     * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
      * 
      */
     @Import(name="connectionStringPrefix")
@@ -211,7 +211,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
-     * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
+     * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
      * 
      */
     public Optional<Output<String>> connectionStringPrefix() {
@@ -1530,7 +1530,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param connectionStringPrefix The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
-         * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
+         * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
          * 
          * @return builder
          * 
@@ -1542,7 +1542,7 @@ public final class DdrInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param connectionStringPrefix The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
-         * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
+         * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
          * 
          * @return builder
          * 

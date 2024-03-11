@@ -98,6 +98,7 @@ class KeyVersion(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -105,6 +106,7 @@ class KeyVersion(pulumi.CustomResource):
         this = alicloud.kms.Key("this")
         keyversion = alicloud.kms.KeyVersion("keyversion", key_id=this.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -135,6 +137,7 @@ class KeyVersion(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -142,6 +145,7 @@ class KeyVersion(pulumi.CustomResource):
         this = alicloud.kms.Key("this")
         keyversion = alicloud.kms.KeyVersion("keyversion", key_id=this.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

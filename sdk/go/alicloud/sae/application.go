@@ -22,6 +22,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -114,6 +115,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -198,7 +200,7 @@ type Application struct {
 	MicroRegistration pulumi.StringPtrOutput `pulumi:"microRegistration"`
 	// Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
 	// * `-1`: Initialization value, indicating that percentages are not used.
-	// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+	// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
 	MinReadyInstanceRatio pulumi.IntOutput `pulumi:"minReadyInstanceRatio"`
 	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
 	MinReadyInstances pulumi.IntOutput `pulumi:"minReadyInstances"`
@@ -413,7 +415,7 @@ type applicationState struct {
 	MicroRegistration *string `pulumi:"microRegistration"`
 	// Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
 	// * `-1`: Initialization value, indicating that percentages are not used.
-	// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+	// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
 	MinReadyInstanceRatio *int `pulumi:"minReadyInstanceRatio"`
 	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
 	MinReadyInstances *int `pulumi:"minReadyInstances"`
@@ -579,7 +581,7 @@ type ApplicationState struct {
 	MicroRegistration pulumi.StringPtrInput
 	// Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
 	// * `-1`: Initialization value, indicating that percentages are not used.
-	// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+	// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
 	MinReadyInstanceRatio pulumi.IntPtrInput
 	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
 	MinReadyInstances pulumi.IntPtrInput
@@ -749,7 +751,7 @@ type applicationArgs struct {
 	MicroRegistration *string `pulumi:"microRegistration"`
 	// Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
 	// * `-1`: Initialization value, indicating that percentages are not used.
-	// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+	// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
 	MinReadyInstanceRatio *int `pulumi:"minReadyInstanceRatio"`
 	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
 	MinReadyInstances *int `pulumi:"minReadyInstances"`
@@ -916,7 +918,7 @@ type ApplicationArgs struct {
 	MicroRegistration pulumi.StringPtrInput
 	// Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
 	// * `-1`: Initialization value, indicating that percentages are not used.
-	// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+	// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
 	MinReadyInstanceRatio pulumi.IntPtrInput
 	// The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
 	MinReadyInstances pulumi.IntPtrInput
@@ -1261,7 +1263,7 @@ func (o ApplicationOutput) MicroRegistration() pulumi.StringPtrOutput {
 
 // Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
 // * `-1`: Initialization value, indicating that percentages are not used.
-// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
+// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
 func (o ApplicationOutput) MinReadyInstanceRatio() pulumi.IntOutput {
 	return o.ApplyT(func(v *Application) pulumi.IntOutput { return v.MinReadyInstanceRatio }).(pulumi.IntOutput)
 }

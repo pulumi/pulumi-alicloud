@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Sae
         /// 
         /// &gt; **NOTE:** Available in v1.139.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,8 +37,7 @@ namespace Pulumi.AliCloud.Sae
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstanceSpecificationsResult> InvokeAsync(GetInstanceSpecificationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceSpecificationsResult>("alicloud:sae/getInstanceSpecifications:getInstanceSpecifications", args ?? new GetInstanceSpecificationsArgs(), options.WithDefaults());
@@ -49,12 +47,11 @@ namespace Pulumi.AliCloud.Sae
         /// 
         /// &gt; **NOTE:** Available in v1.139.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,8 +68,7 @@ namespace Pulumi.AliCloud.Sae
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstanceSpecificationsResult> Invoke(GetInstanceSpecificationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceSpecificationsResult>("alicloud:sae/getInstanceSpecifications:getInstanceSpecifications", args ?? new GetInstanceSpecificationsInvokeArgs(), options.WithDefaults());

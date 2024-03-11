@@ -18,10 +18,9 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// &gt; **NOTE:** Available in v1.132.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,8 +36,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPhysicalConnectionServiceResult> InvokeAsync(GetPhysicalConnectionServiceArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPhysicalConnectionServiceResult>("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", args ?? new GetPhysicalConnectionServiceArgs(), options.WithDefaults());
@@ -50,10 +48,9 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// &gt; **NOTE:** Available in v1.132.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,8 +66,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPhysicalConnectionServiceResult> Invoke(GetPhysicalConnectionServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPhysicalConnectionServiceResult>("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", args ?? new GetPhysicalConnectionServiceInvokeArgs(), options.WithDefaults());

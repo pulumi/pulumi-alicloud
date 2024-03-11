@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// The managed cluster configuration,
+    /// 
     /// ## Import
     /// 
     /// Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.

@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const cert = certs.then(certs => certs.certificates?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 /** @deprecated This resource has been deprecated in favour of getServiceCertificates */
 export function getCertificates(args?: GetCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatesResult> {
@@ -91,6 +93,7 @@ export interface GetCertificatesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -101,6 +104,7 @@ export interface GetCertificatesResult {
  * });
  * export const cert = certs.then(certs => certs.certificates?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 /** @deprecated This resource has been deprecated in favour of getServiceCertificates */
 export function getCertificatesOutput(args?: GetCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificatesResult> {

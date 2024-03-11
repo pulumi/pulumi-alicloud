@@ -98,6 +98,7 @@ def get_accounts(db_cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -133,6 +134,7 @@ def get_accounts(db_cluster_id: Optional[str] = None,
         name_regex=account_name))
     pulumi.export("account", default_accounts.accounts[0].account_name)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_id: The polarDB cluster ID.
@@ -164,6 +166,7 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -199,6 +202,7 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
         name_regex=account_name))
     pulumi.export("account", default_accounts.accounts[0].account_name)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_id: The polarDB cluster ID.

@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -67,6 +69,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -76,7 +79,7 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:kms/clientKey:ClientKey example &lt;id&gt;
  * ```
  * 
- *  Resource attributes such as `password`, `private_key_data_file` are not available for imported resources as this information cannot be read from the KMS API.
+ * Resource attributes such as `password`, `private_key_data_file` are not available for imported resources as this information cannot be read from the KMS API.
  * 
  */
 @ResourceType(type="alicloud:kms/clientKey:ClientKey")

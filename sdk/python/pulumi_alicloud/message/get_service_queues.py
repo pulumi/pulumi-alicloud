@@ -140,6 +140,7 @@ def get_service_queues(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -149,6 +150,7 @@ def get_service_queues(ids: Optional[Sequence[str]] = None,
     name = alicloud.message.get_service_queues(queue_name="tf-example")
     pulumi.export("queueId2", name.queues[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Queue IDs. Its element value is same as Queue Name.
@@ -193,6 +195,7 @@ def get_service_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -202,6 +205,7 @@ def get_service_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     name = alicloud.message.get_service_queues(queue_name="tf-example")
     pulumi.export("queueId2", name.queues[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Queue IDs. Its element value is same as Queue Name.

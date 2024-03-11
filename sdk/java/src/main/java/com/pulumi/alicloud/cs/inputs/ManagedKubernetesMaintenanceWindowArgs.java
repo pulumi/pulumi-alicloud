@@ -64,6 +64,7 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
      * Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
      * 
      * for example:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -86,6 +87,7 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="weeklyPeriod", required=true)
@@ -95,6 +97,7 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
      * @return Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
      * 
      * for example:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -117,6 +120,7 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Output<String> weeklyPeriod() {
@@ -217,6 +221,7 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
          * @param weeklyPeriod Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
          * 
          * for example:
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -239,6 +244,7 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -252,6 +258,7 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
          * @param weeklyPeriod Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
          * 
          * for example:
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -274,6 +281,7 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

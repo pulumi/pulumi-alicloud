@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// 
         /// &gt; **NOTE:** Available in v1.144.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,8 +57,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGatewayCacheDisksResult> InvokeAsync(GetGatewayCacheDisksArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayCacheDisksResult>("alicloud:cloudstoragegateway/getGatewayCacheDisks:getGatewayCacheDisks", args ?? new GetGatewayCacheDisksArgs(), options.WithDefaults());
@@ -69,12 +67,11 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// 
         /// &gt; **NOTE:** Available in v1.144.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -111,8 +108,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGatewayCacheDisksResult> Invoke(GetGatewayCacheDisksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayCacheDisksResult>("alicloud:cloudstoragegateway/getGatewayCacheDisks:getGatewayCacheDisks", args ?? new GetGatewayCacheDisksInvokeArgs(), options.WithDefaults());

@@ -157,6 +157,7 @@ class BgpIp(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -179,6 +180,7 @@ class BgpIp(pulumi.CustomResource):
             ip=default_eip_address.ip_address,
             resource_group_id=default_resource_groups.groups[0].id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -211,6 +213,7 @@ class BgpIp(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -233,6 +236,7 @@ class BgpIp(pulumi.CustomResource):
             ip=default_eip_address.ip_address,
             resource_group_id=default_resource_groups.groups[0].id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

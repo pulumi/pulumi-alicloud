@@ -113,6 +113,7 @@ def get_shared_targets(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,6 +132,7 @@ def get_shared_targets(ids: Optional[Sequence[str]] = None,
     resource_share_id = alicloud.resourcemanager.get_shared_targets_output(resource_share_id=default_shared_target.resource_share_id)
     pulumi.export("secondResourceManagerSharedTargetId", resource_share_id.targets[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Shared Target IDs.
@@ -170,6 +172,7 @@ def get_shared_targets_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -188,6 +191,7 @@ def get_shared_targets_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     resource_share_id = alicloud.resourcemanager.get_shared_targets_output(resource_share_id=default_shared_target.resource_share_id)
     pulumi.export("secondResourceManagerSharedTargetId", resource_share_id.targets[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Shared Target IDs.

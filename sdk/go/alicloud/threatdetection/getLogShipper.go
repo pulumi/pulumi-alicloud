@@ -21,6 +21,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetLogShipper(ctx *pulumi.Context, args *GetLogShipperArgs, opts ...pulumi.InvokeOption) (*GetLogShipperResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLogShipperResult

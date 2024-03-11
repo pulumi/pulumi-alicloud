@@ -114,6 +114,7 @@ def get_synchronization_jobs(enable_details: Optional[bool] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -121,6 +122,7 @@ def get_synchronization_jobs(enable_details: Optional[bool] = None,
     ids = alicloud.dts.get_synchronization_jobs()
     pulumi.export("dtsSynchronizationJobId1", ids.jobs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Synchronization Job IDs.
@@ -163,6 +165,7 @@ def get_synchronization_jobs_output(enable_details: Optional[pulumi.Input[Option
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -170,6 +173,7 @@ def get_synchronization_jobs_output(enable_details: Optional[pulumi.Input[Option
     ids = alicloud.dts.get_synchronization_jobs()
     pulumi.export("dtsSynchronizationJobId1", ids.jobs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Synchronization Job IDs.

@@ -114,6 +114,7 @@ def get_transit_router_route_table_propagations(ids: Optional[Sequence[str]] = N
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -121,6 +122,7 @@ def get_transit_router_route_table_propagations(ids: Optional[Sequence[str]] = N
     default = alicloud.cen.get_transit_router_route_table_propagations(transit_router_route_table_id="rtb-id1")
     pulumi.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default.propagations[0].resource_type)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of CEN Transit Router Route Table Association IDs.
@@ -158,6 +160,7 @@ def get_transit_router_route_table_propagations_output(ids: Optional[pulumi.Inpu
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -165,6 +168,7 @@ def get_transit_router_route_table_propagations_output(ids: Optional[pulumi.Inpu
     default = alicloud.cen.get_transit_router_route_table_propagations(transit_router_route_table_id="rtb-id1")
     pulumi.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default.propagations[0].resource_type)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of CEN Transit Router Route Table Association IDs.

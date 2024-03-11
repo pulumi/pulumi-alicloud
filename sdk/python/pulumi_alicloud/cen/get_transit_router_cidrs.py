@@ -123,6 +123,7 @@ def get_transit_router_cidrs(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -134,6 +135,7 @@ def get_transit_router_cidrs(ids: Optional[Sequence[str]] = None,
         transit_router_id="tr-6ehx7q2jze8ch5ji0****")
     pulumi.export("cenTransitRouterCidrId1", name_regex.cidrs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Cen Transit Router Cidr IDs.
@@ -178,6 +180,7 @@ def get_transit_router_cidrs_output(ids: Optional[pulumi.Input[Optional[Sequence
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -189,6 +192,7 @@ def get_transit_router_cidrs_output(ids: Optional[pulumi.Input[Optional[Sequence
         transit_router_id="tr-6ehx7q2jze8ch5ji0****")
     pulumi.export("cenTransitRouterCidrId1", name_regex.cidrs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Cen Transit Router Cidr IDs.

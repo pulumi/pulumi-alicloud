@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetTransitRouterVpnAttachments(ctx *pulumi.Context, args *GetTransitRouterVpnAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterVpnAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouterVpnAttachmentsResult

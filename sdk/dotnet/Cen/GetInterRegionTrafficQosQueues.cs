@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,8 +43,7 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInterRegionTrafficQosQueuesResult> InvokeAsync(GetInterRegionTrafficQosQueuesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInterRegionTrafficQosQueuesResult>("alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues", args ?? new GetInterRegionTrafficQosQueuesArgs(), options.WithDefaults());
@@ -55,10 +53,9 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +80,7 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInterRegionTrafficQosQueuesResult> Invoke(GetInterRegionTrafficQosQueuesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInterRegionTrafficQosQueuesResult>("alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues", args ?? new GetInterRegionTrafficQosQueuesInvokeArgs(), options.WithDefaults());

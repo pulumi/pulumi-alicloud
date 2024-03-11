@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetDataLimits(ctx *pulumi.Context, args *GetDataLimitsArgs, opts ...pulumi.InvokeOption) (*GetDataLimitsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDataLimitsResult

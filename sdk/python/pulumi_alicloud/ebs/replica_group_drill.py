@@ -108,6 +108,7 @@ class ReplicaGroupDrill(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -118,6 +119,7 @@ class ReplicaGroupDrill(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.ebs.ReplicaGroupDrill("default", group_id="pg-m1H9aaOUIGsDUwgZ")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -148,6 +150,7 @@ class ReplicaGroupDrill(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -158,6 +161,7 @@ class ReplicaGroupDrill(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.ebs.ReplicaGroupDrill("default", group_id="pg-m1H9aaOUIGsDUwgZ")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

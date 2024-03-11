@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetFileCrc64Checksum(ctx *pulumi.Context, args *GetFileCrc64ChecksumArgs, opts ...pulumi.InvokeOption) (*GetFileCrc64ChecksumResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFileCrc64ChecksumResult

@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -80,6 +81,8 @@ import * as utilities from "../utilities";
  *     comment: "second",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Listener fields and protocol mapping
  *
  * load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
@@ -251,7 +254,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     /**
-     * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+     * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
      */
     public readonly healthCheckUri!: pulumi.Output<string | undefined>;
     /**
@@ -557,7 +560,7 @@ export interface ListenerState {
      */
     healthCheckType?: pulumi.Input<string>;
     /**
-     * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+     * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
      */
     healthCheckUri?: pulumi.Input<string>;
     /**
@@ -746,7 +749,7 @@ export interface ListenerArgs {
      */
     healthCheckType?: pulumi.Input<string>;
     /**
-     * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+     * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
      */
     healthCheckUri?: pulumi.Input<string>;
     /**

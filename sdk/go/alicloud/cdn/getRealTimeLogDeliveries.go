@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetRealTimeLogDeliveries(ctx *pulumi.Context, args *GetRealTimeLogDeliveriesArgs, opts ...pulumi.InvokeOption) (*GetRealTimeLogDeliveriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRealTimeLogDeliveriesResult

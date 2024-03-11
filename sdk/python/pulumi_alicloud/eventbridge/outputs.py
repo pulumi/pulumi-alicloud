@@ -819,9 +819,11 @@ class RuleTargetParamList(dict):
                
                > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
                
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
                
                In order to fix the diff, from version 1.160.0,
                this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
@@ -866,9 +868,11 @@ class RuleTargetParamList(dict):
 
         > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         In order to fix the diff, from version 1.160.0,
         this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.

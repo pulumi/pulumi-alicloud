@@ -94,6 +94,7 @@ def get_network_packages(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -108,6 +109,7 @@ def get_network_packages(ids: Optional[Sequence[str]] = None,
     default_network_packages = alicloud.eds.get_network_packages_output(ids=[default_network_package.id])
     pulumi.export("ecdNetworkPackageId1", default_network_packages.packages[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Network Package IDs.
@@ -143,6 +145,7 @@ def get_network_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[str
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -157,6 +160,7 @@ def get_network_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     default_network_packages = alicloud.eds.get_network_packages_output(ids=[default_network_package.id])
     pulumi.export("ecdNetworkPackageId1", default_network_packages.packages[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Network Package IDs.

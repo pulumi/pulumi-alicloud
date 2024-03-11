@@ -28,7 +28,10 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available since v1.149.0+.
  * 
  * ## Example Usage
+ * 
  * ### Create an RDS MySQL clone instance
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -116,6 +119,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

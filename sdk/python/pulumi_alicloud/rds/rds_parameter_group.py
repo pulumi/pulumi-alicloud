@@ -207,6 +207,7 @@ class RdsParameterGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -231,6 +232,7 @@ class RdsParameterGroup(pulumi.CustomResource):
             parameter_group_desc=name,
             parameter_group_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -265,6 +267,7 @@ class RdsParameterGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -289,6 +292,7 @@ class RdsParameterGroup(pulumi.CustomResource):
             parameter_group_desc=name,
             parameter_group_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const cmsHybridMonitorSlsTaskId1 = ids.then(ids => ids.tasks?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHybridMonitorSlsTasks(args?: GetHybridMonitorSlsTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridMonitorSlsTasksResult> {
     args = args || {};
@@ -88,6 +90,7 @@ export interface GetHybridMonitorSlsTasksResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -97,6 +100,7 @@ export interface GetHybridMonitorSlsTasksResult {
  * });
  * export const cmsHybridMonitorSlsTaskId1 = ids.then(ids => ids.tasks?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHybridMonitorSlsTasksOutput(args?: GetHybridMonitorSlsTasksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridMonitorSlsTasksResult> {
     return pulumi.output(args).apply((a: any) => getHybridMonitorSlsTasks(a, opts))

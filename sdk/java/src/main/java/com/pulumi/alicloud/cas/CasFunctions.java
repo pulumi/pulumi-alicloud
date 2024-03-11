@@ -23,6 +23,8 @@ public final class CasFunctions {
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -53,6 +55,7 @@ public final class CasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
@@ -68,6 +71,8 @@ public final class CasFunctions {
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -98,6 +103,7 @@ public final class CasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
@@ -113,6 +119,8 @@ public final class CasFunctions {
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -143,6 +151,7 @@ public final class CasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
@@ -158,6 +167,8 @@ public final class CasFunctions {
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -188,6 +199,7 @@ public final class CasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
@@ -203,6 +215,8 @@ public final class CasFunctions {
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -233,6 +247,7 @@ public final class CasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
@@ -248,6 +263,8 @@ public final class CasFunctions {
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -278,6 +295,7 @@ public final class CasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
@@ -295,6 +313,8 @@ public final class CasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -325,6 +345,7 @@ public final class CasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceCertificatesResult> getServiceCertificates() {
@@ -338,6 +359,8 @@ public final class CasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -368,6 +391,7 @@ public final class CasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceCertificatesResult> getServiceCertificatesPlain() {
@@ -381,6 +405,8 @@ public final class CasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -411,6 +437,7 @@ public final class CasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceCertificatesResult> getServiceCertificates(GetServiceCertificatesArgs args) {
@@ -424,6 +451,8 @@ public final class CasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -454,6 +483,7 @@ public final class CasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceCertificatesResult> getServiceCertificatesPlain(GetServiceCertificatesPlainArgs args) {
@@ -467,6 +497,8 @@ public final class CasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -497,6 +529,7 @@ public final class CasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceCertificatesResult> getServiceCertificates(GetServiceCertificatesArgs args, InvokeOptions options) {
@@ -510,6 +543,8 @@ public final class CasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -540,6 +575,7 @@ public final class CasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceCertificatesResult> getServiceCertificatesPlain(GetServiceCertificatesPlainArgs args, InvokeOptions options) {

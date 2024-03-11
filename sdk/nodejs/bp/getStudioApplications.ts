@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const bpStudioApplicationId2 = nameRegex.then(nameRegex => nameRegex.applications?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getStudioApplications(args?: GetStudioApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetStudioApplicationsResult> {
     args = args || {};
@@ -120,6 +122,7 @@ export interface GetStudioApplicationsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -133,6 +136,7 @@ export interface GetStudioApplicationsResult {
  * });
  * export const bpStudioApplicationId2 = nameRegex.then(nameRegex => nameRegex.applications?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getStudioApplicationsOutput(args?: GetStudioApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStudioApplicationsResult> {
     return pulumi.output(args).apply((a: any) => getStudioApplications(a, opts))

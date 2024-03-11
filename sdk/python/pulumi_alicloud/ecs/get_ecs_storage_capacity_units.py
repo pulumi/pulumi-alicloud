@@ -113,6 +113,7 @@ def get_ecs_storage_capacity_units(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -122,6 +123,7 @@ def get_ecs_storage_capacity_units(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.ecs.get_ecs_storage_capacity_units(name_regex="^my-StorageCapacityUnit")
     pulumi.export("ecsStorageCapacityUnitId2", name_regex.units[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Storage Capacity Unit IDs.
@@ -162,6 +164,7 @@ def get_ecs_storage_capacity_units_output(ids: Optional[pulumi.Input[Optional[Se
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -171,6 +174,7 @@ def get_ecs_storage_capacity_units_output(ids: Optional[pulumi.Input[Optional[Se
     name_regex = alicloud.ecs.get_ecs_storage_capacity_units(name_regex="^my-StorageCapacityUnit")
     pulumi.export("ecsStorageCapacityUnitId2", name_regex.units[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Storage Capacity Unit IDs.

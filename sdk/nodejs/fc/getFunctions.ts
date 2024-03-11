@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -21,6 +22,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstFcFunctionName = functionsDs.then(functionsDs => functionsDs.functions?.[0]?.name);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFunctions(args: GetFunctionsArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionsResult> {
 
@@ -84,6 +86,7 @@ export interface GetFunctionsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -94,6 +97,7 @@ export interface GetFunctionsResult {
  * });
  * export const firstFcFunctionName = functionsDs.then(functionsDs => functionsDs.functions?.[0]?.name);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFunctionsOutput(args: GetFunctionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionsResult> {
     return pulumi.output(args).apply((a: any) => getFunctions(a, opts))

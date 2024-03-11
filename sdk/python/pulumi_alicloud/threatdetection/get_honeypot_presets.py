@@ -187,6 +187,7 @@ def get_honeypot_presets(current_page: Optional[int] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -197,6 +198,7 @@ def get_honeypot_presets(current_page: Optional[int] = None,
         preset_name="apiapec_test")
     pulumi.export("alicloudThreatDetectionHoneypotPresetExampleId", default.presets[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -257,6 +259,7 @@ def get_honeypot_presets_output(current_page: Optional[pulumi.Input[Optional[int
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -267,6 +270,7 @@ def get_honeypot_presets_output(current_page: Optional[pulumi.Input[Optional[int
         preset_name="apiapec_test")
     pulumi.export("alicloudThreatDetectionHoneypotPresetExampleId", default.presets[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

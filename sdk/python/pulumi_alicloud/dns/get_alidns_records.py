@@ -250,17 +250,6 @@ def get_alidns_records(direction: Optional[str] = None,
 
     ## Example Usage
 
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    records_ds = alicloud.dns.get_alidns_records(domain_name="xiaozhu.top",
-        ids=["1978593525779****"],
-        output_file="records.txt",
-        type="A")
-    pulumi.export("firstRecordId", records_ds.records[0].record_id)
-    ```
-
 
     :param str direction: Sorting direction. Valid values: `DESC`,`ASC`. Default to `AESC`.
     :param str domain_name: The domain name associated to the records.
@@ -271,13 +260,13 @@ def get_alidns_records(direction: Optional[str] = None,
     :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
     :param str order_by: Sort by. Sort from newest to oldest according to the time added by resolution.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str rr_key_word: The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
+    :param str rr_key_word: The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
     :param str rr_regex: Host record regex.
     :param str search_mode: Search mode, Valid values: `LIKE`, `EXACT`, `ADVANCED`, `LIKE` (fuzzy), `EXACT` (accurate) search supports KeyWord field, `ADVANCED` (advanced) mode supports other fields.
     :param str status: Record status. Valid values: `ENABLE` and `DISABLE`.
     :param str type: Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
     :param str type_key_word: Analyze type keywords, search by full match, not case sensitive.
-    :param str value_key_word: The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
+    :param str value_key_word: The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
     :param str value_regex: Host record value regex.
     """
     __args__ = dict()
@@ -349,17 +338,6 @@ def get_alidns_records_output(direction: Optional[pulumi.Input[Optional[str]]] =
 
     ## Example Usage
 
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    records_ds = alicloud.dns.get_alidns_records(domain_name="xiaozhu.top",
-        ids=["1978593525779****"],
-        output_file="records.txt",
-        type="A")
-    pulumi.export("firstRecordId", records_ds.records[0].record_id)
-    ```
-
 
     :param str direction: Sorting direction. Valid values: `DESC`,`ASC`. Default to `AESC`.
     :param str domain_name: The domain name associated to the records.
@@ -370,13 +348,13 @@ def get_alidns_records_output(direction: Optional[pulumi.Input[Optional[str]]] =
     :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
     :param str order_by: Sort by. Sort from newest to oldest according to the time added by resolution.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str rr_key_word: The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
+    :param str rr_key_word: The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
     :param str rr_regex: Host record regex.
     :param str search_mode: Search mode, Valid values: `LIKE`, `EXACT`, `ADVANCED`, `LIKE` (fuzzy), `EXACT` (accurate) search supports KeyWord field, `ADVANCED` (advanced) mode supports other fields.
     :param str status: Record status. Valid values: `ENABLE` and `DISABLE`.
     :param str type: Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
     :param str type_key_word: Analyze type keywords, search by full match, not case sensitive.
-    :param str value_key_word: The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
+    :param str value_key_word: The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
     :param str value_regex: Host record value regex.
     """
     ...

@@ -94,6 +94,7 @@ def get_consumer_channels(dts_instance_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -101,6 +102,7 @@ def get_consumer_channels(dts_instance_id: Optional[str] = None,
     ids = alicloud.dts.get_consumer_channels()
     pulumi.export("dtsConsumerChannelId1", ids.channels[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str dts_instance_id: Subscription instance ID.
@@ -136,6 +138,7 @@ def get_consumer_channels_output(dts_instance_id: Optional[pulumi.Input[str]] = 
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -143,6 +146,7 @@ def get_consumer_channels_output(dts_instance_id: Optional[pulumi.Input[str]] = 
     ids = alicloud.dts.get_consumer_channels()
     pulumi.export("dtsConsumerChannelId1", ids.channels[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str dts_instance_id: Subscription instance ID.

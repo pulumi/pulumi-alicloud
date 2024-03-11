@@ -153,6 +153,7 @@ def get_hana_backup_plans(cluster_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -164,6 +165,7 @@ def get_hana_backup_plans(cluster_id: Optional[str] = None,
         ])
     pulumi.export("hbrHanaBackupPlanId1", ids.plans[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the SAP HANA instance.
@@ -218,6 +220,7 @@ def get_hana_backup_plans_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -229,6 +232,7 @@ def get_hana_backup_plans_output(cluster_id: Optional[pulumi.Input[str]] = None,
         ])
     pulumi.export("hbrHanaBackupPlanId1", ids.plans[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the SAP HANA instance.

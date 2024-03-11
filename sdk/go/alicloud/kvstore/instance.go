@@ -119,7 +119,7 @@ type Instance struct {
 	//
 	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
-	// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
+	// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ %!^(MISSING) & * ( ) _ + - =`
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
@@ -310,7 +310,7 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 	Parameters []InstanceParameter `pulumi:"parameters"`
-	// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
+	// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ %!^(MISSING) & * ( ) _ + - =`
 	Password *string `pulumi:"password"`
 	// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -465,7 +465,7 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 	Parameters InstanceParameterArrayInput
-	// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
+	// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ %!^(MISSING) & * ( ) _ + - =`
 	Password pulumi.StringPtrInput
 	// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
 	PaymentType pulumi.StringPtrInput
@@ -614,7 +614,7 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 	Parameters []InstanceParameter `pulumi:"parameters"`
-	// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
+	// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ %!^(MISSING) & * ( ) _ + - =`
 	Password *string `pulumi:"password"`
 	// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -756,7 +756,7 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 	Parameters InstanceParameterArrayInput
-	// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
+	// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ %!^(MISSING) & * ( ) _ + - =`
 	Password pulumi.StringPtrInput
 	// The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
 	PaymentType pulumi.StringPtrInput
@@ -1113,7 +1113,7 @@ func (o InstanceOutput) Parameters() InstanceParameterArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceParameterArrayOutput { return v.Parameters }).(InstanceParameterArrayOutput)
 }
 
-// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
+// The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ %!^(MISSING) & * ( ) _ + - =`
 func (o InstanceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }

@@ -311,6 +311,7 @@ class AddressBook(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -326,6 +327,7 @@ class AddressBook(pulumi.CustomResource):
             group_type="tag",
             tag_relation="and")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -364,6 +366,7 @@ class AddressBook(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -379,6 +382,7 @@ class AddressBook(pulumi.CustomResource):
             group_type="tag",
             tag_relation="and")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -114,6 +114,7 @@ def get_bgp_peers(bgp_group_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -130,6 +131,7 @@ def get_bgp_peers(bgp_group_id: Optional[str] = None,
     status = alicloud.vpc.get_bgp_peers(status="Available")
     pulumi.export("vpcBgpPeerId4", status.peers[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bgp_group_id: The ID of the BGP group.
@@ -173,6 +175,7 @@ def get_bgp_peers_output(bgp_group_id: Optional[pulumi.Input[Optional[str]]] = N
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -189,6 +192,7 @@ def get_bgp_peers_output(bgp_group_id: Optional[pulumi.Input[Optional[str]]] = N
     status = alicloud.vpc.get_bgp_peers(status="Available")
     pulumi.export("vpcBgpPeerId4", status.peers[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bgp_group_id: The ID of the BGP group.

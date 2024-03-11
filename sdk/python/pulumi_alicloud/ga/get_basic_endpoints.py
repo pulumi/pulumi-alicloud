@@ -171,6 +171,7 @@ def get_basic_endpoints(endpoint_group_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -182,6 +183,7 @@ def get_basic_endpoints(endpoint_group_id: Optional[str] = None,
         endpoint_group_id="example_id")
     pulumi.export("gaBasicEndpointsId2", name_regex.endpoints[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_group_id: The ID of the Basic Endpoint Group.
@@ -238,6 +240,7 @@ def get_basic_endpoints_output(endpoint_group_id: Optional[pulumi.Input[str]] = 
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -249,6 +252,7 @@ def get_basic_endpoints_output(endpoint_group_id: Optional[pulumi.Input[str]] = 
         endpoint_group_id="example_id")
     pulumi.export("gaBasicEndpointsId2", name_regex.endpoints[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_group_id: The ID of the Basic Endpoint Group.

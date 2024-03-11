@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,6 +53,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAccessPoints(ctx *pulumi.Context, args *GetAccessPointsArgs, opts ...pulumi.InvokeOption) (*GetAccessPointsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccessPointsResult

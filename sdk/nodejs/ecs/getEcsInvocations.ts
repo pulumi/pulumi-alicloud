@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const ecsInvocationId1 = ids.then(ids => ids.invocations?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEcsInvocations(args?: GetEcsInvocationsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsInvocationsResult> {
     args = args || {};
@@ -94,6 +96,7 @@ export interface GetEcsInvocationsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -103,6 +106,7 @@ export interface GetEcsInvocationsResult {
  * });
  * export const ecsInvocationId1 = ids.then(ids => ids.invocations?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEcsInvocationsOutput(args?: GetEcsInvocationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsInvocationsResult> {
     return pulumi.output(args).apply((a: any) => getEcsInvocations(a, opts))

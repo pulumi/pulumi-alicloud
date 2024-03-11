@@ -471,6 +471,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -524,6 +525,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
             enable_nat_traversal=True,
             vpn_attachment_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -565,6 +567,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -618,6 +621,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
             enable_nat_traversal=True,
             vpn_attachment_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

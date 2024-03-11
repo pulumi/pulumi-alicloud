@@ -122,6 +122,7 @@ def get_key_pairs(key_pair_name: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -130,6 +131,7 @@ def get_key_pairs(key_pair_name: Optional[str] = None,
         name_regex="^my-KeyPair")
     pulumi.export("ensKeyPairId1", name_regex.pairs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str key_pair_name: The name of the key pair.
@@ -171,6 +173,7 @@ def get_key_pairs_output(key_pair_name: Optional[pulumi.Input[Optional[str]]] = 
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -179,6 +182,7 @@ def get_key_pairs_output(key_pair_name: Optional[pulumi.Input[Optional[str]]] = 
         name_regex="^my-KeyPair")
     pulumi.export("ensKeyPairId1", name_regex.pairs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str key_pair_name: The name of the key pair.

@@ -109,6 +109,7 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -140,6 +141,7 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
             policy_id=default_pe3jj_r.id,
             disk_id=default_jk_w46o.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -171,6 +173,7 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -202,6 +205,7 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
             policy_id=default_pe3jj_r.id,
             disk_id=default_jk_w46o.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

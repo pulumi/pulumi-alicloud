@@ -18,10 +18,9 @@ namespace Pulumi.AliCloud.Brain
         /// 
         /// &gt; **NOTE:** The Brain Industrial service is not support in the international site.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,8 +36,7 @@ namespace Pulumi.AliCloud.Brain
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetIndustrialSericeResult> InvokeAsync(GetIndustrialSericeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialSericeResult>("alicloud:brain/getIndustrialSerice:getIndustrialSerice", args ?? new GetIndustrialSericeArgs(), options.WithDefaults());
@@ -50,10 +48,9 @@ namespace Pulumi.AliCloud.Brain
         /// 
         /// &gt; **NOTE:** The Brain Industrial service is not support in the international site.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,8 +66,7 @@ namespace Pulumi.AliCloud.Brain
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIndustrialSericeResult> Invoke(GetIndustrialSericeInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIndustrialSericeResult>("alicloud:brain/getIndustrialSerice:getIndustrialSerice", args ?? new GetIndustrialSericeInvokeArgs(), options.WithDefaults());

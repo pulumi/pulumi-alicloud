@@ -355,6 +355,10 @@ class SslVpnServer(pulumi.CustomResource):
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
         ## Import
 
         SSL-VPN server can be imported using the id, e.g.
@@ -384,6 +388,10 @@ class SslVpnServer(pulumi.CustomResource):
                  args: SslVpnServerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
         ## Import
 
         SSL-VPN server can be imported using the id, e.g.

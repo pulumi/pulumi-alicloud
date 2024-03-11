@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.FNF
         /// 
         /// &gt; **NOTE:** Available in v1.105.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -46,8 +45,7 @@ namespace Pulumi.AliCloud.FNF
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSchedulesResult> InvokeAsync(GetSchedulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSchedulesResult>("alicloud:fnf/getSchedules:getSchedules", args ?? new GetSchedulesArgs(), options.WithDefaults());
@@ -57,12 +55,11 @@ namespace Pulumi.AliCloud.FNF
         /// 
         /// &gt; **NOTE:** Available in v1.105.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,8 +84,7 @@ namespace Pulumi.AliCloud.FNF
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSchedulesResult> Invoke(GetSchedulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSchedulesResult>("alicloud:fnf/getSchedules:getSchedules", args ?? new GetSchedulesInvokeArgs(), options.WithDefaults());

@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRecords(args: GetRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordsResult> {
 
@@ -133,6 +135,7 @@ export interface GetRecordsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -146,6 +149,7 @@ export interface GetRecordsResult {
  * });
  * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRecordsOutput(args: GetRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordsResult> {
     return pulumi.output(args).apply((a: any) => getRecords(a, opts))

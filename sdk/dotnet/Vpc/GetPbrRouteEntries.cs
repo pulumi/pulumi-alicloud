@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,8 +42,7 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPbrRouteEntriesResult> InvokeAsync(GetPbrRouteEntriesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPbrRouteEntriesResult>("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", args ?? new GetPbrRouteEntriesArgs(), options.WithDefaults());
@@ -54,10 +52,9 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// The data source lists a number of VPN Pbr Route Entries resource information owned by an Alicloud account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -81,8 +78,7 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPbrRouteEntriesResult> Invoke(GetPbrRouteEntriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPbrRouteEntriesResult>("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", args ?? new GetPbrRouteEntriesInvokeArgs(), options.WithDefaults());

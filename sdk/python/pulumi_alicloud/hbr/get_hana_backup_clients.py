@@ -159,6 +159,7 @@ def get_hana_backup_clients(client_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -167,6 +168,7 @@ def get_hana_backup_clients(client_id: Optional[str] = None,
         vault_id="your_vault_id")
     pulumi.export("hbrHanaBackupClientsId1", ids.hana_backup_clients[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str client_id: The ID of the backup client.
@@ -220,6 +222,7 @@ def get_hana_backup_clients_output(client_id: Optional[pulumi.Input[Optional[str
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -228,6 +231,7 @@ def get_hana_backup_clients_output(client_id: Optional[pulumi.Input[Optional[str
         vault_id="your_vault_id")
     pulumi.export("hbrHanaBackupClientsId1", ids.hana_backup_clients[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str client_id: The ID of the backup client.

@@ -94,6 +94,7 @@ def get_kubernetes_addon_metadata(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -103,6 +104,7 @@ def get_kubernetes_addon_metadata(cluster_id: Optional[str] = None,
         version="v1.1.2-aliyun.2")
     pulumi.export("addonConfigSchema", data["alicloud_cs_kubernetes_addons"]["default"]["config_schema"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The id of kubernetes cluster.
@@ -136,6 +138,7 @@ def get_kubernetes_addon_metadata_output(cluster_id: Optional[pulumi.Input[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -145,6 +148,7 @@ def get_kubernetes_addon_metadata_output(cluster_id: Optional[pulumi.Input[str]]
         version="v1.1.2-aliyun.2")
     pulumi.export("addonConfigSchema", data["alicloud_cs_kubernetes_addons"]["default"]["config_schema"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The id of kubernetes cluster.

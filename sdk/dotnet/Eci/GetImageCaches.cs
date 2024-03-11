@@ -15,6 +15,33 @@ namespace Pulumi.AliCloud.Eci
         /// Provides a collection of ECI Image Cache to the specified filters.
         /// 
         /// &gt; **NOTE:** Available in 1.90.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        ///  &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Eci.GetImageCaches.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "imc-bp1ef0dyp7ldhb1d****",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["imageCache"] = example.Apply(getImageCachesResult =&gt; getImageCachesResult.Caches[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetImageCachesResult> InvokeAsync(GetImageCachesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageCachesResult>("alicloud:eci/getImageCaches:getImageCaches", args ?? new GetImageCachesArgs(), options.WithDefaults());
@@ -23,6 +50,33 @@ namespace Pulumi.AliCloud.Eci
         /// Provides a collection of ECI Image Cache to the specified filters.
         /// 
         /// &gt; **NOTE:** Available in 1.90.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        ///  &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Eci.GetImageCaches.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "imc-bp1ef0dyp7ldhb1d****",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["imageCache"] = example.Apply(getImageCachesResult =&gt; getImageCachesResult.Caches[0]?.Id),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetImageCachesResult> Invoke(GetImageCachesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageCachesResult>("alicloud:eci/getImageCaches:getImageCaches", args ?? new GetImageCachesInvokeArgs(), options.WithDefaults());

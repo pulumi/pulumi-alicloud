@@ -335,13 +335,16 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
         Empty resource sets defaults values for every property.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.ram.AccountPasswordPolicy("default")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -357,13 +360,14 @@ class AccountPasswordPolicy(pulumi.CustomResource):
             require_symbols=False,
             require_uppercase_characters=False)
         ```
+        <!--End PulumiCodeChooser -->
         For not specified values sets defaults.
 
         ## Import
 
         RAM account password policy can be imported using the `id`, e.g.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy
@@ -392,13 +396,16 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
         Empty resource sets defaults values for every property.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.ram.AccountPasswordPolicy("default")
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -414,13 +421,14 @@ class AccountPasswordPolicy(pulumi.CustomResource):
             require_symbols=False,
             require_uppercase_characters=False)
         ```
+        <!--End PulumiCodeChooser -->
         For not specified values sets defaults.
 
         ## Import
 
         RAM account password policy can be imported using the `id`, e.g.
 
-         bash
+        bash
 
         ```sh
         $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy

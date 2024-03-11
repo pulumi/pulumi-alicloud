@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  * const default = alicloud.threatdetection.getAssets({});
  * export const alicloudThreatDetectionAssetExampleId = _default.then(_default => _default.assets?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAssets(args?: GetAssetsArgs, opts?: pulumi.InvokeOptions): Promise<GetAssetsResult> {
     args = args || {};
@@ -113,6 +115,7 @@ export interface GetAssetsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -120,6 +123,7 @@ export interface GetAssetsResult {
  * const default = alicloud.threatdetection.getAssets({});
  * export const alicloudThreatDetectionAssetExampleId = _default.then(_default => _default.assets?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAssetsOutput(args?: GetAssetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssetsResult> {
     return pulumi.output(args).apply((a: any) => getAssets(a, opts))

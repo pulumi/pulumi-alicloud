@@ -67,6 +67,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -141,6 +143,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBackupJobsResult> getBackupJobs(GetBackupJobsArgs args) {
@@ -154,6 +157,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -228,6 +233,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBackupJobsResult> getBackupJobsPlain(GetBackupJobsPlainArgs args) {
@@ -241,6 +247,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -315,6 +323,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBackupJobsResult> getBackupJobs(GetBackupJobsArgs args, InvokeOptions options) {
@@ -328,6 +337,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -402,6 +413,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBackupJobsResult> getBackupJobsPlain(GetBackupJobsPlainArgs args, InvokeOptions options) {
@@ -415,6 +427,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -452,6 +466,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsBackupClientsResult> getEcsBackupClients() {
@@ -465,6 +480,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -502,6 +519,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsBackupClientsResult> getEcsBackupClientsPlain() {
@@ -515,6 +533,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -552,6 +572,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsBackupClientsResult> getEcsBackupClients(GetEcsBackupClientsArgs args) {
@@ -565,6 +586,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -602,6 +625,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsBackupClientsResult> getEcsBackupClientsPlain(GetEcsBackupClientsPlainArgs args) {
@@ -615,6 +639,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -652,6 +678,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsBackupClientsResult> getEcsBackupClients(GetEcsBackupClientsArgs args, InvokeOptions options) {
@@ -665,6 +692,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -702,6 +731,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsBackupClientsResult> getEcsBackupClientsPlain(GetEcsBackupClientsPlainArgs args, InvokeOptions options) {
@@ -715,6 +745,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -744,6 +776,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsBackupPlansResult> getEcsBackupPlans() {
@@ -757,6 +790,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -786,6 +821,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsBackupPlansResult> getEcsBackupPlansPlain() {
@@ -799,6 +835,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -828,6 +866,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsBackupPlansResult> getEcsBackupPlans(GetEcsBackupPlansArgs args) {
@@ -841,6 +880,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -870,6 +911,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsBackupPlansResult> getEcsBackupPlansPlain(GetEcsBackupPlansPlainArgs args) {
@@ -883,6 +925,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -912,6 +956,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEcsBackupPlansResult> getEcsBackupPlans(GetEcsBackupPlansArgs args, InvokeOptions options) {
@@ -925,6 +970,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -954,6 +1001,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEcsBackupPlansResult> getEcsBackupPlansPlain(GetEcsBackupPlansPlainArgs args, InvokeOptions options) {
@@ -967,6 +1015,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -997,6 +1047,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHanaBackupClientsResult> getHanaBackupClients(GetHanaBackupClientsArgs args) {
@@ -1010,6 +1061,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1040,6 +1093,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHanaBackupClientsResult> getHanaBackupClientsPlain(GetHanaBackupClientsPlainArgs args) {
@@ -1053,6 +1107,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1083,6 +1139,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHanaBackupClientsResult> getHanaBackupClients(GetHanaBackupClientsArgs args, InvokeOptions options) {
@@ -1096,6 +1153,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1126,6 +1185,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHanaBackupClientsResult> getHanaBackupClientsPlain(GetHanaBackupClientsPlainArgs args, InvokeOptions options) {
@@ -1139,6 +1199,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1171,6 +1233,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHanaBackupPlansResult> getHanaBackupPlans(GetHanaBackupPlansArgs args) {
@@ -1184,6 +1247,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1216,6 +1281,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHanaBackupPlansResult> getHanaBackupPlansPlain(GetHanaBackupPlansPlainArgs args) {
@@ -1229,6 +1295,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1261,6 +1329,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHanaBackupPlansResult> getHanaBackupPlans(GetHanaBackupPlansArgs args, InvokeOptions options) {
@@ -1274,6 +1343,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1306,6 +1377,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHanaBackupPlansResult> getHanaBackupPlansPlain(GetHanaBackupPlansPlainArgs args, InvokeOptions options) {
@@ -1319,6 +1391,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1348,6 +1422,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHanaInstancesResult> getHanaInstances() {
@@ -1361,6 +1436,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1390,6 +1467,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHanaInstancesResult> getHanaInstancesPlain() {
@@ -1403,6 +1481,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1432,6 +1512,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHanaInstancesResult> getHanaInstances(GetHanaInstancesArgs args) {
@@ -1445,6 +1526,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1474,6 +1557,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHanaInstancesResult> getHanaInstancesPlain(GetHanaInstancesPlainArgs args) {
@@ -1487,6 +1571,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1516,6 +1602,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHanaInstancesResult> getHanaInstances(GetHanaInstancesArgs args, InvokeOptions options) {
@@ -1529,6 +1616,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1558,6 +1647,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHanaInstancesResult> getHanaInstancesPlain(GetHanaInstancesPlainArgs args, InvokeOptions options) {
@@ -1571,6 +1661,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1600,6 +1692,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNasBackupPlansResult> getNasBackupPlans() {
@@ -1613,6 +1706,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1642,6 +1737,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNasBackupPlansResult> getNasBackupPlansPlain() {
@@ -1655,6 +1751,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1684,6 +1782,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNasBackupPlansResult> getNasBackupPlans(GetNasBackupPlansArgs args) {
@@ -1697,6 +1796,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1726,6 +1827,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNasBackupPlansResult> getNasBackupPlansPlain(GetNasBackupPlansPlainArgs args) {
@@ -1739,6 +1841,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1768,6 +1872,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNasBackupPlansResult> getNasBackupPlans(GetNasBackupPlansArgs args, InvokeOptions options) {
@@ -1781,6 +1886,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1810,6 +1917,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNasBackupPlansResult> getNasBackupPlansPlain(GetNasBackupPlansPlainArgs args, InvokeOptions options) {
@@ -1823,6 +1931,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1852,6 +1962,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOssBackupPlansResult> getOssBackupPlans() {
@@ -1865,6 +1976,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1894,6 +2007,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOssBackupPlansResult> getOssBackupPlansPlain() {
@@ -1907,6 +2021,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1936,6 +2052,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOssBackupPlansResult> getOssBackupPlans(GetOssBackupPlansArgs args) {
@@ -1949,6 +2066,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1978,6 +2097,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOssBackupPlansResult> getOssBackupPlansPlain(GetOssBackupPlansPlainArgs args) {
@@ -1991,6 +2111,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2020,6 +2142,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOssBackupPlansResult> getOssBackupPlans(GetOssBackupPlansArgs args, InvokeOptions options) {
@@ -2033,6 +2156,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2062,6 +2187,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOssBackupPlansResult> getOssBackupPlansPlain(GetOssBackupPlansPlainArgs args, InvokeOptions options) {
@@ -2075,6 +2201,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2104,6 +2232,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOtsBackupPlansResult> getOtsBackupPlans() {
@@ -2117,6 +2246,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2146,6 +2277,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOtsBackupPlansResult> getOtsBackupPlansPlain() {
@@ -2159,6 +2291,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2188,6 +2322,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOtsBackupPlansResult> getOtsBackupPlans(GetOtsBackupPlansArgs args) {
@@ -2201,6 +2336,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2230,6 +2367,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOtsBackupPlansResult> getOtsBackupPlansPlain(GetOtsBackupPlansPlainArgs args) {
@@ -2243,6 +2381,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2272,6 +2412,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOtsBackupPlansResult> getOtsBackupPlans(GetOtsBackupPlansArgs args, InvokeOptions options) {
@@ -2285,6 +2426,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2314,6 +2457,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOtsBackupPlansResult> getOtsBackupPlansPlain(GetOtsBackupPlansPlainArgs args, InvokeOptions options) {
@@ -2327,6 +2471,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2353,6 +2499,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOtsSnapshotsResult> getOtsSnapshots() {
@@ -2366,6 +2513,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2392,6 +2541,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOtsSnapshotsResult> getOtsSnapshotsPlain() {
@@ -2405,6 +2555,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2431,6 +2583,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOtsSnapshotsResult> getOtsSnapshots(GetOtsSnapshotsArgs args) {
@@ -2444,6 +2597,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2470,6 +2625,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOtsSnapshotsResult> getOtsSnapshotsPlain(GetOtsSnapshotsPlainArgs args) {
@@ -2483,6 +2639,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2509,6 +2667,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOtsSnapshotsResult> getOtsSnapshots(GetOtsSnapshotsArgs args, InvokeOptions options) {
@@ -2522,6 +2681,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2548,6 +2709,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOtsSnapshotsResult> getOtsSnapshotsPlain(GetOtsSnapshotsPlainArgs args, InvokeOptions options) {
@@ -2561,6 +2723,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2588,6 +2752,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReplicationVaultRegionsResult> getReplicationVaultRegions() {
@@ -2601,6 +2766,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2628,6 +2795,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReplicationVaultRegionsResult> getReplicationVaultRegionsPlain() {
@@ -2641,6 +2809,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2668,6 +2838,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReplicationVaultRegionsResult> getReplicationVaultRegions(GetReplicationVaultRegionsArgs args) {
@@ -2681,6 +2852,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2708,6 +2881,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReplicationVaultRegionsResult> getReplicationVaultRegionsPlain(GetReplicationVaultRegionsPlainArgs args) {
@@ -2721,6 +2895,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2748,6 +2924,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetReplicationVaultRegionsResult> getReplicationVaultRegions(GetReplicationVaultRegionsArgs args, InvokeOptions options) {
@@ -2761,6 +2938,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2788,6 +2967,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReplicationVaultRegionsResult> getReplicationVaultRegionsPlain(GetReplicationVaultRegionsPlainArgs args, InvokeOptions options) {
@@ -2801,6 +2981,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2836,6 +3018,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRestoreJobsResult> getRestoreJobs(GetRestoreJobsArgs args) {
@@ -2849,6 +3032,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2884,6 +3069,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRestoreJobsResult> getRestoreJobsPlain(GetRestoreJobsPlainArgs args) {
@@ -2897,6 +3083,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2932,6 +3120,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRestoreJobsResult> getRestoreJobs(GetRestoreJobsArgs args, InvokeOptions options) {
@@ -2945,6 +3134,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2980,6 +3171,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRestoreJobsResult> getRestoreJobsPlain(GetRestoreJobsPlainArgs args, InvokeOptions options) {
@@ -2993,6 +3185,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3032,6 +3226,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerBackupPlansResult> getServerBackupPlans() {
@@ -3045,6 +3240,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3084,6 +3281,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerBackupPlansResult> getServerBackupPlansPlain() {
@@ -3097,6 +3295,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3136,6 +3336,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerBackupPlansResult> getServerBackupPlans(GetServerBackupPlansArgs args) {
@@ -3149,6 +3350,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3188,6 +3391,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerBackupPlansResult> getServerBackupPlansPlain(GetServerBackupPlansPlainArgs args) {
@@ -3201,6 +3405,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3240,6 +3446,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerBackupPlansResult> getServerBackupPlans(GetServerBackupPlansArgs args, InvokeOptions options) {
@@ -3253,6 +3460,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3292,6 +3501,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerBackupPlansResult> getServerBackupPlansPlain(GetServerBackupPlansPlainArgs args, InvokeOptions options) {
@@ -3307,6 +3517,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3335,6 +3547,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -3350,6 +3563,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3378,6 +3593,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -3393,6 +3609,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3421,6 +3639,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -3436,6 +3655,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3464,6 +3685,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -3479,6 +3701,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3507,6 +3731,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -3522,6 +3747,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3550,6 +3777,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -3563,6 +3791,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3626,6 +3856,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args) {
@@ -3639,6 +3870,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3702,6 +3935,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain(GetSnapshotsPlainArgs args) {
@@ -3715,6 +3949,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3778,6 +4014,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args, InvokeOptions options) {
@@ -3791,6 +4028,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3854,6 +4093,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain(GetSnapshotsPlainArgs args, InvokeOptions options) {
@@ -3867,6 +4107,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3896,6 +4138,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVaultsResult> getVaults() {
@@ -3909,6 +4152,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3938,6 +4183,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVaultsResult> getVaultsPlain() {
@@ -3951,6 +4197,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3980,6 +4228,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVaultsResult> getVaults(GetVaultsArgs args) {
@@ -3993,6 +4242,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4022,6 +4273,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVaultsResult> getVaultsPlain(GetVaultsPlainArgs args) {
@@ -4035,6 +4287,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4064,6 +4318,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVaultsResult> getVaults(GetVaultsArgs args, InvokeOptions options) {
@@ -4077,6 +4332,8 @@ public final class HbrFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4106,6 +4363,7 @@ public final class HbrFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVaultsResult> getVaultsPlain(GetVaultsPlainArgs args, InvokeOptions options) {

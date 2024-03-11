@@ -145,6 +145,7 @@ def get_folders(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -152,6 +153,7 @@ def get_folders(enable_details: Optional[bool] = None,
     example = alicloud.resourcemanager.get_folders(name_regex="tftest")
     pulumi.export("firstFolderId", example.folders[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
@@ -200,6 +202,7 @@ def get_folders_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -207,6 +210,7 @@ def get_folders_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     example = alicloud.resourcemanager.get_folders(name_regex="tftest")
     pulumi.export("firstFolderId", example.folders[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.

@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// 
         /// &gt; **NOTE:** Available in v1.143.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,8 +67,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServerDisksResult> InvokeAsync(GetServerDisksArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerDisksResult>("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", args ?? new GetServerDisksArgs(), options.WithDefaults());
@@ -79,12 +77,11 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// 
         /// &gt; **NOTE:** Available in v1.143.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -131,8 +128,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServerDisksResult> Invoke(GetServerDisksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerDisksResult>("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", args ?? new GetServerDisksInvokeArgs(), options.WithDefaults());

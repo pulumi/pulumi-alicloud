@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -30,6 +31,7 @@ import * as utilities from "../utilities";
  * });
  * export const cenTransitRouterCidrId1 = nameRegex.then(nameRegex => nameRegex.cidrs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterCidrs(args: GetTransitRouterCidrsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterCidrsResult> {
 
@@ -94,6 +96,7 @@ export interface GetTransitRouterCidrsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -109,6 +112,7 @@ export interface GetTransitRouterCidrsResult {
  * });
  * export const cenTransitRouterCidrId1 = nameRegex.then(nameRegex => nameRegex.cidrs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterCidrsOutput(args: GetTransitRouterCidrsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterCidrsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterCidrs(a, opts))

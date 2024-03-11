@@ -110,6 +110,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -132,6 +133,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
                 category="vpc",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -163,6 +165,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -185,6 +188,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
                 category="vpc",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

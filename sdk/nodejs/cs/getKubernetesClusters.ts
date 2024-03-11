@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKubernetesClusters(args?: GetKubernetesClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClustersResult> {
     args = args || {};
@@ -97,6 +99,7 @@ export interface GetKubernetesClustersResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -108,6 +111,7 @@ export interface GetKubernetesClustersResult {
  * });
  * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKubernetesClustersOutput(args?: GetKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesClustersResult> {
     return pulumi.output(args).apply((a: any) => getKubernetesClusters(a, opts))

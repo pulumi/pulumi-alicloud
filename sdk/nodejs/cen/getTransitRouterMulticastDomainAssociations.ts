@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const cenTransitRouterMulticastDomainId0 = ids.then(ids => ids.associations?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterMulticastDomainAssociations(args: GetTransitRouterMulticastDomainAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterMulticastDomainAssociationsResult> {
 
@@ -127,6 +129,7 @@ export interface GetTransitRouterMulticastDomainAssociationsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -137,6 +140,7 @@ export interface GetTransitRouterMulticastDomainAssociationsResult {
  * });
  * export const cenTransitRouterMulticastDomainId0 = ids.then(ids => ids.associations?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterMulticastDomainAssociationsOutput(args: GetTransitRouterMulticastDomainAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterMulticastDomainAssociationsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterMulticastDomainAssociations(a, opts))

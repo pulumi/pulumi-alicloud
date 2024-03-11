@@ -190,6 +190,7 @@ def get_zones(available_disk_category: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -197,6 +198,7 @@ def get_zones(available_disk_category: Optional[str] = None,
     zones_ds = alicloud.get_zones(available_disk_category="cloud_ssd",
         available_instance_type="ecs.n4.large")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str available_disk_category: Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`.
@@ -269,6 +271,7 @@ def get_zones_output(available_disk_category: Optional[pulumi.Input[Optional[str
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -276,6 +279,7 @@ def get_zones_output(available_disk_category: Optional[pulumi.Input[Optional[str
     zones_ds = alicloud.get_zones(available_disk_category="cloud_ssd",
         available_instance_type="ecs.n4.large")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str available_disk_category: Filter the results by a specific disk category. Can be either `cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`.

@@ -148,6 +148,7 @@ class Notification(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -191,6 +192,7 @@ class Notification(pulumi.CustomResource):
             ],
             notification_arn=default_queue.name.apply(lambda name: f"acs:ess:{default_regions.regions[0].id}:{default_account.id}:queue/{name}"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -222,6 +224,7 @@ class Notification(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -265,6 +268,7 @@ class Notification(pulumi.CustomResource):
             ],
             notification_arn=default_queue.name.apply(lambda name: f"acs:ess:{default_regions.regions[0].id}:{default_account.id}:queue/{name}"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

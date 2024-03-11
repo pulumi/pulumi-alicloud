@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,6 +60,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetBgpNetworks(ctx *pulumi.Context, args *GetBgpNetworksArgs, opts ...pulumi.InvokeOption) (*GetBgpNetworksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBgpNetworksResult

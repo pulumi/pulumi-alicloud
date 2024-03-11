@@ -19,6 +19,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetConfigurationRecorders(ctx *pulumi.Context, args *GetConfigurationRecordersArgs, opts ...pulumi.InvokeOption) (*GetConfigurationRecordersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetConfigurationRecordersResult

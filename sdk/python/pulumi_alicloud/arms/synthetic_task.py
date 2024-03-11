@@ -436,6 +436,7 @@ class SyntheticTask(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -615,6 +616,7 @@ class SyntheticTask(pulumi.CustomResource):
             ),
             resource_group_id=default_resource_groups.ids[1])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -656,6 +658,7 @@ class SyntheticTask(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -835,6 +838,7 @@ class SyntheticTask(pulumi.CustomResource):
             ),
             resource_group_id=default_resource_groups.ids[1])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

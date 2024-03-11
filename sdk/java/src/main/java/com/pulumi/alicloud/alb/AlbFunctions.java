@@ -49,6 +49,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -81,6 +83,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclsResult> getAcls() {
@@ -94,6 +97,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -126,6 +131,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain() {
@@ -139,6 +145,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -171,6 +179,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args) {
@@ -184,6 +193,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -216,6 +227,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args) {
@@ -229,6 +241,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -261,6 +275,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAclsResult> getAcls(GetAclsArgs args, InvokeOptions options) {
@@ -274,6 +289,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -306,6 +323,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAclsResult> getAclsPlain(GetAclsPlainArgs args, InvokeOptions options) {
@@ -317,6 +335,8 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -349,6 +369,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAscriptsResult> getAscripts() {
@@ -360,6 +381,8 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -392,6 +415,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAscriptsResult> getAscriptsPlain() {
@@ -403,6 +427,8 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -435,6 +461,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAscriptsResult> getAscripts(GetAscriptsArgs args) {
@@ -446,6 +473,8 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -478,6 +507,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAscriptsResult> getAscriptsPlain(GetAscriptsPlainArgs args) {
@@ -489,6 +519,8 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -521,6 +553,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAscriptsResult> getAscripts(GetAscriptsArgs args, InvokeOptions options) {
@@ -532,6 +565,8 @@ public final class AlbFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -564,6 +599,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAscriptsResult> getAscriptsPlain(GetAscriptsPlainArgs args, InvokeOptions options) {
@@ -577,6 +613,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -611,6 +649,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHealthCheckTemplatesResult> getHealthCheckTemplates() {
@@ -624,6 +663,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -658,6 +699,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHealthCheckTemplatesResult> getHealthCheckTemplatesPlain() {
@@ -671,6 +713,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -705,6 +749,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHealthCheckTemplatesResult> getHealthCheckTemplates(GetHealthCheckTemplatesArgs args) {
@@ -718,6 +763,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -752,6 +799,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHealthCheckTemplatesResult> getHealthCheckTemplatesPlain(GetHealthCheckTemplatesPlainArgs args) {
@@ -765,6 +813,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -799,6 +849,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHealthCheckTemplatesResult> getHealthCheckTemplates(GetHealthCheckTemplatesArgs args, InvokeOptions options) {
@@ -812,6 +863,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -846,6 +899,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHealthCheckTemplatesResult> getHealthCheckTemplatesPlain(GetHealthCheckTemplatesPlainArgs args, InvokeOptions options) {
@@ -859,6 +913,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -888,6 +944,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListenersResult> getListeners() {
@@ -901,6 +958,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -930,6 +989,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListenersResult> getListenersPlain() {
@@ -943,6 +1003,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -972,6 +1034,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListenersResult> getListeners(GetListenersArgs args) {
@@ -985,6 +1048,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1014,6 +1079,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListenersResult> getListenersPlain(GetListenersPlainArgs args) {
@@ -1027,6 +1093,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1056,6 +1124,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListenersResult> getListeners(GetListenersArgs args, InvokeOptions options) {
@@ -1069,6 +1138,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1098,6 +1169,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListenersResult> getListenersPlain(GetListenersPlainArgs args, InvokeOptions options) {
@@ -1111,6 +1183,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1143,6 +1217,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLoadBalancersResult> getLoadBalancers() {
@@ -1156,6 +1231,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1188,6 +1265,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLoadBalancersResult> getLoadBalancersPlain() {
@@ -1201,6 +1279,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1233,6 +1313,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLoadBalancersResult> getLoadBalancers(GetLoadBalancersArgs args) {
@@ -1246,6 +1327,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1278,6 +1361,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLoadBalancersResult> getLoadBalancersPlain(GetLoadBalancersPlainArgs args) {
@@ -1291,6 +1375,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1323,6 +1409,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLoadBalancersResult> getLoadBalancers(GetLoadBalancersArgs args, InvokeOptions options) {
@@ -1336,6 +1423,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1368,6 +1457,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLoadBalancersResult> getLoadBalancersPlain(GetLoadBalancersPlainArgs args, InvokeOptions options) {
@@ -1435,6 +1525,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1467,6 +1559,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecurityPoliciesResult> getSecurityPolicies() {
@@ -1480,6 +1573,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1512,6 +1607,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecurityPoliciesResult> getSecurityPoliciesPlain() {
@@ -1525,6 +1621,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1557,6 +1655,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecurityPoliciesResult> getSecurityPolicies(GetSecurityPoliciesArgs args) {
@@ -1570,6 +1669,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1602,6 +1703,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecurityPoliciesResult> getSecurityPoliciesPlain(GetSecurityPoliciesPlainArgs args) {
@@ -1615,6 +1717,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1647,6 +1751,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecurityPoliciesResult> getSecurityPolicies(GetSecurityPoliciesArgs args, InvokeOptions options) {
@@ -1660,6 +1765,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1692,6 +1799,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecurityPoliciesResult> getSecurityPoliciesPlain(GetSecurityPoliciesPlainArgs args, InvokeOptions options) {
@@ -1705,6 +1813,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1737,6 +1847,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerGroupsResult> getServerGroups() {
@@ -1750,6 +1861,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1782,6 +1895,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerGroupsResult> getServerGroupsPlain() {
@@ -1795,6 +1909,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1827,6 +1943,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerGroupsResult> getServerGroups(GetServerGroupsArgs args) {
@@ -1840,6 +1957,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1872,6 +1991,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerGroupsResult> getServerGroupsPlain(GetServerGroupsPlainArgs args) {
@@ -1885,6 +2005,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1917,6 +2039,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServerGroupsResult> getServerGroups(GetServerGroupsArgs args, InvokeOptions options) {
@@ -1930,6 +2053,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1962,6 +2087,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServerGroupsResult> getServerGroupsPlain(GetServerGroupsPlainArgs args, InvokeOptions options) {
@@ -1975,6 +2101,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2004,6 +2132,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSystemSecurityPoliciesResult> getSystemSecurityPolicies() {
@@ -2017,6 +2146,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2046,6 +2177,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSystemSecurityPoliciesResult> getSystemSecurityPoliciesPlain() {
@@ -2059,6 +2191,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2088,6 +2222,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSystemSecurityPoliciesResult> getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs args) {
@@ -2101,6 +2236,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2130,6 +2267,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSystemSecurityPoliciesResult> getSystemSecurityPoliciesPlain(GetSystemSecurityPoliciesPlainArgs args) {
@@ -2143,6 +2281,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2172,6 +2312,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSystemSecurityPoliciesResult> getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs args, InvokeOptions options) {
@@ -2185,6 +2326,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2214,6 +2357,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSystemSecurityPoliciesResult> getSystemSecurityPoliciesPlain(GetSystemSecurityPoliciesPlainArgs args, InvokeOptions options) {
@@ -2227,6 +2371,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2254,6 +2400,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -2267,6 +2414,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2294,6 +2443,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -2307,6 +2457,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2334,6 +2486,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -2347,6 +2500,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2374,6 +2529,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -2387,6 +2543,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2414,6 +2572,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -2427,6 +2586,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2454,6 +2615,7 @@ public final class AlbFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

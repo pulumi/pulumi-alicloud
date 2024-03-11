@@ -14,10 +14,9 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the CA certificate list.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCaCertificatesResult> InvokeAsync(GetCaCertificatesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCaCertificatesResult>("alicloud:slb/getCaCertificates:getCaCertificates", args ?? new GetCaCertificatesArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the CA certificate list.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,8 +60,7 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCaCertificatesResult> Invoke(GetCaCertificatesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCaCertificatesResult>("alicloud:slb/getCaCertificates:getCaCertificates", args ?? new GetCaCertificatesInvokeArgs(), options.WithDefaults());

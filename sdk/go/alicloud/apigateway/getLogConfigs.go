@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,6 +53,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetLogConfigs(ctx *pulumi.Context, args *GetLogConfigsArgs, opts ...pulumi.InvokeOption) (*GetLogConfigsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLogConfigsResult

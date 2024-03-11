@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,8 +42,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVbrPconnAssociationsResult> InvokeAsync(GetVbrPconnAssociationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVbrPconnAssociationsResult>("alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations", args ?? new GetVbrPconnAssociationsArgs(), options.WithDefaults());
@@ -54,10 +52,9 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -81,8 +78,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVbrPconnAssociationsResult> Invoke(GetVbrPconnAssociationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVbrPconnAssociationsResult>("alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations", args ?? new GetVbrPconnAssociationsInvokeArgs(), options.WithDefaults());

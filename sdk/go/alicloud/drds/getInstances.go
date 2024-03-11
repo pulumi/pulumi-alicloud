@@ -15,6 +15,39 @@ import (
 // Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 //
 // > **NOTE:** Available in 1.35.0+.
+//
+// ## Example Usage
+//
+//	<!--Start PulumiCodeChooser -->
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/drds"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			drdsInstancesDs, err := drds.GetInstances(ctx, &drds.GetInstancesArgs{
+//				Ids: []string{
+//					"drdsabc123456",
+//				},
+//				NameRegex: pulumi.StringRef("drds-\\d+"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstDbInstanceId", drdsInstancesDs.Instances[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult

@@ -175,6 +175,7 @@ class DeviceGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -185,6 +186,7 @@ class DeviceGroup(pulumi.CustomResource):
             name = "tfexample"
         example = alicloud.iot.DeviceGroup("example", group_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -218,6 +220,7 @@ class DeviceGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -228,6 +231,7 @@ class DeviceGroup(pulumi.CustomResource):
             name = "tfexample"
         example = alicloud.iot.DeviceGroup("example", group_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

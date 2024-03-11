@@ -19,6 +19,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetManagedKubernetesClusters(ctx *pulumi.Context, args *GetManagedKubernetesClustersArgs, opts ...pulumi.InvokeOption) (*GetManagedKubernetesClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetManagedKubernetesClustersResult
