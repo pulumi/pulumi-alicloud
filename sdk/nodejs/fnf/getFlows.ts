@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstFnfFlowId = example.then(example => example.flows?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFlows(args?: GetFlowsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowsResult> {
     args = args || {};
@@ -84,6 +86,7 @@ export interface GetFlowsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -94,6 +97,7 @@ export interface GetFlowsResult {
  * });
  * export const firstFnfFlowId = example.then(example => example.flows?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFlowsOutput(args?: GetFlowsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowsResult> {
     return pulumi.output(args).apply((a: any) => getFlows(a, opts))

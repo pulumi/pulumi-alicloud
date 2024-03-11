@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,6 +53,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetServerCustomImages(ctx *pulumi.Context, args *GetServerCustomImagesArgs, opts ...pulumi.InvokeOption) (*GetServerCustomImagesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerCustomImagesResult

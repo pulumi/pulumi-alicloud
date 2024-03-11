@@ -180,6 +180,7 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -216,6 +217,7 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
             instance_id=default_instance.id,
             port_range="9092/9092")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -251,6 +253,7 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -287,6 +290,7 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
             instance_id=default_instance.id,
             port_range="9092/9092")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

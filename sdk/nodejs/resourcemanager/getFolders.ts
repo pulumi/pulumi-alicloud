@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstFolderId = example.then(example => example.folders?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFolders(args?: GetFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetFoldersResult> {
     args = args || {};
@@ -107,6 +109,7 @@ export interface GetFoldersResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -116,6 +119,7 @@ export interface GetFoldersResult {
  * });
  * export const firstFolderId = example.then(example => example.folders?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFoldersOutput(args?: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
     return pulumi.output(args).apply((a: any) => getFolders(a, opts))

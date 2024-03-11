@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 // })
 // }
 // ```
+// <!--End PulumiCodeChooser -->
 func GetCapacityReservations(ctx *pulumi.Context, args *GetCapacityReservationsArgs, opts ...pulumi.InvokeOption) (*GetCapacityReservationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCapacityReservationsResult

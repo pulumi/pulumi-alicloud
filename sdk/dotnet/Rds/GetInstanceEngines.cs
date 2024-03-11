@@ -16,34 +16,20 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// &gt; **NOTE:** Available in v1.46.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
+        /// ```tf
+        /// data "alicloud_db_instance_engines" "resources" {
+        ///   instance_charge_type = "PostPaid"
+        ///   engine               = "MySQL"
+        ///   engine_version       = "5.6"
+        ///   output_file          = "./engines.txt"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var resources = AliCloud.Rds.GetInstanceEngines.Invoke(new()
-        ///     {
-        ///         Engine = "MySQL",
-        ///         EngineVersion = "5.6",
-        ///         InstanceChargeType = "PostPaid",
-        ///         OutputFile = "./engines.txt",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstDbCategory"] = resources.Apply(getInstanceEnginesResult =&gt; getInstanceEnginesResult.InstanceEngines[0]?.Category),
-        ///     };
-        /// });
+        /// output "first_db_category" {
+        ///   value = "${data.alicloud_db_instance_engines.resources.instance_engines.0.category}"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceEnginesResult> InvokeAsync(GetInstanceEnginesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceEnginesResult>("alicloud:rds/getInstanceEngines:getInstanceEngines", args ?? new GetInstanceEnginesArgs(), options.WithDefaults());
@@ -53,34 +39,20 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// &gt; **NOTE:** Available in v1.46.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
+        /// ```tf
+        /// data "alicloud_db_instance_engines" "resources" {
+        ///   instance_charge_type = "PostPaid"
+        ///   engine               = "MySQL"
+        ///   engine_version       = "5.6"
+        ///   output_file          = "./engines.txt"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var resources = AliCloud.Rds.GetInstanceEngines.Invoke(new()
-        ///     {
-        ///         Engine = "MySQL",
-        ///         EngineVersion = "5.6",
-        ///         InstanceChargeType = "PostPaid",
-        ///         OutputFile = "./engines.txt",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstDbCategory"] = resources.Apply(getInstanceEnginesResult =&gt; getInstanceEnginesResult.InstanceEngines[0]?.Category),
-        ///     };
-        /// });
+        /// output "first_db_category" {
+        ///   value = "${data.alicloud_db_instance_engines.resources.instance_engines.0.category}"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceEnginesResult> Invoke(GetInstanceEnginesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceEnginesResult>("alicloud:rds/getInstanceEngines:getInstanceEngines", args ?? new GetInstanceEnginesInvokeArgs(), options.WithDefaults());

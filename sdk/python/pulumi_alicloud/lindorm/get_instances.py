@@ -143,6 +143,7 @@ def get_instances(enable_details: Optional[bool] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -152,6 +153,7 @@ def get_instances(enable_details: Optional[bool] = None,
     name_regex = alicloud.lindorm.get_instances(name_regex="^my-Instance")
     pulumi.export("lindormInstanceId2", name_regex.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -204,6 +206,7 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -213,6 +216,7 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     name_regex = alicloud.lindorm.get_instances(name_regex="^my-Instance")
     pulumi.export("lindormInstanceId2", name_regex.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

@@ -105,6 +105,7 @@ def get_regions(current: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -112,6 +113,7 @@ def get_regions(current: Optional[bool] = None,
     current_region_ds = alicloud.get_regions(current=True)
     pulumi.export("currentRegionId", current_region_ds.regions[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool current: Set to true to match only the region configured in the provider.
@@ -147,6 +149,7 @@ def get_regions_output(current: Optional[pulumi.Input[Optional[bool]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -154,6 +157,7 @@ def get_regions_output(current: Optional[pulumi.Input[Optional[bool]]] = None,
     current_region_ds = alicloud.get_regions(current=True)
     pulumi.export("currentRegionId", current_region_ds.regions[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool current: Set to true to match only the region configured in the provider.

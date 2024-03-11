@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const hbrHanaInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHanaInstances(args?: GetHanaInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetHanaInstancesResult> {
     args = args || {};
@@ -95,6 +97,7 @@ export interface GetHanaInstancesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -104,6 +107,7 @@ export interface GetHanaInstancesResult {
  * });
  * export const hbrHanaInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHanaInstancesOutput(args?: GetHanaInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHanaInstancesResult> {
     return pulumi.output(args).apply((a: any) => getHanaInstances(a, opts))

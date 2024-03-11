@@ -138,6 +138,7 @@ class UserAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -177,6 +178,7 @@ class UserAttachment(pulumi.CustomResource):
             user_group_id=default_user_group.user_group_id,
             user_id=local_user.user_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -207,6 +209,7 @@ class UserAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -246,6 +249,7 @@ class UserAttachment(pulumi.CustomResource):
             user_group_id=default_user_group.user_group_id,
             user_id=local_user.user_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

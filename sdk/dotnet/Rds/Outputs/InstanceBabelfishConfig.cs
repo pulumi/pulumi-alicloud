@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string BabelfishEnabled;
         /// <summary>
-        /// The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ &amp; * () _ + - =
+        /// The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ %!^(MISSING) &amp; * () _ + - =
         /// </summary>
         public readonly string MasterUserPassword;
         /// <summary>

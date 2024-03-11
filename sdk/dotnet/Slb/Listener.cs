@@ -25,6 +25,7 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -103,6 +104,8 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Listener fields and protocol mapping
     /// 
     /// load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
@@ -295,7 +298,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string?> HealthCheckType { get; private set; } = null!;
 
         /// <summary>
-        /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
+        /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
         /// </summary>
         [Output("healthCheckUri")]
         public Output<string?> HealthCheckUri { get; private set; } = null!;
@@ -604,7 +607,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
+        /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
         /// </summary>
         [Input("healthCheckUri")]
         public Input<string>? HealthCheckUri { get; set; }
@@ -875,7 +878,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
+        /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
         /// </summary>
         [Input("healthCheckUri")]
         public Input<string>? HealthCheckUri { get; set; }

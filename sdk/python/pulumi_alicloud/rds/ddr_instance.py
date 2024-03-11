@@ -122,7 +122,7 @@ class DdrInstanceArgs:
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
-               > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
+               > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\\|{};:'",<>/?
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
                > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
@@ -595,7 +595,7 @@ class DdrInstanceArgs:
     def connection_string_prefix(self) -> Optional[pulumi.Input[str]]:
         """
         The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
-        > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
+        > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\\|{};:'",<>/?
         """
         return pulumi.get(self, "connection_string_prefix")
 
@@ -1361,7 +1361,7 @@ class _DdrInstanceState:
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
         :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
-               > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
+               > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\\|{};:'",<>/?
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
                > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
@@ -1811,7 +1811,7 @@ class _DdrInstanceState:
     def connection_string_prefix(self) -> Optional[pulumi.Input[str]]:
         """
         The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
-        > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
+        > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\\|{};:'",<>/?
         """
         return pulumi.get(self, "connection_string_prefix")
 
@@ -2698,7 +2698,7 @@ class DdrInstance(pulumi.CustomResource):
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
-               > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
+               > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\\|{};:'",<>/?
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
                > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
@@ -3141,7 +3141,7 @@ class DdrInstance(pulumi.CustomResource):
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
         :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
-               > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
+               > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\\|{};:'",<>/?
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
                > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
@@ -3478,7 +3478,7 @@ class DdrInstance(pulumi.CustomResource):
     def connection_string_prefix(self) -> pulumi.Output[str]:
         """
         The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
-        > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
+        > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\\|{};:'",<>/?
         """
         return pulumi.get(self, "connection_string_prefix")
 

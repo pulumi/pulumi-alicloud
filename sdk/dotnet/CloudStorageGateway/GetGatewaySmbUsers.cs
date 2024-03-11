@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// 
         /// &gt; **NOTE:** Available in v1.142.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -81,8 +80,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGatewaySmbUsersResult> InvokeAsync(GetGatewaySmbUsersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewaySmbUsersResult>("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", args ?? new GetGatewaySmbUsersArgs(), options.WithDefaults());
@@ -92,12 +90,11 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// 
         /// &gt; **NOTE:** Available in v1.142.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -157,8 +154,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGatewaySmbUsersResult> Invoke(GetGatewaySmbUsersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewaySmbUsersResult>("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", args ?? new GetGatewaySmbUsersInvokeArgs(), options.WithDefaults());

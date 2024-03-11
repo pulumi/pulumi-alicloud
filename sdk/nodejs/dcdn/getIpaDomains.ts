@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -32,6 +33,7 @@ import * as utilities from "../utilities";
  * });
  * export const dcdnIpaDomainId2 = status.then(status => status.domains?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIpaDomains(args?: GetIpaDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpaDomainsResult> {
     args = args || {};
@@ -97,6 +99,7 @@ export interface GetIpaDomainsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -114,6 +117,7 @@ export interface GetIpaDomainsResult {
  * });
  * export const dcdnIpaDomainId2 = status.then(status => status.domains?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIpaDomainsOutput(args?: GetIpaDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpaDomainsResult> {
     return pulumi.output(args).apply((a: any) => getIpaDomains(a, opts))

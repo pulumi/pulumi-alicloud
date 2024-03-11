@@ -339,6 +339,7 @@ class AnycastEipAddress(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -355,6 +356,7 @@ class AnycastEipAddress(pulumi.CustomResource):
             internet_charge_type="PayByTraffic",
             payment_type="PayAsYouGo")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -392,6 +394,7 @@ class AnycastEipAddress(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -408,6 +411,7 @@ class AnycastEipAddress(pulumi.CustomResource):
             internet_charge_type="PayByTraffic",
             payment_type="PayAsYouGo")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

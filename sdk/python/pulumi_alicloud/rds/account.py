@@ -509,6 +509,7 @@ class Account(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -540,6 +541,7 @@ class Account(pulumi.CustomResource):
             instance_id=instance.id,
             password="Test12345")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -576,6 +578,7 @@ class Account(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -607,6 +610,7 @@ class Account(pulumi.CustomResource):
             instance_id=instance.id,
             password="Test12345")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

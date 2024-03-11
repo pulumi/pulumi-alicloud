@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// &gt; **NOTE:** Available in v1.183.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,8 +43,7 @@ namespace Pulumi.AliCloud.Alb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSystemSecurityPoliciesResult> InvokeAsync(GetSystemSecurityPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSystemSecurityPoliciesResult>("alicloud:alb/getSystemSecurityPolicies:getSystemSecurityPolicies", args ?? new GetSystemSecurityPoliciesArgs(), options.WithDefaults());
@@ -55,12 +53,11 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// &gt; **NOTE:** Available in v1.183.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +80,7 @@ namespace Pulumi.AliCloud.Alb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSystemSecurityPoliciesResult> Invoke(GetSystemSecurityPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSystemSecurityPoliciesResult>("alicloud:alb/getSystemSecurityPolicies:getSystemSecurityPolicies", args ?? new GetSystemSecurityPoliciesInvokeArgs(), options.WithDefaults());

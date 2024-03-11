@@ -179,6 +179,10 @@ class SslVpnClientCert(pulumi.CustomResource):
                  ssl_vpn_server_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
         ## Import
 
         SSL-VPN client certificates can be imported using the id, e.g.
@@ -199,6 +203,10 @@ class SslVpnClientCert(pulumi.CustomResource):
                  args: SslVpnClientCertArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
         ## Import
 
         SSL-VPN client certificates can be imported using the id, e.g.

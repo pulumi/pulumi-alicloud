@@ -143,6 +143,7 @@ def get_host_accounts(host_account_name: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -159,6 +160,7 @@ def get_host_accounts(host_account_name: Optional[str] = None,
         name_regex="^my-HostAccount")
     pulumi.export("bastionhostHostAccountId2", name_regex.accounts[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str host_account_name: Specify the new hosting account's name, support the longest 128 characters.
@@ -211,6 +213,7 @@ def get_host_accounts_output(host_account_name: Optional[pulumi.Input[Optional[s
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -227,6 +230,7 @@ def get_host_accounts_output(host_account_name: Optional[pulumi.Input[Optional[s
         name_regex="^my-HostAccount")
     pulumi.export("bastionhostHostAccountId2", name_regex.accounts[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str host_account_name: Specify the new hosting account's name, support the longest 128 characters.

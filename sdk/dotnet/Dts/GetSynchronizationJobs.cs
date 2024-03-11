@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Dts
         /// 
         /// &gt; **NOTE:** Available in v1.138.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,8 +37,7 @@ namespace Pulumi.AliCloud.Dts
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSynchronizationJobsResult> InvokeAsync(GetSynchronizationJobsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSynchronizationJobsResult>("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args ?? new GetSynchronizationJobsArgs(), options.WithDefaults());
@@ -49,12 +47,11 @@ namespace Pulumi.AliCloud.Dts
         /// 
         /// &gt; **NOTE:** Available in v1.138.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,8 +68,7 @@ namespace Pulumi.AliCloud.Dts
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSynchronizationJobsResult> Invoke(GetSynchronizationJobsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSynchronizationJobsResult>("alicloud:dts/getSynchronizationJobs:getSynchronizationJobs", args ?? new GetSynchronizationJobsInvokeArgs(), options.WithDefaults());

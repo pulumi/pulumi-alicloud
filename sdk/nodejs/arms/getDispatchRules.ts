@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const armsDispatchRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDispatchRules(args?: GetDispatchRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetDispatchRulesResult> {
     args = args || {};
@@ -91,6 +93,7 @@ export interface GetDispatchRulesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -102,6 +105,7 @@ export interface GetDispatchRulesResult {
  * });
  * export const armsDispatchRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDispatchRulesOutput(args?: GetDispatchRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDispatchRulesResult> {
     return pulumi.output(args).apply((a: any) => getDispatchRules(a, opts))

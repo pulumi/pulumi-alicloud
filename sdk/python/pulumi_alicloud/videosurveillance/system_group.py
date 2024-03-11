@@ -415,6 +415,7 @@ class SystemGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -426,6 +427,7 @@ class SystemGroup(pulumi.CustomResource):
             play_domain="your_plan_domain",
             push_domain="your_push_domain")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -463,6 +465,7 @@ class SystemGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -474,6 +477,7 @@ class SystemGroup(pulumi.CustomResource):
             play_domain="your_plan_domain",
             push_domain="your_push_domain")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

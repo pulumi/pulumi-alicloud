@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,6 +48,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetServerFirewallRules(ctx *pulumi.Context, args *GetServerFirewallRulesArgs, opts ...pulumi.InvokeOption) (*GetServerFirewallRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerFirewallRulesResult

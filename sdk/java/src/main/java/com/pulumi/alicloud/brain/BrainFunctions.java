@@ -31,6 +31,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -62,6 +64,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIndustrialPidLoopsResult> getIndustrialPidLoops(GetIndustrialPidLoopsArgs args) {
@@ -75,6 +78,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -106,6 +111,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIndustrialPidLoopsResult> getIndustrialPidLoopsPlain(GetIndustrialPidLoopsPlainArgs args) {
@@ -119,6 +125,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -150,6 +158,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIndustrialPidLoopsResult> getIndustrialPidLoops(GetIndustrialPidLoopsArgs args, InvokeOptions options) {
@@ -163,6 +172,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -194,6 +205,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIndustrialPidLoopsResult> getIndustrialPidLoopsPlain(GetIndustrialPidLoopsPlainArgs args, InvokeOptions options) {
@@ -207,6 +219,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -237,6 +251,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIndustrialPidOrganizationsResult> getIndustrialPidOrganizations() {
@@ -250,6 +265,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -280,6 +297,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIndustrialPidOrganizationsResult> getIndustrialPidOrganizationsPlain() {
@@ -293,6 +311,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -323,6 +343,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIndustrialPidOrganizationsResult> getIndustrialPidOrganizations(GetIndustrialPidOrganizationsArgs args) {
@@ -336,6 +357,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -366,6 +389,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIndustrialPidOrganizationsResult> getIndustrialPidOrganizationsPlain(GetIndustrialPidOrganizationsPlainArgs args) {
@@ -379,6 +403,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -409,6 +435,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIndustrialPidOrganizationsResult> getIndustrialPidOrganizations(GetIndustrialPidOrganizationsArgs args, InvokeOptions options) {
@@ -422,6 +449,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -452,6 +481,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIndustrialPidOrganizationsResult> getIndustrialPidOrganizationsPlain(GetIndustrialPidOrganizationsPlainArgs args, InvokeOptions options) {
@@ -465,6 +495,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -495,6 +527,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIndustrialPidProjectsResult> getIndustrialPidProjects() {
@@ -508,6 +541,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -538,6 +573,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIndustrialPidProjectsResult> getIndustrialPidProjectsPlain() {
@@ -551,6 +587,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -581,6 +619,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIndustrialPidProjectsResult> getIndustrialPidProjects(GetIndustrialPidProjectsArgs args) {
@@ -594,6 +633,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -624,6 +665,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIndustrialPidProjectsResult> getIndustrialPidProjectsPlain(GetIndustrialPidProjectsPlainArgs args) {
@@ -637,6 +679,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -667,6 +711,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIndustrialPidProjectsResult> getIndustrialPidProjects(GetIndustrialPidProjectsArgs args, InvokeOptions options) {
@@ -680,6 +725,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -710,6 +757,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIndustrialPidProjectsResult> getIndustrialPidProjectsPlain(GetIndustrialPidProjectsPlainArgs args, InvokeOptions options) {
@@ -723,6 +771,8 @@ public final class BrainFunctions {
      * &gt; **NOTE:** The Brain Industrial service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -751,6 +801,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIndustrialSericeResult> getIndustrialSerice() {
@@ -764,6 +815,8 @@ public final class BrainFunctions {
      * &gt; **NOTE:** The Brain Industrial service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -792,6 +845,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIndustrialSericeResult> getIndustrialSericePlain() {
@@ -805,6 +859,8 @@ public final class BrainFunctions {
      * &gt; **NOTE:** The Brain Industrial service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -833,6 +889,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIndustrialSericeResult> getIndustrialSerice(GetIndustrialSericeArgs args) {
@@ -846,6 +903,8 @@ public final class BrainFunctions {
      * &gt; **NOTE:** The Brain Industrial service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -874,6 +933,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIndustrialSericeResult> getIndustrialSericePlain(GetIndustrialSericePlainArgs args) {
@@ -887,6 +947,8 @@ public final class BrainFunctions {
      * &gt; **NOTE:** The Brain Industrial service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -915,6 +977,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIndustrialSericeResult> getIndustrialSerice(GetIndustrialSericeArgs args, InvokeOptions options) {
@@ -928,6 +991,8 @@ public final class BrainFunctions {
      * &gt; **NOTE:** The Brain Industrial service is not support in the international site.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -956,6 +1021,7 @@ public final class BrainFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIndustrialSericeResult> getIndustrialSericePlain(GetIndustrialSericePlainArgs args, InvokeOptions options) {

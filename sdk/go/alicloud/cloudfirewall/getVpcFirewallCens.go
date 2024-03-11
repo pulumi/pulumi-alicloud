@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 // })
 // }
 // ```
+// <!--End PulumiCodeChooser -->
 func GetVpcFirewallCens(ctx *pulumi.Context, args *GetVpcFirewallCensArgs, opts ...pulumi.InvokeOption) (*GetVpcFirewallCensResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpcFirewallCensResult

@@ -223,6 +223,7 @@ def get_class_details(class_code: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -232,6 +233,7 @@ def get_class_details(class_code: Optional[str] = None,
         engine="MySQL",
         engine_version="8.0")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str class_code: The code of the instance type.
@@ -292,6 +294,7 @@ def get_class_details_output(class_code: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -301,6 +304,7 @@ def get_class_details_output(class_code: Optional[pulumi.Input[str]] = None,
         engine="MySQL",
         engine_version="8.0")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str class_code: The code of the instance type.

@@ -129,6 +129,7 @@ def get_consumer_groups(consumer_id_regex: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -138,6 +139,7 @@ def get_consumer_groups(consumer_id_regex: Optional[str] = None,
         output_file="consumerGroups.txt")
     pulumi.export("firstGroupName", consumer_groups_ds.consumer_ids[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str consumer_id_regex: A regex string to filter results by the consumer group id.
@@ -177,6 +179,7 @@ def get_consumer_groups_output(consumer_id_regex: Optional[pulumi.Input[Optional
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -186,6 +189,7 @@ def get_consumer_groups_output(consumer_id_regex: Optional[pulumi.Input[Optional
         output_file="consumerGroups.txt")
     pulumi.export("firstGroupName", consumer_groups_ds.consumer_ids[0])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str consumer_id_regex: A regex string to filter results by the consumer group id.

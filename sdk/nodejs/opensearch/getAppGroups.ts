@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -36,6 +37,7 @@ import * as utilities from "../utilities";
  * });
  * export const appGroups = defaultAppGroups.apply(defaultAppGroups => defaultAppGroups.groups);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAppGroups(args?: GetAppGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAppGroupsResult> {
     args = args || {};
@@ -116,6 +118,7 @@ export interface GetAppGroupsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -137,6 +140,7 @@ export interface GetAppGroupsResult {
  * });
  * export const appGroups = defaultAppGroups.apply(defaultAppGroups => defaultAppGroups.groups);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAppGroupsOutput(args?: GetAppGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppGroupsResult> {
     return pulumi.output(args).apply((a: any) => getAppGroups(a, opts))

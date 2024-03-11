@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Sddp
         /// 
         /// &gt; **NOTE:** Available in v1.133.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,8 +50,7 @@ namespace Pulumi.AliCloud.Sddp
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetConfigsResult> InvokeAsync(GetConfigsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConfigsResult>("alicloud:sddp/getConfigs:getConfigs", args ?? new GetConfigsArgs(), options.WithDefaults());
@@ -62,12 +60,11 @@ namespace Pulumi.AliCloud.Sddp
         /// 
         /// &gt; **NOTE:** Available in v1.133.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -97,8 +94,7 @@ namespace Pulumi.AliCloud.Sddp
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetConfigsResult> Invoke(GetConfigsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConfigsResult>("alicloud:sddp/getConfigs:getConfigs", args ?? new GetConfigsInvokeArgs(), options.WithDefaults());

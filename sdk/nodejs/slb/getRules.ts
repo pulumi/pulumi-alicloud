@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -54,6 +55,7 @@ import * as utilities from "../utilities";
  * }));
  * export const firstSlbRuleId = sampleDs.apply(sampleDs => sampleDs.slbRules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRules(args: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
 
@@ -123,6 +125,7 @@ export interface GetRulesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -166,6 +169,7 @@ export interface GetRulesResult {
  * }));
  * export const firstSlbRuleId = sampleDs.apply(sampleDs => sampleDs.slbRules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRulesOutput(args: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
     return pulumi.output(args).apply((a: any) => getRules(a, opts))

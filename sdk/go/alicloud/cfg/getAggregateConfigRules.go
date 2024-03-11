@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,6 +48,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAggregateConfigRules(ctx *pulumi.Context, args *GetAggregateConfigRulesArgs, opts ...pulumi.InvokeOption) (*GetAggregateConfigRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAggregateConfigRulesResult

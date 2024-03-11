@@ -226,6 +226,7 @@ def get_load_balancers(address_type: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -235,6 +236,7 @@ def get_load_balancers(address_type: Optional[str] = None,
     name_regex = alicloud.alb.get_load_balancers(name_regex="^my-LoadBalancer")
     pulumi.export("albLoadBalancerId2", name_regex.balancers[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str address_type: The type of IP address that the ALB instance uses to provide services.
@@ -319,6 +321,7 @@ def get_load_balancers_output(address_type: Optional[pulumi.Input[Optional[str]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -328,6 +331,7 @@ def get_load_balancers_output(address_type: Optional[pulumi.Input[Optional[str]]
     name_regex = alicloud.alb.get_load_balancers(name_regex="^my-LoadBalancer")
     pulumi.export("albLoadBalancerId2", name_regex.balancers[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str address_type: The type of IP address that the ALB instance uses to provide services.

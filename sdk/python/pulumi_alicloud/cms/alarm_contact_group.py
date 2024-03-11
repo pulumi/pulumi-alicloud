@@ -175,12 +175,14 @@ class AlarmContactGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         example = alicloud.cms.AlarmContactGroup("example", alarm_contact_group_name="tf-example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -214,12 +216,14 @@ class AlarmContactGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         example = alicloud.cms.AlarmContactGroup("example", alarm_contact_group_name="tf-example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

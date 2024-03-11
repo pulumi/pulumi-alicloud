@@ -79,12 +79,14 @@ class Qos(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.rocketmq.Qos("default")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -117,12 +119,14 @@ class Qos(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.rocketmq.Qos("default")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

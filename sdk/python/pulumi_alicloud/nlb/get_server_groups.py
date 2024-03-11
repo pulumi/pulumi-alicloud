@@ -153,6 +153,7 @@ def get_server_groups(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -162,6 +163,7 @@ def get_server_groups(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.nlb.get_server_groups(name_regex="^my-ServerGroup")
     pulumi.export("nlbServerGroupId2", name_regex.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Server Group IDs.
@@ -218,6 +220,7 @@ def get_server_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -227,6 +230,7 @@ def get_server_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     name_regex = alicloud.nlb.get_server_groups(name_regex="^my-ServerGroup")
     pulumi.export("nlbServerGroupId2", name_regex.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Server Group IDs.

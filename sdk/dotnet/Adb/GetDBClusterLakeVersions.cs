@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// &gt; **NOTE:** Available in v1.190.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,8 +43,7 @@ namespace Pulumi.AliCloud.Adb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDBClusterLakeVersionsResult> InvokeAsync(GetDBClusterLakeVersionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDBClusterLakeVersionsResult>("alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions", args ?? new GetDBClusterLakeVersionsArgs(), options.WithDefaults());
@@ -55,12 +53,11 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// &gt; **NOTE:** Available in v1.190.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +80,7 @@ namespace Pulumi.AliCloud.Adb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDBClusterLakeVersionsResult> Invoke(GetDBClusterLakeVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDBClusterLakeVersionsResult>("alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions", args ?? new GetDBClusterLakeVersionsInvokeArgs(), options.WithDefaults());

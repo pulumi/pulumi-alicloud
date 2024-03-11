@@ -124,6 +124,7 @@ def get_commands(command_type: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -163,6 +164,7 @@ def get_commands(command_type: Optional[str] = None,
     ids = alicloud.eds.get_commands()
     pulumi.export("ecdCommandId1", ids.commands[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str command_type: The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
@@ -210,6 +212,7 @@ def get_commands_output(command_type: Optional[pulumi.Input[Optional[str]]] = No
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -249,6 +252,7 @@ def get_commands_output(command_type: Optional[pulumi.Input[Optional[str]]] = No
     ids = alicloud.eds.get_commands()
     pulumi.export("ecdCommandId1", ids.commands[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str command_type: The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.

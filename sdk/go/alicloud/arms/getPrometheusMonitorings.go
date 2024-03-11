@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,6 +55,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetPrometheusMonitorings(ctx *pulumi.Context, args *GetPrometheusMonitoringsArgs, opts ...pulumi.InvokeOption) (*GetPrometheusMonitoringsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrometheusMonitoringsResult

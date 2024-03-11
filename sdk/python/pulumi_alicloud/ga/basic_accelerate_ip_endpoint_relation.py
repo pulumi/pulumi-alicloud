@@ -156,6 +156,7 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -220,6 +221,7 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
             accelerate_ip_id=default_basic_accelerate_ip.id,
             endpoint_id=default_basic_endpoint.endpoint_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -252,6 +254,7 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -316,6 +319,7 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
             accelerate_ip_id=default_basic_accelerate_ip.id,
             endpoint_id=default_basic_endpoint.endpoint_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,10 +15,9 @@ namespace Pulumi.AliCloud.MongoDB
         /// The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
         /// Filters support regular expression for the instance name, engine or instance type.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,8 +36,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:mongodb/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
@@ -47,10 +45,9 @@ namespace Pulumi.AliCloud.MongoDB
         /// The `alicloud.mongodb.getInstances` data source provides a collection of MongoDB instances available in Alicloud account.
         /// Filters support regular expression for the instance name, engine or instance type.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,8 +66,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:mongodb/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());

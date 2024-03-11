@@ -165,6 +165,7 @@ def get_transit_router_multicast_domain_associations(ids: Optional[Sequence[str]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -173,6 +174,7 @@ def get_transit_router_multicast_domain_associations(ids: Optional[Sequence[str]
         transit_router_multicast_domain_id="your_transit_router_multicast_domain_id")
     pulumi.export("cenTransitRouterMulticastDomainId0", ids.associations[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain Association IDs.
@@ -228,6 +230,7 @@ def get_transit_router_multicast_domain_associations_output(ids: Optional[pulumi
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -236,6 +239,7 @@ def get_transit_router_multicast_domain_associations_output(ids: Optional[pulumi
         transit_router_multicast_domain_id="your_transit_router_multicast_domain_id")
     pulumi.export("cenTransitRouterMulticastDomainId0", ids.associations[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain Association IDs.

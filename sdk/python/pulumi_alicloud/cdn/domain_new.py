@@ -355,6 +355,7 @@ class DomainNew(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -375,6 +376,7 @@ class DomainNew(pulumi.CustomResource):
                 weight=15,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -416,6 +418,7 @@ class DomainNew(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -436,6 +439,7 @@ class DomainNew(pulumi.CustomResource):
                 weight=15,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

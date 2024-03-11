@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,6 +56,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetGatewayBlockVolumes(ctx *pulumi.Context, args *GetGatewayBlockVolumesArgs, opts ...pulumi.InvokeOption) (*GetGatewayBlockVolumesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewayBlockVolumesResult

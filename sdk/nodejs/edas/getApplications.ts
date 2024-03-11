@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstApplicationName = applications.then(applications => applications.applications?.[0]?.appName);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplications(args?: GetApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationsResult> {
     args = args || {};
@@ -83,6 +85,7 @@ export interface GetApplicationsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -93,6 +96,7 @@ export interface GetApplicationsResult {
  * });
  * export const firstApplicationName = applications.then(applications => applications.applications?.[0]?.appName);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplicationsOutput(args?: GetApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationsResult> {
     return pulumi.output(args).apply((a: any) => getApplications(a, opts))

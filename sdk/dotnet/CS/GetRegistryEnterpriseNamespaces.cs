@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** Available in v1.86.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,7 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRegistryEnterpriseNamespacesResult> InvokeAsync(GetRegistryEnterpriseNamespacesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistryEnterpriseNamespacesResult>("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", args ?? new GetRegistryEnterpriseNamespacesArgs(), options.WithDefaults());
@@ -52,10 +50,9 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** Available in v1.86.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +74,7 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRegistryEnterpriseNamespacesResult> Invoke(GetRegistryEnterpriseNamespacesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseNamespacesResult>("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", args ?? new GetRegistryEnterpriseNamespacesInvokeArgs(), options.WithDefaults());

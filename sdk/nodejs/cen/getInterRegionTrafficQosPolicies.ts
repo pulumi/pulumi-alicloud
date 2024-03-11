@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -32,6 +33,7 @@ import * as utilities from "../utilities";
  * });
  * export const cenInterRegionTrafficQosPolicyId1 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInterRegionTrafficQosPolicies(args: GetInterRegionTrafficQosPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetInterRegionTrafficQosPoliciesResult> {
 
@@ -135,6 +137,7 @@ export interface GetInterRegionTrafficQosPoliciesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -152,6 +155,7 @@ export interface GetInterRegionTrafficQosPoliciesResult {
  * });
  * export const cenInterRegionTrafficQosPolicyId1 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInterRegionTrafficQosPoliciesOutput(args: GetInterRegionTrafficQosPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterRegionTrafficQosPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getInterRegionTrafficQosPolicies(a, opts))

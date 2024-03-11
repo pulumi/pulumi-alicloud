@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudEcsElasticityAssuranceExampleId = _default.then(_default => _default.assurances?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getElasticityAssurances(args?: GetElasticityAssurancesArgs, opts?: pulumi.InvokeOptions): Promise<GetElasticityAssurancesResult> {
     args = args || {};
@@ -105,6 +107,7 @@ export interface GetElasticityAssurancesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -114,6 +117,7 @@ export interface GetElasticityAssurancesResult {
  * });
  * export const alicloudEcsElasticityAssuranceExampleId = _default.then(_default => _default.assurances?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getElasticityAssurancesOutput(args?: GetElasticityAssurancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetElasticityAssurancesResult> {
     return pulumi.output(args).apply((a: any) => getElasticityAssurances(a, opts))

@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,8 @@ import * as utilities from "../utilities";
  *     nameRegex: "^tf-testAcc.*",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Public ip addresses Block
  *
  *   The public ip addresses mapping supports the following:
@@ -132,6 +135,7 @@ export interface GetCommonBandwidthPackagesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -145,6 +149,8 @@ export interface GetCommonBandwidthPackagesResult {
  *     nameRegex: "^tf-testAcc.*",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Public ip addresses Block
  *
  *   The public ip addresses mapping supports the following:

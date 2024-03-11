@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.apigateway.getBackends({});
  * export const apiGatewayBackendId1 = ids.then(ids => ids.backends?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBackends(args?: GetBackendsArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendsResult> {
     args = args || {};
@@ -81,6 +83,7 @@ export interface GetBackendsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -88,6 +91,7 @@ export interface GetBackendsResult {
  * const ids = alicloud.apigateway.getBackends({});
  * export const apiGatewayBackendId1 = ids.then(ids => ids.backends?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBackendsOutput(args?: GetBackendsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendsResult> {
     return pulumi.output(args).apply((a: any) => getBackends(a, opts))

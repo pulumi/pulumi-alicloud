@@ -352,6 +352,7 @@ class Account(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -372,6 +373,8 @@ class Account(pulumi.CustomResource):
             display_name=default.result.apply(lambda result: f"{display_name}-{result}"),
             folder_id=example_folder.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Deleting `resourcemanager.Account` or removing it from your configuration
 
         Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,
@@ -416,6 +419,7 @@ class Account(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -436,6 +440,8 @@ class Account(pulumi.CustomResource):
             display_name=default.result.apply(lambda result: f"{display_name}-{result}"),
             folder_id=example_folder.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Deleting `resourcemanager.Account` or removing it from your configuration
 
         Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,

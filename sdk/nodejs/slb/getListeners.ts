@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -38,6 +39,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstSlbListenerProtocol = sampleDs.apply(sampleDs => sampleDs.slbListeners?.[0]?.protocol);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getListeners(args: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
 
@@ -106,6 +108,7 @@ export interface GetListenersResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -133,6 +136,7 @@ export interface GetListenersResult {
  * });
  * export const firstSlbListenerProtocol = sampleDs.apply(sampleDs => sampleDs.slbListeners?.[0]?.protocol);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getListenersOutput(args: GetListenersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListenersResult> {
     return pulumi.output(args).apply((a: any) => getListeners(a, opts))

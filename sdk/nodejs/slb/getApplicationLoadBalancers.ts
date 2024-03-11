@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstSlbId = example.then(example => example.balancers?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplicationLoadBalancers(args?: GetApplicationLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationLoadBalancersResult> {
     args = args || {};
@@ -238,6 +240,7 @@ export interface GetApplicationLoadBalancersResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -251,6 +254,7 @@ export interface GetApplicationLoadBalancersResult {
  * });
  * export const firstSlbId = example.then(example => example.balancers?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplicationLoadBalancersOutput(args?: GetApplicationLoadBalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationLoadBalancersResult> {
     return pulumi.output(args).apply((a: any) => getApplicationLoadBalancers(a, opts))

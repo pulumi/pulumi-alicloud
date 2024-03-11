@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** Available in v1.90.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,8 +42,7 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRegistryEnterpriseSyncRulesResult> InvokeAsync(GetRegistryEnterpriseSyncRulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistryEnterpriseSyncRulesResult>("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", args ?? new GetRegistryEnterpriseSyncRulesArgs(), options.WithDefaults());
@@ -54,10 +52,9 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// &gt; **NOTE:** Available in v1.90.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -81,8 +78,7 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRegistryEnterpriseSyncRulesResult> Invoke(GetRegistryEnterpriseSyncRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseSyncRulesResult>("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", args ?? new GetRegistryEnterpriseSyncRulesInvokeArgs(), options.WithDefaults());

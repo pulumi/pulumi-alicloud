@@ -20,6 +20,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,12 +58,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// # CEN transit router route table
-//
-// can be imported using the id, e.g.
+// CEN transit router route table  can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cen/transitRouterRouteTable:TransitRouterRouteTable default tr-*********:vtb-********

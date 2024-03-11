@@ -126,6 +126,7 @@ def get_vpc_endpoint_linked_vpcs(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -135,6 +136,7 @@ def get_vpc_endpoint_linked_vpcs(ids: Optional[Sequence[str]] = None,
         module_name="Registry")
     pulumi.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.vpc_endpoint_linked_vpcs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of CR Vpc Endpoint Linked Vpc IDs.
@@ -178,6 +180,7 @@ def get_vpc_endpoint_linked_vpcs_output(ids: Optional[pulumi.Input[Optional[Sequ
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -187,6 +190,7 @@ def get_vpc_endpoint_linked_vpcs_output(ids: Optional[pulumi.Input[Optional[Sequ
         module_name="Registry")
     pulumi.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.vpc_endpoint_linked_vpcs[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of CR Vpc Endpoint Linked Vpc IDs.

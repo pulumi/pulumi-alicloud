@@ -108,6 +108,7 @@ def get_scaling_groups(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -119,6 +120,7 @@ def get_scaling_groups(ids: Optional[Sequence[str]] = None,
         name_regex="scaling_group_name")
     pulumi.export("firstScalingGroup", scalinggroups_ds.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of scaling group IDs.
@@ -151,6 +153,7 @@ def get_scaling_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -162,6 +165,7 @@ def get_scaling_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
         name_regex="scaling_group_name")
     pulumi.export("firstScalingGroup", scalinggroups_ds.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of scaling group IDs.

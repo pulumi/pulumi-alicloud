@@ -103,6 +103,7 @@ def get_gtm_instances(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -110,6 +111,7 @@ def get_gtm_instances(ids: Optional[Sequence[str]] = None,
     ids = alicloud.dns.get_gtm_instances()
     pulumi.export("alidnsGtmInstanceId1", ids.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Gtm Instance IDs.
@@ -146,6 +148,7 @@ def get_gtm_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -153,6 +156,7 @@ def get_gtm_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     ids = alicloud.dns.get_gtm_instances()
     pulumi.export("alidnsGtmInstanceId1", ids.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Gtm Instance IDs.

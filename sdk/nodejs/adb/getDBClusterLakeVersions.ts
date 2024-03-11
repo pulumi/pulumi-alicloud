@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const adbDbClusterLakeVersionId1 = ids.then(ids => ids.versions?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDBClusterLakeVersions(args?: GetDBClusterLakeVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetDBClusterLakeVersionsResult> {
     args = args || {};
@@ -94,6 +96,7 @@ export interface GetDBClusterLakeVersionsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -103,6 +106,7 @@ export interface GetDBClusterLakeVersionsResult {
  * });
  * export const adbDbClusterLakeVersionId1 = ids.then(ids => ids.versions?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDBClusterLakeVersionsOutput(args?: GetDBClusterLakeVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDBClusterLakeVersionsResult> {
     return pulumi.output(args).apply((a: any) => getDBClusterLakeVersions(a, opts))

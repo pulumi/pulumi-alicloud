@@ -32,7 +32,7 @@ type Instance struct {
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// The name of the simple application server.
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
-	// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+	// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The paymen type of the resource. Valid values: `Subscription`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
@@ -93,7 +93,7 @@ type instanceState struct {
 	ImageId *string `pulumi:"imageId"`
 	// The name of the simple application server.
 	InstanceName *string `pulumi:"instanceName"`
-	// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+	// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
 	Password *string `pulumi:"password"`
 	// The paymen type of the resource. Valid values: `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -116,7 +116,7 @@ type InstanceState struct {
 	ImageId pulumi.StringPtrInput
 	// The name of the simple application server.
 	InstanceName pulumi.StringPtrInput
-	// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+	// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
 	Password pulumi.StringPtrInput
 	// The paymen type of the resource. Valid values: `Subscription`.
 	PaymentType pulumi.StringPtrInput
@@ -143,7 +143,7 @@ type instanceArgs struct {
 	ImageId string `pulumi:"imageId"`
 	// The name of the simple application server.
 	InstanceName *string `pulumi:"instanceName"`
-	// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+	// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
 	Password *string `pulumi:"password"`
 	// The paymen type of the resource. Valid values: `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -167,7 +167,7 @@ type InstanceArgs struct {
 	ImageId pulumi.StringInput
 	// The name of the simple application server.
 	InstanceName pulumi.StringPtrInput
-	// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+	// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
 	Password pulumi.StringPtrInput
 	// The paymen type of the resource. Valid values: `Subscription`.
 	PaymentType pulumi.StringPtrInput
@@ -291,7 +291,7 @@ func (o InstanceOutput) InstanceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
 }
 
-// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+// The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
 func (o InstanceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }

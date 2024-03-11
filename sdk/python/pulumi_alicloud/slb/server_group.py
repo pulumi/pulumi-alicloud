@@ -198,6 +198,7 @@ class ServerGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -221,6 +222,7 @@ class ServerGroup(pulumi.CustomResource):
             instance_charge_type="PayByCLCU")
         server_group_server_group = alicloud.slb.ServerGroup("serverGroupServerGroup", load_balancer_id=server_group_application_load_balancer.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -263,6 +265,7 @@ class ServerGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -286,6 +289,7 @@ class ServerGroup(pulumi.CustomResource):
             instance_charge_type="PayByCLCU")
         server_group_server_group = alicloud.slb.ServerGroup("serverGroupServerGroup", load_balancer_id=server_group_application_load_balancer.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

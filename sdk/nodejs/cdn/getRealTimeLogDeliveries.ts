@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const cdnRealTimeLogDelivery1 = example.then(example => example.deliveries?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRealTimeLogDeliveries(args: GetRealTimeLogDeliveriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRealTimeLogDeliveriesResult> {
 
@@ -75,6 +77,7 @@ export interface GetRealTimeLogDeliveriesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -84,6 +87,7 @@ export interface GetRealTimeLogDeliveriesResult {
  * });
  * export const cdnRealTimeLogDelivery1 = example.then(example => example.deliveries?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRealTimeLogDeliveriesOutput(args: GetRealTimeLogDeliveriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRealTimeLogDeliveriesResult> {
     return pulumi.output(args).apply((a: any) => getRealTimeLogDeliveries(a, opts))

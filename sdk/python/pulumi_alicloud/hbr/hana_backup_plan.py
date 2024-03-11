@@ -351,6 +351,7 @@ class HanaBackupPlan(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -379,6 +380,7 @@ class HanaBackupPlan(pulumi.CustomResource):
             schedule="I|1602673264|P1D",
             vault_id=example_hana_instance.vault_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -417,6 +419,7 @@ class HanaBackupPlan(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -445,6 +448,7 @@ class HanaBackupPlan(pulumi.CustomResource):
             schedule="I|1602673264|P1D",
             vault_id=example_hana_instance.vault_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

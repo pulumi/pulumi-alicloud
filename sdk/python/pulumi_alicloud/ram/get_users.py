@@ -140,6 +140,7 @@ def get_users(group_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -187,6 +188,7 @@ def get_users(group_name: Optional[str] = None,
         name_regex=default_user.name)
     pulumi.export("firstUserId", users_ds.users[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str group_name: Filter results by a specific group name. Returned users are in the specified group.
@@ -233,6 +235,7 @@ def get_users_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -280,6 +283,7 @@ def get_users_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
         name_regex=default_user.name)
     pulumi.export("firstUserId", users_ds.users[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str group_name: Filter results by a specific group name. Returned users are in the specified group.

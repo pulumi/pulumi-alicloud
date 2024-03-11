@@ -167,6 +167,7 @@ def get_route_services(access_region_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -174,6 +175,7 @@ def get_route_services(access_region_id: Optional[str] = None,
     example = alicloud.cen.get_route_services(cen_id="cen-7qthudw0ll6jmc****")
     pulumi.export("firstCenRouteServiceId", example.services[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str access_region_id: The region of the network instances that access the cloud services.
@@ -226,6 +228,7 @@ def get_route_services_output(access_region_id: Optional[pulumi.Input[Optional[s
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -233,6 +236,7 @@ def get_route_services_output(access_region_id: Optional[pulumi.Input[Optional[s
     example = alicloud.cen.get_route_services(cen_id="cen-7qthudw0ll6jmc****")
     pulumi.export("firstCenRouteServiceId", example.services[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str access_region_id: The region of the network instances that access the cloud services.

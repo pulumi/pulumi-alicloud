@@ -19,6 +19,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -50,6 +51,8 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Deleting `alicloud.resourcemanager.Account` or removing it from your configuration
     /// 
     /// Deleting the resource manager account or removing it from your configuration will remove it from your state file and management,

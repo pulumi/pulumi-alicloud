@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,6 +59,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetDbClusters(ctx *pulumi.Context, args *GetDbClustersArgs, opts ...pulumi.InvokeOption) (*GetDbClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDbClustersResult

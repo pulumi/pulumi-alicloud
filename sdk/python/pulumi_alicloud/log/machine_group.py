@@ -204,6 +204,7 @@ class MachineGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -222,6 +223,8 @@ class MachineGroup(pulumi.CustomResource):
                 "10.0.0.2",
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use the existing sls-logtail module
@@ -257,6 +260,7 @@ class MachineGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -275,6 +279,8 @@ class MachineGroup(pulumi.CustomResource):
                 "10.0.0.2",
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Module Support
 
         You can use the existing sls-logtail module

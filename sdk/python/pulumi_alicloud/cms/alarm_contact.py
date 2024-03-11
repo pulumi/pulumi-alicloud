@@ -279,6 +279,7 @@ class AlarmContact(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -289,6 +290,7 @@ class AlarmContact(pulumi.CustomResource):
             describe="For example",
             channels_mail="terraform@test.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -325,6 +327,7 @@ class AlarmContact(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -335,6 +338,7 @@ class AlarmContact(pulumi.CustomResource):
             describe="For example",
             channels_mail="terraform@test.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

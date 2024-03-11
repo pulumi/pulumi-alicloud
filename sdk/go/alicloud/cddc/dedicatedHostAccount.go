@@ -24,6 +24,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -114,6 +115,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -127,7 +129,7 @@ type DedicatedHostAccount struct {
 
 	// The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
-	// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
+	// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
 	AccountPassword pulumi.StringOutput `pulumi:"accountPassword"`
 	// The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
 	AccountType pulumi.StringPtrOutput `pulumi:"accountType"`
@@ -183,7 +185,7 @@ func GetDedicatedHostAccount(ctx *pulumi.Context,
 type dedicatedHostAccountState struct {
 	// The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
 	AccountName *string `pulumi:"accountName"`
-	// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
+	// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
 	AccountPassword *string `pulumi:"accountPassword"`
 	// The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
 	AccountType *string `pulumi:"accountType"`
@@ -194,7 +196,7 @@ type dedicatedHostAccountState struct {
 type DedicatedHostAccountState struct {
 	// The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
 	AccountName pulumi.StringPtrInput
-	// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
+	// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
 	AccountPassword pulumi.StringPtrInput
 	// The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
 	AccountType pulumi.StringPtrInput
@@ -209,7 +211,7 @@ func (DedicatedHostAccountState) ElementType() reflect.Type {
 type dedicatedHostAccountArgs struct {
 	// The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
 	AccountName string `pulumi:"accountName"`
-	// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
+	// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
 	AccountPassword string `pulumi:"accountPassword"`
 	// The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
 	AccountType *string `pulumi:"accountType"`
@@ -221,7 +223,7 @@ type dedicatedHostAccountArgs struct {
 type DedicatedHostAccountArgs struct {
 	// The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
 	AccountName pulumi.StringInput
-	// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
+	// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
 	AccountPassword pulumi.StringInput
 	// The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
 	AccountType pulumi.StringPtrInput
@@ -321,7 +323,7 @@ func (o DedicatedHostAccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedHostAccount) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
 
-// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
+// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
 func (o DedicatedHostAccountOutput) AccountPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedHostAccount) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
 }

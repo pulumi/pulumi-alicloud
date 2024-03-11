@@ -237,6 +237,7 @@ class AccessRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -256,6 +257,7 @@ class AccessRule(pulumi.CustomResource):
             network_segment="192.168.81.1",
             access_group_id=default_access_group.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -290,6 +292,7 @@ class AccessRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -309,6 +312,7 @@ class AccessRule(pulumi.CustomResource):
             network_segment="192.168.81.1",
             access_group_id=default_access_group.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

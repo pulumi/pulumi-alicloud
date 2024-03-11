@@ -84,6 +84,7 @@ def get_resolver_zones(output_file: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -91,6 +92,7 @@ def get_resolver_zones(output_file: Optional[str] = None,
     default = alicloud.pvtz.get_resolver_zones(status="NORMAL")
     pulumi.export("firstZonesId", default.zones[0].zone_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -122,6 +124,7 @@ def get_resolver_zones_output(output_file: Optional[pulumi.Input[Optional[str]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -129,6 +132,7 @@ def get_resolver_zones_output(output_file: Optional[pulumi.Input[Optional[str]]]
     default = alicloud.pvtz.get_resolver_zones(status="NORMAL")
     pulumi.export("firstZonesId", default.zones[0].zone_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

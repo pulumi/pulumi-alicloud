@@ -451,6 +451,7 @@ class FileSystem(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -463,7 +464,9 @@ class FileSystem(pulumi.CustomResource):
             encrypt_type=1,
             zone_id=example.zones[0].zone_id)
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -476,7 +479,9 @@ class FileSystem(pulumi.CustomResource):
             storage_type="standard",
             capacity=100)
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -499,6 +504,7 @@ class FileSystem(pulumi.CustomResource):
             vpc_id=example_network.id,
             vswitch_id=example_switch.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -552,6 +558,7 @@ class FileSystem(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -564,7 +571,9 @@ class FileSystem(pulumi.CustomResource):
             encrypt_type=1,
             zone_id=example.zones[0].zone_id)
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -577,7 +586,9 @@ class FileSystem(pulumi.CustomResource):
             storage_type="standard",
             capacity=100)
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -600,6 +611,7 @@ class FileSystem(pulumi.CustomResource):
             vpc_id=example_network.id,
             vswitch_id=example_switch.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

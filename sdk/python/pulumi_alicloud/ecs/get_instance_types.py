@@ -258,6 +258,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -266,6 +267,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
         memory_size=2)
     instance = alicloud.ecs.Instance("instance", instance_type=types_ds.instance_types[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str availability_zone: The zone where instance types are supported.
@@ -359,6 +361,7 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -367,6 +370,7 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
         memory_size=2)
     instance = alicloud.ecs.Instance("instance", instance_type=types_ds.instance_types[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str availability_zone: The zone where instance types are supported.

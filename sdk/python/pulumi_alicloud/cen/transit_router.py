@@ -287,6 +287,7 @@ class TransitRouter(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -298,6 +299,7 @@ class TransitRouter(pulumi.CustomResource):
             transit_router_name="tf_example",
             cen_id=example_instance.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -331,6 +333,7 @@ class TransitRouter(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -342,6 +345,7 @@ class TransitRouter(pulumi.CustomResource):
             transit_router_name="tf_example",
             cen_id=example_instance.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

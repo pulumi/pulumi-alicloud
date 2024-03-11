@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,6 +74,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetDynamicTagGroups(ctx *pulumi.Context, args *GetDynamicTagGroupsArgs, opts ...pulumi.InvokeOption) (*GetDynamicTagGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDynamicTagGroupsResult

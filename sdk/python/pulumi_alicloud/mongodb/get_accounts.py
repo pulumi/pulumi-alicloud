@@ -94,6 +94,7 @@ def get_accounts(account_name: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -102,6 +103,7 @@ def get_accounts(account_name: Optional[str] = None,
         account_name="root")
     pulumi.export("mongodbAccountId1", example.accounts[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_name: The name of the account.
@@ -137,6 +139,7 @@ def get_accounts_output(account_name: Optional[pulumi.Input[Optional[str]]] = No
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -145,6 +148,7 @@ def get_accounts_output(account_name: Optional[pulumi.Input[Optional[str]]] = No
         account_name="root")
     pulumi.export("mongodbAccountId1", example.accounts[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_name: The name of the account.

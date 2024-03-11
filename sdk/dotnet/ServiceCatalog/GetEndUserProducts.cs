@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         /// &gt; **NOTE:** Available since v1.197.0.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,8 +38,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEndUserProductsResult> InvokeAsync(GetEndUserProductsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndUserProductsResult>("alicloud:servicecatalog/getEndUserProducts:getEndUserProducts", args ?? new GetEndUserProductsArgs(), options.WithDefaults());
@@ -50,10 +48,9 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         /// &gt; **NOTE:** Available since v1.197.0.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,8 +70,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEndUserProductsResult> Invoke(GetEndUserProductsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEndUserProductsResult>("alicloud:servicecatalog/getEndUserProducts:getEndUserProducts", args ?? new GetEndUserProductsInvokeArgs(), options.WithDefaults());

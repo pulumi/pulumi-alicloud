@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -56,6 +57,7 @@ import * as utilities from "../utilities";
  *     forwardTableId: defaultForwardEntry.forwardTableId,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getForwardEntries(args: GetForwardEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardEntriesResult> {
 
@@ -184,6 +186,7 @@ export interface GetForwardEntriesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -227,6 +230,7 @@ export interface GetForwardEntriesResult {
  *     forwardTableId: defaultForwardEntry.forwardTableId,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getForwardEntriesOutput(args: GetForwardEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardEntriesResult> {
     return pulumi.output(args).apply((a: any) => getForwardEntries(a, opts))

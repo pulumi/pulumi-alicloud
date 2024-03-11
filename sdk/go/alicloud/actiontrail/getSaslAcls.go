@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetSaslAcls(ctx *pulumi.Context, args *GetSaslAclsArgs, opts ...pulumi.InvokeOption) (*GetSaslAclsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSaslAclsResult

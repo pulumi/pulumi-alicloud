@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstRdsSlotsName = example.then(example => example.slots?.[0]?.slotName);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSlots(args: GetSlotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSlotsResult> {
 
@@ -78,6 +80,7 @@ export interface GetSlotsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -87,6 +90,7 @@ export interface GetSlotsResult {
  * });
  * export const firstRdsSlotsName = example.then(example => example.slots?.[0]?.slotName);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSlotsOutput(args: GetSlotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSlotsResult> {
     return pulumi.output(args).apply((a: any) => getSlots(a, opts))

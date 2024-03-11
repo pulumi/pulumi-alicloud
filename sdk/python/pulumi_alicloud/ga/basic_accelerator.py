@@ -497,6 +497,7 @@ class BasicAccelerator(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -510,6 +511,7 @@ class BasicAccelerator(pulumi.CustomResource):
             duration=1,
             pricing_cycle="Month")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -554,6 +556,7 @@ class BasicAccelerator(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -567,6 +570,7 @@ class BasicAccelerator(pulumi.CustomResource):
             duration=1,
             pricing_cycle="Month")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

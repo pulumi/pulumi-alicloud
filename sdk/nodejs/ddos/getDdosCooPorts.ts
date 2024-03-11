@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstDdoscooPortId = example.then(example => example.ports?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDdosCooPorts(args: GetDdosCooPortsArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosCooPortsResult> {
 
@@ -88,6 +90,7 @@ export interface GetDdosCooPortsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -98,6 +101,7 @@ export interface GetDdosCooPortsResult {
  * });
  * export const firstDdoscooPortId = example.then(example => example.ports?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDdosCooPortsOutput(args: GetDdosCooPortsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooPortsResult> {
     return pulumi.output(args).apply((a: any) => getDdosCooPorts(a, opts))

@@ -104,6 +104,7 @@ def get_gateway_cache_disks(gateway_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -122,6 +123,7 @@ def get_gateway_cache_disks(gateway_id: Optional[str] = None,
         status=0)
     pulumi.export("cloudStorageGatewayGatewayCacheDiskId2", status.disks[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str gateway_id: The ID of the gateway.
@@ -161,6 +163,7 @@ def get_gateway_cache_disks_output(gateway_id: Optional[pulumi.Input[str]] = Non
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -179,6 +182,7 @@ def get_gateway_cache_disks_output(gateway_id: Optional[pulumi.Input[str]] = Non
         status=0)
     pulumi.export("cloudStorageGatewayGatewayCacheDiskId2", status.disks[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str gateway_id: The ID of the gateway.

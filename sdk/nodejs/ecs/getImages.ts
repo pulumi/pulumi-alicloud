@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstImageId = imagesDs.then(imagesDs => imagesDs.images?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
@@ -191,6 +193,7 @@ export interface GetImagesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -201,6 +204,7 @@ export interface GetImagesResult {
  * });
  * export const firstImageId = imagesDs.then(imagesDs => imagesDs.images?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
     return pulumi.output(args).apply((a: any) => getImages(a, opts))

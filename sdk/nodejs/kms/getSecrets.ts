@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,6 +28,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstSecretId = kmsSecretsDs.then(kmsSecretsDs => kmsSecretsDs.secrets?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSecrets(args?: GetSecretsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretsResult> {
     args = args || {};
@@ -115,6 +117,7 @@ export interface GetSecretsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -129,6 +132,7 @@ export interface GetSecretsResult {
  * });
  * export const firstSecretId = kmsSecretsDs.then(kmsSecretsDs => kmsSecretsDs.secrets?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSecretsOutput(args?: GetSecretsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretsResult> {
     return pulumi.output(args).apply((a: any) => getSecrets(a, opts))

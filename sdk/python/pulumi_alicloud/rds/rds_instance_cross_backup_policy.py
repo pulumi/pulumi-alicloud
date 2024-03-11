@@ -306,6 +306,7 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -346,6 +347,7 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
             instance_id=default_instance.id,
             cross_backup_region=regions.ids[0])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -379,6 +381,7 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -419,6 +422,7 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
             instance_id=default_instance.id,
             cross_backup_region=regions.ids[0])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

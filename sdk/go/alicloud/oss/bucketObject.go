@@ -15,8 +15,10 @@ import (
 // Provides a resource to put a object(content or file) to a oss bucket.
 //
 // ## Example Usage
+//
 // ### Uploading a file to a bucket
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,8 +63,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Uploading a content to a bucket
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -107,6 +112,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type BucketObject struct {
 	pulumi.CustomResourceState
 

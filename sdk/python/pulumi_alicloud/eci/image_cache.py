@@ -404,6 +404,7 @@ class ImageCache(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -437,6 +438,7 @@ class ImageCache(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             eip_instance_id=default_eip_address.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -476,6 +478,7 @@ class ImageCache(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -509,6 +512,7 @@ class ImageCache(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             eip_instance_id=default_eip_address.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

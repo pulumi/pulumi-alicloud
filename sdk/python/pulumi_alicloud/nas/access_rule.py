@@ -290,6 +290,7 @@ class AccessRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -305,6 +306,7 @@ class AccessRule(pulumi.CustomResource):
             user_access_type="no_squash",
             priority=2)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -341,6 +343,7 @@ class AccessRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -356,6 +359,7 @@ class AccessRule(pulumi.CustomResource):
             user_access_type="no_squash",
             priority=2)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

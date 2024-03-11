@@ -374,6 +374,7 @@ class DefenseTemplate(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -393,6 +394,7 @@ class DefenseTemplate(pulumi.CustomResource):
             resource_manager_resource_group_id="example",
             description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -444,6 +446,7 @@ class DefenseTemplate(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -463,6 +466,7 @@ class DefenseTemplate(pulumi.CustomResource):
             resource_manager_resource_group_id="example",
             description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

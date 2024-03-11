@@ -173,6 +173,7 @@ def get_monitor_groups(dynamic_tag_rule_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -181,6 +182,7 @@ def get_monitor_groups(dynamic_tag_rule_id: Optional[str] = None,
         name_regex="the_resource_name")
     pulumi.export("firstCmsMonitorGroupId", example.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str dynamic_tag_rule_id: The ID of the tag rule.
@@ -245,6 +247,7 @@ def get_monitor_groups_output(dynamic_tag_rule_id: Optional[pulumi.Input[Optiona
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -253,6 +256,7 @@ def get_monitor_groups_output(dynamic_tag_rule_id: Optional[pulumi.Input[Optiona
         name_regex="the_resource_name")
     pulumi.export("firstCmsMonitorGroupId", example.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str dynamic_tag_rule_id: The ID of the tag rule.

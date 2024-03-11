@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -36,6 +37,7 @@ import * as utilities from "../utilities";
  * });
  * export const ecsSnapshotGroupId4 = instanceId.then(instanceId => instanceId.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEcsSnapshotGroups(args?: GetEcsSnapshotGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsSnapshotGroupsResult> {
     args = args || {};
@@ -113,6 +115,7 @@ export interface GetEcsSnapshotGroupsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -134,6 +137,7 @@ export interface GetEcsSnapshotGroupsResult {
  * });
  * export const ecsSnapshotGroupId4 = instanceId.then(instanceId => instanceId.groups?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEcsSnapshotGroupsOutput(args?: GetEcsSnapshotGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsSnapshotGroupsResult> {
     return pulumi.output(args).apply((a: any) => getEcsSnapshotGroups(a, opts))

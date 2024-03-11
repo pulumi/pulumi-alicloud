@@ -31,7 +31,7 @@ class ShardingNetworkPrivateAddressArgs:
                - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
                - The permissions of this account are fixed to read-only.
         :param pulumi.Input[str] account_password: Account password. 
-               - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+               - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
                - The password must be 8 to 32 characters in length.
         """
         pulumi.set(__self__, "db_instance_id", db_instance_id)
@@ -98,7 +98,7 @@ class ShardingNetworkPrivateAddressArgs:
     def account_password(self) -> Optional[pulumi.Input[str]]:
         """
         Account password. 
-        - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+        - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
         - The password must be 8 to 32 characters in length.
         """
         return pulumi.get(self, "account_password")
@@ -124,7 +124,7 @@ class _ShardingNetworkPrivateAddressState:
                - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
                - The permissions of this account are fixed to read-only.
         :param pulumi.Input[str] account_password: Account password. 
-               - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+               - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
                - The password must be 8 to 32 characters in length.
         :param pulumi.Input[str] db_instance_id: The db instance id.
         :param pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPrivateAddressNetworkAddressArgs']]] network_addresses: The endpoint of the instance.
@@ -164,7 +164,7 @@ class _ShardingNetworkPrivateAddressState:
     def account_password(self) -> Optional[pulumi.Input[str]]:
         """
         Account password. 
-        - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+        - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
         - The password must be 8 to 32 characters in length.
         """
         return pulumi.get(self, "account_password")
@@ -244,6 +244,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -293,6 +294,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
             account_name="example",
             account_password="Example_123")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -309,7 +311,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
                - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
                - The permissions of this account are fixed to read-only.
         :param pulumi.Input[str] account_password: Account password. 
-               - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+               - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
                - The password must be 8 to 32 characters in length.
         :param pulumi.Input[str] db_instance_id: The db instance id.
         :param pulumi.Input[str] node_id: The ID of the Shard node or the ConfigServer node.
@@ -332,6 +334,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -381,6 +384,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
             account_name="example",
             account_password="Example_123")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -461,7 +465,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
                - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
                - The permissions of this account are fixed to read-only.
         :param pulumi.Input[str] account_password: Account password. 
-               - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+               - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
                - The password must be 8 to 32 characters in length.
         :param pulumi.Input[str] db_instance_id: The db instance id.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingNetworkPrivateAddressNetworkAddressArgs']]]] network_addresses: The endpoint of the instance.
@@ -496,7 +500,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
     def account_password(self) -> pulumi.Output[Optional[str]]:
         """
         Account password. 
-        - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+        - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
         - The password must be 8 to 32 characters in length.
         """
         return pulumi.get(self, "account_password")

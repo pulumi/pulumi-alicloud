@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.CloudAuth
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,8 +50,7 @@ namespace Pulumi.AliCloud.CloudAuth
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFaceConfigsResult> InvokeAsync(GetFaceConfigsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsArgs(), options.WithDefaults());
@@ -62,12 +60,11 @@ namespace Pulumi.AliCloud.CloudAuth
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -97,8 +94,7 @@ namespace Pulumi.AliCloud.CloudAuth
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFaceConfigsResult> Invoke(GetFaceConfigsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFaceConfigsResult>("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", args ?? new GetFaceConfigsInvokeArgs(), options.WithDefaults());

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const expressConnectGrantRuleToCenId0 = ids.then(ids => ids.cens?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGrantRuleToCens(args: GetGrantRuleToCensArgs, opts?: pulumi.InvokeOptions): Promise<GetGrantRuleToCensResult> {
 
@@ -85,6 +87,7 @@ export interface GetGrantRuleToCensResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -95,6 +98,7 @@ export interface GetGrantRuleToCensResult {
  * });
  * export const expressConnectGrantRuleToCenId0 = ids.then(ids => ids.cens?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGrantRuleToCensOutput(args: GetGrantRuleToCensOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGrantRuleToCensResult> {
     return pulumi.output(args).apply((a: any) => getGrantRuleToCens(a, opts))

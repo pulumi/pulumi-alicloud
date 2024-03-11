@@ -108,6 +108,7 @@ class ResourceShare(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -118,6 +119,7 @@ class ResourceShare(pulumi.CustomResource):
             name = "tf-example"
         example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -148,6 +150,7 @@ class ResourceShare(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -158,6 +161,7 @@ class ResourceShare(pulumi.CustomResource):
             name = "tf-example"
         example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

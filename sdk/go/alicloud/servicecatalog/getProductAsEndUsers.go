@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetProductAsEndUsers(ctx *pulumi.Context, args *GetProductAsEndUsersArgs, opts ...pulumi.InvokeOption) (*GetProductAsEndUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProductAsEndUsersResult

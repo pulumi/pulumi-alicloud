@@ -338,6 +338,7 @@ class Ipv4Gateway(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -361,6 +362,7 @@ class Ipv4Gateway(pulumi.CustomResource):
             resource_group_id=default_resource_group.id,
             vpc_id=default_network.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -397,6 +399,7 @@ class Ipv4Gateway(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -420,6 +423,7 @@ class Ipv4Gateway(pulumi.CustomResource):
             resource_group_id=default_resource_group.id,
             vpc_id=default_network.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

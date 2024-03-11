@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstScheduledTask = ds.then(ds => ds.tasks?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getScheduledTasks(args?: GetScheduledTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduledTasksResult> {
     args = args || {};
@@ -98,6 +100,7 @@ export interface GetScheduledTasksResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -108,6 +111,7 @@ export interface GetScheduledTasksResult {
  * });
  * export const firstScheduledTask = ds.then(ds => ds.tasks?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getScheduledTasksOutput(args?: GetScheduledTasksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScheduledTasksResult> {
     return pulumi.output(args).apply((a: any) => getScheduledTasks(a, opts))

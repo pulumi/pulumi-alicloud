@@ -373,6 +373,7 @@ class QosCar(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -391,6 +392,7 @@ class QosCar(pulumi.CustomResource):
             max_bandwidth_abs=20,
             percent_source_type="InternetUpBandwidth")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -432,6 +434,7 @@ class QosCar(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -450,6 +453,7 @@ class QosCar(pulumi.CustomResource):
             max_bandwidth_abs=20,
             percent_source_type="InternetUpBandwidth")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

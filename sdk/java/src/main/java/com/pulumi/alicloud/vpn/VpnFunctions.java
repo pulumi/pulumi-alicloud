@@ -35,6 +35,8 @@ public final class VpnFunctions {
      * &gt; **NOTE:** Available since v1.18.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -66,6 +68,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConnectionsResult> getConnections() {
@@ -77,6 +80,8 @@ public final class VpnFunctions {
      * &gt; **NOTE:** Available since v1.18.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -108,6 +113,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionsResult> getConnectionsPlain() {
@@ -119,6 +125,8 @@ public final class VpnFunctions {
      * &gt; **NOTE:** Available since v1.18.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -150,6 +158,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConnectionsResult> getConnections(GetConnectionsArgs args) {
@@ -161,6 +170,8 @@ public final class VpnFunctions {
      * &gt; **NOTE:** Available since v1.18.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -192,6 +203,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionsResult> getConnectionsPlain(GetConnectionsPlainArgs args) {
@@ -203,6 +215,8 @@ public final class VpnFunctions {
      * &gt; **NOTE:** Available since v1.18.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -234,6 +248,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConnectionsResult> getConnections(GetConnectionsArgs args, InvokeOptions options) {
@@ -245,6 +260,8 @@ public final class VpnFunctions {
      * &gt; **NOTE:** Available since v1.18.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -276,6 +293,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionsResult> getConnectionsPlain(GetConnectionsPlainArgs args, InvokeOptions options) {
@@ -285,6 +303,8 @@ public final class VpnFunctions {
      * The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -317,6 +337,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomerGatewaysResult> getCustomerGateways() {
@@ -326,6 +347,8 @@ public final class VpnFunctions {
      * The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -358,6 +381,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomerGatewaysResult> getCustomerGatewaysPlain() {
@@ -367,6 +391,8 @@ public final class VpnFunctions {
      * The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -399,6 +425,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomerGatewaysResult> getCustomerGateways(GetCustomerGatewaysArgs args) {
@@ -408,6 +435,8 @@ public final class VpnFunctions {
      * The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -440,6 +469,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomerGatewaysResult> getCustomerGatewaysPlain(GetCustomerGatewaysPlainArgs args) {
@@ -449,6 +479,8 @@ public final class VpnFunctions {
      * The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -481,6 +513,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomerGatewaysResult> getCustomerGateways(GetCustomerGatewaysArgs args, InvokeOptions options) {
@@ -490,6 +523,8 @@ public final class VpnFunctions {
      * The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -522,6 +557,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomerGatewaysResult> getCustomerGatewaysPlain(GetCustomerGatewaysPlainArgs args, InvokeOptions options) {
@@ -535,6 +571,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -662,6 +700,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewayVcoRoutesResult> getGatewayVcoRoutes(GetGatewayVcoRoutesArgs args) {
@@ -675,6 +714,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -802,6 +843,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewayVcoRoutesResult> getGatewayVcoRoutesPlain(GetGatewayVcoRoutesPlainArgs args) {
@@ -815,6 +857,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -942,6 +986,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewayVcoRoutesResult> getGatewayVcoRoutes(GetGatewayVcoRoutesArgs args, InvokeOptions options) {
@@ -955,6 +1000,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1082,6 +1129,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewayVcoRoutesResult> getGatewayVcoRoutesPlain(GetGatewayVcoRoutesPlainArgs args, InvokeOptions options) {
@@ -1095,6 +1143,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1129,6 +1179,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachments() {
@@ -1142,6 +1193,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1176,6 +1229,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachmentsPlain() {
@@ -1189,6 +1243,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1223,6 +1279,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs args) {
@@ -1236,6 +1293,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1270,6 +1329,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachmentsPlain(GetGatewayVpnAttachmentsPlainArgs args) {
@@ -1283,6 +1343,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1317,6 +1379,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs args, InvokeOptions options) {
@@ -1330,6 +1393,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1364,6 +1429,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewayVpnAttachmentsResult> getGatewayVpnAttachmentsPlain(GetGatewayVpnAttachmentsPlainArgs args, InvokeOptions options) {
@@ -1375,6 +1441,8 @@ public final class VpnFunctions {
      * &gt; **NOTE:** Available since v1.216.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1403,6 +1471,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewayZonesResult> getGatewayZones(GetGatewayZonesArgs args) {
@@ -1414,6 +1483,8 @@ public final class VpnFunctions {
      * &gt; **NOTE:** Available since v1.216.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1442,6 +1513,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewayZonesResult> getGatewayZonesPlain(GetGatewayZonesPlainArgs args) {
@@ -1453,6 +1525,8 @@ public final class VpnFunctions {
      * &gt; **NOTE:** Available since v1.216.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1481,6 +1555,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGatewayZonesResult> getGatewayZones(GetGatewayZonesArgs args, InvokeOptions options) {
@@ -1492,6 +1567,8 @@ public final class VpnFunctions {
      * &gt; **NOTE:** Available since v1.216.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1520,6 +1597,7 @@ public final class VpnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGatewayZonesResult> getGatewayZonesPlain(GetGatewayZonesPlainArgs args, InvokeOptions options) {

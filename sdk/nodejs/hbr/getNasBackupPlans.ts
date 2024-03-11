@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const hbrNasBackupPlanId = ids.then(ids => ids.plans?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNasBackupPlans(args?: GetNasBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetNasBackupPlansResult> {
     args = args || {};
@@ -89,6 +91,7 @@ export interface GetNasBackupPlansResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -98,6 +101,7 @@ export interface GetNasBackupPlansResult {
  * });
  * export const hbrNasBackupPlanId = ids.then(ids => ids.plans?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNasBackupPlansOutput(args?: GetNasBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNasBackupPlansResult> {
     return pulumi.output(args).apply((a: any) => getNasBackupPlans(a, opts))

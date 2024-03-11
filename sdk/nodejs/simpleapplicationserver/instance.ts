@@ -62,7 +62,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceName!: pulumi.Output<string | undefined>;
     /**
-     * The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+     * The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -157,7 +157,7 @@ export interface InstanceState {
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+     * The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
      */
     password?: pulumi.Input<string>;
     /**
@@ -203,7 +203,7 @@ export interface InstanceArgs {
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
+     * The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ %!^(MISSING) & * - + = | { } [ ] : ; < > , . ? /`.
      */
     password?: pulumi.Input<string>;
     /**

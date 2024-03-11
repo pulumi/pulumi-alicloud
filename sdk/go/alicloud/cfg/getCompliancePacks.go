@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetCompliancePacks(ctx *pulumi.Context, args *GetCompliancePacksArgs, opts ...pulumi.InvokeOption) (*GetCompliancePacksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCompliancePacksResult

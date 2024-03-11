@@ -2370,8 +2370,6 @@ type ManagedKubernetesAddon struct {
 	// `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
 	//
 	// The `main.tf`:
-	//
-	// The `varibales.tf`:
 	Disabled *bool `pulumi:"disabled"`
 	// This parameter specifies the name of the component.
 	Name *string `pulumi:"name"`
@@ -2404,8 +2402,6 @@ type ManagedKubernetesAddonArgs struct {
 	// `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
 	//
 	// The `main.tf`:
-	//
-	// The `varibales.tf`:
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// This parameter specifies the name of the component.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -2480,8 +2476,6 @@ func (o ManagedKubernetesAddonOutput) Config() pulumi.StringPtrOutput {
 // `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
 //
 // The `main.tf`:
-//
-// The `varibales.tf`:
 func (o ManagedKubernetesAddonOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesAddon) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
@@ -2895,6 +2889,7 @@ type ManagedKubernetesMaintenanceWindow struct {
 	// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 	//
 	// for example:
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -2908,6 +2903,7 @@ type ManagedKubernetesMaintenanceWindow struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	WeeklyPeriod string `pulumi:"weeklyPeriod"`
 }
 
@@ -2932,6 +2928,7 @@ type ManagedKubernetesMaintenanceWindowArgs struct {
 	// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 	//
 	// for example:
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -2945,6 +2942,7 @@ type ManagedKubernetesMaintenanceWindowArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	WeeklyPeriod pulumi.StringInput `pulumi:"weeklyPeriod"`
 }
 
@@ -3043,6 +3041,7 @@ func (o ManagedKubernetesMaintenanceWindowOutput) MaintenanceTime() pulumi.Strin
 // Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 //
 // for example:
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -3059,6 +3058,7 @@ func (o ManagedKubernetesMaintenanceWindowOutput) MaintenanceTime() pulumi.Strin
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func (o ManagedKubernetesMaintenanceWindowOutput) WeeklyPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) string { return v.WeeklyPeriod }).(pulumi.StringOutput)
 }
@@ -3120,6 +3120,7 @@ func (o ManagedKubernetesMaintenanceWindowPtrOutput) MaintenanceTime() pulumi.St
 // Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 //
 // for example:
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -3136,6 +3137,7 @@ func (o ManagedKubernetesMaintenanceWindowPtrOutput) MaintenanceTime() pulumi.St
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func (o ManagedKubernetesMaintenanceWindowPtrOutput) WeeklyPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetesMaintenanceWindow) *string {
 		if v == nil {

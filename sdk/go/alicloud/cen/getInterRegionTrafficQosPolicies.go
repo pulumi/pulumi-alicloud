@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,6 +57,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetInterRegionTrafficQosPolicies(ctx *pulumi.Context, args *GetInterRegionTrafficQosPoliciesArgs, opts ...pulumi.InvokeOption) (*GetInterRegionTrafficQosPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInterRegionTrafficQosPoliciesResult

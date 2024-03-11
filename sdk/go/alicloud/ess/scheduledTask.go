@@ -17,11 +17,6 @@ import (
 //
 // > **NOTE:** Available since v1.60.0.
 //
-// ## Module Support
-//
-// You can use to the existing autoscaling-rule module
-// to create scheduled task, different type rules and alarm task one-click.
-//
 // ## Import
 //
 // ESS schedule task can be imported using the id, e.g.

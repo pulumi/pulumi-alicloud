@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -33,6 +34,7 @@ import * as utilities from "../utilities";
  * });
  * export const cloudStorageGatewayGatewayBlockVolumeId2 = nameRegex.then(nameRegex => nameRegex.volumes?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGatewayBlockVolumes(args: GetGatewayBlockVolumesArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayBlockVolumesResult> {
 
@@ -97,6 +99,7 @@ export interface GetGatewayBlockVolumesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -115,6 +118,7 @@ export interface GetGatewayBlockVolumesResult {
  * });
  * export const cloudStorageGatewayGatewayBlockVolumeId2 = nameRegex.then(nameRegex => nameRegex.volumes?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGatewayBlockVolumesOutput(args: GetGatewayBlockVolumesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayBlockVolumesResult> {
     return pulumi.output(args).apply((a: any) => getGatewayBlockVolumes(a, opts))

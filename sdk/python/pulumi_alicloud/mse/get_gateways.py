@@ -143,6 +143,7 @@ def get_gateways(enable_details: Optional[bool] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -154,6 +155,7 @@ def get_gateways(enable_details: Optional[bool] = None,
     status = alicloud.mse.get_gateways(status="2")
     pulumi.export("mseGatewayId3", status.gateways[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -206,6 +208,7 @@ def get_gateways_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -217,6 +220,7 @@ def get_gateways_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     status = alicloud.mse.get_gateways(status="2")
     pulumi.export("mseGatewayId3", status.gateways[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

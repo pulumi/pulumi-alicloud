@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Ros
         /// 
         /// &gt; **NOTE:** Available in v1.151.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,8 +55,7 @@ namespace Pulumi.AliCloud.Ros
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTemplateScratchesResult> InvokeAsync(GetTemplateScratchesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTemplateScratchesResult>("alicloud:ros/getTemplateScratches:getTemplateScratches", args ?? new GetTemplateScratchesArgs(), options.WithDefaults());
@@ -67,12 +65,11 @@ namespace Pulumi.AliCloud.Ros
         /// 
         /// &gt; **NOTE:** Available in v1.151.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -107,8 +104,7 @@ namespace Pulumi.AliCloud.Ros
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTemplateScratchesResult> Invoke(GetTemplateScratchesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTemplateScratchesResult>("alicloud:ros/getTemplateScratches:getTemplateScratches", args ?? new GetTemplateScratchesInvokeArgs(), options.WithDefaults());

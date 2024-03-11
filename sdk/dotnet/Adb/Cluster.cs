@@ -19,8 +19,10 @@ namespace Pulumi.AliCloud.Adb
     /// &gt; **NOTE:** Available in v1.71.0+.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Create a ADB MySQL cluster
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,6 +67,7 @@ namespace Pulumi.AliCloud.Adb
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

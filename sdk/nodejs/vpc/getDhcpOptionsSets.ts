@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -42,6 +43,7 @@ import * as utilities from "../utilities";
  * });
  * export const vpcDhcpOptionsSetId5 = status.then(status => status.sets?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDhcpOptionsSets(args?: GetDhcpOptionsSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetDhcpOptionsSetsResult> {
     args = args || {};
@@ -117,6 +119,7 @@ export interface GetDhcpOptionsSetsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -144,6 +147,7 @@ export interface GetDhcpOptionsSetsResult {
  * });
  * export const vpcDhcpOptionsSetId5 = status.then(status => status.sets?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDhcpOptionsSetsOutput(args?: GetDhcpOptionsSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDhcpOptionsSetsResult> {
     return pulumi.output(args).apply((a: any) => getDhcpOptionsSets(a, opts))

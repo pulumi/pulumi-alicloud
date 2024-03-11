@@ -31,6 +31,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -60,6 +62,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerGroupsResult> getContainerGroups() {
@@ -73,6 +76,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -102,6 +107,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerGroupsResult> getContainerGroupsPlain() {
@@ -115,6 +121,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -144,6 +152,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerGroupsResult> getContainerGroups(GetContainerGroupsArgs args) {
@@ -157,6 +166,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -186,6 +197,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerGroupsResult> getContainerGroupsPlain(GetContainerGroupsPlainArgs args) {
@@ -199,6 +211,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -228,6 +242,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerGroupsResult> getContainerGroups(GetContainerGroupsArgs args, InvokeOptions options) {
@@ -241,6 +256,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -270,6 +287,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerGroupsResult> getContainerGroupsPlain(GetContainerGroupsPlainArgs args, InvokeOptions options) {
@@ -280,6 +298,40 @@ public final class EciFunctions {
      * 
      * &gt; **NOTE:** Available in 1.90.0+.
      * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetImageCachesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
+     *             .ids(&#34;imc-bp1ef0dyp7ldhb1d****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;imageCache&#34;, example.applyValue(getImageCachesResult -&gt; getImageCachesResult.caches()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetImageCachesResult> getImageCaches() {
         return getImageCaches(GetImageCachesArgs.Empty, InvokeOptions.Empty);
@@ -288,6 +340,40 @@ public final class EciFunctions {
      * Provides a collection of ECI Image Cache to the specified filters.
      * 
      * &gt; **NOTE:** Available in 1.90.0+.
+     * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetImageCachesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
+     *             .ids(&#34;imc-bp1ef0dyp7ldhb1d****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;imageCache&#34;, example.applyValue(getImageCachesResult -&gt; getImageCachesResult.caches()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageCachesResult> getImageCachesPlain() {
@@ -298,6 +384,40 @@ public final class EciFunctions {
      * 
      * &gt; **NOTE:** Available in 1.90.0+.
      * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetImageCachesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
+     *             .ids(&#34;imc-bp1ef0dyp7ldhb1d****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;imageCache&#34;, example.applyValue(getImageCachesResult -&gt; getImageCachesResult.caches()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetImageCachesResult> getImageCaches(GetImageCachesArgs args) {
         return getImageCaches(args, InvokeOptions.Empty);
@@ -306,6 +426,40 @@ public final class EciFunctions {
      * Provides a collection of ECI Image Cache to the specified filters.
      * 
      * &gt; **NOTE:** Available in 1.90.0+.
+     * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetImageCachesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
+     *             .ids(&#34;imc-bp1ef0dyp7ldhb1d****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;imageCache&#34;, example.applyValue(getImageCachesResult -&gt; getImageCachesResult.caches()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageCachesResult> getImageCachesPlain(GetImageCachesPlainArgs args) {
@@ -316,6 +470,40 @@ public final class EciFunctions {
      * 
      * &gt; **NOTE:** Available in 1.90.0+.
      * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetImageCachesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
+     *             .ids(&#34;imc-bp1ef0dyp7ldhb1d****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;imageCache&#34;, example.applyValue(getImageCachesResult -&gt; getImageCachesResult.caches()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetImageCachesResult> getImageCaches(GetImageCachesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:eci/getImageCaches:getImageCaches", TypeShape.of(GetImageCachesResult.class), args, Utilities.withVersion(options));
@@ -324,6 +512,40 @@ public final class EciFunctions {
      * Provides a collection of ECI Image Cache to the specified filters.
      * 
      * &gt; **NOTE:** Available in 1.90.0+.
+     * 
+     * ## Example Usage
+     * 
+     *  &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.eci.EciFunctions;
+     * import com.pulumi.alicloud.eci.inputs.GetImageCachesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
+     *             .ids(&#34;imc-bp1ef0dyp7ldhb1d****&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;imageCache&#34;, example.applyValue(getImageCachesResult -&gt; getImageCachesResult.caches()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageCachesResult> getImageCachesPlain(GetImageCachesPlainArgs args, InvokeOptions options) {
@@ -337,6 +559,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -373,6 +597,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualNodesResult> getVirtualNodes() {
@@ -386,6 +611,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -422,6 +649,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualNodesResult> getVirtualNodesPlain() {
@@ -435,6 +663,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -471,6 +701,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualNodesResult> getVirtualNodes(GetVirtualNodesArgs args) {
@@ -484,6 +715,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -520,6 +753,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualNodesResult> getVirtualNodesPlain(GetVirtualNodesPlainArgs args) {
@@ -533,6 +767,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -569,6 +805,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVirtualNodesResult> getVirtualNodes(GetVirtualNodesArgs args, InvokeOptions options) {
@@ -582,6 +819,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -618,6 +857,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVirtualNodesResult> getVirtualNodesPlain(GetVirtualNodesPlainArgs args, InvokeOptions options) {
@@ -631,6 +871,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -658,6 +900,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -671,6 +914,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -698,6 +943,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -711,6 +957,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -738,6 +986,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -751,6 +1000,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -778,6 +1029,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -791,6 +1043,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -818,6 +1072,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -831,6 +1086,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -858,6 +1115,7 @@ public final class EciFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

@@ -271,6 +271,7 @@ class EcFailoverTestJob(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -292,6 +293,7 @@ class EcFailoverTestJob(pulumi.CustomResource):
             resource_type="PHYSICALCONNECTION",
             ec_failover_test_job_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -328,6 +330,7 @@ class EcFailoverTestJob(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -349,6 +352,7 @@ class EcFailoverTestJob(pulumi.CustomResource):
             resource_type="PHYSICALCONNECTION",
             ec_failover_test_job_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

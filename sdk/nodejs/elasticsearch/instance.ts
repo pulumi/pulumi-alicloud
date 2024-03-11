@@ -138,7 +138,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly masterNodeSpec!: pulumi.Output<string | undefined>;
     /**
-     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -430,7 +430,7 @@ export interface InstanceState {
      */
     masterNodeSpec?: pulumi.Input<string>;
     /**
-     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
      */
     password?: pulumi.Input<string>;
     /**
@@ -588,7 +588,7 @@ export interface InstanceArgs {
      */
     masterNodeSpec?: pulumi.Input<string>;
     /**
-     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
      */
     password?: pulumi.Input<string>;
     /**

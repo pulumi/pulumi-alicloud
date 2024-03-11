@@ -148,6 +148,7 @@ def get_transit_route_table_aggregations(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -159,6 +160,7 @@ def get_transit_route_table_aggregations(ids: Optional[Sequence[str]] = None,
         transit_route_table_id="your_transit_route_table_id")
     pulumi.export("cenTransitRouterMulticastDomainId1", name_regex.transit_route_table_aggregations[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Transit Route Table Aggregation IDs.
@@ -207,6 +209,7 @@ def get_transit_route_table_aggregations_output(ids: Optional[pulumi.Input[Optio
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -218,6 +221,7 @@ def get_transit_route_table_aggregations_output(ids: Optional[pulumi.Input[Optio
         transit_route_table_id="your_transit_route_table_id")
     pulumi.export("cenTransitRouterMulticastDomainId1", name_regex.transit_route_table_aggregations[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Transit Route Table Aggregation IDs.

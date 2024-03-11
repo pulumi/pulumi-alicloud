@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -30,6 +31,7 @@ import * as utilities from "../utilities";
  * });
  * export const armsRemoteWritesId2 = nameRegex.then(nameRegex => nameRegex.remoteWrites?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRemoteWrites(args: GetRemoteWritesArgs, opts?: pulumi.InvokeOptions): Promise<GetRemoteWritesResult> {
 
@@ -97,6 +99,7 @@ export interface GetRemoteWritesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -112,6 +115,7 @@ export interface GetRemoteWritesResult {
  * });
  * export const armsRemoteWritesId2 = nameRegex.then(nameRegex => nameRegex.remoteWrites?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRemoteWritesOutput(args: GetRemoteWritesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRemoteWritesResult> {
     return pulumi.output(args).apply((a: any) => getRemoteWrites(a, opts))

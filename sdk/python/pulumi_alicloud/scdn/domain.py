@@ -322,6 +322,7 @@ class Domain(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -336,6 +337,7 @@ class Domain(pulumi.CustomResource):
                 type="oss",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -375,6 +377,7 @@ class Domain(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -389,6 +392,7 @@ class Domain(pulumi.CustomResource):
                 type="oss",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

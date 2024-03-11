@@ -1102,9 +1102,6 @@ class ManagedKubernetesAddonArgs:
                `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
                
                The `main.tf`:
-               
-               
-               The `varibales.tf`:
         :param pulumi.Input[str] name: This parameter specifies the name of the component.
         :param pulumi.Input[str] version: It specifies the version of the component.
         """
@@ -1144,9 +1141,6 @@ class ManagedKubernetesAddonArgs:
         `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
 
         The `main.tf`:
-
-
-        The `varibales.tf`:
         """
         return pulumi.get(self, "disabled")
 
@@ -1319,9 +1313,11 @@ class ManagedKubernetesMaintenanceWindowArgs:
         :param pulumi.Input[str] weekly_period: Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
                
                for example:
+               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                ```
+               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "enable", enable)
@@ -1371,9 +1367,11 @@ class ManagedKubernetesMaintenanceWindowArgs:
         Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 
         for example:
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "weekly_period")
 

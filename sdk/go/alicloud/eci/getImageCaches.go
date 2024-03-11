@@ -14,6 +14,38 @@ import (
 // Provides a collection of ECI Image Cache to the specified filters.
 //
 // > **NOTE:** Available in 1.90.0+.
+//
+// ## Example Usage
+//
+//	<!--Start PulumiCodeChooser -->
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eci"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := eci.GetImageCaches(ctx, &eci.GetImageCachesArgs{
+//				Ids: []string{
+//					"imc-bp1ef0dyp7ldhb1d****",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("imageCache", example.Caches[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 func GetImageCaches(ctx *pulumi.Context, args *GetImageCachesArgs, opts ...pulumi.InvokeOption) (*GetImageCachesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetImageCachesResult

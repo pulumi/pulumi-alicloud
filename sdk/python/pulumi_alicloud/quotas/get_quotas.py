@@ -183,6 +183,7 @@ def get_quotas(dimensions: Optional[Sequence[pulumi.InputType['GetQuotasDimensio
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -191,6 +192,7 @@ def get_quotas(dimensions: Optional[Sequence[pulumi.InputType['GetQuotasDimensio
         name_regex="专有宿主机总数量上限")
     pulumi.export("firstQuotasQuotaId", example.quotas[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetQuotasDimensionArgs']] dimensions: The dimensions.
@@ -256,6 +258,7 @@ def get_quotas_output(dimensions: Optional[pulumi.Input[Optional[Sequence[pulumi
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -264,6 +267,7 @@ def get_quotas_output(dimensions: Optional[pulumi.Input[Optional[Sequence[pulumi
         name_regex="专有宿主机总数量上限")
     pulumi.export("firstQuotasQuotaId", example.quotas[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetQuotasDimensionArgs']] dimensions: The dimensions.

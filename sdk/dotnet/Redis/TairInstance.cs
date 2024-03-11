@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Redis
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =.
+        /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) &amp; * ( ) _ + - =.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.Redis
         private Input<string>? _password;
 
         /// <summary>
-        /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =.
+        /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) &amp; * ( ) _ + - =.
         /// </summary>
         public Input<string>? Password
         {
@@ -411,7 +411,7 @@ namespace Pulumi.AliCloud.Redis
         private Input<string>? _password;
 
         /// <summary>
-        /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =.
+        /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ %!^(MISSING) &amp; * ( ) _ + - =.
         /// </summary>
         public Input<string>? Password
         {

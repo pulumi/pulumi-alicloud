@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * const default = alicloud.hbr.getReplicationVaultRegions({});
  * export const hbrReplicationVaultRegionRegionId1 = _default.then(_default => _default.regions?.[0]?.replicationRegionId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getReplicationVaultRegions(args?: GetReplicationVaultRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationVaultRegionsResult> {
     args = args || {};
@@ -62,6 +64,7 @@ export interface GetReplicationVaultRegionsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -69,6 +72,7 @@ export interface GetReplicationVaultRegionsResult {
  * const default = alicloud.hbr.getReplicationVaultRegions({});
  * export const hbrReplicationVaultRegionRegionId1 = _default.then(_default => _default.regions?.[0]?.replicationRegionId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getReplicationVaultRegionsOutput(args?: GetReplicationVaultRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicationVaultRegionsResult> {
     return pulumi.output(args).apply((a: any) => getReplicationVaultRegions(a, opts))

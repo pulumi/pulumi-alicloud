@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstGroupName = consumerGroupsDs.then(consumerGroupsDs => consumerGroupsDs.consumerIds?.[0]);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConsumerGroups(args: GetConsumerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetConsumerGroupsResult> {
 
@@ -90,6 +92,7 @@ export interface GetConsumerGroupsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -101,6 +104,7 @@ export interface GetConsumerGroupsResult {
  * });
  * export const firstGroupName = consumerGroupsDs.then(consumerGroupsDs => consumerGroupsDs.consumerIds?.[0]);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConsumerGroupsOutput(args: GetConsumerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsumerGroupsResult> {
     return pulumi.output(args).apply((a: any) => getConsumerGroups(a, opts))

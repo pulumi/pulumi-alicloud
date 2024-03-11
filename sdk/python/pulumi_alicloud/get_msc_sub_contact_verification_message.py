@@ -84,6 +84,7 @@ def get_msc_sub_contact_verification_message(contact_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -96,6 +97,7 @@ def get_msc_sub_contact_verification_message(contact_id: Optional[str] = None,
     default_msc_sub_contact_verification_message = default_msc_sub_contract.id.apply(lambda id: alicloud.get_msc_sub_contact_verification_message_output(contact_id=id,
         type=1))
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str contact_id: The ID of the Contact.
@@ -125,6 +127,7 @@ def get_msc_sub_contact_verification_message_output(contact_id: Optional[pulumi.
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -137,6 +140,7 @@ def get_msc_sub_contact_verification_message_output(contact_id: Optional[pulumi.
     default_msc_sub_contact_verification_message = default_msc_sub_contract.id.apply(lambda id: alicloud.get_msc_sub_contact_verification_message_output(contact_id=id,
         type=1))
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str contact_id: The ID of the Contact.

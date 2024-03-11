@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  *     loadBalancerId: "fake-lb-id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDomainExtensions(args: GetDomainExtensionsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainExtensionsResult> {
 
@@ -78,6 +80,7 @@ export interface GetDomainExtensionsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -88,6 +91,7 @@ export interface GetDomainExtensionsResult {
  *     loadBalancerId: "fake-lb-id",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDomainExtensionsOutput(args: GetDomainExtensionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainExtensionsResult> {
     return pulumi.output(args).apply((a: any) => getDomainExtensions(a, opts))

@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// &gt; **NOTE:** Available in v1.143.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,8 +36,7 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetBundlesResult> InvokeAsync(GetBundlesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBundlesResult>("alicloud:eds/getBundles:getBundles", args ?? new GetBundlesArgs(), options.WithDefaults());
@@ -48,12 +46,11 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// &gt; **NOTE:** Available in v1.143.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,8 +66,7 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetBundlesResult> Invoke(GetBundlesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBundlesResult>("alicloud:eds/getBundles:getBundles", args ?? new GetBundlesInvokeArgs(), options.WithDefaults());

@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +43,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetTransitRouterAvailableResources(ctx *pulumi.Context, args *GetTransitRouterAvailableResourcesArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterAvailableResourcesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouterAvailableResourcesResult

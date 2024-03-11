@@ -31,6 +31,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -60,6 +62,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBackupPlansResult> getBackupPlans(GetBackupPlansArgs args) {
@@ -73,6 +76,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -102,6 +107,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBackupPlansResult> getBackupPlansPlain(GetBackupPlansPlainArgs args) {
@@ -115,6 +121,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -144,6 +152,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBackupPlansResult> getBackupPlans(GetBackupPlansArgs args, InvokeOptions options) {
@@ -157,6 +166,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -186,6 +197,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBackupPlansResult> getBackupPlansPlain(GetBackupPlansPlainArgs args, InvokeOptions options) {
@@ -198,6 +210,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -226,6 +240,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClustersResult> getClusters() {
@@ -238,6 +253,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -266,6 +283,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain() {
@@ -278,6 +296,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -306,6 +326,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args) {
@@ -318,6 +339,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -346,6 +369,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args) {
@@ -358,6 +382,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -386,6 +412,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
@@ -398,6 +425,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -426,6 +455,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {
@@ -438,6 +468,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -467,6 +499,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDataCentersResult> getDataCenters(GetDataCentersArgs args) {
@@ -479,6 +512,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -508,6 +543,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDataCentersResult> getDataCentersPlain(GetDataCentersPlainArgs args) {
@@ -520,6 +556,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -549,6 +587,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDataCentersResult> getDataCenters(GetDataCentersArgs args, InvokeOptions options) {
@@ -561,6 +600,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:**  Available in 1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -590,6 +631,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDataCentersResult> getDataCentersPlain(GetDataCentersPlainArgs args, InvokeOptions options) {
@@ -601,6 +643,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -633,6 +677,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -644,6 +689,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -676,6 +723,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -687,6 +735,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -719,6 +769,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -730,6 +781,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -762,6 +815,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -773,6 +827,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -805,6 +861,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -816,6 +873,8 @@ public final class CassandraFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -848,6 +907,7 @@ public final class CassandraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

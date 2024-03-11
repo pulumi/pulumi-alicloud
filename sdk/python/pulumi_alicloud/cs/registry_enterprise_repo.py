@@ -256,6 +256,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -282,6 +283,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
             repo_type="PUBLIC",
             detail="this is a public repo")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -319,6 +321,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -345,6 +348,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
             repo_type="PUBLIC",
             detail="this is a public repo")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

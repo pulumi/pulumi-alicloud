@@ -140,6 +140,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -159,6 +160,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
             accelerator_id=example_accelerator.id,
             bandwidth_package_id=example_bandwidth_package.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -190,6 +192,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -209,6 +212,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
             accelerator_id=example_accelerator.id,
             bandwidth_package_id=example_bandwidth_package.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

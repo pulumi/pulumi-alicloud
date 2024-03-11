@@ -313,6 +313,7 @@ class Subnet(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -333,6 +334,7 @@ class Subnet(pulumi.CustomResource):
             cidr="10.0.0.0/16",
             vpd_id=default_vpd.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -370,6 +372,7 @@ class Subnet(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -390,6 +393,7 @@ class Subnet(pulumi.CustomResource):
             cidr="10.0.0.0/16",
             vpd_id=default_vpd.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

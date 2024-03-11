@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -53,6 +54,7 @@ import * as utilities from "../utilities";
  *     jsonEnableTag: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -141,7 +143,7 @@ export class OssShipper extends pulumi.CustomResource {
     public readonly ossPrefix!: pulumi.Output<string | undefined>;
     public readonly parquetConfigs!: pulumi.Output<outputs.log.OssShipperParquetConfig[] | undefined>;
     /**
-     * The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+     * The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
      */
     public readonly pathFormat!: pulumi.Output<string>;
     /**
@@ -295,7 +297,7 @@ export interface OssShipperState {
     ossPrefix?: pulumi.Input<string>;
     parquetConfigs?: pulumi.Input<pulumi.Input<inputs.log.OssShipperParquetConfig>[]>;
     /**
-     * The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+     * The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
      */
     pathFormat?: pulumi.Input<string>;
     /**
@@ -367,7 +369,7 @@ export interface OssShipperArgs {
     ossPrefix?: pulumi.Input<string>;
     parquetConfigs?: pulumi.Input<pulumi.Input<inputs.log.OssShipperParquetConfig>[]>;
     /**
-     * The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
+     * The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
      */
     pathFormat: pulumi.Input<string>;
     /**

@@ -181,6 +181,7 @@ class Attachment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -252,6 +253,7 @@ class Attachment(pulumi.CustomResource):
             ],
             force=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -294,6 +296,7 @@ class Attachment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -365,6 +368,7 @@ class Attachment(pulumi.CustomResource):
             ],
             force=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

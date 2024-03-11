@@ -35,6 +35,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in 1.98.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -64,6 +66,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomDomainsResult> getCustomDomains() {
@@ -75,6 +78,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in 1.98.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -104,6 +109,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomDomainsResult> getCustomDomainsPlain() {
@@ -115,6 +121,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in 1.98.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -144,6 +152,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomDomainsResult> getCustomDomains(GetCustomDomainsArgs args) {
@@ -155,6 +164,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in 1.98.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -184,6 +195,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomDomainsResult> getCustomDomainsPlain(GetCustomDomainsPlainArgs args) {
@@ -195,6 +207,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in 1.98.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -224,6 +238,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCustomDomainsResult> getCustomDomains(GetCustomDomainsArgs args, InvokeOptions options) {
@@ -235,6 +250,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in 1.98.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -264,6 +281,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCustomDomainsResult> getCustomDomainsPlain(GetCustomDomainsPlainArgs args, InvokeOptions options) {
@@ -273,6 +291,8 @@ public final class FcFunctions {
      * This data source provides the Function Compute functions of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -303,6 +323,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFunctionsResult> getFunctions(GetFunctionsArgs args) {
@@ -312,6 +333,8 @@ public final class FcFunctions {
      * This data source provides the Function Compute functions of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -342,6 +365,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFunctionsResult> getFunctionsPlain(GetFunctionsPlainArgs args) {
@@ -351,6 +375,8 @@ public final class FcFunctions {
      * This data source provides the Function Compute functions of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -381,6 +407,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFunctionsResult> getFunctions(GetFunctionsArgs args, InvokeOptions options) {
@@ -390,6 +417,8 @@ public final class FcFunctions {
      * This data source provides the Function Compute functions of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -420,6 +449,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFunctionsResult> getFunctionsPlain(GetFunctionsPlainArgs args, InvokeOptions options) {
@@ -433,6 +463,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available since v1.112.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -461,6 +493,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -474,6 +507,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available since v1.112.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -502,6 +537,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -515,6 +551,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available since v1.112.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -543,6 +581,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -556,6 +595,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available since v1.112.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -584,6 +625,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -597,6 +639,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available since v1.112.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -625,6 +669,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -638,6 +683,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available since v1.112.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -666,6 +713,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -675,6 +723,8 @@ public final class FcFunctions {
      * This data source provides the Function Compute services of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -704,6 +754,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServicesResult> getServices() {
@@ -713,6 +764,8 @@ public final class FcFunctions {
      * This data source provides the Function Compute services of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -742,6 +795,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServicesResult> getServicesPlain() {
@@ -751,6 +805,8 @@ public final class FcFunctions {
      * This data source provides the Function Compute services of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -780,6 +836,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServicesResult> getServices(GetServicesArgs args) {
@@ -789,6 +846,8 @@ public final class FcFunctions {
      * This data source provides the Function Compute services of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -818,6 +877,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServicesResult> getServicesPlain(GetServicesPlainArgs args) {
@@ -827,6 +887,8 @@ public final class FcFunctions {
      * This data source provides the Function Compute services of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -856,6 +918,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServicesResult> getServices(GetServicesArgs args, InvokeOptions options) {
@@ -865,6 +928,8 @@ public final class FcFunctions {
      * This data source provides the Function Compute services of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -894,6 +959,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServicesResult> getServicesPlain(GetServicesPlainArgs args, InvokeOptions options) {
@@ -903,6 +969,8 @@ public final class FcFunctions {
      * This data source provides the Function Compute triggers of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -934,6 +1002,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTriggersResult> getTriggers(GetTriggersArgs args) {
@@ -943,6 +1012,8 @@ public final class FcFunctions {
      * This data source provides the Function Compute triggers of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -974,6 +1045,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTriggersResult> getTriggersPlain(GetTriggersPlainArgs args) {
@@ -983,6 +1055,8 @@ public final class FcFunctions {
      * This data source provides the Function Compute triggers of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1014,6 +1088,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTriggersResult> getTriggers(GetTriggersArgs args, InvokeOptions options) {
@@ -1023,6 +1098,8 @@ public final class FcFunctions {
      * This data source provides the Function Compute triggers of the current Alibaba Cloud user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1054,6 +1131,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTriggersResult> getTriggersPlain(GetTriggersPlainArgs args, InvokeOptions options) {
@@ -1065,6 +1143,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1091,6 +1171,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -1102,6 +1183,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1128,6 +1211,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -1139,6 +1223,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1165,6 +1251,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -1176,6 +1263,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1202,6 +1291,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -1213,6 +1303,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1239,6 +1331,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -1250,6 +1343,8 @@ public final class FcFunctions {
      * &gt; **NOTE:** Available in v1.74.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1276,6 +1371,7 @@ public final class FcFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

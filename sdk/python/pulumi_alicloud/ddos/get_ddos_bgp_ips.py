@@ -134,6 +134,7 @@ def get_ddos_bgp_ips(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -145,6 +146,7 @@ def get_ddos_bgp_ips(ids: Optional[Sequence[str]] = None,
         ])
     pulumi.export("ddosbgpIpId1", ids.ips[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ip IDs.
@@ -194,6 +196,7 @@ def get_ddos_bgp_ips_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -205,6 +208,7 @@ def get_ddos_bgp_ips_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
         ])
     pulumi.export("ddosbgpIpId1", ids.ips[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ip IDs.

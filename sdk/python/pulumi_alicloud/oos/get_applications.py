@@ -113,6 +113,7 @@ def get_applications(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -122,6 +123,7 @@ def get_applications(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.oos.get_applications(name_regex="^my-Application")
     pulumi.export("oosApplicationId2", name_regex.applications[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Application IDs. Its element value is same as Application Name.
@@ -162,6 +164,7 @@ def get_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -171,6 +174,7 @@ def get_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     name_regex = alicloud.oos.get_applications(name_regex="^my-Application")
     pulumi.export("oosApplicationId2", name_regex.applications[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Application IDs. Its element value is same as Application Name.

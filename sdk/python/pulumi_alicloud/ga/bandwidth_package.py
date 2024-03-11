@@ -625,6 +625,7 @@ class BandwidthPackage(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -637,6 +638,7 @@ class BandwidthPackage(pulumi.CustomResource):
             ratio=30,
             type="Basic")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -686,6 +688,7 @@ class BandwidthPackage(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -698,6 +701,7 @@ class BandwidthPackage(pulumi.CustomResource):
             ratio=30,
             type="Basic")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

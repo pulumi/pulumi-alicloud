@@ -114,6 +114,7 @@ def get_db_instances(db_instance_description: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -127,6 +128,7 @@ def get_db_instances(db_instance_description: Optional[str] = None,
         db_instance_description="example_value")
     pulumi.export("graphDatabaseDbInstanceId3", description.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_description: According to the practical example or notes.
@@ -170,6 +172,7 @@ def get_db_instances_output(db_instance_description: Optional[pulumi.Input[Optio
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -183,6 +186,7 @@ def get_db_instances_output(db_instance_description: Optional[pulumi.Input[Optio
         db_instance_description="example_value")
     pulumi.export("graphDatabaseDbInstanceId3", description.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_description: According to the practical example or notes.

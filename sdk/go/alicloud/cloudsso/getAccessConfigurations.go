@@ -21,6 +21,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,6 +58,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetAccessConfigurations(ctx *pulumi.Context, args *GetAccessConfigurationsArgs, opts ...pulumi.InvokeOption) (*GetAccessConfigurationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccessConfigurationsResult

@@ -70,7 +70,7 @@ type Instance struct {
 	MasterNodeDiskType pulumi.StringPtrOutput `pulumi:"masterNodeDiskType"`
 	// The dedicated master node spec. If specified, dedicated master node will be created.
 	MasterNodeSpec pulumi.StringPtrOutput `pulumi:"masterNodeSpec"`
-	// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+	// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
@@ -209,7 +209,7 @@ type instanceState struct {
 	MasterNodeDiskType *string `pulumi:"masterNodeDiskType"`
 	// The dedicated master node spec. If specified, dedicated master node will be created.
 	MasterNodeSpec *string `pulumi:"masterNodeSpec"`
-	// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+	// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
 	Password *string `pulumi:"password"`
 	// The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
 	Period *int `pulumi:"period"`
@@ -294,7 +294,7 @@ type InstanceState struct {
 	MasterNodeDiskType pulumi.StringPtrInput
 	// The dedicated master node spec. If specified, dedicated master node will be created.
 	MasterNodeSpec pulumi.StringPtrInput
-	// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+	// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
 	Password pulumi.StringPtrInput
 	// The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
 	Period pulumi.IntPtrInput
@@ -377,7 +377,7 @@ type instanceArgs struct {
 	MasterNodeDiskType *string `pulumi:"masterNodeDiskType"`
 	// The dedicated master node spec. If specified, dedicated master node will be created.
 	MasterNodeSpec *string `pulumi:"masterNodeSpec"`
-	// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+	// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
 	Password *string `pulumi:"password"`
 	// The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
 	Period *int `pulumi:"period"`
@@ -449,7 +449,7 @@ type InstanceArgs struct {
 	MasterNodeDiskType pulumi.StringPtrInput
 	// The dedicated master node spec. If specified, dedicated master node will be created.
 	MasterNodeSpec pulumi.StringPtrInput
-	// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+	// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
 	Password pulumi.StringPtrInput
 	// The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
 	Period pulumi.IntPtrInput
@@ -684,7 +684,7 @@ func (o InstanceOutput) MasterNodeSpec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.MasterNodeSpec }).(pulumi.StringPtrOutput)
 }
 
-// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
 func (o InstanceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }

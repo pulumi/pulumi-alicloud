@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  *     moduleName: "Registry",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEndpointAclService(args: GetEndpointAclServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointAclServiceResult> {
 
@@ -89,6 +91,7 @@ export interface GetEndpointAclServiceResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -100,6 +103,7 @@ export interface GetEndpointAclServiceResult {
  *     moduleName: "Registry",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEndpointAclServiceOutput(args: GetEndpointAclServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointAclServiceResult> {
     return pulumi.output(args).apply((a: any) => getEndpointAclService(a, opts))

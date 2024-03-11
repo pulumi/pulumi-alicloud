@@ -97,6 +97,7 @@ def get_zones(multi: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -106,6 +107,7 @@ def get_zones(multi: Optional[bool] = None,
     mongodb = alicloud.mongodb.Instance("mongodb", zone_id=zones_ids.zones[0].id)
     # Other properties...
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch MongoDB instances.
@@ -136,6 +138,7 @@ def get_zones_output(multi: Optional[pulumi.Input[Optional[bool]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -145,6 +148,7 @@ def get_zones_output(multi: Optional[pulumi.Input[Optional[bool]]] = None,
     mongodb = alicloud.mongodb.Instance("mongodb", zone_id=zones_ids.zones[0].id)
     # Other properties...
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch MongoDB instances.

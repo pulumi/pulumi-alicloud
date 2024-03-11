@@ -131,6 +131,7 @@ def get_secret_versions(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -139,6 +140,7 @@ def get_secret_versions(enable_details: Optional[bool] = None,
         secret_name="secret_name")
     pulumi.export("firstSecretData", kms_secret_versions_ds.versions[0].secret_data)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to false and only output `secret_name`, `version_id`, `version_stages`. Set it to true can output more details.
@@ -184,6 +186,7 @@ def get_secret_versions_output(enable_details: Optional[pulumi.Input[Optional[bo
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -192,6 +195,7 @@ def get_secret_versions_output(enable_details: Optional[pulumi.Input[Optional[bo
         secret_name="secret_name")
     pulumi.export("firstSecretData", kms_secret_versions_ds.versions[0].secret_data)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to false and only output `secret_name`, `version_id`, `version_stages`. Set it to true can output more details.

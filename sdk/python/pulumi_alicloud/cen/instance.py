@@ -237,6 +237,7 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -245,6 +246,7 @@ class Instance(pulumi.CustomResource):
             cen_instance_name="tf_example",
             description="an example for cen")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -279,6 +281,7 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -287,6 +290,7 @@ class Instance(pulumi.CustomResource):
             cen_instance_name="tf_example",
             description="an example for cen")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

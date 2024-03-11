@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  *     language: "zh",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBlockedRegions(args: GetBlockedRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetBlockedRegionsResult> {
 
@@ -62,6 +64,7 @@ export interface GetBlockedRegionsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -70,6 +73,7 @@ export interface GetBlockedRegionsResult {
  *     language: "zh",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBlockedRegionsOutput(args: GetBlockedRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBlockedRegionsResult> {
     return pulumi.output(args).apply((a: any) => getBlockedRegions(a, opts))

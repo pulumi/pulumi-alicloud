@@ -274,6 +274,7 @@ class App(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -289,6 +290,7 @@ class App(pulumi.CustomResource):
             package_name="com.example.android",
             type="Android")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -327,6 +329,7 @@ class App(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -342,6 +345,7 @@ class App(pulumi.CustomResource):
             package_name="com.example.android",
             type="Android")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

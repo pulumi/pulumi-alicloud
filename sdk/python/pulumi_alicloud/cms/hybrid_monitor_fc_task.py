@@ -157,6 +157,7 @@ class HybridMonitorFcTask(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -192,6 +193,7 @@ class HybridMonitorFcTask(pulumi.CustomResource):
         \"\"\",
             target_user_id=default_account.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -224,6 +226,7 @@ class HybridMonitorFcTask(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -259,6 +262,7 @@ class HybridMonitorFcTask(pulumi.CustomResource):
         \"\"\",
             target_user_id=default_account.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

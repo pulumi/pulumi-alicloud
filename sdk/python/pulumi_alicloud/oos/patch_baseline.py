@@ -255,6 +255,7 @@ class PatchBaseline(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -268,6 +269,7 @@ class PatchBaseline(pulumi.CustomResource):
             operation_system="Windows",
             approval_rules="{\\"PatchRules\\":[{\\"EnableNonSecurity\\":true,\\"PatchFilterGroup\\":[{\\"Values\\":[\\"*\\"],\\"Key\\":\\"Product\\"},{\\"Values\\":[\\"Security\\",\\"Bugfix\\"],\\"Key\\":\\"Classification\\"},{\\"Values\\":[\\"Critical\\",\\"Important\\"],\\"Key\\":\\"Severity\\"}],\\"ApproveAfterDays\\":7,\\"ComplianceLevel\\":\\"Unspecified\\"}]}")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -303,6 +305,7 @@ class PatchBaseline(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -316,6 +319,7 @@ class PatchBaseline(pulumi.CustomResource):
             operation_system="Windows",
             approval_rules="{\\"PatchRules\\":[{\\"EnableNonSecurity\\":true,\\"PatchFilterGroup\\":[{\\"Values\\":[\\"*\\"],\\"Key\\":\\"Product\\"},{\\"Values\\":[\\"Security\\",\\"Bugfix\\"],\\"Key\\":\\"Classification\\"},{\\"Values\\":[\\"Critical\\",\\"Important\\"],\\"Key\\":\\"Severity\\"}],\\"ApproveAfterDays\\":7,\\"ComplianceLevel\\":\\"Unspecified\\"}]}")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

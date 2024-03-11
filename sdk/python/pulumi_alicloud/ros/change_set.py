@@ -655,6 +655,7 @@ class ChangeSet(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -666,6 +667,7 @@ class ChangeSet(pulumi.CustomResource):
             stack_name="tf-testacc",
             template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\"}")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -713,6 +715,7 @@ class ChangeSet(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -724,6 +727,7 @@ class ChangeSet(pulumi.CustomResource):
             stack_name="tf-testacc",
             template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\"}")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

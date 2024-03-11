@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Ga
         /// 
         /// &gt; **NOTE:** Available in 1.197.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,8 +44,7 @@ namespace Pulumi.AliCloud.Ga
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCustomRoutingEndpointsResult> InvokeAsync(GetCustomRoutingEndpointsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomRoutingEndpointsResult>("alicloud:ga/getCustomRoutingEndpoints:getCustomRoutingEndpoints", args ?? new GetCustomRoutingEndpointsArgs(), options.WithDefaults());
@@ -56,12 +54,11 @@ namespace Pulumi.AliCloud.Ga
         /// 
         /// &gt; **NOTE:** Available in 1.197.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,8 +82,7 @@ namespace Pulumi.AliCloud.Ga
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCustomRoutingEndpointsResult> Invoke(GetCustomRoutingEndpointsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomRoutingEndpointsResult>("alicloud:ga/getCustomRoutingEndpoints:getCustomRoutingEndpoints", args ?? new GetCustomRoutingEndpointsInvokeArgs(), options.WithDefaults());

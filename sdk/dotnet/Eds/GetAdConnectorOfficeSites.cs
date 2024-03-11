@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// &gt; **NOTE:** Available in v1.176.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,8 +43,7 @@ namespace Pulumi.AliCloud.Eds
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAdConnectorOfficeSitesResult> InvokeAsync(GetAdConnectorOfficeSitesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAdConnectorOfficeSitesResult>("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", args ?? new GetAdConnectorOfficeSitesArgs(), options.WithDefaults());
@@ -55,12 +53,11 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// &gt; **NOTE:** Available in v1.176.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +80,7 @@ namespace Pulumi.AliCloud.Eds
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAdConnectorOfficeSitesResult> Invoke(GetAdConnectorOfficeSitesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAdConnectorOfficeSitesResult>("alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites", args ?? new GetAdConnectorOfficeSitesInvokeArgs(), options.WithDefaults());

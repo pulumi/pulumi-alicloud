@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// &gt; **NOTE:** Available in v1.132.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,8 +49,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPhysicalConnectionsResult> InvokeAsync(GetPhysicalConnectionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPhysicalConnectionsResult>("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", args ?? new GetPhysicalConnectionsArgs(), options.WithDefaults());
@@ -61,12 +59,11 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// &gt; **NOTE:** Available in v1.132.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -95,8 +92,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPhysicalConnectionsResult> Invoke(GetPhysicalConnectionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPhysicalConnectionsResult>("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", args ?? new GetPhysicalConnectionsInvokeArgs(), options.WithDefaults());

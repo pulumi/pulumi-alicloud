@@ -134,6 +134,18 @@ def get_cluster_credential(cluster_id: Optional[str] = None,
 
     > **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
 
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    auth = alicloud.cs.get_cluster_credential(cluster_id="cluster-id",
+        temporary_duration_minutes=60)
+    ```
+    <!--End PulumiCodeChooser -->
+
 
     :param str cluster_id: The id of target cluster.
     :param str output_file: File name where to save the returned KubeConfig (after running `pulumi preview`).
@@ -168,6 +180,18 @@ def get_cluster_credential_output(cluster_id: Optional[pulumi.Input[str]] = None
     > **NOTE:** Available in v1.187.0+
 
     > **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
+
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    auth = alicloud.cs.get_cluster_credential(cluster_id="cluster-id",
+        temporary_duration_minutes=60)
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The id of target cluster.

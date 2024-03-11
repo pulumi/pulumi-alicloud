@@ -325,6 +325,7 @@ class TemplateScratch(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -342,6 +343,7 @@ class TemplateScratch(pulumi.CustomResource):
                 resource_type_filters=["ALIYUN::ECS::VPC"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -379,6 +381,7 @@ class TemplateScratch(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -396,6 +399,7 @@ class TemplateScratch(pulumi.CustomResource):
                 resource_type_filters=["ALIYUN::ECS::VPC"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

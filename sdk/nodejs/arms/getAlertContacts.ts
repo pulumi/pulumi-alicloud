@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const armsAlertContactId2 = nameRegex.then(nameRegex => nameRegex.contacts?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAlertContacts(args?: GetAlertContactsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertContactsResult> {
     args = args || {};
@@ -97,6 +99,7 @@ export interface GetAlertContactsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -108,6 +111,7 @@ export interface GetAlertContactsResult {
  * });
  * export const armsAlertContactId2 = nameRegex.then(nameRegex => nameRegex.contacts?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAlertContactsOutput(args?: GetAlertContactsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertContactsResult> {
     return pulumi.output(args).apply((a: any) => getAlertContacts(a, opts))

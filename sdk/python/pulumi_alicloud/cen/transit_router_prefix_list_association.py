@@ -254,6 +254,7 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -277,6 +278,7 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
             next_hop_type="BlackHole",
             owner_uid=default.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -312,6 +314,7 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -335,6 +338,7 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
             next_hop_type="BlackHole",
             owner_uid=default.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -382,6 +382,7 @@ class ServerCertificate(pulumi.CustomResource):
 
         * using server_certificate/private content as string example
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -421,9 +422,11 @@ class ServerCertificate(pulumi.CustomResource):
         -----END CERTIFICATE-----
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         * using server_certificate/private file example
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -433,6 +436,7 @@ class ServerCertificate(pulumi.CustomResource):
             server_certificate=(lambda path: open(path).read())(f"{path['module']}/server_certificate.pem"),
             private_key=(lambda path: open(path).read())(f"{path['module']}/private_key.pem"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -470,6 +474,7 @@ class ServerCertificate(pulumi.CustomResource):
 
         * using server_certificate/private content as string example
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -509,9 +514,11 @@ class ServerCertificate(pulumi.CustomResource):
         -----END CERTIFICATE-----
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         * using server_certificate/private file example
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -521,6 +528,7 @@ class ServerCertificate(pulumi.CustomResource):
             server_certificate=(lambda path: open(path).read())(f"{path['module']}/server_certificate.pem"),
             private_key=(lambda path: open(path).read())(f"{path['module']}/private_key.pem"))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

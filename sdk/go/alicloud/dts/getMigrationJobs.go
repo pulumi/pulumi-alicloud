@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetMigrationJobs(ctx *pulumi.Context, args *GetMigrationJobsArgs, opts ...pulumi.InvokeOption) (*GetMigrationJobsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMigrationJobsResult

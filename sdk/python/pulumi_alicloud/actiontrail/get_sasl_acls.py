@@ -124,6 +124,7 @@ def get_sasl_acls(acl_resource_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -135,6 +136,7 @@ def get_sasl_acls(acl_resource_name: Optional[str] = None,
         username="username")
     pulumi.export("firstSaslAclUsername", sasl_acls_ds.acls[0].username)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str acl_resource_name: Get results for the specified resource name.
@@ -176,6 +178,7 @@ def get_sasl_acls_output(acl_resource_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -187,6 +190,7 @@ def get_sasl_acls_output(acl_resource_name: Optional[pulumi.Input[str]] = None,
         username="username")
     pulumi.export("firstSaslAclUsername", sasl_acls_ds.acls[0].username)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str acl_resource_name: Get results for the specified resource name.

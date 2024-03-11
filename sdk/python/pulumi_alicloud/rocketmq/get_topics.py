@@ -140,6 +140,7 @@ def get_topics(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -164,6 +165,7 @@ def get_topics(enable_details: Optional[bool] = None,
         output_file="topics.txt")
     pulumi.export("firstTopicName", topics_ds.topics[0].topic_name)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of topic IDs to filter results.
@@ -209,6 +211,7 @@ def get_topics_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -233,6 +236,7 @@ def get_topics_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
         output_file="topics.txt")
     pulumi.export("firstTopicName", topics_ds.topics[0].topic_name)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of topic IDs to filter results.

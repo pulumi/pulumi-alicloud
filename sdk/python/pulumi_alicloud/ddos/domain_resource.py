@@ -296,6 +296,7 @@ class DomainResource(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -326,6 +327,7 @@ class DomainResource(pulumi.CustomResource):
                 proxy_type="https",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -364,6 +366,7 @@ class DomainResource(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -394,6 +397,7 @@ class DomainResource(pulumi.CustomResource):
                 proxy_type="https",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

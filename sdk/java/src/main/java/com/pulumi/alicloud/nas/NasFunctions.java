@@ -53,6 +53,8 @@ public final class NasFunctions {
      * &gt; NOTE: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -84,6 +86,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessGroupsResult> getAccessGroups() {
@@ -95,6 +98,8 @@ public final class NasFunctions {
      * &gt; NOTE: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -126,6 +131,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessGroupsResult> getAccessGroupsPlain() {
@@ -137,6 +143,8 @@ public final class NasFunctions {
      * &gt; NOTE: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -168,6 +176,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessGroupsResult> getAccessGroups(GetAccessGroupsArgs args) {
@@ -179,6 +188,8 @@ public final class NasFunctions {
      * &gt; NOTE: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -210,6 +221,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessGroupsResult> getAccessGroupsPlain(GetAccessGroupsPlainArgs args) {
@@ -221,6 +233,8 @@ public final class NasFunctions {
      * &gt; NOTE: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -252,6 +266,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessGroupsResult> getAccessGroups(GetAccessGroupsArgs args, InvokeOptions options) {
@@ -263,6 +278,8 @@ public final class NasFunctions {
      * &gt; NOTE: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -294,6 +311,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessGroupsResult> getAccessGroupsPlain(GetAccessGroupsPlainArgs args, InvokeOptions options) {
@@ -341,6 +359,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -370,6 +390,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAutoSnapshotPoliciesResult> getAutoSnapshotPolicies() {
@@ -381,6 +402,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -410,6 +433,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAutoSnapshotPoliciesResult> getAutoSnapshotPoliciesPlain() {
@@ -421,6 +445,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -450,6 +476,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAutoSnapshotPoliciesResult> getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs args) {
@@ -461,6 +488,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -490,6 +519,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAutoSnapshotPoliciesResult> getAutoSnapshotPoliciesPlain(GetAutoSnapshotPoliciesPlainArgs args) {
@@ -501,6 +531,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -530,6 +562,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAutoSnapshotPoliciesResult> getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs args, InvokeOptions options) {
@@ -541,6 +574,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in v1.153.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -570,6 +605,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAutoSnapshotPoliciesResult> getAutoSnapshotPoliciesPlain(GetAutoSnapshotPoliciesPlainArgs args, InvokeOptions options) {
@@ -583,6 +619,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -621,6 +659,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDataFlowsResult> getDataFlows(GetDataFlowsArgs args) {
@@ -634,6 +673,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -672,6 +713,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDataFlowsResult> getDataFlowsPlain(GetDataFlowsPlainArgs args) {
@@ -685,6 +727,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -723,6 +767,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDataFlowsResult> getDataFlows(GetDataFlowsArgs args, InvokeOptions options) {
@@ -736,6 +781,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -774,6 +821,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDataFlowsResult> getDataFlowsPlain(GetDataFlowsPlainArgs args, InvokeOptions options) {
@@ -785,6 +833,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -815,6 +865,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFileSystemsResult> getFileSystems() {
@@ -826,6 +877,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -856,6 +909,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFileSystemsResult> getFileSystemsPlain() {
@@ -867,6 +921,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -897,6 +953,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFileSystemsResult> getFileSystems(GetFileSystemsArgs args) {
@@ -908,6 +965,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -938,6 +997,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFileSystemsResult> getFileSystemsPlain(GetFileSystemsPlainArgs args) {
@@ -949,6 +1009,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -979,6 +1041,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFileSystemsResult> getFileSystems(GetFileSystemsArgs args, InvokeOptions options) {
@@ -990,6 +1053,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1020,6 +1085,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFileSystemsResult> getFileSystemsPlain(GetFileSystemsPlainArgs args, InvokeOptions options) {
@@ -1033,6 +1099,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1065,6 +1133,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFilesetsResult> getFilesets(GetFilesetsArgs args) {
@@ -1078,6 +1147,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1110,6 +1181,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFilesetsResult> getFilesetsPlain(GetFilesetsPlainArgs args) {
@@ -1123,6 +1195,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1155,6 +1229,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFilesetsResult> getFilesets(GetFilesetsArgs args, InvokeOptions options) {
@@ -1168,6 +1243,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1200,6 +1277,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFilesetsResult> getFilesetsPlain(GetFilesetsPlainArgs args, InvokeOptions options) {
@@ -1213,6 +1291,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1251,6 +1331,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLifecyclePoliciesResult> getLifecyclePolicies(GetLifecyclePoliciesArgs args) {
@@ -1264,6 +1345,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1302,6 +1385,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLifecyclePoliciesResult> getLifecyclePoliciesPlain(GetLifecyclePoliciesPlainArgs args) {
@@ -1315,6 +1399,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1353,6 +1439,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLifecyclePoliciesResult> getLifecyclePolicies(GetLifecyclePoliciesArgs args, InvokeOptions options) {
@@ -1366,6 +1453,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1404,6 +1493,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLifecyclePoliciesResult> getLifecyclePoliciesPlain(GetLifecyclePoliciesPlainArgs args, InvokeOptions options) {
@@ -1415,6 +1505,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1445,6 +1537,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMountTargetsResult> getMountTargets(GetMountTargetsArgs args) {
@@ -1456,6 +1549,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1486,6 +1581,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMountTargetsResult> getMountTargetsPlain(GetMountTargetsPlainArgs args) {
@@ -1497,6 +1593,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1527,6 +1625,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMountTargetsResult> getMountTargets(GetMountTargetsArgs args, InvokeOptions options) {
@@ -1538,6 +1637,8 @@ public final class NasFunctions {
      * &gt; **NOTE**: Available in 1.35.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1568,6 +1669,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMountTargetsResult> getMountTargetsPlain(GetMountTargetsPlainArgs args, InvokeOptions options) {
@@ -1579,6 +1681,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in 1.42.0
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1610,6 +1714,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProtocolsResult> getProtocols(GetProtocolsArgs args) {
@@ -1621,6 +1726,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in 1.42.0
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1652,6 +1759,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProtocolsResult> getProtocolsPlain(GetProtocolsPlainArgs args) {
@@ -1663,6 +1771,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in 1.42.0
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1694,6 +1804,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProtocolsResult> getProtocols(GetProtocolsArgs args, InvokeOptions options) {
@@ -1705,6 +1816,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in 1.42.0
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1736,6 +1849,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProtocolsResult> getProtocolsPlain(GetProtocolsPlainArgs args, InvokeOptions options) {
@@ -1749,6 +1863,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1777,6 +1893,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -1790,6 +1907,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1818,6 +1937,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -1831,6 +1951,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1859,6 +1981,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -1872,6 +1995,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1900,6 +2025,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -1913,6 +2039,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1941,6 +2069,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -1954,6 +2083,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.97.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1982,6 +2113,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -1995,6 +2127,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2027,6 +2161,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots() {
@@ -2040,6 +2175,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2072,6 +2209,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain() {
@@ -2085,6 +2223,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2117,6 +2257,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args) {
@@ -2130,6 +2271,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2162,6 +2305,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain(GetSnapshotsPlainArgs args) {
@@ -2175,6 +2319,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2207,6 +2353,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnapshotsResult> getSnapshots(GetSnapshotsArgs args, InvokeOptions options) {
@@ -2220,6 +2367,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2252,6 +2401,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnapshotsResult> getSnapshotsPlain(GetSnapshotsPlainArgs args, InvokeOptions options) {
@@ -2263,6 +2413,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2290,6 +2442,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -2301,6 +2454,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2328,6 +2483,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -2339,6 +2495,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2366,6 +2524,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -2377,6 +2536,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2404,6 +2565,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -2415,6 +2577,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2442,6 +2606,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -2453,6 +2618,8 @@ public final class NasFunctions {
      * &gt; **NOTE:** Available in v1.140.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2480,6 +2647,7 @@ public final class NasFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

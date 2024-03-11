@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstRdsCharacterSetNames = names.then(names => names.names?.[0]);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCharacterSetNames(args: GetCharacterSetNamesArgs, opts?: pulumi.InvokeOptions): Promise<GetCharacterSetNamesResult> {
 
@@ -60,6 +62,7 @@ export interface GetCharacterSetNamesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -69,6 +72,7 @@ export interface GetCharacterSetNamesResult {
  * });
  * export const firstRdsCharacterSetNames = names.then(names => names.names?.[0]);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCharacterSetNamesOutput(args: GetCharacterSetNamesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCharacterSetNamesResult> {
     return pulumi.output(args).apply((a: any) => getCharacterSetNames(a, opts))

@@ -14,6 +14,38 @@ import (
 // Provides a collection of DCDN Domains to the specified filters.
 //
 // > **NOTE:** Available in 1.94.0+.
+//
+// ## Example Usage
+//
+//	<!--Start PulumiCodeChooser -->
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := dcdn.GetDomains(ctx, &dcdn.GetDomainsArgs{
+//				Ids: []string{
+//					"example.com",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("domainId", example.Domains[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainsResult

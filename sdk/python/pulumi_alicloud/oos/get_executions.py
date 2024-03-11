@@ -238,6 +238,7 @@ def get_executions(category: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -247,6 +248,7 @@ def get_executions(category: Optional[str] = None,
         template_name="name")
     pulumi.export("firstExecutionId", example.executions[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str category: The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
@@ -336,6 +338,7 @@ def get_executions_output(category: Optional[pulumi.Input[Optional[str]]] = None
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -345,6 +348,7 @@ def get_executions_output(category: Optional[pulumi.Input[Optional[str]]] = None
         template_name="name")
     pulumi.export("firstExecutionId", example.executions[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str category: The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.

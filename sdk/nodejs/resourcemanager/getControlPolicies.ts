@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstResourceManagerControlPolicyId = example.then(example => example.policies?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getControlPolicies(args?: GetControlPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetControlPoliciesResult> {
     args = args || {};
@@ -96,6 +98,7 @@ export interface GetControlPoliciesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -106,6 +109,7 @@ export interface GetControlPoliciesResult {
  * });
  * export const firstResourceManagerControlPolicyId = example.then(example => example.policies?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getControlPoliciesOutput(args?: GetControlPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetControlPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getControlPolicies(a, opts))

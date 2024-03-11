@@ -22,6 +22,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// Basic Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -78,6 +79,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -93,7 +95,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// The password of the database logon account.
         /// * The password length is `8` to `32` bits.
-        /// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&amp;*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+        /// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&amp;*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
         /// </summary>
         [Output("accountPassword")]
         public Output<string> AccountPassword { get; private set; } = null!;
@@ -262,7 +264,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// The password of the database logon account.
         /// * The password length is `8` to `32` bits.
-        /// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&amp;*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+        /// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&amp;*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
         /// </summary>
         public Input<string>? AccountPassword
         {
@@ -402,7 +404,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// The password of the database logon account.
         /// * The password length is `8` to `32` bits.
-        /// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&amp;*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+        /// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&amp;*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
         /// </summary>
         public Input<string>? AccountPassword
         {

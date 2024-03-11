@@ -117,6 +117,8 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Limits available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -146,6 +148,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBandwidthLimitsResult> getBandwidthLimits() {
@@ -155,6 +158,8 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Limits available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -184,6 +189,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBandwidthLimitsResult> getBandwidthLimitsPlain() {
@@ -193,6 +199,8 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Limits available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -222,6 +230,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBandwidthLimitsResult> getBandwidthLimits(GetBandwidthLimitsArgs args) {
@@ -231,6 +240,8 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Limits available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -260,6 +271,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBandwidthLimitsResult> getBandwidthLimitsPlain(GetBandwidthLimitsPlainArgs args) {
@@ -269,6 +281,8 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Limits available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -298,6 +312,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBandwidthLimitsResult> getBandwidthLimits(GetBandwidthLimitsArgs args, InvokeOptions options) {
@@ -307,6 +322,8 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Limits available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -336,6 +353,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBandwidthLimitsResult> getBandwidthLimitsPlain(GetBandwidthLimitsPlainArgs args, InvokeOptions options) {
@@ -345,6 +363,8 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -375,6 +395,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBandwidthPackagesResult> getBandwidthPackages() {
@@ -384,6 +405,8 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -414,6 +437,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBandwidthPackagesResult> getBandwidthPackagesPlain() {
@@ -423,6 +447,8 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -453,6 +479,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBandwidthPackagesResult> getBandwidthPackages(GetBandwidthPackagesArgs args) {
@@ -462,6 +489,8 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -492,6 +521,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBandwidthPackagesResult> getBandwidthPackagesPlain(GetBandwidthPackagesPlainArgs args) {
@@ -501,6 +531,8 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -531,6 +563,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBandwidthPackagesResult> getBandwidthPackages(GetBandwidthPackagesArgs args, InvokeOptions options) {
@@ -540,6 +573,8 @@ public final class CenFunctions {
      * This data source provides CEN Bandwidth Packages available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -570,6 +605,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBandwidthPackagesResult> getBandwidthPackagesPlain(GetBandwidthPackagesPlainArgs args, InvokeOptions options) {
@@ -581,6 +617,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -611,6 +649,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetChildInstanceRouteEntryToAttachmentsResult> getChildInstanceRouteEntryToAttachments(GetChildInstanceRouteEntryToAttachmentsArgs args) {
@@ -622,6 +661,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -652,6 +693,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetChildInstanceRouteEntryToAttachmentsResult> getChildInstanceRouteEntryToAttachmentsPlain(GetChildInstanceRouteEntryToAttachmentsPlainArgs args) {
@@ -663,6 +705,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -693,6 +737,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetChildInstanceRouteEntryToAttachmentsResult> getChildInstanceRouteEntryToAttachments(GetChildInstanceRouteEntryToAttachmentsArgs args, InvokeOptions options) {
@@ -704,6 +749,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -734,6 +781,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetChildInstanceRouteEntryToAttachmentsResult> getChildInstanceRouteEntryToAttachmentsPlain(GetChildInstanceRouteEntryToAttachmentsPlainArgs args, InvokeOptions options) {
@@ -747,6 +795,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -777,6 +827,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFlowlogsResult> getFlowlogs() {
@@ -790,6 +841,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -820,6 +873,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFlowlogsResult> getFlowlogsPlain() {
@@ -833,6 +887,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -863,6 +919,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFlowlogsResult> getFlowlogs(GetFlowlogsArgs args) {
@@ -876,6 +933,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -906,6 +965,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFlowlogsResult> getFlowlogsPlain(GetFlowlogsPlainArgs args) {
@@ -919,6 +979,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -949,6 +1011,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFlowlogsResult> getFlowlogs(GetFlowlogsArgs args, InvokeOptions options) {
@@ -962,6 +1025,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -992,6 +1057,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFlowlogsResult> getFlowlogsPlain(GetFlowlogsPlainArgs args, InvokeOptions options) {
@@ -1003,6 +1069,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.97.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1032,6 +1100,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceAttachmentsResult> getInstanceAttachments(GetInstanceAttachmentsArgs args) {
@@ -1043,6 +1112,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.97.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1072,6 +1143,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceAttachmentsResult> getInstanceAttachmentsPlain(GetInstanceAttachmentsPlainArgs args) {
@@ -1083,6 +1155,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.97.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1112,6 +1186,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceAttachmentsResult> getInstanceAttachments(GetInstanceAttachmentsArgs args, InvokeOptions options) {
@@ -1123,6 +1198,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.97.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1152,6 +1229,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceAttachmentsResult> getInstanceAttachmentsPlain(GetInstanceAttachmentsPlainArgs args, InvokeOptions options) {
@@ -1161,6 +1239,8 @@ public final class CenFunctions {
      * This data source provides CEN instances available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1191,6 +1271,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances() {
@@ -1200,6 +1281,8 @@ public final class CenFunctions {
      * This data source provides CEN instances available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1230,6 +1313,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain() {
@@ -1239,6 +1323,8 @@ public final class CenFunctions {
      * This data source provides CEN instances available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1269,6 +1355,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args) {
@@ -1278,6 +1365,8 @@ public final class CenFunctions {
      * This data source provides CEN instances available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1308,6 +1397,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args) {
@@ -1317,6 +1407,8 @@ public final class CenFunctions {
      * This data source provides CEN instances available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1347,6 +1439,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstancesResult> getInstances(GetInstancesArgs args, InvokeOptions options) {
@@ -1356,6 +1449,8 @@ public final class CenFunctions {
      * This data source provides CEN instances available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1386,6 +1481,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
@@ -1399,6 +1495,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1437,6 +1535,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInterRegionTrafficQosPoliciesResult> getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs args) {
@@ -1450,6 +1549,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1488,6 +1589,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInterRegionTrafficQosPoliciesResult> getInterRegionTrafficQosPoliciesPlain(GetInterRegionTrafficQosPoliciesPlainArgs args) {
@@ -1501,6 +1603,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1539,6 +1643,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInterRegionTrafficQosPoliciesResult> getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs args, InvokeOptions options) {
@@ -1552,6 +1657,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1590,6 +1697,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInterRegionTrafficQosPoliciesResult> getInterRegionTrafficQosPoliciesPlain(GetInterRegionTrafficQosPoliciesPlainArgs args, InvokeOptions options) {
@@ -1601,6 +1709,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1632,6 +1742,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInterRegionTrafficQosQueuesResult> getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs args) {
@@ -1643,6 +1754,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1674,6 +1787,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInterRegionTrafficQosQueuesResult> getInterRegionTrafficQosQueuesPlain(GetInterRegionTrafficQosQueuesPlainArgs args) {
@@ -1685,6 +1799,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1716,6 +1832,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInterRegionTrafficQosQueuesResult> getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs args, InvokeOptions options) {
@@ -1727,6 +1844,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1758,6 +1877,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInterRegionTrafficQosQueuesResult> getInterRegionTrafficQosQueuesPlain(GetInterRegionTrafficQosQueuesPlainArgs args, InvokeOptions options) {
@@ -1769,6 +1889,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1800,6 +1922,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrivateZonesResult> getPrivateZones(GetPrivateZonesArgs args) {
@@ -1811,6 +1934,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1842,6 +1967,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrivateZonesResult> getPrivateZonesPlain(GetPrivateZonesPlainArgs args) {
@@ -1853,6 +1979,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1884,6 +2012,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPrivateZonesResult> getPrivateZones(GetPrivateZonesArgs args, InvokeOptions options) {
@@ -1895,6 +2024,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.88.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1926,6 +2057,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPrivateZonesResult> getPrivateZonesPlain(GetPrivateZonesPlainArgs args, InvokeOptions options) {
@@ -1935,6 +2067,8 @@ public final class CenFunctions {
      * This data source provides CEN Regional Route Entries available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1965,6 +2099,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionRouteEntriesResult> getRegionRouteEntries(GetRegionRouteEntriesArgs args) {
@@ -1974,6 +2109,8 @@ public final class CenFunctions {
      * This data source provides CEN Regional Route Entries available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2004,6 +2141,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionRouteEntriesResult> getRegionRouteEntriesPlain(GetRegionRouteEntriesPlainArgs args) {
@@ -2013,6 +2151,8 @@ public final class CenFunctions {
      * This data source provides CEN Regional Route Entries available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2043,6 +2183,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionRouteEntriesResult> getRegionRouteEntries(GetRegionRouteEntriesArgs args, InvokeOptions options) {
@@ -2052,6 +2193,8 @@ public final class CenFunctions {
      * This data source provides CEN Regional Route Entries available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2082,6 +2225,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionRouteEntriesResult> getRegionRouteEntriesPlain(GetRegionRouteEntriesPlainArgs args, InvokeOptions options) {
@@ -2091,6 +2235,8 @@ public final class CenFunctions {
      * This data source provides CEN Route Entries available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2121,6 +2267,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouteEntriesResult> getRouteEntries(GetRouteEntriesArgs args) {
@@ -2130,6 +2277,8 @@ public final class CenFunctions {
      * This data source provides CEN Route Entries available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2160,6 +2309,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouteEntriesResult> getRouteEntriesPlain(GetRouteEntriesPlainArgs args) {
@@ -2169,6 +2319,8 @@ public final class CenFunctions {
      * This data source provides CEN Route Entries available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2199,6 +2351,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouteEntriesResult> getRouteEntries(GetRouteEntriesArgs args, InvokeOptions options) {
@@ -2208,6 +2361,8 @@ public final class CenFunctions {
      * This data source provides CEN Route Entries available to the user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2238,6 +2393,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouteEntriesResult> getRouteEntriesPlain(GetRouteEntriesPlainArgs args, InvokeOptions options) {
@@ -2249,6 +2405,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.87.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2283,6 +2441,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouteMapsResult> getRouteMaps(GetRouteMapsArgs args) {
@@ -2294,6 +2453,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.87.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2328,6 +2489,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouteMapsResult> getRouteMapsPlain(GetRouteMapsPlainArgs args) {
@@ -2339,6 +2501,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.87.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2373,6 +2537,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouteMapsResult> getRouteMaps(GetRouteMapsArgs args, InvokeOptions options) {
@@ -2384,6 +2549,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.87.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2418,6 +2585,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouteMapsResult> getRouteMapsPlain(GetRouteMapsPlainArgs args, InvokeOptions options) {
@@ -2431,6 +2599,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2460,6 +2630,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouteServicesResult> getRouteServices(GetRouteServicesArgs args) {
@@ -2473,6 +2644,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2502,6 +2675,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouteServicesResult> getRouteServicesPlain(GetRouteServicesPlainArgs args) {
@@ -2515,6 +2689,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2544,6 +2720,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouteServicesResult> getRouteServices(GetRouteServicesArgs args, InvokeOptions options) {
@@ -2557,6 +2734,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2586,6 +2765,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouteServicesResult> getRouteServicesPlain(GetRouteServicesPlainArgs args, InvokeOptions options) {
@@ -2599,6 +2779,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2637,6 +2819,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrafficMarkingPoliciesResult> getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs args) {
@@ -2650,6 +2833,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2688,6 +2873,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrafficMarkingPoliciesResult> getTrafficMarkingPoliciesPlain(GetTrafficMarkingPoliciesPlainArgs args) {
@@ -2701,6 +2887,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2739,6 +2927,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrafficMarkingPoliciesResult> getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs args, InvokeOptions options) {
@@ -2752,6 +2941,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2790,6 +2981,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrafficMarkingPoliciesResult> getTrafficMarkingPoliciesPlain(GetTrafficMarkingPoliciesPlainArgs args, InvokeOptions options) {
@@ -2803,6 +2995,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2839,6 +3033,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouteTableAggregationsResult> getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs args) {
@@ -2852,6 +3047,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2888,6 +3085,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouteTableAggregationsResult> getTransitRouteTableAggregationsPlain(GetTransitRouteTableAggregationsPlainArgs args) {
@@ -2901,6 +3099,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2937,6 +3137,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouteTableAggregationsResult> getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs args, InvokeOptions options) {
@@ -2950,6 +3151,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2986,6 +3189,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouteTableAggregationsResult> getTransitRouteTableAggregationsPlain(GetTransitRouteTableAggregationsPlainArgs args, InvokeOptions options) {
@@ -2999,6 +3203,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3027,6 +3233,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResources() {
@@ -3040,6 +3247,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3068,6 +3277,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResourcesPlain() {
@@ -3081,6 +3291,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3109,6 +3321,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs args) {
@@ -3122,6 +3335,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3150,6 +3365,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResourcesPlain(GetTransitRouterAvailableResourcesPlainArgs args) {
@@ -3163,6 +3379,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3191,6 +3409,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs args, InvokeOptions options) {
@@ -3204,6 +3423,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3232,6 +3453,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterAvailableResourcesResult> getTransitRouterAvailableResourcesPlain(GetTransitRouterAvailableResourcesPlainArgs args, InvokeOptions options) {
@@ -3245,6 +3467,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3281,6 +3505,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterCidrsResult> getTransitRouterCidrs(GetTransitRouterCidrsArgs args) {
@@ -3294,6 +3519,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3330,6 +3557,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterCidrsResult> getTransitRouterCidrsPlain(GetTransitRouterCidrsPlainArgs args) {
@@ -3343,6 +3571,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3379,6 +3609,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterCidrsResult> getTransitRouterCidrs(GetTransitRouterCidrsArgs args, InvokeOptions options) {
@@ -3392,6 +3623,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3428,6 +3661,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterCidrsResult> getTransitRouterCidrsPlain(GetTransitRouterCidrsPlainArgs args, InvokeOptions options) {
@@ -3441,6 +3675,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3471,6 +3707,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterMulticastDomainAssociationsResult> getTransitRouterMulticastDomainAssociations(GetTransitRouterMulticastDomainAssociationsArgs args) {
@@ -3484,6 +3721,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3514,6 +3753,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterMulticastDomainAssociationsResult> getTransitRouterMulticastDomainAssociationsPlain(GetTransitRouterMulticastDomainAssociationsPlainArgs args) {
@@ -3527,6 +3767,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3557,6 +3799,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterMulticastDomainAssociationsResult> getTransitRouterMulticastDomainAssociations(GetTransitRouterMulticastDomainAssociationsArgs args, InvokeOptions options) {
@@ -3570,6 +3813,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3600,6 +3845,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterMulticastDomainAssociationsResult> getTransitRouterMulticastDomainAssociationsPlain(GetTransitRouterMulticastDomainAssociationsPlainArgs args, InvokeOptions options) {
@@ -3613,6 +3859,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3642,6 +3890,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterMulticastDomainMembersResult> getTransitRouterMulticastDomainMembers(GetTransitRouterMulticastDomainMembersArgs args) {
@@ -3655,6 +3904,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3684,6 +3935,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterMulticastDomainMembersResult> getTransitRouterMulticastDomainMembersPlain(GetTransitRouterMulticastDomainMembersPlainArgs args) {
@@ -3697,6 +3949,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3726,6 +3980,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterMulticastDomainMembersResult> getTransitRouterMulticastDomainMembers(GetTransitRouterMulticastDomainMembersArgs args, InvokeOptions options) {
@@ -3739,6 +3994,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3768,6 +4025,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterMulticastDomainMembersResult> getTransitRouterMulticastDomainMembersPlain(GetTransitRouterMulticastDomainMembersPlainArgs args, InvokeOptions options) {
@@ -3781,6 +4039,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3810,6 +4070,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterMulticastDomainPeerMembersResult> getTransitRouterMulticastDomainPeerMembers(GetTransitRouterMulticastDomainPeerMembersArgs args) {
@@ -3823,6 +4084,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3852,6 +4115,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterMulticastDomainPeerMembersResult> getTransitRouterMulticastDomainPeerMembersPlain(GetTransitRouterMulticastDomainPeerMembersPlainArgs args) {
@@ -3865,6 +4129,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3894,6 +4160,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterMulticastDomainPeerMembersResult> getTransitRouterMulticastDomainPeerMembers(GetTransitRouterMulticastDomainPeerMembersArgs args, InvokeOptions options) {
@@ -3907,6 +4174,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3936,6 +4205,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterMulticastDomainPeerMembersResult> getTransitRouterMulticastDomainPeerMembersPlain(GetTransitRouterMulticastDomainPeerMembersPlainArgs args, InvokeOptions options) {
@@ -3947,6 +4217,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3976,6 +4248,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterMulticastDomainSourcesResult> getTransitRouterMulticastDomainSources(GetTransitRouterMulticastDomainSourcesArgs args) {
@@ -3987,6 +4260,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4016,6 +4291,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterMulticastDomainSourcesResult> getTransitRouterMulticastDomainSourcesPlain(GetTransitRouterMulticastDomainSourcesPlainArgs args) {
@@ -4027,6 +4303,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4056,6 +4334,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterMulticastDomainSourcesResult> getTransitRouterMulticastDomainSources(GetTransitRouterMulticastDomainSourcesArgs args, InvokeOptions options) {
@@ -4067,6 +4346,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4096,6 +4377,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterMulticastDomainSourcesResult> getTransitRouterMulticastDomainSourcesPlain(GetTransitRouterMulticastDomainSourcesPlainArgs args, InvokeOptions options) {
@@ -4109,6 +4391,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4145,6 +4429,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterMulticastDomainsResult> getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs args) {
@@ -4158,6 +4443,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4194,6 +4481,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterMulticastDomainsResult> getTransitRouterMulticastDomainsPlain(GetTransitRouterMulticastDomainsPlainArgs args) {
@@ -4207,6 +4495,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4243,6 +4533,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterMulticastDomainsResult> getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs args, InvokeOptions options) {
@@ -4256,6 +4547,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4292,6 +4585,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterMulticastDomainsResult> getTransitRouterMulticastDomainsPlain(GetTransitRouterMulticastDomainsPlainArgs args, InvokeOptions options) {
@@ -4341,6 +4635,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4371,6 +4667,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterPrefixListAssociationsResult> getTransitRouterPrefixListAssociations(GetTransitRouterPrefixListAssociationsArgs args) {
@@ -4384,6 +4681,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4414,6 +4713,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterPrefixListAssociationsResult> getTransitRouterPrefixListAssociationsPlain(GetTransitRouterPrefixListAssociationsPlainArgs args) {
@@ -4427,6 +4727,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4457,6 +4759,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterPrefixListAssociationsResult> getTransitRouterPrefixListAssociations(GetTransitRouterPrefixListAssociationsArgs args, InvokeOptions options) {
@@ -4470,6 +4773,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4500,6 +4805,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterPrefixListAssociationsResult> getTransitRouterPrefixListAssociationsPlain(GetTransitRouterPrefixListAssociationsPlainArgs args, InvokeOptions options) {
@@ -4547,6 +4853,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4576,6 +4884,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociations() {
@@ -4587,6 +4896,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4616,6 +4927,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociationsPlain() {
@@ -4627,6 +4939,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4656,6 +4970,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs args) {
@@ -4667,6 +4982,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4696,6 +5013,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociationsPlain(GetTransitRouterRouteTableAssociationsPlainArgs args) {
@@ -4707,6 +5025,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4736,6 +5056,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs args, InvokeOptions options) {
@@ -4747,6 +5068,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4776,6 +5099,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociationsPlain(GetTransitRouterRouteTableAssociationsPlainArgs args, InvokeOptions options) {
@@ -4787,6 +5111,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4816,6 +5142,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterRouteTablePropagationsResult> getTransitRouterRouteTablePropagations(GetTransitRouterRouteTablePropagationsArgs args) {
@@ -4827,6 +5154,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4856,6 +5185,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterRouteTablePropagationsResult> getTransitRouterRouteTablePropagationsPlain(GetTransitRouterRouteTablePropagationsPlainArgs args) {
@@ -4867,6 +5197,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4896,6 +5228,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterRouteTablePropagationsResult> getTransitRouterRouteTablePropagations(GetTransitRouterRouteTablePropagationsArgs args, InvokeOptions options) {
@@ -4907,6 +5240,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4936,6 +5271,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterRouteTablePropagationsResult> getTransitRouterRouteTablePropagationsPlain(GetTransitRouterRouteTablePropagationsPlainArgs args, InvokeOptions options) {
@@ -4985,6 +5321,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.139.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5013,6 +5351,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterServiceResult> getTransitRouterService() {
@@ -5026,6 +5365,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.139.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5054,6 +5395,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterServiceResult> getTransitRouterServicePlain() {
@@ -5067,6 +5409,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.139.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5095,6 +5439,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterServiceResult> getTransitRouterService(GetTransitRouterServiceArgs args) {
@@ -5108,6 +5453,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.139.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5136,6 +5483,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterServiceResult> getTransitRouterServicePlain(GetTransitRouterServicePlainArgs args) {
@@ -5149,6 +5497,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.139.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5177,6 +5527,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterServiceResult> getTransitRouterService(GetTransitRouterServiceArgs args, InvokeOptions options) {
@@ -5190,6 +5541,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in v1.139.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5218,6 +5571,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterServiceResult> getTransitRouterServicePlain(GetTransitRouterServicePlainArgs args, InvokeOptions options) {
@@ -5303,6 +5657,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5332,6 +5688,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterVpnAttachmentsResult> getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs args) {
@@ -5345,6 +5702,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5374,6 +5733,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterVpnAttachmentsResult> getTransitRouterVpnAttachmentsPlain(GetTransitRouterVpnAttachmentsPlainArgs args) {
@@ -5387,6 +5747,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5416,6 +5778,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterVpnAttachmentsResult> getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs args, InvokeOptions options) {
@@ -5429,6 +5792,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5458,6 +5823,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterVpnAttachmentsResult> getTransitRouterVpnAttachmentsPlain(GetTransitRouterVpnAttachmentsPlainArgs args, InvokeOptions options) {
@@ -5469,6 +5835,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5498,6 +5866,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRoutersResult> getTransitRouters(GetTransitRoutersArgs args) {
@@ -5509,6 +5878,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5538,6 +5909,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRoutersResult> getTransitRoutersPlain(GetTransitRoutersPlainArgs args) {
@@ -5549,6 +5921,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5578,6 +5952,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRoutersResult> getTransitRouters(GetTransitRoutersArgs args, InvokeOptions options) {
@@ -5589,6 +5964,8 @@ public final class CenFunctions {
      * &gt; **NOTE:** Available in 1.126.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5618,6 +5995,7 @@ public final class CenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRoutersResult> getTransitRoutersPlain(GetTransitRoutersPlainArgs args, InvokeOptions options) {

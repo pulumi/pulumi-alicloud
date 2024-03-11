@@ -76,6 +76,7 @@ class Tag(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -86,6 +87,7 @@ class Tag(pulumi.CustomResource):
             name = "example"
         example = alicloud.directmail.Tag("example", tag_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -116,6 +118,7 @@ class Tag(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -126,6 +129,7 @@ class Tag(pulumi.CustomResource):
             name = "example"
         example = alicloud.directmail.Tag("example", tag_name=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

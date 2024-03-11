@@ -17,33 +17,19 @@ namespace Pulumi.AliCloud.Oss
         /// 
         /// &gt; **NOTE:** Available in v1.40.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
+        /// ``` terraform
+        /// data "alicloud_ots_tables" "tables_ds" {
+        ///   instance_name = "sample-instance"
+        ///   name_regex    = "sample-table"
+        ///   output_file   = "tables.txt"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var tablesDs = AliCloud.Ots.GetTables.Invoke(new()
-        ///     {
-        ///         InstanceName = "sample-instance",
-        ///         NameRegex = "sample-table",
-        ///         OutputFile = "tables.txt",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstTableId"] = tablesDs.Apply(getTablesResult =&gt; getTablesResult.Tables[0]?.Id),
-        ///     };
-        /// });
+        /// output "first_table_id" {
+        ///   value = "${data.alicloud_ots_tables.tables_ds.tables.0.id}"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTablesResult> InvokeAsync(GetTablesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTablesResult>("alicloud:oss/getTables:getTables", args ?? new GetTablesArgs(), options.WithDefaults());
@@ -53,33 +39,19 @@ namespace Pulumi.AliCloud.Oss
         /// 
         /// &gt; **NOTE:** Available in v1.40.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
+        /// ``` terraform
+        /// data "alicloud_ots_tables" "tables_ds" {
+        ///   instance_name = "sample-instance"
+        ///   name_regex    = "sample-table"
+        ///   output_file   = "tables.txt"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var tablesDs = AliCloud.Ots.GetTables.Invoke(new()
-        ///     {
-        ///         InstanceName = "sample-instance",
-        ///         NameRegex = "sample-table",
-        ///         OutputFile = "tables.txt",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstTableId"] = tablesDs.Apply(getTablesResult =&gt; getTablesResult.Tables[0]?.Id),
-        ///     };
-        /// });
+        /// output "first_table_id" {
+        ///   value = "${data.alicloud_ots_tables.tables_ds.tables.0.id}"
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetTablesResult> Invoke(GetTablesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTablesResult>("alicloud:oss/getTables:getTables", args ?? new GetTablesInvokeArgs(), options.WithDefaults());

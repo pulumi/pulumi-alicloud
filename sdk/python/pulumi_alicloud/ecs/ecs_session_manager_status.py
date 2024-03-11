@@ -108,6 +108,7 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -116,6 +117,7 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
             session_manager_status_name="sessionManagerStatus",
             status="Disabled")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -147,6 +149,7 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -155,6 +158,7 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
             session_manager_status_name="sessionManagerStatus",
             status="Disabled")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -173,6 +173,7 @@ class Model(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -184,6 +185,7 @@ class Model(pulumi.CustomResource):
             schema="{\\"type\\":\\"object\\",\\"properties\\":{\\"id\\":{\\"format\\":\\"int64\\",\\"maximum\\":100,\\"exclusiveMaximum\\":true,\\"type\\":\\"integer\\"},\\"name\\":{\\"maxLength\\":10,\\"type\\":\\"string\\"}}}",
             description="example_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -217,6 +219,7 @@ class Model(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -228,6 +231,7 @@ class Model(pulumi.CustomResource):
             schema="{\\"type\\":\\"object\\",\\"properties\\":{\\"id\\":{\\"format\\":\\"int64\\",\\"maximum\\":100,\\"exclusiveMaximum\\":true,\\"type\\":\\"integer\\"},\\"name\\":{\\"maxLength\\":10,\\"type\\":\\"string\\"}}}",
             description="example_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

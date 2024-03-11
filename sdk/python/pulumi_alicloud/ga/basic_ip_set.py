@@ -190,6 +190,7 @@ class BasicIpSet(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -212,6 +213,7 @@ class BasicIpSet(pulumi.CustomResource):
             isp_type="BGP",
             bandwidth=5)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -245,6 +247,7 @@ class BasicIpSet(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -267,6 +270,7 @@ class BasicIpSet(pulumi.CustomResource):
             isp_type="BGP",
             bandwidth=5)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -166,6 +166,7 @@ class AppAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -213,6 +214,7 @@ class AppAttachment(pulumi.CustomResource):
             app_id=example_app.id,
             stage_name="PRE")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -232,6 +234,7 @@ class AppAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -279,6 +282,7 @@ class AppAttachment(pulumi.CustomResource):
             app_id=example_app.id,
             stage_name="PRE")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param AppAttachmentArgs args: The arguments to use to populate this resource's properties.

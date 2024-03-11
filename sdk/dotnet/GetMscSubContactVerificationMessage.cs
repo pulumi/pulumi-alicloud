@@ -14,12 +14,11 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// &gt; **NOTE:** Available in v1.156.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,8 +43,7 @@ namespace Pulumi.AliCloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMscSubContactVerificationMessageResult> InvokeAsync(GetMscSubContactVerificationMessageArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMscSubContactVerificationMessageResult>("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", args ?? new GetMscSubContactVerificationMessageArgs(), options.WithDefaults());
@@ -53,12 +51,11 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// &gt; **NOTE:** Available in v1.156.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,8 +80,7 @@ namespace Pulumi.AliCloud
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMscSubContactVerificationMessageResult> Invoke(GetMscSubContactVerificationMessageInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMscSubContactVerificationMessageResult>("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", args ?? new GetMscSubContactVerificationMessageInvokeArgs(), options.WithDefaults());

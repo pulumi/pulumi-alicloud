@@ -208,6 +208,7 @@ class Template(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -220,6 +221,7 @@ class Template(pulumi.CustomResource):
         \"\"\",
             template_name="example_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -254,6 +256,7 @@ class Template(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -266,6 +269,7 @@ class Template(pulumi.CustomResource):
         \"\"\",
             template_name="example_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -44,8 +44,6 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
      * 
      * The `main.tf`:
      * 
-     * The `varibales.tf`:
-     * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
@@ -62,8 +60,6 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
      * `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
      * 
      * The `main.tf`:
-     * 
-     * The `varibales.tf`:
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -161,8 +157,6 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
          * 
          * The `main.tf`:
          * 
-         * The `varibales.tf`:
-         * 
          * @return builder
          * 
          */
@@ -183,8 +177,6 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
          * `nginx-ingress-controller` - You can specific `IngressSlbNetworkType` in config. Options: internet|intranet.
          * 
          * The `main.tf`:
-         * 
-         * The `varibales.tf`:
          * 
          * @return builder
          * 

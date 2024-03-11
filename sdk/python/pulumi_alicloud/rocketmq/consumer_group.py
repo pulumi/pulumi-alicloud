@@ -240,6 +240,7 @@ class ConsumerGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -295,6 +296,7 @@ class ConsumerGroup(pulumi.CustomResource):
             delivery_order_type="Concurrently",
             remark="example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -329,6 +331,7 @@ class ConsumerGroup(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -384,6 +387,7 @@ class ConsumerGroup(pulumi.CustomResource):
             delivery_order_type="Concurrently",
             remark="example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

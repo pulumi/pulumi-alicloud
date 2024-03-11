@@ -255,6 +255,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -267,6 +268,7 @@ class SecurityPolicy(pulumi.CustomResource):
             security_policy_name="tf_example",
             tls_versions=["TLSv1.0"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -302,6 +304,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -314,6 +317,7 @@ class SecurityPolicy(pulumi.CustomResource):
             security_policy_name="tf_example",
             tls_versions=["TLSv1.0"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

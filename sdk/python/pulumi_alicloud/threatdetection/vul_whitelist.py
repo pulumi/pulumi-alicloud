@@ -142,6 +142,7 @@ class VulWhitelist(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -151,6 +152,7 @@ class VulWhitelist(pulumi.CustomResource):
             target_info="{\\"type\\":\\"GroupId\\",\\"uuids\\":[],\\"groupIds\\":[10782678]}",
             whitelist="[{\\"aliasName\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"name\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"type\\":\\"cve\\"}]")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -183,6 +185,7 @@ class VulWhitelist(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -192,6 +195,7 @@ class VulWhitelist(pulumi.CustomResource):
             target_info="{\\"type\\":\\"GroupId\\",\\"uuids\\":[],\\"groupIds\\":[10782678]}",
             whitelist="[{\\"aliasName\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"name\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"type\\":\\"cve\\"}]")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

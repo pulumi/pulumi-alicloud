@@ -222,6 +222,7 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -240,6 +241,7 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
             transit_route_table_aggregation_name="tf_example",
             transit_route_table_aggregation_description="tf_example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -274,6 +276,7 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -292,6 +295,7 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
             transit_route_table_aggregation_name="tf_example",
             transit_route_table_aggregation_description="tf_example")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

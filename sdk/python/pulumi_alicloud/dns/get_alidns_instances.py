@@ -118,6 +118,7 @@ def get_alidns_instances(domain_type: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -125,6 +126,7 @@ def get_alidns_instances(domain_type: Optional[str] = None,
     example = alicloud.dns.get_alidns_instances(ids=["dns-cn-oew1npk****"])
     pulumi.export("firstInstanceId", example.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str domain_type: The type of domain.
@@ -166,6 +168,7 @@ def get_alidns_instances_output(domain_type: Optional[pulumi.Input[Optional[str]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -173,6 +176,7 @@ def get_alidns_instances_output(domain_type: Optional[pulumi.Input[Optional[str]
     example = alicloud.dns.get_alidns_instances(ids=["dns-cn-oew1npk****"])
     pulumi.export("firstInstanceId", example.instances[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str domain_type: The type of domain.

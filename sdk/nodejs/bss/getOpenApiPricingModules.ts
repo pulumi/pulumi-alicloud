@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudBssOpenapiPricingModuleExampleId = _default.then(_default => _default.modules?.[0]?.code);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOpenApiPricingModules(args: GetOpenApiPricingModulesArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenApiPricingModulesResult> {
 
@@ -98,6 +100,7 @@ export interface GetOpenApiPricingModulesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -110,6 +113,7 @@ export interface GetOpenApiPricingModulesResult {
  * });
  * export const alicloudBssOpenapiPricingModuleExampleId = _default.then(_default => _default.modules?.[0]?.code);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOpenApiPricingModulesOutput(args: GetOpenApiPricingModulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenApiPricingModulesResult> {
     return pulumi.output(args).apply((a: any) => getOpenApiPricingModules(a, opts))

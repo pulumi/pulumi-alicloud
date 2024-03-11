@@ -159,6 +159,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -215,6 +216,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
                 target_port=8080,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -247,6 +249,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -303,6 +306,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
                 target_port=8080,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

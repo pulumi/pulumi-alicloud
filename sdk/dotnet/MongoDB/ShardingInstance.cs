@@ -22,8 +22,10 @@ namespace Pulumi.AliCloud.MongoDB
     /// &gt; **NOTE:**  Create MongoDB Sharding instance or change instance type and storage would cost 10~20 minutes. Please make full preparation.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Create a Mongodb Sharding instance
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -88,6 +90,8 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Module Support
     /// 
     /// You can use to the existing mongodb-sharding module

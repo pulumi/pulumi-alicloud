@@ -61,6 +61,7 @@ class ServiceEnterprisePublic(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -71,6 +72,7 @@ class ServiceEnterprisePublic(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.cloudmonitor.ServiceEnterprisePublic("default")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -100,6 +102,7 @@ class ServiceEnterprisePublic(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -110,6 +113,7 @@ class ServiceEnterprisePublic(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.cloudmonitor.ServiceEnterprisePublic("default")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

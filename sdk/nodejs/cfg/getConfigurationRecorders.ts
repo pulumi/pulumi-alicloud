@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  * const example = alicloud.cfg.getConfigurationRecorders({});
  * export const listOfResourceTypes = data.alicloud_config_configuration_recorders["this"].recorders[0].resource_types;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConfigurationRecorders(args?: GetConfigurationRecordersArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationRecordersResult> {
     args = args || {};
@@ -65,6 +67,7 @@ export interface GetConfigurationRecordersResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -72,6 +75,7 @@ export interface GetConfigurationRecordersResult {
  * const example = alicloud.cfg.getConfigurationRecorders({});
  * export const listOfResourceTypes = data.alicloud_config_configuration_recorders["this"].recorders[0].resource_types;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConfigurationRecordersOutput(args?: GetConfigurationRecordersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigurationRecordersResult> {
     return pulumi.output(args).apply((a: any) => getConfigurationRecorders(a, opts))

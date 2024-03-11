@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  *     type: "propayasgo",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAckService(args: GetAckServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAckServiceResult> {
 
@@ -72,6 +74,7 @@ export interface GetAckServiceResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -81,6 +84,7 @@ export interface GetAckServiceResult {
  *     type: "propayasgo",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAckServiceOutput(args: GetAckServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAckServiceResult> {
     return pulumi.output(args).apply((a: any) => getAckService(a, opts))

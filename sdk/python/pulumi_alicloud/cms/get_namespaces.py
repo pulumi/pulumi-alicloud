@@ -114,6 +114,7 @@ def get_namespaces(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -121,6 +122,7 @@ def get_namespaces(ids: Optional[Sequence[str]] = None,
     ids = alicloud.cms.get_namespaces(ids=["example_id"])
     pulumi.export("cmsNamespaceId1", ids.namespaces[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Namespace IDs.
@@ -162,6 +164,7 @@ def get_namespaces_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -169,6 +172,7 @@ def get_namespaces_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     ids = alicloud.cms.get_namespaces(ids=["example_id"])
     pulumi.export("cmsNamespaceId1", ids.namespaces[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Namespace IDs.

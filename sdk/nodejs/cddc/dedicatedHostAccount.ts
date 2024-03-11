@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -69,6 +70,7 @@ import * as utilities from "../utilities";
  *     accountType: "Normal",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -111,7 +113,7 @@ export class DedicatedHostAccount extends pulumi.CustomResource {
      */
     public readonly accountName!: pulumi.Output<string>;
     /**
-     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
+     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
      */
     public readonly accountPassword!: pulumi.Output<string>;
     /**
@@ -172,7 +174,7 @@ export interface DedicatedHostAccountState {
      */
     accountName?: pulumi.Input<string>;
     /**
-     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
+     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
      */
     accountPassword?: pulumi.Input<string>;
     /**
@@ -194,7 +196,7 @@ export interface DedicatedHostAccountArgs {
      */
     accountName: pulumi.Input<string>;
     /**
-     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
+     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
      */
     accountPassword: pulumi.Input<string>;
     /**

@@ -406,6 +406,7 @@ class EcsBackupClient(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -445,6 +446,8 @@ class EcsBackupClient(pulumi.CustomResource):
             proxy_user="user",
             proxy_password="password")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Notice
 
         > **Note:** Please read the following precautions carefully before deleting a client:
@@ -494,6 +497,7 @@ class EcsBackupClient(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -533,6 +537,8 @@ class EcsBackupClient(pulumi.CustomResource):
             proxy_user="user",
             proxy_password="password")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Notice
 
         > **Note:** Please read the following precautions carefully before deleting a client:

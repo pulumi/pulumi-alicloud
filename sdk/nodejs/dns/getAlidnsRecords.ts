@@ -12,19 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Available in 1.86.0+.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const recordsDs = alicloud.dns.getAlidnsRecords({
- *     domainName: "xiaozhu.top",
- *     ids: ["1978593525779****"],
- *     outputFile: "records.txt",
- *     type: "A",
- * });
- * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
- * ```
  */
 export function getAlidnsRecords(args: GetAlidnsRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlidnsRecordsResult> {
 
@@ -91,7 +78,7 @@ export interface GetAlidnsRecordsArgs {
      */
     outputFile?: string;
     /**
-     * The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
+     * The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
      */
     rrKeyWord?: string;
     /**
@@ -115,7 +102,7 @@ export interface GetAlidnsRecordsArgs {
      */
     typeKeyWord?: string;
     /**
-     * The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
+     * The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
      */
     valueKeyWord?: string;
     /**
@@ -175,19 +162,6 @@ export interface GetAlidnsRecordsResult {
  * > **NOTE:**  Available in 1.86.0+.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const recordsDs = alicloud.dns.getAlidnsRecords({
- *     domainName: "xiaozhu.top",
- *     ids: ["1978593525779****"],
- *     outputFile: "records.txt",
- *     type: "A",
- * });
- * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
- * ```
  */
 export function getAlidnsRecordsOutput(args: GetAlidnsRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsRecordsResult> {
     return pulumi.output(args).apply((a: any) => getAlidnsRecords(a, opts))
@@ -234,7 +208,7 @@ export interface GetAlidnsRecordsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
+     * The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
      */
     rrKeyWord?: pulumi.Input<string>;
     /**
@@ -258,7 +232,7 @@ export interface GetAlidnsRecordsOutputArgs {
      */
     typeKeyWord?: pulumi.Input<string>;
     /**
-     * The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
+     * The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
      */
     valueKeyWord?: pulumi.Input<string>;
     /**

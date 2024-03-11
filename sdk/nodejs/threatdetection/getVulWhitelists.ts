@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudThreatDetectionVulWhitelistExampleId = _default.then(_default => _default.whitelists?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVulWhitelists(args?: GetVulWhitelistsArgs, opts?: pulumi.InvokeOptions): Promise<GetVulWhitelistsResult> {
     args = args || {};
@@ -79,6 +81,7 @@ export interface GetVulWhitelistsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -88,6 +91,7 @@ export interface GetVulWhitelistsResult {
  * });
  * export const alicloudThreatDetectionVulWhitelistExampleId = _default.then(_default => _default.whitelists?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVulWhitelistsOutput(args?: GetVulWhitelistsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVulWhitelistsResult> {
     return pulumi.output(args).apply((a: any) => getVulWhitelists(a, opts))

@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,6 +44,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetSslVpnClientCerts(ctx *pulumi.Context, args *GetSslVpnClientCertsArgs, opts ...pulumi.InvokeOption) (*GetSslVpnClientCertsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSslVpnClientCertsResult

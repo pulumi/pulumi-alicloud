@@ -299,6 +299,7 @@ class Order(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -312,6 +313,7 @@ class Order(pulumi.CustomResource):
             product_code="cmapi033136",
             quantity=1)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -343,6 +345,7 @@ class Order(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -356,6 +359,7 @@ class Order(pulumi.CustomResource):
             product_code="cmapi033136",
             quantity=1)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -32,6 +33,7 @@ import * as utilities from "../utilities";
  * });
  * export const mseGatewayId3 = status.then(status => status.gateways?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
     args = args || {};
@@ -109,6 +111,7 @@ export interface GetGatewaysResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -126,6 +129,7 @@ export interface GetGatewaysResult {
  * });
  * export const mseGatewayId3 = status.then(status => status.gateways?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
     return pulumi.output(args).apply((a: any) => getGateways(a, opts))

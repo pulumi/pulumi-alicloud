@@ -253,6 +253,7 @@ class SaslAcl(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -298,6 +299,7 @@ class SaslAcl(pulumi.CustomResource):
             acl_resource_pattern_type="LITERAL",
             acl_operation_type="Write")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -334,6 +336,7 @@ class SaslAcl(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -379,6 +382,7 @@ class SaslAcl(pulumi.CustomResource):
             acl_resource_pattern_type="LITERAL",
             acl_operation_type="Write")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

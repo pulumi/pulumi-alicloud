@@ -133,6 +133,7 @@ def get_ipv6_addresses(associated_instance_id: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -146,6 +147,7 @@ def get_ipv6_addresses(associated_instance_id: Optional[str] = None,
     status = alicloud.vpc.get_ipv6_addresses(status="Available")
     pulumi.export("vpcIpv6AddressId4", status.addresses[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str associated_instance_id: The ID of the instance that is assigned the IPv6 address.
@@ -193,6 +195,7 @@ def get_ipv6_addresses_output(associated_instance_id: Optional[pulumi.Input[Opti
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -206,6 +209,7 @@ def get_ipv6_addresses_output(associated_instance_id: Optional[pulumi.Input[Opti
     status = alicloud.vpc.get_ipv6_addresses(status="Available")
     pulumi.export("vpcIpv6AddressId4", status.addresses[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str associated_instance_id: The ID of the instance that is assigned the IPv6 address.

@@ -15,10 +15,9 @@ namespace Pulumi.AliCloud.KVStore
         /// The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,8 +37,7 @@ namespace Pulumi.AliCloud.KVStore
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:kvstore/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
@@ -48,10 +46,9 @@ namespace Pulumi.AliCloud.KVStore
         /// The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
         /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,8 +68,7 @@ namespace Pulumi.AliCloud.KVStore
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:kvstore/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());

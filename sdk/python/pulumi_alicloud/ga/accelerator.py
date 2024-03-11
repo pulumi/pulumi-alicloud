@@ -530,6 +530,7 @@ class Accelerator(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -539,6 +540,7 @@ class Accelerator(pulumi.CustomResource):
             duration=1,
             spec="1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -584,6 +586,7 @@ class Accelerator(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -593,6 +596,7 @@ class Accelerator(pulumi.CustomResource):
             duration=1,
             spec="1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -89,6 +89,7 @@ def get_endpoints(db_cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -117,6 +118,7 @@ def get_endpoints(db_cluster_id: Optional[str] = None,
     default_endpoints = polardb_clusters_ds.apply(lambda polardb_clusters_ds: alicloud.polardb.get_endpoints_output(db_cluster_id=polardb_clusters_ds.clusters[0].id))
     pulumi.export("endpoint", default_endpoints.endpoints[0].db_endpoint_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_id: PolarDB cluster ID.
@@ -147,6 +149,7 @@ def get_endpoints_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -175,6 +178,7 @@ def get_endpoints_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
     default_endpoints = polardb_clusters_ds.apply(lambda polardb_clusters_ds: alicloud.polardb.get_endpoints_output(db_cluster_id=polardb_clusters_ds.clusters[0].id))
     pulumi.export("endpoint", default_endpoints.endpoints[0].db_endpoint_id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_id: PolarDB cluster ID.

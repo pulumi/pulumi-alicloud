@@ -153,6 +153,7 @@ def get_desktops(desktop_name: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -195,6 +196,7 @@ def get_desktops(desktop_name: Optional[str] = None,
     name_regex = default_desktop.desktop_name.apply(lambda desktop_name: alicloud.eds.get_desktops_output(name_regex=desktop_name))
     pulumi.export("ecdDesktopId2", name_regex.desktops[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str desktop_name: The desktop name of the Desktop.
@@ -251,6 +253,7 @@ def get_desktops_output(desktop_name: Optional[pulumi.Input[Optional[str]]] = No
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -293,6 +296,7 @@ def get_desktops_output(desktop_name: Optional[pulumi.Input[Optional[str]]] = No
     name_regex = default_desktop.desktop_name.apply(lambda desktop_name: alicloud.eds.get_desktops_output(name_regex=desktop_name))
     pulumi.export("ecdDesktopId2", name_regex.desktops[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str desktop_name: The desktop name of the Desktop.

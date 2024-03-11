@@ -108,6 +108,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -127,6 +128,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
             account_id=example_account.id,
             service_principal="cloudfw.aliyuncs.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -158,6 +160,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -177,6 +180,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
             account_id=example_account.id,
             service_principal="cloudfw.aliyuncs.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

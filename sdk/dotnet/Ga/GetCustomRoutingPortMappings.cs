@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Ga
         /// 
         /// &gt; **NOTE:** Available in 1.197.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,7 @@ namespace Pulumi.AliCloud.Ga
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCustomRoutingPortMappingsResult> InvokeAsync(GetCustomRoutingPortMappingsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomRoutingPortMappingsResult>("alicloud:ga/getCustomRoutingPortMappings:getCustomRoutingPortMappings", args ?? new GetCustomRoutingPortMappingsArgs(), options.WithDefaults());
@@ -52,12 +50,11 @@ namespace Pulumi.AliCloud.Ga
         /// 
         /// &gt; **NOTE:** Available in 1.197.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +74,7 @@ namespace Pulumi.AliCloud.Ga
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCustomRoutingPortMappingsResult> Invoke(GetCustomRoutingPortMappingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomRoutingPortMappingsResult>("alicloud:ga/getCustomRoutingPortMappings:getCustomRoutingPortMappings", args ?? new GetCustomRoutingPortMappingsInvokeArgs(), options.WithDefaults());

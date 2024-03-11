@@ -109,6 +109,7 @@ class InstanceSecurityGroupAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -139,6 +140,7 @@ class InstanceSecurityGroupAttachment(pulumi.CustomResource):
             instance_id=default_instance.id,
             security_group_id=default_security_group.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -170,6 +172,7 @@ class InstanceSecurityGroupAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -200,6 +203,7 @@ class InstanceSecurityGroupAttachment(pulumi.CustomResource):
             instance_id=default_instance.id,
             security_group_id=default_security_group.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

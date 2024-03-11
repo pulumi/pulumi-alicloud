@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetHybridMonitorSlsTasks(ctx *pulumi.Context, args *GetHybridMonitorSlsTasksArgs, opts ...pulumi.InvokeOption) (*GetHybridMonitorSlsTasksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHybridMonitorSlsTasksResult

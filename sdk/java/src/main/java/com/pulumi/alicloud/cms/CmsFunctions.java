@@ -64,6 +64,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -92,6 +94,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlarmContactGroupsResult> getAlarmContactGroups() {
@@ -105,6 +108,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -133,6 +138,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlarmContactGroupsResult> getAlarmContactGroupsPlain() {
@@ -146,6 +152,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -174,6 +182,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlarmContactGroupsResult> getAlarmContactGroups(GetAlarmContactGroupsArgs args) {
@@ -187,6 +196,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -215,6 +226,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlarmContactGroupsResult> getAlarmContactGroupsPlain(GetAlarmContactGroupsPlainArgs args) {
@@ -228,6 +240,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -256,6 +270,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlarmContactGroupsResult> getAlarmContactGroups(GetAlarmContactGroupsArgs args, InvokeOptions options) {
@@ -269,6 +284,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -297,6 +314,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlarmContactGroupsResult> getAlarmContactGroupsPlain(GetAlarmContactGroupsPlainArgs args, InvokeOptions options) {
@@ -310,6 +328,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -339,6 +359,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlarmContactsResult> getAlarmContacts() {
@@ -352,6 +373,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -381,6 +404,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlarmContactsResult> getAlarmContactsPlain() {
@@ -394,6 +418,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -423,6 +449,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlarmContactsResult> getAlarmContacts(GetAlarmContactsArgs args) {
@@ -436,6 +463,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -465,6 +494,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlarmContactsResult> getAlarmContactsPlain(GetAlarmContactsPlainArgs args) {
@@ -478,6 +508,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -507,6 +539,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAlarmContactsResult> getAlarmContacts(GetAlarmContactsArgs args, InvokeOptions options) {
@@ -520,6 +553,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -549,6 +584,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAlarmContactsResult> getAlarmContactsPlain(GetAlarmContactsPlainArgs args, InvokeOptions options) {
@@ -562,6 +598,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -613,6 +651,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDynamicTagGroupsResult> getDynamicTagGroups() {
@@ -626,6 +665,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -677,6 +718,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDynamicTagGroupsResult> getDynamicTagGroupsPlain() {
@@ -690,6 +732,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -741,6 +785,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDynamicTagGroupsResult> getDynamicTagGroups(GetDynamicTagGroupsArgs args) {
@@ -754,6 +799,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -805,6 +852,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDynamicTagGroupsResult> getDynamicTagGroupsPlain(GetDynamicTagGroupsPlainArgs args) {
@@ -818,6 +866,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -869,6 +919,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDynamicTagGroupsResult> getDynamicTagGroups(GetDynamicTagGroupsArgs args, InvokeOptions options) {
@@ -882,6 +933,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -933,6 +986,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDynamicTagGroupsResult> getDynamicTagGroupsPlain(GetDynamicTagGroupsPlainArgs args, InvokeOptions options) {
@@ -946,6 +1000,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -980,6 +1036,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEventRulesResult> getEventRules() {
@@ -993,6 +1050,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1027,6 +1086,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEventRulesResult> getEventRulesPlain() {
@@ -1040,6 +1100,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1074,6 +1136,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEventRulesResult> getEventRules(GetEventRulesArgs args) {
@@ -1087,6 +1150,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1121,6 +1186,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEventRulesResult> getEventRulesPlain(GetEventRulesPlainArgs args) {
@@ -1134,6 +1200,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1168,6 +1236,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetEventRulesResult> getEventRules(GetEventRulesArgs args, InvokeOptions options) {
@@ -1181,6 +1250,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1215,6 +1286,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEventRulesResult> getEventRulesPlain(GetEventRulesPlainArgs args, InvokeOptions options) {
@@ -1228,6 +1300,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1258,6 +1332,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupMetricRulesResult> getGroupMetricRules() {
@@ -1271,6 +1346,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1301,6 +1378,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupMetricRulesResult> getGroupMetricRulesPlain() {
@@ -1314,6 +1392,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1344,6 +1424,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupMetricRulesResult> getGroupMetricRules(GetGroupMetricRulesArgs args) {
@@ -1357,6 +1438,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1387,6 +1470,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupMetricRulesResult> getGroupMetricRulesPlain(GetGroupMetricRulesPlainArgs args) {
@@ -1400,6 +1484,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1430,6 +1516,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupMetricRulesResult> getGroupMetricRules(GetGroupMetricRulesArgs args, InvokeOptions options) {
@@ -1443,6 +1530,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1473,6 +1562,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupMetricRulesResult> getGroupMetricRulesPlain(GetGroupMetricRulesPlainArgs args, InvokeOptions options) {
@@ -1486,6 +1576,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1518,6 +1610,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHybridMonitorDatasResult> getHybridMonitorDatas(GetHybridMonitorDatasArgs args) {
@@ -1531,6 +1624,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1563,6 +1658,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHybridMonitorDatasResult> getHybridMonitorDatasPlain(GetHybridMonitorDatasPlainArgs args) {
@@ -1576,6 +1672,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1608,6 +1706,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHybridMonitorDatasResult> getHybridMonitorDatas(GetHybridMonitorDatasArgs args, InvokeOptions options) {
@@ -1621,6 +1720,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1653,6 +1754,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHybridMonitorDatasResult> getHybridMonitorDatasPlain(GetHybridMonitorDatasPlainArgs args, InvokeOptions options) {
@@ -1666,6 +1768,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1695,6 +1799,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHybridMonitorFcTasksResult> getHybridMonitorFcTasks() {
@@ -1708,6 +1813,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1737,6 +1844,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHybridMonitorFcTasksResult> getHybridMonitorFcTasksPlain() {
@@ -1750,6 +1858,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1779,6 +1889,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHybridMonitorFcTasksResult> getHybridMonitorFcTasks(GetHybridMonitorFcTasksArgs args) {
@@ -1792,6 +1903,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1821,6 +1934,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHybridMonitorFcTasksResult> getHybridMonitorFcTasksPlain(GetHybridMonitorFcTasksPlainArgs args) {
@@ -1834,6 +1948,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1863,6 +1979,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHybridMonitorFcTasksResult> getHybridMonitorFcTasks(GetHybridMonitorFcTasksArgs args, InvokeOptions options) {
@@ -1876,6 +1993,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1905,6 +2024,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHybridMonitorFcTasksResult> getHybridMonitorFcTasksPlain(GetHybridMonitorFcTasksPlainArgs args, InvokeOptions options) {
@@ -1918,6 +2038,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1947,6 +2069,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHybridMonitorSlsTasksResult> getHybridMonitorSlsTasks() {
@@ -1960,6 +2083,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1989,6 +2114,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHybridMonitorSlsTasksResult> getHybridMonitorSlsTasksPlain() {
@@ -2002,6 +2128,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2031,6 +2159,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHybridMonitorSlsTasksResult> getHybridMonitorSlsTasks(GetHybridMonitorSlsTasksArgs args) {
@@ -2044,6 +2173,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2073,6 +2204,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHybridMonitorSlsTasksResult> getHybridMonitorSlsTasksPlain(GetHybridMonitorSlsTasksPlainArgs args) {
@@ -2086,6 +2218,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2115,6 +2249,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHybridMonitorSlsTasksResult> getHybridMonitorSlsTasks(GetHybridMonitorSlsTasksArgs args, InvokeOptions options) {
@@ -2128,6 +2263,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2157,6 +2294,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHybridMonitorSlsTasksResult> getHybridMonitorSlsTasksPlain(GetHybridMonitorSlsTasksPlainArgs args, InvokeOptions options) {
@@ -2168,6 +2306,8 @@ public final class CmsFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2199,6 +2339,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMetricRuleBlackListsResult> getMetricRuleBlackLists() {
@@ -2210,6 +2351,8 @@ public final class CmsFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2241,6 +2384,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetricRuleBlackListsResult> getMetricRuleBlackListsPlain() {
@@ -2252,6 +2396,8 @@ public final class CmsFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2283,6 +2429,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMetricRuleBlackListsResult> getMetricRuleBlackLists(GetMetricRuleBlackListsArgs args) {
@@ -2294,6 +2441,8 @@ public final class CmsFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2325,6 +2474,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetricRuleBlackListsResult> getMetricRuleBlackListsPlain(GetMetricRuleBlackListsPlainArgs args) {
@@ -2336,6 +2486,8 @@ public final class CmsFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2367,6 +2519,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMetricRuleBlackListsResult> getMetricRuleBlackLists(GetMetricRuleBlackListsArgs args, InvokeOptions options) {
@@ -2378,6 +2531,8 @@ public final class CmsFunctions {
      * &gt; **NOTE:** Available in 1.194.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2409,6 +2564,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetricRuleBlackListsResult> getMetricRuleBlackListsPlain(GetMetricRuleBlackListsPlainArgs args, InvokeOptions options) {
@@ -2422,6 +2578,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2466,6 +2624,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMetricRuleTemplatesResult> getMetricRuleTemplates() {
@@ -2479,6 +2638,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2523,6 +2684,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetricRuleTemplatesResult> getMetricRuleTemplatesPlain() {
@@ -2536,6 +2698,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2580,6 +2744,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMetricRuleTemplatesResult> getMetricRuleTemplates(GetMetricRuleTemplatesArgs args) {
@@ -2593,6 +2758,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2637,6 +2804,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetricRuleTemplatesResult> getMetricRuleTemplatesPlain(GetMetricRuleTemplatesPlainArgs args) {
@@ -2650,6 +2818,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2694,6 +2864,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMetricRuleTemplatesResult> getMetricRuleTemplates(GetMetricRuleTemplatesArgs args, InvokeOptions options) {
@@ -2707,6 +2878,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2751,6 +2924,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMetricRuleTemplatesResult> getMetricRuleTemplatesPlain(GetMetricRuleTemplatesPlainArgs args, InvokeOptions options) {
@@ -2776,6 +2950,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2806,6 +2982,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMonitorGroupsResult> getMonitorGroups() {
@@ -2819,6 +2996,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2849,6 +3028,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMonitorGroupsResult> getMonitorGroupsPlain() {
@@ -2862,6 +3042,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2892,6 +3074,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMonitorGroupsResult> getMonitorGroups(GetMonitorGroupsArgs args) {
@@ -2905,6 +3088,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2935,6 +3120,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMonitorGroupsResult> getMonitorGroupsPlain(GetMonitorGroupsPlainArgs args) {
@@ -2948,6 +3134,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2978,6 +3166,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMonitorGroupsResult> getMonitorGroups(GetMonitorGroupsArgs args, InvokeOptions options) {
@@ -2991,6 +3180,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3021,6 +3212,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMonitorGroupsResult> getMonitorGroupsPlain(GetMonitorGroupsPlainArgs args, InvokeOptions options) {
@@ -3034,6 +3226,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3063,6 +3257,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces() {
@@ -3076,6 +3271,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3105,6 +3302,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain() {
@@ -3118,6 +3316,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3147,6 +3347,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args) {
@@ -3160,6 +3361,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3189,6 +3392,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args) {
@@ -3202,6 +3406,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3231,6 +3437,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNamespacesResult> getNamespaces(GetNamespacesArgs args, InvokeOptions options) {
@@ -3244,6 +3451,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3273,6 +3482,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNamespacesResult> getNamespacesPlain(GetNamespacesPlainArgs args, InvokeOptions options) {
@@ -3286,6 +3496,8 @@ public final class CmsFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3314,6 +3526,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -3327,6 +3540,8 @@ public final class CmsFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3355,6 +3570,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -3368,6 +3584,8 @@ public final class CmsFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3396,6 +3614,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -3409,6 +3628,8 @@ public final class CmsFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3437,6 +3658,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -3450,6 +3672,8 @@ public final class CmsFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3478,6 +3702,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -3491,6 +3716,8 @@ public final class CmsFunctions {
      * &gt; **NOTE:** Available in v1.111.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3519,6 +3746,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
@@ -3532,6 +3760,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3566,6 +3796,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSlsGroupsResult> getSlsGroups() {
@@ -3579,6 +3810,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3613,6 +3846,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSlsGroupsResult> getSlsGroupsPlain() {
@@ -3626,6 +3860,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3660,6 +3896,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSlsGroupsResult> getSlsGroups(GetSlsGroupsArgs args) {
@@ -3673,6 +3910,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3707,6 +3946,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSlsGroupsResult> getSlsGroupsPlain(GetSlsGroupsPlainArgs args) {
@@ -3720,6 +3960,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3754,6 +3996,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSlsGroupsResult> getSlsGroups(GetSlsGroupsArgs args, InvokeOptions options) {
@@ -3767,6 +4010,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3801,6 +4046,7 @@ public final class CmsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSlsGroupsResult> getSlsGroupsPlain(GetSlsGroupsPlainArgs args, InvokeOptions options) {

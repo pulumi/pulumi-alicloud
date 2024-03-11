@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,6 +53,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetRamDirectories(ctx *pulumi.Context, args *GetRamDirectoriesArgs, opts ...pulumi.InvokeOption) (*GetRamDirectoriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRamDirectoriesResult

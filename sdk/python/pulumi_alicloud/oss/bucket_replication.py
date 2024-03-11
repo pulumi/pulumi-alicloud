@@ -373,6 +373,7 @@ class BucketReplication(pulumi.CustomResource):
 
         Set bucket replication configuration
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -452,14 +453,15 @@ class BucketReplication(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Timeouts
 
-         The `timeouts` block allows you to specify timeouts for certain actions:
+        The `timeouts` block allows you to specify timeouts for certain actions:
 
-         * `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).
+        * `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -490,6 +492,7 @@ class BucketReplication(pulumi.CustomResource):
 
         Set bucket replication configuration
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -569,14 +572,15 @@ class BucketReplication(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ### Timeouts
 
-         The `timeouts` block allows you to specify timeouts for certain actions:
+        The `timeouts` block allows you to specify timeouts for certain actions:
 
-         * `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).
+        * `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).
 
         :param str resource_name: The name of the resource.
         :param BucketReplicationArgs args: The arguments to use to populate this resource's properties.

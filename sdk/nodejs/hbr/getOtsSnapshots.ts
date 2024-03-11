@@ -15,12 +15,14 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const snapshots = alicloud.hbr.getOtsSnapshots({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOtsSnapshots(args?: GetOtsSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetOtsSnapshotsResult> {
     args = args || {};
@@ -76,12 +78,14 @@ export interface GetOtsSnapshotsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const snapshots = alicloud.hbr.getOtsSnapshots({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOtsSnapshotsOutput(args?: GetOtsSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOtsSnapshotsResult> {
     return pulumi.output(args).apply((a: any) => getOtsSnapshots(a, opts))

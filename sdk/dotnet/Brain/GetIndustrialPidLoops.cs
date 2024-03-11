@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Brain
         /// 
         /// &gt; **NOTE:** Available in v1.117.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -46,8 +45,7 @@ namespace Pulumi.AliCloud.Brain
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetIndustrialPidLoopsResult> InvokeAsync(GetIndustrialPidLoopsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialPidLoopsResult>("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", args ?? new GetIndustrialPidLoopsArgs(), options.WithDefaults());
@@ -57,12 +55,11 @@ namespace Pulumi.AliCloud.Brain
         /// 
         /// &gt; **NOTE:** Available in v1.117.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,8 +84,7 @@ namespace Pulumi.AliCloud.Brain
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIndustrialPidLoopsResult> Invoke(GetIndustrialPidLoopsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIndustrialPidLoopsResult>("alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops", args ?? new GetIndustrialPidLoopsInvokeArgs(), options.WithDefaults());

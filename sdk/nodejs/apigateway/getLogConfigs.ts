@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * export const apiGatewayLogConfigId2 = logType.then(logType => logType.configs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLogConfigs(args?: GetLogConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetLogConfigsResult> {
     args = args || {};
@@ -80,6 +82,7 @@ export interface GetLogConfigsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -93,6 +96,7 @@ export interface GetLogConfigsResult {
  * });
  * export const apiGatewayLogConfigId2 = logType.then(logType => logType.configs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLogConfigsOutput(args?: GetLogConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogConfigsResult> {
     return pulumi.output(args).apply((a: any) => getLogConfigs(a, opts))

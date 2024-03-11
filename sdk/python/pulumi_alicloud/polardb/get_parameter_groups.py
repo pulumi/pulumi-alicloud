@@ -135,6 +135,7 @@ def get_parameter_groups(db_type: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -146,6 +147,7 @@ def get_parameter_groups(db_type: Optional[str] = None,
     name_regex = alicloud.polardb.get_parameter_groups(name_regex=default.groups[0].parameter_group_name)
     pulumi.export("polardbParameterGroupId2", name_regex.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_type: The type of the database engine. Only `MySQL` is supported.
@@ -190,6 +192,7 @@ def get_parameter_groups_output(db_type: Optional[pulumi.Input[Optional[str]]] =
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -201,6 +204,7 @@ def get_parameter_groups_output(db_type: Optional[pulumi.Input[Optional[str]]] =
     name_regex = alicloud.polardb.get_parameter_groups(name_regex=default.groups[0].parameter_group_name)
     pulumi.export("polardbParameterGroupId2", name_regex.groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str db_type: The type of the database engine. Only `MySQL` is supported.

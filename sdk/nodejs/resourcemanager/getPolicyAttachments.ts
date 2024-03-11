@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -20,6 +21,7 @@ import * as utilities from "../utilities";
  * const example = alicloud.resourcemanager.getPolicyAttachments({});
  * export const firstAttachmentId = example.then(example => example.attachments?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPolicyAttachments(args?: GetPolicyAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyAttachmentsResult> {
     args = args || {};
@@ -116,6 +118,7 @@ export interface GetPolicyAttachmentsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -123,6 +126,7 @@ export interface GetPolicyAttachmentsResult {
  * const example = alicloud.resourcemanager.getPolicyAttachments({});
  * export const firstAttachmentId = example.then(example => example.attachments?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPolicyAttachmentsOutput(args?: GetPolicyAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getPolicyAttachments(a, opts))

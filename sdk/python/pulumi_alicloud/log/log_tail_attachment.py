@@ -142,6 +142,7 @@ class LogTailAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -187,6 +188,7 @@ class LogTailAttachment(pulumi.CustomResource):
             logtail_config_name=example_log_tail_config.name,
             machine_group_name=example_machine_group.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -221,6 +223,7 @@ class LogTailAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -266,6 +269,7 @@ class LogTailAttachment(pulumi.CustomResource):
             logtail_config_name=example_log_tail_config.name,
             machine_group_name=example_machine_group.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

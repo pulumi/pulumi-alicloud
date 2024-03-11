@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -75,6 +76,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetEcsDedicatedHostClusters(ctx *pulumi.Context, args *GetEcsDedicatedHostClustersArgs, opts ...pulumi.InvokeOption) (*GetEcsDedicatedHostClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsDedicatedHostClustersResult

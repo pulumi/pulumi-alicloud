@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -34,6 +35,7 @@ import * as utilities from "../utilities";
  *     privateKeyDataFile: "./private_key_data_file.txt",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -43,7 +45,7 @@ import * as utilities from "../utilities";
  * $ pulumi import alicloud:kms/clientKey:ClientKey example <id>
  * ```
  *
- *  Resource attributes such as `password`, `private_key_data_file` are not available for imported resources as this information cannot be read from the KMS API.
+ * Resource attributes such as `password`, `private_key_data_file` are not available for imported resources as this information cannot be read from the KMS API.
  */
 export class ClientKey extends pulumi.CustomResource {
     /**

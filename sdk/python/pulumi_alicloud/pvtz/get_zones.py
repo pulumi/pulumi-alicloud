@@ -181,6 +181,7 @@ def get_zones(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -188,6 +189,7 @@ def get_zones(enable_details: Optional[bool] = None,
     pvtz_zones_ds = alicloud.pvtz.get_zones(keyword=alicloud_pvtz_zone["basic"]["zone_name"])
     pulumi.export("firstZoneId", pvtz_zones_ds.zones[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
@@ -249,6 +251,7 @@ def get_zones_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -256,6 +259,7 @@ def get_zones_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     pvtz_zones_ds = alicloud.pvtz.get_zones(keyword=alicloud_pvtz_zone["basic"]["zone_name"])
     pulumi.export("firstZoneId", pvtz_zones_ds.zones[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.

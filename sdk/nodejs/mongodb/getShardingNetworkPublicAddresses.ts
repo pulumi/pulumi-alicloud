@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const mongodbShardingNetworkPublicAddressDbInstanceId1 = example.then(example => example.addresses?.[0]?.dbInstanceId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getShardingNetworkPublicAddresses(args: GetShardingNetworkPublicAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetShardingNetworkPublicAddressesResult> {
 
@@ -83,6 +85,7 @@ export interface GetShardingNetworkPublicAddressesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -94,6 +97,7 @@ export interface GetShardingNetworkPublicAddressesResult {
  * });
  * export const mongodbShardingNetworkPublicAddressDbInstanceId1 = example.then(example => example.addresses?.[0]?.dbInstanceId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getShardingNetworkPublicAddressesOutput(args: GetShardingNetworkPublicAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShardingNetworkPublicAddressesResult> {
     return pulumi.output(args).apply((a: any) => getShardingNetworkPublicAddresses(a, opts))

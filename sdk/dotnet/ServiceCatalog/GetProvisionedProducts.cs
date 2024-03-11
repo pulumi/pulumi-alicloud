@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         /// &gt; **NOTE:** Available since v1.196.0.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,8 +44,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProvisionedProductsResult> InvokeAsync(GetProvisionedProductsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProvisionedProductsResult>("alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts", args ?? new GetProvisionedProductsArgs(), options.WithDefaults());
@@ -56,12 +54,11 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         /// &gt; **NOTE:** Available since v1.196.0.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,8 +82,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProvisionedProductsResult> Invoke(GetProvisionedProductsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProvisionedProductsResult>("alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts", args ?? new GetProvisionedProductsInvokeArgs(), options.WithDefaults());

@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -101,6 +102,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetForwardEntries(ctx *pulumi.Context, args *GetForwardEntriesArgs, opts ...pulumi.InvokeOption) (*GetForwardEntriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetForwardEntriesResult

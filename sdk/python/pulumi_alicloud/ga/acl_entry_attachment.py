@@ -157,6 +157,7 @@ class AclEntryAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -169,6 +170,7 @@ class AclEntryAttachment(pulumi.CustomResource):
             entry="192.168.1.1/32",
             entry_description="tf-example-value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -201,6 +203,7 @@ class AclEntryAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -213,6 +216,7 @@ class AclEntryAttachment(pulumi.CustomResource):
             entry="192.168.1.1/32",
             entry_description="tf-example-value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

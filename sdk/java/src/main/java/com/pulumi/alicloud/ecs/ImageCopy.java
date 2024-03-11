@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available in 1.66.0+.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -144,6 +146,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Attributes Reference0
  * 
  *  The following attributes are exported:

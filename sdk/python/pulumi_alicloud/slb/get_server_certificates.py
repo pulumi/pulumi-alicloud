@@ -134,6 +134,7 @@ def get_server_certificates(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -141,6 +142,7 @@ def get_server_certificates(ids: Optional[Sequence[str]] = None,
     sample_ds = alicloud.slb.get_server_certificates()
     pulumi.export("firstSlbServerCertificateId", sample_ds.certificates[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of server certificates IDs to filter results.
@@ -181,6 +183,7 @@ def get_server_certificates_output(ids: Optional[pulumi.Input[Optional[Sequence[
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -188,6 +191,7 @@ def get_server_certificates_output(ids: Optional[pulumi.Input[Optional[Sequence[
     sample_ds = alicloud.slb.get_server_certificates()
     pulumi.export("firstSlbServerCertificateId", sample_ds.certificates[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of server certificates IDs to filter results.

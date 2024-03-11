@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Prefix;
         /// <summary>
-        /// Backup progress. The value is 100%*100.
+        /// Backup progress. The value is 100%!(BADWIDTH)%!1(MISSING)00.
         /// </summary>
         public readonly string Progress;
         /// <summary>

@@ -174,6 +174,7 @@ class Image(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -202,6 +203,7 @@ class Image(pulumi.CustomResource):
             instance_id=default_instance.id,
             delete_after_image_upload="false")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -234,6 +236,7 @@ class Image(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -262,6 +265,7 @@ class Image(pulumi.CustomResource):
             instance_id=default_instance.id,
             delete_after_image_upload="false")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

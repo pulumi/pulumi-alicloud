@@ -157,6 +157,7 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -177,6 +178,7 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
             vpc_id=example_network.id,
             dhcp_options_set_id=example_dhcp_options_set.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -209,6 +211,7 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -229,6 +232,7 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
             vpc_id=example_network.id,
             dhcp_options_set_id=example_dhcp_options_set.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

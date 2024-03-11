@@ -207,6 +207,7 @@ class Resource(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -237,6 +238,7 @@ class Resource(pulumi.CustomResource):
         \"\"\",
             type="userdefine")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -271,6 +273,7 @@ class Resource(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -301,6 +304,7 @@ class Resource(pulumi.CustomResource):
         \"\"\",
             type="userdefine")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

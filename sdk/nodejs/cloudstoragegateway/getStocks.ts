@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const zoneId = _default.then(_default => _default.stocks?.[0]?.zoneId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getStocks(args?: GetStocksArgs, opts?: pulumi.InvokeOptions): Promise<GetStocksResult> {
     args = args || {};
@@ -70,6 +72,7 @@ export interface GetStocksResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -79,6 +82,7 @@ export interface GetStocksResult {
  * });
  * export const zoneId = _default.then(_default => _default.stocks?.[0]?.zoneId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getStocksOutput(args?: GetStocksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStocksResult> {
     return pulumi.output(args).apply((a: any) => getStocks(a, opts))

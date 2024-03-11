@@ -285,6 +285,7 @@ def get_images(action_type: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -293,6 +294,7 @@ def get_images(action_type: Optional[str] = None,
         owners="system")
     pulumi.export("firstImageId", images_ds.images[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str action_type: The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
@@ -396,6 +398,7 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -404,6 +407,7 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
         owners="system")
     pulumi.export("firstImageId", images_ds.images[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str action_type: The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:

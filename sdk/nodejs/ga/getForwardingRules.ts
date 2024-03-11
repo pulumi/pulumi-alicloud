@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstGaForwardingRuleId = example.then(example => example.forwardingRules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getForwardingRules(args: GetForwardingRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardingRulesResult> {
 
@@ -89,6 +91,7 @@ export interface GetForwardingRulesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -100,6 +103,7 @@ export interface GetForwardingRulesResult {
  * });
  * export const firstGaForwardingRuleId = example.then(example => example.forwardingRules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getForwardingRulesOutput(args: GetForwardingRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardingRulesResult> {
     return pulumi.output(args).apply((a: any) => getForwardingRules(a, opts))

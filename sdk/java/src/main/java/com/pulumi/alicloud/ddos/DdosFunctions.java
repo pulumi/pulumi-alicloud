@@ -33,6 +33,9 @@ public final class DdosFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetDdosBgpInstancesResult> getDdosBgpInstances() {
         return getDdosBgpInstances(GetDdosBgpInstancesArgs.Empty, InvokeOptions.Empty);
@@ -43,6 +46,9 @@ public final class DdosFunctions {
      * &gt; **NOTE:** Available in v1.183.0+ .
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDdosBgpInstancesResult> getDdosBgpInstancesPlain() {
@@ -55,6 +61,9 @@ public final class DdosFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetDdosBgpInstancesResult> getDdosBgpInstances(GetDdosBgpInstancesArgs args) {
         return getDdosBgpInstances(args, InvokeOptions.Empty);
@@ -65,6 +74,9 @@ public final class DdosFunctions {
      * &gt; **NOTE:** Available in v1.183.0+ .
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDdosBgpInstancesResult> getDdosBgpInstancesPlain(GetDdosBgpInstancesPlainArgs args) {
@@ -77,6 +89,9 @@ public final class DdosFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetDdosBgpInstancesResult> getDdosBgpInstances(GetDdosBgpInstancesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", TypeShape.of(GetDdosBgpInstancesResult.class), args, Utilities.withVersion(options));
@@ -87,6 +102,9 @@ public final class DdosFunctions {
      * &gt; **NOTE:** Available in v1.183.0+ .
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDdosBgpInstancesResult> getDdosBgpInstancesPlain(GetDdosBgpInstancesPlainArgs args, InvokeOptions options) {
@@ -100,6 +118,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -132,6 +152,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDdosBgpIpsResult> getDdosBgpIps(GetDdosBgpIpsArgs args) {
@@ -145,6 +166,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -177,6 +200,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDdosBgpIpsResult> getDdosBgpIpsPlain(GetDdosBgpIpsPlainArgs args) {
@@ -190,6 +214,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -222,6 +248,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDdosBgpIpsResult> getDdosBgpIps(GetDdosBgpIpsArgs args, InvokeOptions options) {
@@ -235,6 +262,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -267,6 +296,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDdosBgpIpsResult> getDdosBgpIpsPlain(GetDdosBgpIpsPlainArgs args, InvokeOptions options) {
@@ -280,6 +310,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -309,6 +341,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDdosCooDomainResourcesResult> getDdosCooDomainResources() {
@@ -322,6 +355,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -351,6 +386,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDdosCooDomainResourcesResult> getDdosCooDomainResourcesPlain() {
@@ -364,6 +400,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -393,6 +431,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDdosCooDomainResourcesResult> getDdosCooDomainResources(GetDdosCooDomainResourcesArgs args) {
@@ -406,6 +445,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -435,6 +476,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDdosCooDomainResourcesResult> getDdosCooDomainResourcesPlain(GetDdosCooDomainResourcesPlainArgs args) {
@@ -448,6 +490,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -477,6 +521,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDdosCooDomainResourcesResult> getDdosCooDomainResources(GetDdosCooDomainResourcesArgs args, InvokeOptions options) {
@@ -490,6 +535,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -519,6 +566,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDdosCooDomainResourcesResult> getDdosCooDomainResourcesPlain(GetDdosCooDomainResourcesPlainArgs args, InvokeOptions options) {
@@ -532,6 +580,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -561,6 +611,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDdosCooInstancesResult> getDdosCooInstances() {
@@ -574,6 +625,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -603,6 +656,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDdosCooInstancesResult> getDdosCooInstancesPlain() {
@@ -616,6 +670,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -645,6 +701,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDdosCooInstancesResult> getDdosCooInstances(GetDdosCooInstancesArgs args) {
@@ -658,6 +715,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -687,6 +746,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDdosCooInstancesResult> getDdosCooInstancesPlain(GetDdosCooInstancesPlainArgs args) {
@@ -700,6 +760,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -729,6 +791,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDdosCooInstancesResult> getDdosCooInstances(GetDdosCooInstancesArgs args, InvokeOptions options) {
@@ -742,6 +805,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -771,6 +836,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDdosCooInstancesResult> getDdosCooInstancesPlain(GetDdosCooInstancesPlainArgs args, InvokeOptions options) {
@@ -784,6 +850,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -814,6 +882,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDdosCooPortsResult> getDdosCooPorts(GetDdosCooPortsArgs args) {
@@ -827,6 +896,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -857,6 +928,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDdosCooPortsResult> getDdosCooPortsPlain(GetDdosCooPortsPlainArgs args) {
@@ -870,6 +942,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -900,6 +974,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDdosCooPortsResult> getDdosCooPorts(GetDdosCooPortsArgs args, InvokeOptions options) {
@@ -913,6 +988,8 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -943,6 +1020,7 @@ public final class DdosFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDdosCooPortsResult> getDdosCooPortsPlain(GetDdosCooPortsPlainArgs args, InvokeOptions options) {

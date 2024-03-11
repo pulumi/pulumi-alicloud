@@ -20,10 +20,9 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:**  Available in 1.40.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,8 +42,8 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ##  Argument Reference
         /// 
         /// The following arguments are supported:
@@ -86,10 +85,9 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:**  Available in 1.40.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -109,8 +107,8 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ##  Argument Reference
         /// 
         /// The following arguments are supported:

@@ -11,12 +11,14 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const foo = new alicloud.pvtz.Zone("foo", {zoneName: "foo.example.com"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

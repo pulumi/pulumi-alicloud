@@ -20,12 +20,11 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// &gt; **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,8 +44,7 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountDeletionCheckTaskResult> InvokeAsync(GetAccountDeletionCheckTaskArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountDeletionCheckTaskResult>("alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask", args ?? new GetAccountDeletionCheckTaskArgs(), options.WithDefaults());
@@ -60,12 +58,11 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// &gt; **NOTE:** The member deletion feature is in invitational preview. You can contact the service manager of Alibaba Cloud to apply for a trial.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,8 +82,7 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountDeletionCheckTaskResult> Invoke(GetAccountDeletionCheckTaskInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountDeletionCheckTaskResult>("alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask", args ?? new GetAccountDeletionCheckTaskInvokeArgs(), options.WithDefaults());

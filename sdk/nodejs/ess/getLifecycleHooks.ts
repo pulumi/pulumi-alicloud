@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstLifecycleHook = ds.then(ds => ds.hooks?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLifecycleHooks(args?: GetLifecycleHooksArgs, opts?: pulumi.InvokeOptions): Promise<GetLifecycleHooksResult> {
     args = args || {};
@@ -92,6 +94,7 @@ export interface GetLifecycleHooksResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -102,6 +105,7 @@ export interface GetLifecycleHooksResult {
  * });
  * export const firstLifecycleHook = ds.then(ds => ds.hooks?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLifecycleHooksOutput(args?: GetLifecycleHooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLifecycleHooksResult> {
     return pulumi.output(args).apply((a: any) => getLifecycleHooks(a, opts))

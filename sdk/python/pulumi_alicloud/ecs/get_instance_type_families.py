@@ -127,6 +127,7 @@ def get_instance_type_families(generation: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -135,6 +136,7 @@ def get_instance_type_families(generation: Optional[str] = None,
     pulumi.export("firstInstanceTypeFamilyId", default.families[0].id)
     pulumi.export("instanceIds", default.ids)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str generation: The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
@@ -177,6 +179,7 @@ def get_instance_type_families_output(generation: Optional[pulumi.Input[Optional
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -185,6 +188,7 @@ def get_instance_type_families_output(generation: Optional[pulumi.Input[Optional
     pulumi.export("firstInstanceTypeFamilyId", default.families[0].id)
     pulumi.export("instanceIds", default.ids)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str generation: The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).

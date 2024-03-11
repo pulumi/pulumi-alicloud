@@ -150,6 +150,7 @@ class BandwidthLimit(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -200,6 +201,7 @@ class BandwidthLimit(pulumi.CustomResource):
             ],
             bandwidth_limit=4)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -236,6 +238,7 @@ class BandwidthLimit(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -286,6 +289,7 @@ class BandwidthLimit(pulumi.CustomResource):
             ],
             bandwidth_limit=4)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

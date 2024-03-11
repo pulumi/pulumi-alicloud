@@ -168,6 +168,7 @@ class GetDomainsDomainResult(dict):
         :param Sequence[str] source_ips: List of the IP address or domain of the origin server to which the specified domain points.
         :param int version: The system data identifier that is used to control optimistic locking.
         :param int write_time: The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
+               ```
         """
         pulumi.set(__self__, "cluster_type", cluster_type)
         pulumi.set(__self__, "cname", cname)
@@ -338,6 +339,7 @@ class GetDomainsDomainResult(dict):
     def write_time(self) -> int:
         """
         The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
+        ```
         """
         return pulumi.get(self, "write_time")
 

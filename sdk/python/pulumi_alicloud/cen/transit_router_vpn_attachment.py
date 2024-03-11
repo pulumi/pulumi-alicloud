@@ -356,6 +356,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -431,6 +432,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
                 zone_id=default.resources[0].master_zones[0],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -469,6 +471,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -544,6 +547,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
                 zone_id=default.resources[0].master_zones[0],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

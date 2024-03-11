@@ -104,6 +104,7 @@ def get_endpoint_acl_policies(endpoint_type: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -116,6 +117,7 @@ def get_endpoint_acl_policies(endpoint_type: Optional[str] = None,
         ])
     pulumi.export("crEndpointAclPolicyId1", ids.policies[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_type: The type of endpoint.
@@ -155,6 +157,7 @@ def get_endpoint_acl_policies_output(endpoint_type: Optional[pulumi.Input[str]] 
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -167,6 +170,7 @@ def get_endpoint_acl_policies_output(endpoint_type: Optional[pulumi.Input[str]] 
         ])
     pulumi.export("crEndpointAclPolicyId1", ids.policies[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_type: The type of endpoint.

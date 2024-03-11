@@ -693,8 +693,10 @@ class ElasticInstance(pulumi.CustomResource):
         > **NOTE:**  Available in 1.127.0+
 
         ## Example Usage
+
         ### Create a AnalyticDB for PostgreSQL instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -718,6 +720,7 @@ class ElasticInstance(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             vswitch_id=default_switch.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -767,8 +770,10 @@ class ElasticInstance(pulumi.CustomResource):
         > **NOTE:**  Available in 1.127.0+
 
         ## Example Usage
+
         ### Create a AnalyticDB for PostgreSQL instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -792,6 +797,7 @@ class ElasticInstance(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             vswitch_id=default_switch.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

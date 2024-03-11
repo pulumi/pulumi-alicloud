@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,6 +49,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetPrefixLists(ctx *pulumi.Context, args *GetPrefixListsArgs, opts ...pulumi.InvokeOption) (*GetPrefixListsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrefixListsResult

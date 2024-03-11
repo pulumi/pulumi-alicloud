@@ -174,6 +174,7 @@ class DomainConfig(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -202,6 +203,7 @@ class DomainConfig(pulumi.CustomResource):
                 arg_value="110.110.110.110",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -238,6 +240,7 @@ class DomainConfig(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -266,6 +269,7 @@ class DomainConfig(pulumi.CustomResource):
                 arg_value="110.110.110.110",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

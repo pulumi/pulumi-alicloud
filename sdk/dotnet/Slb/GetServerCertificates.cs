@@ -14,10 +14,9 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the server certificate list.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServerCertificatesResult> InvokeAsync(GetServerCertificatesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerCertificatesResult>("alicloud:slb/getServerCertificates:getServerCertificates", args ?? new GetServerCertificatesArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Pulumi.AliCloud.Slb
         /// <summary>
         /// This data source provides the server certificate list.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,8 +60,7 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServerCertificatesResult> Invoke(GetServerCertificatesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerCertificatesResult>("alicloud:slb/getServerCertificates:getServerCertificates", args ?? new GetServerCertificatesInvokeArgs(), options.WithDefaults());

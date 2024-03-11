@@ -15,6 +15,7 @@ import (
 //
 // Empty resource sets defaults values for every property.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -36,7 +37,9 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,13 +71,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // For not specified values sets defaults.
 //
 // ## Import
 //
 // RAM account password policy can be imported using the `id`, e.g.
 //
-//	bash
+// bash
 //
 // ```sh
 // $ pulumi import alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy example ram-account-password-policy

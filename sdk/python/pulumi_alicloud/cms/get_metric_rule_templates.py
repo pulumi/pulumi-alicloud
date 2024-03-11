@@ -143,6 +143,7 @@ def get_metric_rule_templates(enable_details: Optional[bool] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -156,6 +157,7 @@ def get_metric_rule_templates(enable_details: Optional[bool] = None,
     template_id = alicloud.cms.get_metric_rule_templates(template_id="example_value")
     pulumi.export("cmsMetricRuleTemplateId4", name_regex.templates[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Valid values: `true` or `false`. Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -208,6 +210,7 @@ def get_metric_rule_templates_output(enable_details: Optional[pulumi.Input[Optio
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -221,6 +224,7 @@ def get_metric_rule_templates_output(enable_details: Optional[pulumi.Input[Optio
     template_id = alicloud.cms.get_metric_rule_templates(template_id="example_value")
     pulumi.export("cmsMetricRuleTemplateId4", name_regex.templates[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Valid values: `true` or `false`. Default to `false`. Set it to `true` can output more details about resource attributes.

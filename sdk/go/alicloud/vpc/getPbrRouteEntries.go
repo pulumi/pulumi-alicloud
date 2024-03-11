@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,6 +45,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetPbrRouteEntries(ctx *pulumi.Context, args *GetPbrRouteEntriesArgs, opts ...pulumi.InvokeOption) (*GetPbrRouteEntriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPbrRouteEntriesResult

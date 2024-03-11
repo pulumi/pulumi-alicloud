@@ -675,6 +675,7 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -688,6 +689,7 @@ class Instance(pulumi.CustomResource):
             period=1,
             spec="premium_version")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -734,6 +736,7 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -747,6 +750,7 @@ class Instance(pulumi.CustomResource):
             period=1,
             spec="premium_version")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

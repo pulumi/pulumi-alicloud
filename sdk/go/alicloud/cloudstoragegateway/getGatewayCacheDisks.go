@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,6 +60,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetGatewayCacheDisks(ctx *pulumi.Context, args *GetGatewayCacheDisksArgs, opts ...pulumi.InvokeOption) (*GetGatewayCacheDisksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewayCacheDisksResult

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  *     startTime: "2022-06-04T13:56Z",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getModifyParameterLogs(args: GetModifyParameterLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetModifyParameterLogsResult> {
 
@@ -82,6 +84,7 @@ export interface GetModifyParameterLogsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -92,6 +95,7 @@ export interface GetModifyParameterLogsResult {
  *     startTime: "2022-06-04T13:56Z",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getModifyParameterLogsOutput(args: GetModifyParameterLogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModifyParameterLogsResult> {
     return pulumi.output(args).apply((a: any) => getModifyParameterLogs(a, opts))

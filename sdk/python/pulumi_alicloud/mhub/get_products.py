@@ -103,6 +103,7 @@ def get_products(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -117,6 +118,7 @@ def get_products(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.mhub.get_products(name_regex="^my-Product")
     pulumi.export("mhubProductId2", name_regex.products[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Product IDs.
@@ -153,6 +155,7 @@ def get_products_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -167,6 +170,7 @@ def get_products_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     name_regex = alicloud.mhub.get_products(name_regex="^my-Product")
     pulumi.export("mhubProductId2", name_regex.products[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Product IDs.

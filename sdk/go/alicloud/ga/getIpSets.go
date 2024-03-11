@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetIpSets(ctx *pulumi.Context, args *GetIpSetsArgs, opts ...pulumi.InvokeOption) (*GetIpSetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpSetsResult

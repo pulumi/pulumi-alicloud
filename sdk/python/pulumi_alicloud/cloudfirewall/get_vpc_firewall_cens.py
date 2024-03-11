@@ -196,6 +196,7 @@ def get_vpc_firewall_cens(cen_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -207,6 +208,7 @@ def get_vpc_firewall_cens(cen_id: Optional[str] = None,
         vpc_firewall_name="tf-test")
     pulumi.export("alicloudCloudFirewallVpcFirewallCenExampleId", default.cens[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cen_id: The ID of the CEN instance.
@@ -270,6 +272,7 @@ def get_vpc_firewall_cens_output(cen_id: Optional[pulumi.Input[Optional[str]]] =
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -281,6 +284,7 @@ def get_vpc_firewall_cens_output(cen_id: Optional[pulumi.Input[Optional[str]]] =
         vpc_firewall_name="tf-test")
     pulumi.export("alicloudCloudFirewallVpcFirewallCenExampleId", default.cens[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cen_id: The ID of the CEN instance.

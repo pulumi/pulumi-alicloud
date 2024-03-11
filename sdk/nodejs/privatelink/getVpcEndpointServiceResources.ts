@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstPrivatelinkVpcEndpointServiceResourceId = example.then(example => example.resources?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVpcEndpointServiceResources(args: GetVpcEndpointServiceResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointServiceResourcesResult> {
 
@@ -70,6 +72,7 @@ export interface GetVpcEndpointServiceResourcesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -79,6 +82,7 @@ export interface GetVpcEndpointServiceResourcesResult {
  * });
  * export const firstPrivatelinkVpcEndpointServiceResourceId = example.then(example => example.resources?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVpcEndpointServiceResourcesOutput(args: GetVpcEndpointServiceResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointServiceResourcesResult> {
     return pulumi.output(args).apply((a: any) => getVpcEndpointServiceResources(a, opts))

@@ -123,6 +123,7 @@ def get_registry_enterprise_namespaces(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -132,6 +133,7 @@ def get_registry_enterprise_namespaces(ids: Optional[Sequence[str]] = None,
         output_file="my-namespace-json")
     pulumi.export("output", my_namespaces.namespaces)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of ids to filter results by namespace id. Each item formats as `<instance_id>:<namespace_name>`.
@@ -170,6 +172,7 @@ def get_registry_enterprise_namespaces_output(ids: Optional[pulumi.Input[Optiona
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -179,6 +182,7 @@ def get_registry_enterprise_namespaces_output(ids: Optional[pulumi.Input[Optiona
         output_file="my-namespace-json")
     pulumi.export("output", my_namespaces.namespaces)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of ids to filter results by namespace id. Each item formats as `<instance_id>:<namespace_name>`.

@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,6 +50,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetRegistryEnterpriseSyncRules(ctx *pulumi.Context, args *GetRegistryEnterpriseSyncRulesArgs, opts ...pulumi.InvokeOption) (*GetRegistryEnterpriseSyncRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegistryEnterpriseSyncRulesResult

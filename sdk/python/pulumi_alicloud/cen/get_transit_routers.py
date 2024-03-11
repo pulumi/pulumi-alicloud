@@ -156,6 +156,7 @@ def get_transit_routers(cen_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -163,6 +164,7 @@ def get_transit_routers(cen_id: Optional[str] = None,
     default = alicloud.cen.get_transit_routers(cen_id="cen-id1")
     pulumi.export("firstTransitRoutersType", default.transit_routers[0].type)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cen_id: The ID of the CEN instance.
@@ -213,6 +215,7 @@ def get_transit_routers_output(cen_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -220,6 +223,7 @@ def get_transit_routers_output(cen_id: Optional[pulumi.Input[str]] = None,
     default = alicloud.cen.get_transit_routers(cen_id="cen-id1")
     pulumi.export("firstTransitRoutersType", default.transit_routers[0].type)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cen_id: The ID of the CEN instance.

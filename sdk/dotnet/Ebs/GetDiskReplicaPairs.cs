@@ -16,10 +16,9 @@ namespace Pulumi.AliCloud.Ebs
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,8 +41,7 @@ namespace Pulumi.AliCloud.Ebs
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDiskReplicaPairsResult> InvokeAsync(GetDiskReplicaPairsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDiskReplicaPairsResult>("alicloud:ebs/getDiskReplicaPairs:getDiskReplicaPairs", args ?? new GetDiskReplicaPairsArgs(), options.WithDefaults());
@@ -53,10 +51,9 @@ namespace Pulumi.AliCloud.Ebs
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,8 +76,7 @@ namespace Pulumi.AliCloud.Ebs
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDiskReplicaPairsResult> Invoke(GetDiskReplicaPairsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDiskReplicaPairsResult>("alicloud:ebs/getDiskReplicaPairs:getDiskReplicaPairs", args ?? new GetDiskReplicaPairsInvokeArgs(), options.WithDefaults());

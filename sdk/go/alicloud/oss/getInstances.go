@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Deprecated: alicloud.oss.getInstances has been deprecated in favor of alicloud.ots.getInstances
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
@@ -61,6 +63,7 @@ type GetInstancesArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// A map of tags assigned to the instance. It must be in the format:
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -84,6 +87,7 @@ type GetInstancesArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -125,6 +129,7 @@ type GetInstancesOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A map of tags assigned to the instance. It must be in the format:
+	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -148,6 +153,7 @@ type GetInstancesOutputArgs struct {
 	// 	})
 	// }
 	// ```
+	// <!--End PulumiCodeChooser -->
 	Tags pulumi.MapInput `pulumi:"tags"`
 }
 

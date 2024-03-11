@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -33,6 +34,7 @@ import * as utilities from "../utilities";
  * });
  * export const bastionhostHostId2 = nameRegex.then(nameRegex => nameRegex.hosts?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHosts(args: GetHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostsResult> {
 
@@ -133,6 +135,7 @@ export interface GetHostsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -151,6 +154,7 @@ export interface GetHostsResult {
  * });
  * export const bastionhostHostId2 = nameRegex.then(nameRegex => nameRegex.hosts?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHostsOutput(args: GetHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostsResult> {
     return pulumi.output(args).apply((a: any) => getHosts(a, opts))

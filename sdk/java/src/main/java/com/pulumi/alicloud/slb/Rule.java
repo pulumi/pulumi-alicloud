@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Only rule&#39;s virtual server group can be modified.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -164,6 +166,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -337,14 +340,14 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.healthCheckTimeout);
     }
     /**
-     * URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
+     * URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
      * 
      */
     @Export(name="healthCheckUri", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckUri;
 
     /**
-     * @return URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
+     * @return URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
      * 
      */
     public Output<Optional<String>> healthCheckUri() {
@@ -478,7 +481,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
     }
     /**
      * Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-     * and characters &#39;-&#39; &#39;/&#39; &#39;?&#39; &#39;%&#39; &#39;#&#39; and &#39;&amp;&#39; are allowed. URLs must be started with the character &#39;/&#39;, but cannot be &#39;/&#39; alone.
+     * and characters &#39;-&#39; &#39;/&#39; &#39;?&#39; &#39;%!&#39;(MISSING) &#39;#&#39; and &#39;&amp;&#39; are allowed. URLs must be started with the character &#39;/&#39;, but cannot be &#39;/&#39; alone.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
@@ -486,7 +489,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-     * and characters &#39;-&#39; &#39;/&#39; &#39;?&#39; &#39;%&#39; &#39;#&#39; and &#39;&amp;&#39; are allowed. URLs must be started with the character &#39;/&#39;, but cannot be &#39;/&#39; alone.
+     * and characters &#39;-&#39; &#39;/&#39; &#39;?&#39; &#39;%!&#39;(MISSING) &#39;#&#39; and &#39;&amp;&#39; are allowed. URLs must be started with the character &#39;/&#39;, but cannot be &#39;/&#39; alone.
      * 
      */
     public Output<Optional<String>> url() {

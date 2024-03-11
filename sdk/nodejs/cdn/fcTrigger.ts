@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -32,6 +33,7 @@ import * as utilities from "../utilities";
  *     triggerArn: Promise.all([defaultRegions, defaultAccount]).then(([defaultRegions, defaultAccount]) => `acs:fc:${defaultRegions.regions?.[0]?.id}:${defaultAccount.id}:services/FCTestService/functions/printEvent/triggers/testtrigger`),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

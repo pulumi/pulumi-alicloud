@@ -22,6 +22,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -114,6 +115,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Notice
 //
 // > **Note:** Please read the following precautions carefully before deleting a client:

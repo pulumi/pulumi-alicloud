@@ -242,6 +242,7 @@ class EcsDeploymentSet(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -253,6 +254,7 @@ class EcsDeploymentSet(pulumi.CustomResource):
             granularity="Host",
             strategy="Availability")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -288,6 +290,7 @@ class EcsDeploymentSet(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -299,6 +302,7 @@ class EcsDeploymentSet(pulumi.CustomResource):
             granularity="Host",
             strategy="Availability")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

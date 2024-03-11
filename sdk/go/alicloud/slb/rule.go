@@ -27,6 +27,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -165,6 +166,7 @@ import (
 // })
 // }
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -201,7 +203,7 @@ type Rule struct {
 	HealthCheckInterval pulumi.IntPtrOutput `pulumi:"healthCheckInterval"`
 	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
 	HealthCheckTimeout pulumi.IntPtrOutput `pulumi:"healthCheckTimeout"`
-	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
 	HealthCheckUri pulumi.StringPtrOutput `pulumi:"healthCheckUri"`
 	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold pulumi.IntPtrOutput `pulumi:"healthyThreshold"`
@@ -222,7 +224,7 @@ type Rule struct {
 	// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	UnhealthyThreshold pulumi.IntPtrOutput `pulumi:"unhealthyThreshold"`
 	// Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-	// and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+	// and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
 	Url pulumi.StringPtrOutput `pulumi:"url"`
 }
 
@@ -290,7 +292,7 @@ type ruleState struct {
 	HealthCheckInterval *int `pulumi:"healthCheckInterval"`
 	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
 	HealthCheckTimeout *int `pulumi:"healthCheckTimeout"`
-	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
 	HealthCheckUri *string `pulumi:"healthCheckUri"`
 	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
@@ -311,7 +313,7 @@ type ruleState struct {
 	// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
 	// Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-	// and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+	// and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
 	Url *string `pulumi:"url"`
 }
 
@@ -341,7 +343,7 @@ type RuleState struct {
 	HealthCheckInterval pulumi.IntPtrInput
 	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
 	HealthCheckTimeout pulumi.IntPtrInput
-	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
 	HealthCheckUri pulumi.StringPtrInput
 	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold pulumi.IntPtrInput
@@ -362,7 +364,7 @@ type RuleState struct {
 	// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	UnhealthyThreshold pulumi.IntPtrInput
 	// Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-	// and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+	// and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
 	Url pulumi.StringPtrInput
 }
 
@@ -396,7 +398,7 @@ type ruleArgs struct {
 	HealthCheckInterval *int `pulumi:"healthCheckInterval"`
 	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
 	HealthCheckTimeout *int `pulumi:"healthCheckTimeout"`
-	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
 	HealthCheckUri *string `pulumi:"healthCheckUri"`
 	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
@@ -417,7 +419,7 @@ type ruleArgs struct {
 	// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
 	// Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-	// and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+	// and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
 	Url *string `pulumi:"url"`
 }
 
@@ -448,7 +450,7 @@ type RuleArgs struct {
 	HealthCheckInterval pulumi.IntPtrInput
 	// Maximum timeout of each health check response. It is required when `healthCheck` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `healthCheckTimeout` < `healthCheckInterval`, its will be replaced by `healthCheckInterval`.
 	HealthCheckTimeout pulumi.IntPtrInput
-	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+	// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
 	HealthCheckUri pulumi.StringPtrInput
 	// Threshold determining the result of the health check is success. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	HealthyThreshold pulumi.IntPtrInput
@@ -469,7 +471,7 @@ type RuleArgs struct {
 	// Threshold determining the result of the health check is fail. It is required when `healthCheck` is on. Valid value range: [1-10] in seconds. Default to 3.
 	UnhealthyThreshold pulumi.IntPtrInput
 	// Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-	// and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+	// and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
 	Url pulumi.StringPtrInput
 }
 
@@ -618,7 +620,7 @@ func (o RuleOutput) HealthCheckTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Rule) pulumi.IntPtrOutput { return v.HealthCheckTimeout }).(pulumi.IntPtrOutput)
 }
 
-// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
+// URI used for health check. When it used to launch TCP listener, `healthCheckType` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
 func (o RuleOutput) HealthCheckUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.HealthCheckUri }).(pulumi.StringPtrOutput)
 }
@@ -669,7 +671,7 @@ func (o RuleOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 }
 
 // Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-// and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+// and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
 func (o RuleOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.Url }).(pulumi.StringPtrOutput)
 }

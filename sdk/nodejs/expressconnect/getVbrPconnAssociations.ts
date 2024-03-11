@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,6 +24,7 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudExpressConnectVbrPconnAssociationExampleId = _default.then(_default => _default.associations?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVbrPconnAssociations(args?: GetVbrPconnAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetVbrPconnAssociationsResult> {
     args = args || {};
@@ -85,6 +87,7 @@ export interface GetVbrPconnAssociationsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -95,6 +98,7 @@ export interface GetVbrPconnAssociationsResult {
  * });
  * export const alicloudExpressConnectVbrPconnAssociationExampleId = _default.then(_default => _default.associations?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVbrPconnAssociationsOutput(args?: GetVbrPconnAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVbrPconnAssociationsResult> {
     return pulumi.output(args).apply((a: any) => getVbrPconnAssociations(a, opts))

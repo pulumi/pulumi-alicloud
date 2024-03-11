@@ -39,6 +39,8 @@ public final class AlicloudFunctions {
      * This data source provides information about the current account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -65,6 +67,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountResult> getAccount() {
@@ -74,6 +77,8 @@ public final class AlicloudFunctions {
      * This data source provides information about the current account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -100,6 +105,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain() {
@@ -109,6 +115,8 @@ public final class AlicloudFunctions {
      * This data source provides information about the current account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -135,6 +143,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountResult> getAccount(InvokeArgs args) {
@@ -144,6 +153,8 @@ public final class AlicloudFunctions {
      * This data source provides information about the current account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -170,6 +181,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args) {
@@ -179,6 +191,8 @@ public final class AlicloudFunctions {
      * This data source provides information about the current account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -205,6 +219,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountResult> getAccount(InvokeArgs args, InvokeOptions options) {
@@ -214,6 +229,8 @@ public final class AlicloudFunctions {
      * This data source provides information about the current account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -240,6 +257,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args, InvokeOptions options) {
@@ -251,6 +269,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.65.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -277,6 +297,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCallerIdentityResult> getCallerIdentity() {
@@ -288,6 +309,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.65.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -314,6 +337,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCallerIdentityResult> getCallerIdentityPlain() {
@@ -325,6 +349,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.65.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -351,6 +377,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCallerIdentityResult> getCallerIdentity(InvokeArgs args) {
@@ -362,6 +389,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.65.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -388,6 +417,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCallerIdentityResult> getCallerIdentityPlain(InvokeArgs args) {
@@ -399,6 +429,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.65.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -425,6 +457,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCallerIdentityResult> getCallerIdentity(InvokeArgs args, InvokeOptions options) {
@@ -436,6 +469,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.65.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -462,6 +497,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCallerIdentityResult> getCallerIdentityPlain(InvokeArgs args, InvokeOptions options) {
@@ -473,6 +509,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.59.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -502,6 +540,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFileCrc64ChecksumResult> getFileCrc64Checksum(GetFileCrc64ChecksumArgs args) {
@@ -513,6 +552,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.59.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -542,6 +583,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFileCrc64ChecksumResult> getFileCrc64ChecksumPlain(GetFileCrc64ChecksumPlainArgs args) {
@@ -553,6 +595,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.59.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -582,6 +626,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFileCrc64ChecksumResult> getFileCrc64Checksum(GetFileCrc64ChecksumArgs args, InvokeOptions options) {
@@ -593,6 +638,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** Available in 1.59.0+.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -622,6 +669,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFileCrc64ChecksumResult> getFileCrc64ChecksumPlain(GetFileCrc64ChecksumPlainArgs args, InvokeOptions options) {
@@ -633,6 +681,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -671,6 +721,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMscSubContactVerificationMessageResult> getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs args) {
@@ -682,6 +733,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -720,6 +773,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMscSubContactVerificationMessageResult> getMscSubContactVerificationMessagePlain(GetMscSubContactVerificationMessagePlainArgs args) {
@@ -731,6 +785,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -769,6 +825,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMscSubContactVerificationMessageResult> getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs args, InvokeOptions options) {
@@ -780,6 +837,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -818,6 +877,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMscSubContactVerificationMessageResult> getMscSubContactVerificationMessagePlain(GetMscSubContactVerificationMessagePlainArgs args, InvokeOptions options) {
@@ -831,6 +891,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -863,6 +925,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMscSubContactsResult> getMscSubContacts() {
@@ -876,6 +939,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -908,6 +973,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMscSubContactsResult> getMscSubContactsPlain() {
@@ -921,6 +987,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -953,6 +1021,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMscSubContactsResult> getMscSubContacts(GetMscSubContactsArgs args) {
@@ -966,6 +1035,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -998,6 +1069,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMscSubContactsResult> getMscSubContactsPlain(GetMscSubContactsPlainArgs args) {
@@ -1011,6 +1083,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1043,6 +1117,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMscSubContactsResult> getMscSubContacts(GetMscSubContactsArgs args, InvokeOptions options) {
@@ -1056,6 +1131,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1088,6 +1165,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMscSubContactsResult> getMscSubContactsPlain(GetMscSubContactsPlainArgs args, InvokeOptions options) {
@@ -1101,6 +1179,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1128,6 +1208,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMscSubSubscriptionsResult> getMscSubSubscriptions() {
@@ -1141,6 +1222,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1168,6 +1251,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMscSubSubscriptionsResult> getMscSubSubscriptionsPlain() {
@@ -1181,6 +1265,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1208,6 +1294,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMscSubSubscriptionsResult> getMscSubSubscriptions(GetMscSubSubscriptionsArgs args) {
@@ -1221,6 +1308,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1248,6 +1337,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMscSubSubscriptionsResult> getMscSubSubscriptionsPlain(GetMscSubSubscriptionsPlainArgs args) {
@@ -1261,6 +1351,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1288,6 +1380,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMscSubSubscriptionsResult> getMscSubSubscriptions(GetMscSubSubscriptionsArgs args, InvokeOptions options) {
@@ -1301,6 +1394,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1328,6 +1423,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMscSubSubscriptionsResult> getMscSubSubscriptionsPlain(GetMscSubSubscriptionsPlainArgs args, InvokeOptions options) {
@@ -1341,6 +1437,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1375,6 +1473,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMscSubWebhooksResult> getMscSubWebhooks() {
@@ -1388,6 +1487,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1422,6 +1523,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMscSubWebhooksResult> getMscSubWebhooksPlain() {
@@ -1435,6 +1537,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1469,6 +1573,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMscSubWebhooksResult> getMscSubWebhooks(GetMscSubWebhooksArgs args) {
@@ -1482,6 +1587,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1516,6 +1623,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMscSubWebhooksResult> getMscSubWebhooksPlain(GetMscSubWebhooksPlainArgs args) {
@@ -1529,6 +1637,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1563,6 +1673,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMscSubWebhooksResult> getMscSubWebhooks(GetMscSubWebhooksArgs args, InvokeOptions options) {
@@ -1576,6 +1687,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1610,6 +1723,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMscSubWebhooksResult> getMscSubWebhooksPlain(GetMscSubWebhooksPlainArgs args, InvokeOptions options) {
@@ -1619,6 +1733,8 @@ public final class AlicloudFunctions {
      * This data source provides Alibaba Cloud regions.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1648,6 +1764,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionsResult> getRegions() {
@@ -1657,6 +1774,8 @@ public final class AlicloudFunctions {
      * This data source provides Alibaba Cloud regions.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1686,6 +1805,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain() {
@@ -1695,6 +1815,8 @@ public final class AlicloudFunctions {
      * This data source provides Alibaba Cloud regions.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1724,6 +1846,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args) {
@@ -1733,6 +1856,8 @@ public final class AlicloudFunctions {
      * This data source provides Alibaba Cloud regions.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1762,6 +1887,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args) {
@@ -1771,6 +1897,8 @@ public final class AlicloudFunctions {
      * This data source provides Alibaba Cloud regions.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1800,6 +1928,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOptions options) {
@@ -1809,6 +1938,8 @@ public final class AlicloudFunctions {
      * This data source provides Alibaba Cloud regions.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1838,6 +1969,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {
@@ -1849,6 +1981,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1878,6 +2012,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -1889,6 +2024,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1918,6 +2055,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -1929,6 +2067,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1958,6 +2098,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -1969,6 +2110,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1998,6 +2141,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -2009,6 +2153,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2038,6 +2184,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -2049,6 +2196,8 @@ public final class AlicloudFunctions {
      * &gt; **NOTE:** If one zone is sold out, it will not be exported.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2078,6 +2227,7 @@ public final class AlicloudFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

@@ -271,6 +271,7 @@ class Schedule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -292,6 +293,7 @@ class Schedule(pulumi.CustomResource):
             payload="{\\"tf-example\\": \\"example success\\"}",
             schedule_name="tf-exampleFnFSchedule983041")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -327,6 +329,7 @@ class Schedule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -348,6 +351,7 @@ class Schedule(pulumi.CustomResource):
             payload="{\\"tf-example\\": \\"example success\\"}",
             schedule_name="tf-exampleFnFSchedule983041")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

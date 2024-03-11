@@ -23,6 +23,8 @@ public final class BssFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -55,6 +57,7 @@ public final class BssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpenApiPricingModulesResult> getOpenApiPricingModules(GetOpenApiPricingModulesArgs args) {
@@ -66,6 +69,8 @@ public final class BssFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -98,6 +103,7 @@ public final class BssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpenApiPricingModulesResult> getOpenApiPricingModulesPlain(GetOpenApiPricingModulesPlainArgs args) {
@@ -109,6 +115,8 @@ public final class BssFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -141,6 +149,7 @@ public final class BssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpenApiPricingModulesResult> getOpenApiPricingModules(GetOpenApiPricingModulesArgs args, InvokeOptions options) {
@@ -152,6 +161,8 @@ public final class BssFunctions {
      * &gt; **NOTE:** Available in 1.195.0+
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -184,6 +195,7 @@ public final class BssFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpenApiPricingModulesResult> getOpenApiPricingModulesPlain(GetOpenApiPricingModulesPlainArgs args, InvokeOptions options) {

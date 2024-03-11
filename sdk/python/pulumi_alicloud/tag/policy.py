@@ -179,6 +179,7 @@ class Policy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -193,6 +194,7 @@ class Policy(pulumi.CustomResource):
             user_type="USER",
             policy_content="		{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -228,6 +230,7 @@ class Policy(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -242,6 +245,7 @@ class Policy(pulumi.CustomResource):
             user_type="USER",
             policy_content="		{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

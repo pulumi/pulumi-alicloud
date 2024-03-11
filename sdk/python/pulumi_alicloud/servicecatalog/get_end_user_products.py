@@ -138,6 +138,7 @@ def get_end_user_products(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -145,6 +146,7 @@ def get_end_user_products(ids: Optional[Sequence[str]] = None,
     default = alicloud.servicecatalog.get_end_user_products(name_regex="ram模板创建")
     pulumi.export("alicloudServiceCatalogEndUserProductExampleId", default.end_user_products[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of End User Product IDs.
@@ -192,6 +194,7 @@ def get_end_user_products_output(ids: Optional[pulumi.Input[Optional[Sequence[st
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -199,6 +202,7 @@ def get_end_user_products_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     default = alicloud.servicecatalog.get_end_user_products(name_regex="ram模板创建")
     pulumi.export("alicloudServiceCatalogEndUserProductExampleId", default.end_user_products[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of End User Product IDs.

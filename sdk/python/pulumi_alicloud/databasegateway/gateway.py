@@ -125,12 +125,14 @@ class Gateway(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         example = alicloud.databasegateway.Gateway("example", gateway_name="example_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -162,12 +164,14 @@ class Gateway(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         example = alicloud.databasegateway.Gateway("example", gateway_name="example_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

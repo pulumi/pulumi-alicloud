@@ -13,10 +13,12 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available since v1.100.0.
  *
  * ## Example Usage
+ *
  * ### Destination Configuration
  *
  * > **NOTE** Ensure the FC Function RAM Role has necessary permissions for the destination, such as `mns:SendMessage`, `mns:PublishMessage` or `fc:InvokeFunction`, otherwise the API will return a generic error.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -112,6 +114,7 @@ import * as utilities from "../utilities";
  *     qualifier: "LATEST",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

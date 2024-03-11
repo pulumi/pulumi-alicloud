@@ -368,6 +368,7 @@ class AclRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -389,6 +390,7 @@ class AclRule(pulumi.CustomResource):
             dest_port_range="-1/-1",
             priority=1)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -430,6 +432,7 @@ class AclRule(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -451,6 +454,7 @@ class AclRule(pulumi.CustomResource):
             dest_port_range="-1/-1",
             priority=1)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

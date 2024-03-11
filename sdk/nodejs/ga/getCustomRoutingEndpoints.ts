@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const gaCustomRoutingEndpointsId1 = ids.then(ids => ids.customRoutingEndpoints?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCustomRoutingEndpoints(args: GetCustomRoutingEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomRoutingEndpointsResult> {
 
@@ -106,6 +108,7 @@ export interface GetCustomRoutingEndpointsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -116,6 +119,7 @@ export interface GetCustomRoutingEndpointsResult {
  * });
  * export const gaCustomRoutingEndpointsId1 = ids.then(ids => ids.customRoutingEndpoints?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCustomRoutingEndpointsOutput(args: GetCustomRoutingEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomRoutingEndpointsResult> {
     return pulumi.output(args).apply((a: any) => getCustomRoutingEndpoints(a, opts))

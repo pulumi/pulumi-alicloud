@@ -22,7 +22,7 @@ class AccountArgs:
         The set of arguments for constructing a Account resource.
         :param pulumi.Input[str] account_name: The name of the account. Valid values: `root`.
         :param pulumi.Input[str] account_password: The Password of the Account.
-               * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+               * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
                * The password must be `8` to `32` characters in length.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] account_description: The description of the account.
@@ -52,7 +52,7 @@ class AccountArgs:
     def account_password(self) -> pulumi.Input[str]:
         """
         The Password of the Account.
-        * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+        * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
         * The password must be `8` to `32` characters in length.
         """
         return pulumi.get(self, "account_password")
@@ -103,7 +103,7 @@ class _AccountState:
                * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
         :param pulumi.Input[str] account_name: The name of the account. Valid values: `root`.
         :param pulumi.Input[str] account_password: The Password of the Account.
-               * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+               * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
                * The password must be `8` to `32` characters in length.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] status: The status of the account. Valid values: `Unavailable`, `Available`.
@@ -150,7 +150,7 @@ class _AccountState:
     def account_password(self) -> Optional[pulumi.Input[str]]:
         """
         The Password of the Account.
-        * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+        * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
         * The password must be `8` to `32` characters in length.
         """
         return pulumi.get(self, "account_password")
@@ -205,6 +205,7 @@ class Account(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -243,6 +244,7 @@ class Account(pulumi.CustomResource):
             instance_id=default_instance.id,
             account_description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -259,7 +261,7 @@ class Account(pulumi.CustomResource):
                * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
         :param pulumi.Input[str] account_name: The name of the account. Valid values: `root`.
         :param pulumi.Input[str] account_password: The Password of the Account.
-               * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+               * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
                * The password must be `8` to `32` characters in length.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         """
@@ -280,6 +282,7 @@ class Account(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -318,6 +321,7 @@ class Account(pulumi.CustomResource):
             instance_id=default_instance.id,
             account_description=name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -395,7 +399,7 @@ class Account(pulumi.CustomResource):
                * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
         :param pulumi.Input[str] account_name: The name of the account. Valid values: `root`.
         :param pulumi.Input[str] account_password: The Password of the Account.
-               * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+               * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
                * The password must be `8` to `32` characters in length.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] status: The status of the account. Valid values: `Unavailable`, `Available`.
@@ -434,7 +438,7 @@ class Account(pulumi.CustomResource):
     def account_password(self) -> pulumi.Output[str]:
         """
         The Password of the Account.
-        * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
+        * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&*()_+-=`.
         * The password must be `8` to `32` characters in length.
         """
         return pulumi.get(self, "account_password")

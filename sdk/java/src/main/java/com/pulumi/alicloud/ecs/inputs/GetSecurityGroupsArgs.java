@@ -103,6 +103,7 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
 
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -134,6 +135,7 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="tags")
@@ -141,6 +143,7 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
 
     /**
      * @return A map of tags assigned to the ECS instances. It must be in the format:
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -172,6 +175,7 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -348,6 +352,7 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param tags A map of tags assigned to the ECS instances. It must be in the format:
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -379,6 +384,7 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -390,6 +396,7 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param tags A map of tags assigned to the ECS instances. It must be in the format:
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -421,6 +428,7 @@ public final class GetSecurityGroupsArgs extends com.pulumi.resources.InvokeArgs
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

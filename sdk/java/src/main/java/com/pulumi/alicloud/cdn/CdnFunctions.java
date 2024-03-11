@@ -31,6 +31,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -59,6 +61,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBlockedRegionsResult> getBlockedRegions(GetBlockedRegionsArgs args) {
@@ -72,6 +75,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -100,6 +105,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBlockedRegionsResult> getBlockedRegionsPlain(GetBlockedRegionsPlainArgs args) {
@@ -113,6 +119,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -141,6 +149,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBlockedRegionsResult> getBlockedRegions(GetBlockedRegionsArgs args, InvokeOptions options) {
@@ -154,6 +163,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -182,6 +193,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBlockedRegionsResult> getBlockedRegionsPlain(GetBlockedRegionsPlainArgs args, InvokeOptions options) {
@@ -195,6 +207,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -223,6 +237,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpInfoResult> getIpInfo(GetIpInfoArgs args) {
@@ -236,6 +251,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -264,6 +281,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpInfoResult> getIpInfoPlain(GetIpInfoPlainArgs args) {
@@ -277,6 +295,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -305,6 +325,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpInfoResult> getIpInfo(GetIpInfoArgs args, InvokeOptions options) {
@@ -318,6 +339,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -346,6 +369,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpInfoResult> getIpInfoPlain(GetIpInfoPlainArgs args, InvokeOptions options) {
@@ -359,6 +383,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -388,6 +414,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRealTimeLogDeliveriesResult> getRealTimeLogDeliveries(GetRealTimeLogDeliveriesArgs args) {
@@ -401,6 +428,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -430,6 +459,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRealTimeLogDeliveriesResult> getRealTimeLogDeliveriesPlain(GetRealTimeLogDeliveriesPlainArgs args) {
@@ -443,6 +473,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -472,6 +504,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRealTimeLogDeliveriesResult> getRealTimeLogDeliveries(GetRealTimeLogDeliveriesArgs args, InvokeOptions options) {
@@ -485,6 +518,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -514,6 +549,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRealTimeLogDeliveriesResult> getRealTimeLogDeliveriesPlain(GetRealTimeLogDeliveriesPlainArgs args, InvokeOptions options) {
@@ -527,6 +563,8 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available since v1.98.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -556,6 +594,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService() {
@@ -569,6 +608,8 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available since v1.98.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -598,6 +639,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain() {
@@ -611,6 +653,8 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available since v1.98.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -640,6 +684,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args) {
@@ -653,6 +698,8 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available since v1.98.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -682,6 +729,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args) {
@@ -695,6 +743,8 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available since v1.98.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -724,6 +774,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOptions options) {
@@ -737,6 +788,8 @@ public final class CdnFunctions {
      * &gt; **NOTE:** Available since v1.98.0.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -766,6 +819,7 @@ public final class CdnFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {

@@ -237,6 +237,7 @@ class SnatEntry(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -269,6 +270,7 @@ class SnatEntry(pulumi.CustomResource):
             source_vswitch_id=default_switch.id,
             snat_ip=default_eip_address.ip_address)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -301,6 +303,7 @@ class SnatEntry(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -333,6 +336,7 @@ class SnatEntry(pulumi.CustomResource):
             source_vswitch_id=default_switch.id,
             snat_ip=default_eip_address.ip_address)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

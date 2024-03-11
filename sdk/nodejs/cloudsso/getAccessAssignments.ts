@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -30,6 +31,7 @@ import * as utilities from "../utilities";
  * });
  * export const cloudSsoAccessAssignmentId1 = ids.then(ids => ids.assignments?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccessAssignments(args: GetAccessAssignmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessAssignmentsResult> {
 
@@ -107,6 +109,7 @@ export interface GetAccessAssignmentsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -120,6 +123,7 @@ export interface GetAccessAssignmentsResult {
  * });
  * export const cloudSsoAccessAssignmentId1 = ids.then(ids => ids.assignments?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccessAssignmentsOutput(args: GetAccessAssignmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessAssignmentsResult> {
     return pulumi.output(args).apply((a: any) => getAccessAssignments(a, opts))

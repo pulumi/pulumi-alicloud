@@ -565,6 +565,7 @@ class RdsAccount(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -598,6 +599,7 @@ class RdsAccount(pulumi.CustomResource):
             account_name=name,
             account_password="Example1234")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -644,6 +646,7 @@ class RdsAccount(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -677,6 +680,7 @@ class RdsAccount(pulumi.CustomResource):
             account_name=name,
             account_password="Example1234")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

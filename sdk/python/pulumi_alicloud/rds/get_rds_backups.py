@@ -134,6 +134,7 @@ def get_rds_backups(backup_mode: Optional[str] = None,
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -141,6 +142,7 @@ def get_rds_backups(backup_mode: Optional[str] = None,
     example = alicloud.rds.get_rds_backups(db_instance_id="example_value")
     pulumi.export("firstRdsBackupId", example.backups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str backup_mode: BackupMode.
@@ -199,6 +201,7 @@ def get_rds_backups_output(backup_mode: Optional[pulumi.Input[Optional[str]]] = 
 
     Basic Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -206,6 +209,7 @@ def get_rds_backups_output(backup_mode: Optional[pulumi.Input[Optional[str]]] = 
     example = alicloud.rds.get_rds_backups(db_instance_id="example_value")
     pulumi.export("firstRdsBackupId", example.backups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str backup_mode: BackupMode.

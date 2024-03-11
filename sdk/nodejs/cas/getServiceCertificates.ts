@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const cert = certs.then(certs => certs.certificates?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServiceCertificates(args?: GetServiceCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceCertificatesResult> {
     args = args || {};
@@ -90,6 +92,7 @@ export interface GetServiceCertificatesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -100,6 +103,7 @@ export interface GetServiceCertificatesResult {
  * });
  * export const cert = certs.then(certs => certs.certificates?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServiceCertificatesOutput(args?: GetServiceCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceCertificatesResult> {
     return pulumi.output(args).apply((a: any) => getServiceCertificates(a, opts))

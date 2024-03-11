@@ -331,6 +331,7 @@ class QuotaAlarm(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -354,6 +355,7 @@ class QuotaAlarm(pulumi.CustomResource):
             threshold_percent=80,
             threshold_type="used")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -393,6 +395,7 @@ class QuotaAlarm(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -416,6 +419,7 @@ class QuotaAlarm(pulumi.CustomResource):
             threshold_percent=80,
             threshold_type="used")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

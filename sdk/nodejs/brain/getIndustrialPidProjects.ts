@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,6 +26,7 @@ import * as utilities from "../utilities";
  * });
  * export const firstBrainIndustrialPidProjectId = example.then(example => example.projects?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIndustrialPidProjects(args?: GetIndustrialPidProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetIndustrialPidProjectsResult> {
     args = args || {};
@@ -90,6 +92,7 @@ export interface GetIndustrialPidProjectsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -100,6 +103,7 @@ export interface GetIndustrialPidProjectsResult {
  * });
  * export const firstBrainIndustrialPidProjectId = example.then(example => example.projects?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getIndustrialPidProjectsOutput(args?: GetIndustrialPidProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialPidProjectsResult> {
     return pulumi.output(args).apply((a: any) => getIndustrialPidProjects(a, opts))

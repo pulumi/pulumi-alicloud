@@ -13,6 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -43,6 +44,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultPrimaryEndpoint = new alicloud.polardb.PrimaryEndpoint("defaultPrimaryEndpoint", {dbClusterId: defaultCluster.id});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

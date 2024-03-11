@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,6 +30,7 @@ import * as utilities from "../utilities";
  * });
  * export const actiontrailHistoryDeliveryJobId2 = status.then(status => status.jobs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHistoryDeliveryJobs(args?: GetHistoryDeliveryJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetHistoryDeliveryJobsResult> {
     args = args || {};
@@ -84,6 +86,7 @@ export interface GetHistoryDeliveryJobsResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -98,6 +101,7 @@ export interface GetHistoryDeliveryJobsResult {
  * });
  * export const actiontrailHistoryDeliveryJobId2 = status.then(status => status.jobs?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getHistoryDeliveryJobsOutput(args?: GetHistoryDeliveryJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHistoryDeliveryJobsResult> {
     return pulumi.output(args).apply((a: any) => getHistoryDeliveryJobs(a, opts))

@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,6 +30,7 @@ import * as utilities from "../utilities";
  * });
  * export const crEndpointAclPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEndpointAclPolicies(args: GetEndpointAclPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointAclPoliciesResult> {
 
@@ -86,6 +88,7 @@ export interface GetEndpointAclPoliciesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -100,6 +103,7 @@ export interface GetEndpointAclPoliciesResult {
  * });
  * export const crEndpointAclPolicyId1 = ids.then(ids => ids.policies?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getEndpointAclPoliciesOutput(args: GetEndpointAclPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointAclPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getEndpointAclPolicies(a, opts))

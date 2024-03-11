@@ -27,7 +27,7 @@ class AccountArgs:
         """
         The set of arguments for constructing a Account resource.
         :param pulumi.Input[str] account_name: Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
-        :param pulumi.Input[str] account_password: The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
+        :param pulumi.Input[str] account_password: The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
         :param pulumi.Input[str] db_cluster_id: The db cluster id.
         :param pulumi.Input[str] account_description: In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
         :param pulumi.Input[str] allow_databases: The list of databases to which you want to grant permissions. Separate databases with commas (,).
@@ -71,7 +71,7 @@ class AccountArgs:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Input[str]:
         """
-        The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
+        The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
         """
         return pulumi.get(self, "account_password")
 
@@ -195,7 +195,7 @@ class _AccountState:
         Input properties used for looking up and filtering Account resources.
         :param pulumi.Input[str] account_description: In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
         :param pulumi.Input[str] account_name: Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
-        :param pulumi.Input[str] account_password: The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
+        :param pulumi.Input[str] account_password: The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
         :param pulumi.Input[str] allow_databases: The list of databases to which you want to grant permissions. Separate databases with commas (,).
         :param pulumi.Input[str] allow_dictionaries: The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
         :param pulumi.Input[str] db_cluster_id: The db cluster id.
@@ -259,7 +259,7 @@ class _AccountState:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> Optional[pulumi.Input[str]]:
         """
-        The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
+        The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
         """
         return pulumi.get(self, "account_password")
 
@@ -403,6 +403,7 @@ class Account(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -437,6 +438,7 @@ class Account(pulumi.CustomResource):
             account_name="examplename",
             account_password="Example1234")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -450,7 +452,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_description: In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
         :param pulumi.Input[str] account_name: Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
-        :param pulumi.Input[str] account_password: The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
+        :param pulumi.Input[str] account_password: The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
         :param pulumi.Input[str] allow_databases: The list of databases to which you want to grant permissions. Separate databases with commas (,).
         :param pulumi.Input[str] allow_dictionaries: The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
         :param pulumi.Input[str] db_cluster_id: The db cluster id.
@@ -476,6 +478,7 @@ class Account(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -510,6 +513,7 @@ class Account(pulumi.CustomResource):
             account_name="examplename",
             account_password="Example1234")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -602,7 +606,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_description: In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
         :param pulumi.Input[str] account_name: Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
-        :param pulumi.Input[str] account_password: The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
+        :param pulumi.Input[str] account_password: The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
         :param pulumi.Input[str] allow_databases: The list of databases to which you want to grant permissions. Separate databases with commas (,).
         :param pulumi.Input[str] allow_dictionaries: The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
         :param pulumi.Input[str] db_cluster_id: The db cluster id.
@@ -651,7 +655,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Output[str]:
         """
-        The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
+        The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
         """
         return pulumi.get(self, "account_password")
 

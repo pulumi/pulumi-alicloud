@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Sae
         /// 
         /// &gt; **NOTE:** Available in v1.160.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,8 +41,7 @@ namespace Pulumi.AliCloud.Sae
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGreyTagRoutesResult> InvokeAsync(GetGreyTagRoutesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGreyTagRoutesResult>("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", args ?? new GetGreyTagRoutesArgs(), options.WithDefaults());
@@ -53,12 +51,11 @@ namespace Pulumi.AliCloud.Sae
         /// 
         /// &gt; **NOTE:** Available in v1.160.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -79,8 +76,7 @@ namespace Pulumi.AliCloud.Sae
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGreyTagRoutesResult> Invoke(GetGreyTagRoutesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGreyTagRoutesResult>("alicloud:sae/getGreyTagRoutes:getGreyTagRoutes", args ?? new GetGreyTagRoutesInvokeArgs(), options.WithDefaults());

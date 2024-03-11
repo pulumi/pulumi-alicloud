@@ -234,6 +234,7 @@ class Handshake(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -244,6 +245,7 @@ class Handshake(pulumi.CustomResource):
             target_entity="1182775234******",
             target_type="Account")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -273,6 +275,7 @@ class Handshake(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -283,6 +286,7 @@ class Handshake(pulumi.CustomResource):
             target_entity="1182775234******",
             target_type="Account")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

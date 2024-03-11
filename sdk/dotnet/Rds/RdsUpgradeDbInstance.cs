@@ -17,8 +17,10 @@ namespace Pulumi.AliCloud.Rds
     /// &gt; **NOTE:** Available since v1.153.0+.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Create a RDS PostgreSQL upgrade instance
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -92,6 +94,7 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

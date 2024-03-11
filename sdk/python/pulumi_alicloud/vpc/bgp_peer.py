@@ -224,6 +224,7 @@ class BgpPeer(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -261,6 +262,7 @@ class BgpPeer(pulumi.CustomResource):
             ip_version="IPV4",
             peer_ip_address="1.1.1.1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -295,6 +297,7 @@ class BgpPeer(pulumi.CustomResource):
 
         Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -332,6 +335,7 @@ class BgpPeer(pulumi.CustomResource):
             ip_version="IPV4",
             peer_ip_address="1.1.1.1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

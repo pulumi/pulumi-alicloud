@@ -19,6 +19,7 @@ import (
 //
 // # Basic Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +43,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetBundles(ctx *pulumi.Context, args *GetBundlesArgs, opts ...pulumi.InvokeOption) (*GetBundlesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBundlesResult

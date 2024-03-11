@@ -16,12 +16,11 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// &gt; **NOTE:** Available in v1.136.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,8 +52,7 @@ namespace Pulumi.AliCloud.Arms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPrometheusAlertRulesResult> InvokeAsync(GetPrometheusAlertRulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrometheusAlertRulesResult>("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", args ?? new GetPrometheusAlertRulesArgs(), options.WithDefaults());
@@ -64,12 +62,11 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// &gt; **NOTE:** Available in v1.136.0+.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// Basic Usage
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -101,8 +98,7 @@ namespace Pulumi.AliCloud.Arms
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPrometheusAlertRulesResult> Invoke(GetPrometheusAlertRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrometheusAlertRulesResult>("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", args ?? new GetPrometheusAlertRulesInvokeArgs(), options.WithDefaults());

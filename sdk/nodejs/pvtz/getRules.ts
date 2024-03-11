@@ -15,6 +15,7 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  * });
  * export const pvtzRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
     args = args || {};
@@ -85,6 +87,7 @@ export interface GetRulesResult {
  *
  * Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -96,6 +99,7 @@ export interface GetRulesResult {
  * });
  * export const pvtzRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
     return pulumi.output(args).apply((a: any) => getRules(a, opts))

@@ -118,6 +118,7 @@ def get_server_groups(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -143,6 +144,7 @@ def get_server_groups(ids: Optional[Sequence[str]] = None,
     sample_ds = alicloud.slb.get_server_groups_output(load_balancer_id=default_application_load_balancer.id)
     pulumi.export("firstSlbServerGroupId", sample_ds.slb_server_groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of VServer group IDs to filter results.
@@ -179,6 +181,7 @@ def get_server_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -204,6 +207,7 @@ def get_server_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     sample_ds = alicloud.slb.get_server_groups_output(load_balancer_id=default_application_load_balancer.id)
     pulumi.export("firstSlbServerGroupId", sample_ds.slb_server_groups[0].id)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of VServer group IDs to filter results.

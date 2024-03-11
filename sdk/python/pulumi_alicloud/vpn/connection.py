@@ -711,6 +711,10 @@ class Connection(pulumi.CustomResource):
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
         ## Import
 
         VPN connection can be imported using the id, e.g.
@@ -753,6 +757,10 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
         ## Import
 
         VPN connection can be imported using the id, e.g.

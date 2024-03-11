@@ -239,12 +239,15 @@ class Acl(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         acl = alicloud.slb.Acl("acl", ip_version="ipv4")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Entry Block
 
         The entry mapping supports the following:
@@ -301,12 +304,15 @@ class Acl(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         acl = alicloud.slb.Acl("acl", ip_version="ipv4")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Entry Block
 
         The entry mapping supports the following:
