@@ -571,6 +571,9 @@
             "alicloud_api_gateway_plugin": {
                 "current": "alicloud:apigateway/plugin:Plugin"
             },
+            "alicloud_api_gateway_plugin_attachment": {
+                "current": "alicloud:apigateway/pluginAttachment:PluginAttachment"
+            },
             "alicloud_api_gateway_vpc_access": {
                 "current": "alicloud:apigateway/vpcAccess:VpcAccess"
             },
@@ -1899,16 +1902,36 @@
                         "maxItemsOne": false
                     },
                     "kubelet_configuration": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_unsafe_sysctls": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "labels": {
                         "maxItemsOne": false
                     },
                     "management": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "auto_repair_policy": {
+                                    "maxItemsOne": true
+                                },
+                                "auto_upgrade_policy": {
+                                    "maxItemsOne": true
+                                },
+                                "auto_vul_fix_policy": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
-                    "polardb_ids": {
-                        "maxItemsOne": false
+                    "private_pool_options": {
+                        "maxItemsOne": true
                     },
                     "rds_instances": {
                         "maxItemsOne": false
@@ -1928,8 +1951,14 @@
                     "spot_price_limit": {
                         "maxItemsOne": false
                     },
+                    "system_disk_categories": {
+                        "maxItemsOne": false
+                    },
                     "taints": {
                         "maxItemsOne": false
+                    },
+                    "tee_config": {
+                        "maxItemsOne": true
                     },
                     "vswitch_ids": {
                         "maxItemsOne": false
@@ -4785,6 +4814,9 @@
                     }
                 }
             },
+            "alicloud_log_alert_resource": {
+                "current": "alicloud:log/alertResource:AlertResource"
+            },
             "alicloud_log_audit": {
                 "current": "alicloud:log/audit:Audit",
                 "fields": {
@@ -5266,7 +5298,13 @@
             "alicloud_oos_patch_baseline": {
                 "current": "alicloud:oos/patchBaseline:PatchBaseline",
                 "fields": {
+                    "approved_patches": {
+                        "maxItemsOne": false
+                    },
                     "rejected_patches": {
+                        "maxItemsOne": false
+                    },
+                    "sources": {
                         "maxItemsOne": false
                     }
                 }
