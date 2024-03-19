@@ -5,6 +5,7 @@ package com.pulumi.alicloud.adb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -178,6 +179,21 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="diskEncryption")
+    private @Nullable Output<Boolean> diskEncryption;
+
+    /**
+     * @return Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> diskEncryption() {
+        return Optional.ofNullable(this.diskEncryption);
+    }
+
+    /**
      * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
      * 
      */
@@ -220,6 +236,21 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> elasticIoResourceSize() {
         return Optional.ofNullable(this.elasticIoResourceSize);
+    }
+
+    /**
+     * The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+     * 
+     */
+    @Import(name="kmsId")
+    private @Nullable Output<String> kmsId;
+
+    /**
+     * @return The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+     * 
+     */
+    public Optional<Output<String>> kmsId() {
+        return Optional.ofNullable(this.kmsId);
     }
 
     /**
@@ -478,9 +509,11 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
         this.dbNodeCount = $.dbNodeCount;
         this.dbNodeStorage = $.dbNodeStorage;
         this.description = $.description;
+        this.diskEncryption = $.diskEncryption;
         this.diskPerformanceLevel = $.diskPerformanceLevel;
         this.elasticIoResource = $.elasticIoResource;
         this.elasticIoResourceSize = $.elasticIoResourceSize;
+        this.kmsId = $.kmsId;
         this.maintainTime = $.maintainTime;
         this.mode = $.mode;
         this.modifyType = $.modifyType;
@@ -735,6 +768,27 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param diskEncryption Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(@Nullable Output<Boolean> diskEncryption) {
+            $.diskEncryption = diskEncryption;
+            return this;
+        }
+
+        /**
+         * @param diskEncryption Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(Boolean diskEncryption) {
+            return diskEncryption(Output.of(diskEncryption));
+        }
+
+        /**
          * @param diskPerformanceLevel The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
          * 
          * @return builder
@@ -795,6 +849,27 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder elasticIoResourceSize(String elasticIoResourceSize) {
             return elasticIoResourceSize(Output.of(elasticIoResourceSize));
+        }
+
+        /**
+         * @param kmsId The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsId(@Nullable Output<String> kmsId) {
+            $.kmsId = kmsId;
+            return this;
+        }
+
+        /**
+         * @param kmsId The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsId(String kmsId) {
+            return kmsId(Output.of(kmsId));
         }
 
         /**

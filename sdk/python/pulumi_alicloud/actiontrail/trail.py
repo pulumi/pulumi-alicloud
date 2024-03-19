@@ -513,14 +513,20 @@ class Trail(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
         example_regions = alicloud.get_regions(current=True)
         example_account = alicloud.get_account()
-        example_project = alicloud.log.Project("exampleProject", description="tf actiontrail example")
+        example_project = alicloud.log.Project("exampleProject",
+            project_name=default.result.apply(lambda result: f"{name}-{result}"),
+            description="tf actiontrail example")
         example_roles = alicloud.ram.get_roles(name_regex="AliyunServiceRoleForActionTrail")
         example_trail = alicloud.actiontrail.Trail("exampleTrail",
             trail_name=name,
@@ -574,14 +580,20 @@ class Trail(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
         example_regions = alicloud.get_regions(current=True)
         example_account = alicloud.get_account()
-        example_project = alicloud.log.Project("exampleProject", description="tf actiontrail example")
+        example_project = alicloud.log.Project("exampleProject",
+            project_name=default.result.apply(lambda result: f"{name}-{result}"),
+            description="tf actiontrail example")
         example_roles = alicloud.ram.get_roles(name_regex="AliyunServiceRoleForActionTrail")
         example_trail = alicloud.actiontrail.Trail("exampleTrail",
             trail_name=name,

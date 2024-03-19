@@ -28,13 +28,13 @@ namespace Pulumi.AliCloud.EventBridge
     public partial class Rule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of rule.
+        /// The description of the event rule.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of event bus.
+        /// The name of the event bus.
         /// </summary>
         [Output("eventBusName")]
         public Output<string> EventBusName { get; private set; } = null!;
@@ -46,19 +46,19 @@ namespace Pulumi.AliCloud.EventBridge
         public Output<string> FilterPattern { get; private set; } = null!;
 
         /// <summary>
-        /// The name of rule.
+        /// The name of the event rule.
         /// </summary>
         [Output("ruleName")]
         public Output<string> RuleName { get; private set; } = null!;
 
         /// <summary>
-        /// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+        /// The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The target of rule. See `targets` below.
+        /// The targets of rule. See `targets` below.
         /// </summary>
         [Output("targets")]
         public Output<ImmutableArray<Outputs.RuleTarget>> Targets { get; private set; } = null!;
@@ -110,13 +110,13 @@ namespace Pulumi.AliCloud.EventBridge
     public sealed class RuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of rule.
+        /// The description of the event rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of event bus.
+        /// The name of the event bus.
         /// </summary>
         [Input("eventBusName", required: true)]
         public Input<string> EventBusName { get; set; } = null!;
@@ -128,13 +128,13 @@ namespace Pulumi.AliCloud.EventBridge
         public Input<string> FilterPattern { get; set; } = null!;
 
         /// <summary>
-        /// The name of rule.
+        /// The name of the event rule.
         /// </summary>
         [Input("ruleName", required: true)]
         public Input<string> RuleName { get; set; } = null!;
 
         /// <summary>
-        /// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+        /// The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.EventBridge
         private InputList<Inputs.RuleTargetArgs>? _targets;
 
         /// <summary>
-        /// The target of rule. See `targets` below.
+        /// The targets of rule. See `targets` below.
         /// </summary>
         public InputList<Inputs.RuleTargetArgs> Targets
         {
@@ -160,13 +160,13 @@ namespace Pulumi.AliCloud.EventBridge
     public sealed class RuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of rule.
+        /// The description of the event rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of event bus.
+        /// The name of the event bus.
         /// </summary>
         [Input("eventBusName")]
         public Input<string>? EventBusName { get; set; }
@@ -178,13 +178,13 @@ namespace Pulumi.AliCloud.EventBridge
         public Input<string>? FilterPattern { get; set; }
 
         /// <summary>
-        /// The name of rule.
+        /// The name of the event rule.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+        /// The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -193,7 +193,7 @@ namespace Pulumi.AliCloud.EventBridge
         private InputList<Inputs.RuleTargetGetArgs>? _targets;
 
         /// <summary>
-        /// The target of rule. See `targets` below.
+        /// The targets of rule. See `targets` below.
         /// </summary>
         public InputList<Inputs.RuleTargetGetArgs> Targets
         {

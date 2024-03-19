@@ -6,6 +6,7 @@ package com.pulumi.alicloud.apigateway.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -21,30 +22,120 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
      * RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
      * 
      */
-    @Import(name="arnRole")
-    private @Nullable Output<String> arnRole;
+    @Import(name="arnRole", required=true)
+    private Output<String> arnRole;
 
     /**
      * @return RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
      * 
      */
-    public Optional<Output<String>> arnRole() {
-        return Optional.ofNullable(this.arnRole);
+    public Output<String> arnRole() {
+        return this.arnRole;
     }
 
     /**
-     * The function name of function compute service.
+     * The base url of function compute service. Required if `function_type` is `HttpTrigger`.
      * 
      */
-    @Import(name="functionName", required=true)
-    private Output<String> functionName;
+    @Import(name="functionBaseUrl")
+    private @Nullable Output<String> functionBaseUrl;
 
     /**
-     * @return The function name of function compute service.
+     * @return The base url of function compute service. Required if `function_type` is `HttpTrigger`.
      * 
      */
-    public Output<String> functionName() {
-        return this.functionName;
+    public Optional<Output<String>> functionBaseUrl() {
+        return Optional.ofNullable(this.functionBaseUrl);
+    }
+
+    /**
+     * The function name of function compute service. Required if `function_type` is `FCEvent`.
+     * 
+     */
+    @Import(name="functionName")
+    private @Nullable Output<String> functionName;
+
+    /**
+     * @return The function name of function compute service. Required if `function_type` is `FCEvent`.
+     * 
+     */
+    public Optional<Output<String>> functionName() {
+        return Optional.ofNullable(this.functionName);
+    }
+
+    /**
+     * The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+     * 
+     */
+    @Import(name="functionType")
+    private @Nullable Output<String> functionType;
+
+    /**
+     * @return The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+     * 
+     */
+    public Optional<Output<String>> functionType() {
+        return Optional.ofNullable(this.functionType);
+    }
+
+    /**
+     * The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+     * 
+     */
+    @Import(name="method")
+    private @Nullable Output<String> method;
+
+    /**
+     * @return The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+     * 
+     */
+    public Optional<Output<String>> method() {
+        return Optional.ofNullable(this.method);
+    }
+
+    /**
+     * Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+     * 
+     */
+    @Import(name="onlyBusinessPath")
+    private @Nullable Output<Boolean> onlyBusinessPath;
+
+    /**
+     * @return Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+     * 
+     */
+    public Optional<Output<Boolean>> onlyBusinessPath() {
+        return Optional.ofNullable(this.onlyBusinessPath);
+    }
+
+    /**
+     * The path of function compute service. Required if `function_type` is `HttpTrigger`.
+     * 
+     */
+    @Import(name="path")
+    private @Nullable Output<String> path;
+
+    /**
+     * @return The path of function compute service. Required if `function_type` is `HttpTrigger`.
+     * 
+     */
+    public Optional<Output<String>> path() {
+        return Optional.ofNullable(this.path);
+    }
+
+    /**
+     * The qualifier of function name of compute service.
+     * 
+     */
+    @Import(name="qualifier")
+    private @Nullable Output<String> qualifier;
+
+    /**
+     * @return The qualifier of function name of compute service.
+     * 
+     */
+    public Optional<Output<String>> qualifier() {
+        return Optional.ofNullable(this.qualifier);
     }
 
     /**
@@ -63,18 +154,18 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The service name of function compute service.
+     * The service name of function compute service. Required if `function_type` is `FCEvent`.
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
-     * @return The service name of function compute service.
+     * @return The service name of function compute service. Required if `function_type` is `FCEvent`.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     /**
@@ -96,7 +187,13 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
 
     private ApiFcServiceConfigArgs(ApiFcServiceConfigArgs $) {
         this.arnRole = $.arnRole;
+        this.functionBaseUrl = $.functionBaseUrl;
         this.functionName = $.functionName;
+        this.functionType = $.functionType;
+        this.method = $.method;
+        this.onlyBusinessPath = $.onlyBusinessPath;
+        this.path = $.path;
+        this.qualifier = $.qualifier;
         this.region = $.region;
         this.serviceName = $.serviceName;
         this.timeout = $.timeout;
@@ -126,7 +223,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder arnRole(@Nullable Output<String> arnRole) {
+        public Builder arnRole(Output<String> arnRole) {
             $.arnRole = arnRole;
             return this;
         }
@@ -142,24 +239,150 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param functionName The function name of function compute service.
+         * @param functionBaseUrl The base url of function compute service. Required if `function_type` is `HttpTrigger`.
          * 
          * @return builder
          * 
          */
-        public Builder functionName(Output<String> functionName) {
+        public Builder functionBaseUrl(@Nullable Output<String> functionBaseUrl) {
+            $.functionBaseUrl = functionBaseUrl;
+            return this;
+        }
+
+        /**
+         * @param functionBaseUrl The base url of function compute service. Required if `function_type` is `HttpTrigger`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionBaseUrl(String functionBaseUrl) {
+            return functionBaseUrl(Output.of(functionBaseUrl));
+        }
+
+        /**
+         * @param functionName The function name of function compute service. Required if `function_type` is `FCEvent`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionName(@Nullable Output<String> functionName) {
             $.functionName = functionName;
             return this;
         }
 
         /**
-         * @param functionName The function name of function compute service.
+         * @param functionName The function name of function compute service. Required if `function_type` is `FCEvent`.
          * 
          * @return builder
          * 
          */
         public Builder functionName(String functionName) {
             return functionName(Output.of(functionName));
+        }
+
+        /**
+         * @param functionType The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionType(@Nullable Output<String> functionType) {
+            $.functionType = functionType;
+            return this;
+        }
+
+        /**
+         * @param functionType The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionType(String functionType) {
+            return functionType(Output.of(functionType));
+        }
+
+        /**
+         * @param method The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder method(@Nullable Output<String> method) {
+            $.method = method;
+            return this;
+        }
+
+        /**
+         * @param method The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder method(String method) {
+            return method(Output.of(method));
+        }
+
+        /**
+         * @param onlyBusinessPath Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onlyBusinessPath(@Nullable Output<Boolean> onlyBusinessPath) {
+            $.onlyBusinessPath = onlyBusinessPath;
+            return this;
+        }
+
+        /**
+         * @param onlyBusinessPath Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onlyBusinessPath(Boolean onlyBusinessPath) {
+            return onlyBusinessPath(Output.of(onlyBusinessPath));
+        }
+
+        /**
+         * @param path The path of function compute service. Required if `function_type` is `HttpTrigger`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder path(@Nullable Output<String> path) {
+            $.path = path;
+            return this;
+        }
+
+        /**
+         * @param path The path of function compute service. Required if `function_type` is `HttpTrigger`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder path(String path) {
+            return path(Output.of(path));
+        }
+
+        /**
+         * @param qualifier The qualifier of function name of compute service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder qualifier(@Nullable Output<String> qualifier) {
+            $.qualifier = qualifier;
+            return this;
+        }
+
+        /**
+         * @param qualifier The qualifier of function name of compute service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder qualifier(String qualifier) {
+            return qualifier(Output.of(qualifier));
         }
 
         /**
@@ -184,18 +407,18 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceName The service name of function compute service.
+         * @param serviceName The service name of function compute service. Required if `function_type` is `FCEvent`.
          * 
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
         /**
-         * @param serviceName The service name of function compute service.
+         * @param serviceName The service name of function compute service. Required if `function_type` is `FCEvent`.
          * 
          * @return builder
          * 
@@ -226,14 +449,11 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         public ApiFcServiceConfigArgs build() {
-            if ($.functionName == null) {
-                throw new MissingRequiredPropertyException("ApiFcServiceConfigArgs", "functionName");
+            if ($.arnRole == null) {
+                throw new MissingRequiredPropertyException("ApiFcServiceConfigArgs", "arnRole");
             }
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("ApiFcServiceConfigArgs", "region");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("ApiFcServiceConfigArgs", "serviceName");
             }
             if ($.timeout == null) {
                 throw new MissingRequiredPropertyException("ApiFcServiceConfigArgs", "timeout");

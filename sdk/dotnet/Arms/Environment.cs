@@ -40,6 +40,12 @@ namespace Pulumi.AliCloud.Arms
         public Output<string?> BindResourceId { get; private set; } = null!;
 
         /// <summary>
+        /// List of abandoned indicators.
+        /// </summary>
+        [Output("dropMetrics")]
+        public Output<string?> DropMetrics { get; private set; } = null!;
+
+        /// <summary>
         /// The first ID of the resource.
         /// </summary>
         [Output("environmentId")]
@@ -65,6 +71,15 @@ namespace Pulumi.AliCloud.Arms
         /// </summary>
         [Output("environmentType")]
         public Output<string> EnvironmentType { get; private set; } = null!;
+
+        /// <summary>
+        /// Hosting type:
+        /// - none: unmanaged. The default value of the ACK cluster.
+        /// - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+        /// - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+        /// </summary>
+        [Output("managedType")]
+        public Output<string> ManagedType { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group.
@@ -137,6 +152,12 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? BindResourceId { get; set; }
 
         /// <summary>
+        /// List of abandoned indicators.
+        /// </summary>
+        [Input("dropMetrics")]
+        public Input<string>? DropMetrics { get; set; }
+
+        /// <summary>
         /// The name of the resource.
         /// </summary>
         [Input("environmentName")]
@@ -156,6 +177,15 @@ namespace Pulumi.AliCloud.Arms
         /// </summary>
         [Input("environmentType", required: true)]
         public Input<string> EnvironmentType { get; set; } = null!;
+
+        /// <summary>
+        /// Hosting type:
+        /// - none: unmanaged. The default value of the ACK cluster.
+        /// - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+        /// - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+        /// </summary>
+        [Input("managedType")]
+        public Input<string>? ManagedType { get; set; }
 
         /// <summary>
         /// The ID of the resource group.
@@ -196,6 +226,12 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? BindResourceId { get; set; }
 
         /// <summary>
+        /// List of abandoned indicators.
+        /// </summary>
+        [Input("dropMetrics")]
+        public Input<string>? DropMetrics { get; set; }
+
+        /// <summary>
         /// The first ID of the resource.
         /// </summary>
         [Input("environmentId")]
@@ -221,6 +257,15 @@ namespace Pulumi.AliCloud.Arms
         /// </summary>
         [Input("environmentType")]
         public Input<string>? EnvironmentType { get; set; }
+
+        /// <summary>
+        /// Hosting type:
+        /// - none: unmanaged. The default value of the ACK cluster.
+        /// - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+        /// - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+        /// </summary>
+        [Input("managedType")]
+        public Input<string>? ManagedType { get; set; }
 
         /// <summary>
         /// The ID of the resource group.

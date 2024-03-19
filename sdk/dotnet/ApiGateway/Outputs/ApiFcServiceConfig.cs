@@ -16,19 +16,43 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// <summary>
         /// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         /// </summary>
-        public readonly string? ArnRole;
+        public readonly string ArnRole;
         /// <summary>
-        /// The function name of function compute service.
+        /// The base url of function compute service. Required if `function_type` is `HttpTrigger`.
         /// </summary>
-        public readonly string FunctionName;
+        public readonly string? FunctionBaseUrl;
+        /// <summary>
+        /// The function name of function compute service. Required if `function_type` is `FCEvent`.
+        /// </summary>
+        public readonly string? FunctionName;
+        /// <summary>
+        /// The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+        /// </summary>
+        public readonly string? FunctionType;
+        /// <summary>
+        /// The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+        /// </summary>
+        public readonly string? Method;
+        /// <summary>
+        /// Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+        /// </summary>
+        public readonly bool? OnlyBusinessPath;
+        /// <summary>
+        /// The path of function compute service. Required if `function_type` is `HttpTrigger`.
+        /// </summary>
+        public readonly string? Path;
+        /// <summary>
+        /// The qualifier of function name of compute service.
+        /// </summary>
+        public readonly string? Qualifier;
         /// <summary>
         /// The region that the function compute service belongs to.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// The service name of function compute service.
+        /// The service name of function compute service. Required if `function_type` is `FCEvent`.
         /// </summary>
-        public readonly string ServiceName;
+        public readonly string? ServiceName;
         /// <summary>
         /// Backend service time-out time; unit: millisecond.
         /// </summary>
@@ -36,18 +60,36 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
 
         [OutputConstructor]
         private ApiFcServiceConfig(
-            string? arnRole,
+            string arnRole,
 
-            string functionName,
+            string? functionBaseUrl,
+
+            string? functionName,
+
+            string? functionType,
+
+            string? method,
+
+            bool? onlyBusinessPath,
+
+            string? path,
+
+            string? qualifier,
 
             string region,
 
-            string serviceName,
+            string? serviceName,
 
             int timeout)
         {
             ArnRole = arnRole;
+            FunctionBaseUrl = functionBaseUrl;
             FunctionName = functionName;
+            FunctionType = functionType;
+            Method = method;
+            OnlyBusinessPath = onlyBusinessPath;
+            Path = path;
+            Qualifier = qualifier;
             Region = region;
             ServiceName = serviceName;
             Timeout = timeout;

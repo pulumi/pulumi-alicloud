@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketReplicationSourceSelectionCriteria
     {
         /// <summary>
-        /// Filter source objects encrypted by using SSE-KMS(See the following block `sse_kms_encrypted_objects`).
+        /// Filter source objects encrypted by using SSE-KMS. See `sse_kms_encrypted_objects` below.
         /// </summary>
         public readonly Outputs.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects? SseKmsEncryptedObjects;
 

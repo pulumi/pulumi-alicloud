@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -32,14 +33,29 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
+     * Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+     * 
+     */
+    @Import(name="burstingEnabled")
+    private @Nullable Output<Boolean> burstingEnabled;
+
+    /**
+     * @return Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+     * 
+     */
+    public Optional<Output<Boolean>> burstingEnabled() {
+        return Optional.ofNullable(this.burstingEnabled);
+    }
+
+    /**
+     * The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
+     * @return The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
      * 
      */
     public Optional<Output<String>> category() {
@@ -92,14 +108,14 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+     * The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+     * @return The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
      * 
      */
     public Optional<Output<String>> name() {
@@ -119,6 +135,21 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
+    }
+
+    /**
+     * The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+     * 
+     */
+    @Import(name="provisionedIops")
+    private @Nullable Output<Integer> provisionedIops;
+
+    /**
+     * @return The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+     * 
+     */
+    public Optional<Output<Integer>> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
     }
 
     /**
@@ -155,12 +186,14 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
 
     private NodePoolDataDiskArgs(NodePoolDataDiskArgs $) {
         this.autoSnapshotPolicyId = $.autoSnapshotPolicyId;
+        this.burstingEnabled = $.burstingEnabled;
         this.category = $.category;
         this.device = $.device;
         this.encrypted = $.encrypted;
         this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.performanceLevel = $.performanceLevel;
+        this.provisionedIops = $.provisionedIops;
         this.size = $.size;
         this.snapshotId = $.snapshotId;
     }
@@ -205,7 +238,28 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param category The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
+         * @param burstingEnabled Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder burstingEnabled(@Nullable Output<Boolean> burstingEnabled) {
+            $.burstingEnabled = burstingEnabled;
+            return this;
+        }
+
+        /**
+         * @param burstingEnabled Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder burstingEnabled(Boolean burstingEnabled) {
+            return burstingEnabled(Output.of(burstingEnabled));
+        }
+
+        /**
+         * @param category The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
          * 
          * @return builder
          * 
@@ -216,7 +270,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param category The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
+         * @param category The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
          * 
          * @return builder
          * 
@@ -289,7 +343,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+         * @param name The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
          * 
          * @return builder
          * 
@@ -300,7 +354,7 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+         * @param name The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
          * 
          * @return builder
          * 
@@ -328,6 +382,27 @@ public final class NodePoolDataDiskArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder performanceLevel(String performanceLevel) {
             return performanceLevel(Output.of(performanceLevel));
+        }
+
+        /**
+         * @param provisionedIops The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(@Nullable Output<Integer> provisionedIops) {
+            $.provisionedIops = provisionedIops;
+            return this;
+        }
+
+        /**
+         * @param provisionedIops The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(Integer provisionedIops) {
+            return provisionedIops(Output.of(provisionedIops));
         }
 
         /**

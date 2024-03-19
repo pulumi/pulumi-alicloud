@@ -16,6 +16,126 @@ namespace Pulumi.AliCloud.DBS
     /// 
     /// &gt; **NOTE:** Available since v1.185.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "HighAvailability",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var defaultInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         Category = "HighAvailability",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceChargeType = "PostPaid",
+    ///     });
+    /// 
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var vswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]);
+    /// 
+    ///     var zoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]);
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceType = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         VswitchId = vswitchId,
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var defaultDatabase = new AliCloud.Rds.Database("defaultDatabase", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///     });
+    /// 
+    ///     var defaultRdsAccount = new AliCloud.Rds.RdsAccount("defaultRdsAccount", new()
+    ///     {
+    ///         DbInstanceId = defaultInstance.Id,
+    ///         AccountName = "tfnormal000",
+    ///         AccountPassword = "Test12345",
+    ///     });
+    /// 
+    ///     var defaultAccountPrivilege = new AliCloud.Rds.AccountPrivilege("defaultAccountPrivilege", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         AccountName = defaultRdsAccount.AccountName,
+    ///         Privilege = "ReadWrite",
+    ///         DbNames = new[]
+    ///         {
+    ///             defaultDatabase.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultBackupPlan = new AliCloud.DBS.BackupPlan("defaultBackupPlan", new()
+    ///     {
+    ///         BackupPlanName = name,
+    ///         PaymentType = "PayAsYouGo",
+    ///         InstanceClass = "xlarge",
+    ///         BackupMethod = "logical",
+    ///         DatabaseType = "MySQL",
+    ///         DatabaseRegion = "cn-hangzhou",
+    ///         StorageRegion = "cn-hangzhou",
+    ///         InstanceType = "RDS",
+    ///         SourceEndpointInstanceType = "RDS",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         SourceEndpointRegion = "cn-hangzhou",
+    ///         SourceEndpointInstanceId = defaultInstance.Id,
+    ///         SourceEndpointUserName = defaultAccountPrivilege.AccountName,
+    ///         SourceEndpointPassword = defaultRdsAccount.AccountPassword,
+    ///         BackupObjects = defaultDatabase.Name.Apply(name =&gt; $"[{{\"DBName\":\"{name}\"}}]"),
+    ///         BackupPeriod = "Monday",
+    ///         BackupStartTime = "14:22",
+    ///         BackupStorageType = "system",
+    ///         BackupRetentionPeriod = 740,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// DBS Backup Plan can be imported using the id, e.g.

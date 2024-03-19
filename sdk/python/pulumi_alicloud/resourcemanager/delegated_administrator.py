@@ -112,6 +112,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -120,9 +121,12 @@ class DelegatedAdministrator(pulumi.CustomResource):
         display_name = config.get("displayName")
         if display_name is None:
             display_name = "EAccount"
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
+        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=default.result.apply(lambda result: f"{name}-{result}"))
         example_account = alicloud.resourcemanager.Account("exampleAccount",
-            display_name=display_name,
+            display_name=default.result.apply(lambda result: f"{display_name}-{result}"),
             folder_id=example_folder.id)
         example_delegated_administrator = alicloud.resourcemanager.DelegatedAdministrator("exampleDelegatedAdministrator",
             account_id=example_account.id,
@@ -164,6 +168,7 @@ class DelegatedAdministrator(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -172,9 +177,12 @@ class DelegatedAdministrator(pulumi.CustomResource):
         display_name = config.get("displayName")
         if display_name is None:
             display_name = "EAccount"
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
+        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=default.result.apply(lambda result: f"{name}-{result}"))
         example_account = alicloud.resourcemanager.Account("exampleAccount",
-            display_name=display_name,
+            display_name=default.result.apply(lambda result: f"{display_name}-{result}"),
             folder_id=example_folder.id)
         example_delegated_administrator = alicloud.resourcemanager.DelegatedAdministrator("exampleDelegatedAdministrator",
             account_id=example_account.id,

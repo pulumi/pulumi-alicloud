@@ -13,25 +13,25 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
     public sealed class RuleTargetParamListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+        /// The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
         /// </summary>
         [Input("form", required: true)]
         public Input<string> Form { get; set; } = null!;
 
         /// <summary>
-        /// The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+        /// The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
         /// </summary>
         [Input("resourceKey", required: true)]
         public Input<string> ResourceKey { get; set; } = null!;
 
         /// <summary>
-        /// The template of param.
+        /// The template of the event target parameter.
         /// </summary>
         [Input("template")]
         public Input<string>? Template { get; set; }
 
         /// <summary>
-        /// The value of param.
+        /// The value of the event target parameter.
         /// 
         /// &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
         /// 
@@ -47,8 +47,7 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// In order to fix the diff, from version 1.160.0,
-        /// this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
+        /// In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
         /// If you want to set `resource_key = "IsBase64Encode"`, please avoid to set `value = "false"`.
         /// </summary>
         [Input("value")]

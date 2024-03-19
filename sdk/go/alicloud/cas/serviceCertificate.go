@@ -28,14 +28,24 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cas"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cas.NewServiceCertificate(ctx, "default", &cas.ServiceCertificateArgs{
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cas.NewServiceCertificate(ctx, "defaultServiceCertificate", &cas.ServiceCertificateArgs{
 //				Cert: pulumi.String(`-----BEGIN CERTIFICATE-----
 //
 // MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
@@ -61,7 +71,9 @@ import (
 //
 // `),
 //
-//	CertificateName: pulumi.String("tf-example"),
+//	CertificateName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//		return fmt.Sprintf("tf-example-%v", result), nil
+//	}).(pulumi.StringOutput),
 //	Key: pulumi.String(`-----BEGIN PRIVATE KEY-----
 //
 // MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDOST00lQfs8tJA

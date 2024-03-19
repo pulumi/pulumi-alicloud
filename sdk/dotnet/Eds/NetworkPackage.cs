@@ -26,30 +26,19 @@ namespace Pulumi.AliCloud.Eds
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultSimpleOfficeSites = AliCloud.Eds.GetSimpleOfficeSites.Invoke(new()
     ///     {
-    ///         Min = 10000,
-    ///         Max = 99999,
-    ///     });
-    /// 
-    ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
-    ///     {
-    ///         CidrBlock = "172.16.0.0/12",
-    ///         EnableAdminAccess = false,
-    ///         DesktopAccessType = "Internet",
-    ///         OfficeSiteName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         Status = "REGISTERED",
+    ///         NameRegex = "default",
     ///     });
     /// 
     ///     var defaultNetworkPackage = new AliCloud.Eds.NetworkPackage("defaultNetworkPackage", new()
     ///     {
     ///         Bandwidth = 10,
-    ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+    ///         OfficeSiteId = defaultSimpleOfficeSites.Apply(getSimpleOfficeSitesResult =&gt; getSimpleOfficeSitesResult.Ids[0]),
     ///     });
     /// 
     /// });

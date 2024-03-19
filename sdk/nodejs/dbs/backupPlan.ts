@@ -11,6 +11,90 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.185.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "HighAvailability",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const defaultInstanceClasses = defaultZones.then(defaultZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: defaultZones.zones?.[0]?.id,
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     category: "HighAvailability",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceChargeType: "PostPaid",
+ * }));
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING",
+ * });
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.zones?.[0]?.id,
+ * }));
+ * const vswitchId = defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]);
+ * const zoneId = defaultZones.then(defaultZones => defaultZones.ids?.[0]);
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
+ * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceType: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     vswitchId: vswitchId,
+ *     instanceName: name,
+ * });
+ * const defaultDatabase = new alicloud.rds.Database("defaultDatabase", {instanceId: defaultInstance.id});
+ * const defaultRdsAccount = new alicloud.rds.RdsAccount("defaultRdsAccount", {
+ *     dbInstanceId: defaultInstance.id,
+ *     accountName: "tfnormal000",
+ *     accountPassword: "Test12345",
+ * });
+ * const defaultAccountPrivilege = new alicloud.rds.AccountPrivilege("defaultAccountPrivilege", {
+ *     instanceId: defaultInstance.id,
+ *     accountName: defaultRdsAccount.accountName,
+ *     privilege: "ReadWrite",
+ *     dbNames: [defaultDatabase.name],
+ * });
+ * const defaultBackupPlan = new alicloud.dbs.BackupPlan("defaultBackupPlan", {
+ *     backupPlanName: name,
+ *     paymentType: "PayAsYouGo",
+ *     instanceClass: "xlarge",
+ *     backupMethod: "logical",
+ *     databaseType: "MySQL",
+ *     databaseRegion: "cn-hangzhou",
+ *     storageRegion: "cn-hangzhou",
+ *     instanceType: "RDS",
+ *     sourceEndpointInstanceType: "RDS",
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     sourceEndpointRegion: "cn-hangzhou",
+ *     sourceEndpointInstanceId: defaultInstance.id,
+ *     sourceEndpointUserName: defaultAccountPrivilege.accountName,
+ *     sourceEndpointPassword: defaultRdsAccount.accountPassword,
+ *     backupObjects: pulumi.interpolate`[{"DBName":"${defaultDatabase.name}"}]`,
+ *     backupPeriod: "Monday",
+ *     backupStartTime: "14:22",
+ *     backupStorageType: "system",
+ *     backupRetentionPeriod: 740,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * DBS Backup Plan can be imported using the id, e.g.

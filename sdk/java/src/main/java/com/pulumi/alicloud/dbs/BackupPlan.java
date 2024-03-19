@@ -24,6 +24,144 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.185.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.rds.Instance;
+ * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.alicloud.rds.Database;
+ * import com.pulumi.alicloud.rds.DatabaseArgs;
+ * import com.pulumi.alicloud.rds.RdsAccount;
+ * import com.pulumi.alicloud.rds.RdsAccountArgs;
+ * import com.pulumi.alicloud.rds.AccountPrivilege;
+ * import com.pulumi.alicloud.rds.AccountPrivilegeArgs;
+ * import com.pulumi.alicloud.dbs.BackupPlan;
+ * import com.pulumi.alicloud.dbs.BackupPlanArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status(&#34;OK&#34;)
+ *             .build());
+ * 
+ *         final var defaultZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;8.0&#34;)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .category(&#34;HighAvailability&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;8.0&#34;)
+ *             .category(&#34;HighAvailability&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .build());
+ * 
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;^default-NODELETING&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         final var vswitchId = defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]);
+ * 
+ *         final var zoneId = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]);
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;8.0&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .instanceType(defaultInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(defaultInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .vswitchId(vswitchId)
+ *             .instanceName(name)
+ *             .build());
+ * 
+ *         var defaultDatabase = new Database(&#34;defaultDatabase&#34;, DatabaseArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .build());
+ * 
+ *         var defaultRdsAccount = new RdsAccount(&#34;defaultRdsAccount&#34;, RdsAccountArgs.builder()        
+ *             .dbInstanceId(defaultInstance.id())
+ *             .accountName(&#34;tfnormal000&#34;)
+ *             .accountPassword(&#34;Test12345&#34;)
+ *             .build());
+ * 
+ *         var defaultAccountPrivilege = new AccountPrivilege(&#34;defaultAccountPrivilege&#34;, AccountPrivilegeArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .accountName(defaultRdsAccount.accountName())
+ *             .privilege(&#34;ReadWrite&#34;)
+ *             .dbNames(defaultDatabase.name())
+ *             .build());
+ * 
+ *         var defaultBackupPlan = new BackupPlan(&#34;defaultBackupPlan&#34;, BackupPlanArgs.builder()        
+ *             .backupPlanName(name)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .instanceClass(&#34;xlarge&#34;)
+ *             .backupMethod(&#34;logical&#34;)
+ *             .databaseType(&#34;MySQL&#34;)
+ *             .databaseRegion(&#34;cn-hangzhou&#34;)
+ *             .storageRegion(&#34;cn-hangzhou&#34;)
+ *             .instanceType(&#34;RDS&#34;)
+ *             .sourceEndpointInstanceType(&#34;RDS&#34;)
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .sourceEndpointRegion(&#34;cn-hangzhou&#34;)
+ *             .sourceEndpointInstanceId(defaultInstance.id())
+ *             .sourceEndpointUserName(defaultAccountPrivilege.accountName())
+ *             .sourceEndpointPassword(defaultRdsAccount.accountPassword())
+ *             .backupObjects(defaultDatabase.name().applyValue(name -&gt; String.format(&#34;[{{\&#34;DBName\&#34;:\&#34;%s\&#34;}}]&#34;, name)))
+ *             .backupPeriod(&#34;Monday&#34;)
+ *             .backupStartTime(&#34;14:22&#34;)
+ *             .backupStorageType(&#34;system&#34;)
+ *             .backupRetentionPeriod(740)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * DBS Backup Plan can be imported using the id, e.g.

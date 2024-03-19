@@ -32,6 +32,8 @@ type Environment struct {
 	AliyunLang pulumi.StringPtrOutput `pulumi:"aliyunLang"`
 	// The id or vpcId of the bound container instance.
 	BindResourceId pulumi.StringPtrOutput `pulumi:"bindResourceId"`
+	// List of abandoned indicators.
+	DropMetrics pulumi.StringPtrOutput `pulumi:"dropMetrics"`
 	// The first ID of the resource.
 	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
 	// The name of the resource.
@@ -43,6 +45,11 @@ type Environment struct {
 	EnvironmentSubType pulumi.StringOutput `pulumi:"environmentSubType"`
 	// Type of environment.
 	EnvironmentType pulumi.StringOutput `pulumi:"environmentType"`
+	// Hosting type:
+	// - none: unmanaged. The default value of the ACK cluster.
+	// - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+	// - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+	ManagedType pulumi.StringOutput `pulumi:"managedType"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The tag of the resource.
@@ -89,6 +96,8 @@ type environmentState struct {
 	AliyunLang *string `pulumi:"aliyunLang"`
 	// The id or vpcId of the bound container instance.
 	BindResourceId *string `pulumi:"bindResourceId"`
+	// List of abandoned indicators.
+	DropMetrics *string `pulumi:"dropMetrics"`
 	// The first ID of the resource.
 	EnvironmentId *string `pulumi:"environmentId"`
 	// The name of the resource.
@@ -100,6 +109,11 @@ type environmentState struct {
 	EnvironmentSubType *string `pulumi:"environmentSubType"`
 	// Type of environment.
 	EnvironmentType *string `pulumi:"environmentType"`
+	// Hosting type:
+	// - none: unmanaged. The default value of the ACK cluster.
+	// - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+	// - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+	ManagedType *string `pulumi:"managedType"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
@@ -111,6 +125,8 @@ type EnvironmentState struct {
 	AliyunLang pulumi.StringPtrInput
 	// The id or vpcId of the bound container instance.
 	BindResourceId pulumi.StringPtrInput
+	// List of abandoned indicators.
+	DropMetrics pulumi.StringPtrInput
 	// The first ID of the resource.
 	EnvironmentId pulumi.StringPtrInput
 	// The name of the resource.
@@ -122,6 +138,11 @@ type EnvironmentState struct {
 	EnvironmentSubType pulumi.StringPtrInput
 	// Type of environment.
 	EnvironmentType pulumi.StringPtrInput
+	// Hosting type:
+	// - none: unmanaged. The default value of the ACK cluster.
+	// - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+	// - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+	ManagedType pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tag of the resource.
@@ -137,6 +158,8 @@ type environmentArgs struct {
 	AliyunLang *string `pulumi:"aliyunLang"`
 	// The id or vpcId of the bound container instance.
 	BindResourceId *string `pulumi:"bindResourceId"`
+	// List of abandoned indicators.
+	DropMetrics *string `pulumi:"dropMetrics"`
 	// The name of the resource.
 	EnvironmentName *string `pulumi:"environmentName"`
 	// Subtype of environment:
@@ -146,6 +169,11 @@ type environmentArgs struct {
 	EnvironmentSubType string `pulumi:"environmentSubType"`
 	// Type of environment.
 	EnvironmentType string `pulumi:"environmentType"`
+	// Hosting type:
+	// - none: unmanaged. The default value of the ACK cluster.
+	// - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+	// - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+	ManagedType *string `pulumi:"managedType"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
@@ -158,6 +186,8 @@ type EnvironmentArgs struct {
 	AliyunLang pulumi.StringPtrInput
 	// The id or vpcId of the bound container instance.
 	BindResourceId pulumi.StringPtrInput
+	// List of abandoned indicators.
+	DropMetrics pulumi.StringPtrInput
 	// The name of the resource.
 	EnvironmentName pulumi.StringPtrInput
 	// Subtype of environment:
@@ -167,6 +197,11 @@ type EnvironmentArgs struct {
 	EnvironmentSubType pulumi.StringInput
 	// Type of environment.
 	EnvironmentType pulumi.StringInput
+	// Hosting type:
+	// - none: unmanaged. The default value of the ACK cluster.
+	// - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+	// - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+	ManagedType pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tag of the resource.
@@ -270,6 +305,11 @@ func (o EnvironmentOutput) BindResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.BindResourceId }).(pulumi.StringPtrOutput)
 }
 
+// List of abandoned indicators.
+func (o EnvironmentOutput) DropMetrics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.DropMetrics }).(pulumi.StringPtrOutput)
+}
+
 // The first ID of the resource.
 func (o EnvironmentOutput) EnvironmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.EnvironmentId }).(pulumi.StringOutput)
@@ -291,6 +331,14 @@ func (o EnvironmentOutput) EnvironmentSubType() pulumi.StringOutput {
 // Type of environment.
 func (o EnvironmentOutput) EnvironmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.EnvironmentType }).(pulumi.StringOutput)
+}
+
+// Hosting type:
+// - none: unmanaged. The default value of the ACK cluster.
+// - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+// - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+func (o EnvironmentOutput) ManagedType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ManagedType }).(pulumi.StringOutput)
 }
 
 // The ID of the resource group.

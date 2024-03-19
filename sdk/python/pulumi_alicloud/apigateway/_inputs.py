@@ -91,36 +91,61 @@ class ApiConstantParameterArgs:
 @pulumi.input_type
 class ApiFcServiceConfigArgs:
     def __init__(__self__, *,
-                 function_name: pulumi.Input[str],
+                 arn_role: pulumi.Input[str],
                  region: pulumi.Input[str],
-                 service_name: pulumi.Input[str],
                  timeout: pulumi.Input[int],
-                 arn_role: Optional[pulumi.Input[str]] = None):
+                 function_base_url: Optional[pulumi.Input[str]] = None,
+                 function_name: Optional[pulumi.Input[str]] = None,
+                 function_type: Optional[pulumi.Input[str]] = None,
+                 method: Optional[pulumi.Input[str]] = None,
+                 only_business_path: Optional[pulumi.Input[bool]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 qualifier: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] function_name: The function name of function compute service.
-        :param pulumi.Input[str] region: The region that the function compute service belongs to.
-        :param pulumi.Input[str] service_name: The service name of function compute service.
-        :param pulumi.Input[int] timeout: Backend service time-out time; unit: millisecond.
         :param pulumi.Input[str] arn_role: RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+        :param pulumi.Input[str] region: The region that the function compute service belongs to.
+        :param pulumi.Input[int] timeout: Backend service time-out time; unit: millisecond.
+        :param pulumi.Input[str] function_base_url: The base url of function compute service. Required if `function_type` is `HttpTrigger`.
+        :param pulumi.Input[str] function_name: The function name of function compute service. Required if `function_type` is `FCEvent`.
+        :param pulumi.Input[str] function_type: The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+        :param pulumi.Input[str] method: The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+        :param pulumi.Input[bool] only_business_path: Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+        :param pulumi.Input[str] path: The path of function compute service. Required if `function_type` is `HttpTrigger`.
+        :param pulumi.Input[str] qualifier: The qualifier of function name of compute service.
+        :param pulumi.Input[str] service_name: The service name of function compute service. Required if `function_type` is `FCEvent`.
         """
-        pulumi.set(__self__, "function_name", function_name)
+        pulumi.set(__self__, "arn_role", arn_role)
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "timeout", timeout)
-        if arn_role is not None:
-            pulumi.set(__self__, "arn_role", arn_role)
+        if function_base_url is not None:
+            pulumi.set(__self__, "function_base_url", function_base_url)
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if function_type is not None:
+            pulumi.set(__self__, "function_type", function_type)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if only_business_path is not None:
+            pulumi.set(__self__, "only_business_path", only_business_path)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if qualifier is not None:
+            pulumi.set(__self__, "qualifier", qualifier)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
-    @pulumi.getter(name="functionName")
-    def function_name(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="arnRole")
+    def arn_role(self) -> pulumi.Input[str]:
         """
-        The function name of function compute service.
+        RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         """
-        return pulumi.get(self, "function_name")
+        return pulumi.get(self, "arn_role")
 
-    @function_name.setter
-    def function_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "function_name", value)
+    @arn_role.setter
+    def arn_role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "arn_role", value)
 
     @property
     @pulumi.getter
@@ -135,18 +160,6 @@ class ApiFcServiceConfigArgs:
         pulumi.set(self, "region", value)
 
     @property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Input[str]:
-        """
-        The service name of function compute service.
-        """
-        return pulumi.get(self, "service_name")
-
-    @service_name.setter
-    def service_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "service_name", value)
-
-    @property
     @pulumi.getter
     def timeout(self) -> pulumi.Input[int]:
         """
@@ -159,16 +172,100 @@ class ApiFcServiceConfigArgs:
         pulumi.set(self, "timeout", value)
 
     @property
-    @pulumi.getter(name="arnRole")
-    def arn_role(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="functionBaseUrl")
+    def function_base_url(self) -> Optional[pulumi.Input[str]]:
         """
-        RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+        The base url of function compute service. Required if `function_type` is `HttpTrigger`.
         """
-        return pulumi.get(self, "arn_role")
+        return pulumi.get(self, "function_base_url")
 
-    @arn_role.setter
-    def arn_role(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "arn_role", value)
+    @function_base_url.setter
+    def function_base_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_base_url", value)
+
+    @property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The function name of function compute service. Required if `function_type` is `FCEvent`.
+        """
+        return pulumi.get(self, "function_name")
+
+    @function_name.setter
+    def function_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_name", value)
+
+    @property
+    @pulumi.getter(name="functionType")
+    def function_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+        """
+        return pulumi.get(self, "function_type")
+
+    @function_type.setter
+    def function_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_type", value)
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter(name="onlyBusinessPath")
+    def only_business_path(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+        """
+        return pulumi.get(self, "only_business_path")
+
+    @only_business_path.setter
+    def only_business_path(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "only_business_path", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of function compute service. Required if `function_type` is `HttpTrigger`.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def qualifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The qualifier of function name of compute service.
+        """
+        return pulumi.get(self, "qualifier")
+
+    @qualifier.setter
+    def qualifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "qualifier", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service name of function compute service. Required if `function_type` is `FCEvent`.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
 
 
 @pulumi.input_type

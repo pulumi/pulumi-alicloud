@@ -24,9 +24,11 @@ class DBClusterArgs:
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_encryption: Optional[pulumi.Input[bool]] = None,
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
@@ -51,9 +53,11 @@ class DBClusterArgs:
         :param pulumi.Input[int] db_node_count: The db node count.
         :param pulumi.Input[int] db_node_storage: The db node storage.
         :param pulumi.Input[str] description: The description of DBCluster.
+        :param pulumi.Input[bool] disk_encryption: Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] disk_performance_level: The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
         :param pulumi.Input[int] elastic_io_resource: The elastic io resource.
         :param pulumi.Input[str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        :param pulumi.Input[str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
@@ -93,12 +97,16 @@ class DBClusterArgs:
             pulumi.set(__self__, "db_node_storage", db_node_storage)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
         if disk_performance_level is not None:
             pulumi.set(__self__, "disk_performance_level", disk_performance_level)
         if elastic_io_resource is not None:
             pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
         if elastic_io_resource_size is not None:
             pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
+        if kms_id is not None:
+            pulumi.set(__self__, "kms_id", kms_id)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
         if modify_type is not None:
@@ -251,6 +259,18 @@ class DBClusterArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @disk_encryption.setter
+    def disk_encryption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disk_encryption", value)
+
+    @property
     @pulumi.getter(name="diskPerformanceLevel")
     def disk_performance_level(self) -> Optional[pulumi.Input[str]]:
         """
@@ -285,6 +305,18 @@ class DBClusterArgs:
     @elastic_io_resource_size.setter
     def elastic_io_resource_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "elastic_io_resource_size", value)
+
+    @property
+    @pulumi.getter(name="kmsId")
+    def kms_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        """
+        return pulumi.get(self, "kms_id")
+
+    @kms_id.setter
+    def kms_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_id", value)
 
     @property
     @pulumi.getter(name="maintainTime")
@@ -452,9 +484,11 @@ class _DBClusterState:
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_encryption: Optional[pulumi.Input[bool]] = None,
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -482,9 +516,11 @@ class _DBClusterState:
         :param pulumi.Input[int] db_node_count: The db node count.
         :param pulumi.Input[int] db_node_storage: The db node storage.
         :param pulumi.Input[str] description: The description of DBCluster.
+        :param pulumi.Input[bool] disk_encryption: Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] disk_performance_level: The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
         :param pulumi.Input[int] elastic_io_resource: The elastic io resource.
         :param pulumi.Input[str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        :param pulumi.Input[str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[str] modify_type: The modify type.
@@ -529,12 +565,16 @@ class _DBClusterState:
             pulumi.set(__self__, "db_node_storage", db_node_storage)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
         if disk_performance_level is not None:
             pulumi.set(__self__, "disk_performance_level", disk_performance_level)
         if elastic_io_resource is not None:
             pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
         if elastic_io_resource_size is not None:
             pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
+        if kms_id is not None:
+            pulumi.set(__self__, "kms_id", kms_id)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
         if mode is not None:
@@ -693,6 +733,18 @@ class _DBClusterState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @disk_encryption.setter
+    def disk_encryption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disk_encryption", value)
+
+    @property
     @pulumi.getter(name="diskPerformanceLevel")
     def disk_performance_level(self) -> Optional[pulumi.Input[str]]:
         """
@@ -727,6 +779,18 @@ class _DBClusterState:
     @elastic_io_resource_size.setter
     def elastic_io_resource_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "elastic_io_resource_size", value)
+
+    @property
+    @pulumi.getter(name="kmsId")
+    def kms_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        """
+        return pulumi.get(self, "kms_id")
+
+    @kms_id.setter
+    def kms_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_id", value)
 
     @property
     @pulumi.getter(name="maintainTime")
@@ -931,9 +995,11 @@ class DBCluster(pulumi.CustomResource):
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_encryption: Optional[pulumi.Input[bool]] = None,
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -968,9 +1034,11 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[int] db_node_count: The db node count.
         :param pulumi.Input[int] db_node_storage: The db node storage.
         :param pulumi.Input[str] description: The description of DBCluster.
+        :param pulumi.Input[bool] disk_encryption: Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] disk_performance_level: The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
         :param pulumi.Input[int] elastic_io_resource: The elastic io resource.
         :param pulumi.Input[str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        :param pulumi.Input[str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[str] modify_type: The modify type.
@@ -1029,9 +1097,11 @@ class DBCluster(pulumi.CustomResource):
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_encryption: Optional[pulumi.Input[bool]] = None,
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -1065,9 +1135,11 @@ class DBCluster(pulumi.CustomResource):
             __props__.__dict__["db_node_count"] = db_node_count
             __props__.__dict__["db_node_storage"] = db_node_storage
             __props__.__dict__["description"] = description
+            __props__.__dict__["disk_encryption"] = disk_encryption
             __props__.__dict__["disk_performance_level"] = disk_performance_level
             __props__.__dict__["elastic_io_resource"] = elastic_io_resource
             __props__.__dict__["elastic_io_resource_size"] = elastic_io_resource_size
+            __props__.__dict__["kms_id"] = kms_id
             __props__.__dict__["maintain_time"] = maintain_time
             if mode is None and not opts.urn:
                 raise TypeError("Missing required property 'mode'")
@@ -1106,9 +1178,11 @@ class DBCluster(pulumi.CustomResource):
             db_node_count: Optional[pulumi.Input[int]] = None,
             db_node_storage: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            disk_encryption: Optional[pulumi.Input[bool]] = None,
             disk_performance_level: Optional[pulumi.Input[str]] = None,
             elastic_io_resource: Optional[pulumi.Input[int]] = None,
             elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+            kms_id: Optional[pulumi.Input[str]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
             mode: Optional[pulumi.Input[str]] = None,
             modify_type: Optional[pulumi.Input[str]] = None,
@@ -1141,9 +1215,11 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[int] db_node_count: The db node count.
         :param pulumi.Input[int] db_node_storage: The db node storage.
         :param pulumi.Input[str] description: The description of DBCluster.
+        :param pulumi.Input[bool] disk_encryption: Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[str] disk_performance_level: The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
         :param pulumi.Input[int] elastic_io_resource: The elastic io resource.
         :param pulumi.Input[str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        :param pulumi.Input[str] kms_id: The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[str] modify_type: The modify type.
@@ -1179,9 +1255,11 @@ class DBCluster(pulumi.CustomResource):
         __props__.__dict__["db_node_count"] = db_node_count
         __props__.__dict__["db_node_storage"] = db_node_storage
         __props__.__dict__["description"] = description
+        __props__.__dict__["disk_encryption"] = disk_encryption
         __props__.__dict__["disk_performance_level"] = disk_performance_level
         __props__.__dict__["elastic_io_resource"] = elastic_io_resource
         __props__.__dict__["elastic_io_resource_size"] = elastic_io_resource_size
+        __props__.__dict__["kms_id"] = kms_id
         __props__.__dict__["maintain_time"] = maintain_time
         __props__.__dict__["mode"] = mode
         __props__.__dict__["modify_type"] = modify_type
@@ -1283,6 +1361,14 @@ class DBCluster(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "disk_encryption")
+
+    @property
     @pulumi.getter(name="diskPerformanceLevel")
     def disk_performance_level(self) -> pulumi.Output[str]:
         """
@@ -1305,6 +1391,14 @@ class DBCluster(pulumi.CustomResource):
         The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
         """
         return pulumi.get(self, "elastic_io_resource_size")
+
+    @property
+    @pulumi.getter(name="kmsId")
+    def kms_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        """
+        return pulumi.get(self, "kms_id")
 
     @property
     @pulumi.getter(name="maintainTime")

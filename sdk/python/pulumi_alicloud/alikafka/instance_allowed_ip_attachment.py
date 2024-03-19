@@ -20,12 +20,14 @@ class InstanceAllowedIpAttachmentArgs:
                  port_range: pulumi.Input[str]):
         """
         The set of arguments for constructing a InstanceAllowedIpAttachment resource.
-        :param pulumi.Input[str] allowed_ip: The allowed ip. It can be a CIDR block.
-        :param pulumi.Input[str] allowed_type: The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        :param pulumi.Input[str] allowed_ip: The IP address whitelist. It can be a CIDR block.
+        :param pulumi.Input[str] allowed_type: The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         :param pulumi.Input[str] instance_id: The ID of the instance.
-        :param pulumi.Input[str] port_range: The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-               - `9092/9092`: port range for a VPC whitelist.
-               - `9093/9093`: port range for an Internet whitelist.
+        :param pulumi.Input[str] port_range: The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+               - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+               - `9093/9093`: The port range for access from the Internet.
+               - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+               - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
         """
         pulumi.set(__self__, "allowed_ip", allowed_ip)
         pulumi.set(__self__, "allowed_type", allowed_type)
@@ -36,7 +38,7 @@ class InstanceAllowedIpAttachmentArgs:
     @pulumi.getter(name="allowedIp")
     def allowed_ip(self) -> pulumi.Input[str]:
         """
-        The allowed ip. It can be a CIDR block.
+        The IP address whitelist. It can be a CIDR block.
         """
         return pulumi.get(self, "allowed_ip")
 
@@ -48,7 +50,7 @@ class InstanceAllowedIpAttachmentArgs:
     @pulumi.getter(name="allowedType")
     def allowed_type(self) -> pulumi.Input[str]:
         """
-        The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         """
         return pulumi.get(self, "allowed_type")
 
@@ -72,9 +74,11 @@ class InstanceAllowedIpAttachmentArgs:
     @pulumi.getter(name="portRange")
     def port_range(self) -> pulumi.Input[str]:
         """
-        The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-        - `9092/9092`: port range for a VPC whitelist.
-        - `9093/9093`: port range for an Internet whitelist.
+        The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+        - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+        - `9093/9093`: The port range for access from the Internet.
+        - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+        - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
         """
         return pulumi.get(self, "port_range")
 
@@ -92,12 +96,14 @@ class _InstanceAllowedIpAttachmentState:
                  port_range: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstanceAllowedIpAttachment resources.
-        :param pulumi.Input[str] allowed_ip: The allowed ip. It can be a CIDR block.
-        :param pulumi.Input[str] allowed_type: The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        :param pulumi.Input[str] allowed_ip: The IP address whitelist. It can be a CIDR block.
+        :param pulumi.Input[str] allowed_type: The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         :param pulumi.Input[str] instance_id: The ID of the instance.
-        :param pulumi.Input[str] port_range: The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-               - `9092/9092`: port range for a VPC whitelist.
-               - `9093/9093`: port range for an Internet whitelist.
+        :param pulumi.Input[str] port_range: The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+               - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+               - `9093/9093`: The port range for access from the Internet.
+               - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+               - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
         """
         if allowed_ip is not None:
             pulumi.set(__self__, "allowed_ip", allowed_ip)
@@ -112,7 +118,7 @@ class _InstanceAllowedIpAttachmentState:
     @pulumi.getter(name="allowedIp")
     def allowed_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The allowed ip. It can be a CIDR block.
+        The IP address whitelist. It can be a CIDR block.
         """
         return pulumi.get(self, "allowed_ip")
 
@@ -124,7 +130,7 @@ class _InstanceAllowedIpAttachmentState:
     @pulumi.getter(name="allowedType")
     def allowed_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         """
         return pulumi.get(self, "allowed_type")
 
@@ -148,9 +154,11 @@ class _InstanceAllowedIpAttachmentState:
     @pulumi.getter(name="portRange")
     def port_range(self) -> Optional[pulumi.Input[str]]:
         """
-        The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-        - `9092/9092`: port range for a VPC whitelist.
-        - `9093/9093`: port range for an Internet whitelist.
+        The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+        - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+        - `9093/9093`: The port range for access from the Internet.
+        - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+        - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
         """
         return pulumi.get(self, "port_range")
 
@@ -172,7 +180,7 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
         """
         Provides a AliKafka Instance Allowed Ip Attachment resource.
 
-        For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-updateallowedip).
+        For information about AliKafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-updateallowedip).
 
         > **NOTE:** Available since v1.163.0.
 
@@ -212,10 +220,10 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             security_group=default_security_group.id)
         default_instance_allowed_ip_attachment = alicloud.alikafka.InstanceAllowedIpAttachment("defaultInstanceAllowedIpAttachment",
-            allowed_ip="114.237.9.78/32",
-            allowed_type="vpc",
             instance_id=default_instance.id,
-            port_range="9092/9092")
+            allowed_type="vpc",
+            port_range="9092/9092",
+            allowed_ip="114.237.9.78/32")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -229,12 +237,14 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] allowed_ip: The allowed ip. It can be a CIDR block.
-        :param pulumi.Input[str] allowed_type: The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        :param pulumi.Input[str] allowed_ip: The IP address whitelist. It can be a CIDR block.
+        :param pulumi.Input[str] allowed_type: The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         :param pulumi.Input[str] instance_id: The ID of the instance.
-        :param pulumi.Input[str] port_range: The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-               - `9092/9092`: port range for a VPC whitelist.
-               - `9093/9093`: port range for an Internet whitelist.
+        :param pulumi.Input[str] port_range: The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+               - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+               - `9093/9093`: The port range for access from the Internet.
+               - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+               - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
         """
         ...
     @overload
@@ -245,7 +255,7 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
         """
         Provides a AliKafka Instance Allowed Ip Attachment resource.
 
-        For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-updateallowedip).
+        For information about AliKafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-updateallowedip).
 
         > **NOTE:** Available since v1.163.0.
 
@@ -285,10 +295,10 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             security_group=default_security_group.id)
         default_instance_allowed_ip_attachment = alicloud.alikafka.InstanceAllowedIpAttachment("defaultInstanceAllowedIpAttachment",
-            allowed_ip="114.237.9.78/32",
-            allowed_type="vpc",
             instance_id=default_instance.id,
-            port_range="9092/9092")
+            allowed_type="vpc",
+            port_range="9092/9092",
+            allowed_ip="114.237.9.78/32")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -361,12 +371,14 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] allowed_ip: The allowed ip. It can be a CIDR block.
-        :param pulumi.Input[str] allowed_type: The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        :param pulumi.Input[str] allowed_ip: The IP address whitelist. It can be a CIDR block.
+        :param pulumi.Input[str] allowed_type: The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         :param pulumi.Input[str] instance_id: The ID of the instance.
-        :param pulumi.Input[str] port_range: The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-               - `9092/9092`: port range for a VPC whitelist.
-               - `9093/9093`: port range for an Internet whitelist.
+        :param pulumi.Input[str] port_range: The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+               - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+               - `9093/9093`: The port range for access from the Internet.
+               - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+               - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -382,7 +394,7 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
     @pulumi.getter(name="allowedIp")
     def allowed_ip(self) -> pulumi.Output[str]:
         """
-        The allowed ip. It can be a CIDR block.
+        The IP address whitelist. It can be a CIDR block.
         """
         return pulumi.get(self, "allowed_ip")
 
@@ -390,7 +402,7 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
     @pulumi.getter(name="allowedType")
     def allowed_type(self) -> pulumi.Output[str]:
         """
-        The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         """
         return pulumi.get(self, "allowed_type")
 
@@ -406,9 +418,11 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
     @pulumi.getter(name="portRange")
     def port_range(self) -> pulumi.Output[str]:
         """
-        The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-        - `9092/9092`: port range for a VPC whitelist.
-        - `9093/9093`: port range for an Internet whitelist.
+        The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+        - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+        - `9093/9093`: The port range for access from the Internet.
+        - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+        - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
         """
         return pulumi.get(self, "port_range")
 

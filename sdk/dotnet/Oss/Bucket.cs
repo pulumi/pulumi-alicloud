@@ -266,6 +266,12 @@ namespace Pulumi.AliCloud.Oss
         public Output<Outputs.BucketRefererConfig?> RefererConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the resource group to which the bucket belongs.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// A configuration of server-side encryption. See `server_side_encryption_rule` below.
         /// </summary>
         [Output("serverSideEncryptionRule")]
@@ -429,6 +435,12 @@ namespace Pulumi.AliCloud.Oss
         public Input<Inputs.BucketRefererConfigArgs>? RefererConfig { get; set; }
 
         /// <summary>
+        /// The ID of the resource group to which the bucket belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// A configuration of server-side encryption. See `server_side_encryption_rule` below.
         /// </summary>
         [Input("serverSideEncryptionRule")]
@@ -588,6 +600,12 @@ namespace Pulumi.AliCloud.Oss
         /// </summary>
         [Input("refererConfig")]
         public Input<Inputs.BucketRefererConfigGetArgs>? RefererConfig { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group to which the bucket belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// A configuration of server-side encryption. See `server_side_encryption_rule` below.

@@ -29,11 +29,15 @@ namespace Pulumi.AliCloud.Ros
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRegions = AliCloud.Ros.GetRegions.Invoke();
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @this = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var exampleStackGroup = new AliCloud.Ros.StackGroup("exampleStackGroup", new()
+    ///     var defaultRegions = AliCloud.Ros.GetRegions.Invoke();
+    /// 
+    ///     var defaultStackGroup = new AliCloud.Ros.StackGroup("defaultStackGroup", new()
     ///     {
-    ///         StackGroupName = @var.Name,
+    ///         StackGroupName = name,
     ///         TemplateBody = "{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}",
     ///         Description = "test for stack groups",
     ///         Parameters = new[]
@@ -51,12 +55,15 @@ namespace Pulumi.AliCloud.Ros
     ///         },
     ///     });
     /// 
-    ///     var exampleStackInstance = new AliCloud.Ros.StackInstance("exampleStackInstance", new()
+    ///     var example = new AliCloud.Ros.StackInstance("example", new()
     ///     {
-    ///         StackGroupName = exampleStackGroup.StackGroupName,
-    ///         StackInstanceAccountId = "example_value",
-    ///         StackInstanceRegionId = exampleRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.RegionId),
+    ///         StackGroupName = defaultStackGroup.StackGroupName,
+    ///         StackInstanceAccountId = @this.Apply(@this =&gt; @this.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///         StackInstanceRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.RegionId),
     ///         OperationPreferences = "{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}",
+    ///         TimeoutInMinutes = "60",
+    ///         OperationDescription = "tf-example",
+    ///         RetainStacks = true,
     ///         ParameterOverrides = new[]
     ///         {
     ///             new AliCloud.Ros.Inputs.StackInstanceParameterOverrideArgs

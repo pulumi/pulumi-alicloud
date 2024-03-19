@@ -15,6 +15,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodeGroupSubscriptionConfig {
     /**
+     * @return Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+     * 
+     */
+    private @Nullable Boolean autoPayOrder;
+    /**
      * @return Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
      * 
      */
@@ -41,6 +46,13 @@ public final class ClusterNodeGroupSubscriptionConfig {
     private String paymentDurationUnit;
 
     private ClusterNodeGroupSubscriptionConfig() {}
+    /**
+     * @return Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+     * 
+     */
+    public Optional<Boolean> autoPayOrder() {
+        return Optional.ofNullable(this.autoPayOrder);
+    }
     /**
      * @return Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
      * 
@@ -86,6 +98,7 @@ public final class ClusterNodeGroupSubscriptionConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean autoPayOrder;
         private @Nullable Boolean autoRenew;
         private @Nullable Integer autoRenewDuration;
         private @Nullable String autoRenewDurationUnit;
@@ -94,6 +107,7 @@ public final class ClusterNodeGroupSubscriptionConfig {
         public Builder() {}
         public Builder(ClusterNodeGroupSubscriptionConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoPayOrder = defaults.autoPayOrder;
     	      this.autoRenew = defaults.autoRenew;
     	      this.autoRenewDuration = defaults.autoRenewDuration;
     	      this.autoRenewDurationUnit = defaults.autoRenewDurationUnit;
@@ -101,6 +115,12 @@ public final class ClusterNodeGroupSubscriptionConfig {
     	      this.paymentDurationUnit = defaults.paymentDurationUnit;
         }
 
+        @CustomType.Setter
+        public Builder autoPayOrder(@Nullable Boolean autoPayOrder) {
+
+            this.autoPayOrder = autoPayOrder;
+            return this;
+        }
         @CustomType.Setter
         public Builder autoRenew(@Nullable Boolean autoRenew) {
 
@@ -137,6 +157,7 @@ public final class ClusterNodeGroupSubscriptionConfig {
         }
         public ClusterNodeGroupSubscriptionConfig build() {
             final var _resultValue = new ClusterNodeGroupSubscriptionConfig();
+            _resultValue.autoPayOrder = autoPayOrder;
             _resultValue.autoRenew = autoRenew;
             _resultValue.autoRenewDuration = autoRenewDuration;
             _resultValue.autoRenewDurationUnit = autoRenewDurationUnit;

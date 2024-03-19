@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -175,6 +176,20 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
+     * Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="diskEncryption", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> diskEncryption;
+
+    /**
+     * @return Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> diskEncryption() {
+        return Codegen.optional(this.diskEncryption);
+    }
+    /**
      * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
      * 
      */
@@ -215,6 +230,20 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> elasticIoResourceSize() {
         return this.elasticIoResourceSize;
+    }
+    /**
+     * The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+     * 
+     */
+    @Export(name="kmsId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsId;
+
+    /**
+     * @return The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+     * 
+     */
+    public Output<Optional<String>> kmsId() {
+        return Codegen.optional(this.kmsId);
     }
     /**
      * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.

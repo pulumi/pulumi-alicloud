@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
  *
  * For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
  *
- * > **NOTE:** Available in v1.161.0+
+ * > **DEPRECATED:**  This resource  has been deprecated from version `1.219.0`. Please use new resource alicloud_log_alert_resource.
+ *
+ * > **NOTE:** Available since v1.161.0.
  *
  * ## Example Usage
  *
@@ -21,10 +23,6 @@ import * as utilities from "../utilities";
  * const exampleUser = alicloud.log.getAlertResource({
  *     lang: "cn",
  *     type: "user",
- * });
- * const exampleProject = alicloud.log.getAlertResource({
- *     project: "test-alert-tf",
- *     type: "project",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -74,7 +72,9 @@ export interface GetAlertResourceResult {
  *
  * For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
  *
- * > **NOTE:** Available in v1.161.0+
+ * > **DEPRECATED:**  This resource  has been deprecated from version `1.219.0`. Please use new resource alicloud_log_alert_resource.
+ *
+ * > **NOTE:** Available since v1.161.0.
  *
  * ## Example Usage
  *
@@ -86,10 +86,6 @@ export interface GetAlertResourceResult {
  * const exampleUser = alicloud.log.getAlertResource({
  *     lang: "cn",
  *     type: "user",
- * });
- * const exampleProject = alicloud.log.getAlertResource({
- *     project: "test-alert-tf",
- *     type: "project",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

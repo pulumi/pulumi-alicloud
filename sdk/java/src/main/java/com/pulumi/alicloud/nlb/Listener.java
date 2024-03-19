@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .scheduler(&#34;Wrr&#34;)
  *             .protocol(&#34;TCP&#34;)
- *             .connectionDrain(true)
+ *             .connectionDrainEnabled(true)
  *             .connectionDrainTimeout(60)
  *             .addressIpVersion(&#34;Ipv4&#34;)
  *             .healthCheck(ServerGroupHealthCheckArgs.builder()
@@ -157,7 +157,6 @@ import javax.annotation.Nullable;
  *             .serverGroupId(defaultServerGroup.id())
  *             .idleTimeout(&#34;900&#34;)
  *             .proxyProtocolEnabled(&#34;true&#34;)
- *             .secSensorEnabled(&#34;true&#34;)
  *             .cps(&#34;10000&#34;)
  *             .mss(&#34;0&#34;)
  *             .build());

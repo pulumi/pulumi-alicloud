@@ -101,8 +101,10 @@ import (
 //				return err
 //			}
 //			defaultApplication, err := sae.NewApplication(ctx, "defaultApplication", &sae.ApplicationArgs{
-//				AppDescription:  pulumi.String(name),
-//				AppName:         pulumi.String(name),
+//				AppDescription: pulumi.String(name),
+//				AppName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("%v-%v", name, result), nil
+//				}).(pulumi.StringOutput),
 //				NamespaceId:     defaultNamespace.ID(),
 //				ImageUrl:        pulumi.String("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5"),
 //				PackageType:     pulumi.String("Image"),

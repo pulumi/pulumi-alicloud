@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a AliKafka Instance Allowed Ip Attachment resource.
  * 
- * For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-updateallowedip).
+ * For information about AliKafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-updateallowedip).
  * 
  * &gt; **NOTE:** Available since v1.163.0.
  * 
@@ -96,10 +96,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstanceAllowedIpAttachment = new InstanceAllowedIpAttachment(&#34;defaultInstanceAllowedIpAttachment&#34;, InstanceAllowedIpAttachmentArgs.builder()        
- *             .allowedIp(&#34;114.237.9.78/32&#34;)
- *             .allowedType(&#34;vpc&#34;)
  *             .instanceId(defaultInstance.id())
+ *             .allowedType(&#34;vpc&#34;)
  *             .portRange(&#34;9092/9092&#34;)
+ *             .allowedIp(&#34;114.237.9.78/32&#34;)
  *             .build());
  * 
  *     }
@@ -119,28 +119,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment")
 public class InstanceAllowedIpAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The allowed ip. It can be a CIDR block.
+     * The IP address whitelist. It can be a CIDR block.
      * 
      */
     @Export(name="allowedIp", refs={String.class}, tree="[0]")
     private Output<String> allowedIp;
 
     /**
-     * @return The allowed ip. It can be a CIDR block.
+     * @return The IP address whitelist. It can be a CIDR block.
      * 
      */
     public Output<String> allowedIp() {
         return this.allowedIp;
     }
     /**
-     * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+     * The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
      * 
      */
     @Export(name="allowedType", refs={String.class}, tree="[0]")
     private Output<String> allowedType;
 
     /**
-     * @return The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+     * @return The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
      * 
      */
     public Output<String> allowedType() {
@@ -161,18 +161,22 @@ public class InstanceAllowedIpAttachment extends com.pulumi.resources.CustomReso
         return this.instanceId;
     }
     /**
-     * The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-     * - `9092/9092`: port range for a VPC whitelist.
-     * - `9093/9093`: port range for an Internet whitelist.
+     * The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+     * - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+     * - `9093/9093`: The port range for access from the Internet.
+     * - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+     * - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
      * 
      */
     @Export(name="portRange", refs={String.class}, tree="[0]")
     private Output<String> portRange;
 
     /**
-     * @return The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-     * - `9092/9092`: port range for a VPC whitelist.
-     * - `9093/9093`: port range for an Internet whitelist.
+     * @return The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+     * - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+     * - `9093/9093`: The port range for access from the Internet.
+     * - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+     * - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
      * 
      */
     public Output<String> portRange() {

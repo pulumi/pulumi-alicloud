@@ -31,14 +31,14 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * (Available in v1.148.0+) The unique ID of the access control policy.
+     * (Available since v1.148.0) The unique ID of the access control policy.
      * 
      */
     @Import(name="aclUuid")
     private @Nullable Output<String> aclUuid;
 
     /**
-     * @return (Available in v1.148.0+) The unique ID of the access control policy.
+     * @return (Available since v1.148.0) The unique ID of the access control policy.
      * 
      */
     public Optional<Output<String>> aclUuid() {
@@ -46,14 +46,16 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+     * The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
      * 
      */
     @Import(name="applicationName")
     private @Nullable Output<String> applicationName;
 
     /**
-     * @return The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+     * @return The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
      * 
      */
     public Optional<Output<String>> applicationName() {
@@ -332,7 +334,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param aclUuid (Available in v1.148.0+) The unique ID of the access control policy.
+         * @param aclUuid (Available since v1.148.0) The unique ID of the access control policy.
          * 
          * @return builder
          * 
@@ -343,7 +345,7 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param aclUuid (Available in v1.148.0+) The unique ID of the access control policy.
+         * @param aclUuid (Available since v1.148.0) The unique ID of the access control policy.
          * 
          * @return builder
          * 
@@ -353,7 +355,8 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param applicationName The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+         * @param applicationName The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
          * 
          * @return builder
          * 
@@ -364,7 +367,8 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param applicationName The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+         * @param applicationName The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
          * 
          * @return builder
          * 

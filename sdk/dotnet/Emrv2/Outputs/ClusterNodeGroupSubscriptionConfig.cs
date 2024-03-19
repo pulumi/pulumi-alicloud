@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     public sealed class ClusterNodeGroupSubscriptionConfig
     {
         /// <summary>
+        /// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+        /// </summary>
+        public readonly bool? AutoPayOrder;
+        /// <summary>
         /// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         /// </summary>
         public readonly bool? AutoRenew;
@@ -36,6 +40,8 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
 
         [OutputConstructor]
         private ClusterNodeGroupSubscriptionConfig(
+            bool? autoPayOrder,
+
             bool? autoRenew,
 
             int? autoRenewDuration,
@@ -46,6 +52,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
 
             string paymentDurationUnit)
         {
+            AutoPayOrder = autoPayOrder;
             AutoRenew = autoRenew;
             AutoRenewDuration = autoRenewDuration;
             AutoRenewDurationUnit = autoRenewDurationUnit;

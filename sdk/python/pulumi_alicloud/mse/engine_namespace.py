@@ -178,6 +178,10 @@ class EngineNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         example_network = alicloud.vpc.Network("exampleNetwork",
             vpc_name="terraform-example",
@@ -187,22 +191,21 @@ class EngineNamespace(pulumi.CustomResource):
             cidr_block="172.17.3.0/24",
             vpc_id=example_network.id,
             zone_id=example_zones.zones[0].id)
-        example_cluster = alicloud.mse.Cluster("exampleCluster",
+        default = alicloud.mse.Cluster("default",
+            connection_type="slb",
+            net_type="privatenet",
+            vswitch_id=example_switch.id,
             cluster_specification="MSE_SC_1_2_60_c",
-            cluster_type="Nacos-Ans",
             cluster_version="NACOS_2_0_0",
             instance_count=1,
-            net_type="privatenet",
             pub_network_flow="1",
-            connection_type="slb",
-            cluster_alias_name="terraform-example",
+            cluster_alias_name=name,
             mse_version="mse_dev",
-            vswitch_id=example_switch.id,
-            vpc_id=example_network.id)
+            cluster_type="Nacos-Ans")
         example_engine_namespace = alicloud.mse.EngineNamespace("exampleEngineNamespace",
-            cluster_id=example_cluster.cluster_id,
-            namespace_show_name="terraform-example",
-            namespace_id="terraform-example")
+            cluster_id=default.id,
+            namespace_show_name=name,
+            namespace_id=name)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -243,6 +246,10 @@ class EngineNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         example_network = alicloud.vpc.Network("exampleNetwork",
             vpc_name="terraform-example",
@@ -252,22 +259,21 @@ class EngineNamespace(pulumi.CustomResource):
             cidr_block="172.17.3.0/24",
             vpc_id=example_network.id,
             zone_id=example_zones.zones[0].id)
-        example_cluster = alicloud.mse.Cluster("exampleCluster",
+        default = alicloud.mse.Cluster("default",
+            connection_type="slb",
+            net_type="privatenet",
+            vswitch_id=example_switch.id,
             cluster_specification="MSE_SC_1_2_60_c",
-            cluster_type="Nacos-Ans",
             cluster_version="NACOS_2_0_0",
             instance_count=1,
-            net_type="privatenet",
             pub_network_flow="1",
-            connection_type="slb",
-            cluster_alias_name="terraform-example",
+            cluster_alias_name=name,
             mse_version="mse_dev",
-            vswitch_id=example_switch.id,
-            vpc_id=example_network.id)
+            cluster_type="Nacos-Ans")
         example_engine_namespace = alicloud.mse.EngineNamespace("exampleEngineNamespace",
-            cluster_id=example_cluster.cluster_id,
-            namespace_show_name="terraform-example",
-            namespace_id="terraform-example")
+            cluster_id=default.id,
+            namespace_show_name=name,
+            namespace_id=name)
         ```
         <!--End PulumiCodeChooser -->
 

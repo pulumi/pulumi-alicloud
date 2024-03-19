@@ -16,14 +16,14 @@ public final class InstanceAllowedIpAttachmentState extends com.pulumi.resources
     public static final InstanceAllowedIpAttachmentState Empty = new InstanceAllowedIpAttachmentState();
 
     /**
-     * The allowed ip. It can be a CIDR block.
+     * The IP address whitelist. It can be a CIDR block.
      * 
      */
     @Import(name="allowedIp")
     private @Nullable Output<String> allowedIp;
 
     /**
-     * @return The allowed ip. It can be a CIDR block.
+     * @return The IP address whitelist. It can be a CIDR block.
      * 
      */
     public Optional<Output<String>> allowedIp() {
@@ -31,14 +31,14 @@ public final class InstanceAllowedIpAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+     * The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
      * 
      */
     @Import(name="allowedType")
     private @Nullable Output<String> allowedType;
 
     /**
-     * @return The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+     * @return The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
      * 
      */
     public Optional<Output<String>> allowedType() {
@@ -61,18 +61,22 @@ public final class InstanceAllowedIpAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-     * - `9092/9092`: port range for a VPC whitelist.
-     * - `9093/9093`: port range for an Internet whitelist.
+     * The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+     * - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+     * - `9093/9093`: The port range for access from the Internet.
+     * - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+     * - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
      * 
      */
     @Import(name="portRange")
     private @Nullable Output<String> portRange;
 
     /**
-     * @return The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-     * - `9092/9092`: port range for a VPC whitelist.
-     * - `9093/9093`: port range for an Internet whitelist.
+     * @return The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+     * - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+     * - `9093/9093`: The port range for access from the Internet.
+     * - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+     * - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
      * 
      */
     public Optional<Output<String>> portRange() {
@@ -107,7 +111,7 @@ public final class InstanceAllowedIpAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param allowedIp The allowed ip. It can be a CIDR block.
+         * @param allowedIp The IP address whitelist. It can be a CIDR block.
          * 
          * @return builder
          * 
@@ -118,7 +122,7 @@ public final class InstanceAllowedIpAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param allowedIp The allowed ip. It can be a CIDR block.
+         * @param allowedIp The IP address whitelist. It can be a CIDR block.
          * 
          * @return builder
          * 
@@ -128,7 +132,7 @@ public final class InstanceAllowedIpAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param allowedType The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+         * @param allowedType The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
          * 
          * @return builder
          * 
@@ -139,7 +143,7 @@ public final class InstanceAllowedIpAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param allowedType The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+         * @param allowedType The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
          * 
          * @return builder
          * 
@@ -170,9 +174,11 @@ public final class InstanceAllowedIpAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param portRange The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-         * - `9092/9092`: port range for a VPC whitelist.
-         * - `9093/9093`: port range for an Internet whitelist.
+         * @param portRange The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+         * - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+         * - `9093/9093`: The port range for access from the Internet.
+         * - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+         * - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
          * 
          * @return builder
          * 
@@ -183,9 +189,11 @@ public final class InstanceAllowedIpAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param portRange The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-         * - `9092/9092`: port range for a VPC whitelist.
-         * - `9093/9093`: port range for an Internet whitelist.
+         * @param portRange The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+         * - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+         * - `9093/9093`: The port range for access from the Internet.
+         * - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+         * - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
          * 
          * @return builder
          * 

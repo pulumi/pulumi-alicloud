@@ -54,11 +54,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleFolder, err := resourcemanager.NewFolder(ctx, "exampleFolder", &resourcemanager.FolderArgs{
-//				FolderName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
-//			})
+//			exampleFolders, err := resourcemanager.GetFolders(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -66,7 +62,7 @@ import (
 //				DisplayName: _default.Result.ApplyT(func(result int) (string, error) {
 //					return fmt.Sprintf("%v-%v", displayName, result), nil
 //				}).(pulumi.StringOutput),
-//				FolderId: exampleFolder.ID(),
+//				FolderId: *pulumi.String(exampleFolders.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

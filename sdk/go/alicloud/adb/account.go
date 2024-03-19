@@ -25,7 +25,6 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/adb"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -35,7 +34,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf_example"
+//			creation := "ADB"
+//			if param := cfg.Get("creation"); param != "" {
+//				creation = param
+//			}
+//			name := "tfexample"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -43,19 +46,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-//				Status: pulumi.StringRef("OK"),
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("10.4.0.0/16"),
-//			})
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
+<<<<<<< HEAD
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
@@ -85,12 +89,21 @@ import (
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("example"),
 //				},
+=======
+//			vswitchId := defaultSwitches.Ids[0]
+//			cluster, err := adb.NewDBCluster(ctx, "cluster", &adb.DBClusterArgs{
+//				DbClusterCategory: pulumi.String("MixedStorage"),
+//				Mode:              pulumi.String("flexible"),
+//				ComputeResource:   pulumi.String("8Core32GB"),
+//				VswitchId:         *pulumi.String(vswitchId),
+//				Description:       pulumi.String(name),
+>>>>>>> 7cc4b796d (make build_sdks)
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = adb.NewAccount(ctx, "defaultAccount", &adb.AccountArgs{
-//				DbClusterId:        defaultDBCluster.ID(),
+//				DbClusterId:        cluster.ID(),
 //				AccountName:        pulumi.String(name),
 //				AccountPassword:    pulumi.String("tf_example123"),
 //				AccountDescription: pulumi.String(name),

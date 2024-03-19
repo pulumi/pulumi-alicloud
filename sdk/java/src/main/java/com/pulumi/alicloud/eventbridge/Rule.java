@@ -35,28 +35,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:eventbridge/rule:Rule")
 public class Rule extends com.pulumi.resources.CustomResource {
     /**
-     * The description of rule.
+     * The description of the event rule.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of rule.
+     * @return The description of the event rule.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of event bus.
+     * The name of the event bus.
      * 
      */
     @Export(name="eventBusName", refs={String.class}, tree="[0]")
     private Output<String> eventBusName;
 
     /**
-     * @return The name of event bus.
+     * @return The name of the event bus.
      * 
      */
     public Output<String> eventBusName() {
@@ -77,42 +77,42 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return this.filterPattern;
     }
     /**
-     * The name of rule.
+     * The name of the event rule.
      * 
      */
     @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;
 
     /**
-     * @return The name of rule.
+     * @return The name of the event rule.
      * 
      */
     public Output<String> ruleName() {
         return this.ruleName;
     }
     /**
-     * Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+     * The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+     * @return The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The target of rule. See `targets` below.
+     * The targets of rule. See `targets` below.
      * 
      */
     @Export(name="targets", refs={List.class,RuleTarget.class}, tree="[0,1]")
     private Output<List<RuleTarget>> targets;
 
     /**
-     * @return The target of rule. See `targets` below.
+     * @return The targets of rule. See `targets` below.
      * 
      */
     public Output<List<RuleTarget>> targets() {

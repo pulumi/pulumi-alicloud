@@ -190,7 +190,7 @@ class LoadBalancerIntranet(pulumi.CustomResource):
             enable_micro_registration=False)
         default_application = alicloud.sae.Application("defaultApplication",
             app_description=name,
-            app_name=name,
+            app_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
             namespace_id=default_namespace.id,
             image_url="registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
             package_type="Image",
@@ -280,7 +280,7 @@ class LoadBalancerIntranet(pulumi.CustomResource):
             enable_micro_registration=False)
         default_application = alicloud.sae.Application("defaultApplication",
             app_description=name,
-            app_name=name,
+            app_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
             namespace_id=default_namespace.id,
             image_url="registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
             package_type="Image",

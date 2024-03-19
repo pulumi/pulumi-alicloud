@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// For information about OSS replication and how to use it, see [What is cross-region replication](https://www.alibabacloud.com/help/doc-detail/31864.html) and [What is same-region replication](https://www.alibabacloud.com/help/doc-detail/254865.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.161.0+.
+    /// &gt; **NOTE:** Available since v1.161.0.
     /// 
     /// ## Example Usage
     /// 
@@ -163,13 +163,13 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> Bucket { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the destination for the rule(See the following block `destination`).
+        /// Specifies the destination for the rule. See `destination` below.
         /// </summary>
         [Output("destination")]
         public Output<Outputs.BucketReplicationDestination> Destination { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryption_configuration`).
+        /// Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
         /// </summary>
         [Output("encryptionConfiguration")]
         public Output<Outputs.BucketReplicationEncryptionConfiguration?> EncryptionConfiguration { get; private set; } = null!;
@@ -181,13 +181,13 @@ namespace Pulumi.AliCloud.Oss
         public Output<string?> HistoricalObjectReplication { get; private set; } = null!;
 
         /// <summary>
-        /// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefix_set`).
+        /// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
         /// </summary>
         [Output("prefixSet")]
         public Output<Outputs.BucketReplicationPrefixSet?> PrefixSet { get; private set; } = null!;
 
         /// <summary>
-        /// Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
+        /// Specifies the progress for querying the progress of a data replication task of a bucket.
         /// </summary>
         [Output("progress")]
         public Output<Outputs.BucketReplicationProgress> Progress { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<string> RuleId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies other conditions used to filter the source objects to replicate(See the following block `source_selection_criteria`).
+        /// Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
         /// </summary>
         [Output("sourceSelectionCriteria")]
         public Output<Outputs.BucketReplicationSourceSelectionCriteria?> SourceSelectionCriteria { get; private set; } = null!;
@@ -275,13 +275,13 @@ namespace Pulumi.AliCloud.Oss
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the destination for the rule(See the following block `destination`).
+        /// Specifies the destination for the rule. See `destination` below.
         /// </summary>
         [Input("destination", required: true)]
         public Input<Inputs.BucketReplicationDestinationArgs> Destination { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryption_configuration`).
+        /// Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
         /// </summary>
         [Input("encryptionConfiguration")]
         public Input<Inputs.BucketReplicationEncryptionConfigurationArgs>? EncryptionConfiguration { get; set; }
@@ -293,19 +293,19 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? HistoricalObjectReplication { get; set; }
 
         /// <summary>
-        /// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefix_set`).
+        /// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
         /// </summary>
         [Input("prefixSet")]
         public Input<Inputs.BucketReplicationPrefixSetArgs>? PrefixSet { get; set; }
 
         /// <summary>
-        /// Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
+        /// Specifies the progress for querying the progress of a data replication task of a bucket.
         /// </summary>
         [Input("progress")]
         public Input<Inputs.BucketReplicationProgressArgs>? Progress { get; set; }
 
         /// <summary>
-        /// Specifies other conditions used to filter the source objects to replicate(See the following block `source_selection_criteria`).
+        /// Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
         /// </summary>
         [Input("sourceSelectionCriteria")]
         public Input<Inputs.BucketReplicationSourceSelectionCriteriaArgs>? SourceSelectionCriteria { get; set; }
@@ -337,13 +337,13 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// Specifies the destination for the rule(See the following block `destination`).
+        /// Specifies the destination for the rule. See `destination` below.
         /// </summary>
         [Input("destination")]
         public Input<Inputs.BucketReplicationDestinationGetArgs>? Destination { get; set; }
 
         /// <summary>
-        /// Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryption_configuration`).
+        /// Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
         /// </summary>
         [Input("encryptionConfiguration")]
         public Input<Inputs.BucketReplicationEncryptionConfigurationGetArgs>? EncryptionConfiguration { get; set; }
@@ -355,13 +355,13 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? HistoricalObjectReplication { get; set; }
 
         /// <summary>
-        /// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefix_set`).
+        /// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
         /// </summary>
         [Input("prefixSet")]
         public Input<Inputs.BucketReplicationPrefixSetGetArgs>? PrefixSet { get; set; }
 
         /// <summary>
-        /// Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
+        /// Specifies the progress for querying the progress of a data replication task of a bucket.
         /// </summary>
         [Input("progress")]
         public Input<Inputs.BucketReplicationProgressGetArgs>? Progress { get; set; }
@@ -373,7 +373,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? RuleId { get; set; }
 
         /// <summary>
-        /// Specifies other conditions used to filter the source objects to replicate(See the following block `source_selection_criteria`).
+        /// Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
         /// </summary>
         [Input("sourceSelectionCriteria")]
         public Input<Inputs.BucketReplicationSourceSelectionCriteriaGetArgs>? SourceSelectionCriteria { get; set; }

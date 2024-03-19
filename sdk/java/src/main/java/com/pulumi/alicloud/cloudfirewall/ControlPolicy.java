@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cloud Firewall Control Policy and how to use it, see [What is Control Policy](https://www.alibabacloud.com/help/doc-detail/138867.htm).
  * 
- * &gt; **NOTE:** Available in v1.129.0+.
+ * &gt; **NOTE:** Available since v1.129.0.
  * 
  * ## Example Usage
  * 
@@ -90,28 +90,30 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
         return this.aclAction;
     }
     /**
-     * (Available in v1.148.0+) The unique ID of the access control policy.
+     * (Available since v1.148.0) The unique ID of the access control policy.
      * 
      */
     @Export(name="aclUuid", refs={String.class}, tree="[0]")
     private Output<String> aclUuid;
 
     /**
-     * @return (Available in v1.148.0+) The unique ID of the access control policy.
+     * @return (Available since v1.148.0) The unique ID of the access control policy.
      * 
      */
     public Output<String> aclUuid() {
         return this.aclUuid;
     }
     /**
-     * The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+     * The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
      * 
      */
     @Export(name="applicationName", refs={String.class}, tree="[0]")
     private Output<String> applicationName;
 
     /**
-     * @return The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+     * @return The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
      * 
      */
     public Output<String> applicationName() {

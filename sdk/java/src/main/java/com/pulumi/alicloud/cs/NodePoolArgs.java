@@ -7,11 +7,12 @@ import com.pulumi.alicloud.cs.inputs.NodePoolDataDiskArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolKubeletConfigurationArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolLabelArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolManagementArgs;
+import com.pulumi.alicloud.cs.inputs.NodePoolPrivatePoolOptionsArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolRollingPolicyArgs;
-import com.pulumi.alicloud.cs.inputs.NodePoolRolloutPolicyArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolTaintArgs;
+import com.pulumi.alicloud.cs.inputs.NodePoolTeeConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -31,14 +32,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     public static final NodePoolArgs Empty = new NodePoolArgs();
 
     /**
-     * Enable Node payment auto-renew, default is `false`.
+     * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Enable Node payment auto-renew, default is `false`.
+     * @return Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -46,14 +47,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+     * The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
      * 
      */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+     * @return The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
      * 
      */
     public Optional<Output<Integer>> autoRenewPeriod() {
@@ -91,14 +92,29 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+     * Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+     * 
+     */
+    @Import(name="compensateWithOnDemand")
+    private @Nullable Output<Boolean> compensateWithOnDemand;
+
+    /**
+     * @return Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+     * 
+     */
+    public Optional<Output<Boolean>> compensateWithOnDemand() {
+        return Optional.ofNullable(this.compensateWithOnDemand);
+    }
+
+    /**
+     * Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
      * 
      */
     @Import(name="cpuPolicy")
     private @Nullable Output<String> cpuPolicy;
 
     /**
-     * @return Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+     * @return Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
      * 
      */
     public Optional<Output<String>> cpuPolicy() {
@@ -106,14 +122,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
+     * Configure the data disk of the node in the node pool. See `data_disks` below.
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<NodePoolDataDiskArgs>> dataDisks;
 
     /**
-     * @return The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
+     * @return Configure the data disk of the node in the node pool. See `data_disks` below.
      * 
      */
     public Optional<Output<List<NodePoolDataDiskArgs>>> dataDisks() {
@@ -136,18 +152,33 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The desired size of nodes of the node pool. From version 1.158.0, `desired_size` is not required.
+     * Number of expected nodes in the node pool.
      * 
      */
     @Import(name="desiredSize")
     private @Nullable Output<Integer> desiredSize;
 
     /**
-     * @return The desired size of nodes of the node pool. From version 1.158.0, `desired_size` is not required.
+     * @return Number of expected nodes in the node pool.
      * 
      */
     public Optional<Output<Integer>> desiredSize() {
         return Optional.ofNullable(this.desiredSize);
+    }
+
+    /**
+     * Whether to force deletion.
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<Boolean> forceDelete;
+
+    /**
+     * @return Whether to force deletion.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
     }
 
     /**
@@ -166,14 +197,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom Image support. Must based on CentOS7 or AliyunLinux2.
+     * The custom image ID. The system-provided image is used by default.
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return Custom Image support. Must based on CentOS7 or AliyunLinux2.
+     * @return The custom image ID. The system-provided image is used by default.
      * 
      */
     public Optional<Output<String>> imageId() {
@@ -181,14 +212,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+     * The operating system image type and the `platform` parameter can be selected from the following values:
      * 
      */
     @Import(name="imageType")
     private @Nullable Output<String> imageType;
 
     /**
-     * @return The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+     * @return The operating system image type and the `platform` parameter can be selected from the following values:
      * 
      */
     public Optional<Output<String>> imageType() {
@@ -196,14 +227,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
+     * Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
      * 
      */
     @Import(name="installCloudMonitor")
     private @Nullable Output<Boolean> installCloudMonitor;
 
     /**
-     * @return Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
+     * @return Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> installCloudMonitor() {
@@ -226,14 +257,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The instance type of worker node.
+     * In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
      * 
      */
     @Import(name="instanceTypes", required=true)
     private Output<List<String>> instanceTypes;
 
     /**
-     * @return The instance type of worker node.
+     * @return In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
      * 
      */
     public Output<List<String>> instanceTypes() {
@@ -256,14 +287,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+     * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+     * @return The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -271,14 +302,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+     * The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
      * 
      */
     @Import(name="internetMaxBandwidthOut")
     private @Nullable Output<Integer> internetMaxBandwidthOut;
 
     /**
-     * @return The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+     * @return The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
      * 
      */
     public Optional<Output<Integer>> internetMaxBandwidthOut() {
@@ -301,14 +332,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
+     * The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
      * 
      */
     @Import(name="keyName")
     private @Nullable Output<String> keyName;
 
     /**
-     * @return The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
+     * @return The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
      * 
      */
     public Optional<Output<String>> keyName() {
@@ -346,14 +377,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+     * Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubelet_configuration` below.
      * 
      */
     @Import(name="kubeletConfiguration")
     private @Nullable Output<NodePoolKubeletConfigurationArgs> kubeletConfiguration;
 
     /**
-     * @return Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+     * @return Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubelet_configuration` below.
      * 
      */
     public Optional<Output<NodePoolKubeletConfigurationArgs>> kubeletConfiguration() {
@@ -376,14 +407,29 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. See `management` below.
+     * Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
+     * 
+     */
+    @Import(name="loginAsNonRoot")
+    private @Nullable Output<Boolean> loginAsNonRoot;
+
+    /**
+     * @return Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> loginAsNonRoot() {
+        return Optional.ofNullable(this.loginAsNonRoot);
+    }
+
+    /**
+     * Managed node pool configuration. See `management` below.
      * 
      */
     @Import(name="management")
     private @Nullable Output<NodePoolManagementArgs> management;
 
     /**
-     * @return Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. See `management` below.
+     * @return Managed node pool configuration. See `management` below.
      * 
      */
     public Optional<Output<NodePoolManagementArgs>> management() {
@@ -391,16 +437,39 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of node pool.
+     * The scaling policy for ECS instances in a multi-zone scaling group. Valid value: `PRIORITY`, `COST_OPTIMIZED` and `BALANCE`. `PRIORITY`: scales the capacity according to the virtual switches you define (VSwitchIds.N). When an ECS instance cannot be created in the zone where the higher-priority vSwitch is located, the next-priority vSwitch is automatically used to create an ECS instance. `COST_OPTIMIZED`: try to create by vCPU unit price from low to high. When the scaling configuration is configured with multiple instances of preemptible billing, preemptible instances are created first. You can continue to use the `CompensateWithOnDemand` parameter to specify whether to automatically try to create a preemptible instance by paying for it. It takes effect only when the scaling configuration has multi-instance specifications or preemptible instances. `BALANCE`: distributes ECS instances evenly among the multi-zone specified by the scaling group. If the zones become unbalanced due to insufficient inventory, you can use the API RebalanceInstances to balance resources.
      * 
      */
+    @Import(name="multiAzPolicy")
+    private @Nullable Output<String> multiAzPolicy;
+
+    /**
+     * @return The scaling policy for ECS instances in a multi-zone scaling group. Valid value: `PRIORITY`, `COST_OPTIMIZED` and `BALANCE`. `PRIORITY`: scales the capacity according to the virtual switches you define (VSwitchIds.N). When an ECS instance cannot be created in the zone where the higher-priority vSwitch is located, the next-priority vSwitch is automatically used to create an ECS instance. `COST_OPTIMIZED`: try to create by vCPU unit price from low to high. When the scaling configuration is configured with multiple instances of preemptible billing, preemptible instances are created first. You can continue to use the `CompensateWithOnDemand` parameter to specify whether to automatically try to create a preemptible instance by paying for it. It takes effect only when the scaling configuration has multi-instance specifications or preemptible instances. `BALANCE`: distributes ECS instances evenly among the multi-zone specified by the scaling group. If the zones become unbalanced due to insufficient inventory, you can use the API RebalanceInstances to balance resources.
+     * 
+     */
+    public Optional<Output<String>> multiAzPolicy() {
+        return Optional.ofNullable(this.multiAzPolicy);
+    }
+
+    /**
+     * . Field &#39;name&#39; has been deprecated from provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of node pool.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -429,14 +498,20 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,&lt;prefix&gt;,ip,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,ip,-test&#34;, if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
+     * Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.
+     * - The prefix and suffix can be composed of one or more parts separated by &#39;.&#39;, each part can use lowercase letters, numbers and &#39;-&#39;, and the beginning and end of the node name must be lowercase letters and numbers.
+     * - The node IP address is the complete private IP address of the node.
+     * - For example, if the string `customized,aliyun,ip,com` is passed in (where &#39;customized&#39; and &#39;ip&#39; are fixed strings, &#39;aliyun&#39; is the prefix, and &#39;com&#39; is the suffix), the name of the node is `aliyun.192.168.xxx.xxx.com`.
      * 
      */
     @Import(name="nodeNameMode")
     private @Nullable Output<String> nodeNameMode;
 
     /**
-     * @return Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,&lt;prefix&gt;,ip,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,ip,-test&#34;, if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
+     * @return Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.
+     * - The prefix and suffix can be composed of one or more parts separated by &#39;.&#39;, each part can use lowercase letters, numbers and &#39;-&#39;, and the beginning and end of the node name must be lowercase letters and numbers.
+     * - The node IP address is the complete private IP address of the node.
+     * - For example, if the string `customized,aliyun,ip,com` is passed in (where &#39;customized&#39; and &#39;ip&#39; are fixed strings, &#39;aliyun&#39; is the prefix, and &#39;com&#39; is the suffix), the name of the node is `aliyun.192.168.xxx.xxx.com`.
      * 
      */
     public Optional<Output<String>> nodeNameMode() {
@@ -444,14 +519,59 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * The name of node pool.
+     * 
+     */
+    @Import(name="nodePoolName")
+    private @Nullable Output<String> nodePoolName;
+
+    /**
+     * @return The name of node pool.
+     * 
+     */
+    public Optional<Output<String>> nodePoolName() {
+        return Optional.ofNullable(this.nodePoolName);
+    }
+
+    /**
+     * The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
+     * 
+     */
+    @Import(name="onDemandBaseCapacity")
+    private @Nullable Output<Integer> onDemandBaseCapacity;
+
+    /**
+     * @return The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
+     * 
+     */
+    public Optional<Output<Integer>> onDemandBaseCapacity() {
+        return Optional.ofNullable(this.onDemandBaseCapacity);
+    }
+
+    /**
+     * The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+     * 
+     */
+    @Import(name="onDemandPercentageAboveBaseCapacity")
+    private @Nullable Output<Integer> onDemandPercentageAboveBaseCapacity;
+
+    /**
+     * @return The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+     * 
+     */
+    public Optional<Output<Integer>> onDemandPercentageAboveBaseCapacity() {
+        return Optional.ofNullable(this.onDemandPercentageAboveBaseCapacity);
+    }
+
+    /**
+     * The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * @return The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
      * 
      */
     public Optional<Output<String>> password() {
@@ -459,14 +579,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+     * Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+     * @return Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -489,52 +609,52 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
+     * Operating system release, using `image_type` instead.
      * 
      * @deprecated
-     * Field &#39;platform&#39; has been deprecated from provider version 1.145.0. New field &#39;image_type&#39; instead
+     * Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.
      * 
      */
-    @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead */
+    @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead. */
     @Import(name="platform")
     private @Nullable Output<String> platform;
 
     /**
-     * @return The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
+     * @return Operating system release, using `image_type` instead.
      * 
      * @deprecated
-     * Field &#39;platform&#39; has been deprecated from provider version 1.145.0. New field &#39;image_type&#39; instead
+     * Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.
      * 
      */
-    @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead */
+    @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead. */
     public Optional<Output<String>> platform() {
         return Optional.ofNullable(this.platform);
     }
 
     /**
-     * PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+     * Private node pool configuration. See `private_pool_options` below.
      * 
      */
-    @Import(name="polardbIds")
-    private @Nullable Output<List<String>> polardbIds;
+    @Import(name="privatePoolOptions")
+    private @Nullable Output<NodePoolPrivatePoolOptionsArgs> privatePoolOptions;
 
     /**
-     * @return PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+     * @return Private node pool configuration. See `private_pool_options` below.
      * 
      */
-    public Optional<Output<List<String>>> polardbIds() {
-        return Optional.ofNullable(this.polardbIds);
+    public Optional<Output<NodePoolPrivatePoolOptionsArgs>> privatePoolOptions() {
+        return Optional.ofNullable(this.privatePoolOptions);
     }
 
     /**
-     * RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     * The list of RDS instances.
      * 
      */
     @Import(name="rdsInstances")
     private @Nullable Output<List<String>> rdsInstances;
 
     /**
-     * @return RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     * @return The list of RDS instances.
      * 
      */
     public Optional<Output<List<String>>> rdsInstances() {
@@ -542,14 +662,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     * The ID of the resource group.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+     * @return The ID of the resource group.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -557,41 +677,18 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rolling_policy` below.
+     * Rotary configuration. See `rolling_policy` below.
      * 
      */
     @Import(name="rollingPolicy")
     private @Nullable Output<NodePoolRollingPolicyArgs> rollingPolicy;
 
     /**
-     * @return Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rolling_policy` below.
+     * @return Rotary configuration. See `rolling_policy` below.
      * 
      */
     public Optional<Output<NodePoolRollingPolicyArgs>> rollingPolicy() {
         return Optional.ofNullable(this.rollingPolicy);
-    }
-
-    /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0. See `rollout_policy` below.
-     * 
-     * @deprecated
-     * Field &#39;rollout_policy&#39; has been deprecated from provider version 1.184.0. Please use new field &#39;rolling_policy&#39; instead it to ensure the config takes effect
-     * 
-     */
-    @Deprecated /* Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect */
-    @Import(name="rolloutPolicy")
-    private @Nullable Output<NodePoolRolloutPolicyArgs> rolloutPolicy;
-
-    /**
-     * @return Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0. See `rollout_policy` below.
-     * 
-     * @deprecated
-     * Field &#39;rollout_policy&#39; has been deprecated from provider version 1.184.0. Please use new field &#39;rolling_policy&#39; instead it to ensure the config takes effect
-     * 
-     */
-    @Deprecated /* Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect */
-    public Optional<Output<NodePoolRolloutPolicyArgs>> rolloutPolicy() {
-        return Optional.ofNullable(this.rolloutPolicy);
     }
 
     /**
@@ -625,14 +722,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Auto scaling node pool configuration. See `scaling_config` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+     * Automatic scaling configuration. See `scaling_config` below.
      * 
      */
     @Import(name="scalingConfig")
     private @Nullable Output<NodePoolScalingConfigArgs> scalingConfig;
 
     /**
-     * @return Auto scaling node pool configuration. See `scaling_config` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+     * @return Automatic scaling configuration. See `scaling_config` below.
      * 
      */
     public Optional<Output<NodePoolScalingConfigArgs>> scalingConfig() {
@@ -640,14 +737,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+     * Scaling group mode, default value: `release`. Valid values:
      * 
      */
     @Import(name="scalingPolicy")
     private @Nullable Output<String> scalingPolicy;
 
     /**
-     * @return The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+     * @return Scaling group mode, default value: `release`. Valid values:
      * 
      */
     public Optional<Output<String>> scalingPolicy() {
@@ -655,24 +752,24 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
+     * The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
      * 
      * @deprecated
-     * Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. New field &#39;security_group_ids&#39; instead
+     * Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
      * 
      */
-    @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead */
+    @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead. */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
+     * @return The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
      * 
      * @deprecated
-     * Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. New field &#39;security_group_ids&#39; instead
+     * Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
      * 
      */
-    @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead */
+    @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead. */
     public Optional<Output<String>> securityGroupId() {
         return Optional.ofNullable(this.securityGroupId);
     }
@@ -694,7 +791,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-     * &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+     * &gt; **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
      * 
      */
     @Import(name="socEnabled")
@@ -702,7 +799,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-     * &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+     * &gt; **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
      * 
      */
     public Optional<Output<Boolean>> socEnabled() {
@@ -710,14 +807,44 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
+     * The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
+     * 
+     */
+    @Import(name="spotInstancePools")
+    private @Nullable Output<Integer> spotInstancePools;
+
+    /**
+     * @return The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
+     * 
+     */
+    public Optional<Output<Integer>> spotInstancePools() {
+        return Optional.ofNullable(this.spotInstancePools);
+    }
+
+    /**
+     * Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
+     * 
+     */
+    @Import(name="spotInstanceRemedy")
+    private @Nullable Output<Boolean> spotInstanceRemedy;
+
+    /**
+     * @return Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
+     * 
+     */
+    public Optional<Output<Boolean>> spotInstanceRemedy() {
+        return Optional.ofNullable(this.spotInstanceRemedy);
+    }
+
+    /**
+     * The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
      * 
      */
     @Import(name="spotPriceLimits")
     private @Nullable Output<List<NodePoolSpotPriceLimitArgs>> spotPriceLimits;
 
     /**
-     * @return The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
+     * @return The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
      * 
      */
     public Optional<Output<List<NodePoolSpotPriceLimitArgs>>> spotPriceLimits() {
@@ -725,14 +852,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
+     * The preemptible instance type. Value:
      * 
      */
     @Import(name="spotStrategy")
     private @Nullable Output<String> spotStrategy;
 
     /**
-     * @return The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
+     * @return The preemptible instance type. Value:
      * 
      */
     public Optional<Output<String>> spotStrategy() {
@@ -740,14 +867,44 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
+     * Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+     * 
+     */
+    @Import(name="systemDiskBurstingEnabled")
+    private @Nullable Output<Boolean> systemDiskBurstingEnabled;
+
+    /**
+     * @return Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+     * 
+     */
+    public Optional<Output<Boolean>> systemDiskBurstingEnabled() {
+        return Optional.ofNullable(this.systemDiskBurstingEnabled);
+    }
+
+    /**
+     * The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+     * 
+     */
+    @Import(name="systemDiskCategories")
+    private @Nullable Output<List<String>> systemDiskCategories;
+
+    /**
+     * @return The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+     * 
+     */
+    public Optional<Output<List<String>>> systemDiskCategories() {
+        return Optional.ofNullable(this.systemDiskCategories);
+    }
+
+    /**
+     * The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
      * 
      */
     @Import(name="systemDiskCategory")
     private @Nullable Output<String> systemDiskCategory;
 
     /**
-     * @return The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
+     * @return The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
      * 
      */
     public Optional<Output<String>> systemDiskCategory() {
@@ -755,14 +912,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
+     * The encryption algorithm used by the system disk. Value range: aes-256.
      * 
      */
     @Import(name="systemDiskEncryptAlgorithm")
     private @Nullable Output<String> systemDiskEncryptAlgorithm;
 
     /**
-     * @return The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
+     * @return The encryption algorithm used by the system disk. Value range: aes-256.
      * 
      */
     public Optional<Output<String>> systemDiskEncryptAlgorithm() {
@@ -770,14 +927,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable system disk encryption.
+     * Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
      * 
      */
     @Import(name="systemDiskEncrypted")
     private @Nullable Output<Boolean> systemDiskEncrypted;
 
     /**
-     * @return Whether to enable system disk encryption.
+     * @return Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
      * 
      */
     public Optional<Output<Boolean>> systemDiskEncrypted() {
@@ -785,14 +942,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+     * The ID of the KMS key used by the system disk.
      * 
      */
     @Import(name="systemDiskKmsKey")
     private @Nullable Output<String> systemDiskKmsKey;
 
     /**
-     * @return The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+     * @return The ID of the KMS key used by the system disk.
      * 
      */
     public Optional<Output<String>> systemDiskKmsKey() {
@@ -800,18 +957,33 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
+     * The system disk performance of the node takes effect only for the ESSD disk.
      * 
      */
     @Import(name="systemDiskPerformanceLevel")
     private @Nullable Output<String> systemDiskPerformanceLevel;
 
     /**
-     * @return The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
+     * @return The system disk performance of the node takes effect only for the ESSD disk.
      * 
      */
     public Optional<Output<String>> systemDiskPerformanceLevel() {
         return Optional.ofNullable(this.systemDiskPerformanceLevel);
+    }
+
+    /**
+     * The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+     * 
+     */
+    @Import(name="systemDiskProvisionedIops")
+    private @Nullable Output<Integer> systemDiskProvisionedIops;
+
+    /**
+     * @return The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+     * 
+     */
+    public Optional<Output<Integer>> systemDiskProvisionedIops() {
+        return Optional.ofNullable(this.systemDiskProvisionedIops);
     }
 
     /**
@@ -830,14 +1002,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The system disk snapshot policy id.
+     * The ID of the automatic snapshot policy used by the system disk.
      * 
      */
     @Import(name="systemDiskSnapshotPolicyId")
     private @Nullable Output<String> systemDiskSnapshotPolicyId;
 
     /**
-     * @return The system disk snapshot policy id.
+     * @return The ID of the automatic snapshot policy used by the system disk.
      * 
      */
     public Optional<Output<String>> systemDiskSnapshotPolicyId() {
@@ -845,14 +1017,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
+     * Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
+     * @return Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -875,14 +1047,29 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+     * The configuration about confidential computing for the cluster. See `tee_config` below.
+     * 
+     */
+    @Import(name="teeConfig")
+    private @Nullable Output<NodePoolTeeConfigArgs> teeConfig;
+
+    /**
+     * @return The configuration about confidential computing for the cluster. See `tee_config` below.
+     * 
+     */
+    public Optional<Output<NodePoolTeeConfigArgs>> teeConfig() {
+        return Optional.ofNullable(this.teeConfig);
+    }
+
+    /**
+     * Whether the node after expansion can be scheduled.
      * 
      */
     @Import(name="unschedulable")
     private @Nullable Output<Boolean> unschedulable;
 
     /**
-     * @return Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+     * @return Whether the node after expansion can be scheduled.
      * 
      */
     public Optional<Output<Boolean>> unschedulable() {
@@ -890,14 +1077,14 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+     * Node custom data.
      * 
      */
     @Import(name="userData")
     private @Nullable Output<String> userData;
 
     /**
-     * @return Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+     * @return Node custom data.
      * 
      */
     public Optional<Output<String>> userData() {
@@ -926,10 +1113,12 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.autoRenewPeriod = $.autoRenewPeriod;
         this.cisEnabled = $.cisEnabled;
         this.clusterId = $.clusterId;
+        this.compensateWithOnDemand = $.compensateWithOnDemand;
         this.cpuPolicy = $.cpuPolicy;
         this.dataDisks = $.dataDisks;
         this.deploymentSetId = $.deploymentSetId;
         this.desiredSize = $.desiredSize;
+        this.forceDelete = $.forceDelete;
         this.formatDisk = $.formatDisk;
         this.imageId = $.imageId;
         this.imageType = $.imageType;
@@ -945,19 +1134,23 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.kmsEncryptionContext = $.kmsEncryptionContext;
         this.kubeletConfiguration = $.kubeletConfiguration;
         this.labels = $.labels;
+        this.loginAsNonRoot = $.loginAsNonRoot;
         this.management = $.management;
+        this.multiAzPolicy = $.multiAzPolicy;
         this.name = $.name;
         this.nodeCount = $.nodeCount;
         this.nodeNameMode = $.nodeNameMode;
+        this.nodePoolName = $.nodePoolName;
+        this.onDemandBaseCapacity = $.onDemandBaseCapacity;
+        this.onDemandPercentageAboveBaseCapacity = $.onDemandPercentageAboveBaseCapacity;
         this.password = $.password;
         this.period = $.period;
         this.periodUnit = $.periodUnit;
         this.platform = $.platform;
-        this.polardbIds = $.polardbIds;
+        this.privatePoolOptions = $.privatePoolOptions;
         this.rdsInstances = $.rdsInstances;
         this.resourceGroupId = $.resourceGroupId;
         this.rollingPolicy = $.rollingPolicy;
-        this.rolloutPolicy = $.rolloutPolicy;
         this.runtimeName = $.runtimeName;
         this.runtimeVersion = $.runtimeVersion;
         this.scalingConfig = $.scalingConfig;
@@ -965,17 +1158,23 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.securityGroupId = $.securityGroupId;
         this.securityGroupIds = $.securityGroupIds;
         this.socEnabled = $.socEnabled;
+        this.spotInstancePools = $.spotInstancePools;
+        this.spotInstanceRemedy = $.spotInstanceRemedy;
         this.spotPriceLimits = $.spotPriceLimits;
         this.spotStrategy = $.spotStrategy;
+        this.systemDiskBurstingEnabled = $.systemDiskBurstingEnabled;
+        this.systemDiskCategories = $.systemDiskCategories;
         this.systemDiskCategory = $.systemDiskCategory;
         this.systemDiskEncryptAlgorithm = $.systemDiskEncryptAlgorithm;
         this.systemDiskEncrypted = $.systemDiskEncrypted;
         this.systemDiskKmsKey = $.systemDiskKmsKey;
         this.systemDiskPerformanceLevel = $.systemDiskPerformanceLevel;
+        this.systemDiskProvisionedIops = $.systemDiskProvisionedIops;
         this.systemDiskSize = $.systemDiskSize;
         this.systemDiskSnapshotPolicyId = $.systemDiskSnapshotPolicyId;
         this.tags = $.tags;
         this.taints = $.taints;
+        this.teeConfig = $.teeConfig;
         this.unschedulable = $.unschedulable;
         this.userData = $.userData;
         this.vswitchIds = $.vswitchIds;
@@ -1000,7 +1199,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Enable Node payment auto-renew, default is `false`.
+         * @param autoRenew Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
          * 
          * @return builder
          * 
@@ -1011,7 +1210,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Enable Node payment auto-renew, default is `false`.
+         * @param autoRenew Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
          * 
          * @return builder
          * 
@@ -1021,7 +1220,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+         * @param autoRenewPeriod The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
          * 
          * @return builder
          * 
@@ -1032,7 +1231,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
+         * @param autoRenewPeriod The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
          * 
          * @return builder
          * 
@@ -1084,7 +1283,28 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpuPolicy Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+         * @param compensateWithOnDemand Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compensateWithOnDemand(@Nullable Output<Boolean> compensateWithOnDemand) {
+            $.compensateWithOnDemand = compensateWithOnDemand;
+            return this;
+        }
+
+        /**
+         * @param compensateWithOnDemand Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compensateWithOnDemand(Boolean compensateWithOnDemand) {
+            return compensateWithOnDemand(Output.of(compensateWithOnDemand));
+        }
+
+        /**
+         * @param cpuPolicy Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
          * 
          * @return builder
          * 
@@ -1095,7 +1315,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cpuPolicy Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
+         * @param cpuPolicy Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
          * 
          * @return builder
          * 
@@ -1105,7 +1325,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
+         * @param dataDisks Configure the data disk of the node in the node pool. See `data_disks` below.
          * 
          * @return builder
          * 
@@ -1116,7 +1336,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
+         * @param dataDisks Configure the data disk of the node in the node pool. See `data_disks` below.
          * 
          * @return builder
          * 
@@ -1126,7 +1346,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
+         * @param dataDisks Configure the data disk of the node in the node pool. See `data_disks` below.
          * 
          * @return builder
          * 
@@ -1157,7 +1377,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredSize The desired size of nodes of the node pool. From version 1.158.0, `desired_size` is not required.
+         * @param desiredSize Number of expected nodes in the node pool.
          * 
          * @return builder
          * 
@@ -1168,13 +1388,34 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredSize The desired size of nodes of the node pool. From version 1.158.0, `desired_size` is not required.
+         * @param desiredSize Number of expected nodes in the node pool.
          * 
          * @return builder
          * 
          */
         public Builder desiredSize(Integer desiredSize) {
             return desiredSize(Output.of(desiredSize));
+        }
+
+        /**
+         * @param forceDelete Whether to force deletion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Whether to force deletion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(Boolean forceDelete) {
+            return forceDelete(Output.of(forceDelete));
         }
 
         /**
@@ -1199,7 +1440,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId Custom Image support. Must based on CentOS7 or AliyunLinux2.
+         * @param imageId The custom image ID. The system-provided image is used by default.
          * 
          * @return builder
          * 
@@ -1210,7 +1451,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId Custom Image support. Must based on CentOS7 or AliyunLinux2.
+         * @param imageId The custom image ID. The system-provided image is used by default.
          * 
          * @return builder
          * 
@@ -1220,7 +1461,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageType The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+         * @param imageType The operating system image type and the `platform` parameter can be selected from the following values:
          * 
          * @return builder
          * 
@@ -1231,7 +1472,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageType The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
+         * @param imageType The operating system image type and the `platform` parameter can be selected from the following values:
          * 
          * @return builder
          * 
@@ -1241,7 +1482,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param installCloudMonitor Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
+         * @param installCloudMonitor Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -1252,7 +1493,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param installCloudMonitor Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
+         * @param installCloudMonitor Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -1283,7 +1524,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceTypes The instance type of worker node.
+         * @param instanceTypes In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
          * 
          * @return builder
          * 
@@ -1294,7 +1535,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceTypes The instance type of worker node.
+         * @param instanceTypes In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
          * 
          * @return builder
          * 
@@ -1304,7 +1545,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceTypes The instance type of worker node.
+         * @param instanceTypes In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
          * 
          * @return builder
          * 
@@ -1345,7 +1586,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+         * @param internetChargeType The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
          * 
          * @return builder
          * 
@@ -1356,7 +1597,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
+         * @param internetChargeType The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
          * 
          * @return builder
          * 
@@ -1366,7 +1607,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetMaxBandwidthOut The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+         * @param internetMaxBandwidthOut The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
          * 
          * @return builder
          * 
@@ -1377,7 +1618,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetMaxBandwidthOut The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
+         * @param internetMaxBandwidthOut The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\[1,100\].
          * 
          * @return builder
          * 
@@ -1408,7 +1649,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyName The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
+         * @param keyName The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
          * 
          * @return builder
          * 
@@ -1419,7 +1660,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyName The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
+         * @param keyName The name of the key pair. When the node pool is a managed node pool, only `key_name` is supported.
          * 
          * @return builder
          * 
@@ -1471,7 +1712,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kubeletConfiguration Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+         * @param kubeletConfiguration Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubelet_configuration` below.
          * 
          * @return builder
          * 
@@ -1482,7 +1723,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kubeletConfiguration Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
+         * @param kubeletConfiguration Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/). See `kubelet_configuration` below.
          * 
          * @return builder
          * 
@@ -1523,7 +1764,28 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param management Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. See `management` below.
+         * @param loginAsNonRoot Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loginAsNonRoot(@Nullable Output<Boolean> loginAsNonRoot) {
+            $.loginAsNonRoot = loginAsNonRoot;
+            return this;
+        }
+
+        /**
+         * @param loginAsNonRoot Whether the ECS instance is logged on as a ecs-user user. Valid value: `true` and `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loginAsNonRoot(Boolean loginAsNonRoot) {
+            return loginAsNonRoot(Output.of(loginAsNonRoot));
+        }
+
+        /**
+         * @param management Managed node pool configuration. See `management` below.
          * 
          * @return builder
          * 
@@ -1534,7 +1796,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param management Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. See `management` below.
+         * @param management Managed node pool configuration. See `management` below.
          * 
          * @return builder
          * 
@@ -1544,22 +1806,51 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of node pool.
+         * @param multiAzPolicy The scaling policy for ECS instances in a multi-zone scaling group. Valid value: `PRIORITY`, `COST_OPTIMIZED` and `BALANCE`. `PRIORITY`: scales the capacity according to the virtual switches you define (VSwitchIds.N). When an ECS instance cannot be created in the zone where the higher-priority vSwitch is located, the next-priority vSwitch is automatically used to create an ECS instance. `COST_OPTIMIZED`: try to create by vCPU unit price from low to high. When the scaling configuration is configured with multiple instances of preemptible billing, preemptible instances are created first. You can continue to use the `CompensateWithOnDemand` parameter to specify whether to automatically try to create a preemptible instance by paying for it. It takes effect only when the scaling configuration has multi-instance specifications or preemptible instances. `BALANCE`: distributes ECS instances evenly among the multi-zone specified by the scaling group. If the zones become unbalanced due to insufficient inventory, you can use the API RebalanceInstances to balance resources.
          * 
          * @return builder
          * 
          */
+        public Builder multiAzPolicy(@Nullable Output<String> multiAzPolicy) {
+            $.multiAzPolicy = multiAzPolicy;
+            return this;
+        }
+
+        /**
+         * @param multiAzPolicy The scaling policy for ECS instances in a multi-zone scaling group. Valid value: `PRIORITY`, `COST_OPTIMIZED` and `BALANCE`. `PRIORITY`: scales the capacity according to the virtual switches you define (VSwitchIds.N). When an ECS instance cannot be created in the zone where the higher-priority vSwitch is located, the next-priority vSwitch is automatically used to create an ECS instance. `COST_OPTIMIZED`: try to create by vCPU unit price from low to high. When the scaling configuration is configured with multiple instances of preemptible billing, preemptible instances are created first. You can continue to use the `CompensateWithOnDemand` parameter to specify whether to automatically try to create a preemptible instance by paying for it. It takes effect only when the scaling configuration has multi-instance specifications or preemptible instances. `BALANCE`: distributes ECS instances evenly among the multi-zone specified by the scaling group. If the zones become unbalanced due to insufficient inventory, you can use the API RebalanceInstances to balance resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiAzPolicy(String multiAzPolicy) {
+            return multiAzPolicy(Output.of(multiAzPolicy));
+        }
+
+        /**
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated since provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of node pool.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated since provider version 1.219.0. New field &#39;node_pool_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -1594,7 +1885,10 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeNameMode Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,&lt;prefix&gt;,ip,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,ip,-test&#34;, if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
+         * @param nodeNameMode Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.
+         * - The prefix and suffix can be composed of one or more parts separated by &#39;.&#39;, each part can use lowercase letters, numbers and &#39;-&#39;, and the beginning and end of the node name must be lowercase letters and numbers.
+         * - The node IP address is the complete private IP address of the node.
+         * - For example, if the string `customized,aliyun,ip,com` is passed in (where &#39;customized&#39; and &#39;ip&#39; are fixed strings, &#39;aliyun&#39; is the prefix, and &#39;com&#39; is the suffix), the name of the node is `aliyun.192.168.xxx.xxx.com`.
          * 
          * @return builder
          * 
@@ -1605,7 +1899,10 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeNameMode Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,&lt;prefix&gt;,ip,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,ip,-test&#34;, if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
+         * @param nodeNameMode Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.
+         * - The prefix and suffix can be composed of one or more parts separated by &#39;.&#39;, each part can use lowercase letters, numbers and &#39;-&#39;, and the beginning and end of the node name must be lowercase letters and numbers.
+         * - The node IP address is the complete private IP address of the node.
+         * - For example, if the string `customized,aliyun,ip,com` is passed in (where &#39;customized&#39; and &#39;ip&#39; are fixed strings, &#39;aliyun&#39; is the prefix, and &#39;com&#39; is the suffix), the name of the node is `aliyun.192.168.xxx.xxx.com`.
          * 
          * @return builder
          * 
@@ -1615,7 +1912,70 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+         * @param nodePoolName The name of node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodePoolName(@Nullable Output<String> nodePoolName) {
+            $.nodePoolName = nodePoolName;
+            return this;
+        }
+
+        /**
+         * @param nodePoolName The name of node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodePoolName(String nodePoolName) {
+            return nodePoolName(Output.of(nodePoolName));
+        }
+
+        /**
+         * @param onDemandBaseCapacity The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDemandBaseCapacity(@Nullable Output<Integer> onDemandBaseCapacity) {
+            $.onDemandBaseCapacity = onDemandBaseCapacity;
+            return this;
+        }
+
+        /**
+         * @param onDemandBaseCapacity The minimum number of pay-as-you-go instances that must be kept in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferably creates pay-as-you-go instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDemandBaseCapacity(Integer onDemandBaseCapacity) {
+            return onDemandBaseCapacity(Output.of(onDemandBaseCapacity));
+        }
+
+        /**
+         * @param onDemandPercentageAboveBaseCapacity The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDemandPercentageAboveBaseCapacity(@Nullable Output<Integer> onDemandPercentageAboveBaseCapacity) {
+            $.onDemandPercentageAboveBaseCapacity = onDemandPercentageAboveBaseCapacity;
+            return this;
+        }
+
+        /**
+         * @param onDemandPercentageAboveBaseCapacity The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDemandPercentageAboveBaseCapacity(Integer onDemandPercentageAboveBaseCapacity) {
+            return onDemandPercentageAboveBaseCapacity(Output.of(onDemandPercentageAboveBaseCapacity));
+        }
+
+        /**
+         * @param password The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
          * 
          * @return builder
          * 
@@ -1626,7 +1986,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+         * @param password The password of ssh login. You have to specify one of `password` and `key_name` fields. The password rule is 8 to 30 characters and contains at least three items (upper and lower case letters, numbers, and special symbols).
          * 
          * @return builder
          * 
@@ -1636,7 +1996,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+         * @param period Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
          * 
          * @return builder
          * 
@@ -1647,7 +2007,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+         * @param period Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
          * 
          * @return builder
          * 
@@ -1678,67 +2038,57 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param platform The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
+         * @param platform Operating system release, using `image_type` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;platform&#39; has been deprecated from provider version 1.145.0. New field &#39;image_type&#39; instead
+         * Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.
          * 
          */
-        @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead */
+        @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead. */
         public Builder platform(@Nullable Output<String> platform) {
             $.platform = platform;
             return this;
         }
 
         /**
-         * @param platform The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
+         * @param platform Operating system release, using `image_type` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;platform&#39; has been deprecated from provider version 1.145.0. New field &#39;image_type&#39; instead
+         * Field &#39;platform&#39; has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.
          * 
          */
-        @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead */
+        @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead. */
         public Builder platform(String platform) {
             return platform(Output.of(platform));
         }
 
         /**
-         * @param polardbIds PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+         * @param privatePoolOptions Private node pool configuration. See `private_pool_options` below.
          * 
          * @return builder
          * 
          */
-        public Builder polardbIds(@Nullable Output<List<String>> polardbIds) {
-            $.polardbIds = polardbIds;
+        public Builder privatePoolOptions(@Nullable Output<NodePoolPrivatePoolOptionsArgs> privatePoolOptions) {
+            $.privatePoolOptions = privatePoolOptions;
             return this;
         }
 
         /**
-         * @param polardbIds PolarDB id list, You can choose which PolarDB whitelist to add instances to.
+         * @param privatePoolOptions Private node pool configuration. See `private_pool_options` below.
          * 
          * @return builder
          * 
          */
-        public Builder polardbIds(List<String> polardbIds) {
-            return polardbIds(Output.of(polardbIds));
+        public Builder privatePoolOptions(NodePoolPrivatePoolOptionsArgs privatePoolOptions) {
+            return privatePoolOptions(Output.of(privatePoolOptions));
         }
 
         /**
-         * @param polardbIds PolarDB id list, You can choose which PolarDB whitelist to add instances to.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder polardbIds(String... polardbIds) {
-            return polardbIds(List.of(polardbIds));
-        }
-
-        /**
-         * @param rdsInstances RDS instance list, You can choose which RDS instances whitelist to add instances to.
+         * @param rdsInstances The list of RDS instances.
          * 
          * @return builder
          * 
@@ -1749,7 +2099,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rdsInstances RDS instance list, You can choose which RDS instances whitelist to add instances to.
+         * @param rdsInstances The list of RDS instances.
          * 
          * @return builder
          * 
@@ -1759,7 +2109,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rdsInstances RDS instance list, You can choose which RDS instances whitelist to add instances to.
+         * @param rdsInstances The list of RDS instances.
          * 
          * @return builder
          * 
@@ -1769,7 +2119,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+         * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
          * 
@@ -1780,7 +2130,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
+         * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
          * 
@@ -1790,7 +2140,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rollingPolicy Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rolling_policy` below.
+         * @param rollingPolicy Rotary configuration. See `rolling_policy` below.
          * 
          * @return builder
          * 
@@ -1801,42 +2151,13 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rollingPolicy Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rolling_policy` below.
+         * @param rollingPolicy Rotary configuration. See `rolling_policy` below.
          * 
          * @return builder
          * 
          */
         public Builder rollingPolicy(NodePoolRollingPolicyArgs rollingPolicy) {
             return rollingPolicy(Output.of(rollingPolicy));
-        }
-
-        /**
-         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0. See `rollout_policy` below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;rollout_policy&#39; has been deprecated from provider version 1.184.0. Please use new field &#39;rolling_policy&#39; instead it to ensure the config takes effect
-         * 
-         */
-        @Deprecated /* Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect */
-        public Builder rolloutPolicy(@Nullable Output<NodePoolRolloutPolicyArgs> rolloutPolicy) {
-            $.rolloutPolicy = rolloutPolicy;
-            return this;
-        }
-
-        /**
-         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0. See `rollout_policy` below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;rollout_policy&#39; has been deprecated from provider version 1.184.0. Please use new field &#39;rolling_policy&#39; instead it to ensure the config takes effect
-         * 
-         */
-        @Deprecated /* Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect */
-        public Builder rolloutPolicy(NodePoolRolloutPolicyArgs rolloutPolicy) {
-            return rolloutPolicy(Output.of(rolloutPolicy));
         }
 
         /**
@@ -1882,7 +2203,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scalingConfig Auto scaling node pool configuration. See `scaling_config` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+         * @param scalingConfig Automatic scaling configuration. See `scaling_config` below.
          * 
          * @return builder
          * 
@@ -1893,7 +2214,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scalingConfig Auto scaling node pool configuration. See `scaling_config` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
+         * @param scalingConfig Automatic scaling configuration. See `scaling_config` below.
          * 
          * @return builder
          * 
@@ -1903,7 +2224,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scalingPolicy The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+         * @param scalingPolicy Scaling group mode, default value: `release`. Valid values:
          * 
          * @return builder
          * 
@@ -1914,7 +2235,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scalingPolicy The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
+         * @param scalingPolicy Scaling group mode, default value: `release`. Valid values:
          * 
          * @return builder
          * 
@@ -1924,30 +2245,30 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
+         * @param securityGroupId The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. New field &#39;security_group_ids&#39; instead
+         * Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
          * 
          */
-        @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead */
+        @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead. */
         public Builder securityGroupId(@Nullable Output<String> securityGroupId) {
             $.securityGroupId = securityGroupId;
             return this;
         }
 
         /**
-         * @param securityGroupId The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
+         * @param securityGroupId The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. New field &#39;security_group_ids&#39; instead
+         * Field &#39;security_group_id&#39; has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
          * 
          */
-        @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead */
+        @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead. */
         public Builder securityGroupId(String securityGroupId) {
             return securityGroupId(Output.of(securityGroupId));
         }
@@ -1985,7 +2306,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param socEnabled Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-         * &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+         * &gt; **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
          * 
          * @return builder
          * 
@@ -1997,7 +2318,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param socEnabled Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-         * &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+         * &gt; **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
          * 
          * @return builder
          * 
@@ -2007,7 +2328,49 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotPriceLimits The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
+         * @param spotInstancePools The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotInstancePools(@Nullable Output<Integer> spotInstancePools) {
+            $.spotInstancePools = spotInstancePools;
+            return this;
+        }
+
+        /**
+         * @param spotInstancePools The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotInstancePools(Integer spotInstancePools) {
+            return spotInstancePools(Output.of(spotInstancePools));
+        }
+
+        /**
+         * @param spotInstanceRemedy Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotInstanceRemedy(@Nullable Output<Boolean> spotInstanceRemedy) {
+            $.spotInstanceRemedy = spotInstanceRemedy;
+            return this;
+        }
+
+        /**
+         * @param spotInstanceRemedy Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotInstanceRemedy(Boolean spotInstanceRemedy) {
+            return spotInstanceRemedy(Output.of(spotInstanceRemedy));
+        }
+
+        /**
+         * @param spotPriceLimits The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
          * 
          * @return builder
          * 
@@ -2018,7 +2381,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotPriceLimits The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
+         * @param spotPriceLimits The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
          * 
          * @return builder
          * 
@@ -2028,7 +2391,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotPriceLimits The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
+         * @param spotPriceLimits The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
          * 
          * @return builder
          * 
@@ -2038,7 +2401,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotStrategy The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
+         * @param spotStrategy The preemptible instance type. Value:
          * 
          * @return builder
          * 
@@ -2049,7 +2412,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotStrategy The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
+         * @param spotStrategy The preemptible instance type. Value:
          * 
          * @return builder
          * 
@@ -2059,7 +2422,59 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskCategory The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
+         * @param systemDiskBurstingEnabled Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskBurstingEnabled(@Nullable Output<Boolean> systemDiskBurstingEnabled) {
+            $.systemDiskBurstingEnabled = systemDiskBurstingEnabled;
+            return this;
+        }
+
+        /**
+         * @param systemDiskBurstingEnabled Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskBurstingEnabled(Boolean systemDiskBurstingEnabled) {
+            return systemDiskBurstingEnabled(Output.of(systemDiskBurstingEnabled));
+        }
+
+        /**
+         * @param systemDiskCategories The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskCategories(@Nullable Output<List<String>> systemDiskCategories) {
+            $.systemDiskCategories = systemDiskCategories;
+            return this;
+        }
+
+        /**
+         * @param systemDiskCategories The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskCategories(List<String> systemDiskCategories) {
+            return systemDiskCategories(Output.of(systemDiskCategories));
+        }
+
+        /**
+         * @param systemDiskCategories The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskCategories(String... systemDiskCategories) {
+            return systemDiskCategories(List.of(systemDiskCategories));
+        }
+
+        /**
+         * @param systemDiskCategory The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
          * 
          * @return builder
          * 
@@ -2070,7 +2485,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskCategory The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
+         * @param systemDiskCategory The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
          * 
          * @return builder
          * 
@@ -2080,7 +2495,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskEncryptAlgorithm The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
+         * @param systemDiskEncryptAlgorithm The encryption algorithm used by the system disk. Value range: aes-256.
          * 
          * @return builder
          * 
@@ -2091,7 +2506,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskEncryptAlgorithm The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
+         * @param systemDiskEncryptAlgorithm The encryption algorithm used by the system disk. Value range: aes-256.
          * 
          * @return builder
          * 
@@ -2101,7 +2516,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskEncrypted Whether to enable system disk encryption.
+         * @param systemDiskEncrypted Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
          * 
          * @return builder
          * 
@@ -2112,7 +2527,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskEncrypted Whether to enable system disk encryption.
+         * @param systemDiskEncrypted Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
          * 
          * @return builder
          * 
@@ -2122,7 +2537,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskKmsKey The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+         * @param systemDiskKmsKey The ID of the KMS key used by the system disk.
          * 
          * @return builder
          * 
@@ -2133,7 +2548,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskKmsKey The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
+         * @param systemDiskKmsKey The ID of the KMS key used by the system disk.
          * 
          * @return builder
          * 
@@ -2143,7 +2558,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskPerformanceLevel The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
+         * @param systemDiskPerformanceLevel The system disk performance of the node takes effect only for the ESSD disk.
          * 
          * @return builder
          * 
@@ -2154,13 +2569,34 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskPerformanceLevel The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
+         * @param systemDiskPerformanceLevel The system disk performance of the node takes effect only for the ESSD disk.
          * 
          * @return builder
          * 
          */
         public Builder systemDiskPerformanceLevel(String systemDiskPerformanceLevel) {
             return systemDiskPerformanceLevel(Output.of(systemDiskPerformanceLevel));
+        }
+
+        /**
+         * @param systemDiskProvisionedIops The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskProvisionedIops(@Nullable Output<Integer> systemDiskProvisionedIops) {
+            $.systemDiskProvisionedIops = systemDiskProvisionedIops;
+            return this;
+        }
+
+        /**
+         * @param systemDiskProvisionedIops The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskProvisionedIops(Integer systemDiskProvisionedIops) {
+            return systemDiskProvisionedIops(Output.of(systemDiskProvisionedIops));
         }
 
         /**
@@ -2185,7 +2621,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskSnapshotPolicyId The system disk snapshot policy id.
+         * @param systemDiskSnapshotPolicyId The ID of the automatic snapshot policy used by the system disk.
          * 
          * @return builder
          * 
@@ -2196,7 +2632,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDiskSnapshotPolicyId The system disk snapshot policy id.
+         * @param systemDiskSnapshotPolicyId The ID of the automatic snapshot policy used by the system disk.
          * 
          * @return builder
          * 
@@ -2206,7 +2642,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
+         * @param tags Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
          * 
          * @return builder
          * 
@@ -2217,7 +2653,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
+         * @param tags Add tags only for ECS instances.  The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
          * 
          * @return builder
          * 
@@ -2258,7 +2694,28 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unschedulable Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+         * @param teeConfig The configuration about confidential computing for the cluster. See `tee_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder teeConfig(@Nullable Output<NodePoolTeeConfigArgs> teeConfig) {
+            $.teeConfig = teeConfig;
+            return this;
+        }
+
+        /**
+         * @param teeConfig The configuration about confidential computing for the cluster. See `tee_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder teeConfig(NodePoolTeeConfigArgs teeConfig) {
+            return teeConfig(Output.of(teeConfig));
+        }
+
+        /**
+         * @param unschedulable Whether the node after expansion can be scheduled.
          * 
          * @return builder
          * 
@@ -2269,7 +2726,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unschedulable Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
+         * @param unschedulable Whether the node after expansion can be scheduled.
          * 
          * @return builder
          * 
@@ -2279,7 +2736,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userData Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+         * @param userData Node custom data.
          * 
          * @return builder
          * 
@@ -2290,7 +2747,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userData Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
+         * @param userData Node custom data.
          * 
          * @return builder
          * 

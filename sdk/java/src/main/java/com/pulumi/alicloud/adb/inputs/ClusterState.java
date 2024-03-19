@@ -5,6 +5,7 @@ package com.pulumi.alicloud.adb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -165,6 +166,13 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    @Import(name="diskEncryption")
+    private @Nullable Output<Boolean> diskEncryption;
+
+    public Optional<Output<Boolean>> diskEncryption() {
+        return Optional.ofNullable(this.diskEncryption);
+    }
+
     @Import(name="diskPerformanceLevel")
     private @Nullable Output<String> diskPerformanceLevel;
 
@@ -184,6 +192,13 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> elasticIoResourceSize() {
         return Optional.ofNullable(this.elasticIoResourceSize);
+    }
+
+    @Import(name="kmsId")
+    private @Nullable Output<String> kmsId;
+
+    public Optional<Output<String>> kmsId() {
+        return Optional.ofNullable(this.kmsId);
     }
 
     /**
@@ -400,9 +415,11 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.dbNodeCount = $.dbNodeCount;
         this.dbNodeStorage = $.dbNodeStorage;
         this.description = $.description;
+        this.diskEncryption = $.diskEncryption;
         this.diskPerformanceLevel = $.diskPerformanceLevel;
         this.elasticIoResource = $.elasticIoResource;
         this.elasticIoResourceSize = $.elasticIoResourceSize;
+        this.kmsId = $.kmsId;
         this.maintainTime = $.maintainTime;
         this.mode = $.mode;
         this.modifyType = $.modifyType;
@@ -640,6 +657,15 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        public Builder diskEncryption(@Nullable Output<Boolean> diskEncryption) {
+            $.diskEncryption = diskEncryption;
+            return this;
+        }
+
+        public Builder diskEncryption(Boolean diskEncryption) {
+            return diskEncryption(Output.of(diskEncryption));
+        }
+
         public Builder diskPerformanceLevel(@Nullable Output<String> diskPerformanceLevel) {
             $.diskPerformanceLevel = diskPerformanceLevel;
             return this;
@@ -665,6 +691,15 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         public Builder elasticIoResourceSize(String elasticIoResourceSize) {
             return elasticIoResourceSize(Output.of(elasticIoResourceSize));
+        }
+
+        public Builder kmsId(@Nullable Output<String> kmsId) {
+            $.kmsId = kmsId;
+            return this;
+        }
+
+        public Builder kmsId(String kmsId) {
+            return kmsId(Output.of(kmsId));
         }
 
         /**

@@ -779,6 +779,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "apigateway/pluginAttachment",
+  "fqn": "pulumi_alicloud.apigateway",
+  "classes": {
+   "alicloud:apigateway/pluginAttachment:PluginAttachment": "PluginAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "apigateway/vpcAccess",
   "fqn": "pulumi_alicloud.apigateway",
   "classes": {
@@ -4455,6 +4463,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.log",
   "classes": {
    "alicloud:log/alert:Alert": "Alert"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "log/alertResource",
+  "fqn": "pulumi_alicloud.log",
+  "classes": {
+   "alicloud:log/alertResource:AlertResource": "AlertResource"
   }
  },
  {

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:log/alert:Alert":
 		r = &Alert{}
+	case "alicloud:log/alertResource:AlertResource":
+		r = &AlertResource{}
 	case "alicloud:log/audit:Audit":
 		r = &Audit{}
 	case "alicloud:log/dashboard:Dashboard":
@@ -67,6 +69,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"log/alert",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"log/alertResource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -24,7 +24,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Protocol version. Value:
-     * - **ipv4**:IPv4 type.
+     * - **Ipv4**:IPv4 type.
      * - **DualStack**: Double Stack type.
      * 
      */
@@ -33,7 +33,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Protocol version. Value:
-     * - **ipv4**:IPv4 type.
+     * - **Ipv4**:IPv4 type.
      * - **DualStack**: Double Stack type.
      * 
      */
@@ -415,7 +415,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param addressIpVersion Protocol version. Value:
-         * - **ipv4**:IPv4 type.
+         * - **Ipv4**:IPv4 type.
          * - **DualStack**: Double Stack type.
          * 
          * @return builder
@@ -428,7 +428,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param addressIpVersion Protocol version. Value:
-         * - **ipv4**:IPv4 type.
+         * - **Ipv4**:IPv4 type.
          * - **DualStack**: Double Stack type.
          * 
          * @return builder

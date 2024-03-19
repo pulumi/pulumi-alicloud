@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
  *             .appDescription(name)
- *             .appName(name)
+ *             .appName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
  *             .namespaceId(defaultNamespace.id())
  *             .imageUrl(String.format(&#34;registry-vpc.%s.aliyuncs.com/sae-demo-image/consumer:1.0&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id())))
  *             .packageType(&#34;Image&#34;)

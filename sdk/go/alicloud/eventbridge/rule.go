@@ -28,17 +28,17 @@ import (
 type Rule struct {
 	pulumi.CustomResourceState
 
-	// The description of rule.
+	// The description of the event rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of event bus.
+	// The name of the event bus.
 	EventBusName pulumi.StringOutput `pulumi:"eventBusName"`
 	// The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
 	FilterPattern pulumi.StringOutput `pulumi:"filterPattern"`
-	// The name of rule.
+	// The name of the event rule.
 	RuleName pulumi.StringOutput `pulumi:"ruleName"`
-	// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+	// The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The target of rule. See `targets` below.
+	// The targets of rule. See `targets` below.
 	Targets RuleTargetArrayOutput `pulumi:"targets"`
 }
 
@@ -84,32 +84,32 @@ func GetRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Rule resources.
 type ruleState struct {
-	// The description of rule.
+	// The description of the event rule.
 	Description *string `pulumi:"description"`
-	// The name of event bus.
+	// The name of the event bus.
 	EventBusName *string `pulumi:"eventBusName"`
 	// The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
 	FilterPattern *string `pulumi:"filterPattern"`
-	// The name of rule.
+	// The name of the event rule.
 	RuleName *string `pulumi:"ruleName"`
-	// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+	// The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
 	Status *string `pulumi:"status"`
-	// The target of rule. See `targets` below.
+	// The targets of rule. See `targets` below.
 	Targets []RuleTarget `pulumi:"targets"`
 }
 
 type RuleState struct {
-	// The description of rule.
+	// The description of the event rule.
 	Description pulumi.StringPtrInput
-	// The name of event bus.
+	// The name of the event bus.
 	EventBusName pulumi.StringPtrInput
 	// The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
 	FilterPattern pulumi.StringPtrInput
-	// The name of rule.
+	// The name of the event rule.
 	RuleName pulumi.StringPtrInput
-	// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+	// The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
 	Status pulumi.StringPtrInput
-	// The target of rule. See `targets` below.
+	// The targets of rule. See `targets` below.
 	Targets RuleTargetArrayInput
 }
 
@@ -118,33 +118,33 @@ func (RuleState) ElementType() reflect.Type {
 }
 
 type ruleArgs struct {
-	// The description of rule.
+	// The description of the event rule.
 	Description *string `pulumi:"description"`
-	// The name of event bus.
+	// The name of the event bus.
 	EventBusName string `pulumi:"eventBusName"`
 	// The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
 	FilterPattern string `pulumi:"filterPattern"`
-	// The name of rule.
+	// The name of the event rule.
 	RuleName string `pulumi:"ruleName"`
-	// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+	// The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
 	Status *string `pulumi:"status"`
-	// The target of rule. See `targets` below.
+	// The targets of rule. See `targets` below.
 	Targets []RuleTarget `pulumi:"targets"`
 }
 
 // The set of arguments for constructing a Rule resource.
 type RuleArgs struct {
-	// The description of rule.
+	// The description of the event rule.
 	Description pulumi.StringPtrInput
-	// The name of event bus.
+	// The name of the event bus.
 	EventBusName pulumi.StringInput
 	// The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
 	FilterPattern pulumi.StringInput
-	// The name of rule.
+	// The name of the event rule.
 	RuleName pulumi.StringInput
-	// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+	// The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
 	Status pulumi.StringPtrInput
-	// The target of rule. See `targets` below.
+	// The targets of rule. See `targets` below.
 	Targets RuleTargetArrayInput
 }
 
@@ -235,12 +235,12 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 	return o
 }
 
-// The description of rule.
+// The description of the event rule.
 func (o RuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of event bus.
+// The name of the event bus.
 func (o RuleOutput) EventBusName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.EventBusName }).(pulumi.StringOutput)
 }
@@ -250,17 +250,17 @@ func (o RuleOutput) FilterPattern() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.FilterPattern }).(pulumi.StringOutput)
 }
 
-// The name of rule.
+// The name of the event rule.
 func (o RuleOutput) RuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.RuleName }).(pulumi.StringOutput)
 }
 
-// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+// The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
 func (o RuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The target of rule. See `targets` below.
+// The targets of rule. See `targets` below.
 func (o RuleOutput) Targets() RuleTargetArrayOutput {
 	return o.ApplyT(func(v *Rule) RuleTargetArrayOutput { return v.Targets }).(RuleTargetArrayOutput)
 }

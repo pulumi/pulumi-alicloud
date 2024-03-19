@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.cas.ServiceCertificate;
  * import com.pulumi.alicloud.cas.ServiceCertificateArgs;
  * import java.util.List;
@@ -47,7 +49,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ServiceCertificate(&#34;default&#34;, ServiceCertificateArgs.builder()        
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultServiceCertificate = new ServiceCertificate(&#34;defaultServiceCertificate&#34;, ServiceCertificateArgs.builder()        
  *             .cert(&#34;&#34;&#34;
  * -----BEGIN CERTIFICATE-----
  * MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
@@ -72,7 +79,7 @@ import javax.annotation.Nullable;
  * -----END CERTIFICATE-----
  * 
  *             &#34;&#34;&#34;)
- *             .certificateName(&#34;tf-example&#34;)
+ *             .certificateName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;tf-example-%s&#34;, result)))
  *             .key(&#34;&#34;&#34;
  * -----BEGIN PRIVATE KEY-----
  * MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDOST00lQfs8tJA

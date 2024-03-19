@@ -26,36 +26,45 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var bucketRandom = defaultRandomInteger.Result;
+    /// 
     ///     var default8j4t1R = new AliCloud.Oss.Bucket("default8j4t1R", new()
     ///     {
-    ///         BucketName = $"{name}-1",
+    ///         BucketName = bucketRandom.Apply(bucketRandom =&gt; $"{name}-1-{bucketRandom}"),
     ///         StorageClass = "Standard",
     ///     });
     /// 
     ///     var default9HMqfT = new AliCloud.Oss.Bucket("default9HMqfT", new()
     ///     {
-    ///         BucketName = $"{name}-2",
+    ///         BucketName = bucketRandom.Apply(bucketRandom =&gt; $"{name}-2-{bucketRandom}"),
     ///         StorageClass = "Standard",
     ///     });
     /// 
     ///     var defaultxBXqFQ = new AliCloud.Oss.Bucket("defaultxBXqFQ", new()
     ///     {
-    ///         BucketName = $"{name}-3",
+    ///         BucketName = bucketRandom.Apply(bucketRandom =&gt; $"{name}-3-{bucketRandom}"),
     ///         StorageClass = "Standard",
     ///     });
     /// 
     ///     var defaulthZvCmR = new AliCloud.Oss.Bucket("defaulthZvCmR", new()
     ///     {
-    ///         BucketName = $"{name}-4",
+    ///         BucketName = bucketRandom.Apply(bucketRandom =&gt; $"{name}-4-{bucketRandom}"),
     ///         StorageClass = "Standard",
     ///     });
     /// 
-    ///     var @default = new AliCloud.ThreatDetection.OssScanConfig("default", new()
+    ///     var defaultOssScanConfig = new AliCloud.ThreatDetection.OssScanConfig("defaultOssScanConfig", new()
     ///     {
     ///         KeySuffixLists = new[]
     ///         {

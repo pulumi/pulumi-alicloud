@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Nlb
     {
         /// <summary>
         /// Protocol version. Value:
-        /// - **ipv4**:IPv4 type.
+        /// - **Ipv4**:IPv4 type.
         /// - **DualStack**: Double Stack type.
         /// </summary>
         [Output("addressIpVersion")]
@@ -288,7 +288,7 @@ namespace Pulumi.AliCloud.Nlb
     {
         /// <summary>
         /// Protocol version. Value:
-        /// - **ipv4**:IPv4 type.
+        /// - **Ipv4**:IPv4 type.
         /// - **DualStack**: Double Stack type.
         /// </summary>
         [Input("addressIpVersion")]
@@ -430,7 +430,7 @@ namespace Pulumi.AliCloud.Nlb
     {
         /// <summary>
         /// Protocol version. Value:
-        /// - **ipv4**:IPv4 type.
+        /// - **Ipv4**:IPv4 type.
         /// - **DualStack**: Double Stack type.
         /// </summary>
         [Input("addressIpVersion")]

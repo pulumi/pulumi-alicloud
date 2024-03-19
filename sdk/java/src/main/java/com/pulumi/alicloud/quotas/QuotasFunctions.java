@@ -317,7 +317,7 @@ public final class QuotasFunctions {
     /**
      * This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.117.0+.
+     * &gt; **NOTE:** Available since v1.117.0.
      * 
      * ## Example Usage
      * 
@@ -330,6 +330,8 @@ public final class QuotasFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotaApplication;
+     * import com.pulumi.alicloud.quotas.QuotaApplicationArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsArgs;
      * import java.util.List;
@@ -345,12 +347,26 @@ public final class QuotasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *             .productCode(&#34;ess&#34;)
-     *             .ids(&#34;4621F886-81E9-xxxx-xxxx&#34;)
+     *         var defaultQuotaApplication = new QuotaApplication(&#34;defaultQuotaApplication&#34;, QuotaApplicationArgs.builder()        
+     *             .productCode(&#34;vpc&#34;)
+     *             .noticeType(&#34;3&#34;)
+     *             .effectiveTime(&#34;2023-05-22T16:00:00Z&#34;)
+     *             .expireTime(&#34;2024-09-15T00:08:32Z&#34;)
+     *             .desireValue(&#34;1&#34;)
+     *             .reason(&#34;&#34;)
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .auditMode(&#34;Sync&#34;)
+     *             .envLanguage(&#34;zh&#34;)
+     *             .quotaCategory(&#34;WhiteListLabel&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstQuotasQuotaApplicationId&#34;, example.applyValue(getQuotaApplicationsResult -&gt; getQuotaApplicationsResult.applications()[0].id()));
+     *         final var defaultQuotaApplications = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *             .productCode(&#34;vpc&#34;)
+     *             .enableDetails(&#34;true&#34;)
+     *             .quotaCategory(defaultQuotaApplication.quotaCategory())
+     *             .ids(defaultQuotaApplication.id())
+     *             .build());
+     * 
      *     }
      * }
      * ```
@@ -363,7 +379,7 @@ public final class QuotasFunctions {
     /**
      * This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.117.0+.
+     * &gt; **NOTE:** Available since v1.117.0.
      * 
      * ## Example Usage
      * 
@@ -376,6 +392,8 @@ public final class QuotasFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotaApplication;
+     * import com.pulumi.alicloud.quotas.QuotaApplicationArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsArgs;
      * import java.util.List;
@@ -391,12 +409,26 @@ public final class QuotasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *             .productCode(&#34;ess&#34;)
-     *             .ids(&#34;4621F886-81E9-xxxx-xxxx&#34;)
+     *         var defaultQuotaApplication = new QuotaApplication(&#34;defaultQuotaApplication&#34;, QuotaApplicationArgs.builder()        
+     *             .productCode(&#34;vpc&#34;)
+     *             .noticeType(&#34;3&#34;)
+     *             .effectiveTime(&#34;2023-05-22T16:00:00Z&#34;)
+     *             .expireTime(&#34;2024-09-15T00:08:32Z&#34;)
+     *             .desireValue(&#34;1&#34;)
+     *             .reason(&#34;&#34;)
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .auditMode(&#34;Sync&#34;)
+     *             .envLanguage(&#34;zh&#34;)
+     *             .quotaCategory(&#34;WhiteListLabel&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstQuotasQuotaApplicationId&#34;, example.applyValue(getQuotaApplicationsResult -&gt; getQuotaApplicationsResult.applications()[0].id()));
+     *         final var defaultQuotaApplications = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *             .productCode(&#34;vpc&#34;)
+     *             .enableDetails(&#34;true&#34;)
+     *             .quotaCategory(defaultQuotaApplication.quotaCategory())
+     *             .ids(defaultQuotaApplication.id())
+     *             .build());
+     * 
      *     }
      * }
      * ```
@@ -409,7 +441,7 @@ public final class QuotasFunctions {
     /**
      * This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.117.0+.
+     * &gt; **NOTE:** Available since v1.117.0.
      * 
      * ## Example Usage
      * 
@@ -422,6 +454,8 @@ public final class QuotasFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotaApplication;
+     * import com.pulumi.alicloud.quotas.QuotaApplicationArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsArgs;
      * import java.util.List;
@@ -437,12 +471,26 @@ public final class QuotasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *             .productCode(&#34;ess&#34;)
-     *             .ids(&#34;4621F886-81E9-xxxx-xxxx&#34;)
+     *         var defaultQuotaApplication = new QuotaApplication(&#34;defaultQuotaApplication&#34;, QuotaApplicationArgs.builder()        
+     *             .productCode(&#34;vpc&#34;)
+     *             .noticeType(&#34;3&#34;)
+     *             .effectiveTime(&#34;2023-05-22T16:00:00Z&#34;)
+     *             .expireTime(&#34;2024-09-15T00:08:32Z&#34;)
+     *             .desireValue(&#34;1&#34;)
+     *             .reason(&#34;&#34;)
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .auditMode(&#34;Sync&#34;)
+     *             .envLanguage(&#34;zh&#34;)
+     *             .quotaCategory(&#34;WhiteListLabel&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstQuotasQuotaApplicationId&#34;, example.applyValue(getQuotaApplicationsResult -&gt; getQuotaApplicationsResult.applications()[0].id()));
+     *         final var defaultQuotaApplications = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *             .productCode(&#34;vpc&#34;)
+     *             .enableDetails(&#34;true&#34;)
+     *             .quotaCategory(defaultQuotaApplication.quotaCategory())
+     *             .ids(defaultQuotaApplication.id())
+     *             .build());
+     * 
      *     }
      * }
      * ```
@@ -455,7 +503,7 @@ public final class QuotasFunctions {
     /**
      * This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.117.0+.
+     * &gt; **NOTE:** Available since v1.117.0.
      * 
      * ## Example Usage
      * 
@@ -468,6 +516,8 @@ public final class QuotasFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.quotas.QuotaApplication;
+     * import com.pulumi.alicloud.quotas.QuotaApplicationArgs;
      * import com.pulumi.alicloud.quotas.QuotasFunctions;
      * import com.pulumi.alicloud.quotas.inputs.GetQuotaApplicationsArgs;
      * import java.util.List;
@@ -483,12 +533,26 @@ public final class QuotasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *             .productCode(&#34;ess&#34;)
-     *             .ids(&#34;4621F886-81E9-xxxx-xxxx&#34;)
+     *         var defaultQuotaApplication = new QuotaApplication(&#34;defaultQuotaApplication&#34;, QuotaApplicationArgs.builder()        
+     *             .productCode(&#34;vpc&#34;)
+     *             .noticeType(&#34;3&#34;)
+     *             .effectiveTime(&#34;2023-05-22T16:00:00Z&#34;)
+     *             .expireTime(&#34;2024-09-15T00:08:32Z&#34;)
+     *             .desireValue(&#34;1&#34;)
+     *             .reason(&#34;&#34;)
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .auditMode(&#34;Sync&#34;)
+     *             .envLanguage(&#34;zh&#34;)
+     *             .quotaCategory(&#34;WhiteListLabel&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstQuotasQuotaApplicationId&#34;, example.applyValue(getQuotaApplicationsResult -&gt; getQuotaApplicationsResult.applications()[0].id()));
+     *         final var defaultQuotaApplications = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *             .productCode(&#34;vpc&#34;)
+     *             .enableDetails(&#34;true&#34;)
+     *             .quotaCategory(defaultQuotaApplication.quotaCategory())
+     *             .ids(defaultQuotaApplication.id())
+     *             .build());
+     * 
      *     }
      * }
      * ```

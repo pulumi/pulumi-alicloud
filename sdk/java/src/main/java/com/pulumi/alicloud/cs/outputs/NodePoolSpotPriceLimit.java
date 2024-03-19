@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolSpotPriceLimit {
     /**
-     * @return Spot instance type.
+     * @return The type of the preemptible instance.
      * 
      */
     private @Nullable String instanceType;
     /**
-     * @return The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
+     * @return The maximum price of a single instance.
      * 
      */
     private @Nullable String priceLimit;
 
     private NodePoolSpotPriceLimit() {}
     /**
-     * @return Spot instance type.
+     * @return The type of the preemptible instance.
      * 
      */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
     /**
-     * @return The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
+     * @return The maximum price of a single instance.
      * 
      */
     public Optional<String> priceLimit() {

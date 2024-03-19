@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Sae
     ///     var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new()
     ///     {
     ///         AppDescription = name,
-    ///         AppName = name,
+    ///         AppName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
     ///         NamespaceId = defaultNamespace.Id,
     ///         ImageUrl = "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
     ///         PackageType = "Image",

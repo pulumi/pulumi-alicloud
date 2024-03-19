@@ -26,18 +26,23 @@ namespace Pulumi.AliCloud.Dcdn
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var domainName = config.Get("domainName") ?? "example.com";
-    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
     ///     var example = new AliCloud.Dcdn.IpaDomain("example", new()
     ///     {
-    ///         DomainName = domainName,
-    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
-    ///         Scope = "global",
+    ///         DomainName = defaultRandomInteger.Result.Apply(result =&gt; $"example-{result}.com"),
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         Scope = "overseas",
     ///         Status = "online",
     ///         Sources = new[]
     ///         {

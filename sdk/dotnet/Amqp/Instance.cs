@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Amqp
     /// <summary>
     /// ## Import
     /// 
-    /// RabbitMQ (AMQP) Instance can be imported using the id, e.g.
+    /// Amqp Instance can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:amqp/instance:Instance example &lt;id&gt;
@@ -22,76 +22,102 @@ namespace Pulumi.AliCloud.Amqp
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+        /// </summary>
+        [Output("autoRenew")]
+        public Output<bool?> AutoRenew { get; private set; } = null!;
+
+        /// <summary>
+        /// OrderCreateTime.
+        /// </summary>
+        [Output("createTime")]
+        public Output<int> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// The instance name.
         /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+        /// Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+        /// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         /// </summary>
-        [Output("logistics")]
-        public Output<string?> Logistics { get; private set; } = null!;
+        [Output("maxConnections")]
+        public Output<int> MaxConnections { get; private set; } = null!;
 
         /// <summary>
-        /// The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
+        /// Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         /// </summary>
         [Output("maxEipTps")]
         public Output<string?> MaxEipTps { get; private set; } = null!;
 
         /// <summary>
-        /// The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
+        /// Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
         /// </summary>
         [Output("maxTps")]
         public Output<string> MaxTps { get; private set; } = null!;
 
         /// <summary>
-        /// The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
+        /// Type of instance lifting and lowering:
+        /// - Upgrade: Upgrade
+        /// - Downgrade: Downgrading.
         /// </summary>
         [Output("modifyType")]
         public Output<string?> ModifyType { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type. Valid values: `Subscription`.
+        /// The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
+        /// Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The queue capacity. The smallest value is 50 and the step size 5.
+        /// Prepaid cycle units. Value: Month. Year: Year.
+        /// </summary>
+        [Output("periodCycle")]
+        public Output<string?> PeriodCycle { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
         /// </summary>
         [Output("queueCapacity")]
         public Output<string> QueueCapacity { get; private set; } = null!;
 
         /// <summary>
-        /// RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
+        /// The number of automatic renewal cycles.
         /// </summary>
         [Output("renewalDuration")]
-        public Output<int?> RenewalDuration { get; private set; } = null!;
+        public Output<int> RenewalDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
         /// </summary>
         [Output("renewalDurationUnit")]
-        public Output<string?> RenewalDurationUnit { get; private set; } = null!;
+        public Output<string> RenewalDurationUnit { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        /// The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
         /// </summary>
         [Output("renewalStatus")]
         public Output<string> RenewalStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// The billing type of the serverless instance. Value: onDemand.
+        /// </summary>
+        [Output("serverlessChargeType")]
+        public Output<string?> ServerlessChargeType { get; private set; } = null!;
 
         /// <summary>
         /// The status of the resource.
@@ -100,16 +126,28 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The storage size. It is valid when `instance_type` is vip.
+        /// Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         /// </summary>
         [Output("storageSize")]
-        public Output<string?> StorageSize { get; private set; } = null!;
+        public Output<string> StorageSize { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to support EIP.
+        /// Whether to support public network.
         /// </summary>
         [Output("supportEip")]
-        public Output<bool> SupportEip { get; private set; } = null!;
+        public Output<bool?> SupportEip { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+        /// </summary>
+        [Output("supportTracing")]
+        public Output<bool> SupportTracing { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+        /// </summary>
+        [Output("tracingStorageTime")]
+        public Output<int> TracingStorageTime { get; private set; } = null!;
 
 
         /// <summary>
@@ -158,88 +196,120 @@ namespace Pulumi.AliCloud.Amqp
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
         /// The instance name.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+        /// Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
         /// </summary>
-        [Input("instanceType", required: true)]
-        public Input<string> InstanceType { get; set; } = null!;
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+        /// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         /// </summary>
-        [Input("logistics")]
-        public Input<string>? Logistics { get; set; }
+        [Input("maxConnections")]
+        public Input<int>? MaxConnections { get; set; }
 
         /// <summary>
-        /// The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
+        /// Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         /// </summary>
         [Input("maxEipTps")]
         public Input<string>? MaxEipTps { get; set; }
 
         /// <summary>
-        /// The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
+        /// Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
         /// </summary>
-        [Input("maxTps", required: true)]
-        public Input<string> MaxTps { get; set; } = null!;
+        [Input("maxTps")]
+        public Input<string>? MaxTps { get; set; }
 
         /// <summary>
-        /// The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
+        /// Type of instance lifting and lowering:
+        /// - Upgrade: Upgrade
+        /// - Downgrade: Downgrading.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// The payment type. Valid values: `Subscription`.
+        /// The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
+        /// Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The queue capacity. The smallest value is 50 and the step size 5.
+        /// Prepaid cycle units. Value: Month. Year: Year.
         /// </summary>
-        [Input("queueCapacity", required: true)]
-        public Input<string> QueueCapacity { get; set; } = null!;
+        [Input("periodCycle")]
+        public Input<string>? PeriodCycle { get; set; }
 
         /// <summary>
-        /// RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
+        /// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
+        /// </summary>
+        [Input("queueCapacity")]
+        public Input<string>? QueueCapacity { get; set; }
+
+        /// <summary>
+        /// The number of automatic renewal cycles.
         /// </summary>
         [Input("renewalDuration")]
         public Input<int>? RenewalDuration { get; set; }
 
         /// <summary>
-        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
         /// </summary>
         [Input("renewalDurationUnit")]
         public Input<string>? RenewalDurationUnit { get; set; }
 
         /// <summary>
-        /// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        /// The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
-        /// The storage size. It is valid when `instance_type` is vip.
+        /// The billing type of the serverless instance. Value: onDemand.
+        /// </summary>
+        [Input("serverlessChargeType")]
+        public Input<string>? ServerlessChargeType { get; set; }
+
+        /// <summary>
+        /// Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         /// </summary>
         [Input("storageSize")]
         public Input<string>? StorageSize { get; set; }
 
         /// <summary>
-        /// Whether to support EIP.
+        /// Whether to support public network.
         /// </summary>
-        [Input("supportEip", required: true)]
-        public Input<bool> SupportEip { get; set; } = null!;
+        [Input("supportEip")]
+        public Input<bool>? SupportEip { get; set; }
+
+        /// <summary>
+        /// Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+        /// </summary>
+        [Input("supportTracing")]
+        public Input<bool>? SupportTracing { get; set; }
+
+        /// <summary>
+        /// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+        /// </summary>
+        [Input("tracingStorageTime")]
+        public Input<int>? TracingStorageTime { get; set; }
 
         public InstanceArgs()
         {
@@ -250,76 +320,102 @@ namespace Pulumi.AliCloud.Amqp
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// OrderCreateTime.
+        /// </summary>
+        [Input("createTime")]
+        public Input<int>? CreateTime { get; set; }
+
+        /// <summary>
         /// The instance name.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+        /// Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+        /// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         /// </summary>
-        [Input("logistics")]
-        public Input<string>? Logistics { get; set; }
+        [Input("maxConnections")]
+        public Input<int>? MaxConnections { get; set; }
 
         /// <summary>
-        /// The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
+        /// Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         /// </summary>
         [Input("maxEipTps")]
         public Input<string>? MaxEipTps { get; set; }
 
         /// <summary>
-        /// The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
+        /// Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
         /// </summary>
         [Input("maxTps")]
         public Input<string>? MaxTps { get; set; }
 
         /// <summary>
-        /// The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
+        /// Type of instance lifting and lowering:
+        /// - Upgrade: Upgrade
+        /// - Downgrade: Downgrading.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// The payment type. Valid values: `Subscription`.
+        /// The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
+        /// Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The queue capacity. The smallest value is 50 and the step size 5.
+        /// Prepaid cycle units. Value: Month. Year: Year.
+        /// </summary>
+        [Input("periodCycle")]
+        public Input<string>? PeriodCycle { get; set; }
+
+        /// <summary>
+        /// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
         /// </summary>
         [Input("queueCapacity")]
         public Input<string>? QueueCapacity { get; set; }
 
         /// <summary>
-        /// RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
+        /// The number of automatic renewal cycles.
         /// </summary>
         [Input("renewalDuration")]
         public Input<int>? RenewalDuration { get; set; }
 
         /// <summary>
-        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
         /// </summary>
         [Input("renewalDurationUnit")]
         public Input<string>? RenewalDurationUnit { get; set; }
 
         /// <summary>
-        /// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        /// The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
+
+        /// <summary>
+        /// The billing type of the serverless instance. Value: onDemand.
+        /// </summary>
+        [Input("serverlessChargeType")]
+        public Input<string>? ServerlessChargeType { get; set; }
 
         /// <summary>
         /// The status of the resource.
@@ -328,16 +424,28 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The storage size. It is valid when `instance_type` is vip.
+        /// Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         /// </summary>
         [Input("storageSize")]
         public Input<string>? StorageSize { get; set; }
 
         /// <summary>
-        /// Whether to support EIP.
+        /// Whether to support public network.
         /// </summary>
         [Input("supportEip")]
         public Input<bool>? SupportEip { get; set; }
+
+        /// <summary>
+        /// Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+        /// </summary>
+        [Input("supportTracing")]
+        public Input<bool>? SupportTracing { get; set; }
+
+        /// <summary>
+        /// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+        /// </summary>
+        [Input("tracingStorageTime")]
+        public Input<int>? TracingStorageTime { get; set; }
 
         public InstanceState()
         {

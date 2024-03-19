@@ -18,7 +18,11 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? AutoSnapshotPolicyId;
         /// <summary>
-        /// The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
+        /// Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+        /// </summary>
+        public readonly bool? BurstingEnabled;
+        /// <summary>
+        /// The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
         /// </summary>
         public readonly string? Category;
         /// <summary>
@@ -34,13 +38,17 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? KmsKeyId;
         /// <summary>
-        /// The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        /// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
         /// </summary>
         public readonly string? Name;
         /// <summary>
         /// Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         /// </summary>
         public readonly string? PerformanceLevel;
+        /// <summary>
+        /// The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+        /// </summary>
+        public readonly int? ProvisionedIops;
         /// <summary>
         /// The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
         /// </summary>
@@ -54,6 +62,8 @@ namespace Pulumi.AliCloud.CS.Outputs
         private NodePoolDataDisk(
             string? autoSnapshotPolicyId,
 
+            bool? burstingEnabled,
+
             string? category,
 
             string? device,
@@ -66,17 +76,21 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string? performanceLevel,
 
+            int? provisionedIops,
+
             int? size,
 
             string? snapshotId)
         {
             AutoSnapshotPolicyId = autoSnapshotPolicyId;
+            BurstingEnabled = burstingEnabled;
             Category = category;
             Device = device;
             Encrypted = encrypted;
             KmsKeyId = kmsKeyId;
             Name = name;
             PerformanceLevel = performanceLevel;
+            ProvisionedIops = provisionedIops;
             Size = size;
             SnapshotId = snapshotId;
         }

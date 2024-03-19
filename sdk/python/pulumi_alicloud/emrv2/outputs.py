@@ -495,8 +495,12 @@ class ClusterNodeGroup(dict):
             suggest = "additional_security_group_ids"
         elif key == "costOptimizedConfig":
             suggest = "cost_optimized_config"
+        elif key == "deploymentSetStrategy":
+            suggest = "deployment_set_strategy"
         elif key == "gracefulShutdown":
             suggest = "graceful_shutdown"
+        elif key == "nodeResizeStrategy":
+            suggest = "node_resize_strategy"
         elif key == "paymentType":
             suggest = "payment_type"
         elif key == "spotBidPrices":
@@ -530,7 +534,9 @@ class ClusterNodeGroup(dict):
                  system_disk: 'outputs.ClusterNodeGroupSystemDisk',
                  additional_security_group_ids: Optional[Sequence[str]] = None,
                  cost_optimized_config: Optional['outputs.ClusterNodeGroupCostOptimizedConfig'] = None,
+                 deployment_set_strategy: Optional[str] = None,
                  graceful_shutdown: Optional[bool] = None,
+                 node_resize_strategy: Optional[str] = None,
                  payment_type: Optional[str] = None,
                  spot_bid_prices: Optional[Sequence['outputs.ClusterNodeGroupSpotBidPrice']] = None,
                  spot_instance_remedy: Optional[bool] = None,
@@ -542,11 +548,13 @@ class ClusterNodeGroup(dict):
         :param Sequence[str] instance_types: Host Ecs instance types.
         :param int node_count: Host Ecs number in this node group.
         :param str node_group_name: The node group name of emr cluster.
-        :param str node_group_type: The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+        :param str node_group_type: The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
         :param 'ClusterNodeGroupSystemDiskArgs' system_disk: Host Ecs system disk information in this node group. See `system_disk` below.
         :param Sequence[str] additional_security_group_ids: Additional security Group IDS for Cluster, you can also specify this key for each node group.
         :param 'ClusterNodeGroupCostOptimizedConfigArgs' cost_optimized_config: The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
+        :param str deployment_set_strategy: Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
         :param bool graceful_shutdown: Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
+        :param str node_resize_strategy: Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
         :param str payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
         :param Sequence['ClusterNodeGroupSpotBidPriceArgs'] spot_bid_prices: The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
         :param bool spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
@@ -564,8 +572,12 @@ class ClusterNodeGroup(dict):
             pulumi.set(__self__, "additional_security_group_ids", additional_security_group_ids)
         if cost_optimized_config is not None:
             pulumi.set(__self__, "cost_optimized_config", cost_optimized_config)
+        if deployment_set_strategy is not None:
+            pulumi.set(__self__, "deployment_set_strategy", deployment_set_strategy)
         if graceful_shutdown is not None:
             pulumi.set(__self__, "graceful_shutdown", graceful_shutdown)
+        if node_resize_strategy is not None:
+            pulumi.set(__self__, "node_resize_strategy", node_resize_strategy)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if spot_bid_prices is not None:
@@ -615,7 +627,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="nodeGroupType")
     def node_group_type(self) -> str:
         """
-        The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+        The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
         """
         return pulumi.get(self, "node_group_type")
 
@@ -644,12 +656,28 @@ class ClusterNodeGroup(dict):
         return pulumi.get(self, "cost_optimized_config")
 
     @property
+    @pulumi.getter(name="deploymentSetStrategy")
+    def deployment_set_strategy(self) -> Optional[str]:
+        """
+        Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+        """
+        return pulumi.get(self, "deployment_set_strategy")
+
+    @property
     @pulumi.getter(name="gracefulShutdown")
     def graceful_shutdown(self) -> Optional[bool]:
         """
         Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
         """
         return pulumi.get(self, "graceful_shutdown")
+
+    @property
+    @pulumi.getter(name="nodeResizeStrategy")
+    def node_resize_strategy(self) -> Optional[str]:
+        """
+        Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
+        """
+        return pulumi.get(self, "node_resize_strategy")
 
     @property
     @pulumi.getter(name="paymentType")
@@ -888,6 +916,8 @@ class ClusterNodeGroupSubscriptionConfig(dict):
             suggest = "payment_duration"
         elif key == "paymentDurationUnit":
             suggest = "payment_duration_unit"
+        elif key == "autoPayOrder":
+            suggest = "auto_pay_order"
         elif key == "autoRenew":
             suggest = "auto_renew"
         elif key == "autoRenewDuration":
@@ -909,18 +939,22 @@ class ClusterNodeGroupSubscriptionConfig(dict):
     def __init__(__self__, *,
                  payment_duration: int,
                  payment_duration_unit: str,
+                 auto_pay_order: Optional[bool] = None,
                  auto_renew: Optional[bool] = None,
                  auto_renew_duration: Optional[int] = None,
                  auto_renew_duration_unit: Optional[str] = None):
         """
         :param int payment_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param str payment_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
+        :param bool auto_pay_order: Auto pay order for payment type of subscription, ’true’ or ‘false’ .
         :param bool auto_renew: Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         :param int auto_renew_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param str auto_renew_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
         """
         pulumi.set(__self__, "payment_duration", payment_duration)
         pulumi.set(__self__, "payment_duration_unit", payment_duration_unit)
+        if auto_pay_order is not None:
+            pulumi.set(__self__, "auto_pay_order", auto_pay_order)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_duration is not None:
@@ -943,6 +977,14 @@ class ClusterNodeGroupSubscriptionConfig(dict):
         If paymentType is Subscription, this should be specified. Supported value: Month or Year.
         """
         return pulumi.get(self, "payment_duration_unit")
+
+    @property
+    @pulumi.getter(name="autoPayOrder")
+    def auto_pay_order(self) -> Optional[bool]:
+        """
+        Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+        """
+        return pulumi.get(self, "auto_pay_order")
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -1048,6 +1090,8 @@ class ClusterSubscriptionConfig(dict):
             suggest = "payment_duration"
         elif key == "paymentDurationUnit":
             suggest = "payment_duration_unit"
+        elif key == "autoPayOrder":
+            suggest = "auto_pay_order"
         elif key == "autoRenew":
             suggest = "auto_renew"
         elif key == "autoRenewDuration":
@@ -1069,18 +1113,22 @@ class ClusterSubscriptionConfig(dict):
     def __init__(__self__, *,
                  payment_duration: int,
                  payment_duration_unit: str,
+                 auto_pay_order: Optional[bool] = None,
                  auto_renew: Optional[bool] = None,
                  auto_renew_duration: Optional[int] = None,
                  auto_renew_duration_unit: Optional[str] = None):
         """
         :param int payment_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param str payment_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
+        :param bool auto_pay_order: Auto pay order for payment type of subscription, ’true’ or ‘false’ .
         :param bool auto_renew: Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         :param int auto_renew_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param str auto_renew_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
         """
         pulumi.set(__self__, "payment_duration", payment_duration)
         pulumi.set(__self__, "payment_duration_unit", payment_duration_unit)
+        if auto_pay_order is not None:
+            pulumi.set(__self__, "auto_pay_order", auto_pay_order)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_duration is not None:
@@ -1103,6 +1151,14 @@ class ClusterSubscriptionConfig(dict):
         If paymentType is Subscription, this should be specified. Supported value: Month or Year.
         """
         return pulumi.get(self, "payment_duration_unit")
+
+    @property
+    @pulumi.getter(name="autoPayOrder")
+    def auto_pay_order(self) -> Optional[bool]:
+        """
+        Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+        """
+        return pulumi.get(self, "auto_pay_order")
 
     @property
     @pulumi.getter(name="autoRenew")

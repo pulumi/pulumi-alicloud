@@ -3,8 +3,10 @@
 
 package com.pulumi.alicloud.cs.outputs;
 
+import com.pulumi.alicloud.cs.outputs.NodePoolManagementAutoRepairPolicy;
+import com.pulumi.alicloud.cs.outputs.NodePoolManagementAutoUpgradePolicy;
+import com.pulumi.alicloud.cs.outputs.NodePoolManagementAutoVulFixPolicy;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -14,64 +16,140 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolManagement {
     /**
-     * @return Whether automatic repair, Default to `false`.
+     * @return Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
      * 
      */
     private @Nullable Boolean autoRepair;
     /**
-     * @return Whether auto upgrade, Default to `false`.
+     * @return Automatic repair node policy. See `auto_repair_policy` below.
+     * 
+     */
+    private @Nullable NodePoolManagementAutoRepairPolicy autoRepairPolicy;
+    /**
+     * @return Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
      * 
      */
     private @Nullable Boolean autoUpgrade;
     /**
-     * @return Max number of unavailable nodes. Default to `1`.
+     * @return The auto update policy. See `auto_upgrade_policy` below.
      * 
      */
-    private Integer maxUnavailable;
+    private @Nullable NodePoolManagementAutoUpgradePolicy autoUpgradePolicy;
+    /**
+     * @return Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+     * 
+     */
+    private @Nullable Boolean autoVulFix;
+    /**
+     * @return The auto CVE patching policy. See `auto_vul_fix_policy` below.
+     * 
+     */
+    private @Nullable NodePoolManagementAutoVulFixPolicy autoVulFixPolicy;
+    /**
+     * @return Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+     * 
+     */
+    private @Nullable Boolean enable;
+    /**
+     * @return Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+     * 
+     */
+    private @Nullable Integer maxUnavailable;
     /**
      * @return Number of additional nodes. You have to specify one of surge, surge_percentage.
      * 
+     * @deprecated
+     * Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
+     * 
      */
+    @Deprecated /* Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage. */
     private @Nullable Integer surge;
     /**
      * @return Proportion of additional nodes. You have to specify one of surge, surge_percentage.
      * 
+     * @deprecated
+     * Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+     * 
      */
+    @Deprecated /* Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage. */
     private @Nullable Integer surgePercentage;
 
     private NodePoolManagement() {}
     /**
-     * @return Whether automatic repair, Default to `false`.
+     * @return Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
      * 
      */
     public Optional<Boolean> autoRepair() {
         return Optional.ofNullable(this.autoRepair);
     }
     /**
-     * @return Whether auto upgrade, Default to `false`.
+     * @return Automatic repair node policy. See `auto_repair_policy` below.
+     * 
+     */
+    public Optional<NodePoolManagementAutoRepairPolicy> autoRepairPolicy() {
+        return Optional.ofNullable(this.autoRepairPolicy);
+    }
+    /**
+     * @return Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
      * 
      */
     public Optional<Boolean> autoUpgrade() {
         return Optional.ofNullable(this.autoUpgrade);
     }
     /**
-     * @return Max number of unavailable nodes. Default to `1`.
+     * @return The auto update policy. See `auto_upgrade_policy` below.
      * 
      */
-    public Integer maxUnavailable() {
-        return this.maxUnavailable;
+    public Optional<NodePoolManagementAutoUpgradePolicy> autoUpgradePolicy() {
+        return Optional.ofNullable(this.autoUpgradePolicy);
+    }
+    /**
+     * @return Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Boolean> autoVulFix() {
+        return Optional.ofNullable(this.autoVulFix);
+    }
+    /**
+     * @return The auto CVE patching policy. See `auto_vul_fix_policy` below.
+     * 
+     */
+    public Optional<NodePoolManagementAutoVulFixPolicy> autoVulFixPolicy() {
+        return Optional.ofNullable(this.autoVulFixPolicy);
+    }
+    /**
+     * @return Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+     * 
+     */
+    public Optional<Boolean> enable() {
+        return Optional.ofNullable(this.enable);
+    }
+    /**
+     * @return Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+     * 
+     */
+    public Optional<Integer> maxUnavailable() {
+        return Optional.ofNullable(this.maxUnavailable);
     }
     /**
      * @return Number of additional nodes. You have to specify one of surge, surge_percentage.
      * 
+     * @deprecated
+     * Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
+     * 
      */
+    @Deprecated /* Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage. */
     public Optional<Integer> surge() {
         return Optional.ofNullable(this.surge);
     }
     /**
      * @return Proportion of additional nodes. You have to specify one of surge, surge_percentage.
      * 
+     * @deprecated
+     * Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+     * 
      */
+    @Deprecated /* Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage. */
     public Optional<Integer> surgePercentage() {
         return Optional.ofNullable(this.surgePercentage);
     }
@@ -86,15 +164,25 @@ public final class NodePoolManagement {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean autoRepair;
+        private @Nullable NodePoolManagementAutoRepairPolicy autoRepairPolicy;
         private @Nullable Boolean autoUpgrade;
-        private Integer maxUnavailable;
+        private @Nullable NodePoolManagementAutoUpgradePolicy autoUpgradePolicy;
+        private @Nullable Boolean autoVulFix;
+        private @Nullable NodePoolManagementAutoVulFixPolicy autoVulFixPolicy;
+        private @Nullable Boolean enable;
+        private @Nullable Integer maxUnavailable;
         private @Nullable Integer surge;
         private @Nullable Integer surgePercentage;
         public Builder() {}
         public Builder(NodePoolManagement defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoRepair = defaults.autoRepair;
+    	      this.autoRepairPolicy = defaults.autoRepairPolicy;
     	      this.autoUpgrade = defaults.autoUpgrade;
+    	      this.autoUpgradePolicy = defaults.autoUpgradePolicy;
+    	      this.autoVulFix = defaults.autoVulFix;
+    	      this.autoVulFixPolicy = defaults.autoVulFixPolicy;
+    	      this.enable = defaults.enable;
     	      this.maxUnavailable = defaults.maxUnavailable;
     	      this.surge = defaults.surge;
     	      this.surgePercentage = defaults.surgePercentage;
@@ -107,16 +195,44 @@ public final class NodePoolManagement {
             return this;
         }
         @CustomType.Setter
+        public Builder autoRepairPolicy(@Nullable NodePoolManagementAutoRepairPolicy autoRepairPolicy) {
+
+            this.autoRepairPolicy = autoRepairPolicy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder autoUpgrade(@Nullable Boolean autoUpgrade) {
 
             this.autoUpgrade = autoUpgrade;
             return this;
         }
         @CustomType.Setter
-        public Builder maxUnavailable(Integer maxUnavailable) {
-            if (maxUnavailable == null) {
-              throw new MissingRequiredPropertyException("NodePoolManagement", "maxUnavailable");
-            }
+        public Builder autoUpgradePolicy(@Nullable NodePoolManagementAutoUpgradePolicy autoUpgradePolicy) {
+
+            this.autoUpgradePolicy = autoUpgradePolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoVulFix(@Nullable Boolean autoVulFix) {
+
+            this.autoVulFix = autoVulFix;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoVulFixPolicy(@Nullable NodePoolManagementAutoVulFixPolicy autoVulFixPolicy) {
+
+            this.autoVulFixPolicy = autoVulFixPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enable(@Nullable Boolean enable) {
+
+            this.enable = enable;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxUnavailable(@Nullable Integer maxUnavailable) {
+
             this.maxUnavailable = maxUnavailable;
             return this;
         }
@@ -135,7 +251,12 @@ public final class NodePoolManagement {
         public NodePoolManagement build() {
             final var _resultValue = new NodePoolManagement();
             _resultValue.autoRepair = autoRepair;
+            _resultValue.autoRepairPolicy = autoRepairPolicy;
             _resultValue.autoUpgrade = autoUpgrade;
+            _resultValue.autoUpgradePolicy = autoUpgradePolicy;
+            _resultValue.autoVulFix = autoVulFix;
+            _resultValue.autoVulFixPolicy = autoVulFixPolicy;
+            _resultValue.enable = enable;
             _resultValue.maxUnavailable = maxUnavailable;
             _resultValue.surge = surge;
             _resultValue.surgePercentage = surgePercentage;

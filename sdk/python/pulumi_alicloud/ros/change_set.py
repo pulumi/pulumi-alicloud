@@ -659,12 +659,16 @@ class ChangeSet(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         example = alicloud.ros.ChangeSet("example",
             change_set_name="example_value",
             change_set_type="CREATE",
             description="Test From Terraform",
-            stack_name="tf-testacc",
+            stack_name=default.result.apply(lambda result: f"tf-example-{result}"),
             template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\"}")
         ```
         <!--End PulumiCodeChooser -->
@@ -719,12 +723,16 @@ class ChangeSet(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         example = alicloud.ros.ChangeSet("example",
             change_set_name="example_value",
             change_set_type="CREATE",
             description="Test From Terraform",
-            stack_name="tf-testacc",
+            stack_name=default.result.apply(lambda result: f"tf-example-{result}"),
             template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\"}")
         ```
         <!--End PulumiCodeChooser -->

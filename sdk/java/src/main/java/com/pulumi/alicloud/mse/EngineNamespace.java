@@ -55,6 +55,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
@@ -71,24 +73,23 @@ import javax.annotation.Nullable;
  *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var exampleCluster = new Cluster(&#34;exampleCluster&#34;, ClusterArgs.builder()        
- *             .clusterSpecification(&#34;MSE_SC_1_2_60_c&#34;)
- *             .clusterType(&#34;Nacos-Ans&#34;)
- *             .clusterVersion(&#34;NACOS_2_0_0&#34;)
- *             .instanceCount(1)
- *             .netType(&#34;privatenet&#34;)
- *             .pubNetworkFlow(&#34;1&#34;)
+ *         var default_ = new Cluster(&#34;default&#34;, ClusterArgs.builder()        
  *             .connectionType(&#34;slb&#34;)
- *             .clusterAliasName(&#34;terraform-example&#34;)
- *             .mseVersion(&#34;mse_dev&#34;)
+ *             .netType(&#34;privatenet&#34;)
  *             .vswitchId(exampleSwitch.id())
- *             .vpcId(exampleNetwork.id())
+ *             .clusterSpecification(&#34;MSE_SC_1_2_60_c&#34;)
+ *             .clusterVersion(&#34;NACOS_2_0_0&#34;)
+ *             .instanceCount(&#34;1&#34;)
+ *             .pubNetworkFlow(&#34;1&#34;)
+ *             .clusterAliasName(name)
+ *             .mseVersion(&#34;mse_dev&#34;)
+ *             .clusterType(&#34;Nacos-Ans&#34;)
  *             .build());
  * 
  *         var exampleEngineNamespace = new EngineNamespace(&#34;exampleEngineNamespace&#34;, EngineNamespaceArgs.builder()        
- *             .clusterId(exampleCluster.clusterId())
- *             .namespaceShowName(&#34;terraform-example&#34;)
- *             .namespaceId(&#34;terraform-example&#34;)
+ *             .clusterId(default_.id())
+ *             .namespaceShowName(name)
+ *             .namespaceId(name)
  *             .build());
  * 
  *     }

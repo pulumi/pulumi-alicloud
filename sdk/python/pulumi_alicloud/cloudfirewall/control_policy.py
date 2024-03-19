@@ -33,7 +33,8 @@ class ControlPolicyArgs:
         """
         The set of arguments for constructing a ControlPolicy resource.
         :param pulumi.Input[str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
-        :param pulumi.Input[str] application_name: The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        :param pulumi.Input[str] application_name: The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+               > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         :param pulumi.Input[str] description: The description of the access control policy.
         :param pulumi.Input[str] destination: The destination address defined in the access control policy.
         :param pulumi.Input[str] destination_type: DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
@@ -89,7 +90,8 @@ class ControlPolicyArgs:
     @pulumi.getter(name="applicationName")
     def application_name(self) -> pulumi.Input[str]:
         """
-        The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         """
         return pulumi.get(self, "application_name")
 
@@ -289,8 +291,9 @@ class _ControlPolicyState:
         """
         Input properties used for looking up and filtering ControlPolicy resources.
         :param pulumi.Input[str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
-        :param pulumi.Input[str] acl_uuid: (Available in v1.148.0+) The unique ID of the access control policy.
-        :param pulumi.Input[str] application_name: The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        :param pulumi.Input[str] acl_uuid: (Available since v1.148.0) The unique ID of the access control policy.
+        :param pulumi.Input[str] application_name: The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+               > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         :param pulumi.Input[str] description: The description of the access control policy.
         :param pulumi.Input[str] dest_port: The destination port defined in the access control policy.
         :param pulumi.Input[str] dest_port_group: The destination port address book defined in the access control policy.
@@ -357,7 +360,7 @@ class _ControlPolicyState:
     @pulumi.getter(name="aclUuid")
     def acl_uuid(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in v1.148.0+) The unique ID of the access control policy.
+        (Available since v1.148.0) The unique ID of the access control policy.
         """
         return pulumi.get(self, "acl_uuid")
 
@@ -369,7 +372,8 @@ class _ControlPolicyState:
     @pulumi.getter(name="applicationName")
     def application_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         """
         return pulumi.get(self, "application_name")
 
@@ -573,7 +577,7 @@ class ControlPolicy(pulumi.CustomResource):
 
         For information about Cloud Firewall Control Policy and how to use it, see [What is Control Policy](https://www.alibabacloud.com/help/doc-detail/138867.htm).
 
-        > **NOTE:** Available in v1.129.0+.
+        > **NOTE:** Available since v1.129.0.
 
         ## Example Usage
 
@@ -608,7 +612,8 @@ class ControlPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
-        :param pulumi.Input[str] application_name: The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        :param pulumi.Input[str] application_name: The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+               > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         :param pulumi.Input[str] description: The description of the access control policy.
         :param pulumi.Input[str] dest_port: The destination port defined in the access control policy.
         :param pulumi.Input[str] dest_port_group: The destination port address book defined in the access control policy.
@@ -635,7 +640,7 @@ class ControlPolicy(pulumi.CustomResource):
 
         For information about Cloud Firewall Control Policy and how to use it, see [What is Control Policy](https://www.alibabacloud.com/help/doc-detail/138867.htm).
 
-        > **NOTE:** Available in v1.129.0+.
+        > **NOTE:** Available since v1.129.0.
 
         ## Example Usage
 
@@ -777,8 +782,9 @@ class ControlPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
-        :param pulumi.Input[str] acl_uuid: (Available in v1.148.0+) The unique ID of the access control policy.
-        :param pulumi.Input[str] application_name: The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        :param pulumi.Input[str] acl_uuid: (Available since v1.148.0) The unique ID of the access control policy.
+        :param pulumi.Input[str] application_name: The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+               > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         :param pulumi.Input[str] description: The description of the access control policy.
         :param pulumi.Input[str] dest_port: The destination port defined in the access control policy.
         :param pulumi.Input[str] dest_port_group: The destination port address book defined in the access control policy.
@@ -829,7 +835,7 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="aclUuid")
     def acl_uuid(self) -> pulumi.Output[str]:
         """
-        (Available in v1.148.0+) The unique ID of the access control policy.
+        (Available since v1.148.0) The unique ID of the access control policy.
         """
         return pulumi.get(self, "acl_uuid")
 
@@ -837,7 +843,8 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="applicationName")
     def application_name(self) -> pulumi.Output[str]:
         """
-        The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         """
         return pulumi.get(self, "application_name")
 

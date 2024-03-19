@@ -12,6 +12,30 @@ namespace Pulumi.AliCloud.CS.Inputs
 
     public sealed class NodePoolKubeletConfigurationArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowedUnsafeSysctls")]
+        private InputList<string>? _allowedUnsafeSysctls;
+
+        /// <summary>
+        /// Allowed sysctl mode whitelist.
+        /// </summary>
+        public InputList<string> AllowedUnsafeSysctls
+        {
+            get => _allowedUnsafeSysctls ?? (_allowedUnsafeSysctls = new InputList<string>());
+            set => _allowedUnsafeSysctls = value;
+        }
+
+        /// <summary>
+        /// The maximum number of log files that can exist in each container.
+        /// </summary>
+        [Input("containerLogMaxFiles")]
+        public Input<string>? ContainerLogMaxFiles { get; set; }
+
+        /// <summary>
+        /// The maximum size that can be reached before a log file is rotated.
+        /// </summary>
+        [Input("containerLogMaxSize")]
+        public Input<string>? ContainerLogMaxSize { get; set; }
+
         /// <summary>
         /// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
         /// </summary>
@@ -66,6 +90,18 @@ namespace Pulumi.AliCloud.CS.Inputs
             set => _evictionSoftGracePeriod = value;
         }
 
+        [Input("featureGates")]
+        private InputMap<bool>? _featureGates;
+
+        /// <summary>
+        /// Feature switch to enable configuration of experimental features.
+        /// </summary>
+        public InputMap<bool> FeatureGates
+        {
+            get => _featureGates ?? (_featureGates = new InputMap<bool>());
+            set => _featureGates = value;
+        }
+
         /// <summary>
         /// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
         /// </summary>
@@ -89,6 +125,18 @@ namespace Pulumi.AliCloud.CS.Inputs
             get => _kubeReserved ?? (_kubeReserved = new InputMap<object>());
             set => _kubeReserved = value;
         }
+
+        /// <summary>
+        /// The maximum number of running pods.
+        /// </summary>
+        [Input("maxPods")]
+        public Input<string>? MaxPods { get; set; }
+
+        /// <summary>
+        /// Read-only port number.
+        /// </summary>
+        [Input("readOnlyPort")]
+        public Input<string>? ReadOnlyPort { get; set; }
 
         /// <summary>
         /// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.

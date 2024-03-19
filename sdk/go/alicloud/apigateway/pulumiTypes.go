@@ -139,13 +139,25 @@ func (o ApiConstantParameterArrayOutput) Index(i pulumi.IntInput) ApiConstantPar
 
 type ApiFcServiceConfig struct {
 	// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-	ArnRole *string `pulumi:"arnRole"`
-	// The function name of function compute service.
-	FunctionName string `pulumi:"functionName"`
+	ArnRole string `pulumi:"arnRole"`
+	// The base url of function compute service. Required if `functionType` is `HttpTrigger`.
+	FunctionBaseUrl *string `pulumi:"functionBaseUrl"`
+	// The function name of function compute service. Required if `functionType` is `FCEvent`.
+	FunctionName *string `pulumi:"functionName"`
+	// The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+	FunctionType *string `pulumi:"functionType"`
+	// The http method of function compute service. Required if `functionType` is `HttpTrigger`.
+	Method *string `pulumi:"method"`
+	// Whether to filter path in `functionBaseUrl`. Optional if `functionType` is `HttpTrigger`.
+	OnlyBusinessPath *bool `pulumi:"onlyBusinessPath"`
+	// The path of function compute service. Required if `functionType` is `HttpTrigger`.
+	Path *string `pulumi:"path"`
+	// The qualifier of function name of compute service.
+	Qualifier *string `pulumi:"qualifier"`
 	// The region that the function compute service belongs to.
 	Region string `pulumi:"region"`
-	// The service name of function compute service.
-	ServiceName string `pulumi:"serviceName"`
+	// The service name of function compute service. Required if `functionType` is `FCEvent`.
+	ServiceName *string `pulumi:"serviceName"`
 	// Backend service time-out time; unit: millisecond.
 	Timeout int `pulumi:"timeout"`
 }
@@ -163,13 +175,25 @@ type ApiFcServiceConfigInput interface {
 
 type ApiFcServiceConfigArgs struct {
 	// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-	ArnRole pulumi.StringPtrInput `pulumi:"arnRole"`
-	// The function name of function compute service.
-	FunctionName pulumi.StringInput `pulumi:"functionName"`
+	ArnRole pulumi.StringInput `pulumi:"arnRole"`
+	// The base url of function compute service. Required if `functionType` is `HttpTrigger`.
+	FunctionBaseUrl pulumi.StringPtrInput `pulumi:"functionBaseUrl"`
+	// The function name of function compute service. Required if `functionType` is `FCEvent`.
+	FunctionName pulumi.StringPtrInput `pulumi:"functionName"`
+	// The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+	FunctionType pulumi.StringPtrInput `pulumi:"functionType"`
+	// The http method of function compute service. Required if `functionType` is `HttpTrigger`.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// Whether to filter path in `functionBaseUrl`. Optional if `functionType` is `HttpTrigger`.
+	OnlyBusinessPath pulumi.BoolPtrInput `pulumi:"onlyBusinessPath"`
+	// The path of function compute service. Required if `functionType` is `HttpTrigger`.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The qualifier of function name of compute service.
+	Qualifier pulumi.StringPtrInput `pulumi:"qualifier"`
 	// The region that the function compute service belongs to.
 	Region pulumi.StringInput `pulumi:"region"`
-	// The service name of function compute service.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// The service name of function compute service. Required if `functionType` is `FCEvent`.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 	// Backend service time-out time; unit: millisecond.
 	Timeout pulumi.IntInput `pulumi:"timeout"`
 }
@@ -252,13 +276,43 @@ func (o ApiFcServiceConfigOutput) ToApiFcServiceConfigPtrOutputWithContext(ctx c
 }
 
 // RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
-func (o ApiFcServiceConfigOutput) ArnRole() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.ArnRole }).(pulumi.StringPtrOutput)
+func (o ApiFcServiceConfigOutput) ArnRole() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiFcServiceConfig) string { return v.ArnRole }).(pulumi.StringOutput)
 }
 
-// The function name of function compute service.
-func (o ApiFcServiceConfigOutput) FunctionName() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiFcServiceConfig) string { return v.FunctionName }).(pulumi.StringOutput)
+// The base url of function compute service. Required if `functionType` is `HttpTrigger`.
+func (o ApiFcServiceConfigOutput) FunctionBaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.FunctionBaseUrl }).(pulumi.StringPtrOutput)
+}
+
+// The function name of function compute service. Required if `functionType` is `FCEvent`.
+func (o ApiFcServiceConfigOutput) FunctionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.FunctionName }).(pulumi.StringPtrOutput)
+}
+
+// The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+func (o ApiFcServiceConfigOutput) FunctionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.FunctionType }).(pulumi.StringPtrOutput)
+}
+
+// The http method of function compute service. Required if `functionType` is `HttpTrigger`.
+func (o ApiFcServiceConfigOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// Whether to filter path in `functionBaseUrl`. Optional if `functionType` is `HttpTrigger`.
+func (o ApiFcServiceConfigOutput) OnlyBusinessPath() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApiFcServiceConfig) *bool { return v.OnlyBusinessPath }).(pulumi.BoolPtrOutput)
+}
+
+// The path of function compute service. Required if `functionType` is `HttpTrigger`.
+func (o ApiFcServiceConfigOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The qualifier of function name of compute service.
+func (o ApiFcServiceConfigOutput) Qualifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.Qualifier }).(pulumi.StringPtrOutput)
 }
 
 // The region that the function compute service belongs to.
@@ -266,9 +320,9 @@ func (o ApiFcServiceConfigOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiFcServiceConfig) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The service name of function compute service.
-func (o ApiFcServiceConfigOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v ApiFcServiceConfig) string { return v.ServiceName }).(pulumi.StringOutput)
+// The service name of function compute service. Required if `functionType` is `FCEvent`.
+func (o ApiFcServiceConfigOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
 // Backend service time-out time; unit: millisecond.
@@ -306,17 +360,77 @@ func (o ApiFcServiceConfigPtrOutput) ArnRole() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.ArnRole
+		return &v.ArnRole
 	}).(pulumi.StringPtrOutput)
 }
 
-// The function name of function compute service.
+// The base url of function compute service. Required if `functionType` is `HttpTrigger`.
+func (o ApiFcServiceConfigPtrOutput) FunctionBaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FunctionBaseUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The function name of function compute service. Required if `functionType` is `FCEvent`.
 func (o ApiFcServiceConfigPtrOutput) FunctionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.FunctionName
+		return v.FunctionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+func (o ApiFcServiceConfigPtrOutput) FunctionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FunctionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The http method of function compute service. Required if `functionType` is `HttpTrigger`.
+func (o ApiFcServiceConfigPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to filter path in `functionBaseUrl`. Optional if `functionType` is `HttpTrigger`.
+func (o ApiFcServiceConfigPtrOutput) OnlyBusinessPath() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApiFcServiceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OnlyBusinessPath
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The path of function compute service. Required if `functionType` is `HttpTrigger`.
+func (o ApiFcServiceConfigPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// The qualifier of function name of compute service.
+func (o ApiFcServiceConfigPtrOutput) Qualifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Qualifier
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -330,13 +444,13 @@ func (o ApiFcServiceConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The service name of function compute service.
+// The service name of function compute service. Required if `functionType` is `FCEvent`.
 func (o ApiFcServiceConfigPtrOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ServiceName
+		return v.ServiceName
 	}).(pulumi.StringPtrOutput)
 }
 

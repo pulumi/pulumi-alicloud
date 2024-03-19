@@ -26,20 +26,27 @@ namespace Pulumi.AliCloud.ResourceManager
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var displayName = config.Get("displayName") ?? "EAccount";
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var exampleFolder = new AliCloud.ResourceManager.Folder("exampleFolder", new()
     ///     {
-    ///         FolderName = name,
+    ///         FolderName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
     ///     });
     /// 
     ///     var exampleAccount = new AliCloud.ResourceManager.Account("exampleAccount", new()
     ///     {
-    ///         DisplayName = displayName,
+    ///         DisplayName = @default.Result.Apply(result =&gt; $"{displayName}-{result}"),
     ///         FolderId = exampleFolder.Id,
     ///     });
     /// 

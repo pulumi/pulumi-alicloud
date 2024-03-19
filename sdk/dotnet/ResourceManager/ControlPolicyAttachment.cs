@@ -26,11 +26,18 @@ namespace Pulumi.AliCloud.ResourceManager
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var exampleControlPolicy = new AliCloud.ResourceManager.ControlPolicy("exampleControlPolicy", new()
     ///     {
     ///         ControlPolicyName = name,
@@ -56,7 +63,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// 
     ///     var exampleFolder = new AliCloud.ResourceManager.Folder("exampleFolder", new()
     ///     {
-    ///         FolderName = name,
+    ///         FolderName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
     ///     });
     /// 
     ///     var exampleControlPolicyAttachment = new AliCloud.ResourceManager.ControlPolicyAttachment("exampleControlPolicyAttachment", new()

@@ -24,12 +24,12 @@ class RuleArgs:
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Rule resource.
-        :param pulumi.Input[str] event_bus_name: The name of event bus.
+        :param pulumi.Input[str] event_bus_name: The name of the event bus.
         :param pulumi.Input[str] filter_pattern: The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
-        :param pulumi.Input[str] rule_name: The name of rule.
-        :param pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]] targets: The target of rule. See `targets` below.
-        :param pulumi.Input[str] description: The description of rule.
-        :param pulumi.Input[str] status: Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+        :param pulumi.Input[str] rule_name: The name of the event rule.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]] targets: The targets of rule. See `targets` below.
+        :param pulumi.Input[str] description: The description of the event rule.
+        :param pulumi.Input[str] status: The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
         """
         pulumi.set(__self__, "event_bus_name", event_bus_name)
         pulumi.set(__self__, "filter_pattern", filter_pattern)
@@ -44,7 +44,7 @@ class RuleArgs:
     @pulumi.getter(name="eventBusName")
     def event_bus_name(self) -> pulumi.Input[str]:
         """
-        The name of event bus.
+        The name of the event bus.
         """
         return pulumi.get(self, "event_bus_name")
 
@@ -68,7 +68,7 @@ class RuleArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Input[str]:
         """
-        The name of rule.
+        The name of the event rule.
         """
         return pulumi.get(self, "rule_name")
 
@@ -80,7 +80,7 @@ class RuleArgs:
     @pulumi.getter
     def targets(self) -> pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]]:
         """
-        The target of rule. See `targets` below.
+        The targets of rule. See `targets` below.
         """
         return pulumi.get(self, "targets")
 
@@ -92,7 +92,7 @@ class RuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of rule.
+        The description of the event rule.
         """
         return pulumi.get(self, "description")
 
@@ -104,7 +104,7 @@ class RuleArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+        The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
         """
         return pulumi.get(self, "status")
 
@@ -124,12 +124,12 @@ class _RuleState:
                  targets: Optional[pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
-        :param pulumi.Input[str] description: The description of rule.
-        :param pulumi.Input[str] event_bus_name: The name of event bus.
+        :param pulumi.Input[str] description: The description of the event rule.
+        :param pulumi.Input[str] event_bus_name: The name of the event bus.
         :param pulumi.Input[str] filter_pattern: The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
-        :param pulumi.Input[str] rule_name: The name of rule.
-        :param pulumi.Input[str] status: Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
-        :param pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]] targets: The target of rule. See `targets` below.
+        :param pulumi.Input[str] rule_name: The name of the event rule.
+        :param pulumi.Input[str] status: The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]] targets: The targets of rule. See `targets` below.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -148,7 +148,7 @@ class _RuleState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of rule.
+        The description of the event rule.
         """
         return pulumi.get(self, "description")
 
@@ -160,7 +160,7 @@ class _RuleState:
     @pulumi.getter(name="eventBusName")
     def event_bus_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of event bus.
+        The name of the event bus.
         """
         return pulumi.get(self, "event_bus_name")
 
@@ -184,7 +184,7 @@ class _RuleState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of rule.
+        The name of the event rule.
         """
         return pulumi.get(self, "rule_name")
 
@@ -196,7 +196,7 @@ class _RuleState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+        The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
         """
         return pulumi.get(self, "status")
 
@@ -208,7 +208,7 @@ class _RuleState:
     @pulumi.getter
     def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleTargetArgs']]]]:
         """
-        The target of rule. See `targets` below.
+        The targets of rule. See `targets` below.
         """
         return pulumi.get(self, "targets")
 
@@ -246,12 +246,12 @@ class Rule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of rule.
-        :param pulumi.Input[str] event_bus_name: The name of event bus.
+        :param pulumi.Input[str] description: The description of the event rule.
+        :param pulumi.Input[str] event_bus_name: The name of the event bus.
         :param pulumi.Input[str] filter_pattern: The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
-        :param pulumi.Input[str] rule_name: The name of rule.
-        :param pulumi.Input[str] status: Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleTargetArgs']]]] targets: The target of rule. See `targets` below.
+        :param pulumi.Input[str] rule_name: The name of the event rule.
+        :param pulumi.Input[str] status: The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleTargetArgs']]]] targets: The targets of rule. See `targets` below.
         """
         ...
     @overload
@@ -341,12 +341,12 @@ class Rule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of rule.
-        :param pulumi.Input[str] event_bus_name: The name of event bus.
+        :param pulumi.Input[str] description: The description of the event rule.
+        :param pulumi.Input[str] event_bus_name: The name of the event bus.
         :param pulumi.Input[str] filter_pattern: The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
-        :param pulumi.Input[str] rule_name: The name of rule.
-        :param pulumi.Input[str] status: Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleTargetArgs']]]] targets: The target of rule. See `targets` below.
+        :param pulumi.Input[str] rule_name: The name of the event rule.
+        :param pulumi.Input[str] status: The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleTargetArgs']]]] targets: The targets of rule. See `targets` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -364,7 +364,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of rule.
+        The description of the event rule.
         """
         return pulumi.get(self, "description")
 
@@ -372,7 +372,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="eventBusName")
     def event_bus_name(self) -> pulumi.Output[str]:
         """
-        The name of event bus.
+        The name of the event bus.
         """
         return pulumi.get(self, "event_bus_name")
 
@@ -388,7 +388,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[str]:
         """
-        The name of rule.
+        The name of the event rule.
         """
         return pulumi.get(self, "rule_name")
 
@@ -396,7 +396,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+        The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
         """
         return pulumi.get(self, "status")
 
@@ -404,7 +404,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def targets(self) -> pulumi.Output[Sequence['outputs.RuleTarget']]:
         """
-        The target of rule. See `targets` below.
+        The targets of rule. See `targets` below.
         """
         return pulumi.get(self, "targets")
 

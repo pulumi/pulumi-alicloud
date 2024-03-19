@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * For information about OSS replication and how to use it, see [What is cross-region replication](https://www.alibabacloud.com/help/doc-detail/31864.html) and [What is same-region replication](https://www.alibabacloud.com/help/doc-detail/254865.html).
  * 
- * &gt; **NOTE:** Available in v1.161.0+.
+ * &gt; **NOTE:** Available since v1.161.0.
  * 
  * ## Example Usage
  * 
@@ -206,28 +206,28 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
         return this.bucket;
     }
     /**
-     * Specifies the destination for the rule(See the following block `destination`).
+     * Specifies the destination for the rule. See `destination` below.
      * 
      */
     @Export(name="destination", refs={BucketReplicationDestination.class}, tree="[0]")
     private Output<BucketReplicationDestination> destination;
 
     /**
-     * @return Specifies the destination for the rule(See the following block `destination`).
+     * @return Specifies the destination for the rule. See `destination` below.
      * 
      */
     public Output<BucketReplicationDestination> destination() {
         return this.destination;
     }
     /**
-     * Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryption_configuration`).
+     * Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
      * 
      */
     @Export(name="encryptionConfiguration", refs={BucketReplicationEncryptionConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ BucketReplicationEncryptionConfiguration> encryptionConfiguration;
 
     /**
-     * @return Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryption_configuration`).
+     * @return Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
      * 
      */
     public Output<Optional<BucketReplicationEncryptionConfiguration>> encryptionConfiguration() {
@@ -248,28 +248,28 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.historicalObjectReplication);
     }
     /**
-     * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefix_set`).
+     * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
      * 
      */
     @Export(name="prefixSet", refs={BucketReplicationPrefixSet.class}, tree="[0]")
     private Output</* @Nullable */ BucketReplicationPrefixSet> prefixSet;
 
     /**
-     * @return The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefix_set`).
+     * @return The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
      * 
      */
     public Output<Optional<BucketReplicationPrefixSet>> prefixSet() {
         return Codegen.optional(this.prefixSet);
     }
     /**
-     * Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
+     * Specifies the progress for querying the progress of a data replication task of a bucket.
      * 
      */
     @Export(name="progress", refs={BucketReplicationProgress.class}, tree="[0]")
     private Output<BucketReplicationProgress> progress;
 
     /**
-     * @return Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
+     * @return Specifies the progress for querying the progress of a data replication task of a bucket.
      * 
      */
     public Output<BucketReplicationProgress> progress() {
@@ -290,14 +290,14 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
         return this.ruleId;
     }
     /**
-     * Specifies other conditions used to filter the source objects to replicate(See the following block `source_selection_criteria`).
+     * Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
      * 
      */
     @Export(name="sourceSelectionCriteria", refs={BucketReplicationSourceSelectionCriteria.class}, tree="[0]")
     private Output</* @Nullable */ BucketReplicationSourceSelectionCriteria> sourceSelectionCriteria;
 
     /**
-     * @return Specifies other conditions used to filter the source objects to replicate(See the following block `source_selection_criteria`).
+     * @return Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
      * 
      */
     public Output<Optional<BucketReplicationSourceSelectionCriteria>> sourceSelectionCriteria() {

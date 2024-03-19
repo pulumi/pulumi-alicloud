@@ -73,6 +73,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> CidrBlock { get; private set; } = null!;
 
         /// <summary>
+        /// IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+        /// &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
+        /// </summary>
+        [Output("cidrMask")]
+        public Output<int?> CidrMask { get; private set; } = null!;
+
+        /// <summary>
         /// The creation time of the resource.
         /// </summary>
         [Output("createTime")]
@@ -143,6 +150,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
+        /// IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+        /// &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
+        /// </summary>
+        [Input("cidrMask")]
+        public Input<int>? CidrMask { get; set; }
+
+        /// <summary>
         /// The ID of the VPC Public IP address pool.
         /// </summary>
         [Input("publicIpAddressPoolId", required: true)]
@@ -161,6 +175,13 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
+
+        /// <summary>
+        /// IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+        /// &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
+        /// </summary>
+        [Input("cidrMask")]
+        public Input<int>? CidrMask { get; set; }
 
         /// <summary>
         /// The creation time of the resource.

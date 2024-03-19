@@ -28,6 +28,7 @@ class BucketArgs:
                  policy: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
                  referer_config: Optional[pulumi.Input['BucketRefererConfigArgs']] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  server_side_encryption_rule: Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -47,6 +48,7 @@ class BucketArgs:
         :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         :param pulumi.Input['BucketRefererConfigArgs'] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the bucket belongs.
         :param pulumi.Input['BucketServerSideEncryptionRuleArgs'] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
@@ -81,6 +83,8 @@ class BucketArgs:
             pulumi.set(__self__, "redundancy_type", redundancy_type)
         if referer_config is not None:
             pulumi.set(__self__, "referer_config", referer_config)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if server_side_encryption_rule is not None:
             pulumi.set(__self__, "server_side_encryption_rule", server_side_encryption_rule)
         if storage_class is not None:
@@ -239,6 +243,18 @@ class BucketArgs:
         pulumi.set(self, "referer_config", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group to which the bucket belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="serverSideEncryptionRule")
     def server_side_encryption_rule(self) -> Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']]:
         """
@@ -331,6 +347,7 @@ class _BucketState:
                  policy: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
                  referer_config: Optional[pulumi.Input['BucketRefererConfigArgs']] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  server_side_encryption_rule: Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -355,6 +372,7 @@ class _BucketState:
         :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         :param pulumi.Input['BucketRefererConfigArgs'] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the bucket belongs.
         :param pulumi.Input['BucketServerSideEncryptionRuleArgs'] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
@@ -399,6 +417,8 @@ class _BucketState:
             pulumi.set(__self__, "redundancy_type", redundancy_type)
         if referer_config is not None:
             pulumi.set(__self__, "referer_config", referer_config)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if server_side_encryption_rule is not None:
             pulumi.set(__self__, "server_side_encryption_rule", server_side_encryption_rule)
         if storage_class is not None:
@@ -617,6 +637,18 @@ class _BucketState:
         pulumi.set(self, "referer_config", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group to which the bucket belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="serverSideEncryptionRule")
     def server_side_encryption_rule(self) -> Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']]:
         """
@@ -706,6 +738,7 @@ class Bucket(pulumi.CustomResource):
                  policy: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
                  referer_config: Optional[pulumi.Input[pulumi.InputType['BucketRefererConfigArgs']]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  server_side_encryption_rule: Optional[pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -829,6 +862,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         :param pulumi.Input[pulumi.InputType['BucketRefererConfigArgs']] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the bucket belongs.
         :param pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
@@ -972,6 +1006,7 @@ class Bucket(pulumi.CustomResource):
                  policy: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
                  referer_config: Optional[pulumi.Input[pulumi.InputType['BucketRefererConfigArgs']]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  server_side_encryption_rule: Optional[pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -999,6 +1034,7 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["policy"] = policy
             __props__.__dict__["redundancy_type"] = redundancy_type
             __props__.__dict__["referer_config"] = referer_config
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["server_side_encryption_rule"] = server_side_encryption_rule
             __props__.__dict__["storage_class"] = storage_class
             __props__.__dict__["tags"] = tags
@@ -1037,6 +1073,7 @@ class Bucket(pulumi.CustomResource):
             policy: Optional[pulumi.Input[str]] = None,
             redundancy_type: Optional[pulumi.Input[str]] = None,
             referer_config: Optional[pulumi.Input[pulumi.InputType['BucketRefererConfigArgs']]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             server_side_encryption_rule: Optional[pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']]] = None,
             storage_class: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1066,6 +1103,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
         :param pulumi.Input[pulumi.InputType['BucketRefererConfigArgs']] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the bucket belongs.
         :param pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
@@ -1094,6 +1132,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["policy"] = policy
         __props__.__dict__["redundancy_type"] = redundancy_type
         __props__.__dict__["referer_config"] = referer_config
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["server_side_encryption_rule"] = server_side_encryption_rule
         __props__.__dict__["storage_class"] = storage_class
         __props__.__dict__["tags"] = tags
@@ -1237,6 +1276,14 @@ class Bucket(pulumi.CustomResource):
         The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
         """
         return pulumi.get(self, "referer_config")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group to which the bucket belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="serverSideEncryptionRule")

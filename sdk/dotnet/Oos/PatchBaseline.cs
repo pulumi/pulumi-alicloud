@@ -24,6 +24,7 @@ namespace Pulumi.AliCloud.Oos
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -35,7 +36,47 @@ namespace Pulumi.AliCloud.Oos
     ///     {
     ///         PatchBaselineName = name,
     ///         OperationSystem = "Windows",
-    ///         ApprovalRules = "{\"PatchRules\":[{\"EnableNonSecurity\":true,\"PatchFilterGroup\":[{\"Values\":[\"*\"],\"Key\":\"Product\"},{\"Values\":[\"Security\",\"Bugfix\"],\"Key\":\"Classification\"},{\"Values\":[\"Critical\",\"Important\"],\"Key\":\"Severity\"}],\"ApproveAfterDays\":7,\"ComplianceLevel\":\"Unspecified\"}]}",
+    ///         ApprovalRules = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["PatchRules"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["EnableNonSecurity"] = true,
+    ///                     ["PatchFilterGroup"] = new[]
+    ///                     {
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["Values"] = new[]
+    ///                             {
+    ///                                 "*",
+    ///                             },
+    ///                             ["Key"] = "Product",
+    ///                         },
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["Values"] = new[]
+    ///                             {
+    ///                                 "Security",
+    ///                                 "Bugfix",
+    ///                             },
+    ///                             ["Key"] = "Classification",
+    ///                         },
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["Values"] = new[]
+    ///                             {
+    ///                                 "Critical",
+    ///                                 "Important",
+    ///                             },
+    ///                             ["Key"] = "Severity",
+    ///                         },
+    ///                     },
+    ///                     ["ApproveAfterDays"] = 7,
+    ///                     ["ComplianceLevel"] = "Unspecified",
+    ///                 },
+    ///             },
+    ///         }),
     ///     });
     /// 
     /// });
@@ -58,6 +99,18 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         [Output("approvalRules")]
         public Output<string> ApprovalRules { get; private set; } = null!;
+
+        /// <summary>
+        /// Approved Patch.
+        /// </summary>
+        [Output("approvedPatches")]
+        public Output<ImmutableArray<string>> ApprovedPatches { get; private set; } = null!;
+
+        /// <summary>
+        /// ApprovedPatchesEnableNonSecurity.
+        /// </summary>
+        [Output("approvedPatchesEnableNonSecurity")]
+        public Output<bool?> ApprovedPatchesEnableNonSecurity { get; private set; } = null!;
 
         /// <summary>
         /// Creation time.
@@ -94,6 +147,24 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         [Output("rejectedPatchesAction")]
         public Output<string> RejectedPatchesAction { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Source.
+        /// </summary>
+        [Output("sources")]
+        public Output<ImmutableArray<string>> Sources { get; private set; } = null!;
+
+        /// <summary>
+        /// Label.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -147,6 +218,24 @@ namespace Pulumi.AliCloud.Oos
         [Input("approvalRules", required: true)]
         public Input<string> ApprovalRules { get; set; } = null!;
 
+        [Input("approvedPatches")]
+        private InputList<string>? _approvedPatches;
+
+        /// <summary>
+        /// Approved Patch.
+        /// </summary>
+        public InputList<string> ApprovedPatches
+        {
+            get => _approvedPatches ?? (_approvedPatches = new InputList<string>());
+            set => _approvedPatches = value;
+        }
+
+        /// <summary>
+        /// ApprovedPatchesEnableNonSecurity.
+        /// </summary>
+        [Input("approvedPatchesEnableNonSecurity")]
+        public Input<bool>? ApprovedPatchesEnableNonSecurity { get; set; }
+
         /// <summary>
         /// Patches baseline description information.
         /// </summary>
@@ -183,6 +272,36 @@ namespace Pulumi.AliCloud.Oos
         [Input("rejectedPatchesAction")]
         public Input<string>? RejectedPatchesAction { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("sources")]
+        private InputList<string>? _sources;
+
+        /// <summary>
+        /// Source.
+        /// </summary>
+        public InputList<string> Sources
+        {
+            get => _sources ?? (_sources = new InputList<string>());
+            set => _sources = value;
+        }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Label.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         public PatchBaselineArgs()
         {
         }
@@ -196,6 +315,24 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         [Input("approvalRules")]
         public Input<string>? ApprovalRules { get; set; }
+
+        [Input("approvedPatches")]
+        private InputList<string>? _approvedPatches;
+
+        /// <summary>
+        /// Approved Patch.
+        /// </summary>
+        public InputList<string> ApprovedPatches
+        {
+            get => _approvedPatches ?? (_approvedPatches = new InputList<string>());
+            set => _approvedPatches = value;
+        }
+
+        /// <summary>
+        /// ApprovedPatchesEnableNonSecurity.
+        /// </summary>
+        [Input("approvedPatchesEnableNonSecurity")]
+        public Input<bool>? ApprovedPatchesEnableNonSecurity { get; set; }
 
         /// <summary>
         /// Creation time.
@@ -238,6 +375,36 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         [Input("rejectedPatchesAction")]
         public Input<string>? RejectedPatchesAction { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("sources")]
+        private InputList<string>? _sources;
+
+        /// <summary>
+        /// Source.
+        /// </summary>
+        public InputList<string> Sources
+        {
+            get => _sources ?? (_sources = new InputList<string>());
+            set => _sources = value;
+        }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Label.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public PatchBaselineState()
         {

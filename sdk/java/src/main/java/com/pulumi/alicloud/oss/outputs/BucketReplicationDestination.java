@@ -17,6 +17,10 @@ public final class BucketReplicationDestination {
      * 
      */
     private String bucket;
+    /**
+     * @return The region in which the destination bucket is located.
+     * 
+     */
     private String location;
     /**
      * @return The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
@@ -34,6 +38,10 @@ public final class BucketReplicationDestination {
     public String bucket() {
         return this.bucket;
     }
+    /**
+     * @return The region in which the destination bucket is located.
+     * 
+     */
     public String location() {
         return this.location;
     }

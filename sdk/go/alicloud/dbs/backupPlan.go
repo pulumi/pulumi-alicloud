@@ -18,6 +18,153 @@ import (
 //
 // > **NOTE:** Available since v1.185.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dbs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
+//				Category:              pulumi.StringRef("HighAvailability"),
+//				DbInstanceStorageType: pulumi.StringRef("cloud_essd"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
+//				ZoneId:                pulumi.StringRef(defaultZones.Zones[0].Id),
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				Category:              pulumi.StringRef("HighAvailability"),
+//				DbInstanceStorageType: pulumi.StringRef("cloud_essd"),
+//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vswitchId := defaultSwitches.Ids[0]
+//			_ := defaultZones.Ids[0]
+//			_, err = ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
+//				Engine:                pulumi.String("MySQL"),
+//				EngineVersion:         pulumi.String("8.0"),
+//				DbInstanceStorageType: pulumi.String("cloud_essd"),
+//				InstanceType:          *pulumi.String(defaultInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       *pulumi.String(defaultInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				VswitchId:             *pulumi.String(vswitchId),
+//				InstanceName:          pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultDatabase, err := rds.NewDatabase(ctx, "defaultDatabase", &rds.DatabaseArgs{
+//				InstanceId: defaultInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRdsAccount, err := rds.NewRdsAccount(ctx, "defaultRdsAccount", &rds.RdsAccountArgs{
+//				DbInstanceId:    defaultInstance.ID(),
+//				AccountName:     pulumi.String("tfnormal000"),
+//				AccountPassword: pulumi.String("Test12345"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAccountPrivilege, err := rds.NewAccountPrivilege(ctx, "defaultAccountPrivilege", &rds.AccountPrivilegeArgs{
+//				InstanceId:  defaultInstance.ID(),
+//				AccountName: defaultRdsAccount.AccountName,
+//				Privilege:   pulumi.String("ReadWrite"),
+//				DbNames: pulumi.StringArray{
+//					defaultDatabase.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dbs.NewBackupPlan(ctx, "defaultBackupPlan", &dbs.BackupPlanArgs{
+//				BackupPlanName:             pulumi.String(name),
+//				PaymentType:                pulumi.String("PayAsYouGo"),
+//				InstanceClass:              pulumi.String("xlarge"),
+//				BackupMethod:               pulumi.String("logical"),
+//				DatabaseType:               pulumi.String("MySQL"),
+//				DatabaseRegion:             pulumi.String("cn-hangzhou"),
+//				StorageRegion:              pulumi.String("cn-hangzhou"),
+//				InstanceType:               pulumi.String("RDS"),
+//				SourceEndpointInstanceType: pulumi.String("RDS"),
+//				ResourceGroupId:            *pulumi.String(defaultResourceGroups.Ids[0]),
+//				SourceEndpointRegion:       pulumi.String("cn-hangzhou"),
+//				SourceEndpointInstanceId:   defaultInstance.ID(),
+//				SourceEndpointUserName:     defaultAccountPrivilege.AccountName,
+//				SourceEndpointPassword:     defaultRdsAccount.AccountPassword,
+//				BackupObjects: defaultDatabase.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("[{\"DBName\":\"%v\"}]", name), nil
+//				}).(pulumi.StringOutput),
+//				BackupPeriod:          pulumi.String("Monday"),
+//				BackupStartTime:       pulumi.String("14:22"),
+//				BackupStorageType:     pulumi.String("system"),
+//				BackupRetentionPeriod: pulumi.Int(740),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // DBS Backup Plan can be imported using the id, e.g.

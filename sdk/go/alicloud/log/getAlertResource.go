@@ -15,7 +15,9 @@ import (
 //
 // For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
 //
-// > **NOTE:** Available in v1.161.0+
+// > **DEPRECATED:**  This resource  has been deprecated from version `1.219.0`. Please use new resource alicloud_log_alert_resource.
+//
+// > **NOTE:** Available since v1.161.0.
 //
 // ## Example Usage
 //
@@ -32,16 +34,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := log.GetAlertResource(ctx, &log.GetAlertResourceArgs{
+//			_, err := log.LookupAlertResource(ctx, &log.LookupAlertResourceArgs{
 //				Lang: pulumi.StringRef("cn"),
 //				Type: "user",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = log.GetAlertResource(ctx, &log.GetAlertResourceArgs{
-//				Project: pulumi.StringRef("test-alert-tf"),
-//				Type:    "project",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,9 +47,9 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
-func GetAlertResource(ctx *pulumi.Context, args *GetAlertResourceArgs, opts ...pulumi.InvokeOption) (*GetAlertResourceResult, error) {
+func LookupAlertResource(ctx *pulumi.Context, args *LookupAlertResourceArgs, opts ...pulumi.InvokeOption) (*LookupAlertResourceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetAlertResourceResult
+	var rv LookupAlertResourceResult
 	err := ctx.Invoke("alicloud:log/getAlertResource:getAlertResource", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -63,7 +58,7 @@ func GetAlertResource(ctx *pulumi.Context, args *GetAlertResourceArgs, opts ...p
 }
 
 // A collection of arguments for invoking getAlertResource.
-type GetAlertResourceArgs struct {
+type LookupAlertResourceArgs struct {
 	// The lang of alert center resource when type is user.
 	Lang *string `pulumi:"lang"`
 	// The project of alert resource when type is project.
@@ -73,7 +68,7 @@ type GetAlertResourceArgs struct {
 }
 
 // A collection of values returned by getAlertResource.
-type GetAlertResourceResult struct {
+type LookupAlertResourceResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id      string  `pulumi:"id"`
 	Lang    *string `pulumi:"lang"`
@@ -81,21 +76,21 @@ type GetAlertResourceResult struct {
 	Type    string  `pulumi:"type"`
 }
 
-func GetAlertResourceOutput(ctx *pulumi.Context, args GetAlertResourceOutputArgs, opts ...pulumi.InvokeOption) GetAlertResourceResultOutput {
+func LookupAlertResourceOutput(ctx *pulumi.Context, args LookupAlertResourceOutputArgs, opts ...pulumi.InvokeOption) LookupAlertResourceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAlertResourceResult, error) {
-			args := v.(GetAlertResourceArgs)
-			r, err := GetAlertResource(ctx, &args, opts...)
-			var s GetAlertResourceResult
+		ApplyT(func(v interface{}) (LookupAlertResourceResult, error) {
+			args := v.(LookupAlertResourceArgs)
+			r, err := LookupAlertResource(ctx, &args, opts...)
+			var s LookupAlertResourceResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetAlertResourceResultOutput)
+		}).(LookupAlertResourceResultOutput)
 }
 
 // A collection of arguments for invoking getAlertResource.
-type GetAlertResourceOutputArgs struct {
+type LookupAlertResourceOutputArgs struct {
 	// The lang of alert center resource when type is user.
 	Lang pulumi.StringPtrInput `pulumi:"lang"`
 	// The project of alert resource when type is project.
@@ -104,42 +99,42 @@ type GetAlertResourceOutputArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
-func (GetAlertResourceOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAlertResourceArgs)(nil)).Elem()
+func (LookupAlertResourceOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAlertResourceArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getAlertResource.
-type GetAlertResourceResultOutput struct{ *pulumi.OutputState }
+type LookupAlertResourceResultOutput struct{ *pulumi.OutputState }
 
-func (GetAlertResourceResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAlertResourceResult)(nil)).Elem()
+func (LookupAlertResourceResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAlertResourceResult)(nil)).Elem()
 }
 
-func (o GetAlertResourceResultOutput) ToGetAlertResourceResultOutput() GetAlertResourceResultOutput {
+func (o LookupAlertResourceResultOutput) ToLookupAlertResourceResultOutput() LookupAlertResourceResultOutput {
 	return o
 }
 
-func (o GetAlertResourceResultOutput) ToGetAlertResourceResultOutputWithContext(ctx context.Context) GetAlertResourceResultOutput {
+func (o LookupAlertResourceResultOutput) ToLookupAlertResourceResultOutputWithContext(ctx context.Context) LookupAlertResourceResultOutput {
 	return o
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetAlertResourceResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAlertResourceResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupAlertResourceResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlertResourceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetAlertResourceResultOutput) Lang() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAlertResourceResult) *string { return v.Lang }).(pulumi.StringPtrOutput)
+func (o LookupAlertResourceResultOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAlertResourceResult) *string { return v.Lang }).(pulumi.StringPtrOutput)
 }
 
-func (o GetAlertResourceResultOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAlertResourceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+func (o LookupAlertResourceResultOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAlertResourceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-func (o GetAlertResourceResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAlertResourceResult) string { return v.Type }).(pulumi.StringOutput)
+func (o LookupAlertResourceResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlertResourceResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetAlertResourceResultOutput{})
+	pulumi.RegisterOutputType(LookupAlertResourceResultOutput{})
 }

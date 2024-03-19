@@ -3344,7 +3344,9 @@ func (o ManagedKubernetesRrsaMetadataPtrOutput) RrsaOidcIssuerUrl() pulumi.Strin
 type NodePoolDataDisk struct {
 	// The ID of the automatic snapshot policy that you want to apply to the system disk.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
-	// The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`.
+	// Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+	BurstingEnabled *bool `pulumi:"burstingEnabled"`
+	// The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`.
 	Category *string `pulumi:"category"`
 	// The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
 	Device *string `pulumi:"device"`
@@ -3352,10 +3354,12 @@ type NodePoolDataDisk struct {
 	Encrypted *string `pulumi:"encrypted"`
 	// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+	// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
 	Name *string `pulumi:"name"`
 	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
 	Size *int `pulumi:"size"`
 	// The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
@@ -3376,7 +3380,9 @@ type NodePoolDataDiskInput interface {
 type NodePoolDataDiskArgs struct {
 	// The ID of the automatic snapshot policy that you want to apply to the system disk.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
-	// The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`.
+	// Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+	BurstingEnabled pulumi.BoolPtrInput `pulumi:"burstingEnabled"`
+	// The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
 	Device pulumi.StringPtrInput `pulumi:"device"`
@@ -3384,10 +3390,12 @@ type NodePoolDataDiskArgs struct {
 	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
 	// The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+	// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
 	// The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 	// The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
@@ -3450,7 +3458,12 @@ func (o NodePoolDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`.
+// Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+func (o NodePoolDataDiskOutput) BurstingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolDataDisk) *bool { return v.BurstingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`.
 func (o NodePoolDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -3470,7 +3483,7 @@ func (o NodePoolDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
 func (o NodePoolDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3478,6 +3491,11 @@ func (o NodePoolDataDiskOutput) Name() pulumi.StringPtrOutput {
 // Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 func (o NodePoolDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+func (o NodePoolDataDiskOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolDataDisk) *int { return v.ProvisionedIops }).(pulumi.IntPtrOutput)
 }
 
 // The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
@@ -3511,6 +3529,12 @@ func (o NodePoolDataDiskArrayOutput) Index(i pulumi.IntInput) NodePoolDataDiskOu
 }
 
 type NodePoolKubeletConfiguration struct {
+	// Allowed sysctl mode whitelist.
+	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
+	// The maximum number of log files that can exist in each container.
+	ContainerLogMaxFiles *string `pulumi:"containerLogMaxFiles"`
+	// The maximum size that can be reached before a log file is rotated.
+	ContainerLogMaxSize *string `pulumi:"containerLogMaxSize"`
 	// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
 	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
 	// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
@@ -3523,12 +3547,18 @@ type NodePoolKubeletConfiguration struct {
 	EvictionSoft map[string]interface{} `pulumi:"evictionSoft"`
 	// Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
 	EvictionSoftGracePeriod map[string]interface{} `pulumi:"evictionSoftGracePeriod"`
+	// Feature switch to enable configuration of experimental features.
+	FeatureGates map[string]bool `pulumi:"featureGates"`
 	// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
 	KubeApiBurst *string `pulumi:"kubeApiBurst"`
 	// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
 	KubeApiQps *string `pulumi:"kubeApiQps"`
 	// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 	KubeReserved map[string]interface{} `pulumi:"kubeReserved"`
+	// The maximum number of running pods.
+	MaxPods *string `pulumi:"maxPods"`
+	// Read-only port number.
+	ReadOnlyPort *string `pulumi:"readOnlyPort"`
 	// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
 	RegistryBurst *string `pulumi:"registryBurst"`
 	// Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
@@ -3551,6 +3581,12 @@ type NodePoolKubeletConfigurationInput interface {
 }
 
 type NodePoolKubeletConfigurationArgs struct {
+	// Allowed sysctl mode whitelist.
+	AllowedUnsafeSysctls pulumi.StringArrayInput `pulumi:"allowedUnsafeSysctls"`
+	// The maximum number of log files that can exist in each container.
+	ContainerLogMaxFiles pulumi.StringPtrInput `pulumi:"containerLogMaxFiles"`
+	// The maximum size that can be reached before a log file is rotated.
+	ContainerLogMaxSize pulumi.StringPtrInput `pulumi:"containerLogMaxSize"`
 	// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
 	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
 	// Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `eventRecordQps`. It is only used when `eventRecordQps` is greater than 0. Valid value is `[0-100]`.
@@ -3563,12 +3599,18 @@ type NodePoolKubeletConfigurationArgs struct {
 	EvictionSoft pulumi.MapInput `pulumi:"evictionSoft"`
 	// Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
 	EvictionSoftGracePeriod pulumi.MapInput `pulumi:"evictionSoftGracePeriod"`
+	// Feature switch to enable configuration of experimental features.
+	FeatureGates pulumi.BoolMapInput `pulumi:"featureGates"`
 	// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
 	KubeApiBurst pulumi.StringPtrInput `pulumi:"kubeApiBurst"`
 	// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
 	KubeApiQps pulumi.StringPtrInput `pulumi:"kubeApiQps"`
 	// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 	KubeReserved pulumi.MapInput `pulumi:"kubeReserved"`
+	// The maximum number of running pods.
+	MaxPods pulumi.StringPtrInput `pulumi:"maxPods"`
+	// Read-only port number.
+	ReadOnlyPort pulumi.StringPtrInput `pulumi:"readOnlyPort"`
 	// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
 	RegistryBurst pulumi.StringPtrInput `pulumi:"registryBurst"`
 	// Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
@@ -3656,6 +3698,21 @@ func (o NodePoolKubeletConfigurationOutput) ToNodePoolKubeletConfigurationPtrOut
 	}).(NodePoolKubeletConfigurationPtrOutput)
 }
 
+// Allowed sysctl mode whitelist.
+func (o NodePoolKubeletConfigurationOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) []string { return v.AllowedUnsafeSysctls }).(pulumi.StringArrayOutput)
+}
+
+// The maximum number of log files that can exist in each container.
+func (o NodePoolKubeletConfigurationOutput) ContainerLogMaxFiles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.ContainerLogMaxFiles }).(pulumi.StringPtrOutput)
+}
+
+// The maximum size that can be reached before a log file is rotated.
+func (o NodePoolKubeletConfigurationOutput) ContainerLogMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.ContainerLogMaxSize }).(pulumi.StringPtrOutput)
+}
+
 // Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
 func (o NodePoolKubeletConfigurationOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
@@ -3686,6 +3743,11 @@ func (o NodePoolKubeletConfigurationOutput) EvictionSoftGracePeriod() pulumi.Map
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]interface{} { return v.EvictionSoftGracePeriod }).(pulumi.MapOutput)
 }
 
+// Feature switch to enable configuration of experimental features.
+func (o NodePoolKubeletConfigurationOutput) FeatureGates() pulumi.BoolMapOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]bool { return v.FeatureGates }).(pulumi.BoolMapOutput)
+}
+
 // Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
 func (o NodePoolKubeletConfigurationOutput) KubeApiBurst() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.KubeApiBurst }).(pulumi.StringPtrOutput)
@@ -3699,6 +3761,16 @@ func (o NodePoolKubeletConfigurationOutput) KubeApiQps() pulumi.StringPtrOutput 
 // Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 func (o NodePoolKubeletConfigurationOutput) KubeReserved() pulumi.MapOutput {
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]interface{} { return v.KubeReserved }).(pulumi.MapOutput)
+}
+
+// The maximum number of running pods.
+func (o NodePoolKubeletConfigurationOutput) MaxPods() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.MaxPods }).(pulumi.StringPtrOutput)
+}
+
+// Read-only port number.
+func (o NodePoolKubeletConfigurationOutput) ReadOnlyPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.ReadOnlyPort }).(pulumi.StringPtrOutput)
 }
 
 // Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
@@ -3743,6 +3815,36 @@ func (o NodePoolKubeletConfigurationPtrOutput) Elem() NodePoolKubeletConfigurati
 		var ret NodePoolKubeletConfiguration
 		return ret
 	}).(NodePoolKubeletConfigurationOutput)
+}
+
+// Allowed sysctl mode whitelist.
+func (o NodePoolKubeletConfigurationPtrOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedUnsafeSysctls
+	}).(pulumi.StringArrayOutput)
+}
+
+// The maximum number of log files that can exist in each container.
+func (o NodePoolKubeletConfigurationPtrOutput) ContainerLogMaxFiles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerLogMaxFiles
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum size that can be reached before a log file is rotated.
+func (o NodePoolKubeletConfigurationPtrOutput) ContainerLogMaxSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerLogMaxSize
+	}).(pulumi.StringPtrOutput)
 }
 
 // Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
@@ -3805,6 +3907,16 @@ func (o NodePoolKubeletConfigurationPtrOutput) EvictionSoftGracePeriod() pulumi.
 	}).(pulumi.MapOutput)
 }
 
+// Feature switch to enable configuration of experimental features.
+func (o NodePoolKubeletConfigurationPtrOutput) FeatureGates() pulumi.BoolMapOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]bool {
+		if v == nil {
+			return nil
+		}
+		return v.FeatureGates
+	}).(pulumi.BoolMapOutput)
+}
+
 // Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
 func (o NodePoolKubeletConfigurationPtrOutput) KubeApiBurst() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
@@ -3833,6 +3945,26 @@ func (o NodePoolKubeletConfigurationPtrOutput) KubeReserved() pulumi.MapOutput {
 		}
 		return v.KubeReserved
 	}).(pulumi.MapOutput)
+}
+
+// The maximum number of running pods.
+func (o NodePoolKubeletConfigurationPtrOutput) MaxPods() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPods
+	}).(pulumi.StringPtrOutput)
+}
+
+// Read-only port number.
+func (o NodePoolKubeletConfigurationPtrOutput) ReadOnlyPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnlyPort
+	}).(pulumi.StringPtrOutput)
 }
 
 // Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
@@ -3982,15 +4114,29 @@ func (o NodePoolLabelArrayOutput) Index(i pulumi.IntInput) NodePoolLabelOutput {
 }
 
 type NodePoolManagement struct {
-	// Whether automatic repair, Default to `false`.
+	// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
 	AutoRepair *bool `pulumi:"autoRepair"`
-	// Whether auto upgrade, Default to `false`.
+	// Automatic repair node policy. See `autoRepairPolicy` below.
+	AutoRepairPolicy *NodePoolManagementAutoRepairPolicy `pulumi:"autoRepairPolicy"`
+	// Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
-	// Max number of unavailable nodes. Default to `1`.
-	MaxUnavailable int `pulumi:"maxUnavailable"`
+	// The auto update policy. See `autoUpgradePolicy` below.
+	AutoUpgradePolicy *NodePoolManagementAutoUpgradePolicy `pulumi:"autoUpgradePolicy"`
+	// Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+	AutoVulFix *bool `pulumi:"autoVulFix"`
+	// The auto CVE patching policy. See `autoVulFixPolicy` below.
+	AutoVulFixPolicy *NodePoolManagementAutoVulFixPolicy `pulumi:"autoVulFixPolicy"`
+	// Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+	Enable *bool `pulumi:"enable"`
+	// Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+	MaxUnavailable *int `pulumi:"maxUnavailable"`
 	// Number of additional nodes. You have to specify one of surge, surge_percentage.
+	//
+	// Deprecated: Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
 	Surge *int `pulumi:"surge"`
 	// Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+	//
+	// Deprecated: Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
 	SurgePercentage *int `pulumi:"surgePercentage"`
 }
 
@@ -4006,15 +4152,29 @@ type NodePoolManagementInput interface {
 }
 
 type NodePoolManagementArgs struct {
-	// Whether automatic repair, Default to `false`.
+	// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
 	AutoRepair pulumi.BoolPtrInput `pulumi:"autoRepair"`
-	// Whether auto upgrade, Default to `false`.
+	// Automatic repair node policy. See `autoRepairPolicy` below.
+	AutoRepairPolicy NodePoolManagementAutoRepairPolicyPtrInput `pulumi:"autoRepairPolicy"`
+	// Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
 	AutoUpgrade pulumi.BoolPtrInput `pulumi:"autoUpgrade"`
-	// Max number of unavailable nodes. Default to `1`.
-	MaxUnavailable pulumi.IntInput `pulumi:"maxUnavailable"`
+	// The auto update policy. See `autoUpgradePolicy` below.
+	AutoUpgradePolicy NodePoolManagementAutoUpgradePolicyPtrInput `pulumi:"autoUpgradePolicy"`
+	// Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+	AutoVulFix pulumi.BoolPtrInput `pulumi:"autoVulFix"`
+	// The auto CVE patching policy. See `autoVulFixPolicy` below.
+	AutoVulFixPolicy NodePoolManagementAutoVulFixPolicyPtrInput `pulumi:"autoVulFixPolicy"`
+	// Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
 	// Number of additional nodes. You have to specify one of surge, surge_percentage.
+	//
+	// Deprecated: Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
 	Surge pulumi.IntPtrInput `pulumi:"surge"`
 	// Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+	//
+	// Deprecated: Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
 	SurgePercentage pulumi.IntPtrInput `pulumi:"surgePercentage"`
 }
 
@@ -4095,27 +4255,56 @@ func (o NodePoolManagementOutput) ToNodePoolManagementPtrOutputWithContext(ctx c
 	}).(NodePoolManagementPtrOutput)
 }
 
-// Whether automatic repair, Default to `false`.
+// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
 func (o NodePoolManagementOutput) AutoRepair() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
 }
 
-// Whether auto upgrade, Default to `false`.
+// Automatic repair node policy. See `autoRepairPolicy` below.
+func (o NodePoolManagementOutput) AutoRepairPolicy() NodePoolManagementAutoRepairPolicyPtrOutput {
+	return o.ApplyT(func(v NodePoolManagement) *NodePoolManagementAutoRepairPolicy { return v.AutoRepairPolicy }).(NodePoolManagementAutoRepairPolicyPtrOutput)
+}
+
+// Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
 func (o NodePoolManagementOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
 
-// Max number of unavailable nodes. Default to `1`.
-func (o NodePoolManagementOutput) MaxUnavailable() pulumi.IntOutput {
-	return o.ApplyT(func(v NodePoolManagement) int { return v.MaxUnavailable }).(pulumi.IntOutput)
+// The auto update policy. See `autoUpgradePolicy` below.
+func (o NodePoolManagementOutput) AutoUpgradePolicy() NodePoolManagementAutoUpgradePolicyPtrOutput {
+	return o.ApplyT(func(v NodePoolManagement) *NodePoolManagementAutoUpgradePolicy { return v.AutoUpgradePolicy }).(NodePoolManagementAutoUpgradePolicyPtrOutput)
+}
+
+// Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+func (o NodePoolManagementOutput) AutoVulFix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolManagement) *bool { return v.AutoVulFix }).(pulumi.BoolPtrOutput)
+}
+
+// The auto CVE patching policy. See `autoVulFixPolicy` below.
+func (o NodePoolManagementOutput) AutoVulFixPolicy() NodePoolManagementAutoVulFixPolicyPtrOutput {
+	return o.ApplyT(func(v NodePoolManagement) *NodePoolManagementAutoVulFixPolicy { return v.AutoVulFixPolicy }).(NodePoolManagementAutoVulFixPolicyPtrOutput)
+}
+
+// Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+func (o NodePoolManagementOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolManagement) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+func (o NodePoolManagementOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolManagement) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
 }
 
 // Number of additional nodes. You have to specify one of surge, surge_percentage.
+//
+// Deprecated: Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
 func (o NodePoolManagementOutput) Surge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolManagement) *int { return v.Surge }).(pulumi.IntPtrOutput)
 }
 
 // Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+//
+// Deprecated: Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
 func (o NodePoolManagementOutput) SurgePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolManagement) *int { return v.SurgePercentage }).(pulumi.IntPtrOutput)
 }
@@ -4144,7 +4333,7 @@ func (o NodePoolManagementPtrOutput) Elem() NodePoolManagementOutput {
 	}).(NodePoolManagementOutput)
 }
 
-// Whether automatic repair, Default to `false`.
+// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
 func (o NodePoolManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolManagement) *bool {
 		if v == nil {
@@ -4154,7 +4343,17 @@ func (o NodePoolManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether auto upgrade, Default to `false`.
+// Automatic repair node policy. See `autoRepairPolicy` below.
+func (o NodePoolManagementPtrOutput) AutoRepairPolicy() NodePoolManagementAutoRepairPolicyPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagement) *NodePoolManagementAutoRepairPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.AutoRepairPolicy
+	}).(NodePoolManagementAutoRepairPolicyPtrOutput)
+}
+
+// Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
 func (o NodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolManagement) *bool {
 		if v == nil {
@@ -4164,17 +4363,59 @@ func (o NodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Max number of unavailable nodes. Default to `1`.
+// The auto update policy. See `autoUpgradePolicy` below.
+func (o NodePoolManagementPtrOutput) AutoUpgradePolicy() NodePoolManagementAutoUpgradePolicyPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagement) *NodePoolManagementAutoUpgradePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.AutoUpgradePolicy
+	}).(NodePoolManagementAutoUpgradePolicyPtrOutput)
+}
+
+// Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+func (o NodePoolManagementPtrOutput) AutoVulFix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagement) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoVulFix
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The auto CVE patching policy. See `autoVulFixPolicy` below.
+func (o NodePoolManagementPtrOutput) AutoVulFixPolicy() NodePoolManagementAutoVulFixPolicyPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagement) *NodePoolManagementAutoVulFixPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.AutoVulFixPolicy
+	}).(NodePoolManagementAutoVulFixPolicyPtrOutput)
+}
+
+// Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+func (o NodePoolManagementPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagement) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
 func (o NodePoolManagementPtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolManagement) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.MaxUnavailable
+		return v.MaxUnavailable
 	}).(pulumi.IntPtrOutput)
 }
 
 // Number of additional nodes. You have to specify one of surge, surge_percentage.
+//
+// Deprecated: Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
 func (o NodePoolManagementPtrOutput) Surge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolManagement) *int {
 		if v == nil {
@@ -4185,6 +4426,8 @@ func (o NodePoolManagementPtrOutput) Surge() pulumi.IntPtrOutput {
 }
 
 // Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+//
+// Deprecated: Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
 func (o NodePoolManagementPtrOutput) SurgePercentage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolManagement) *int {
 		if v == nil {
@@ -4194,8 +4437,594 @@ func (o NodePoolManagementPtrOutput) SurgePercentage() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type NodePoolManagementAutoRepairPolicy struct {
+	// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+	RestartNode *bool `pulumi:"restartNode"`
+}
+
+// NodePoolManagementAutoRepairPolicyInput is an input type that accepts NodePoolManagementAutoRepairPolicyArgs and NodePoolManagementAutoRepairPolicyOutput values.
+// You can construct a concrete instance of `NodePoolManagementAutoRepairPolicyInput` via:
+//
+//	NodePoolManagementAutoRepairPolicyArgs{...}
+type NodePoolManagementAutoRepairPolicyInput interface {
+	pulumi.Input
+
+	ToNodePoolManagementAutoRepairPolicyOutput() NodePoolManagementAutoRepairPolicyOutput
+	ToNodePoolManagementAutoRepairPolicyOutputWithContext(context.Context) NodePoolManagementAutoRepairPolicyOutput
+}
+
+type NodePoolManagementAutoRepairPolicyArgs struct {
+	// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+	RestartNode pulumi.BoolPtrInput `pulumi:"restartNode"`
+}
+
+func (NodePoolManagementAutoRepairPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolManagementAutoRepairPolicy)(nil)).Elem()
+}
+
+func (i NodePoolManagementAutoRepairPolicyArgs) ToNodePoolManagementAutoRepairPolicyOutput() NodePoolManagementAutoRepairPolicyOutput {
+	return i.ToNodePoolManagementAutoRepairPolicyOutputWithContext(context.Background())
+}
+
+func (i NodePoolManagementAutoRepairPolicyArgs) ToNodePoolManagementAutoRepairPolicyOutputWithContext(ctx context.Context) NodePoolManagementAutoRepairPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolManagementAutoRepairPolicyOutput)
+}
+
+func (i NodePoolManagementAutoRepairPolicyArgs) ToNodePoolManagementAutoRepairPolicyPtrOutput() NodePoolManagementAutoRepairPolicyPtrOutput {
+	return i.ToNodePoolManagementAutoRepairPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolManagementAutoRepairPolicyArgs) ToNodePoolManagementAutoRepairPolicyPtrOutputWithContext(ctx context.Context) NodePoolManagementAutoRepairPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolManagementAutoRepairPolicyOutput).ToNodePoolManagementAutoRepairPolicyPtrOutputWithContext(ctx)
+}
+
+// NodePoolManagementAutoRepairPolicyPtrInput is an input type that accepts NodePoolManagementAutoRepairPolicyArgs, NodePoolManagementAutoRepairPolicyPtr and NodePoolManagementAutoRepairPolicyPtrOutput values.
+// You can construct a concrete instance of `NodePoolManagementAutoRepairPolicyPtrInput` via:
+//
+//	        NodePoolManagementAutoRepairPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolManagementAutoRepairPolicyPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolManagementAutoRepairPolicyPtrOutput() NodePoolManagementAutoRepairPolicyPtrOutput
+	ToNodePoolManagementAutoRepairPolicyPtrOutputWithContext(context.Context) NodePoolManagementAutoRepairPolicyPtrOutput
+}
+
+type nodePoolManagementAutoRepairPolicyPtrType NodePoolManagementAutoRepairPolicyArgs
+
+func NodePoolManagementAutoRepairPolicyPtr(v *NodePoolManagementAutoRepairPolicyArgs) NodePoolManagementAutoRepairPolicyPtrInput {
+	return (*nodePoolManagementAutoRepairPolicyPtrType)(v)
+}
+
+func (*nodePoolManagementAutoRepairPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolManagementAutoRepairPolicy)(nil)).Elem()
+}
+
+func (i *nodePoolManagementAutoRepairPolicyPtrType) ToNodePoolManagementAutoRepairPolicyPtrOutput() NodePoolManagementAutoRepairPolicyPtrOutput {
+	return i.ToNodePoolManagementAutoRepairPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolManagementAutoRepairPolicyPtrType) ToNodePoolManagementAutoRepairPolicyPtrOutputWithContext(ctx context.Context) NodePoolManagementAutoRepairPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolManagementAutoRepairPolicyPtrOutput)
+}
+
+type NodePoolManagementAutoRepairPolicyOutput struct{ *pulumi.OutputState }
+
+func (NodePoolManagementAutoRepairPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolManagementAutoRepairPolicy)(nil)).Elem()
+}
+
+func (o NodePoolManagementAutoRepairPolicyOutput) ToNodePoolManagementAutoRepairPolicyOutput() NodePoolManagementAutoRepairPolicyOutput {
+	return o
+}
+
+func (o NodePoolManagementAutoRepairPolicyOutput) ToNodePoolManagementAutoRepairPolicyOutputWithContext(ctx context.Context) NodePoolManagementAutoRepairPolicyOutput {
+	return o
+}
+
+func (o NodePoolManagementAutoRepairPolicyOutput) ToNodePoolManagementAutoRepairPolicyPtrOutput() NodePoolManagementAutoRepairPolicyPtrOutput {
+	return o.ToNodePoolManagementAutoRepairPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolManagementAutoRepairPolicyOutput) ToNodePoolManagementAutoRepairPolicyPtrOutputWithContext(ctx context.Context) NodePoolManagementAutoRepairPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolManagementAutoRepairPolicy) *NodePoolManagementAutoRepairPolicy {
+		return &v
+	}).(NodePoolManagementAutoRepairPolicyPtrOutput)
+}
+
+// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+func (o NodePoolManagementAutoRepairPolicyOutput) RestartNode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolManagementAutoRepairPolicy) *bool { return v.RestartNode }).(pulumi.BoolPtrOutput)
+}
+
+type NodePoolManagementAutoRepairPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolManagementAutoRepairPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolManagementAutoRepairPolicy)(nil)).Elem()
+}
+
+func (o NodePoolManagementAutoRepairPolicyPtrOutput) ToNodePoolManagementAutoRepairPolicyPtrOutput() NodePoolManagementAutoRepairPolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolManagementAutoRepairPolicyPtrOutput) ToNodePoolManagementAutoRepairPolicyPtrOutputWithContext(ctx context.Context) NodePoolManagementAutoRepairPolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolManagementAutoRepairPolicyPtrOutput) Elem() NodePoolManagementAutoRepairPolicyOutput {
+	return o.ApplyT(func(v *NodePoolManagementAutoRepairPolicy) NodePoolManagementAutoRepairPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolManagementAutoRepairPolicy
+		return ret
+	}).(NodePoolManagementAutoRepairPolicyOutput)
+}
+
+// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+func (o NodePoolManagementAutoRepairPolicyPtrOutput) RestartNode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagementAutoRepairPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RestartNode
+	}).(pulumi.BoolPtrOutput)
+}
+
+type NodePoolManagementAutoUpgradePolicy struct {
+	// Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+	AutoUpgradeKubelet *bool `pulumi:"autoUpgradeKubelet"`
+}
+
+// NodePoolManagementAutoUpgradePolicyInput is an input type that accepts NodePoolManagementAutoUpgradePolicyArgs and NodePoolManagementAutoUpgradePolicyOutput values.
+// You can construct a concrete instance of `NodePoolManagementAutoUpgradePolicyInput` via:
+//
+//	NodePoolManagementAutoUpgradePolicyArgs{...}
+type NodePoolManagementAutoUpgradePolicyInput interface {
+	pulumi.Input
+
+	ToNodePoolManagementAutoUpgradePolicyOutput() NodePoolManagementAutoUpgradePolicyOutput
+	ToNodePoolManagementAutoUpgradePolicyOutputWithContext(context.Context) NodePoolManagementAutoUpgradePolicyOutput
+}
+
+type NodePoolManagementAutoUpgradePolicyArgs struct {
+	// Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+	AutoUpgradeKubelet pulumi.BoolPtrInput `pulumi:"autoUpgradeKubelet"`
+}
+
+func (NodePoolManagementAutoUpgradePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolManagementAutoUpgradePolicy)(nil)).Elem()
+}
+
+func (i NodePoolManagementAutoUpgradePolicyArgs) ToNodePoolManagementAutoUpgradePolicyOutput() NodePoolManagementAutoUpgradePolicyOutput {
+	return i.ToNodePoolManagementAutoUpgradePolicyOutputWithContext(context.Background())
+}
+
+func (i NodePoolManagementAutoUpgradePolicyArgs) ToNodePoolManagementAutoUpgradePolicyOutputWithContext(ctx context.Context) NodePoolManagementAutoUpgradePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolManagementAutoUpgradePolicyOutput)
+}
+
+func (i NodePoolManagementAutoUpgradePolicyArgs) ToNodePoolManagementAutoUpgradePolicyPtrOutput() NodePoolManagementAutoUpgradePolicyPtrOutput {
+	return i.ToNodePoolManagementAutoUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolManagementAutoUpgradePolicyArgs) ToNodePoolManagementAutoUpgradePolicyPtrOutputWithContext(ctx context.Context) NodePoolManagementAutoUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolManagementAutoUpgradePolicyOutput).ToNodePoolManagementAutoUpgradePolicyPtrOutputWithContext(ctx)
+}
+
+// NodePoolManagementAutoUpgradePolicyPtrInput is an input type that accepts NodePoolManagementAutoUpgradePolicyArgs, NodePoolManagementAutoUpgradePolicyPtr and NodePoolManagementAutoUpgradePolicyPtrOutput values.
+// You can construct a concrete instance of `NodePoolManagementAutoUpgradePolicyPtrInput` via:
+//
+//	        NodePoolManagementAutoUpgradePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolManagementAutoUpgradePolicyPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolManagementAutoUpgradePolicyPtrOutput() NodePoolManagementAutoUpgradePolicyPtrOutput
+	ToNodePoolManagementAutoUpgradePolicyPtrOutputWithContext(context.Context) NodePoolManagementAutoUpgradePolicyPtrOutput
+}
+
+type nodePoolManagementAutoUpgradePolicyPtrType NodePoolManagementAutoUpgradePolicyArgs
+
+func NodePoolManagementAutoUpgradePolicyPtr(v *NodePoolManagementAutoUpgradePolicyArgs) NodePoolManagementAutoUpgradePolicyPtrInput {
+	return (*nodePoolManagementAutoUpgradePolicyPtrType)(v)
+}
+
+func (*nodePoolManagementAutoUpgradePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolManagementAutoUpgradePolicy)(nil)).Elem()
+}
+
+func (i *nodePoolManagementAutoUpgradePolicyPtrType) ToNodePoolManagementAutoUpgradePolicyPtrOutput() NodePoolManagementAutoUpgradePolicyPtrOutput {
+	return i.ToNodePoolManagementAutoUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolManagementAutoUpgradePolicyPtrType) ToNodePoolManagementAutoUpgradePolicyPtrOutputWithContext(ctx context.Context) NodePoolManagementAutoUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolManagementAutoUpgradePolicyPtrOutput)
+}
+
+type NodePoolManagementAutoUpgradePolicyOutput struct{ *pulumi.OutputState }
+
+func (NodePoolManagementAutoUpgradePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolManagementAutoUpgradePolicy)(nil)).Elem()
+}
+
+func (o NodePoolManagementAutoUpgradePolicyOutput) ToNodePoolManagementAutoUpgradePolicyOutput() NodePoolManagementAutoUpgradePolicyOutput {
+	return o
+}
+
+func (o NodePoolManagementAutoUpgradePolicyOutput) ToNodePoolManagementAutoUpgradePolicyOutputWithContext(ctx context.Context) NodePoolManagementAutoUpgradePolicyOutput {
+	return o
+}
+
+func (o NodePoolManagementAutoUpgradePolicyOutput) ToNodePoolManagementAutoUpgradePolicyPtrOutput() NodePoolManagementAutoUpgradePolicyPtrOutput {
+	return o.ToNodePoolManagementAutoUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolManagementAutoUpgradePolicyOutput) ToNodePoolManagementAutoUpgradePolicyPtrOutputWithContext(ctx context.Context) NodePoolManagementAutoUpgradePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolManagementAutoUpgradePolicy) *NodePoolManagementAutoUpgradePolicy {
+		return &v
+	}).(NodePoolManagementAutoUpgradePolicyPtrOutput)
+}
+
+// Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+func (o NodePoolManagementAutoUpgradePolicyOutput) AutoUpgradeKubelet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolManagementAutoUpgradePolicy) *bool { return v.AutoUpgradeKubelet }).(pulumi.BoolPtrOutput)
+}
+
+type NodePoolManagementAutoUpgradePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolManagementAutoUpgradePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolManagementAutoUpgradePolicy)(nil)).Elem()
+}
+
+func (o NodePoolManagementAutoUpgradePolicyPtrOutput) ToNodePoolManagementAutoUpgradePolicyPtrOutput() NodePoolManagementAutoUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolManagementAutoUpgradePolicyPtrOutput) ToNodePoolManagementAutoUpgradePolicyPtrOutputWithContext(ctx context.Context) NodePoolManagementAutoUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolManagementAutoUpgradePolicyPtrOutput) Elem() NodePoolManagementAutoUpgradePolicyOutput {
+	return o.ApplyT(func(v *NodePoolManagementAutoUpgradePolicy) NodePoolManagementAutoUpgradePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolManagementAutoUpgradePolicy
+		return ret
+	}).(NodePoolManagementAutoUpgradePolicyOutput)
+}
+
+// Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+func (o NodePoolManagementAutoUpgradePolicyPtrOutput) AutoUpgradeKubelet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagementAutoUpgradePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoUpgradeKubelet
+	}).(pulumi.BoolPtrOutput)
+}
+
+type NodePoolManagementAutoVulFixPolicy struct {
+	// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+	RestartNode *bool `pulumi:"restartNode"`
+	// The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+	VulLevel *string `pulumi:"vulLevel"`
+}
+
+// NodePoolManagementAutoVulFixPolicyInput is an input type that accepts NodePoolManagementAutoVulFixPolicyArgs and NodePoolManagementAutoVulFixPolicyOutput values.
+// You can construct a concrete instance of `NodePoolManagementAutoVulFixPolicyInput` via:
+//
+//	NodePoolManagementAutoVulFixPolicyArgs{...}
+type NodePoolManagementAutoVulFixPolicyInput interface {
+	pulumi.Input
+
+	ToNodePoolManagementAutoVulFixPolicyOutput() NodePoolManagementAutoVulFixPolicyOutput
+	ToNodePoolManagementAutoVulFixPolicyOutputWithContext(context.Context) NodePoolManagementAutoVulFixPolicyOutput
+}
+
+type NodePoolManagementAutoVulFixPolicyArgs struct {
+	// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+	RestartNode pulumi.BoolPtrInput `pulumi:"restartNode"`
+	// The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+	VulLevel pulumi.StringPtrInput `pulumi:"vulLevel"`
+}
+
+func (NodePoolManagementAutoVulFixPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolManagementAutoVulFixPolicy)(nil)).Elem()
+}
+
+func (i NodePoolManagementAutoVulFixPolicyArgs) ToNodePoolManagementAutoVulFixPolicyOutput() NodePoolManagementAutoVulFixPolicyOutput {
+	return i.ToNodePoolManagementAutoVulFixPolicyOutputWithContext(context.Background())
+}
+
+func (i NodePoolManagementAutoVulFixPolicyArgs) ToNodePoolManagementAutoVulFixPolicyOutputWithContext(ctx context.Context) NodePoolManagementAutoVulFixPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolManagementAutoVulFixPolicyOutput)
+}
+
+func (i NodePoolManagementAutoVulFixPolicyArgs) ToNodePoolManagementAutoVulFixPolicyPtrOutput() NodePoolManagementAutoVulFixPolicyPtrOutput {
+	return i.ToNodePoolManagementAutoVulFixPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolManagementAutoVulFixPolicyArgs) ToNodePoolManagementAutoVulFixPolicyPtrOutputWithContext(ctx context.Context) NodePoolManagementAutoVulFixPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolManagementAutoVulFixPolicyOutput).ToNodePoolManagementAutoVulFixPolicyPtrOutputWithContext(ctx)
+}
+
+// NodePoolManagementAutoVulFixPolicyPtrInput is an input type that accepts NodePoolManagementAutoVulFixPolicyArgs, NodePoolManagementAutoVulFixPolicyPtr and NodePoolManagementAutoVulFixPolicyPtrOutput values.
+// You can construct a concrete instance of `NodePoolManagementAutoVulFixPolicyPtrInput` via:
+//
+//	        NodePoolManagementAutoVulFixPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolManagementAutoVulFixPolicyPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolManagementAutoVulFixPolicyPtrOutput() NodePoolManagementAutoVulFixPolicyPtrOutput
+	ToNodePoolManagementAutoVulFixPolicyPtrOutputWithContext(context.Context) NodePoolManagementAutoVulFixPolicyPtrOutput
+}
+
+type nodePoolManagementAutoVulFixPolicyPtrType NodePoolManagementAutoVulFixPolicyArgs
+
+func NodePoolManagementAutoVulFixPolicyPtr(v *NodePoolManagementAutoVulFixPolicyArgs) NodePoolManagementAutoVulFixPolicyPtrInput {
+	return (*nodePoolManagementAutoVulFixPolicyPtrType)(v)
+}
+
+func (*nodePoolManagementAutoVulFixPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolManagementAutoVulFixPolicy)(nil)).Elem()
+}
+
+func (i *nodePoolManagementAutoVulFixPolicyPtrType) ToNodePoolManagementAutoVulFixPolicyPtrOutput() NodePoolManagementAutoVulFixPolicyPtrOutput {
+	return i.ToNodePoolManagementAutoVulFixPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolManagementAutoVulFixPolicyPtrType) ToNodePoolManagementAutoVulFixPolicyPtrOutputWithContext(ctx context.Context) NodePoolManagementAutoVulFixPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolManagementAutoVulFixPolicyPtrOutput)
+}
+
+type NodePoolManagementAutoVulFixPolicyOutput struct{ *pulumi.OutputState }
+
+func (NodePoolManagementAutoVulFixPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolManagementAutoVulFixPolicy)(nil)).Elem()
+}
+
+func (o NodePoolManagementAutoVulFixPolicyOutput) ToNodePoolManagementAutoVulFixPolicyOutput() NodePoolManagementAutoVulFixPolicyOutput {
+	return o
+}
+
+func (o NodePoolManagementAutoVulFixPolicyOutput) ToNodePoolManagementAutoVulFixPolicyOutputWithContext(ctx context.Context) NodePoolManagementAutoVulFixPolicyOutput {
+	return o
+}
+
+func (o NodePoolManagementAutoVulFixPolicyOutput) ToNodePoolManagementAutoVulFixPolicyPtrOutput() NodePoolManagementAutoVulFixPolicyPtrOutput {
+	return o.ToNodePoolManagementAutoVulFixPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolManagementAutoVulFixPolicyOutput) ToNodePoolManagementAutoVulFixPolicyPtrOutputWithContext(ctx context.Context) NodePoolManagementAutoVulFixPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolManagementAutoVulFixPolicy) *NodePoolManagementAutoVulFixPolicy {
+		return &v
+	}).(NodePoolManagementAutoVulFixPolicyPtrOutput)
+}
+
+// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+func (o NodePoolManagementAutoVulFixPolicyOutput) RestartNode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolManagementAutoVulFixPolicy) *bool { return v.RestartNode }).(pulumi.BoolPtrOutput)
+}
+
+// The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+func (o NodePoolManagementAutoVulFixPolicyOutput) VulLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolManagementAutoVulFixPolicy) *string { return v.VulLevel }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolManagementAutoVulFixPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolManagementAutoVulFixPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolManagementAutoVulFixPolicy)(nil)).Elem()
+}
+
+func (o NodePoolManagementAutoVulFixPolicyPtrOutput) ToNodePoolManagementAutoVulFixPolicyPtrOutput() NodePoolManagementAutoVulFixPolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolManagementAutoVulFixPolicyPtrOutput) ToNodePoolManagementAutoVulFixPolicyPtrOutputWithContext(ctx context.Context) NodePoolManagementAutoVulFixPolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolManagementAutoVulFixPolicyPtrOutput) Elem() NodePoolManagementAutoVulFixPolicyOutput {
+	return o.ApplyT(func(v *NodePoolManagementAutoVulFixPolicy) NodePoolManagementAutoVulFixPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolManagementAutoVulFixPolicy
+		return ret
+	}).(NodePoolManagementAutoVulFixPolicyOutput)
+}
+
+// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+func (o NodePoolManagementAutoVulFixPolicyPtrOutput) RestartNode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagementAutoVulFixPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RestartNode
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+func (o NodePoolManagementAutoVulFixPolicyPtrOutput) VulLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolManagementAutoVulFixPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VulLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+type NodePoolPrivatePoolOptions struct {
+	// The ID of the private node pool.
+	PrivatePoolOptionsId *string `pulumi:"privatePoolOptionsId"`
+	// The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
+	PrivatePoolOptionsMatchCriteria *string `pulumi:"privatePoolOptionsMatchCriteria"`
+}
+
+// NodePoolPrivatePoolOptionsInput is an input type that accepts NodePoolPrivatePoolOptionsArgs and NodePoolPrivatePoolOptionsOutput values.
+// You can construct a concrete instance of `NodePoolPrivatePoolOptionsInput` via:
+//
+//	NodePoolPrivatePoolOptionsArgs{...}
+type NodePoolPrivatePoolOptionsInput interface {
+	pulumi.Input
+
+	ToNodePoolPrivatePoolOptionsOutput() NodePoolPrivatePoolOptionsOutput
+	ToNodePoolPrivatePoolOptionsOutputWithContext(context.Context) NodePoolPrivatePoolOptionsOutput
+}
+
+type NodePoolPrivatePoolOptionsArgs struct {
+	// The ID of the private node pool.
+	PrivatePoolOptionsId pulumi.StringPtrInput `pulumi:"privatePoolOptionsId"`
+	// The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
+	PrivatePoolOptionsMatchCriteria pulumi.StringPtrInput `pulumi:"privatePoolOptionsMatchCriteria"`
+}
+
+func (NodePoolPrivatePoolOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolPrivatePoolOptions)(nil)).Elem()
+}
+
+func (i NodePoolPrivatePoolOptionsArgs) ToNodePoolPrivatePoolOptionsOutput() NodePoolPrivatePoolOptionsOutput {
+	return i.ToNodePoolPrivatePoolOptionsOutputWithContext(context.Background())
+}
+
+func (i NodePoolPrivatePoolOptionsArgs) ToNodePoolPrivatePoolOptionsOutputWithContext(ctx context.Context) NodePoolPrivatePoolOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolPrivatePoolOptionsOutput)
+}
+
+func (i NodePoolPrivatePoolOptionsArgs) ToNodePoolPrivatePoolOptionsPtrOutput() NodePoolPrivatePoolOptionsPtrOutput {
+	return i.ToNodePoolPrivatePoolOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolPrivatePoolOptionsArgs) ToNodePoolPrivatePoolOptionsPtrOutputWithContext(ctx context.Context) NodePoolPrivatePoolOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolPrivatePoolOptionsOutput).ToNodePoolPrivatePoolOptionsPtrOutputWithContext(ctx)
+}
+
+// NodePoolPrivatePoolOptionsPtrInput is an input type that accepts NodePoolPrivatePoolOptionsArgs, NodePoolPrivatePoolOptionsPtr and NodePoolPrivatePoolOptionsPtrOutput values.
+// You can construct a concrete instance of `NodePoolPrivatePoolOptionsPtrInput` via:
+//
+//	        NodePoolPrivatePoolOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolPrivatePoolOptionsPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolPrivatePoolOptionsPtrOutput() NodePoolPrivatePoolOptionsPtrOutput
+	ToNodePoolPrivatePoolOptionsPtrOutputWithContext(context.Context) NodePoolPrivatePoolOptionsPtrOutput
+}
+
+type nodePoolPrivatePoolOptionsPtrType NodePoolPrivatePoolOptionsArgs
+
+func NodePoolPrivatePoolOptionsPtr(v *NodePoolPrivatePoolOptionsArgs) NodePoolPrivatePoolOptionsPtrInput {
+	return (*nodePoolPrivatePoolOptionsPtrType)(v)
+}
+
+func (*nodePoolPrivatePoolOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolPrivatePoolOptions)(nil)).Elem()
+}
+
+func (i *nodePoolPrivatePoolOptionsPtrType) ToNodePoolPrivatePoolOptionsPtrOutput() NodePoolPrivatePoolOptionsPtrOutput {
+	return i.ToNodePoolPrivatePoolOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolPrivatePoolOptionsPtrType) ToNodePoolPrivatePoolOptionsPtrOutputWithContext(ctx context.Context) NodePoolPrivatePoolOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolPrivatePoolOptionsPtrOutput)
+}
+
+type NodePoolPrivatePoolOptionsOutput struct{ *pulumi.OutputState }
+
+func (NodePoolPrivatePoolOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolPrivatePoolOptions)(nil)).Elem()
+}
+
+func (o NodePoolPrivatePoolOptionsOutput) ToNodePoolPrivatePoolOptionsOutput() NodePoolPrivatePoolOptionsOutput {
+	return o
+}
+
+func (o NodePoolPrivatePoolOptionsOutput) ToNodePoolPrivatePoolOptionsOutputWithContext(ctx context.Context) NodePoolPrivatePoolOptionsOutput {
+	return o
+}
+
+func (o NodePoolPrivatePoolOptionsOutput) ToNodePoolPrivatePoolOptionsPtrOutput() NodePoolPrivatePoolOptionsPtrOutput {
+	return o.ToNodePoolPrivatePoolOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolPrivatePoolOptionsOutput) ToNodePoolPrivatePoolOptionsPtrOutputWithContext(ctx context.Context) NodePoolPrivatePoolOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolPrivatePoolOptions) *NodePoolPrivatePoolOptions {
+		return &v
+	}).(NodePoolPrivatePoolOptionsPtrOutput)
+}
+
+// The ID of the private node pool.
+func (o NodePoolPrivatePoolOptionsOutput) PrivatePoolOptionsId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolPrivatePoolOptions) *string { return v.PrivatePoolOptionsId }).(pulumi.StringPtrOutput)
+}
+
+// The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
+func (o NodePoolPrivatePoolOptionsOutput) PrivatePoolOptionsMatchCriteria() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolPrivatePoolOptions) *string { return v.PrivatePoolOptionsMatchCriteria }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolPrivatePoolOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolPrivatePoolOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolPrivatePoolOptions)(nil)).Elem()
+}
+
+func (o NodePoolPrivatePoolOptionsPtrOutput) ToNodePoolPrivatePoolOptionsPtrOutput() NodePoolPrivatePoolOptionsPtrOutput {
+	return o
+}
+
+func (o NodePoolPrivatePoolOptionsPtrOutput) ToNodePoolPrivatePoolOptionsPtrOutputWithContext(ctx context.Context) NodePoolPrivatePoolOptionsPtrOutput {
+	return o
+}
+
+func (o NodePoolPrivatePoolOptionsPtrOutput) Elem() NodePoolPrivatePoolOptionsOutput {
+	return o.ApplyT(func(v *NodePoolPrivatePoolOptions) NodePoolPrivatePoolOptions {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolPrivatePoolOptions
+		return ret
+	}).(NodePoolPrivatePoolOptionsOutput)
+}
+
+// The ID of the private node pool.
+func (o NodePoolPrivatePoolOptionsPtrOutput) PrivatePoolOptionsId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolPrivatePoolOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivatePoolOptionsId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
+func (o NodePoolPrivatePoolOptionsPtrOutput) PrivatePoolOptionsMatchCriteria() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolPrivatePoolOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivatePoolOptionsMatchCriteria
+	}).(pulumi.StringPtrOutput)
+}
+
 type NodePoolRollingPolicy struct {
-	// Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+	// The maximum number of unusable nodes.
 	MaxParallelism *int `pulumi:"maxParallelism"`
 }
 
@@ -4211,7 +5040,7 @@ type NodePoolRollingPolicyInput interface {
 }
 
 type NodePoolRollingPolicyArgs struct {
-	// Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+	// The maximum number of unusable nodes.
 	MaxParallelism pulumi.IntPtrInput `pulumi:"maxParallelism"`
 }
 
@@ -4292,7 +5121,7 @@ func (o NodePoolRollingPolicyOutput) ToNodePoolRollingPolicyPtrOutputWithContext
 	}).(NodePoolRollingPolicyPtrOutput)
 }
 
-// Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+// The maximum number of unusable nodes.
 func (o NodePoolRollingPolicyOutput) MaxParallelism() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolRollingPolicy) *int { return v.MaxParallelism }).(pulumi.IntPtrOutput)
 }
@@ -4321,7 +5150,7 @@ func (o NodePoolRollingPolicyPtrOutput) Elem() NodePoolRollingPolicyOutput {
 	}).(NodePoolRollingPolicyOutput)
 }
 
-// Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+// The maximum number of unusable nodes.
 func (o NodePoolRollingPolicyPtrOutput) MaxParallelism() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolRollingPolicy) *int {
 		if v == nil {
@@ -4331,154 +5160,19 @@ func (o NodePoolRollingPolicyPtrOutput) MaxParallelism() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-type NodePoolRolloutPolicy struct {
-	// Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used. Please use `maxParallelism` to instead it from provider version 1.185.0.
-	MaxUnavailable *int `pulumi:"maxUnavailable"`
-}
-
-// NodePoolRolloutPolicyInput is an input type that accepts NodePoolRolloutPolicyArgs and NodePoolRolloutPolicyOutput values.
-// You can construct a concrete instance of `NodePoolRolloutPolicyInput` via:
-//
-//	NodePoolRolloutPolicyArgs{...}
-type NodePoolRolloutPolicyInput interface {
-	pulumi.Input
-
-	ToNodePoolRolloutPolicyOutput() NodePoolRolloutPolicyOutput
-	ToNodePoolRolloutPolicyOutputWithContext(context.Context) NodePoolRolloutPolicyOutput
-}
-
-type NodePoolRolloutPolicyArgs struct {
-	// Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used. Please use `maxParallelism` to instead it from provider version 1.185.0.
-	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
-}
-
-func (NodePoolRolloutPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodePoolRolloutPolicy)(nil)).Elem()
-}
-
-func (i NodePoolRolloutPolicyArgs) ToNodePoolRolloutPolicyOutput() NodePoolRolloutPolicyOutput {
-	return i.ToNodePoolRolloutPolicyOutputWithContext(context.Background())
-}
-
-func (i NodePoolRolloutPolicyArgs) ToNodePoolRolloutPolicyOutputWithContext(ctx context.Context) NodePoolRolloutPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodePoolRolloutPolicyOutput)
-}
-
-func (i NodePoolRolloutPolicyArgs) ToNodePoolRolloutPolicyPtrOutput() NodePoolRolloutPolicyPtrOutput {
-	return i.ToNodePoolRolloutPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i NodePoolRolloutPolicyArgs) ToNodePoolRolloutPolicyPtrOutputWithContext(ctx context.Context) NodePoolRolloutPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodePoolRolloutPolicyOutput).ToNodePoolRolloutPolicyPtrOutputWithContext(ctx)
-}
-
-// NodePoolRolloutPolicyPtrInput is an input type that accepts NodePoolRolloutPolicyArgs, NodePoolRolloutPolicyPtr and NodePoolRolloutPolicyPtrOutput values.
-// You can construct a concrete instance of `NodePoolRolloutPolicyPtrInput` via:
-//
-//	        NodePoolRolloutPolicyArgs{...}
-//
-//	or:
-//
-//	        nil
-type NodePoolRolloutPolicyPtrInput interface {
-	pulumi.Input
-
-	ToNodePoolRolloutPolicyPtrOutput() NodePoolRolloutPolicyPtrOutput
-	ToNodePoolRolloutPolicyPtrOutputWithContext(context.Context) NodePoolRolloutPolicyPtrOutput
-}
-
-type nodePoolRolloutPolicyPtrType NodePoolRolloutPolicyArgs
-
-func NodePoolRolloutPolicyPtr(v *NodePoolRolloutPolicyArgs) NodePoolRolloutPolicyPtrInput {
-	return (*nodePoolRolloutPolicyPtrType)(v)
-}
-
-func (*nodePoolRolloutPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodePoolRolloutPolicy)(nil)).Elem()
-}
-
-func (i *nodePoolRolloutPolicyPtrType) ToNodePoolRolloutPolicyPtrOutput() NodePoolRolloutPolicyPtrOutput {
-	return i.ToNodePoolRolloutPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *nodePoolRolloutPolicyPtrType) ToNodePoolRolloutPolicyPtrOutputWithContext(ctx context.Context) NodePoolRolloutPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NodePoolRolloutPolicyPtrOutput)
-}
-
-type NodePoolRolloutPolicyOutput struct{ *pulumi.OutputState }
-
-func (NodePoolRolloutPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodePoolRolloutPolicy)(nil)).Elem()
-}
-
-func (o NodePoolRolloutPolicyOutput) ToNodePoolRolloutPolicyOutput() NodePoolRolloutPolicyOutput {
-	return o
-}
-
-func (o NodePoolRolloutPolicyOutput) ToNodePoolRolloutPolicyOutputWithContext(ctx context.Context) NodePoolRolloutPolicyOutput {
-	return o
-}
-
-func (o NodePoolRolloutPolicyOutput) ToNodePoolRolloutPolicyPtrOutput() NodePoolRolloutPolicyPtrOutput {
-	return o.ToNodePoolRolloutPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o NodePoolRolloutPolicyOutput) ToNodePoolRolloutPolicyPtrOutputWithContext(ctx context.Context) NodePoolRolloutPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolRolloutPolicy) *NodePoolRolloutPolicy {
-		return &v
-	}).(NodePoolRolloutPolicyPtrOutput)
-}
-
-// Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used. Please use `maxParallelism` to instead it from provider version 1.185.0.
-func (o NodePoolRolloutPolicyOutput) MaxUnavailable() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NodePoolRolloutPolicy) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
-}
-
-type NodePoolRolloutPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (NodePoolRolloutPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodePoolRolloutPolicy)(nil)).Elem()
-}
-
-func (o NodePoolRolloutPolicyPtrOutput) ToNodePoolRolloutPolicyPtrOutput() NodePoolRolloutPolicyPtrOutput {
-	return o
-}
-
-func (o NodePoolRolloutPolicyPtrOutput) ToNodePoolRolloutPolicyPtrOutputWithContext(ctx context.Context) NodePoolRolloutPolicyPtrOutput {
-	return o
-}
-
-func (o NodePoolRolloutPolicyPtrOutput) Elem() NodePoolRolloutPolicyOutput {
-	return o.ApplyT(func(v *NodePoolRolloutPolicy) NodePoolRolloutPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret NodePoolRolloutPolicy
-		return ret
-	}).(NodePoolRolloutPolicyOutput)
-}
-
-// Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used. Please use `maxParallelism` to instead it from provider version 1.185.0.
-func (o NodePoolRolloutPolicyPtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NodePoolRolloutPolicy) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxUnavailable
-	}).(pulumi.IntPtrOutput)
-}
-
 type NodePoolScalingConfig struct {
-	// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+	// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
 	EipBandwidth *int `pulumi:"eipBandwidth"`
-	// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
+	// EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
 	EipInternetChargeType *string `pulumi:"eipInternetChargeType"`
+	// Whether to enable automatic scaling. Value:
+	Enable *bool `pulumi:"enable"`
 	// Whether to bind EIP for an instance. Default: `false`.
 	IsBondEip *bool `pulumi:"isBondEip"`
 	// Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
-	MaxSize int `pulumi:"maxSize"`
+	MaxSize *int `pulumi:"maxSize"`
 	// Min number of instances in a auto scaling group, its valid value range [0~1000].
-	MinSize int `pulumi:"minSize"`
+	MinSize *int `pulumi:"minSize"`
 	// Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
 	Type *string `pulumi:"type"`
 }
@@ -4495,16 +5189,18 @@ type NodePoolScalingConfigInput interface {
 }
 
 type NodePoolScalingConfigArgs struct {
-	// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+	// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
 	EipBandwidth pulumi.IntPtrInput `pulumi:"eipBandwidth"`
-	// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
+	// EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
 	EipInternetChargeType pulumi.StringPtrInput `pulumi:"eipInternetChargeType"`
+	// Whether to enable automatic scaling. Value:
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// Whether to bind EIP for an instance. Default: `false`.
 	IsBondEip pulumi.BoolPtrInput `pulumi:"isBondEip"`
 	// Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
-	MaxSize pulumi.IntInput `pulumi:"maxSize"`
+	MaxSize pulumi.IntPtrInput `pulumi:"maxSize"`
 	// Min number of instances in a auto scaling group, its valid value range [0~1000].
-	MinSize pulumi.IntInput `pulumi:"minSize"`
+	MinSize pulumi.IntPtrInput `pulumi:"minSize"`
 	// Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -4586,14 +5282,19 @@ func (o NodePoolScalingConfigOutput) ToNodePoolScalingConfigPtrOutputWithContext
 	}).(NodePoolScalingConfigPtrOutput)
 }
 
-// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
 func (o NodePoolScalingConfigOutput) EipBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolScalingConfig) *int { return v.EipBandwidth }).(pulumi.IntPtrOutput)
 }
 
-// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
+// EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
 func (o NodePoolScalingConfigOutput) EipInternetChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolScalingConfig) *string { return v.EipInternetChargeType }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable automatic scaling. Value:
+func (o NodePoolScalingConfigOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolScalingConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to bind EIP for an instance. Default: `false`.
@@ -4602,13 +5303,13 @@ func (o NodePoolScalingConfigOutput) IsBondEip() pulumi.BoolPtrOutput {
 }
 
 // Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
-func (o NodePoolScalingConfigOutput) MaxSize() pulumi.IntOutput {
-	return o.ApplyT(func(v NodePoolScalingConfig) int { return v.MaxSize }).(pulumi.IntOutput)
+func (o NodePoolScalingConfigOutput) MaxSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolScalingConfig) *int { return v.MaxSize }).(pulumi.IntPtrOutput)
 }
 
 // Min number of instances in a auto scaling group, its valid value range [0~1000].
-func (o NodePoolScalingConfigOutput) MinSize() pulumi.IntOutput {
-	return o.ApplyT(func(v NodePoolScalingConfig) int { return v.MinSize }).(pulumi.IntOutput)
+func (o NodePoolScalingConfigOutput) MinSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolScalingConfig) *int { return v.MinSize }).(pulumi.IntPtrOutput)
 }
 
 // Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
@@ -4640,7 +5341,7 @@ func (o NodePoolScalingConfigPtrOutput) Elem() NodePoolScalingConfigOutput {
 	}).(NodePoolScalingConfigOutput)
 }
 
-// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
 func (o NodePoolScalingConfigPtrOutput) EipBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolScalingConfig) *int {
 		if v == nil {
@@ -4650,7 +5351,7 @@ func (o NodePoolScalingConfigPtrOutput) EipBandwidth() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
+// EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
 func (o NodePoolScalingConfigPtrOutput) EipInternetChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolScalingConfig) *string {
 		if v == nil {
@@ -4658,6 +5359,16 @@ func (o NodePoolScalingConfigPtrOutput) EipInternetChargeType() pulumi.StringPtr
 		}
 		return v.EipInternetChargeType
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable automatic scaling. Value:
+func (o NodePoolScalingConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolScalingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Whether to bind EIP for an instance. Default: `false`.
@@ -4676,7 +5387,7 @@ func (o NodePoolScalingConfigPtrOutput) MaxSize() pulumi.IntPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.MaxSize
+		return v.MaxSize
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -4686,7 +5397,7 @@ func (o NodePoolScalingConfigPtrOutput) MinSize() pulumi.IntPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.MinSize
+		return v.MinSize
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -4701,9 +5412,9 @@ func (o NodePoolScalingConfigPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type NodePoolSpotPriceLimit struct {
-	// Spot instance type.
+	// The type of the preemptible instance.
 	InstanceType *string `pulumi:"instanceType"`
-	// The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
+	// The maximum price of a single instance.
 	PriceLimit *string `pulumi:"priceLimit"`
 }
 
@@ -4719,9 +5430,9 @@ type NodePoolSpotPriceLimitInput interface {
 }
 
 type NodePoolSpotPriceLimitArgs struct {
-	// Spot instance type.
+	// The type of the preemptible instance.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
-	// The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
+	// The maximum price of a single instance.
 	PriceLimit pulumi.StringPtrInput `pulumi:"priceLimit"`
 }
 
@@ -4776,12 +5487,12 @@ func (o NodePoolSpotPriceLimitOutput) ToNodePoolSpotPriceLimitOutputWithContext(
 	return o
 }
 
-// Spot instance type.
+// The type of the preemptible instance.
 func (o NodePoolSpotPriceLimitOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolSpotPriceLimit) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
-// The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
+// The maximum price of a single instance.
 func (o NodePoolSpotPriceLimitOutput) PriceLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolSpotPriceLimit) *string { return v.PriceLimit }).(pulumi.StringPtrOutput)
 }
@@ -4919,6 +5630,143 @@ func (o NodePoolTaintArrayOutput) Index(i pulumi.IntInput) NodePoolTaintOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolTaint {
 		return vs[0].([]NodePoolTaint)[vs[1].(int)]
 	}).(NodePoolTaintOutput)
+}
+
+type NodePoolTeeConfig struct {
+	// Specifies whether to enable confidential computing for the cluster.
+	TeeEnable *bool `pulumi:"teeEnable"`
+}
+
+// NodePoolTeeConfigInput is an input type that accepts NodePoolTeeConfigArgs and NodePoolTeeConfigOutput values.
+// You can construct a concrete instance of `NodePoolTeeConfigInput` via:
+//
+//	NodePoolTeeConfigArgs{...}
+type NodePoolTeeConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolTeeConfigOutput() NodePoolTeeConfigOutput
+	ToNodePoolTeeConfigOutputWithContext(context.Context) NodePoolTeeConfigOutput
+}
+
+type NodePoolTeeConfigArgs struct {
+	// Specifies whether to enable confidential computing for the cluster.
+	TeeEnable pulumi.BoolPtrInput `pulumi:"teeEnable"`
+}
+
+func (NodePoolTeeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolTeeConfig)(nil)).Elem()
+}
+
+func (i NodePoolTeeConfigArgs) ToNodePoolTeeConfigOutput() NodePoolTeeConfigOutput {
+	return i.ToNodePoolTeeConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolTeeConfigArgs) ToNodePoolTeeConfigOutputWithContext(ctx context.Context) NodePoolTeeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolTeeConfigOutput)
+}
+
+func (i NodePoolTeeConfigArgs) ToNodePoolTeeConfigPtrOutput() NodePoolTeeConfigPtrOutput {
+	return i.ToNodePoolTeeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolTeeConfigArgs) ToNodePoolTeeConfigPtrOutputWithContext(ctx context.Context) NodePoolTeeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolTeeConfigOutput).ToNodePoolTeeConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolTeeConfigPtrInput is an input type that accepts NodePoolTeeConfigArgs, NodePoolTeeConfigPtr and NodePoolTeeConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolTeeConfigPtrInput` via:
+//
+//	        NodePoolTeeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolTeeConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolTeeConfigPtrOutput() NodePoolTeeConfigPtrOutput
+	ToNodePoolTeeConfigPtrOutputWithContext(context.Context) NodePoolTeeConfigPtrOutput
+}
+
+type nodePoolTeeConfigPtrType NodePoolTeeConfigArgs
+
+func NodePoolTeeConfigPtr(v *NodePoolTeeConfigArgs) NodePoolTeeConfigPtrInput {
+	return (*nodePoolTeeConfigPtrType)(v)
+}
+
+func (*nodePoolTeeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolTeeConfig)(nil)).Elem()
+}
+
+func (i *nodePoolTeeConfigPtrType) ToNodePoolTeeConfigPtrOutput() NodePoolTeeConfigPtrOutput {
+	return i.ToNodePoolTeeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolTeeConfigPtrType) ToNodePoolTeeConfigPtrOutputWithContext(ctx context.Context) NodePoolTeeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolTeeConfigPtrOutput)
+}
+
+type NodePoolTeeConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolTeeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolTeeConfig)(nil)).Elem()
+}
+
+func (o NodePoolTeeConfigOutput) ToNodePoolTeeConfigOutput() NodePoolTeeConfigOutput {
+	return o
+}
+
+func (o NodePoolTeeConfigOutput) ToNodePoolTeeConfigOutputWithContext(ctx context.Context) NodePoolTeeConfigOutput {
+	return o
+}
+
+func (o NodePoolTeeConfigOutput) ToNodePoolTeeConfigPtrOutput() NodePoolTeeConfigPtrOutput {
+	return o.ToNodePoolTeeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolTeeConfigOutput) ToNodePoolTeeConfigPtrOutputWithContext(ctx context.Context) NodePoolTeeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolTeeConfig) *NodePoolTeeConfig {
+		return &v
+	}).(NodePoolTeeConfigPtrOutput)
+}
+
+// Specifies whether to enable confidential computing for the cluster.
+func (o NodePoolTeeConfigOutput) TeeEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolTeeConfig) *bool { return v.TeeEnable }).(pulumi.BoolPtrOutput)
+}
+
+type NodePoolTeeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolTeeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolTeeConfig)(nil)).Elem()
+}
+
+func (o NodePoolTeeConfigPtrOutput) ToNodePoolTeeConfigPtrOutput() NodePoolTeeConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolTeeConfigPtrOutput) ToNodePoolTeeConfigPtrOutputWithContext(ctx context.Context) NodePoolTeeConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolTeeConfigPtrOutput) Elem() NodePoolTeeConfigOutput {
+	return o.ApplyT(func(v *NodePoolTeeConfig) NodePoolTeeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolTeeConfig
+		return ret
+	}).(NodePoolTeeConfigOutput)
+}
+
+// Specifies whether to enable confidential computing for the cluster.
+func (o NodePoolTeeConfigPtrOutput) TeeEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolTeeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TeeEnable
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ServerlessKubernetesAddon struct {
@@ -8798,16 +9646,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolLabelArrayInput)(nil)).Elem(), NodePoolLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementInput)(nil)).Elem(), NodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementPtrInput)(nil)).Elem(), NodePoolManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementAutoRepairPolicyInput)(nil)).Elem(), NodePoolManagementAutoRepairPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementAutoRepairPolicyPtrInput)(nil)).Elem(), NodePoolManagementAutoRepairPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementAutoUpgradePolicyInput)(nil)).Elem(), NodePoolManagementAutoUpgradePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementAutoUpgradePolicyPtrInput)(nil)).Elem(), NodePoolManagementAutoUpgradePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementAutoVulFixPolicyInput)(nil)).Elem(), NodePoolManagementAutoVulFixPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementAutoVulFixPolicyPtrInput)(nil)).Elem(), NodePoolManagementAutoVulFixPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolPrivatePoolOptionsInput)(nil)).Elem(), NodePoolPrivatePoolOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolPrivatePoolOptionsPtrInput)(nil)).Elem(), NodePoolPrivatePoolOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolRollingPolicyInput)(nil)).Elem(), NodePoolRollingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolRollingPolicyPtrInput)(nil)).Elem(), NodePoolRollingPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolRolloutPolicyInput)(nil)).Elem(), NodePoolRolloutPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolRolloutPolicyPtrInput)(nil)).Elem(), NodePoolRolloutPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolScalingConfigInput)(nil)).Elem(), NodePoolScalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolScalingConfigPtrInput)(nil)).Elem(), NodePoolScalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolSpotPriceLimitInput)(nil)).Elem(), NodePoolSpotPriceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolSpotPriceLimitArrayInput)(nil)).Elem(), NodePoolSpotPriceLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTaintInput)(nil)).Elem(), NodePoolTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTaintArrayInput)(nil)).Elem(), NodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTeeConfigInput)(nil)).Elem(), NodePoolTeeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTeeConfigPtrInput)(nil)).Elem(), NodePoolTeeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesAddonInput)(nil)).Elem(), ServerlessKubernetesAddonArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesAddonArrayInput)(nil)).Elem(), ServerlessKubernetesAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesRrsaMetadataInput)(nil)).Elem(), ServerlessKubernetesRrsaMetadataArgs{})
@@ -8907,16 +9763,24 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolLabelArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolManagementOutput{})
 	pulumi.RegisterOutputType(NodePoolManagementPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolManagementAutoRepairPolicyOutput{})
+	pulumi.RegisterOutputType(NodePoolManagementAutoRepairPolicyPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolManagementAutoUpgradePolicyOutput{})
+	pulumi.RegisterOutputType(NodePoolManagementAutoUpgradePolicyPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolManagementAutoVulFixPolicyOutput{})
+	pulumi.RegisterOutputType(NodePoolManagementAutoVulFixPolicyPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolPrivatePoolOptionsOutput{})
+	pulumi.RegisterOutputType(NodePoolPrivatePoolOptionsPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolRollingPolicyOutput{})
 	pulumi.RegisterOutputType(NodePoolRollingPolicyPtrOutput{})
-	pulumi.RegisterOutputType(NodePoolRolloutPolicyOutput{})
-	pulumi.RegisterOutputType(NodePoolRolloutPolicyPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolScalingConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolScalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolSpotPriceLimitOutput{})
 	pulumi.RegisterOutputType(NodePoolSpotPriceLimitArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolTaintOutput{})
 	pulumi.RegisterOutputType(NodePoolTaintArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolTeeConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolTeeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesAddonOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesRrsaMetadataOutput{})

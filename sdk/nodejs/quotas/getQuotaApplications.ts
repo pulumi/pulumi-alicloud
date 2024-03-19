@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.117.0+.
+ * > **NOTE:** Available since v1.117.0.
  *
  * ## Example Usage
  *
@@ -20,11 +20,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.quotas.getQuotaApplications({
- *     productCode: "ess",
- *     ids: ["4621F886-81E9-xxxx-xxxx"],
+ * const defaultQuotaApplication = new alicloud.quotas.QuotaApplication("defaultQuotaApplication", {
+ *     productCode: "vpc",
+ *     noticeType: 3,
+ *     effectiveTime: "2023-05-22T16:00:00Z",
+ *     expireTime: "2024-09-15T00:08:32Z",
+ *     desireValue: 1,
+ *     reason: "",
+ *     quotaActionCode: "vpc_whitelist/ha_vip_whitelist",
+ *     auditMode: "Sync",
+ *     envLanguage: "zh",
+ *     quotaCategory: "WhiteListLabel",
  * });
- * export const firstQuotasQuotaApplicationId = example.then(example => example.applications?.[0]?.id);
+ * const defaultQuotaApplications = pulumi.all([defaultQuotaApplication.quotaCategory, defaultQuotaApplication.id]).apply(([quotaCategory, id]) => alicloud.quotas.getQuotaApplicationsOutput({
+ *     productCode: "vpc",
+ *     enableDetails: true,
+ *     quotaCategory: quotaCategory,
+ *     ids: [id],
+ * }));
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -74,7 +87,7 @@ export interface GetQuotaApplicationsArgs {
      */
     quotaActionCode?: string;
     /**
-     * The quota category. Valid values: `CommonQuota`, `FlowControl`.
+     * The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
      */
     quotaCategory?: string;
     /**
@@ -105,7 +118,7 @@ export interface GetQuotaApplicationsResult {
 /**
  * This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.117.0+.
+ * > **NOTE:** Available since v1.117.0.
  *
  * ## Example Usage
  *
@@ -116,11 +129,24 @@ export interface GetQuotaApplicationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.quotas.getQuotaApplications({
- *     productCode: "ess",
- *     ids: ["4621F886-81E9-xxxx-xxxx"],
+ * const defaultQuotaApplication = new alicloud.quotas.QuotaApplication("defaultQuotaApplication", {
+ *     productCode: "vpc",
+ *     noticeType: 3,
+ *     effectiveTime: "2023-05-22T16:00:00Z",
+ *     expireTime: "2024-09-15T00:08:32Z",
+ *     desireValue: 1,
+ *     reason: "",
+ *     quotaActionCode: "vpc_whitelist/ha_vip_whitelist",
+ *     auditMode: "Sync",
+ *     envLanguage: "zh",
+ *     quotaCategory: "WhiteListLabel",
  * });
- * export const firstQuotasQuotaApplicationId = example.then(example => example.applications?.[0]?.id);
+ * const defaultQuotaApplications = pulumi.all([defaultQuotaApplication.quotaCategory, defaultQuotaApplication.id]).apply(([quotaCategory, id]) => alicloud.quotas.getQuotaApplicationsOutput({
+ *     productCode: "vpc",
+ *     enableDetails: true,
+ *     quotaCategory: quotaCategory,
+ *     ids: [id],
+ * }));
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -158,7 +184,7 @@ export interface GetQuotaApplicationsOutputArgs {
      */
     quotaActionCode?: pulumi.Input<string>;
     /**
-     * The quota category. Valid values: `CommonQuota`, `FlowControl`.
+     * The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
      */
     quotaCategory?: pulumi.Input<string>;
     /**

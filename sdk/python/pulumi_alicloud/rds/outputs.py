@@ -513,10 +513,6 @@ class InstanceServerlessConfig(dict):
                - MySQL: 0.5~8
                - SQLServer: 2~8 \\(Supports integers only\\).
                - PostgreSQL: 0.5~12
-        :param bool auto_pause: Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
-               - true: enables the feature.
-               - false: disables the feature. This is the default value.
-               > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
         :param bool switch_force: Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
                - true: enables the feature.
                - false: disables the feature. This is the default value.
@@ -555,12 +551,6 @@ class InstanceServerlessConfig(dict):
     @property
     @pulumi.getter(name="autoPause")
     def auto_pause(self) -> Optional[bool]:
-        """
-        Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
-        - true: enables the feature.
-        - false: disables the feature. This is the default value.
-        > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
-        """
         return pulumi.get(self, "auto_pause")
 
     @property

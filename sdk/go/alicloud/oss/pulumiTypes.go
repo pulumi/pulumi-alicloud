@@ -1862,7 +1862,8 @@ func (o BucketRefererConfigPtrOutput) Referers() pulumi.StringArrayOutput {
 
 type BucketReplicationDestination struct {
 	// The destination bucket to which the data is replicated.
-	Bucket   string `pulumi:"bucket"`
+	Bucket string `pulumi:"bucket"`
+	// The region in which the destination bucket is located.
 	Location string `pulumi:"location"`
 	// The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
 	//
@@ -1883,7 +1884,8 @@ type BucketReplicationDestinationInput interface {
 
 type BucketReplicationDestinationArgs struct {
 	// The destination bucket to which the data is replicated.
-	Bucket   pulumi.StringInput `pulumi:"bucket"`
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The region in which the destination bucket is located.
 	Location pulumi.StringInput `pulumi:"location"`
 	// The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
 	//
@@ -1973,6 +1975,7 @@ func (o BucketReplicationDestinationOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketReplicationDestination) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
+// The region in which the destination bucket is located.
 func (o BucketReplicationDestinationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketReplicationDestination) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -2018,6 +2021,7 @@ func (o BucketReplicationDestinationPtrOutput) Bucket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The region in which the destination bucket is located.
 func (o BucketReplicationDestinationPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketReplicationDestination) *string {
 		if v == nil {
@@ -2486,7 +2490,7 @@ func (o BucketReplicationProgressPtrOutput) NewObject() pulumi.StringPtrOutput {
 }
 
 type BucketReplicationSourceSelectionCriteria struct {
-	// Filter source objects encrypted by using SSE-KMS(See the following block `sseKmsEncryptedObjects`).
+	// Filter source objects encrypted by using SSE-KMS. See `sseKmsEncryptedObjects` below.
 	SseKmsEncryptedObjects *BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects `pulumi:"sseKmsEncryptedObjects"`
 }
 
@@ -2502,7 +2506,7 @@ type BucketReplicationSourceSelectionCriteriaInput interface {
 }
 
 type BucketReplicationSourceSelectionCriteriaArgs struct {
-	// Filter source objects encrypted by using SSE-KMS(See the following block `sseKmsEncryptedObjects`).
+	// Filter source objects encrypted by using SSE-KMS. See `sseKmsEncryptedObjects` below.
 	SseKmsEncryptedObjects BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrInput `pulumi:"sseKmsEncryptedObjects"`
 }
 
@@ -2583,7 +2587,7 @@ func (o BucketReplicationSourceSelectionCriteriaOutput) ToBucketReplicationSourc
 	}).(BucketReplicationSourceSelectionCriteriaPtrOutput)
 }
 
-// Filter source objects encrypted by using SSE-KMS(See the following block `sseKmsEncryptedObjects`).
+// Filter source objects encrypted by using SSE-KMS. See `sseKmsEncryptedObjects` below.
 func (o BucketReplicationSourceSelectionCriteriaOutput) SseKmsEncryptedObjects() BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput {
 	return o.ApplyT(func(v BucketReplicationSourceSelectionCriteria) *BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
 		return v.SseKmsEncryptedObjects
@@ -2614,7 +2618,7 @@ func (o BucketReplicationSourceSelectionCriteriaPtrOutput) Elem() BucketReplicat
 	}).(BucketReplicationSourceSelectionCriteriaOutput)
 }
 
-// Filter source objects encrypted by using SSE-KMS(See the following block `sseKmsEncryptedObjects`).
+// Filter source objects encrypted by using SSE-KMS. See `sseKmsEncryptedObjects` below.
 func (o BucketReplicationSourceSelectionCriteriaPtrOutput) SseKmsEncryptedObjects() BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput {
 	return o.ApplyT(func(v *BucketReplicationSourceSelectionCriteria) *BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
 		if v == nil {

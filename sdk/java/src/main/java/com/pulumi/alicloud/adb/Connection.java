@@ -32,12 +32,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.adb.AdbFunctions;
  * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
- * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.adb.DBCluster;
  * import com.pulumi.alicloud.adb.DBClusterArgs;
  * import com.pulumi.alicloud.adb.Connection;
@@ -59,45 +56,27 @@ import javax.annotation.Nullable;
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         final var defaultZones = AdbFunctions.getZones();
  * 
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .status(&#34;OK&#34;)
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;^default-NODELETING$&#34;)
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchName(name)
- *             .build());
+ *         final var vswitchId = defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]);
  * 
- *         var defaultDBCluster = new DBCluster(&#34;defaultDBCluster&#34;, DBClusterArgs.builder()        
- *             .dbClusterCategory(&#34;Cluster&#34;)
- *             .dbNodeClass(&#34;C8&#34;)
- *             .dbNodeCount(&#34;4&#34;)
- *             .dbNodeStorage(&#34;400&#34;)
- *             .mode(&#34;reserver&#34;)
- *             .dbClusterVersion(&#34;3.0&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .vswitchId(defaultSwitch.id())
+ *         var cluster = new DBCluster(&#34;cluster&#34;, DBClusterArgs.builder()        
+ *             .dbClusterCategory(&#34;MixedStorage&#34;)
+ *             .mode(&#34;flexible&#34;)
+ *             .computeResource(&#34;8Core32GB&#34;)
+ *             .vswitchId(vswitchId)
  *             .description(name)
- *             .maintainTime(&#34;23:00Z-00:00Z&#34;)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
- *             .securityIps(            
- *                 &#34;10.168.1.12&#34;,
- *                 &#34;10.168.1.11&#34;)
- *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
- *             ))
  *             .build());
  * 
  *         var defaultConnection = new Connection(&#34;defaultConnection&#34;, ConnectionArgs.builder()        
- *             .dbClusterId(defaultDBCluster.id())
+ *             .dbClusterId(cluster.id())
  *             .connectionPrefix(&#34;example&#34;)
  *             .build());
  * 

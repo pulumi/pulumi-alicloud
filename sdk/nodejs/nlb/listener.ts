@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  *     vpcId: defaultNetwork.id,
  *     scheduler: "Wrr",
  *     protocol: "TCP",
- *     connectionDrain: true,
+ *     connectionDrainEnabled: true,
  *     connectionDrainTimeout: 60,
  *     addressIpVersion: "Ipv4",
  *     healthCheck: {
@@ -101,7 +101,6 @@ import * as utilities from "../utilities";
  *     serverGroupId: defaultServerGroup.id,
  *     idleTimeout: 900,
  *     proxyProtocolEnabled: true,
- *     secSensorEnabled: true,
  *     cps: 10000,
  *     mss: 0,
  * });

@@ -10,7 +10,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -98,6 +100,22 @@ public class PublicIpAddressPoolCidrBlock extends com.pulumi.resources.CustomRes
      */
     public Output<String> cidrBlock() {
         return this.cidrBlock;
+    }
+    /**
+     * IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+     * &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
+     * 
+     */
+    @Export(name="cidrMask", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> cidrMask;
+
+    /**
+     * @return IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+     * &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
+     * 
+     */
+    public Output<Optional<Integer>> cidrMask() {
+        return Codegen.optional(this.cidrMask);
     }
     /**
      * The creation time of the resource.

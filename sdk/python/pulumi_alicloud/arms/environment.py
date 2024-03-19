@@ -18,7 +18,9 @@ class EnvironmentArgs:
                  environment_type: pulumi.Input[str],
                  aliyun_lang: Optional[pulumi.Input[str]] = None,
                  bind_resource_id: Optional[pulumi.Input[str]] = None,
+                 drop_metrics: Optional[pulumi.Input[str]] = None,
                  environment_name: Optional[pulumi.Input[str]] = None,
+                 managed_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
@@ -30,7 +32,12 @@ class EnvironmentArgs:
         :param pulumi.Input[str] environment_type: Type of environment.
         :param pulumi.Input[str] aliyun_lang: The locale. The default is Chinese zh | en.
         :param pulumi.Input[str] bind_resource_id: The id or vpcId of the bound container instance.
+        :param pulumi.Input[str] drop_metrics: List of abandoned indicators.
         :param pulumi.Input[str] environment_name: The name of the resource.
+        :param pulumi.Input[str] managed_type: Hosting type:
+               - none: unmanaged. The default value of the ACK cluster.
+               - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+               - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
@@ -40,8 +47,12 @@ class EnvironmentArgs:
             pulumi.set(__self__, "aliyun_lang", aliyun_lang)
         if bind_resource_id is not None:
             pulumi.set(__self__, "bind_resource_id", bind_resource_id)
+        if drop_metrics is not None:
+            pulumi.set(__self__, "drop_metrics", drop_metrics)
         if environment_name is not None:
             pulumi.set(__self__, "environment_name", environment_name)
+        if managed_type is not None:
+            pulumi.set(__self__, "managed_type", managed_type)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
@@ -99,6 +110,18 @@ class EnvironmentArgs:
         pulumi.set(self, "bind_resource_id", value)
 
     @property
+    @pulumi.getter(name="dropMetrics")
+    def drop_metrics(self) -> Optional[pulumi.Input[str]]:
+        """
+        List of abandoned indicators.
+        """
+        return pulumi.get(self, "drop_metrics")
+
+    @drop_metrics.setter
+    def drop_metrics(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "drop_metrics", value)
+
+    @property
     @pulumi.getter(name="environmentName")
     def environment_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -109,6 +132,21 @@ class EnvironmentArgs:
     @environment_name.setter
     def environment_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "environment_name", value)
+
+    @property
+    @pulumi.getter(name="managedType")
+    def managed_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hosting type:
+        - none: unmanaged. The default value of the ACK cluster.
+        - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+        - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+        """
+        return pulumi.get(self, "managed_type")
+
+    @managed_type.setter
+    def managed_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "managed_type", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -140,16 +178,19 @@ class _EnvironmentState:
     def __init__(__self__, *,
                  aliyun_lang: Optional[pulumi.Input[str]] = None,
                  bind_resource_id: Optional[pulumi.Input[str]] = None,
+                 drop_metrics: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  environment_name: Optional[pulumi.Input[str]] = None,
                  environment_sub_type: Optional[pulumi.Input[str]] = None,
                  environment_type: Optional[pulumi.Input[str]] = None,
+                 managed_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
         :param pulumi.Input[str] aliyun_lang: The locale. The default is Chinese zh | en.
         :param pulumi.Input[str] bind_resource_id: The id or vpcId of the bound container instance.
+        :param pulumi.Input[str] drop_metrics: List of abandoned indicators.
         :param pulumi.Input[str] environment_id: The first ID of the resource.
         :param pulumi.Input[str] environment_name: The name of the resource.
         :param pulumi.Input[str] environment_sub_type: Subtype of environment:
@@ -157,6 +198,10 @@ class _EnvironmentState:
                - Type of ECS: currently supports ECS.
                - Type of Cloud: currently supports Cloud.
         :param pulumi.Input[str] environment_type: Type of environment.
+        :param pulumi.Input[str] managed_type: Hosting type:
+               - none: unmanaged. The default value of the ACK cluster.
+               - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+               - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
@@ -164,6 +209,8 @@ class _EnvironmentState:
             pulumi.set(__self__, "aliyun_lang", aliyun_lang)
         if bind_resource_id is not None:
             pulumi.set(__self__, "bind_resource_id", bind_resource_id)
+        if drop_metrics is not None:
+            pulumi.set(__self__, "drop_metrics", drop_metrics)
         if environment_id is not None:
             pulumi.set(__self__, "environment_id", environment_id)
         if environment_name is not None:
@@ -172,6 +219,8 @@ class _EnvironmentState:
             pulumi.set(__self__, "environment_sub_type", environment_sub_type)
         if environment_type is not None:
             pulumi.set(__self__, "environment_type", environment_type)
+        if managed_type is not None:
+            pulumi.set(__self__, "managed_type", managed_type)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
@@ -200,6 +249,18 @@ class _EnvironmentState:
     @bind_resource_id.setter
     def bind_resource_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bind_resource_id", value)
+
+    @property
+    @pulumi.getter(name="dropMetrics")
+    def drop_metrics(self) -> Optional[pulumi.Input[str]]:
+        """
+        List of abandoned indicators.
+        """
+        return pulumi.get(self, "drop_metrics")
+
+    @drop_metrics.setter
+    def drop_metrics(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "drop_metrics", value)
 
     @property
     @pulumi.getter(name="environmentId")
@@ -253,6 +314,21 @@ class _EnvironmentState:
         pulumi.set(self, "environment_type", value)
 
     @property
+    @pulumi.getter(name="managedType")
+    def managed_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hosting type:
+        - none: unmanaged. The default value of the ACK cluster.
+        - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+        - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+        """
+        return pulumi.get(self, "managed_type")
+
+    @managed_type.setter
+    def managed_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "managed_type", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -284,9 +360,11 @@ class Environment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aliyun_lang: Optional[pulumi.Input[str]] = None,
                  bind_resource_id: Optional[pulumi.Input[str]] = None,
+                 drop_metrics: Optional[pulumi.Input[str]] = None,
                  environment_name: Optional[pulumi.Input[str]] = None,
                  environment_sub_type: Optional[pulumi.Input[str]] = None,
                  environment_type: Optional[pulumi.Input[str]] = None,
+                 managed_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
@@ -309,12 +387,17 @@ class Environment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aliyun_lang: The locale. The default is Chinese zh | en.
         :param pulumi.Input[str] bind_resource_id: The id or vpcId of the bound container instance.
+        :param pulumi.Input[str] drop_metrics: List of abandoned indicators.
         :param pulumi.Input[str] environment_name: The name of the resource.
         :param pulumi.Input[str] environment_sub_type: Subtype of environment:
                - Type of CS: ACK is currently supported.
                - Type of ECS: currently supports ECS.
                - Type of Cloud: currently supports Cloud.
         :param pulumi.Input[str] environment_type: Type of environment.
+        :param pulumi.Input[str] managed_type: Hosting type:
+               - none: unmanaged. The default value of the ACK cluster.
+               - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+               - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
@@ -356,9 +439,11 @@ class Environment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aliyun_lang: Optional[pulumi.Input[str]] = None,
                  bind_resource_id: Optional[pulumi.Input[str]] = None,
+                 drop_metrics: Optional[pulumi.Input[str]] = None,
                  environment_name: Optional[pulumi.Input[str]] = None,
                  environment_sub_type: Optional[pulumi.Input[str]] = None,
                  environment_type: Optional[pulumi.Input[str]] = None,
+                 managed_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
@@ -372,6 +457,7 @@ class Environment(pulumi.CustomResource):
 
             __props__.__dict__["aliyun_lang"] = aliyun_lang
             __props__.__dict__["bind_resource_id"] = bind_resource_id
+            __props__.__dict__["drop_metrics"] = drop_metrics
             __props__.__dict__["environment_name"] = environment_name
             if environment_sub_type is None and not opts.urn:
                 raise TypeError("Missing required property 'environment_sub_type'")
@@ -379,6 +465,7 @@ class Environment(pulumi.CustomResource):
             if environment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'environment_type'")
             __props__.__dict__["environment_type"] = environment_type
+            __props__.__dict__["managed_type"] = managed_type
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["environment_id"] = None
@@ -394,10 +481,12 @@ class Environment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             aliyun_lang: Optional[pulumi.Input[str]] = None,
             bind_resource_id: Optional[pulumi.Input[str]] = None,
+            drop_metrics: Optional[pulumi.Input[str]] = None,
             environment_id: Optional[pulumi.Input[str]] = None,
             environment_name: Optional[pulumi.Input[str]] = None,
             environment_sub_type: Optional[pulumi.Input[str]] = None,
             environment_type: Optional[pulumi.Input[str]] = None,
+            managed_type: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Environment':
         """
@@ -409,6 +498,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aliyun_lang: The locale. The default is Chinese zh | en.
         :param pulumi.Input[str] bind_resource_id: The id or vpcId of the bound container instance.
+        :param pulumi.Input[str] drop_metrics: List of abandoned indicators.
         :param pulumi.Input[str] environment_id: The first ID of the resource.
         :param pulumi.Input[str] environment_name: The name of the resource.
         :param pulumi.Input[str] environment_sub_type: Subtype of environment:
@@ -416,6 +506,10 @@ class Environment(pulumi.CustomResource):
                - Type of ECS: currently supports ECS.
                - Type of Cloud: currently supports Cloud.
         :param pulumi.Input[str] environment_type: Type of environment.
+        :param pulumi.Input[str] managed_type: Hosting type:
+               - none: unmanaged. The default value of the ACK cluster.
+               - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+               - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
@@ -425,10 +519,12 @@ class Environment(pulumi.CustomResource):
 
         __props__.__dict__["aliyun_lang"] = aliyun_lang
         __props__.__dict__["bind_resource_id"] = bind_resource_id
+        __props__.__dict__["drop_metrics"] = drop_metrics
         __props__.__dict__["environment_id"] = environment_id
         __props__.__dict__["environment_name"] = environment_name
         __props__.__dict__["environment_sub_type"] = environment_sub_type
         __props__.__dict__["environment_type"] = environment_type
+        __props__.__dict__["managed_type"] = managed_type
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["tags"] = tags
         return Environment(resource_name, opts=opts, __props__=__props__)
@@ -448,6 +544,14 @@ class Environment(pulumi.CustomResource):
         The id or vpcId of the bound container instance.
         """
         return pulumi.get(self, "bind_resource_id")
+
+    @property
+    @pulumi.getter(name="dropMetrics")
+    def drop_metrics(self) -> pulumi.Output[Optional[str]]:
+        """
+        List of abandoned indicators.
+        """
+        return pulumi.get(self, "drop_metrics")
 
     @property
     @pulumi.getter(name="environmentId")
@@ -483,6 +587,17 @@ class Environment(pulumi.CustomResource):
         Type of environment.
         """
         return pulumi.get(self, "environment_type")
+
+    @property
+    @pulumi.getter(name="managedType")
+    def managed_type(self) -> pulumi.Output[str]:
+        """
+        Hosting type:
+        - none: unmanaged. The default value of the ACK cluster.
+        - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+        - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+        """
+        return pulumi.get(self, "managed_type")
 
     @property
     @pulumi.getter(name="resourceGroupId")

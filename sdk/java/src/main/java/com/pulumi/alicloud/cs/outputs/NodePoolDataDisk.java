@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -18,7 +19,12 @@ public final class NodePoolDataDisk {
      */
     private @Nullable String autoSnapshotPolicyId;
     /**
-     * @return The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
+     * @return Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+     * 
+     */
+    private @Nullable Boolean burstingEnabled;
+    /**
+     * @return The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
      * 
      */
     private @Nullable String category;
@@ -38,7 +44,7 @@ public final class NodePoolDataDisk {
      */
     private @Nullable String kmsKeyId;
     /**
-     * @return The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+     * @return The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
      * 
      */
     private @Nullable String name;
@@ -47,6 +53,11 @@ public final class NodePoolDataDisk {
      * 
      */
     private @Nullable String performanceLevel;
+    /**
+     * @return The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+     * 
+     */
+    private @Nullable Integer provisionedIops;
     /**
      * @return The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
      * 
@@ -67,7 +78,14 @@ public final class NodePoolDataDisk {
         return Optional.ofNullable(this.autoSnapshotPolicyId);
     }
     /**
-     * @return The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
+     * @return Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+     * 
+     */
+    public Optional<Boolean> burstingEnabled() {
+        return Optional.ofNullable(this.burstingEnabled);
+    }
+    /**
+     * @return The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
      * 
      */
     public Optional<String> category() {
@@ -95,7 +113,7 @@ public final class NodePoolDataDisk {
         return Optional.ofNullable(this.kmsKeyId);
     }
     /**
-     * @return The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+     * @return The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
      * 
      */
     public Optional<String> name() {
@@ -107,6 +125,13 @@ public final class NodePoolDataDisk {
      */
     public Optional<String> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
+    }
+    /**
+     * @return The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+     * 
+     */
+    public Optional<Integer> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
     }
     /**
      * @return The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
@@ -133,24 +158,28 @@ public final class NodePoolDataDisk {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String autoSnapshotPolicyId;
+        private @Nullable Boolean burstingEnabled;
         private @Nullable String category;
         private @Nullable String device;
         private @Nullable String encrypted;
         private @Nullable String kmsKeyId;
         private @Nullable String name;
         private @Nullable String performanceLevel;
+        private @Nullable Integer provisionedIops;
         private @Nullable Integer size;
         private @Nullable String snapshotId;
         public Builder() {}
         public Builder(NodePoolDataDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoSnapshotPolicyId = defaults.autoSnapshotPolicyId;
+    	      this.burstingEnabled = defaults.burstingEnabled;
     	      this.category = defaults.category;
     	      this.device = defaults.device;
     	      this.encrypted = defaults.encrypted;
     	      this.kmsKeyId = defaults.kmsKeyId;
     	      this.name = defaults.name;
     	      this.performanceLevel = defaults.performanceLevel;
+    	      this.provisionedIops = defaults.provisionedIops;
     	      this.size = defaults.size;
     	      this.snapshotId = defaults.snapshotId;
         }
@@ -159,6 +188,12 @@ public final class NodePoolDataDisk {
         public Builder autoSnapshotPolicyId(@Nullable String autoSnapshotPolicyId) {
 
             this.autoSnapshotPolicyId = autoSnapshotPolicyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder burstingEnabled(@Nullable Boolean burstingEnabled) {
+
+            this.burstingEnabled = burstingEnabled;
             return this;
         }
         @CustomType.Setter
@@ -198,6 +233,12 @@ public final class NodePoolDataDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder provisionedIops(@Nullable Integer provisionedIops) {
+
+            this.provisionedIops = provisionedIops;
+            return this;
+        }
+        @CustomType.Setter
         public Builder size(@Nullable Integer size) {
 
             this.size = size;
@@ -212,12 +253,14 @@ public final class NodePoolDataDisk {
         public NodePoolDataDisk build() {
             final var _resultValue = new NodePoolDataDisk();
             _resultValue.autoSnapshotPolicyId = autoSnapshotPolicyId;
+            _resultValue.burstingEnabled = burstingEnabled;
             _resultValue.category = category;
             _resultValue.device = device;
             _resultValue.encrypted = encrypted;
             _resultValue.kmsKeyId = kmsKeyId;
             _resultValue.name = name;
             _resultValue.performanceLevel = performanceLevel;
+            _resultValue.provisionedIops = provisionedIops;
             _resultValue.size = size;
             _resultValue.snapshotId = snapshotId;
             return _resultValue;

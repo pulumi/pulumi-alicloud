@@ -19,6 +19,21 @@ public final class ClusterSubscriptionConfigArgs extends com.pulumi.resources.Re
     public static final ClusterSubscriptionConfigArgs Empty = new ClusterSubscriptionConfigArgs();
 
     /**
+     * Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+     * 
+     */
+    @Import(name="autoPayOrder")
+    private @Nullable Output<Boolean> autoPayOrder;
+
+    /**
+     * @return Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+     * 
+     */
+    public Optional<Output<Boolean>> autoPayOrder() {
+        return Optional.ofNullable(this.autoPayOrder);
+    }
+
+    /**
      * Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
      * 
      */
@@ -96,6 +111,7 @@ public final class ClusterSubscriptionConfigArgs extends com.pulumi.resources.Re
     private ClusterSubscriptionConfigArgs() {}
 
     private ClusterSubscriptionConfigArgs(ClusterSubscriptionConfigArgs $) {
+        this.autoPayOrder = $.autoPayOrder;
         this.autoRenew = $.autoRenew;
         this.autoRenewDuration = $.autoRenewDuration;
         this.autoRenewDurationUnit = $.autoRenewDurationUnit;
@@ -119,6 +135,27 @@ public final class ClusterSubscriptionConfigArgs extends com.pulumi.resources.Re
 
         public Builder(ClusterSubscriptionConfigArgs defaults) {
             $ = new ClusterSubscriptionConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoPayOrder Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoPayOrder(@Nullable Output<Boolean> autoPayOrder) {
+            $.autoPayOrder = autoPayOrder;
+            return this;
+        }
+
+        /**
+         * @param autoPayOrder Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoPayOrder(Boolean autoPayOrder) {
+            return autoPayOrder(Output.of(autoPayOrder));
         }
 
         /**

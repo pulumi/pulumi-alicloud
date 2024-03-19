@@ -409,7 +409,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly systemDiskAutoSnapshotPolicyId!: pulumi.Output<string | undefined>;
     /**
-     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available since 1.184.0+.
+     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since 1.184.0+.
      */
     public readonly systemDiskCategory!: pulumi.Output<string>;
     /**
@@ -953,7 +953,7 @@ export interface InstanceState {
      */
     systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
     /**
-     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available since 1.184.0+.
+     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since 1.184.0+.
      */
     systemDiskCategory?: pulumi.Input<string>;
     /**
@@ -1287,7 +1287,7 @@ export interface InstanceArgs {
      */
     systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
     /**
-     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Default to `cloudEfficiency`. Valid values `cloudAuto` Available since 1.184.0+.
+     * Valid values are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`, `cloudAuto`, `cloudEssdEntry`. only is used to some none I/O optimized instance. Valid values `cloudAuto` Available since 1.184.0+.
      */
     systemDiskCategory?: pulumi.Input<string>;
     /**

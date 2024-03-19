@@ -19,8 +19,13 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const _default = new alicloud.cas.ServiceCertificate("default", {
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultServiceCertificate = new alicloud.cas.ServiceCertificate("defaultServiceCertificate", {
  *     cert: `-----BEGIN CERTIFICATE-----
  * MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
  * TjEVMBMGA1UEAwwMKi50ZnRlc3QudG9wMRAwDgYDVQQIDAdCZWlKaW5nMRAwDgYD
@@ -44,7 +49,7 @@ import * as utilities from "../utilities";
  * -----END CERTIFICATE-----
  *
  * `,
- *     certificateName: "tf-example",
+ *     certificateName: pulumi.interpolate`tf-example-${defaultRandomInteger.result}`,
  *     key: `-----BEGIN PRIVATE KEY-----
  * MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDOST00lQfs8tJA
  * rhFGsZBjl1Wx+2SGcqH0eEjrKueWjBYgM9LU9kc5T/mBDvE9Q8Z0pBXlLvHzBE6c

@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.EventBridge
     /// {
     ///     var serviceLinkedRole = new AliCloud.EventBridge.ServiceLinkedRole("serviceLinkedRole", new()
     ///     {
-    ///         ProductName = "AliyunServiceRoleForEventBridgeSendToMNS",
+    ///         ProductName = "AliyunServiceRoleForEventBridgeSourceRocketMQ",
     ///     });
     /// 
     /// });

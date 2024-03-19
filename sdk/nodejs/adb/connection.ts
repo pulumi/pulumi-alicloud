@@ -22,42 +22,23 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const defaultZones = alicloud.adb.getZones({});
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
- *     status: "OK",
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.4.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "10.4.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
- * });
- * const defaultDBCluster = new alicloud.adb.DBCluster("defaultDBCluster", {
- *     dbClusterCategory: "Cluster",
- *     dbNodeClass: "C8",
- *     dbNodeCount: 4,
- *     dbNodeStorage: 400,
- *     mode: "reserver",
- *     dbClusterVersion: "3.0",
- *     paymentType: "PayAsYouGo",
- *     vswitchId: defaultSwitch.id,
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.ids?.[0],
+ * }));
+ * const vswitchId = defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]);
+ * const cluster = new alicloud.adb.DBCluster("cluster", {
+ *     dbClusterCategory: "MixedStorage",
+ *     mode: "flexible",
+ *     computeResource: "8Core32GB",
+ *     vswitchId: vswitchId,
  *     description: name,
- *     maintainTime: "23:00Z-00:00Z",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
- *     securityIps: [
- *         "10.168.1.12",
- *         "10.168.1.11",
- *     ],
- *     tags: {
- *         Created: "TF",
- *         For: "example",
- *     },
  * });
  * const defaultConnection = new alicloud.adb.Connection("defaultConnection", {
- *     dbClusterId: defaultDBCluster.id,
+ *     dbClusterId: cluster.id,
  *     connectionPrefix: "example",
  * });
  * ```

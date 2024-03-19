@@ -47,14 +47,14 @@ public final class LogTailConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * （Optional）The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
+     * The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
      * 
      */
     @Import(name="logSample")
     private @Nullable Output<String> logSample;
 
     /**
-     * @return （Optional）The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
+     * @return The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
      * 
      */
     public Optional<Output<String>> logSample() {
@@ -194,7 +194,7 @@ public final class LogTailConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logSample （Optional）The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
+         * @param logSample The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class LogTailConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logSample （Optional）The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
+         * @param logSample The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
          * 
          * @return builder
          * 

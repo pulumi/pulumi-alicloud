@@ -701,12 +701,12 @@ class RuleTarget(dict):
                  dead_letter_queue: Optional['outputs.RuleTargetDeadLetterQueue'] = None,
                  push_retry_strategy: Optional[str] = None):
         """
-        :param str endpoint: The endpoint of target.
-        :param Sequence['RuleTargetParamListArgs'] param_lists: A list of param. See `param_list` below.
-        :param str target_id: The ID of target.
-        :param str type: The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+        :param str endpoint: The endpoint of the event target.
+        :param Sequence['RuleTargetParamListArgs'] param_lists: The parameters that are configured for the event target. See `param_list` below.
+        :param str target_id: The ID of the custom event target.
+        :param str type: The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
                **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
-        :param 'RuleTargetDeadLetterQueueArgs' dead_letter_queue: Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+        :param 'RuleTargetDeadLetterQueueArgs' dead_letter_queue: The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
         :param str push_retry_strategy: The retry policy that is used to push the event. Valid values:
         """
         pulumi.set(__self__, "endpoint", endpoint)
@@ -722,7 +722,7 @@ class RuleTarget(dict):
     @pulumi.getter
     def endpoint(self) -> str:
         """
-        The endpoint of target.
+        The endpoint of the event target.
         """
         return pulumi.get(self, "endpoint")
 
@@ -730,7 +730,7 @@ class RuleTarget(dict):
     @pulumi.getter(name="paramLists")
     def param_lists(self) -> Sequence['outputs.RuleTargetParamList']:
         """
-        A list of param. See `param_list` below.
+        The parameters that are configured for the event target. See `param_list` below.
         """
         return pulumi.get(self, "param_lists")
 
@@ -738,7 +738,7 @@ class RuleTarget(dict):
     @pulumi.getter(name="targetId")
     def target_id(self) -> str:
         """
-        The ID of target.
+        The ID of the custom event target.
         """
         return pulumi.get(self, "target_id")
 
@@ -746,7 +746,7 @@ class RuleTarget(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+        The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
         **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
         """
         return pulumi.get(self, "type")
@@ -755,7 +755,7 @@ class RuleTarget(dict):
     @pulumi.getter(name="deadLetterQueue")
     def dead_letter_queue(self) -> Optional['outputs.RuleTargetDeadLetterQueue']:
         """
-        Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+        The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
         """
         return pulumi.get(self, "dead_letter_queue")
 
@@ -773,7 +773,7 @@ class RuleTargetDeadLetterQueue(dict):
     def __init__(__self__, *,
                  arn: Optional[str] = None):
         """
-        :param str arn: The srn of the dead letter queue.
+        :param str arn: The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
         """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
@@ -782,7 +782,7 @@ class RuleTargetDeadLetterQueue(dict):
     @pulumi.getter
     def arn(self) -> Optional[str]:
         """
-        The srn of the dead letter queue.
+        The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
         """
         return pulumi.get(self, "arn")
 
@@ -812,10 +812,10 @@ class RuleTargetParamList(dict):
                  template: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str form: The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
-        :param str resource_key: The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
-        :param str template: The template of param.
-        :param str value: The value of param.
+        :param str form: The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+        :param str resource_key: The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+        :param str template: The template of the event target parameter.
+        :param str value: The value of the event target parameter.
                
                > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
                
@@ -825,8 +825,7 @@ class RuleTargetParamList(dict):
                ```
                <!--End PulumiCodeChooser -->
                
-               In order to fix the diff, from version 1.160.0,
-               this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
+               In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
                If you want to set `resource_key = "IsBase64Encode"`, please avoid to set `value = "false"`.
         """
         pulumi.set(__self__, "form", form)
@@ -840,7 +839,7 @@ class RuleTargetParamList(dict):
     @pulumi.getter
     def form(self) -> str:
         """
-        The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+        The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
         """
         return pulumi.get(self, "form")
 
@@ -848,7 +847,7 @@ class RuleTargetParamList(dict):
     @pulumi.getter(name="resourceKey")
     def resource_key(self) -> str:
         """
-        The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+        The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
         """
         return pulumi.get(self, "resource_key")
 
@@ -856,7 +855,7 @@ class RuleTargetParamList(dict):
     @pulumi.getter
     def template(self) -> Optional[str]:
         """
-        The template of param.
+        The template of the event target parameter.
         """
         return pulumi.get(self, "template")
 
@@ -864,7 +863,7 @@ class RuleTargetParamList(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of param.
+        The value of the event target parameter.
 
         > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
 
@@ -874,8 +873,7 @@ class RuleTargetParamList(dict):
         ```
         <!--End PulumiCodeChooser -->
 
-        In order to fix the diff, from version 1.160.0,
-        this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
+        In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
         If you want to set `resource_key = "IsBase64Encode"`, please avoid to set `value = "false"`.
         """
         return pulumi.get(self, "value")

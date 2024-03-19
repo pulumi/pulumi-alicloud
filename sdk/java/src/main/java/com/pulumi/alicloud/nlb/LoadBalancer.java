@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
 public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**
      * Protocol version. Value:
-     * - **ipv4**:IPv4 type.
+     * - **Ipv4**:IPv4 type.
      * - **DualStack**: Double Stack type.
      * 
      */
@@ -137,7 +137,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Protocol version. Value:
-     * - **ipv4**:IPv4 type.
+     * - **Ipv4**:IPv4 type.
      * - **DualStack**: Double Stack type.
      * 
      */

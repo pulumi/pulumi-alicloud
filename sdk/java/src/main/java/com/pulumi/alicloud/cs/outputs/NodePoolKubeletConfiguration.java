@@ -4,8 +4,10 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,6 +15,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolKubeletConfiguration {
+    /**
+     * @return Allowed sysctl mode whitelist.
+     * 
+     */
+    private @Nullable List<String> allowedUnsafeSysctls;
+    /**
+     * @return The maximum number of log files that can exist in each container.
+     * 
+     */
+    private @Nullable String containerLogMaxFiles;
+    /**
+     * @return The maximum size that can be reached before a log file is rotated.
+     * 
+     */
+    private @Nullable String containerLogMaxSize;
     /**
      * @return Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
      * 
@@ -44,6 +61,11 @@ public final class NodePoolKubeletConfiguration {
      */
     private @Nullable Map<String,Object> evictionSoftGracePeriod;
     /**
+     * @return Feature switch to enable configuration of experimental features.
+     * 
+     */
+    private @Nullable Map<String,Boolean> featureGates;
+    /**
      * @return Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
      * 
      */
@@ -58,6 +80,16 @@ public final class NodePoolKubeletConfiguration {
      * 
      */
     private @Nullable Map<String,Object> kubeReserved;
+    /**
+     * @return The maximum number of running pods.
+     * 
+     */
+    private @Nullable String maxPods;
+    /**
+     * @return Read-only port number.
+     * 
+     */
+    private @Nullable String readOnlyPort;
     /**
      * @return Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
      * 
@@ -80,6 +112,27 @@ public final class NodePoolKubeletConfiguration {
     private @Nullable Map<String,Object> systemReserved;
 
     private NodePoolKubeletConfiguration() {}
+    /**
+     * @return Allowed sysctl mode whitelist.
+     * 
+     */
+    public List<String> allowedUnsafeSysctls() {
+        return this.allowedUnsafeSysctls == null ? List.of() : this.allowedUnsafeSysctls;
+    }
+    /**
+     * @return The maximum number of log files that can exist in each container.
+     * 
+     */
+    public Optional<String> containerLogMaxFiles() {
+        return Optional.ofNullable(this.containerLogMaxFiles);
+    }
+    /**
+     * @return The maximum size that can be reached before a log file is rotated.
+     * 
+     */
+    public Optional<String> containerLogMaxSize() {
+        return Optional.ofNullable(this.containerLogMaxSize);
+    }
     /**
      * @return Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
      * 
@@ -123,6 +176,13 @@ public final class NodePoolKubeletConfiguration {
         return this.evictionSoftGracePeriod == null ? Map.of() : this.evictionSoftGracePeriod;
     }
     /**
+     * @return Feature switch to enable configuration of experimental features.
+     * 
+     */
+    public Map<String,Boolean> featureGates() {
+        return this.featureGates == null ? Map.of() : this.featureGates;
+    }
+    /**
      * @return Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
      * 
      */
@@ -142,6 +202,20 @@ public final class NodePoolKubeletConfiguration {
      */
     public Map<String,Object> kubeReserved() {
         return this.kubeReserved == null ? Map.of() : this.kubeReserved;
+    }
+    /**
+     * @return The maximum number of running pods.
+     * 
+     */
+    public Optional<String> maxPods() {
+        return Optional.ofNullable(this.maxPods);
+    }
+    /**
+     * @return Read-only port number.
+     * 
+     */
+    public Optional<String> readOnlyPort() {
+        return Optional.ofNullable(this.readOnlyPort);
     }
     /**
      * @return Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
@@ -181,15 +255,21 @@ public final class NodePoolKubeletConfiguration {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> allowedUnsafeSysctls;
+        private @Nullable String containerLogMaxFiles;
+        private @Nullable String containerLogMaxSize;
         private @Nullable String cpuManagerPolicy;
         private @Nullable String eventBurst;
         private @Nullable String eventRecordQps;
         private @Nullable Map<String,Object> evictionHard;
         private @Nullable Map<String,Object> evictionSoft;
         private @Nullable Map<String,Object> evictionSoftGracePeriod;
+        private @Nullable Map<String,Boolean> featureGates;
         private @Nullable String kubeApiBurst;
         private @Nullable String kubeApiQps;
         private @Nullable Map<String,Object> kubeReserved;
+        private @Nullable String maxPods;
+        private @Nullable String readOnlyPort;
         private @Nullable String registryBurst;
         private @Nullable String registryPullQps;
         private @Nullable String serializeImagePulls;
@@ -197,21 +277,48 @@ public final class NodePoolKubeletConfiguration {
         public Builder() {}
         public Builder(NodePoolKubeletConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowedUnsafeSysctls = defaults.allowedUnsafeSysctls;
+    	      this.containerLogMaxFiles = defaults.containerLogMaxFiles;
+    	      this.containerLogMaxSize = defaults.containerLogMaxSize;
     	      this.cpuManagerPolicy = defaults.cpuManagerPolicy;
     	      this.eventBurst = defaults.eventBurst;
     	      this.eventRecordQps = defaults.eventRecordQps;
     	      this.evictionHard = defaults.evictionHard;
     	      this.evictionSoft = defaults.evictionSoft;
     	      this.evictionSoftGracePeriod = defaults.evictionSoftGracePeriod;
+    	      this.featureGates = defaults.featureGates;
     	      this.kubeApiBurst = defaults.kubeApiBurst;
     	      this.kubeApiQps = defaults.kubeApiQps;
     	      this.kubeReserved = defaults.kubeReserved;
+    	      this.maxPods = defaults.maxPods;
+    	      this.readOnlyPort = defaults.readOnlyPort;
     	      this.registryBurst = defaults.registryBurst;
     	      this.registryPullQps = defaults.registryPullQps;
     	      this.serializeImagePulls = defaults.serializeImagePulls;
     	      this.systemReserved = defaults.systemReserved;
         }
 
+        @CustomType.Setter
+        public Builder allowedUnsafeSysctls(@Nullable List<String> allowedUnsafeSysctls) {
+
+            this.allowedUnsafeSysctls = allowedUnsafeSysctls;
+            return this;
+        }
+        public Builder allowedUnsafeSysctls(String... allowedUnsafeSysctls) {
+            return allowedUnsafeSysctls(List.of(allowedUnsafeSysctls));
+        }
+        @CustomType.Setter
+        public Builder containerLogMaxFiles(@Nullable String containerLogMaxFiles) {
+
+            this.containerLogMaxFiles = containerLogMaxFiles;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder containerLogMaxSize(@Nullable String containerLogMaxSize) {
+
+            this.containerLogMaxSize = containerLogMaxSize;
+            return this;
+        }
         @CustomType.Setter
         public Builder cpuManagerPolicy(@Nullable String cpuManagerPolicy) {
 
@@ -249,6 +356,12 @@ public final class NodePoolKubeletConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder featureGates(@Nullable Map<String,Boolean> featureGates) {
+
+            this.featureGates = featureGates;
+            return this;
+        }
+        @CustomType.Setter
         public Builder kubeApiBurst(@Nullable String kubeApiBurst) {
 
             this.kubeApiBurst = kubeApiBurst;
@@ -264,6 +377,18 @@ public final class NodePoolKubeletConfiguration {
         public Builder kubeReserved(@Nullable Map<String,Object> kubeReserved) {
 
             this.kubeReserved = kubeReserved;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxPods(@Nullable String maxPods) {
+
+            this.maxPods = maxPods;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder readOnlyPort(@Nullable String readOnlyPort) {
+
+            this.readOnlyPort = readOnlyPort;
             return this;
         }
         @CustomType.Setter
@@ -292,15 +417,21 @@ public final class NodePoolKubeletConfiguration {
         }
         public NodePoolKubeletConfiguration build() {
             final var _resultValue = new NodePoolKubeletConfiguration();
+            _resultValue.allowedUnsafeSysctls = allowedUnsafeSysctls;
+            _resultValue.containerLogMaxFiles = containerLogMaxFiles;
+            _resultValue.containerLogMaxSize = containerLogMaxSize;
             _resultValue.cpuManagerPolicy = cpuManagerPolicy;
             _resultValue.eventBurst = eventBurst;
             _resultValue.eventRecordQps = eventRecordQps;
             _resultValue.evictionHard = evictionHard;
             _resultValue.evictionSoft = evictionSoft;
             _resultValue.evictionSoftGracePeriod = evictionSoftGracePeriod;
+            _resultValue.featureGates = featureGates;
             _resultValue.kubeApiBurst = kubeApiBurst;
             _resultValue.kubeApiQps = kubeApiQps;
             _resultValue.kubeReserved = kubeReserved;
+            _resultValue.maxPods = maxPods;
+            _resultValue.readOnlyPort = readOnlyPort;
             _resultValue.registryBurst = registryBurst;
             _resultValue.registryPullQps = registryPullQps;
             _resultValue.serializeImagePulls = serializeImagePulls;

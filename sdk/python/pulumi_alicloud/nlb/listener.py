@@ -817,7 +817,7 @@ class Listener(pulumi.CustomResource):
             vpc_id=default_network.id,
             scheduler="Wrr",
             protocol="TCP",
-            connection_drain=True,
+            connection_drain_enabled=True,
             connection_drain_timeout=60,
             address_ip_version="Ipv4",
             health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
@@ -847,7 +847,6 @@ class Listener(pulumi.CustomResource):
             server_group_id=default_server_group.id,
             idle_timeout=900,
             proxy_protocol_enabled=True,
-            sec_sensor_enabled=True,
             cps=10000,
             mss=0)
         ```
@@ -970,7 +969,7 @@ class Listener(pulumi.CustomResource):
             vpc_id=default_network.id,
             scheduler="Wrr",
             protocol="TCP",
-            connection_drain=True,
+            connection_drain_enabled=True,
             connection_drain_timeout=60,
             address_ip_version="Ipv4",
             health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
@@ -1000,7 +999,6 @@ class Listener(pulumi.CustomResource):
             server_group_id=default_server_group.id,
             idle_timeout=900,
             proxy_protocol_enabled=True,
-            sec_sensor_enabled=True,
             cps=10000,
             mss=0)
         ```

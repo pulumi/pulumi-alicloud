@@ -83,10 +83,10 @@ namespace Pulumi.AliCloud.Rds
         /// * **HighAvailability**: High-availability Edition.
         /// * **AlwaysOn**: Cluster Edition.
         /// * **Finance**: Enterprise Edition.
-        /// * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
-        /// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
-        /// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
-        /// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+        /// * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
+        /// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
+        /// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
+        /// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
         /// 
         /// &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         /// </summary>
@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> ConnectionStringPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.204.1+) The creation time of db instance.
+        /// (Available since 1.204.1) The creation time of db instance.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> DbInstanceStorageType { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.197.0+) The type of db instance.
+        /// (Available since 1.197.0) The type of db instance.
         /// </summary>
         [Output("dbInstanceType")]
         public Output<string> DbInstanceType { get; private set; } = null!;
@@ -421,7 +421,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+        /// , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
@@ -499,7 +499,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> SslStatus { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.204.1+) The status of db instance.
+        /// (Available since 1.204.1) The status of db instance.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -515,7 +515,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> StorageAutoScale { get; private set; } = null!;
 
         /// <summary>
-        /// The trigger threshold (percentage) for automatic storage space expansion.
+        /// The threshold in percentage based on which an automatic storage expansion is triggered. If the available storage reaches the threshold, ApsaraDB RDS increases the storage capacity of the instance.
         /// Valid values: [10, 20, 30, 40, 50].
         /// 
         /// &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
@@ -748,10 +748,10 @@ namespace Pulumi.AliCloud.Rds
         /// * **HighAvailability**: High-availability Edition.
         /// * **AlwaysOn**: Cluster Edition.
         /// * **Finance**: Enterprise Edition.
-        /// * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
-        /// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
-        /// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
-        /// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+        /// * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
+        /// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
+        /// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
+        /// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
         /// 
         /// &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         /// </summary>
@@ -1083,7 +1083,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+        /// , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -1180,7 +1180,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? StorageAutoScale { get; set; }
 
         /// <summary>
-        /// The trigger threshold (percentage) for automatic storage space expansion.
+        /// The threshold in percentage based on which an automatic storage expansion is triggered. If the available storage reaches the threshold, ApsaraDB RDS increases the storage capacity of the instance.
         /// Valid values: [10, 20, 30, 40, 50].
         /// 
         /// &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
@@ -1381,10 +1381,10 @@ namespace Pulumi.AliCloud.Rds
         /// * **HighAvailability**: High-availability Edition.
         /// * **AlwaysOn**: Cluster Edition.
         /// * **Finance**: Enterprise Edition.
-        /// * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
-        /// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
-        /// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
-        /// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+        /// * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
+        /// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
+        /// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
+        /// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
         /// 
         /// &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         /// </summary>
@@ -1433,7 +1433,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? ConnectionStringPrefix { get; set; }
 
         /// <summary>
-        /// (Available in 1.204.1+) The creation time of db instance.
+        /// (Available since 1.204.1) The creation time of db instance.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -1466,7 +1466,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceStorageType { get; set; }
 
         /// <summary>
-        /// (Available in 1.197.0+) The type of db instance.
+        /// (Available since 1.197.0) The type of db instance.
         /// </summary>
         [Input("dbInstanceType")]
         public Input<string>? DbInstanceType { get; set; }
@@ -1734,7 +1734,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+        /// , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -1827,7 +1827,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SslStatus { get; set; }
 
         /// <summary>
-        /// (Available in 1.204.1+) The status of db instance.
+        /// (Available since 1.204.1) The status of db instance.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -1843,7 +1843,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? StorageAutoScale { get; set; }
 
         /// <summary>
-        /// The trigger threshold (percentage) for automatic storage space expansion.
+        /// The threshold in percentage based on which an automatic storage expansion is triggered. If the available storage reaches the threshold, ApsaraDB RDS increases the storage capacity of the instance.
         /// Valid values: [10, 20, 30, 40, 50].
         /// 
         /// &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.

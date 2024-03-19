@@ -6,6 +6,7 @@ package com.pulumi.alicloud.vpc;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,6 +33,23 @@ public final class PublicIpAddressPoolCidrBlockArgs extends com.pulumi.resources
     }
 
     /**
+     * IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+     * &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
+     * 
+     */
+    @Import(name="cidrMask")
+    private @Nullable Output<Integer> cidrMask;
+
+    /**
+     * @return IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+     * &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
+     * 
+     */
+    public Optional<Output<Integer>> cidrMask() {
+        return Optional.ofNullable(this.cidrMask);
+    }
+
+    /**
      * The ID of the VPC Public IP address pool.
      * 
      */
@@ -50,6 +68,7 @@ public final class PublicIpAddressPoolCidrBlockArgs extends com.pulumi.resources
 
     private PublicIpAddressPoolCidrBlockArgs(PublicIpAddressPoolCidrBlockArgs $) {
         this.cidrBlock = $.cidrBlock;
+        this.cidrMask = $.cidrMask;
         this.publicIpAddressPoolId = $.publicIpAddressPoolId;
     }
 
@@ -90,6 +109,29 @@ public final class PublicIpAddressPoolCidrBlockArgs extends com.pulumi.resources
          */
         public Builder cidrBlock(String cidrBlock) {
             return cidrBlock(Output.of(cidrBlock));
+        }
+
+        /**
+         * @param cidrMask IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+         * &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cidrMask(@Nullable Output<Integer> cidrMask) {
+            $.cidrMask = cidrMask;
+            return this;
+        }
+
+        /**
+         * @param cidrMask IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
+         * &gt; **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cidrMask(Integer cidrMask) {
+            return cidrMask(Output.of(cidrMask));
         }
 
         /**

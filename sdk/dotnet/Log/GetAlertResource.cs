@@ -16,7 +16,9 @@ namespace Pulumi.AliCloud.Log
         /// 
         /// For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
         /// 
-        /// &gt; **NOTE:** Available in v1.161.0+
+        /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.219.0`. Please use new resource alicloud_log_alert_resource.
+        /// 
+        /// &gt; **NOTE:** Available since v1.161.0.
         /// 
         /// ## Example Usage
         /// 
@@ -33,12 +35,6 @@ namespace Pulumi.AliCloud.Log
         ///     {
         ///         Lang = "cn",
         ///         Type = "user",
-        ///     });
-        /// 
-        ///     var exampleProject = AliCloud.Log.GetAlertResource.Invoke(new()
-        ///     {
-        ///         Project = "test-alert-tf",
-        ///         Type = "project",
         ///     });
         /// 
         /// });
@@ -53,7 +49,9 @@ namespace Pulumi.AliCloud.Log
         /// 
         /// For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
         /// 
-        /// &gt; **NOTE:** Available in v1.161.0+
+        /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.219.0`. Please use new resource alicloud_log_alert_resource.
+        /// 
+        /// &gt; **NOTE:** Available since v1.161.0.
         /// 
         /// ## Example Usage
         /// 
@@ -70,12 +68,6 @@ namespace Pulumi.AliCloud.Log
         ///     {
         ///         Lang = "cn",
         ///         Type = "user",
-        ///     });
-        /// 
-        ///     var exampleProject = AliCloud.Log.GetAlertResource.Invoke(new()
-        ///     {
-        ///         Project = "test-alert-tf",
-        ///         Type = "project",
         ///     });
         /// 
         /// });

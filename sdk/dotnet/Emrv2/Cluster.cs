@@ -24,6 +24,7 @@ namespace Pulumi.AliCloud.Emrv2
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// using Random = Pulumi.Random;
@@ -141,6 +142,7 @@ namespace Pulumi.AliCloud.Emrv2
     ///             new AliCloud.Emrv2.Inputs.ClusterNodeGroupArgs
     ///             {
     ///                 SpotInstanceRemedy = false,
+    ///                 DeploymentSetStrategy = "CLUSTER",
     ///                 NodeGroupType = "CORE",
     ///                 VswitchIds = new[]
     ///                 {
@@ -200,6 +202,17 @@ namespace Pulumi.AliCloud.Emrv2
     ///                 SecurityGroupId = defaultSecurityGroup.Id,
     ///             },
     ///         },
+    ///         LogCollectStrategy = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["open"] = new[]
+    ///             {
+    ///                 "all",
+    ///             },
+    ///             ["close"] = new[]
+    ///             {
+    ///                 "",
+    ///             },
+    ///         }),
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
     ///         ClusterName = name,
     ///         PaymentType = "PayAsYouGo",
@@ -256,6 +269,12 @@ namespace Pulumi.AliCloud.Emrv2
         /// </summary>
         [Output("deployMode")]
         public Output<string> DeployMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The log collect strategy of EMR cluster.
+        /// </summary>
+        [Output("logCollectStrategy")]
+        public Output<string> LogCollectStrategy { get; private set; } = null!;
 
         /// <summary>
         /// The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
@@ -405,6 +424,12 @@ namespace Pulumi.AliCloud.Emrv2
         [Input("deployMode")]
         public Input<string>? DeployMode { get; set; }
 
+        /// <summary>
+        /// The log collect strategy of EMR cluster.
+        /// </summary>
+        [Input("logCollectStrategy")]
+        public Input<string>? LogCollectStrategy { get; set; }
+
         [Input("nodeAttributes", required: true)]
         private InputList<Inputs.ClusterNodeAttributeArgs>? _nodeAttributes;
 
@@ -532,6 +557,12 @@ namespace Pulumi.AliCloud.Emrv2
         /// </summary>
         [Input("deployMode")]
         public Input<string>? DeployMode { get; set; }
+
+        /// <summary>
+        /// The log collect strategy of EMR cluster.
+        /// </summary>
+        [Input("logCollectStrategy")]
+        public Input<string>? LogCollectStrategy { get; set; }
 
         [Input("nodeAttributes")]
         private InputList<Inputs.ClusterNodeAttributeGetArgs>? _nodeAttributes;

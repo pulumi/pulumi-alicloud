@@ -570,6 +570,8 @@ type ClusterNodeGroup struct {
 	CostOptimizedConfig *ClusterNodeGroupCostOptimizedConfig `pulumi:"costOptimizedConfig"`
 	// Host Ecs data disks information in this node group. See `dataDisks` below.
 	DataDisks []ClusterNodeGroupDataDisk `pulumi:"dataDisks"`
+	// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+	DeploymentSetStrategy *string `pulumi:"deploymentSetStrategy"`
 	// Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
 	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
 	// Host Ecs instance types.
@@ -578,8 +580,10 @@ type ClusterNodeGroup struct {
 	NodeCount int `pulumi:"nodeCount"`
 	// The node group name of emr cluster.
 	NodeGroupName string `pulumi:"nodeGroupName"`
-	// The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+	// The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
 	NodeGroupType string `pulumi:"nodeGroupType"`
+	// Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
+	NodeResizeStrategy *string `pulumi:"nodeResizeStrategy"`
 	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
 	PaymentType *string `pulumi:"paymentType"`
 	// The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
@@ -614,6 +618,8 @@ type ClusterNodeGroupArgs struct {
 	CostOptimizedConfig ClusterNodeGroupCostOptimizedConfigPtrInput `pulumi:"costOptimizedConfig"`
 	// Host Ecs data disks information in this node group. See `dataDisks` below.
 	DataDisks ClusterNodeGroupDataDiskArrayInput `pulumi:"dataDisks"`
+	// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+	DeploymentSetStrategy pulumi.StringPtrInput `pulumi:"deploymentSetStrategy"`
 	// Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
 	GracefulShutdown pulumi.BoolPtrInput `pulumi:"gracefulShutdown"`
 	// Host Ecs instance types.
@@ -622,8 +628,10 @@ type ClusterNodeGroupArgs struct {
 	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
 	// The node group name of emr cluster.
 	NodeGroupName pulumi.StringInput `pulumi:"nodeGroupName"`
-	// The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+	// The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
 	NodeGroupType pulumi.StringInput `pulumi:"nodeGroupType"`
+	// Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
+	NodeResizeStrategy pulumi.StringPtrInput `pulumi:"nodeResizeStrategy"`
 	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
 	// The spot bid prices of a PayAsYouGo instance. See `spotBidPrices` below.
@@ -706,6 +714,11 @@ func (o ClusterNodeGroupOutput) DataDisks() ClusterNodeGroupDataDiskArrayOutput 
 	return o.ApplyT(func(v ClusterNodeGroup) []ClusterNodeGroupDataDisk { return v.DataDisks }).(ClusterNodeGroupDataDiskArrayOutput)
 }
 
+// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+func (o ClusterNodeGroupOutput) DeploymentSetStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroup) *string { return v.DeploymentSetStrategy }).(pulumi.StringPtrOutput)
+}
+
 // Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
 func (o ClusterNodeGroupOutput) GracefulShutdown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *bool { return v.GracefulShutdown }).(pulumi.BoolPtrOutput)
@@ -726,9 +739,14 @@ func (o ClusterNodeGroupOutput) NodeGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) string { return v.NodeGroupName }).(pulumi.StringOutput)
 }
 
-// The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+// The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
 func (o ClusterNodeGroupOutput) NodeGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) string { return v.NodeGroupType }).(pulumi.StringOutput)
+}
+
+// Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
+func (o ClusterNodeGroupOutput) NodeResizeStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroup) *string { return v.NodeResizeStrategy }).(pulumi.StringPtrOutput)
 }
 
 // Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
@@ -1192,6 +1210,8 @@ func (o ClusterNodeGroupSpotBidPriceArrayOutput) Index(i pulumi.IntInput) Cluste
 }
 
 type ClusterNodeGroupSubscriptionConfig struct {
+	// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+	AutoPayOrder *bool `pulumi:"autoPayOrder"`
 	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
@@ -1216,6 +1236,8 @@ type ClusterNodeGroupSubscriptionConfigInput interface {
 }
 
 type ClusterNodeGroupSubscriptionConfigArgs struct {
+	// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+	AutoPayOrder pulumi.BoolPtrInput `pulumi:"autoPayOrder"`
 	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew pulumi.BoolPtrInput `pulumi:"autoRenew"`
 	// If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
@@ -1305,6 +1327,11 @@ func (o ClusterNodeGroupSubscriptionConfigOutput) ToClusterNodeGroupSubscription
 	}).(ClusterNodeGroupSubscriptionConfigPtrOutput)
 }
 
+// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+func (o ClusterNodeGroupSubscriptionConfigOutput) AutoPayOrder() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupSubscriptionConfig) *bool { return v.AutoPayOrder }).(pulumi.BoolPtrOutput)
+}
+
 // Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 func (o ClusterNodeGroupSubscriptionConfigOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupSubscriptionConfig) *bool { return v.AutoRenew }).(pulumi.BoolPtrOutput)
@@ -1352,6 +1379,16 @@ func (o ClusterNodeGroupSubscriptionConfigPtrOutput) Elem() ClusterNodeGroupSubs
 		var ret ClusterNodeGroupSubscriptionConfig
 		return ret
 	}).(ClusterNodeGroupSubscriptionConfigOutput)
+}
+
+// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+func (o ClusterNodeGroupSubscriptionConfigPtrOutput) AutoPayOrder() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupSubscriptionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoPayOrder
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
@@ -1484,6 +1521,8 @@ func (o ClusterNodeGroupSystemDiskOutput) Size() pulumi.IntOutput {
 }
 
 type ClusterSubscriptionConfig struct {
+	// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+	AutoPayOrder *bool `pulumi:"autoPayOrder"`
 	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
@@ -1508,6 +1547,8 @@ type ClusterSubscriptionConfigInput interface {
 }
 
 type ClusterSubscriptionConfigArgs struct {
+	// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+	AutoPayOrder pulumi.BoolPtrInput `pulumi:"autoPayOrder"`
 	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew pulumi.BoolPtrInput `pulumi:"autoRenew"`
 	// If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
@@ -1597,6 +1638,11 @@ func (o ClusterSubscriptionConfigOutput) ToClusterSubscriptionConfigPtrOutputWit
 	}).(ClusterSubscriptionConfigPtrOutput)
 }
 
+// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+func (o ClusterSubscriptionConfigOutput) AutoPayOrder() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterSubscriptionConfig) *bool { return v.AutoPayOrder }).(pulumi.BoolPtrOutput)
+}
+
 // Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 func (o ClusterSubscriptionConfigOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterSubscriptionConfig) *bool { return v.AutoRenew }).(pulumi.BoolPtrOutput)
@@ -1644,6 +1690,16 @@ func (o ClusterSubscriptionConfigPtrOutput) Elem() ClusterSubscriptionConfigOutp
 		var ret ClusterSubscriptionConfig
 		return ret
 	}).(ClusterSubscriptionConfigOutput)
+}
+
+// Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+func (o ClusterSubscriptionConfigPtrOutput) AutoPayOrder() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterSubscriptionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoPayOrder
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.

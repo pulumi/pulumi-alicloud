@@ -16,17 +16,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleTarget {
     /**
-     * @return Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+     * @return The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
      * 
      */
     private @Nullable RuleTargetDeadLetterQueue deadLetterQueue;
     /**
-     * @return The endpoint of target.
+     * @return The endpoint of the event target.
      * 
      */
     private String endpoint;
     /**
-     * @return A list of param. See `param_list` below.
+     * @return The parameters that are configured for the event target. See `param_list` below.
      * 
      */
     private List<RuleTargetParamList> paramLists;
@@ -36,12 +36,12 @@ public final class RuleTarget {
      */
     private @Nullable String pushRetryStrategy;
     /**
-     * @return The ID of target.
+     * @return The ID of the custom event target.
      * 
      */
     private String targetId;
     /**
-     * @return The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+     * @return The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
      * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
      * 
      */
@@ -49,21 +49,21 @@ public final class RuleTarget {
 
     private RuleTarget() {}
     /**
-     * @return Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+     * @return The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
      * 
      */
     public Optional<RuleTargetDeadLetterQueue> deadLetterQueue() {
         return Optional.ofNullable(this.deadLetterQueue);
     }
     /**
-     * @return The endpoint of target.
+     * @return The endpoint of the event target.
      * 
      */
     public String endpoint() {
         return this.endpoint;
     }
     /**
-     * @return A list of param. See `param_list` below.
+     * @return The parameters that are configured for the event target. See `param_list` below.
      * 
      */
     public List<RuleTargetParamList> paramLists() {
@@ -77,14 +77,14 @@ public final class RuleTarget {
         return Optional.ofNullable(this.pushRetryStrategy);
     }
     /**
-     * @return The ID of target.
+     * @return The ID of the custom event target.
      * 
      */
     public String targetId() {
         return this.targetId;
     }
     /**
-     * @return The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+     * @return The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
      * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
      * 
      */

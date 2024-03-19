@@ -19,23 +19,14 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
- *     min: 10000,
- *     max: 99999,
- * });
- * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
- *     cidrBlock: "172.16.0.0/12",
- *     enableAdminAccess: false,
- *     desktopAccessType: "Internet",
- *     officeSiteName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
+ * const defaultSimpleOfficeSites = alicloud.eds.getSimpleOfficeSites({
+ *     status: "REGISTERED",
+ *     nameRegex: "default",
  * });
  * const defaultNetworkPackage = new alicloud.eds.NetworkPackage("defaultNetworkPackage", {
  *     bandwidth: 10,
- *     officeSiteId: defaultSimpleOfficeSite.id,
+ *     officeSiteId: defaultSimpleOfficeSites.then(defaultSimpleOfficeSites => defaultSimpleOfficeSites.ids?.[0]),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

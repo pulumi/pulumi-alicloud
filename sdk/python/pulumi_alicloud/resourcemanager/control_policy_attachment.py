@@ -112,11 +112,15 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
         example_control_policy = alicloud.resourcemanager.ControlPolicy("exampleControlPolicy",
             control_policy_name=name,
             description=name,
@@ -137,7 +141,7 @@ class ControlPolicyAttachment(pulumi.CustomResource):
             ]
           }
         \"\"\")
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
+        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=default.result.apply(lambda result: f"{name}-{result}"))
         example_control_policy_attachment = alicloud.resourcemanager.ControlPolicyAttachment("exampleControlPolicyAttachment",
             policy_id=example_control_policy.id,
             target_id=example_folder.id)
@@ -178,11 +182,15 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default = random.RandomInteger("default",
+            min=10000,
+            max=99999)
         example_control_policy = alicloud.resourcemanager.ControlPolicy("exampleControlPolicy",
             control_policy_name=name,
             description=name,
@@ -203,7 +211,7 @@ class ControlPolicyAttachment(pulumi.CustomResource):
             ]
           }
         \"\"\")
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=name)
+        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=default.result.apply(lambda result: f"{name}-{result}"))
         example_control_policy_attachment = alicloud.resourcemanager.ControlPolicyAttachment("exampleControlPolicyAttachment",
             policy_id=example_control_policy.id,
             target_id=example_folder.id)

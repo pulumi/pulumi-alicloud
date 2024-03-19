@@ -20,6 +20,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const exampleZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
@@ -33,23 +35,22 @@ import * as utilities from "../utilities";
  *     vpcId: exampleNetwork.id,
  *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
  * });
- * const exampleCluster = new alicloud.mse.Cluster("exampleCluster", {
+ * const _default = new alicloud.mse.Cluster("default", {
+ *     connectionType: "slb",
+ *     netType: "privatenet",
+ *     vswitchId: exampleSwitch.id,
  *     clusterSpecification: "MSE_SC_1_2_60_c",
- *     clusterType: "Nacos-Ans",
  *     clusterVersion: "NACOS_2_0_0",
  *     instanceCount: 1,
- *     netType: "privatenet",
  *     pubNetworkFlow: "1",
- *     connectionType: "slb",
- *     clusterAliasName: "terraform-example",
+ *     clusterAliasName: name,
  *     mseVersion: "mse_dev",
- *     vswitchId: exampleSwitch.id,
- *     vpcId: exampleNetwork.id,
+ *     clusterType: "Nacos-Ans",
  * });
  * const exampleEngineNamespace = new alicloud.mse.EngineNamespace("exampleEngineNamespace", {
- *     clusterId: exampleCluster.clusterId,
- *     namespaceShowName: "terraform-example",
- *     namespaceId: "terraform-example",
+ *     clusterId: _default.id,
+ *     namespaceShowName: name,
+ *     namespaceId: name,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -16,14 +16,14 @@ public final class RuleTargetDeadLetterQueueArgs extends com.pulumi.resources.Re
     public static final RuleTargetDeadLetterQueueArgs Empty = new RuleTargetDeadLetterQueueArgs();
 
     /**
-     * The srn of the dead letter queue.
+     * The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
      * 
      */
     @Import(name="arn")
     private @Nullable Output<String> arn;
 
     /**
-     * @return The srn of the dead letter queue.
+     * @return The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
      * 
      */
     public Optional<Output<String>> arn() {
@@ -55,7 +55,7 @@ public final class RuleTargetDeadLetterQueueArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param arn The srn of the dead letter queue.
+         * @param arn The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class RuleTargetDeadLetterQueueArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param arn The srn of the dead letter queue.
+         * @param arn The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
          * 
          * @return builder
          * 

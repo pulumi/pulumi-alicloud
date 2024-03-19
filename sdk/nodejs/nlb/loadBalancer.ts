@@ -105,7 +105,7 @@ export class LoadBalancer extends pulumi.CustomResource {
 
     /**
      * Protocol version. Value:
-     * - **ipv4**:IPv4 type.
+     * - **Ipv4**:IPv4 type.
      * - **DualStack**: Double Stack type.
      */
     public readonly addressIpVersion!: pulumi.Output<string>;
@@ -280,7 +280,7 @@ export class LoadBalancer extends pulumi.CustomResource {
 export interface LoadBalancerState {
     /**
      * Protocol version. Value:
-     * - **ipv4**:IPv4 type.
+     * - **Ipv4**:IPv4 type.
      * - **DualStack**: Double Stack type.
      */
     addressIpVersion?: pulumi.Input<string>;
@@ -382,7 +382,7 @@ export interface LoadBalancerState {
 export interface LoadBalancerArgs {
     /**
      * Protocol version. Value:
-     * - **ipv4**:IPv4 type.
+     * - **Ipv4**:IPv4 type.
      * - **DualStack**: Double Stack type.
      */
     addressIpVersion?: pulumi.Input<string>;

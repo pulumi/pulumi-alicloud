@@ -19,13 +19,18 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const displayName = config.get("displayName") || "EAccount";
- * const exampleFolder = new alicloud.resourcemanager.Folder("exampleFolder", {folderName: name});
+ * const _default = new random.RandomInteger("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const exampleFolder = new alicloud.resourcemanager.Folder("exampleFolder", {folderName: pulumi.interpolate`${name}-${_default.result}`});
  * const exampleAccount = new alicloud.resourcemanager.Account("exampleAccount", {
- *     displayName: displayName,
+ *     displayName: pulumi.interpolate`${displayName}-${_default.result}`,
  *     folderId: exampleFolder.id,
  * });
  * const exampleDelegatedAdministrator = new alicloud.resourcemanager.DelegatedAdministrator("exampleDelegatedAdministrator", {

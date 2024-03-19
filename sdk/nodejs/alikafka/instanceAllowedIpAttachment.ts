@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a AliKafka Instance Allowed Ip Attachment resource.
  *
- * For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-updateallowedip).
+ * For information about AliKafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-updateallowedip).
  *
  * > **NOTE:** Available since v1.163.0.
  *
@@ -51,10 +51,10 @@ import * as utilities from "../utilities";
  *     securityGroup: defaultSecurityGroup.id,
  * });
  * const defaultInstanceAllowedIpAttachment = new alicloud.alikafka.InstanceAllowedIpAttachment("defaultInstanceAllowedIpAttachment", {
- *     allowedIp: "114.237.9.78/32",
- *     allowedType: "vpc",
  *     instanceId: defaultInstance.id,
+ *     allowedType: "vpc",
  *     portRange: "9092/9092",
+ *     allowedIp: "114.237.9.78/32",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -96,11 +96,11 @@ export class InstanceAllowedIpAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * The allowed ip. It can be a CIDR block.
+     * The IP address whitelist. It can be a CIDR block.
      */
     public readonly allowedIp!: pulumi.Output<string>;
     /**
-     * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
+     * The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
      */
     public readonly allowedType!: pulumi.Output<string>;
     /**
@@ -108,9 +108,11 @@ export class InstanceAllowedIpAttachment extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`.
-     * - `9092/9092`: port range for a VPC whitelist.
-     * - `9093/9093`: port range for an Internet whitelist.
+     * The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`. From version 1.219.0, `portRange` can be set to `9094/9094`, `9095/9095`.
+     * - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+     * - `9093/9093`: The port range for access from the Internet.
+     * - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+     * - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
      */
     public readonly portRange!: pulumi.Output<string>;
 
@@ -160,11 +162,11 @@ export class InstanceAllowedIpAttachment extends pulumi.CustomResource {
  */
 export interface InstanceAllowedIpAttachmentState {
     /**
-     * The allowed ip. It can be a CIDR block.
+     * The IP address whitelist. It can be a CIDR block.
      */
     allowedIp?: pulumi.Input<string>;
     /**
-     * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
+     * The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
      */
     allowedType?: pulumi.Input<string>;
     /**
@@ -172,9 +174,11 @@ export interface InstanceAllowedIpAttachmentState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`.
-     * - `9092/9092`: port range for a VPC whitelist.
-     * - `9093/9093`: port range for an Internet whitelist.
+     * The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`. From version 1.219.0, `portRange` can be set to `9094/9094`, `9095/9095`.
+     * - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+     * - `9093/9093`: The port range for access from the Internet.
+     * - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+     * - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
      */
     portRange?: pulumi.Input<string>;
 }
@@ -184,11 +188,11 @@ export interface InstanceAllowedIpAttachmentState {
  */
 export interface InstanceAllowedIpAttachmentArgs {
     /**
-     * The allowed ip. It can be a CIDR block.
+     * The IP address whitelist. It can be a CIDR block.
      */
     allowedIp: pulumi.Input<string>;
     /**
-     * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
+     * The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowedType` can be set to `internet`.
      */
     allowedType: pulumi.Input<string>;
     /**
@@ -196,9 +200,11 @@ export interface InstanceAllowedIpAttachmentArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`.
-     * - `9092/9092`: port range for a VPC whitelist.
-     * - `9093/9093`: port range for an Internet whitelist.
+     * The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`. From version 1.219.0, `portRange` can be set to `9094/9094`, `9095/9095`.
+     * - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+     * - `9093/9093`: The port range for access from the Internet.
+     * - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+     * - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
      */
     portRange: pulumi.Input<string>;
 }

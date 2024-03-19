@@ -252,6 +252,8 @@ type Bucket struct {
 	RedundancyType pulumi.StringPtrOutput `pulumi:"redundancyType"`
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
 	RefererConfig BucketRefererConfigPtrOutput `pulumi:"refererConfig"`
+	// The ID of the resource group to which the bucket belongs.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// A configuration of server-side encryption. See `serverSideEncryptionRule` below.
 	ServerSideEncryptionRule BucketServerSideEncryptionRulePtrOutput `pulumi:"serverSideEncryptionRule"`
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
@@ -331,6 +333,8 @@ type bucketState struct {
 	RedundancyType *string `pulumi:"redundancyType"`
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
 	RefererConfig *BucketRefererConfig `pulumi:"refererConfig"`
+	// The ID of the resource group to which the bucket belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A configuration of server-side encryption. See `serverSideEncryptionRule` below.
 	ServerSideEncryptionRule *BucketServerSideEncryptionRule `pulumi:"serverSideEncryptionRule"`
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
@@ -381,6 +385,8 @@ type BucketState struct {
 	RedundancyType pulumi.StringPtrInput
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
 	RefererConfig BucketRefererConfigPtrInput
+	// The ID of the resource group to which the bucket belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// A configuration of server-side encryption. See `serverSideEncryptionRule` below.
 	ServerSideEncryptionRule BucketServerSideEncryptionRulePtrInput
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
@@ -425,6 +431,8 @@ type bucketArgs struct {
 	RedundancyType *string `pulumi:"redundancyType"`
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
 	RefererConfig *BucketRefererConfig `pulumi:"refererConfig"`
+	// The ID of the resource group to which the bucket belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A configuration of server-side encryption. See `serverSideEncryptionRule` below.
 	ServerSideEncryptionRule *BucketServerSideEncryptionRule `pulumi:"serverSideEncryptionRule"`
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
@@ -466,6 +474,8 @@ type BucketArgs struct {
 	RedundancyType pulumi.StringPtrInput
 	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
 	RefererConfig BucketRefererConfigPtrInput
+	// The ID of the resource group to which the bucket belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// A configuration of server-side encryption. See `serverSideEncryptionRule` below.
 	ServerSideEncryptionRule BucketServerSideEncryptionRulePtrInput
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
@@ -651,6 +661,11 @@ func (o BucketOutput) RedundancyType() pulumi.StringPtrOutput {
 // The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
 func (o BucketOutput) RefererConfig() BucketRefererConfigPtrOutput {
 	return o.ApplyT(func(v *Bucket) BucketRefererConfigPtrOutput { return v.RefererConfig }).(BucketRefererConfigPtrOutput)
+}
+
+// The ID of the resource group to which the bucket belongs.
+func (o BucketOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // A configuration of server-side encryption. See `serverSideEncryptionRule` below.

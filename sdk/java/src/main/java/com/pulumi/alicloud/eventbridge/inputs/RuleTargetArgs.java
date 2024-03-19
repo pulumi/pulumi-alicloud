@@ -20,14 +20,14 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
     public static final RuleTargetArgs Empty = new RuleTargetArgs();
 
     /**
-     * Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+     * The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
      * 
      */
     @Import(name="deadLetterQueue")
     private @Nullable Output<RuleTargetDeadLetterQueueArgs> deadLetterQueue;
 
     /**
-     * @return Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+     * @return The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
      * 
      */
     public Optional<Output<RuleTargetDeadLetterQueueArgs>> deadLetterQueue() {
@@ -35,14 +35,14 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The endpoint of target.
+     * The endpoint of the event target.
      * 
      */
     @Import(name="endpoint", required=true)
     private Output<String> endpoint;
 
     /**
-     * @return The endpoint of target.
+     * @return The endpoint of the event target.
      * 
      */
     public Output<String> endpoint() {
@@ -50,14 +50,14 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of param. See `param_list` below.
+     * The parameters that are configured for the event target. See `param_list` below.
      * 
      */
     @Import(name="paramLists", required=true)
     private Output<List<RuleTargetParamListArgs>> paramLists;
 
     /**
-     * @return A list of param. See `param_list` below.
+     * @return The parameters that are configured for the event target. See `param_list` below.
      * 
      */
     public Output<List<RuleTargetParamListArgs>> paramLists() {
@@ -80,14 +80,14 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of target.
+     * The ID of the custom event target.
      * 
      */
     @Import(name="targetId", required=true)
     private Output<String> targetId;
 
     /**
-     * @return The ID of target.
+     * @return The ID of the custom event target.
      * 
      */
     public Output<String> targetId() {
@@ -95,7 +95,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+     * The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
      * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
      * 
      */
@@ -103,7 +103,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> type;
 
     /**
-     * @return The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+     * @return The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
      * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
      * 
      */
@@ -141,7 +141,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deadLetterQueue Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+         * @param deadLetterQueue The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deadLetterQueue Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+         * @param deadLetterQueue The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpoint The endpoint of target.
+         * @param endpoint The endpoint of the event target.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpoint The endpoint of target.
+         * @param endpoint The endpoint of the event target.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramLists A list of param. See `param_list` below.
+         * @param paramLists The parameters that are configured for the event target. See `param_list` below.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramLists A list of param. See `param_list` below.
+         * @param paramLists The parameters that are configured for the event target. See `param_list` below.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramLists A list of param. See `param_list` below.
+         * @param paramLists The parameters that are configured for the event target. See `param_list` below.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetId The ID of target.
+         * @param targetId The ID of the custom event target.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetId The ID of target.
+         * @param targetId The ID of the custom event target.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+         * @param type The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
          * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
          * 
          * @return builder
@@ -268,7 +268,7 @@ public final class RuleTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+         * @param type The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
          * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
          * 
          * @return builder

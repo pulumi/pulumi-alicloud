@@ -70,6 +70,21 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+     * 
+     */
+    @Import(name="deploymentSetStrategy")
+    private @Nullable Output<String> deploymentSetStrategy;
+
+    /**
+     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+     * 
+     */
+    public Optional<Output<String>> deploymentSetStrategy() {
+        return Optional.ofNullable(this.deploymentSetStrategy);
+    }
+
+    /**
      * Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
      * 
      */
@@ -130,18 +145,33 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+     * The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
      * 
      */
     @Import(name="nodeGroupType", required=true)
     private Output<String> nodeGroupType;
 
     /**
-     * @return The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+     * @return The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
      * 
      */
     public Output<String> nodeGroupType() {
         return this.nodeGroupType;
+    }
+
+    /**
+     * Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
+     * 
+     */
+    @Import(name="nodeResizeStrategy")
+    private @Nullable Output<String> nodeResizeStrategy;
+
+    /**
+     * @return Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
+     * 
+     */
+    public Optional<Output<String>> nodeResizeStrategy() {
+        return Optional.ofNullable(this.nodeResizeStrategy);
     }
 
     /**
@@ -255,11 +285,13 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         this.additionalSecurityGroupIds = $.additionalSecurityGroupIds;
         this.costOptimizedConfig = $.costOptimizedConfig;
         this.dataDisks = $.dataDisks;
+        this.deploymentSetStrategy = $.deploymentSetStrategy;
         this.gracefulShutdown = $.gracefulShutdown;
         this.instanceTypes = $.instanceTypes;
         this.nodeCount = $.nodeCount;
         this.nodeGroupName = $.nodeGroupName;
         this.nodeGroupType = $.nodeGroupType;
+        this.nodeResizeStrategy = $.nodeResizeStrategy;
         this.paymentType = $.paymentType;
         this.spotBidPrices = $.spotBidPrices;
         this.spotInstanceRemedy = $.spotInstanceRemedy;
@@ -371,6 +403,27 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param deploymentSetStrategy Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentSetStrategy(@Nullable Output<String> deploymentSetStrategy) {
+            $.deploymentSetStrategy = deploymentSetStrategy;
+            return this;
+        }
+
+        /**
+         * @param deploymentSetStrategy Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentSetStrategy(String deploymentSetStrategy) {
+            return deploymentSetStrategy(Output.of(deploymentSetStrategy));
+        }
+
+        /**
          * @param gracefulShutdown Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
          * 
          * @return builder
@@ -465,7 +518,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeGroupType The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+         * @param nodeGroupType The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
          * 
          * @return builder
          * 
@@ -476,13 +529,34 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeGroupType The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+         * @param nodeGroupType The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
          * 
          * @return builder
          * 
          */
         public Builder nodeGroupType(String nodeGroupType) {
             return nodeGroupType(Output.of(nodeGroupType));
+        }
+
+        /**
+         * @param nodeResizeStrategy Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeResizeStrategy(@Nullable Output<String> nodeResizeStrategy) {
+            $.nodeResizeStrategy = nodeResizeStrategy;
+            return this;
+        }
+
+        /**
+         * @param nodeResizeStrategy Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeResizeStrategy(String nodeResizeStrategy) {
+            return nodeResizeStrategy(Output.of(nodeResizeStrategy));
         }
 
         /**

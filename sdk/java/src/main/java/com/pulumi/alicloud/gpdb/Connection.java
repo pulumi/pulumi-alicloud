@@ -35,10 +35,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.gpdb.GpdbFunctions;
  * import com.pulumi.alicloud.gpdb.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.gpdb.Instance;
  * import com.pulumi.alicloud.gpdb.InstanceArgs;
  * import com.pulumi.alicloud.gpdb.inputs.InstanceIpWhitelistArgs;
@@ -63,15 +62,12 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultZones = GpdbFunctions.getZones();
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;^default-NODELETING$&#34;)
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
- *             .vpcId(defaultNetwork.id())
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .build());
  * 
@@ -91,8 +87,8 @@ import javax.annotation.Nullable;
  *             .segStorageType(&#34;cloud_essd&#34;)
  *             .segNodeNum(4)
  *             .storageSize(50)
- *             .vpcId(defaultNetwork.id())
- *             .vswitchId(defaultSwitch.id())
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
  *             .ipWhitelists(InstanceIpWhitelistArgs.builder()
  *                 .securityIpList(&#34;127.0.0.1&#34;)
  *                 .build())

@@ -1289,6 +1289,78 @@ class BackupPlan(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.185.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd")
+        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.zones[0].id)
+        vswitch_id = default_switches.ids[0]
+        zone_id = default_zones.ids[0]
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
+        default_instance = alicloud.rds.Instance("defaultInstance",
+            engine="MySQL",
+            engine_version="8.0",
+            db_instance_storage_type="cloud_essd",
+            instance_type=default_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
+            vswitch_id=vswitch_id,
+            instance_name=name)
+        default_database = alicloud.rds.Database("defaultDatabase", instance_id=default_instance.id)
+        default_rds_account = alicloud.rds.RdsAccount("defaultRdsAccount",
+            db_instance_id=default_instance.id,
+            account_name="tfnormal000",
+            account_password="Test12345")
+        default_account_privilege = alicloud.rds.AccountPrivilege("defaultAccountPrivilege",
+            instance_id=default_instance.id,
+            account_name=default_rds_account.account_name,
+            privilege="ReadWrite",
+            db_names=[default_database.name])
+        default_backup_plan = alicloud.dbs.BackupPlan("defaultBackupPlan",
+            backup_plan_name=name,
+            payment_type="PayAsYouGo",
+            instance_class="xlarge",
+            backup_method="logical",
+            database_type="MySQL",
+            database_region="cn-hangzhou",
+            storage_region="cn-hangzhou",
+            instance_type="RDS",
+            source_endpoint_instance_type="RDS",
+            resource_group_id=default_resource_groups.ids[0],
+            source_endpoint_region="cn-hangzhou",
+            source_endpoint_instance_id=default_instance.id,
+            source_endpoint_user_name=default_account_privilege.account_name,
+            source_endpoint_password=default_rds_account.account_password,
+            backup_objects=default_database.name.apply(lambda name: f"[{{\\"DBName\\":\\"{name}\\"}}]"),
+            backup_period="Monday",
+            backup_start_time="14:22",
+            backup_storage_type="system",
+            backup_retention_period=740)
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         DBS Backup Plan can be imported using the id, e.g.
@@ -1350,6 +1422,78 @@ class BackupPlan(pulumi.CustomResource):
         For information about DBS Backup Plan and how to use it, see [What is Backup Plan](https://www.alibabacloud.com/help/en/dbs/developer-reference/api-dbs-2019-03-06-createandstartbackupplan).
 
         > **NOTE:** Available since v1.185.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd")
+        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.zones[0].id)
+        vswitch_id = default_switches.ids[0]
+        zone_id = default_zones.ids[0]
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
+        default_instance = alicloud.rds.Instance("defaultInstance",
+            engine="MySQL",
+            engine_version="8.0",
+            db_instance_storage_type="cloud_essd",
+            instance_type=default_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
+            vswitch_id=vswitch_id,
+            instance_name=name)
+        default_database = alicloud.rds.Database("defaultDatabase", instance_id=default_instance.id)
+        default_rds_account = alicloud.rds.RdsAccount("defaultRdsAccount",
+            db_instance_id=default_instance.id,
+            account_name="tfnormal000",
+            account_password="Test12345")
+        default_account_privilege = alicloud.rds.AccountPrivilege("defaultAccountPrivilege",
+            instance_id=default_instance.id,
+            account_name=default_rds_account.account_name,
+            privilege="ReadWrite",
+            db_names=[default_database.name])
+        default_backup_plan = alicloud.dbs.BackupPlan("defaultBackupPlan",
+            backup_plan_name=name,
+            payment_type="PayAsYouGo",
+            instance_class="xlarge",
+            backup_method="logical",
+            database_type="MySQL",
+            database_region="cn-hangzhou",
+            storage_region="cn-hangzhou",
+            instance_type="RDS",
+            source_endpoint_instance_type="RDS",
+            resource_group_id=default_resource_groups.ids[0],
+            source_endpoint_region="cn-hangzhou",
+            source_endpoint_instance_id=default_instance.id,
+            source_endpoint_user_name=default_account_privilege.account_name,
+            source_endpoint_password=default_rds_account.account_password,
+            backup_objects=default_database.name.apply(lambda name: f"[{{\\"DBName\\":\\"{name}\\"}}]"),
+            backup_period="Monday",
+            backup_start_time="14:22",
+            backup_storage_type="system",
+            backup_retention_period=740)
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

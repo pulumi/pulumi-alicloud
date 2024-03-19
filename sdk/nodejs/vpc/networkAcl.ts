@@ -44,18 +44,18 @@ import * as utilities from "../utilities";
  *     ingressAclEntries: [{
  *         description: `${name}-ingress`,
  *         networkAclEntryName: `${name}-ingress`,
- *         sourceCidrIp: "196.168.2.0/21",
+ *         sourceCidrIp: "10.0.0.0/24",
  *         policy: "accept",
- *         port: "22/80",
+ *         port: "20/80",
  *         protocol: "tcp",
  *     }],
  *     egressAclEntries: [{
  *         description: `${name}-egress`,
  *         networkAclEntryName: `${name}-egress`,
- *         destinationCidrIp: "0.0.0.0/0",
+ *         destinationCidrIp: "10.0.0.0/24",
  *         policy: "accept",
- *         port: "-1/-1",
- *         protocol: "all",
+ *         port: "20/80",
+ *         protocol: "tcp",
  *     }],
  *     resources: [{
  *         resourceId: exampleSwitch.id,

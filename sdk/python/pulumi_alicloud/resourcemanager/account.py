@@ -368,10 +368,10 @@ class Account(pulumi.CustomResource):
         default = random.RandomInteger("default",
             min=10000,
             max=99999)
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=default.result.apply(lambda result: f"{name}-{result}"))
+        example_folders = alicloud.resourcemanager.get_folders()
         example_account = alicloud.resourcemanager.Account("exampleAccount",
             display_name=default.result.apply(lambda result: f"{display_name}-{result}"),
-            folder_id=example_folder.id)
+            folder_id=example_folders.ids[0])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -435,10 +435,10 @@ class Account(pulumi.CustomResource):
         default = random.RandomInteger("default",
             min=10000,
             max=99999)
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=default.result.apply(lambda result: f"{name}-{result}"))
+        example_folders = alicloud.resourcemanager.get_folders()
         example_account = alicloud.resourcemanager.Account("exampleAccount",
             display_name=default.result.apply(lambda result: f"{display_name}-{result}"),
-            folder_id=example_folder.id)
+            folder_id=example_folders.ids[0])
         ```
         <!--End PulumiCodeChooser -->
 

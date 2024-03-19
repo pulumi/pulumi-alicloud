@@ -33,19 +33,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
  * import com.pulumi.alicloud.servicemesh.inputs.GetVersionsArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ram.User;
  * import com.pulumi.alicloud.servicemesh.ServiceMesh;
  * import com.pulumi.alicloud.servicemesh.ServiceMeshArgs;
  * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshNetworkArgs;
  * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshLoadBalancerArgs;
- * import com.pulumi.alicloud.ram.User;
  * import com.pulumi.alicloud.servicemesh.UserPermission;
  * import com.pulumi.alicloud.servicemesh.UserPermissionArgs;
  * import com.pulumi.alicloud.servicemesh.inputs.UserPermissionPermissionArgs;
@@ -64,34 +65,38 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
  *             .build());
  * 
  *         final var defaultVersions = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
  *             .edition(&#34;Default&#34;)
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
- *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(name)
- *             .cidrBlock(&#34;10.1.0.0/16&#34;)
- *             .vpcId(defaultNetwork.id())
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;^default-NODELETING$&#34;)
+ *             .build());
+ * 
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultServiceMesh = new ServiceMesh(&#34;defaultServiceMesh&#34;, ServiceMeshArgs.builder()        
- *             .serviceMeshName(name)
- *             .edition(&#34;Pro&#34;)
+ *         var defaultUser = new User(&#34;defaultUser&#34;);
+ * 
+ *         var default1 = new ServiceMesh(&#34;default1&#34;, ServiceMeshArgs.builder()        
+ *             .serviceMeshName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .edition(&#34;Default&#34;)
+ *             .clusterSpec(&#34;standard&#34;)
  *             .version(defaultVersions.applyValue(getVersionsResult -&gt; getVersionsResult.versions()[0].version()))
- *             .clusterSpec(&#34;enterprise&#34;)
  *             .network(ServiceMeshNetworkArgs.builder()
- *                 .vpcId(defaultNetwork.id())
- *                 .vswitcheList(defaultSwitch.id())
+ *                 .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *                 .vswitcheList(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
  *                 .build())
  *             .loadBalancer(ServiceMeshLoadBalancerArgs.builder()
  *                 .pilotPublicEip(false)
@@ -99,16 +104,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultUser = new User(&#34;defaultUser&#34;);
- * 
  *         var defaultUserPermission = new UserPermission(&#34;defaultUserPermission&#34;, UserPermissionArgs.builder()        
  *             .subAccountUserId(defaultUser.id())
  *             .permissions(UserPermissionPermissionArgs.builder()
- *                 .roleName(&#34;istio-admin&#34;)
- *                 .serviceMeshId(defaultServiceMesh.id())
+ *                 .roleName(&#34;istio-ops&#34;)
+ *                 .serviceMeshId(default1.id())
  *                 .roleType(&#34;custom&#34;)
  *                 .isCustom(true)
- *                 .isRamRole(false)
  *                 .build())
  *             .build());
  * 

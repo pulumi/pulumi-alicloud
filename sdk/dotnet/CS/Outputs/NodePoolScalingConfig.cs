@@ -14,13 +14,17 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class NodePoolScalingConfig
     {
         /// <summary>
-        /// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+        /// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
         /// </summary>
         public readonly int? EipBandwidth;
         /// <summary>
-        /// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
+        /// EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
         /// </summary>
         public readonly string? EipInternetChargeType;
+        /// <summary>
+        /// Whether to enable automatic scaling. Value:
+        /// </summary>
+        public readonly bool? Enable;
         /// <summary>
         /// Whether to bind EIP for an instance. Default: `false`.
         /// </summary>
@@ -28,11 +32,11 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// <summary>
         /// Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
         /// </summary>
-        public readonly int MaxSize;
+        public readonly int? MaxSize;
         /// <summary>
         /// Min number of instances in a auto scaling group, its valid value range [0~1000].
         /// </summary>
-        public readonly int MinSize;
+        public readonly int? MinSize;
         /// <summary>
         /// Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
         /// </summary>
@@ -44,16 +48,19 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string? eipInternetChargeType,
 
+            bool? enable,
+
             bool? isBondEip,
 
-            int maxSize,
+            int? maxSize,
 
-            int minSize,
+            int? minSize,
 
             string? type)
         {
             EipBandwidth = eipBandwidth;
             EipInternetChargeType = eipInternetChargeType;
+            Enable = enable;
             IsBondEip = isBondEip;
             MaxSize = maxSize;
             MinSize = minSize;

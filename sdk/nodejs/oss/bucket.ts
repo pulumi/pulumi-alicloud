@@ -214,6 +214,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly refererConfig!: pulumi.Output<outputs.oss.BucketRefererConfig | undefined>;
     /**
+     * The ID of the resource group to which the bucket belongs.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * A configuration of server-side encryption. See `serverSideEncryptionRule` below.
      */
     public readonly serverSideEncryptionRule!: pulumi.Output<outputs.oss.BucketServerSideEncryptionRule | undefined>;
@@ -268,6 +272,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["policy"] = state ? state.policy : undefined;
             resourceInputs["redundancyType"] = state ? state.redundancyType : undefined;
             resourceInputs["refererConfig"] = state ? state.refererConfig : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["serverSideEncryptionRule"] = state ? state.serverSideEncryptionRule : undefined;
             resourceInputs["storageClass"] = state ? state.storageClass : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -288,6 +293,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["policy"] = args ? args.policy : undefined;
             resourceInputs["redundancyType"] = args ? args.redundancyType : undefined;
             resourceInputs["refererConfig"] = args ? args.refererConfig : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["serverSideEncryptionRule"] = args ? args.serverSideEncryptionRule : undefined;
             resourceInputs["storageClass"] = args ? args.storageClass : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -377,6 +383,10 @@ export interface BucketState {
      */
     refererConfig?: pulumi.Input<inputs.oss.BucketRefererConfig>;
     /**
+     * The ID of the resource group to which the bucket belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * A configuration of server-side encryption. See `serverSideEncryptionRule` below.
      */
     serverSideEncryptionRule?: pulumi.Input<inputs.oss.BucketServerSideEncryptionRule>;
@@ -453,6 +463,10 @@ export interface BucketArgs {
      * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
      */
     refererConfig?: pulumi.Input<inputs.oss.BucketRefererConfig>;
+    /**
+     * The ID of the resource group to which the bucket belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * A configuration of server-side encryption. See `serverSideEncryptionRule` below.
      */

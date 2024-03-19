@@ -14,282 +14,68 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 instance_type: pulumi.Input[str],
-                 max_tps: pulumi.Input[str],
                  payment_type: pulumi.Input[str],
-                 queue_capacity: pulumi.Input[str],
-                 support_eip: pulumi.Input[bool],
-                 instance_name: Optional[pulumi.Input[str]] = None,
-                 logistics: Optional[pulumi.Input[str]] = None,
-                 max_eip_tps: Optional[pulumi.Input[str]] = None,
-                 modify_type: Optional[pulumi.Input[str]] = None,
-                 period: Optional[pulumi.Input[int]] = None,
-                 renewal_duration: Optional[pulumi.Input[int]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[str]] = None,
-                 renewal_status: Optional[pulumi.Input[str]] = None,
-                 storage_size: Optional[pulumi.Input[str]] = None):
-        """
-        The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
-        :param pulumi.Input[str] max_tps: The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
-        :param pulumi.Input[str] payment_type: The payment type. Valid values: `Subscription`.
-        :param pulumi.Input[str] queue_capacity: The queue capacity. The smallest value is 50 and the step size 5.
-        :param pulumi.Input[bool] support_eip: Whether to support EIP.
-        :param pulumi.Input[str] instance_name: The instance name.
-        :param pulumi.Input[str] logistics: The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
-        :param pulumi.Input[str] max_eip_tps: The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
-        :param pulumi.Input[str] modify_type: The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
-        :param pulumi.Input[int] period: The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
-        :param pulumi.Input[int] renewal_duration: RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
-        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
-        :param pulumi.Input[str] storage_size: The storage size. It is valid when `instance_type` is vip.
-        """
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "max_tps", max_tps)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "queue_capacity", queue_capacity)
-        pulumi.set(__self__, "support_eip", support_eip)
-        if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
-        if logistics is not None:
-            pulumi.set(__self__, "logistics", logistics)
-        if max_eip_tps is not None:
-            pulumi.set(__self__, "max_eip_tps", max_eip_tps)
-        if modify_type is not None:
-            pulumi.set(__self__, "modify_type", modify_type)
-        if period is not None:
-            pulumi.set(__self__, "period", period)
-        if renewal_duration is not None:
-            pulumi.set(__self__, "renewal_duration", renewal_duration)
-        if renewal_duration_unit is not None:
-            pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
-        if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
-        if storage_size is not None:
-            pulumi.set(__self__, "storage_size", storage_size)
-
-    @property
-    @pulumi.getter(name="instanceType")
-    def instance_type(self) -> pulumi.Input[str]:
-        """
-        The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
-        """
-        return pulumi.get(self, "instance_type")
-
-    @instance_type.setter
-    def instance_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instance_type", value)
-
-    @property
-    @pulumi.getter(name="maxTps")
-    def max_tps(self) -> pulumi.Input[str]:
-        """
-        The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
-        """
-        return pulumi.get(self, "max_tps")
-
-    @max_tps.setter
-    def max_tps(self, value: pulumi.Input[str]):
-        pulumi.set(self, "max_tps", value)
-
-    @property
-    @pulumi.getter(name="paymentType")
-    def payment_type(self) -> pulumi.Input[str]:
-        """
-        The payment type. Valid values: `Subscription`.
-        """
-        return pulumi.get(self, "payment_type")
-
-    @payment_type.setter
-    def payment_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "payment_type", value)
-
-    @property
-    @pulumi.getter(name="queueCapacity")
-    def queue_capacity(self) -> pulumi.Input[str]:
-        """
-        The queue capacity. The smallest value is 50 and the step size 5.
-        """
-        return pulumi.get(self, "queue_capacity")
-
-    @queue_capacity.setter
-    def queue_capacity(self, value: pulumi.Input[str]):
-        pulumi.set(self, "queue_capacity", value)
-
-    @property
-    @pulumi.getter(name="supportEip")
-    def support_eip(self) -> pulumi.Input[bool]:
-        """
-        Whether to support EIP.
-        """
-        return pulumi.get(self, "support_eip")
-
-    @support_eip.setter
-    def support_eip(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "support_eip", value)
-
-    @property
-    @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The instance name.
-        """
-        return pulumi.get(self, "instance_name")
-
-    @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "instance_name", value)
-
-    @property
-    @pulumi.getter
-    def logistics(self) -> Optional[pulumi.Input[str]]:
-        """
-        The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
-        """
-        return pulumi.get(self, "logistics")
-
-    @logistics.setter
-    def logistics(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "logistics", value)
-
-    @property
-    @pulumi.getter(name="maxEipTps")
-    def max_eip_tps(self) -> Optional[pulumi.Input[str]]:
-        """
-        The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
-        """
-        return pulumi.get(self, "max_eip_tps")
-
-    @max_eip_tps.setter
-    def max_eip_tps(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "max_eip_tps", value)
-
-    @property
-    @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
-        """
-        return pulumi.get(self, "modify_type")
-
-    @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "modify_type", value)
-
-    @property
-    @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[int]]:
-        """
-        The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
-        """
-        return pulumi.get(self, "period")
-
-    @period.setter
-    def period(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "period", value)
-
-    @property
-    @pulumi.getter(name="renewalDuration")
-    def renewal_duration(self) -> Optional[pulumi.Input[int]]:
-        """
-        RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
-        """
-        return pulumi.get(self, "renewal_duration")
-
-    @renewal_duration.setter
-    def renewal_duration(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "renewal_duration", value)
-
-    @property
-    @pulumi.getter(name="renewalDurationUnit")
-    def renewal_duration_unit(self) -> Optional[pulumi.Input[str]]:
-        """
-        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
-        """
-        return pulumi.get(self, "renewal_duration_unit")
-
-    @renewal_duration_unit.setter
-    def renewal_duration_unit(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "renewal_duration_unit", value)
-
-    @property
-    @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[str]]:
-        """
-        Whether to renew an instance automatically or not. Default to "ManualRenewal".
-        """
-        return pulumi.get(self, "renewal_status")
-
-    @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "renewal_status", value)
-
-    @property
-    @pulumi.getter(name="storageSize")
-    def storage_size(self) -> Optional[pulumi.Input[str]]:
-        """
-        The storage size. It is valid when `instance_type` is vip.
-        """
-        return pulumi.get(self, "storage_size")
-
-    @storage_size.setter
-    def storage_size(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "storage_size", value)
-
-
-@pulumi.input_type
-class _InstanceState:
-    def __init__(__self__, *,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 logistics: Optional[pulumi.Input[str]] = None,
+                 max_connections: Optional[pulumi.Input[int]] = None,
                  max_eip_tps: Optional[pulumi.Input[str]] = None,
                  max_tps: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
-                 payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 period_cycle: Optional[pulumi.Input[str]] = None,
                  queue_capacity: Optional[pulumi.Input[str]] = None,
                  renewal_duration: Optional[pulumi.Input[int]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
+                 serverless_charge_type: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[str]] = None,
-                 support_eip: Optional[pulumi.Input[bool]] = None):
+                 support_eip: Optional[pulumi.Input[bool]] = None,
+                 support_tracing: Optional[pulumi.Input[bool]] = None,
+                 tracing_storage_time: Optional[pulumi.Input[int]] = None):
         """
-        Input properties used for looking up and filtering Instance resources.
+        The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] payment_type: The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+        :param pulumi.Input[bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         :param pulumi.Input[str] instance_name: The instance name.
-        :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
-        :param pulumi.Input[str] logistics: The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
-        :param pulumi.Input[str] max_eip_tps: The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
-        :param pulumi.Input[str] max_tps: The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
-        :param pulumi.Input[str] modify_type: The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
-        :param pulumi.Input[str] payment_type: The payment type. Valid values: `Subscription`.
-        :param pulumi.Input[int] period: The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
-        :param pulumi.Input[str] queue_capacity: The queue capacity. The smallest value is 50 and the step size 5.
-        :param pulumi.Input[int] renewal_duration: RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
-        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
-        :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[str] storage_size: The storage size. It is valid when `instance_type` is vip.
-        :param pulumi.Input[bool] support_eip: Whether to support EIP.
+        :param pulumi.Input[str] instance_type: Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+        :param pulumi.Input[int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
+        :param pulumi.Input[str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
+        :param pulumi.Input[str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
+        :param pulumi.Input[str] modify_type: Type of instance lifting and lowering:
+               - Upgrade: Upgrade
+               - Downgrade: Downgrading.
+        :param pulumi.Input[int] period: Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+        :param pulumi.Input[str] period_cycle: Prepaid cycle units. Value: Month. Year: Year.
+        :param pulumi.Input[str] queue_capacity: Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
+        :param pulumi.Input[int] renewal_duration: The number of automatic renewal cycles.
+        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+        :param pulumi.Input[str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
+        :param pulumi.Input[str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
+        :param pulumi.Input[str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
+        :param pulumi.Input[bool] support_eip: Whether to support public network.
+        :param pulumi.Input[bool] support_tracing: Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+        :param pulumi.Input[int] tracing_storage_time: Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
         """
+        pulumi.set(__self__, "payment_type", payment_type)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
-        if logistics is not None:
-            pulumi.set(__self__, "logistics", logistics)
+        if max_connections is not None:
+            pulumi.set(__self__, "max_connections", max_connections)
         if max_eip_tps is not None:
             pulumi.set(__self__, "max_eip_tps", max_eip_tps)
         if max_tps is not None:
             pulumi.set(__self__, "max_tps", max_tps)
         if modify_type is not None:
             pulumi.set(__self__, "modify_type", modify_type)
-        if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if period_cycle is not None:
+            pulumi.set(__self__, "period_cycle", period_cycle)
         if queue_capacity is not None:
             pulumi.set(__self__, "queue_capacity", queue_capacity)
         if renewal_duration is not None:
@@ -298,12 +84,40 @@ class _InstanceState:
             pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
+        if serverless_charge_type is not None:
+            pulumi.set(__self__, "serverless_charge_type", serverless_charge_type)
         if storage_size is not None:
             pulumi.set(__self__, "storage_size", storage_size)
         if support_eip is not None:
             pulumi.set(__self__, "support_eip", support_eip)
+        if support_tracing is not None:
+            pulumi.set(__self__, "support_tracing", support_tracing)
+        if tracing_storage_time is not None:
+            pulumi.set(__self__, "tracing_storage_time", tracing_storage_time)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Input[str]:
+        """
+        The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "payment_type", value)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -321,7 +135,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+        Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
         """
         return pulumi.get(self, "instance_type")
 
@@ -330,22 +144,22 @@ class _InstanceState:
         pulumi.set(self, "instance_type", value)
 
     @property
-    @pulumi.getter
-    def logistics(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> Optional[pulumi.Input[int]]:
         """
-        The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+        The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         """
-        return pulumi.get(self, "logistics")
+        return pulumi.get(self, "max_connections")
 
-    @logistics.setter
-    def logistics(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "logistics", value)
+    @max_connections.setter
+    def max_connections(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_connections", value)
 
     @property
     @pulumi.getter(name="maxEipTps")
     def max_eip_tps(self) -> Optional[pulumi.Input[str]]:
         """
-        The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
+        Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         """
         return pulumi.get(self, "max_eip_tps")
 
@@ -357,7 +171,7 @@ class _InstanceState:
     @pulumi.getter(name="maxTps")
     def max_tps(self) -> Optional[pulumi.Input[str]]:
         """
-        The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
+        Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
         """
         return pulumi.get(self, "max_tps")
 
@@ -369,7 +183,9 @@ class _InstanceState:
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
+        Type of instance lifting and lowering:
+        - Upgrade: Upgrade
+        - Downgrade: Downgrading.
         """
         return pulumi.get(self, "modify_type")
 
@@ -378,22 +194,10 @@ class _InstanceState:
         pulumi.set(self, "modify_type", value)
 
     @property
-    @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The payment type. Valid values: `Subscription`.
-        """
-        return pulumi.get(self, "payment_type")
-
-    @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "payment_type", value)
-
-    @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
+        Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
         """
         return pulumi.get(self, "period")
 
@@ -402,10 +206,22 @@ class _InstanceState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="periodCycle")
+    def period_cycle(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prepaid cycle units. Value: Month. Year: Year.
+        """
+        return pulumi.get(self, "period_cycle")
+
+    @period_cycle.setter
+    def period_cycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "period_cycle", value)
+
+    @property
     @pulumi.getter(name="queueCapacity")
     def queue_capacity(self) -> Optional[pulumi.Input[str]]:
         """
-        The queue capacity. The smallest value is 50 and the step size 5.
+        Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
         """
         return pulumi.get(self, "queue_capacity")
 
@@ -417,7 +233,7 @@ class _InstanceState:
     @pulumi.getter(name="renewalDuration")
     def renewal_duration(self) -> Optional[pulumi.Input[int]]:
         """
-        RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
+        The number of automatic renewal cycles.
         """
         return pulumi.get(self, "renewal_duration")
 
@@ -429,7 +245,7 @@ class _InstanceState:
     @pulumi.getter(name="renewalDurationUnit")
     def renewal_duration_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
         """
         return pulumi.get(self, "renewal_duration_unit")
 
@@ -441,13 +257,361 @@ class _InstanceState:
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
         """
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
     def renewal_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "renewal_status", value)
+
+    @property
+    @pulumi.getter(name="serverlessChargeType")
+    def serverless_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing type of the serverless instance. Value: onDemand.
+        """
+        return pulumi.get(self, "serverless_charge_type")
+
+    @serverless_charge_type.setter
+    def serverless_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serverless_charge_type", value)
+
+    @property
+    @pulumi.getter(name="storageSize")
+    def storage_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
+        """
+        return pulumi.get(self, "storage_size")
+
+    @storage_size.setter
+    def storage_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_size", value)
+
+    @property
+    @pulumi.getter(name="supportEip")
+    def support_eip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to support public network.
+        """
+        return pulumi.get(self, "support_eip")
+
+    @support_eip.setter
+    def support_eip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "support_eip", value)
+
+    @property
+    @pulumi.getter(name="supportTracing")
+    def support_tracing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+        """
+        return pulumi.get(self, "support_tracing")
+
+    @support_tracing.setter
+    def support_tracing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "support_tracing", value)
+
+    @property
+    @pulumi.getter(name="tracingStorageTime")
+    def tracing_storage_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+        """
+        return pulumi.get(self, "tracing_storage_time")
+
+    @tracing_storage_time.setter
+    def tracing_storage_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "tracing_storage_time", value)
+
+
+@pulumi.input_type
+class _InstanceState:
+    def __init__(__self__, *,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 create_time: Optional[pulumi.Input[int]] = None,
+                 instance_name: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 max_connections: Optional[pulumi.Input[int]] = None,
+                 max_eip_tps: Optional[pulumi.Input[str]] = None,
+                 max_tps: Optional[pulumi.Input[str]] = None,
+                 modify_type: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 period_cycle: Optional[pulumi.Input[str]] = None,
+                 queue_capacity: Optional[pulumi.Input[str]] = None,
+                 renewal_duration: Optional[pulumi.Input[int]] = None,
+                 renewal_duration_unit: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
+                 serverless_charge_type: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 storage_size: Optional[pulumi.Input[str]] = None,
+                 support_eip: Optional[pulumi.Input[bool]] = None,
+                 support_tracing: Optional[pulumi.Input[bool]] = None,
+                 tracing_storage_time: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+        :param pulumi.Input[int] create_time: OrderCreateTime.
+        :param pulumi.Input[str] instance_name: The instance name.
+        :param pulumi.Input[str] instance_type: Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+        :param pulumi.Input[int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
+        :param pulumi.Input[str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
+        :param pulumi.Input[str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
+        :param pulumi.Input[str] modify_type: Type of instance lifting and lowering:
+               - Upgrade: Upgrade
+               - Downgrade: Downgrading.
+        :param pulumi.Input[str] payment_type: The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+        :param pulumi.Input[int] period: Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+        :param pulumi.Input[str] period_cycle: Prepaid cycle units. Value: Month. Year: Year.
+        :param pulumi.Input[str] queue_capacity: Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
+        :param pulumi.Input[int] renewal_duration: The number of automatic renewal cycles.
+        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+        :param pulumi.Input[str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
+        :param pulumi.Input[str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
+        :param pulumi.Input[bool] support_eip: Whether to support public network.
+        :param pulumi.Input[bool] support_tracing: Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+        :param pulumi.Input[int] tracing_storage_time: Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+        """
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if max_connections is not None:
+            pulumi.set(__self__, "max_connections", max_connections)
+        if max_eip_tps is not None:
+            pulumi.set(__self__, "max_eip_tps", max_eip_tps)
+        if max_tps is not None:
+            pulumi.set(__self__, "max_tps", max_tps)
+        if modify_type is not None:
+            pulumi.set(__self__, "modify_type", modify_type)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if period_cycle is not None:
+            pulumi.set(__self__, "period_cycle", period_cycle)
+        if queue_capacity is not None:
+            pulumi.set(__self__, "queue_capacity", queue_capacity)
+        if renewal_duration is not None:
+            pulumi.set(__self__, "renewal_duration", renewal_duration)
+        if renewal_duration_unit is not None:
+            pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
+        if serverless_charge_type is not None:
+            pulumi.set(__self__, "serverless_charge_type", serverless_charge_type)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if storage_size is not None:
+            pulumi.set(__self__, "storage_size", storage_size)
+        if support_eip is not None:
+            pulumi.set(__self__, "support_eip", support_eip)
+        if support_tracing is not None:
+            pulumi.set(__self__, "support_tracing", support_tracing)
+        if tracing_storage_time is not None:
+            pulumi.set(__self__, "tracing_storage_time", tracing_storage_time)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        OrderCreateTime.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance name.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_name", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
+        """
+        return pulumi.get(self, "max_connections")
+
+    @max_connections.setter
+    def max_connections(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_connections", value)
+
+    @property
+    @pulumi.getter(name="maxEipTps")
+    def max_eip_tps(self) -> Optional[pulumi.Input[str]]:
+        """
+        Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
+        """
+        return pulumi.get(self, "max_eip_tps")
+
+    @max_eip_tps.setter
+    def max_eip_tps(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_eip_tps", value)
+
+    @property
+    @pulumi.getter(name="maxTps")
+    def max_tps(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
+        """
+        return pulumi.get(self, "max_tps")
+
+    @max_tps.setter
+    def max_tps(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_tps", value)
+
+    @property
+    @pulumi.getter(name="modifyType")
+    def modify_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of instance lifting and lowering:
+        - Upgrade: Upgrade
+        - Downgrade: Downgrading.
+        """
+        return pulumi.get(self, "modify_type")
+
+    @modify_type.setter
+    def modify_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modify_type", value)
+
+    @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="periodCycle")
+    def period_cycle(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prepaid cycle units. Value: Month. Year: Year.
+        """
+        return pulumi.get(self, "period_cycle")
+
+    @period_cycle.setter
+    def period_cycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "period_cycle", value)
+
+    @property
+    @pulumi.getter(name="queueCapacity")
+    def queue_capacity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
+        """
+        return pulumi.get(self, "queue_capacity")
+
+    @queue_capacity.setter
+    def queue_capacity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "queue_capacity", value)
+
+    @property
+    @pulumi.getter(name="renewalDuration")
+    def renewal_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of automatic renewal cycles.
+        """
+        return pulumi.get(self, "renewal_duration")
+
+    @renewal_duration.setter
+    def renewal_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "renewal_duration", value)
+
+    @property
+    @pulumi.getter(name="renewalDurationUnit")
+    def renewal_duration_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+        """
+        return pulumi.get(self, "renewal_duration_unit")
+
+    @renewal_duration_unit.setter
+    def renewal_duration_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_duration_unit", value)
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
+    @property
+    @pulumi.getter(name="serverlessChargeType")
+    def serverless_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The billing type of the serverless instance. Value: onDemand.
+        """
+        return pulumi.get(self, "serverless_charge_type")
+
+    @serverless_charge_type.setter
+    def serverless_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serverless_charge_type", value)
 
     @property
     @pulumi.getter
@@ -465,7 +629,7 @@ class _InstanceState:
     @pulumi.getter(name="storageSize")
     def storage_size(self) -> Optional[pulumi.Input[str]]:
         """
-        The storage size. It is valid when `instance_type` is vip.
+        Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         """
         return pulumi.get(self, "storage_size")
 
@@ -477,7 +641,7 @@ class _InstanceState:
     @pulumi.getter(name="supportEip")
     def support_eip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to support EIP.
+        Whether to support public network.
         """
         return pulumi.get(self, "support_eip")
 
@@ -485,31 +649,60 @@ class _InstanceState:
     def support_eip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "support_eip", value)
 
+    @property
+    @pulumi.getter(name="supportTracing")
+    def support_tracing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+        """
+        return pulumi.get(self, "support_tracing")
+
+    @support_tracing.setter
+    def support_tracing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "support_tracing", value)
+
+    @property
+    @pulumi.getter(name="tracingStorageTime")
+    def tracing_storage_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+        """
+        return pulumi.get(self, "tracing_storage_time")
+
+    @tracing_storage_time.setter
+    def tracing_storage_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "tracing_storage_time", value)
+
 
 class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 logistics: Optional[pulumi.Input[str]] = None,
+                 max_connections: Optional[pulumi.Input[int]] = None,
                  max_eip_tps: Optional[pulumi.Input[str]] = None,
                  max_tps: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 period_cycle: Optional[pulumi.Input[str]] = None,
                  queue_capacity: Optional[pulumi.Input[str]] = None,
                  renewal_duration: Optional[pulumi.Input[int]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 serverless_charge_type: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[str]] = None,
                  support_eip: Optional[pulumi.Input[bool]] = None,
+                 support_tracing: Optional[pulumi.Input[bool]] = None,
+                 tracing_storage_time: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
         ## Import
 
-        RabbitMQ (AMQP) Instance can be imported using the id, e.g.
+        Amqp Instance can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:amqp/instance:Instance example <id>
@@ -517,20 +710,27 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         :param pulumi.Input[str] instance_name: The instance name.
-        :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
-        :param pulumi.Input[str] logistics: The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
-        :param pulumi.Input[str] max_eip_tps: The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
-        :param pulumi.Input[str] max_tps: The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
-        :param pulumi.Input[str] modify_type: The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
-        :param pulumi.Input[str] payment_type: The payment type. Valid values: `Subscription`.
-        :param pulumi.Input[int] period: The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
-        :param pulumi.Input[str] queue_capacity: The queue capacity. The smallest value is 50 and the step size 5.
-        :param pulumi.Input[int] renewal_duration: RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
-        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
-        :param pulumi.Input[str] storage_size: The storage size. It is valid when `instance_type` is vip.
-        :param pulumi.Input[bool] support_eip: Whether to support EIP.
+        :param pulumi.Input[str] instance_type: Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+        :param pulumi.Input[int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
+        :param pulumi.Input[str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
+        :param pulumi.Input[str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
+        :param pulumi.Input[str] modify_type: Type of instance lifting and lowering:
+               - Upgrade: Upgrade
+               - Downgrade: Downgrading.
+        :param pulumi.Input[str] payment_type: The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+        :param pulumi.Input[int] period: Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+        :param pulumi.Input[str] period_cycle: Prepaid cycle units. Value: Month. Year: Year.
+        :param pulumi.Input[str] queue_capacity: Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
+        :param pulumi.Input[int] renewal_duration: The number of automatic renewal cycles.
+        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+        :param pulumi.Input[str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
+        :param pulumi.Input[str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
+        :param pulumi.Input[str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
+        :param pulumi.Input[bool] support_eip: Whether to support public network.
+        :param pulumi.Input[bool] support_tracing: Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+        :param pulumi.Input[int] tracing_storage_time: Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
         """
         ...
     @overload
@@ -541,7 +741,7 @@ class Instance(pulumi.CustomResource):
         """
         ## Import
 
-        RabbitMQ (AMQP) Instance can be imported using the id, e.g.
+        Amqp Instance can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:amqp/instance:Instance example <id>
@@ -562,20 +762,25 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 logistics: Optional[pulumi.Input[str]] = None,
+                 max_connections: Optional[pulumi.Input[int]] = None,
                  max_eip_tps: Optional[pulumi.Input[str]] = None,
                  max_tps: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 period_cycle: Optional[pulumi.Input[str]] = None,
                  queue_capacity: Optional[pulumi.Input[str]] = None,
                  renewal_duration: Optional[pulumi.Input[int]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 serverless_charge_type: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[str]] = None,
                  support_eip: Optional[pulumi.Input[bool]] = None,
+                 support_tracing: Optional[pulumi.Input[bool]] = None,
+                 tracing_storage_time: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -585,30 +790,28 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["instance_name"] = instance_name
-            if instance_type is None and not opts.urn:
-                raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
-            __props__.__dict__["logistics"] = logistics
+            __props__.__dict__["max_connections"] = max_connections
             __props__.__dict__["max_eip_tps"] = max_eip_tps
-            if max_tps is None and not opts.urn:
-                raise TypeError("Missing required property 'max_tps'")
             __props__.__dict__["max_tps"] = max_tps
             __props__.__dict__["modify_type"] = modify_type
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
-            if queue_capacity is None and not opts.urn:
-                raise TypeError("Missing required property 'queue_capacity'")
+            __props__.__dict__["period_cycle"] = period_cycle
             __props__.__dict__["queue_capacity"] = queue_capacity
             __props__.__dict__["renewal_duration"] = renewal_duration
             __props__.__dict__["renewal_duration_unit"] = renewal_duration_unit
             __props__.__dict__["renewal_status"] = renewal_status
+            __props__.__dict__["serverless_charge_type"] = serverless_charge_type
             __props__.__dict__["storage_size"] = storage_size
-            if support_eip is None and not opts.urn:
-                raise TypeError("Missing required property 'support_eip'")
             __props__.__dict__["support_eip"] = support_eip
+            __props__.__dict__["support_tracing"] = support_tracing
+            __props__.__dict__["tracing_storage_time"] = tracing_storage_time
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
             'alicloud:amqp/instance:Instance',
@@ -620,21 +823,27 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew: Optional[pulumi.Input[bool]] = None,
+            create_time: Optional[pulumi.Input[int]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
-            logistics: Optional[pulumi.Input[str]] = None,
+            max_connections: Optional[pulumi.Input[int]] = None,
             max_eip_tps: Optional[pulumi.Input[str]] = None,
             max_tps: Optional[pulumi.Input[str]] = None,
             modify_type: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            period_cycle: Optional[pulumi.Input[str]] = None,
             queue_capacity: Optional[pulumi.Input[str]] = None,
             renewal_duration: Optional[pulumi.Input[int]] = None,
             renewal_duration_unit: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
+            serverless_charge_type: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage_size: Optional[pulumi.Input[str]] = None,
-            support_eip: Optional[pulumi.Input[bool]] = None) -> 'Instance':
+            support_eip: Optional[pulumi.Input[bool]] = None,
+            support_tracing: Optional[pulumi.Input[bool]] = None,
+            tracing_storage_time: Optional[pulumi.Input[int]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -642,42 +851,72 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+        :param pulumi.Input[int] create_time: OrderCreateTime.
         :param pulumi.Input[str] instance_name: The instance name.
-        :param pulumi.Input[str] instance_type: The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
-        :param pulumi.Input[str] logistics: The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
-        :param pulumi.Input[str] max_eip_tps: The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
-        :param pulumi.Input[str] max_tps: The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
-        :param pulumi.Input[str] modify_type: The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
-        :param pulumi.Input[str] payment_type: The payment type. Valid values: `Subscription`.
-        :param pulumi.Input[int] period: The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
-        :param pulumi.Input[str] queue_capacity: The queue capacity. The smallest value is 50 and the step size 5.
-        :param pulumi.Input[int] renewal_duration: RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
-        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        :param pulumi.Input[str] instance_type: Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
+        :param pulumi.Input[int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
+        :param pulumi.Input[str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
+        :param pulumi.Input[str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
+        :param pulumi.Input[str] modify_type: Type of instance lifting and lowering:
+               - Upgrade: Upgrade
+               - Downgrade: Downgrading.
+        :param pulumi.Input[str] payment_type: The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
+        :param pulumi.Input[int] period: Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
+        :param pulumi.Input[str] period_cycle: Prepaid cycle units. Value: Month. Year: Year.
+        :param pulumi.Input[str] queue_capacity: Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
+        :param pulumi.Input[int] renewal_duration: The number of automatic renewal cycles.
+        :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
+        :param pulumi.Input[str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
+        :param pulumi.Input[str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[str] storage_size: The storage size. It is valid when `instance_type` is vip.
-        :param pulumi.Input[bool] support_eip: Whether to support EIP.
+        :param pulumi.Input[str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
+        :param pulumi.Input[bool] support_eip: Whether to support public network.
+        :param pulumi.Input[bool] support_tracing: Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+        :param pulumi.Input[int] tracing_storage_time: Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["auto_renew"] = auto_renew
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_type"] = instance_type
-        __props__.__dict__["logistics"] = logistics
+        __props__.__dict__["max_connections"] = max_connections
         __props__.__dict__["max_eip_tps"] = max_eip_tps
         __props__.__dict__["max_tps"] = max_tps
         __props__.__dict__["modify_type"] = modify_type
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
+        __props__.__dict__["period_cycle"] = period_cycle
         __props__.__dict__["queue_capacity"] = queue_capacity
         __props__.__dict__["renewal_duration"] = renewal_duration
         __props__.__dict__["renewal_duration_unit"] = renewal_duration_unit
         __props__.__dict__["renewal_status"] = renewal_status
+        __props__.__dict__["serverless_charge_type"] = serverless_charge_type
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_size"] = storage_size
         __props__.__dict__["support_eip"] = support_eip
+        __props__.__dict__["support_tracing"] = support_tracing
+        __props__.__dict__["tracing_storage_time"] = tracing_storage_time
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[int]:
+        """
+        OrderCreateTime.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="instanceName")
@@ -691,23 +930,23 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+        Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
         """
         return pulumi.get(self, "instance_type")
 
     @property
-    @pulumi.getter
-    def logistics(self) -> pulumi.Output[Optional[str]]:
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> pulumi.Output[int]:
         """
-        The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+        The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         """
-        return pulumi.get(self, "logistics")
+        return pulumi.get(self, "max_connections")
 
     @property
     @pulumi.getter(name="maxEipTps")
     def max_eip_tps(self) -> pulumi.Output[Optional[str]]:
         """
-        The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
+        Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         """
         return pulumi.get(self, "max_eip_tps")
 
@@ -715,7 +954,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="maxTps")
     def max_tps(self) -> pulumi.Output[str]:
         """
-        The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
+        Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
         """
         return pulumi.get(self, "max_tps")
 
@@ -723,7 +962,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
+        Type of instance lifting and lowering:
+        - Upgrade: Upgrade
+        - Downgrade: Downgrading.
         """
         return pulumi.get(self, "modify_type")
 
@@ -731,7 +972,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The payment type. Valid values: `Subscription`.
+        The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
         """
         return pulumi.get(self, "payment_type")
 
@@ -739,31 +980,39 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
         """
-        The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
+        Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
         """
         return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter(name="periodCycle")
+    def period_cycle(self) -> pulumi.Output[Optional[str]]:
+        """
+        Prepaid cycle units. Value: Month. Year: Year.
+        """
+        return pulumi.get(self, "period_cycle")
 
     @property
     @pulumi.getter(name="queueCapacity")
     def queue_capacity(self) -> pulumi.Output[str]:
         """
-        The queue capacity. The smallest value is 50 and the step size 5.
+        Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
         """
         return pulumi.get(self, "queue_capacity")
 
     @property
     @pulumi.getter(name="renewalDuration")
-    def renewal_duration(self) -> pulumi.Output[Optional[int]]:
+    def renewal_duration(self) -> pulumi.Output[int]:
         """
-        RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
+        The number of automatic renewal cycles.
         """
         return pulumi.get(self, "renewal_duration")
 
     @property
     @pulumi.getter(name="renewalDurationUnit")
-    def renewal_duration_unit(self) -> pulumi.Output[Optional[str]]:
+    def renewal_duration_unit(self) -> pulumi.Output[str]:
         """
-        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
         """
         return pulumi.get(self, "renewal_duration_unit")
 
@@ -771,9 +1020,17 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> pulumi.Output[str]:
         """
-        Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
         """
         return pulumi.get(self, "renewal_status")
+
+    @property
+    @pulumi.getter(name="serverlessChargeType")
+    def serverless_charge_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The billing type of the serverless instance. Value: onDemand.
+        """
+        return pulumi.get(self, "serverless_charge_type")
 
     @property
     @pulumi.getter
@@ -785,17 +1042,33 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="storageSize")
-    def storage_size(self) -> pulumi.Output[Optional[str]]:
+    def storage_size(self) -> pulumi.Output[str]:
         """
-        The storage size. It is valid when `instance_type` is vip.
+        Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         """
         return pulumi.get(self, "storage_size")
 
     @property
     @pulumi.getter(name="supportEip")
-    def support_eip(self) -> pulumi.Output[bool]:
+    def support_eip(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to support EIP.
+        Whether to support public network.
         """
         return pulumi.get(self, "support_eip")
+
+    @property
+    @pulumi.getter(name="supportTracing")
+    def support_tracing(self) -> pulumi.Output[bool]:
+        """
+        Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+        """
+        return pulumi.get(self, "support_tracing")
+
+    @property
+    @pulumi.getter(name="tracingStorageTime")
+    def tracing_storage_time(self) -> pulumi.Output[int]:
+        """
+        Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+        """
+        return pulumi.get(self, "tracing_storage_time")
 

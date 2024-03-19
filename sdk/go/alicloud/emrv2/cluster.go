@@ -28,6 +28,7 @@ import (
 //
 // import (
 //
+//	"encoding/json"
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
@@ -130,6 +131,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"open": []string{
+//					"all",
+//				},
+//				"close": []string{
+//					"",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
 //			_, err = emrv2.NewCluster(ctx, "defaultCluster", &emrv2.ClusterArgs{
 //				NodeGroups: emrv2.ClusterNodeGroupArray{
 //					&emrv2.ClusterNodeGroupArgs{
@@ -162,8 +175,9 @@ import (
 //						NodeGroupType: pulumi.String("MASTER"),
 //					},
 //					&emrv2.ClusterNodeGroupArgs{
-//						SpotInstanceRemedy: pulumi.Bool(false),
-//						NodeGroupType:      pulumi.String("CORE"),
+//						SpotInstanceRemedy:    pulumi.Bool(false),
+//						DeploymentSetStrategy: pulumi.String("CLUSTER"),
+//						NodeGroupType:         pulumi.String("CORE"),
 //						VswitchIds: pulumi.StringArray{
 //							defaultSwitch.ID(),
 //						},
@@ -213,10 +227,18 @@ import (
 //						SecurityGroupId:   defaultSecurityGroup.ID(),
 //					},
 //				},
+<<<<<<< HEAD
 //				ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[0]),
 //				ClusterName:     pulumi.String(name),
 //				PaymentType:     pulumi.String("PayAsYouGo"),
 //				ClusterType:     pulumi.String("DATAFLOW"),
+=======
+//				LogCollectStrategy: pulumi.String(json0),
+//				ResourceGroupId:    *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ClusterName:        pulumi.String(name),
+//				PaymentType:        pulumi.String("PayAsYouGo"),
+//				ClusterType:        pulumi.String("DATAFLOW"),
+>>>>>>> 7cc4b796d (make build_sdks)
 //			})
 //			if err != nil {
 //				return err
@@ -250,6 +272,8 @@ type Cluster struct {
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
 	// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 	DeployMode pulumi.StringOutput `pulumi:"deployMode"`
+	// The log collect strategy of EMR cluster.
+	LogCollectStrategy pulumi.StringOutput `pulumi:"logCollectStrategy"`
 	// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 	NodeAttributes ClusterNodeAttributeArrayOutput `pulumi:"nodeAttributes"`
 	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
@@ -328,6 +352,8 @@ type clusterState struct {
 	ClusterType *string `pulumi:"clusterType"`
 	// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 	DeployMode *string `pulumi:"deployMode"`
+	// The log collect strategy of EMR cluster.
+	LogCollectStrategy *string `pulumi:"logCollectStrategy"`
 	// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 	NodeAttributes []ClusterNodeAttribute `pulumi:"nodeAttributes"`
 	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
@@ -359,6 +385,8 @@ type ClusterState struct {
 	ClusterType pulumi.StringPtrInput
 	// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 	DeployMode pulumi.StringPtrInput
+	// The log collect strategy of EMR cluster.
+	LogCollectStrategy pulumi.StringPtrInput
 	// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 	NodeAttributes ClusterNodeAttributeArrayInput
 	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
@@ -394,6 +422,8 @@ type clusterArgs struct {
 	ClusterType string `pulumi:"clusterType"`
 	// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 	DeployMode *string `pulumi:"deployMode"`
+	// The log collect strategy of EMR cluster.
+	LogCollectStrategy *string `pulumi:"logCollectStrategy"`
 	// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 	NodeAttributes []ClusterNodeAttribute `pulumi:"nodeAttributes"`
 	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
@@ -426,6 +456,8 @@ type ClusterArgs struct {
 	ClusterType pulumi.StringInput
 	// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 	DeployMode pulumi.StringPtrInput
+	// The log collect strategy of EMR cluster.
+	LogCollectStrategy pulumi.StringPtrInput
 	// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 	NodeAttributes ClusterNodeAttributeArrayInput
 	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
@@ -559,6 +591,11 @@ func (o ClusterOutput) ClusterType() pulumi.StringOutput {
 // The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 func (o ClusterOutput) DeployMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DeployMode }).(pulumi.StringOutput)
+}
+
+// The log collect strategy of EMR cluster.
+func (o ClusterOutput) LogCollectStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.LogCollectStrategy }).(pulumi.StringOutput)
 }
 
 // The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.

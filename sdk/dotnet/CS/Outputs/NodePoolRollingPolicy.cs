@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class NodePoolRollingPolicy
     {
         /// <summary>
-        /// Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+        /// The maximum number of unusable nodes.
         /// </summary>
         public readonly int? MaxParallelism;
 

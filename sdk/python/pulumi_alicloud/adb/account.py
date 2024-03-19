@@ -242,41 +242,25 @@ class Account(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
+        creation = config.get("creation")
+        if creation is None:
+            creation = "ADB"
         name = config.get("name")
         if name is None:
-            name = "tf_example"
+            name = "tfexample"
         default_zones = alicloud.adb.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="10.4.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
-            db_cluster_category="Cluster",
-            db_node_class="C8",
-            db_node_count=4,
-            db_node_storage=400,
-            mode="reserver",
-            db_cluster_version="3.0",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            description=name,
-            maintain_time="23:00Z-00:00Z",
-            resource_group_id=default_resource_groups.ids[0],
-            security_ips=[
-                "10.168.1.12",
-                "10.168.1.11",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.ids[0])
+        vswitch_id = default_switches.ids[0]
+        cluster = alicloud.adb.DBCluster("cluster",
+            db_cluster_category="MixedStorage",
+            mode="flexible",
+            compute_resource="8Core32GB",
+            vswitch_id=vswitch_id,
+            description=name)
         default_account = alicloud.adb.Account("defaultAccount",
-            db_cluster_id=default_db_cluster.id,
+            db_cluster_id=cluster.id,
             account_name=name,
             account_password="tf_example123",
             account_description=name)
@@ -319,41 +303,25 @@ class Account(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
+        creation = config.get("creation")
+        if creation is None:
+            creation = "ADB"
         name = config.get("name")
         if name is None:
-            name = "tf_example"
+            name = "tfexample"
         default_zones = alicloud.adb.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="10.4.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
-            db_cluster_category="Cluster",
-            db_node_class="C8",
-            db_node_count=4,
-            db_node_storage=400,
-            mode="reserver",
-            db_cluster_version="3.0",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            description=name,
-            maintain_time="23:00Z-00:00Z",
-            resource_group_id=default_resource_groups.ids[0],
-            security_ips=[
-                "10.168.1.12",
-                "10.168.1.11",
-            ],
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
+        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+            zone_id=default_zones.ids[0])
+        vswitch_id = default_switches.ids[0]
+        cluster = alicloud.adb.DBCluster("cluster",
+            db_cluster_category="MixedStorage",
+            mode="flexible",
+            compute_resource="8Core32GB",
+            vswitch_id=vswitch_id,
+            description=name)
         default_account = alicloud.adb.Account("defaultAccount",
-            db_cluster_id=default_db_cluster.id,
+            db_cluster_id=cluster.id,
             account_name=name,
             account_password="tf_example123",
             account_description=name)
