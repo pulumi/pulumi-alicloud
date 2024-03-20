@@ -42,7 +42,7 @@ import (
 //			}
 //			_, err = cloudfirewall.NewFirewallVpcFirewall(ctx, "default", &cloudfirewall.FirewallVpcFirewallArgs{
 //				VpcFirewallName: pulumi.String("tf-example"),
-//				MemberUid:       *pulumi.String(current.Id),
+//				MemberUid:       pulumi.String(current.Id),
 //				LocalVpc: &cloudfirewall.FirewallVpcFirewallLocalVpcArgs{
 //					VpcId:    pulumi.String("vpc-bp1d065m6hzn1xbw8ibfd"),
 //					RegionNo: pulumi.String("cn-hangzhou"),

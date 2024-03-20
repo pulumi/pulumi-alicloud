@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
-//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
 //				CidrBlock:   pulumi.String("192.168.0.0/16"),
 //				VpcId:       exampleNetwork.ID(),
 //				VswitchName: pulumi.String(name),

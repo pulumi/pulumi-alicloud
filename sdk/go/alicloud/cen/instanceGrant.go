@@ -90,7 +90,7 @@ import (
 //			childAccountInstanceGrant, err := cen.NewInstanceGrant(ctx, "childAccountInstanceGrant", &cen.InstanceGrantArgs{
 //				CenId:           exampleInstance.ID(),
 //				ChildInstanceId: childAccountNetwork.ID(),
-//				CenOwnerId:      *pulumi.String(yourAccountAccount.Id),
+//				CenOwnerId:      pulumi.String(yourAccountAccount.Id),
 //			}, pulumi.Provider(alicloud.Child_account))
 //			if err != nil {
 //				return err
@@ -99,8 +99,8 @@ import (
 //				InstanceId:            exampleInstance.ID(),
 //				ChildInstanceId:       childAccountInstanceGrant.ChildInstanceId,
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: *pulumi.String(_default.Regions[0].Id),
-//				ChildInstanceOwnerId:  *pulumi.String(childAccountAccount.Id),
+//				ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
+//				ChildInstanceOwnerId:  pulumi.String(childAccountAccount.Id),
 //			}, pulumi.Provider(alicloud.Your_account))
 //			if err != nil {
 //				return err

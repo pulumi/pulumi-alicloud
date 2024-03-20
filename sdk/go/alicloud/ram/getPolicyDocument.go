@@ -52,7 +52,7 @@ import (
 //			}
 //			_, err = ram.NewPolicy(ctx, "default", &ram.PolicyArgs{
 //				PolicyName:     pulumi.String("tf-example"),
-//				PolicyDocument: *pulumi.String(basicExample.Document),
+//				PolicyDocument: pulumi.String(basicExample.Document),
 //				Force:          pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -142,7 +142,7 @@ import (
 //			}
 //			_, err = ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
 //				PolicyName:     pulumi.String("tf-example-condition"),
-//				PolicyDocument: *pulumi.String(multipleCondition.Document),
+//				PolicyDocument: pulumi.String(multipleCondition.Document),
 //				Force:          pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -194,7 +194,7 @@ import (
 //				return err
 //			}
 //			_, err = ram.NewRole(ctx, "role", &ram.RoleArgs{
-//				Document: *pulumi.String(ramExample.Document),
+//				Document: pulumi.String(ramExample.Document),
 //				Force:    pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -246,7 +246,7 @@ import (
 //				return err
 //			}
 //			_, err = ram.NewRole(ctx, "role", &ram.RoleArgs{
-//				Document: *pulumi.String(serviceExample.Document),
+//				Document: pulumi.String(serviceExample.Document),
 //				Force:    pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -307,7 +307,7 @@ import (
 //				return err
 //			}
 //			_, err = ram.NewRole(ctx, "role", &ram.RoleArgs{
-//				Document: *pulumi.String(federatedExample.Document),
+//				Document: pulumi.String(federatedExample.Document),
 //				Force:    pulumi.Bool(true),
 //			})
 //			if err != nil {

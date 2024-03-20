@@ -60,7 +60,7 @@ import (
 //			_, err = threatdetection.NewHoneypotPreset(ctx, "defaultHoneypotPreset", &threatdetection.HoneypotPresetArgs{
 //				PresetName:        pulumi.String(name),
 //				NodeId:            defaultHoneypotNode.ID(),
-//				HoneypotImageName: *pulumi.String(defaultHoneypotImages.Images[0].HoneypotImageName),
+//				HoneypotImageName: pulumi.String(defaultHoneypotImages.Images[0].HoneypotImageName),
 //				Meta: &threatdetection.HoneypotPresetMetaArgs{
 //					PortraitOption: pulumi.Bool(true),
 //					Burp:           pulumi.String("open"),

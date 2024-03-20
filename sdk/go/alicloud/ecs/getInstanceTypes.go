@@ -40,7 +40,7 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
-//				InstanceType: *pulumi.String(typesDs.InstanceTypes[0].Id),
+//				InstanceType: pulumi.String(typesDs.InstanceTypes[0].Id),
 //			})
 //			if err != nil {
 //				return err

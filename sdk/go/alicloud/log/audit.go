@@ -42,7 +42,7 @@ import (
 //			}
 //			_, err = log.NewAudit(ctx, "example", &log.AuditArgs{
 //				DisplayName: pulumi.String("tf-audit-example"),
-//				Aliuid:      *pulumi.String(_default.Id),
+//				Aliuid:      pulumi.String(_default.Id),
 //				VariableMap: pulumi.Map{
 //					"actiontrail_enabled":             pulumi.Any("true"),
 //					"actiontrail_ttl":                 pulumi.Any("180"),
@@ -162,7 +162,7 @@ import (
 //			}
 //			_, err = log.NewAudit(ctx, "example", &log.AuditArgs{
 //				DisplayName: pulumi.String("tf-audit-example"),
-//				Aliuid:      *pulumi.String(_default.Id),
+//				Aliuid:      pulumi.String(_default.Id),
 //				VariableMap: pulumi.Map{
 //					"actiontrail_enabled": pulumi.Any("true"),
 //					"actiontrail_ttl":     pulumi.Any("180"),
@@ -205,7 +205,7 @@ import (
 //			}
 //			_, err = log.NewAudit(ctx, "example", &log.AuditArgs{
 //				DisplayName: pulumi.String("tf-audit-example"),
-//				Aliuid:      *pulumi.String(_default.Id),
+//				Aliuid:      pulumi.String(_default.Id),
 //				VariableMap: pulumi.Map{
 //					"actiontrail_enabled": pulumi.Any("true"),
 //					"actiontrail_ttl":     pulumi.Any("180"),
@@ -243,7 +243,7 @@ import (
 //			}
 //			_, err = log.NewAudit(ctx, "example", &log.AuditArgs{
 //				DisplayName: pulumi.String("tf-audit-example"),
-//				Aliuid:      *pulumi.String(_default.Id),
+//				Aliuid:      pulumi.String(_default.Id),
 //				VariableMap: pulumi.Map{
 //					"actiontrail_enabled": pulumi.Any("true"),
 //					"actiontrail_ttl":     pulumi.Any("180"),

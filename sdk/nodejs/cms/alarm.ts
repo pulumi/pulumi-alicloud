@@ -122,7 +122,7 @@ export class Alarm extends pulumi.CustomResource {
     /**
      * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      *
-     * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+     * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      */
     public readonly dimensions!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -136,7 +136,7 @@ export class Alarm extends pulumi.CustomResource {
     /**
      * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
-     * @deprecated Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * @deprecated Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
@@ -183,7 +183,7 @@ export class Alarm extends pulumi.CustomResource {
     /**
      * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
-     * @deprecated Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * @deprecated Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
@@ -284,7 +284,7 @@ export interface AlarmState {
     /**
      * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      *
-     * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+     * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      */
     dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -298,7 +298,7 @@ export interface AlarmState {
     /**
      * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
-     * @deprecated Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * @deprecated Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      */
     endTime?: pulumi.Input<number>;
     /**
@@ -345,7 +345,7 @@ export interface AlarmState {
     /**
      * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
-     * @deprecated Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * @deprecated Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      */
     startTime?: pulumi.Input<number>;
     /**
@@ -377,7 +377,7 @@ export interface AlarmArgs {
     /**
      * Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      *
-     * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+     * @deprecated Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
      */
     dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -391,7 +391,7 @@ export interface AlarmArgs {
     /**
      * Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
-     * @deprecated Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * @deprecated Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      */
     endTime?: pulumi.Input<number>;
     /**
@@ -438,7 +438,7 @@ export interface AlarmArgs {
     /**
      * Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      *
-     * @deprecated Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+     * @deprecated Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
      */
     startTime?: pulumi.Input<number>;
     /**

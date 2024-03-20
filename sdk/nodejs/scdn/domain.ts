@@ -76,7 +76,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * Attribute perm has been deprecated and suggest removing it from your template.
      *
-     * @deprecated Attribute biz_name has been deprecated and suggest removing it from your template.
+     * @deprecated Attribute bizName has been deprecated and suggest removing it from your template.
      */
     public readonly bizName!: pulumi.Output<string | undefined>;
     /**
@@ -158,7 +158,7 @@ export interface DomainState {
     /**
      * Attribute perm has been deprecated and suggest removing it from your template.
      *
-     * @deprecated Attribute biz_name has been deprecated and suggest removing it from your template.
+     * @deprecated Attribute bizName has been deprecated and suggest removing it from your template.
      */
     bizName?: pulumi.Input<string>;
     /**
@@ -198,7 +198,7 @@ export interface DomainArgs {
     /**
      * Attribute perm has been deprecated and suggest removing it from your template.
      *
-     * @deprecated Attribute biz_name has been deprecated and suggest removing it from your template.
+     * @deprecated Attribute bizName has been deprecated and suggest removing it from your template.
      */
     bizName?: pulumi.Input<string>;
     /**

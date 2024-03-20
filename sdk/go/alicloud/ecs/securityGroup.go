@@ -108,7 +108,7 @@ type SecurityGroup struct {
 	//
 	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 	//
-	// Deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
+	// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. Use `innerAccessPolicy` replaces it.
 	InnerAccess pulumi.BoolOutput `pulumi:"innerAccess"`
 	// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
 	InnerAccessPolicy pulumi.StringOutput `pulumi:"innerAccessPolicy"`
@@ -160,7 +160,7 @@ type securityGroupState struct {
 	//
 	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 	//
-	// Deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
+	// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. Use `innerAccessPolicy` replaces it.
 	InnerAccess *bool `pulumi:"innerAccess"`
 	// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
 	InnerAccessPolicy *string `pulumi:"innerAccessPolicy"`
@@ -183,7 +183,7 @@ type SecurityGroupState struct {
 	//
 	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 	//
-	// Deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
+	// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. Use `innerAccessPolicy` replaces it.
 	InnerAccess pulumi.BoolPtrInput
 	// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
 	InnerAccessPolicy pulumi.StringPtrInput
@@ -210,7 +210,7 @@ type securityGroupArgs struct {
 	//
 	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 	//
-	// Deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
+	// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. Use `innerAccessPolicy` replaces it.
 	InnerAccess *bool `pulumi:"innerAccess"`
 	// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
 	InnerAccessPolicy *string `pulumi:"innerAccessPolicy"`
@@ -234,7 +234,7 @@ type SecurityGroupArgs struct {
 	//
 	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 	//
-	// Deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
+	// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. Use `innerAccessPolicy` replaces it.
 	InnerAccess pulumi.BoolPtrInput
 	// The internal access control policy of the security group. Valid values: `Accept`, `Drop`.
 	InnerAccessPolicy pulumi.StringPtrInput
@@ -346,7 +346,7 @@ func (o SecurityGroupOutput) Description() pulumi.StringPtrOutput {
 //
 // Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 //
-// Deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
+// Deprecated: Field `innerAccess` has been deprecated from provider version 1.55.3. Use `innerAccessPolicy` replaces it.
 func (o SecurityGroupOutput) InnerAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.BoolOutput { return v.InnerAccess }).(pulumi.BoolOutput)
 }

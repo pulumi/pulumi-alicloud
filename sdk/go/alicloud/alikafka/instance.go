@@ -91,7 +91,7 @@ type Instance struct {
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 	//
-	// Deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
+	// Deprecated: Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
 	TopicQuota pulumi.IntOutput `pulumi:"topicQuota"`
 	// (Available since v1.214.1) The number of used topics.
 	TopicUsed pulumi.IntOutput `pulumi:"topicUsed"`
@@ -214,7 +214,7 @@ type instanceState struct {
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 	//
-	// Deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
+	// Deprecated: Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
 	TopicQuota *int `pulumi:"topicQuota"`
 	// (Available since v1.214.1) The number of used topics.
 	TopicUsed *int `pulumi:"topicUsed"`
@@ -296,7 +296,7 @@ type InstanceState struct {
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 	//
-	// Deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
+	// Deprecated: Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
 	TopicQuota pulumi.IntPtrInput
 	// (Available since v1.214.1) The number of used topics.
 	TopicUsed pulumi.IntPtrInput
@@ -364,7 +364,7 @@ type instanceArgs struct {
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 	//
-	// Deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
+	// Deprecated: Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
 	TopicQuota *int `pulumi:"topicQuota"`
 	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
@@ -427,7 +427,7 @@ type InstanceArgs struct {
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 	//
-	// Deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
+	// Deprecated: Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
 	TopicQuota pulumi.IntPtrInput
 	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
@@ -668,7 +668,7 @@ func (o InstanceOutput) TopicNumOfBuy() pulumi.IntOutput {
 // Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 // Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 //
-// Deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
+// Deprecated: Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
 func (o InstanceOutput) TopicQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TopicQuota }).(pulumi.IntOutput)
 }

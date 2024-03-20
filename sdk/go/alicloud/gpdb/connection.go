@@ -62,7 +62,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Ids[0]),
+//				ZoneId:      pulumi.String(defaultZones.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +74,7 @@ import (
 //				Description:         pulumi.String(name),
 //				Engine:              pulumi.String("gpdb"),
 //				EngineVersion:       pulumi.String("6.0"),
-//				ZoneId:              *pulumi.String(defaultZones.Ids[0]),
+//				ZoneId:              pulumi.String(defaultZones.Ids[0]),
 //				InstanceNetworkType: pulumi.String("VPC"),
 //				InstanceSpec:        pulumi.String("2C16G"),
 //				MasterNodeNum:       pulumi.Int(1),

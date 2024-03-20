@@ -59,7 +59,7 @@ import (
 //				InstanceId:            exampleInstance.ID(),
 //				ChildInstanceId:       exampleNetwork.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: *pulumi.String(_default.Regions[0].Id),
+//				ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
 //			})
 //			if err != nil {
 //				return err

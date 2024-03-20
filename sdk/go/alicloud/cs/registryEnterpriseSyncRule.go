@@ -114,7 +114,7 @@ import (
 //			_, err = cs.NewRegistryEnterpriseSyncRule(ctx, "defaultRegistryEnterpriseSyncRule", &cs.RegistryEnterpriseSyncRuleArgs{
 //				InstanceId:          sourceRegistryEnterpriseInstance.ID(),
 //				NamespaceName:       sourceRegistryEnterpriseNamespace.Name,
-//				TargetRegionId:      *pulumi.String(defaultRegions.Regions[0].Id),
+//				TargetRegionId:      pulumi.String(defaultRegions.Regions[0].Id),
 //				TargetInstanceId:    targetRegistryEnterpriseInstance.ID(),
 //				TargetNamespaceName: targetRegistryEnterpriseNamespace.Name,
 //				TagFilter:           pulumi.String(".*"),

@@ -66,7 +66,7 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId: pulumi.String(defaultNetworks.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -78,7 +78,7 @@ import (
 //				Storage:     pulumi.String("5"),
 //				Bandwidth:   pulumi.String("5"),
 //				Period:      pulumi.Int(1),
-//				VswitchId:   *pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:   pulumi.String(defaultSwitches.Ids[0]),
 //				SecurityGroupIds: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},

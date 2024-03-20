@@ -83,7 +83,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -93,7 +93,7 @@ import (
 //					defaultSwitch.ID(),
 //				},
 //				WorkerInstanceTypes: pulumi.StringArray{
-//					*pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//					pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				},
 //				Version:                   pulumi.String("1.20.11-aliyunedge.1"),
 //				WorkerNumber:              pulumi.Int(1),
@@ -174,7 +174,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -184,7 +184,7 @@ import (
 //					defaultSwitch.ID(),
 //				},
 //				WorkerInstanceTypes: pulumi.StringArray{
-//					*pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//					pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				},
 //				Version:                   pulumi.String("1.20.11-aliyunedge.1"),
 //				ClusterSpec:               pulumi.String("ack.pro.small"),

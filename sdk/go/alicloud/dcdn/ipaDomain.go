@@ -48,7 +48,7 @@ import (
 //			}
 //			_, err = dcdn.NewIpaDomain(ctx, "example", &dcdn.IpaDomainArgs{
 //				DomainName:      pulumi.String(domainName),
-//				ResourceGroupId: *pulumi.String(_default.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
 //				Scope:           pulumi.String("global"),
 //				Status:          pulumi.String("online"),
 //				Sources: dcdn.IpaDomainSourceArray{

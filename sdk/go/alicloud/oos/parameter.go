@@ -49,7 +49,7 @@ import (
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("OosParameter"),
 //				},
-//				ResourceGroupId: *pulumi.String(_default.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
 //			})
 //			if err != nil {
 //				return err

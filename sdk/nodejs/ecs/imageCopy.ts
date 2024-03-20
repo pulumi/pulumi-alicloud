@@ -149,7 +149,7 @@ export class ImageCopy extends pulumi.CustomResource {
      */
     public readonly kmsKeyId!: pulumi.Output<string | undefined>;
     /**
-     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -240,7 +240,7 @@ export interface ImageCopyState {
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
-     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -285,7 +285,7 @@ export interface ImageCopyArgs {
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
-     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
      */
     name?: pulumi.Input<string>;
     /**

@@ -57,7 +57,7 @@ import (
 //			domainExtensionSwitch, err := vpc.NewSwitch(ctx, "domainExtensionSwitch", &vpc.SwitchArgs{
 //				VpcId:       domainExtensionNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      *pulumi.String(domainExtensionZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(domainExtensionZones.Zones[0].Id),
 //				VswitchName: pulumi.String(slbDomainExtensionName),
 //			})
 //			if err != nil {

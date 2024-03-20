@@ -80,7 +80,7 @@ import (
 // VswitchName: pulumi.String(name),
 // CidrBlock: pulumi.String("172.17.3.0/24"),
 // VpcId: defaultNetwork.ID(),
-// ZoneId: *pulumi.String(defaultZones.Zones[0].Id),
+// ZoneId: pulumi.String(defaultZones.Zones[0].Id),
 // })
 // if err != nil {
 // return err
@@ -97,8 +97,8 @@ import (
 // }
 // _, err = ecs.NewEcsInstanceSet(ctx, "beijingK", &ecs.EcsInstanceSetArgs{
 // Amount: pulumi.Int(10),
-// ImageId: *pulumi.String(defaultImages.Images[0].Id),
-// InstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+// ImageId: pulumi.String(defaultImages.Images[0].Id),
+// InstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 // InstanceName: pulumi.String(name),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskPerformanceLevel: pulumi.String("PL0"),
@@ -106,7 +106,7 @@ import (
 // SystemDiskSize: pulumi.Int(200),
 // VswitchId: defaultSwitch.ID(),
 // SecurityGroupIds: splat0,
-// ZoneId: *pulumi.String(defaultZones.Zones[0].Id),
+// ZoneId: pulumi.String(defaultZones.Zones[0].Id),
 // })
 // if err != nil {
 // return err

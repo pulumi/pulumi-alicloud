@@ -21,7 +21,7 @@ type CopyImage struct {
 	Force              pulumi.BoolPtrOutput   `pulumi:"force"`
 	ImageName          pulumi.StringOutput    `pulumi:"imageName"`
 	KmsKeyId           pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 	Name           pulumi.StringOutput `pulumi:"name"`
 	SourceImageId  pulumi.StringOutput `pulumi:"sourceImageId"`
 	SourceRegionId pulumi.StringOutput `pulumi:"sourceRegionId"`
@@ -70,7 +70,7 @@ type copyImageState struct {
 	Force              *bool   `pulumi:"force"`
 	ImageName          *string `pulumi:"imageName"`
 	KmsKeyId           *string `pulumi:"kmsKeyId"`
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 	Name           *string                `pulumi:"name"`
 	SourceImageId  *string                `pulumi:"sourceImageId"`
 	SourceRegionId *string                `pulumi:"sourceRegionId"`
@@ -84,7 +84,7 @@ type CopyImageState struct {
 	Force              pulumi.BoolPtrInput
 	ImageName          pulumi.StringPtrInput
 	KmsKeyId           pulumi.StringPtrInput
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 	Name           pulumi.StringPtrInput
 	SourceImageId  pulumi.StringPtrInput
 	SourceRegionId pulumi.StringPtrInput
@@ -102,7 +102,7 @@ type copyImageArgs struct {
 	Force              *bool   `pulumi:"force"`
 	ImageName          *string `pulumi:"imageName"`
 	KmsKeyId           *string `pulumi:"kmsKeyId"`
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 	Name           *string                `pulumi:"name"`
 	SourceImageId  string                 `pulumi:"sourceImageId"`
 	SourceRegionId string                 `pulumi:"sourceRegionId"`
@@ -117,7 +117,7 @@ type CopyImageArgs struct {
 	Force              pulumi.BoolPtrInput
 	ImageName          pulumi.StringPtrInput
 	KmsKeyId           pulumi.StringPtrInput
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 	Name           pulumi.StringPtrInput
 	SourceImageId  pulumi.StringInput
 	SourceRegionId pulumi.StringInput
@@ -235,7 +235,7 @@ func (o CopyImageOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CopyImage) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 func (o CopyImageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CopyImage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			defaultServerGroup, err := nlb.NewServerGroup(ctx, "defaultServerGroup", &nlb.ServerGroupArgs{
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[0]),
 //				ServerGroupName: pulumi.String(name),
 //				ServerGroupType: pulumi.String("Ip"),
 //				VpcId:           defaultNetwork.ID(),

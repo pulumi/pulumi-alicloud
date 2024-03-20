@@ -70,7 +70,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -112,7 +112,7 @@ import (
 //			_, err = privatelink.NewVpcEndpointZone(ctx, "exampleVpcEndpointZone", &privatelink.VpcEndpointZoneArgs{
 //				EndpointId: exampleVpcEndpoint.ID(),
 //				VswitchId:  exampleSwitch.ID(),
-//				ZoneId:     *pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:     pulumi.String(exampleZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err

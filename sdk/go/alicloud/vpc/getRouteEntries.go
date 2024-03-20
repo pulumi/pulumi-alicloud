@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
-//				AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+//				AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 //				CidrBlock:        pulumi.String("10.1.1.0/24"),
 //				VpcId:            fooNetwork.ID(),
 //				VswitchName:      pulumi.String(name),
@@ -84,10 +84,10 @@ import (
 //			}
 //			fooInstance, err := ecs.NewInstance(ctx, "fooInstance", &ecs.InstanceArgs{
 //				AllocatePublicIp:        pulumi.Bool(true),
-//				ImageId:                 *pulumi.String(defaultImages.Images[0].Id),
+//				ImageId:                 pulumi.String(defaultImages.Images[0].Id),
 //				InstanceChargeType:      pulumi.String("PostPaid"),
 //				InstanceName:            pulumi.String(name),
-//				InstanceType:            *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				InstanceType:            pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),
 //				SecurityGroups: pulumi.StringArray{

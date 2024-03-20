@@ -53,7 +53,7 @@ import (
 //				Description:             pulumi.String(name),
 //				PublicIpAddressPoolName: pulumi.String(name),
 //				Isp:                     pulumi.String("BGP"),
-//				ResourceGroupId:         *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:         pulumi.String(defaultResourceGroups.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

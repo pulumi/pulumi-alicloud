@@ -81,7 +81,7 @@ import (
 // ruleSwitch, err := vpc.NewSwitch(ctx, "ruleSwitch", &vpc.SwitchArgs{
 // VpcId: ruleNetwork.ID(),
 // CidrBlock: pulumi.String("172.16.0.0/16"),
-// ZoneId: *pulumi.String(ruleZones.Zones[0].Id),
+// ZoneId: pulumi.String(ruleZones.Zones[0].Id),
 // VswitchName: pulumi.String(slbRuleName),
 // })
 // if err != nil {
@@ -98,12 +98,12 @@ import (
 // splat0 = append(splat0, val0.ID())
 // }
 // _, err = ecs.NewInstance(ctx, "ruleInstance", &ecs.InstanceArgs{
-// ImageId: *pulumi.String(ruleImages.Images[0].Id),
-// InstanceType: *pulumi.String(ruleInstanceTypes.InstanceTypes[0].Id),
+// ImageId: pulumi.String(ruleImages.Images[0].Id),
+// InstanceType: pulumi.String(ruleInstanceTypes.InstanceTypes[0].Id),
 // SecurityGroups: splat0,
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(10),
-// AvailabilityZone: *pulumi.String(ruleZones.Zones[0].Id),
+// AvailabilityZone: pulumi.String(ruleZones.Zones[0].Id),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // VswitchId: ruleSwitch.ID(),

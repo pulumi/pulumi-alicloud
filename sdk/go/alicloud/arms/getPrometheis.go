@@ -62,7 +62,7 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId: pulumi.String(defaultNetworks.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -70,11 +70,11 @@ import (
 //			defaultPrometheus, err := arms.NewPrometheus(ctx, "defaultPrometheus", &arms.PrometheusArgs{
 //				ClusterType:       pulumi.String("ecs"),
 //				GrafanaInstanceId: pulumi.String("free"),
-//				VpcId:             *pulumi.String(defaultNetworks.Ids[0]),
-//				VswitchId:         *pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:             pulumi.String(defaultNetworks.Ids[0]),
+//				VswitchId:         pulumi.String(defaultSwitches.Ids[0]),
 //				SecurityGroupId:   defaultSecurityGroup.ID(),
 //				ClusterName:       pulumi.String(fmt.Sprintf("%v-%v", name, defaultNetworks.Ids[0])),
-//				ResourceGroupId:   *pulumi.String(defaultResourceGroups.Groups[1].Id),
+//				ResourceGroupId:   pulumi.String(defaultResourceGroups.Groups[1].Id),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("Prometheus"),

@@ -68,7 +68,7 @@ import (
 //				return err
 //			}
 //			exampleEcsDisk, err := ecs.NewEcsDisk(ctx, "exampleEcsDisk", &ecs.EcsDiskArgs{
-//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
 //				DiskName:    pulumi.String("terraform-example"),
 //				Description: pulumi.String("Hello ecs disk."),
 //				Category:    pulumi.String("cloud_efficiency"),

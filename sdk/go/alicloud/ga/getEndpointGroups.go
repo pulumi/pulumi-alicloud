@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      *pulumi.String(defaultAccelerators.Ids[0]),
+//				AcceleratorId:      pulumi.String(defaultAccelerators.Ids[0]),
 //				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {

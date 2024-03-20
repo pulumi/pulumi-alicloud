@@ -65,7 +65,7 @@ import (
 //			vswich, err := vpc.NewSwitch(ctx, "vswich", &vpc.SwitchArgs{
 //				VpcId:             vpc.ID(),
 //				CidrBlock:         pulumi.String("172.168.0.0/24"),
-//				ZoneId:            *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:            pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName:       pulumi.String(name),
 //				Ipv6CidrBlockMask: pulumi.Int(1),
 //			})
@@ -73,7 +73,7 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewIpv6Address(ctx, "defaultIpv6Address", &vpc.Ipv6AddressArgs{
-//				ResourceGroupId:        *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:        pulumi.String(defaultResourceGroups.Ids[0]),
 //				VswitchId:              vswich.ID(),
 //				Ipv6AddressDescription: pulumi.String("create_description"),
 //				Ipv6AddressName:        pulumi.String(name),

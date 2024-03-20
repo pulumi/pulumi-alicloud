@@ -41,7 +41,7 @@ import (
 //			}
 //			defaultDomain, err := waf.NewDomain(ctx, "defaultDomain", &waf.DomainArgs{
 //				DomainName:      pulumi.String("you domain"),
-//				InstanceId:      *pulumi.String(defaultInstances.Ids[0]),
+//				InstanceId:      pulumi.String(defaultInstances.Ids[0]),
 //				IsAccessProduct: pulumi.String("On"),
 //				SourceIps: pulumi.StringArray{
 //					pulumi.String("1.1.1.1"),
@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			_, err = waf.NewProtectionModule(ctx, "defaultProtectionModule", &waf.ProtectionModuleArgs{
-//				InstanceId:  *pulumi.String(defaultInstances.Ids[0]),
+//				InstanceId:  pulumi.String(defaultInstances.Ids[0]),
 //				Domain:      defaultDomain.DomainName,
 //				DefenseType: pulumi.String("ac_cc"),
 //				Mode:        pulumi.Int(0),

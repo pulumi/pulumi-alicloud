@@ -59,7 +59,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -76,7 +76,7 @@ import (
 //				VswitchId:         defaultSwitch.ID(),
 //				Description:       pulumi.String(name),
 //				MaintainTime:      pulumi.String("23:00Z-00:00Z"),
-//				ResourceGroupId:   *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:   pulumi.String(defaultResourceGroups.Ids[0]),
 //				SecurityIps: pulumi.StringArray{
 //					pulumi.String("10.168.1.12"),
 //					pulumi.String("10.168.1.11"),

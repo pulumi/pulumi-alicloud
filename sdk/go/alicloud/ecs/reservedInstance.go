@@ -38,13 +38,13 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewReservedInstance(ctx, "defaultReservedInstance", &ecs.ReservedInstanceArgs{
-//				InstanceType:         *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				InstanceType:         pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				InstanceAmount:       pulumi.Int(1),
 //				PeriodUnit:           pulumi.String("Month"),
 //				OfferingType:         pulumi.String("All Upfront"),
 //				ReservedInstanceName: pulumi.String("terraform-example"),
 //				Description:          pulumi.String("ReservedInstance"),
-//				ZoneId:               *pulumi.String(defaultInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
+//				ZoneId:               pulumi.String(defaultInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
 //				Scope:                pulumi.String("Zone"),
 //			})
 //			if err != nil {

@@ -60,7 +60,7 @@ import (
 //			createVswitch, err := vpc.NewSwitch(ctx, "createVswitch", &vpc.SwitchArgs{
 //				Description: pulumi.String("example"),
 //				VpcId:       createVpc.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String(name),
 //			})

@@ -44,7 +44,7 @@ import (
 //			}
 //			defaultAcl, err := alb.NewAcl(ctx, "defaultAcl", &alb.AclArgs{
 //				AclName:         pulumi.String(name),
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
 //			})
 //			if err != nil {
 //				return err

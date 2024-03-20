@@ -75,7 +75,7 @@ import (
 //			defaultDesktop, err := eds.NewDesktop(ctx, "defaultDesktop", &eds.DesktopArgs{
 //				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
 //				PolicyGroupId: defaultEcdPolicyGroup.ID(),
-//				BundleId:      *pulumi.String(defaultBundles.Bundles[0].Id),
+//				BundleId:      pulumi.String(defaultBundles.Bundles[0].Id),
 //				DesktopName:   pulumi.Any(_var.Name),
 //			})
 //			if err != nil {

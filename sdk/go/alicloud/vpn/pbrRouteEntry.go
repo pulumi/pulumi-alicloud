@@ -53,7 +53,7 @@ import (
 //			}
 //			defaultConnection, err := vpn.NewConnection(ctx, "defaultConnection", &vpn.ConnectionArgs{
 //				CustomerGatewayId: defaultCustomerGateway.ID(),
-//				VpnGatewayId:      *pulumi.String(defaultGateways.Ids[0]),
+//				VpnGatewayId:      pulumi.String(defaultGateways.Ids[0]),
 //				LocalSubnets: pulumi.StringArray{
 //					pulumi.String("192.168.2.0/24"),
 //				},
@@ -65,7 +65,7 @@ import (
 //				return err
 //			}
 //			_, err = vpn.NewPbrRouteEntry(ctx, "defaultPbrRouteEntry", &vpn.PbrRouteEntryArgs{
-//				VpnGatewayId: *pulumi.String(defaultGateways.Ids[0]),
+//				VpnGatewayId: pulumi.String(defaultGateways.Ids[0]),
 //				RouteSource:  pulumi.String("192.168.1.0/24"),
 //				RouteDest:    pulumi.String("10.0.0.0/24"),
 //				NextHop:      defaultConnection.ID(),

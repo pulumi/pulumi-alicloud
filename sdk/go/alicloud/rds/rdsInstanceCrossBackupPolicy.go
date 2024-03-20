@@ -73,7 +73,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Ids[0]),
+//				ZoneId:      pulumi.String(defaultZones.Ids[0]),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -82,8 +82,8 @@ import (
 //			defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
-//				InstanceType:          *pulumi.String(defaultInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       *pulumi.String(defaultInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceType:          pulumi.String(defaultInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       pulumi.String(defaultInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				Category:              pulumi.String("HighAvailability"),
 //				InstanceName:          pulumi.String(name),
@@ -95,7 +95,7 @@ import (
 //			}
 //			_, err = rds.NewRdsInstanceCrossBackupPolicy(ctx, "defaultRdsInstanceCrossBackupPolicy", &rds.RdsInstanceCrossBackupPolicyArgs{
 //				InstanceId:        defaultInstance.ID(),
-//				CrossBackupRegion: *pulumi.String(regions.Ids[0]),
+//				CrossBackupRegion: pulumi.String(regions.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

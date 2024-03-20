@@ -61,7 +61,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultRegions.Regions[0].ZoneIds[0].ZoneId),
+//				ZoneId:      pulumi.String(defaultRegions.Regions[0].ZoneIds[0].ZoneId),
 //			})
 //			if err != nil {
 //				return err

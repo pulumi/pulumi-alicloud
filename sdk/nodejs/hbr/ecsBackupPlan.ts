@@ -188,7 +188,7 @@ export class EcsBackupPlan extends pulumi.CustomResource {
     /**
      * Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
      *
-     * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+     * @deprecated Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      */
     public readonly updatePaths!: pulumi.Output<boolean | undefined>;
     /**
@@ -336,7 +336,7 @@ export interface EcsBackupPlanState {
     /**
      * Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
      *
-     * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+     * @deprecated Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      */
     updatePaths?: pulumi.Input<boolean>;
     /**
@@ -412,7 +412,7 @@ export interface EcsBackupPlanArgs {
     /**
      * Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
      *
-     * @deprecated Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+     * @deprecated Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      */
     updatePaths?: pulumi.Input<boolean>;
     /**

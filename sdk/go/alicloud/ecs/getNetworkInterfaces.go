@@ -53,7 +53,7 @@ import (
 // return err
 // }
 // vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-// AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+// AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // CidrBlock: pulumi.String("192.168.0.0/24"),
 // VpcId: vpc.ID(),
 // VswitchName: pulumi.String(name),
@@ -82,7 +82,7 @@ import (
 // return err
 // }
 // instance, err := ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
-// AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+// AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // ImageId: pulumi.String("centos_7_04_64_20G_alibase_201701015.vhd"),
 // InstanceName: pulumi.String(name),
 // InstanceType: pulumi.String("ecs.e3.xlarge"),

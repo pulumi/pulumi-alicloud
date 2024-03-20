@@ -60,7 +60,7 @@ import (
 //			_, err = ros.NewStackInstance(ctx, "exampleStackInstance", &ros.StackInstanceArgs{
 //				StackGroupName:         exampleStackGroup.StackGroupName,
 //				StackInstanceAccountId: pulumi.String("example_value"),
-//				StackInstanceRegionId:  *pulumi.String(exampleRegions.Regions[0].RegionId),
+//				StackInstanceRegionId:  pulumi.String(exampleRegions.Regions[0].RegionId),
 //				OperationPreferences:   pulumi.String("{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}"),
 //				ParameterOverrides: ros.StackInstanceParameterOverrideArray{
 //					&ros.StackInstanceParameterOverrideArgs{

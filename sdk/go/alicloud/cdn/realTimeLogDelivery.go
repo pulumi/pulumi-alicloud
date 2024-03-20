@@ -96,7 +96,7 @@ import (
 //				Domain:    defaultDomainNew.DomainName,
 //				Logstore:  defaultStore.LogstoreName,
 //				Project:   defaultProject.ProjectName,
-//				SlsRegion: *pulumi.String(defaultRegions.Regions[0].Id),
+//				SlsRegion: pulumi.String(defaultRegions.Regions[0].Id),
 //			})
 //			if err != nil {
 //				return err

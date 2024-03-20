@@ -88,7 +88,7 @@ import (
 //				ClusterName: defaultNetwork.ID().ApplyT(func(id string) (string, error) {
 //					return fmt.Sprintf("%v-%v", name, id), nil
 //				}).(pulumi.StringOutput),
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("Prometheus"),

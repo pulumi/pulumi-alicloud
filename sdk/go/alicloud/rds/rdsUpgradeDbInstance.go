@@ -71,7 +71,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
 //				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
 //				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
@@ -81,8 +81,8 @@ import (
 //				Engine:                pulumi.String("PostgreSQL"),
 //				EngineVersion:         pulumi.String("13.0"),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
-//				InstanceType:          *pulumi.String(exampleInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       *pulumi.String(exampleInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceType:          pulumi.String(exampleInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       pulumi.String(exampleInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				InstanceName:          pulumi.String("terraform-example"),
 //				VswitchId:             exampleSwitch.ID(),

@@ -73,7 +73,7 @@ export class Acl extends pulumi.CustomResource {
     /**
      * The entries of the Acl. See `aclEntries` below. **NOTE:** "Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
      *
-     * @deprecated Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.
+     * @deprecated Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.
      */
     public readonly aclEntries!: pulumi.Output<outputs.ga.AclAclEntry[]>;
     /**
@@ -140,7 +140,7 @@ export interface AclState {
     /**
      * The entries of the Acl. See `aclEntries` below. **NOTE:** "Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
      *
-     * @deprecated Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.
+     * @deprecated Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.
      */
     aclEntries?: pulumi.Input<pulumi.Input<inputs.ga.AclAclEntry>[]>;
     /**
@@ -172,7 +172,7 @@ export interface AclArgs {
     /**
      * The entries of the Acl. See `aclEntries` below. **NOTE:** "Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
      *
-     * @deprecated Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.
+     * @deprecated Field `aclEntries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.
      */
     aclEntries?: pulumi.Input<pulumi.Input<inputs.ga.AclAclEntry>[]>;
     /**

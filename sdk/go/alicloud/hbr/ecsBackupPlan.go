@@ -70,7 +70,7 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -82,9 +82,9 @@ import (
 //				return err
 //			}
 //			exampleInstance, err := ecs.NewInstance(ctx, "exampleInstance", &ecs.InstanceArgs{
-//				ImageId:          *pulumi.String(exampleImages.Images[0].Id),
-//				InstanceType:     *pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
-//				AvailabilityZone: *pulumi.String(exampleZones.Zones[0].Id),
+//				ImageId:          pulumi.String(exampleImages.Images[0].Id),
+//				InstanceType:     pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
+//				AvailabilityZone: pulumi.String(exampleZones.Zones[0].Id),
 //				SecurityGroups: pulumi.StringArray{
 //					exampleSecurityGroup.ID(),
 //				},
@@ -186,7 +186,7 @@ type EcsBackupPlan struct {
 	SpeedLimit pulumi.StringPtrOutput `pulumi:"speedLimit"`
 	// Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
 	//
-	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+	// Deprecated: Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
 	UpdatePaths pulumi.BoolPtrOutput `pulumi:"updatePaths"`
 	// The ID of Backup vault.
 	VaultId pulumi.StringOutput `pulumi:"vaultId"`
@@ -272,7 +272,7 @@ type ecsBackupPlanState struct {
 	SpeedLimit *string `pulumi:"speedLimit"`
 	// Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
 	//
-	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+	// Deprecated: Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
 	UpdatePaths *bool `pulumi:"updatePaths"`
 	// The ID of Backup vault.
 	VaultId *string `pulumi:"vaultId"`
@@ -311,7 +311,7 @@ type EcsBackupPlanState struct {
 	SpeedLimit pulumi.StringPtrInput
 	// Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
 	//
-	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+	// Deprecated: Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
 	UpdatePaths pulumi.BoolPtrInput
 	// The ID of Backup vault.
 	VaultId pulumi.StringPtrInput
@@ -354,7 +354,7 @@ type ecsBackupPlanArgs struct {
 	SpeedLimit *string `pulumi:"speedLimit"`
 	// Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
 	//
-	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+	// Deprecated: Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
 	UpdatePaths *bool `pulumi:"updatePaths"`
 	// The ID of Backup vault.
 	VaultId string `pulumi:"vaultId"`
@@ -394,7 +394,7 @@ type EcsBackupPlanArgs struct {
 	SpeedLimit pulumi.StringPtrInput
 	// Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
 	//
-	// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+	// Deprecated: Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
 	UpdatePaths pulumi.BoolPtrInput
 	// The ID of Backup vault.
 	VaultId pulumi.StringInput
@@ -564,7 +564,7 @@ func (o EcsBackupPlanOutput) SpeedLimit() pulumi.StringPtrOutput {
 
 // Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
 //
-// Deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.
+// Deprecated: Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
 func (o EcsBackupPlanOutput) UpdatePaths() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsBackupPlan) pulumi.BoolPtrOutput { return v.UpdatePaths }).(pulumi.BoolPtrOutput)
 }

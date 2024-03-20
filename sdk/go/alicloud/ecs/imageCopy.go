@@ -81,7 +81,7 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //			}, pulumi.Provider(alicloud.Hz))
 //			if err != nil {
 //				return err
@@ -93,14 +93,14 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-//				AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+//				AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 //				InstanceName:     pulumi.String("terraform-example"),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
 //				VswitchId:               defaultSwitch.ID(),
-//				InstanceType:            *pulumi.String(defaultInstanceTypes.Ids[0]),
-//				ImageId:                 *pulumi.String(defaultImages.Ids[0]),
+//				InstanceType:            pulumi.String(defaultInstanceTypes.Ids[0]),
+//				ImageId:                 pulumi.String(defaultImages.Ids[0]),
 //				InternetMaxBandwidthOut: pulumi.Int(10),
 //			}, pulumi.Provider(alicloud.Hz))
 //			if err != nil {
@@ -162,7 +162,7 @@ type ImageCopy struct {
 	ImageName pulumi.StringOutput `pulumi:"imageName"`
 	// Key ID used to encrypt the image.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The source image ID.
 	SourceImageId pulumi.StringOutput `pulumi:"sourceImageId"`
@@ -221,7 +221,7 @@ type imageCopyState struct {
 	ImageName *string `pulumi:"imageName"`
 	// Key ID used to encrypt the image.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 	Name *string `pulumi:"name"`
 	// The source image ID.
 	SourceImageId *string `pulumi:"sourceImageId"`
@@ -245,7 +245,7 @@ type ImageCopyState struct {
 	ImageName pulumi.StringPtrInput
 	// Key ID used to encrypt the image.
 	KmsKeyId pulumi.StringPtrInput
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 	Name pulumi.StringPtrInput
 	// The source image ID.
 	SourceImageId pulumi.StringPtrInput
@@ -273,7 +273,7 @@ type imageCopyArgs struct {
 	ImageName *string `pulumi:"imageName"`
 	// Key ID used to encrypt the image.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 	Name *string `pulumi:"name"`
 	// The source image ID.
 	SourceImageId string `pulumi:"sourceImageId"`
@@ -298,7 +298,7 @@ type ImageCopyArgs struct {
 	ImageName pulumi.StringPtrInput
 	// Key ID used to encrypt the image.
 	KmsKeyId pulumi.StringPtrInput
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 	Name pulumi.StringPtrInput
 	// The source image ID.
 	SourceImageId pulumi.StringInput
@@ -426,7 +426,7 @@ func (o ImageCopyOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageCopy) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
+// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
 func (o ImageCopyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImageCopy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

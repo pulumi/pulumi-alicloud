@@ -70,8 +70,8 @@ import (
 //				DiskCategory:             pulumi.String("cloud_efficiency"),
 //				PaymentType:              pulumi.String("PayAsYouGo"),
 //				ZoneId:                   pulumi.String(zoneId),
-//				VswitchId:                *pulumi.String(defaultSwitches.Ids[0]),
-//				VpcId:                    *pulumi.String(defaultNetworks.Ids[0]),
+//				VswitchId:                pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:                    pulumi.String(defaultNetworks.Ids[0]),
 //				InstanceName:             pulumi.String(name),
 //				TableEngineSpecification: pulumi.String("lindorm.g.4xlarge"),
 //				TableEngineNodeCount:     pulumi.Int(2),
@@ -191,7 +191,7 @@ type Instance struct {
 	TimeSeriesEngineSpecification pulumi.StringOutput `pulumi:"timeSeriesEngineSpecification"`
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
-	// Deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+	// Deprecated: Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	TimeSeriresEngineSpecification pulumi.StringOutput `pulumi:"timeSeriresEngineSpecification"`
 	// The VPC ID of the instance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
@@ -334,7 +334,7 @@ type instanceState struct {
 	TimeSeriesEngineSpecification *string `pulumi:"timeSeriesEngineSpecification"`
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
-	// Deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+	// Deprecated: Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	TimeSeriresEngineSpecification *string `pulumi:"timeSeriresEngineSpecification"`
 	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
@@ -439,7 +439,7 @@ type InstanceState struct {
 	TimeSeriesEngineSpecification pulumi.StringPtrInput
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
-	// Deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+	// Deprecated: Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	TimeSeriresEngineSpecification pulumi.StringPtrInput
 	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
@@ -532,7 +532,7 @@ type instanceArgs struct {
 	TimeSeriesEngineSpecification *string `pulumi:"timeSeriesEngineSpecification"`
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
-	// Deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+	// Deprecated: Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	TimeSeriresEngineSpecification *string `pulumi:"timeSeriresEngineSpecification"`
 	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
@@ -622,7 +622,7 @@ type InstanceArgs struct {
 	TimeSeriesEngineSpecification pulumi.StringPtrInput
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
-	// Deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+	// Deprecated: Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	TimeSeriresEngineSpecification pulumi.StringPtrInput
 	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
@@ -948,7 +948,7 @@ func (o InstanceOutput) TimeSeriesEngineSpecification() pulumi.StringOutput {
 
 // Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 //
-// Deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+// Deprecated: Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 func (o InstanceOutput) TimeSeriresEngineSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TimeSeriresEngineSpecification }).(pulumi.StringOutput)
 }

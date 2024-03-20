@@ -61,15 +61,15 @@ import (
 //				Platform:                pulumi.String("linux"),
 //				CapacityReservationName: pulumi.String("terraform-example"),
 //				EndTimeType:             pulumi.String("Unlimited"),
-//				ResourceGroupId:         *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:         pulumi.String(defaultResourceGroups.Ids[0]),
 //				InstanceAmount:          pulumi.Int(1),
-//				InstanceType:            *pulumi.String(defaultInstanceTypes.Ids[0]),
+//				InstanceType:            pulumi.String(defaultInstanceTypes.Ids[0]),
 //				MatchCriteria:           pulumi.String("Open"),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("terraform-example"),
 //				},
 //				ZoneIds: pulumi.StringArray{
-//					*pulumi.String(defaultZones.Zones[0].Id),
+//					pulumi.String(defaultZones.Zones[0].Id),
 //				},
 //			})
 //			if err != nil {

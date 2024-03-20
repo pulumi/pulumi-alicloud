@@ -57,7 +57,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.1.0/24"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      *pulumi.String(masterZone),
+//				ZoneId:      pulumi.String(masterZone),
 //			})
 //			if err != nil {
 //				return err
@@ -66,7 +66,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      *pulumi.String(slaveZone),
+//				ZoneId:      pulumi.String(slaveZone),
 //			})
 //			if err != nil {
 //				return err
@@ -91,11 +91,11 @@ import (
 //				VpcId:           exampleNetwork.ID(),
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
-//						ZoneId:    *pulumi.String(masterZone),
+//						ZoneId:    pulumi.String(masterZone),
 //						VswitchId: exampleMaster.ID(),
 //					},
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
-//						ZoneId:    *pulumi.String(slaveZone),
+//						ZoneId:    pulumi.String(slaveZone),
 //						VswitchId: exampleSlave.ID(),
 //					},
 //				},

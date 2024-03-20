@@ -324,7 +324,7 @@ export class Alert extends pulumi.CustomResource {
     /**
      * Join condition.
      *
-     * @deprecated Deprecated from 1.161.0+, use eval_condition in severity_configurations
+     * @deprecated Deprecated from 1.161.0+, use evalCondition in severity_configurations
      */
     public readonly condition!: pulumi.Output<string | undefined>;
     /**
@@ -358,7 +358,7 @@ export class Alert extends pulumi.CustomResource {
     /**
      * Alarm information notification list, Deprecated from 1.161.0+.
      *
-     * @deprecated Deprecated from 1.161.0+, use policy_configuration for notification
+     * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
      */
     public readonly notificationLists!: pulumi.Output<outputs.log.AlertNotificationList[] | undefined>;
     /**
@@ -414,7 +414,7 @@ export class Alert extends pulumi.CustomResource {
     /**
      * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
      *
-     * @deprecated Deprecated from 1.161.0+, use repeat_interval in policy_configuration
+     * @deprecated Deprecated from 1.161.0+, use repeatInterval in policy_configuration
      */
     public readonly throttling!: pulumi.Output<string | undefined>;
     /**
@@ -539,7 +539,7 @@ export interface AlertState {
     /**
      * Join condition.
      *
-     * @deprecated Deprecated from 1.161.0+, use eval_condition in severity_configurations
+     * @deprecated Deprecated from 1.161.0+, use evalCondition in severity_configurations
      */
     condition?: pulumi.Input<string>;
     /**
@@ -573,7 +573,7 @@ export interface AlertState {
     /**
      * Alarm information notification list, Deprecated from 1.161.0+.
      *
-     * @deprecated Deprecated from 1.161.0+, use policy_configuration for notification
+     * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
      */
     notificationLists?: pulumi.Input<pulumi.Input<inputs.log.AlertNotificationList>[]>;
     /**
@@ -629,7 +629,7 @@ export interface AlertState {
     /**
      * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
      *
-     * @deprecated Deprecated from 1.161.0+, use repeat_interval in policy_configuration
+     * @deprecated Deprecated from 1.161.0+, use repeatInterval in policy_configuration
      */
     throttling?: pulumi.Input<string>;
     /**
@@ -669,7 +669,7 @@ export interface AlertArgs {
     /**
      * Join condition.
      *
-     * @deprecated Deprecated from 1.161.0+, use eval_condition in severity_configurations
+     * @deprecated Deprecated from 1.161.0+, use evalCondition in severity_configurations
      */
     condition?: pulumi.Input<string>;
     /**
@@ -703,7 +703,7 @@ export interface AlertArgs {
     /**
      * Alarm information notification list, Deprecated from 1.161.0+.
      *
-     * @deprecated Deprecated from 1.161.0+, use policy_configuration for notification
+     * @deprecated Deprecated from 1.161.0+, use policyConfiguration for notification
      */
     notificationLists?: pulumi.Input<pulumi.Input<inputs.log.AlertNotificationList>[]>;
     /**
@@ -759,7 +759,7 @@ export interface AlertArgs {
     /**
      * Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
      *
-     * @deprecated Deprecated from 1.161.0+, use repeat_interval in policy_configuration
+     * @deprecated Deprecated from 1.161.0+, use repeatInterval in policy_configuration
      */
     throttling?: pulumi.Input<string>;
     /**
