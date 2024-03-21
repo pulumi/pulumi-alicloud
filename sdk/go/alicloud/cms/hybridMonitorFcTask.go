@@ -76,7 +76,7 @@ import (
 //
 // `),
 //
-//				TargetUserId: *pulumi.String(defaultAccount.Id),
+//				TargetUserId: pulumi.String(defaultAccount.Id),
 //			})
 //			if err != nil {
 //				return err

@@ -57,7 +57,7 @@ import (
 //			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
 //				VpcId:     fooNetwork.ID(),
 //				CidrBlock: pulumi.String("172.16.0.0/21"),
-//				ZoneId:    *pulumi.String(_default.Zones[0].Id),
+//				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err

@@ -78,7 +78,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -90,10 +90,10 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-//				AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+//				AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 //				InstanceName:     pulumi.String(name),
-//				ImageId:          *pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:     *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:          pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:     pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
@@ -158,7 +158,7 @@ type Alarm struct {
 	ContactGroups pulumi.StringArrayOutput `pulumi:"contactGroups"`
 	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
-	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	Dimensions pulumi.MapOutput `pulumi:"dimensions"`
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrOutput `pulumi:"effectiveInterval"`
@@ -166,7 +166,7 @@ type Alarm struct {
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+	// Deprecated: Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
 	// A configuration of critical alarm. See `escalationsCritical` below.
 	EscalationsCritical AlarmEscalationsCriticalOutput `pulumi:"escalationsCritical"`
@@ -191,7 +191,7 @@ type Alarm struct {
 	SilenceTime pulumi.IntPtrOutput `pulumi:"silenceTime"`
 	// Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+	// Deprecated: Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
 	// The status of the Alarm.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -246,7 +246,7 @@ type alarmState struct {
 	ContactGroups []string `pulumi:"contactGroups"`
 	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
-	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
@@ -254,7 +254,7 @@ type alarmState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+	// Deprecated: Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	EndTime *int `pulumi:"endTime"`
 	// A configuration of critical alarm. See `escalationsCritical` below.
 	EscalationsCritical *AlarmEscalationsCritical `pulumi:"escalationsCritical"`
@@ -279,7 +279,7 @@ type alarmState struct {
 	SilenceTime *int `pulumi:"silenceTime"`
 	// Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+	// Deprecated: Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	StartTime *int `pulumi:"startTime"`
 	// The status of the Alarm.
 	Status *string `pulumi:"status"`
@@ -296,7 +296,7 @@ type AlarmState struct {
 	ContactGroups pulumi.StringArrayInput
 	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
-	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	Dimensions pulumi.MapInput
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrInput
@@ -304,7 +304,7 @@ type AlarmState struct {
 	Enabled pulumi.BoolPtrInput
 	// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+	// Deprecated: Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	EndTime pulumi.IntPtrInput
 	// A configuration of critical alarm. See `escalationsCritical` below.
 	EscalationsCritical AlarmEscalationsCriticalPtrInput
@@ -329,7 +329,7 @@ type AlarmState struct {
 	SilenceTime pulumi.IntPtrInput
 	// Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+	// Deprecated: Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	StartTime pulumi.IntPtrInput
 	// The status of the Alarm.
 	Status pulumi.StringPtrInput
@@ -350,7 +350,7 @@ type alarmArgs struct {
 	ContactGroups []string `pulumi:"contactGroups"`
 	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
-	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
@@ -358,7 +358,7 @@ type alarmArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+	// Deprecated: Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	EndTime *int `pulumi:"endTime"`
 	// A configuration of critical alarm. See `escalationsCritical` below.
 	EscalationsCritical *AlarmEscalationsCritical `pulumi:"escalationsCritical"`
@@ -383,7 +383,7 @@ type alarmArgs struct {
 	SilenceTime *int `pulumi:"silenceTime"`
 	// Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+	// Deprecated: Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	StartTime *int `pulumi:"startTime"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -399,7 +399,7 @@ type AlarmArgs struct {
 	ContactGroups pulumi.StringArrayInput
 	// Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	//
-	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+	// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 	Dimensions pulumi.MapInput
 	// The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
 	EffectiveInterval pulumi.StringPtrInput
@@ -407,7 +407,7 @@ type AlarmArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+	// Deprecated: Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	EndTime pulumi.IntPtrInput
 	// A configuration of critical alarm. See `escalationsCritical` below.
 	EscalationsCritical AlarmEscalationsCriticalPtrInput
@@ -432,7 +432,7 @@ type AlarmArgs struct {
 	SilenceTime pulumi.IntPtrInput
 	// Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	//
-	// Deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+	// Deprecated: Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 	StartTime pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -536,7 +536,7 @@ func (o AlarmOutput) ContactGroups() pulumi.StringArrayOutput {
 
 // Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 //
-// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
+// Deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metricDimensions` instead.
 func (o AlarmOutput) Dimensions() pulumi.MapOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.MapOutput { return v.Dimensions }).(pulumi.MapOutput)
 }
@@ -553,7 +553,7 @@ func (o AlarmOutput) Enabled() pulumi.BoolPtrOutput {
 
 // Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 //
-// Deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+// Deprecated: Field `endTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 func (o AlarmOutput) EndTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.IntPtrOutput { return v.EndTime }).(pulumi.IntPtrOutput)
 }
@@ -611,7 +611,7 @@ func (o AlarmOutput) SilenceTime() pulumi.IntPtrOutput {
 
 // Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 //
-// Deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
+// Deprecated: Field `startTime` has been deprecated from provider version 1.50.0. New field `effectiveInterval` instead.
 func (o AlarmOutput) StartTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
 }

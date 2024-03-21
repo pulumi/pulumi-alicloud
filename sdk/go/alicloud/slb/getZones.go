@@ -64,7 +64,7 @@ type GetZonesArgs struct {
 	AvailableSlbAddressType *string `pulumi:"availableSlbAddressType"`
 	// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
 	//
-	// Deprecated: The parameter enable_details has been deprecated from version v1.154.0+
+	// Deprecated: The parameter enableDetails has been deprecated from version v1.154.0+
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The primary zone.
 	MasterZoneId *string `pulumi:"masterZoneId"`
@@ -78,7 +78,7 @@ type GetZonesArgs struct {
 type GetZonesResult struct {
 	AvailableSlbAddressIpVersion *string `pulumi:"availableSlbAddressIpVersion"`
 	AvailableSlbAddressType      *string `pulumi:"availableSlbAddressType"`
-	// Deprecated: The parameter enable_details has been deprecated from version v1.154.0+
+	// Deprecated: The parameter enableDetails has been deprecated from version v1.154.0+
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -117,7 +117,7 @@ type GetZonesOutputArgs struct {
 	AvailableSlbAddressType pulumi.StringPtrInput `pulumi:"availableSlbAddressType"`
 	// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
 	//
-	// Deprecated: The parameter enable_details has been deprecated from version v1.154.0+
+	// Deprecated: The parameter enableDetails has been deprecated from version v1.154.0+
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// The primary zone.
 	MasterZoneId pulumi.StringPtrInput `pulumi:"masterZoneId"`
@@ -154,7 +154,7 @@ func (o GetZonesResultOutput) AvailableSlbAddressType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesResult) *string { return v.AvailableSlbAddressType }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: The parameter enable_details has been deprecated from version v1.154.0+
+// Deprecated: The parameter enableDetails has been deprecated from version v1.154.0+
 func (o GetZonesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetZonesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }

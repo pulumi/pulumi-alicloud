@@ -67,7 +67,7 @@ import (
 // `),
 //
 //				CoverUrl: pulumi.String("https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png"),
-//				Division: *pulumi.String(_default.Regions[0].Id),
+//				Division: pulumi.String(_default.Regions[0].Id),
 //			})
 //			if err != nil {
 //				return err

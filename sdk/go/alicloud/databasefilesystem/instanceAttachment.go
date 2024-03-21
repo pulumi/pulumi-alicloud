@@ -73,7 +73,7 @@ import (
 //				return err
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId: pulumi.String(defaultNetworks.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -81,12 +81,12 @@ import (
 //			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
 //				AvailabilityZone: pulumi.String(zoneId),
 //				InstanceName:     pulumi.String(name),
-//				ImageId:          *pulumi.String(exampleImages.Images[0].Id),
+//				ImageId:          pulumi.String(exampleImages.Images[0].Id),
 //				InstanceType:     exampleInstanceTypes.InstanceTypes[len(exampleInstanceTypes.InstanceTypes)-1].Id,
 //				SecurityGroups: pulumi.StringArray{
 //					exampleSecurityGroup.ID(),
 //				},
-//				VswitchId:          *pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:          pulumi.String(defaultSwitches.Ids[0]),
 //				SystemDiskCategory: pulumi.String("cloud_essd"),
 //			})
 //			if err != nil {

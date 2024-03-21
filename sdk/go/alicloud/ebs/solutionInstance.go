@@ -56,7 +56,7 @@ import (
 //			}
 //			_, err = ebs.NewSolutionInstance(ctx, "defaultSolutionInstance", &ebs.SolutionInstanceArgs{
 //				SolutionInstanceName: pulumi.String(name),
-//				ResourceGroupId:      *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:      pulumi.String(defaultResourceGroups.Ids[0]),
 //				Description:          pulumi.String("description"),
 //				SolutionId:           pulumi.String("mysql"),
 //				Parameters: ebs.SolutionInstanceParameterArray{

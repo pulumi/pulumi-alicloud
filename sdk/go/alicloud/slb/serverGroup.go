@@ -68,7 +68,7 @@ import (
 //			serverGroupSwitch, err := vpc.NewSwitch(ctx, "serverGroupSwitch", &vpc.SwitchArgs{
 //				VpcId:       serverGroupNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
-//				ZoneId:      *pulumi.String(serverGroupZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(serverGroupZones.Zones[0].Id),
 //				VswitchName: pulumi.String(slbServerGroupName),
 //			})
 //			if err != nil {

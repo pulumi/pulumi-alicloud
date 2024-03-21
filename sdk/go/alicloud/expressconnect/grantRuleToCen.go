@@ -61,7 +61,7 @@ import (
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-//				PhysicalConnectionId:    *pulumi.String(examplePhysicalConnections.Connections[0].Id),
+//				PhysicalConnectionId:    pulumi.String(examplePhysicalConnections.Connections[0].Id),
 //				VirtualBorderRouterName: pulumi.String(name),
 //				VlanId:                  vlanId.ID(),
 //				MinRxInterval:           pulumi.Int(1000),
@@ -83,7 +83,7 @@ import (
 //			}
 //			_, err = expressconnect.NewGrantRuleToCen(ctx, "exampleGrantRuleToCen", &expressconnect.GrantRuleToCenArgs{
 //				CenId:      exampleInstance.ID(),
-//				CenOwnerId: *pulumi.String(_default.Id),
+//				CenOwnerId: pulumi.String(_default.Id),
 //				InstanceId: exampleVirtualBorderRouter.ID(),
 //			})
 //			if err != nil {

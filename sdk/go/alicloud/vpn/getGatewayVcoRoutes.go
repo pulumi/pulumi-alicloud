@@ -112,7 +112,7 @@ import (
 //				VpnId:                              defaultGatewayVpnAttachment.ID(),
 //				Zones: cen.TransitRouterVpnAttachmentZoneArray{
 //					&cen.TransitRouterVpnAttachmentZoneArgs{
-//						ZoneId: *pulumi.String(defaultTransitRouterAvailableResources.Resources[0].MasterZones[0]),
+//						ZoneId: pulumi.String(defaultTransitRouterAvailableResources.Resources[0].MasterZones[0]),
 //					},
 //				},
 //			})

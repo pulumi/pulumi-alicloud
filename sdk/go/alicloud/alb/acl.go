@@ -42,7 +42,7 @@ import (
 //			}
 //			_, err = alb.NewAcl(ctx, "defaultAcl", &alb.AclArgs{
 //				AclName:         pulumi.String("tf_example"),
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
 //			})
 //			if err != nil {
 //				return err

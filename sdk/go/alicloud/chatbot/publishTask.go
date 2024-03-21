@@ -41,7 +41,7 @@ import (
 //			}
 //			_, err = chatbot.NewPublishTask(ctx, "defaultPublishTask", &chatbot.PublishTaskArgs{
 //				BizType:  pulumi.String("faq"),
-//				AgentKey: *pulumi.String(defaultAgents.Agents[0].AgentKey),
+//				AgentKey: pulumi.String(defaultAgents.Agents[0].AgentKey),
 //			})
 //			if err != nil {
 //				return err

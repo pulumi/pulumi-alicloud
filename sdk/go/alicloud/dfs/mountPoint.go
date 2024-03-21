@@ -68,7 +68,7 @@ import (
 //				VpcId:       defaultVPC.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String(name),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].ZoneId),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].ZoneId),
 //			})
 //			if err != nil {
 //				return err
@@ -97,7 +97,7 @@ import (
 //				SpaceCapacity:      pulumi.Int(1024),
 //				Description:        pulumi.String("for mountpoint  example"),
 //				StorageType:        pulumi.String("STANDARD"),
-//				ZoneId:             *pulumi.String(defaultZones.Zones[0].ZoneId),
+//				ZoneId:             pulumi.String(defaultZones.Zones[0].ZoneId),
 //				ProtocolType:       pulumi.String("HDFS"),
 //				DataRedundancyType: pulumi.String("LRS"),
 //				FileSystemName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {

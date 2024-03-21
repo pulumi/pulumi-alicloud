@@ -52,7 +52,7 @@ import (
 //			defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
 //				FileSystemType: pulumi.String("extreme"),
 //				ProtocolType:   pulumi.String("NFS"),
-//				ZoneId:         *pulumi.String(defaultZones.Zones[0].ZoneId),
+//				ZoneId:         pulumi.String(defaultZones.Zones[0].ZoneId),
 //				StorageType:    pulumi.String("standard"),
 //				Description:    pulumi.String(name),
 //				Capacity:       pulumi.Int(100),

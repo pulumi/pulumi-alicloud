@@ -70,7 +70,7 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -82,14 +82,14 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-//				AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+//				AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 //				InstanceName:     pulumi.String("terraform-example"),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
 //				VswitchId:               defaultSwitch.ID(),
-//				InstanceType:            *pulumi.String(defaultInstanceTypes.Ids[0]),
-//				ImageId:                 *pulumi.String(defaultImages.Ids[0]),
+//				InstanceType:            pulumi.String(defaultInstanceTypes.Ids[0]),
+//				ImageId:                 pulumi.String(defaultImages.Ids[0]),
 //				InternetMaxBandwidthOut: pulumi.Int(10),
 //			})
 //			if err != nil {

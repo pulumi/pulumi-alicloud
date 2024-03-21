@@ -63,15 +63,15 @@ import (
 //				InstanceId:            exampleInstance.ID(),
 //				ChildInstanceId:       exampleNetwork.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: *pulumi.String(defaultRegions.Regions[0].Id),
+//				ChildInstanceRegionId: pulumi.String(defaultRegions.Regions[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cen.NewPrivateZone(ctx, "defaultPrivateZone", &cen.PrivateZoneArgs{
-//				AccessRegionId: *pulumi.String(defaultRegions.Regions[0].Id),
+//				AccessRegionId: pulumi.String(defaultRegions.Regions[0].Id),
 //				CenId:          exampleInstanceAttachment.InstanceId,
-//				HostRegionId:   *pulumi.String(defaultRegions.Regions[0].Id),
+//				HostRegionId:   pulumi.String(defaultRegions.Regions[0].Id),
 //				HostVpcId:      exampleNetwork.ID(),
 //			})
 //			if err != nil {

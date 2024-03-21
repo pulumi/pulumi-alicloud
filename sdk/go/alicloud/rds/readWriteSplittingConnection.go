@@ -70,7 +70,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
 //				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -86,8 +86,8 @@ import (
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("5.7"),
 //				Category:              pulumi.String("HighAvailability"),
-//				InstanceType:          *pulumi.String(exampleInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       *pulumi.String(exampleInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceType:          pulumi.String(exampleInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       pulumi.String(exampleInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				DbInstanceStorageType: pulumi.String("local_ssd"),
 //				InstanceName:          pulumi.String(name),

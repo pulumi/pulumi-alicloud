@@ -95,7 +95,7 @@ type Instance struct {
 	InstanceClass pulumi.StringPtrOutput `pulumi:"instanceClass"`
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
-	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
+	// Deprecated: Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// Whether to open the release protection.
 	InstanceReleaseProtection pulumi.BoolPtrOutput `pulumi:"instanceReleaseProtection"`
@@ -286,7 +286,7 @@ type instanceState struct {
 	InstanceClass *string `pulumi:"instanceClass"`
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
-	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
+	// Deprecated: Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
 	InstanceName *string `pulumi:"instanceName"`
 	// Whether to open the release protection.
 	InstanceReleaseProtection *bool `pulumi:"instanceReleaseProtection"`
@@ -441,7 +441,7 @@ type InstanceState struct {
 	InstanceClass pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
-	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
+	// Deprecated: Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
 	InstanceName pulumi.StringPtrInput
 	// Whether to open the release protection.
 	InstanceReleaseProtection pulumi.BoolPtrInput
@@ -590,7 +590,7 @@ type instanceArgs struct {
 	InstanceClass *string `pulumi:"instanceClass"`
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
-	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
+	// Deprecated: Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
 	InstanceName *string `pulumi:"instanceName"`
 	// Whether to open the release protection.
 	InstanceReleaseProtection *bool `pulumi:"instanceReleaseProtection"`
@@ -732,7 +732,7 @@ type InstanceArgs struct {
 	InstanceClass pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
-	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
+	// Deprecated: Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
 	InstanceName pulumi.StringPtrInput
 	// Whether to open the release protection.
 	InstanceReleaseProtection pulumi.BoolPtrInput
@@ -1059,7 +1059,7 @@ func (o InstanceOutput) InstanceClass() pulumi.StringPtrOutput {
 
 // It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 //
-// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
+// Deprecated: Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
 func (o InstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }

@@ -54,14 +54,14 @@ import (
 //			defaultVpd, err := eflo.NewVpd(ctx, "defaultVpd", &eflo.VpdArgs{
 //				Cidr:            pulumi.String("10.0.0.0/8"),
 //				VpdName:         pulumi.String(name),
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = eflo.NewSubnet(ctx, "defaultSubnet", &eflo.SubnetArgs{
 //				SubnetName: pulumi.String(name),
-//				ZoneId:     *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:     pulumi.String(defaultZones.Zones[0].Id),
 //				Cidr:       pulumi.String("10.0.0.0/16"),
 //				VpdId:      defaultVpd.ID(),
 //			})

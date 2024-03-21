@@ -91,7 +91,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -106,8 +106,8 @@ import (
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
-//				InstanceType:          *pulumi.String(defaultInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       *pulumi.String(defaultInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceType:          pulumi.String(defaultInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       pulumi.String(defaultInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				VswitchId:             defaultSwitch.ID(),
 //				InstanceName:          pulumi.String(name),
 //				SecurityIps: pulumi.StringArray{
@@ -132,7 +132,7 @@ import (
 //				return err
 //			}
 //			_, err = dms.NewEnterpriseInstance(ctx, "defaultEnterpriseInstance", &dms.EnterpriseInstanceArgs{
-//				Tid:              *pulumi.String(defaultUserTenants.Ids[0]),
+//				Tid:              pulumi.String(defaultUserTenants.Ids[0]),
 //				InstanceType:     pulumi.String("mysql"),
 //				InstanceSource:   pulumi.String("RDS"),
 //				NetworkType:      pulumi.String("VPC"),
@@ -142,12 +142,12 @@ import (
 //				DatabaseUser:     defaultAccount.AccountName,
 //				DatabasePassword: defaultAccount.AccountPassword,
 //				InstanceName:     pulumi.String(name),
-//				DbaUid:           *pulumi.String(current.Id),
+//				DbaUid:           pulumi.String(current.Id),
 //				SafeRule:         pulumi.String("904496"),
 //				UseDsql:          pulumi.Int(1),
 //				QueryTimeout:     pulumi.Int(60),
 //				ExportTimeout:    pulumi.Int(600),
-//				EcsRegion:        *pulumi.String(defaultRegions.Regions[0].Id),
+//				EcsRegion:        pulumi.String(defaultRegions.Regions[0].Id),
 //			})
 //			if err != nil {
 //				return err

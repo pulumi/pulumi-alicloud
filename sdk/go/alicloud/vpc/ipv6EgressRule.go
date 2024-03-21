@@ -77,7 +77,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:             defaultNetwork.ID(),
 //				CidrBlock:         pulumi.String("172.16.0.0/21"),
-//				ZoneId:            *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:            pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName:       pulumi.String(name),
 //				Ipv6CidrBlockMask: pulumi.Int(64),
 //			})
@@ -92,11 +92,11 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-//				AvailabilityZone:        *pulumi.String(defaultZones.Zones[0].Id),
+//				AvailabilityZone:        pulumi.String(defaultZones.Zones[0].Id),
 //				Ipv6AddressCount:        pulumi.Int(1),
-//				InstanceType:            *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				InstanceType:            pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
-//				ImageId:                 *pulumi.String(defaultImages.Images[0].Id),
+//				ImageId:                 pulumi.String(defaultImages.Images[0].Id),
 //				InstanceName:            pulumi.String(name),
 //				VswitchId:               defaultSwitch.ID(),
 //				InternetMaxBandwidthOut: pulumi.Int(10),

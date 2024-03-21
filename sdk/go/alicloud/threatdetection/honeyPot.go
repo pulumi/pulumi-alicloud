@@ -58,8 +58,8 @@ import (
 //				return err
 //			}
 //			_, err = threatdetection.NewHoneyPot(ctx, "defaultHoneyPot", &threatdetection.HoneyPotArgs{
-//				HoneypotImageName: *pulumi.String(defaultHoneypotImages.Images[0].HoneypotImageName),
-//				HoneypotImageId:   *pulumi.String(defaultHoneypotImages.Images[0].HoneypotImageId),
+//				HoneypotImageName: pulumi.String(defaultHoneypotImages.Images[0].HoneypotImageName),
+//				HoneypotImageId:   pulumi.String(defaultHoneypotImages.Images[0].HoneypotImageId),
 //				HoneypotName:      pulumi.String(name),
 //				NodeId:            defaultHoneypotNode.ID(),
 //			})

@@ -69,7 +69,7 @@ import (
 //			}
 //			_, err = actiontrail.NewTrail(ctx, "exampleTrail", &actiontrail.TrailArgs{
 //				TrailName:       pulumi.String(name),
-//				SlsWriteRoleArn: *pulumi.String(exampleRoles.Roles[0].Arn),
+//				SlsWriteRoleArn: pulumi.String(exampleRoles.Roles[0].Arn),
 //				SlsProjectArn: exampleProject.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("acs:log:%v:%v:project/%v", exampleRegions.Regions[0].Id, exampleAccount.Id, name), nil
 //				}).(pulumi.StringOutput),

@@ -47,7 +47,7 @@ import (
 //				Content:            pulumi.String("RUN yum update -y"),
 //				Description:        pulumi.String("example_value"),
 //				ImageComponentName: pulumi.String("example_value"),
-//				ResourceGroupId:    *pulumi.String(_default.Groups[0].Id),
+//				ResourceGroupId:    pulumi.String(_default.Groups[0].Id),
 //				SystemType:         pulumi.String("Linux"),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),

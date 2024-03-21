@@ -68,7 +68,7 @@ import (
 //					&cms.MonitorGroupInstancesInstanceArgs{
 //						InstanceId:   defaultNetwork.ID(),
 //						InstanceName: pulumi.String(name),
-//						RegionId:     *pulumi.String(defaultRegions.Regions[0].Id),
+//						RegionId:     pulumi.String(defaultRegions.Regions[0].Id),
 //						Category:     pulumi.String("vpc"),
 //					},
 //				},

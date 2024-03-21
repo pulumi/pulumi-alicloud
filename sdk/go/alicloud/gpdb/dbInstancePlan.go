@@ -66,15 +66,15 @@ import (
 //				Description:         pulumi.String(name),
 //				Engine:              pulumi.String("gpdb"),
 //				EngineVersion:       pulumi.String("6.0"),
-//				ZoneId:              *pulumi.String(defaultZones.Ids[0]),
+//				ZoneId:              pulumi.String(defaultZones.Ids[0]),
 //				InstanceNetworkType: pulumi.String("VPC"),
 //				InstanceSpec:        pulumi.String("2C16G"),
 //				PaymentType:         pulumi.String("PayAsYouGo"),
 //				SegStorageType:      pulumi.String("cloud_essd"),
 //				SegNodeNum:          pulumi.Int(4),
 //				StorageSize:         pulumi.Int(50),
-//				VpcId:               *pulumi.String(defaultNetworks.Ids[0]),
-//				VswitchId:           *pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:               pulumi.String(defaultNetworks.Ids[0]),
+//				VswitchId:           pulumi.String(defaultSwitches.Ids[0]),
 //				IpWhitelists: gpdb.InstanceIpWhitelistArray{
 //					&gpdb.InstanceIpWhitelistArgs{
 //						SecurityIpList: pulumi.String("127.0.0.1"),

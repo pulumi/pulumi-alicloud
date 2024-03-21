@@ -72,7 +72,7 @@ import (
 //				}).(pulumi.StringOutput),
 //				ClusterType:     pulumi.Int(2),
 //				NetworkMode:     pulumi.Int(2),
-//				LogicalRegionId: *pulumi.String(defaultRegions.Regions[0].Id),
+//				LogicalRegionId: pulumi.String(defaultRegions.Regions[0].Id),
 //				VpcId:           defaultNetwork.ID(),
 //			})
 //			if err != nil {

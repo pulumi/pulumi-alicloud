@@ -74,7 +74,7 @@ import (
 // vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
 // VpcId: vpc.ID(),
 // CidrBlock: pulumi.String("172.16.0.0/24"),
-// ZoneId: *pulumi.String(_default.Zones[0].Id),
+// ZoneId: pulumi.String(_default.Zones[0].Id),
 // VswitchName: pulumi.String(name),
 // })
 // if err != nil {
@@ -85,7 +85,7 @@ import (
 // splat0 = append(splat0, val0.ID())
 // }
 // _, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
-// AvailabilityZone: *pulumi.String(_default.Zones[0].Id),
+// AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 // SecurityGroups: splat0,
 // InstanceType: pulumi.String("ecs.n4.large"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),

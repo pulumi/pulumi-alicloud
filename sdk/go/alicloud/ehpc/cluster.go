@@ -75,7 +75,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -100,23 +100,23 @@ import (
 //				DeployMode:          pulumi.String("Simple"),
 //				Description:         pulumi.String(name),
 //				HaEnable:            pulumi.Bool(false),
-//				ImageId:             *pulumi.String(defaultImages.Images[0].Id),
+//				ImageId:             pulumi.String(defaultImages.Images[0].Id),
 //				ImageOwnerAlias:     pulumi.String("system"),
 //				VolumeProtocol:      pulumi.String("nfs"),
 //				VolumeId:            defaultFileSystem.ID(),
 //				VolumeMountpoint:    defaultMountTarget.MountTargetDomain,
 //				ComputeCount:        pulumi.Int(1),
-//				ComputeInstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ComputeInstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				LoginCount:          pulumi.Int(1),
-//				LoginInstanceType:   *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				LoginInstanceType:   pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				ManagerCount:        pulumi.Int(1),
-//				ManagerInstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ManagerInstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				OsTag:               pulumi.String("CentOS_7.6_64"),
 //				SchedulerType:       pulumi.String("pbs"),
 //				Password:            pulumi.String("your-password123"),
 //				VswitchId:           defaultSwitch.ID(),
 //				VpcId:               defaultNetwork.ID(),
-//				ZoneId:              *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:              pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err

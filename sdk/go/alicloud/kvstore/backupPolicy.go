@@ -54,7 +54,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -63,7 +63,7 @@ import (
 //			defaultInstance, err := kvstore.NewInstance(ctx, "defaultInstance", &kvstore.InstanceArgs{
 //				DbInstanceName: pulumi.String(name),
 //				VswitchId:      defaultSwitch.ID(),
-//				ZoneId:         *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:         pulumi.String(defaultZones.Zones[0].Id),
 //				InstanceClass:  pulumi.String("redis.master.large.default"),
 //				InstanceType:   pulumi.String("Redis"),
 //				EngineVersion:  pulumi.String("5.0"),

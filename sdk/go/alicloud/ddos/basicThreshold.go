@@ -76,7 +76,7 @@ import (
 // VswitchName: pulumi.String(name),
 // VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("192.168.192.0/24"),
-// ZoneId: *pulumi.String(defaultZones.Ids[0]),
+// ZoneId: pulumi.String(defaultZones.Ids[0]),
 // })
 // if err != nil {
 // return err
@@ -92,13 +92,13 @@ import (
 // splat0 = append(splat0, val0.ID())
 // }
 // defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-// ImageId: *pulumi.String(defaultImages.Images[0].Id),
-// InstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+// ImageId: pulumi.String(defaultImages.Images[0].Id),
+// InstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 // InstanceName: pulumi.String(name),
 // SecurityGroups: splat0,
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(10),
-// AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+// AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // VswitchId: defaultSwitch.ID(),

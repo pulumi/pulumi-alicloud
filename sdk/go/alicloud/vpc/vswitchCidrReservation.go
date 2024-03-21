@@ -61,7 +61,7 @@ import (
 //				VpcId:       defaultVpc.ID(),
 //				CidrBlock:   pulumi.String("10.0.0.0/20"),
 //				VswitchName: pulumi.String(fmt.Sprintf("%v1", name)),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err

@@ -51,8 +51,8 @@ import (
 //			_, err = cfg.NewAggregator(ctx, "defaultAggregator", &cfg.AggregatorArgs{
 //				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
 //					&cfg.AggregatorAggregatorAccountArgs{
-//						AccountId:   *pulumi.String(defaultAccounts.Accounts[0].AccountId),
-//						AccountName: *pulumi.String(defaultAccounts.Accounts[0].DisplayName),
+//						AccountId:   pulumi.String(defaultAccounts.Accounts[0].AccountId),
+//						AccountName: pulumi.String(defaultAccounts.Accounts[0].DisplayName),
 //						AccountType: pulumi.String("ResourceDirectory"),
 //					},
 //				},

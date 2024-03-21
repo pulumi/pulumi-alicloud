@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			_, err = oos.NewApplication(ctx, "defaultApplication", &oos.ApplicationArgs{
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				ApplicationName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
 //					return fmt.Sprintf("%v-%v", name, result), nil
 //				}).(pulumi.StringOutput),

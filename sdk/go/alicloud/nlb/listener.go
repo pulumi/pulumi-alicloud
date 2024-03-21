@@ -63,7 +63,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -72,7 +72,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.1.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[1].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[1].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -85,7 +85,7 @@ import (
 //			}
 //			defaultLoadBalancer, err := nlb.NewLoadBalancer(ctx, "defaultLoadBalancer", &nlb.LoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(name),
-//				ResourceGroupId:  *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:  pulumi.String(defaultResourceGroups.Ids[0]),
 //				LoadBalancerType: pulumi.String("Network"),
 //				AddressType:      pulumi.String("Internet"),
 //				AddressIpVersion: pulumi.String("Ipv4"),
@@ -97,11 +97,11 @@ import (
 //				ZoneMappings: nlb.LoadBalancerZoneMappingArray{
 //					&nlb.LoadBalancerZoneMappingArgs{
 //						VswitchId: defaultSwitch.ID(),
-//						ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//						ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
 //					},
 //					&nlb.LoadBalancerZoneMappingArgs{
 //						VswitchId: default1.ID(),
-//						ZoneId:    *pulumi.String(defaultZones.Zones[1].Id),
+//						ZoneId:    pulumi.String(defaultZones.Zones[1].Id),
 //					},
 //				},
 //			})
@@ -109,7 +109,7 @@ import (
 //				return err
 //			}
 //			defaultServerGroup, err := nlb.NewServerGroup(ctx, "defaultServerGroup", &nlb.ServerGroupArgs{
-//				ResourceGroupId:        *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:        pulumi.String(defaultResourceGroups.Ids[0]),
 //				ServerGroupName:        pulumi.String(name),
 //				ServerGroupType:        pulumi.String("Instance"),
 //				VpcId:                  defaultNetwork.ID(),

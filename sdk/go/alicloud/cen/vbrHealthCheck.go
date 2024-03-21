@@ -68,7 +68,7 @@ import (
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-//				PhysicalConnectionId:    *pulumi.String(defaultPhysicalConnections.Connections[0].Id),
+//				PhysicalConnectionId:    pulumi.String(defaultPhysicalConnections.Connections[0].Id),
 //				VirtualBorderRouterName: pulumi.String(name),
 //				VlanId:                  vlanId.ID(),
 //				MinRxInterval:           pulumi.Int(1000),
@@ -89,7 +89,7 @@ import (
 //				InstanceId:            exampleInstance.ID(),
 //				ChildInstanceId:       exampleVirtualBorderRouter.ID(),
 //				ChildInstanceType:     pulumi.String("VBR"),
-//				ChildInstanceRegionId: *pulumi.String(defaultRegions.Regions[0].Id),
+//				ChildInstanceRegionId: pulumi.String(defaultRegions.Regions[0].Id),
 //			})
 //			if err != nil {
 //				return err

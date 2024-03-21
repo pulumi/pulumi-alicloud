@@ -89,7 +89,7 @@ import (
 //			defaultPeerConnection, err := vpc.NewPeerConnection(ctx, "defaultPeerConnection", &vpc.PeerConnectionArgs{
 //				PeerConnectionName: pulumi.String(name),
 //				VpcId:              localNetwork.ID(),
-//				AcceptingAliUid:    *pulumi.String(acceptingAccount.Id),
+//				AcceptingAliUid:    pulumi.String(acceptingAccount.Id),
 //				AcceptingRegionId:  pulumi.String(acceptingRegion),
 //				AcceptingVpcId:     acceptingNetwork.ID(),
 //				Description:        pulumi.String(name),

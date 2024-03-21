@@ -88,7 +88,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(myName),
 //			})
 //			if err != nil {
@@ -130,8 +130,8 @@ import (
 //			}
 //			_, err = ess.NewScalingConfiguration(ctx, "defaultScalingConfiguration", &ess.ScalingConfigurationArgs{
 //				ScalingGroupId:  defaultScalingGroup.ID(),
-//				ImageId:         *pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:    *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:         pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:    pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroupId: defaultSecurityGroup.ID(),
 //				ForceDelete:     pulumi.Bool(true),
 //				Active:          pulumi.Bool(true),
@@ -199,7 +199,7 @@ type ScalingConfiguration struct {
 	InternetMaxBandwidthOut pulumi.IntPtrOutput `pulumi:"internetMaxBandwidthOut"`
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 	//
-	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+	// Deprecated: Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrOutput `pulumi:"ioOptimized"`
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrOutput `pulumi:"isOutdated"`
@@ -340,7 +340,7 @@ type scalingConfigurationState struct {
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 	//
-	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+	// Deprecated: Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized *string `pulumi:"ioOptimized"`
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated *bool `pulumi:"isOutdated"`
@@ -449,7 +449,7 @@ type ScalingConfigurationState struct {
 	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 	//
-	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+	// Deprecated: Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrInput
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrInput
@@ -562,7 +562,7 @@ type scalingConfigurationArgs struct {
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 	//
-	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+	// Deprecated: Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized *string `pulumi:"ioOptimized"`
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated *bool `pulumi:"isOutdated"`
@@ -672,7 +672,7 @@ type ScalingConfigurationArgs struct {
 	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 	//
-	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+	// Deprecated: Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrInput
 	// Whether to use outdated instance type. Default to false.
 	IsOutdated pulumi.BoolPtrInput
@@ -922,7 +922,7 @@ func (o ScalingConfigurationOutput) InternetMaxBandwidthOut() pulumi.IntPtrOutpu
 
 // It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 //
-// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+// Deprecated: Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 func (o ScalingConfigurationOutput) IoOptimized() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.IoOptimized }).(pulumi.StringPtrOutput)
 }

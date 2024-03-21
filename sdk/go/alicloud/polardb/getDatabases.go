@@ -53,7 +53,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(this.Classes[0].ZoneId),
+//				ZoneId:      pulumi.String(this.Classes[0].ZoneId),
 //				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
@@ -64,7 +64,7 @@ import (
 //				DbVersion:   pulumi.String("8.0"),
 //				PayType:     pulumi.String("PostPaid"),
 //				DbNodeCount: pulumi.Int(2),
-//				DbNodeClass: *pulumi.String(this.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
+//				DbNodeClass: pulumi.String(this.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
 //				VswitchId:   defaultSwitch.ID(),
 //			})
 //			if err != nil {

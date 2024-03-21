@@ -59,7 +59,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].ZoneIds[0]),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].ZoneIds[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -93,7 +93,7 @@ import (
 //				VswitchId:           defaultSwitch.ID(),
 //				EnablePublicNetwork: pulumi.Bool(false),
 //				EipInstanceId:       defaultEipAddress.ID(),
-//				ResourceGroupId:     *pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId:     pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				KubeConfig:          pulumi.String("kube_config"),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),

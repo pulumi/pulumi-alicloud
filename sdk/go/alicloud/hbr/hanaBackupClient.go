@@ -73,7 +73,7 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -85,9 +85,9 @@ import (
 //				return err
 //			}
 //			exampleInstance, err := ecs.NewInstance(ctx, "exampleInstance", &ecs.InstanceArgs{
-//				ImageId:          *pulumi.String(exampleImages.Images[0].Id),
-//				InstanceType:     *pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
-//				AvailabilityZone: *pulumi.String(exampleZones.Zones[0].Id),
+//				ImageId:          pulumi.String(exampleImages.Images[0].Id),
+//				InstanceType:     pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
+//				AvailabilityZone: pulumi.String(exampleZones.Zones[0].Id),
 //				SecurityGroups: pulumi.StringArray{
 //					exampleSecurityGroup.ID(),
 //				},
@@ -116,7 +116,7 @@ import (
 //				Host:                pulumi.String("1.1.1.1"),
 //				InstanceNumber:      pulumi.Int(1),
 //				Password:            pulumi.String("YouPassword123"),
-//				ResourceGroupId:     *pulumi.String(exampleResourceGroups.Groups[0].Id),
+//				ResourceGroupId:     pulumi.String(exampleResourceGroups.Groups[0].Id),
 //				Sid:                 pulumi.String("HXE"),
 //				UseSsl:              pulumi.Bool(false),
 //				UserName:            pulumi.String("admin"),

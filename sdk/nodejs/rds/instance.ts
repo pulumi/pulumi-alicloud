@@ -341,7 +341,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      *
-     * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
+     * @deprecated Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
@@ -464,7 +464,7 @@ export class Instance extends pulumi.CustomResource {
      * - true: upgrade
      * - false: not to upgrade
      *
-     * @deprecated Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
+     * @deprecated Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
      */
     public readonly upgradeDbInstanceKernelVersion!: pulumi.Output<boolean | undefined>;
     /**
@@ -996,7 +996,7 @@ export interface InstanceState {
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      *
-     * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
+     * @deprecated Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
@@ -1119,7 +1119,7 @@ export interface InstanceState {
      * - true: upgrade
      * - false: not to upgrade
      *
-     * @deprecated Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
+     * @deprecated Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
      */
     upgradeDbInstanceKernelVersion?: pulumi.Input<boolean>;
     /**
@@ -1451,7 +1451,7 @@ export interface InstanceArgs {
     /**
      * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      *
-     * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
+     * @deprecated Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
@@ -1566,7 +1566,7 @@ export interface InstanceArgs {
      * - true: upgrade
      * - false: not to upgrade
      *
-     * @deprecated Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
+     * @deprecated Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
      */
     upgradeDbInstanceKernelVersion?: pulumi.Input<boolean>;
     /**

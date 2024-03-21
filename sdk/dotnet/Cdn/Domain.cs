@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Cdn
 
         [Input("blockIps")]
         private InputList<string>? _blockIps;
-        [Obsolete(@"Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")]
+        [Obsolete(@"Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.")]
         public InputList<string> BlockIps
         {
             get => _blockIps ?? (_blockIps = new InputList<string>());
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Cdn
 
         [Input("cacheConfigs")]
         private InputList<Inputs.DomainCacheConfigArgs>? _cacheConfigs;
-        [Obsolete(@"Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")]
+        [Obsolete(@"Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.")]
         public InputList<Inputs.DomainCacheConfigArgs> CacheConfigs
         {
             get => _cacheConfigs ?? (_cacheConfigs = new InputList<Inputs.DomainCacheConfigArgs>());
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Cdn
 
         [Input("httpHeaderConfigs")]
         private InputList<Inputs.DomainHttpHeaderConfigArgs>? _httpHeaderConfigs;
-        [Obsolete(@"Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")]
+        [Obsolete(@"Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.")]
         public InputList<Inputs.DomainHttpHeaderConfigArgs> HttpHeaderConfigs
         {
             get => _httpHeaderConfigs ?? (_httpHeaderConfigs = new InputList<Inputs.DomainHttpHeaderConfigArgs>());
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.Cdn
 
         [Input("sources")]
         private InputList<string>? _sources;
-        [Obsolete(@"Use `alicloud_cdn_domain_new` configuration `sources` argument instead.")]
+        [Obsolete(@"Use `alicloud.cdn.DomainNew` configuration `sources` argument instead.")]
         public InputList<string> Sources
         {
             get => _sources ?? (_sources = new InputList<string>());
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.Cdn
 
         [Input("blockIps")]
         private InputList<string>? _blockIps;
-        [Obsolete(@"Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")]
+        [Obsolete(@"Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.")]
         public InputList<string> BlockIps
         {
             get => _blockIps ?? (_blockIps = new InputList<string>());
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.Cdn
 
         [Input("cacheConfigs")]
         private InputList<Inputs.DomainCacheConfigGetArgs>? _cacheConfigs;
-        [Obsolete(@"Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")]
+        [Obsolete(@"Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.")]
         public InputList<Inputs.DomainCacheConfigGetArgs> CacheConfigs
         {
             get => _cacheConfigs ?? (_cacheConfigs = new InputList<Inputs.DomainCacheConfigGetArgs>());
@@ -230,7 +230,7 @@ namespace Pulumi.AliCloud.Cdn
 
         [Input("httpHeaderConfigs")]
         private InputList<Inputs.DomainHttpHeaderConfigGetArgs>? _httpHeaderConfigs;
-        [Obsolete(@"Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.")]
+        [Obsolete(@"Use `alicloud.cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.")]
         public InputList<Inputs.DomainHttpHeaderConfigGetArgs> HttpHeaderConfigs
         {
             get => _httpHeaderConfigs ?? (_httpHeaderConfigs = new InputList<Inputs.DomainHttpHeaderConfigGetArgs>());
@@ -266,7 +266,7 @@ namespace Pulumi.AliCloud.Cdn
 
         [Input("sources")]
         private InputList<string>? _sources;
-        [Obsolete(@"Use `alicloud_cdn_domain_new` configuration `sources` argument instead.")]
+        [Obsolete(@"Use `alicloud.cdn.DomainNew` configuration `sources` argument instead.")]
         public InputList<string> Sources
         {
             get => _sources ?? (_sources = new InputList<string>());

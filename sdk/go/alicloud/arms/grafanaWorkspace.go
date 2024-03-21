@@ -48,7 +48,7 @@ import (
 //			_, err = arms.NewGrafanaWorkspace(ctx, "defaultGrafanaWorkspace", &arms.GrafanaWorkspaceArgs{
 //				GrafanaVersion:          pulumi.String("9.0.x"),
 //				Description:             pulumi.String(name),
-//				ResourceGroupId:         *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:         pulumi.String(defaultResourceGroups.Ids[0]),
 //				GrafanaWorkspaceEdition: pulumi.String("standard"),
 //				GrafanaWorkspaceName:    pulumi.String(name),
 //				Tags: pulumi.Map{

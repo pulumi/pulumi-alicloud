@@ -61,7 +61,7 @@ import (
 //				VpcId:       defaultVpc.ID(),
 //				CidrBlock:   pulumi.String("192.168.0.0/21"),
 //				VswitchName: pulumi.String(fmt.Sprintf("%v1", name)),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //				Description: pulumi.String("tf-testacc-vswitch"),
 //			})
 //			if err != nil {
