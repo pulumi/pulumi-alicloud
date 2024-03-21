@@ -84,7 +84,7 @@ import (
 //			mainSwitch, err := vpc.NewSwitch(ctx, "mainSwitch", &vpc.SwitchArgs{
 //				VpcId:       mainNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
-//				ZoneId:      *pulumi.String(msServerGroupZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(msServerGroupZones.Zones[0].Id),
 //				VswitchName: pulumi.String(slbMasterSlaveServerGroup),
 //			})
 //			if err != nil {
@@ -101,15 +101,15 @@ import (
 //				key0 := index
 //				_ := index
 //				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("msServerGroupInstance-%v", key0), &ecs.InstanceArgs{
-//					ImageId:      *pulumi.String(image.Images[0].Id),
-//					InstanceType: *pulumi.String(msServerGroupInstanceTypes.InstanceTypes[0].Id),
+//					ImageId:      pulumi.String(image.Images[0].Id),
+//					InstanceType: pulumi.String(msServerGroupInstanceTypes.InstanceTypes[0].Id),
 //					InstanceName: pulumi.String(slbMasterSlaveServerGroup),
 //					SecurityGroups: pulumi.StringArray{
 //						groupSecurityGroup.ID(),
 //					},
 //					InternetChargeType:      pulumi.String("PayByTraffic"),
 //					InternetMaxBandwidthOut: pulumi.Int(10),
-//					AvailabilityZone:        *pulumi.String(msServerGroupZones.Zones[0].Id),
+//					AvailabilityZone:        pulumi.String(msServerGroupZones.Zones[0].Id),
 //					InstanceChargeType:      pulumi.String("PostPaid"),
 //					SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //					VswitchId:               mainSwitch.ID(),

@@ -51,8 +51,8 @@ import (
 //			defaultAggregator, err := cfg.NewAggregator(ctx, "defaultAggregator", &cfg.AggregatorArgs{
 //				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
 //					&cfg.AggregatorAggregatorAccountArgs{
-//						AccountId:   *pulumi.String(defaultAccounts.Accounts[0].AccountId),
-//						AccountName: *pulumi.String(defaultAccounts.Accounts[0].DisplayName),
+//						AccountId:   pulumi.String(defaultAccounts.Accounts[0].AccountId),
+//						AccountName: pulumi.String(defaultAccounts.Accounts[0].DisplayName),
 //						AccountType: pulumi.String("ResourceDirectory"),
 //					},
 //				},
@@ -125,7 +125,7 @@ type AggregateCompliancePack struct {
 	ConfigRuleIds AggregateCompliancePackConfigRuleIdArrayOutput `pulumi:"configRuleIds"`
 	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+	// Deprecated: Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	ConfigRules AggregateCompliancePackConfigRuleArrayOutput `pulumi:"configRules"`
 	// The description of compliance package.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -189,7 +189,7 @@ type aggregateCompliancePackState struct {
 	ConfigRuleIds []AggregateCompliancePackConfigRuleId `pulumi:"configRuleIds"`
 	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+	// Deprecated: Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	ConfigRules []AggregateCompliancePackConfigRule `pulumi:"configRules"`
 	// The description of compliance package.
 	Description *string `pulumi:"description"`
@@ -212,7 +212,7 @@ type AggregateCompliancePackState struct {
 	ConfigRuleIds AggregateCompliancePackConfigRuleIdArrayInput
 	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+	// Deprecated: Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	ConfigRules AggregateCompliancePackConfigRuleArrayInput
 	// The description of compliance package.
 	Description pulumi.StringPtrInput
@@ -237,7 +237,7 @@ type aggregateCompliancePackArgs struct {
 	ConfigRuleIds []AggregateCompliancePackConfigRuleId `pulumi:"configRuleIds"`
 	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+	// Deprecated: Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	ConfigRules []AggregateCompliancePackConfigRule `pulumi:"configRules"`
 	// The description of compliance package.
 	Description string `pulumi:"description"`
@@ -257,7 +257,7 @@ type AggregateCompliancePackArgs struct {
 	ConfigRuleIds AggregateCompliancePackConfigRuleIdArrayInput
 	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+	// Deprecated: Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	ConfigRules AggregateCompliancePackConfigRuleArrayInput
 	// The description of compliance package.
 	Description pulumi.StringInput
@@ -381,7 +381,7 @@ func (o AggregateCompliancePackOutput) ConfigRuleIds() AggregateCompliancePackCo
 
 // A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 //
-// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+// Deprecated: Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 func (o AggregateCompliancePackOutput) ConfigRules() AggregateCompliancePackConfigRuleArrayOutput {
 	return o.ApplyT(func(v *AggregateCompliancePack) AggregateCompliancePackConfigRuleArrayOutput { return v.ConfigRules }).(AggregateCompliancePackConfigRuleArrayOutput)
 }

@@ -60,7 +60,7 @@ export class DBCluster extends pulumi.CustomResource {
     /**
      * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      *
-     * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+     * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      */
     public readonly dbClusterClass!: pulumi.Output<string | undefined>;
     /**
@@ -269,7 +269,7 @@ export interface DBClusterState {
     /**
      * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      *
-     * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+     * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      */
     dbClusterClass?: pulumi.Input<string>;
     /**
@@ -392,7 +392,7 @@ export interface DBClusterArgs {
     /**
      * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      *
-     * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+     * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      */
     dbClusterClass?: pulumi.Input<string>;
     /**

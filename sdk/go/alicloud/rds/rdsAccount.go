@@ -66,7 +66,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Ids[0]),
+//				ZoneId:      pulumi.String(defaultZones.Ids[0]),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -75,7 +75,7 @@ import (
 //			defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
 //				Engine:          pulumi.String("MySQL"),
 //				EngineVersion:   pulumi.String("5.6"),
-//				InstanceType:    *pulumi.String(defaultInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceType:    pulumi.String(defaultInstanceClasses.InstanceClasses[0].InstanceClass),
 //				InstanceStorage: pulumi.Int(10),
 //				VswitchId:       defaultSwitch.ID(),
 //				InstanceName:    pulumi.String(name),

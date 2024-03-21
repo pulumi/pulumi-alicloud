@@ -61,13 +61,13 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(zoneId),
+//				ZoneId:      pulumi.String(zoneId),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultShardingInstance, err := mongodb.NewShardingInstance(ctx, "defaultShardingInstance", &mongodb.ShardingInstanceArgs{
-//				ZoneId:        *pulumi.String(zoneId),
+//				ZoneId:        pulumi.String(zoneId),
 //				VswitchId:     defaultSwitch.ID(),
 //				EngineVersion: pulumi.String("4.2"),
 //				ShardLists: mongodb.ShardingInstanceShardListArray{

@@ -47,8 +47,8 @@ import (
 //				return err
 //			}
 //			_, err = dms.NewEnterpriseProxyAccess(ctx, "default", &dms.EnterpriseProxyAccessArgs{
-//				ProxyId: *pulumi.String(ids.Proxies[0].Id),
-//				UserId:  *pulumi.String(dmsEnterpriseUsersDs.Users[0].UserId),
+//				ProxyId: pulumi.String(ids.Proxies[0].Id),
+//				UserId:  pulumi.String(dmsEnterpriseUsersDs.Users[0].UserId),
 //			})
 //			if err != nil {
 //				return err

@@ -51,9 +51,9 @@ import (
 //				Description: pulumi.String(name),
 //				JobType:     pulumi.String("StartNow"),
 //				ResourceIds: pulumi.StringArray{
-//					*pulumi.String(defaultPhysicalConnections.Ids[0]),
-//					*pulumi.String(defaultPhysicalConnections.Ids[1]),
-//					*pulumi.String(defaultPhysicalConnections.Ids[2]),
+//					pulumi.String(defaultPhysicalConnections.Ids[0]),
+//					pulumi.String(defaultPhysicalConnections.Ids[1]),
+//					pulumi.String(defaultPhysicalConnections.Ids[2]),
 //				},
 //				JobDuration:           pulumi.Int(1),
 //				ResourceType:          pulumi.String("PHYSICALCONNECTION"),

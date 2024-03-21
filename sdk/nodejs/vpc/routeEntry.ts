@@ -139,7 +139,7 @@ export class RouteEntry extends pulumi.CustomResource {
     /**
      * This argument has been deprecated. Please use other arguments to launch a custom route entry.
      *
-     * @deprecated Attribute router_id has been deprecated and suggest removing it from your template.
+     * @deprecated Attribute routerId has been deprecated and suggest removing it from your template.
      */
     public readonly routerId!: pulumi.Output<string>;
 
@@ -206,7 +206,7 @@ export interface RouteEntryState {
     /**
      * This argument has been deprecated. Please use other arguments to launch a custom route entry.
      *
-     * @deprecated Attribute router_id has been deprecated and suggest removing it from your template.
+     * @deprecated Attribute routerId has been deprecated and suggest removing it from your template.
      */
     routerId?: pulumi.Input<string>;
 }
@@ -238,7 +238,7 @@ export interface RouteEntryArgs {
     /**
      * This argument has been deprecated. Please use other arguments to launch a custom route entry.
      *
-     * @deprecated Attribute router_id has been deprecated and suggest removing it from your template.
+     * @deprecated Attribute routerId has been deprecated and suggest removing it from your template.
      */
     routerId?: pulumi.Input<string>;
 }

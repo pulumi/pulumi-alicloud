@@ -57,7 +57,7 @@ import (
 //			}
 //			_, err = tag.NewPolicyAttachment(ctx, "examplePolicyAttachment", &tag.PolicyAttachmentArgs{
 //				PolicyId:   examplePolicy.ID(),
-//				TargetId:   *pulumi.String(_default.Id),
+//				TargetId:   pulumi.String(_default.Id),
 //				TargetType: pulumi.String("USER"),
 //			})
 //			if err != nil {

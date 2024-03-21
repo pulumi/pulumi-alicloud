@@ -63,12 +63,12 @@ import (
 //				return err
 //			}
 //			defaultGateway, err := vpn.NewGateway(ctx, "defaultGateway", &vpn.GatewayArgs{
-//				VpcId:              *pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId:              pulumi.String(defaultNetworks.Ids[0]),
 //				Bandwidth:          pulumi.Int(10),
 //				EnableSsl:          pulumi.Bool(true),
 //				Description:        pulumi.String(name),
 //				InstanceChargeType: pulumi.String("PrePaid"),
-//				VswitchId:          *pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:          pulumi.String(defaultSwitches.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

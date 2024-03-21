@@ -58,13 +58,13 @@ import (
 //			}
 //			_, err = kms.NewInstance(ctx, "defaultInstance", &kms.InstanceArgs{
 //				ProductVersion: pulumi.String("3"),
-//				VpcId:          *pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId:          pulumi.String(defaultNetworks.Ids[0]),
 //				ZoneIds: pulumi.StringArray{
 //					pulumi.String("cn-hangzhou-k"),
 //					pulumi.String("cn-hangzhou-j"),
 //				},
 //				VswitchIds: pulumi.StringArray{
-//					*pulumi.String(defaultSwitches.Ids[0]),
+//					pulumi.String(defaultSwitches.Ids[0]),
 //				},
 //				VpcNum:    pulumi.Int(1),
 //				KeyNum:    pulumi.Int(1000),

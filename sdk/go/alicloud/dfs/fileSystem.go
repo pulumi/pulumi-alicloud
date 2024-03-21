@@ -66,8 +66,8 @@ import (
 //				SpaceCapacity:                pulumi.Int(1024),
 //				ThroughputMode:               pulumi.String("Provisioned"),
 //				ProvisionedThroughputInMiBps: pulumi.Int(512),
-//				StorageType:                  *pulumi.String(storageType),
-//				ZoneId:                       *pulumi.String(zoneId),
+//				StorageType:                  pulumi.String(storageType),
+//				ZoneId:                       pulumi.String(zoneId),
 //			})
 //			if err != nil {
 //				return err

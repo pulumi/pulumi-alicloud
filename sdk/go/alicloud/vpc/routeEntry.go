@@ -71,7 +71,7 @@ import (
 //			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
 //				VpcId:       fooNetwork.ID(),
 //				CidrBlock:   pulumi.String("10.1.1.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -103,11 +103,11 @@ import (
 //				},
 //				VswitchId:               fooSwitch.ID(),
 //				InstanceChargeType:      pulumi.String("PostPaid"),
-//				InstanceType:            *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				InstanceType:            pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
-//				ImageId:                 *pulumi.String(defaultImages.Images[0].Id),
+//				ImageId:                 pulumi.String(defaultImages.Images[0].Id),
 //				InstanceName:            pulumi.String(name),
 //			})
 //			if err != nil {
@@ -156,7 +156,7 @@ type RouteEntry struct {
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
 	// This argument has been deprecated. Please use other arguments to launch a custom route entry.
 	//
-	// Deprecated: Attribute router_id has been deprecated and suggest removing it from your template.
+	// Deprecated: Attribute routerId has been deprecated and suggest removing it from your template.
 	RouterId pulumi.StringOutput `pulumi:"routerId"`
 }
 
@@ -205,7 +205,7 @@ type routeEntryState struct {
 	RouteTableId *string `pulumi:"routeTableId"`
 	// This argument has been deprecated. Please use other arguments to launch a custom route entry.
 	//
-	// Deprecated: Attribute router_id has been deprecated and suggest removing it from your template.
+	// Deprecated: Attribute routerId has been deprecated and suggest removing it from your template.
 	RouterId *string `pulumi:"routerId"`
 }
 
@@ -222,7 +222,7 @@ type RouteEntryState struct {
 	RouteTableId pulumi.StringPtrInput
 	// This argument has been deprecated. Please use other arguments to launch a custom route entry.
 	//
-	// Deprecated: Attribute router_id has been deprecated and suggest removing it from your template.
+	// Deprecated: Attribute routerId has been deprecated and suggest removing it from your template.
 	RouterId pulumi.StringPtrInput
 }
 
@@ -243,7 +243,7 @@ type routeEntryArgs struct {
 	RouteTableId string `pulumi:"routeTableId"`
 	// This argument has been deprecated. Please use other arguments to launch a custom route entry.
 	//
-	// Deprecated: Attribute router_id has been deprecated and suggest removing it from your template.
+	// Deprecated: Attribute routerId has been deprecated and suggest removing it from your template.
 	RouterId *string `pulumi:"routerId"`
 }
 
@@ -261,7 +261,7 @@ type RouteEntryArgs struct {
 	RouteTableId pulumi.StringInput
 	// This argument has been deprecated. Please use other arguments to launch a custom route entry.
 	//
-	// Deprecated: Attribute router_id has been deprecated and suggest removing it from your template.
+	// Deprecated: Attribute routerId has been deprecated and suggest removing it from your template.
 	RouterId pulumi.StringPtrInput
 }
 
@@ -379,7 +379,7 @@ func (o RouteEntryOutput) RouteTableId() pulumi.StringOutput {
 
 // This argument has been deprecated. Please use other arguments to launch a custom route entry.
 //
-// Deprecated: Attribute router_id has been deprecated and suggest removing it from your template.
+// Deprecated: Attribute routerId has been deprecated and suggest removing it from your template.
 func (o RouteEntryOutput) RouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
 }

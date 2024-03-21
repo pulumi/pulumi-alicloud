@@ -31,8 +31,8 @@ class AclArgs:
         """
         pulumi.set(__self__, "address_ip_version", address_ip_version)
         if acl_entries is not None:
-            warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""", DeprecationWarning)
-            pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""")
+            warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""", DeprecationWarning)
+            pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""")
         if acl_entries is not None:
             pulumi.set(__self__, "acl_entries", acl_entries)
         if acl_name is not None:
@@ -60,8 +60,8 @@ class AclArgs:
         """
         The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         """
-        warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""", DeprecationWarning)
-        pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""")
+        warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""", DeprecationWarning)
+        pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""")
 
         return pulumi.get(self, "acl_entries")
 
@@ -125,8 +125,8 @@ class _AclState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if acl_entries is not None:
-            warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""", DeprecationWarning)
-            pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""")
+            warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""", DeprecationWarning)
+            pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""")
         if acl_entries is not None:
             pulumi.set(__self__, "acl_entries", acl_entries)
         if acl_name is not None:
@@ -146,8 +146,8 @@ class _AclState:
         """
         The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         """
-        warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""", DeprecationWarning)
-        pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""")
+        warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""", DeprecationWarning)
+        pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""")
 
         return pulumi.get(self, "acl_entries")
 
@@ -394,8 +394,8 @@ class Acl(pulumi.CustomResource):
         """
         The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         """
-        warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""", DeprecationWarning)
-        pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""")
+        warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""", DeprecationWarning)
+        pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""")
 
         return pulumi.get(self, "acl_entries")
 

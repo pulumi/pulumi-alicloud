@@ -70,15 +70,15 @@ import (
 //				Description:         pulumi.String(name),
 //				Engine:              pulumi.String("gpdb"),
 //				EngineVersion:       pulumi.String("6.0"),
-//				ZoneId:              *pulumi.String(defaultZones.Ids[0]),
+//				ZoneId:              pulumi.String(defaultZones.Ids[0]),
 //				InstanceNetworkType: pulumi.String("VPC"),
 //				InstanceSpec:        pulumi.String("2C16G"),
 //				PaymentType:         pulumi.String("PayAsYouGo"),
 //				SegStorageType:      pulumi.String("cloud_essd"),
 //				SegNodeNum:          pulumi.Int(4),
 //				StorageSize:         pulumi.Int(50),
-//				VpcId:               *pulumi.String(defaultNetworks.Ids[0]),
-//				VswitchId:           *pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:               pulumi.String(defaultNetworks.Ids[0]),
+//				VswitchId:           pulumi.String(defaultSwitches.Ids[0]),
 //				IpWhitelists: gpdb.InstanceIpWhitelistArray{
 //					&gpdb.InstanceIpWhitelistArgs{
 //						SecurityIpList: pulumi.String("127.0.0.1"),
@@ -135,7 +135,7 @@ type Instance struct {
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
 	//
-	// Deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
+	// Deprecated: Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
 	InstanceGroupCount pulumi.IntPtrOutput `pulumi:"instanceGroupCount"`
@@ -158,7 +158,7 @@ type Instance struct {
 	MasterCu pulumi.IntOutput `pulumi:"masterCu"`
 	// The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 	//
-	// Deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.
+	// Deprecated: Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 	MasterNodeNum pulumi.IntPtrOutput `pulumi:"masterNodeNum"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
@@ -168,7 +168,7 @@ type Instance struct {
 	Port pulumi.StringOutput `pulumi:"port"`
 	// The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 	//
-	// Deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.
+	// Deprecated: Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 	PrivateIpAddress pulumi.StringPtrOutput `pulumi:"privateIpAddress"`
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -275,7 +275,7 @@ type instanceState struct {
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
 	//
-	// Deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
+	// Deprecated: Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
 	InstanceGroupCount *int `pulumi:"instanceGroupCount"`
@@ -298,7 +298,7 @@ type instanceState struct {
 	MasterCu *int `pulumi:"masterCu"`
 	// The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 	//
-	// Deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.
+	// Deprecated: Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 	MasterNodeNum *int `pulumi:"masterNodeNum"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -308,7 +308,7 @@ type instanceState struct {
 	Port *string `pulumi:"port"`
 	// The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 	//
-	// Deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.
+	// Deprecated: Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -374,7 +374,7 @@ type InstanceState struct {
 	EngineVersion pulumi.StringPtrInput
 	// Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
 	//
-	// Deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
+	// Deprecated: Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
 	InstanceChargeType pulumi.StringPtrInput
 	// The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
 	InstanceGroupCount pulumi.IntPtrInput
@@ -397,7 +397,7 @@ type InstanceState struct {
 	MasterCu pulumi.IntPtrInput
 	// The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 	//
-	// Deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.
+	// Deprecated: Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 	MasterNodeNum pulumi.IntPtrInput
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
@@ -407,7 +407,7 @@ type InstanceState struct {
 	Port pulumi.StringPtrInput
 	// The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 	//
-	// Deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.
+	// Deprecated: Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 	PrivateIpAddress pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -475,7 +475,7 @@ type instanceArgs struct {
 	EngineVersion string `pulumi:"engineVersion"`
 	// Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
 	//
-	// Deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
+	// Deprecated: Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
 	InstanceGroupCount *int `pulumi:"instanceGroupCount"`
@@ -498,7 +498,7 @@ type instanceArgs struct {
 	MasterCu *int `pulumi:"masterCu"`
 	// The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 	//
-	// Deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.
+	// Deprecated: Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 	MasterNodeNum *int `pulumi:"masterNodeNum"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -506,7 +506,7 @@ type instanceArgs struct {
 	Period *string `pulumi:"period"`
 	// The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 	//
-	// Deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.
+	// Deprecated: Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -569,7 +569,7 @@ type InstanceArgs struct {
 	EngineVersion pulumi.StringInput
 	// Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
 	//
-	// Deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
+	// Deprecated: Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
 	InstanceChargeType pulumi.StringPtrInput
 	// The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
 	InstanceGroupCount pulumi.IntPtrInput
@@ -592,7 +592,7 @@ type InstanceArgs struct {
 	MasterCu pulumi.IntPtrInput
 	// The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 	//
-	// Deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.
+	// Deprecated: Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 	MasterNodeNum pulumi.IntPtrInput
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
@@ -600,7 +600,7 @@ type InstanceArgs struct {
 	Period pulumi.StringPtrInput
 	// The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 	//
-	// Deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.
+	// Deprecated: Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 	PrivateIpAddress pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -783,7 +783,7 @@ func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
 
 // Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
 //
-// Deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
+// Deprecated: Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
 func (o InstanceOutput) InstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
@@ -830,7 +830,7 @@ func (o InstanceOutput) MasterCu() pulumi.IntOutput {
 
 // The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 //
-// Deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.
+// Deprecated: Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 func (o InstanceOutput) MasterNodeNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.MasterNodeNum }).(pulumi.IntPtrOutput)
 }
@@ -852,7 +852,7 @@ func (o InstanceOutput) Port() pulumi.StringOutput {
 
 // The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 //
-// Deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.
+// Deprecated: Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 func (o InstanceOutput) PrivateIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
 }

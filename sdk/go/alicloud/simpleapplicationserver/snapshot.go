@@ -51,9 +51,9 @@ import (
 //			}
 //			defaultInstance, err := simpleapplicationserver.NewInstance(ctx, "defaultInstance", &simpleapplicationserver.InstanceArgs{
 //				PaymentType:  pulumi.String("Subscription"),
-//				PlanId:       *pulumi.String(defaultServerPlans.Plans[0].Id),
+//				PlanId:       pulumi.String(defaultServerPlans.Plans[0].Id),
 //				InstanceName: pulumi.String(name),
-//				ImageId:      *pulumi.String(defaultImages.Images[0].Id),
+//				ImageId:      pulumi.String(defaultImages.Images[0].Id),
 //				Period:       pulumi.Int(1),
 //				DataDiskSize: pulumi.Int(100),
 //			})

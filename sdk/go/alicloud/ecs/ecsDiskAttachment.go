@@ -66,7 +66,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:     defaultNetwork.ID(),
 //				CidrBlock: pulumi.String("10.4.0.0/24"),
-//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -87,11 +87,11 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-//				AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+//				AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 //				InstanceName:     pulumi.String(name),
 //				HostName:         pulumi.String(name),
-//				ImageId:          *pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:     *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:          pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:     pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
@@ -107,7 +107,7 @@ import (
 //				return err
 //			}
 //			defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "defaultEcsDisk", &ecs.EcsDiskArgs{
-//				ZoneId:             *pulumi.String(disk.Zones[0].Id),
+//				ZoneId:             pulumi.String(disk.Zones[0].Id),
 //				Category:           pulumi.String("cloud_efficiency"),
 //				DeleteAutoSnapshot: pulumi.Bool(true),
 //				Description:        pulumi.String("Test For Terraform"),

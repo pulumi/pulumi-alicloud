@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			_, err = ocean.NewBaseInstance(ctx, "defaultBaseInstance", &ocean.BaseInstanceArgs{
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[0]),
 //				Zones: pulumi.StringArray{
 //					defaultZones.Ids[len(defaultZones.Ids)-2],
 //					defaultZones.Ids[len(defaultZones.Ids)-3],

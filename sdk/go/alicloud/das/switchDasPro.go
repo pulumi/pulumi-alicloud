@@ -66,7 +66,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultNodeClasses.Classes[0].ZoneId),
+//				ZoneId:      pulumi.String(defaultNodeClasses.Classes[0].ZoneId),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -95,7 +95,7 @@ import (
 //			_, err = das.NewSwitchDasPro(ctx, "defaultSwitchDasPro", &das.SwitchDasProArgs{
 //				InstanceId:   defaultCluster.ID(),
 //				SqlRetention: pulumi.Int(30),
-//				UserId:       *pulumi.String(defaultAccount.Id),
+//				UserId:       pulumi.String(defaultAccount.Id),
 //			})
 //			if err != nil {
 //				return err

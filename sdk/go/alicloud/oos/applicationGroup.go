@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			defaultApplication, err := oos.NewApplication(ctx, "defaultApplication", &oos.ApplicationArgs{
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				ApplicationName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
 //					return fmt.Sprintf("%v-%v", name, result), nil
 //				}).(pulumi.StringOutput),
@@ -79,7 +79,7 @@ import (
 //			_, err = oos.NewApplicationGroup(ctx, "defaultApplicationGroup", &oos.ApplicationGroupArgs{
 //				ApplicationGroupName: pulumi.String(name),
 //				ApplicationName:      defaultApplication.ID(),
-//				DeployRegionId:       *pulumi.String(defaultRegions.Regions[0].Id),
+//				DeployRegionId:       pulumi.String(defaultRegions.Regions[0].Id),
 //				Description:          pulumi.String(name),
 //				ImportTagKey:         pulumi.String("example_key"),
 //				ImportTagValue:       pulumi.String("example_value"),

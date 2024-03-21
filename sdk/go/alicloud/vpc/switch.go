@@ -55,7 +55,7 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				VpcId:       fooNetwork.ID(),
-//				ZoneId:      *pulumi.String(fooZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(fooZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -104,7 +104,7 @@ import (
 //			_, err = vpc.NewSwitch(ctx, "island-nat", &vpc.SwitchArgs{
 //				VpcId:       cidrBlocks.VpcId,
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      *pulumi.String(foo.Zones[0].Id),
+//				ZoneId:      pulumi.String(foo.Zones[0].Id),
 //				VswitchName: pulumi.String("terraform-example"),
 //				Tags: pulumi.Map{
 //					"BuiltBy":     pulumi.Any("example_value"),
@@ -162,7 +162,7 @@ import (
 //			_, err = vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
 //				VpcId:     fooIpv4CidrBlock.VpcId,
 //				CidrBlock: pulumi.String("192.163.0.0/24"),
-//				ZoneId:    *pulumi.String(fooZones.Zones[0].Id),
+//				ZoneId:    pulumi.String(fooZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err

@@ -94,7 +94,7 @@ import (
 // return err
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-// VpcId: *pulumi.String(defaultNetworks.Ids[0]),
+// VpcId: pulumi.String(defaultNetworks.Ids[0]),
 // })
 // if err != nil {
 // return err
@@ -132,18 +132,18 @@ import (
 // return err
 // }
 // defaultCluster, err := emr.NewCluster(ctx, "defaultCluster", &emr.ClusterArgs{
-// EmrVer: *pulumi.String(defaultMainVersions.MainVersions[0].EmrVersion),
-// ClusterType: *pulumi.String(defaultMainVersions.MainVersions[0].ClusterTypes[0]),
+// EmrVer: pulumi.String(defaultMainVersions.MainVersions[0].EmrVersion),
+// ClusterType: pulumi.String(defaultMainVersions.MainVersions[0].ClusterTypes[0]),
 // HostGroups: emr.ClusterHostGroupArray{
 // var tmp0 pulumi.String
 // if dataDisk.Types[0].Min > 160 {
-// tmp0 = *pulumi.Int(dataDisk.Types[0].Min)
+// tmp0 = pulumi.Int(dataDisk.Types[0].Min)
 // } else {
 // tmp0 = pulumi.String("160")
 // }
 // var tmp1 pulumi.String
 // if systemDisk.Types[0].Min > 160 {
-// tmp1 = *pulumi.Int(systemDisk.Types[0].Min)
+// tmp1 = pulumi.Int(systemDisk.Types[0].Min)
 // } else {
 // tmp1 = pulumi.String("160")
 // }
@@ -151,22 +151,22 @@ import (
 // HostGroupName: pulumi.String("master_group"),
 // HostGroupType: pulumi.String("MASTER"),
 // NodeCount: pulumi.String("2"),
-// InstanceType: *pulumi.String(defaultInstanceTypes.Types[0].Id),
-// DiskType: *pulumi.String(dataDisk.Types[0].Value),
+// InstanceType: pulumi.String(defaultInstanceTypes.Types[0].Id),
+// DiskType: pulumi.String(dataDisk.Types[0].Value),
 // DiskCapacity: pulumi.String(tmp0),
 // DiskCount: pulumi.String("1"),
-// SysDiskType: *pulumi.String(systemDisk.Types[0].Value),
+// SysDiskType: pulumi.String(systemDisk.Types[0].Value),
 // SysDiskCapacity: pulumi.String(tmp1),
 // },
 // var tmp2 pulumi.String
 // if dataDisk.Types[0].Min > 160 {
-// tmp2 = *pulumi.Int(dataDisk.Types[0].Min)
+// tmp2 = pulumi.Int(dataDisk.Types[0].Min)
 // } else {
 // tmp2 = pulumi.String("160")
 // }
 // var tmp3 pulumi.String
 // if systemDisk.Types[0].Min > 160 {
-// tmp3 = *pulumi.Int(systemDisk.Types[0].Min)
+// tmp3 = pulumi.Int(systemDisk.Types[0].Min)
 // } else {
 // tmp3 = pulumi.String("160")
 // }
@@ -174,22 +174,22 @@ import (
 // HostGroupName: pulumi.String("core_group"),
 // HostGroupType: pulumi.String("CORE"),
 // NodeCount: pulumi.String("3"),
-// InstanceType: *pulumi.String(defaultInstanceTypes.Types[0].Id),
-// DiskType: *pulumi.String(dataDisk.Types[0].Value),
+// InstanceType: pulumi.String(defaultInstanceTypes.Types[0].Id),
+// DiskType: pulumi.String(dataDisk.Types[0].Value),
 // DiskCapacity: pulumi.String(tmp2),
 // DiskCount: pulumi.String("4"),
-// SysDiskType: *pulumi.String(systemDisk.Types[0].Value),
+// SysDiskType: pulumi.String(systemDisk.Types[0].Value),
 // SysDiskCapacity: pulumi.String(tmp3),
 // },
 // var tmp4 pulumi.String
 // if dataDisk.Types[0].Min > 160 {
-// tmp4 = *pulumi.Int(dataDisk.Types[0].Min)
+// tmp4 = pulumi.Int(dataDisk.Types[0].Min)
 // } else {
 // tmp4 = pulumi.String("160")
 // }
 // var tmp5 pulumi.String
 // if systemDisk.Types[0].Min > 160 {
-// tmp5 = *pulumi.Int(systemDisk.Types[0].Min)
+// tmp5 = pulumi.Int(systemDisk.Types[0].Min)
 // } else {
 // tmp5 = pulumi.String("160")
 // }
@@ -197,20 +197,20 @@ import (
 // HostGroupName: pulumi.String("task_group"),
 // HostGroupType: pulumi.String("TASK"),
 // NodeCount: pulumi.String("2"),
-// InstanceType: *pulumi.String(defaultInstanceTypes.Types[0].Id),
-// DiskType: *pulumi.String(dataDisk.Types[0].Value),
+// InstanceType: pulumi.String(defaultInstanceTypes.Types[0].Id),
+// DiskType: pulumi.String(dataDisk.Types[0].Value),
 // DiskCapacity: pulumi.String(tmp4),
 // DiskCount: pulumi.String("4"),
-// SysDiskType: *pulumi.String(systemDisk.Types[0].Value),
+// SysDiskType: pulumi.String(systemDisk.Types[0].Value),
 // SysDiskCapacity: pulumi.String(tmp5),
 // },
 // },
 // HighAvailabilityEnable: pulumi.Bool(true),
-// ZoneId: *pulumi.String(defaultInstanceTypes.Types[0].ZoneId),
+// ZoneId: pulumi.String(defaultInstanceTypes.Types[0].ZoneId),
 // SecurityGroupId: defaultSecurityGroup.ID(),
 // IsOpenPublicIp: pulumi.Bool(true),
 // ChargeType: pulumi.String("PostPaid"),
-// VswitchId: *pulumi.String(defaultSwitches.Ids[0]),
+// VswitchId: pulumi.String(defaultSwitches.Ids[0]),
 // UserDefinedEmrEcsRole: defaultRole.Name,
 // SshEnable: pulumi.Bool(true),
 // MasterPwd: pulumi.String("ABCtest1234!"),

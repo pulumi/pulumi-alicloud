@@ -66,8 +66,8 @@ import (
 //			_, err = drds.NewInstance(ctx, "defaultInstance", &drds.InstanceArgs{
 //				Description:        pulumi.String("drds instance"),
 //				InstanceChargeType: pulumi.String("PostPaid"),
-//				ZoneId:             *pulumi.String(defaultSwitches.Vswitches[0].ZoneId),
-//				VswitchId:          *pulumi.String(defaultSwitches.Vswitches[0].Id),
+//				ZoneId:             pulumi.String(defaultSwitches.Vswitches[0].ZoneId),
+//				VswitchId:          pulumi.String(defaultSwitches.Vswitches[0].Id),
 //				InstanceSeries:     pulumi.String(instanceSeries),
 //				Specification:      pulumi.String("drds.sn1.4c8g.8C16G"),
 //			})

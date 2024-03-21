@@ -67,7 +67,7 @@ import (
 //			_, err = ddos.NewBgpIp(ctx, "defaultBgpIp", &ddos.BgpIpArgs{
 //				InstanceId:      instance.ID(),
 //				Ip:              defaultEipAddress.IpAddress,
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
 //			})
 //			if err != nil {
 //				return err

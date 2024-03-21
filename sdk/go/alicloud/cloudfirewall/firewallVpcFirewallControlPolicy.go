@@ -72,7 +72,7 @@ import (
 //				DestPortType:    pulumi.String("port"),
 //				Proto:           pulumi.String("TCP"),
 //				Release:         pulumi.Bool(true),
-//				MemberUid:       *pulumi.String(defaultAccount.Id),
+//				MemberUid:       pulumi.String(defaultAccount.Id),
 //				VpcFirewallId:   defaultInstance.ID(),
 //			})
 //			if err != nil {

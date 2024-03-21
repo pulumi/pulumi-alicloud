@@ -161,7 +161,7 @@ export class Instance extends pulumi.CustomResource {
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
      * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
      *
-     * @deprecated Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
+     * @deprecated Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
      */
     public readonly topicQuota!: pulumi.Output<number>;
     /**
@@ -398,7 +398,7 @@ export interface InstanceState {
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
      * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
      *
-     * @deprecated Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
+     * @deprecated Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
      */
     topicQuota?: pulumi.Input<number>;
     /**
@@ -507,7 +507,7 @@ export interface InstanceArgs {
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
      * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
      *
-     * @deprecated Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.
+     * @deprecated Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
      */
     topicQuota?: pulumi.Input<number>;
     /**

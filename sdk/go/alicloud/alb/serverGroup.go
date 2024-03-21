@@ -81,7 +81,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/16"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -94,10 +94,10 @@ import (
 //				return err
 //			}
 //			exampleInstance, err := ecs.NewInstance(ctx, "exampleInstance", &ecs.InstanceArgs{
-//				AvailabilityZone: *pulumi.String(exampleZones.Zones[0].Id),
+//				AvailabilityZone: pulumi.String(exampleZones.Zones[0].Id),
 //				InstanceName:     pulumi.String(name),
-//				ImageId:          *pulumi.String(exampleImages.Images[0].Id),
-//				InstanceType:     *pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:          pulumi.String(exampleImages.Images[0].Id),
+//				InstanceType:     pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
 //					exampleSecurityGroup.ID(),
 //				},
@@ -110,7 +110,7 @@ import (
 //				Protocol:        pulumi.String("HTTP"),
 //				VpcId:           exampleNetwork.ID(),
 //				ServerGroupName: pulumi.String(name),
-//				ResourceGroupId: *pulumi.String(exampleResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(exampleResourceGroups.Groups[0].Id),
 //				StickySessionConfig: &alb.ServerGroupStickySessionConfigArgs{
 //					StickySessionEnabled: pulumi.Bool(true),
 //					Cookie:               pulumi.String("tf-example"),

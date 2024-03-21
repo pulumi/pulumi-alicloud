@@ -78,7 +78,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -204,16 +204,16 @@ import (
 //				},
 //				NodeAttributes: emrv2.ClusterNodeAttributeArray{
 //					&emrv2.ClusterNodeAttributeArgs{
-//						ZoneId:            *pulumi.String(defaultZones.Zones[0].Id),
+//						ZoneId:            pulumi.String(defaultZones.Zones[0].Id),
 //						KeyPairName:       defaultEcsKeyPair.ID(),
 //						DataDiskEncrypted: pulumi.Bool(true),
-//						DataDiskKmsKeyId:  *pulumi.String(defaultKeys.Ids[0]),
+//						DataDiskKmsKeyId:  pulumi.String(defaultKeys.Ids[0]),
 //						VpcId:             defaultNetwork.ID(),
 //						RamRole:           defaultRole.Name,
 //						SecurityGroupId:   defaultSecurityGroup.ID(),
 //					},
 //				},
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[0]),
 //				ClusterName:     pulumi.String(name),
 //				PaymentType:     pulumi.String("PayAsYouGo"),
 //				ClusterType:     pulumi.String("DATAFLOW"),

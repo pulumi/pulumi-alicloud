@@ -69,7 +69,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      *pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -89,10 +89,10 @@ import (
 //				return err
 //			}
 //			exampleInstance, err := ecs.NewInstance(ctx, "exampleInstance", &ecs.InstanceArgs{
-//				AvailabilityZone:        *pulumi.String(_default.Zones[0].Id),
+//				AvailabilityZone:        pulumi.String(_default.Zones[0].Id),
 //				VswitchId:               exampleSwitch.ID(),
-//				ImageId:                 *pulumi.String(exampleImages.Images[0].Id),
-//				InstanceType:            *pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:                 pulumi.String(exampleImages.Images[0].Id),
+//				InstanceType:            pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),

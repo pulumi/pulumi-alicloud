@@ -111,7 +111,7 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
      *
-     * @deprecated Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
+     * @deprecated Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
      */
     public readonly backupPeriods!: pulumi.Output<string[]>;
     /**
@@ -121,7 +121,7 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
      *
-     * @deprecated Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
+     * @deprecated Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
      */
     public readonly backupTime!: pulumi.Output<string>;
     /**
@@ -156,7 +156,7 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
      *
-     * @deprecated Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead
+     * @deprecated Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enableBackupLog` instead
      */
     public readonly logBackup!: pulumi.Output<boolean>;
     /**
@@ -170,7 +170,7 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
      *
-     * @deprecated Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
+     * @deprecated Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
      */
     public readonly logRetentionPeriod!: pulumi.Output<number>;
     /**
@@ -191,7 +191,7 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
      *
-     * @deprecated Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
+     * @deprecated Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
      */
     public readonly retentionPeriod!: pulumi.Output<number>;
 
@@ -296,7 +296,7 @@ export interface BackupPolicyState {
     /**
      * It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
      *
-     * @deprecated Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
+     * @deprecated Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
      */
     backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -306,7 +306,7 @@ export interface BackupPolicyState {
     /**
      * It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
      *
-     * @deprecated Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
+     * @deprecated Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
      */
     backupTime?: pulumi.Input<string>;
     /**
@@ -341,7 +341,7 @@ export interface BackupPolicyState {
     /**
      * It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
      *
-     * @deprecated Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead
+     * @deprecated Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enableBackupLog` instead
      */
     logBackup?: pulumi.Input<boolean>;
     /**
@@ -355,7 +355,7 @@ export interface BackupPolicyState {
     /**
      * It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
      *
-     * @deprecated Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
+     * @deprecated Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
      */
     logRetentionPeriod?: pulumi.Input<number>;
     /**
@@ -376,7 +376,7 @@ export interface BackupPolicyState {
     /**
      * It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
      *
-     * @deprecated Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
+     * @deprecated Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
      */
     retentionPeriod?: pulumi.Input<number>;
 }
@@ -414,7 +414,7 @@ export interface BackupPolicyArgs {
     /**
      * It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
      *
-     * @deprecated Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
+     * @deprecated Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferredBackupPeriod` instead
      */
     backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -424,7 +424,7 @@ export interface BackupPolicyArgs {
     /**
      * It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
      *
-     * @deprecated Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
+     * @deprecated Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferredBackupTime` instead
      */
     backupTime?: pulumi.Input<string>;
     /**
@@ -459,7 +459,7 @@ export interface BackupPolicyArgs {
     /**
      * It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
      *
-     * @deprecated Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead
+     * @deprecated Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enableBackupLog` instead
      */
     logBackup?: pulumi.Input<boolean>;
     /**
@@ -473,7 +473,7 @@ export interface BackupPolicyArgs {
     /**
      * It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
      *
-     * @deprecated Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
+     * @deprecated Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `logBackupRetentionPeriod` instead
      */
     logRetentionPeriod?: pulumi.Input<number>;
     /**
@@ -494,7 +494,7 @@ export interface BackupPolicyArgs {
     /**
      * It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
      *
-     * @deprecated Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead
+     * @deprecated Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backupRetentionPeriod` instead
      */
     retentionPeriod?: pulumi.Input<number>;
 }

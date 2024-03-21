@@ -57,7 +57,7 @@ import (
 // vsw, err := vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
 // VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("172.16.0.0/21"),
-// AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+// AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // Ipv6CidrBlockMask: pulumi.Int(22),
 // })
 // if err != nil {
@@ -92,11 +92,11 @@ import (
 // splat0 = append(splat0, val0.ID())
 // }
 // vpcInstance, err := ecs.NewInstance(ctx, "vpcInstance", &ecs.InstanceArgs{
-// AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+// AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 // Ipv6AddressCount: pulumi.Int(1),
-// InstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+// InstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// ImageId: *pulumi.String(defaultImages.Images[0].Id),
+// ImageId: pulumi.String(defaultImages.Images[0].Id),
 // InstanceName: pulumi.String(name),
 // VswitchId: vsw.ID(),
 // InternetMaxBandwidthOut: pulumi.Int(10),

@@ -64,10 +64,10 @@ import (
 //				VirtualPhysicalConnectionName: pulumi.String(name),
 //				Description:                   pulumi.String(name),
 //				OrderMode:                     pulumi.String("PayByPhysicalConnectionOwner"),
-//				ParentPhysicalConnectionId:    *pulumi.String(examplePhysicalConnections.Ids[0]),
+//				ParentPhysicalConnectionId:    pulumi.String(examplePhysicalConnections.Ids[0]),
 //				Spec:                          pulumi.String("50M"),
 //				VlanId:                        vlanId.ID(),
-//				VpconnAliUid:                  *pulumi.String(_default.Id),
+//				VpconnAliUid:                  pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err

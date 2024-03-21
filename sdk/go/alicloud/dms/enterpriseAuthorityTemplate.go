@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			_, err = dms.NewEnterpriseAuthorityTemplate(ctx, "defaultEnterpriseAuthorityTemplate", &dms.EnterpriseAuthorityTemplateArgs{
-//				Tid:                   *pulumi.String(defaultUserTenants.Ids[0]),
+//				Tid:                   pulumi.String(defaultUserTenants.Ids[0]),
 //				AuthorityTemplateName: pulumi.String(name),
 //				Description:           pulumi.String(name),
 //			})

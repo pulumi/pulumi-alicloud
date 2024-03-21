@@ -36,7 +36,7 @@ import (
 //			}
 //			// Create an Cassandra cluster with the first matched zone
 //			_, err = cassandra.NewCluster(ctx, "cassandra", &cassandra.ClusterArgs{
-//				ZoneId: *pulumi.String(zonesIds.Zones[0].Id),
+//				ZoneId: pulumi.String(zonesIds.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err

@@ -59,7 +59,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Ids[0]),
+//				ZoneId:      pulumi.String(defaultZones.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -89,8 +89,8 @@ import (
 //			defaultDedicatedHost, err := cddc.NewDedicatedHost(ctx, "defaultDedicatedHost", &cddc.DedicatedHostArgs{
 //				HostName:             pulumi.String(name),
 //				DedicatedHostGroupId: defaultDedicatedHostGroup.ID(),
-//				HostClass:            *pulumi.String(defaultHostEcsLevelInfos.Infos[0].ResClassCode),
-//				ZoneId:               *pulumi.String(defaultZones.Ids[0]),
+//				HostClass:            pulumi.String(defaultHostEcsLevelInfos.Infos[0].ResClassCode),
+//				ZoneId:               pulumi.String(defaultZones.Ids[0]),
 //				VswitchId:            defaultSwitch.ID(),
 //				PaymentType:          pulumi.String("Subscription"),
 //				Tags: pulumi.Map{

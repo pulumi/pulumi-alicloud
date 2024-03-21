@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			_, err = alicloud.NewProvider(ctx, "replication", &alicloud.ProviderArgs{
-//				Region: *pulumi.String(defaultReplicationVaultRegions.Regions[0].ReplicationRegionId),
+//				Region: pulumi.String(defaultReplicationVaultRegions.Regions[0].ReplicationRegionId),
 //			})
 //			if err != nil {
 //				return err

@@ -67,7 +67,7 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -79,21 +79,21 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-//				AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+//				AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 //				InstanceName:     pulumi.String("terraform-example"),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
 //				VswitchId:               defaultSwitch.ID(),
-//				InstanceType:            *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-//				ImageId:                 *pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:            pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:                 pulumi.String(defaultImages.Images[0].Id),
 //				InternetMaxBandwidthOut: pulumi.Int(10),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "defaultEcsDisk", &ecs.EcsDiskArgs{
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //				DiskName:    pulumi.String("terraform-example"),
 //				Description: pulumi.String("terraform-example"),
 //				Category:    pulumi.String("cloud_essd"),

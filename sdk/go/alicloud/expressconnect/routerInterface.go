@@ -58,7 +58,7 @@ import (
 //			}
 //			_, err = expressconnect.NewRouterInterface(ctx, "defaultRouterInterface", &expressconnect.RouterInterfaceArgs{
 //				Description:         pulumi.String(name),
-//				OppositeRegionId:    *pulumi.String(defaultRegions.Regions[0].Id),
+//				OppositeRegionId:    pulumi.String(defaultRegions.Regions[0].Id),
 //				RouterId:            defaultNetwork.RouterId,
 //				Role:                pulumi.String("InitiatingSide"),
 //				RouterType:          pulumi.String("VRouter"),

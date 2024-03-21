@@ -53,7 +53,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultNodeClasses.Classes[0].ZoneId),
+//				ZoneId:      pulumi.String(defaultNodeClasses.Classes[0].ZoneId),
 //				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
@@ -62,7 +62,7 @@ import (
 //			defaultCluster, err := polardb.NewCluster(ctx, "defaultCluster", &polardb.ClusterArgs{
 //				DbType:      pulumi.String("MySQL"),
 //				DbVersion:   pulumi.String("8.0"),
-//				DbNodeClass: *pulumi.String(defaultNodeClasses.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
+//				DbNodeClass: pulumi.String(defaultNodeClasses.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
 //				PayType:     pulumi.String("PostPaid"),
 //				VswitchId:   defaultSwitch.ID(),
 //				Description: pulumi.String("terraform-example"),

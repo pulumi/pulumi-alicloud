@@ -47,7 +47,7 @@ import (
 //			}
 //			_, err = wafv3.NewDefenseTemplate(ctx, "defaultDefenseTemplate", &wafv3.DefenseTemplateArgs{
 //				Status:                         pulumi.String("1"),
-//				InstanceId:                     *pulumi.String(defaultInstances.Ids[0]),
+//				InstanceId:                     pulumi.String(defaultInstances.Ids[0]),
 //				DefenseTemplateName:            pulumi.String(name),
 //				TemplateType:                   pulumi.String("user_custom"),
 //				TemplateOrigin:                 pulumi.String("custom"),

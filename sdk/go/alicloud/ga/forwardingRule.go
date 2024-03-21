@@ -119,7 +119,7 @@ import (
 //						EnableClientipPreservation: pulumi.Bool(true),
 //					},
 //				},
-//				EndpointGroupRegion:        *pulumi.String(_default.Regions[0].Id),
+//				EndpointGroupRegion:        pulumi.String(_default.Regions[0].Id),
 //				ListenerId:                 exampleListener.ID(),
 //				Description:                pulumi.String(name),
 //				EndpointGroupType:          pulumi.String("virtual"),

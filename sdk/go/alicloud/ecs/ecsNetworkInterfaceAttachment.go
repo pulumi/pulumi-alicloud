@@ -67,7 +67,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
 //				VpcId:       defaultNetwork.ID(),
 //			})
 //			if err != nil {
@@ -89,11 +89,11 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-//				AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+//				AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
 //				InstanceName:     pulumi.String(name),
 //				HostName:         pulumi.String("tf-example"),
-//				ImageId:          *pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:     *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:          pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:     pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
@@ -120,7 +120,7 @@ import (
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("example"),
 //				},
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

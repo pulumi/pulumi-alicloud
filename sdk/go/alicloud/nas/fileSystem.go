@@ -48,7 +48,7 @@ import (
 //				StorageType:  pulumi.String("Performance"),
 //				Description:  pulumi.String("terraform-example"),
 //				EncryptType:  pulumi.Int(1),
-//				ZoneId:       *pulumi.String(example.Zones[0].ZoneId),
+//				ZoneId:       pulumi.String(example.Zones[0].ZoneId),
 //			})
 //			if err != nil {
 //				return err
@@ -82,7 +82,7 @@ import (
 //			_, err = nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
 //				FileSystemType: pulumi.String("extreme"),
 //				ProtocolType:   pulumi.String("NFS"),
-//				ZoneId:         *pulumi.String(example.Zones[0].ZoneId),
+//				ZoneId:         pulumi.String(example.Zones[0].ZoneId),
 //				StorageType:    pulumi.String("standard"),
 //				Capacity:       pulumi.Int(100),
 //			})
@@ -127,7 +127,7 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      *pulumi.String(exampleZones.Zones[1].ZoneId),
+//				ZoneId:      pulumi.String(exampleZones.Zones[1].ZoneId),
 //			})
 //			if err != nil {
 //				return err
@@ -137,7 +137,7 @@ import (
 //				StorageType:    pulumi.String("advance_200"),
 //				FileSystemType: pulumi.String("cpfs"),
 //				Capacity:       pulumi.Int(3600),
-//				ZoneId:         *pulumi.String(exampleZones.Zones[1].ZoneId),
+//				ZoneId:         pulumi.String(exampleZones.Zones[1].ZoneId),
 //				VpcId:          exampleNetwork.ID(),
 //				VswitchId:      exampleSwitch.ID(),
 //			})

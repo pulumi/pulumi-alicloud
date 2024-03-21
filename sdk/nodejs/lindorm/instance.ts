@@ -271,7 +271,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      *
-     * @deprecated Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+     * @deprecated Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      */
     public readonly timeSeriresEngineSpecification!: pulumi.Output<string>;
     /**
@@ -604,7 +604,7 @@ export interface InstanceState {
     /**
      * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      *
-     * @deprecated Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+     * @deprecated Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      */
     timeSeriresEngineSpecification?: pulumi.Input<string>;
     /**
@@ -778,7 +778,7 @@ export interface InstanceArgs {
     /**
      * Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      *
-     * @deprecated Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+     * @deprecated Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
      */
     timeSeriresEngineSpecification?: pulumi.Input<string>;
     /**

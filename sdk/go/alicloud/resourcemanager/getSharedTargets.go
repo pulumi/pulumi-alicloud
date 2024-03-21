@@ -50,7 +50,7 @@ import (
 //			}
 //			defaultSharedTarget, err := resourcemanager.NewSharedTarget(ctx, "defaultSharedTarget", &resourcemanager.SharedTargetArgs{
 //				ResourceShareId: defaultResourceShare.ID(),
-//				TargetId:        *pulumi.String(defaultAccounts.Ids[0]),
+//				TargetId:        pulumi.String(defaultAccounts.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
