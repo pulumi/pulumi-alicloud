@@ -51,17 +51,11 @@ import (
 //				return err
 //			}
 //			_, err = dcdn.NewIpaDomain(ctx, "example", &dcdn.IpaDomainArgs{
-<<<<<<< HEAD
-//				DomainName:      pulumi.String(domainName),
-//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
-//				Scope:           pulumi.String("global"),
-=======
 //				DomainName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
 //					return fmt.Sprintf("example-%v.com", result), nil
 //				}).(pulumi.StringOutput),
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				Scope:           pulumi.String("overseas"),
->>>>>>> 7cc4b796d (make build_sdks)
 //				Status:          pulumi.String("online"),
 //				Sources: dcdn.IpaDomainSourceArray{
 //					&dcdn.IpaDomainSourceArgs{

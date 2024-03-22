@@ -111,7 +111,7 @@ type NodePool struct {
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
 	// Operating system release, using `imageType` instead.
 	//
-	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.
+	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
 	Platform pulumi.StringOutput `pulumi:"platform"`
 	// Private node pool configuration. See `privatePoolOptions` below.
 	PrivatePoolOptions NodePoolPrivatePoolOptionsPtrOutput `pulumi:"privatePoolOptions"`
@@ -131,7 +131,7 @@ type NodePool struct {
 	ScalingPolicy pulumi.StringOutput `pulumi:"scalingPolicy"`
 	// The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
 	//
-	// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+	// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
@@ -315,7 +315,7 @@ type nodePoolState struct {
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// Operating system release, using `imageType` instead.
 	//
-	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.
+	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
 	Platform *string `pulumi:"platform"`
 	// Private node pool configuration. See `privatePoolOptions` below.
 	PrivatePoolOptions *NodePoolPrivatePoolOptions `pulumi:"privatePoolOptions"`
@@ -335,7 +335,7 @@ type nodePoolState struct {
 	ScalingPolicy *string `pulumi:"scalingPolicy"`
 	// The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
 	//
-	// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+	// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
@@ -470,7 +470,7 @@ type NodePoolState struct {
 	PeriodUnit pulumi.StringPtrInput
 	// Operating system release, using `imageType` instead.
 	//
-	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.
+	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
 	Platform pulumi.StringPtrInput
 	// Private node pool configuration. See `privatePoolOptions` below.
 	PrivatePoolOptions NodePoolPrivatePoolOptionsPtrInput
@@ -490,7 +490,7 @@ type NodePoolState struct {
 	ScalingPolicy pulumi.StringPtrInput
 	// The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
 	//
-	// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+	// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
 	SecurityGroupId pulumi.StringPtrInput
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds pulumi.StringArrayInput
@@ -627,7 +627,7 @@ type nodePoolArgs struct {
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// Operating system release, using `imageType` instead.
 	//
-	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.
+	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
 	Platform *string `pulumi:"platform"`
 	// Private node pool configuration. See `privatePoolOptions` below.
 	PrivatePoolOptions *NodePoolPrivatePoolOptions `pulumi:"privatePoolOptions"`
@@ -647,7 +647,7 @@ type nodePoolArgs struct {
 	ScalingPolicy *string `pulumi:"scalingPolicy"`
 	// The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
 	//
-	// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+	// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
@@ -781,7 +781,7 @@ type NodePoolArgs struct {
 	PeriodUnit pulumi.StringPtrInput
 	// Operating system release, using `imageType` instead.
 	//
-	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.
+	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
 	Platform pulumi.StringPtrInput
 	// Private node pool configuration. See `privatePoolOptions` below.
 	PrivatePoolOptions NodePoolPrivatePoolOptionsPtrInput
@@ -801,7 +801,7 @@ type NodePoolArgs struct {
 	ScalingPolicy pulumi.StringPtrInput
 	// The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
 	//
-	// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+	// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
 	SecurityGroupId pulumi.StringPtrInput
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds pulumi.StringArrayInput
@@ -1136,7 +1136,7 @@ func (o NodePoolOutput) PeriodUnit() pulumi.StringPtrOutput {
 
 // Operating system release, using `imageType` instead.
 //
-// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.
+// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
 func (o NodePoolOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Platform }).(pulumi.StringOutput)
 }
@@ -1183,7 +1183,7 @@ func (o NodePoolOutput) ScalingPolicy() pulumi.StringOutput {
 
 // The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
 //
-// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+// Deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
 func (o NodePoolOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }

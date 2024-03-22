@@ -68,17 +68,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-<<<<<<< HEAD
-//			_, err = ros.NewStackInstance(ctx, "exampleStackInstance", &ros.StackInstanceArgs{
-//				StackGroupName:         exampleStackGroup.StackGroupName,
-//				StackInstanceAccountId: pulumi.String("example_value"),
-//				StackInstanceRegionId:  pulumi.String(exampleRegions.Regions[0].RegionId),
-=======
 //			_, err = ros.NewStackInstance(ctx, "example", &ros.StackInstanceArgs{
 //				StackGroupName:         defaultStackGroup.StackGroupName,
-//				StackInstanceAccountId: *pulumi.String(this.Id),
-//				StackInstanceRegionId:  *pulumi.String(defaultRegions.Regions[0].RegionId),
->>>>>>> 7cc4b796d (make build_sdks)
+//				StackInstanceAccountId: pulumi.String(this.Id),
+//				StackInstanceRegionId:  pulumi.String(defaultRegions.Regions[0].RegionId),
 //				OperationPreferences:   pulumi.String("{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}"),
 //				TimeoutInMinutes:       pulumi.String("60"),
 //				OperationDescription:   pulumi.String("tf-example"),

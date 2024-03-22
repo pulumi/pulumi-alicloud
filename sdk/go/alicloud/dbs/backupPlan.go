@@ -90,7 +90,7 @@ import (
 //			vswitchId := defaultSwitches.Ids[0]
 //			_ := defaultZones.Ids[0]
 //			_, err = ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId: pulumi.String(defaultNetworks.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -99,9 +99,9 @@ import (
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
-//				InstanceType:          *pulumi.String(defaultInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       *pulumi.String(defaultInstanceClasses.InstanceClasses[0].StorageRange.Min),
-//				VswitchId:             *pulumi.String(vswitchId),
+//				InstanceType:          pulumi.String(defaultInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       pulumi.String(defaultInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				VswitchId:             pulumi.String(vswitchId),
 //				InstanceName:          pulumi.String(name),
 //			})
 //			if err != nil {
@@ -142,7 +142,7 @@ import (
 //				StorageRegion:              pulumi.String("cn-hangzhou"),
 //				InstanceType:               pulumi.String("RDS"),
 //				SourceEndpointInstanceType: pulumi.String("RDS"),
-//				ResourceGroupId:            *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:            pulumi.String(defaultResourceGroups.Ids[0]),
 //				SourceEndpointRegion:       pulumi.String("cn-hangzhou"),
 //				SourceEndpointInstanceId:   defaultInstance.ID(),
 //				SourceEndpointUserName:     defaultAccountPrivilege.AccountName,

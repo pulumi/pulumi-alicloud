@@ -44,7 +44,7 @@ import (
 //			}
 //			_, err = eds.NewNetworkPackage(ctx, "defaultNetworkPackage", &eds.NetworkPackageArgs{
 //				Bandwidth:    pulumi.Int(10),
-//				OfficeSiteId: *pulumi.String(defaultSimpleOfficeSites.Ids[0]),
+//				OfficeSiteId: pulumi.String(defaultSimpleOfficeSites.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

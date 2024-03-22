@@ -227,18 +227,11 @@ import (
 //						SecurityGroupId:   defaultSecurityGroup.ID(),
 //					},
 //				},
-<<<<<<< HEAD
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[0]),
-//				ClusterName:     pulumi.String(name),
-//				PaymentType:     pulumi.String("PayAsYouGo"),
-//				ClusterType:     pulumi.String("DATAFLOW"),
-=======
 //				LogCollectStrategy: pulumi.String(json0),
-//				ResourceGroupId:    *pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:    pulumi.String(defaultResourceGroups.Ids[0]),
 //				ClusterName:        pulumi.String(name),
 //				PaymentType:        pulumi.String("PayAsYouGo"),
 //				ClusterType:        pulumi.String("DATAFLOW"),
->>>>>>> 7cc4b796d (make build_sdks)
 //			})
 //			if err != nil {
 //				return err

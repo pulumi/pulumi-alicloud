@@ -52,19 +52,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-<<<<<<< HEAD
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
-//				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Ids[0]),
-//			})
-=======
 //			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
 //				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
 //				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
 //			}, nil)
->>>>>>> 7cc4b796d (make build_sdks)
 //			if err != nil {
 //				return err
 //			}
@@ -84,8 +75,8 @@ import (
 //				SegStorageType:      pulumi.String("cloud_essd"),
 //				SegNodeNum:          pulumi.Int(4),
 //				StorageSize:         pulumi.Int(50),
-//				VpcId:               *pulumi.String(defaultNetworks.Ids[0]),
-//				VswitchId:           *pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:               pulumi.String(defaultNetworks.Ids[0]),
+//				VswitchId:           pulumi.String(defaultSwitches.Ids[0]),
 //				IpWhitelists: gpdb.InstanceIpWhitelistArray{
 //					&gpdb.InstanceIpWhitelistArgs{
 //						SecurityIpList: pulumi.String("127.0.0.1"),

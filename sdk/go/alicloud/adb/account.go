@@ -59,45 +59,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-<<<<<<< HEAD
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
-//				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultDBCluster, err := adb.NewDBCluster(ctx, "defaultDBCluster", &adb.DBClusterArgs{
-//				DbClusterCategory: pulumi.String("Cluster"),
-//				DbNodeClass:       pulumi.String("C8"),
-//				DbNodeCount:       pulumi.Int(4),
-//				DbNodeStorage:     pulumi.Int(400),
-//				Mode:              pulumi.String("reserver"),
-//				DbClusterVersion:  pulumi.String("3.0"),
-//				PaymentType:       pulumi.String("PayAsYouGo"),
-//				VswitchId:         defaultSwitch.ID(),
-//				Description:       pulumi.String(name),
-//				MaintainTime:      pulumi.String("23:00Z-00:00Z"),
-//				ResourceGroupId:   pulumi.String(defaultResourceGroups.Ids[0]),
-//				SecurityIps: pulumi.StringArray{
-//					pulumi.String("10.168.1.12"),
-//					pulumi.String("10.168.1.11"),
-//				},
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
-//				},
-=======
 //			vswitchId := defaultSwitches.Ids[0]
 //			cluster, err := adb.NewDBCluster(ctx, "cluster", &adb.DBClusterArgs{
 //				DbClusterCategory: pulumi.String("MixedStorage"),
 //				Mode:              pulumi.String("flexible"),
 //				ComputeResource:   pulumi.String("8Core32GB"),
-//				VswitchId:         *pulumi.String(vswitchId),
+//				VswitchId:         pulumi.String(vswitchId),
 //				Description:       pulumi.String(name),
->>>>>>> 7cc4b796d (make build_sdks)
 //			})
 //			if err != nil {
 //				return err

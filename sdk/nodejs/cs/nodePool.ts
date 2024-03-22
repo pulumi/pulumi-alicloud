@@ -209,7 +209,7 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * Operating system release, using `imageType` instead.
      *
-     * @deprecated Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.
+     * @deprecated Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
      */
     public readonly platform!: pulumi.Output<string>;
     /**
@@ -247,7 +247,7 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      *
-     * @deprecated Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+     * @deprecated Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
@@ -678,7 +678,7 @@ export interface NodePoolState {
     /**
      * Operating system release, using `imageType` instead.
      *
-     * @deprecated Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.
+     * @deprecated Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
      */
     platform?: pulumi.Input<string>;
     /**
@@ -716,7 +716,7 @@ export interface NodePoolState {
     /**
      * The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      *
-     * @deprecated Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+     * @deprecated Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
@@ -972,7 +972,7 @@ export interface NodePoolArgs {
     /**
      * Operating system release, using `imageType` instead.
      *
-     * @deprecated Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.
+     * @deprecated Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
      */
     platform?: pulumi.Input<string>;
     /**
@@ -1010,7 +1010,7 @@ export interface NodePoolArgs {
     /**
      * The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      *
-     * @deprecated Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
+     * @deprecated Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
      */
     securityGroupId?: pulumi.Input<string>;
     /**

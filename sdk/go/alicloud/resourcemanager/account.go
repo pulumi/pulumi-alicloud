@@ -62,7 +62,7 @@ import (
 //				DisplayName: _default.Result.ApplyT(func(result int) (string, error) {
 //					return fmt.Sprintf("%v-%v", displayName, result), nil
 //				}).(pulumi.StringOutput),
-//				FolderId: *pulumi.String(exampleFolders.Ids[0]),
+//				FolderId: pulumi.String(exampleFolders.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
