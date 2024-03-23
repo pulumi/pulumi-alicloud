@@ -74,9 +74,9 @@ import (
 //					&vpc.NetworkAclIngressAclEntryArgs{
 //						Description:         pulumi.String(fmt.Sprintf("%v-ingress", name)),
 //						NetworkAclEntryName: pulumi.String(fmt.Sprintf("%v-ingress", name)),
-//						SourceCidrIp:        pulumi.String("196.168.2.0/21"),
+//						SourceCidrIp:        pulumi.String("10.0.0.0/24"),
 //						Policy:              pulumi.String("accept"),
-//						Port:                pulumi.String("22/80"),
+//						Port:                pulumi.String("20/80"),
 //						Protocol:            pulumi.String("tcp"),
 //					},
 //				},
@@ -84,10 +84,10 @@ import (
 //					&vpc.NetworkAclEgressAclEntryArgs{
 //						Description:         pulumi.String(fmt.Sprintf("%v-egress", name)),
 //						NetworkAclEntryName: pulumi.String(fmt.Sprintf("%v-egress", name)),
-//						DestinationCidrIp:   pulumi.String("0.0.0.0/0"),
+//						DestinationCidrIp:   pulumi.String("10.0.0.0/24"),
 //						Policy:              pulumi.String("accept"),
-//						Port:                pulumi.String("-1/-1"),
-//						Protocol:            pulumi.String("all"),
+//						Port:                pulumi.String("20/80"),
+//						Protocol:            pulumi.String("tcp"),
 //					},
 //				},
 //				Resources: vpc.NetworkAclResourceArray{

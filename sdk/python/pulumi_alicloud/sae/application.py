@@ -2464,6 +2464,7 @@ class Application(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         region = config.get("region")
@@ -2472,6 +2473,9 @@ class Application(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
         default_regions = alicloud.get_regions(current=True)
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("defaultNetwork",
@@ -2484,13 +2488,13 @@ class Application(pulumi.CustomResource):
             zone_id=default_zones.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=f"{default_regions.regions[0].id}:example",
+            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
             namespace_name=name,
             namespace_description=name,
             enable_micro_registration=False)
         default_application = alicloud.sae.Application("defaultApplication",
             app_description=name,
-            app_name=name,
+            app_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
             namespace_id=default_namespace.id,
             image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
             package_type="Image",
@@ -2610,6 +2614,7 @@ class Application(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         region = config.get("region")
@@ -2618,6 +2623,9 @@ class Application(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
         default_regions = alicloud.get_regions(current=True)
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("defaultNetwork",
@@ -2630,13 +2638,13 @@ class Application(pulumi.CustomResource):
             zone_id=default_zones.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=f"{default_regions.regions[0].id}:example",
+            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
             namespace_name=name,
             namespace_description=name,
             enable_micro_registration=False)
         default_application = alicloud.sae.Application("defaultApplication",
             app_description=name,
-            app_name=name,
+            app_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
             namespace_id=default_namespace.id,
             image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
             package_type="Image",

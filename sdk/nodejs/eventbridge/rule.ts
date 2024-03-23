@@ -50,11 +50,11 @@ export class Rule extends pulumi.CustomResource {
     }
 
     /**
-     * The description of rule.
+     * The description of the event rule.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The name of event bus.
+     * The name of the event bus.
      */
     public readonly eventBusName!: pulumi.Output<string>;
     /**
@@ -62,15 +62,15 @@ export class Rule extends pulumi.CustomResource {
      */
     public readonly filterPattern!: pulumi.Output<string>;
     /**
-     * The name of rule.
+     * The name of the event rule.
      */
     public readonly ruleName!: pulumi.Output<string>;
     /**
-     * Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+     * The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * The target of rule. See `targets` below.
+     * The targets of rule. See `targets` below.
      */
     public readonly targets!: pulumi.Output<outputs.eventbridge.RuleTarget[]>;
 
@@ -124,11 +124,11 @@ export class Rule extends pulumi.CustomResource {
  */
 export interface RuleState {
     /**
-     * The description of rule.
+     * The description of the event rule.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of event bus.
+     * The name of the event bus.
      */
     eventBusName?: pulumi.Input<string>;
     /**
@@ -136,15 +136,15 @@ export interface RuleState {
      */
     filterPattern?: pulumi.Input<string>;
     /**
-     * The name of rule.
+     * The name of the event rule.
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+     * The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The target of rule. See `targets` below.
+     * The targets of rule. See `targets` below.
      */
     targets?: pulumi.Input<pulumi.Input<inputs.eventbridge.RuleTarget>[]>;
 }
@@ -154,11 +154,11 @@ export interface RuleState {
  */
 export interface RuleArgs {
     /**
-     * The description of rule.
+     * The description of the event rule.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of event bus.
+     * The name of the event bus.
      */
     eventBusName: pulumi.Input<string>;
     /**
@@ -166,15 +166,15 @@ export interface RuleArgs {
      */
     filterPattern: pulumi.Input<string>;
     /**
-     * The name of rule.
+     * The name of the event rule.
      */
     ruleName: pulumi.Input<string>;
     /**
-     * Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+     * The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The target of rule. See `targets` below.
+     * The targets of rule. See `targets` below.
      */
     targets: pulumi.Input<pulumi.Input<inputs.eventbridge.RuleTarget>[]>;
 }

@@ -82,6 +82,12 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        /// </summary>
+        [Output("diskEncryption")]
+        public Output<bool?> DiskEncryption { get; private set; } = null!;
+
+        /// <summary>
         /// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
         /// </summary>
         [Output("diskPerformanceLevel")]
@@ -98,6 +104,12 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Output("elasticIoResourceSize")]
         public Output<string> ElasticIoResourceSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        /// </summary>
+        [Output("kmsId")]
+        public Output<string?> KmsId { get; private set; } = null!;
 
         /// <summary>
         /// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -295,6 +307,12 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("diskEncryption")]
+        public Input<bool>? DiskEncryption { get; set; }
+
+        /// <summary>
         /// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
         /// </summary>
         [Input("diskPerformanceLevel")]
@@ -311,6 +329,12 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Input("elasticIoResourceSize")]
         public Input<string>? ElasticIoResourceSize { get; set; }
+
+        /// <summary>
+        /// The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        /// </summary>
+        [Input("kmsId")]
+        public Input<string>? KmsId { get; set; }
 
         /// <summary>
         /// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -476,6 +500,12 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+        /// </summary>
+        [Input("diskEncryption")]
+        public Input<bool>? DiskEncryption { get; set; }
+
+        /// <summary>
         /// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
         /// </summary>
         [Input("diskPerformanceLevel")]
@@ -492,6 +522,12 @@ namespace Pulumi.AliCloud.Adb
         /// </summary>
         [Input("elasticIoResourceSize")]
         public Input<string>? ElasticIoResourceSize { get; set; }
+
+        /// <summary>
+        /// The Key Management Service (KMS) ID that is used for disk encryption. `kms_id` is valid only when `disk_encryption` is set to `true`.
+        /// </summary>
+        [Input("kmsId")]
+        public Input<string>? KmsId { get; set; }
 
         /// <summary>
         /// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.

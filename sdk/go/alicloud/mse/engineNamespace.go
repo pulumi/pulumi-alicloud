@@ -32,11 +32,17 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
@@ -59,26 +65,25 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleCluster, err := mse.NewCluster(ctx, "exampleCluster", &mse.ClusterArgs{
+//			_, err = mse.NewCluster(ctx, "default", &mse.ClusterArgs{
+//				ConnectionType:       pulumi.String("slb"),
+//				NetType:              pulumi.String("privatenet"),
+//				VswitchId:            exampleSwitch.ID(),
 //				ClusterSpecification: pulumi.String("MSE_SC_1_2_60_c"),
-//				ClusterType:          pulumi.String("Nacos-Ans"),
 //				ClusterVersion:       pulumi.String("NACOS_2_0_0"),
 //				InstanceCount:        pulumi.Int(1),
-//				NetType:              pulumi.String("privatenet"),
 //				PubNetworkFlow:       pulumi.String("1"),
-//				ConnectionType:       pulumi.String("slb"),
-//				ClusterAliasName:     pulumi.String("terraform-example"),
+//				ClusterAliasName:     pulumi.String(name),
 //				MseVersion:           pulumi.String("mse_dev"),
-//				VswitchId:            exampleSwitch.ID(),
-//				VpcId:                exampleNetwork.ID(),
+//				ClusterType:          pulumi.String("Nacos-Ans"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = mse.NewEngineNamespace(ctx, "exampleEngineNamespace", &mse.EngineNamespaceArgs{
-//				ClusterId:         exampleCluster.ClusterId,
-//				NamespaceShowName: pulumi.String("terraform-example"),
-//				NamespaceId:       pulumi.String("terraform-example"),
+//				ClusterId:         _default.ID(),
+//				NamespaceShowName: pulumi.String(name),
+//				NamespaceId:       pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

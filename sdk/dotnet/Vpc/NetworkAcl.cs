@@ -61,9 +61,9 @@ namespace Pulumi.AliCloud.Vpc
     ///             {
     ///                 Description = $"{name}-ingress",
     ///                 NetworkAclEntryName = $"{name}-ingress",
-    ///                 SourceCidrIp = "196.168.2.0/21",
+    ///                 SourceCidrIp = "10.0.0.0/24",
     ///                 Policy = "accept",
-    ///                 Port = "22/80",
+    ///                 Port = "20/80",
     ///                 Protocol = "tcp",
     ///             },
     ///         },
@@ -73,10 +73,10 @@ namespace Pulumi.AliCloud.Vpc
     ///             {
     ///                 Description = $"{name}-egress",
     ///                 NetworkAclEntryName = $"{name}-egress",
-    ///                 DestinationCidrIp = "0.0.0.0/0",
+    ///                 DestinationCidrIp = "10.0.0.0/24",
     ///                 Policy = "accept",
-    ///                 Port = "-1/-1",
-    ///                 Protocol = "all",
+    ///                 Port = "20/80",
+    ///                 Protocol = "tcp",
     ///             },
     ///         },
     ///         Resources = new[]

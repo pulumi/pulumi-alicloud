@@ -115,7 +115,7 @@ import (
 //				VpcId:                  defaultNetwork.ID(),
 //				Scheduler:              pulumi.String("Wrr"),
 //				Protocol:               pulumi.String("TCP"),
-//				ConnectionDrain:        pulumi.Bool(true),
+//				ConnectionDrainEnabled: pulumi.Bool(true),
 //				ConnectionDrainTimeout: pulumi.Int(60),
 //				AddressIpVersion:       pulumi.String("Ipv4"),
 //				HealthCheck: &nlb.ServerGroupHealthCheckArgs{
@@ -149,7 +149,6 @@ import (
 //				ServerGroupId:        defaultServerGroup.ID(),
 //				IdleTimeout:          pulumi.Int(900),
 //				ProxyProtocolEnabled: pulumi.Bool(true),
-//				SecSensorEnabled:     pulumi.Bool(true),
 //				Cps:                  pulumi.Int(10000),
 //				Mss:                  pulumi.Int(0),
 //			})

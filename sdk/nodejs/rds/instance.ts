@@ -91,10 +91,10 @@ export class Instance extends pulumi.CustomResource {
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
-     * * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
-     * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
-     * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
-     * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+     * * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
+     * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
+     * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
+     * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
      *
      * > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
      */
@@ -129,7 +129,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly connectionStringPrefix!: pulumi.Output<string>;
     /**
-     * (Available in 1.204.1+) The creation time of db instance.
+     * (Available since 1.204.1) The creation time of db instance.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -154,7 +154,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dbInstanceStorageType!: pulumi.Output<string>;
     /**
-     * (Available in 1.197.0+) The type of db instance.
+     * (Available since 1.197.0) The type of db instance.
      */
     public /*out*/ readonly dbInstanceType!: pulumi.Output<string>;
     /**
@@ -345,7 +345,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
-     * , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+     * , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
@@ -399,7 +399,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly sslStatus!: pulumi.Output<string>;
     /**
-     * (Available in 1.204.1+) The status of db instance.
+     * (Available since 1.204.1) The status of db instance.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -411,7 +411,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly storageAutoScale!: pulumi.Output<string | undefined>;
     /**
-     * The trigger threshold (percentage) for automatic storage space expansion.
+     * The threshold in percentage based on which an automatic storage expansion is triggered. If the available storage reaches the threshold, ApsaraDB RDS increases the storage capacity of the instance.
      * Valid values: [10, 20, 30, 40, 50].
      *
      * > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
@@ -746,10 +746,10 @@ export interface InstanceState {
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
-     * * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
-     * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
-     * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
-     * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+     * * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
+     * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
+     * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
+     * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
      *
      * > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
      */
@@ -784,7 +784,7 @@ export interface InstanceState {
      */
     connectionStringPrefix?: pulumi.Input<string>;
     /**
-     * (Available in 1.204.1+) The creation time of db instance.
+     * (Available since 1.204.1) The creation time of db instance.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -809,7 +809,7 @@ export interface InstanceState {
      */
     dbInstanceStorageType?: pulumi.Input<string>;
     /**
-     * (Available in 1.197.0+) The type of db instance.
+     * (Available since 1.197.0) The type of db instance.
      */
     dbInstanceType?: pulumi.Input<string>;
     /**
@@ -1000,7 +1000,7 @@ export interface InstanceState {
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+     * , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1054,7 +1054,7 @@ export interface InstanceState {
      */
     sslStatus?: pulumi.Input<string>;
     /**
-     * (Available in 1.204.1+) The status of db instance.
+     * (Available since 1.204.1) The status of db instance.
      */
     status?: pulumi.Input<string>;
     /**
@@ -1066,7 +1066,7 @@ export interface InstanceState {
      */
     storageAutoScale?: pulumi.Input<string>;
     /**
-     * The trigger threshold (percentage) for automatic storage space expansion.
+     * The threshold in percentage based on which an automatic storage expansion is triggered. If the available storage reaches the threshold, ApsaraDB RDS increases the storage capacity of the instance.
      * Valid values: [10, 20, 30, 40, 50].
      *
      * > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
@@ -1213,10 +1213,10 @@ export interface InstanceArgs {
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
-     * * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
-     * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
-     * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
-     * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+     * * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
+     * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
+     * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
+     * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
      *
      * > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
      */
@@ -1455,7 +1455,7 @@ export interface InstanceArgs {
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+     * , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1513,7 +1513,7 @@ export interface InstanceArgs {
      */
     storageAutoScale?: pulumi.Input<string>;
     /**
-     * The trigger threshold (percentage) for automatic storage space expansion.
+     * The threshold in percentage based on which an automatic storage expansion is triggered. If the available storage reaches the threshold, ApsaraDB RDS increases the storage capacity of the instance.
      * Valid values: [10, 20, 30, 40, 50].
      *
      * > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.

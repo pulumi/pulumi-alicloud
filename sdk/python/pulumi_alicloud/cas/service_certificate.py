@@ -239,8 +239,12 @@ class ServiceCertificate(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.cas.ServiceCertificate("default",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_service_certificate = alicloud.cas.ServiceCertificate("defaultServiceCertificate",
             cert=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
         TjEVMBMGA1UEAwwMKi50ZnRlc3QudG9wMRAwDgYDVQQIDAdCZWlKaW5nMRAwDgYD
@@ -264,7 +268,7 @@ class ServiceCertificate(pulumi.CustomResource):
         -----END CERTIFICATE-----
 
         \"\"\",
-            certificate_name="tf-example",
+            certificate_name=default_random_integer.result.apply(lambda result: f"tf-example-{result}"),
             key=\"\"\"-----BEGIN PRIVATE KEY-----
         MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDOST00lQfs8tJA
         rhFGsZBjl1Wx+2SGcqH0eEjrKueWjBYgM9LU9kc5T/mBDvE9Q8Z0pBXlLvHzBE6c
@@ -339,8 +343,12 @@ class ServiceCertificate(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.cas.ServiceCertificate("default",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_service_certificate = alicloud.cas.ServiceCertificate("defaultServiceCertificate",
             cert=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
         TjEVMBMGA1UEAwwMKi50ZnRlc3QudG9wMRAwDgYDVQQIDAdCZWlKaW5nMRAwDgYD
@@ -364,7 +372,7 @@ class ServiceCertificate(pulumi.CustomResource):
         -----END CERTIFICATE-----
 
         \"\"\",
-            certificate_name="tf-example",
+            certificate_name=default_random_integer.result.apply(lambda result: f"tf-example-{result}"),
             key=\"\"\"-----BEGIN PRIVATE KEY-----
         MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDOST00lQfs8tJA
         rhFGsZBjl1Wx+2SGcqH0eEjrKueWjBYgM9LU9kc5T/mBDvE9Q8Z0pBXlLvHzBE6c

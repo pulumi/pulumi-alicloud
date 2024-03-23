@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class NodePoolRollingPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+        /// The maximum number of unusable nodes.
         /// </summary>
         [Input("maxParallelism")]
         public Input<int>? MaxParallelism { get; set; }

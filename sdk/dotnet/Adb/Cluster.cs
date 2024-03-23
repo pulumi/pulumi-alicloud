@@ -134,6 +134,9 @@ namespace Pulumi.AliCloud.Adb
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        [Output("diskEncryption")]
+        public Output<bool?> DiskEncryption { get; private set; } = null!;
+
         [Output("diskPerformanceLevel")]
         public Output<string> DiskPerformanceLevel { get; private set; } = null!;
 
@@ -142,6 +145,9 @@ namespace Pulumi.AliCloud.Adb
 
         [Output("elasticIoResourceSize")]
         public Output<string> ElasticIoResourceSize { get; private set; } = null!;
+
+        [Output("kmsId")]
+        public Output<string?> KmsId { get; private set; } = null!;
 
         /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -316,6 +322,9 @@ namespace Pulumi.AliCloud.Adb
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("diskEncryption")]
+        public Input<bool>? DiskEncryption { get; set; }
+
         [Input("diskPerformanceLevel")]
         public Input<string>? DiskPerformanceLevel { get; set; }
 
@@ -324,6 +333,9 @@ namespace Pulumi.AliCloud.Adb
 
         [Input("elasticIoResourceSize")]
         public Input<string>? ElasticIoResourceSize { get; set; }
+
+        [Input("kmsId")]
+        public Input<string>? KmsId { get; set; }
 
         /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -469,6 +481,9 @@ namespace Pulumi.AliCloud.Adb
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("diskEncryption")]
+        public Input<bool>? DiskEncryption { get; set; }
+
         [Input("diskPerformanceLevel")]
         public Input<string>? DiskPerformanceLevel { get; set; }
 
@@ -477,6 +492,9 @@ namespace Pulumi.AliCloud.Adb
 
         [Input("elasticIoResourceSize")]
         public Input<string>? ElasticIoResourceSize { get; set; }
+
+        [Input("kmsId")]
+        public Input<string>? KmsId { get; set; }
 
         /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)

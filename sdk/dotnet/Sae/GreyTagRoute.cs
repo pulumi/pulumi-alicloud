@@ -26,11 +26,18 @@ namespace Pulumi.AliCloud.Sae
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
@@ -62,7 +69,12 @@ namespace Pulumi.AliCloud.Sae
     /// 
     ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
     ///     {
-    ///         NamespaceId = $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example",
+    ///         NamespaceId = Output.Tuple(defaultRegions, defaultRandomInteger.Result).Apply(values =&gt;
+    ///         {
+    ///             var defaultRegions = values.Item1;
+    ///             var result = values.Item2;
+    ///             return $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example{result}";
+    ///         }),
     ///         NamespaceName = name,
     ///         NamespaceDescription = name,
     ///         EnableMicroRegistration = false,
@@ -71,7 +83,7 @@ namespace Pulumi.AliCloud.Sae
     ///     var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new()
     ///     {
     ///         AppDescription = name,
-    ///         AppName = name,
+    ///         AppName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
     ///         NamespaceId = defaultNamespace.Id,
     ///         ImageUrl = $"registry-vpc.{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}.aliyuncs.com/sae-demo-image/consumer:1.0",
     ///         PackageType = "Image",

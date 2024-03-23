@@ -63,6 +63,20 @@ public class Environment extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bindResourceId);
     }
     /**
+     * List of abandoned indicators.
+     * 
+     */
+    @Export(name="dropMetrics", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dropMetrics;
+
+    /**
+     * @return List of abandoned indicators.
+     * 
+     */
+    public Output<Optional<String>> dropMetrics() {
+        return Codegen.optional(this.dropMetrics);
+    }
+    /**
      * The first ID of the resource.
      * 
      */
@@ -123,6 +137,26 @@ public class Environment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> environmentType() {
         return this.environmentType;
+    }
+    /**
+     * Hosting type:
+     * - none: unmanaged. The default value of the ACK cluster.
+     * - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+     * - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+     * 
+     */
+    @Export(name="managedType", refs={String.class}, tree="[0]")
+    private Output<String> managedType;
+
+    /**
+     * @return Hosting type:
+     * - none: unmanaged. The default value of the ACK cluster.
+     * - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+     * - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+     * 
+     */
+    public Output<String> managedType() {
+        return this.managedType;
     }
     /**
      * The ID of the resource group.

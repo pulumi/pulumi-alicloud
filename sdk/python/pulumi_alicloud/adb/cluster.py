@@ -24,9 +24,11 @@ class ClusterArgs:
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_encryption: Optional[pulumi.Input[bool]] = None,
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
@@ -83,12 +85,16 @@ class ClusterArgs:
             pulumi.set(__self__, "db_node_storage", db_node_storage)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
         if disk_performance_level is not None:
             pulumi.set(__self__, "disk_performance_level", disk_performance_level)
         if elastic_io_resource is not None:
             pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
         if elastic_io_resource_size is not None:
             pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
+        if kms_id is not None:
+            pulumi.set(__self__, "kms_id", kms_id)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
         if modify_type is not None:
@@ -232,6 +238,15 @@ class ClusterArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "disk_encryption")
+
+    @disk_encryption.setter
+    def disk_encryption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disk_encryption", value)
+
+    @property
     @pulumi.getter(name="diskPerformanceLevel")
     def disk_performance_level(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "disk_performance_level")
@@ -257,6 +272,15 @@ class ClusterArgs:
     @elastic_io_resource_size.setter
     def elastic_io_resource_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "elastic_io_resource_size", value)
+
+    @property
+    @pulumi.getter(name="kmsId")
+    def kms_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kms_id")
+
+    @kms_id.setter
+    def kms_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_id", value)
 
     @property
     @pulumi.getter(name="maintainTime")
@@ -414,9 +438,11 @@ class _ClusterState:
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_encryption: Optional[pulumi.Input[bool]] = None,
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -480,12 +506,16 @@ class _ClusterState:
             pulumi.set(__self__, "db_node_storage", db_node_storage)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disk_encryption is not None:
+            pulumi.set(__self__, "disk_encryption", disk_encryption)
         if disk_performance_level is not None:
             pulumi.set(__self__, "disk_performance_level", disk_performance_level)
         if elastic_io_resource is not None:
             pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
         if elastic_io_resource_size is not None:
             pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
+        if kms_id is not None:
+            pulumi.set(__self__, "kms_id", kms_id)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
         if mode is not None:
@@ -638,6 +668,15 @@ class _ClusterState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "disk_encryption")
+
+    @disk_encryption.setter
+    def disk_encryption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disk_encryption", value)
+
+    @property
     @pulumi.getter(name="diskPerformanceLevel")
     def disk_performance_level(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "disk_performance_level")
@@ -663,6 +702,15 @@ class _ClusterState:
     @elastic_io_resource_size.setter
     def elastic_io_resource_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "elastic_io_resource_size", value)
+
+    @property
+    @pulumi.getter(name="kmsId")
+    def kms_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kms_id")
+
+    @kms_id.setter
+    def kms_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_id", value)
 
     @property
     @pulumi.getter(name="maintainTime")
@@ -851,9 +899,11 @@ class Cluster(pulumi.CustomResource):
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_encryption: Optional[pulumi.Input[bool]] = None,
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -1029,9 +1079,11 @@ class Cluster(pulumi.CustomResource):
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_encryption: Optional[pulumi.Input[bool]] = None,
                  disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
                  elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+                 kms_id: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -1065,9 +1117,11 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["db_node_count"] = db_node_count
             __props__.__dict__["db_node_storage"] = db_node_storage
             __props__.__dict__["description"] = description
+            __props__.__dict__["disk_encryption"] = disk_encryption
             __props__.__dict__["disk_performance_level"] = disk_performance_level
             __props__.__dict__["elastic_io_resource"] = elastic_io_resource
             __props__.__dict__["elastic_io_resource_size"] = elastic_io_resource_size
+            __props__.__dict__["kms_id"] = kms_id
             __props__.__dict__["maintain_time"] = maintain_time
             if mode is None and not opts.urn:
                 raise TypeError("Missing required property 'mode'")
@@ -1106,9 +1160,11 @@ class Cluster(pulumi.CustomResource):
             db_node_count: Optional[pulumi.Input[int]] = None,
             db_node_storage: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            disk_encryption: Optional[pulumi.Input[bool]] = None,
             disk_performance_level: Optional[pulumi.Input[str]] = None,
             elastic_io_resource: Optional[pulumi.Input[int]] = None,
             elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
+            kms_id: Optional[pulumi.Input[str]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
             mode: Optional[pulumi.Input[str]] = None,
             modify_type: Optional[pulumi.Input[str]] = None,
@@ -1168,9 +1224,11 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["db_node_count"] = db_node_count
         __props__.__dict__["db_node_storage"] = db_node_storage
         __props__.__dict__["description"] = description
+        __props__.__dict__["disk_encryption"] = disk_encryption
         __props__.__dict__["disk_performance_level"] = disk_performance_level
         __props__.__dict__["elastic_io_resource"] = elastic_io_resource
         __props__.__dict__["elastic_io_resource_size"] = elastic_io_resource_size
+        __props__.__dict__["kms_id"] = kms_id
         __props__.__dict__["maintain_time"] = maintain_time
         __props__.__dict__["mode"] = mode
         __props__.__dict__["modify_type"] = modify_type
@@ -1266,6 +1324,11 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="diskEncryption")
+    def disk_encryption(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "disk_encryption")
+
+    @property
     @pulumi.getter(name="diskPerformanceLevel")
     def disk_performance_level(self) -> pulumi.Output[str]:
         return pulumi.get(self, "disk_performance_level")
@@ -1279,6 +1342,11 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="elasticIoResourceSize")
     def elastic_io_resource_size(self) -> pulumi.Output[str]:
         return pulumi.get(self, "elastic_io_resource_size")
+
+    @property
+    @pulumi.getter(name="kmsId")
+    def kms_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "kms_id")
 
     @property
     @pulumi.getter(name="maintainTime")

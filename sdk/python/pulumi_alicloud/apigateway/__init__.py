@@ -22,6 +22,7 @@ from .instance import *
 from .log_config import *
 from .model import *
 from .plugin import *
+from .plugin_attachment import *
 from .vpc_access import *
 from ._inputs import *
 from . import outputs

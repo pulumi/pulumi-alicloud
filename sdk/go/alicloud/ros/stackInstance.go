@@ -28,19 +28,30 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleRegions, err := ros.GetRegions(ctx, nil, nil)
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			this, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleStackGroup, err := ros.NewStackGroup(ctx, "exampleStackGroup", &ros.StackGroupArgs{
-//				StackGroupName: pulumi.Any(_var.Name),
+//			defaultRegions, err := ros.GetRegions(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultStackGroup, err := ros.NewStackGroup(ctx, "defaultStackGroup", &ros.StackGroupArgs{
+//				StackGroupName: pulumi.String(name),
 //				TemplateBody:   pulumi.String("{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}"),
 //				Description:    pulumi.String("test for stack groups"),
 //				Parameters: ros.StackGroupParameterArray{
@@ -57,11 +68,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ros.NewStackInstance(ctx, "exampleStackInstance", &ros.StackInstanceArgs{
-//				StackGroupName:         exampleStackGroup.StackGroupName,
-//				StackInstanceAccountId: pulumi.String("example_value"),
-//				StackInstanceRegionId:  pulumi.String(exampleRegions.Regions[0].RegionId),
+//			_, err = ros.NewStackInstance(ctx, "example", &ros.StackInstanceArgs{
+//				StackGroupName:         defaultStackGroup.StackGroupName,
+//				StackInstanceAccountId: pulumi.String(this.Id),
+//				StackInstanceRegionId:  pulumi.String(defaultRegions.Regions[0].RegionId),
 //				OperationPreferences:   pulumi.String("{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}"),
+//				TimeoutInMinutes:       pulumi.String("60"),
+//				OperationDescription:   pulumi.String("tf-example"),
+//				RetainStacks:           pulumi.Bool(true),
 //				ParameterOverrides: ros.StackInstanceParameterOverrideArray{
 //					&ros.StackInstanceParameterOverrideArgs{
 //						ParameterValue: pulumi.String("VpcName"),

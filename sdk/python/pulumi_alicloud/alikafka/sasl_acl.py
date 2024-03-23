@@ -257,6 +257,7 @@ class SaslAcl(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -272,6 +273,9 @@ class SaslAcl(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default_zones.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_instance = alicloud.alikafka.Instance("defaultInstance",
             partition_num=50,
             disk_type=1,
@@ -340,6 +344,7 @@ class SaslAcl(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -355,6 +360,9 @@ class SaslAcl(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default_zones.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
         default_instance = alicloud.alikafka.Instance("defaultInstance",
             partition_num=50,
             disk_type=1,

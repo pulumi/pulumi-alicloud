@@ -18,6 +18,9 @@ namespace Pulumi.AliCloud.Oss.Inputs
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
+        /// <summary>
+        /// The region in which the destination bucket is located.
+        /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 

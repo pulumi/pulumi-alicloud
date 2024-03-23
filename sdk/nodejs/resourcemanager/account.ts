@@ -27,10 +27,10 @@ import * as utilities from "../utilities";
  *     min: 10000,
  *     max: 99999,
  * });
- * const exampleFolder = new alicloud.resourcemanager.Folder("exampleFolder", {folderName: pulumi.interpolate`${name}-${_default.result}`});
+ * const exampleFolders = alicloud.resourcemanager.getFolders({});
  * const exampleAccount = new alicloud.resourcemanager.Account("exampleAccount", {
  *     displayName: pulumi.interpolate`${displayName}-${_default.result}`,
- *     folderId: exampleFolder.id,
+ *     folderId: exampleFolders.then(exampleFolders => exampleFolders.ids?.[0]),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

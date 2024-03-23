@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// The destination bucket to which the data is replicated.
         /// </summary>
         public readonly string Bucket;
+        /// <summary>
+        /// The region in which the destination bucket is located.
+        /// </summary>
         public readonly string Location;
         /// <summary>
         /// The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.

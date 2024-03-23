@@ -32,10 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
- * import com.pulumi.alicloud.eds.SimpleOfficeSite;
- * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
+ * import com.pulumi.alicloud.eds.EdsFunctions;
+ * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
  * import com.pulumi.alicloud.eds.NetworkPackage;
  * import com.pulumi.alicloud.eds.NetworkPackageArgs;
  * import java.util.List;
@@ -51,23 +49,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
- *             .min(10000)
- *             .max(99999)
- *             .build());
- * 
- *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
- *             .enableAdminAccess(false)
- *             .desktopAccessType(&#34;Internet&#34;)
- *             .officeSiteName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *         final var defaultSimpleOfficeSites = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
+ *             .status(&#34;REGISTERED&#34;)
+ *             .nameRegex(&#34;default&#34;)
  *             .build());
  * 
  *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
  *             .bandwidth(10)
- *             .officeSiteId(defaultSimpleOfficeSite.id())
+ *             .officeSiteId(defaultSimpleOfficeSites.applyValue(getSimpleOfficeSitesResult -&gt; getSimpleOfficeSitesResult.ids()[0]))
  *             .build());
  * 
  *     }

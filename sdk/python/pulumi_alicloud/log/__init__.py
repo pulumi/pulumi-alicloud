@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .alert import *
+from .alert_resource import *
 from .audit import *
 from .dashboard import *
 from .etl import *

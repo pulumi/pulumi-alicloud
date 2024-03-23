@@ -5,7 +5,6 @@ package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -19,14 +18,14 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
     public static final NodePoolScalingConfigArgs Empty = new NodePoolScalingConfigArgs();
 
     /**
-     * Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+     * Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
      * 
      */
     @Import(name="eipBandwidth")
     private @Nullable Output<Integer> eipBandwidth;
 
     /**
-     * @return Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+     * @return Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
      * 
      */
     public Optional<Output<Integer>> eipBandwidth() {
@@ -34,18 +33,33 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
+     * EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
      * 
      */
     @Import(name="eipInternetChargeType")
     private @Nullable Output<String> eipInternetChargeType;
 
     /**
-     * @return EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
+     * @return EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
      * 
      */
     public Optional<Output<String>> eipInternetChargeType() {
         return Optional.ofNullable(this.eipInternetChargeType);
+    }
+
+    /**
+     * Whether to enable automatic scaling. Value:
+     * 
+     */
+    @Import(name="enable")
+    private @Nullable Output<Boolean> enable;
+
+    /**
+     * @return Whether to enable automatic scaling. Value:
+     * 
+     */
+    public Optional<Output<Boolean>> enable() {
+        return Optional.ofNullable(this.enable);
     }
 
     /**
@@ -67,30 +81,30 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
      * Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
      * 
      */
-    @Import(name="maxSize", required=true)
-    private Output<Integer> maxSize;
+    @Import(name="maxSize")
+    private @Nullable Output<Integer> maxSize;
 
     /**
      * @return Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
      * 
      */
-    public Output<Integer> maxSize() {
-        return this.maxSize;
+    public Optional<Output<Integer>> maxSize() {
+        return Optional.ofNullable(this.maxSize);
     }
 
     /**
      * Min number of instances in a auto scaling group, its valid value range [0~1000].
      * 
      */
-    @Import(name="minSize", required=true)
-    private Output<Integer> minSize;
+    @Import(name="minSize")
+    private @Nullable Output<Integer> minSize;
 
     /**
      * @return Min number of instances in a auto scaling group, its valid value range [0~1000].
      * 
      */
-    public Output<Integer> minSize() {
-        return this.minSize;
+    public Optional<Output<Integer>> minSize() {
+        return Optional.ofNullable(this.minSize);
     }
 
     /**
@@ -113,6 +127,7 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
     private NodePoolScalingConfigArgs(NodePoolScalingConfigArgs $) {
         this.eipBandwidth = $.eipBandwidth;
         this.eipInternetChargeType = $.eipInternetChargeType;
+        this.enable = $.enable;
         this.isBondEip = $.isBondEip;
         this.maxSize = $.maxSize;
         this.minSize = $.minSize;
@@ -138,7 +153,7 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param eipBandwidth Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+         * @param eipBandwidth Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
          * 
          * @return builder
          * 
@@ -149,7 +164,7 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param eipBandwidth Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+         * @param eipBandwidth Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
          * 
          * @return builder
          * 
@@ -159,7 +174,7 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param eipInternetChargeType EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
+         * @param eipInternetChargeType EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
          * 
          * @return builder
          * 
@@ -170,13 +185,34 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param eipInternetChargeType EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
+         * @param eipInternetChargeType EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
          * 
          * @return builder
          * 
          */
         public Builder eipInternetChargeType(String eipInternetChargeType) {
             return eipInternetChargeType(Output.of(eipInternetChargeType));
+        }
+
+        /**
+         * @param enable Whether to enable automatic scaling. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enable(@Nullable Output<Boolean> enable) {
+            $.enable = enable;
+            return this;
+        }
+
+        /**
+         * @param enable Whether to enable automatic scaling. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enable(Boolean enable) {
+            return enable(Output.of(enable));
         }
 
         /**
@@ -206,7 +242,7 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder maxSize(Output<Integer> maxSize) {
+        public Builder maxSize(@Nullable Output<Integer> maxSize) {
             $.maxSize = maxSize;
             return this;
         }
@@ -227,7 +263,7 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder minSize(Output<Integer> minSize) {
+        public Builder minSize(@Nullable Output<Integer> minSize) {
             $.minSize = minSize;
             return this;
         }
@@ -264,12 +300,6 @@ public final class NodePoolScalingConfigArgs extends com.pulumi.resources.Resour
         }
 
         public NodePoolScalingConfigArgs build() {
-            if ($.maxSize == null) {
-                throw new MissingRequiredPropertyException("NodePoolScalingConfigArgs", "maxSize");
-            }
-            if ($.minSize == null) {
-                throw new MissingRequiredPropertyException("NodePoolScalingConfigArgs", "minSize");
-            }
             return $;
         }
     }

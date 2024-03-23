@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class NodePoolSpotPriceLimitGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Spot instance type.
+        /// The type of the preemptible instance.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
+        /// The maximum price of a single instance.
         /// </summary>
         [Input("priceLimit")]
         public Input<string>? PriceLimit { get; set; }

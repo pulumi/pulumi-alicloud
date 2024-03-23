@@ -32,6 +32,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -44,35 +45,51 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bucketRandom := defaultRandomInteger.Result
 //			default8j4t1R, err := oss.NewBucket(ctx, "default8j4t1R", &oss.BucketArgs{
-//				Bucket:       pulumi.String(fmt.Sprintf("%v-1", name)),
+//				Bucket: bucketRandom.ApplyT(func(bucketRandom int) (string, error) {
+//					return fmt.Sprintf("%v-1-%v", name, bucketRandom), nil
+//				}).(pulumi.StringOutput),
 //				StorageClass: pulumi.String("Standard"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			default9HMqfT, err := oss.NewBucket(ctx, "default9HMqfT", &oss.BucketArgs{
-//				Bucket:       pulumi.String(fmt.Sprintf("%v-2", name)),
+//				Bucket: bucketRandom.ApplyT(func(bucketRandom int) (string, error) {
+//					return fmt.Sprintf("%v-2-%v", name, bucketRandom), nil
+//				}).(pulumi.StringOutput),
 //				StorageClass: pulumi.String("Standard"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultxBXqFQ, err := oss.NewBucket(ctx, "defaultxBXqFQ", &oss.BucketArgs{
-//				Bucket:       pulumi.String(fmt.Sprintf("%v-3", name)),
+//				Bucket: bucketRandom.ApplyT(func(bucketRandom int) (string, error) {
+//					return fmt.Sprintf("%v-3-%v", name, bucketRandom), nil
+//				}).(pulumi.StringOutput),
 //				StorageClass: pulumi.String("Standard"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = oss.NewBucket(ctx, "defaulthZvCmR", &oss.BucketArgs{
-//				Bucket:       pulumi.String(fmt.Sprintf("%v-4", name)),
+//				Bucket: bucketRandom.ApplyT(func(bucketRandom int) (string, error) {
+//					return fmt.Sprintf("%v-4-%v", name, bucketRandom), nil
+//				}).(pulumi.StringOutput),
 //				StorageClass: pulumi.String("Standard"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = threatdetection.NewOssScanConfig(ctx, "default", &threatdetection.OssScanConfigArgs{
+//			_, err = threatdetection.NewOssScanConfig(ctx, "defaultOssScanConfig", &threatdetection.OssScanConfigArgs{
 //				KeySuffixLists: pulumi.StringArray{
 //					pulumi.String(".jsp"),
 //					pulumi.String(".php"),

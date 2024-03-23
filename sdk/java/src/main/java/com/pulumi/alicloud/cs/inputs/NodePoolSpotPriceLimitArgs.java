@@ -16,14 +16,14 @@ public final class NodePoolSpotPriceLimitArgs extends com.pulumi.resources.Resou
     public static final NodePoolSpotPriceLimitArgs Empty = new NodePoolSpotPriceLimitArgs();
 
     /**
-     * Spot instance type.
+     * The type of the preemptible instance.
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return Spot instance type.
+     * @return The type of the preemptible instance.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -31,14 +31,14 @@ public final class NodePoolSpotPriceLimitArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
+     * The maximum price of a single instance.
      * 
      */
     @Import(name="priceLimit")
     private @Nullable Output<String> priceLimit;
 
     /**
-     * @return The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
+     * @return The maximum price of a single instance.
      * 
      */
     public Optional<Output<String>> priceLimit() {
@@ -71,7 +71,7 @@ public final class NodePoolSpotPriceLimitArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param instanceType Spot instance type.
+         * @param instanceType The type of the preemptible instance.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class NodePoolSpotPriceLimitArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param instanceType Spot instance type.
+         * @param instanceType The type of the preemptible instance.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class NodePoolSpotPriceLimitArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param priceLimit The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
+         * @param priceLimit The maximum price of a single instance.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class NodePoolSpotPriceLimitArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param priceLimit The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
+         * @param priceLimit The maximum price of a single instance.
          * 
          * @return builder
          * 

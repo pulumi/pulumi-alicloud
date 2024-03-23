@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -235,6 +236,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<String> description() {
         return this.description;
     }
+    @Export(name="diskEncryption", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> diskEncryption;
+
+    public Output<Optional<Boolean>> diskEncryption() {
+        return Codegen.optional(this.diskEncryption);
+    }
     @Export(name="diskPerformanceLevel", refs={String.class}, tree="[0]")
     private Output<String> diskPerformanceLevel;
 
@@ -252,6 +259,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     public Output<String> elasticIoResourceSize() {
         return this.elasticIoResourceSize;
+    }
+    @Export(name="kmsId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsId;
+
+    public Output<Optional<String>> kmsId() {
+        return Codegen.optional(this.kmsId);
     }
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)

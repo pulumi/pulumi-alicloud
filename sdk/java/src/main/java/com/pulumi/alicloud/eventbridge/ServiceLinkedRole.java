@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var serviceLinkedRole = new ServiceLinkedRole(&#34;serviceLinkedRole&#34;, ServiceLinkedRoleArgs.builder()        
- *             .productName(&#34;AliyunServiceRoleForEventBridgeSendToMNS&#34;)
+ *             .productName(&#34;AliyunServiceRoleForEventBridgeSourceRocketMQ&#34;)
  *             .build());
  * 
  *     }

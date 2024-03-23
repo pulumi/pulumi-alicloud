@@ -48,6 +48,21 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * List of abandoned indicators.
+     * 
+     */
+    @Import(name="dropMetrics")
+    private @Nullable Output<String> dropMetrics;
+
+    /**
+     * @return List of abandoned indicators.
+     * 
+     */
+    public Optional<Output<String>> dropMetrics() {
+        return Optional.ofNullable(this.dropMetrics);
+    }
+
+    /**
      * The first ID of the resource.
      * 
      */
@@ -114,6 +129,27 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Hosting type:
+     * - none: unmanaged. The default value of the ACK cluster.
+     * - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+     * - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+     * 
+     */
+    @Import(name="managedType")
+    private @Nullable Output<String> managedType;
+
+    /**
+     * @return Hosting type:
+     * - none: unmanaged. The default value of the ACK cluster.
+     * - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+     * - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+     * 
+     */
+    public Optional<Output<String>> managedType() {
+        return Optional.ofNullable(this.managedType);
+    }
+
+    /**
      * The ID of the resource group.
      * 
      */
@@ -148,10 +184,12 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
     private EnvironmentState(EnvironmentState $) {
         this.aliyunLang = $.aliyunLang;
         this.bindResourceId = $.bindResourceId;
+        this.dropMetrics = $.dropMetrics;
         this.environmentId = $.environmentId;
         this.environmentName = $.environmentName;
         this.environmentSubType = $.environmentSubType;
         this.environmentType = $.environmentType;
+        this.managedType = $.managedType;
         this.resourceGroupId = $.resourceGroupId;
         this.tags = $.tags;
     }
@@ -214,6 +252,27 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bindResourceId(String bindResourceId) {
             return bindResourceId(Output.of(bindResourceId));
+        }
+
+        /**
+         * @param dropMetrics List of abandoned indicators.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dropMetrics(@Nullable Output<String> dropMetrics) {
+            $.dropMetrics = dropMetrics;
+            return this;
+        }
+
+        /**
+         * @param dropMetrics List of abandoned indicators.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dropMetrics(String dropMetrics) {
+            return dropMetrics(Output.of(dropMetrics));
         }
 
         /**
@@ -304,6 +363,33 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder environmentType(String environmentType) {
             return environmentType(Output.of(environmentType));
+        }
+
+        /**
+         * @param managedType Hosting type:
+         * - none: unmanaged. The default value of the ACK cluster.
+         * - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+         * - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedType(@Nullable Output<String> managedType) {
+            $.managedType = managedType;
+            return this;
+        }
+
+        /**
+         * @param managedType Hosting type:
+         * - none: unmanaged. The default value of the ACK cluster.
+         * - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+         * - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedType(String managedType) {
+            return managedType(Output.of(managedType));
         }
 
         /**

@@ -28,7 +28,9 @@ public final class LogFunctions {
      * 
      * For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
      * 
-     * &gt; **NOTE:** Available in v1.161.0+
+     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.219.0`. Please use new resource alicloud_log_alert_resource.
+     * 
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -57,11 +59,6 @@ public final class LogFunctions {
      *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
      *             .lang(&#34;cn&#34;)
      *             .type(&#34;user&#34;)
-     *             .build());
-     * 
-     *         final var exampleProject = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
-     *             .project(&#34;test-alert-tf&#34;)
-     *             .type(&#34;project&#34;)
      *             .build());
      * 
      *     }
@@ -78,7 +75,9 @@ public final class LogFunctions {
      * 
      * For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
      * 
-     * &gt; **NOTE:** Available in v1.161.0+
+     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.219.0`. Please use new resource alicloud_log_alert_resource.
+     * 
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -107,11 +106,6 @@ public final class LogFunctions {
      *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
      *             .lang(&#34;cn&#34;)
      *             .type(&#34;user&#34;)
-     *             .build());
-     * 
-     *         final var exampleProject = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
-     *             .project(&#34;test-alert-tf&#34;)
-     *             .type(&#34;project&#34;)
      *             .build());
      * 
      *     }
@@ -128,7 +122,9 @@ public final class LogFunctions {
      * 
      * For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
      * 
-     * &gt; **NOTE:** Available in v1.161.0+
+     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.219.0`. Please use new resource alicloud_log_alert_resource.
+     * 
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -157,11 +153,6 @@ public final class LogFunctions {
      *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
      *             .lang(&#34;cn&#34;)
      *             .type(&#34;user&#34;)
-     *             .build());
-     * 
-     *         final var exampleProject = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
-     *             .project(&#34;test-alert-tf&#34;)
-     *             .type(&#34;project&#34;)
      *             .build());
      * 
      *     }
@@ -178,7 +169,9 @@ public final class LogFunctions {
      * 
      * For information about SLS Alert and how to use it, see [SLS Alert Overview](https://www.alibabacloud.com/help/en/doc-detail/209202.html)
      * 
-     * &gt; **NOTE:** Available in v1.161.0+
+     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.219.0`. Please use new resource alicloud_log_alert_resource.
+     * 
+     * &gt; **NOTE:** Available since v1.161.0.
      * 
      * ## Example Usage
      * 
@@ -207,11 +200,6 @@ public final class LogFunctions {
      *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
      *             .lang(&#34;cn&#34;)
      *             .type(&#34;user&#34;)
-     *             .build());
-     * 
-     *         final var exampleProject = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
-     *             .project(&#34;test-alert-tf&#34;)
-     *             .type(&#34;project&#34;)
      *             .build());
      * 
      *     }

@@ -16,14 +16,14 @@ public final class BucketReplicationSourceSelectionCriteriaArgs extends com.pulu
     public static final BucketReplicationSourceSelectionCriteriaArgs Empty = new BucketReplicationSourceSelectionCriteriaArgs();
 
     /**
-     * Filter source objects encrypted by using SSE-KMS(See the following block `sse_kms_encrypted_objects`).
+     * Filter source objects encrypted by using SSE-KMS. See `sse_kms_encrypted_objects` below.
      * 
      */
     @Import(name="sseKmsEncryptedObjects")
     private @Nullable Output<BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs> sseKmsEncryptedObjects;
 
     /**
-     * @return Filter source objects encrypted by using SSE-KMS(See the following block `sse_kms_encrypted_objects`).
+     * @return Filter source objects encrypted by using SSE-KMS. See `sse_kms_encrypted_objects` below.
      * 
      */
     public Optional<Output<BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs>> sseKmsEncryptedObjects() {
@@ -55,7 +55,7 @@ public final class BucketReplicationSourceSelectionCriteriaArgs extends com.pulu
         }
 
         /**
-         * @param sseKmsEncryptedObjects Filter source objects encrypted by using SSE-KMS(See the following block `sse_kms_encrypted_objects`).
+         * @param sseKmsEncryptedObjects Filter source objects encrypted by using SSE-KMS. See `sse_kms_encrypted_objects` below.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class BucketReplicationSourceSelectionCriteriaArgs extends com.pulu
         }
 
         /**
-         * @param sseKmsEncryptedObjects Filter source objects encrypted by using SSE-KMS(See the following block `sse_kms_encrypted_objects`).
+         * @param sseKmsEncryptedObjects Filter source objects encrypted by using SSE-KMS. See `sse_kms_encrypted_objects` below.
          * 
          * @return builder
          * 

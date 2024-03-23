@@ -31,9 +31,17 @@ public final class BucketReplicationDestinationArgs extends com.pulumi.resources
         return this.bucket;
     }
 
+    /**
+     * The region in which the destination bucket is located.
+     * 
+     */
     @Import(name="location", required=true)
     private Output<String> location;
 
+    /**
+     * @return The region in which the destination bucket is located.
+     * 
+     */
     public Output<String> location() {
         return this.location;
     }
@@ -104,11 +112,23 @@ public final class BucketReplicationDestinationArgs extends com.pulumi.resources
             return bucket(Output.of(bucket));
         }
 
+        /**
+         * @param location The region in which the destination bucket is located.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(Output<String> location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param location The region in which the destination bucket is located.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             return location(Output.of(location));
         }

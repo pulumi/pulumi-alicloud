@@ -21,10 +21,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
  * const name = config.get("name") || "tf-example";
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const defaultRegions = alicloud.getRegions({
  *     current: true,
  * });
@@ -43,14 +48,14 @@ import * as utilities from "../utilities";
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
- *     namespaceId: defaultRegions.then(defaultRegions => `${defaultRegions.regions?.[0]?.id}:example`),
+ *     namespaceId: pulumi.all([defaultRegions, defaultRandomInteger.result]).apply(([defaultRegions, result]) => `${defaultRegions.regions?.[0]?.id}:example${result}`),
  *     namespaceName: name,
  *     namespaceDescription: name,
  *     enableMicroRegistration: false,
  * });
  * const defaultApplication = new alicloud.sae.Application("defaultApplication", {
  *     appDescription: name,
- *     appName: name,
+ *     appName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
  *     namespaceId: defaultNamespace.id,
  *     imageUrl: defaultRegions.then(defaultRegions => `registry-vpc.${defaultRegions.regions?.[0]?.id}.aliyuncs.com/sae-demo-image/consumer:1.0`),
  *     packageType: "Image",

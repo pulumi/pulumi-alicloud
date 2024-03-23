@@ -10,6 +10,11 @@ export type Alert = import("./alert").Alert;
 export const Alert: typeof import("./alert").Alert = null as any;
 utilities.lazyLoad(exports, ["Alert"], () => require("./alert"));
 
+export { AlertResourceArgs, AlertResourceState } from "./alertResource";
+export type AlertResource = import("./alertResource").AlertResource;
+export const AlertResource: typeof import("./alertResource").AlertResource = null as any;
+utilities.lazyLoad(exports, ["AlertResource"], () => require("./alertResource"));
+
 export { AuditArgs, AuditState } from "./audit";
 export type Audit = import("./audit").Audit;
 export const Audit: typeof import("./audit").Audit = null as any;
@@ -107,6 +112,8 @@ const _module = {
         switch (type) {
             case "alicloud:log/alert:Alert":
                 return new Alert(name, <any>undefined, { urn })
+            case "alicloud:log/alertResource:AlertResource":
+                return new AlertResource(name, <any>undefined, { urn })
             case "alicloud:log/audit:Audit":
                 return new Audit(name, <any>undefined, { urn })
             case "alicloud:log/dashboard:Dashboard":
@@ -141,6 +148,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "log/alert", _module)
+pulumi.runtime.registerResourceModule("alicloud", "log/alertResource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/audit", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/dashboard", _module)
 pulumi.runtime.registerResourceModule("alicloud", "log/etl", _module)

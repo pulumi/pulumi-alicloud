@@ -5,6 +5,7 @@ package com.pulumi.alicloud.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -17,22 +18,52 @@ public final class ApiFcServiceConfig {
      * @return RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
      * 
      */
-    private @Nullable String arnRole;
+    private String arnRole;
     /**
-     * @return The function name of function compute service.
+     * @return The base url of function compute service. Required if `function_type` is `HttpTrigger`.
      * 
      */
-    private String functionName;
+    private @Nullable String functionBaseUrl;
+    /**
+     * @return The function name of function compute service. Required if `function_type` is `FCEvent`.
+     * 
+     */
+    private @Nullable String functionName;
+    /**
+     * @return The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+     * 
+     */
+    private @Nullable String functionType;
+    /**
+     * @return The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+     * 
+     */
+    private @Nullable String method;
+    /**
+     * @return Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+     * 
+     */
+    private @Nullable Boolean onlyBusinessPath;
+    /**
+     * @return The path of function compute service. Required if `function_type` is `HttpTrigger`.
+     * 
+     */
+    private @Nullable String path;
+    /**
+     * @return The qualifier of function name of compute service.
+     * 
+     */
+    private @Nullable String qualifier;
     /**
      * @return The region that the function compute service belongs to.
      * 
      */
     private String region;
     /**
-     * @return The service name of function compute service.
+     * @return The service name of function compute service. Required if `function_type` is `FCEvent`.
      * 
      */
-    private String serviceName;
+    private @Nullable String serviceName;
     /**
      * @return Backend service time-out time; unit: millisecond.
      * 
@@ -44,15 +75,57 @@ public final class ApiFcServiceConfig {
      * @return RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
      * 
      */
-    public Optional<String> arnRole() {
-        return Optional.ofNullable(this.arnRole);
+    public String arnRole() {
+        return this.arnRole;
     }
     /**
-     * @return The function name of function compute service.
+     * @return The base url of function compute service. Required if `function_type` is `HttpTrigger`.
      * 
      */
-    public String functionName() {
-        return this.functionName;
+    public Optional<String> functionBaseUrl() {
+        return Optional.ofNullable(this.functionBaseUrl);
+    }
+    /**
+     * @return The function name of function compute service. Required if `function_type` is `FCEvent`.
+     * 
+     */
+    public Optional<String> functionName() {
+        return Optional.ofNullable(this.functionName);
+    }
+    /**
+     * @return The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+     * 
+     */
+    public Optional<String> functionType() {
+        return Optional.ofNullable(this.functionType);
+    }
+    /**
+     * @return The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+     * 
+     */
+    public Optional<String> method() {
+        return Optional.ofNullable(this.method);
+    }
+    /**
+     * @return Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+     * 
+     */
+    public Optional<Boolean> onlyBusinessPath() {
+        return Optional.ofNullable(this.onlyBusinessPath);
+    }
+    /**
+     * @return The path of function compute service. Required if `function_type` is `HttpTrigger`.
+     * 
+     */
+    public Optional<String> path() {
+        return Optional.ofNullable(this.path);
+    }
+    /**
+     * @return The qualifier of function name of compute service.
+     * 
+     */
+    public Optional<String> qualifier() {
+        return Optional.ofNullable(this.qualifier);
     }
     /**
      * @return The region that the function compute service belongs to.
@@ -62,11 +135,11 @@ public final class ApiFcServiceConfig {
         return this.region;
     }
     /**
-     * @return The service name of function compute service.
+     * @return The service name of function compute service. Required if `function_type` is `FCEvent`.
      * 
      */
-    public String serviceName() {
-        return this.serviceName;
+    public Optional<String> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
     /**
      * @return Backend service time-out time; unit: millisecond.
@@ -85,33 +158,81 @@ public final class ApiFcServiceConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String arnRole;
-        private String functionName;
+        private String arnRole;
+        private @Nullable String functionBaseUrl;
+        private @Nullable String functionName;
+        private @Nullable String functionType;
+        private @Nullable String method;
+        private @Nullable Boolean onlyBusinessPath;
+        private @Nullable String path;
+        private @Nullable String qualifier;
         private String region;
-        private String serviceName;
+        private @Nullable String serviceName;
         private Integer timeout;
         public Builder() {}
         public Builder(ApiFcServiceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arnRole = defaults.arnRole;
+    	      this.functionBaseUrl = defaults.functionBaseUrl;
     	      this.functionName = defaults.functionName;
+    	      this.functionType = defaults.functionType;
+    	      this.method = defaults.method;
+    	      this.onlyBusinessPath = defaults.onlyBusinessPath;
+    	      this.path = defaults.path;
+    	      this.qualifier = defaults.qualifier;
     	      this.region = defaults.region;
     	      this.serviceName = defaults.serviceName;
     	      this.timeout = defaults.timeout;
         }
 
         @CustomType.Setter
-        public Builder arnRole(@Nullable String arnRole) {
-
+        public Builder arnRole(String arnRole) {
+            if (arnRole == null) {
+              throw new MissingRequiredPropertyException("ApiFcServiceConfig", "arnRole");
+            }
             this.arnRole = arnRole;
             return this;
         }
         @CustomType.Setter
-        public Builder functionName(String functionName) {
-            if (functionName == null) {
-              throw new MissingRequiredPropertyException("ApiFcServiceConfig", "functionName");
-            }
+        public Builder functionBaseUrl(@Nullable String functionBaseUrl) {
+
+            this.functionBaseUrl = functionBaseUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder functionName(@Nullable String functionName) {
+
             this.functionName = functionName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder functionType(@Nullable String functionType) {
+
+            this.functionType = functionType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder method(@Nullable String method) {
+
+            this.method = method;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder onlyBusinessPath(@Nullable Boolean onlyBusinessPath) {
+
+            this.onlyBusinessPath = onlyBusinessPath;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder path(@Nullable String path) {
+
+            this.path = path;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder qualifier(@Nullable String qualifier) {
+
+            this.qualifier = qualifier;
             return this;
         }
         @CustomType.Setter
@@ -123,10 +244,8 @@ public final class ApiFcServiceConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder serviceName(String serviceName) {
-            if (serviceName == null) {
-              throw new MissingRequiredPropertyException("ApiFcServiceConfig", "serviceName");
-            }
+        public Builder serviceName(@Nullable String serviceName) {
+
             this.serviceName = serviceName;
             return this;
         }
@@ -141,7 +260,13 @@ public final class ApiFcServiceConfig {
         public ApiFcServiceConfig build() {
             final var _resultValue = new ApiFcServiceConfig();
             _resultValue.arnRole = arnRole;
+            _resultValue.functionBaseUrl = functionBaseUrl;
             _resultValue.functionName = functionName;
+            _resultValue.functionType = functionType;
+            _resultValue.method = method;
+            _resultValue.onlyBusinessPath = onlyBusinessPath;
+            _resultValue.path = path;
+            _resultValue.qualifier = qualifier;
             _resultValue.region = region;
             _resultValue.serviceName = serviceName;
             _resultValue.timeout = timeout;

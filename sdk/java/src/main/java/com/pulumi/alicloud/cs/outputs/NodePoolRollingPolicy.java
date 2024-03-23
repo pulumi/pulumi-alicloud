@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolRollingPolicy {
     /**
-     * @return Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used.
+     * @return The maximum number of unusable nodes.
      * 
      */
     private @Nullable Integer maxParallelism;
 
     private NodePoolRollingPolicy() {}
     /**
-     * @return Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used.
+     * @return The maximum number of unusable nodes.
      * 
      */
     public Optional<Integer> maxParallelism() {

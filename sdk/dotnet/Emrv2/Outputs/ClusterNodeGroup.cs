@@ -26,6 +26,10 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupDataDisk> DataDisks;
         /// <summary>
+        /// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+        /// </summary>
+        public readonly string? DeploymentSetStrategy;
+        /// <summary>
         /// Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
         /// </summary>
         public readonly bool? GracefulShutdown;
@@ -42,9 +46,13 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly string NodeGroupName;
         /// <summary>
-        /// The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+        /// The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
         /// </summary>
         public readonly string NodeGroupType;
+        /// <summary>
+        /// Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
+        /// </summary>
+        public readonly string? NodeResizeStrategy;
         /// <summary>
         /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
         /// </summary>
@@ -82,6 +90,8 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
 
             ImmutableArray<Outputs.ClusterNodeGroupDataDisk> dataDisks,
 
+            string? deploymentSetStrategy,
+
             bool? gracefulShutdown,
 
             ImmutableArray<string> instanceTypes,
@@ -91,6 +101,8 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
             string nodeGroupName,
 
             string nodeGroupType,
+
+            string? nodeResizeStrategy,
 
             string? paymentType,
 
@@ -109,11 +121,13 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
             AdditionalSecurityGroupIds = additionalSecurityGroupIds;
             CostOptimizedConfig = costOptimizedConfig;
             DataDisks = dataDisks;
+            DeploymentSetStrategy = deploymentSetStrategy;
             GracefulShutdown = gracefulShutdown;
             InstanceTypes = instanceTypes;
             NodeCount = nodeCount;
             NodeGroupName = nodeGroupName;
             NodeGroupType = nodeGroupType;
+            NodeResizeStrategy = nodeResizeStrategy;
             PaymentType = paymentType;
             SpotBidPrices = spotBidPrices;
             SpotInstanceRemedy = spotInstanceRemedy;

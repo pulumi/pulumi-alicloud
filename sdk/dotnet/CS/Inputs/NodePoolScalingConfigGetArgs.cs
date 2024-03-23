@@ -13,16 +13,22 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class NodePoolScalingConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+        /// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
         /// </summary>
         [Input("eipBandwidth")]
         public Input<int>? EipBandwidth { get; set; }
 
         /// <summary>
-        /// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
+        /// EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
         /// </summary>
         [Input("eipInternetChargeType")]
         public Input<string>? EipInternetChargeType { get; set; }
+
+        /// <summary>
+        /// Whether to enable automatic scaling. Value:
+        /// </summary>
+        [Input("enable")]
+        public Input<bool>? Enable { get; set; }
 
         /// <summary>
         /// Whether to bind EIP for an instance. Default: `false`.
@@ -33,14 +39,14 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// <summary>
         /// Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
         /// </summary>
-        [Input("maxSize", required: true)]
-        public Input<int> MaxSize { get; set; } = null!;
+        [Input("maxSize")]
+        public Input<int>? MaxSize { get; set; }
 
         /// <summary>
         /// Min number of instances in a auto scaling group, its valid value range [0~1000].
         /// </summary>
-        [Input("minSize", required: true)]
-        public Input<int> MinSize { get; set; } = null!;
+        [Input("minSize")]
+        public Input<int>? MinSize { get; set; }
 
         /// <summary>
         /// Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.

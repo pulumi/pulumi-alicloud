@@ -284,6 +284,21 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the resource group to which the bucket belongs.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group to which the bucket belongs.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * A configuration of server-side encryption. See `server_side_encryption_rule` below.
      * 
      */
@@ -393,6 +408,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         this.policy = $.policy;
         this.redundancyType = $.redundancyType;
         this.refererConfig = $.refererConfig;
+        this.resourceGroupId = $.resourceGroupId;
         this.serverSideEncryptionRule = $.serverSideEncryptionRule;
         this.storageClass = $.storageClass;
         this.tags = $.tags;
@@ -790,6 +806,27 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder refererConfig(BucketRefererConfigArgs refererConfig) {
             return refererConfig(Output.of(refererConfig));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group to which the bucket belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group to which the bucket belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**

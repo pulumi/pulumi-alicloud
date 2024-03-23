@@ -119,10 +119,12 @@ type Cluster struct {
 	// The dbNodeStorage of cluster node.
 	DbNodeStorage pulumi.IntOutput `pulumi:"dbNodeStorage"`
 	// The description of cluster.
-	Description           pulumi.StringOutput `pulumi:"description"`
-	DiskPerformanceLevel  pulumi.StringOutput `pulumi:"diskPerformanceLevel"`
-	ElasticIoResource     pulumi.IntOutput    `pulumi:"elasticIoResource"`
-	ElasticIoResourceSize pulumi.StringOutput `pulumi:"elasticIoResourceSize"`
+	Description           pulumi.StringOutput    `pulumi:"description"`
+	DiskEncryption        pulumi.BoolPtrOutput   `pulumi:"diskEncryption"`
+	DiskPerformanceLevel  pulumi.StringOutput    `pulumi:"diskPerformanceLevel"`
+	ElasticIoResource     pulumi.IntOutput       `pulumi:"elasticIoResource"`
+	ElasticIoResourceSize pulumi.StringOutput    `pulumi:"elasticIoResourceSize"`
+	KmsId                 pulumi.StringPtrOutput `pulumi:"kmsId"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringOutput    `pulumi:"maintainTime"`
 	Mode         pulumi.StringOutput    `pulumi:"mode"`
@@ -211,9 +213,11 @@ type clusterState struct {
 	DbNodeStorage *int `pulumi:"dbNodeStorage"`
 	// The description of cluster.
 	Description           *string `pulumi:"description"`
+	DiskEncryption        *bool   `pulumi:"diskEncryption"`
 	DiskPerformanceLevel  *string `pulumi:"diskPerformanceLevel"`
 	ElasticIoResource     *int    `pulumi:"elasticIoResource"`
 	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
+	KmsId                 *string `pulumi:"kmsId"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
 	Mode         *string `pulumi:"mode"`
@@ -267,9 +271,11 @@ type ClusterState struct {
 	DbNodeStorage pulumi.IntPtrInput
 	// The description of cluster.
 	Description           pulumi.StringPtrInput
+	DiskEncryption        pulumi.BoolPtrInput
 	DiskPerformanceLevel  pulumi.StringPtrInput
 	ElasticIoResource     pulumi.IntPtrInput
 	ElasticIoResourceSize pulumi.StringPtrInput
+	KmsId                 pulumi.StringPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
 	Mode         pulumi.StringPtrInput
@@ -325,9 +331,11 @@ type clusterArgs struct {
 	DbNodeStorage *int `pulumi:"dbNodeStorage"`
 	// The description of cluster.
 	Description           *string `pulumi:"description"`
+	DiskEncryption        *bool   `pulumi:"diskEncryption"`
 	DiskPerformanceLevel  *string `pulumi:"diskPerformanceLevel"`
 	ElasticIoResource     *int    `pulumi:"elasticIoResource"`
 	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
+	KmsId                 *string `pulumi:"kmsId"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime *string `pulumi:"maintainTime"`
 	Mode         string  `pulumi:"mode"`
@@ -377,9 +385,11 @@ type ClusterArgs struct {
 	DbNodeStorage pulumi.IntPtrInput
 	// The description of cluster.
 	Description           pulumi.StringPtrInput
+	DiskEncryption        pulumi.BoolPtrInput
 	DiskPerformanceLevel  pulumi.StringPtrInput
 	ElasticIoResource     pulumi.IntPtrInput
 	ElasticIoResourceSize pulumi.StringPtrInput
+	KmsId                 pulumi.StringPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringPtrInput
 	Mode         pulumi.StringInput
@@ -546,6 +556,10 @@ func (o ClusterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o ClusterOutput) DiskEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.DiskEncryption }).(pulumi.BoolPtrOutput)
+}
+
 func (o ClusterOutput) DiskPerformanceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DiskPerformanceLevel }).(pulumi.StringOutput)
 }
@@ -556,6 +570,10 @@ func (o ClusterOutput) ElasticIoResource() pulumi.IntOutput {
 
 func (o ClusterOutput) ElasticIoResourceSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ElasticIoResourceSize }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) KmsId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.KmsId }).(pulumi.StringPtrOutput)
 }
 
 // Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)

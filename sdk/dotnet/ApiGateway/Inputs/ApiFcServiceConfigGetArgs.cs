@@ -15,14 +15,50 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         /// <summary>
         /// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         /// </summary>
-        [Input("arnRole")]
-        public Input<string>? ArnRole { get; set; }
+        [Input("arnRole", required: true)]
+        public Input<string> ArnRole { get; set; } = null!;
 
         /// <summary>
-        /// The function name of function compute service.
+        /// The base url of function compute service. Required if `function_type` is `HttpTrigger`.
         /// </summary>
-        [Input("functionName", required: true)]
-        public Input<string> FunctionName { get; set; } = null!;
+        [Input("functionBaseUrl")]
+        public Input<string>? FunctionBaseUrl { get; set; }
+
+        /// <summary>
+        /// The function name of function compute service. Required if `function_type` is `FCEvent`.
+        /// </summary>
+        [Input("functionName")]
+        public Input<string>? FunctionName { get; set; }
+
+        /// <summary>
+        /// The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+        /// </summary>
+        [Input("functionType")]
+        public Input<string>? FunctionType { get; set; }
+
+        /// <summary>
+        /// The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+        /// </summary>
+        [Input("method")]
+        public Input<string>? Method { get; set; }
+
+        /// <summary>
+        /// Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+        /// </summary>
+        [Input("onlyBusinessPath")]
+        public Input<bool>? OnlyBusinessPath { get; set; }
+
+        /// <summary>
+        /// The path of function compute service. Required if `function_type` is `HttpTrigger`.
+        /// </summary>
+        [Input("path")]
+        public Input<string>? Path { get; set; }
+
+        /// <summary>
+        /// The qualifier of function name of compute service.
+        /// </summary>
+        [Input("qualifier")]
+        public Input<string>? Qualifier { get; set; }
 
         /// <summary>
         /// The region that the function compute service belongs to.
@@ -31,10 +67,10 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// The service name of function compute service.
+        /// The service name of function compute service. Required if `function_type` is `FCEvent`.
         /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
 
         /// <summary>
         /// Backend service time-out time; unit: millisecond.

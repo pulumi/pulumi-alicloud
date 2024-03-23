@@ -14,17 +14,37 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class NodePoolManagement
     {
         /// <summary>
-        /// Whether automatic repair, Default to `false`.
+        /// Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
         /// </summary>
         public readonly bool? AutoRepair;
         /// <summary>
-        /// Whether auto upgrade, Default to `false`.
+        /// Automatic repair node policy. See `auto_repair_policy` below.
+        /// </summary>
+        public readonly Outputs.NodePoolManagementAutoRepairPolicy? AutoRepairPolicy;
+        /// <summary>
+        /// Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
         /// </summary>
         public readonly bool? AutoUpgrade;
         /// <summary>
-        /// Max number of unavailable nodes. Default to `1`.
+        /// The auto update policy. See `auto_upgrade_policy` below.
         /// </summary>
-        public readonly int MaxUnavailable;
+        public readonly Outputs.NodePoolManagementAutoUpgradePolicy? AutoUpgradePolicy;
+        /// <summary>
+        /// Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+        /// </summary>
+        public readonly bool? AutoVulFix;
+        /// <summary>
+        /// The auto CVE patching policy. See `auto_vul_fix_policy` below.
+        /// </summary>
+        public readonly Outputs.NodePoolManagementAutoVulFixPolicy? AutoVulFixPolicy;
+        /// <summary>
+        /// Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+        /// </summary>
+        public readonly bool? Enable;
+        /// <summary>
+        /// Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+        /// </summary>
+        public readonly int? MaxUnavailable;
         /// <summary>
         /// Number of additional nodes. You have to specify one of surge, surge_percentage.
         /// </summary>
@@ -38,16 +58,31 @@ namespace Pulumi.AliCloud.CS.Outputs
         private NodePoolManagement(
             bool? autoRepair,
 
+            Outputs.NodePoolManagementAutoRepairPolicy? autoRepairPolicy,
+
             bool? autoUpgrade,
 
-            int maxUnavailable,
+            Outputs.NodePoolManagementAutoUpgradePolicy? autoUpgradePolicy,
+
+            bool? autoVulFix,
+
+            Outputs.NodePoolManagementAutoVulFixPolicy? autoVulFixPolicy,
+
+            bool? enable,
+
+            int? maxUnavailable,
 
             int? surge,
 
             int? surgePercentage)
         {
             AutoRepair = autoRepair;
+            AutoRepairPolicy = autoRepairPolicy;
             AutoUpgrade = autoUpgrade;
+            AutoUpgradePolicy = autoUpgradePolicy;
+            AutoVulFix = autoVulFix;
+            AutoVulFixPolicy = autoVulFixPolicy;
+            Enable = enable;
             MaxUnavailable = maxUnavailable;
             Surge = surge;
             SurgePercentage = surgePercentage;

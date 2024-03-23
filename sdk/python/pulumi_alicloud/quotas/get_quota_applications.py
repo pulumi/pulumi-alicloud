@@ -149,7 +149,7 @@ def get_quota_applications(dimensions: Optional[Sequence[pulumi.InputType['GetQu
     """
     This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.117.0+.
+    > **NOTE:** Available since v1.117.0.
 
     ## Example Usage
 
@@ -160,9 +160,21 @@ def get_quota_applications(dimensions: Optional[Sequence[pulumi.InputType['GetQu
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.quotas.get_quota_applications(product_code="ess",
-        ids=["4621F886-81E9-xxxx-xxxx"])
-    pulumi.export("firstQuotasQuotaApplicationId", example.applications[0].id)
+    default_quota_application = alicloud.quotas.QuotaApplication("defaultQuotaApplication",
+        product_code="vpc",
+        notice_type=3,
+        effective_time="2023-05-22T16:00:00Z",
+        expire_time="2024-09-15T00:08:32Z",
+        desire_value=1,
+        reason="",
+        quota_action_code="vpc_whitelist/ha_vip_whitelist",
+        audit_mode="Sync",
+        env_language="zh",
+        quota_category="WhiteListLabel")
+    default_quota_applications = pulumi.Output.all(default_quota_application.quota_category, default_quota_application.id).apply(lambda quota_category, id: alicloud.quotas.get_quota_applications_output(product_code="vpc",
+        enable_details=True,
+        quota_category=quota_category,
+        ids=[id]))
     ```
     <!--End PulumiCodeChooser -->
 
@@ -173,7 +185,7 @@ def get_quota_applications(dimensions: Optional[Sequence[pulumi.InputType['GetQu
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: The product code.
     :param str quota_action_code: The ID of quota action..
-    :param str quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`.
+    :param str quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
     :param str status: The status of the quota application.
     """
     __args__ = dict()
@@ -217,7 +229,7 @@ def get_quota_applications_output(dimensions: Optional[pulumi.Input[Optional[Seq
     """
     This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.117.0+.
+    > **NOTE:** Available since v1.117.0.
 
     ## Example Usage
 
@@ -228,9 +240,21 @@ def get_quota_applications_output(dimensions: Optional[pulumi.Input[Optional[Seq
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.quotas.get_quota_applications(product_code="ess",
-        ids=["4621F886-81E9-xxxx-xxxx"])
-    pulumi.export("firstQuotasQuotaApplicationId", example.applications[0].id)
+    default_quota_application = alicloud.quotas.QuotaApplication("defaultQuotaApplication",
+        product_code="vpc",
+        notice_type=3,
+        effective_time="2023-05-22T16:00:00Z",
+        expire_time="2024-09-15T00:08:32Z",
+        desire_value=1,
+        reason="",
+        quota_action_code="vpc_whitelist/ha_vip_whitelist",
+        audit_mode="Sync",
+        env_language="zh",
+        quota_category="WhiteListLabel")
+    default_quota_applications = pulumi.Output.all(default_quota_application.quota_category, default_quota_application.id).apply(lambda quota_category, id: alicloud.quotas.get_quota_applications_output(product_code="vpc",
+        enable_details=True,
+        quota_category=quota_category,
+        ids=[id]))
     ```
     <!--End PulumiCodeChooser -->
 
@@ -241,7 +265,7 @@ def get_quota_applications_output(dimensions: Optional[pulumi.Input[Optional[Seq
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: The product code.
     :param str quota_action_code: The ID of quota action..
-    :param str quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`.
+    :param str quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
     :param str status: The status of the quota application.
     """
     ...

@@ -25,7 +25,33 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.oos.PatchBaseline("default", {
  *     patchBaselineName: name,
  *     operationSystem: "Windows",
- *     approvalRules: "{\"PatchRules\":[{\"EnableNonSecurity\":true,\"PatchFilterGroup\":[{\"Values\":[\"*\"],\"Key\":\"Product\"},{\"Values\":[\"Security\",\"Bugfix\"],\"Key\":\"Classification\"},{\"Values\":[\"Critical\",\"Important\"],\"Key\":\"Severity\"}],\"ApproveAfterDays\":7,\"ComplianceLevel\":\"Unspecified\"}]}",
+ *     approvalRules: JSON.stringify({
+ *         PatchRules: [{
+ *             EnableNonSecurity: true,
+ *             PatchFilterGroup: [
+ *                 {
+ *                     Values: ["*"],
+ *                     Key: "Product",
+ *                 },
+ *                 {
+ *                     Values: [
+ *                         "Security",
+ *                         "Bugfix",
+ *                     ],
+ *                     Key: "Classification",
+ *                 },
+ *                 {
+ *                     Values: [
+ *                         "Critical",
+ *                         "Important",
+ *                     ],
+ *                     Key: "Severity",
+ *                 },
+ *             ],
+ *             ApproveAfterDays: 7,
+ *             ComplianceLevel: "Unspecified",
+ *         }],
+ *     }),
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -71,6 +97,14 @@ export class PatchBaseline extends pulumi.CustomResource {
      */
     public readonly approvalRules!: pulumi.Output<string>;
     /**
+     * Approved Patch.
+     */
+    public readonly approvedPatches!: pulumi.Output<string[] | undefined>;
+    /**
+     * ApprovedPatchesEnableNonSecurity.
+     */
+    public readonly approvedPatchesEnableNonSecurity!: pulumi.Output<boolean | undefined>;
+    /**
      * Creation time.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -94,6 +128,18 @@ export class PatchBaseline extends pulumi.CustomResource {
      * Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
      */
     public readonly rejectedPatchesAction!: pulumi.Output<string>;
+    /**
+     * The ID of the resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * Source.
+     */
+    public readonly sources!: pulumi.Output<string[] | undefined>;
+    /**
+     * Label.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a PatchBaseline resource with the given unique name, arguments, and options.
@@ -109,12 +155,17 @@ export class PatchBaseline extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PatchBaselineState | undefined;
             resourceInputs["approvalRules"] = state ? state.approvalRules : undefined;
+            resourceInputs["approvedPatches"] = state ? state.approvedPatches : undefined;
+            resourceInputs["approvedPatchesEnableNonSecurity"] = state ? state.approvedPatchesEnableNonSecurity : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["operationSystem"] = state ? state.operationSystem : undefined;
             resourceInputs["patchBaselineName"] = state ? state.patchBaselineName : undefined;
             resourceInputs["rejectedPatches"] = state ? state.rejectedPatches : undefined;
             resourceInputs["rejectedPatchesAction"] = state ? state.rejectedPatchesAction : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["sources"] = state ? state.sources : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as PatchBaselineArgs | undefined;
             if ((!args || args.approvalRules === undefined) && !opts.urn) {
@@ -127,11 +178,16 @@ export class PatchBaseline extends pulumi.CustomResource {
                 throw new Error("Missing required property 'patchBaselineName'");
             }
             resourceInputs["approvalRules"] = args ? args.approvalRules : undefined;
+            resourceInputs["approvedPatches"] = args ? args.approvedPatches : undefined;
+            resourceInputs["approvedPatchesEnableNonSecurity"] = args ? args.approvedPatchesEnableNonSecurity : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["operationSystem"] = args ? args.operationSystem : undefined;
             resourceInputs["patchBaselineName"] = args ? args.patchBaselineName : undefined;
             resourceInputs["rejectedPatches"] = args ? args.rejectedPatches : undefined;
             resourceInputs["rejectedPatchesAction"] = args ? args.rejectedPatchesAction : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["sources"] = args ? args.sources : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -147,6 +203,14 @@ export interface PatchBaselineState {
      * Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      */
     approvalRules?: pulumi.Input<string>;
+    /**
+     * Approved Patch.
+     */
+    approvedPatches?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ApprovedPatchesEnableNonSecurity.
+     */
+    approvedPatchesEnableNonSecurity?: pulumi.Input<boolean>;
     /**
      * Creation time.
      */
@@ -171,6 +235,18 @@ export interface PatchBaselineState {
      * Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
      */
     rejectedPatchesAction?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Source.
+     */
+    sources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Label.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -181,6 +257,14 @@ export interface PatchBaselineArgs {
      * Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      */
     approvalRules: pulumi.Input<string>;
+    /**
+     * Approved Patch.
+     */
+    approvedPatches?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ApprovedPatchesEnableNonSecurity.
+     */
+    approvedPatchesEnableNonSecurity?: pulumi.Input<boolean>;
     /**
      * Patches baseline description information.
      */
@@ -201,4 +285,16 @@ export interface PatchBaselineArgs {
      * Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
      */
     rejectedPatchesAction?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Source.
+     */
+    sources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Label.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

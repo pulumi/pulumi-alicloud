@@ -468,6 +468,20 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.refererConfig);
     }
     /**
+     * The ID of the resource group to which the bucket belongs.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group to which the bucket belongs.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
      * A configuration of server-side encryption. See `server_side_encryption_rule` below.
      * 
      */

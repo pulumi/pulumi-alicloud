@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about OSS replication and how to use it, see [What is cross-region replication](https://www.alibabacloud.com/help/doc-detail/31864.html) and [What is same-region replication](https://www.alibabacloud.com/help/doc-detail/254865.html).
  *
- * > **NOTE:** Available in v1.161.0+.
+ * > **NOTE:** Available since v1.161.0.
  *
  * ## Example Usage
  *
@@ -150,11 +150,11 @@ export class BucketReplication extends pulumi.CustomResource {
      */
     public readonly bucket!: pulumi.Output<string>;
     /**
-     * Specifies the destination for the rule(See the following block `destination`).
+     * Specifies the destination for the rule. See `destination` below.
      */
     public readonly destination!: pulumi.Output<outputs.oss.BucketReplicationDestination>;
     /**
-     * Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryptionConfiguration`).
+     * Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
      */
     public readonly encryptionConfiguration!: pulumi.Output<outputs.oss.BucketReplicationEncryptionConfiguration | undefined>;
     /**
@@ -162,11 +162,11 @@ export class BucketReplication extends pulumi.CustomResource {
      */
     public readonly historicalObjectReplication!: pulumi.Output<string | undefined>;
     /**
-     * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefixSet`).
+     * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
      */
     public readonly prefixSet!: pulumi.Output<outputs.oss.BucketReplicationPrefixSet | undefined>;
     /**
-     * Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
+     * Specifies the progress for querying the progress of a data replication task of a bucket.
      */
     public readonly progress!: pulumi.Output<outputs.oss.BucketReplicationProgress>;
     /**
@@ -174,7 +174,7 @@ export class BucketReplication extends pulumi.CustomResource {
      */
     public /*out*/ readonly ruleId!: pulumi.Output<string>;
     /**
-     * Specifies other conditions used to filter the source objects to replicate(See the following block `sourceSelectionCriteria`).
+     * Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
      */
     public readonly sourceSelectionCriteria!: pulumi.Output<outputs.oss.BucketReplicationSourceSelectionCriteria | undefined>;
     /**
@@ -248,11 +248,11 @@ export interface BucketReplicationState {
      */
     bucket?: pulumi.Input<string>;
     /**
-     * Specifies the destination for the rule(See the following block `destination`).
+     * Specifies the destination for the rule. See `destination` below.
      */
     destination?: pulumi.Input<inputs.oss.BucketReplicationDestination>;
     /**
-     * Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryptionConfiguration`).
+     * Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
      */
     encryptionConfiguration?: pulumi.Input<inputs.oss.BucketReplicationEncryptionConfiguration>;
     /**
@@ -260,11 +260,11 @@ export interface BucketReplicationState {
      */
     historicalObjectReplication?: pulumi.Input<string>;
     /**
-     * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefixSet`).
+     * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
      */
     prefixSet?: pulumi.Input<inputs.oss.BucketReplicationPrefixSet>;
     /**
-     * Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
+     * Specifies the progress for querying the progress of a data replication task of a bucket.
      */
     progress?: pulumi.Input<inputs.oss.BucketReplicationProgress>;
     /**
@@ -272,7 +272,7 @@ export interface BucketReplicationState {
      */
     ruleId?: pulumi.Input<string>;
     /**
-     * Specifies other conditions used to filter the source objects to replicate(See the following block `sourceSelectionCriteria`).
+     * Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
      */
     sourceSelectionCriteria?: pulumi.Input<inputs.oss.BucketReplicationSourceSelectionCriteria>;
     /**
@@ -298,11 +298,11 @@ export interface BucketReplicationArgs {
      */
     bucket: pulumi.Input<string>;
     /**
-     * Specifies the destination for the rule(See the following block `destination`).
+     * Specifies the destination for the rule. See `destination` below.
      */
     destination: pulumi.Input<inputs.oss.BucketReplicationDestination>;
     /**
-     * Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryptionConfiguration`).
+     * Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
      */
     encryptionConfiguration?: pulumi.Input<inputs.oss.BucketReplicationEncryptionConfiguration>;
     /**
@@ -310,15 +310,15 @@ export interface BucketReplicationArgs {
      */
     historicalObjectReplication?: pulumi.Input<string>;
     /**
-     * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefixSet`).
+     * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
      */
     prefixSet?: pulumi.Input<inputs.oss.BucketReplicationPrefixSet>;
     /**
-     * Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
+     * Specifies the progress for querying the progress of a data replication task of a bucket.
      */
     progress?: pulumi.Input<inputs.oss.BucketReplicationProgress>;
     /**
-     * Specifies other conditions used to filter the source objects to replicate(See the following block `sourceSelectionCriteria`).
+     * Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
      */
     sourceSelectionCriteria?: pulumi.Input<inputs.oss.BucketReplicationSourceSelectionCriteria>;
     /**

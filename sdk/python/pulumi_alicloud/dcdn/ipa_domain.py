@@ -213,16 +213,16 @@ class IpaDomain(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "example.com"
-        default = alicloud.resourcemanager.get_resource_groups()
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         example = alicloud.dcdn.IpaDomain("example",
-            domain_name=domain_name,
-            resource_group_id=default.groups[0].id,
-            scope="global",
+            domain_name=default_random_integer.result.apply(lambda result: f"example-{result}.com"),
+            resource_group_id=default_resource_groups.groups[0].id,
+            scope="overseas",
             status="online",
             sources=[alicloud.dcdn.IpaDomainSourceArgs(
                 content="www.alicloud-provider.cn",
@@ -271,16 +271,16 @@ class IpaDomain(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        domain_name = config.get("domainName")
-        if domain_name is None:
-            domain_name = "example.com"
-        default = alicloud.resourcemanager.get_resource_groups()
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            min=10000,
+            max=99999)
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         example = alicloud.dcdn.IpaDomain("example",
-            domain_name=domain_name,
-            resource_group_id=default.groups[0].id,
-            scope="global",
+            domain_name=default_random_integer.result.apply(lambda result: f"example-{result}.com"),
+            resource_group_id=default_resource_groups.groups[0].id,
+            scope="overseas",
             status="online",
             sources=[alicloud.dcdn.IpaDomainSourceArgs(
                 content="www.alicloud-provider.cn",

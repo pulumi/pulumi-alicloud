@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultApplication = new alicloud.sae.Application("defaultApplication", {
  *     appDescription: name,
- *     appName: name,
+ *     appName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
  *     namespaceId: defaultNamespace.id,
  *     imageUrl: defaultRegions.then(defaultRegions => `registry-vpc.${defaultRegions.regions?.[0]?.id}.aliyuncs.com/sae-demo-image/consumer:1.0`),
  *     packageType: "Image",

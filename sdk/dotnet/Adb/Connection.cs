@@ -32,53 +32,31 @@ namespace Pulumi.AliCloud.Adb
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultZones = AliCloud.Adb.GetZones.Invoke();
     /// 
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         Status = "OK",
+    ///         NameRegex = "^default-NODELETING$",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "10.4.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = name,
-    ///     });
+    ///     var vswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]);
     /// 
-    ///     var defaultDBCluster = new AliCloud.Adb.DBCluster("defaultDBCluster", new()
+    ///     var cluster = new AliCloud.Adb.DBCluster("cluster", new()
     ///     {
-    ///         DbClusterCategory = "Cluster",
-    ///         DbNodeClass = "C8",
-    ///         DbNodeCount = 4,
-    ///         DbNodeStorage = 400,
-    ///         Mode = "reserver",
-    ///         DbClusterVersion = "3.0",
-    ///         PaymentType = "PayAsYouGo",
-    ///         VswitchId = defaultSwitch.Id,
+    ///         DbClusterCategory = "MixedStorage",
+    ///         Mode = "flexible",
+    ///         ComputeResource = "8Core32GB",
+    ///         VswitchId = vswitchId,
     ///         Description = name,
-    ///         MaintainTime = "23:00Z-00:00Z",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
-    ///         SecurityIps = new[]
-    ///         {
-    ///             "10.168.1.12",
-    ///             "10.168.1.11",
-    ///         },
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///             { "For", "example" },
-    ///         },
     ///     });
     /// 
     ///     var defaultConnection = new AliCloud.Adb.Connection("defaultConnection", new()
     ///     {
-    ///         DbClusterId = defaultDBCluster.Id,
+    ///         DbClusterId = cluster.Id,
     ///         ConnectionPrefix = "example",
     ///     });
     /// 

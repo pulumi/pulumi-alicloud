@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// <summary>
     /// Provides a AliKafka Instance Allowed Ip Attachment resource.
     /// 
-    /// For information about Ali Kafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-updateallowedip).
+    /// For information about AliKafka Instance Allowed Ip Attachment and how to use it, see [What is Instance Allowed Ip Attachment](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-updateallowedip).
     /// 
     /// &gt; **NOTE:** Available since v1.163.0.
     /// 
@@ -75,10 +75,10 @@ namespace Pulumi.AliCloud.AliKafka
     /// 
     ///     var defaultInstanceAllowedIpAttachment = new AliCloud.AliKafka.InstanceAllowedIpAttachment("defaultInstanceAllowedIpAttachment", new()
     ///     {
-    ///         AllowedIp = "114.237.9.78/32",
-    ///         AllowedType = "vpc",
     ///         InstanceId = defaultInstance.Id,
+    ///         AllowedType = "vpc",
     ///         PortRange = "9092/9092",
+    ///         AllowedIp = "114.237.9.78/32",
     ///     });
     /// 
     /// });
@@ -97,13 +97,13 @@ namespace Pulumi.AliCloud.AliKafka
     public partial class InstanceAllowedIpAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The allowed ip. It can be a CIDR block.
+        /// The IP address whitelist. It can be a CIDR block.
         /// </summary>
         [Output("allowedIp")]
         public Output<string> AllowedIp { get; private set; } = null!;
 
         /// <summary>
-        /// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        /// The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         /// </summary>
         [Output("allowedType")]
         public Output<string> AllowedType { get; private set; } = null!;
@@ -115,9 +115,11 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-        /// - `9092/9092`: port range for a VPC whitelist.
-        /// - `9093/9093`: port range for an Internet whitelist.
+        /// The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+        /// - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+        /// - `9093/9093`: The port range for access from the Internet.
+        /// - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+        /// - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
         /// </summary>
         [Output("portRange")]
         public Output<string> PortRange { get; private set; } = null!;
@@ -169,13 +171,13 @@ namespace Pulumi.AliCloud.AliKafka
     public sealed class InstanceAllowedIpAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The allowed ip. It can be a CIDR block.
+        /// The IP address whitelist. It can be a CIDR block.
         /// </summary>
         [Input("allowedIp", required: true)]
         public Input<string> AllowedIp { get; set; } = null!;
 
         /// <summary>
-        /// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        /// The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         /// </summary>
         [Input("allowedType", required: true)]
         public Input<string> AllowedType { get; set; } = null!;
@@ -187,9 +189,11 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-        /// - `9092/9092`: port range for a VPC whitelist.
-        /// - `9093/9093`: port range for an Internet whitelist.
+        /// The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+        /// - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+        /// - `9093/9093`: The port range for access from the Internet.
+        /// - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+        /// - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
         /// </summary>
         [Input("portRange", required: true)]
         public Input<string> PortRange { get; set; } = null!;
@@ -203,13 +207,13 @@ namespace Pulumi.AliCloud.AliKafka
     public sealed class InstanceAllowedIpAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The allowed ip. It can be a CIDR block.
+        /// The IP address whitelist. It can be a CIDR block.
         /// </summary>
         [Input("allowedIp")]
         public Input<string>? AllowedIp { get; set; }
 
         /// <summary>
-        /// The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
+        /// The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         /// </summary>
         [Input("allowedType")]
         public Input<string>? AllowedType { get; set; }
@@ -221,9 +225,11 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-        /// - `9092/9092`: port range for a VPC whitelist.
-        /// - `9093/9093`: port range for an Internet whitelist.
+        /// The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
+        /// - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
+        /// - `9093/9093`: The port range for access from the Internet.
+        /// - `9094/9094`: The port range for access from VPCs by using the Simple Authentication and Security Layer (SASL) endpoint.
+        /// - `9095/9095`: The port range for access from VPCs by using the Secure Sockets Layer (SSL) endpoint.
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }

@@ -403,7 +403,7 @@ class Ingress(pulumi.CustomResource):
             enable_micro_registration=False)
         default_application = alicloud.sae.Application("defaultApplication",
             app_description=name,
-            app_name=name,
+            app_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
             namespace_id=default_namespace.id,
             image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
             package_type="Image",
@@ -506,7 +506,7 @@ class Ingress(pulumi.CustomResource):
             enable_micro_registration=False)
         default_application = alicloud.sae.Application("defaultApplication",
             app_description=name,
-            app_name=name,
+            app_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
             namespace_id=default_namespace.id,
             image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
             package_type="Image",

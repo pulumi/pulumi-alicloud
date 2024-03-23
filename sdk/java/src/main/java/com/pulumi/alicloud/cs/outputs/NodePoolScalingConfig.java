@@ -4,7 +4,6 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -15,15 +14,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolScalingConfig {
     /**
-     * @return Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+     * @return Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
      * 
      */
     private @Nullable Integer eipBandwidth;
     /**
-     * @return EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
+     * @return EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
      * 
      */
     private @Nullable String eipInternetChargeType;
+    /**
+     * @return Whether to enable automatic scaling. Value:
+     * 
+     */
+    private @Nullable Boolean enable;
     /**
      * @return Whether to bind EIP for an instance. Default: `false`.
      * 
@@ -33,12 +37,12 @@ public final class NodePoolScalingConfig {
      * @return Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
      * 
      */
-    private Integer maxSize;
+    private @Nullable Integer maxSize;
     /**
      * @return Min number of instances in a auto scaling group, its valid value range [0~1000].
      * 
      */
-    private Integer minSize;
+    private @Nullable Integer minSize;
     /**
      * @return Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
      * 
@@ -47,18 +51,25 @@ public final class NodePoolScalingConfig {
 
     private NodePoolScalingConfig() {}
     /**
-     * @return Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+     * @return Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
      * 
      */
     public Optional<Integer> eipBandwidth() {
         return Optional.ofNullable(this.eipBandwidth);
     }
     /**
-     * @return EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
+     * @return EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
      * 
      */
     public Optional<String> eipInternetChargeType() {
         return Optional.ofNullable(this.eipInternetChargeType);
+    }
+    /**
+     * @return Whether to enable automatic scaling. Value:
+     * 
+     */
+    public Optional<Boolean> enable() {
+        return Optional.ofNullable(this.enable);
     }
     /**
      * @return Whether to bind EIP for an instance. Default: `false`.
@@ -71,15 +82,15 @@ public final class NodePoolScalingConfig {
      * @return Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
      * 
      */
-    public Integer maxSize() {
-        return this.maxSize;
+    public Optional<Integer> maxSize() {
+        return Optional.ofNullable(this.maxSize);
     }
     /**
      * @return Min number of instances in a auto scaling group, its valid value range [0~1000].
      * 
      */
-    public Integer minSize() {
-        return this.minSize;
+    public Optional<Integer> minSize() {
+        return Optional.ofNullable(this.minSize);
     }
     /**
      * @return Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
@@ -100,15 +111,17 @@ public final class NodePoolScalingConfig {
     public static final class Builder {
         private @Nullable Integer eipBandwidth;
         private @Nullable String eipInternetChargeType;
+        private @Nullable Boolean enable;
         private @Nullable Boolean isBondEip;
-        private Integer maxSize;
-        private Integer minSize;
+        private @Nullable Integer maxSize;
+        private @Nullable Integer minSize;
         private @Nullable String type;
         public Builder() {}
         public Builder(NodePoolScalingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eipBandwidth = defaults.eipBandwidth;
     	      this.eipInternetChargeType = defaults.eipInternetChargeType;
+    	      this.enable = defaults.enable;
     	      this.isBondEip = defaults.isBondEip;
     	      this.maxSize = defaults.maxSize;
     	      this.minSize = defaults.minSize;
@@ -128,24 +141,26 @@ public final class NodePoolScalingConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder enable(@Nullable Boolean enable) {
+
+            this.enable = enable;
+            return this;
+        }
+        @CustomType.Setter
         public Builder isBondEip(@Nullable Boolean isBondEip) {
 
             this.isBondEip = isBondEip;
             return this;
         }
         @CustomType.Setter
-        public Builder maxSize(Integer maxSize) {
-            if (maxSize == null) {
-              throw new MissingRequiredPropertyException("NodePoolScalingConfig", "maxSize");
-            }
+        public Builder maxSize(@Nullable Integer maxSize) {
+
             this.maxSize = maxSize;
             return this;
         }
         @CustomType.Setter
-        public Builder minSize(Integer minSize) {
-            if (minSize == null) {
-              throw new MissingRequiredPropertyException("NodePoolScalingConfig", "minSize");
-            }
+        public Builder minSize(@Nullable Integer minSize) {
+
             this.minSize = minSize;
             return this;
         }
@@ -159,6 +174,7 @@ public final class NodePoolScalingConfig {
             final var _resultValue = new NodePoolScalingConfig();
             _resultValue.eipBandwidth = eipBandwidth;
             _resultValue.eipInternetChargeType = eipInternetChargeType;
+            _resultValue.enable = enable;
             _resultValue.isBondEip = isBondEip;
             _resultValue.maxSize = maxSize;
             _resultValue.minSize = minSize;

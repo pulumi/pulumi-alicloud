@@ -19,6 +19,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
+     * Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+     * 
+     */
+    @Import(name="autoRenew")
+    private @Nullable Output<Boolean> autoRenew;
+
+    /**
+     * @return Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+     * 
+     */
+    public Optional<Output<Boolean>> autoRenew() {
+        return Optional.ofNullable(this.autoRenew);
+    }
+
+    /**
      * The instance name.
      * 
      */
@@ -34,44 +49,44 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+     * Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
      * 
      */
-    @Import(name="instanceType", required=true)
-    private Output<String> instanceType;
+    @Import(name="instanceType")
+    private @Nullable Output<String> instanceType;
 
     /**
-     * @return The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+     * @return Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
      * 
      */
-    public Output<String> instanceType() {
-        return this.instanceType;
+    public Optional<Output<String>> instanceType() {
+        return Optional.ofNullable(this.instanceType);
     }
 
     /**
-     * The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+     * The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
      * 
      */
-    @Import(name="logistics")
-    private @Nullable Output<String> logistics;
+    @Import(name="maxConnections")
+    private @Nullable Output<Integer> maxConnections;
 
     /**
-     * @return The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+     * @return The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
      * 
      */
-    public Optional<Output<String>> logistics() {
-        return Optional.ofNullable(this.logistics);
+    public Optional<Output<Integer>> maxConnections() {
+        return Optional.ofNullable(this.maxConnections);
     }
 
     /**
-     * The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
+     * Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
      * 
      */
     @Import(name="maxEipTps")
     private @Nullable Output<String> maxEipTps;
 
     /**
-     * @return The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
+     * @return Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
      * 
      */
     public Optional<Output<String>> maxEipTps() {
@@ -79,29 +94,33 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
+     * Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
      * 
      */
-    @Import(name="maxTps", required=true)
-    private Output<String> maxTps;
+    @Import(name="maxTps")
+    private @Nullable Output<String> maxTps;
 
     /**
-     * @return The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
+     * @return Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
      * 
      */
-    public Output<String> maxTps() {
-        return this.maxTps;
+    public Optional<Output<String>> maxTps() {
+        return Optional.ofNullable(this.maxTps);
     }
 
     /**
-     * The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
+     * Type of instance lifting and lowering:
+     * - Upgrade: Upgrade
+     * - Downgrade: Downgrading.
      * 
      */
     @Import(name="modifyType")
     private @Nullable Output<String> modifyType;
 
     /**
-     * @return The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
+     * @return Type of instance lifting and lowering:
+     * - Upgrade: Upgrade
+     * - Downgrade: Downgrading.
      * 
      */
     public Optional<Output<String>> modifyType() {
@@ -109,14 +128,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The payment type. Valid values: `Subscription`.
+     * The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
      * 
      */
     @Import(name="paymentType", required=true)
     private Output<String> paymentType;
 
     /**
-     * @return The payment type. Valid values: `Subscription`.
+     * @return The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
      * 
      */
     public Output<String> paymentType() {
@@ -124,14 +143,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
+     * Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
+     * @return Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -139,29 +158,44 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The queue capacity. The smallest value is 50 and the step size 5.
+     * Prepaid cycle units. Value: Month. Year: Year.
      * 
      */
-    @Import(name="queueCapacity", required=true)
-    private Output<String> queueCapacity;
+    @Import(name="periodCycle")
+    private @Nullable Output<String> periodCycle;
 
     /**
-     * @return The queue capacity. The smallest value is 50 and the step size 5.
+     * @return Prepaid cycle units. Value: Month. Year: Year.
      * 
      */
-    public Output<String> queueCapacity() {
-        return this.queueCapacity;
+    public Optional<Output<String>> periodCycle() {
+        return Optional.ofNullable(this.periodCycle);
     }
 
     /**
-     * RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
+     * Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
+     * 
+     */
+    @Import(name="queueCapacity")
+    private @Nullable Output<String> queueCapacity;
+
+    /**
+     * @return Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
+     * 
+     */
+    public Optional<Output<String>> queueCapacity() {
+        return Optional.ofNullable(this.queueCapacity);
+    }
+
+    /**
+     * The number of automatic renewal cycles.
      * 
      */
     @Import(name="renewalDuration")
     private @Nullable Output<Integer> renewalDuration;
 
     /**
-     * @return RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
+     * @return The number of automatic renewal cycles.
      * 
      */
     public Optional<Output<Integer>> renewalDuration() {
@@ -169,14 +203,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
      * 
      */
     @Import(name="renewalDurationUnit")
     private @Nullable Output<String> renewalDurationUnit;
 
     /**
-     * @return Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+     * @return Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
      * 
      */
     public Optional<Output<String>> renewalDurationUnit() {
@@ -184,14 +218,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+     * The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
      * 
      */
     @Import(name="renewalStatus")
     private @Nullable Output<String> renewalStatus;
 
     /**
-     * @return Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+     * @return The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
      * 
      */
     public Optional<Output<String>> renewalStatus() {
@@ -199,14 +233,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The storage size. It is valid when `instance_type` is vip.
+     * The billing type of the serverless instance. Value: onDemand.
+     * 
+     */
+    @Import(name="serverlessChargeType")
+    private @Nullable Output<String> serverlessChargeType;
+
+    /**
+     * @return The billing type of the serverless instance. Value: onDemand.
+     * 
+     */
+    public Optional<Output<String>> serverlessChargeType() {
+        return Optional.ofNullable(this.serverlessChargeType);
+    }
+
+    /**
+     * Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
      * 
      */
     @Import(name="storageSize")
     private @Nullable Output<String> storageSize;
 
     /**
-     * @return The storage size. It is valid when `instance_type` is vip.
+     * @return Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
      * 
      */
     public Optional<Output<String>> storageSize() {
@@ -214,37 +263,72 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to support EIP.
+     * Whether to support public network.
      * 
      */
-    @Import(name="supportEip", required=true)
-    private Output<Boolean> supportEip;
+    @Import(name="supportEip")
+    private @Nullable Output<Boolean> supportEip;
 
     /**
-     * @return Whether to support EIP.
+     * @return Whether to support public network.
      * 
      */
-    public Output<Boolean> supportEip() {
-        return this.supportEip;
+    public Optional<Output<Boolean>> supportEip() {
+        return Optional.ofNullable(this.supportEip);
+    }
+
+    /**
+     * Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+     * 
+     */
+    @Import(name="supportTracing")
+    private @Nullable Output<Boolean> supportTracing;
+
+    /**
+     * @return Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+     * 
+     */
+    public Optional<Output<Boolean>> supportTracing() {
+        return Optional.ofNullable(this.supportTracing);
+    }
+
+    /**
+     * Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+     * 
+     */
+    @Import(name="tracingStorageTime")
+    private @Nullable Output<Integer> tracingStorageTime;
+
+    /**
+     * @return Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+     * 
+     */
+    public Optional<Output<Integer>> tracingStorageTime() {
+        return Optional.ofNullable(this.tracingStorageTime);
     }
 
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
+        this.autoRenew = $.autoRenew;
         this.instanceName = $.instanceName;
         this.instanceType = $.instanceType;
-        this.logistics = $.logistics;
+        this.maxConnections = $.maxConnections;
         this.maxEipTps = $.maxEipTps;
         this.maxTps = $.maxTps;
         this.modifyType = $.modifyType;
         this.paymentType = $.paymentType;
         this.period = $.period;
+        this.periodCycle = $.periodCycle;
         this.queueCapacity = $.queueCapacity;
         this.renewalDuration = $.renewalDuration;
         this.renewalDurationUnit = $.renewalDurationUnit;
         this.renewalStatus = $.renewalStatus;
+        this.serverlessChargeType = $.serverlessChargeType;
         this.storageSize = $.storageSize;
         this.supportEip = $.supportEip;
+        this.supportTracing = $.supportTracing;
+        this.tracingStorageTime = $.tracingStorageTime;
     }
 
     public static Builder builder() {
@@ -263,6 +347,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceArgs defaults) {
             $ = new InstanceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoRenew Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(@Nullable Output<Boolean> autoRenew) {
+            $.autoRenew = autoRenew;
+            return this;
+        }
+
+        /**
+         * @param autoRenew Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(Boolean autoRenew) {
+            return autoRenew(Output.of(autoRenew));
         }
 
         /**
@@ -287,18 +392,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+         * @param instanceType Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
          * 
          * @return builder
          * 
          */
-        public Builder instanceType(Output<String> instanceType) {
+        public Builder instanceType(@Nullable Output<String> instanceType) {
             $.instanceType = instanceType;
             return this;
         }
 
         /**
-         * @param instanceType The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+         * @param instanceType Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
          * 
          * @return builder
          * 
@@ -308,28 +413,28 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logistics The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+         * @param maxConnections The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
          * 
          * @return builder
          * 
          */
-        public Builder logistics(@Nullable Output<String> logistics) {
-            $.logistics = logistics;
+        public Builder maxConnections(@Nullable Output<Integer> maxConnections) {
+            $.maxConnections = maxConnections;
             return this;
         }
 
         /**
-         * @param logistics The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+         * @param maxConnections The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
          * 
          * @return builder
          * 
          */
-        public Builder logistics(String logistics) {
-            return logistics(Output.of(logistics));
+        public Builder maxConnections(Integer maxConnections) {
+            return maxConnections(Output.of(maxConnections));
         }
 
         /**
-         * @param maxEipTps The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
+         * @param maxEipTps Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
          * 
          * @return builder
          * 
@@ -340,7 +445,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxEipTps The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
+         * @param maxEipTps Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
          * 
          * @return builder
          * 
@@ -350,18 +455,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxTps The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
+         * @param maxTps Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
          * 
          * @return builder
          * 
          */
-        public Builder maxTps(Output<String> maxTps) {
+        public Builder maxTps(@Nullable Output<String> maxTps) {
             $.maxTps = maxTps;
             return this;
         }
 
         /**
-         * @param maxTps The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
+         * @param maxTps Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
          * 
          * @return builder
          * 
@@ -371,7 +476,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyType The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
+         * @param modifyType Type of instance lifting and lowering:
+         * - Upgrade: Upgrade
+         * - Downgrade: Downgrading.
          * 
          * @return builder
          * 
@@ -382,7 +489,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyType The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
+         * @param modifyType Type of instance lifting and lowering:
+         * - Upgrade: Upgrade
+         * - Downgrade: Downgrading.
          * 
          * @return builder
          * 
@@ -392,7 +501,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type. Valid values: `Subscription`.
+         * @param paymentType The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
          * 
          * @return builder
          * 
@@ -403,7 +512,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type. Valid values: `Subscription`.
+         * @param paymentType The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
          * 
          * @return builder
          * 
@@ -413,7 +522,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
+         * @param period Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
          * 
          * @return builder
          * 
@@ -424,7 +533,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
+         * @param period Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
          * 
          * @return builder
          * 
@@ -434,18 +543,39 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queueCapacity The queue capacity. The smallest value is 50 and the step size 5.
+         * @param periodCycle Prepaid cycle units. Value: Month. Year: Year.
          * 
          * @return builder
          * 
          */
-        public Builder queueCapacity(Output<String> queueCapacity) {
+        public Builder periodCycle(@Nullable Output<String> periodCycle) {
+            $.periodCycle = periodCycle;
+            return this;
+        }
+
+        /**
+         * @param periodCycle Prepaid cycle units. Value: Month. Year: Year.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder periodCycle(String periodCycle) {
+            return periodCycle(Output.of(periodCycle));
+        }
+
+        /**
+         * @param queueCapacity Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queueCapacity(@Nullable Output<String> queueCapacity) {
             $.queueCapacity = queueCapacity;
             return this;
         }
 
         /**
-         * @param queueCapacity The queue capacity. The smallest value is 50 and the step size 5.
+         * @param queueCapacity Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
          * 
          * @return builder
          * 
@@ -455,7 +585,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalDuration RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
+         * @param renewalDuration The number of automatic renewal cycles.
          * 
          * @return builder
          * 
@@ -466,7 +596,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalDuration RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
+         * @param renewalDuration The number of automatic renewal cycles.
          * 
          * @return builder
          * 
@@ -476,7 +606,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalDurationUnit Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+         * @param renewalDurationUnit Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
          * 
          * @return builder
          * 
@@ -487,7 +617,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalDurationUnit Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+         * @param renewalDurationUnit Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
          * 
          * @return builder
          * 
@@ -497,7 +627,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalStatus Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+         * @param renewalStatus The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
          * 
          * @return builder
          * 
@@ -508,7 +638,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalStatus Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+         * @param renewalStatus The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
          * 
          * @return builder
          * 
@@ -518,7 +648,28 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageSize The storage size. It is valid when `instance_type` is vip.
+         * @param serverlessChargeType The billing type of the serverless instance. Value: onDemand.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessChargeType(@Nullable Output<String> serverlessChargeType) {
+            $.serverlessChargeType = serverlessChargeType;
+            return this;
+        }
+
+        /**
+         * @param serverlessChargeType The billing type of the serverless instance. Value: onDemand.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessChargeType(String serverlessChargeType) {
+            return serverlessChargeType(Output.of(serverlessChargeType));
+        }
+
+        /**
+         * @param storageSize Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
          * 
          * @return builder
          * 
@@ -529,7 +680,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageSize The storage size. It is valid when `instance_type` is vip.
+         * @param storageSize Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
          * 
          * @return builder
          * 
@@ -539,18 +690,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportEip Whether to support EIP.
+         * @param supportEip Whether to support public network.
          * 
          * @return builder
          * 
          */
-        public Builder supportEip(Output<Boolean> supportEip) {
+        public Builder supportEip(@Nullable Output<Boolean> supportEip) {
             $.supportEip = supportEip;
             return this;
         }
 
         /**
-         * @param supportEip Whether to support EIP.
+         * @param supportEip Whether to support public network.
          * 
          * @return builder
          * 
@@ -559,21 +710,51 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return supportEip(Output.of(supportEip));
         }
 
+        /**
+         * @param supportTracing Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportTracing(@Nullable Output<Boolean> supportTracing) {
+            $.supportTracing = supportTracing;
+            return this;
+        }
+
+        /**
+         * @param supportTracing Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportTracing(Boolean supportTracing) {
+            return supportTracing(Output.of(supportTracing));
+        }
+
+        /**
+         * @param tracingStorageTime Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tracingStorageTime(@Nullable Output<Integer> tracingStorageTime) {
+            $.tracingStorageTime = tracingStorageTime;
+            return this;
+        }
+
+        /**
+         * @param tracingStorageTime Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tracingStorageTime(Integer tracingStorageTime) {
+            return tracingStorageTime(Output.of(tracingStorageTime));
+        }
+
         public InstanceArgs build() {
-            if ($.instanceType == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "instanceType");
-            }
-            if ($.maxTps == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "maxTps");
-            }
             if ($.paymentType == null) {
                 throw new MissingRequiredPropertyException("InstanceArgs", "paymentType");
-            }
-            if ($.queueCapacity == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "queueCapacity");
-            }
-            if ($.supportEip == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "supportEip");
             }
             return $;
         }

@@ -43,6 +43,12 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         }
 
         /// <summary>
+        /// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+        /// </summary>
+        [Input("deploymentSetStrategy")]
+        public Input<string>? DeploymentSetStrategy { get; set; }
+
+        /// <summary>
         /// Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
         /// </summary>
         [Input("gracefulShutdown")]
@@ -73,10 +79,16 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         public Input<string> NodeGroupName { get; set; } = null!;
 
         /// <summary>
-        /// The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+        /// The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
         /// </summary>
         [Input("nodeGroupType", required: true)]
         public Input<string> NodeGroupType { get; set; } = null!;
+
+        /// <summary>
+        /// Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
+        /// </summary>
+        [Input("nodeResizeStrategy")]
+        public Input<string>? NodeResizeStrategy { get; set; }
 
         /// <summary>
         /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.

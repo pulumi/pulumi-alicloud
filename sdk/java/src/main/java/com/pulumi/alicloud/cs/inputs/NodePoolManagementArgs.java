@@ -3,9 +3,11 @@
 
 package com.pulumi.alicloud.cs.inputs;
 
+import com.pulumi.alicloud.cs.inputs.NodePoolManagementAutoRepairPolicyArgs;
+import com.pulumi.alicloud.cs.inputs.NodePoolManagementAutoUpgradePolicyArgs;
+import com.pulumi.alicloud.cs.inputs.NodePoolManagementAutoVulFixPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -18,14 +20,14 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
     public static final NodePoolManagementArgs Empty = new NodePoolManagementArgs();
 
     /**
-     * Whether automatic repair, Default to `false`.
+     * Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
      * 
      */
     @Import(name="autoRepair")
     private @Nullable Output<Boolean> autoRepair;
 
     /**
-     * @return Whether automatic repair, Default to `false`.
+     * @return Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
      * 
      */
     public Optional<Output<Boolean>> autoRepair() {
@@ -33,14 +35,29 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Whether auto upgrade, Default to `false`.
+     * Automatic repair node policy. See `auto_repair_policy` below.
+     * 
+     */
+    @Import(name="autoRepairPolicy")
+    private @Nullable Output<NodePoolManagementAutoRepairPolicyArgs> autoRepairPolicy;
+
+    /**
+     * @return Automatic repair node policy. See `auto_repair_policy` below.
+     * 
+     */
+    public Optional<Output<NodePoolManagementAutoRepairPolicyArgs>> autoRepairPolicy() {
+        return Optional.ofNullable(this.autoRepairPolicy);
+    }
+
+    /**
+     * Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
      * 
      */
     @Import(name="autoUpgrade")
     private @Nullable Output<Boolean> autoUpgrade;
 
     /**
-     * @return Whether auto upgrade, Default to `false`.
+     * @return Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
      * 
      */
     public Optional<Output<Boolean>> autoUpgrade() {
@@ -48,31 +65,99 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Max number of unavailable nodes. Default to `1`.
+     * The auto update policy. See `auto_upgrade_policy` below.
      * 
      */
-    @Import(name="maxUnavailable", required=true)
-    private Output<Integer> maxUnavailable;
+    @Import(name="autoUpgradePolicy")
+    private @Nullable Output<NodePoolManagementAutoUpgradePolicyArgs> autoUpgradePolicy;
 
     /**
-     * @return Max number of unavailable nodes. Default to `1`.
+     * @return The auto update policy. See `auto_upgrade_policy` below.
      * 
      */
-    public Output<Integer> maxUnavailable() {
-        return this.maxUnavailable;
+    public Optional<Output<NodePoolManagementAutoUpgradePolicyArgs>> autoUpgradePolicy() {
+        return Optional.ofNullable(this.autoUpgradePolicy);
+    }
+
+    /**
+     * Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="autoVulFix")
+    private @Nullable Output<Boolean> autoVulFix;
+
+    /**
+     * @return Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> autoVulFix() {
+        return Optional.ofNullable(this.autoVulFix);
+    }
+
+    /**
+     * The auto CVE patching policy. See `auto_vul_fix_policy` below.
+     * 
+     */
+    @Import(name="autoVulFixPolicy")
+    private @Nullable Output<NodePoolManagementAutoVulFixPolicyArgs> autoVulFixPolicy;
+
+    /**
+     * @return The auto CVE patching policy. See `auto_vul_fix_policy` below.
+     * 
+     */
+    public Optional<Output<NodePoolManagementAutoVulFixPolicyArgs>> autoVulFixPolicy() {
+        return Optional.ofNullable(this.autoVulFixPolicy);
+    }
+
+    /**
+     * Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+     * 
+     */
+    @Import(name="enable")
+    private @Nullable Output<Boolean> enable;
+
+    /**
+     * @return Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+     * 
+     */
+    public Optional<Output<Boolean>> enable() {
+        return Optional.ofNullable(this.enable);
+    }
+
+    /**
+     * Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+     * 
+     */
+    @Import(name="maxUnavailable")
+    private @Nullable Output<Integer> maxUnavailable;
+
+    /**
+     * @return Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+     * 
+     */
+    public Optional<Output<Integer>> maxUnavailable() {
+        return Optional.ofNullable(this.maxUnavailable);
     }
 
     /**
      * Number of additional nodes. You have to specify one of surge, surge_percentage.
      * 
+     * @deprecated
+     * Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
+     * 
      */
+    @Deprecated /* Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage. */
     @Import(name="surge")
     private @Nullable Output<Integer> surge;
 
     /**
      * @return Number of additional nodes. You have to specify one of surge, surge_percentage.
      * 
+     * @deprecated
+     * Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
+     * 
      */
+    @Deprecated /* Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage. */
     public Optional<Output<Integer>> surge() {
         return Optional.ofNullable(this.surge);
     }
@@ -80,14 +165,22 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
     /**
      * Proportion of additional nodes. You have to specify one of surge, surge_percentage.
      * 
+     * @deprecated
+     * Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+     * 
      */
+    @Deprecated /* Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage. */
     @Import(name="surgePercentage")
     private @Nullable Output<Integer> surgePercentage;
 
     /**
      * @return Proportion of additional nodes. You have to specify one of surge, surge_percentage.
      * 
+     * @deprecated
+     * Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+     * 
      */
+    @Deprecated /* Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage. */
     public Optional<Output<Integer>> surgePercentage() {
         return Optional.ofNullable(this.surgePercentage);
     }
@@ -96,7 +189,12 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
 
     private NodePoolManagementArgs(NodePoolManagementArgs $) {
         this.autoRepair = $.autoRepair;
+        this.autoRepairPolicy = $.autoRepairPolicy;
         this.autoUpgrade = $.autoUpgrade;
+        this.autoUpgradePolicy = $.autoUpgradePolicy;
+        this.autoVulFix = $.autoVulFix;
+        this.autoVulFixPolicy = $.autoVulFixPolicy;
+        this.enable = $.enable;
         this.maxUnavailable = $.maxUnavailable;
         this.surge = $.surge;
         this.surgePercentage = $.surgePercentage;
@@ -121,7 +219,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoRepair Whether automatic repair, Default to `false`.
+         * @param autoRepair Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
          * 
          * @return builder
          * 
@@ -132,7 +230,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoRepair Whether automatic repair, Default to `false`.
+         * @param autoRepair Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
          * 
          * @return builder
          * 
@@ -142,7 +240,28 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoUpgrade Whether auto upgrade, Default to `false`.
+         * @param autoRepairPolicy Automatic repair node policy. See `auto_repair_policy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRepairPolicy(@Nullable Output<NodePoolManagementAutoRepairPolicyArgs> autoRepairPolicy) {
+            $.autoRepairPolicy = autoRepairPolicy;
+            return this;
+        }
+
+        /**
+         * @param autoRepairPolicy Automatic repair node policy. See `auto_repair_policy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRepairPolicy(NodePoolManagementAutoRepairPolicyArgs autoRepairPolicy) {
+            return autoRepairPolicy(Output.of(autoRepairPolicy));
+        }
+
+        /**
+         * @param autoUpgrade Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
          * 
          * @return builder
          * 
@@ -153,7 +272,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoUpgrade Whether auto upgrade, Default to `false`.
+         * @param autoUpgrade Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
          * 
          * @return builder
          * 
@@ -163,18 +282,102 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param maxUnavailable Max number of unavailable nodes. Default to `1`.
+         * @param autoUpgradePolicy The auto update policy. See `auto_upgrade_policy` below.
          * 
          * @return builder
          * 
          */
-        public Builder maxUnavailable(Output<Integer> maxUnavailable) {
+        public Builder autoUpgradePolicy(@Nullable Output<NodePoolManagementAutoUpgradePolicyArgs> autoUpgradePolicy) {
+            $.autoUpgradePolicy = autoUpgradePolicy;
+            return this;
+        }
+
+        /**
+         * @param autoUpgradePolicy The auto update policy. See `auto_upgrade_policy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgradePolicy(NodePoolManagementAutoUpgradePolicyArgs autoUpgradePolicy) {
+            return autoUpgradePolicy(Output.of(autoUpgradePolicy));
+        }
+
+        /**
+         * @param autoVulFix Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoVulFix(@Nullable Output<Boolean> autoVulFix) {
+            $.autoVulFix = autoVulFix;
+            return this;
+        }
+
+        /**
+         * @param autoVulFix Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoVulFix(Boolean autoVulFix) {
+            return autoVulFix(Output.of(autoVulFix));
+        }
+
+        /**
+         * @param autoVulFixPolicy The auto CVE patching policy. See `auto_vul_fix_policy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoVulFixPolicy(@Nullable Output<NodePoolManagementAutoVulFixPolicyArgs> autoVulFixPolicy) {
+            $.autoVulFixPolicy = autoVulFixPolicy;
+            return this;
+        }
+
+        /**
+         * @param autoVulFixPolicy The auto CVE patching policy. See `auto_vul_fix_policy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoVulFixPolicy(NodePoolManagementAutoVulFixPolicyArgs autoVulFixPolicy) {
+            return autoVulFixPolicy(Output.of(autoVulFixPolicy));
+        }
+
+        /**
+         * @param enable Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enable(@Nullable Output<Boolean> enable) {
+            $.enable = enable;
+            return this;
+        }
+
+        /**
+         * @param enable Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enable(Boolean enable) {
+            return enable(Output.of(enable));
+        }
+
+        /**
+         * @param maxUnavailable Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxUnavailable(@Nullable Output<Integer> maxUnavailable) {
             $.maxUnavailable = maxUnavailable;
             return this;
         }
 
         /**
-         * @param maxUnavailable Max number of unavailable nodes. Default to `1`.
+         * @param maxUnavailable Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
          * 
          * @return builder
          * 
@@ -188,7 +391,11 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
+         * 
          */
+        @Deprecated /* Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage. */
         public Builder surge(@Nullable Output<Integer> surge) {
             $.surge = surge;
             return this;
@@ -199,7 +406,11 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;surge&#39; has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
+         * 
          */
+        @Deprecated /* Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage. */
         public Builder surge(Integer surge) {
             return surge(Output.of(surge));
         }
@@ -209,7 +420,11 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+         * 
          */
+        @Deprecated /* Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage. */
         public Builder surgePercentage(@Nullable Output<Integer> surgePercentage) {
             $.surgePercentage = surgePercentage;
             return this;
@@ -220,15 +435,16 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;surge_percentage&#39; has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+         * 
          */
+        @Deprecated /* Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage. */
         public Builder surgePercentage(Integer surgePercentage) {
             return surgePercentage(Output.of(surgePercentage));
         }
 
         public NodePoolManagementArgs build() {
-            if ($.maxUnavailable == null) {
-                throw new MissingRequiredPropertyException("NodePoolManagementArgs", "maxUnavailable");
-            }
             return $;
         }
     }

@@ -56,6 +56,10 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly bindResourceId!: pulumi.Output<string | undefined>;
     /**
+     * List of abandoned indicators.
+     */
+    public readonly dropMetrics!: pulumi.Output<string | undefined>;
+    /**
      * The first ID of the resource.
      */
     public /*out*/ readonly environmentId!: pulumi.Output<string>;
@@ -74,6 +78,13 @@ export class Environment extends pulumi.CustomResource {
      * Type of environment.
      */
     public readonly environmentType!: pulumi.Output<string>;
+    /**
+     * Hosting type:
+     * - none: unmanaged. The default value of the ACK cluster.
+     * - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+     * - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+     */
+    public readonly managedType!: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
@@ -98,10 +109,12 @@ export class Environment extends pulumi.CustomResource {
             const state = argsOrState as EnvironmentState | undefined;
             resourceInputs["aliyunLang"] = state ? state.aliyunLang : undefined;
             resourceInputs["bindResourceId"] = state ? state.bindResourceId : undefined;
+            resourceInputs["dropMetrics"] = state ? state.dropMetrics : undefined;
             resourceInputs["environmentId"] = state ? state.environmentId : undefined;
             resourceInputs["environmentName"] = state ? state.environmentName : undefined;
             resourceInputs["environmentSubType"] = state ? state.environmentSubType : undefined;
             resourceInputs["environmentType"] = state ? state.environmentType : undefined;
+            resourceInputs["managedType"] = state ? state.managedType : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -114,9 +127,11 @@ export class Environment extends pulumi.CustomResource {
             }
             resourceInputs["aliyunLang"] = args ? args.aliyunLang : undefined;
             resourceInputs["bindResourceId"] = args ? args.bindResourceId : undefined;
+            resourceInputs["dropMetrics"] = args ? args.dropMetrics : undefined;
             resourceInputs["environmentName"] = args ? args.environmentName : undefined;
             resourceInputs["environmentSubType"] = args ? args.environmentSubType : undefined;
             resourceInputs["environmentType"] = args ? args.environmentType : undefined;
+            resourceInputs["managedType"] = args ? args.managedType : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["environmentId"] = undefined /*out*/;
@@ -139,6 +154,10 @@ export interface EnvironmentState {
      */
     bindResourceId?: pulumi.Input<string>;
     /**
+     * List of abandoned indicators.
+     */
+    dropMetrics?: pulumi.Input<string>;
+    /**
      * The first ID of the resource.
      */
     environmentId?: pulumi.Input<string>;
@@ -157,6 +176,13 @@ export interface EnvironmentState {
      * Type of environment.
      */
     environmentType?: pulumi.Input<string>;
+    /**
+     * Hosting type:
+     * - none: unmanaged. The default value of the ACK cluster.
+     * - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+     * - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+     */
+    managedType?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
@@ -180,6 +206,10 @@ export interface EnvironmentArgs {
      */
     bindResourceId?: pulumi.Input<string>;
     /**
+     * List of abandoned indicators.
+     */
+    dropMetrics?: pulumi.Input<string>;
+    /**
      * The name of the resource.
      */
     environmentName?: pulumi.Input<string>;
@@ -194,6 +224,13 @@ export interface EnvironmentArgs {
      * Type of environment.
      */
     environmentType: pulumi.Input<string>;
+    /**
+     * Hosting type:
+     * - none: unmanaged. The default value of the ACK cluster.
+     * - agent: Managed agent (including ksm). Default values of ASK, ACS, and Acone clusters.
+     * - agent-exproter: Managed agent and exporter. The default value of the cloud service type.
+     */
+    managedType?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */

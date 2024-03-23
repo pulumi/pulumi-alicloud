@@ -19,7 +19,13 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? AutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
+        /// Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+        /// </summary>
+        [Input("burstingEnabled")]
+        public Input<bool>? BurstingEnabled { get; set; }
+
+        /// <summary>
+        /// The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -43,7 +49,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        /// The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -53,6 +59,12 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
+
+        /// <summary>
+        /// The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+        /// </summary>
+        [Input("provisionedIops")]
+        public Input<int>? ProvisionedIops { get; set; }
 
         /// <summary>
         /// The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.

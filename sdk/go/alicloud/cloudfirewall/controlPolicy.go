@@ -16,7 +16,7 @@ import (
 //
 // For information about Cloud Firewall Control Policy and how to use it, see [What is Control Policy](https://www.alibabacloud.com/help/doc-detail/138867.htm).
 //
-// > **NOTE:** Available in v1.129.0+.
+// > **NOTE:** Available since v1.129.0.
 //
 // ## Example Usage
 //
@@ -68,9 +68,10 @@ type ControlPolicy struct {
 
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction pulumi.StringOutput `pulumi:"aclAction"`
-	// (Available in v1.148.0+) The unique ID of the access control policy.
+	// (Available since v1.148.0) The unique ID of the access control policy.
 	AclUuid pulumi.StringOutput `pulumi:"aclUuid"`
-	// The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
 	ApplicationName pulumi.StringOutput `pulumi:"applicationName"`
 	// The description of the access control policy.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -161,9 +162,10 @@ func GetControlPolicy(ctx *pulumi.Context,
 type controlPolicyState struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction *string `pulumi:"aclAction"`
-	// (Available in v1.148.0+) The unique ID of the access control policy.
+	// (Available since v1.148.0) The unique ID of the access control policy.
 	AclUuid *string `pulumi:"aclUuid"`
-	// The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
 	ApplicationName *string `pulumi:"applicationName"`
 	// The description of the access control policy.
 	Description *string `pulumi:"description"`
@@ -198,9 +200,10 @@ type controlPolicyState struct {
 type ControlPolicyState struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction pulumi.StringPtrInput
-	// (Available in v1.148.0+) The unique ID of the access control policy.
+	// (Available since v1.148.0) The unique ID of the access control policy.
 	AclUuid pulumi.StringPtrInput
-	// The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
 	ApplicationName pulumi.StringPtrInput
 	// The description of the access control policy.
 	Description pulumi.StringPtrInput
@@ -239,7 +242,8 @@ func (ControlPolicyState) ElementType() reflect.Type {
 type controlPolicyArgs struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction string `pulumi:"aclAction"`
-	// The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
 	ApplicationName string `pulumi:"applicationName"`
 	// The description of the access control policy.
 	Description string `pulumi:"description"`
@@ -275,7 +279,8 @@ type controlPolicyArgs struct {
 type ControlPolicyArgs struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction pulumi.StringInput
-	// The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
 	ApplicationName pulumi.StringInput
 	// The description of the access control policy.
 	Description pulumi.StringInput
@@ -399,12 +404,13 @@ func (o ControlPolicyOutput) AclAction() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.AclAction }).(pulumi.StringOutput)
 }
 
-// (Available in v1.148.0+) The unique ID of the access control policy.
+// (Available since v1.148.0) The unique ID of the access control policy.
 func (o ControlPolicyOutput) AclUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.AclUuid }).(pulumi.StringOutput)
 }
 
-// The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationName` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationName` to `ANY`.
 func (o ControlPolicyOutput) ApplicationName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicy) pulumi.StringOutput { return v.ApplicationName }).(pulumi.StringOutput)
 }

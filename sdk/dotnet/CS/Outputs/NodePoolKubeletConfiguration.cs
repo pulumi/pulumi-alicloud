@@ -14,6 +14,18 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class NodePoolKubeletConfiguration
     {
         /// <summary>
+        /// Allowed sysctl mode whitelist.
+        /// </summary>
+        public readonly ImmutableArray<string> AllowedUnsafeSysctls;
+        /// <summary>
+        /// The maximum number of log files that can exist in each container.
+        /// </summary>
+        public readonly string? ContainerLogMaxFiles;
+        /// <summary>
+        /// The maximum size that can be reached before a log file is rotated.
+        /// </summary>
+        public readonly string? ContainerLogMaxSize;
+        /// <summary>
         /// Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
         /// </summary>
         public readonly string? CpuManagerPolicy;
@@ -38,6 +50,10 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? EvictionSoftGracePeriod;
         /// <summary>
+        /// Feature switch to enable configuration of experimental features.
+        /// </summary>
+        public readonly ImmutableDictionary<string, bool>? FeatureGates;
+        /// <summary>
         /// Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
         /// </summary>
         public readonly string? KubeApiBurst;
@@ -49,6 +65,14 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? KubeReserved;
+        /// <summary>
+        /// The maximum number of running pods.
+        /// </summary>
+        public readonly string? MaxPods;
+        /// <summary>
+        /// Read-only port number.
+        /// </summary>
+        public readonly string? ReadOnlyPort;
         /// <summary>
         /// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
         /// </summary>
@@ -68,6 +92,12 @@ namespace Pulumi.AliCloud.CS.Outputs
 
         [OutputConstructor]
         private NodePoolKubeletConfiguration(
+            ImmutableArray<string> allowedUnsafeSysctls,
+
+            string? containerLogMaxFiles,
+
+            string? containerLogMaxSize,
+
             string? cpuManagerPolicy,
 
             string? eventBurst,
@@ -80,11 +110,17 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             ImmutableDictionary<string, object>? evictionSoftGracePeriod,
 
+            ImmutableDictionary<string, bool>? featureGates,
+
             string? kubeApiBurst,
 
             string? kubeApiQps,
 
             ImmutableDictionary<string, object>? kubeReserved,
+
+            string? maxPods,
+
+            string? readOnlyPort,
 
             string? registryBurst,
 
@@ -94,15 +130,21 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             ImmutableDictionary<string, object>? systemReserved)
         {
+            AllowedUnsafeSysctls = allowedUnsafeSysctls;
+            ContainerLogMaxFiles = containerLogMaxFiles;
+            ContainerLogMaxSize = containerLogMaxSize;
             CpuManagerPolicy = cpuManagerPolicy;
             EventBurst = eventBurst;
             EventRecordQps = eventRecordQps;
             EvictionHard = evictionHard;
             EvictionSoft = evictionSoft;
             EvictionSoftGracePeriod = evictionSoftGracePeriod;
+            FeatureGates = featureGates;
             KubeApiBurst = kubeApiBurst;
             KubeApiQps = kubeApiQps;
             KubeReserved = kubeReserved;
+            MaxPods = maxPods;
+            ReadOnlyPort = readOnlyPort;
             RegistryBurst = registryBurst;
             RegistryPullQps = registryPullQps;
             SerializeImagePulls = serializeImagePulls;

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
     public sealed class BucketReplicationSourceSelectionCriteriaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Filter source objects encrypted by using SSE-KMS(See the following block `sse_kms_encrypted_objects`).
+        /// Filter source objects encrypted by using SSE-KMS. See `sse_kms_encrypted_objects` below.
         /// </summary>
         [Input("sseKmsEncryptedObjects")]
         public Input<Inputs.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs>? SseKmsEncryptedObjects { get; set; }

@@ -10,8 +10,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -35,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.oos.PatchBaseline;
  * import com.pulumi.alicloud.oos.PatchBaselineArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,7 +57,34 @@ import javax.annotation.Nullable;
  *         var default_ = new PatchBaseline(&#34;default&#34;, PatchBaselineArgs.builder()        
  *             .patchBaselineName(name)
  *             .operationSystem(&#34;Windows&#34;)
- *             .approvalRules(&#34;{\&#34;PatchRules\&#34;:[{\&#34;EnableNonSecurity\&#34;:true,\&#34;PatchFilterGroup\&#34;:[{\&#34;Values\&#34;:[\&#34;*\&#34;],\&#34;Key\&#34;:\&#34;Product\&#34;},{\&#34;Values\&#34;:[\&#34;Security\&#34;,\&#34;Bugfix\&#34;],\&#34;Key\&#34;:\&#34;Classification\&#34;},{\&#34;Values\&#34;:[\&#34;Critical\&#34;,\&#34;Important\&#34;],\&#34;Key\&#34;:\&#34;Severity\&#34;}],\&#34;ApproveAfterDays\&#34;:7,\&#34;ComplianceLevel\&#34;:\&#34;Unspecified\&#34;}]}&#34;)
+ *             .approvalRules(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;PatchRules&#34;, jsonArray(jsonObject(
+ *                         jsonProperty(&#34;EnableNonSecurity&#34;, true),
+ *                         jsonProperty(&#34;PatchFilterGroup&#34;, jsonArray(
+ *                             jsonObject(
+ *                                 jsonProperty(&#34;Values&#34;, jsonArray(&#34;*&#34;)),
+ *                                 jsonProperty(&#34;Key&#34;, &#34;Product&#34;)
+ *                             ), 
+ *                             jsonObject(
+ *                                 jsonProperty(&#34;Values&#34;, jsonArray(
+ *                                     &#34;Security&#34;, 
+ *                                     &#34;Bugfix&#34;
+ *                                 )),
+ *                                 jsonProperty(&#34;Key&#34;, &#34;Classification&#34;)
+ *                             ), 
+ *                             jsonObject(
+ *                                 jsonProperty(&#34;Values&#34;, jsonArray(
+ *                                     &#34;Critical&#34;, 
+ *                                     &#34;Important&#34;
+ *                                 )),
+ *                                 jsonProperty(&#34;Key&#34;, &#34;Severity&#34;)
+ *                             )
+ *                         )),
+ *                         jsonProperty(&#34;ApproveAfterDays&#34;, 7),
+ *                         jsonProperty(&#34;ComplianceLevel&#34;, &#34;Unspecified&#34;)
+ *                     )))
+ *                 )))
  *             .build());
  * 
  *     }
@@ -85,6 +116,34 @@ public class PatchBaseline extends com.pulumi.resources.CustomResource {
      */
     public Output<String> approvalRules() {
         return this.approvalRules;
+    }
+    /**
+     * Approved Patch.
+     * 
+     */
+    @Export(name="approvedPatches", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> approvedPatches;
+
+    /**
+     * @return Approved Patch.
+     * 
+     */
+    public Output<Optional<List<String>>> approvedPatches() {
+        return Codegen.optional(this.approvedPatches);
+    }
+    /**
+     * ApprovedPatchesEnableNonSecurity.
+     * 
+     */
+    @Export(name="approvedPatchesEnableNonSecurity", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> approvedPatchesEnableNonSecurity;
+
+    /**
+     * @return ApprovedPatchesEnableNonSecurity.
+     * 
+     */
+    public Output<Optional<Boolean>> approvedPatchesEnableNonSecurity() {
+        return Codegen.optional(this.approvedPatchesEnableNonSecurity);
     }
     /**
      * Creation time.
@@ -169,6 +228,48 @@ public class PatchBaseline extends com.pulumi.resources.CustomResource {
      */
     public Output<String> rejectedPatchesAction() {
         return this.rejectedPatchesAction;
+    }
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * Source.
+     * 
+     */
+    @Export(name="sources", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> sources;
+
+    /**
+     * @return Source.
+     * 
+     */
+    public Output<Optional<List<String>>> sources() {
+        return Codegen.optional(this.sources);
+    }
+    /**
+     * Label.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return Label.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

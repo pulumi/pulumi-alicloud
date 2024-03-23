@@ -6,8 +6,11 @@ package com.pulumi.alicloud.oos;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,6 +33,36 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> approvalRules() {
         return this.approvalRules;
+    }
+
+    /**
+     * Approved Patch.
+     * 
+     */
+    @Import(name="approvedPatches")
+    private @Nullable Output<List<String>> approvedPatches;
+
+    /**
+     * @return Approved Patch.
+     * 
+     */
+    public Optional<Output<List<String>>> approvedPatches() {
+        return Optional.ofNullable(this.approvedPatches);
+    }
+
+    /**
+     * ApprovedPatchesEnableNonSecurity.
+     * 
+     */
+    @Import(name="approvedPatchesEnableNonSecurity")
+    private @Nullable Output<Boolean> approvedPatchesEnableNonSecurity;
+
+    /**
+     * @return ApprovedPatchesEnableNonSecurity.
+     * 
+     */
+    public Optional<Output<Boolean>> approvedPatchesEnableNonSecurity() {
+        return Optional.ofNullable(this.approvedPatchesEnableNonSecurity);
     }
 
     /**
@@ -107,15 +140,65 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rejectedPatchesAction);
     }
 
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * Source.
+     * 
+     */
+    @Import(name="sources")
+    private @Nullable Output<List<String>> sources;
+
+    /**
+     * @return Source.
+     * 
+     */
+    public Optional<Output<List<String>>> sources() {
+        return Optional.ofNullable(this.sources);
+    }
+
+    /**
+     * Label.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return Label.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private PatchBaselineArgs() {}
 
     private PatchBaselineArgs(PatchBaselineArgs $) {
         this.approvalRules = $.approvalRules;
+        this.approvedPatches = $.approvedPatches;
+        this.approvedPatchesEnableNonSecurity = $.approvedPatchesEnableNonSecurity;
         this.description = $.description;
         this.operationSystem = $.operationSystem;
         this.patchBaselineName = $.patchBaselineName;
         this.rejectedPatches = $.rejectedPatches;
         this.rejectedPatchesAction = $.rejectedPatchesAction;
+        this.resourceGroupId = $.resourceGroupId;
+        this.sources = $.sources;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -155,6 +238,58 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder approvalRules(String approvalRules) {
             return approvalRules(Output.of(approvalRules));
+        }
+
+        /**
+         * @param approvedPatches Approved Patch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder approvedPatches(@Nullable Output<List<String>> approvedPatches) {
+            $.approvedPatches = approvedPatches;
+            return this;
+        }
+
+        /**
+         * @param approvedPatches Approved Patch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder approvedPatches(List<String> approvedPatches) {
+            return approvedPatches(Output.of(approvedPatches));
+        }
+
+        /**
+         * @param approvedPatches Approved Patch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder approvedPatches(String... approvedPatches) {
+            return approvedPatches(List.of(approvedPatches));
+        }
+
+        /**
+         * @param approvedPatchesEnableNonSecurity ApprovedPatchesEnableNonSecurity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder approvedPatchesEnableNonSecurity(@Nullable Output<Boolean> approvedPatchesEnableNonSecurity) {
+            $.approvedPatchesEnableNonSecurity = approvedPatchesEnableNonSecurity;
+            return this;
+        }
+
+        /**
+         * @param approvedPatchesEnableNonSecurity ApprovedPatchesEnableNonSecurity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder approvedPatchesEnableNonSecurity(Boolean approvedPatchesEnableNonSecurity) {
+            return approvedPatchesEnableNonSecurity(Output.of(approvedPatchesEnableNonSecurity));
         }
 
         /**
@@ -270,6 +405,79 @@ public final class PatchBaselineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rejectedPatchesAction(String rejectedPatchesAction) {
             return rejectedPatchesAction(Output.of(rejectedPatchesAction));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param sources Source.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sources(@Nullable Output<List<String>> sources) {
+            $.sources = sources;
+            return this;
+        }
+
+        /**
+         * @param sources Source.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sources(List<String> sources) {
+            return sources(Output.of(sources));
+        }
+
+        /**
+         * @param sources Source.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sources(String... sources) {
+            return sources(List.of(sources));
+        }
+
+        /**
+         * @param tags Label.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Label.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         public PatchBaselineArgs build() {

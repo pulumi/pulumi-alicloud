@@ -1770,17 +1770,17 @@ func (o ConnectionNetworkParametersPtrOutput) VswitcheId() pulumi.StringPtrOutpu
 }
 
 type RuleTarget struct {
-	// Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
+	// The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
 	DeadLetterQueue *RuleTargetDeadLetterQueue `pulumi:"deadLetterQueue"`
-	// The endpoint of target.
+	// The endpoint of the event target.
 	Endpoint string `pulumi:"endpoint"`
-	// A list of param. See `paramList` below.
+	// The parameters that are configured for the event target. See `paramList` below.
 	ParamLists []RuleTargetParamList `pulumi:"paramLists"`
 	// The retry policy that is used to push the event. Valid values:
 	PushRetryStrategy *string `pulumi:"pushRetryStrategy"`
-	// The ID of target.
+	// The ID of the custom event target.
 	TargetId string `pulumi:"targetId"`
-	// The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+	// The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
 	// **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
 	Type string `pulumi:"type"`
 }
@@ -1797,17 +1797,17 @@ type RuleTargetInput interface {
 }
 
 type RuleTargetArgs struct {
-	// Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
+	// The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
 	DeadLetterQueue RuleTargetDeadLetterQueuePtrInput `pulumi:"deadLetterQueue"`
-	// The endpoint of target.
+	// The endpoint of the event target.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
-	// A list of param. See `paramList` below.
+	// The parameters that are configured for the event target. See `paramList` below.
 	ParamLists RuleTargetParamListArrayInput `pulumi:"paramLists"`
 	// The retry policy that is used to push the event. Valid values:
 	PushRetryStrategy pulumi.StringPtrInput `pulumi:"pushRetryStrategy"`
-	// The ID of target.
+	// The ID of the custom event target.
 	TargetId pulumi.StringInput `pulumi:"targetId"`
-	// The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+	// The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
 	// **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -1863,17 +1863,17 @@ func (o RuleTargetOutput) ToRuleTargetOutputWithContext(ctx context.Context) Rul
 	return o
 }
 
-// Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
+// The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
 func (o RuleTargetOutput) DeadLetterQueue() RuleTargetDeadLetterQueuePtrOutput {
 	return o.ApplyT(func(v RuleTarget) *RuleTargetDeadLetterQueue { return v.DeadLetterQueue }).(RuleTargetDeadLetterQueuePtrOutput)
 }
 
-// The endpoint of target.
+// The endpoint of the event target.
 func (o RuleTargetOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleTarget) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// A list of param. See `paramList` below.
+// The parameters that are configured for the event target. See `paramList` below.
 func (o RuleTargetOutput) ParamLists() RuleTargetParamListArrayOutput {
 	return o.ApplyT(func(v RuleTarget) []RuleTargetParamList { return v.ParamLists }).(RuleTargetParamListArrayOutput)
 }
@@ -1883,12 +1883,12 @@ func (o RuleTargetOutput) PushRetryStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleTarget) *string { return v.PushRetryStrategy }).(pulumi.StringPtrOutput)
 }
 
-// The ID of target.
+// The ID of the custom event target.
 func (o RuleTargetOutput) TargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleTarget) string { return v.TargetId }).(pulumi.StringOutput)
 }
 
-// The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+// The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
 // **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
 func (o RuleTargetOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleTarget) string { return v.Type }).(pulumi.StringOutput)
@@ -1915,7 +1915,7 @@ func (o RuleTargetArrayOutput) Index(i pulumi.IntInput) RuleTargetOutput {
 }
 
 type RuleTargetDeadLetterQueue struct {
-	// The srn of the dead letter queue.
+	// The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
 	Arn *string `pulumi:"arn"`
 }
 
@@ -1931,7 +1931,7 @@ type RuleTargetDeadLetterQueueInput interface {
 }
 
 type RuleTargetDeadLetterQueueArgs struct {
-	// The srn of the dead letter queue.
+	// The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
 	Arn pulumi.StringPtrInput `pulumi:"arn"`
 }
 
@@ -2012,7 +2012,7 @@ func (o RuleTargetDeadLetterQueueOutput) ToRuleTargetDeadLetterQueuePtrOutputWit
 	}).(RuleTargetDeadLetterQueuePtrOutput)
 }
 
-// The srn of the dead letter queue.
+// The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
 func (o RuleTargetDeadLetterQueueOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleTargetDeadLetterQueue) *string { return v.Arn }).(pulumi.StringPtrOutput)
 }
@@ -2041,7 +2041,7 @@ func (o RuleTargetDeadLetterQueuePtrOutput) Elem() RuleTargetDeadLetterQueueOutp
 	}).(RuleTargetDeadLetterQueueOutput)
 }
 
-// The srn of the dead letter queue.
+// The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
 func (o RuleTargetDeadLetterQueuePtrOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleTargetDeadLetterQueue) *string {
 		if v == nil {
@@ -2052,13 +2052,13 @@ func (o RuleTargetDeadLetterQueuePtrOutput) Arn() pulumi.StringPtrOutput {
 }
 
 type RuleTargetParamList struct {
-	// The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+	// The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
 	Form string `pulumi:"form"`
-	// The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+	// The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
 	ResourceKey string `pulumi:"resourceKey"`
-	// The template of param.
+	// The template of the event target parameter.
 	Template *string `pulumi:"template"`
-	// The value of param.
+	// The value of the event target parameter.
 	//
 	// > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
 	//
@@ -2078,8 +2078,7 @@ type RuleTargetParamList struct {
 	// ```
 	// <!--End PulumiCodeChooser -->
 	//
-	// In order to fix the diff, from version 1.160.0,
-	// this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
+	// In order to fix the diff, from version 1.160.0, this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
 	// If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
 	Value *string `pulumi:"value"`
 }
@@ -2096,13 +2095,13 @@ type RuleTargetParamListInput interface {
 }
 
 type RuleTargetParamListArgs struct {
-	// The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+	// The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
 	Form pulumi.StringInput `pulumi:"form"`
-	// The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+	// The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
 	ResourceKey pulumi.StringInput `pulumi:"resourceKey"`
-	// The template of param.
+	// The template of the event target parameter.
 	Template pulumi.StringPtrInput `pulumi:"template"`
-	// The value of param.
+	// The value of the event target parameter.
 	//
 	// > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
 	//
@@ -2122,8 +2121,7 @@ type RuleTargetParamListArgs struct {
 	// ```
 	// <!--End PulumiCodeChooser -->
 	//
-	// In order to fix the diff, from version 1.160.0,
-	// this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
+	// In order to fix the diff, from version 1.160.0, this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
 	// If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -2179,22 +2177,22 @@ func (o RuleTargetParamListOutput) ToRuleTargetParamListOutputWithContext(ctx co
 	return o
 }
 
-// The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+// The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
 func (o RuleTargetParamListOutput) Form() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleTargetParamList) string { return v.Form }).(pulumi.StringOutput)
 }
 
-// The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+// The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
 func (o RuleTargetParamListOutput) ResourceKey() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleTargetParamList) string { return v.ResourceKey }).(pulumi.StringOutput)
 }
 
-// The template of param.
+// The template of the event target parameter.
 func (o RuleTargetParamListOutput) Template() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleTargetParamList) *string { return v.Template }).(pulumi.StringPtrOutput)
 }
 
-// The value of param.
+// The value of the event target parameter.
 //
 // > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
 //
@@ -2217,8 +2215,7 @@ func (o RuleTargetParamListOutput) Template() pulumi.StringPtrOutput {
 // ```
 // <!--End PulumiCodeChooser -->
 //
-// In order to fix the diff, from version 1.160.0,
-// this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
+// In order to fix the diff, from version 1.160.0, this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
 // If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
 func (o RuleTargetParamListOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleTargetParamList) *string { return v.Value }).(pulumi.StringPtrOutput)

@@ -328,9 +328,14 @@ class StackInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_regions = alicloud.ros.get_regions()
-        example_stack_group = alicloud.ros.StackGroup("exampleStackGroup",
-            stack_group_name=var["name"],
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        this = alicloud.get_account()
+        default_regions = alicloud.ros.get_regions()
+        default_stack_group = alicloud.ros.StackGroup("defaultStackGroup",
+            stack_group_name=name,
             template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\", \\"Parameters\\": {\\"VpcName\\": {\\"Type\\": \\"String\\"},\\"InstanceType\\": {\\"Type\\": \\"String\\"}}}",
             description="test for stack groups",
             parameters=[
@@ -343,11 +348,14 @@ class StackInstance(pulumi.CustomResource):
                     parameter_value="InstanceType",
                 ),
             ])
-        example_stack_instance = alicloud.ros.StackInstance("exampleStackInstance",
-            stack_group_name=example_stack_group.stack_group_name,
-            stack_instance_account_id="example_value",
-            stack_instance_region_id=example_regions.regions[0].region_id,
+        example = alicloud.ros.StackInstance("example",
+            stack_group_name=default_stack_group.stack_group_name,
+            stack_instance_account_id=this.id,
+            stack_instance_region_id=default_regions.regions[0].region_id,
             operation_preferences="{\\"FailureToleranceCount\\": 1, \\"MaxConcurrentCount\\": 2}",
+            timeout_in_minutes="60",
+            operation_description="tf-example",
+            retain_stacks=True,
             parameter_overrides=[alicloud.ros.StackInstanceParameterOverrideArgs(
                 parameter_value="VpcName",
                 parameter_key="VpcName",
@@ -396,9 +404,14 @@ class StackInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_regions = alicloud.ros.get_regions()
-        example_stack_group = alicloud.ros.StackGroup("exampleStackGroup",
-            stack_group_name=var["name"],
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        this = alicloud.get_account()
+        default_regions = alicloud.ros.get_regions()
+        default_stack_group = alicloud.ros.StackGroup("defaultStackGroup",
+            stack_group_name=name,
             template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\", \\"Parameters\\": {\\"VpcName\\": {\\"Type\\": \\"String\\"},\\"InstanceType\\": {\\"Type\\": \\"String\\"}}}",
             description="test for stack groups",
             parameters=[
@@ -411,11 +424,14 @@ class StackInstance(pulumi.CustomResource):
                     parameter_value="InstanceType",
                 ),
             ])
-        example_stack_instance = alicloud.ros.StackInstance("exampleStackInstance",
-            stack_group_name=example_stack_group.stack_group_name,
-            stack_instance_account_id="example_value",
-            stack_instance_region_id=example_regions.regions[0].region_id,
+        example = alicloud.ros.StackInstance("example",
+            stack_group_name=default_stack_group.stack_group_name,
+            stack_instance_account_id=this.id,
+            stack_instance_region_id=default_regions.regions[0].region_id,
             operation_preferences="{\\"FailureToleranceCount\\": 1, \\"MaxConcurrentCount\\": 2}",
+            timeout_in_minutes="60",
+            operation_description="tf-example",
+            retain_stacks=True,
             parameter_overrides=[alicloud.ros.StackInstanceParameterOverrideArgs(
                 parameter_value="VpcName",
                 parameter_key="VpcName",

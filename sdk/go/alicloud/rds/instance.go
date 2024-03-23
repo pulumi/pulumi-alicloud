@@ -55,10 +55,10 @@ type Instance struct {
 	// * **HighAvailability**: High-availability Edition.
 	// * **AlwaysOn**: Cluster Edition.
 	// * **Finance**: Enterprise Edition.
-	// * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
-	// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
-	// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
-	// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+	// * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
+	// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
+	// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
+	// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
 	//
 	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	Category pulumi.StringOutput `pulumi:"category"`
@@ -79,7 +79,7 @@ type Instance struct {
 	// The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
 	// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\|{};:'",<>/?
 	ConnectionStringPrefix pulumi.StringOutput `pulumi:"connectionStringPrefix"`
-	// (Available in 1.204.1+) The creation time of db instance.
+	// (Available since 1.204.1) The creation time of db instance.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The attribute of the IP address whitelist. By default, this parameter is empty.
 	//
@@ -96,7 +96,7 @@ type Instance struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringOutput `pulumi:"dbInstanceStorageType"`
-	// (Available in 1.197.0+) The type of db instance.
+	// (Available since 1.197.0) The type of db instance.
 	DbInstanceType pulumi.StringOutput `pulumi:"dbInstanceType"`
 	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
 	DbIsIgnoreCase pulumi.BoolOutput `pulumi:"dbIsIgnoreCase"`
@@ -223,7 +223,7 @@ type Instance struct {
 	//
 	// Deprecated: Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+	// , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
 	SecurityIpMode pulumi.StringPtrOutput `pulumi:"securityIpMode"`
@@ -253,7 +253,7 @@ type Instance struct {
 	SslConnectionString pulumi.StringOutput `pulumi:"sslConnectionString"`
 	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
 	SslStatus pulumi.StringOutput `pulumi:"sslStatus"`
-	// (Available in 1.204.1+) The status of db instance.
+	// (Available since 1.204.1) The status of db instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Automatic storage space expansion switch. Valid values:
 	// - Enable
@@ -261,7 +261,7 @@ type Instance struct {
 	//
 	// > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
 	StorageAutoScale pulumi.StringPtrOutput `pulumi:"storageAutoScale"`
-	// The trigger threshold (percentage) for automatic storage space expansion.
+	// The threshold in percentage based on which an automatic storage expansion is triggered. If the available storage reaches the threshold, ApsaraDB RDS increases the storage capacity of the instance.
 	// Valid values: [10, 20, 30, 40, 50].
 	//
 	// > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
@@ -403,10 +403,10 @@ type instanceState struct {
 	// * **HighAvailability**: High-availability Edition.
 	// * **AlwaysOn**: Cluster Edition.
 	// * **Finance**: Enterprise Edition.
-	// * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
-	// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
-	// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
-	// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+	// * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
+	// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
+	// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
+	// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
 	//
 	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	Category *string `pulumi:"category"`
@@ -427,7 +427,7 @@ type instanceState struct {
 	// The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
 	// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\|{};:'",<>/?
 	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
-	// (Available in 1.204.1+) The creation time of db instance.
+	// (Available since 1.204.1) The creation time of db instance.
 	CreateTime *string `pulumi:"createTime"`
 	// The attribute of the IP address whitelist. By default, this parameter is empty.
 	//
@@ -444,7 +444,7 @@ type instanceState struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
-	// (Available in 1.197.0+) The type of db instance.
+	// (Available since 1.197.0) The type of db instance.
 	DbInstanceType *string `pulumi:"dbInstanceType"`
 	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
 	DbIsIgnoreCase *bool `pulumi:"dbIsIgnoreCase"`
@@ -571,7 +571,7 @@ type instanceState struct {
 	//
 	// Deprecated: Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+	// , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
 	SecurityIpMode *string `pulumi:"securityIpMode"`
@@ -601,7 +601,7 @@ type instanceState struct {
 	SslConnectionString *string `pulumi:"sslConnectionString"`
 	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
 	SslStatus *string `pulumi:"sslStatus"`
-	// (Available in 1.204.1+) The status of db instance.
+	// (Available since 1.204.1) The status of db instance.
 	Status *string `pulumi:"status"`
 	// Automatic storage space expansion switch. Valid values:
 	// - Enable
@@ -609,7 +609,7 @@ type instanceState struct {
 	//
 	// > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
 	StorageAutoScale *string `pulumi:"storageAutoScale"`
-	// The trigger threshold (percentage) for automatic storage space expansion.
+	// The threshold in percentage based on which an automatic storage expansion is triggered. If the available storage reaches the threshold, ApsaraDB RDS increases the storage capacity of the instance.
 	// Valid values: [10, 20, 30, 40, 50].
 	//
 	// > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
@@ -710,10 +710,10 @@ type InstanceState struct {
 	// * **HighAvailability**: High-availability Edition.
 	// * **AlwaysOn**: Cluster Edition.
 	// * **Finance**: Enterprise Edition.
-	// * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
-	// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
-	// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
-	// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+	// * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
+	// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
+	// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
+	// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
 	//
 	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	Category pulumi.StringPtrInput
@@ -734,7 +734,7 @@ type InstanceState struct {
 	// The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
 	// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\|{};:'",<>/?
 	ConnectionStringPrefix pulumi.StringPtrInput
-	// (Available in 1.204.1+) The creation time of db instance.
+	// (Available since 1.204.1) The creation time of db instance.
 	CreateTime pulumi.StringPtrInput
 	// The attribute of the IP address whitelist. By default, this parameter is empty.
 	//
@@ -751,7 +751,7 @@ type InstanceState struct {
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
 	DbInstanceStorageType pulumi.StringPtrInput
-	// (Available in 1.197.0+) The type of db instance.
+	// (Available since 1.197.0) The type of db instance.
 	DbInstanceType pulumi.StringPtrInput
 	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
 	DbIsIgnoreCase pulumi.BoolPtrInput
@@ -878,7 +878,7 @@ type InstanceState struct {
 	//
 	// Deprecated: Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	SecurityGroupId pulumi.StringPtrInput
-	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+	// , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayInput
 	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
 	SecurityIpMode pulumi.StringPtrInput
@@ -908,7 +908,7 @@ type InstanceState struct {
 	SslConnectionString pulumi.StringPtrInput
 	// Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
 	SslStatus pulumi.StringPtrInput
-	// (Available in 1.204.1+) The status of db instance.
+	// (Available since 1.204.1) The status of db instance.
 	Status pulumi.StringPtrInput
 	// Automatic storage space expansion switch. Valid values:
 	// - Enable
@@ -916,7 +916,7 @@ type InstanceState struct {
 	//
 	// > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
 	StorageAutoScale pulumi.StringPtrInput
-	// The trigger threshold (percentage) for automatic storage space expansion.
+	// The threshold in percentage based on which an automatic storage expansion is triggered. If the available storage reaches the threshold, ApsaraDB RDS increases the storage capacity of the instance.
 	// Valid values: [10, 20, 30, 40, 50].
 	//
 	// > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
@@ -1021,10 +1021,10 @@ type instanceArgs struct {
 	// * **HighAvailability**: High-availability Edition.
 	// * **AlwaysOn**: Cluster Edition.
 	// * **Finance**: Enterprise Edition.
-	// * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
-	// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
-	// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
-	// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+	// * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
+	// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
+	// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
+	// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
 	//
 	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	Category *string `pulumi:"category"`
@@ -1183,7 +1183,7 @@ type instanceArgs struct {
 	//
 	// Deprecated: Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+	// , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
 	SecurityIpMode *string `pulumi:"securityIpMode"`
@@ -1217,7 +1217,7 @@ type instanceArgs struct {
 	//
 	// > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
 	StorageAutoScale *string `pulumi:"storageAutoScale"`
-	// The trigger threshold (percentage) for automatic storage space expansion.
+	// The threshold in percentage based on which an automatic storage expansion is triggered. If the available storage reaches the threshold, ApsaraDB RDS increases the storage capacity of the instance.
 	// Valid values: [10, 20, 30, 40, 50].
 	//
 	// > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
@@ -1319,10 +1319,10 @@ type InstanceArgs struct {
 	// * **HighAvailability**: High-availability Edition.
 	// * **AlwaysOn**: Cluster Edition.
 	// * **Finance**: Enterprise Edition.
-	// * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
-	// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
-	// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
-	// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+	// * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
+	// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
+	// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
+	// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
 	//
 	// > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 	Category pulumi.StringPtrInput
@@ -1481,7 +1481,7 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	SecurityGroupId pulumi.StringPtrInput
-	// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+	// , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayInput
 	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
 	SecurityIpMode pulumi.StringPtrInput
@@ -1515,7 +1515,7 @@ type InstanceArgs struct {
 	//
 	// > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
 	StorageAutoScale pulumi.StringPtrInput
-	// The trigger threshold (percentage) for automatic storage space expansion.
+	// The threshold in percentage based on which an automatic storage expansion is triggered. If the available storage reaches the threshold, ApsaraDB RDS increases the storage capacity of the instance.
 	// Valid values: [10, 20, 30, 40, 50].
 	//
 	// > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
@@ -1723,10 +1723,10 @@ func (o InstanceOutput) CaType() pulumi.StringOutput {
 // * **HighAvailability**: High-availability Edition.
 // * **AlwaysOn**: Cluster Edition.
 // * **Finance**: Enterprise Edition.
-// * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
-// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
-// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
-// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+// * **cluster**: MySQL Cluster Edition. (Available since 1.202.0)
+// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.200.0)
+// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available since 1.204.0)
+// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available since 1.204.0)
 //
 // > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
 func (o InstanceOutput) Category() pulumi.StringOutput {
@@ -1768,7 +1768,7 @@ func (o InstanceOutput) ConnectionStringPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionStringPrefix }).(pulumi.StringOutput)
 }
 
-// (Available in 1.204.1+) The creation time of db instance.
+// (Available since 1.204.1) The creation time of db instance.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -1797,7 +1797,7 @@ func (o InstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DbInstanceStorageType }).(pulumi.StringOutput)
 }
 
-// (Available in 1.197.0+) The type of db instance.
+// (Available since 1.197.0) The type of db instance.
 func (o InstanceOutput) DbInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DbInstanceType }).(pulumi.StringOutput)
 }
@@ -2020,7 +2020,7 @@ func (o InstanceOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+// , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
 func (o InstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
@@ -2086,7 +2086,7 @@ func (o InstanceOutput) SslStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SslStatus }).(pulumi.StringOutput)
 }
 
-// (Available in 1.204.1+) The status of db instance.
+// (Available since 1.204.1) The status of db instance.
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -2100,7 +2100,7 @@ func (o InstanceOutput) StorageAutoScale() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.StorageAutoScale }).(pulumi.StringPtrOutput)
 }
 
-// The trigger threshold (percentage) for automatic storage space expansion.
+// The threshold in percentage based on which an automatic storage expansion is triggered. If the available storage reaches the threshold, ApsaraDB RDS increases the storage capacity of the instance.
 // Valid values: [10, 20, 30, 40, 50].
 //
 // > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.

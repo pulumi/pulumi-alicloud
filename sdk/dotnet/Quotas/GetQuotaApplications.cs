@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Quotas
         /// <summary>
         /// This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.117.0+.
+        /// &gt; **NOTE:** Available since v1.117.0.
         /// 
         /// ## Example Usage
         /// 
@@ -29,19 +29,31 @@ namespace Pulumi.AliCloud.Quotas
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.Quotas.GetQuotaApplications.Invoke(new()
+        ///     var defaultQuotaApplication = new AliCloud.Quotas.QuotaApplication("defaultQuotaApplication", new()
         ///     {
-        ///         ProductCode = "ess",
+        ///         ProductCode = "vpc",
+        ///         NoticeType = 3,
+        ///         EffectiveTime = "2023-05-22T16:00:00Z",
+        ///         ExpireTime = "2024-09-15T00:08:32Z",
+        ///         DesireValue = 1,
+        ///         Reason = "",
+        ///         QuotaActionCode = "vpc_whitelist/ha_vip_whitelist",
+        ///         AuditMode = "Sync",
+        ///         EnvLanguage = "zh",
+        ///         QuotaCategory = "WhiteListLabel",
+        ///     });
+        /// 
+        ///     var defaultQuotaApplications = AliCloud.Quotas.GetQuotaApplications.Invoke(new()
+        ///     {
+        ///         ProductCode = "vpc",
+        ///         EnableDetails = true,
+        ///         QuotaCategory = defaultQuotaApplication.QuotaCategory,
         ///         Ids = new[]
         ///         {
-        ///             "4621F886-81E9-xxxx-xxxx",
+        ///             defaultQuotaApplication.Id,
         ///         },
         ///     });
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstQuotasQuotaApplicationId"] = example.Apply(getQuotaApplicationsResult =&gt; getQuotaApplicationsResult.Applications[0]?.Id),
-        ///     };
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;
@@ -52,7 +64,7 @@ namespace Pulumi.AliCloud.Quotas
         /// <summary>
         /// This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.117.0+.
+        /// &gt; **NOTE:** Available since v1.117.0.
         /// 
         /// ## Example Usage
         /// 
@@ -67,19 +79,31 @@ namespace Pulumi.AliCloud.Quotas
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.Quotas.GetQuotaApplications.Invoke(new()
+        ///     var defaultQuotaApplication = new AliCloud.Quotas.QuotaApplication("defaultQuotaApplication", new()
         ///     {
-        ///         ProductCode = "ess",
+        ///         ProductCode = "vpc",
+        ///         NoticeType = 3,
+        ///         EffectiveTime = "2023-05-22T16:00:00Z",
+        ///         ExpireTime = "2024-09-15T00:08:32Z",
+        ///         DesireValue = 1,
+        ///         Reason = "",
+        ///         QuotaActionCode = "vpc_whitelist/ha_vip_whitelist",
+        ///         AuditMode = "Sync",
+        ///         EnvLanguage = "zh",
+        ///         QuotaCategory = "WhiteListLabel",
+        ///     });
+        /// 
+        ///     var defaultQuotaApplications = AliCloud.Quotas.GetQuotaApplications.Invoke(new()
+        ///     {
+        ///         ProductCode = "vpc",
+        ///         EnableDetails = true,
+        ///         QuotaCategory = defaultQuotaApplication.QuotaCategory,
         ///         Ids = new[]
         ///         {
-        ///             "4621F886-81E9-xxxx-xxxx",
+        ///             defaultQuotaApplication.Id,
         ///         },
         ///     });
         /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstQuotasQuotaApplicationId"] = example.Apply(getQuotaApplicationsResult =&gt; getQuotaApplicationsResult.Applications[0]?.Id),
-        ///     };
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;
@@ -143,7 +167,7 @@ namespace Pulumi.AliCloud.Quotas
         public string? QuotaActionCode { get; set; }
 
         /// <summary>
-        /// The quota category. Valid values: `CommonQuota`, `FlowControl`.
+        /// The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
         /// </summary>
         [Input("quotaCategory")]
         public string? QuotaCategory { get; set; }
@@ -214,7 +238,7 @@ namespace Pulumi.AliCloud.Quotas
         public Input<string>? QuotaActionCode { get; set; }
 
         /// <summary>
-        /// The quota category. Valid values: `CommonQuota`, `FlowControl`.
+        /// The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
         /// </summary>
         [Input("quotaCategory")]
         public Input<string>? QuotaCategory { get; set; }

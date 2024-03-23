@@ -21,14 +21,17 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const config = new pulumi.Config();
- * const domainName = config.get("domainName") || "example.com";
- * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const example = new alicloud.dcdn.IpaDomain("example", {
- *     domainName: domainName,
- *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
- *     scope: "global",
+ *     domainName: pulumi.interpolate`example-${defaultRandomInteger.result}.com`,
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     scope: "overseas",
  *     status: "online",
  *     sources: [{
  *         content: "www.alicloud-provider.cn",

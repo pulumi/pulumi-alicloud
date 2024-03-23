@@ -26,10 +26,17 @@ namespace Pulumi.AliCloud.Cas
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Cas.ServiceCertificate("default", new()
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultServiceCertificate = new AliCloud.Cas.ServiceCertificate("defaultServiceCertificate", new()
     ///     {
     ///         Cert = @"-----BEGIN CERTIFICATE-----
     /// MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
@@ -54,7 +61,7 @@ namespace Pulumi.AliCloud.Cas
     /// -----END CERTIFICATE-----
     /// 
     /// ",
-    ///         CertificateName = "tf-example",
+    ///         CertificateName = defaultRandomInteger.Result.Apply(result =&gt; $"tf-example-{result}"),
     ///         Key = @"-----BEGIN PRIVATE KEY-----
     /// MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDOST00lQfs8tJA
     /// rhFGsZBjl1Wx+2SGcqH0eEjrKueWjBYgM9LU9kc5T/mBDvE9Q8Z0pBXlLvHzBE6c

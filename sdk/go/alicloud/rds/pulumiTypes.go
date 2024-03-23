@@ -806,10 +806,6 @@ func (o InstancePgHbaConfArrayOutput) Index(i pulumi.IntInput) InstancePgHbaConf
 }
 
 type InstanceServerlessConfig struct {
-	// Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
-	// - true: enables the feature.
-	// - false: disables the feature. This is the default value.
-	// > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
 	AutoPause *bool `pulumi:"autoPause"`
 	// The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
 	// - MySQL: 1~8
@@ -841,10 +837,6 @@ type InstanceServerlessConfigInput interface {
 }
 
 type InstanceServerlessConfigArgs struct {
-	// Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
-	// - true: enables the feature.
-	// - false: disables the feature. This is the default value.
-	// > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
 	AutoPause pulumi.BoolPtrInput `pulumi:"autoPause"`
 	// The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
 	// - MySQL: 1~8
@@ -915,10 +907,6 @@ func (o InstanceServerlessConfigOutput) ToInstanceServerlessConfigOutputWithCont
 	return o
 }
 
-// Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
-// - true: enables the feature.
-// - false: disables the feature. This is the default value.
-// > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
 func (o InstanceServerlessConfigOutput) AutoPause() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceServerlessConfig) *bool { return v.AutoPause }).(pulumi.BoolPtrOutput)
 }

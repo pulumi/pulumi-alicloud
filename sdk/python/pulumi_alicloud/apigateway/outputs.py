@@ -101,12 +101,18 @@ class ApiFcServiceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "functionName":
+        if key == "arnRole":
+            suggest = "arn_role"
+        elif key == "functionBaseUrl":
+            suggest = "function_base_url"
+        elif key == "functionName":
             suggest = "function_name"
+        elif key == "functionType":
+            suggest = "function_type"
+        elif key == "onlyBusinessPath":
+            suggest = "only_business_path"
         elif key == "serviceName":
             suggest = "service_name"
-        elif key == "arnRole":
-            suggest = "arn_role"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ApiFcServiceConfig. Access the value via the '{suggest}' property getter instead.")
@@ -120,32 +126,57 @@ class ApiFcServiceConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 function_name: str,
+                 arn_role: str,
                  region: str,
-                 service_name: str,
                  timeout: int,
-                 arn_role: Optional[str] = None):
+                 function_base_url: Optional[str] = None,
+                 function_name: Optional[str] = None,
+                 function_type: Optional[str] = None,
+                 method: Optional[str] = None,
+                 only_business_path: Optional[bool] = None,
+                 path: Optional[str] = None,
+                 qualifier: Optional[str] = None,
+                 service_name: Optional[str] = None):
         """
-        :param str function_name: The function name of function compute service.
-        :param str region: The region that the function compute service belongs to.
-        :param str service_name: The service name of function compute service.
-        :param int timeout: Backend service time-out time; unit: millisecond.
         :param str arn_role: RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+        :param str region: The region that the function compute service belongs to.
+        :param int timeout: Backend service time-out time; unit: millisecond.
+        :param str function_base_url: The base url of function compute service. Required if `function_type` is `HttpTrigger`.
+        :param str function_name: The function name of function compute service. Required if `function_type` is `FCEvent`.
+        :param str function_type: The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+        :param str method: The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+        :param bool only_business_path: Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+        :param str path: The path of function compute service. Required if `function_type` is `HttpTrigger`.
+        :param str qualifier: The qualifier of function name of compute service.
+        :param str service_name: The service name of function compute service. Required if `function_type` is `FCEvent`.
         """
-        pulumi.set(__self__, "function_name", function_name)
+        pulumi.set(__self__, "arn_role", arn_role)
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "timeout", timeout)
-        if arn_role is not None:
-            pulumi.set(__self__, "arn_role", arn_role)
+        if function_base_url is not None:
+            pulumi.set(__self__, "function_base_url", function_base_url)
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if function_type is not None:
+            pulumi.set(__self__, "function_type", function_type)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if only_business_path is not None:
+            pulumi.set(__self__, "only_business_path", only_business_path)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if qualifier is not None:
+            pulumi.set(__self__, "qualifier", qualifier)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
 
     @property
-    @pulumi.getter(name="functionName")
-    def function_name(self) -> str:
+    @pulumi.getter(name="arnRole")
+    def arn_role(self) -> str:
         """
-        The function name of function compute service.
+        RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         """
-        return pulumi.get(self, "function_name")
+        return pulumi.get(self, "arn_role")
 
     @property
     @pulumi.getter
@@ -156,14 +187,6 @@ class ApiFcServiceConfig(dict):
         return pulumi.get(self, "region")
 
     @property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> str:
-        """
-        The service name of function compute service.
-        """
-        return pulumi.get(self, "service_name")
-
-    @property
     @pulumi.getter
     def timeout(self) -> int:
         """
@@ -172,12 +195,68 @@ class ApiFcServiceConfig(dict):
         return pulumi.get(self, "timeout")
 
     @property
-    @pulumi.getter(name="arnRole")
-    def arn_role(self) -> Optional[str]:
+    @pulumi.getter(name="functionBaseUrl")
+    def function_base_url(self) -> Optional[str]:
         """
-        RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+        The base url of function compute service. Required if `function_type` is `HttpTrigger`.
         """
-        return pulumi.get(self, "arn_role")
+        return pulumi.get(self, "function_base_url")
+
+    @property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[str]:
+        """
+        The function name of function compute service. Required if `function_type` is `FCEvent`.
+        """
+        return pulumi.get(self, "function_name")
+
+    @property
+    @pulumi.getter(name="functionType")
+    def function_type(self) -> Optional[str]:
+        """
+        The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+        """
+        return pulumi.get(self, "function_type")
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[str]:
+        """
+        The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+        """
+        return pulumi.get(self, "method")
+
+    @property
+    @pulumi.getter(name="onlyBusinessPath")
+    def only_business_path(self) -> Optional[bool]:
+        """
+        Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+        """
+        return pulumi.get(self, "only_business_path")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        The path of function compute service. Required if `function_type` is `HttpTrigger`.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def qualifier(self) -> Optional[str]:
+        """
+        The qualifier of function name of compute service.
+        """
+        return pulumi.get(self, "qualifier")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        """
+        The service name of function compute service. Required if `function_type` is `FCEvent`.
+        """
+        return pulumi.get(self, "service_name")
 
 
 @pulumi.output_type

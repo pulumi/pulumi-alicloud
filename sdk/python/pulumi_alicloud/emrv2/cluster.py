@@ -25,6 +25,7 @@ class ClusterArgs:
                  application_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]] = None,
                  bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]] = None,
                  deploy_mode: Optional[pulumi.Input[str]] = None,
+                 log_collect_strategy: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_mode: Optional[pulumi.Input[str]] = None,
@@ -41,6 +42,7 @@ class ClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
+        :param pulumi.Input[str] log_collect_strategy: The log collect strategy of EMR cluster.
         :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
@@ -59,6 +61,8 @@ class ClusterArgs:
             pulumi.set(__self__, "bootstrap_scripts", bootstrap_scripts)
         if deploy_mode is not None:
             pulumi.set(__self__, "deploy_mode", deploy_mode)
+        if log_collect_strategy is not None:
+            pulumi.set(__self__, "log_collect_strategy", log_collect_strategy)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if resource_group_id is not None:
@@ -179,6 +183,18 @@ class ClusterArgs:
         pulumi.set(self, "deploy_mode", value)
 
     @property
+    @pulumi.getter(name="logCollectStrategy")
+    def log_collect_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The log collect strategy of EMR cluster.
+        """
+        return pulumi.get(self, "log_collect_strategy")
+
+    @log_collect_strategy.setter
+    def log_collect_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_collect_strategy", value)
+
+    @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -248,6 +264,7 @@ class _ClusterState:
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  deploy_mode: Optional[pulumi.Input[str]] = None,
+                 log_collect_strategy: Optional[pulumi.Input[str]] = None,
                  node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]]] = None,
                  node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -264,6 +281,7 @@ class _ClusterState:
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
+        :param pulumi.Input[str] log_collect_strategy: The log collect strategy of EMR cluster.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
         :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
@@ -285,6 +303,8 @@ class _ClusterState:
             pulumi.set(__self__, "cluster_type", cluster_type)
         if deploy_mode is not None:
             pulumi.set(__self__, "deploy_mode", deploy_mode)
+        if log_collect_strategy is not None:
+            pulumi.set(__self__, "log_collect_strategy", log_collect_strategy)
         if node_attributes is not None:
             pulumi.set(__self__, "node_attributes", node_attributes)
         if node_groups is not None:
@@ -373,6 +393,18 @@ class _ClusterState:
     @deploy_mode.setter
     def deploy_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "deploy_mode", value)
+
+    @property
+    @pulumi.getter(name="logCollectStrategy")
+    def log_collect_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The log collect strategy of EMR cluster.
+        """
+        return pulumi.get(self, "log_collect_strategy")
+
+    @log_collect_strategy.setter
+    def log_collect_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_collect_strategy", value)
 
     @property
     @pulumi.getter(name="nodeAttributes")
@@ -482,6 +514,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  deploy_mode: Optional[pulumi.Input[str]] = None,
+                 log_collect_strategy: Optional[pulumi.Input[str]] = None,
                  node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]]] = None,
                  node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -505,6 +538,7 @@ class Cluster(pulumi.CustomResource):
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
@@ -574,6 +608,7 @@ class Cluster(pulumi.CustomResource):
                 ),
                 alicloud.emrv2.ClusterNodeGroupArgs(
                     spot_instance_remedy=False,
+                    deployment_set_strategy="CLUSTER",
                     node_group_type="CORE",
                     vswitch_ids=[default_switch.id],
                     node_count=2,
@@ -616,6 +651,10 @@ class Cluster(pulumi.CustomResource):
                 ram_role=default_role.name,
                 security_group_id=default_security_group.id,
             )],
+            log_collect_strategy=json.dumps({
+                "open": ["all"],
+                "close": [""],
+            }),
             resource_group_id=default_resource_groups.ids[0],
             cluster_name=name,
             payment_type="PayAsYouGo",
@@ -639,6 +678,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
+        :param pulumi.Input[str] log_collect_strategy: The log collect strategy of EMR cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
         :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
@@ -668,6 +708,7 @@ class Cluster(pulumi.CustomResource):
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
@@ -737,6 +778,7 @@ class Cluster(pulumi.CustomResource):
                 ),
                 alicloud.emrv2.ClusterNodeGroupArgs(
                     spot_instance_remedy=False,
+                    deployment_set_strategy="CLUSTER",
                     node_group_type="CORE",
                     vswitch_ids=[default_switch.id],
                     node_count=2,
@@ -779,6 +821,10 @@ class Cluster(pulumi.CustomResource):
                 ram_role=default_role.name,
                 security_group_id=default_security_group.id,
             )],
+            log_collect_strategy=json.dumps({
+                "open": ["all"],
+                "close": [""],
+            }),
             resource_group_id=default_resource_groups.ids[0],
             cluster_name=name,
             payment_type="PayAsYouGo",
@@ -815,6 +861,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  deploy_mode: Optional[pulumi.Input[str]] = None,
+                 log_collect_strategy: Optional[pulumi.Input[str]] = None,
                  node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]]] = None,
                  node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -844,6 +891,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster_type'")
             __props__.__dict__["cluster_type"] = cluster_type
             __props__.__dict__["deploy_mode"] = deploy_mode
+            __props__.__dict__["log_collect_strategy"] = log_collect_strategy
             if node_attributes is None and not opts.urn:
                 raise TypeError("Missing required property 'node_attributes'")
             __props__.__dict__["node_attributes"] = node_attributes
@@ -874,6 +922,7 @@ class Cluster(pulumi.CustomResource):
             cluster_name: Optional[pulumi.Input[str]] = None,
             cluster_type: Optional[pulumi.Input[str]] = None,
             deploy_mode: Optional[pulumi.Input[str]] = None,
+            log_collect_strategy: Optional[pulumi.Input[str]] = None,
             node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]]] = None,
             node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
@@ -895,6 +944,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
+        :param pulumi.Input[str] log_collect_strategy: The log collect strategy of EMR cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
         :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
@@ -914,6 +964,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["cluster_name"] = cluster_name
         __props__.__dict__["cluster_type"] = cluster_type
         __props__.__dict__["deploy_mode"] = deploy_mode
+        __props__.__dict__["log_collect_strategy"] = log_collect_strategy
         __props__.__dict__["node_attributes"] = node_attributes
         __props__.__dict__["node_groups"] = node_groups
         __props__.__dict__["payment_type"] = payment_type
@@ -971,6 +1022,14 @@ class Cluster(pulumi.CustomResource):
         The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         """
         return pulumi.get(self, "deploy_mode")
+
+    @property
+    @pulumi.getter(name="logCollectStrategy")
+    def log_collect_strategy(self) -> pulumi.Output[str]:
+        """
+        The log collect strategy of EMR cluster.
+        """
+        return pulumi.get(self, "log_collect_strategy")
 
     @property
     @pulumi.getter(name="nodeAttributes")

@@ -34,17 +34,14 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     ///     var defaultZones = AliCloud.Gpdb.GetZones.Invoke();
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
+    ///         NameRegex = "^default-NODELETING$",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VswitchName = name,
-    ///         CidrBlock = "10.4.0.0/24",
-    ///         VpcId = defaultNetwork.Id,
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///     });
     /// 
@@ -65,8 +62,8 @@ namespace Pulumi.AliCloud.Gpdb
     ///         SegStorageType = "cloud_essd",
     ///         SegNodeNum = 4,
     ///         StorageSize = 50,
-    ///         VpcId = defaultNetwork.Id,
-    ///         VswitchId = defaultSwitch.Id,
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///         IpWhitelists = new[]
     ///         {
     ///             new AliCloud.Gpdb.Inputs.InstanceIpWhitelistArgs

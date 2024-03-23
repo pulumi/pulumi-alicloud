@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * RabbitMQ (AMQP) Instance can be imported using the id, e.g.
+ * Amqp Instance can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:amqp/instance:Instance example <id>
@@ -42,65 +42,91 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+     */
+    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    /**
+     * OrderCreateTime.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    /**
      * The instance name.
      */
     public readonly instanceName!: pulumi.Output<string>;
     /**
-     * The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+     * Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
-     * The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+     * The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
      */
-    public readonly logistics!: pulumi.Output<string | undefined>;
+    public readonly maxConnections!: pulumi.Output<number>;
     /**
-     * The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
+     * Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
      */
     public readonly maxEipTps!: pulumi.Output<string | undefined>;
     /**
-     * The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
+     * Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
      */
     public readonly maxTps!: pulumi.Output<string>;
     /**
-     * The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
+     * Type of instance lifting and lowering:
+     * - Upgrade: Upgrade
+     * - Downgrade: Downgrading.
      */
     public readonly modifyType!: pulumi.Output<string | undefined>;
     /**
-     * The payment type. Valid values: `Subscription`.
+     * The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
-     * The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
+     * Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * The queue capacity. The smallest value is 50 and the step size 5.
+     * Prepaid cycle units. Value: Month. Year: Year.
+     */
+    public readonly periodCycle!: pulumi.Output<string | undefined>;
+    /**
+     * Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
      */
     public readonly queueCapacity!: pulumi.Output<string>;
     /**
-     * RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
+     * The number of automatic renewal cycles.
      */
-    public readonly renewalDuration!: pulumi.Output<number | undefined>;
+    public readonly renewalDuration!: pulumi.Output<number>;
     /**
-     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
      */
-    public readonly renewalDurationUnit!: pulumi.Output<string | undefined>;
+    public readonly renewalDurationUnit!: pulumi.Output<string>;
     /**
-     * Whether to renew an instance automatically or not. Default to "ManualRenewal".
+     * The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
      */
     public readonly renewalStatus!: pulumi.Output<string>;
+    /**
+     * The billing type of the serverless instance. Value: onDemand.
+     */
+    public readonly serverlessChargeType!: pulumi.Output<string | undefined>;
     /**
      * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The storage size. It is valid when `instanceType` is vip.
+     * Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
      */
-    public readonly storageSize!: pulumi.Output<string | undefined>;
+    public readonly storageSize!: pulumi.Output<string>;
     /**
-     * Whether to support EIP.
+     * Whether to support public network.
      */
-    public readonly supportEip!: pulumi.Output<boolean>;
+    public readonly supportEip!: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+     */
+    public readonly supportTracing!: pulumi.Output<boolean>;
+    /**
+     * Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+     */
+    public readonly tracingStorageTime!: pulumi.Output<number>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -115,52 +141,52 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
-            resourceInputs["logistics"] = state ? state.logistics : undefined;
+            resourceInputs["maxConnections"] = state ? state.maxConnections : undefined;
             resourceInputs["maxEipTps"] = state ? state.maxEipTps : undefined;
             resourceInputs["maxTps"] = state ? state.maxTps : undefined;
             resourceInputs["modifyType"] = state ? state.modifyType : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodCycle"] = state ? state.periodCycle : undefined;
             resourceInputs["queueCapacity"] = state ? state.queueCapacity : undefined;
             resourceInputs["renewalDuration"] = state ? state.renewalDuration : undefined;
             resourceInputs["renewalDurationUnit"] = state ? state.renewalDurationUnit : undefined;
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            resourceInputs["serverlessChargeType"] = state ? state.serverlessChargeType : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["storageSize"] = state ? state.storageSize : undefined;
             resourceInputs["supportEip"] = state ? state.supportEip : undefined;
+            resourceInputs["supportTracing"] = state ? state.supportTracing : undefined;
+            resourceInputs["tracingStorageTime"] = state ? state.tracingStorageTime : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.instanceType === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instanceType'");
-            }
-            if ((!args || args.maxTps === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'maxTps'");
-            }
             if ((!args || args.paymentType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
-            if ((!args || args.queueCapacity === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'queueCapacity'");
-            }
-            if ((!args || args.supportEip === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'supportEip'");
-            }
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
-            resourceInputs["logistics"] = args ? args.logistics : undefined;
+            resourceInputs["maxConnections"] = args ? args.maxConnections : undefined;
             resourceInputs["maxEipTps"] = args ? args.maxEipTps : undefined;
             resourceInputs["maxTps"] = args ? args.maxTps : undefined;
             resourceInputs["modifyType"] = args ? args.modifyType : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodCycle"] = args ? args.periodCycle : undefined;
             resourceInputs["queueCapacity"] = args ? args.queueCapacity : undefined;
             resourceInputs["renewalDuration"] = args ? args.renewalDuration : undefined;
             resourceInputs["renewalDurationUnit"] = args ? args.renewalDurationUnit : undefined;
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            resourceInputs["serverlessChargeType"] = args ? args.serverlessChargeType : undefined;
             resourceInputs["storageSize"] = args ? args.storageSize : undefined;
             resourceInputs["supportEip"] = args ? args.supportEip : undefined;
+            resourceInputs["supportTracing"] = args ? args.supportTracing : undefined;
+            resourceInputs["tracingStorageTime"] = args ? args.tracingStorageTime : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -173,65 +199,91 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
+     * Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+     */
+    autoRenew?: pulumi.Input<boolean>;
+    /**
+     * OrderCreateTime.
+     */
+    createTime?: pulumi.Input<number>;
+    /**
      * The instance name.
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+     * Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
      */
     instanceType?: pulumi.Input<string>;
     /**
-     * The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+     * The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
      */
-    logistics?: pulumi.Input<string>;
+    maxConnections?: pulumi.Input<number>;
     /**
-     * The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
+     * Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
      */
     maxEipTps?: pulumi.Input<string>;
     /**
-     * The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
+     * Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
      */
     maxTps?: pulumi.Input<string>;
     /**
-     * The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
+     * Type of instance lifting and lowering:
+     * - Upgrade: Upgrade
+     * - Downgrade: Downgrading.
      */
     modifyType?: pulumi.Input<string>;
     /**
-     * The payment type. Valid values: `Subscription`.
+     * The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
+     * Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
      */
     period?: pulumi.Input<number>;
     /**
-     * The queue capacity. The smallest value is 50 and the step size 5.
+     * Prepaid cycle units. Value: Month. Year: Year.
+     */
+    periodCycle?: pulumi.Input<string>;
+    /**
+     * Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
      */
     queueCapacity?: pulumi.Input<string>;
     /**
-     * RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
+     * The number of automatic renewal cycles.
      */
     renewalDuration?: pulumi.Input<number>;
     /**
-     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
      */
     renewalDurationUnit?: pulumi.Input<string>;
     /**
-     * Whether to renew an instance automatically or not. Default to "ManualRenewal".
+     * The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
      */
     renewalStatus?: pulumi.Input<string>;
+    /**
+     * The billing type of the serverless instance. Value: onDemand.
+     */
+    serverlessChargeType?: pulumi.Input<string>;
     /**
      * The status of the resource.
      */
     status?: pulumi.Input<string>;
     /**
-     * The storage size. It is valid when `instanceType` is vip.
+     * Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
      */
     storageSize?: pulumi.Input<string>;
     /**
-     * Whether to support EIP.
+     * Whether to support public network.
      */
     supportEip?: pulumi.Input<boolean>;
+    /**
+     * Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+     */
+    supportTracing?: pulumi.Input<boolean>;
+    /**
+     * Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+     */
+    tracingStorageTime?: pulumi.Input<number>;
 }
 
 /**
@@ -239,59 +291,81 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
+     * Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+     */
+    autoRenew?: pulumi.Input<boolean>;
+    /**
      * The instance name.
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
+     * Instance type. Valid values are as follows:  professional: professional Edition enterprise: enterprise Edition vip: Platinum Edition.
      */
-    instanceType: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     /**
-     * The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
+     * The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
      */
-    logistics?: pulumi.Input<string>;
+    maxConnections?: pulumi.Input<number>;
     /**
-     * The max eip tps. It is valid when `supportEip` is true. The valid value is [128, 45000] with the step size 128.
+     * Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
      */
     maxEipTps?: pulumi.Input<string>;
     /**
-     * The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
+     * Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
      */
-    maxTps: pulumi.Input<string>;
+    maxTps?: pulumi.Input<string>;
     /**
-     * The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
+     * Type of instance lifting and lowering:
+     * - Upgrade: Upgrade
+     * - Downgrade: Downgrading.
      */
     modifyType?: pulumi.Input<string>;
     /**
-     * The payment type. Valid values: `Subscription`.
+     * The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
      */
     paymentType: pulumi.Input<string>;
     /**
-     * The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
+     * Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
      */
     period?: pulumi.Input<number>;
     /**
-     * The queue capacity. The smallest value is 50 and the step size 5.
+     * Prepaid cycle units. Value: Month. Year: Year.
      */
-    queueCapacity: pulumi.Input<string>;
+    periodCycle?: pulumi.Input<string>;
     /**
-     * RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
+     * Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
+     */
+    queueCapacity?: pulumi.Input<string>;
+    /**
+     * The number of automatic renewal cycles.
      */
     renewalDuration?: pulumi.Input<number>;
     /**
-     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
+     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
      */
     renewalDurationUnit?: pulumi.Input<string>;
     /**
-     * Whether to renew an instance automatically or not. Default to "ManualRenewal".
+     * The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
      */
     renewalStatus?: pulumi.Input<string>;
     /**
-     * The storage size. It is valid when `instanceType` is vip.
+     * The billing type of the serverless instance. Value: onDemand.
+     */
+    serverlessChargeType?: pulumi.Input<string>;
+    /**
+     * Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
      */
     storageSize?: pulumi.Input<string>;
     /**
-     * Whether to support EIP.
+     * Whether to support public network.
      */
-    supportEip: pulumi.Input<boolean>;
+    supportEip?: pulumi.Input<boolean>;
+    /**
+     * Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+     */
+    supportTracing?: pulumi.Input<boolean>;
+    /**
+     * Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
+     */
+    tracingStorageTime?: pulumi.Input<number>;
 }

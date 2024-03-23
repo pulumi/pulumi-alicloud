@@ -28,43 +28,23 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
-//				CidrBlock:         pulumi.String("172.16.0.0/12"),
-//				EnableAdminAccess: pulumi.Bool(false),
-//				DesktopAccessType: pulumi.String("Internet"),
-//				OfficeSiteName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
-//			})
+//			defaultSimpleOfficeSites, err := eds.GetSimpleOfficeSites(ctx, &eds.GetSimpleOfficeSitesArgs{
+//				Status:    pulumi.StringRef("REGISTERED"),
+//				NameRegex: pulumi.StringRef("default"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = eds.NewNetworkPackage(ctx, "defaultNetworkPackage", &eds.NetworkPackageArgs{
 //				Bandwidth:    pulumi.Int(10),
-//				OfficeSiteId: defaultSimpleOfficeSite.ID(),
+//				OfficeSiteId: pulumi.String(defaultSimpleOfficeSites.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

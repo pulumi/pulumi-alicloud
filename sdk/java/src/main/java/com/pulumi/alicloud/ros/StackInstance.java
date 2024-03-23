@@ -35,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.ros.RosFunctions;
  * import com.pulumi.alicloud.ros.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.ros.StackGroup;
@@ -56,10 +57,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleRegions = RosFunctions.getRegions();
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var this = AlicloudFunctions.getAccount();
  * 
- *         var exampleStackGroup = new StackGroup(&#34;exampleStackGroup&#34;, StackGroupArgs.builder()        
- *             .stackGroupName(var_.name())
+ *         final var defaultRegions = RosFunctions.getRegions();
+ * 
+ *         var defaultStackGroup = new StackGroup(&#34;defaultStackGroup&#34;, StackGroupArgs.builder()        
+ *             .stackGroupName(name)
  *             .templateBody(&#34;{\&#34;ROSTemplateFormatVersion\&#34;:\&#34;2015-09-01\&#34;, \&#34;Parameters\&#34;: {\&#34;VpcName\&#34;: {\&#34;Type\&#34;: \&#34;String\&#34;},\&#34;InstanceType\&#34;: {\&#34;Type\&#34;: \&#34;String\&#34;}}}&#34;)
  *             .description(&#34;test for stack groups&#34;)
  *             .parameters(            
@@ -73,11 +78,14 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var exampleStackInstance = new StackInstance(&#34;exampleStackInstance&#34;, StackInstanceArgs.builder()        
- *             .stackGroupName(exampleStackGroup.stackGroupName())
- *             .stackInstanceAccountId(&#34;example_value&#34;)
- *             .stackInstanceRegionId(exampleRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()))
+ *         var example = new StackInstance(&#34;example&#34;, StackInstanceArgs.builder()        
+ *             .stackGroupName(defaultStackGroup.stackGroupName())
+ *             .stackInstanceAccountId(this_.id())
+ *             .stackInstanceRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()))
  *             .operationPreferences(&#34;{\&#34;FailureToleranceCount\&#34;: 1, \&#34;MaxConcurrentCount\&#34;: 2}&#34;)
+ *             .timeoutInMinutes(&#34;60&#34;)
+ *             .operationDescription(&#34;tf-example&#34;)
+ *             .retainStacks(&#34;true&#34;)
  *             .parameterOverrides(StackInstanceParameterOverrideArgs.builder()
  *                 .parameterValue(&#34;VpcName&#34;)
  *                 .parameterKey(&#34;VpcName&#34;)

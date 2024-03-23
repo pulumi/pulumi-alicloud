@@ -84,6 +84,10 @@ export class DBCluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+     */
+    public readonly diskEncryption!: pulumi.Output<boolean | undefined>;
+    /**
      * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
      */
     public readonly diskPerformanceLevel!: pulumi.Output<string>;
@@ -95,6 +99,10 @@ export class DBCluster extends pulumi.CustomResource {
      * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
      */
     public readonly elasticIoResourceSize!: pulumi.Output<string>;
+    /**
+     * The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
+     */
+    public readonly kmsId!: pulumi.Output<string | undefined>;
     /**
      * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      */
@@ -186,9 +194,11 @@ export class DBCluster extends pulumi.CustomResource {
             resourceInputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
             resourceInputs["dbNodeStorage"] = state ? state.dbNodeStorage : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["diskEncryption"] = state ? state.diskEncryption : undefined;
             resourceInputs["diskPerformanceLevel"] = state ? state.diskPerformanceLevel : undefined;
             resourceInputs["elasticIoResource"] = state ? state.elasticIoResource : undefined;
             resourceInputs["elasticIoResourceSize"] = state ? state.elasticIoResourceSize : undefined;
+            resourceInputs["kmsId"] = state ? state.kmsId : undefined;
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["modifyType"] = state ? state.modifyType : undefined;
@@ -221,9 +231,11 @@ export class DBCluster extends pulumi.CustomResource {
             resourceInputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
             resourceInputs["dbNodeStorage"] = args ? args.dbNodeStorage : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["diskEncryption"] = args ? args.diskEncryption : undefined;
             resourceInputs["diskPerformanceLevel"] = args ? args.diskPerformanceLevel : undefined;
             resourceInputs["elasticIoResource"] = args ? args.elasticIoResource : undefined;
             resourceInputs["elasticIoResourceSize"] = args ? args.elasticIoResourceSize : undefined;
+            resourceInputs["kmsId"] = args ? args.kmsId : undefined;
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["modifyType"] = args ? args.modifyType : undefined;
@@ -293,6 +305,10 @@ export interface DBClusterState {
      */
     description?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+     */
+    diskEncryption?: pulumi.Input<boolean>;
+    /**
      * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
      */
     diskPerformanceLevel?: pulumi.Input<string>;
@@ -304,6 +320,10 @@ export interface DBClusterState {
      * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
      */
     elasticIoResourceSize?: pulumi.Input<string>;
+    /**
+     * The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
+     */
+    kmsId?: pulumi.Input<string>;
     /**
      * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      */
@@ -416,6 +436,10 @@ export interface DBClusterArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+     */
+    diskEncryption?: pulumi.Input<boolean>;
+    /**
      * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
      */
     diskPerformanceLevel?: pulumi.Input<string>;
@@ -427,6 +451,10 @@ export interface DBClusterArgs {
      * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
      */
     elasticIoResourceSize?: pulumi.Input<string>;
+    /**
+     * The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
+     */
+    kmsId?: pulumi.Input<string>;
     /**
      * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      */

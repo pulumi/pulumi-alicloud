@@ -44,12 +44,16 @@ type DBCluster struct {
 	DbNodeStorage pulumi.IntOutput `pulumi:"dbNodeStorage"`
 	// The description of DBCluster.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+	DiskEncryption pulumi.BoolPtrOutput `pulumi:"diskEncryption"`
 	// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
 	DiskPerformanceLevel pulumi.StringOutput `pulumi:"diskPerformanceLevel"`
 	// The elastic io resource.
 	ElasticIoResource pulumi.IntOutput `pulumi:"elasticIoResource"`
 	// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
 	ElasticIoResourceSize pulumi.StringOutput `pulumi:"elasticIoResourceSize"`
+	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
+	KmsId pulumi.StringPtrOutput `pulumi:"kmsId"`
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
 	// The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -147,12 +151,16 @@ type dbclusterState struct {
 	DbNodeStorage *int `pulumi:"dbNodeStorage"`
 	// The description of DBCluster.
 	Description *string `pulumi:"description"`
+	// Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+	DiskEncryption *bool `pulumi:"diskEncryption"`
 	// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
 	DiskPerformanceLevel *string `pulumi:"diskPerformanceLevel"`
 	// The elastic io resource.
 	ElasticIoResource *int `pulumi:"elasticIoResource"`
 	// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
 	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
+	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
+	KmsId *string `pulumi:"kmsId"`
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
 	MaintainTime *string `pulumi:"maintainTime"`
 	// The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -215,12 +223,16 @@ type DBClusterState struct {
 	DbNodeStorage pulumi.IntPtrInput
 	// The description of DBCluster.
 	Description pulumi.StringPtrInput
+	// Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+	DiskEncryption pulumi.BoolPtrInput
 	// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
 	DiskPerformanceLevel pulumi.StringPtrInput
 	// The elastic io resource.
 	ElasticIoResource pulumi.IntPtrInput
 	// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
 	ElasticIoResourceSize pulumi.StringPtrInput
+	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
+	KmsId pulumi.StringPtrInput
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
 	MaintainTime pulumi.StringPtrInput
 	// The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -285,12 +297,16 @@ type dbclusterArgs struct {
 	DbNodeStorage *int `pulumi:"dbNodeStorage"`
 	// The description of DBCluster.
 	Description *string `pulumi:"description"`
+	// Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+	DiskEncryption *bool `pulumi:"diskEncryption"`
 	// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
 	DiskPerformanceLevel *string `pulumi:"diskPerformanceLevel"`
 	// The elastic io resource.
 	ElasticIoResource *int `pulumi:"elasticIoResource"`
 	// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
 	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
+	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
+	KmsId *string `pulumi:"kmsId"`
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
 	MaintainTime *string `pulumi:"maintainTime"`
 	// The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -348,12 +364,16 @@ type DBClusterArgs struct {
 	DbNodeStorage pulumi.IntPtrInput
 	// The description of DBCluster.
 	Description pulumi.StringPtrInput
+	// Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+	DiskEncryption pulumi.BoolPtrInput
 	// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
 	DiskPerformanceLevel pulumi.StringPtrInput
 	// The elastic io resource.
 	ElasticIoResource pulumi.IntPtrInput
 	// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
 	ElasticIoResourceSize pulumi.StringPtrInput
+	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
+	KmsId pulumi.StringPtrInput
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
 	MaintainTime pulumi.StringPtrInput
 	// The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -528,6 +548,11 @@ func (o DBClusterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
+func (o DBClusterOutput) DiskEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.BoolPtrOutput { return v.DiskEncryption }).(pulumi.BoolPtrOutput)
+}
+
 // The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
 func (o DBClusterOutput) DiskPerformanceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.DiskPerformanceLevel }).(pulumi.StringOutput)
@@ -541,6 +566,11 @@ func (o DBClusterOutput) ElasticIoResource() pulumi.IntOutput {
 // The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
 func (o DBClusterOutput) ElasticIoResourceSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.ElasticIoResourceSize }).(pulumi.StringOutput)
+}
+
+// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
+func (o DBClusterOutput) KmsId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringPtrOutput { return v.KmsId }).(pulumi.StringPtrOutput)
 }
 
 // The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.

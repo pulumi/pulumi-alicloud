@@ -17,14 +17,14 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
     public static final RuleTargetParamListArgs Empty = new RuleTargetParamListArgs();
 
     /**
-     * The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+     * The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
      * 
      */
     @Import(name="form", required=true)
     private Output<String> form;
 
     /**
-     * @return The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+     * @return The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
      * 
      */
     public Output<String> form() {
@@ -32,14 +32,14 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+     * The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
      * 
      */
     @Import(name="resourceKey", required=true)
     private Output<String> resourceKey;
 
     /**
-     * @return The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+     * @return The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
      * 
      */
     public Output<String> resourceKey() {
@@ -47,14 +47,14 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The template of param.
+     * The template of the event target parameter.
      * 
      */
     @Import(name="template")
     private @Nullable Output<String> template;
 
     /**
-     * @return The template of param.
+     * @return The template of the event target parameter.
      * 
      */
     public Optional<Output<String>> template() {
@@ -62,7 +62,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The value of param.
+     * The value of the event target parameter.
      * 
      * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
      * 
@@ -91,8 +91,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * In order to fix the diff, from version 1.160.0,
-     * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
+     * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
      * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
      * 
      */
@@ -100,7 +99,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of param.
+     * @return The value of the event target parameter.
      * 
      * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
      * 
@@ -129,8 +128,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * In order to fix the diff, from version 1.160.0,
-     * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
+     * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
      * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
      * 
      */
@@ -166,7 +164,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param form The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+         * @param form The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
          * 
          * @return builder
          * 
@@ -177,7 +175,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param form The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+         * @param form The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
          * 
          * @return builder
          * 
@@ -187,7 +185,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param resourceKey The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+         * @param resourceKey The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
          * 
          * @return builder
          * 
@@ -198,7 +196,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param resourceKey The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+         * @param resourceKey The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
          * 
          * @return builder
          * 
@@ -208,7 +206,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param template The template of param.
+         * @param template The template of the event target parameter.
          * 
          * @return builder
          * 
@@ -219,7 +217,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param template The template of param.
+         * @param template The template of the event target parameter.
          * 
          * @return builder
          * 
@@ -229,7 +227,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param value The value of param.
+         * @param value The value of the event target parameter.
          * 
          * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
          * 
@@ -258,8 +256,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
          * ```
          * &lt;!--End PulumiCodeChooser --&gt;
          * 
-         * In order to fix the diff, from version 1.160.0,
-         * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
+         * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
          * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
          * 
          * @return builder
@@ -271,7 +268,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param value The value of param.
+         * @param value The value of the event target parameter.
          * 
          * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
          * 
@@ -300,8 +297,7 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
          * ```
          * &lt;!--End PulumiCodeChooser --&gt;
          * 
-         * In order to fix the diff, from version 1.160.0,
-         * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
+         * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
          * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
          * 
          * @return builder

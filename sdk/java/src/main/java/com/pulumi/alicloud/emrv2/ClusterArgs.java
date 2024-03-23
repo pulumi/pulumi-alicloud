@@ -115,6 +115,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The log collect strategy of EMR cluster.
+     * 
+     */
+    @Import(name="logCollectStrategy")
+    private @Nullable Output<String> logCollectStrategy;
+
+    /**
+     * @return The log collect strategy of EMR cluster.
+     * 
+     */
+    public Optional<Output<String>> logCollectStrategy() {
+        return Optional.ofNullable(this.logCollectStrategy);
+    }
+
+    /**
      * The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
      * 
      */
@@ -243,6 +258,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.clusterName = $.clusterName;
         this.clusterType = $.clusterType;
         this.deployMode = $.deployMode;
+        this.logCollectStrategy = $.logCollectStrategy;
         this.nodeAttributes = $.nodeAttributes;
         this.nodeGroups = $.nodeGroups;
         this.paymentType = $.paymentType;
@@ -425,6 +441,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deployMode(String deployMode) {
             return deployMode(Output.of(deployMode));
+        }
+
+        /**
+         * @param logCollectStrategy The log collect strategy of EMR cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logCollectStrategy(@Nullable Output<String> logCollectStrategy) {
+            $.logCollectStrategy = logCollectStrategy;
+            return this;
+        }
+
+        /**
+         * @param logCollectStrategy The log collect strategy of EMR cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logCollectStrategy(String logCollectStrategy) {
+            return logCollectStrategy(Output.of(logCollectStrategy));
         }
 
         /**

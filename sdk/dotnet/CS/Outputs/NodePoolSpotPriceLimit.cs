@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class NodePoolSpotPriceLimit
     {
         /// <summary>
-        /// Spot instance type.
+        /// The type of the preemptible instance.
         /// </summary>
         public readonly string? InstanceType;
         /// <summary>
-        /// The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
+        /// The maximum price of a single instance.
         /// </summary>
         public readonly string? PriceLimit;
 

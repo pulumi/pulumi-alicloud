@@ -16,14 +16,14 @@ public final class NodePoolRollingPolicyArgs extends com.pulumi.resources.Resour
     public static final NodePoolRollingPolicyArgs Empty = new NodePoolRollingPolicyArgs();
 
     /**
-     * Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used.
+     * The maximum number of unusable nodes.
      * 
      */
     @Import(name="maxParallelism")
     private @Nullable Output<Integer> maxParallelism;
 
     /**
-     * @return Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used.
+     * @return The maximum number of unusable nodes.
      * 
      */
     public Optional<Output<Integer>> maxParallelism() {
@@ -55,7 +55,7 @@ public final class NodePoolRollingPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param maxParallelism Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used.
+         * @param maxParallelism The maximum number of unusable nodes.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class NodePoolRollingPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param maxParallelism Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used.
+         * @param maxParallelism The maximum number of unusable nodes.
          * 
          * @return builder
          * 

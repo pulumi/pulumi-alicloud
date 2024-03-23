@@ -26,15 +26,22 @@ namespace Pulumi.AliCloud.Ros
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var example = new AliCloud.Ros.ChangeSet("example", new()
     ///     {
     ///         ChangeSetName = "example_value",
     ///         ChangeSetType = "CREATE",
     ///         Description = "Test From Terraform",
-    ///         StackName = "tf-testacc",
+    ///         StackName = @default.Result.Apply(result =&gt; $"tf-example-{result}"),
     ///         TemplateBody = "{\"ROSTemplateFormatVersion\":\"2015-09-01\"}",
     ///     });
     /// 

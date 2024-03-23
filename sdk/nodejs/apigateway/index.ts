@@ -90,6 +90,11 @@ export type Plugin = import("./plugin").Plugin;
 export const Plugin: typeof import("./plugin").Plugin = null as any;
 utilities.lazyLoad(exports, ["Plugin"], () => require("./plugin"));
 
+export { PluginAttachmentArgs, PluginAttachmentState } from "./pluginAttachment";
+export type PluginAttachment = import("./pluginAttachment").PluginAttachment;
+export const PluginAttachment: typeof import("./pluginAttachment").PluginAttachment = null as any;
+utilities.lazyLoad(exports, ["PluginAttachment"], () => require("./pluginAttachment"));
+
 export { VpcAccessArgs, VpcAccessState } from "./vpcAccess";
 export type VpcAccess = import("./vpcAccess").VpcAccess;
 export const VpcAccess: typeof import("./vpcAccess").VpcAccess = null as any;
@@ -118,6 +123,8 @@ const _module = {
                 return new Model(name, <any>undefined, { urn })
             case "alicloud:apigateway/plugin:Plugin":
                 return new Plugin(name, <any>undefined, { urn })
+            case "alicloud:apigateway/pluginAttachment:PluginAttachment":
+                return new PluginAttachment(name, <any>undefined, { urn })
             case "alicloud:apigateway/vpcAccess:VpcAccess":
                 return new VpcAccess(name, <any>undefined, { urn })
             default:
@@ -134,4 +141,5 @@ pulumi.runtime.registerResourceModule("alicloud", "apigateway/instance", _module
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/logConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/model", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/plugin", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apigateway/pluginAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/vpcAccess", _module)

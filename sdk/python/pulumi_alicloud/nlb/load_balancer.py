@@ -42,7 +42,7 @@ class LoadBalancerArgs:
         :param pulumi.Input[str] vpc_id: The ID of the network-based SLB instance.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]] zone_mappings: The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zone_mappings` below.
         :param pulumi.Input[str] address_ip_version: Protocol version. Value:
-               - **ipv4**:IPv4 type.
+               - **Ipv4**:IPv4 type.
                - **DualStack**: Double Stack type.
         :param pulumi.Input[str] bandwidth_package_id: The ID of the shared bandwidth package associated with the public network instance.
         :param pulumi.Input[bool] cross_zone_enabled: Whether cross-zone is enabled for a network-based load balancing instance. Value:
@@ -140,7 +140,7 @@ class LoadBalancerArgs:
     def address_ip_version(self) -> Optional[pulumi.Input[str]]:
         """
         Protocol version. Value:
-        - **ipv4**:IPv4 type.
+        - **Ipv4**:IPv4 type.
         - **DualStack**: Double Stack type.
         """
         return pulumi.get(self, "address_ip_version")
@@ -350,7 +350,7 @@ class _LoadBalancerState:
         """
         Input properties used for looking up and filtering LoadBalancer resources.
         :param pulumi.Input[str] address_ip_version: Protocol version. Value:
-               - **ipv4**:IPv4 type.
+               - **Ipv4**:IPv4 type.
                - **DualStack**: Double Stack type.
         :param pulumi.Input[str] address_type: The network address type of IPv4 for network load balancing. Value:
                - **Internet**: public network. Load balancer has a public network IP address, and the DNS domain name is resolved to a public network IP address, so it can be accessed in a public network environment.
@@ -430,7 +430,7 @@ class _LoadBalancerState:
     def address_ip_version(self) -> Optional[pulumi.Input[str]]:
         """
         Protocol version. Value:
-        - **ipv4**:IPv4 type.
+        - **Ipv4**:IPv4 type.
         - **DualStack**: Double Stack type.
         """
         return pulumi.get(self, "address_ip_version")
@@ -792,7 +792,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_ip_version: Protocol version. Value:
-               - **ipv4**:IPv4 type.
+               - **Ipv4**:IPv4 type.
                - **DualStack**: Double Stack type.
         :param pulumi.Input[str] address_type: The network address type of IPv4 for network load balancing. Value:
                - **Internet**: public network. Load balancer has a public network IP address, and the DNS domain name is resolved to a public network IP address, so it can be accessed in a public network environment.
@@ -1001,7 +1001,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_ip_version: Protocol version. Value:
-               - **ipv4**:IPv4 type.
+               - **Ipv4**:IPv4 type.
                - **DualStack**: Double Stack type.
         :param pulumi.Input[str] address_type: The network address type of IPv4 for network load balancing. Value:
                - **Internet**: public network. Load balancer has a public network IP address, and the DNS domain name is resolved to a public network IP address, so it can be accessed in a public network environment.
@@ -1064,7 +1064,7 @@ class LoadBalancer(pulumi.CustomResource):
     def address_ip_version(self) -> pulumi.Output[str]:
         """
         Protocol version. Value:
-        - **ipv4**:IPv4 type.
+        - **Ipv4**:IPv4 type.
         - **DualStack**: Double Stack type.
         """
         return pulumi.get(self, "address_ip_version")

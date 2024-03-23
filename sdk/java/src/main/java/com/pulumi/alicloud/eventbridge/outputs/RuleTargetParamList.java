@@ -13,22 +13,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleTargetParamList {
     /**
-     * @return The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+     * @return The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
      * 
      */
     private String form;
     /**
-     * @return The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+     * @return The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
      * 
      */
     private String resourceKey;
     /**
-     * @return The template of param.
+     * @return The template of the event target parameter.
      * 
      */
     private @Nullable String template;
     /**
-     * @return The value of param.
+     * @return The value of the event target parameter.
      * 
      * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
      * 
@@ -57,8 +57,7 @@ public final class RuleTargetParamList {
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * In order to fix the diff, from version 1.160.0,
-     * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
+     * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
      * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
      * 
      */
@@ -66,28 +65,28 @@ public final class RuleTargetParamList {
 
     private RuleTargetParamList() {}
     /**
-     * @return The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+     * @return The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
      * 
      */
     public String form() {
         return this.form;
     }
     /**
-     * @return The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+     * @return The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
      * 
      */
     public String resourceKey() {
         return this.resourceKey;
     }
     /**
-     * @return The template of param.
+     * @return The template of the event target parameter.
      * 
      */
     public Optional<String> template() {
         return Optional.ofNullable(this.template);
     }
     /**
-     * @return The value of param.
+     * @return The value of the event target parameter.
      * 
      * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
      * 
@@ -116,8 +115,7 @@ public final class RuleTargetParamList {
      * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * In order to fix the diff, from version 1.160.0,
-     * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
+     * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
      * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
      * 
      */

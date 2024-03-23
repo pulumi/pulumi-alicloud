@@ -3136,19 +3136,43 @@ export namespace apigateway {
         /**
          * RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
          */
-        arnRole?: string;
+        arnRole: string;
         /**
-         * The function name of function compute service.
+         * The base url of function compute service. Required if `functionType` is `HttpTrigger`.
          */
-        functionName: string;
+        functionBaseUrl?: string;
+        /**
+         * The function name of function compute service. Required if `functionType` is `FCEvent`.
+         */
+        functionName?: string;
+        /**
+         * The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+         */
+        functionType?: string;
+        /**
+         * The http method of function compute service. Required if `functionType` is `HttpTrigger`.
+         */
+        method: string;
+        /**
+         * Whether to filter path in `functionBaseUrl`. Optional if `functionType` is `HttpTrigger`.
+         */
+        onlyBusinessPath?: boolean;
+        /**
+         * The path of function compute service. Required if `functionType` is `HttpTrigger`.
+         */
+        path?: string;
+        /**
+         * The qualifier of function name of compute service.
+         */
+        qualifier?: string;
         /**
          * The region that the function compute service belongs to.
          */
         region: string;
         /**
-         * The service name of function compute service.
+         * The service name of function compute service. Required if `functionType` is `FCEvent`.
          */
-        serviceName: string;
+        serviceName?: string;
         /**
          * Backend service time-out time; unit: millisecond.
          */
@@ -13943,7 +13967,11 @@ export namespace cs {
          */
         autoSnapshotPolicyId?: string;
         /**
-         * The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`.
+         * Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+         */
+        burstingEnabled?: boolean;
+        /**
+         * The type of the data disks. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`.
          */
         category?: string;
         /**
@@ -13959,13 +13987,17 @@ export namespace cs {
          */
         kmsKeyId?: string;
         /**
-         * The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+         * The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
          */
         name?: string;
         /**
          * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          */
         performanceLevel?: string;
+        /**
+         * The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+         */
+        provisionedIops?: number;
         /**
          * The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
          */
@@ -13977,6 +14009,18 @@ export namespace cs {
     }
 
     export interface NodePoolKubeletConfiguration {
+        /**
+         * Allowed sysctl mode whitelist.
+         */
+        allowedUnsafeSysctls?: string[];
+        /**
+         * The maximum number of log files that can exist in each container.
+         */
+        containerLogMaxFiles?: string;
+        /**
+         * The maximum size that can be reached before a log file is rotated.
+         */
+        containerLogMaxSize?: string;
         /**
          * Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
          */
@@ -14002,6 +14046,10 @@ export namespace cs {
          */
         evictionSoftGracePeriod?: {[key: string]: any};
         /**
+         * Feature switch to enable configuration of experimental features.
+         */
+        featureGates?: {[key: string]: boolean};
+        /**
          * Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
          */
         kubeApiBurst?: string;
@@ -14013,6 +14061,14 @@ export namespace cs {
          * Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
          */
         kubeReserved?: {[key: string]: any};
+        /**
+         * The maximum number of running pods.
+         */
+        maxPods?: string;
+        /**
+         * Read-only port number.
+         */
+        readOnlyPort?: string;
         /**
          * Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
          */
@@ -14044,50 +14100,107 @@ export namespace cs {
 
     export interface NodePoolManagement {
         /**
-         * Whether automatic repair, Default to `false`.
+         * Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
          */
-        autoRepair?: boolean;
+        autoRepair: boolean;
         /**
-         * Whether auto upgrade, Default to `false`.
+         * Automatic repair node policy. See `autoRepairPolicy` below.
          */
-        autoUpgrade?: boolean;
+        autoRepairPolicy: outputs.cs.NodePoolManagementAutoRepairPolicy;
         /**
-         * Max number of unavailable nodes. Default to `1`.
+         * Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
          */
-        maxUnavailable: number;
+        autoUpgrade: boolean;
+        /**
+         * The auto update policy. See `autoUpgradePolicy` below.
+         */
+        autoUpgradePolicy: outputs.cs.NodePoolManagementAutoUpgradePolicy;
+        /**
+         * Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+         */
+        autoVulFix: boolean;
+        /**
+         * The auto CVE patching policy. See `autoVulFixPolicy` below.
+         */
+        autoVulFixPolicy: outputs.cs.NodePoolManagementAutoVulFixPolicy;
+        /**
+         * Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+         */
+        enable?: boolean;
+        /**
+         * Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
+         */
+        maxUnavailable?: number;
         /**
          * Number of additional nodes. You have to specify one of surge, surge_percentage.
+         *
+         * @deprecated Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.
          */
         surge?: number;
         /**
          * Proportion of additional nodes. You have to specify one of surge, surge_percentage.
+         *
+         * @deprecated Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.
          */
         surgePercentage?: number;
     }
 
+    export interface NodePoolManagementAutoRepairPolicy {
+        /**
+         * Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+         */
+        restartNode: boolean;
+    }
+
+    export interface NodePoolManagementAutoUpgradePolicy {
+        /**
+         * Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+         */
+        autoUpgradeKubelet: boolean;
+    }
+
+    export interface NodePoolManagementAutoVulFixPolicy {
+        /**
+         * Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+         */
+        restartNode: boolean;
+        /**
+         * The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+         */
+        vulLevel: string;
+    }
+
+    export interface NodePoolPrivatePoolOptions {
+        /**
+         * The ID of the private node pool.
+         */
+        privatePoolOptionsId?: string;
+        /**
+         * The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
+         */
+        privatePoolOptionsMatchCriteria?: string;
+    }
+
     export interface NodePoolRollingPolicy {
         /**
-         * Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+         * The maximum number of unusable nodes.
          */
         maxParallelism?: number;
     }
 
-    export interface NodePoolRolloutPolicy {
-        /**
-         * Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used. Please use `maxParallelism` to instead it from provider version 1.185.0.
-         */
-        maxUnavailable?: number;
-    }
-
     export interface NodePoolScalingConfig {
         /**
-         * Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+         * Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
          */
         eipBandwidth?: number;
         /**
-         * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
+         * EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
          */
         eipInternetChargeType?: string;
+        /**
+         * Whether to enable automatic scaling. Value:
+         */
+        enable?: boolean;
         /**
          * Whether to bind EIP for an instance. Default: `false`.
          */
@@ -14095,11 +14208,11 @@ export namespace cs {
         /**
          * Max number of instances in a auto scaling group, its valid value range [0~1000]. `maxSize` has to be greater than `minSize`.
          */
-        maxSize: number;
+        maxSize?: number;
         /**
          * Min number of instances in a auto scaling group, its valid value range [0~1000].
          */
-        minSize: number;
+        minSize?: number;
         /**
          * Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instanceTypes`.
          */
@@ -14108,11 +14221,11 @@ export namespace cs {
 
     export interface NodePoolSpotPriceLimit {
         /**
-         * Spot instance type.
+         * The type of the preemptible instance.
          */
         instanceType?: string;
         /**
-         * The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
+         * The maximum price of a single instance.
          */
         priceLimit?: string;
     }
@@ -14130,6 +14243,13 @@ export namespace cs {
          * The value of a taint.
          */
         value?: string;
+    }
+
+    export interface NodePoolTeeConfig {
+        /**
+         * Specifies whether to enable confidential computing for the cluster.
+         */
+        teeEnable?: boolean;
     }
 
     export interface ServerlessKubernetesAddon {
@@ -20164,7 +20284,7 @@ export namespace ecs {
         /**
          * The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
          */
-        performanceLevel?: string;
+        performanceLevel: string;
         /**
          * Size of the system disk, measured in GB. Value range: [20, 500].
          */
@@ -23304,7 +23424,7 @@ export namespace ecs {
          * The name of the data disk.
          */
         name: string;
-        performanceLevel?: string;
+        performanceLevel: string;
         /**
          * The size of the data disk.
          * - cloud：[5, 2000]
@@ -26057,6 +26177,10 @@ export namespace emrv2 {
          */
         dataDisks: outputs.emrv2.ClusterNodeGroupDataDisk[];
         /**
+         * Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+         */
+        deploymentSetStrategy: string;
+        /**
          * Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
          */
         gracefulShutdown: boolean;
@@ -26073,9 +26197,13 @@ export namespace emrv2 {
          */
         nodeGroupName: string;
         /**
-         * The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+         * The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
          */
         nodeGroupType: string;
+        /**
+         * Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
+         */
+        nodeResizeStrategy: string;
         /**
          * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
          */
@@ -26153,6 +26281,10 @@ export namespace emrv2 {
 
     export interface ClusterNodeGroupSubscriptionConfig {
         /**
+         * Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+         */
+        autoPayOrder?: boolean;
+        /**
          * Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
          */
         autoRenew?: boolean;
@@ -26194,6 +26326,10 @@ export namespace emrv2 {
     }
 
     export interface ClusterSubscriptionConfig {
+        /**
+         * Auto pay order for payment type of subscription, ’true’ or ‘false’ .
+         */
+        autoPayOrder?: boolean;
         /**
          * Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
          */
@@ -27620,15 +27756,15 @@ export namespace eventbridge {
 
     export interface RuleTarget {
         /**
-         * Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
+         * The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `deadLetterQueue` below.
          */
         deadLetterQueue?: outputs.eventbridge.RuleTargetDeadLetterQueue;
         /**
-         * The endpoint of target.
+         * The endpoint of the event target.
          */
         endpoint: string;
         /**
-         * A list of param. See `paramList` below.
+         * The parameters that are configured for the event target. See `paramList` below.
          */
         paramLists: outputs.eventbridge.RuleTargetParamList[];
         /**
@@ -27636,11 +27772,11 @@ export namespace eventbridge {
          */
         pushRetryStrategy: string;
         /**
-         * The ID of target.
+         * The ID of the custom event target.
          */
         targetId: string;
         /**
-         * The type of target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+         * The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
          * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
          */
         type: string;
@@ -27648,26 +27784,26 @@ export namespace eventbridge {
 
     export interface RuleTargetDeadLetterQueue {
         /**
-         * The srn of the dead letter queue.
+         * The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
          */
         arn?: string;
     }
 
     export interface RuleTargetParamList {
         /**
-         * The format of param. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+         * The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
          */
         form: string;
         /**
-         * The resource key of param.  For more information, see [Event target parameters](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+         * The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
          */
         resourceKey: string;
         /**
-         * The template of param.
+         * The template of the event target parameter.
          */
         template?: string;
         /**
-         * The value of param.
+         * The value of the event target parameter.
          *
          * > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
          *
@@ -27677,8 +27813,7 @@ export namespace eventbridge {
          * ```
          * <!--End PulumiCodeChooser -->
          *
-         * In order to fix the diff, from version 1.160.0,
-         * this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
+         * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
          * If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
          */
         value?: string;
@@ -36905,6 +37040,9 @@ export namespace oss {
          * The destination bucket to which the data is replicated.
          */
         bucket: string;
+        /**
+         * The region in which the destination bucket is located.
+         */
         location: string;
         /**
          * The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
@@ -36945,7 +37083,7 @@ export namespace oss {
 
     export interface BucketReplicationSourceSelectionCriteria {
         /**
-         * Filter source objects encrypted by using SSE-KMS(See the following block `sseKmsEncryptedObjects`).
+         * Filter source objects encrypted by using SSE-KMS. See `sseKmsEncryptedObjects` below.
          */
         sseKmsEncryptedObjects?: outputs.oss.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects;
     }
@@ -40382,12 +40520,6 @@ export namespace rds {
     }
 
     export interface InstanceServerlessConfig {
-        /**
-         * Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
-         * - true: enables the feature.
-         * - false: disables the feature. This is the default value.
-         * > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
-         */
         autoPause?: boolean;
         /**
          * The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:

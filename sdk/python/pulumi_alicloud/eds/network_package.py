@@ -144,23 +144,12 @@ class NetworkPackage(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            min=10000,
-            max=99999)
-        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
-            cidr_block="172.16.0.0/12",
-            enable_admin_access=False,
-            desktop_access_type="Internet",
-            office_site_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
+        default_simple_office_sites = alicloud.eds.get_simple_office_sites(status="REGISTERED",
+            name_regex="default")
         default_network_package = alicloud.eds.NetworkPackage("defaultNetworkPackage",
             bandwidth=10,
-            office_site_id=default_simple_office_site.id)
+            office_site_id=default_simple_office_sites.ids[0])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -198,23 +187,12 @@ class NetworkPackage(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            min=10000,
-            max=99999)
-        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
-            cidr_block="172.16.0.0/12",
-            enable_admin_access=False,
-            desktop_access_type="Internet",
-            office_site_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
+        default_simple_office_sites = alicloud.eds.get_simple_office_sites(status="REGISTERED",
+            name_regex="default")
         default_network_package = alicloud.eds.NetworkPackage("defaultNetworkPackage",
             bandwidth=10,
-            office_site_id=default_simple_office_site.id)
+            office_site_id=default_simple_office_sites.ids[0])
         ```
         <!--End PulumiCodeChooser -->
 

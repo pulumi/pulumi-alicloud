@@ -97,6 +97,7 @@ import * as utilities from "../utilities";
  *         },
  *         {
  *             spotInstanceRemedy: false,
+ *             deploymentSetStrategy: "CLUSTER",
  *             nodeGroupType: "CORE",
  *             vswitchIds: [defaultSwitch.id],
  *             nodeCount: 2,
@@ -139,6 +140,10 @@ import * as utilities from "../utilities";
  *         ramRole: defaultRole.name,
  *         securityGroupId: defaultSecurityGroup.id,
  *     }],
+ *     logCollectStrategy: JSON.stringify({
+ *         open: ["all"],
+ *         close: [""],
+ *     }),
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
  *     clusterName: name,
  *     paymentType: "PayAsYouGo",
@@ -208,6 +213,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly deployMode!: pulumi.Output<string>;
     /**
+     * The log collect strategy of EMR cluster.
+     */
+    public readonly logCollectStrategy!: pulumi.Output<string>;
+    /**
      * The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
      */
     public readonly nodeAttributes!: pulumi.Output<outputs.emrv2.ClusterNodeAttribute[]>;
@@ -259,6 +268,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterName"] = state ? state.clusterName : undefined;
             resourceInputs["clusterType"] = state ? state.clusterType : undefined;
             resourceInputs["deployMode"] = state ? state.deployMode : undefined;
+            resourceInputs["logCollectStrategy"] = state ? state.logCollectStrategy : undefined;
             resourceInputs["nodeAttributes"] = state ? state.nodeAttributes : undefined;
             resourceInputs["nodeGroups"] = state ? state.nodeGroups : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
@@ -293,6 +303,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["clusterType"] = args ? args.clusterType : undefined;
             resourceInputs["deployMode"] = args ? args.deployMode : undefined;
+            resourceInputs["logCollectStrategy"] = args ? args.logCollectStrategy : undefined;
             resourceInputs["nodeAttributes"] = args ? args.nodeAttributes : undefined;
             resourceInputs["nodeGroups"] = args ? args.nodeGroups : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
@@ -335,6 +346,10 @@ export interface ClusterState {
      * The deploy mode of EMR cluster. Supported value: NORMAL or HA.
      */
     deployMode?: pulumi.Input<string>;
+    /**
+     * The log collect strategy of EMR cluster.
+     */
+    logCollectStrategy?: pulumi.Input<string>;
     /**
      * The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
      */
@@ -397,6 +412,10 @@ export interface ClusterArgs {
      * The deploy mode of EMR cluster. Supported value: NORMAL or HA.
      */
     deployMode?: pulumi.Input<string>;
+    /**
+     * The log collect strategy of EMR cluster.
+     */
+    logCollectStrategy?: pulumi.Input<string>;
     /**
      * The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
      */

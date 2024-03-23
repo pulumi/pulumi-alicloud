@@ -36,6 +36,11 @@ public final class ClusterNodeGroup {
      */
     private List<ClusterNodeGroupDataDisk> dataDisks;
     /**
+     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+     * 
+     */
+    private @Nullable String deploymentSetStrategy;
+    /**
      * @return Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
      * 
      */
@@ -56,10 +61,15 @@ public final class ClusterNodeGroup {
      */
     private String nodeGroupName;
     /**
-     * @return The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+     * @return The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
      * 
      */
     private String nodeGroupType;
+    /**
+     * @return Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
+     * 
+     */
+    private @Nullable String nodeResizeStrategy;
     /**
      * @return Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
      * 
@@ -119,6 +129,13 @@ public final class ClusterNodeGroup {
         return this.dataDisks;
     }
     /**
+     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
+     * 
+     */
+    public Optional<String> deploymentSetStrategy() {
+        return Optional.ofNullable(this.deploymentSetStrategy);
+    }
+    /**
      * @return Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
      * 
      */
@@ -147,11 +164,18 @@ public final class ClusterNodeGroup {
         return this.nodeGroupName;
     }
     /**
-     * @return The node group type of emr cluster, supported value: MASTER, CORE or TASK.
+     * @return The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
      * 
      */
     public String nodeGroupType() {
         return this.nodeGroupType;
+    }
+    /**
+     * @return Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
+     * 
+     */
+    public Optional<String> nodeResizeStrategy() {
+        return Optional.ofNullable(this.nodeResizeStrategy);
     }
     /**
      * @return Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
@@ -215,11 +239,13 @@ public final class ClusterNodeGroup {
         private @Nullable List<String> additionalSecurityGroupIds;
         private @Nullable ClusterNodeGroupCostOptimizedConfig costOptimizedConfig;
         private List<ClusterNodeGroupDataDisk> dataDisks;
+        private @Nullable String deploymentSetStrategy;
         private @Nullable Boolean gracefulShutdown;
         private List<String> instanceTypes;
         private Integer nodeCount;
         private String nodeGroupName;
         private String nodeGroupType;
+        private @Nullable String nodeResizeStrategy;
         private @Nullable String paymentType;
         private @Nullable List<ClusterNodeGroupSpotBidPrice> spotBidPrices;
         private @Nullable Boolean spotInstanceRemedy;
@@ -233,11 +259,13 @@ public final class ClusterNodeGroup {
     	      this.additionalSecurityGroupIds = defaults.additionalSecurityGroupIds;
     	      this.costOptimizedConfig = defaults.costOptimizedConfig;
     	      this.dataDisks = defaults.dataDisks;
+    	      this.deploymentSetStrategy = defaults.deploymentSetStrategy;
     	      this.gracefulShutdown = defaults.gracefulShutdown;
     	      this.instanceTypes = defaults.instanceTypes;
     	      this.nodeCount = defaults.nodeCount;
     	      this.nodeGroupName = defaults.nodeGroupName;
     	      this.nodeGroupType = defaults.nodeGroupType;
+    	      this.nodeResizeStrategy = defaults.nodeResizeStrategy;
     	      this.paymentType = defaults.paymentType;
     	      this.spotBidPrices = defaults.spotBidPrices;
     	      this.spotInstanceRemedy = defaults.spotInstanceRemedy;
@@ -272,6 +300,12 @@ public final class ClusterNodeGroup {
         }
         public Builder dataDisks(ClusterNodeGroupDataDisk... dataDisks) {
             return dataDisks(List.of(dataDisks));
+        }
+        @CustomType.Setter
+        public Builder deploymentSetStrategy(@Nullable String deploymentSetStrategy) {
+
+            this.deploymentSetStrategy = deploymentSetStrategy;
+            return this;
         }
         @CustomType.Setter
         public Builder gracefulShutdown(@Nullable Boolean gracefulShutdown) {
@@ -312,6 +346,12 @@ public final class ClusterNodeGroup {
               throw new MissingRequiredPropertyException("ClusterNodeGroup", "nodeGroupType");
             }
             this.nodeGroupType = nodeGroupType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nodeResizeStrategy(@Nullable String nodeResizeStrategy) {
+
+            this.nodeResizeStrategy = nodeResizeStrategy;
             return this;
         }
         @CustomType.Setter
@@ -369,11 +409,13 @@ public final class ClusterNodeGroup {
             _resultValue.additionalSecurityGroupIds = additionalSecurityGroupIds;
             _resultValue.costOptimizedConfig = costOptimizedConfig;
             _resultValue.dataDisks = dataDisks;
+            _resultValue.deploymentSetStrategy = deploymentSetStrategy;
             _resultValue.gracefulShutdown = gracefulShutdown;
             _resultValue.instanceTypes = instanceTypes;
             _resultValue.nodeCount = nodeCount;
             _resultValue.nodeGroupName = nodeGroupName;
             _resultValue.nodeGroupType = nodeGroupType;
+            _resultValue.nodeResizeStrategy = nodeResizeStrategy;
             _resultValue.paymentType = paymentType;
             _resultValue.spotBidPrices = spotBidPrices;
             _resultValue.spotInstanceRemedy = spotInstanceRemedy;

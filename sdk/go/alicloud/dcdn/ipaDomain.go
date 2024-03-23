@@ -28,28 +28,34 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			domainName := "example.com"
-//			if param := cfg.Get("domainName"); param != "" {
-//				domainName = param
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Min: pulumi.Int(10000),
+//				Max: pulumi.Int(99999),
+//			})
+//			if err != nil {
+//				return err
 //			}
-//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dcdn.NewIpaDomain(ctx, "example", &dcdn.IpaDomainArgs{
-//				DomainName:      pulumi.String(domainName),
-//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
-//				Scope:           pulumi.String("global"),
+//				DomainName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-%v.com", result), nil
+//				}).(pulumi.StringOutput),
+//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				Scope:           pulumi.String("overseas"),
 //				Status:          pulumi.String("online"),
 //				Sources: dcdn.IpaDomainSourceArray{
 //					&dcdn.IpaDomainSourceArgs{

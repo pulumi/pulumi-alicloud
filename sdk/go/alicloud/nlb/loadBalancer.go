@@ -119,7 +119,7 @@ type LoadBalancer struct {
 	pulumi.CustomResourceState
 
 	// Protocol version. Value:
-	// - **ipv4**:IPv4 type.
+	// - **Ipv4**:IPv4 type.
 	// - **DualStack**: Double Stack type.
 	AddressIpVersion pulumi.StringOutput `pulumi:"addressIpVersion"`
 	// The network address type of IPv4 for network load balancing. Value:
@@ -212,7 +212,7 @@ func GetLoadBalancer(ctx *pulumi.Context,
 // Input properties used for looking up and filtering LoadBalancer resources.
 type loadBalancerState struct {
 	// Protocol version. Value:
-	// - **ipv4**:IPv4 type.
+	// - **Ipv4**:IPv4 type.
 	// - **DualStack**: Double Stack type.
 	AddressIpVersion *string `pulumi:"addressIpVersion"`
 	// The network address type of IPv4 for network load balancing. Value:
@@ -267,7 +267,7 @@ type loadBalancerState struct {
 
 type LoadBalancerState struct {
 	// Protocol version. Value:
-	// - **ipv4**:IPv4 type.
+	// - **Ipv4**:IPv4 type.
 	// - **DualStack**: Double Stack type.
 	AddressIpVersion pulumi.StringPtrInput
 	// The network address type of IPv4 for network load balancing. Value:
@@ -326,7 +326,7 @@ func (LoadBalancerState) ElementType() reflect.Type {
 
 type loadBalancerArgs struct {
 	// Protocol version. Value:
-	// - **ipv4**:IPv4 type.
+	// - **Ipv4**:IPv4 type.
 	// - **DualStack**: Double Stack type.
 	AddressIpVersion *string `pulumi:"addressIpVersion"`
 	// The network address type of IPv4 for network load balancing. Value:
@@ -374,7 +374,7 @@ type loadBalancerArgs struct {
 // The set of arguments for constructing a LoadBalancer resource.
 type LoadBalancerArgs struct {
 	// Protocol version. Value:
-	// - **ipv4**:IPv4 type.
+	// - **Ipv4**:IPv4 type.
 	// - **DualStack**: Double Stack type.
 	AddressIpVersion pulumi.StringPtrInput
 	// The network address type of IPv4 for network load balancing. Value:
@@ -507,7 +507,7 @@ func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context)
 }
 
 // Protocol version. Value:
-// - **ipv4**:IPv4 type.
+// - **Ipv4**:IPv4 type.
 // - **DualStack**: Double Stack type.
 func (o LoadBalancerOutput) AddressIpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.AddressIpVersion }).(pulumi.StringOutput)

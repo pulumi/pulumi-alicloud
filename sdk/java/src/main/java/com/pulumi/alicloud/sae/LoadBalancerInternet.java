@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
  *             .appDescription(name)
- *             .appName(name)
+ *             .appName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
  *             .namespaceId(defaultNamespace.id())
  *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
  *             .packageType(&#34;Image&#34;)

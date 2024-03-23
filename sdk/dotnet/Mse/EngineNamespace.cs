@@ -29,6 +29,8 @@ namespace Pulumi.AliCloud.Mse
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var exampleZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
@@ -48,26 +50,25 @@ namespace Pulumi.AliCloud.Mse
     ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var exampleCluster = new AliCloud.Mse.Cluster("exampleCluster", new()
+    ///     var @default = new AliCloud.Mse.Cluster("default", new()
     ///     {
+    ///         ConnectionType = "slb",
+    ///         NetType = "privatenet",
+    ///         VswitchId = exampleSwitch.Id,
     ///         ClusterSpecification = "MSE_SC_1_2_60_c",
-    ///         ClusterType = "Nacos-Ans",
     ///         ClusterVersion = "NACOS_2_0_0",
     ///         InstanceCount = 1,
-    ///         NetType = "privatenet",
     ///         PubNetworkFlow = "1",
-    ///         ConnectionType = "slb",
-    ///         ClusterAliasName = "terraform-example",
+    ///         ClusterAliasName = name,
     ///         MseVersion = "mse_dev",
-    ///         VswitchId = exampleSwitch.Id,
-    ///         VpcId = exampleNetwork.Id,
+    ///         ClusterType = "Nacos-Ans",
     ///     });
     /// 
     ///     var exampleEngineNamespace = new AliCloud.Mse.EngineNamespace("exampleEngineNamespace", new()
     ///     {
-    ///         ClusterId = exampleCluster.ClusterId,
-    ///         NamespaceShowName = "terraform-example",
-    ///         NamespaceId = "terraform-example",
+    ///         ClusterId = @default.Id,
+    ///         NamespaceShowName = name,
+    ///         NamespaceId = name,
     ///     });
     /// 
     /// });

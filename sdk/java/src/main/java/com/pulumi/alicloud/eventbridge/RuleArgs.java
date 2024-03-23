@@ -19,14 +19,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     public static final RuleArgs Empty = new RuleArgs();
 
     /**
-     * The description of rule.
+     * The description of the event rule.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of rule.
+     * @return The description of the event rule.
      * 
      */
     public Optional<Output<String>> description() {
@@ -34,14 +34,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of event bus.
+     * The name of the event bus.
      * 
      */
     @Import(name="eventBusName", required=true)
     private Output<String> eventBusName;
 
     /**
-     * @return The name of event bus.
+     * @return The name of the event bus.
      * 
      */
     public Output<String> eventBusName() {
@@ -64,14 +64,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of rule.
+     * The name of the event rule.
      * 
      */
     @Import(name="ruleName", required=true)
     private Output<String> ruleName;
 
     /**
-     * @return The name of rule.
+     * @return The name of the event rule.
      * 
      */
     public Output<String> ruleName() {
@@ -79,14 +79,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+     * The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+     * @return The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -94,14 +94,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The target of rule. See `targets` below.
+     * The targets of rule. See `targets` below.
      * 
      */
     @Import(name="targets", required=true)
     private Output<List<RuleTargetArgs>> targets;
 
     /**
-     * @return The target of rule. See `targets` below.
+     * @return The targets of rule. See `targets` below.
      * 
      */
     public Output<List<RuleTargetArgs>> targets() {
@@ -138,7 +138,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of rule.
+         * @param description The description of the event rule.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of rule.
+         * @param description The description of the event rule.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventBusName The name of event bus.
+         * @param eventBusName The name of the event bus.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventBusName The name of event bus.
+         * @param eventBusName The name of the event bus.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleName The name of rule.
+         * @param ruleName The name of the event rule.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleName The name of rule.
+         * @param ruleName The name of the event rule.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+         * @param status The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
+         * @param status The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targets The target of rule. See `targets` below.
+         * @param targets The targets of rule. See `targets` below.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targets The target of rule. See `targets` below.
+         * @param targets The targets of rule. See `targets` below.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targets The target of rule. See `targets` below.
+         * @param targets The targets of rule. See `targets` below.
          * 
          * @return builder
          * 

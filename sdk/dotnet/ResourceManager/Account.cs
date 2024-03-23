@@ -38,15 +38,12 @@ namespace Pulumi.AliCloud.ResourceManager
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var exampleFolder = new AliCloud.ResourceManager.Folder("exampleFolder", new()
-    ///     {
-    ///         FolderName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
-    ///     });
+    ///     var exampleFolders = AliCloud.ResourceManager.GetFolders.Invoke();
     /// 
     ///     var exampleAccount = new AliCloud.ResourceManager.Account("exampleAccount", new()
     ///     {
     ///         DisplayName = @default.Result.Apply(result =&gt; $"{displayName}-{result}"),
-    ///         FolderId = exampleFolder.Id,
+    ///         FolderId = exampleFolders.Apply(getFoldersResult =&gt; getFoldersResult.Ids[0]),
     ///     });
     /// 
     /// });

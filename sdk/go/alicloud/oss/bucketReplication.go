@@ -16,7 +16,7 @@ import (
 //
 // For information about OSS replication and how to use it, see [What is cross-region replication](https://www.alibabacloud.com/help/doc-detail/31864.html) and [What is same-region replication](https://www.alibabacloud.com/help/doc-detail/254865.html).
 //
-// > **NOTE:** Available in v1.161.0+.
+// > **NOTE:** Available since v1.161.0.
 //
 // ## Example Usage
 //
@@ -178,19 +178,19 @@ type BucketReplication struct {
 	Action pulumi.StringPtrOutput `pulumi:"action"`
 	// The name of the bucket.
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
-	// Specifies the destination for the rule(See the following block `destination`).
+	// Specifies the destination for the rule. See `destination` below.
 	Destination BucketReplicationDestinationOutput `pulumi:"destination"`
-	// Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryptionConfiguration`).
+	// Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
 	EncryptionConfiguration BucketReplicationEncryptionConfigurationPtrOutput `pulumi:"encryptionConfiguration"`
 	// Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
 	HistoricalObjectReplication pulumi.StringPtrOutput `pulumi:"historicalObjectReplication"`
-	// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefixSet`).
+	// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
 	PrefixSet BucketReplicationPrefixSetPtrOutput `pulumi:"prefixSet"`
-	// Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
+	// Specifies the progress for querying the progress of a data replication task of a bucket.
 	Progress BucketReplicationProgressOutput `pulumi:"progress"`
 	// The ID of the data replication rule.
 	RuleId pulumi.StringOutput `pulumi:"ruleId"`
-	// Specifies other conditions used to filter the source objects to replicate(See the following block `sourceSelectionCriteria`).
+	// Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
 	SourceSelectionCriteria BucketReplicationSourceSelectionCriteriaPtrOutput `pulumi:"sourceSelectionCriteria"`
 	// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -238,19 +238,19 @@ type bucketReplicationState struct {
 	Action *string `pulumi:"action"`
 	// The name of the bucket.
 	Bucket *string `pulumi:"bucket"`
-	// Specifies the destination for the rule(See the following block `destination`).
+	// Specifies the destination for the rule. See `destination` below.
 	Destination *BucketReplicationDestination `pulumi:"destination"`
-	// Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryptionConfiguration`).
+	// Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
 	EncryptionConfiguration *BucketReplicationEncryptionConfiguration `pulumi:"encryptionConfiguration"`
 	// Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
 	HistoricalObjectReplication *string `pulumi:"historicalObjectReplication"`
-	// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefixSet`).
+	// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
 	PrefixSet *BucketReplicationPrefixSet `pulumi:"prefixSet"`
-	// Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
+	// Specifies the progress for querying the progress of a data replication task of a bucket.
 	Progress *BucketReplicationProgress `pulumi:"progress"`
 	// The ID of the data replication rule.
 	RuleId *string `pulumi:"ruleId"`
-	// Specifies other conditions used to filter the source objects to replicate(See the following block `sourceSelectionCriteria`).
+	// Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
 	SourceSelectionCriteria *BucketReplicationSourceSelectionCriteria `pulumi:"sourceSelectionCriteria"`
 	// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
 	Status *string `pulumi:"status"`
@@ -263,19 +263,19 @@ type BucketReplicationState struct {
 	Action pulumi.StringPtrInput
 	// The name of the bucket.
 	Bucket pulumi.StringPtrInput
-	// Specifies the destination for the rule(See the following block `destination`).
+	// Specifies the destination for the rule. See `destination` below.
 	Destination BucketReplicationDestinationPtrInput
-	// Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryptionConfiguration`).
+	// Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
 	EncryptionConfiguration BucketReplicationEncryptionConfigurationPtrInput
 	// Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
 	HistoricalObjectReplication pulumi.StringPtrInput
-	// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefixSet`).
+	// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
 	PrefixSet BucketReplicationPrefixSetPtrInput
-	// Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
+	// Specifies the progress for querying the progress of a data replication task of a bucket.
 	Progress BucketReplicationProgressPtrInput
 	// The ID of the data replication rule.
 	RuleId pulumi.StringPtrInput
-	// Specifies other conditions used to filter the source objects to replicate(See the following block `sourceSelectionCriteria`).
+	// Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
 	SourceSelectionCriteria BucketReplicationSourceSelectionCriteriaPtrInput
 	// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
 	Status pulumi.StringPtrInput
@@ -292,17 +292,17 @@ type bucketReplicationArgs struct {
 	Action *string `pulumi:"action"`
 	// The name of the bucket.
 	Bucket string `pulumi:"bucket"`
-	// Specifies the destination for the rule(See the following block `destination`).
+	// Specifies the destination for the rule. See `destination` below.
 	Destination BucketReplicationDestination `pulumi:"destination"`
-	// Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryptionConfiguration`).
+	// Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
 	EncryptionConfiguration *BucketReplicationEncryptionConfiguration `pulumi:"encryptionConfiguration"`
 	// Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
 	HistoricalObjectReplication *string `pulumi:"historicalObjectReplication"`
-	// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefixSet`).
+	// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
 	PrefixSet *BucketReplicationPrefixSet `pulumi:"prefixSet"`
-	// Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
+	// Specifies the progress for querying the progress of a data replication task of a bucket.
 	Progress *BucketReplicationProgress `pulumi:"progress"`
-	// Specifies other conditions used to filter the source objects to replicate(See the following block `sourceSelectionCriteria`).
+	// Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
 	SourceSelectionCriteria *BucketReplicationSourceSelectionCriteria `pulumi:"sourceSelectionCriteria"`
 	// Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
 	SyncRole *string `pulumi:"syncRole"`
@@ -314,17 +314,17 @@ type BucketReplicationArgs struct {
 	Action pulumi.StringPtrInput
 	// The name of the bucket.
 	Bucket pulumi.StringInput
-	// Specifies the destination for the rule(See the following block `destination`).
+	// Specifies the destination for the rule. See `destination` below.
 	Destination BucketReplicationDestinationInput
-	// Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryptionConfiguration`).
+	// Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
 	EncryptionConfiguration BucketReplicationEncryptionConfigurationPtrInput
 	// Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
 	HistoricalObjectReplication pulumi.StringPtrInput
-	// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefixSet`).
+	// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
 	PrefixSet BucketReplicationPrefixSetPtrInput
-	// Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
+	// Specifies the progress for querying the progress of a data replication task of a bucket.
 	Progress BucketReplicationProgressPtrInput
-	// Specifies other conditions used to filter the source objects to replicate(See the following block `sourceSelectionCriteria`).
+	// Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
 	SourceSelectionCriteria BucketReplicationSourceSelectionCriteriaPtrInput
 	// Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
 	SyncRole pulumi.StringPtrInput
@@ -427,12 +427,12 @@ func (o BucketReplicationOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketReplication) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }
 
-// Specifies the destination for the rule(See the following block `destination`).
+// Specifies the destination for the rule. See `destination` below.
 func (o BucketReplicationOutput) Destination() BucketReplicationDestinationOutput {
 	return o.ApplyT(func(v *BucketReplication) BucketReplicationDestinationOutput { return v.Destination }).(BucketReplicationDestinationOutput)
 }
 
-// Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryptionConfiguration`).
+// Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryptionConfiguration` below.
 func (o BucketReplicationOutput) EncryptionConfiguration() BucketReplicationEncryptionConfigurationPtrOutput {
 	return o.ApplyT(func(v *BucketReplication) BucketReplicationEncryptionConfigurationPtrOutput {
 		return v.EncryptionConfiguration
@@ -444,12 +444,12 @@ func (o BucketReplicationOutput) HistoricalObjectReplication() pulumi.StringPtrO
 	return o.ApplyT(func(v *BucketReplication) pulumi.StringPtrOutput { return v.HistoricalObjectReplication }).(pulumi.StringPtrOutput)
 }
 
-// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefixSet`).
+// The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefixSet` below.
 func (o BucketReplicationOutput) PrefixSet() BucketReplicationPrefixSetPtrOutput {
 	return o.ApplyT(func(v *BucketReplication) BucketReplicationPrefixSetPtrOutput { return v.PrefixSet }).(BucketReplicationPrefixSetPtrOutput)
 }
 
-// Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
+// Specifies the progress for querying the progress of a data replication task of a bucket.
 func (o BucketReplicationOutput) Progress() BucketReplicationProgressOutput {
 	return o.ApplyT(func(v *BucketReplication) BucketReplicationProgressOutput { return v.Progress }).(BucketReplicationProgressOutput)
 }
@@ -459,7 +459,7 @@ func (o BucketReplicationOutput) RuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketReplication) pulumi.StringOutput { return v.RuleId }).(pulumi.StringOutput)
 }
 
-// Specifies other conditions used to filter the source objects to replicate(See the following block `sourceSelectionCriteria`).
+// Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
 func (o BucketReplicationOutput) SourceSelectionCriteria() BucketReplicationSourceSelectionCriteriaPtrOutput {
 	return o.ApplyT(func(v *BucketReplication) BucketReplicationSourceSelectionCriteriaPtrOutput {
 		return v.SourceSelectionCriteria

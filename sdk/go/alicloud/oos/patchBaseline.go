@@ -28,6 +28,8 @@ import (
 //
 // import (
 //
+//	"encoding/json"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -41,10 +43,45 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := oos.NewPatchBaseline(ctx, "default", &oos.PatchBaselineArgs{
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"PatchRules": []map[string]interface{}{
+//					map[string]interface{}{
+//						"EnableNonSecurity": true,
+//						"PatchFilterGroup": []map[string]interface{}{
+//							map[string]interface{}{
+//								"Values": []string{
+//									"*",
+//								},
+//								"Key": "Product",
+//							},
+//							map[string]interface{}{
+//								"Values": []string{
+//									"Security",
+//									"Bugfix",
+//								},
+//								"Key": "Classification",
+//							},
+//							map[string]interface{}{
+//								"Values": []string{
+//									"Critical",
+//									"Important",
+//								},
+//								"Key": "Severity",
+//							},
+//						},
+//						"ApproveAfterDays": 7,
+//						"ComplianceLevel":  "Unspecified",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = oos.NewPatchBaseline(ctx, "default", &oos.PatchBaselineArgs{
 //				PatchBaselineName: pulumi.String(name),
 //				OperationSystem:   pulumi.String("Windows"),
-//				ApprovalRules:     pulumi.String("{\"PatchRules\":[{\"EnableNonSecurity\":true,\"PatchFilterGroup\":[{\"Values\":[\"*\"],\"Key\":\"Product\"},{\"Values\":[\"Security\",\"Bugfix\"],\"Key\":\"Classification\"},{\"Values\":[\"Critical\",\"Important\"],\"Key\":\"Severity\"}],\"ApproveAfterDays\":7,\"ComplianceLevel\":\"Unspecified\"}]}"),
+//				ApprovalRules:     pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err
@@ -68,6 +105,10 @@ type PatchBaseline struct {
 
 	// Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
 	ApprovalRules pulumi.StringOutput `pulumi:"approvalRules"`
+	// Approved Patch.
+	ApprovedPatches pulumi.StringArrayOutput `pulumi:"approvedPatches"`
+	// ApprovedPatchesEnableNonSecurity.
+	ApprovedPatchesEnableNonSecurity pulumi.BoolPtrOutput `pulumi:"approvedPatchesEnableNonSecurity"`
 	// Creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Patches baseline description information.
@@ -80,6 +121,12 @@ type PatchBaseline struct {
 	RejectedPatches pulumi.StringArrayOutput `pulumi:"rejectedPatches"`
 	// Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
 	RejectedPatchesAction pulumi.StringOutput `pulumi:"rejectedPatchesAction"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// Source.
+	Sources pulumi.StringArrayOutput `pulumi:"sources"`
+	// Label.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
 // NewPatchBaseline registers a new resource with the given unique name, arguments, and options.
@@ -123,6 +170,10 @@ func GetPatchBaseline(ctx *pulumi.Context,
 type patchBaselineState struct {
 	// Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
 	ApprovalRules *string `pulumi:"approvalRules"`
+	// Approved Patch.
+	ApprovedPatches []string `pulumi:"approvedPatches"`
+	// ApprovedPatchesEnableNonSecurity.
+	ApprovedPatchesEnableNonSecurity *bool `pulumi:"approvedPatchesEnableNonSecurity"`
 	// Creation time.
 	CreateTime *string `pulumi:"createTime"`
 	// Patches baseline description information.
@@ -135,11 +186,21 @@ type patchBaselineState struct {
 	RejectedPatches []string `pulumi:"rejectedPatches"`
 	// Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
 	RejectedPatchesAction *string `pulumi:"rejectedPatchesAction"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Source.
+	Sources []string `pulumi:"sources"`
+	// Label.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type PatchBaselineState struct {
 	// Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
 	ApprovalRules pulumi.StringPtrInput
+	// Approved Patch.
+	ApprovedPatches pulumi.StringArrayInput
+	// ApprovedPatchesEnableNonSecurity.
+	ApprovedPatchesEnableNonSecurity pulumi.BoolPtrInput
 	// Creation time.
 	CreateTime pulumi.StringPtrInput
 	// Patches baseline description information.
@@ -152,6 +213,12 @@ type PatchBaselineState struct {
 	RejectedPatches pulumi.StringArrayInput
 	// Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
 	RejectedPatchesAction pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
+	// Source.
+	Sources pulumi.StringArrayInput
+	// Label.
+	Tags pulumi.MapInput
 }
 
 func (PatchBaselineState) ElementType() reflect.Type {
@@ -161,6 +228,10 @@ func (PatchBaselineState) ElementType() reflect.Type {
 type patchBaselineArgs struct {
 	// Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
 	ApprovalRules string `pulumi:"approvalRules"`
+	// Approved Patch.
+	ApprovedPatches []string `pulumi:"approvedPatches"`
+	// ApprovedPatchesEnableNonSecurity.
+	ApprovedPatchesEnableNonSecurity *bool `pulumi:"approvedPatchesEnableNonSecurity"`
 	// Patches baseline description information.
 	Description *string `pulumi:"description"`
 	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
@@ -171,12 +242,22 @@ type patchBaselineArgs struct {
 	RejectedPatches []string `pulumi:"rejectedPatches"`
 	// Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
 	RejectedPatchesAction *string `pulumi:"rejectedPatchesAction"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Source.
+	Sources []string `pulumi:"sources"`
+	// Label.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a PatchBaseline resource.
 type PatchBaselineArgs struct {
 	// Accept the rules. This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
 	ApprovalRules pulumi.StringInput
+	// Approved Patch.
+	ApprovedPatches pulumi.StringArrayInput
+	// ApprovedPatchesEnableNonSecurity.
+	ApprovedPatchesEnableNonSecurity pulumi.BoolPtrInput
 	// Patches baseline description information.
 	Description pulumi.StringPtrInput
 	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`, `AlmaLinux`.
@@ -187,6 +268,12 @@ type PatchBaselineArgs struct {
 	RejectedPatches pulumi.StringArrayInput
 	// Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
 	RejectedPatchesAction pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
+	// Source.
+	Sources pulumi.StringArrayInput
+	// Label.
+	Tags pulumi.MapInput
 }
 
 func (PatchBaselineArgs) ElementType() reflect.Type {
@@ -281,6 +368,16 @@ func (o PatchBaselineOutput) ApprovalRules() pulumi.StringOutput {
 	return o.ApplyT(func(v *PatchBaseline) pulumi.StringOutput { return v.ApprovalRules }).(pulumi.StringOutput)
 }
 
+// Approved Patch.
+func (o PatchBaselineOutput) ApprovedPatches() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PatchBaseline) pulumi.StringArrayOutput { return v.ApprovedPatches }).(pulumi.StringArrayOutput)
+}
+
+// ApprovedPatchesEnableNonSecurity.
+func (o PatchBaselineOutput) ApprovedPatchesEnableNonSecurity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PatchBaseline) pulumi.BoolPtrOutput { return v.ApprovedPatchesEnableNonSecurity }).(pulumi.BoolPtrOutput)
+}
+
 // Creation time.
 func (o PatchBaselineOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PatchBaseline) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -309,6 +406,21 @@ func (o PatchBaselineOutput) RejectedPatches() pulumi.StringArrayOutput {
 // Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
 func (o PatchBaselineOutput) RejectedPatchesAction() pulumi.StringOutput {
 	return o.ApplyT(func(v *PatchBaseline) pulumi.StringOutput { return v.RejectedPatchesAction }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o PatchBaselineOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PatchBaseline) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Source.
+func (o PatchBaselineOutput) Sources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PatchBaseline) pulumi.StringArrayOutput { return v.Sources }).(pulumi.StringArrayOutput)
+}
+
+// Label.
+func (o PatchBaselineOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *PatchBaseline) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 type PatchBaselineArrayOutput struct{ *pulumi.OutputState }

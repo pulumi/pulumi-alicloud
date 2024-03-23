@@ -35,11 +35,15 @@ __all__ = [
     'NodePoolKubeletConfigurationArgs',
     'NodePoolLabelArgs',
     'NodePoolManagementArgs',
+    'NodePoolManagementAutoRepairPolicyArgs',
+    'NodePoolManagementAutoUpgradePolicyArgs',
+    'NodePoolManagementAutoVulFixPolicyArgs',
+    'NodePoolPrivatePoolOptionsArgs',
     'NodePoolRollingPolicyArgs',
-    'NodePoolRolloutPolicyArgs',
     'NodePoolScalingConfigArgs',
     'NodePoolSpotPriceLimitArgs',
     'NodePoolTaintArgs',
+    'NodePoolTeeConfigArgs',
     'ServerlessKubernetesAddonArgs',
     'ServerlessKubernetesRrsaMetadataArgs',
     'SwarmNodeArgs',
@@ -1455,27 +1459,33 @@ class ManagedKubernetesRrsaMetadataArgs:
 class NodePoolDataDiskArgs:
     def __init__(__self__, *,
                  auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+                 bursting_enabled: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  device: Optional[pulumi.Input[str]] = None,
                  encrypted: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] auto_snapshot_policy_id: The ID of the automatic snapshot policy that you want to apply to the system disk.
-        :param pulumi.Input[str] category: The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
+        :param pulumi.Input[bool] bursting_enabled: Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+        :param pulumi.Input[str] category: The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
         :param pulumi.Input[str] device: The mount target of data disk N. Valid values of N: 1 to 16. If you do not specify this parameter, the system automatically assigns a mount target when Auto Scaling creates ECS instances. The name of the mount target ranges from /dev/xvdb to /dev/xvdz.
         :param pulumi.Input[str] encrypted: Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
         :param pulumi.Input[str] kms_key_id: The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
-        :param pulumi.Input[str] name: The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        :param pulumi.Input[str] name: The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
         :param pulumi.Input[str] performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        :param pulumi.Input[int] provisioned_iops: The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
         :param pulumi.Input[int] size: The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
         :param pulumi.Input[str] snapshot_id: The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
         """
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+        if bursting_enabled is not None:
+            pulumi.set(__self__, "bursting_enabled", bursting_enabled)
         if category is not None:
             pulumi.set(__self__, "category", category)
         if device is not None:
@@ -1488,6 +1498,8 @@ class NodePoolDataDiskArgs:
             pulumi.set(__self__, "name", name)
         if performance_level is not None:
             pulumi.set(__self__, "performance_level", performance_level)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
@@ -1506,10 +1518,22 @@ class NodePoolDataDiskArgs:
         pulumi.set(self, "auto_snapshot_policy_id", value)
 
     @property
+    @pulumi.getter(name="burstingEnabled")
+    def bursting_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the data disk is enabled with Burst (performance Burst). This is configured when the disk type is cloud_auto.
+        """
+        return pulumi.get(self, "bursting_enabled")
+
+    @bursting_enabled.setter
+    def bursting_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bursting_enabled", value)
+
+    @property
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
+        The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`.
         """
         return pulumi.get(self, "category")
 
@@ -1557,7 +1581,7 @@ class NodePoolDataDiskArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of data disk N. Valid values of N: 1 to 16. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        The length is 2~128 English or Chinese characters. It must start with an uppercase or lowr letter or a Chinese character and cannot start with http:// or https. Can contain numbers, colons (:), underscores (_), or dashes (-).
         """
         return pulumi.get(self, "name")
 
@@ -1576,6 +1600,18 @@ class NodePoolDataDiskArgs:
     @performance_level.setter
     def performance_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "performance_level", value)
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_iops", value)
 
     @property
     @pulumi.getter
@@ -1605,34 +1641,52 @@ class NodePoolDataDiskArgs:
 @pulumi.input_type
 class NodePoolKubeletConfigurationArgs:
     def __init__(__self__, *,
+                 allowed_unsafe_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 container_log_max_files: Optional[pulumi.Input[str]] = None,
+                 container_log_max_size: Optional[pulumi.Input[str]] = None,
                  cpu_manager_policy: Optional[pulumi.Input[str]] = None,
                  event_burst: Optional[pulumi.Input[str]] = None,
                  event_record_qps: Optional[pulumi.Input[str]] = None,
                  eviction_hard: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  eviction_soft: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  eviction_soft_grace_period: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 feature_gates: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
                  kube_api_burst: Optional[pulumi.Input[str]] = None,
                  kube_api_qps: Optional[pulumi.Input[str]] = None,
                  kube_reserved: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 max_pods: Optional[pulumi.Input[str]] = None,
+                 read_only_port: Optional[pulumi.Input[str]] = None,
                  registry_burst: Optional[pulumi.Input[str]] = None,
                  registry_pull_qps: Optional[pulumi.Input[str]] = None,
                  serialize_image_pulls: Optional[pulumi.Input[str]] = None,
                  system_reserved: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_unsafe_sysctls: Allowed sysctl mode whitelist.
+        :param pulumi.Input[str] container_log_max_files: The maximum number of log files that can exist in each container.
+        :param pulumi.Input[str] container_log_max_size: The maximum size that can be reached before a log file is rotated.
         :param pulumi.Input[str] cpu_manager_policy: Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
         :param pulumi.Input[str] event_burst: Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
         :param pulumi.Input[str] event_record_qps: Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
         :param pulumi.Input[Mapping[str, Any]] eviction_hard: Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
         :param pulumi.Input[Mapping[str, Any]] eviction_soft: Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{"memory.available" = "300Mi"}`.
         :param pulumi.Input[Mapping[str, Any]] eviction_soft_grace_period: Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[bool]]] feature_gates: Feature switch to enable configuration of experimental features.
         :param pulumi.Input[str] kube_api_burst: Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
         :param pulumi.Input[str] kube_api_qps: Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
         :param pulumi.Input[Mapping[str, Any]] kube_reserved: Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
+        :param pulumi.Input[str] max_pods: The maximum number of running pods.
+        :param pulumi.Input[str] read_only_port: Read-only port number.
         :param pulumi.Input[str] registry_burst: Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
         :param pulumi.Input[str] registry_pull_qps: Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
         :param pulumi.Input[str] serialize_image_pulls: Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
         :param pulumi.Input[Mapping[str, Any]] system_reserved: Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         """
+        if allowed_unsafe_sysctls is not None:
+            pulumi.set(__self__, "allowed_unsafe_sysctls", allowed_unsafe_sysctls)
+        if container_log_max_files is not None:
+            pulumi.set(__self__, "container_log_max_files", container_log_max_files)
+        if container_log_max_size is not None:
+            pulumi.set(__self__, "container_log_max_size", container_log_max_size)
         if cpu_manager_policy is not None:
             pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
         if event_burst is not None:
@@ -1645,12 +1699,18 @@ class NodePoolKubeletConfigurationArgs:
             pulumi.set(__self__, "eviction_soft", eviction_soft)
         if eviction_soft_grace_period is not None:
             pulumi.set(__self__, "eviction_soft_grace_period", eviction_soft_grace_period)
+        if feature_gates is not None:
+            pulumi.set(__self__, "feature_gates", feature_gates)
         if kube_api_burst is not None:
             pulumi.set(__self__, "kube_api_burst", kube_api_burst)
         if kube_api_qps is not None:
             pulumi.set(__self__, "kube_api_qps", kube_api_qps)
         if kube_reserved is not None:
             pulumi.set(__self__, "kube_reserved", kube_reserved)
+        if max_pods is not None:
+            pulumi.set(__self__, "max_pods", max_pods)
+        if read_only_port is not None:
+            pulumi.set(__self__, "read_only_port", read_only_port)
         if registry_burst is not None:
             pulumi.set(__self__, "registry_burst", registry_burst)
         if registry_pull_qps is not None:
@@ -1659,6 +1719,42 @@ class NodePoolKubeletConfigurationArgs:
             pulumi.set(__self__, "serialize_image_pulls", serialize_image_pulls)
         if system_reserved is not None:
             pulumi.set(__self__, "system_reserved", system_reserved)
+
+    @property
+    @pulumi.getter(name="allowedUnsafeSysctls")
+    def allowed_unsafe_sysctls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed sysctl mode whitelist.
+        """
+        return pulumi.get(self, "allowed_unsafe_sysctls")
+
+    @allowed_unsafe_sysctls.setter
+    def allowed_unsafe_sysctls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_unsafe_sysctls", value)
+
+    @property
+    @pulumi.getter(name="containerLogMaxFiles")
+    def container_log_max_files(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum number of log files that can exist in each container.
+        """
+        return pulumi.get(self, "container_log_max_files")
+
+    @container_log_max_files.setter
+    def container_log_max_files(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_log_max_files", value)
+
+    @property
+    @pulumi.getter(name="containerLogMaxSize")
+    def container_log_max_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum size that can be reached before a log file is rotated.
+        """
+        return pulumi.get(self, "container_log_max_size")
+
+    @container_log_max_size.setter
+    def container_log_max_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_log_max_size", value)
 
     @property
     @pulumi.getter(name="cpuManagerPolicy")
@@ -1733,6 +1829,18 @@ class NodePoolKubeletConfigurationArgs:
         pulumi.set(self, "eviction_soft_grace_period", value)
 
     @property
+    @pulumi.getter(name="featureGates")
+    def feature_gates(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]]:
+        """
+        Feature switch to enable configuration of experimental features.
+        """
+        return pulumi.get(self, "feature_gates")
+
+    @feature_gates.setter
+    def feature_gates(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]]):
+        pulumi.set(self, "feature_gates", value)
+
+    @property
     @pulumi.getter(name="kubeApiBurst")
     def kube_api_burst(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1767,6 +1875,30 @@ class NodePoolKubeletConfigurationArgs:
     @kube_reserved.setter
     def kube_reserved(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "kube_reserved", value)
+
+    @property
+    @pulumi.getter(name="maxPods")
+    def max_pods(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum number of running pods.
+        """
+        return pulumi.get(self, "max_pods")
+
+    @max_pods.setter
+    def max_pods(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_pods", value)
+
+    @property
+    @pulumi.getter(name="readOnlyPort")
+    def read_only_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Read-only port number.
+        """
+        return pulumi.get(self, "read_only_port")
+
+    @read_only_port.setter
+    def read_only_port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_only_port", value)
 
     @property
     @pulumi.getter(name="registryBurst")
@@ -1858,45 +1990,60 @@ class NodePoolLabelArgs:
 @pulumi.input_type
 class NodePoolManagementArgs:
     def __init__(__self__, *,
-                 max_unavailable: pulumi.Input[int],
                  auto_repair: Optional[pulumi.Input[bool]] = None,
+                 auto_repair_policy: Optional[pulumi.Input['NodePoolManagementAutoRepairPolicyArgs']] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 auto_upgrade_policy: Optional[pulumi.Input['NodePoolManagementAutoUpgradePolicyArgs']] = None,
+                 auto_vul_fix: Optional[pulumi.Input[bool]] = None,
+                 auto_vul_fix_policy: Optional[pulumi.Input['NodePoolManagementAutoVulFixPolicyArgs']] = None,
+                 enable: Optional[pulumi.Input[bool]] = None,
+                 max_unavailable: Optional[pulumi.Input[int]] = None,
                  surge: Optional[pulumi.Input[int]] = None,
                  surge_percentage: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] max_unavailable: Max number of unavailable nodes. Default to `1`.
-        :param pulumi.Input[bool] auto_repair: Whether automatic repair, Default to `false`.
-        :param pulumi.Input[bool] auto_upgrade: Whether auto upgrade, Default to `false`.
+        :param pulumi.Input[bool] auto_repair: Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
+        :param pulumi.Input['NodePoolManagementAutoRepairPolicyArgs'] auto_repair_policy: Automatic repair node policy. See `auto_repair_policy` below.
+        :param pulumi.Input[bool] auto_upgrade: Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
+        :param pulumi.Input['NodePoolManagementAutoUpgradePolicyArgs'] auto_upgrade_policy: The auto update policy. See `auto_upgrade_policy` below.
+        :param pulumi.Input[bool] auto_vul_fix: Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+        :param pulumi.Input['NodePoolManagementAutoVulFixPolicyArgs'] auto_vul_fix_policy: The auto CVE patching policy. See `auto_vul_fix_policy` below.
+        :param pulumi.Input[bool] enable: Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+        :param pulumi.Input[int] max_unavailable: Maximum number of unavailable nodes. Default value: 1. Value range:\\[1,1000\\].
         :param pulumi.Input[int] surge: Number of additional nodes. You have to specify one of surge, surge_percentage.
         :param pulumi.Input[int] surge_percentage: Proportion of additional nodes. You have to specify one of surge, surge_percentage.
         """
-        pulumi.set(__self__, "max_unavailable", max_unavailable)
         if auto_repair is not None:
             pulumi.set(__self__, "auto_repair", auto_repair)
+        if auto_repair_policy is not None:
+            pulumi.set(__self__, "auto_repair_policy", auto_repair_policy)
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+        if auto_upgrade_policy is not None:
+            pulumi.set(__self__, "auto_upgrade_policy", auto_upgrade_policy)
+        if auto_vul_fix is not None:
+            pulumi.set(__self__, "auto_vul_fix", auto_vul_fix)
+        if auto_vul_fix_policy is not None:
+            pulumi.set(__self__, "auto_vul_fix_policy", auto_vul_fix_policy)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+        if surge is not None:
+            warnings.warn("""Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.""", DeprecationWarning)
+            pulumi.log.warn("""surge is deprecated: Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.""")
         if surge is not None:
             pulumi.set(__self__, "surge", surge)
         if surge_percentage is not None:
+            warnings.warn("""Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.""", DeprecationWarning)
+            pulumi.log.warn("""surge_percentage is deprecated: Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.""")
+        if surge_percentage is not None:
             pulumi.set(__self__, "surge_percentage", surge_percentage)
-
-    @property
-    @pulumi.getter(name="maxUnavailable")
-    def max_unavailable(self) -> pulumi.Input[int]:
-        """
-        Max number of unavailable nodes. Default to `1`.
-        """
-        return pulumi.get(self, "max_unavailable")
-
-    @max_unavailable.setter
-    def max_unavailable(self, value: pulumi.Input[int]):
-        pulumi.set(self, "max_unavailable", value)
 
     @property
     @pulumi.getter(name="autoRepair")
     def auto_repair(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether automatic repair, Default to `false`.
+        Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
         """
         return pulumi.get(self, "auto_repair")
 
@@ -1905,10 +2052,22 @@ class NodePoolManagementArgs:
         pulumi.set(self, "auto_repair", value)
 
     @property
+    @pulumi.getter(name="autoRepairPolicy")
+    def auto_repair_policy(self) -> Optional[pulumi.Input['NodePoolManagementAutoRepairPolicyArgs']]:
+        """
+        Automatic repair node policy. See `auto_repair_policy` below.
+        """
+        return pulumi.get(self, "auto_repair_policy")
+
+    @auto_repair_policy.setter
+    def auto_repair_policy(self, value: Optional[pulumi.Input['NodePoolManagementAutoRepairPolicyArgs']]):
+        pulumi.set(self, "auto_repair_policy", value)
+
+    @property
     @pulumi.getter(name="autoUpgrade")
     def auto_upgrade(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether auto upgrade, Default to `false`.
+        Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
         """
         return pulumi.get(self, "auto_upgrade")
 
@@ -1917,11 +2076,74 @@ class NodePoolManagementArgs:
         pulumi.set(self, "auto_upgrade", value)
 
     @property
+    @pulumi.getter(name="autoUpgradePolicy")
+    def auto_upgrade_policy(self) -> Optional[pulumi.Input['NodePoolManagementAutoUpgradePolicyArgs']]:
+        """
+        The auto update policy. See `auto_upgrade_policy` below.
+        """
+        return pulumi.get(self, "auto_upgrade_policy")
+
+    @auto_upgrade_policy.setter
+    def auto_upgrade_policy(self, value: Optional[pulumi.Input['NodePoolManagementAutoUpgradePolicyArgs']]):
+        pulumi.set(self, "auto_upgrade_policy", value)
+
+    @property
+    @pulumi.getter(name="autoVulFix")
+    def auto_vul_fix(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "auto_vul_fix")
+
+    @auto_vul_fix.setter
+    def auto_vul_fix(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_vul_fix", value)
+
+    @property
+    @pulumi.getter(name="autoVulFixPolicy")
+    def auto_vul_fix_policy(self) -> Optional[pulumi.Input['NodePoolManagementAutoVulFixPolicyArgs']]:
+        """
+        The auto CVE patching policy. See `auto_vul_fix_policy` below.
+        """
+        return pulumi.get(self, "auto_vul_fix_policy")
+
+    @auto_vul_fix_policy.setter
+    def auto_vul_fix_policy(self, value: Optional[pulumi.Input['NodePoolManagementAutoVulFixPolicyArgs']]):
+        pulumi.set(self, "auto_vul_fix_policy", value)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the managed node pool feature. Valid values: `true`: enables the managed node pool feature. `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable", value)
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of unavailable nodes. Default value: 1. Value range:\\[1,1000\\].
+        """
+        return pulumi.get(self, "max_unavailable")
+
+    @max_unavailable.setter
+    def max_unavailable(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_unavailable", value)
+
+    @property
     @pulumi.getter
     def surge(self) -> Optional[pulumi.Input[int]]:
         """
         Number of additional nodes. You have to specify one of surge, surge_percentage.
         """
+        warnings.warn("""Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.""", DeprecationWarning)
+        pulumi.log.warn("""surge is deprecated: Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.""")
+
         return pulumi.get(self, "surge")
 
     @surge.setter
@@ -1934,6 +2156,9 @@ class NodePoolManagementArgs:
         """
         Proportion of additional nodes. You have to specify one of surge, surge_percentage.
         """
+        warnings.warn("""Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.""", DeprecationWarning)
+        pulumi.log.warn("""surge_percentage is deprecated: Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.""")
+
         return pulumi.get(self, "surge_percentage")
 
     @surge_percentage.setter
@@ -1942,11 +2167,135 @@ class NodePoolManagementArgs:
 
 
 @pulumi.input_type
+class NodePoolManagementAutoRepairPolicyArgs:
+    def __init__(__self__, *,
+                 restart_node: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] restart_node: Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+        """
+        if restart_node is not None:
+            pulumi.set(__self__, "restart_node", restart_node)
+
+    @property
+    @pulumi.getter(name="restartNode")
+    def restart_node(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "restart_node")
+
+    @restart_node.setter
+    def restart_node(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restart_node", value)
+
+
+@pulumi.input_type
+class NodePoolManagementAutoUpgradePolicyArgs:
+    def __init__(__self__, *,
+                 auto_upgrade_kubelet: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] auto_upgrade_kubelet: Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+        """
+        if auto_upgrade_kubelet is not None:
+            pulumi.set(__self__, "auto_upgrade_kubelet", auto_upgrade_kubelet)
+
+    @property
+    @pulumi.getter(name="autoUpgradeKubelet")
+    def auto_upgrade_kubelet(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+        """
+        return pulumi.get(self, "auto_upgrade_kubelet")
+
+    @auto_upgrade_kubelet.setter
+    def auto_upgrade_kubelet(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_upgrade_kubelet", value)
+
+
+@pulumi.input_type
+class NodePoolManagementAutoVulFixPolicyArgs:
+    def __init__(__self__, *,
+                 restart_node: Optional[pulumi.Input[bool]] = None,
+                 vul_level: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] restart_node: Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+        :param pulumi.Input[str] vul_level: The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+        """
+        if restart_node is not None:
+            pulumi.set(__self__, "restart_node", restart_node)
+        if vul_level is not None:
+            pulumi.set(__self__, "vul_level", vul_level)
+
+    @property
+    @pulumi.getter(name="restartNode")
+    def restart_node(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "restart_node")
+
+    @restart_node.setter
+    def restart_node(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restart_node", value)
+
+    @property
+    @pulumi.getter(name="vulLevel")
+    def vul_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+        """
+        return pulumi.get(self, "vul_level")
+
+    @vul_level.setter
+    def vul_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vul_level", value)
+
+
+@pulumi.input_type
+class NodePoolPrivatePoolOptionsArgs:
+    def __init__(__self__, *,
+                 private_pool_options_id: Optional[pulumi.Input[str]] = None,
+                 private_pool_options_match_criteria: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] private_pool_options_id: The ID of the private node pool.
+        :param pulumi.Input[str] private_pool_options_match_criteria: The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
+        """
+        if private_pool_options_id is not None:
+            pulumi.set(__self__, "private_pool_options_id", private_pool_options_id)
+        if private_pool_options_match_criteria is not None:
+            pulumi.set(__self__, "private_pool_options_match_criteria", private_pool_options_match_criteria)
+
+    @property
+    @pulumi.getter(name="privatePoolOptionsId")
+    def private_pool_options_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the private node pool.
+        """
+        return pulumi.get(self, "private_pool_options_id")
+
+    @private_pool_options_id.setter
+    def private_pool_options_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_pool_options_id", value)
+
+    @property
+    @pulumi.getter(name="privatePoolOptionsMatchCriteria")
+    def private_pool_options_match_criteria(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of private node pool. This parameter specifies the type of the private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values: `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used. `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started. `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
+        """
+        return pulumi.get(self, "private_pool_options_match_criteria")
+
+    @private_pool_options_match_criteria.setter
+    def private_pool_options_match_criteria(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_pool_options_match_criteria", value)
+
+
+@pulumi.input_type
 class NodePoolRollingPolicyArgs:
     def __init__(__self__, *,
                  max_parallelism: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] max_parallelism: Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+        :param pulumi.Input[int] max_parallelism: The maximum number of unusable nodes.
         """
         if max_parallelism is not None:
             pulumi.set(__self__, "max_parallelism", max_parallelism)
@@ -1955,7 +2304,7 @@ class NodePoolRollingPolicyArgs:
     @pulumi.getter(name="maxParallelism")
     def max_parallelism(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
+        The maximum number of unusable nodes.
         """
         return pulumi.get(self, "max_parallelism")
 
@@ -1965,85 +2314,44 @@ class NodePoolRollingPolicyArgs:
 
 
 @pulumi.input_type
-class NodePoolRolloutPolicyArgs:
-    def __init__(__self__, *,
-                 max_unavailable: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[int] max_unavailable: Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used. Please use `max_parallelism` to instead it from provider version 1.185.0.
-        """
-        if max_unavailable is not None:
-            pulumi.set(__self__, "max_unavailable", max_unavailable)
-
-    @property
-    @pulumi.getter(name="maxUnavailable")
-    def max_unavailable(self) -> Optional[pulumi.Input[int]]:
-        """
-        Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used. Please use `max_parallelism` to instead it from provider version 1.185.0.
-        """
-        return pulumi.get(self, "max_unavailable")
-
-    @max_unavailable.setter
-    def max_unavailable(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "max_unavailable", value)
-
-
-@pulumi.input_type
 class NodePoolScalingConfigArgs:
     def __init__(__self__, *,
-                 max_size: pulumi.Input[int],
-                 min_size: pulumi.Input[int],
                  eip_bandwidth: Optional[pulumi.Input[int]] = None,
                  eip_internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 enable: Optional[pulumi.Input[bool]] = None,
                  is_bond_eip: Optional[pulumi.Input[bool]] = None,
+                 max_size: Optional[pulumi.Input[int]] = None,
+                 min_size: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[int] eip_bandwidth: Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
+        :param pulumi.Input[str] eip_internet_charge_type: EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
+        :param pulumi.Input[bool] enable: Whether to enable automatic scaling. Value:
+        :param pulumi.Input[bool] is_bond_eip: Whether to bind EIP for an instance. Default: `false`.
         :param pulumi.Input[int] max_size: Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
         :param pulumi.Input[int] min_size: Min number of instances in a auto scaling group, its valid value range [0~1000].
-        :param pulumi.Input[int] eip_bandwidth: Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
-        :param pulumi.Input[str] eip_internet_charge_type: EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
-        :param pulumi.Input[bool] is_bond_eip: Whether to bind EIP for an instance. Default: `false`.
         :param pulumi.Input[str] type: Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
         """
-        pulumi.set(__self__, "max_size", max_size)
-        pulumi.set(__self__, "min_size", min_size)
         if eip_bandwidth is not None:
             pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
         if eip_internet_charge_type is not None:
             pulumi.set(__self__, "eip_internet_charge_type", eip_internet_charge_type)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
         if is_bond_eip is not None:
             pulumi.set(__self__, "is_bond_eip", is_bond_eip)
+        if max_size is not None:
+            pulumi.set(__self__, "max_size", max_size)
+        if min_size is not None:
+            pulumi.set(__self__, "min_size", min_size)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="maxSize")
-    def max_size(self) -> pulumi.Input[int]:
-        """
-        Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
-        """
-        return pulumi.get(self, "max_size")
-
-    @max_size.setter
-    def max_size(self, value: pulumi.Input[int]):
-        pulumi.set(self, "max_size", value)
-
-    @property
-    @pulumi.getter(name="minSize")
-    def min_size(self) -> pulumi.Input[int]:
-        """
-        Min number of instances in a auto scaling group, its valid value range [0~1000].
-        """
-        return pulumi.get(self, "min_size")
-
-    @min_size.setter
-    def min_size(self, value: pulumi.Input[int]):
-        pulumi.set(self, "min_size", value)
 
     @property
     @pulumi.getter(name="eipBandwidth")
     def eip_bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
+        Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
         """
         return pulumi.get(self, "eip_bandwidth")
 
@@ -2055,13 +2363,25 @@ class NodePoolScalingConfigArgs:
     @pulumi.getter(name="eipInternetChargeType")
     def eip_internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
+        EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
         """
         return pulumi.get(self, "eip_internet_charge_type")
 
     @eip_internet_charge_type.setter
     def eip_internet_charge_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "eip_internet_charge_type", value)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable automatic scaling. Value:
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable", value)
 
     @property
     @pulumi.getter(name="isBondEip")
@@ -2074,6 +2394,30 @@ class NodePoolScalingConfigArgs:
     @is_bond_eip.setter
     def is_bond_eip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_bond_eip", value)
+
+    @property
+    @pulumi.getter(name="maxSize")
+    def max_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
+        """
+        return pulumi.get(self, "max_size")
+
+    @max_size.setter
+    def max_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_size", value)
+
+    @property
+    @pulumi.getter(name="minSize")
+    def min_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Min number of instances in a auto scaling group, its valid value range [0~1000].
+        """
+        return pulumi.get(self, "min_size")
+
+    @min_size.setter
+    def min_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_size", value)
 
     @property
     @pulumi.getter
@@ -2094,8 +2438,8 @@ class NodePoolSpotPriceLimitArgs:
                  instance_type: Optional[pulumi.Input[str]] = None,
                  price_limit: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] instance_type: Spot instance type.
-        :param pulumi.Input[str] price_limit: The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
+        :param pulumi.Input[str] instance_type: The type of the preemptible instance.
+        :param pulumi.Input[str] price_limit: The maximum price of a single instance.
         """
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
@@ -2106,7 +2450,7 @@ class NodePoolSpotPriceLimitArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Spot instance type.
+        The type of the preemptible instance.
         """
         return pulumi.get(self, "instance_type")
 
@@ -2118,7 +2462,7 @@ class NodePoolSpotPriceLimitArgs:
     @pulumi.getter(name="priceLimit")
     def price_limit(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
+        The maximum price of a single instance.
         """
         return pulumi.get(self, "price_limit")
 
@@ -2179,6 +2523,29 @@ class NodePoolTaintArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class NodePoolTeeConfigArgs:
+    def __init__(__self__, *,
+                 tee_enable: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] tee_enable: Specifies whether to enable confidential computing for the cluster.
+        """
+        if tee_enable is not None:
+            pulumi.set(__self__, "tee_enable", tee_enable)
+
+    @property
+    @pulumi.getter(name="teeEnable")
+    def tee_enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable confidential computing for the cluster.
+        """
+        return pulumi.get(self, "tee_enable")
+
+    @tee_enable.setter
+    def tee_enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "tee_enable", value)
 
 
 @pulumi.input_type

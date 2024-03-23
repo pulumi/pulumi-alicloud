@@ -63,6 +63,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
  * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
  * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -164,6 +165,7 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 ClusterNodeGroupArgs.builder()
  *                     .spotInstanceRemedy(&#34;false&#34;)
+ *                     .deploymentSetStrategy(&#34;CLUSTER&#34;)
  *                     .nodeGroupType(&#34;CORE&#34;)
  *                     .vswitchIds(defaultSwitch.id())
  *                     .nodeCount(&#34;2&#34;)
@@ -204,6 +206,11 @@ import javax.annotation.Nullable;
  *                 .ramRole(defaultRole.name())
  *                 .securityGroupId(defaultSecurityGroup.id())
  *                 .build())
+ *             .logCollectStrategy(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(&#34;open&#34;, jsonArray(&#34;all&#34;)),
+ *                     jsonProperty(&#34;close&#34;, jsonArray(&#34;&#34;))
+ *                 )))
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
  *             .clusterName(name)
  *             .paymentType(&#34;PayAsYouGo&#34;)
@@ -309,6 +316,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deployMode() {
         return this.deployMode;
+    }
+    /**
+     * The log collect strategy of EMR cluster.
+     * 
+     */
+    @Export(name="logCollectStrategy", refs={String.class}, tree="[0]")
+    private Output<String> logCollectStrategy;
+
+    /**
+     * @return The log collect strategy of EMR cluster.
+     * 
+     */
+    public Output<String> logCollectStrategy() {
+        return this.logCollectStrategy;
     }
     /**
      * The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.

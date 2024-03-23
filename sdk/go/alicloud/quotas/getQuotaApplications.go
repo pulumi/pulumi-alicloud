@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.117.0+.
+// > **NOTE:** Available since v1.117.0.
 //
 // ## Example Usage
 //
@@ -32,16 +32,33 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := quotas.GetQuotaApplications(ctx, &quotas.GetQuotaApplicationsArgs{
-//				ProductCode: "ess",
-//				Ids: []string{
-//					"4621F886-81E9-xxxx-xxxx",
-//				},
-//			}, nil)
+//			defaultQuotaApplication, err := quotas.NewQuotaApplication(ctx, "defaultQuotaApplication", &quotas.QuotaApplicationArgs{
+//				ProductCode:     pulumi.String("vpc"),
+//				NoticeType:      pulumi.Int(3),
+//				EffectiveTime:   pulumi.String("2023-05-22T16:00:00Z"),
+//				ExpireTime:      pulumi.String("2024-09-15T00:08:32Z"),
+//				DesireValue:     pulumi.Float64(1),
+//				Reason:          pulumi.String(""),
+//				QuotaActionCode: pulumi.String("vpc_whitelist/ha_vip_whitelist"),
+//				AuditMode:       pulumi.String("Sync"),
+//				EnvLanguage:     pulumi.String("zh"),
+//				QuotaCategory:   pulumi.String("WhiteListLabel"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstQuotasQuotaApplicationId", example.Applications[0].Id)
+//			_ = pulumi.All(defaultQuotaApplication.QuotaCategory, defaultQuotaApplication.ID()).ApplyT(func(_args []interface{}) (quotas.GetQuotaApplicationsResult, error) {
+//				quotaCategory := _args[0].(*string)
+//				id := _args[1].(string)
+//				return quotas.GetQuotaApplicationsOutput(ctx, quotas.GetQuotaApplicationsOutputArgs{
+//					ProductCode:   "vpc",
+//					EnableDetails: true,
+//					QuotaCategory: quotaCategory,
+//					Ids: []string{
+//						id,
+//					},
+//				}, nil), nil
+//			}).(quotas.GetQuotaApplicationsResultOutput)
 //			return nil
 //		})
 //	}
@@ -73,7 +90,7 @@ type GetQuotaApplicationsArgs struct {
 	ProductCode string `pulumi:"productCode"`
 	// The ID of quota action..
 	QuotaActionCode *string `pulumi:"quotaActionCode"`
-	// The quota category. Valid values: `CommonQuota`, `FlowControl`.
+	// The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
 	QuotaCategory *string `pulumi:"quotaCategory"`
 	// The status of the quota application.
 	Status *string `pulumi:"status"`
@@ -123,7 +140,7 @@ type GetQuotaApplicationsOutputArgs struct {
 	ProductCode pulumi.StringInput `pulumi:"productCode"`
 	// The ID of quota action..
 	QuotaActionCode pulumi.StringPtrInput `pulumi:"quotaActionCode"`
-	// The quota category. Valid values: `CommonQuota`, `FlowControl`.
+	// The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
 	QuotaCategory pulumi.StringPtrInput `pulumi:"quotaCategory"`
 	// The status of the quota application.
 	Status pulumi.StringPtrInput `pulumi:"status"`

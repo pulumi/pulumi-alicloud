@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultApplication = new alicloud.sae.Application("defaultApplication", {
  *     appDescription: name,
- *     appName: name,
+ *     appName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
  *     namespaceId: defaultNamespace.id,
  *     imageUrl: "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
  *     packageType: "Image",

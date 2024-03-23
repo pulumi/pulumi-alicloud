@@ -819,6 +819,7 @@ class BucketReplicationDestinationArgs:
                  transfer_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] bucket: The destination bucket to which the data is replicated.
+        :param pulumi.Input[str] location: The region in which the destination bucket is located.
         :param pulumi.Input[str] transfer_type: The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
                
                `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
@@ -843,6 +844,9 @@ class BucketReplicationDestinationArgs:
     @property
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
+        """
+        The region in which the destination bucket is located.
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -960,7 +964,7 @@ class BucketReplicationSourceSelectionCriteriaArgs:
     def __init__(__self__, *,
                  sse_kms_encrypted_objects: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs']] = None):
         """
-        :param pulumi.Input['BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs'] sse_kms_encrypted_objects: Filter source objects encrypted by using SSE-KMS(See the following block `sse_kms_encrypted_objects`).
+        :param pulumi.Input['BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs'] sse_kms_encrypted_objects: Filter source objects encrypted by using SSE-KMS. See `sse_kms_encrypted_objects` below.
         """
         if sse_kms_encrypted_objects is not None:
             pulumi.set(__self__, "sse_kms_encrypted_objects", sse_kms_encrypted_objects)
@@ -969,7 +973,7 @@ class BucketReplicationSourceSelectionCriteriaArgs:
     @pulumi.getter(name="sseKmsEncryptedObjects")
     def sse_kms_encrypted_objects(self) -> Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs']]:
         """
-        Filter source objects encrypted by using SSE-KMS(See the following block `sse_kms_encrypted_objects`).
+        Filter source objects encrypted by using SSE-KMS. See `sse_kms_encrypted_objects` below.
         """
         return pulumi.get(self, "sse_kms_encrypted_objects")
 

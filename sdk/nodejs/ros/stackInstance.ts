@@ -22,9 +22,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleRegions = alicloud.ros.getRegions({});
- * const exampleStackGroup = new alicloud.ros.StackGroup("exampleStackGroup", {
- *     stackGroupName: _var.name,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const this = alicloud.getAccount({});
+ * const defaultRegions = alicloud.ros.getRegions({});
+ * const defaultStackGroup = new alicloud.ros.StackGroup("defaultStackGroup", {
+ *     stackGroupName: name,
  *     templateBody: "{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}",
  *     description: "test for stack groups",
  *     parameters: [
@@ -38,11 +41,14 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * });
- * const exampleStackInstance = new alicloud.ros.StackInstance("exampleStackInstance", {
- *     stackGroupName: exampleStackGroup.stackGroupName,
- *     stackInstanceAccountId: "example_value",
- *     stackInstanceRegionId: exampleRegions.then(exampleRegions => exampleRegions.regions?.[0]?.regionId),
+ * const example = new alicloud.ros.StackInstance("example", {
+ *     stackGroupName: defaultStackGroup.stackGroupName,
+ *     stackInstanceAccountId: _this.then(_this => _this.id),
+ *     stackInstanceRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.regionId),
  *     operationPreferences: "{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}",
+ *     timeoutInMinutes: "60",
+ *     operationDescription: "tf-example",
+ *     retainStacks: true,
  *     parameterOverrides: [{
  *         parameterValue: "VpcName",
  *         parameterKey: "VpcName",

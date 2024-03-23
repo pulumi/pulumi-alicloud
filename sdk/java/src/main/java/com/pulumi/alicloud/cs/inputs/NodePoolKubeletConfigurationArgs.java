@@ -5,8 +5,10 @@ package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +18,51 @@ import javax.annotation.Nullable;
 public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NodePoolKubeletConfigurationArgs Empty = new NodePoolKubeletConfigurationArgs();
+
+    /**
+     * Allowed sysctl mode whitelist.
+     * 
+     */
+    @Import(name="allowedUnsafeSysctls")
+    private @Nullable Output<List<String>> allowedUnsafeSysctls;
+
+    /**
+     * @return Allowed sysctl mode whitelist.
+     * 
+     */
+    public Optional<Output<List<String>>> allowedUnsafeSysctls() {
+        return Optional.ofNullable(this.allowedUnsafeSysctls);
+    }
+
+    /**
+     * The maximum number of log files that can exist in each container.
+     * 
+     */
+    @Import(name="containerLogMaxFiles")
+    private @Nullable Output<String> containerLogMaxFiles;
+
+    /**
+     * @return The maximum number of log files that can exist in each container.
+     * 
+     */
+    public Optional<Output<String>> containerLogMaxFiles() {
+        return Optional.ofNullable(this.containerLogMaxFiles);
+    }
+
+    /**
+     * The maximum size that can be reached before a log file is rotated.
+     * 
+     */
+    @Import(name="containerLogMaxSize")
+    private @Nullable Output<String> containerLogMaxSize;
+
+    /**
+     * @return The maximum size that can be reached before a log file is rotated.
+     * 
+     */
+    public Optional<Output<String>> containerLogMaxSize() {
+        return Optional.ofNullable(this.containerLogMaxSize);
+    }
 
     /**
      * Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
@@ -108,6 +155,21 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
     }
 
     /**
+     * Feature switch to enable configuration of experimental features.
+     * 
+     */
+    @Import(name="featureGates")
+    private @Nullable Output<Map<String,Boolean>> featureGates;
+
+    /**
+     * @return Feature switch to enable configuration of experimental features.
+     * 
+     */
+    public Optional<Output<Map<String,Boolean>>> featureGates() {
+        return Optional.ofNullable(this.featureGates);
+    }
+
+    /**
      * Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
      * 
      */
@@ -150,6 +212,36 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
      */
     public Optional<Output<Map<String,Object>>> kubeReserved() {
         return Optional.ofNullable(this.kubeReserved);
+    }
+
+    /**
+     * The maximum number of running pods.
+     * 
+     */
+    @Import(name="maxPods")
+    private @Nullable Output<String> maxPods;
+
+    /**
+     * @return The maximum number of running pods.
+     * 
+     */
+    public Optional<Output<String>> maxPods() {
+        return Optional.ofNullable(this.maxPods);
+    }
+
+    /**
+     * Read-only port number.
+     * 
+     */
+    @Import(name="readOnlyPort")
+    private @Nullable Output<String> readOnlyPort;
+
+    /**
+     * @return Read-only port number.
+     * 
+     */
+    public Optional<Output<String>> readOnlyPort() {
+        return Optional.ofNullable(this.readOnlyPort);
     }
 
     /**
@@ -215,15 +307,21 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
     private NodePoolKubeletConfigurationArgs() {}
 
     private NodePoolKubeletConfigurationArgs(NodePoolKubeletConfigurationArgs $) {
+        this.allowedUnsafeSysctls = $.allowedUnsafeSysctls;
+        this.containerLogMaxFiles = $.containerLogMaxFiles;
+        this.containerLogMaxSize = $.containerLogMaxSize;
         this.cpuManagerPolicy = $.cpuManagerPolicy;
         this.eventBurst = $.eventBurst;
         this.eventRecordQps = $.eventRecordQps;
         this.evictionHard = $.evictionHard;
         this.evictionSoft = $.evictionSoft;
         this.evictionSoftGracePeriod = $.evictionSoftGracePeriod;
+        this.featureGates = $.featureGates;
         this.kubeApiBurst = $.kubeApiBurst;
         this.kubeApiQps = $.kubeApiQps;
         this.kubeReserved = $.kubeReserved;
+        this.maxPods = $.maxPods;
+        this.readOnlyPort = $.readOnlyPort;
         this.registryBurst = $.registryBurst;
         this.registryPullQps = $.registryPullQps;
         this.serializeImagePulls = $.serializeImagePulls;
@@ -246,6 +344,79 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
 
         public Builder(NodePoolKubeletConfigurationArgs defaults) {
             $ = new NodePoolKubeletConfigurationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowedUnsafeSysctls Allowed sysctl mode whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedUnsafeSysctls(@Nullable Output<List<String>> allowedUnsafeSysctls) {
+            $.allowedUnsafeSysctls = allowedUnsafeSysctls;
+            return this;
+        }
+
+        /**
+         * @param allowedUnsafeSysctls Allowed sysctl mode whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedUnsafeSysctls(List<String> allowedUnsafeSysctls) {
+            return allowedUnsafeSysctls(Output.of(allowedUnsafeSysctls));
+        }
+
+        /**
+         * @param allowedUnsafeSysctls Allowed sysctl mode whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedUnsafeSysctls(String... allowedUnsafeSysctls) {
+            return allowedUnsafeSysctls(List.of(allowedUnsafeSysctls));
+        }
+
+        /**
+         * @param containerLogMaxFiles The maximum number of log files that can exist in each container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerLogMaxFiles(@Nullable Output<String> containerLogMaxFiles) {
+            $.containerLogMaxFiles = containerLogMaxFiles;
+            return this;
+        }
+
+        /**
+         * @param containerLogMaxFiles The maximum number of log files that can exist in each container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerLogMaxFiles(String containerLogMaxFiles) {
+            return containerLogMaxFiles(Output.of(containerLogMaxFiles));
+        }
+
+        /**
+         * @param containerLogMaxSize The maximum size that can be reached before a log file is rotated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerLogMaxSize(@Nullable Output<String> containerLogMaxSize) {
+            $.containerLogMaxSize = containerLogMaxSize;
+            return this;
+        }
+
+        /**
+         * @param containerLogMaxSize The maximum size that can be reached before a log file is rotated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerLogMaxSize(String containerLogMaxSize) {
+            return containerLogMaxSize(Output.of(containerLogMaxSize));
         }
 
         /**
@@ -375,6 +546,27 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
+         * @param featureGates Feature switch to enable configuration of experimental features.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder featureGates(@Nullable Output<Map<String,Boolean>> featureGates) {
+            $.featureGates = featureGates;
+            return this;
+        }
+
+        /**
+         * @param featureGates Feature switch to enable configuration of experimental features.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder featureGates(Map<String,Boolean> featureGates) {
+            return featureGates(Output.of(featureGates));
+        }
+
+        /**
          * @param kubeApiBurst Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
          * 
          * @return builder
@@ -435,6 +627,48 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
          */
         public Builder kubeReserved(Map<String,Object> kubeReserved) {
             return kubeReserved(Output.of(kubeReserved));
+        }
+
+        /**
+         * @param maxPods The maximum number of running pods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxPods(@Nullable Output<String> maxPods) {
+            $.maxPods = maxPods;
+            return this;
+        }
+
+        /**
+         * @param maxPods The maximum number of running pods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxPods(String maxPods) {
+            return maxPods(Output.of(maxPods));
+        }
+
+        /**
+         * @param readOnlyPort Read-only port number.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnlyPort(@Nullable Output<String> readOnlyPort) {
+            $.readOnlyPort = readOnlyPort;
+            return this;
+        }
+
+        /**
+         * @param readOnlyPort Read-only port number.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnlyPort(String readOnlyPort) {
+            return readOnlyPort(Output.of(readOnlyPort));
         }
 
         /**
