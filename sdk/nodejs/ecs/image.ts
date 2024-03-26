@@ -137,7 +137,7 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string | undefined>;
     /**
-     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
+     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -238,7 +238,7 @@ export interface ImageState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
+     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -295,7 +295,7 @@ export interface ImageArgs {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
+     * @deprecated Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
      */
     name?: pulumi.Input<string>;
     /**

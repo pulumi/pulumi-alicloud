@@ -144,7 +144,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
      *
-     * @deprecated Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
+     * @deprecated Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
     /**
@@ -183,7 +183,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      *
-     * @deprecated Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+     * @deprecated Field `master_node_num` has been deprecated from provider version 1.213.0.
      */
     public readonly masterNodeNum!: pulumi.Output<number | undefined>;
     /**
@@ -201,7 +201,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
      *
-     * @deprecated Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+     * @deprecated Field `private_ip_address` has been deprecated from provider version 1.213.0.
      */
     public readonly privateIpAddress!: pulumi.Output<string | undefined>;
     /**
@@ -426,7 +426,7 @@ export interface InstanceState {
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
      *
-     * @deprecated Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
+     * @deprecated Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
@@ -465,7 +465,7 @@ export interface InstanceState {
     /**
      * The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      *
-     * @deprecated Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+     * @deprecated Field `master_node_num` has been deprecated from provider version 1.213.0.
      */
     masterNodeNum?: pulumi.Input<number>;
     /**
@@ -483,7 +483,7 @@ export interface InstanceState {
     /**
      * The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
      *
-     * @deprecated Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+     * @deprecated Field `private_ip_address` has been deprecated from provider version 1.213.0.
      */
     privateIpAddress?: pulumi.Input<string>;
     /**
@@ -598,7 +598,7 @@ export interface InstanceArgs {
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.187.0. New field `paymentType` instead.
      *
-     * @deprecated Field `instanceChargeType` has been deprecated from version 1.187.0. Use `paymentType` instead.
+     * @deprecated Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
@@ -637,7 +637,7 @@ export interface InstanceArgs {
     /**
      * The number of Master nodes. **NOTE:** Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      *
-     * @deprecated Field `masterNodeNum` has been deprecated from provider version 1.213.0.
+     * @deprecated Field `master_node_num` has been deprecated from provider version 1.213.0.
      */
     masterNodeNum?: pulumi.Input<number>;
     /**
@@ -651,7 +651,7 @@ export interface InstanceArgs {
     /**
      * The private ip address. **NOTE:** Field `privateIpAddress` has been deprecated from provider version 1.213.0.
      *
-     * @deprecated Field `privateIpAddress` has been deprecated from provider version 1.213.0.
+     * @deprecated Field `private_ip_address` has been deprecated from provider version 1.213.0.
      */
     privateIpAddress?: pulumi.Input<string>;
     /**

@@ -178,7 +178,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      *
-     * @deprecated Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
+     * @deprecated Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
      */
     public readonly instanceName!: pulumi.Output<string>;
     /**
@@ -618,7 +618,7 @@ export interface InstanceState {
     /**
      * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      *
-     * @deprecated Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
+     * @deprecated Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
      */
     instanceName?: pulumi.Input<string>;
     /**
@@ -888,7 +888,7 @@ export interface InstanceArgs {
     /**
      * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      *
-     * @deprecated Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
+     * @deprecated Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
      */
     instanceName?: pulumi.Input<string>;
     /**

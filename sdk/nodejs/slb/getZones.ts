@@ -57,7 +57,7 @@ export interface GetZonesArgs {
     /**
      * Default to false and only output `id` in the `zones` block. Set it to true can output more details.
      *
-     * @deprecated The parameter enableDetails has been deprecated from version v1.154.0+
+     * @deprecated The parameter enable_details has been deprecated from version v1.154.0+
      */
     enableDetails?: boolean;
     /**
@@ -81,7 +81,7 @@ export interface GetZonesResult {
     readonly availableSlbAddressIpVersion?: string;
     readonly availableSlbAddressType?: string;
     /**
-     * @deprecated The parameter enableDetails has been deprecated from version v1.154.0+
+     * @deprecated The parameter enable_details has been deprecated from version v1.154.0+
      */
     readonly enableDetails?: boolean;
     /**
@@ -147,7 +147,7 @@ export interface GetZonesOutputArgs {
     /**
      * Default to false and only output `id` in the `zones` block. Set it to true can output more details.
      *
-     * @deprecated The parameter enableDetails has been deprecated from version v1.154.0+
+     * @deprecated The parameter enable_details has been deprecated from version v1.154.0+
      */
     enableDetails?: pulumi.Input<boolean>;
     /**

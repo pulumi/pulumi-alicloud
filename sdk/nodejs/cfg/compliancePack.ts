@@ -121,7 +121,7 @@ export class CompliancePack extends pulumi.CustomResource {
     /**
      * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      *
-     * @deprecated Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
+     * @deprecated Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      */
     public readonly configRules!: pulumi.Output<outputs.cfg.CompliancePackConfigRule[] | undefined>;
     /**
@@ -200,7 +200,7 @@ export interface CompliancePackState {
     /**
      * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      *
-     * @deprecated Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
+     * @deprecated Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      */
     configRules?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRule>[]>;
     /**
@@ -236,7 +236,7 @@ export interface CompliancePackArgs {
     /**
      * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      *
-     * @deprecated Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
+     * @deprecated Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
      */
     configRules?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRule>[]>;
     /**

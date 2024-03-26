@@ -73,7 +73,7 @@ type Domain struct {
 
 	// Attribute perm has been deprecated and suggest removing it from your template.
 	//
-	// Deprecated: Attribute bizName has been deprecated and suggest removing it from your template.
+	// Deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.
 	BizName pulumi.StringPtrOutput `pulumi:"bizName"`
 	// Certificate Information. See the following `Block certInfos`.
 	CertInfos DomainCertInfoArrayOutput `pulumi:"certInfos"`
@@ -129,7 +129,7 @@ func GetDomain(ctx *pulumi.Context,
 type domainState struct {
 	// Attribute perm has been deprecated and suggest removing it from your template.
 	//
-	// Deprecated: Attribute bizName has been deprecated and suggest removing it from your template.
+	// Deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.
 	BizName *string `pulumi:"bizName"`
 	// Certificate Information. See the following `Block certInfos`.
 	CertInfos []DomainCertInfo `pulumi:"certInfos"`
@@ -150,7 +150,7 @@ type domainState struct {
 type DomainState struct {
 	// Attribute perm has been deprecated and suggest removing it from your template.
 	//
-	// Deprecated: Attribute bizName has been deprecated and suggest removing it from your template.
+	// Deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.
 	BizName pulumi.StringPtrInput
 	// Certificate Information. See the following `Block certInfos`.
 	CertInfos DomainCertInfoArrayInput
@@ -175,7 +175,7 @@ func (DomainState) ElementType() reflect.Type {
 type domainArgs struct {
 	// Attribute perm has been deprecated and suggest removing it from your template.
 	//
-	// Deprecated: Attribute bizName has been deprecated and suggest removing it from your template.
+	// Deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.
 	BizName *string `pulumi:"bizName"`
 	// Certificate Information. See the following `Block certInfos`.
 	CertInfos []DomainCertInfo `pulumi:"certInfos"`
@@ -197,7 +197,7 @@ type domainArgs struct {
 type DomainArgs struct {
 	// Attribute perm has been deprecated and suggest removing it from your template.
 	//
-	// Deprecated: Attribute bizName has been deprecated and suggest removing it from your template.
+	// Deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.
 	BizName pulumi.StringPtrInput
 	// Certificate Information. See the following `Block certInfos`.
 	CertInfos DomainCertInfoArrayInput
@@ -304,7 +304,7 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 
 // Attribute perm has been deprecated and suggest removing it from your template.
 //
-// Deprecated: Attribute bizName has been deprecated and suggest removing it from your template.
+// Deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.
 func (o DomainOutput) BizName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.BizName }).(pulumi.StringPtrOutput)
 }
