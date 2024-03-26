@@ -93,7 +93,7 @@ export class SecurityGroup extends pulumi.CustomResource {
      *
      * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      *
-     * @deprecated Field `innerAccess` has been deprecated from provider version 1.55.3. Use `innerAccessPolicy` replaces it.
+     * @deprecated Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
      */
     public readonly innerAccess!: pulumi.Output<boolean>;
     /**
@@ -171,7 +171,7 @@ export interface SecurityGroupState {
      *
      * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      *
-     * @deprecated Field `innerAccess` has been deprecated from provider version 1.55.3. Use `innerAccessPolicy` replaces it.
+     * @deprecated Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
      */
     innerAccess?: pulumi.Input<boolean>;
     /**
@@ -213,7 +213,7 @@ export interface SecurityGroupArgs {
      *
      * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      *
-     * @deprecated Field `innerAccess` has been deprecated from provider version 1.55.3. Use `innerAccessPolicy` replaces it.
+     * @deprecated Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.
      */
     innerAccess?: pulumi.Input<boolean>;
     /**

@@ -5029,7 +5029,7 @@ type GetZonesZone struct {
 	// (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
 	// It has been deprecated from v1.157.0 and use `slaveZoneId` instead.
 	//
-	// Deprecated: the attribute slbSlaveZoneIds has been deprecated from version 1.157.0 and use slaveZoneId instead.
+	// Deprecated: the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead.
 	SlbSlaveZoneIds []string `pulumi:"slbSlaveZoneIds"`
 	// (Available in 1.154.0+)A list of available resource which the slb master zone supported.
 	SupportedResources []GetZonesZoneSupportedResource `pulumi:"supportedResources"`
@@ -5056,7 +5056,7 @@ type GetZonesZoneArgs struct {
 	// (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
 	// It has been deprecated from v1.157.0 and use `slaveZoneId` instead.
 	//
-	// Deprecated: the attribute slbSlaveZoneIds has been deprecated from version 1.157.0 and use slaveZoneId instead.
+	// Deprecated: the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead.
 	SlbSlaveZoneIds pulumi.StringArrayInput `pulumi:"slbSlaveZoneIds"`
 	// (Available in 1.154.0+)A list of available resource which the slb master zone supported.
 	SupportedResources GetZonesZoneSupportedResourceArrayInput `pulumi:"supportedResources"`
@@ -5131,7 +5131,7 @@ func (o GetZonesZoneOutput) SlaveZoneId() pulumi.StringOutput {
 // (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
 // It has been deprecated from v1.157.0 and use `slaveZoneId` instead.
 //
-// Deprecated: the attribute slbSlaveZoneIds has been deprecated from version 1.157.0 and use slaveZoneId instead.
+// Deprecated: the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead.
 func (o GetZonesZoneOutput) SlbSlaveZoneIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZonesZone) []string { return v.SlbSlaveZoneIds }).(pulumi.StringArrayOutput)
 }

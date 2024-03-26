@@ -198,7 +198,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
     /**
      * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      *
-     * @deprecated Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+     * @deprecated Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
     public readonly ioOptimized!: pulumi.Output<string | undefined>;
     /**
@@ -505,7 +505,7 @@ export interface ScalingConfigurationState {
     /**
      * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      *
-     * @deprecated Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+     * @deprecated Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
     ioOptimized?: pulumi.Input<string>;
     /**
@@ -703,7 +703,7 @@ export interface ScalingConfigurationArgs {
     /**
      * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      *
-     * @deprecated Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
+     * @deprecated Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
     ioOptimized?: pulumi.Input<string>;
     /**

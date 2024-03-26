@@ -378,7 +378,7 @@ type Alert struct {
 	AutoAnnotation pulumi.BoolPtrOutput `pulumi:"autoAnnotation"`
 	// Join condition.
 	//
-	// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
+	// Deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations
 	Condition pulumi.StringPtrOutput `pulumi:"condition"`
 	// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 	Dashboard pulumi.StringPtrOutput `pulumi:"dashboard"`
@@ -396,7 +396,7 @@ type Alert struct {
 	NoDataSeverity pulumi.IntPtrOutput `pulumi:"noDataSeverity"`
 	// Alarm information notification list, Deprecated from 1.161.0+.
 	//
-	// Deprecated: Deprecated from 1.161.0+, use policyConfiguration for notification
+	// Deprecated: Deprecated from 1.161.0+, use policy_configuration for notification
 	NotificationLists AlertNotificationListArrayOutput `pulumi:"notificationLists"`
 	// Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
 	//
@@ -428,7 +428,7 @@ type Alert struct {
 	Threshold pulumi.IntOutput `pulumi:"threshold"`
 	// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
 	//
-	// Deprecated: Deprecated from 1.161.0+, use repeatInterval in policy_configuration
+	// Deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration
 	Throttling pulumi.StringPtrOutput `pulumi:"throttling"`
 	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
@@ -487,7 +487,7 @@ type alertState struct {
 	AutoAnnotation *bool `pulumi:"autoAnnotation"`
 	// Join condition.
 	//
-	// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
+	// Deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations
 	Condition *string `pulumi:"condition"`
 	// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 	Dashboard *string `pulumi:"dashboard"`
@@ -505,7 +505,7 @@ type alertState struct {
 	NoDataSeverity *int `pulumi:"noDataSeverity"`
 	// Alarm information notification list, Deprecated from 1.161.0+.
 	//
-	// Deprecated: Deprecated from 1.161.0+, use policyConfiguration for notification
+	// Deprecated: Deprecated from 1.161.0+, use policy_configuration for notification
 	NotificationLists []AlertNotificationList `pulumi:"notificationLists"`
 	// Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
 	//
@@ -537,7 +537,7 @@ type alertState struct {
 	Threshold *int `pulumi:"threshold"`
 	// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
 	//
-	// Deprecated: Deprecated from 1.161.0+, use repeatInterval in policy_configuration
+	// Deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration
 	Throttling *string `pulumi:"throttling"`
 	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type *string `pulumi:"type"`
@@ -558,7 +558,7 @@ type AlertState struct {
 	AutoAnnotation pulumi.BoolPtrInput
 	// Join condition.
 	//
-	// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
+	// Deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations
 	Condition pulumi.StringPtrInput
 	// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 	Dashboard pulumi.StringPtrInput
@@ -576,7 +576,7 @@ type AlertState struct {
 	NoDataSeverity pulumi.IntPtrInput
 	// Alarm information notification list, Deprecated from 1.161.0+.
 	//
-	// Deprecated: Deprecated from 1.161.0+, use policyConfiguration for notification
+	// Deprecated: Deprecated from 1.161.0+, use policy_configuration for notification
 	NotificationLists AlertNotificationListArrayInput
 	// Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
 	//
@@ -608,7 +608,7 @@ type AlertState struct {
 	Threshold pulumi.IntPtrInput
 	// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
 	//
-	// Deprecated: Deprecated from 1.161.0+, use repeatInterval in policy_configuration
+	// Deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration
 	Throttling pulumi.StringPtrInput
 	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type pulumi.StringPtrInput
@@ -633,7 +633,7 @@ type alertArgs struct {
 	AutoAnnotation *bool `pulumi:"autoAnnotation"`
 	// Join condition.
 	//
-	// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
+	// Deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations
 	Condition *string `pulumi:"condition"`
 	// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 	Dashboard *string `pulumi:"dashboard"`
@@ -651,7 +651,7 @@ type alertArgs struct {
 	NoDataSeverity *int `pulumi:"noDataSeverity"`
 	// Alarm information notification list, Deprecated from 1.161.0+.
 	//
-	// Deprecated: Deprecated from 1.161.0+, use policyConfiguration for notification
+	// Deprecated: Deprecated from 1.161.0+, use policy_configuration for notification
 	NotificationLists []AlertNotificationList `pulumi:"notificationLists"`
 	// Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
 	//
@@ -683,7 +683,7 @@ type alertArgs struct {
 	Threshold *int `pulumi:"threshold"`
 	// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
 	//
-	// Deprecated: Deprecated from 1.161.0+, use repeatInterval in policy_configuration
+	// Deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration
 	Throttling *string `pulumi:"throttling"`
 	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type *string `pulumi:"type"`
@@ -705,7 +705,7 @@ type AlertArgs struct {
 	AutoAnnotation pulumi.BoolPtrInput
 	// Join condition.
 	//
-	// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
+	// Deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations
 	Condition pulumi.StringPtrInput
 	// Deprecated: Deprecated from 1.161.0+, use dashboardId in query_list
 	Dashboard pulumi.StringPtrInput
@@ -723,7 +723,7 @@ type AlertArgs struct {
 	NoDataSeverity pulumi.IntPtrInput
 	// Alarm information notification list, Deprecated from 1.161.0+.
 	//
-	// Deprecated: Deprecated from 1.161.0+, use policyConfiguration for notification
+	// Deprecated: Deprecated from 1.161.0+, use policy_configuration for notification
 	NotificationLists AlertNotificationListArrayInput
 	// Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
 	//
@@ -755,7 +755,7 @@ type AlertArgs struct {
 	Threshold pulumi.IntPtrInput
 	// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
 	//
-	// Deprecated: Deprecated from 1.161.0+, use repeatInterval in policy_configuration
+	// Deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration
 	Throttling pulumi.StringPtrInput
 	// including FixedRate,Hourly,Daily,Weekly,Cron.
 	Type pulumi.StringPtrInput
@@ -877,7 +877,7 @@ func (o AlertOutput) AutoAnnotation() pulumi.BoolPtrOutput {
 
 // Join condition.
 //
-// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
+// Deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations
 func (o AlertOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.Condition }).(pulumi.StringPtrOutput)
 }
@@ -919,7 +919,7 @@ func (o AlertOutput) NoDataSeverity() pulumi.IntPtrOutput {
 
 // Alarm information notification list, Deprecated from 1.161.0+.
 //
-// Deprecated: Deprecated from 1.161.0+, use policyConfiguration for notification
+// Deprecated: Deprecated from 1.161.0+, use policy_configuration for notification
 func (o AlertOutput) NotificationLists() AlertNotificationListArrayOutput {
 	return o.ApplyT(func(v *Alert) AlertNotificationListArrayOutput { return v.NotificationLists }).(AlertNotificationListArrayOutput)
 }
@@ -987,7 +987,7 @@ func (o AlertOutput) Threshold() pulumi.IntOutput {
 
 // Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
 //
-// Deprecated: Deprecated from 1.161.0+, use repeatInterval in policy_configuration
+// Deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration
 func (o AlertOutput) Throttling() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.Throttling }).(pulumi.StringPtrOutput)
 }

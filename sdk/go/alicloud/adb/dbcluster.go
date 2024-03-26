@@ -32,7 +32,7 @@ type DBCluster struct {
 	DbClusterCategory pulumi.StringOutput `pulumi:"dbClusterCategory"`
 	// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
 	//
-	// Deprecated: It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass pulumi.StringPtrOutput `pulumi:"dbClusterClass"`
 	// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
 	DbClusterVersion pulumi.StringPtrOutput `pulumi:"dbClusterVersion"`
@@ -139,7 +139,7 @@ type dbclusterState struct {
 	DbClusterCategory *string `pulumi:"dbClusterCategory"`
 	// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
 	//
-	// Deprecated: It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass *string `pulumi:"dbClusterClass"`
 	// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
@@ -211,7 +211,7 @@ type DBClusterState struct {
 	DbClusterCategory pulumi.StringPtrInput
 	// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
 	//
-	// Deprecated: It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass pulumi.StringPtrInput
 	// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
 	DbClusterVersion pulumi.StringPtrInput
@@ -285,7 +285,7 @@ type dbclusterArgs struct {
 	DbClusterCategory string `pulumi:"dbClusterCategory"`
 	// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
 	//
-	// Deprecated: It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass *string `pulumi:"dbClusterClass"`
 	// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
@@ -352,7 +352,7 @@ type DBClusterArgs struct {
 	DbClusterCategory pulumi.StringInput
 	// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
 	//
-	// Deprecated: It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass pulumi.StringPtrInput
 	// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
 	DbClusterVersion pulumi.StringPtrInput
@@ -518,7 +518,7 @@ func (o DBClusterOutput) DbClusterCategory() pulumi.StringOutput {
 
 // It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
 //
-// Deprecated: It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 func (o DBClusterOutput) DbClusterClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringPtrOutput { return v.DbClusterClass }).(pulumi.StringPtrOutput)
 }

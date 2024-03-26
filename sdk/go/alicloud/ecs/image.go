@@ -155,7 +155,7 @@ type Image struct {
 	ImageName pulumi.StringOutput `pulumi:"imageName"`
 	// The instance ID.
 	InstanceId pulumi.StringPtrOutput `pulumi:"instanceId"`
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The distribution of the operating system for the system disk in the custom image.
 	// If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
@@ -216,7 +216,7 @@ type imageState struct {
 	ImageName *string `pulumi:"imageName"`
 	// The instance ID.
 	InstanceId *string `pulumi:"instanceId"`
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 	Name *string `pulumi:"name"`
 	// The distribution of the operating system for the system disk in the custom image.
 	// If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
@@ -248,7 +248,7 @@ type ImageState struct {
 	ImageName pulumi.StringPtrInput
 	// The instance ID.
 	InstanceId pulumi.StringPtrInput
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 	Name pulumi.StringPtrInput
 	// The distribution of the operating system for the system disk in the custom image.
 	// If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
@@ -284,7 +284,7 @@ type imageArgs struct {
 	ImageName *string `pulumi:"imageName"`
 	// The instance ID.
 	InstanceId *string `pulumi:"instanceId"`
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 	Name *string `pulumi:"name"`
 	// The distribution of the operating system for the system disk in the custom image.
 	// If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
@@ -317,7 +317,7 @@ type ImageArgs struct {
 	ImageName pulumi.StringPtrInput
 	// The instance ID.
 	InstanceId pulumi.StringPtrInput
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
+	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 	Name pulumi.StringPtrInput
 	// The distribution of the operating system for the system disk in the custom image.
 	// If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
@@ -456,7 +456,7 @@ func (o ImageOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
+// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead.
 func (o ImageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -221,7 +221,7 @@ type Instance struct {
 	RoleArn pulumi.StringOutput `pulumi:"roleArn"`
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	//
-	// Deprecated: Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
@@ -300,7 +300,7 @@ type Instance struct {
 	// - true: upgrade
 	// - false: not to upgrade
 	//
-	// Deprecated: Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
+	// Deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
 	UpgradeDbInstanceKernelVersion pulumi.BoolPtrOutput `pulumi:"upgradeDbInstanceKernelVersion"`
 	// The method to update the minor engine version. Default value: Immediate. It is valid only when `targetMinorVersion` is changed. Valid values:
 	// - Immediate: The minor engine version is immediately updated.
@@ -569,7 +569,7 @@ type instanceState struct {
 	RoleArn *string `pulumi:"roleArn"`
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	//
-	// Deprecated: Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
@@ -648,7 +648,7 @@ type instanceState struct {
 	// - true: upgrade
 	// - false: not to upgrade
 	//
-	// Deprecated: Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
+	// Deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
 	UpgradeDbInstanceKernelVersion *bool `pulumi:"upgradeDbInstanceKernelVersion"`
 	// The method to update the minor engine version. Default value: Immediate. It is valid only when `targetMinorVersion` is changed. Valid values:
 	// - Immediate: The minor engine version is immediately updated.
@@ -876,7 +876,7 @@ type InstanceState struct {
 	RoleArn pulumi.StringPtrInput
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	//
-	// Deprecated: Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
 	SecurityGroupId pulumi.StringPtrInput
 	// , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayInput
@@ -955,7 +955,7 @@ type InstanceState struct {
 	// - true: upgrade
 	// - false: not to upgrade
 	//
-	// Deprecated: Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
+	// Deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
 	UpgradeDbInstanceKernelVersion pulumi.BoolPtrInput
 	// The method to update the minor engine version. Default value: Immediate. It is valid only when `targetMinorVersion` is changed. Valid values:
 	// - Immediate: The minor engine version is immediately updated.
@@ -1181,7 +1181,7 @@ type instanceArgs struct {
 	RoleArn *string `pulumi:"roleArn"`
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	//
-	// Deprecated: Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
@@ -1256,7 +1256,7 @@ type instanceArgs struct {
 	// - true: upgrade
 	// - false: not to upgrade
 	//
-	// Deprecated: Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
+	// Deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
 	UpgradeDbInstanceKernelVersion *bool `pulumi:"upgradeDbInstanceKernelVersion"`
 	// The method to update the minor engine version. Default value: Immediate. It is valid only when `targetMinorVersion` is changed. Valid values:
 	// - Immediate: The minor engine version is immediately updated.
@@ -1479,7 +1479,7 @@ type InstanceArgs struct {
 	RoleArn pulumi.StringPtrInput
 	// It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 	//
-	// Deprecated: Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+	// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
 	SecurityGroupId pulumi.StringPtrInput
 	// , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayInput
@@ -1554,7 +1554,7 @@ type InstanceArgs struct {
 	// - true: upgrade
 	// - false: not to upgrade
 	//
-	// Deprecated: Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
+	// Deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
 	UpgradeDbInstanceKernelVersion pulumi.BoolPtrInput
 	// The method to update the minor engine version. Default value: Immediate. It is valid only when `targetMinorVersion` is changed. Valid values:
 	// - Immediate: The minor engine version is immediately updated.
@@ -2015,7 +2015,7 @@ func (o InstanceOutput) RoleArn() pulumi.StringOutput {
 
 // It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
 //
-// Deprecated: Attribute `securityGroupId` has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+// Deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
 func (o InstanceOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
@@ -2160,7 +2160,7 @@ func (o InstanceOutput) TdeStatus() pulumi.StringOutput {
 // - true: upgrade
 // - false: not to upgrade
 //
-// Deprecated: Attribute `upgradeDbInstanceKernelVersion` has been deprecated from 1.198.0 and use `targetMinorVersion` instead.
+// Deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.
 func (o InstanceOutput) UpgradeDbInstanceKernelVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.UpgradeDbInstanceKernelVersion }).(pulumi.BoolPtrOutput)
 }

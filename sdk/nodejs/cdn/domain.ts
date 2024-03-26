@@ -35,66 +35,66 @@ export class Domain extends pulumi.CustomResource {
     }
 
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     public readonly authConfig!: pulumi.Output<outputs.cdn.DomainAuthConfig | undefined>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     public readonly blockIps!: pulumi.Output<string[] | undefined>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     public readonly cacheConfigs!: pulumi.Output<outputs.cdn.DomainCacheConfig[] | undefined>;
     public readonly cdnType!: pulumi.Output<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     public readonly certificateConfig!: pulumi.Output<outputs.cdn.DomainCertificateConfig | undefined>;
     public readonly domainName!: pulumi.Output<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     public readonly httpHeaderConfigs!: pulumi.Output<outputs.cdn.DomainHttpHeaderConfig[] | undefined>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     public readonly optimizeEnable!: pulumi.Output<string | undefined>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     public readonly page404Config!: pulumi.Output<outputs.cdn.DomainPage404Config | undefined>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     public readonly pageCompressEnable!: pulumi.Output<string | undefined>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     public readonly parameterFilterConfig!: pulumi.Output<outputs.cdn.DomainParameterFilterConfig | undefined>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     public readonly rangeEnable!: pulumi.Output<string | undefined>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     public readonly referConfig!: pulumi.Output<outputs.cdn.DomainReferConfig | undefined>;
     public readonly scope!: pulumi.Output<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainNew` configuration `sources` block `port` argument instead.
+     * @deprecated Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.
      */
     public readonly sourcePort!: pulumi.Output<number | undefined>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainNew` configuration `sources` block `type` argument instead.
+     * @deprecated Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.
      */
     public readonly sourceType!: pulumi.Output<string | undefined>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainNew` configuration `sources` argument instead.
+     * @deprecated Use `alicloud_cdn_domain_new` configuration `sources` argument instead.
      */
     public readonly sources!: pulumi.Output<string[] | undefined>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     public readonly videoSeekEnable!: pulumi.Output<string | undefined>;
 
@@ -166,66 +166,66 @@ export class Domain extends pulumi.CustomResource {
  */
 export interface DomainState {
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     authConfig?: pulumi.Input<inputs.cdn.DomainAuthConfig>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     blockIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     cacheConfigs?: pulumi.Input<pulumi.Input<inputs.cdn.DomainCacheConfig>[]>;
     cdnType?: pulumi.Input<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     certificateConfig?: pulumi.Input<inputs.cdn.DomainCertificateConfig>;
     domainName?: pulumi.Input<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     httpHeaderConfigs?: pulumi.Input<pulumi.Input<inputs.cdn.DomainHttpHeaderConfig>[]>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     optimizeEnable?: pulumi.Input<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     page404Config?: pulumi.Input<inputs.cdn.DomainPage404Config>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     pageCompressEnable?: pulumi.Input<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     parameterFilterConfig?: pulumi.Input<inputs.cdn.DomainParameterFilterConfig>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     rangeEnable?: pulumi.Input<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     referConfig?: pulumi.Input<inputs.cdn.DomainReferConfig>;
     scope?: pulumi.Input<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainNew` configuration `sources` block `port` argument instead.
+     * @deprecated Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.
      */
     sourcePort?: pulumi.Input<number>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainNew` configuration `sources` block `type` argument instead.
+     * @deprecated Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.
      */
     sourceType?: pulumi.Input<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainNew` configuration `sources` argument instead.
+     * @deprecated Use `alicloud_cdn_domain_new` configuration `sources` argument instead.
      */
     sources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     videoSeekEnable?: pulumi.Input<string>;
 }
@@ -235,66 +235,66 @@ export interface DomainState {
  */
 export interface DomainArgs {
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     authConfig?: pulumi.Input<inputs.cdn.DomainAuthConfig>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     blockIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     cacheConfigs?: pulumi.Input<pulumi.Input<inputs.cdn.DomainCacheConfig>[]>;
     cdnType: pulumi.Input<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     certificateConfig?: pulumi.Input<inputs.cdn.DomainCertificateConfig>;
     domainName: pulumi.Input<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     httpHeaderConfigs?: pulumi.Input<pulumi.Input<inputs.cdn.DomainHttpHeaderConfig>[]>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     optimizeEnable?: pulumi.Input<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     page404Config?: pulumi.Input<inputs.cdn.DomainPage404Config>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     pageCompressEnable?: pulumi.Input<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     parameterFilterConfig?: pulumi.Input<inputs.cdn.DomainParameterFilterConfig>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     rangeEnable?: pulumi.Input<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     referConfig?: pulumi.Input<inputs.cdn.DomainReferConfig>;
     scope?: pulumi.Input<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainNew` configuration `sources` block `port` argument instead.
+     * @deprecated Use `alicloud_cdn_domain_new` configuration `sources` block `port` argument instead.
      */
     sourcePort?: pulumi.Input<number>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainNew` configuration `sources` block `type` argument instead.
+     * @deprecated Use `alicloud_cdn_domain_new` configuration `sources` block `type` argument instead.
      */
     sourceType?: pulumi.Input<string>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainNew` configuration `sources` argument instead.
+     * @deprecated Use `alicloud_cdn_domain_new` configuration `sources` argument instead.
      */
     sources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated Use `alicloud.cdn.DomainConfig` configuration `functionName` and `functionArgs` arguments instead.
+     * @deprecated Use `alicloud_cdn_domain_config` configuration `function_name` and `function_args` arguments instead.
      */
     videoSeekEnable?: pulumi.Input<string>;
 }

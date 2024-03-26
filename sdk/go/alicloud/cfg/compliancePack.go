@@ -126,7 +126,7 @@ type CompliancePack struct {
 	ConfigRuleIds CompliancePackConfigRuleIdArrayOutput `pulumi:"configRuleIds"`
 	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
+	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 	ConfigRules CompliancePackConfigRuleArrayOutput `pulumi:"configRules"`
 	// The Description of compliance pack.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -183,7 +183,7 @@ type compliancePackState struct {
 	ConfigRuleIds []CompliancePackConfigRuleId `pulumi:"configRuleIds"`
 	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
+	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 	ConfigRules []CompliancePackConfigRule `pulumi:"configRules"`
 	// The Description of compliance pack.
 	Description *string `pulumi:"description"`
@@ -202,7 +202,7 @@ type CompliancePackState struct {
 	ConfigRuleIds CompliancePackConfigRuleIdArrayInput
 	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
+	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 	ConfigRules CompliancePackConfigRuleArrayInput
 	// The Description of compliance pack.
 	Description pulumi.StringPtrInput
@@ -225,7 +225,7 @@ type compliancePackArgs struct {
 	ConfigRuleIds []CompliancePackConfigRuleId `pulumi:"configRuleIds"`
 	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
+	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 	ConfigRules []CompliancePackConfigRule `pulumi:"configRules"`
 	// The Description of compliance pack.
 	Description string `pulumi:"description"`
@@ -243,7 +243,7 @@ type CompliancePackArgs struct {
 	ConfigRuleIds CompliancePackConfigRuleIdArrayInput
 	// A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 	//
-	// Deprecated: Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
+	// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 	ConfigRules CompliancePackConfigRuleArrayInput
 	// The Description of compliance pack.
 	Description pulumi.StringInput
@@ -355,7 +355,7 @@ func (o CompliancePackOutput) ConfigRuleIds() CompliancePackConfigRuleIdArrayOut
 
 // A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
 //
-// Deprecated: Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
+// Deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
 func (o CompliancePackOutput) ConfigRules() CompliancePackConfigRuleArrayOutput {
 	return o.ApplyT(func(v *CompliancePack) CompliancePackConfigRuleArrayOutput { return v.ConfigRules }).(CompliancePackConfigRuleArrayOutput)
 }
