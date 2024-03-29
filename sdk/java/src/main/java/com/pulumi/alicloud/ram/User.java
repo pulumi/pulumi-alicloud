@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new RAM user.
  *         var user = new User(&#34;user&#34;, UserArgs.builder()        
  *             .comments(&#34;yoyoyo&#34;)
  *             .displayName(&#34;user_display_name&#34;)

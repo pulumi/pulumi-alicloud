@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var anotherUid = config.get(&#34;anotherUid&#34;).orElse(&#34;xxxx&#34;);
+ *         // Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
  *         var childAccount = new Provider(&#34;childAccount&#34;, ProviderArgs.builder()        
  *             .region(&#34;cn-hangzhou&#34;)
  *             .assumeRole(ProviderAssumeRoleArgs.builder()
@@ -67,6 +68,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Method 2: Use the target cen account&#39;s access_key, secret_key
+ *         // provider &#34;alicloud&#34; {
+ *         //   region     = &#34;cn-hangzhou&#34;
+ *         //   access_key = &#34;access_key&#34;
+ *         //   secret_key = &#34;secret_key&#34;
+ *         //   alias      = &#34;child_account&#34;
+ *         // }
  *         var yourAccount = new Provider(&#34;yourAccount&#34;);
  * 
  *         final var yourAccountAccount = AlicloudFunctions.getAccount();

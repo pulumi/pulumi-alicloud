@@ -63,6 +63,7 @@ import javax.annotation.Nullable;
  *             .region(&#34;cn-shanghai&#34;)
  *             .build());
  * 
+ *         // Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
  *         var cenAccount = new Provider(&#34;cenAccount&#34;, ProviderArgs.builder()        
  *             .region(&#34;cn-hangzhou&#34;)
  *             .assumeRole(ProviderAssumeRoleArgs.builder()
@@ -70,6 +71,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Method 2: Use the target cen account&#39;s access_key, secret_key
+ *         // provider &#34;alicloud&#34; {
+ *         //   region     = &#34;cn-hangzhou&#34;
+ *         //   access_key = &#34;access_key&#34;
+ *         //   secret_key = &#34;secret_key&#34;
+ *         //   alias      = &#34;cen_account&#34;
+ *         // }
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
  *             .description(name)
  *             .cidrBlock(&#34;192.168.0.0/24&#34;)

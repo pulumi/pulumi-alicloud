@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new Domain config.
  *         var domain = new Domain(&#34;domain&#34;, DomainArgs.builder()        
  *             .domainName(&#34;mydomain.alicloud-provider.cn&#34;)
  *             .cdnType(&#34;web&#34;)

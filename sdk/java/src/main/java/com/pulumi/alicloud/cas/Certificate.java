@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Add a new Certificate.
  *         var cert = new Certificate(&#34;cert&#34;, CertificateArgs.builder()        
  *             .cert(Files.readString(Paths.get(String.format(&#34;%s/test.crt&#34;, path.module()))))
  *             .key(Files.readString(Paths.get(String.format(&#34;%s/test.key&#34;, path.module()))))

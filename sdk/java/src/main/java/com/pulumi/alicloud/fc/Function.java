@@ -126,6 +126,7 @@ import javax.annotation.Nullable;
  *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .build());
  * 
+ *         // If you upload the function by OSS Bucket, you need to specify path can&#39;t upload by content.
  *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
  *             .bucket(defaultBucket.id())
  *             .key(&#34;index.py&#34;)
