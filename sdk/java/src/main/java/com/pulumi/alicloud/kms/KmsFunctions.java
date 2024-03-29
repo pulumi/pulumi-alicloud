@@ -953,6 +953,7 @@ public final class KmsFunctions {
      *             .isEnabled(true)
      *             .build());
      * 
+     *         // Encrypt plaintext &#39;example&#39;
      *         var encrypted = new Ciphertext(&#34;encrypted&#34;, CiphertextArgs.builder()        
      *             .keyId(key.id())
      *             .plaintext(&#34;example&#34;)
@@ -1006,6 +1007,7 @@ public final class KmsFunctions {
      *             .isEnabled(true)
      *             .build());
      * 
+     *         // Encrypt plaintext &#39;example&#39;
      *         var encrypted = new Ciphertext(&#34;encrypted&#34;, CiphertextArgs.builder()        
      *             .keyId(key.id())
      *             .plaintext(&#34;example&#34;)
@@ -1059,6 +1061,7 @@ public final class KmsFunctions {
      *             .isEnabled(true)
      *             .build());
      * 
+     *         // Encrypt plaintext &#39;example&#39;
      *         var encrypted = new Ciphertext(&#34;encrypted&#34;, CiphertextArgs.builder()        
      *             .keyId(key.id())
      *             .plaintext(&#34;example&#34;)
@@ -1112,6 +1115,7 @@ public final class KmsFunctions {
      *             .isEnabled(true)
      *             .build());
      * 
+     *         // Encrypt plaintext &#39;example&#39;
      *         var encrypted = new Ciphertext(&#34;encrypted&#34;, CiphertextArgs.builder()        
      *             .keyId(key.id())
      *             .plaintext(&#34;example&#34;)

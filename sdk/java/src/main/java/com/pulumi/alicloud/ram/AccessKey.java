@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new RAM access key for user.
  *         var user = new User(&#34;user&#34;, UserArgs.builder()        
  *             .displayName(&#34;user_display_name&#34;)
  *             .mobile(&#34;86-18688888888&#34;)
@@ -94,6 +95,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new RAM access key for user.
  *         var user = new User(&#34;user&#34;, UserArgs.builder()        
  *             .displayName(&#34;user_display_name&#34;)
  *             .mobile(&#34;86-18688888888&#34;)

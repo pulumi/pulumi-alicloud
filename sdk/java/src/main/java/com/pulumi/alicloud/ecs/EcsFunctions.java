@@ -8148,6 +8148,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
      *             .keyName(&#34;keyPairDatasource&#34;)
      *             .build());
@@ -8196,6 +8197,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
      *             .keyName(&#34;keyPairDatasource&#34;)
      *             .build());
@@ -8244,6 +8246,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
      *             .keyName(&#34;keyPairDatasource&#34;)
      *             .build());
@@ -8292,6 +8295,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
      *             .keyName(&#34;keyPairDatasource&#34;)
      *             .build());
@@ -8340,6 +8344,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
      *             .keyName(&#34;keyPairDatasource&#34;)
      *             .build());
@@ -8388,6 +8393,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
      *             .keyName(&#34;keyPairDatasource&#34;)
      *             .build());
@@ -9232,6 +9238,7 @@ public final class EcsFunctions {
      *             .nicType(&#34;internet&#34;)
      *             .build());
      * 
+     *         // Pass port_range to the backend service
      *         var backend = new Instance(&#34;backend&#34;, InstanceArgs.builder()        
      *             .userData(String.format(&#34;config_service.sh --portrange=%s&#34;, ingressRulesDs.applyValue(getSecurityGroupRulesResult -&gt; getSecurityGroupRulesResult.rules()[0].portRange())))
      *             .build());
@@ -9292,6 +9299,7 @@ public final class EcsFunctions {
      *             .nicType(&#34;internet&#34;)
      *             .build());
      * 
+     *         // Pass port_range to the backend service
      *         var backend = new Instance(&#34;backend&#34;, InstanceArgs.builder()        
      *             .userData(String.format(&#34;config_service.sh --portrange=%s&#34;, ingressRulesDs.applyValue(getSecurityGroupRulesResult -&gt; getSecurityGroupRulesResult.rules()[0].portRange())))
      *             .build());
@@ -9352,6 +9360,7 @@ public final class EcsFunctions {
      *             .nicType(&#34;internet&#34;)
      *             .build());
      * 
+     *         // Pass port_range to the backend service
      *         var backend = new Instance(&#34;backend&#34;, InstanceArgs.builder()        
      *             .userData(String.format(&#34;config_service.sh --portrange=%s&#34;, ingressRulesDs.applyValue(getSecurityGroupRulesResult -&gt; getSecurityGroupRulesResult.rules()[0].portRange())))
      *             .build());
@@ -9412,6 +9421,7 @@ public final class EcsFunctions {
      *             .nicType(&#34;internet&#34;)
      *             .build());
      * 
+     *         // Pass port_range to the backend service
      *         var backend = new Instance(&#34;backend&#34;, InstanceArgs.builder()        
      *             .userData(String.format(&#34;config_service.sh --portrange=%s&#34;, ingressRulesDs.applyValue(getSecurityGroupRulesResult -&gt; getSecurityGroupRulesResult.rules()[0].portRange())))
      *             .build());
@@ -9458,6 +9468,7 @@ public final class EcsFunctions {
      *             .outputFile(&#34;web_access.json&#34;)
      *             .build());
      * 
+     *         // In conjunction with a VPC
      *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
      * 
      *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
@@ -9507,6 +9518,7 @@ public final class EcsFunctions {
      *             .outputFile(&#34;web_access.json&#34;)
      *             .build());
      * 
+     *         // In conjunction with a VPC
      *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
      * 
      *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
@@ -9556,6 +9568,7 @@ public final class EcsFunctions {
      *             .outputFile(&#34;web_access.json&#34;)
      *             .build());
      * 
+     *         // In conjunction with a VPC
      *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
      * 
      *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
@@ -9605,6 +9618,7 @@ public final class EcsFunctions {
      *             .outputFile(&#34;web_access.json&#34;)
      *             .build());
      * 
+     *         // In conjunction with a VPC
      *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
      * 
      *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
@@ -9654,6 +9668,7 @@ public final class EcsFunctions {
      *             .outputFile(&#34;web_access.json&#34;)
      *             .build());
      * 
+     *         // In conjunction with a VPC
      *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
      * 
      *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
@@ -9703,6 +9718,7 @@ public final class EcsFunctions {
      *             .outputFile(&#34;web_access.json&#34;)
      *             .build());
      * 
+     *         // In conjunction with a VPC
      *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
      * 
      *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()

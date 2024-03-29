@@ -67,11 +67,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         // Create a new ECS instance for VPC
  *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
+ *         // Create a new ECS instance for a VPC
  *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
  *             .description(&#34;foo&#34;)
  *             .vpcId(vpc.id())

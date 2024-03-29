@@ -100,6 +100,7 @@ import javax.annotation.Nullable;
  *                 .provider(alicloud)
  *                 .build());
  * 
+ *         // A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
  *         var fooRouterInterfaceConnection = new RouterInterfaceConnection(&#34;fooRouterInterfaceConnection&#34;, RouterInterfaceConnectionArgs.builder()        
  *             .interfaceId(initiate.id())
  *             .oppositeInterfaceId(opposite.id())
@@ -107,6 +108,7 @@ import javax.annotation.Nullable;
  *                 .dependsOn(barRouterInterfaceConnection)
  *                 .build());
  * 
+ *         // The connection must start from the accepting side.
  *     }
  * }
  * ```

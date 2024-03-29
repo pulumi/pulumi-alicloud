@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new ECS disk.
  *         var ecsDisk = new Disk(&#34;ecsDisk&#34;, DiskArgs.builder()        
  *             .availabilityZone(&#34;cn-beijing-b&#34;)
  *             .category(&#34;cloud_efficiency&#34;)

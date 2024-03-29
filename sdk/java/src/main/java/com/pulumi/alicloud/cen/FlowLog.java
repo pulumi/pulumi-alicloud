@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a cen flowlog resource and use it to publish a route entry pointing to an ECS.
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;);
  * 
  *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        

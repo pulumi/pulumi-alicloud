@@ -1259,10 +1259,12 @@ public final class MongodbFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
+     *         // Create an mongoDB instance with the first matched zone
      *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```
@@ -1305,10 +1307,12 @@ public final class MongodbFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
+     *         // Create an mongoDB instance with the first matched zone
      *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```
@@ -1351,10 +1355,12 @@ public final class MongodbFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
+     *         // Create an mongoDB instance with the first matched zone
      *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```
@@ -1397,10 +1403,12 @@ public final class MongodbFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
+     *         // Create an mongoDB instance with the first matched zone
      *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```
@@ -1443,10 +1451,12 @@ public final class MongodbFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
+     *         // Create an mongoDB instance with the first matched zone
      *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```
@@ -1489,10 +1499,12 @@ public final class MongodbFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
+     *         // Create an mongoDB instance with the first matched zone
      *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```

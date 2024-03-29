@@ -51,10 +51,12 @@ import javax.annotation.Nullable;
  *             .keyName(&#34;terraform-test-key-pair&#34;)
  *             .build());
  * 
+ *         // Using name prefix to build key pair
  *         var prefix = new KeyPair(&#34;prefix&#34;, KeyPairArgs.builder()        
  *             .keyNamePrefix(&#34;terraform-test-key-pair-prefix&#34;)
  *             .build());
  * 
+ *         // Import an existing public key to build a alicloud key pair
  *         var publickey = new KeyPair(&#34;publickey&#34;, KeyPairArgs.builder()        
  *             .keyName(&#34;my_public_key&#34;)
  *             .publicKey(&#34;ssh-rsa AAAAB3Nza12345678qwertyuudsfsg&#34;)
