@@ -738,10 +738,12 @@ public final class GpdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
+     *         // Create an Gpdb instance with the first matched zone
      *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
      *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```
@@ -784,10 +786,12 @@ public final class GpdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
+     *         // Create an Gpdb instance with the first matched zone
      *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
      *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```
@@ -830,10 +834,12 @@ public final class GpdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
+     *         // Create an Gpdb instance with the first matched zone
      *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
      *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```
@@ -876,10 +882,12 @@ public final class GpdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
+     *         // Create an Gpdb instance with the first matched zone
      *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
      *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```
@@ -922,10 +930,12 @@ public final class GpdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
+     *         // Create an Gpdb instance with the first matched zone
      *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
      *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```
@@ -968,10 +978,12 @@ public final class GpdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
+     *         // Create an Gpdb instance with the first matched zone
      *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
      *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```

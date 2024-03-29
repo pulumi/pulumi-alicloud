@@ -31,6 +31,42 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.SnapshotPolicy;
+ * import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sp = new SnapshotPolicy(&#34;sp&#34;, SnapshotPolicyArgs.builder()        
+ *             .repeatWeekdays(            
+ *                 &#34;1&#34;,
+ *                 &#34;2&#34;,
+ *                 &#34;3&#34;)
+ *             .retentionDays(&#34;TODO: GenUnaryOpExpression&#34;)
+ *             .timePoints(            
+ *                 &#34;1&#34;,
+ *                 &#34;22&#34;,
+ *                 &#34;23&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

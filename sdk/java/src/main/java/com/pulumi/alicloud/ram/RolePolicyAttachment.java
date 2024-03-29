@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a RAM Role Policy attachment.
  *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
  *             .document(&#34;&#34;&#34;
  *     {

@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new RAM Group.
  *         var group = new Group(&#34;group&#34;, GroupArgs.builder()        
  *             .comments(&#34;this is a group comments.&#34;)
  *             .build());

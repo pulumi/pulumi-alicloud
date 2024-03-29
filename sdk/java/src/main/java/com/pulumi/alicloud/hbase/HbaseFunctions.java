@@ -375,6 +375,7 @@ public final class HbaseFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```
@@ -421,6 +422,7 @@ public final class HbaseFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```
@@ -467,6 +469,7 @@ public final class HbaseFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```
@@ -513,6 +516,7 @@ public final class HbaseFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```
@@ -559,6 +563,7 @@ public final class HbaseFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```
@@ -605,6 +610,7 @@ public final class HbaseFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
+     *         // Other properties...
      *     }
      * }
      * ```

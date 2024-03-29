@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Add a new Domain.
  *         var dns = new DnsDomain(&#34;dns&#34;, DnsDomainArgs.builder()        
  *             .domainName(&#34;starmove.com&#34;)
  *             .groupId(&#34;85ab8713-4a30-4de4-9d20-155ff830****&#34;)

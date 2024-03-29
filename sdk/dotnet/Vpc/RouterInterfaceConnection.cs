@@ -92,9 +92,9 @@ namespace Pulumi.AliCloud.Vpc
     ///         OppositeInterfaceId = opposite.Id,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             barRouterInterfaceConnection,
+    ///             barRouterInterfaceConnection, 
     ///         },
     ///     });
     /// 

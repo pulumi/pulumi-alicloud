@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  *             .max(99999)
  *             .build());
  * 
+ *         // Create a new Domain config.
  *         var domain = new DomainNew(&#34;domain&#34;, DomainNewArgs.builder()        
  *             .domainName(default_.result().applyValue(result -&gt; String.format(&#34;mycdndomain-%s.alicloud-provider.cn&#34;, result)))
  *             .cdnType(&#34;web&#34;)

@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // create a server certificate
  *         var foo = new ServerCertificate(&#34;foo&#34;, ServerCertificateArgs.builder()        
  *             .privateKey(&#34;&#34;&#34;
  * -----BEGIN RSA PRIVATE KEY-----
@@ -115,6 +116,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // create a server certificate
  *         var foo = new ServerCertificate(&#34;foo&#34;, ServerCertificateArgs.builder()        
  *             .serverCertificate(Files.readString(Paths.get(String.format(&#34;%s/server_certificate.pem&#34;, path.module()))))
  *             .privateKey(Files.readString(Paths.get(String.format(&#34;%s/private_key.pem&#34;, path.module()))))

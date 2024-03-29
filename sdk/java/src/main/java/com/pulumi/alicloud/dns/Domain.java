@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Add a new Domain.
  *         var dns = new Domain(&#34;dns&#34;, DomainArgs.builder()        
  *             .groupId(&#34;85ab8713-4a30-4de4-9d20-155ff830f651&#34;)
  *             .build());
