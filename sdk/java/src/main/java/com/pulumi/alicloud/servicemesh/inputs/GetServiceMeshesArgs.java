@@ -18,14 +18,14 @@ public final class GetServiceMeshesArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetServiceMeshesArgs Empty = new GetServiceMeshesArgs();
 
     /**
-     * Whether to query the detailed list of resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
     /**
-     * @return Whether to query the detailed list of resource attributes.
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> enableDetails() {
@@ -78,14 +78,14 @@ public final class GetServiceMeshesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The status of the resource. Valid values: `running` or `initial`.
+     * The status of the Service Mesh. Valid values: `running`, `initial`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `running` or `initial`.
+     * @return The status of the Service Mesh. Valid values: `running`, `initial`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -121,7 +121,7 @@ public final class GetServiceMeshesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param enableDetails Whether to query the detailed list of resource attributes.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class GetServiceMeshesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param enableDetails Whether to query the detailed list of resource attributes.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class GetServiceMeshesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param status The status of the resource. Valid values: `running` or `initial`.
+         * @param status The status of the Service Mesh. Valid values: `running`, `initial`.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class GetServiceMeshesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param status The status of the resource. Valid values: `running` or `initial`.
+         * @param status The status of the Service Mesh. Valid values: `running`, `initial`.
          * 
          * @return builder
          * 

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,10 +15,25 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ScalingConfigurationInstancePatternInfo {
     /**
+     * @return Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+     * 
+     */
+    private @Nullable List<String> architectures;
+    /**
+     * @return Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+     * 
+     */
+    private @Nullable String burstablePerformance;
+    /**
      * @return The number of vCPUs that are specified for an instance type in instancePatternInfo.
      * 
      */
     private @Nullable Integer cores;
+    /**
+     * @return Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+     * 
+     */
+    private @Nullable List<String> excludedInstanceTypes;
     /**
      * @return The instance family level in instancePatternInfo.
      * 
@@ -36,11 +52,32 @@ public final class ScalingConfigurationInstancePatternInfo {
 
     private ScalingConfigurationInstancePatternInfo() {}
     /**
+     * @return Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+     * 
+     */
+    public List<String> architectures() {
+        return this.architectures == null ? List.of() : this.architectures;
+    }
+    /**
+     * @return Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+     * 
+     */
+    public Optional<String> burstablePerformance() {
+        return Optional.ofNullable(this.burstablePerformance);
+    }
+    /**
      * @return The number of vCPUs that are specified for an instance type in instancePatternInfo.
      * 
      */
     public Optional<Integer> cores() {
         return Optional.ofNullable(this.cores);
+    }
+    /**
+     * @return Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+     * 
+     */
+    public List<String> excludedInstanceTypes() {
+        return this.excludedInstanceTypes == null ? List.of() : this.excludedInstanceTypes;
     }
     /**
      * @return The instance family level in instancePatternInfo.
@@ -73,24 +110,54 @@ public final class ScalingConfigurationInstancePatternInfo {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> architectures;
+        private @Nullable String burstablePerformance;
         private @Nullable Integer cores;
+        private @Nullable List<String> excludedInstanceTypes;
         private @Nullable String instanceFamilyLevel;
         private @Nullable Double maxPrice;
         private @Nullable Double memory;
         public Builder() {}
         public Builder(ScalingConfigurationInstancePatternInfo defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.architectures = defaults.architectures;
+    	      this.burstablePerformance = defaults.burstablePerformance;
     	      this.cores = defaults.cores;
+    	      this.excludedInstanceTypes = defaults.excludedInstanceTypes;
     	      this.instanceFamilyLevel = defaults.instanceFamilyLevel;
     	      this.maxPrice = defaults.maxPrice;
     	      this.memory = defaults.memory;
         }
 
         @CustomType.Setter
+        public Builder architectures(@Nullable List<String> architectures) {
+
+            this.architectures = architectures;
+            return this;
+        }
+        public Builder architectures(String... architectures) {
+            return architectures(List.of(architectures));
+        }
+        @CustomType.Setter
+        public Builder burstablePerformance(@Nullable String burstablePerformance) {
+
+            this.burstablePerformance = burstablePerformance;
+            return this;
+        }
+        @CustomType.Setter
         public Builder cores(@Nullable Integer cores) {
 
             this.cores = cores;
             return this;
+        }
+        @CustomType.Setter
+        public Builder excludedInstanceTypes(@Nullable List<String> excludedInstanceTypes) {
+
+            this.excludedInstanceTypes = excludedInstanceTypes;
+            return this;
+        }
+        public Builder excludedInstanceTypes(String... excludedInstanceTypes) {
+            return excludedInstanceTypes(List.of(excludedInstanceTypes));
         }
         @CustomType.Setter
         public Builder instanceFamilyLevel(@Nullable String instanceFamilyLevel) {
@@ -112,7 +179,10 @@ public final class ScalingConfigurationInstancePatternInfo {
         }
         public ScalingConfigurationInstancePatternInfo build() {
             final var _resultValue = new ScalingConfigurationInstancePatternInfo();
+            _resultValue.architectures = architectures;
+            _resultValue.burstablePerformance = burstablePerformance;
             _resultValue.cores = cores;
+            _resultValue.excludedInstanceTypes = excludedInstanceTypes;
             _resultValue.instanceFamilyLevel = instanceFamilyLevel;
             _resultValue.maxPrice = maxPrice;
             _resultValue.memory = memory;

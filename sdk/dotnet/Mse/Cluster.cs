@@ -10,59 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Mse
 {
     /// <summary>
-    /// Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry's mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
-    /// 
-    /// &gt; **NOTE:** Available in 1.94.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
-    ///     {
-    ///         VpcName = "terraform-example",
-    ///         CidrBlock = "172.17.3.0/24",
-    ///     });
-    /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
-    ///     {
-    ///         VswitchName = "terraform-example",
-    ///         CidrBlock = "172.17.3.0/24",
-    ///         VpcId = exampleNetwork.Id,
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
-    ///     var exampleCluster = new AliCloud.Mse.Cluster("exampleCluster", new()
-    ///     {
-    ///         ClusterSpecification = "MSE_SC_1_2_60_c",
-    ///         ClusterType = "Nacos-Ans",
-    ///         ClusterVersion = "NACOS_2_0_0",
-    ///         InstanceCount = 1,
-    ///         NetType = "privatenet",
-    ///         PubNetworkFlow = "1",
-    ///         ConnectionType = "slb",
-    ///         ClusterAliasName = "terraform-example",
-    ///         MseVersion = "mse_dev",
-    ///         VswitchId = exampleSwitch.Id,
-    ///         VpcId = exampleNetwork.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// ## Import
     /// 
     /// MSE Cluster can be imported using the id, e.g.
@@ -147,6 +94,12 @@ namespace Pulumi.AliCloud.Mse
         public Output<string> NetType { get; private set; } = null!;
 
         /// <summary>
+        /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+        /// </summary>
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
+
+        /// <summary>
         /// The specification of private network SLB.
         /// </summary>
         [Output("privateSlbSpecification")]
@@ -171,10 +124,22 @@ namespace Pulumi.AliCloud.Mse
         public Output<string?> RequestPars { get; private set; } = null!;
 
         /// <summary>
+        /// The resource group of the resource.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The status of MSE Cluster.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The id of the VPC.
@@ -301,6 +266,12 @@ namespace Pulumi.AliCloud.Mse
         public Input<string> NetType { get; set; } = null!;
 
         /// <summary>
+        /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
         /// The specification of private network SLB.
         /// </summary>
         [Input("privateSlbSpecification")]
@@ -323,6 +294,24 @@ namespace Pulumi.AliCloud.Mse
         /// </summary>
         [Input("requestPars")]
         public Input<string>? RequestPars { get; set; }
+
+        /// <summary>
+        /// The resource group of the resource.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The id of the VPC.
@@ -423,6 +412,12 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? NetType { get; set; }
 
         /// <summary>
+        /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
         /// The specification of private network SLB.
         /// </summary>
         [Input("privateSlbSpecification")]
@@ -447,10 +442,28 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? RequestPars { get; set; }
 
         /// <summary>
+        /// The resource group of the resource.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The status of MSE Cluster.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The id of the VPC.

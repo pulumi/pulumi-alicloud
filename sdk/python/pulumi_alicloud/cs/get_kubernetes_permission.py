@@ -9,7 +9,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetKubernetesPermissionResult',
@@ -44,9 +43,9 @@ class GetKubernetesPermissionResult:
 
     @property
     @pulumi.getter
-    def permissions(self) -> Optional[Sequence['outputs.GetKubernetesPermissionPermissionResult']]:
+    def permissions(self) -> Sequence['outputs.GetKubernetesPermissionPermissionResult']:
         """
-        A list of user permission.
+        A list of user permission. See `permissions` below.
         """
         return pulumi.get(self, "permissions")
 
@@ -70,13 +69,12 @@ class AwaitableGetKubernetesPermissionResult(GetKubernetesPermissionResult):
             uid=self.uid)
 
 
-def get_kubernetes_permission(permissions: Optional[Sequence[pulumi.InputType['GetKubernetesPermissionPermissionArgs']]] = None,
-                              uid: Optional[str] = None,
+def get_kubernetes_permission(uid: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubernetesPermissionResult:
     """
     This data source provides a list of Ram user permissions.
 
-    > **NOTE:** Available in v1.122.0+.
+    > **NOTE:** Available since v1.122.0.
 
     ## Example Usage
 
@@ -85,18 +83,16 @@ def get_kubernetes_permission(permissions: Optional[Sequence[pulumi.InputType['G
     import pulumi
     import pulumi_alicloud as alicloud
 
-    users_ds = alicloud.ram.get_users(name_regex="your_user_name")
-    default = alicloud.cs.get_kubernetes_permission(uid=users_ds.users[0].id)
-    pulumi.export("permissions", default.permissions)
+    default_users = alicloud.ram.get_users()
+    default_kubernetes_permission = alicloud.cs.get_kubernetes_permission(uid=default_users.users[0].id)
+    pulumi.export("permissions", default_kubernetes_permission.permissions)
     ```
     <!--End PulumiCodeChooser -->
 
 
-    :param Sequence[pulumi.InputType['GetKubernetesPermissionPermissionArgs']] permissions: A list of user permission.
     :param str uid: The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
     """
     __args__ = dict()
-    __args__['permissions'] = permissions
     __args__['uid'] = uid
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:cs/getKubernetesPermission:getKubernetesPermission', __args__, opts=opts, typ=GetKubernetesPermissionResult).value
@@ -108,13 +104,12 @@ def get_kubernetes_permission(permissions: Optional[Sequence[pulumi.InputType['G
 
 
 @_utilities.lift_output_func(get_kubernetes_permission)
-def get_kubernetes_permission_output(permissions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKubernetesPermissionPermissionArgs']]]]] = None,
-                                     uid: Optional[pulumi.Input[str]] = None,
+def get_kubernetes_permission_output(uid: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesPermissionResult]:
     """
     This data source provides a list of Ram user permissions.
 
-    > **NOTE:** Available in v1.122.0+.
+    > **NOTE:** Available since v1.122.0.
 
     ## Example Usage
 
@@ -123,14 +118,13 @@ def get_kubernetes_permission_output(permissions: Optional[pulumi.Input[Optional
     import pulumi
     import pulumi_alicloud as alicloud
 
-    users_ds = alicloud.ram.get_users(name_regex="your_user_name")
-    default = alicloud.cs.get_kubernetes_permission(uid=users_ds.users[0].id)
-    pulumi.export("permissions", default.permissions)
+    default_users = alicloud.ram.get_users()
+    default_kubernetes_permission = alicloud.cs.get_kubernetes_permission(uid=default_users.users[0].id)
+    pulumi.export("permissions", default_kubernetes_permission.permissions)
     ```
     <!--End PulumiCodeChooser -->
 
 
-    :param Sequence[pulumi.InputType['GetKubernetesPermissionPermissionArgs']] permissions: A list of user permission.
     :param str uid: The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
     """
     ...

@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.Quotas
         public string? QuotaActionCode { get; set; }
 
         /// <summary>
-        /// The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
+        /// The category of quota. Valid Values: `FlowControl` and `CommonQuota`, `WhiteListLabel`.
         /// </summary>
         [Input("quotaCategory")]
         public string? QuotaCategory { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Quotas
         public Input<string>? QuotaActionCode { get; set; }
 
         /// <summary>
-        /// The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
+        /// The category of quota. Valid Values: `FlowControl` and `CommonQuota`, `WhiteListLabel`.
         /// </summary>
         [Input("quotaCategory")]
         public Input<string>? QuotaCategory { get; set; }

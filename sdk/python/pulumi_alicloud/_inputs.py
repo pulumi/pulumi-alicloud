@@ -11,6 +11,7 @@ from . import _utilities
 
 __all__ = [
     'ProviderAssumeRoleArgs',
+    'ProviderAssumeRoleWithOidcArgs',
     'ProviderEndpointArgs',
     'ProviderSignVersionArgs',
 ]
@@ -91,6 +92,119 @@ class ProviderAssumeRoleArgs:
     @session_name.setter
     def session_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "session_name", value)
+
+
+@pulumi.input_type
+class ProviderAssumeRoleWithOidcArgs:
+    def __init__(__self__, *,
+                 oidc_provider_arn: pulumi.Input[str],
+                 role_arn: pulumi.Input[str],
+                 oidc_token: Optional[pulumi.Input[str]] = None,
+                 oidc_token_file: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
+                 role_session_name: Optional[pulumi.Input[str]] = None,
+                 session_expiration: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] oidc_provider_arn: ARN of the OIDC IdP.
+        :param pulumi.Input[str] role_arn: ARN of a RAM role to assume prior to making API calls.
+        :param pulumi.Input[str] oidc_token_file: The file path of OIDC token that is issued by the external IdP.
+        :param pulumi.Input[str] policy: The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
+        :param pulumi.Input[str] role_session_name: The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
+        :param pulumi.Input[int] session_expiration: The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+        """
+        pulumi.set(__self__, "oidc_provider_arn", oidc_provider_arn)
+        pulumi.set(__self__, "role_arn", role_arn)
+        if oidc_token is not None:
+            pulumi.set(__self__, "oidc_token", oidc_token)
+        if oidc_token_file is not None:
+            pulumi.set(__self__, "oidc_token_file", oidc_token_file)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if role_session_name is not None:
+            pulumi.set(__self__, "role_session_name", role_session_name)
+        if session_expiration is not None:
+            pulumi.set(__self__, "session_expiration", session_expiration)
+
+    @property
+    @pulumi.getter(name="oidcProviderArn")
+    def oidc_provider_arn(self) -> pulumi.Input[str]:
+        """
+        ARN of the OIDC IdP.
+        """
+        return pulumi.get(self, "oidc_provider_arn")
+
+    @oidc_provider_arn.setter
+    def oidc_provider_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "oidc_provider_arn", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> pulumi.Input[str]:
+        """
+        ARN of a RAM role to assume prior to making API calls.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter(name="oidcToken")
+    def oidc_token(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "oidc_token")
+
+    @oidc_token.setter
+    def oidc_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oidc_token", value)
+
+    @property
+    @pulumi.getter(name="oidcTokenFile")
+    def oidc_token_file(self) -> Optional[pulumi.Input[str]]:
+        """
+        The file path of OIDC token that is issued by the external IdP.
+        """
+        return pulumi.get(self, "oidc_token_file")
+
+    @oidc_token_file.setter
+    def oidc_token_file(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oidc_token_file", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter(name="roleSessionName")
+    def role_session_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
+        """
+        return pulumi.get(self, "role_session_name")
+
+    @role_session_name.setter
+    def role_session_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_session_name", value)
+
+    @property
+    @pulumi.getter(name="sessionExpiration")
+    def session_expiration(self) -> Optional[pulumi.Input[int]]:
+        """
+        The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+        """
+        return pulumi.get(self, "session_expiration")
+
+    @session_expiration.setter
+    def session_expiration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "session_expiration", value)
 
 
 @pulumi.input_type

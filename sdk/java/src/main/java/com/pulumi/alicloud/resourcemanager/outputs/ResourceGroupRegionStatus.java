@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ResourceGroupRegionStatus {
     /**
-     * @return The region ID.
+     * @return The status of the region.
      * 
      */
     private @Nullable String regionId;
     /**
-     * @return The status of the regional resource group.
+     * @return The status of the resource group.
      * 
      */
     private @Nullable String status;
 
     private ResourceGroupRegionStatus() {}
     /**
-     * @return The region ID.
+     * @return The status of the region.
      * 
      */
     public Optional<String> regionId() {
         return Optional.ofNullable(this.regionId);
     }
     /**
-     * @return The status of the regional resource group.
+     * @return The status of the resource group.
      * 
      */
     public Optional<String> status() {

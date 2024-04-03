@@ -708,6 +708,20 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.scalingConfig;
     }
     /**
+     * The ID of the scaling group.
+     * 
+     */
+    @Export(name="scalingGroupId", refs={String.class}, tree="[0]")
+    private Output<String> scalingGroupId;
+
+    /**
+     * @return The ID of the scaling group.
+     * 
+     */
+    public Output<String> scalingGroupId() {
+        return this.scalingGroupId;
+    }
+    /**
      * Scaling group mode, default value: `release`. Valid values:
      * 
      */

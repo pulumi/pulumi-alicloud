@@ -8,21 +8,19 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKubernetesPermissionPermission {
     /**
-     * @return ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+     * @return Indicates whether the permissions are granted to the cluster owner. Valid values `false`, `true`.
      * 
      */
-    private @Nullable Boolean isOwner;
+    private Boolean isOwner;
     /**
-     * @return Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+     * @return Indicates whether the permissions are granted to the RAM role. Valid values `false`, `true`.
      * 
      */
-    private @Nullable Boolean isRamRole;
+    private Boolean isRamRole;
     /**
      * @return The permission settings to manage ACK clusters.
      * 
@@ -42,22 +40,22 @@ public final class GetKubernetesPermissionPermission {
      * @return The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
      * 
      */
-    private @Nullable String roleType;
+    private String roleType;
 
     private GetKubernetesPermissionPermission() {}
     /**
-     * @return ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+     * @return Indicates whether the permissions are granted to the cluster owner. Valid values `false`, `true`.
      * 
      */
-    public Optional<Boolean> isOwner() {
-        return Optional.ofNullable(this.isOwner);
+    public Boolean isOwner() {
+        return this.isOwner;
     }
     /**
-     * @return Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+     * @return Indicates whether the permissions are granted to the RAM role. Valid values `false`, `true`.
      * 
      */
-    public Optional<Boolean> isRamRole() {
-        return Optional.ofNullable(this.isRamRole);
+    public Boolean isRamRole() {
+        return this.isRamRole;
     }
     /**
      * @return The permission settings to manage ACK clusters.
@@ -84,8 +82,8 @@ public final class GetKubernetesPermissionPermission {
      * @return The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
      * 
      */
-    public Optional<String> roleType() {
-        return Optional.ofNullable(this.roleType);
+    public String roleType() {
+        return this.roleType;
     }
 
     public static Builder builder() {
@@ -97,12 +95,12 @@ public final class GetKubernetesPermissionPermission {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean isOwner;
-        private @Nullable Boolean isRamRole;
+        private Boolean isOwner;
+        private Boolean isRamRole;
         private String resourceId;
         private String resourceType;
         private String roleName;
-        private @Nullable String roleType;
+        private String roleType;
         public Builder() {}
         public Builder(GetKubernetesPermissionPermission defaults) {
     	      Objects.requireNonNull(defaults);
@@ -115,14 +113,18 @@ public final class GetKubernetesPermissionPermission {
         }
 
         @CustomType.Setter
-        public Builder isOwner(@Nullable Boolean isOwner) {
-
+        public Builder isOwner(Boolean isOwner) {
+            if (isOwner == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesPermissionPermission", "isOwner");
+            }
             this.isOwner = isOwner;
             return this;
         }
         @CustomType.Setter
-        public Builder isRamRole(@Nullable Boolean isRamRole) {
-
+        public Builder isRamRole(Boolean isRamRole) {
+            if (isRamRole == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesPermissionPermission", "isRamRole");
+            }
             this.isRamRole = isRamRole;
             return this;
         }
@@ -151,8 +153,10 @@ public final class GetKubernetesPermissionPermission {
             return this;
         }
         @CustomType.Setter
-        public Builder roleType(@Nullable String roleType) {
-
+        public Builder roleType(String roleType) {
+            if (roleType == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesPermissionPermission", "roleType");
+            }
             this.roleType = roleType;
             return this;
         }

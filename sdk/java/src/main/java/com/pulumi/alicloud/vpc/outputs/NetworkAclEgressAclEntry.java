@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworkAclEgressAclEntry {
     /**
-     * @return The description of the outbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     private @Nullable String description;
@@ -22,7 +22,17 @@ public final class NetworkAclEgressAclEntry {
      */
     private @Nullable String destinationCidrIp;
     /**
-     * @return Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return The route entry type. The value can be `custom`, indicating custom.
+     * 
+     */
+    private @Nullable String entryType;
+    /**
+     * @return The IP protocol version of the route entry. Valid values: &#34;IPV4&#34; and &#34;IPV4&#39;.
+     * 
+     */
+    private @Nullable String ipVersion;
+    /**
+     * @return Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     private @Nullable String networkAclEntryName;
@@ -34,7 +44,7 @@ public final class NetworkAclEgressAclEntry {
      */
     private @Nullable String policy;
     /**
-     * @return The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+     * @return The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     private @Nullable String port;
@@ -51,7 +61,7 @@ public final class NetworkAclEgressAclEntry {
 
     private NetworkAclEgressAclEntry() {}
     /**
-     * @return The description of the outbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<String> description() {
@@ -65,7 +75,21 @@ public final class NetworkAclEgressAclEntry {
         return Optional.ofNullable(this.destinationCidrIp);
     }
     /**
-     * @return Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return The route entry type. The value can be `custom`, indicating custom.
+     * 
+     */
+    public Optional<String> entryType() {
+        return Optional.ofNullable(this.entryType);
+    }
+    /**
+     * @return The IP protocol version of the route entry. Valid values: &#34;IPV4&#34; and &#34;IPV4&#39;.
+     * 
+     */
+    public Optional<String> ipVersion() {
+        return Optional.ofNullable(this.ipVersion);
+    }
+    /**
+     * @return Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<String> networkAclEntryName() {
@@ -81,7 +105,7 @@ public final class NetworkAclEgressAclEntry {
         return Optional.ofNullable(this.policy);
     }
     /**
-     * @return The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+     * @return The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     public Optional<String> port() {
@@ -111,6 +135,8 @@ public final class NetworkAclEgressAclEntry {
     public static final class Builder {
         private @Nullable String description;
         private @Nullable String destinationCidrIp;
+        private @Nullable String entryType;
+        private @Nullable String ipVersion;
         private @Nullable String networkAclEntryName;
         private @Nullable String policy;
         private @Nullable String port;
@@ -120,6 +146,8 @@ public final class NetworkAclEgressAclEntry {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.destinationCidrIp = defaults.destinationCidrIp;
+    	      this.entryType = defaults.entryType;
+    	      this.ipVersion = defaults.ipVersion;
     	      this.networkAclEntryName = defaults.networkAclEntryName;
     	      this.policy = defaults.policy;
     	      this.port = defaults.port;
@@ -136,6 +164,18 @@ public final class NetworkAclEgressAclEntry {
         public Builder destinationCidrIp(@Nullable String destinationCidrIp) {
 
             this.destinationCidrIp = destinationCidrIp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder entryType(@Nullable String entryType) {
+
+            this.entryType = entryType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipVersion(@Nullable String ipVersion) {
+
+            this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
@@ -166,6 +206,8 @@ public final class NetworkAclEgressAclEntry {
             final var _resultValue = new NetworkAclEgressAclEntry();
             _resultValue.description = description;
             _resultValue.destinationCidrIp = destinationCidrIp;
+            _resultValue.entryType = entryType;
+            _resultValue.ipVersion = ipVersion;
             _resultValue.networkAclEntryName = networkAclEntryName;
             _resultValue.policy = policy;
             _resultValue.port = port;

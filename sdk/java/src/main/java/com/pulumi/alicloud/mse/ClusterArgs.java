@@ -7,8 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -169,6 +171,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+     * 
+     */
+    @Import(name="paymentType")
+    private @Nullable Output<String> paymentType;
+
+    /**
+     * @return Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+     * 
+     */
+    public Optional<Output<String>> paymentType() {
+        return Optional.ofNullable(this.paymentType);
+    }
+
+    /**
      * The specification of private network SLB.
      * 
      */
@@ -229,6 +246,36 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The resource group of the resource.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The resource group of the resource.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The id of the VPC.
      * 
      */
@@ -271,10 +318,13 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.instanceCount = $.instanceCount;
         this.mseVersion = $.mseVersion;
         this.netType = $.netType;
+        this.paymentType = $.paymentType;
         this.privateSlbSpecification = $.privateSlbSpecification;
         this.pubNetworkFlow = $.pubNetworkFlow;
         this.pubSlbSpecification = $.pubSlbSpecification;
         this.requestPars = $.requestPars;
+        this.resourceGroupId = $.resourceGroupId;
+        this.tags = $.tags;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
     }
@@ -518,6 +568,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param paymentType Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(@Nullable Output<String> paymentType) {
+            $.paymentType = paymentType;
+            return this;
+        }
+
+        /**
+         * @param paymentType Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(String paymentType) {
+            return paymentType(Output.of(paymentType));
+        }
+
+        /**
          * @param privateSlbSpecification The specification of private network SLB.
          * 
          * @return builder
@@ -599,6 +670,48 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder requestPars(String requestPars) {
             return requestPars(Output.of(requestPars));
+        }
+
+        /**
+         * @param resourceGroupId The resource group of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The resource group of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

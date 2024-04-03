@@ -61,6 +61,13 @@ namespace Pulumi.AliCloud
             set => _assumeRole.Set(value);
         }
 
+        private static readonly __Value<Pulumi.AliCloud.Config.Types.AssumeRoleWithOidc?> _assumeRoleWithOidc = new __Value<Pulumi.AliCloud.Config.Types.AssumeRoleWithOidc?>(() => __config.GetObject<Pulumi.AliCloud.Config.Types.AssumeRoleWithOidc>("assumeRoleWithOidc"));
+        public static Pulumi.AliCloud.Config.Types.AssumeRoleWithOidc? AssumeRoleWithOidc
+        {
+            get => _assumeRoleWithOidc.Get();
+            set => _assumeRoleWithOidc.Set(value);
+        }
+
         private static readonly __Value<int?> _clientConnectTimeout = new __Value<int?>(() => __config.GetInt32("clientConnectTimeout"));
         /// <summary>
         /// The maximum timeout of the client connection server.
@@ -276,6 +283,35 @@ namespace Pulumi.AliCloud
             /// </summary>
                 public int? SessionExpiration { get; set; }
                 public string? SessionName { get; set; } = null!;
+            }
+
+             public class AssumeRoleWithOidc
+             {
+            /// <summary>
+            /// ARN of the OIDC IdP.
+            /// </summary>
+                public string OidcProviderArn { get; set; }
+                public string? OidcToken { get; set; } = null!;
+            /// <summary>
+            /// The file path of OIDC token that is issued by the external IdP.
+            /// </summary>
+                public string? OidcTokenFile { get; set; } = null!;
+            /// <summary>
+            /// The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
+            /// </summary>
+                public string? Policy { get; set; } = null!;
+            /// <summary>
+            /// ARN of a RAM role to assume prior to making API calls.
+            /// </summary>
+                public string RoleArn { get; set; }
+            /// <summary>
+            /// The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
+            /// </summary>
+                public string? RoleSessionName { get; set; } = null!;
+            /// <summary>
+            /// The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+            /// </summary>
+                public int? SessionExpiration { get; set; }
             }
 
              public class Endpoints

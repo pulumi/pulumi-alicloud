@@ -50,7 +50,7 @@ export interface GetTemplateApplicationsArgs {
      */
     quotaActionCode?: string;
     /**
-     * The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+     * The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
      */
     quotaCategory?: string;
 }
@@ -123,7 +123,7 @@ export interface GetTemplateApplicationsOutputArgs {
      */
     quotaActionCode?: pulumi.Input<string>;
     /**
-     * The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+     * The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
      */
     quotaCategory?: pulumi.Input<string>;
 }

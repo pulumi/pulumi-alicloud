@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Network Acl resource.
+    /// Provides a VPC Network Acl resource. Network Access Control List (ACL) is a Network Access Control function in VPC. You can customize the network ACL rules and bind the network ACL to the switch to control the traffic of ECS instances in the switch.
     /// 
     /// For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
     /// 
@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        /// The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -129,13 +129,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableArray<Outputs.NetworkAclIngressAclEntry>> IngressAclEntries { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+        /// . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        /// The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         [Output("networkAclName")]
         public Output<string> NetworkAclName { get; private set; } = null!;
@@ -147,7 +147,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableArray<Outputs.NetworkAclResource>> Resources { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the associated resource.
+        /// SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+        /// </summary>
+        [Output("sourceNetworkAclId")]
+        public Output<string?> SourceNetworkAclId { get; private set; } = null!;
+
+        /// <summary>
+        /// The state of the network ACL.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -213,7 +219,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NetworkAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        /// The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -243,13 +249,13 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+        /// . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        /// The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("networkAclName")]
         public Input<string>? NetworkAclName { get; set; }
@@ -265,6 +271,12 @@ namespace Pulumi.AliCloud.Vpc
             get => _resources ?? (_resources = new InputList<Inputs.NetworkAclResourceArgs>());
             set => _resources = value;
         }
+
+        /// <summary>
+        /// SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+        /// </summary>
+        [Input("sourceNetworkAclId")]
+        public Input<string>? SourceNetworkAclId { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -301,7 +313,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        /// The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -331,13 +343,13 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+        /// . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        /// The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("networkAclName")]
         public Input<string>? NetworkAclName { get; set; }
@@ -355,7 +367,13 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The status of the associated resource.
+        /// SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+        /// </summary>
+        [Input("sourceNetworkAclId")]
+        public Input<string>? SourceNetworkAclId { get; set; }
+
+        /// <summary>
+        /// The state of the network ACL.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

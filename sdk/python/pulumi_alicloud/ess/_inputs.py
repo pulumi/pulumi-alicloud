@@ -1807,24 +1807,60 @@ class ScalingConfigurationDataDiskArgs:
 @pulumi.input_type
 class ScalingConfigurationInstancePatternInfoArgs:
     def __init__(__self__, *,
+                 architectures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 burstable_performance: Optional[pulumi.Input[str]] = None,
                  cores: Optional[pulumi.Input[int]] = None,
+                 excluded_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_family_level: Optional[pulumi.Input[str]] = None,
                  max_price: Optional[pulumi.Input[float]] = None,
                  memory: Optional[pulumi.Input[float]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] architectures: Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+        :param pulumi.Input[str] burstable_performance: Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
         :param pulumi.Input[int] cores: The number of vCPUs that are specified for an instance type in instancePatternInfo.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_instance_types: Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
         :param pulumi.Input[str] instance_family_level: The instance family level in instancePatternInfo.
         :param pulumi.Input[float] max_price: The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
         :param pulumi.Input[float] memory: The memory size that is specified for an instance type in instancePatternInfo.
         """
+        if architectures is not None:
+            pulumi.set(__self__, "architectures", architectures)
+        if burstable_performance is not None:
+            pulumi.set(__self__, "burstable_performance", burstable_performance)
         if cores is not None:
             pulumi.set(__self__, "cores", cores)
+        if excluded_instance_types is not None:
+            pulumi.set(__self__, "excluded_instance_types", excluded_instance_types)
         if instance_family_level is not None:
             pulumi.set(__self__, "instance_family_level", instance_family_level)
         if max_price is not None:
             pulumi.set(__self__, "max_price", max_price)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def architectures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+        """
+        return pulumi.get(self, "architectures")
+
+    @architectures.setter
+    def architectures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "architectures", value)
+
+    @property
+    @pulumi.getter(name="burstablePerformance")
+    def burstable_performance(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+        """
+        return pulumi.get(self, "burstable_performance")
+
+    @burstable_performance.setter
+    def burstable_performance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "burstable_performance", value)
 
     @property
     @pulumi.getter
@@ -1837,6 +1873,18 @@ class ScalingConfigurationInstancePatternInfoArgs:
     @cores.setter
     def cores(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cores", value)
+
+    @property
+    @pulumi.getter(name="excludedInstanceTypes")
+    def excluded_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+        """
+        return pulumi.get(self, "excluded_instance_types")
+
+    @excluded_instance_types.setter
+    def excluded_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_instance_types", value)
 
     @property
     @pulumi.getter(name="instanceFamilyLevel")

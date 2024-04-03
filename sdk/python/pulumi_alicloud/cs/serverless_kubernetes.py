@@ -1146,6 +1146,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             zone_id=default_zones.zones[0].id)
         serverless = alicloud.cs.ServerlessKubernetes("serverless",
             name_prefix=name,
+            cluster_spec="ack.pro.small",
             vpc_id=default_network.id,
             vswitch_ids=[default_switch.id],
             new_nat_gateway=True,
@@ -1271,6 +1272,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             zone_id=default_zones.zones[0].id)
         serverless = alicloud.cs.ServerlessKubernetes("serverless",
             name_prefix=name,
+            cluster_spec="ack.pro.small",
             vpc_id=default_network.id,
             vswitch_ids=[default_switch.id],
             new_nat_gateway=True,

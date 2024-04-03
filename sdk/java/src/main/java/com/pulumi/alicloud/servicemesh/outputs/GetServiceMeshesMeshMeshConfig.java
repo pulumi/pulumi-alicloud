@@ -32,7 +32,7 @@ public final class GetServiceMeshesMeshMeshConfig {
      */
     private List<GetServiceMeshesMeshMeshConfigAudit> audits;
     /**
-     * @return The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
+     * @return (Available since v1.174.0) The configuration of the control plane logging.
      * 
      */
     private List<GetServiceMeshesMeshMeshConfigControlPlaneLog> controlPlaneLogs;
@@ -62,7 +62,7 @@ public final class GetServiceMeshesMeshMeshConfig {
      */
     private List<GetServiceMeshesMeshMeshConfigOpa> opas;
     /**
-     * @return The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+     * @return The policy of the Out to the traffic.
      * 
      */
     private String outboundTrafficPolicy;
@@ -113,7 +113,7 @@ public final class GetServiceMeshesMeshMeshConfig {
         return this.audits;
     }
     /**
-     * @return The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
+     * @return (Available since v1.174.0) The configuration of the control plane logging.
      * 
      */
     public List<GetServiceMeshesMeshMeshConfigControlPlaneLog> controlPlaneLogs() {
@@ -155,7 +155,7 @@ public final class GetServiceMeshesMeshMeshConfig {
         return this.opas;
     }
     /**
-     * @return The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+     * @return The policy of the Out to the traffic.
      * 
      */
     public String outboundTrafficPolicy() {

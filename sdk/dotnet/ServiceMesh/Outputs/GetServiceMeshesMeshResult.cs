@@ -14,67 +14,67 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class GetServiceMeshesMeshResult
     {
         /// <summary>
-        /// Cluster List.
+        /// The Cluster List.
         /// </summary>
         public readonly ImmutableArray<string> Clusters;
         /// <summary>
-        /// The created time of the resource.
+        /// The created time of the Service Mesh instance.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Grid instance version type. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+        /// Grid instance version type. **Note:** `edition` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string Edition;
         /// <summary>
-        /// The endpoint details.
+        /// The endpoint details. **Note:** `endpoints` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMeshesMeshEndpointResult> Endpoints;
         /// <summary>
-        /// The Cause of the Error.
+        /// The returned error message.
         /// </summary>
         public readonly string ErrorMessage;
         /// <summary>
-        /// The ID of the Service Mesh.
+        /// The ID of the Service Mesh instance.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The Istio Operator Version. **Note:** the `istio_operator_version` is available from the version v1.170.0.
+        /// (Available since v1.170.0) The Istio Operator Version. **Note:** `istio_operator_version` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string IstioOperatorVersion;
         /// <summary>
-        /// The content of Kube config.
+        /// The content of Kube config. **Note:** `kube_config` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string KubeConfig;
         /// <summary>
-        /// The configuration of the Load Balancer.
+        /// The configuration of the Load Balancer. **Note:** `load_balancer` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMeshesMeshLoadBalancerResult> LoadBalancers;
         /// <summary>
-        /// The configuration of the Service grid.
+        /// The configuration of the Service grid. **Note:** `mesh_config` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMeshesMeshMeshConfigResult> MeshConfigs;
         /// <summary>
-        /// The configuration of the Service grid network.
+        /// The configuration of the Service grid network. **Note:** `network` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMeshesMeshNetworkResult> Networks;
         /// <summary>
-        /// The first ID of the resource.
+        /// The ID of the Service Mesh instance.
         /// </summary>
         public readonly string ServiceMeshId;
         /// <summary>
-        /// The name of the resource.
+        /// The name of the Service Mesh instance.
         /// </summary>
         public readonly string ServiceMeshName;
         /// <summary>
-        /// The SideCar Version. **Note:** the `sidecar_version` is available from the version v1.170.0.
+        /// (Available since v1.170.0) The SideCar Version. **Note:** `sidecar_version` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string SidecarVersion;
         /// <summary>
-        /// The status of the resource. Valid values: `running` or `initial`.
+        /// The status of the Service Mesh. Valid values: `running`, `initial`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The version of the resource.
+        /// The version of the Service Mesh instance.
         /// </summary>
         public readonly string Version;
 

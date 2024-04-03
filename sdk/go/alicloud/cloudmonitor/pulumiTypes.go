@@ -423,6 +423,139 @@ func (o ServiceGroupMonitoringAgentProcessMatchExpressArrayOutput) Index(i pulum
 	}).(ServiceGroupMonitoringAgentProcessMatchExpressOutput)
 }
 
+type GetServiceHybridDoubleWritesHybridDoubleWrite struct {
+	// The ID of the Hybrid Double Write. It formats as `<source_namespace>:<source_user_id>`.
+	Id string `pulumi:"id"`
+	// Target Namespace.
+	Namespace string `pulumi:"namespace"`
+	// Source Namespace.
+	SourceNamespace string `pulumi:"sourceNamespace"`
+	// Source UserId.
+	SourceUserId string `pulumi:"sourceUserId"`
+	// Target UserId.
+	UserId string `pulumi:"userId"`
+}
+
+// GetServiceHybridDoubleWritesHybridDoubleWriteInput is an input type that accepts GetServiceHybridDoubleWritesHybridDoubleWriteArgs and GetServiceHybridDoubleWritesHybridDoubleWriteOutput values.
+// You can construct a concrete instance of `GetServiceHybridDoubleWritesHybridDoubleWriteInput` via:
+//
+//	GetServiceHybridDoubleWritesHybridDoubleWriteArgs{...}
+type GetServiceHybridDoubleWritesHybridDoubleWriteInput interface {
+	pulumi.Input
+
+	ToGetServiceHybridDoubleWritesHybridDoubleWriteOutput() GetServiceHybridDoubleWritesHybridDoubleWriteOutput
+	ToGetServiceHybridDoubleWritesHybridDoubleWriteOutputWithContext(context.Context) GetServiceHybridDoubleWritesHybridDoubleWriteOutput
+}
+
+type GetServiceHybridDoubleWritesHybridDoubleWriteArgs struct {
+	// The ID of the Hybrid Double Write. It formats as `<source_namespace>:<source_user_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Target Namespace.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Source Namespace.
+	SourceNamespace pulumi.StringInput `pulumi:"sourceNamespace"`
+	// Source UserId.
+	SourceUserId pulumi.StringInput `pulumi:"sourceUserId"`
+	// Target UserId.
+	UserId pulumi.StringInput `pulumi:"userId"`
+}
+
+func (GetServiceHybridDoubleWritesHybridDoubleWriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceHybridDoubleWritesHybridDoubleWrite)(nil)).Elem()
+}
+
+func (i GetServiceHybridDoubleWritesHybridDoubleWriteArgs) ToGetServiceHybridDoubleWritesHybridDoubleWriteOutput() GetServiceHybridDoubleWritesHybridDoubleWriteOutput {
+	return i.ToGetServiceHybridDoubleWritesHybridDoubleWriteOutputWithContext(context.Background())
+}
+
+func (i GetServiceHybridDoubleWritesHybridDoubleWriteArgs) ToGetServiceHybridDoubleWritesHybridDoubleWriteOutputWithContext(ctx context.Context) GetServiceHybridDoubleWritesHybridDoubleWriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceHybridDoubleWritesHybridDoubleWriteOutput)
+}
+
+// GetServiceHybridDoubleWritesHybridDoubleWriteArrayInput is an input type that accepts GetServiceHybridDoubleWritesHybridDoubleWriteArray and GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput values.
+// You can construct a concrete instance of `GetServiceHybridDoubleWritesHybridDoubleWriteArrayInput` via:
+//
+//	GetServiceHybridDoubleWritesHybridDoubleWriteArray{ GetServiceHybridDoubleWritesHybridDoubleWriteArgs{...} }
+type GetServiceHybridDoubleWritesHybridDoubleWriteArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput() GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput
+	ToGetServiceHybridDoubleWritesHybridDoubleWriteArrayOutputWithContext(context.Context) GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput
+}
+
+type GetServiceHybridDoubleWritesHybridDoubleWriteArray []GetServiceHybridDoubleWritesHybridDoubleWriteInput
+
+func (GetServiceHybridDoubleWritesHybridDoubleWriteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceHybridDoubleWritesHybridDoubleWrite)(nil)).Elem()
+}
+
+func (i GetServiceHybridDoubleWritesHybridDoubleWriteArray) ToGetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput() GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput {
+	return i.ToGetServiceHybridDoubleWritesHybridDoubleWriteArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceHybridDoubleWritesHybridDoubleWriteArray) ToGetServiceHybridDoubleWritesHybridDoubleWriteArrayOutputWithContext(ctx context.Context) GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput)
+}
+
+type GetServiceHybridDoubleWritesHybridDoubleWriteOutput struct{ *pulumi.OutputState }
+
+func (GetServiceHybridDoubleWritesHybridDoubleWriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceHybridDoubleWritesHybridDoubleWrite)(nil)).Elem()
+}
+
+func (o GetServiceHybridDoubleWritesHybridDoubleWriteOutput) ToGetServiceHybridDoubleWritesHybridDoubleWriteOutput() GetServiceHybridDoubleWritesHybridDoubleWriteOutput {
+	return o
+}
+
+func (o GetServiceHybridDoubleWritesHybridDoubleWriteOutput) ToGetServiceHybridDoubleWritesHybridDoubleWriteOutputWithContext(ctx context.Context) GetServiceHybridDoubleWritesHybridDoubleWriteOutput {
+	return o
+}
+
+// The ID of the Hybrid Double Write. It formats as `<source_namespace>:<source_user_id>`.
+func (o GetServiceHybridDoubleWritesHybridDoubleWriteOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceHybridDoubleWritesHybridDoubleWrite) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Target Namespace.
+func (o GetServiceHybridDoubleWritesHybridDoubleWriteOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceHybridDoubleWritesHybridDoubleWrite) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Source Namespace.
+func (o GetServiceHybridDoubleWritesHybridDoubleWriteOutput) SourceNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceHybridDoubleWritesHybridDoubleWrite) string { return v.SourceNamespace }).(pulumi.StringOutput)
+}
+
+// Source UserId.
+func (o GetServiceHybridDoubleWritesHybridDoubleWriteOutput) SourceUserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceHybridDoubleWritesHybridDoubleWrite) string { return v.SourceUserId }).(pulumi.StringOutput)
+}
+
+// Target UserId.
+func (o GetServiceHybridDoubleWritesHybridDoubleWriteOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceHybridDoubleWritesHybridDoubleWrite) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+type GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceHybridDoubleWritesHybridDoubleWrite)(nil)).Elem()
+}
+
+func (o GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput) ToGetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput() GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput {
+	return o
+}
+
+func (o GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput) ToGetServiceHybridDoubleWritesHybridDoubleWriteArrayOutputWithContext(ctx context.Context) GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput {
+	return o
+}
+
+func (o GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput) Index(i pulumi.IntInput) GetServiceHybridDoubleWritesHybridDoubleWriteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceHybridDoubleWritesHybridDoubleWrite {
+		return vs[0].([]GetServiceHybridDoubleWritesHybridDoubleWrite)[vs[1].(int)]
+	}).(GetServiceHybridDoubleWritesHybridDoubleWriteOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceGroupMonitoringAgentProcessAlertConfigInput)(nil)).Elem(), ServiceGroupMonitoringAgentProcessAlertConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceGroupMonitoringAgentProcessAlertConfigArrayInput)(nil)).Elem(), ServiceGroupMonitoringAgentProcessAlertConfigArray{})
@@ -430,10 +563,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceGroupMonitoringAgentProcessAlertConfigTargetListArrayInput)(nil)).Elem(), ServiceGroupMonitoringAgentProcessAlertConfigTargetListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceGroupMonitoringAgentProcessMatchExpressInput)(nil)).Elem(), ServiceGroupMonitoringAgentProcessMatchExpressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceGroupMonitoringAgentProcessMatchExpressArrayInput)(nil)).Elem(), ServiceGroupMonitoringAgentProcessMatchExpressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHybridDoubleWritesHybridDoubleWriteInput)(nil)).Elem(), GetServiceHybridDoubleWritesHybridDoubleWriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHybridDoubleWritesHybridDoubleWriteArrayInput)(nil)).Elem(), GetServiceHybridDoubleWritesHybridDoubleWriteArray{})
 	pulumi.RegisterOutputType(ServiceGroupMonitoringAgentProcessAlertConfigOutput{})
 	pulumi.RegisterOutputType(ServiceGroupMonitoringAgentProcessAlertConfigArrayOutput{})
 	pulumi.RegisterOutputType(ServiceGroupMonitoringAgentProcessAlertConfigTargetListOutput{})
 	pulumi.RegisterOutputType(ServiceGroupMonitoringAgentProcessAlertConfigTargetListArrayOutput{})
 	pulumi.RegisterOutputType(ServiceGroupMonitoringAgentProcessMatchExpressOutput{})
 	pulumi.RegisterOutputType(ServiceGroupMonitoringAgentProcessMatchExpressArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceHybridDoubleWritesHybridDoubleWriteOutput{})
+	pulumi.RegisterOutputType(GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput{})
 }

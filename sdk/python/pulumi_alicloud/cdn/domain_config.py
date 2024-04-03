@@ -18,16 +18,20 @@ class DomainConfigArgs:
     def __init__(__self__, *,
                  domain_name: pulumi.Input[str],
                  function_args: pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]],
-                 function_name: pulumi.Input[str]):
+                 function_name: pulumi.Input[str],
+                 parent_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DomainConfig resource.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config. See `function_args` below.
         :param pulumi.Input[str] function_name: The name of the domain config.
+        :param pulumi.Input[str] parent_id: By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
         """
         pulumi.set(__self__, "domain_name", domain_name)
         pulumi.set(__self__, "function_args", function_args)
         pulumi.set(__self__, "function_name", function_name)
+        if parent_id is not None:
+            pulumi.set(__self__, "parent_id", parent_id)
 
     @property
     @pulumi.getter(name="domainName")
@@ -65,6 +69,18 @@ class DomainConfigArgs:
     def function_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "function_name", value)
 
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @parent_id.setter
+    def parent_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_id", value)
+
 
 @pulumi.input_type
 class _DomainConfigState:
@@ -73,14 +89,16 @@ class _DomainConfigState:
                  domain_name: Optional[pulumi.Input[str]] = None,
                  function_args: Optional[pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DomainConfig resources.
-        :param pulumi.Input[str] config_id: (Available in 1.132.0+) The ID of the domain config function.
+        :param pulumi.Input[str] config_id: (Available since v1.132.0) The ID of the domain config function.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]] function_args: The args of the domain config. See `function_args` below.
         :param pulumi.Input[str] function_name: The name of the domain config.
-        :param pulumi.Input[str] status: (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        :param pulumi.Input[str] parent_id: By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+        :param pulumi.Input[str] status: (Available since v1.132.0) The Status of the function.
         """
         if config_id is not None:
             pulumi.set(__self__, "config_id", config_id)
@@ -90,6 +108,8 @@ class _DomainConfigState:
             pulumi.set(__self__, "function_args", function_args)
         if function_name is not None:
             pulumi.set(__self__, "function_name", function_name)
+        if parent_id is not None:
+            pulumi.set(__self__, "parent_id", parent_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -97,7 +117,7 @@ class _DomainConfigState:
     @pulumi.getter(name="configId")
     def config_id(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.132.0+) The ID of the domain config function.
+        (Available since v1.132.0) The ID of the domain config function.
         """
         return pulumi.get(self, "config_id")
 
@@ -142,10 +162,22 @@ class _DomainConfigState:
         pulumi.set(self, "function_name", value)
 
     @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @parent_id.setter
+    def parent_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        (Available since v1.132.0) The Status of the function.
         """
         return pulumi.get(self, "status")
 
@@ -162,13 +194,14 @@ class DomainConfig(pulumi.CustomResource):
                  domain_name: Optional[pulumi.Input[str]] = None,
                  function_args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a CDN Accelerated Domain resource.
+        Provides a Cdn Domain Config resource.
 
-        For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/90915.htm)
+        For information about Cdn Domain Config and how to use it, see [What is Domain Config](https://www.alibabacloud.com/help/en/doc-detail/90915.htm)
 
-        > **NOTE:** Available since v1.34.0+.
+        > **NOTE:** Available since v1.34.0.
 
         ## Example Usage
 
@@ -222,6 +255,7 @@ class DomainConfig(pulumi.CustomResource):
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]] function_args: The args of the domain config. See `function_args` below.
         :param pulumi.Input[str] function_name: The name of the domain config.
+        :param pulumi.Input[str] parent_id: By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
         """
         ...
     @overload
@@ -230,11 +264,11 @@ class DomainConfig(pulumi.CustomResource):
                  args: DomainConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CDN Accelerated Domain resource.
+        Provides a Cdn Domain Config resource.
 
-        For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/90915.htm)
+        For information about Cdn Domain Config and how to use it, see [What is Domain Config](https://www.alibabacloud.com/help/en/doc-detail/90915.htm)
 
-        > **NOTE:** Available since v1.34.0+.
+        > **NOTE:** Available since v1.34.0.
 
         ## Example Usage
 
@@ -301,6 +335,7 @@ class DomainConfig(pulumi.CustomResource):
                  domain_name: Optional[pulumi.Input[str]] = None,
                  function_args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -319,6 +354,7 @@ class DomainConfig(pulumi.CustomResource):
             if function_name is None and not opts.urn:
                 raise TypeError("Missing required property 'function_name'")
             __props__.__dict__["function_name"] = function_name
+            __props__.__dict__["parent_id"] = parent_id
             __props__.__dict__["config_id"] = None
             __props__.__dict__["status"] = None
         super(DomainConfig, __self__).__init__(
@@ -335,6 +371,7 @@ class DomainConfig(pulumi.CustomResource):
             domain_name: Optional[pulumi.Input[str]] = None,
             function_args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]]] = None,
             function_name: Optional[pulumi.Input[str]] = None,
+            parent_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'DomainConfig':
         """
         Get an existing DomainConfig resource's state with the given name, id, and optional extra
@@ -343,11 +380,12 @@ class DomainConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] config_id: (Available in 1.132.0+) The ID of the domain config function.
+        :param pulumi.Input[str] config_id: (Available since v1.132.0) The ID of the domain config function.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]] function_args: The args of the domain config. See `function_args` below.
         :param pulumi.Input[str] function_name: The name of the domain config.
-        :param pulumi.Input[str] status: (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        :param pulumi.Input[str] parent_id: By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+        :param pulumi.Input[str] status: (Available since v1.132.0) The Status of the function.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -357,6 +395,7 @@ class DomainConfig(pulumi.CustomResource):
         __props__.__dict__["domain_name"] = domain_name
         __props__.__dict__["function_args"] = function_args
         __props__.__dict__["function_name"] = function_name
+        __props__.__dict__["parent_id"] = parent_id
         __props__.__dict__["status"] = status
         return DomainConfig(resource_name, opts=opts, __props__=__props__)
 
@@ -364,7 +403,7 @@ class DomainConfig(pulumi.CustomResource):
     @pulumi.getter(name="configId")
     def config_id(self) -> pulumi.Output[str]:
         """
-        (Available in 1.132.0+) The ID of the domain config function.
+        (Available since v1.132.0) The ID of the domain config function.
         """
         return pulumi.get(self, "config_id")
 
@@ -393,10 +432,18 @@ class DomainConfig(pulumi.CustomResource):
         return pulumi.get(self, "function_name")
 
     @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> pulumi.Output[str]:
+        """
+        By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        (Available since v1.132.0) The Status of the function.
         """
         return pulumi.get(self, "status")
 

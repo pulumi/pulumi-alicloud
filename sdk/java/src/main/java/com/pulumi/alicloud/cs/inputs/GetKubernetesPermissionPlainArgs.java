@@ -3,34 +3,15 @@
 
 package com.pulumi.alicloud.cs.inputs;
 
-import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionPermission;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetKubernetesPermissionPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetKubernetesPermissionPlainArgs Empty = new GetKubernetesPermissionPlainArgs();
-
-    /**
-     * A list of user permission.
-     * 
-     */
-    @Import(name="permissions")
-    private @Nullable List<GetKubernetesPermissionPermission> permissions;
-
-    /**
-     * @return A list of user permission.
-     * 
-     */
-    public Optional<List<GetKubernetesPermissionPermission>> permissions() {
-        return Optional.ofNullable(this.permissions);
-    }
 
     /**
      * The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
@@ -50,7 +31,6 @@ public final class GetKubernetesPermissionPlainArgs extends com.pulumi.resources
     private GetKubernetesPermissionPlainArgs() {}
 
     private GetKubernetesPermissionPlainArgs(GetKubernetesPermissionPlainArgs $) {
-        this.permissions = $.permissions;
         this.uid = $.uid;
     }
 
@@ -70,27 +50,6 @@ public final class GetKubernetesPermissionPlainArgs extends com.pulumi.resources
 
         public Builder(GetKubernetesPermissionPlainArgs defaults) {
             $ = new GetKubernetesPermissionPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param permissions A list of user permission.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder permissions(@Nullable List<GetKubernetesPermissionPermission> permissions) {
-            $.permissions = permissions;
-            return this;
-        }
-
-        /**
-         * @param permissions A list of user permission.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder permissions(GetKubernetesPermissionPermission... permissions) {
-            return permissions(List.of(permissions));
         }
 
         /**

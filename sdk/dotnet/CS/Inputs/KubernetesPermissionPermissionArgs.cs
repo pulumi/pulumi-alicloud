@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class KubernetesPermissionPermissionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the cluster that you want to manage.
+        /// The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string> RoleName { get; set; } = null!;
 
         /// <summary>
-        /// The authorization type. Valid values `cluster`, `namespace`.
+        /// The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
         /// </summary>
         [Input("roleType", required: true)]
         public Input<string> RoleType { get; set; } = null!;

@@ -17,14 +17,14 @@ public final class ServerlessKubernetesAddonArgs extends com.pulumi.resources.Re
     public static final ServerlessKubernetesAddonArgs Empty = new ServerlessKubernetesAddonArgs();
 
     /**
-     * The ACK add-on configurations.
+     * The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     @Import(name="config")
     private @Nullable Output<String> config;
 
     /**
-     * @return The ACK add-on configurations.
+     * @return The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     public Optional<Output<String>> config() {
@@ -92,7 +92,7 @@ public final class ServerlessKubernetesAddonArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param config The ACK add-on configurations.
+         * @param config The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ServerlessKubernetesAddonArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param config The ACK add-on configurations.
+         * @param config The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
          * 
          * @return builder
          * 

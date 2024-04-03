@@ -16,14 +16,14 @@ public final class ResourceGroupRegionStatusArgs extends com.pulumi.resources.Re
     public static final ResourceGroupRegionStatusArgs Empty = new ResourceGroupRegionStatusArgs();
 
     /**
-     * The region ID.
+     * The status of the region.
      * 
      */
     @Import(name="regionId")
     private @Nullable Output<String> regionId;
 
     /**
-     * @return The region ID.
+     * @return The status of the region.
      * 
      */
     public Optional<Output<String>> regionId() {
@@ -31,14 +31,14 @@ public final class ResourceGroupRegionStatusArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The status of the regional resource group.
+     * The status of the resource group.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the regional resource group.
+     * @return The status of the resource group.
      * 
      */
     public Optional<Output<String>> status() {
@@ -71,7 +71,7 @@ public final class ResourceGroupRegionStatusArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param regionId The region ID.
+         * @param regionId The status of the region.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ResourceGroupRegionStatusArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param regionId The region ID.
+         * @param regionId The status of the region.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ResourceGroupRegionStatusArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param status The status of the regional resource group.
+         * @param status The status of the resource group.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ResourceGroupRegionStatusArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param status The status of the regional resource group.
+         * @param status The status of the resource group.
          * 
          * @return builder
          * 

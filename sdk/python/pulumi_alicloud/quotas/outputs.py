@@ -1232,7 +1232,7 @@ class GetTemplateApplicationsApplicationResult(dict):
         :param str id: The ID of the quota application batch.
         :param str product_code: Cloud service name abbreviation.> For more information about cloud services that support quota centers, see Cloud services that support quota centers.
         :param str quota_action_code: The quota ID.
-        :param str quota_category: The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+        :param str quota_category: The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
         :param str reason: Reason for quota application.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
         """
         pulumi.set(__self__, "aliyun_uids", aliyun_uids)
@@ -1341,7 +1341,7 @@ class GetTemplateApplicationsApplicationResult(dict):
     @pulumi.getter(name="quotaCategory")
     def quota_category(self) -> str:
         """
-        The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+        The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
         """
         return pulumi.get(self, "quota_category")
 

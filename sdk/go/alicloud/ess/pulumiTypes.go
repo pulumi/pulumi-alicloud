@@ -2248,8 +2248,14 @@ func (o ScalingConfigurationDataDiskArrayOutput) Index(i pulumi.IntInput) Scalin
 }
 
 type ScalingConfigurationInstancePatternInfo struct {
+	// Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+	Architectures []string `pulumi:"architectures"`
+	// Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+	BurstablePerformance *string `pulumi:"burstablePerformance"`
 	// The number of vCPUs that are specified for an instance type in instancePatternInfo.
 	Cores *int `pulumi:"cores"`
+	// Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+	ExcludedInstanceTypes []string `pulumi:"excludedInstanceTypes"`
 	// The instance family level in instancePatternInfo.
 	InstanceFamilyLevel *string `pulumi:"instanceFamilyLevel"`
 	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
@@ -2270,8 +2276,14 @@ type ScalingConfigurationInstancePatternInfoInput interface {
 }
 
 type ScalingConfigurationInstancePatternInfoArgs struct {
+	// Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+	Architectures pulumi.StringArrayInput `pulumi:"architectures"`
+	// Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+	BurstablePerformance pulumi.StringPtrInput `pulumi:"burstablePerformance"`
 	// The number of vCPUs that are specified for an instance type in instancePatternInfo.
 	Cores pulumi.IntPtrInput `pulumi:"cores"`
+	// Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+	ExcludedInstanceTypes pulumi.StringArrayInput `pulumi:"excludedInstanceTypes"`
 	// The instance family level in instancePatternInfo.
 	InstanceFamilyLevel pulumi.StringPtrInput `pulumi:"instanceFamilyLevel"`
 	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
@@ -2331,9 +2343,24 @@ func (o ScalingConfigurationInstancePatternInfoOutput) ToScalingConfigurationIns
 	return o
 }
 
+// Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+func (o ScalingConfigurationInstancePatternInfoOutput) Architectures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) []string { return v.Architectures }).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+func (o ScalingConfigurationInstancePatternInfoOutput) BurstablePerformance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *string { return v.BurstablePerformance }).(pulumi.StringPtrOutput)
+}
+
 // The number of vCPUs that are specified for an instance type in instancePatternInfo.
 func (o ScalingConfigurationInstancePatternInfoOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *int { return v.Cores }).(pulumi.IntPtrOutput)
+}
+
+// Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+func (o ScalingConfigurationInstancePatternInfoOutput) ExcludedInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) []string { return v.ExcludedInstanceTypes }).(pulumi.StringArrayOutput)
 }
 
 // The instance family level in instancePatternInfo.

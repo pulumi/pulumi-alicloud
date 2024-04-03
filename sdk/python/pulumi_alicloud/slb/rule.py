@@ -38,32 +38,31 @@ class RuleArgs:
                  url: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Rule resource.
-        :param pulumi.Input[int] frontend_port: The listener frontend port which is used to launch the new forwarding rule. Valid range: [1-65535].
+        :param pulumi.Input[int] frontend_port: The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch the new forwarding rule.
         :param pulumi.Input[str] server_group_id: ID of a virtual server group that will be forwarded.
-        :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
-        :param pulumi.Input[int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
-        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+        :param pulumi.Input[int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         :param pulumi.Input[str] domain: Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
                and wildcard characters. The following two domain name formats are supported:
                - Standard domain name: www.test.com
                - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
-        :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener. This parameter is required  and takes effect only when ListenerSync is set to off.
-        :param pulumi.Input[int] health_check_connect_port: Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
-        :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
-        :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
-        :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
-        :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
-        :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
-        :param pulumi.Input[str] listener_sync: Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
+        :param pulumi.Input[str] health_check: Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener's `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
+        :param pulumi.Input[int] health_check_connect_port: Port used for health check. Valid values: [1-65535]. Default value: `None` means the backend server port is used.
+        :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+        :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
+        :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
+        :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
+        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
+        :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+        :param pulumi.Input[str] listener_sync: Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default value: `on`. Valid values: `on` and `off`.
         :param pulumi.Input[str] name: Name of the forwarding rule. Our plugin provides a default name: "tf-slb-rule".
-        :param pulumi.Input[str] scheduler: Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr". This parameter is required  and takes effect only when ListenerSync is set to off.
-        :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
-        :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
-        :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
-        :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-               and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+        :param pulumi.Input[str] scheduler: Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
+        :param pulumi.Input[str] sticky_session: Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
+        :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+        :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+        :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         pulumi.set(__self__, "frontend_port", frontend_port)
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
@@ -111,7 +110,7 @@ class RuleArgs:
     @pulumi.getter(name="frontendPort")
     def frontend_port(self) -> pulumi.Input[int]:
         """
-        The listener frontend port which is used to launch the new forwarding rule. Valid range: [1-65535].
+        The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
         """
         return pulumi.get(self, "frontend_port")
 
@@ -147,7 +146,7 @@ class RuleArgs:
     @pulumi.getter
     def cookie(self) -> Optional[pulumi.Input[str]]:
         """
-        The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+        The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
         """
         return pulumi.get(self, "cookie")
 
@@ -159,7 +158,7 @@ class RuleArgs:
     @pulumi.getter(name="cookieTimeout")
     def cookie_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+        Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
         """
         return pulumi.get(self, "cookie_timeout")
 
@@ -171,7 +170,7 @@ class RuleArgs:
     @pulumi.getter(name="deleteProtectionValidation")
     def delete_protection_validation(self) -> Optional[pulumi.Input[bool]]:
         """
-        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         """
         return pulumi.get(self, "delete_protection_validation")
 
@@ -198,7 +197,7 @@ class RuleArgs:
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener. This parameter is required  and takes effect only when ListenerSync is set to off.
+        Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener's `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
         """
         return pulumi.get(self, "health_check")
 
@@ -210,7 +209,7 @@ class RuleArgs:
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+        Port used for health check. Valid values: [1-65535]. Default value: `None` means the backend server port is used.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -222,7 +221,7 @@ class RuleArgs:
     @pulumi.getter(name="healthCheckDomain")
     def health_check_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+        Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
         """
         return pulumi.get(self, "health_check_domain")
 
@@ -234,7 +233,7 @@ class RuleArgs:
     @pulumi.getter(name="healthCheckHttpCode")
     def health_check_http_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+        Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
         """
         return pulumi.get(self, "health_check_http_code")
 
@@ -246,7 +245,7 @@ class RuleArgs:
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+        Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -258,7 +257,7 @@ class RuleArgs:
     @pulumi.getter(name="healthCheckTimeout")
     def health_check_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
+        Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
         """
         return pulumi.get(self, "health_check_timeout")
 
@@ -270,7 +269,7 @@ class RuleArgs:
     @pulumi.getter(name="healthCheckUri")
     def health_check_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
+        URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         """
         return pulumi.get(self, "health_check_uri")
 
@@ -282,7 +281,7 @@ class RuleArgs:
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -294,7 +293,7 @@ class RuleArgs:
     @pulumi.getter(name="listenerSync")
     def listener_sync(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
+        Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default value: `on`. Valid values: `on` and `off`.
         """
         return pulumi.get(self, "listener_sync")
 
@@ -318,7 +317,7 @@ class RuleArgs:
     @pulumi.getter
     def scheduler(self) -> Optional[pulumi.Input[str]]:
         """
-        Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr". This parameter is required  and takes effect only when ListenerSync is set to off.
+        Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
         """
         return pulumi.get(self, "scheduler")
 
@@ -330,7 +329,7 @@ class RuleArgs:
     @pulumi.getter(name="stickySession")
     def sticky_session(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
+        Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
         """
         return pulumi.get(self, "sticky_session")
 
@@ -342,7 +341,7 @@ class RuleArgs:
     @pulumi.getter(name="stickySessionType")
     def sticky_session_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+        Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         """
         return pulumi.get(self, "sticky_session_type")
 
@@ -354,7 +353,7 @@ class RuleArgs:
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -366,8 +365,7 @@ class RuleArgs:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-        and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+        Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         return pulumi.get(self, "url")
 
@@ -403,32 +401,31 @@ class _RuleState:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
-        :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
-        :param pulumi.Input[int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
-        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+        :param pulumi.Input[int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         :param pulumi.Input[str] domain: Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
                and wildcard characters. The following two domain name formats are supported:
                - Standard domain name: www.test.com
                - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
-        :param pulumi.Input[int] frontend_port: The listener frontend port which is used to launch the new forwarding rule. Valid range: [1-65535].
-        :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener. This parameter is required  and takes effect only when ListenerSync is set to off.
-        :param pulumi.Input[int] health_check_connect_port: Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
-        :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
-        :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
-        :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
-        :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
-        :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
-        :param pulumi.Input[str] listener_sync: Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
+        :param pulumi.Input[int] frontend_port: The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
+        :param pulumi.Input[str] health_check: Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener's `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
+        :param pulumi.Input[int] health_check_connect_port: Port used for health check. Valid values: [1-65535]. Default value: `None` means the backend server port is used.
+        :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+        :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
+        :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
+        :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
+        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
+        :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+        :param pulumi.Input[str] listener_sync: Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default value: `on`. Valid values: `on` and `off`.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch the new forwarding rule.
         :param pulumi.Input[str] name: Name of the forwarding rule. Our plugin provides a default name: "tf-slb-rule".
-        :param pulumi.Input[str] scheduler: Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr". This parameter is required  and takes effect only when ListenerSync is set to off.
+        :param pulumi.Input[str] scheduler: Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
         :param pulumi.Input[str] server_group_id: ID of a virtual server group that will be forwarded.
-        :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
-        :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
-        :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
-        :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-               and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+        :param pulumi.Input[str] sticky_session: Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
+        :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+        :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+        :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         if cookie is not None:
             pulumi.set(__self__, "cookie", cookie)
@@ -479,7 +476,7 @@ class _RuleState:
     @pulumi.getter
     def cookie(self) -> Optional[pulumi.Input[str]]:
         """
-        The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+        The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
         """
         return pulumi.get(self, "cookie")
 
@@ -491,7 +488,7 @@ class _RuleState:
     @pulumi.getter(name="cookieTimeout")
     def cookie_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+        Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
         """
         return pulumi.get(self, "cookie_timeout")
 
@@ -503,7 +500,7 @@ class _RuleState:
     @pulumi.getter(name="deleteProtectionValidation")
     def delete_protection_validation(self) -> Optional[pulumi.Input[bool]]:
         """
-        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         """
         return pulumi.get(self, "delete_protection_validation")
 
@@ -530,7 +527,7 @@ class _RuleState:
     @pulumi.getter(name="frontendPort")
     def frontend_port(self) -> Optional[pulumi.Input[int]]:
         """
-        The listener frontend port which is used to launch the new forwarding rule. Valid range: [1-65535].
+        The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
         """
         return pulumi.get(self, "frontend_port")
 
@@ -542,7 +539,7 @@ class _RuleState:
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener. This parameter is required  and takes effect only when ListenerSync is set to off.
+        Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener's `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
         """
         return pulumi.get(self, "health_check")
 
@@ -554,7 +551,7 @@ class _RuleState:
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+        Port used for health check. Valid values: [1-65535]. Default value: `None` means the backend server port is used.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -566,7 +563,7 @@ class _RuleState:
     @pulumi.getter(name="healthCheckDomain")
     def health_check_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+        Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
         """
         return pulumi.get(self, "health_check_domain")
 
@@ -578,7 +575,7 @@ class _RuleState:
     @pulumi.getter(name="healthCheckHttpCode")
     def health_check_http_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+        Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
         """
         return pulumi.get(self, "health_check_http_code")
 
@@ -590,7 +587,7 @@ class _RuleState:
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+        Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -602,7 +599,7 @@ class _RuleState:
     @pulumi.getter(name="healthCheckTimeout")
     def health_check_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
+        Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
         """
         return pulumi.get(self, "health_check_timeout")
 
@@ -614,7 +611,7 @@ class _RuleState:
     @pulumi.getter(name="healthCheckUri")
     def health_check_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
+        URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         """
         return pulumi.get(self, "health_check_uri")
 
@@ -626,7 +623,7 @@ class _RuleState:
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -638,7 +635,7 @@ class _RuleState:
     @pulumi.getter(name="listenerSync")
     def listener_sync(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
+        Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default value: `on`. Valid values: `on` and `off`.
         """
         return pulumi.get(self, "listener_sync")
 
@@ -674,7 +671,7 @@ class _RuleState:
     @pulumi.getter
     def scheduler(self) -> Optional[pulumi.Input[str]]:
         """
-        Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr". This parameter is required  and takes effect only when ListenerSync is set to off.
+        Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
         """
         return pulumi.get(self, "scheduler")
 
@@ -698,7 +695,7 @@ class _RuleState:
     @pulumi.getter(name="stickySession")
     def sticky_session(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
+        Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
         """
         return pulumi.get(self, "sticky_session")
 
@@ -710,7 +707,7 @@ class _RuleState:
     @pulumi.getter(name="stickySessionType")
     def sticky_session_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+        Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         """
         return pulumi.get(self, "sticky_session_type")
 
@@ -722,7 +719,7 @@ class _RuleState:
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -734,8 +731,7 @@ class _RuleState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-        and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+        Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         return pulumi.get(self, "url")
 
@@ -773,6 +769,12 @@ class Rule(pulumi.CustomResource):
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides a Lindorm Instance resource.
+
+        For information about Load Balancer Forwarding Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-slb-2014-05-15-dir-forwarding-rules).
+
+        > **NOTE:** Available since v1.6.0.
+
         A forwarding rule is configured in `HTTP`/`HTTPS` listener and it used to listen a list of backend servers which in one specified virtual backend server group.
         You can add forwarding rules to a listener to forward requests based on the domain names or the URL in the request.
 
@@ -797,14 +799,7 @@ class Rule(pulumi.CustomResource):
         slb_rule_name = config.get("slbRuleName")
         if slb_rule_name is None:
             slb_rule_name = "terraform-example"
-        rule_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        rule_instance_types = alicloud.ecs.get_instance_types(availability_zone=rule_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        rule_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
+        rule_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         rule_network = alicloud.vpc.Network("ruleNetwork",
             vpc_name=slb_rule_name,
             cidr_block="172.16.0.0/16")
@@ -813,18 +808,6 @@ class Rule(pulumi.CustomResource):
             cidr_block="172.16.0.0/16",
             zone_id=rule_zones.zones[0].id,
             vswitch_name=slb_rule_name)
-        rule_security_group = alicloud.ecs.SecurityGroup("ruleSecurityGroup", vpc_id=rule_network.id)
-        rule_instance = alicloud.ecs.Instance("ruleInstance",
-            image_id=rule_images.images[0].id,
-            instance_type=rule_instance_types.instance_types[0].id,
-            security_groups=[__item.id for __item in [rule_security_group]],
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=10,
-            availability_zone=rule_zones.zones[0].id,
-            instance_charge_type="PostPaid",
-            system_disk_category="cloud_efficiency",
-            vswitch_id=rule_switch.id,
-            instance_name=slb_rule_name)
         rule_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("ruleApplicationLoadBalancer",
             load_balancer_name=slb_rule_name,
             vswitch_id=rule_switch.id,
@@ -866,37 +849,36 @@ class Rule(pulumi.CustomResource):
         Load balancer forwarding rule can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:slb/rule:Rule example rule-abc123456
+        $ pulumi import alicloud:slb/rule:Rule example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
-        :param pulumi.Input[int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
-        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+        :param pulumi.Input[int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         :param pulumi.Input[str] domain: Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
                and wildcard characters. The following two domain name formats are supported:
                - Standard domain name: www.test.com
                - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
-        :param pulumi.Input[int] frontend_port: The listener frontend port which is used to launch the new forwarding rule. Valid range: [1-65535].
-        :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener. This parameter is required  and takes effect only when ListenerSync is set to off.
-        :param pulumi.Input[int] health_check_connect_port: Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
-        :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
-        :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
-        :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
-        :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
-        :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
-        :param pulumi.Input[str] listener_sync: Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
+        :param pulumi.Input[int] frontend_port: The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
+        :param pulumi.Input[str] health_check: Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener's `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
+        :param pulumi.Input[int] health_check_connect_port: Port used for health check. Valid values: [1-65535]. Default value: `None` means the backend server port is used.
+        :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+        :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
+        :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
+        :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
+        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
+        :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+        :param pulumi.Input[str] listener_sync: Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default value: `on`. Valid values: `on` and `off`.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch the new forwarding rule.
         :param pulumi.Input[str] name: Name of the forwarding rule. Our plugin provides a default name: "tf-slb-rule".
-        :param pulumi.Input[str] scheduler: Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr". This parameter is required  and takes effect only when ListenerSync is set to off.
+        :param pulumi.Input[str] scheduler: Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
         :param pulumi.Input[str] server_group_id: ID of a virtual server group that will be forwarded.
-        :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
-        :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
-        :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
-        :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-               and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+        :param pulumi.Input[str] sticky_session: Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
+        :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+        :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+        :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         ...
     @overload
@@ -905,6 +887,12 @@ class Rule(pulumi.CustomResource):
                  args: RuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Lindorm Instance resource.
+
+        For information about Load Balancer Forwarding Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-slb-2014-05-15-dir-forwarding-rules).
+
+        > **NOTE:** Available since v1.6.0.
+
         A forwarding rule is configured in `HTTP`/`HTTPS` listener and it used to listen a list of backend servers which in one specified virtual backend server group.
         You can add forwarding rules to a listener to forward requests based on the domain names or the URL in the request.
 
@@ -929,14 +917,7 @@ class Rule(pulumi.CustomResource):
         slb_rule_name = config.get("slbRuleName")
         if slb_rule_name is None:
             slb_rule_name = "terraform-example"
-        rule_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        rule_instance_types = alicloud.ecs.get_instance_types(availability_zone=rule_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        rule_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
+        rule_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         rule_network = alicloud.vpc.Network("ruleNetwork",
             vpc_name=slb_rule_name,
             cidr_block="172.16.0.0/16")
@@ -945,18 +926,6 @@ class Rule(pulumi.CustomResource):
             cidr_block="172.16.0.0/16",
             zone_id=rule_zones.zones[0].id,
             vswitch_name=slb_rule_name)
-        rule_security_group = alicloud.ecs.SecurityGroup("ruleSecurityGroup", vpc_id=rule_network.id)
-        rule_instance = alicloud.ecs.Instance("ruleInstance",
-            image_id=rule_images.images[0].id,
-            instance_type=rule_instance_types.instance_types[0].id,
-            security_groups=[__item.id for __item in [rule_security_group]],
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=10,
-            availability_zone=rule_zones.zones[0].id,
-            instance_charge_type="PostPaid",
-            system_disk_category="cloud_efficiency",
-            vswitch_id=rule_switch.id,
-            instance_name=slb_rule_name)
         rule_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("ruleApplicationLoadBalancer",
             load_balancer_name=slb_rule_name,
             vswitch_id=rule_switch.id,
@@ -998,7 +967,7 @@ class Rule(pulumi.CustomResource):
         Load balancer forwarding rule can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:slb/rule:Rule example rule-abc123456
+        $ pulumi import alicloud:slb/rule:Rule example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1114,32 +1083,31 @@ class Rule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
-        :param pulumi.Input[int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
-        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+        :param pulumi.Input[int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         :param pulumi.Input[str] domain: Domain name of the forwarding rule. It can contain letters a-z, numbers 0-9, hyphens (-), and periods (.),
                and wildcard characters. The following two domain name formats are supported:
                - Standard domain name: www.test.com
                - Wildcard domain name: *.test.com. wildcard (*) must be the first character in the format of (*.)
-        :param pulumi.Input[int] frontend_port: The listener frontend port which is used to launch the new forwarding rule. Valid range: [1-65535].
-        :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener. This parameter is required  and takes effect only when ListenerSync is set to off.
-        :param pulumi.Input[int] health_check_connect_port: Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
-        :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
-        :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
-        :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
-        :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
-        :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
-        :param pulumi.Input[str] listener_sync: Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
+        :param pulumi.Input[int] frontend_port: The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
+        :param pulumi.Input[str] health_check: Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener's `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
+        :param pulumi.Input[int] health_check_connect_port: Port used for health check. Valid values: [1-65535]. Default value: `None` means the backend server port is used.
+        :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+        :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
+        :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
+        :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
+        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
+        :param pulumi.Input[int] healthy_threshold: Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+        :param pulumi.Input[str] listener_sync: Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default value: `on`. Valid values: `on` and `off`.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch the new forwarding rule.
         :param pulumi.Input[str] name: Name of the forwarding rule. Our plugin provides a default name: "tf-slb-rule".
-        :param pulumi.Input[str] scheduler: Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr". This parameter is required  and takes effect only when ListenerSync is set to off.
+        :param pulumi.Input[str] scheduler: Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
         :param pulumi.Input[str] server_group_id: ID of a virtual server group that will be forwarded.
-        :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
-        :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
-        :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
-        :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-               and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+        :param pulumi.Input[str] sticky_session: Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
+        :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+        :param pulumi.Input[int] unhealthy_threshold: Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
+        :param pulumi.Input[str] url: Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1173,7 +1141,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def cookie(self) -> pulumi.Output[Optional[str]]:
         """
-        The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+        The cookie configured on the server. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `server`. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being `1` - `200`. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
         """
         return pulumi.get(self, "cookie")
 
@@ -1181,7 +1149,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="cookieTimeout")
     def cookie_timeout(self) -> pulumi.Output[Optional[int]]:
         """
-        Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+        Cookie timeout. It is mandatory when `sticky_session` is `on` and `sticky_session_type` is `insert`. Otherwise, it will be ignored. Valid values: [1-86400] in seconds.
         """
         return pulumi.get(self, "cookie_timeout")
 
@@ -1189,7 +1157,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="deleteProtectionValidation")
     def delete_protection_validation(self) -> pulumi.Output[Optional[bool]]:
         """
-        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        Checking DeleteProtection of SLB instance before deleting. If `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         """
         return pulumi.get(self, "delete_protection_validation")
 
@@ -1208,7 +1176,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="frontendPort")
     def frontend_port(self) -> pulumi.Output[int]:
         """
-        The listener frontend port which is used to launch the new forwarding rule. Valid range: [1-65535].
+        The listener frontend port which is used to launch the new forwarding rule. Valid values: [1-65535].
         """
         return pulumi.get(self, "frontend_port")
 
@@ -1216,7 +1184,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> pulumi.Output[Optional[str]]:
         """
-        Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener. This parameter is required  and takes effect only when ListenerSync is set to off.
+        Whether to enable health check. Valid values: `on` and `off`. `TCP` and `UDP` listener's `health_check` is always `on`, so it will be ignore when launching `TCP` or `UDP` listener. **NOTE:** `health_check` is required and takes effect only when `listener_sync` is set to `off`.
         """
         return pulumi.get(self, "health_check")
 
@@ -1224,7 +1192,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> pulumi.Output[int]:
         """
-        Port used for health check. Valid value range: [1-65535]. Default to "None" means the backend server port is used.
+        Port used for health check. Valid values: [1-65535]. Default value: `None` means the backend server port is used.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -1232,7 +1200,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckDomain")
     def health_check_domain(self) -> pulumi.Output[Optional[str]]:
         """
-        Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+        Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty, Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
         """
         return pulumi.get(self, "health_check_domain")
 
@@ -1240,7 +1208,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckHttpCode")
     def health_check_http_code(self) -> pulumi.Output[Optional[str]]:
         """
-        Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+        Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is `on`. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`.
         """
         return pulumi.get(self, "health_check_http_code")
 
@@ -1248,7 +1216,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> pulumi.Output[Optional[int]]:
         """
-        Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+        Time interval of health checks. It is required when `health_check` is `on`. Valid values: [1-50] in seconds. Default value: `2`.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -1256,7 +1224,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckTimeout")
     def health_check_timeout(self) -> pulumi.Output[Optional[int]]:
         """
-        Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
+        Maximum timeout of each health check response. It is required when `health_check` is `on`. Valid values: [1-300] in seconds. Default value: `5`. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
         """
         return pulumi.get(self, "health_check_timeout")
 
@@ -1264,7 +1232,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckUri")
     def health_check_uri(self) -> pulumi.Output[Optional[str]]:
         """
-        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
+        URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
         """
         return pulumi.get(self, "health_check_uri")
 
@@ -1272,7 +1240,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> pulumi.Output[Optional[int]]:
         """
-        Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        Threshold determining the result of the health check is success. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -1280,7 +1248,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="listenerSync")
     def listener_sync(self) -> pulumi.Output[Optional[str]]:
         """
-        Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default to on.
+        Indicates whether a forwarding rule inherits the settings of a health check , session persistence, and scheduling algorithm from a listener. Default value: `on`. Valid values: `on` and `off`.
         """
         return pulumi.get(self, "listener_sync")
 
@@ -1304,7 +1272,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def scheduler(self) -> pulumi.Output[Optional[str]]:
         """
-        Scheduling algorithm, Valid values are `wrr`, `rr` and `wlc`.  Default to "wrr". This parameter is required  and takes effect only when ListenerSync is set to off.
+        Scheduling algorithm. Valid values: `wrr`, `rr` and `wlc`. Default value: `wrr`. **NOTE:** `scheduler` is required and takes effect only when `listener_sync` is set to `off`.
         """
         return pulumi.get(self, "scheduler")
 
@@ -1320,7 +1288,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="stickySession")
     def sticky_session(self) -> pulumi.Output[Optional[str]]:
         """
-        Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`. This parameter is required  and takes effect only when ListenerSync is set to off.
+        Whether to enable session persistence. Valid values: `on` and `off`. Default value: `off`. **NOTE:** `sticky_session` is required and takes effect only when `listener_sync` is set to `off`.
         """
         return pulumi.get(self, "sticky_session")
 
@@ -1328,7 +1296,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="stickySessionType")
     def sticky_session_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+        Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         """
         return pulumi.get(self, "sticky_session_type")
 
@@ -1336,7 +1304,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> pulumi.Output[Optional[int]]:
         """
-        Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3.
+        Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -1344,8 +1312,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[Optional[str]]:
         """
-        Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9,
-        and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+        Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         """
         return pulumi.get(self, "url")
 

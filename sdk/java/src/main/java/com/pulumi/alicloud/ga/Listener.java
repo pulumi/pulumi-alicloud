@@ -176,18 +176,34 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forwardedForConfig);
     }
     /**
+     * The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+     * &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+     * 
+     */
+    @Export(name="httpVersion", refs={String.class}, tree="[0]")
+    private Output<String> httpVersion;
+
+    /**
+     * @return The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+     * &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+     * 
+     */
+    public Output<String> httpVersion() {
+        return this.httpVersion;
+    }
+    /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
      * 
      */
     @Export(name="listenerType", refs={String.class}, tree="[0]")
-    private Output<String> listenerType;
+    private Output</* @Nullable */ String> listenerType;
 
     /**
      * @return The routing type of the listener. Default Value: `Standard`. Valid values:
      * 
      */
-    public Output<String> listenerType() {
-        return this.listenerType;
+    public Output<Optional<String>> listenerType() {
+        return Codegen.optional(this.listenerType);
     }
     /**
      * The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.

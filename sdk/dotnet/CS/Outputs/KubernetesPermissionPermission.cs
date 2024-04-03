@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class KubernetesPermissionPermission
     {
         /// <summary>
-        /// The ID of the cluster that you want to manage.
+        /// The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
         /// </summary>
         public readonly string Cluster;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string RoleName;
         /// <summary>
-        /// The authorization type. Valid values `cluster`, `namespace`.
+        /// The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
         /// </summary>
         public readonly string RoleType;
 

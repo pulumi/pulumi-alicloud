@@ -1203,6 +1203,7 @@ class _NodePoolState:
                  runtime_name: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
                  scaling_config: Optional[pulumi.Input['NodePoolScalingConfigArgs']] = None,
+                 scaling_group_id: Optional[pulumi.Input[str]] = None,
                  scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1278,6 +1279,7 @@ class _NodePoolState:
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Automatic scaling configuration. See `scaling_config` below.
+        :param pulumi.Input[str] scaling_group_id: The ID of the scaling group.
         :param pulumi.Input[str] scaling_policy: Scaling group mode, default value: `release`. Valid values:
         :param pulumi.Input[str] security_group_id: The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
@@ -1405,6 +1407,8 @@ class _NodePoolState:
             pulumi.set(__self__, "runtime_version", runtime_version)
         if scaling_config is not None:
             pulumi.set(__self__, "scaling_config", scaling_config)
+        if scaling_group_id is not None:
+            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         if scaling_policy is not None:
             pulumi.set(__self__, "scaling_policy", scaling_policy)
         if security_group_id is not None:
@@ -2020,6 +2024,18 @@ class _NodePoolState:
     @scaling_config.setter
     def scaling_config(self, value: Optional[pulumi.Input['NodePoolScalingConfigArgs']]):
         pulumi.set(self, "scaling_config", value)
+
+    @property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the scaling group.
+        """
+        return pulumi.get(self, "scaling_group_id")
+
+    @scaling_group_id.setter
+    def scaling_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scaling_group_id", value)
 
     @property
     @pulumi.getter(name="scalingPolicy")
@@ -2666,6 +2682,7 @@ class NodePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vswitch_ids'")
             __props__.__dict__["vswitch_ids"] = vswitch_ids
             __props__.__dict__["node_pool_id"] = None
+            __props__.__dict__["scaling_group_id"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["kmsEncryptedPassword", "password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(NodePool, __self__).__init__(
@@ -2724,6 +2741,7 @@ class NodePool(pulumi.CustomResource):
             runtime_name: Optional[pulumi.Input[str]] = None,
             runtime_version: Optional[pulumi.Input[str]] = None,
             scaling_config: Optional[pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']]] = None,
+            scaling_group_id: Optional[pulumi.Input[str]] = None,
             scaling_policy: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2804,6 +2822,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Automatic scaling configuration. See `scaling_config` below.
+        :param pulumi.Input[str] scaling_group_id: The ID of the scaling group.
         :param pulumi.Input[str] scaling_policy: Scaling group mode, default value: `release`. Valid values:
         :param pulumi.Input[str] security_group_id: The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
@@ -2880,6 +2899,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["runtime_name"] = runtime_name
         __props__.__dict__["runtime_version"] = runtime_version
         __props__.__dict__["scaling_config"] = scaling_config
+        __props__.__dict__["scaling_group_id"] = scaling_group_id
         __props__.__dict__["scaling_policy"] = scaling_policy
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
@@ -3285,6 +3305,14 @@ class NodePool(pulumi.CustomResource):
         Automatic scaling configuration. See `scaling_config` below.
         """
         return pulumi.get(self, "scaling_config")
+
+    @property
+    @pulumi.getter(name="scalingGroupId")
+    def scaling_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the scaling group.
+        """
+        return pulumi.get(self, "scaling_group_id")
 
     @property
     @pulumi.getter(name="scalingPolicy")

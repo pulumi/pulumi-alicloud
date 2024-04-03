@@ -219,8 +219,10 @@ type Bucket struct {
 
 	// A access monitor status of a bucket. See `accessMonitor` below.
 	AccessMonitor BucketAccessMonitorOutput `pulumi:"accessMonitor"`
-	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
-	Acl    pulumi.StringPtrOutput `pulumi:"acl"`
+	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
+	//
+	// Deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
+	Acl    pulumi.StringOutput    `pulumi:"acl"`
 	Bucket pulumi.StringPtrOutput `pulumi:"bucket"`
 	// A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
 	CorsRules BucketCorsRuleArrayOutput `pulumi:"corsRules"`
@@ -246,11 +248,11 @@ type Bucket struct {
 	LoggingIsenable pulumi.BoolPtrOutput `pulumi:"loggingIsenable"`
 	// The bucket owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketPolicy` instead.
 	Policy pulumi.StringPtrOutput `pulumi:"policy"`
 	// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
 	RedundancyType pulumi.StringPtrOutput `pulumi:"redundancyType"`
-	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
+	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketReferer` instead. See `refererConfig` below.
 	RefererConfig BucketRefererConfigPtrOutput `pulumi:"refererConfig"`
 	// The ID of the resource group to which the bucket belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -300,7 +302,9 @@ func GetBucket(ctx *pulumi.Context,
 type bucketState struct {
 	// A access monitor status of a bucket. See `accessMonitor` below.
 	AccessMonitor *BucketAccessMonitor `pulumi:"accessMonitor"`
-	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
+	//
+	// Deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
 	Acl    *string `pulumi:"acl"`
 	Bucket *string `pulumi:"bucket"`
 	// A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
@@ -327,11 +331,11 @@ type bucketState struct {
 	LoggingIsenable *bool `pulumi:"loggingIsenable"`
 	// The bucket owner.
 	Owner *string `pulumi:"owner"`
-	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketPolicy` instead.
 	Policy *string `pulumi:"policy"`
 	// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
 	RedundancyType *string `pulumi:"redundancyType"`
-	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
+	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketReferer` instead. See `refererConfig` below.
 	RefererConfig *BucketRefererConfig `pulumi:"refererConfig"`
 	// The ID of the resource group to which the bucket belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -352,7 +356,9 @@ type bucketState struct {
 type BucketState struct {
 	// A access monitor status of a bucket. See `accessMonitor` below.
 	AccessMonitor BucketAccessMonitorPtrInput
-	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
+	//
+	// Deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
 	Acl    pulumi.StringPtrInput
 	Bucket pulumi.StringPtrInput
 	// A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
@@ -379,11 +385,11 @@ type BucketState struct {
 	LoggingIsenable pulumi.BoolPtrInput
 	// The bucket owner.
 	Owner pulumi.StringPtrInput
-	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketPolicy` instead.
 	Policy pulumi.StringPtrInput
 	// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
 	RedundancyType pulumi.StringPtrInput
-	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
+	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketReferer` instead. See `refererConfig` below.
 	RefererConfig BucketRefererConfigPtrInput
 	// The ID of the resource group to which the bucket belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -408,7 +414,9 @@ func (BucketState) ElementType() reflect.Type {
 type bucketArgs struct {
 	// A access monitor status of a bucket. See `accessMonitor` below.
 	AccessMonitor *BucketAccessMonitor `pulumi:"accessMonitor"`
-	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
+	//
+	// Deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
 	Acl    *string `pulumi:"acl"`
 	Bucket *string `pulumi:"bucket"`
 	// A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
@@ -425,11 +433,11 @@ type bucketArgs struct {
 	//
 	// Deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
 	LoggingIsenable *bool `pulumi:"loggingIsenable"`
-	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketPolicy` instead.
 	Policy *string `pulumi:"policy"`
 	// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
 	RedundancyType *string `pulumi:"redundancyType"`
-	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
+	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketReferer` instead. See `refererConfig` below.
 	RefererConfig *BucketRefererConfig `pulumi:"refererConfig"`
 	// The ID of the resource group to which the bucket belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -451,7 +459,9 @@ type bucketArgs struct {
 type BucketArgs struct {
 	// A access monitor status of a bucket. See `accessMonitor` below.
 	AccessMonitor BucketAccessMonitorPtrInput
-	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
+	//
+	// Deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
 	Acl    pulumi.StringPtrInput
 	Bucket pulumi.StringPtrInput
 	// A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
@@ -468,11 +478,11 @@ type BucketArgs struct {
 	//
 	// Deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
 	LoggingIsenable pulumi.BoolPtrInput
-	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+	// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketPolicy` instead.
 	Policy pulumi.StringPtrInput
 	// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
 	RedundancyType pulumi.StringPtrInput
-	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
+	// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketReferer` instead. See `refererConfig` below.
 	RefererConfig BucketRefererConfigPtrInput
 	// The ID of the resource group to which the bucket belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -582,9 +592,11 @@ func (o BucketOutput) AccessMonitor() BucketAccessMonitorOutput {
 	return o.ApplyT(func(v *Bucket) BucketAccessMonitorOutput { return v.AccessMonitor }).(BucketAccessMonitorOutput)
 }
 
-// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
-func (o BucketOutput) Acl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
+// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
+//
+// Deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
+func (o BucketOutput) Acl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Acl }).(pulumi.StringOutput)
 }
 
 func (o BucketOutput) Bucket() pulumi.StringPtrOutput {
@@ -648,7 +660,7 @@ func (o BucketOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketPolicy` instead.
 func (o BucketOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.Policy }).(pulumi.StringPtrOutput)
 }
@@ -658,7 +670,7 @@ func (o BucketOutput) RedundancyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.RedundancyType }).(pulumi.StringPtrOutput)
 }
 
-// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
+// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketReferer` instead. See `refererConfig` below.
 func (o BucketOutput) RefererConfig() BucketRefererConfigPtrOutput {
 	return o.ApplyT(func(v *Bucket) BucketRefererConfigPtrOutput { return v.RefererConfig }).(BucketRefererConfigPtrOutput)
 }

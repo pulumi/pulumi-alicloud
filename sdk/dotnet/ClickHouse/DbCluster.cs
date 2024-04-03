@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> DbNodeStorage { get; private set; } = null!;
 
         /// <summary>
-        /// Key management service KMS key ID.
+        /// Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         /// </summary>
         [Output("encryptionKey")]
         public Output<string?> EncryptionKey { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+        /// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         /// </summary>
         [Output("period")]
         public Output<string?> Period { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> StorageType { get; private set; } = null!;
 
         /// <summary>
-        /// The used time of DBCluster.
+        /// The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
         /// </summary>
         [Output("usedTime")]
         public Output<string?> UsedTime { get; private set; } = null!;
@@ -310,7 +310,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string> DbNodeStorage { get; set; } = null!;
 
         /// <summary>
-        /// Key management service KMS key ID.
+        /// Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
@@ -334,7 +334,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+        /// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
@@ -352,7 +352,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string> StorageType { get; set; } = null!;
 
         /// <summary>
-        /// The used time of DBCluster.
+        /// The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
         /// </summary>
         [Input("usedTime")]
         public Input<string>? UsedTime { get; set; }
@@ -446,7 +446,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? DbNodeStorage { get; set; }
 
         /// <summary>
-        /// Key management service KMS key ID.
+        /// Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
@@ -470,7 +470,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+        /// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
@@ -494,7 +494,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? StorageType { get; set; }
 
         /// <summary>
-        /// The used time of DBCluster.
+        /// The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
         /// </summary>
         [Input("usedTime")]
         public Input<string>? UsedTime { get; set; }

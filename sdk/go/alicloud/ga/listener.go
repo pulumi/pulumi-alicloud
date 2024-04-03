@@ -101,8 +101,11 @@ type Listener struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The XForward headers. See `forwardedForConfig` below.
 	ForwardedForConfig ListenerForwardedForConfigPtrOutput `pulumi:"forwardedForConfig"`
+	// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
+	HttpVersion pulumi.StringOutput `pulumi:"httpVersion"`
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
-	ListenerType pulumi.StringOutput `pulumi:"listenerType"`
+	ListenerType pulumi.StringPtrOutput `pulumi:"listenerType"`
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The portRanges of the listener. See `portRanges` below.
@@ -165,6 +168,9 @@ type listenerState struct {
 	Description *string `pulumi:"description"`
 	// The XForward headers. See `forwardedForConfig` below.
 	ForwardedForConfig *ListenerForwardedForConfig `pulumi:"forwardedForConfig"`
+	// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
+	HttpVersion *string `pulumi:"httpVersion"`
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
 	ListenerType *string `pulumi:"listenerType"`
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
@@ -194,6 +200,9 @@ type ListenerState struct {
 	Description pulumi.StringPtrInput
 	// The XForward headers. See `forwardedForConfig` below.
 	ForwardedForConfig ListenerForwardedForConfigPtrInput
+	// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
+	HttpVersion pulumi.StringPtrInput
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
 	ListenerType pulumi.StringPtrInput
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
@@ -227,6 +236,9 @@ type listenerArgs struct {
 	Description *string `pulumi:"description"`
 	// The XForward headers. See `forwardedForConfig` below.
 	ForwardedForConfig *ListenerForwardedForConfig `pulumi:"forwardedForConfig"`
+	// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
+	HttpVersion *string `pulumi:"httpVersion"`
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
 	ListenerType *string `pulumi:"listenerType"`
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
@@ -255,6 +267,9 @@ type ListenerArgs struct {
 	Description pulumi.StringPtrInput
 	// The XForward headers. See `forwardedForConfig` below.
 	ForwardedForConfig ListenerForwardedForConfigPtrInput
+	// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
+	HttpVersion pulumi.StringPtrInput
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
 	ListenerType pulumi.StringPtrInput
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
@@ -383,9 +398,15 @@ func (o ListenerOutput) ForwardedForConfig() ListenerForwardedForConfigPtrOutput
 	return o.ApplyT(func(v *Listener) ListenerForwardedForConfigPtrOutput { return v.ForwardedForConfig }).(ListenerForwardedForConfigPtrOutput)
 }
 
+// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
+func (o ListenerOutput) HttpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.HttpVersion }).(pulumi.StringOutput)
+}
+
 // The routing type of the listener. Default Value: `Standard`. Valid values:
-func (o ListenerOutput) ListenerType() pulumi.StringOutput {
-	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.ListenerType }).(pulumi.StringOutput)
+func (o ListenerOutput) ListenerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.ListenerType }).(pulumi.StringPtrOutput)
 }
 
 // The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.

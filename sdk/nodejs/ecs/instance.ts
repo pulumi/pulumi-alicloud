@@ -327,9 +327,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
+     * The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
      * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
      * - [1-3] when `periodUnit` in "Week"
+     *
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     public readonly period!: pulumi.Output<number>;
@@ -871,9 +872,10 @@ export interface InstanceState {
      */
     password?: pulumi.Input<string>;
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
+     * The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
      * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
      * - [1-3] when `periodUnit` in "Week"
+     *
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     period?: pulumi.Input<number>;
@@ -1213,9 +1215,10 @@ export interface InstanceArgs {
      */
     password?: pulumi.Input<string>;
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
+     * The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
      * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
      * - [1-3] when `periodUnit` in "Week"
+     *
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     period?: pulumi.Input<number>;

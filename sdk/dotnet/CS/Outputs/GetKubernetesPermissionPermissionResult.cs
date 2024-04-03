@@ -14,13 +14,13 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class GetKubernetesPermissionPermissionResult
     {
         /// <summary>
-        /// ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+        /// Indicates whether the permissions are granted to the cluster owner. Valid values `false`, `true`.
         /// </summary>
-        public readonly bool? IsOwner;
+        public readonly bool IsOwner;
         /// <summary>
-        /// Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+        /// Indicates whether the permissions are granted to the RAM role. Valid values `false`, `true`.
         /// </summary>
-        public readonly bool? IsRamRole;
+        public readonly bool IsRamRole;
         /// <summary>
         /// The permission settings to manage ACK clusters.
         /// </summary>
@@ -36,13 +36,13 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// <summary>
         /// The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
         /// </summary>
-        public readonly string? RoleType;
+        public readonly string RoleType;
 
         [OutputConstructor]
         private GetKubernetesPermissionPermissionResult(
-            bool? isOwner,
+            bool isOwner,
 
-            bool? isRamRole,
+            bool isRamRole,
 
             string resourceId,
 
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string roleName,
 
-            string? roleType)
+            string roleType)
         {
             IsOwner = isOwner;
             IsRamRole = isRamRole;

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetServiceHybridDoubleWritesArgs, GetServiceHybridDoubleWritesResult, GetServiceHybridDoubleWritesOutputArgs } from "./getServiceHybridDoubleWrites";
+export const getServiceHybridDoubleWrites: typeof import("./getServiceHybridDoubleWrites").getServiceHybridDoubleWrites = null as any;
+export const getServiceHybridDoubleWritesOutput: typeof import("./getServiceHybridDoubleWrites").getServiceHybridDoubleWritesOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceHybridDoubleWrites","getServiceHybridDoubleWritesOutput"], () => require("./getServiceHybridDoubleWrites"));
+
 export { ServiceBasicPublicArgs, ServiceBasicPublicState } from "./serviceBasicPublic";
 export type ServiceBasicPublic = import("./serviceBasicPublic").ServiceBasicPublic;
 export const ServiceBasicPublic: typeof import("./serviceBasicPublic").ServiceBasicPublic = null as any;

@@ -32,6 +32,21 @@ public final class KubernetesAddonState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
+     * 
+     */
+    @Import(name="cleanupCloudResources")
+    private @Nullable Output<Boolean> cleanupCloudResources;
+
+    /**
+     * @return Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
+     * 
+     */
+    public Optional<Output<Boolean>> cleanupCloudResources() {
+        return Optional.ofNullable(this.cleanupCloudResources);
+    }
+
+    /**
      * The id of kubernetes cluster.
      * 
      */
@@ -47,14 +62,14 @@ public final class KubernetesAddonState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
+     * The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
      * 
      */
     @Import(name="config")
     private @Nullable Output<String> config;
 
     /**
-     * @return The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
+     * @return The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
      * 
      */
     public Optional<Output<String>> config() {
@@ -125,6 +140,7 @@ public final class KubernetesAddonState extends com.pulumi.resources.ResourceArg
 
     private KubernetesAddonState(KubernetesAddonState $) {
         this.canUpgrade = $.canUpgrade;
+        this.cleanupCloudResources = $.cleanupCloudResources;
         this.clusterId = $.clusterId;
         this.config = $.config;
         this.name = $.name;
@@ -173,6 +189,27 @@ public final class KubernetesAddonState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param cleanupCloudResources Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cleanupCloudResources(@Nullable Output<Boolean> cleanupCloudResources) {
+            $.cleanupCloudResources = cleanupCloudResources;
+            return this;
+        }
+
+        /**
+         * @param cleanupCloudResources Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cleanupCloudResources(Boolean cleanupCloudResources) {
+            return cleanupCloudResources(Output.of(cleanupCloudResources));
+        }
+
+        /**
          * @param clusterId The id of kubernetes cluster.
          * 
          * @return builder
@@ -194,7 +231,7 @@ public final class KubernetesAddonState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param config The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
+         * @param config The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
          * 
          * @return builder
          * 
@@ -205,7 +242,7 @@ public final class KubernetesAddonState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param config The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
+         * @param config The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
          * 
          * @return builder
          * 

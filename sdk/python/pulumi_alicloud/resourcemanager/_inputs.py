@@ -19,8 +19,8 @@ class ResourceGroupRegionStatusArgs:
                  region_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] region_id: The region ID.
-        :param pulumi.Input[str] status: The status of the regional resource group.
+        :param pulumi.Input[str] region_id: The status of the region.
+        :param pulumi.Input[str] status: The status of the resource group.
         """
         if region_id is not None:
             pulumi.set(__self__, "region_id", region_id)
@@ -31,7 +31,7 @@ class ResourceGroupRegionStatusArgs:
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The region ID.
+        The status of the region.
         """
         return pulumi.get(self, "region_id")
 
@@ -43,7 +43,7 @@ class ResourceGroupRegionStatusArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the regional resource group.
+        The status of the resource group.
         """
         return pulumi.get(self, "status")
 

@@ -236,43 +236,9 @@ public final class CsFunctions {
     /**
      * This data source provides Container Service cluster credential on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+
+     * &gt; **NOTE:** Available since v1.187.0
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cs.CsFunctions;
-     * import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var auth = CsFunctions.getClusterCredential(GetClusterCredentialArgs.builder()
-     *             .clusterId(&#34;cluster-id&#34;)
-     *             .temporaryDurationMinutes(60)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args) {
@@ -281,43 +247,9 @@ public final class CsFunctions {
     /**
      * This data source provides Container Service cluster credential on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+
+     * &gt; **NOTE:** Available since v1.187.0
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cs.CsFunctions;
-     * import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var auth = CsFunctions.getClusterCredential(GetClusterCredentialArgs.builder()
-     *             .clusterId(&#34;cluster-id&#34;)
-     *             .temporaryDurationMinutes(60)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterCredentialResult> getClusterCredentialPlain(GetClusterCredentialPlainArgs args) {
@@ -326,43 +258,9 @@ public final class CsFunctions {
     /**
      * This data source provides Container Service cluster credential on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+
+     * &gt; **NOTE:** Available since v1.187.0
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cs.CsFunctions;
-     * import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var auth = CsFunctions.getClusterCredential(GetClusterCredentialArgs.builder()
-     *             .clusterId(&#34;cluster-id&#34;)
-     *             .temporaryDurationMinutes(60)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterCredentialResult> getClusterCredential(GetClusterCredentialArgs args, InvokeOptions options) {
@@ -371,43 +269,9 @@ public final class CsFunctions {
     /**
      * This data source provides Container Service cluster credential on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.187.0+
+     * &gt; **NOTE:** Available since v1.187.0
      * 
      * &gt; **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cs.CsFunctions;
-     * import com.pulumi.alicloud.cs.inputs.GetClusterCredentialArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var auth = CsFunctions.getClusterCredential(GetClusterCredentialArgs.builder()
-     *             .clusterId(&#34;cluster-id&#34;)
-     *             .temporaryDurationMinutes(60)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterCredentialResult> getClusterCredentialPlain(GetClusterCredentialPlainArgs args, InvokeOptions options) {
@@ -1182,7 +1046,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list of Ram user permissions.
      * 
-     * &gt; **NOTE:** Available in v1.122.0+.
+     * &gt; **NOTE:** Available since v1.122.0.
      * 
      * ## Example Usage
      * 
@@ -1210,15 +1074,13 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .nameRegex(&#34;your_user_name&#34;)
+     *         final var defaultUsers = RamFunctions.getUsers();
+     * 
+     *         final var defaultKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
+     *             .uid(defaultUsers.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
      *             .build());
      * 
-     *         final var default = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
-     *             .uid(usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
-     *             .build());
-     * 
-     *         ctx.export(&#34;permissions&#34;, default_.permissions());
+     *         ctx.export(&#34;permissions&#34;, defaultKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
      *     }
      * }
      * ```
@@ -1231,7 +1093,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list of Ram user permissions.
      * 
-     * &gt; **NOTE:** Available in v1.122.0+.
+     * &gt; **NOTE:** Available since v1.122.0.
      * 
      * ## Example Usage
      * 
@@ -1259,15 +1121,13 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .nameRegex(&#34;your_user_name&#34;)
+     *         final var defaultUsers = RamFunctions.getUsers();
+     * 
+     *         final var defaultKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
+     *             .uid(defaultUsers.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
      *             .build());
      * 
-     *         final var default = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
-     *             .uid(usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
-     *             .build());
-     * 
-     *         ctx.export(&#34;permissions&#34;, default_.permissions());
+     *         ctx.export(&#34;permissions&#34;, defaultKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
      *     }
      * }
      * ```
@@ -1280,7 +1140,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list of Ram user permissions.
      * 
-     * &gt; **NOTE:** Available in v1.122.0+.
+     * &gt; **NOTE:** Available since v1.122.0.
      * 
      * ## Example Usage
      * 
@@ -1308,15 +1168,13 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .nameRegex(&#34;your_user_name&#34;)
+     *         final var defaultUsers = RamFunctions.getUsers();
+     * 
+     *         final var defaultKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
+     *             .uid(defaultUsers.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
      *             .build());
      * 
-     *         final var default = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
-     *             .uid(usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
-     *             .build());
-     * 
-     *         ctx.export(&#34;permissions&#34;, default_.permissions());
+     *         ctx.export(&#34;permissions&#34;, defaultKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
      *     }
      * }
      * ```
@@ -1329,7 +1187,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list of Ram user permissions.
      * 
-     * &gt; **NOTE:** Available in v1.122.0+.
+     * &gt; **NOTE:** Available since v1.122.0.
      * 
      * ## Example Usage
      * 
@@ -1357,15 +1215,13 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .nameRegex(&#34;your_user_name&#34;)
+     *         final var defaultUsers = RamFunctions.getUsers();
+     * 
+     *         final var defaultKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
+     *             .uid(defaultUsers.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
      *             .build());
      * 
-     *         final var default = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
-     *             .uid(usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
-     *             .build());
-     * 
-     *         ctx.export(&#34;permissions&#34;, default_.permissions());
+     *         ctx.export(&#34;permissions&#34;, defaultKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
      *     }
      * }
      * ```

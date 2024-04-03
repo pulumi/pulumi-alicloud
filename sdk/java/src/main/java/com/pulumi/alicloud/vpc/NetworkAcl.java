@@ -21,7 +21,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Network Acl resource.
+ * Provides a VPC Network Acl resource. Network Access Control List (ACL) is a Network Access Control function in VPC. You can customize the network ACL rules and bind the network ACL to the switch to control the traffic of ECS instances in the switch.
  * 
  * For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
  * 
@@ -137,14 +137,14 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     public Output<Optional<String>> description() {
@@ -179,32 +179,32 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
         return this.ingressAclEntries;
     }
     /**
-     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     @Export(name="networkAclName", refs={String.class}, tree="[0]")
     private Output<String> networkAclName;
 
     /**
-     * @return The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     public Output<String> networkAclName() {
@@ -225,14 +225,28 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
         return this.resources;
     }
     /**
-     * The status of the associated resource.
+     * SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+     * 
+     */
+    @Export(name="sourceNetworkAclId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sourceNetworkAclId;
+
+    /**
+     * @return SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+     * 
+     */
+    public Output<Optional<String>> sourceNetworkAclId() {
+        return Codegen.optional(this.sourceNetworkAclId);
+    }
+    /**
+     * The state of the network ACL.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the associated resource.
+     * @return The state of the network ACL.
      * 
      */
     public Output<String> status() {

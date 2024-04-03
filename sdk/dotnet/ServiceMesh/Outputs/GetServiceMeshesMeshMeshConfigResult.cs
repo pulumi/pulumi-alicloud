@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMeshesMeshMeshConfigAuditResult> Audits;
         /// <summary>
-        /// The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
+        /// (Available since v1.174.0) The configuration of the control plane logging.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMeshesMeshMeshConfigControlPlaneLogResult> ControlPlaneLogs;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMeshesMeshMeshConfigOpaResult> Opas;
         /// <summary>
-        /// The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+        /// The policy of the Out to the traffic.
         /// </summary>
         public readonly string OutboundTrafficPolicy;
         /// <summary>

@@ -67,6 +67,7 @@ namespace Pulumi.AliCloud.CS
     ///     var serverless = new AliCloud.CS.ServerlessKubernetes("serverless", new()
     ///     {
     ///         NamePrefix = name,
+    ///         ClusterSpec = "ack.pro.small",
     ///         VpcId = defaultNetwork.Id,
     ///         VswitchIds = new[]
     ///         {

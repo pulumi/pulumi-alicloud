@@ -49,14 +49,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
- *             .bandWidth(10)
+ *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *             .bandWidth(200)
  *             .cfwLog(true)
  *             .cfwLogStorage(1000)
- *             .ipNumber(20)
- *             .paymentType(&#34;Subscription&#34;)
- *             .period(1)
- *             .spec(&#34;premium_version&#34;)
+ *             .ipNumber(400)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .spec(&#34;ultimate_version&#34;)
  *             .build());
  * 
  *     }
@@ -244,32 +243,32 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.modifyType);
     }
     /**
-     * The payment type of the resource. Valid values: `Subscription`.
+     * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values: `Subscription`.
+     * @return The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
-    private Output<Integer> period;
+    private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+     * @return The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
      * 
      */
-    public Output<Integer> period() {
-        return this.period;
+    public Output<Optional<Integer>> period() {
+        return Codegen.optional(this.period);
     }
     /**
      * The release time.
@@ -286,7 +285,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.releaseTime;
     }
     /**
-     * Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
+     * Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
      * 
      * @deprecated
      * Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
@@ -297,21 +296,23 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
+     * @return Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
      * 
      */
     public Output<Integer> renewPeriod() {
         return this.renewPeriod;
     }
     /**
-     * Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
      * 
      */
     @Export(name="renewalDuration", refs={Integer.class}, tree="[0]")
     private Output<Integer> renewalDuration;
 
     /**
-     * @return Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * @return Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
      * 
      */
     public Output<Integer> renewalDuration() {

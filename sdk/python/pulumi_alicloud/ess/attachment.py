@@ -16,12 +16,18 @@ class AttachmentArgs:
     def __init__(__self__, *,
                  instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  scaling_group_id: pulumi.Input[str],
-                 force: Optional[pulumi.Input[bool]] = None):
+                 entrusted: Optional[pulumi.Input[bool]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
+                 lifecycle_hook: Optional[pulumi.Input[bool]] = None,
+                 load_balancer_weights: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         The set of arguments for constructing a Attachment resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
+        :param pulumi.Input[bool] entrusted: Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
         :param pulumi.Input[bool] force: Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+        :param pulumi.Input[bool] lifecycle_hook: Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] load_balancer_weights: The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
                
                > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
                
@@ -35,8 +41,14 @@ class AttachmentArgs:
         """
         pulumi.set(__self__, "instance_ids", instance_ids)
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        if entrusted is not None:
+            pulumi.set(__self__, "entrusted", entrusted)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if lifecycle_hook is not None:
+            pulumi.set(__self__, "lifecycle_hook", lifecycle_hook)
+        if load_balancer_weights is not None:
+            pulumi.set(__self__, "load_balancer_weights", load_balancer_weights)
 
     @property
     @pulumi.getter(name="instanceIds")
@@ -64,9 +76,45 @@ class AttachmentArgs:
 
     @property
     @pulumi.getter
+    def entrusted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
+        """
+        return pulumi.get(self, "entrusted")
+
+    @entrusted.setter
+    def entrusted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "entrusted", value)
+
+    @property
+    @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
+
+    @property
+    @pulumi.getter(name="lifecycleHook")
+    def lifecycle_hook(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
+        """
+        return pulumi.get(self, "lifecycle_hook")
+
+    @lifecycle_hook.setter
+    def lifecycle_hook(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "lifecycle_hook", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerWeights")
+    def load_balancer_weights(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
 
         > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
 
@@ -78,22 +126,29 @@ class AttachmentArgs:
         - The attached ECS instances has not been attached to other scaling groups.
         - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         """
-        return pulumi.get(self, "force")
+        return pulumi.get(self, "load_balancer_weights")
 
-    @force.setter
-    def force(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "force", value)
+    @load_balancer_weights.setter
+    def load_balancer_weights(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "load_balancer_weights", value)
 
 
 @pulumi.input_type
 class _AttachmentState:
     def __init__(__self__, *,
+                 entrusted: Optional[pulumi.Input[bool]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 lifecycle_hook: Optional[pulumi.Input[bool]] = None,
+                 load_balancer_weights: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Attachment resources.
+        :param pulumi.Input[bool] entrusted: Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
         :param pulumi.Input[bool] force: Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
+        :param pulumi.Input[bool] lifecycle_hook: Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] load_balancer_weights: The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
                
                > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
                
@@ -104,31 +159,38 @@ class _AttachmentState:
                - The attached ECS instances must in the running state.
                - The attached ECS instances has not been attached to other scaling groups.
                - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
         """
+        if entrusted is not None:
+            pulumi.set(__self__, "entrusted", entrusted)
         if force is not None:
             pulumi.set(__self__, "force", force)
         if instance_ids is not None:
             pulumi.set(__self__, "instance_ids", instance_ids)
+        if lifecycle_hook is not None:
+            pulumi.set(__self__, "lifecycle_hook", lifecycle_hook)
+        if load_balancer_weights is not None:
+            pulumi.set(__self__, "load_balancer_weights", load_balancer_weights)
         if scaling_group_id is not None:
             pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+
+    @property
+    @pulumi.getter
+    def entrusted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
+        """
+        return pulumi.get(self, "entrusted")
+
+    @entrusted.setter
+    def entrusted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "entrusted", value)
 
     @property
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
-
-        > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
-
-        > **NOTE:** Restrictions on attaching ECS instances:
-
-        - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
-        - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
-        - The attached ECS instances must in the running state.
-        - The attached ECS instances has not been attached to other scaling groups.
-        - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         """
         return pulumi.get(self, "force")
 
@@ -149,6 +211,40 @@ class _AttachmentState:
         pulumi.set(self, "instance_ids", value)
 
     @property
+    @pulumi.getter(name="lifecycleHook")
+    def lifecycle_hook(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
+        """
+        return pulumi.get(self, "lifecycle_hook")
+
+    @lifecycle_hook.setter
+    def lifecycle_hook(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "lifecycle_hook", value)
+
+    @property
+    @pulumi.getter(name="loadBalancerWeights")
+    def load_balancer_weights(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
+
+        > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+
+        > **NOTE:** Restrictions on attaching ECS instances:
+
+        - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+        - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+        - The attached ECS instances must in the running state.
+        - The attached ECS instances has not been attached to other scaling groups.
+        - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+        """
+        return pulumi.get(self, "load_balancer_weights")
+
+    @load_balancer_weights.setter
+    def load_balancer_weights(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "load_balancer_weights", value)
+
+    @property
     @pulumi.getter(name="scalingGroupId")
     def scaling_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -166,8 +262,11 @@ class Attachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 entrusted: Optional[pulumi.Input[bool]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 lifecycle_hook: Optional[pulumi.Input[bool]] = None,
+                 load_balancer_weights: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -265,7 +364,11 @@ class Attachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] entrusted: Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
         :param pulumi.Input[bool] force: Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
+        :param pulumi.Input[bool] lifecycle_hook: Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] load_balancer_weights: The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
                
                > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
                
@@ -276,7 +379,6 @@ class Attachment(pulumi.CustomResource):
                - The attached ECS instances must in the running state.
                - The attached ECS instances has not been attached to other scaling groups.
                - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
         """
         ...
@@ -393,8 +495,11 @@ class Attachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 entrusted: Optional[pulumi.Input[bool]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 lifecycle_hook: Optional[pulumi.Input[bool]] = None,
+                 load_balancer_weights: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -405,10 +510,13 @@ class Attachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AttachmentArgs.__new__(AttachmentArgs)
 
+            __props__.__dict__["entrusted"] = entrusted
             __props__.__dict__["force"] = force
             if instance_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_ids'")
             __props__.__dict__["instance_ids"] = instance_ids
+            __props__.__dict__["lifecycle_hook"] = lifecycle_hook
+            __props__.__dict__["load_balancer_weights"] = load_balancer_weights
             if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
             __props__.__dict__["scaling_group_id"] = scaling_group_id
@@ -422,8 +530,11 @@ class Attachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            entrusted: Optional[pulumi.Input[bool]] = None,
             force: Optional[pulumi.Input[bool]] = None,
             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            lifecycle_hook: Optional[pulumi.Input[bool]] = None,
+            load_balancer_weights: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             scaling_group_id: Optional[pulumi.Input[str]] = None) -> 'Attachment':
         """
         Get an existing Attachment resource's state with the given name, id, and optional extra
@@ -432,7 +543,11 @@ class Attachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] entrusted: Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
         :param pulumi.Input[bool] force: Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
+        :param pulumi.Input[bool] lifecycle_hook: Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] load_balancer_weights: The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
                
                > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
                
@@ -443,23 +558,57 @@ class Attachment(pulumi.CustomResource):
                - The attached ECS instances must in the running state.
                - The attached ECS instances has not been attached to other scaling groups.
                - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AttachmentState.__new__(_AttachmentState)
 
+        __props__.__dict__["entrusted"] = entrusted
         __props__.__dict__["force"] = force
         __props__.__dict__["instance_ids"] = instance_ids
+        __props__.__dict__["lifecycle_hook"] = lifecycle_hook
+        __props__.__dict__["load_balancer_weights"] = load_balancer_weights
         __props__.__dict__["scaling_group_id"] = scaling_group_id
         return Attachment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def entrusted(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
+        """
+        return pulumi.get(self, "entrusted")
 
     @property
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+        """
+        return pulumi.get(self, "force")
+
+    @property
+    @pulumi.getter(name="instanceIds")
+    def instance_ids(self) -> pulumi.Output[Sequence[str]]:
+        """
+        ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
+        """
+        return pulumi.get(self, "instance_ids")
+
+    @property
+    @pulumi.getter(name="lifecycleHook")
+    def lifecycle_hook(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
+        """
+        return pulumi.get(self, "lifecycle_hook")
+
+    @property
+    @pulumi.getter(name="loadBalancerWeights")
+    def load_balancer_weights(self) -> pulumi.Output[Sequence[int]]:
+        """
+        The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
 
         > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
 
@@ -471,15 +620,7 @@ class Attachment(pulumi.CustomResource):
         - The attached ECS instances has not been attached to other scaling groups.
         - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         """
-        return pulumi.get(self, "force")
-
-    @property
-    @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> pulumi.Output[Sequence[str]]:
-        """
-        ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
-        """
-        return pulumi.get(self, "instance_ids")
+        return pulumi.get(self, "load_balancer_weights")
 
     @property
     @pulumi.getter(name="scalingGroupId")

@@ -1219,22 +1219,22 @@ class GetServiceMeshesMeshResult(dict):
                  status: str,
                  version: str):
         """
-        :param Sequence[str] clusters: Cluster List.
-        :param str create_time: The created time of the resource.
-        :param str edition: Grid instance version type. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
-        :param Sequence['GetServiceMeshesMeshEndpointArgs'] endpoints: The endpoint details.
-        :param str error_message: The Cause of the Error.
-        :param str id: The ID of the Service Mesh.
-        :param str istio_operator_version: The Istio Operator Version. **Note:** the `istio_operator_version` is available from the version v1.170.0.
-        :param str kube_config: The content of Kube config.
-        :param Sequence['GetServiceMeshesMeshLoadBalancerArgs'] load_balancers: The configuration of the Load Balancer.
-        :param Sequence['GetServiceMeshesMeshMeshConfigArgs'] mesh_configs: The configuration of the Service grid.
-        :param Sequence['GetServiceMeshesMeshNetworkArgs'] networks: The configuration of the Service grid network.
-        :param str service_mesh_id: The first ID of the resource.
-        :param str service_mesh_name: The name of the resource.
-        :param str sidecar_version: The SideCar Version. **Note:** the `sidecar_version` is available from the version v1.170.0.
-        :param str status: The status of the resource. Valid values: `running` or `initial`.
-        :param str version: The version of the resource.
+        :param Sequence[str] clusters: The Cluster List.
+        :param str create_time: The created time of the Service Mesh instance.
+        :param str edition: Grid instance version type. **Note:** `edition` takes effect only if `enable_details` is set to `true`.
+        :param Sequence['GetServiceMeshesMeshEndpointArgs'] endpoints: The endpoint details. **Note:** `endpoints` takes effect only if `enable_details` is set to `true`.
+        :param str error_message: The returned error message.
+        :param str id: The ID of the Service Mesh instance.
+        :param str istio_operator_version: (Available since v1.170.0) The Istio Operator Version. **Note:** `istio_operator_version` takes effect only if `enable_details` is set to `true`.
+        :param str kube_config: The content of Kube config. **Note:** `kube_config` takes effect only if `enable_details` is set to `true`.
+        :param Sequence['GetServiceMeshesMeshLoadBalancerArgs'] load_balancers: The configuration of the Load Balancer. **Note:** `load_balancer` takes effect only if `enable_details` is set to `true`.
+        :param Sequence['GetServiceMeshesMeshMeshConfigArgs'] mesh_configs: The configuration of the Service grid. **Note:** `mesh_config` takes effect only if `enable_details` is set to `true`.
+        :param Sequence['GetServiceMeshesMeshNetworkArgs'] networks: The configuration of the Service grid network. **Note:** `network` takes effect only if `enable_details` is set to `true`.
+        :param str service_mesh_id: The ID of the Service Mesh instance.
+        :param str service_mesh_name: The name of the Service Mesh instance.
+        :param str sidecar_version: (Available since v1.170.0) The SideCar Version. **Note:** `sidecar_version` takes effect only if `enable_details` is set to `true`.
+        :param str status: The status of the Service Mesh. Valid values: `running`, `initial`.
+        :param str version: The version of the Service Mesh instance.
         """
         pulumi.set(__self__, "clusters", clusters)
         pulumi.set(__self__, "create_time", create_time)
@@ -1257,7 +1257,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter
     def clusters(self) -> Sequence[str]:
         """
-        Cluster List.
+        The Cluster List.
         """
         return pulumi.get(self, "clusters")
 
@@ -1265,7 +1265,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        The created time of the resource.
+        The created time of the Service Mesh instance.
         """
         return pulumi.get(self, "create_time")
 
@@ -1273,7 +1273,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter
     def edition(self) -> str:
         """
-        Grid instance version type. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+        Grid instance version type. **Note:** `edition` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "edition")
 
@@ -1281,7 +1281,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter
     def endpoints(self) -> Sequence['outputs.GetServiceMeshesMeshEndpointResult']:
         """
-        The endpoint details.
+        The endpoint details. **Note:** `endpoints` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "endpoints")
 
@@ -1289,7 +1289,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter(name="errorMessage")
     def error_message(self) -> str:
         """
-        The Cause of the Error.
+        The returned error message.
         """
         return pulumi.get(self, "error_message")
 
@@ -1297,7 +1297,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The ID of the Service Mesh.
+        The ID of the Service Mesh instance.
         """
         return pulumi.get(self, "id")
 
@@ -1305,7 +1305,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter(name="istioOperatorVersion")
     def istio_operator_version(self) -> str:
         """
-        The Istio Operator Version. **Note:** the `istio_operator_version` is available from the version v1.170.0.
+        (Available since v1.170.0) The Istio Operator Version. **Note:** `istio_operator_version` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "istio_operator_version")
 
@@ -1313,7 +1313,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter(name="kubeConfig")
     def kube_config(self) -> str:
         """
-        The content of Kube config.
+        The content of Kube config. **Note:** `kube_config` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "kube_config")
 
@@ -1321,7 +1321,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter(name="loadBalancers")
     def load_balancers(self) -> Sequence['outputs.GetServiceMeshesMeshLoadBalancerResult']:
         """
-        The configuration of the Load Balancer.
+        The configuration of the Load Balancer. **Note:** `load_balancer` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "load_balancers")
 
@@ -1329,7 +1329,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter(name="meshConfigs")
     def mesh_configs(self) -> Sequence['outputs.GetServiceMeshesMeshMeshConfigResult']:
         """
-        The configuration of the Service grid.
+        The configuration of the Service grid. **Note:** `mesh_config` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "mesh_configs")
 
@@ -1337,7 +1337,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter
     def networks(self) -> Sequence['outputs.GetServiceMeshesMeshNetworkResult']:
         """
-        The configuration of the Service grid network.
+        The configuration of the Service grid network. **Note:** `network` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "networks")
 
@@ -1345,7 +1345,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter(name="serviceMeshId")
     def service_mesh_id(self) -> str:
         """
-        The first ID of the resource.
+        The ID of the Service Mesh instance.
         """
         return pulumi.get(self, "service_mesh_id")
 
@@ -1353,7 +1353,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter(name="serviceMeshName")
     def service_mesh_name(self) -> str:
         """
-        The name of the resource.
+        The name of the Service Mesh instance.
         """
         return pulumi.get(self, "service_mesh_name")
 
@@ -1361,7 +1361,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter(name="sidecarVersion")
     def sidecar_version(self) -> str:
         """
-        The SideCar Version. **Note:** the `sidecar_version` is available from the version v1.170.0.
+        (Available since v1.170.0) The SideCar Version. **Note:** `sidecar_version` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "sidecar_version")
 
@@ -1369,7 +1369,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource. Valid values: `running` or `initial`.
+        The status of the Service Mesh. Valid values: `running`, `initial`.
         """
         return pulumi.get(self, "status")
 
@@ -1377,7 +1377,7 @@ class GetServiceMeshesMeshResult(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        The version of the resource.
+        The version of the Service Mesh instance.
         """
         return pulumi.get(self, "version")
 
@@ -1505,13 +1505,13 @@ class GetServiceMeshesMeshMeshConfigResult(dict):
         """
         :param Sequence['GetServiceMeshesMeshMeshConfigAccessLogArgs'] access_logs: The configuration of the access logging.
         :param Sequence['GetServiceMeshesMeshMeshConfigAuditArgs'] audits: The configuration of the Service grid audit.
-        :param Sequence['GetServiceMeshesMeshMeshConfigControlPlaneLogArgs'] control_plane_logs: The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
+        :param Sequence['GetServiceMeshesMeshMeshConfigControlPlaneLogArgs'] control_plane_logs: (Available since v1.174.0) The configuration of the control plane logging.
         :param bool customized_zipkin: Whether or not to enable the use of a custom zipkin.
         :param bool enable_locality_lb: Whether to enable service can access the service through the nearest node access.
         :param str include_ip_ranges: The IP ADDRESS range.
         :param Sequence['GetServiceMeshesMeshMeshConfigKialiArgs'] kialis: The configuration of the Kiali.
         :param Sequence['GetServiceMeshesMeshMeshConfigOpaArgs'] opas: The open-door policy of agent (OPA) plug-in information.
-        :param str outbound_traffic_policy: The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+        :param str outbound_traffic_policy: The policy of the Out to the traffic.
         :param Sequence['GetServiceMeshesMeshMeshConfigPilotArgs'] pilots: The configuration of the Link trace sampling.
         :param Sequence['GetServiceMeshesMeshMeshConfigPrometheusArgs'] prometheuses: the configuration of the Prometheus.
         :param Sequence['GetServiceMeshesMeshMeshConfigProxyArgs'] proxies: The configuration of the Proxy.
@@ -1555,7 +1555,7 @@ class GetServiceMeshesMeshMeshConfigResult(dict):
     @pulumi.getter(name="controlPlaneLogs")
     def control_plane_logs(self) -> Sequence['outputs.GetServiceMeshesMeshMeshConfigControlPlaneLogResult']:
         """
-        The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
+        (Available since v1.174.0) The configuration of the control plane logging.
         """
         return pulumi.get(self, "control_plane_logs")
 
@@ -1603,7 +1603,7 @@ class GetServiceMeshesMeshMeshConfigResult(dict):
     @pulumi.getter(name="outboundTrafficPolicy")
     def outbound_traffic_policy(self) -> str:
         """
-        The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+        The policy of the Out to the traffic.
         """
         return pulumi.get(self, "outbound_traffic_policy")
 
@@ -1662,7 +1662,7 @@ class GetServiceMeshesMeshMeshConfigAccessLogResult(dict):
                  enabled: bool,
                  project: str):
         """
-        :param bool enabled: Whether to enable Service grid audit.
+        :param bool enabled: Whether to enable CNI.
         :param str project: The Service grid audit that to the project.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -1672,7 +1672,7 @@ class GetServiceMeshesMeshMeshConfigAccessLogResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Whether to enable Service grid audit.
+        Whether to enable CNI.
         """
         return pulumi.get(self, "enabled")
 
@@ -1691,7 +1691,7 @@ class GetServiceMeshesMeshMeshConfigAuditResult(dict):
                  enabled: bool,
                  project: str):
         """
-        :param bool enabled: Whether to enable Service grid audit.
+        :param bool enabled: Whether to enable CNI.
         :param str project: The Service grid audit that to the project.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -1701,7 +1701,7 @@ class GetServiceMeshesMeshMeshConfigAuditResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Whether to enable Service grid audit.
+        Whether to enable CNI.
         """
         return pulumi.get(self, "enabled")
 
@@ -1720,7 +1720,7 @@ class GetServiceMeshesMeshMeshConfigControlPlaneLogResult(dict):
                  enabled: bool,
                  project: str):
         """
-        :param bool enabled: Whether to enable Service grid audit.
+        :param bool enabled: Whether to enable CNI.
         :param str project: The Service grid audit that to the project.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -1730,7 +1730,7 @@ class GetServiceMeshesMeshMeshConfigControlPlaneLogResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Whether to enable Service grid audit.
+        Whether to enable CNI.
         """
         return pulumi.get(self, "enabled")
 
@@ -1749,7 +1749,7 @@ class GetServiceMeshesMeshMeshConfigKialiResult(dict):
                  enabled: bool,
                  url: str):
         """
-        :param bool enabled: Whether to enable Service grid audit.
+        :param bool enabled: Whether to enable CNI.
         :param str url: The service address of the Kiali.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -1759,7 +1759,7 @@ class GetServiceMeshesMeshMeshConfigKialiResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Whether to enable Service grid audit.
+        Whether to enable CNI.
         """
         return pulumi.get(self, "enabled")
 
@@ -1782,7 +1782,7 @@ class GetServiceMeshesMeshMeshConfigOpaResult(dict):
                  request_cpu: str,
                  request_memory: str):
         """
-        :param bool enabled: Whether to enable Service grid audit.
+        :param bool enabled: Whether to enable CNI.
         :param str limit_cpu: Sidecar injector Pods on the throttle.
         :param str limit_memory: The memory limit  of the Sidecar injector Pods.
         :param str log_level: The log level of the OPA proxy container .
@@ -1800,7 +1800,7 @@ class GetServiceMeshesMeshMeshConfigOpaResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Whether to enable Service grid audit.
+        Whether to enable CNI.
         """
         return pulumi.get(self, "enabled")
 
@@ -2066,7 +2066,7 @@ class GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationResult(di
                  enabled: bool,
                  exclude_namespaces: str):
         """
-        :param bool enabled: Whether to enable Service grid audit.
+        :param bool enabled: Whether to enable CNI.
         :param str exclude_namespaces: The excluded namespace of the CNI.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -2076,7 +2076,7 @@ class GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationResult(di
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Whether to enable Service grid audit.
+        Whether to enable CNI.
         """
         return pulumi.get(self, "enabled")
 

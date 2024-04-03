@@ -36,7 +36,7 @@ type LookupTemplateApplicationsArgs struct {
 	ProductCode *string `pulumi:"productCode"`
 	// The quota ID.
 	QuotaActionCode *string `pulumi:"quotaActionCode"`
-	// The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+	// The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
 	QuotaCategory *string `pulumi:"quotaCategory"`
 }
 
@@ -84,7 +84,7 @@ type LookupTemplateApplicationsOutputArgs struct {
 	ProductCode pulumi.StringPtrInput `pulumi:"productCode"`
 	// The quota ID.
 	QuotaActionCode pulumi.StringPtrInput `pulumi:"quotaActionCode"`
-	// The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+	// The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
 	QuotaCategory pulumi.StringPtrInput `pulumi:"quotaCategory"`
 }
 

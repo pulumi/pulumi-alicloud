@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.Slb.Outputs
     public sealed class ListenerXForwardedFor
     {
         /// <summary>
-        /// Whether to retrieve the client ip. It is read-only attribute.
+        /// Whether to retrieve the client ip.
         /// </summary>
         public readonly bool? RetriveClientIp;
         /// <summary>
-        /// Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
+        /// Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         public readonly bool? RetriveSlbId;
         /// <summary>
-        /// Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
+        /// Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         public readonly bool? RetriveSlbIp;
         /// <summary>
-        /// Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+        /// Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         public readonly bool? RetriveSlbProto;
 

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class ServerlessKubernetesAddonGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ACK add-on configurations.
+        /// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }

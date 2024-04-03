@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerlessKubernetesAddon {
     /**
-     * @return The ACK add-on configurations.
+     * @return The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     private @Nullable String config;
@@ -32,7 +32,7 @@ public final class ServerlessKubernetesAddon {
 
     private ServerlessKubernetesAddon() {}
     /**
-     * @return The ACK add-on configurations.
+     * @return The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     public Optional<String> config() {

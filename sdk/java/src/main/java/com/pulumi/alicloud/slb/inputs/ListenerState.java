@@ -19,14 +19,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     public static final ListenerState Empty = new ListenerState();
 
     /**
-     * the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored.
+     * The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
      * 
      */
     @Import(name="aclId")
     private @Nullable Output<String> aclId;
 
     /**
-     * @return the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored.
+     * @return The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
      * 
      */
     public Optional<Output<String>> aclId() {
@@ -34,14 +34,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable &#34;acl(access control list)&#34;, the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+     * Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
      * 
      */
     @Import(name="aclStatus")
     private @Nullable Output<String> aclStatus;
 
     /**
-     * @return Whether to enable &#34;acl(access control list)&#34;, the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+     * @return Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
      * 
      */
     public Optional<Output<String>> aclStatus() {
@@ -49,14 +49,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Mode for handling the acl specified by acl_id. If `acl_status` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+     * The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
      * 
      */
     @Import(name="aclType")
     private @Nullable Output<String> aclType;
 
     /**
-     * @return Mode for handling the acl specified by acl_id. If `acl_status` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+     * @return The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
      * 
      */
     public Optional<Output<String>> aclType() {
@@ -64,14 +64,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
+     * The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
      * 
      */
     @Import(name="backendPort")
     private @Nullable Output<Integer> backendPort;
 
     /**
-     * @return Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
+     * @return The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
      * 
      */
     public Optional<Output<Integer>> backendPort() {
@@ -79,14 +79,16 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+     * The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+     * - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+     * @return The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+     * - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -94,14 +96,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+     * The ID of the certification authority (CA) certificate.
      * 
      */
     @Import(name="caCertificateId")
     private @Nullable Output<String> caCertificateId;
 
     /**
-     * @return SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+     * @return The ID of the certification authority (CA) certificate.
      * 
      */
     public Optional<Output<String>> caCertificateId() {
@@ -109,14 +111,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The cookie configured on the server. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;server&#34;. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+     * The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
      * 
      */
     @Import(name="cookie")
     private @Nullable Output<String> cookie;
 
     /**
-     * @return The cookie configured on the server. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;server&#34;. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+     * @return The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
      * 
      */
     public Optional<Output<String>> cookie() {
@@ -124,14 +126,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cookie timeout. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;insert&#34;. Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+     * The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
      * 
      */
     @Import(name="cookieTimeout")
     private @Nullable Output<Integer> cookieTimeout;
 
     /**
-     * @return Cookie timeout. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;insert&#34;. Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+     * @return The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
      * 
      */
     public Optional<Output<Integer>> cookieTimeout() {
@@ -139,14 +141,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
      * 
      */
     @Import(name="deleteProtectionValidation")
     private @Nullable Output<Boolean> deleteProtectionValidation;
 
     /**
-     * @return Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+     * @return Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> deleteProtectionValidation() {
@@ -154,14 +156,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+     * The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+     * @return The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
      * 
      */
     public Optional<Output<String>> description() {
@@ -169,14 +171,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+     * Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
      * 
      */
     @Import(name="enableHttp2")
     private @Nullable Output<String> enableHttp2;
 
     /**
-     * @return Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+     * @return Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
      * 
      */
     public Optional<Output<String>> enableHttp2() {
@@ -184,14 +186,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+     * The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
      * 
      */
     @Import(name="establishedTimeout")
     private @Nullable Output<Integer> establishedTimeout;
 
     /**
-     * @return Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+     * @return The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
      * 
      */
     public Optional<Output<Integer>> establishedTimeout() {
@@ -199,14 +201,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The port that http redirect to https.
+     * The listening port that is used to redirect HTTP requests to HTTPS.
      * 
      */
     @Import(name="forwardPort")
     private @Nullable Output<Integer> forwardPort;
 
     /**
-     * @return The port that http redirect to https.
+     * @return The listening port that is used to redirect HTTP requests to HTTPS.
      * 
      */
     public Optional<Output<Integer>> forwardPort() {
@@ -214,14 +216,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+     * The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
      * 
      */
     @Import(name="frontendPort")
     private @Nullable Output<Integer> frontendPort;
 
     /**
-     * @return Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+     * @return The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
      * 
      */
     public Optional<Output<Integer>> frontendPort() {
@@ -229,14 +231,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
+     * Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
      * 
      */
     @Import(name="gzip")
     private @Nullable Output<Boolean> gzip;
 
     /**
-     * @return Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
+     * @return Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> gzip() {
@@ -244,14 +246,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener&#39;s HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
+     * Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener&#39;s HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
      * 
      */
     @Import(name="healthCheck")
     private @Nullable Output<String> healthCheck;
 
     /**
-     * @return Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener&#39;s HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
+     * @return Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener&#39;s HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
      * 
      */
     public Optional<Output<String>> healthCheck() {
@@ -259,14 +261,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
+     * The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Import(name="healthCheckConnectPort")
     private @Nullable Output<Integer> healthCheckConnectPort;
 
     /**
-     * @return The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
+     * @return The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Optional<Output<Integer>> healthCheckConnectPort() {
@@ -274,14 +276,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+     * The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Import(name="healthCheckDomain")
     private @Nullable Output<String> healthCheckDomain;
 
     /**
-     * @return Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+     * @return The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Optional<Output<String>> healthCheckDomain() {
@@ -289,14 +291,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+     * The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Import(name="healthCheckHttpCode")
     private @Nullable Output<String> healthCheckHttpCode;
 
     /**
-     * @return Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+     * @return The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Optional<Output<String>> healthCheckHttpCode() {
@@ -304,14 +306,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+     * The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Import(name="healthCheckInterval")
     private @Nullable Output<Integer> healthCheckInterval;
 
     /**
-     * @return Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+     * @return The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Optional<Output<Integer>> healthCheckInterval() {
@@ -319,14 +321,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * HealthCheckMethod used for health check.Valid values: [&#34;head&#34;, &#34;get&#34;] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou&#34;, cn-beijing, cn-shanghai.This function does not support the TCP protocol .
+     * The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Import(name="healthCheckMethod")
     private @Nullable Output<String> healthCheckMethod;
 
     /**
-     * @return HealthCheckMethod used for health check.Valid values: [&#34;head&#34;, &#34;get&#34;] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou&#34;, cn-beijing, cn-shanghai.This function does not support the TCP protocol .
+     * @return The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Optional<Output<String>> healthCheckMethod() {
@@ -334,14 +336,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
+     * The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Import(name="healthCheckTimeout")
     private @Nullable Output<Integer> healthCheckTimeout;
 
     /**
-     * @return Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
+     * @return The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Optional<Output<Integer>> healthCheckTimeout() {
@@ -349,14 +351,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
+     * The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
      * 
      */
     @Import(name="healthCheckType")
     private @Nullable Output<String> healthCheckType;
 
     /**
-     * @return Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
+     * @return The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
      * 
      */
     public Optional<Output<String>> healthCheckType() {
@@ -364,14 +366,16 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+     * The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+     * **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Import(name="healthCheckUri")
     private @Nullable Output<String> healthCheckUri;
 
     /**
-     * @return URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+     * @return The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+     * **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Optional<Output<String>> healthCheckUri() {
@@ -379,14 +383,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+     * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Import(name="healthyThreshold")
     private @Nullable Output<Integer> healthyThreshold;
 
     /**
-     * @return The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+     * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Optional<Output<Integer>> healthyThreshold() {
@@ -394,14 +398,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+     * The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
      * 
      */
     @Import(name="idleTimeout")
     private @Nullable Output<Integer> idleTimeout;
 
     /**
-     * @return Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+     * @return The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
      * 
      */
     public Optional<Output<Integer>> idleTimeout() {
@@ -447,14 +451,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+     * Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
      * 
      */
     @Import(name="listenerForward")
     private @Nullable Output<String> listenerForward;
 
     /**
-     * @return Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+     * @return Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
      * 
      */
     public Optional<Output<String>> listenerForward() {
@@ -477,14 +481,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the master slave server group.
+     * The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
      * 
      */
     @Import(name="masterSlaveServerGroupId")
     private @Nullable Output<String> masterSlaveServerGroupId;
 
     /**
-     * @return The ID of the master slave server group.
+     * @return The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
      * 
      */
     public Optional<Output<String>> masterSlaveServerGroupId() {
@@ -492,14 +496,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+     * The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
      * 
      */
     @Import(name="persistenceTimeout")
     private @Nullable Output<Integer> persistenceTimeout;
 
     /**
-     * @return Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+     * @return The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
      * 
      */
     public Optional<Output<Integer>> persistenceTimeout() {
@@ -507,14 +511,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+     * The protocol to listen on. Valid values: `http`.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+     * @return The protocol to listen on. Valid values: `http`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -522,22 +526,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-     * 
-     * &gt; **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-     * 
-     * &gt; **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is &#34;Shared-Performance&#34;. More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+     * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Import(name="proxyProtocolV2Enabled")
     private @Nullable Output<Boolean> proxyProtocolV2Enabled;
 
     /**
-     * @return Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-     * 
-     * &gt; **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-     * 
-     * &gt; **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is &#34;Shared-Performance&#34;. More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+     * @return Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> proxyProtocolV2Enabled() {
@@ -545,14 +541,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+     * The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
      * 
      */
     @Import(name="requestTimeout")
     private @Nullable Output<Integer> requestTimeout;
 
     /**
-     * @return Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+     * @return The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
      * 
      */
     public Optional<Output<Integer>> requestTimeout() {
@@ -560,16 +556,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
-     * Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
+     * The scheduling algorithm. Default value: `wrr`. Valid values:
      * 
      */
     @Import(name="scheduler")
     private @Nullable Output<String> scheduler;
 
     /**
-     * @return Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
-     * Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
+     * @return The scheduling algorithm. Default value: `wrr`. Valid values:
      * 
      */
     public Optional<Output<String>> scheduler() {
@@ -577,14 +571,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
+     * The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
      * 
      */
     @Import(name="serverCertificateId")
     private @Nullable Output<String> serverCertificateId;
 
     /**
-     * @return SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
+     * @return The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
      * 
      */
     public Optional<Output<String>> serverCertificateId() {
@@ -592,14 +586,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * the id of server group to be apply on the listener, is the id of resource `alicloud.slb.ServerGroup`.
+     * The ID of the vServer group. It&#39;s the ID of resource `alicloud.slb.ServerGroup`.
      * 
      */
     @Import(name="serverGroupId")
     private @Nullable Output<String> serverGroupId;
 
     /**
-     * @return the id of server group to be apply on the listener, is the id of resource `alicloud.slb.ServerGroup`.
+     * @return The ID of the vServer group. It&#39;s the ID of resource `alicloud.slb.ServerGroup`.
      * 
      */
     public Optional<Output<String>> serverGroupId() {
@@ -607,7 +601,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+     * The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
      * 
      * @deprecated
      * Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
@@ -618,7 +612,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> sslCertificateId;
 
     /**
-     * @return SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+     * @return The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
      * 
      * @deprecated
      * Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
@@ -630,14 +624,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
+     * Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
      * 
      */
     @Import(name="stickySession")
     private @Nullable Output<String> stickySession;
 
     /**
-     * @return Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
+     * @return Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
      * 
      */
     public Optional<Output<String>> stickySession() {
@@ -645,14 +639,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Mode for handling the cookie. If `sticky_session` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+     * The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
      * 
      */
     @Import(name="stickySessionType")
     private @Nullable Output<String> stickySessionType;
 
     /**
-     * @return Mode for handling the cookie. If `sticky_session` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+     * @return The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
      * 
      */
     public Optional<Output<String>> stickySessionType() {
@@ -660,14 +654,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is &#34;Shared-Performance&#34;.
+     * The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
      * 
      */
     @Import(name="tlsCipherPolicy")
     private @Nullable Output<String> tlsCipherPolicy;
 
     /**
-     * @return Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is &#34;Shared-Performance&#34;.
+     * @return The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
      * 
      */
     public Optional<Output<String>> tlsCipherPolicy() {
@@ -675,14 +669,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+     * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Import(name="unhealthyThreshold")
     private @Nullable Output<Integer> unhealthyThreshold;
 
     /**
-     * @return The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+     * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Optional<Output<Integer>> unhealthyThreshold() {
@@ -690,14 +684,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+     * Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34;. See `x_forwarded_for` below.
      * 
      */
     @Import(name="xForwardedFor")
     private @Nullable Output<ListenerXForwardedForArgs> xForwardedFor;
 
     /**
-     * @return Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+     * @return Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34;. See `x_forwarded_for` below.
      * 
      */
     public Optional<Output<ListenerXForwardedForArgs>> xForwardedFor() {
@@ -772,7 +766,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclId the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored.
+         * @param aclId The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
          * 
          * @return builder
          * 
@@ -783,7 +777,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclId the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored.
+         * @param aclId The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
          * 
          * @return builder
          * 
@@ -793,7 +787,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclStatus Whether to enable &#34;acl(access control list)&#34;, the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+         * @param aclStatus Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
          * 
          * @return builder
          * 
@@ -804,7 +798,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclStatus Whether to enable &#34;acl(access control list)&#34;, the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+         * @param aclStatus Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
          * 
          * @return builder
          * 
@@ -814,7 +808,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclType Mode for handling the acl specified by acl_id. If `acl_status` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+         * @param aclType The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
          * 
          * @return builder
          * 
@@ -825,7 +819,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclType Mode for handling the acl specified by acl_id. If `acl_status` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+         * @param aclType The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
          * 
          * @return builder
          * 
@@ -835,7 +829,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backendPort Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
+         * @param backendPort The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
          * 
          * @return builder
          * 
@@ -846,7 +840,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backendPort Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
+         * @param backendPort The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
          * 
          * @return builder
          * 
@@ -856,7 +850,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+         * @param bandwidth The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+         * - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
          * 
          * @return builder
          * 
@@ -867,7 +862,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+         * @param bandwidth The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+         * - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
          * 
          * @return builder
          * 
@@ -877,7 +873,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caCertificateId SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+         * @param caCertificateId The ID of the certification authority (CA) certificate.
          * 
          * @return builder
          * 
@@ -888,7 +884,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caCertificateId SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+         * @param caCertificateId The ID of the certification authority (CA) certificate.
          * 
          * @return builder
          * 
@@ -898,7 +894,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cookie The cookie configured on the server. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;server&#34;. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+         * @param cookie The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
          * 
          * @return builder
          * 
@@ -909,7 +905,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cookie The cookie configured on the server. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;server&#34;. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+         * @param cookie The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
          * 
          * @return builder
          * 
@@ -919,7 +915,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cookieTimeout Cookie timeout. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;insert&#34;. Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+         * @param cookieTimeout The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
          * 
          * @return builder
          * 
@@ -930,7 +926,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cookieTimeout Cookie timeout. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;insert&#34;. Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+         * @param cookieTimeout The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
          * 
          * @return builder
          * 
@@ -940,7 +936,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteProtectionValidation Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+         * @param deleteProtectionValidation Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
          * 
          * @return builder
          * 
@@ -951,7 +947,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteProtectionValidation Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+         * @param deleteProtectionValidation Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
          * 
          * @return builder
          * 
@@ -961,7 +957,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+         * @param description The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
          * 
          * @return builder
          * 
@@ -972,7 +968,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+         * @param description The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
          * 
          * @return builder
          * 
@@ -982,7 +978,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableHttp2 Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+         * @param enableHttp2 Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
          * 
          * @return builder
          * 
@@ -993,7 +989,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableHttp2 Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+         * @param enableHttp2 Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
          * 
          * @return builder
          * 
@@ -1003,7 +999,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param establishedTimeout Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+         * @param establishedTimeout The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
          * 
          * @return builder
          * 
@@ -1014,7 +1010,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param establishedTimeout Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+         * @param establishedTimeout The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
          * 
          * @return builder
          * 
@@ -1024,7 +1020,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardPort The port that http redirect to https.
+         * @param forwardPort The listening port that is used to redirect HTTP requests to HTTPS.
          * 
          * @return builder
          * 
@@ -1035,7 +1031,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardPort The port that http redirect to https.
+         * @param forwardPort The listening port that is used to redirect HTTP requests to HTTPS.
          * 
          * @return builder
          * 
@@ -1045,7 +1041,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param frontendPort Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+         * @param frontendPort The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
          * 
          * @return builder
          * 
@@ -1056,7 +1052,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param frontendPort Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+         * @param frontendPort The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
          * 
          * @return builder
          * 
@@ -1066,7 +1062,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gzip Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
+         * @param gzip Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -1077,7 +1073,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gzip Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
+         * @param gzip Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -1087,7 +1083,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheck Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener&#39;s HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
+         * @param healthCheck Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener&#39;s HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
          * 
          * @return builder
          * 
@@ -1098,7 +1094,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheck Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener&#39;s HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
+         * @param healthCheck Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener&#39;s HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
          * 
          * @return builder
          * 
@@ -1108,7 +1104,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConnectPort The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
+         * @param healthCheckConnectPort The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1119,7 +1115,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConnectPort The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
+         * @param healthCheckConnectPort The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1129,7 +1125,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckDomain Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+         * @param healthCheckDomain The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1140,7 +1136,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckDomain Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+         * @param healthCheckDomain The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1150,7 +1146,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckHttpCode Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+         * @param healthCheckHttpCode The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1161,7 +1157,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckHttpCode Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+         * @param healthCheckHttpCode The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1171,7 +1167,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckInterval Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+         * @param healthCheckInterval The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1182,7 +1178,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckInterval Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+         * @param healthCheckInterval The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1192,7 +1188,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckMethod HealthCheckMethod used for health check.Valid values: [&#34;head&#34;, &#34;get&#34;] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou&#34;, cn-beijing, cn-shanghai.This function does not support the TCP protocol .
+         * @param healthCheckMethod The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1203,7 +1199,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckMethod HealthCheckMethod used for health check.Valid values: [&#34;head&#34;, &#34;get&#34;] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou&#34;, cn-beijing, cn-shanghai.This function does not support the TCP protocol .
+         * @param healthCheckMethod The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1213,7 +1209,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckTimeout Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
+         * @param healthCheckTimeout The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1224,7 +1220,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckTimeout Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
+         * @param healthCheckTimeout The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1234,7 +1230,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckType Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
+         * @param healthCheckType The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
          * 
          * @return builder
          * 
@@ -1245,7 +1241,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckType Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
+         * @param healthCheckType The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
          * 
          * @return builder
          * 
@@ -1255,7 +1251,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckUri URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+         * @param healthCheckUri The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+         * **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1266,7 +1263,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckUri URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+         * @param healthCheckUri The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+         * **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1276,7 +1274,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthyThreshold The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+         * @param healthyThreshold The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1287,7 +1285,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthyThreshold The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+         * @param healthyThreshold The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1297,7 +1295,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idleTimeout Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+         * @param idleTimeout The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
          * 
          * @return builder
          * 
@@ -1308,7 +1306,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param idleTimeout Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+         * @param idleTimeout The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
          * 
          * @return builder
          * 
@@ -1368,7 +1366,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerForward Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+         * @param listenerForward Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
          * 
          * @return builder
          * 
@@ -1379,7 +1377,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerForward Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+         * @param listenerForward Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
          * 
          * @return builder
          * 
@@ -1410,7 +1408,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterSlaveServerGroupId The ID of the master slave server group.
+         * @param masterSlaveServerGroupId The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
          * 
          * @return builder
          * 
@@ -1421,7 +1419,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterSlaveServerGroupId The ID of the master slave server group.
+         * @param masterSlaveServerGroupId The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
          * 
          * @return builder
          * 
@@ -1431,7 +1429,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param persistenceTimeout Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+         * @param persistenceTimeout The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
          * 
          * @return builder
          * 
@@ -1442,7 +1440,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param persistenceTimeout Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+         * @param persistenceTimeout The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
          * 
          * @return builder
          * 
@@ -1452,7 +1450,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+         * @param protocol The protocol to listen on. Valid values: `http`.
          * 
          * @return builder
          * 
@@ -1463,7 +1461,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+         * @param protocol The protocol to listen on. Valid values: `http`.
          * 
          * @return builder
          * 
@@ -1473,11 +1471,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyProtocolV2Enabled Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-         * 
-         * &gt; **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-         * 
-         * &gt; **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is &#34;Shared-Performance&#34;. More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+         * @param proxyProtocolV2Enabled Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -1488,11 +1482,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyProtocolV2Enabled Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-         * 
-         * &gt; **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-         * 
-         * &gt; **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is &#34;Shared-Performance&#34;. More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+         * @param proxyProtocolV2Enabled Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -1502,7 +1492,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestTimeout Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+         * @param requestTimeout The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
          * 
          * @return builder
          * 
@@ -1513,7 +1503,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requestTimeout Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+         * @param requestTimeout The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
          * 
          * @return builder
          * 
@@ -1523,8 +1513,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduler Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
-         * Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
+         * @param scheduler The scheduling algorithm. Default value: `wrr`. Valid values:
          * 
          * @return builder
          * 
@@ -1535,8 +1524,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduler Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
-         * Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
+         * @param scheduler The scheduling algorithm. Default value: `wrr`. Valid values:
          * 
          * @return builder
          * 
@@ -1546,7 +1534,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverCertificateId SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
+         * @param serverCertificateId The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
          * 
          * @return builder
          * 
@@ -1557,7 +1545,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverCertificateId SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
+         * @param serverCertificateId The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
          * 
          * @return builder
          * 
@@ -1567,7 +1555,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupId the id of server group to be apply on the listener, is the id of resource `alicloud.slb.ServerGroup`.
+         * @param serverGroupId The ID of the vServer group. It&#39;s the ID of resource `alicloud.slb.ServerGroup`.
          * 
          * @return builder
          * 
@@ -1578,7 +1566,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupId the id of server group to be apply on the listener, is the id of resource `alicloud.slb.ServerGroup`.
+         * @param serverGroupId The ID of the vServer group. It&#39;s the ID of resource `alicloud.slb.ServerGroup`.
          * 
          * @return builder
          * 
@@ -1588,7 +1576,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslCertificateId SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+         * @param sslCertificateId The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
          * 
          * @return builder
          * 
@@ -1603,7 +1591,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslCertificateId SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+         * @param sslCertificateId The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
          * 
          * @return builder
          * 
@@ -1617,7 +1605,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySession Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
+         * @param stickySession Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
          * 
          * @return builder
          * 
@@ -1628,7 +1616,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySession Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
+         * @param stickySession Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
          * 
          * @return builder
          * 
@@ -1638,7 +1626,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySessionType Mode for handling the cookie. If `sticky_session` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+         * @param stickySessionType The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
          * 
          * @return builder
          * 
@@ -1649,7 +1637,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySessionType Mode for handling the cookie. If `sticky_session` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+         * @param stickySessionType The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
          * 
          * @return builder
          * 
@@ -1659,7 +1647,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tlsCipherPolicy Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is &#34;Shared-Performance&#34;.
+         * @param tlsCipherPolicy The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
          * 
          * @return builder
          * 
@@ -1670,7 +1658,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tlsCipherPolicy Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is &#34;Shared-Performance&#34;.
+         * @param tlsCipherPolicy The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
          * 
          * @return builder
          * 
@@ -1680,7 +1668,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unhealthyThreshold The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+         * @param unhealthyThreshold The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1691,7 +1679,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unhealthyThreshold The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+         * @param unhealthyThreshold The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
          * 
          * @return builder
          * 
@@ -1701,7 +1689,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xForwardedFor Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+         * @param xForwardedFor Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34;. See `x_forwarded_for` below.
          * 
          * @return builder
          * 
@@ -1712,7 +1700,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xForwardedFor Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+         * @param xForwardedFor Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34;. See `x_forwarded_for` below.
          * 
          * @return builder
          * 

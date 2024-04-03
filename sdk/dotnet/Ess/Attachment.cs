@@ -156,7 +156,31 @@ namespace Pulumi.AliCloud.Ess
     public partial class Attachment : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
+        /// </summary>
+        [Output("entrusted")]
+        public Output<bool?> Entrusted { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+        /// </summary>
+        [Output("force")]
+        public Output<bool?> Force { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
+        /// </summary>
+        [Output("instanceIds")]
+        public Output<ImmutableArray<string>> InstanceIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
+        /// </summary>
+        [Output("lifecycleHook")]
+        public Output<bool?> LifecycleHook { get; private set; } = null!;
+
+        /// <summary>
+        /// The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
         /// 
         /// &gt; **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
         /// 
@@ -168,14 +192,8 @@ namespace Pulumi.AliCloud.Ess
         /// - The attached ECS instances has not been attached to other scaling groups.
         /// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         /// </summary>
-        [Output("force")]
-        public Output<bool?> Force { get; private set; } = null!;
-
-        /// <summary>
-        /// ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
-        /// </summary>
-        [Output("instanceIds")]
-        public Output<ImmutableArray<string>> InstanceIds { get; private set; } = null!;
+        [Output("loadBalancerWeights")]
+        public Output<ImmutableArray<int>> LoadBalancerWeights { get; private set; } = null!;
 
         /// <summary>
         /// ID of the scaling group of a scaling configuration.
@@ -230,17 +248,13 @@ namespace Pulumi.AliCloud.Ess
     public sealed class AttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
+        /// </summary>
+        [Input("entrusted")]
+        public Input<bool>? Entrusted { get; set; }
+
+        /// <summary>
         /// Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
-        /// 
-        /// &gt; **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
-        /// 
-        /// &gt; **NOTE:** Restrictions on attaching ECS instances:
-        /// 
-        /// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
-        /// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
-        /// - The attached ECS instances must in the running state.
-        /// - The attached ECS instances has not been attached to other scaling groups.
-        /// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -258,6 +272,34 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
+        /// Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
+        /// </summary>
+        [Input("lifecycleHook")]
+        public Input<bool>? LifecycleHook { get; set; }
+
+        [Input("loadBalancerWeights")]
+        private InputList<int>? _loadBalancerWeights;
+
+        /// <summary>
+        /// The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
+        /// 
+        /// &gt; **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+        /// 
+        /// &gt; **NOTE:** Restrictions on attaching ECS instances:
+        /// 
+        /// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+        /// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+        /// - The attached ECS instances must in the running state.
+        /// - The attached ECS instances has not been attached to other scaling groups.
+        /// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+        /// </summary>
+        public InputList<int> LoadBalancerWeights
+        {
+            get => _loadBalancerWeights ?? (_loadBalancerWeights = new InputList<int>());
+            set => _loadBalancerWeights = value;
+        }
+
+        /// <summary>
         /// ID of the scaling group of a scaling configuration.
         /// </summary>
         [Input("scalingGroupId", required: true)]
@@ -272,17 +314,13 @@ namespace Pulumi.AliCloud.Ess
     public sealed class AttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether the scaling group manages the lifecycles of the instances that are manually added to the scaling group.
+        /// </summary>
+        [Input("entrusted")]
+        public Input<bool>? Entrusted { get; set; }
+
+        /// <summary>
         /// Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
-        /// 
-        /// &gt; **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
-        /// 
-        /// &gt; **NOTE:** Restrictions on attaching ECS instances:
-        /// 
-        /// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
-        /// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
-        /// - The attached ECS instances must in the running state.
-        /// - The attached ECS instances has not been attached to other scaling groups.
-        /// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -297,6 +335,34 @@ namespace Pulumi.AliCloud.Ess
         {
             get => _instanceIds ?? (_instanceIds = new InputList<string>());
             set => _instanceIds = value;
+        }
+
+        /// <summary>
+        /// Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
+        /// </summary>
+        [Input("lifecycleHook")]
+        public Input<bool>? LifecycleHook { get; set; }
+
+        [Input("loadBalancerWeights")]
+        private InputList<int>? _loadBalancerWeights;
+
+        /// <summary>
+        /// The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
+        /// 
+        /// &gt; **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+        /// 
+        /// &gt; **NOTE:** Restrictions on attaching ECS instances:
+        /// 
+        /// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+        /// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+        /// - The attached ECS instances must in the running state.
+        /// - The attached ECS instances has not been attached to other scaling groups.
+        /// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+        /// </summary>
+        public InputList<int> LoadBalancerWeights
+        {
+            get => _loadBalancerWeights ?? (_loadBalancerWeights = new InputList<int>());
+            set => _loadBalancerWeights = value;
         }
 
         /// <summary>

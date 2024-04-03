@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KubernetesPermissionPermission {
     /**
-     * @return The ID of the cluster that you want to manage.
+     * @return The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
      * 
      */
     private String cluster;
@@ -39,14 +39,14 @@ public final class KubernetesPermissionPermission {
      */
     private String roleName;
     /**
-     * @return The authorization type. Valid values `cluster`, `namespace`.
+     * @return The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
      * 
      */
     private String roleType;
 
     private KubernetesPermissionPermission() {}
     /**
-     * @return The ID of the cluster that you want to manage.
+     * @return The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
      * 
      */
     public String cluster() {
@@ -81,7 +81,7 @@ public final class KubernetesPermissionPermission {
         return this.roleName;
     }
     /**
-     * @return The authorization type. Valid values `cluster`, `namespace`.
+     * @return The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
      * 
      */
     public String roleType() {

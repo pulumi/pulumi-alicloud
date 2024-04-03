@@ -198,14 +198,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The payment type of the resource. Valid values: `Subscription`.
+     * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values: `Subscription`.
+     * @return The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -213,14 +213,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+     * @return The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -243,7 +243,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
+     * Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
      * 
      * @deprecated
      * Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
@@ -254,7 +254,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
+     * @return Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
      * 
      * @deprecated
      * Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
@@ -266,14 +266,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
      * 
      */
     @Import(name="renewalDuration")
     private @Nullable Output<Integer> renewalDuration;
 
     /**
-     * @return Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * @return Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
      * 
      */
     public Optional<Output<Integer>> renewalDuration() {
@@ -637,7 +639,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values: `Subscription`.
+         * @param paymentType The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -648,7 +650,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values: `Subscription`.
+         * @param paymentType The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -658,7 +660,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+         * @param period The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
          * 
          * @return builder
          * 
@@ -669,7 +671,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+         * @param period The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
          * 
          * @return builder
          * 
@@ -700,7 +702,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
+         * @param renewPeriod Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
          * 
          * @return builder
          * 
@@ -715,7 +717,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
+         * @param renewPeriod Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
          * 
          * @return builder
          * 
@@ -729,7 +731,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalDuration Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+         * @param renewalDuration Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+         * **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
          * 
          * @return builder
          * 
@@ -740,7 +743,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalDuration Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+         * @param renewalDuration Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+         * **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
          * 
          * @return builder
          * 

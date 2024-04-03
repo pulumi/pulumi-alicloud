@@ -127,6 +127,8 @@ type NodePool struct {
 	RuntimeVersion pulumi.StringOutput `pulumi:"runtimeVersion"`
 	// Automatic scaling configuration. See `scalingConfig` below.
 	ScalingConfig NodePoolScalingConfigOutput `pulumi:"scalingConfig"`
+	// The ID of the scaling group.
+	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
 	// Scaling group mode, default value: `release`. Valid values:
 	ScalingPolicy pulumi.StringOutput `pulumi:"scalingPolicy"`
 	// The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
@@ -331,6 +333,8 @@ type nodePoolState struct {
 	RuntimeVersion *string `pulumi:"runtimeVersion"`
 	// Automatic scaling configuration. See `scalingConfig` below.
 	ScalingConfig *NodePoolScalingConfig `pulumi:"scalingConfig"`
+	// The ID of the scaling group.
+	ScalingGroupId *string `pulumi:"scalingGroupId"`
 	// Scaling group mode, default value: `release`. Valid values:
 	ScalingPolicy *string `pulumi:"scalingPolicy"`
 	// The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
@@ -486,6 +490,8 @@ type NodePoolState struct {
 	RuntimeVersion pulumi.StringPtrInput
 	// Automatic scaling configuration. See `scalingConfig` below.
 	ScalingConfig NodePoolScalingConfigPtrInput
+	// The ID of the scaling group.
+	ScalingGroupId pulumi.StringPtrInput
 	// Scaling group mode, default value: `release`. Valid values:
 	ScalingPolicy pulumi.StringPtrInput
 	// The security group ID of the node pool. This field has been replaced by `securityGroupIds`, please use the `securityGroupIds` field instead.
@@ -1174,6 +1180,11 @@ func (o NodePoolOutput) RuntimeVersion() pulumi.StringOutput {
 // Automatic scaling configuration. See `scalingConfig` below.
 func (o NodePoolOutput) ScalingConfig() NodePoolScalingConfigOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolScalingConfigOutput { return v.ScalingConfig }).(NodePoolScalingConfigOutput)
+}
+
+// The ID of the scaling group.
+func (o NodePoolOutput) ScalingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
 }
 
 // Scaling group mode, default value: `release`. Valid values:

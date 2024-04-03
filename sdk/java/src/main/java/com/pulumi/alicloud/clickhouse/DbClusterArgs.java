@@ -144,14 +144,14 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Key management service KMS key ID.
+     * Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
      * 
      */
     @Import(name="encryptionKey")
     private @Nullable Output<String> encryptionKey;
 
     /**
-     * @return Key management service KMS key ID.
+     * @return Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
      * 
      */
     public Optional<Output<String>> encryptionKey() {
@@ -204,14 +204,14 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+     * Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
      * 
      */
     @Import(name="period")
     private @Nullable Output<String> period;
 
     /**
-     * @return Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+     * @return Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
      * 
      */
     public Optional<Output<String>> period() {
@@ -249,14 +249,14 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The used time of DBCluster.
+     * The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
      * 
      */
     @Import(name="usedTime")
     private @Nullable Output<String> usedTime;
 
     /**
-     * @return The used time of DBCluster.
+     * @return The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
      * 
      */
     public Optional<Output<String>> usedTime() {
@@ -533,7 +533,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionKey Key management service KMS key ID.
+         * @param encryptionKey Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionKey Key management service KMS key ID.
+         * @param encryptionKey Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
          * 
          * @return builder
          * 
@@ -617,7 +617,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+         * @param period Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
          * 
          * @return builder
          * 
@@ -628,7 +628,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+         * @param period Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
          * 
          * @return builder
          * 
@@ -680,7 +680,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usedTime The used time of DBCluster.
+         * @param usedTime The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
          * 
          * @return builder
          * 
@@ -691,7 +691,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usedTime The used time of DBCluster.
+         * @param usedTime The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
          * 
          * @return builder
          * 

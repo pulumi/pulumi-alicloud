@@ -38,16 +38,16 @@ class BucketArgs:
         """
         The set of arguments for constructing a Bucket resource.
         :param pulumi.Input['BucketAccessMonitorArgs'] access_monitor: A access monitor status of a bucket. See `access_monitor` below.
-        :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+        :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]] cors_rules: A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
         :param pulumi.Input[bool] lifecycle_rule_allow_same_action_overlap: A boolean that indicates lifecycle rules allow prefix overlap.
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]] lifecycle_rules: A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
         :param pulumi.Input['BucketLoggingArgs'] logging: A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
         :param pulumi.Input[bool] logging_isenable: The flag of using logging enable container. Defaults true.
-        :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+        :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketPolicy` instead.
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
-        :param pulumi.Input['BucketRefererConfigArgs'] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+        :param pulumi.Input['BucketRefererConfigArgs'] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketReferer` instead. See `referer_config` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the bucket belongs.
         :param pulumi.Input['BucketServerSideEncryptionRuleArgs'] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
@@ -58,6 +58,9 @@ class BucketArgs:
         """
         if access_monitor is not None:
             pulumi.set(__self__, "access_monitor", access_monitor)
+        if acl is not None:
+            warnings.warn("""Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""", DeprecationWarning)
+            pulumi.log.warn("""acl is deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""")
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
         if bucket is not None:
@@ -114,8 +117,11 @@ class BucketArgs:
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input[str]]:
         """
-        The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+        The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
         """
+        warnings.warn("""Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""", DeprecationWarning)
+        pulumi.log.warn("""acl is deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""")
+
         return pulumi.get(self, "acl")
 
     @acl.setter
@@ -210,7 +216,7 @@ class BucketArgs:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+        Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketPolicy` instead.
         """
         return pulumi.get(self, "policy")
 
@@ -234,7 +240,7 @@ class BucketArgs:
     @pulumi.getter(name="refererConfig")
     def referer_config(self) -> Optional[pulumi.Input['BucketRefererConfigArgs']]:
         """
-        The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+        The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketReferer` instead. See `referer_config` below.
         """
         return pulumi.get(self, "referer_config")
 
@@ -357,7 +363,7 @@ class _BucketState:
         """
         Input properties used for looking up and filtering Bucket resources.
         :param pulumi.Input['BucketAccessMonitorArgs'] access_monitor: A access monitor status of a bucket. See `access_monitor` below.
-        :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+        :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]] cors_rules: A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
         :param pulumi.Input[str] creation_date: The creation date of the bucket.
         :param pulumi.Input[str] extranet_endpoint: The extranet access endpoint of the bucket.
@@ -369,9 +375,9 @@ class _BucketState:
         :param pulumi.Input['BucketLoggingArgs'] logging: A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
         :param pulumi.Input[bool] logging_isenable: The flag of using logging enable container. Defaults true.
         :param pulumi.Input[str] owner: The bucket owner.
-        :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+        :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketPolicy` instead.
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
-        :param pulumi.Input['BucketRefererConfigArgs'] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+        :param pulumi.Input['BucketRefererConfigArgs'] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketReferer` instead. See `referer_config` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the bucket belongs.
         :param pulumi.Input['BucketServerSideEncryptionRuleArgs'] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
@@ -382,6 +388,9 @@ class _BucketState:
         """
         if access_monitor is not None:
             pulumi.set(__self__, "access_monitor", access_monitor)
+        if acl is not None:
+            warnings.warn("""Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""", DeprecationWarning)
+            pulumi.log.warn("""acl is deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""")
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
         if bucket is not None:
@@ -448,8 +457,11 @@ class _BucketState:
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input[str]]:
         """
-        The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+        The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
         """
+        warnings.warn("""Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""", DeprecationWarning)
+        pulumi.log.warn("""acl is deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""")
+
         return pulumi.get(self, "acl")
 
     @acl.setter
@@ -604,7 +616,7 @@ class _BucketState:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+        Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketPolicy` instead.
         """
         return pulumi.get(self, "policy")
 
@@ -628,7 +640,7 @@ class _BucketState:
     @pulumi.getter(name="refererConfig")
     def referer_config(self) -> Optional[pulumi.Input['BucketRefererConfigArgs']]:
         """
-        The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+        The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketReferer` instead. See `referer_config` below.
         """
         return pulumi.get(self, "referer_config")
 
@@ -852,16 +864,16 @@ class Bucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['BucketAccessMonitorArgs']] access_monitor: A access monitor status of a bucket. See `access_monitor` below.
-        :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+        :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsRuleArgs']]]] cors_rules: A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
         :param pulumi.Input[bool] lifecycle_rule_allow_same_action_overlap: A boolean that indicates lifecycle rules allow prefix overlap.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
         :param pulumi.Input[pulumi.InputType['BucketLoggingArgs']] logging: A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
         :param pulumi.Input[bool] logging_isenable: The flag of using logging enable container. Defaults true.
-        :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+        :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketPolicy` instead.
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
-        :param pulumi.Input[pulumi.InputType['BucketRefererConfigArgs']] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+        :param pulumi.Input[pulumi.InputType['BucketRefererConfigArgs']] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketReferer` instead. See `referer_config` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the bucket belongs.
         :param pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
@@ -1088,7 +1100,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['BucketAccessMonitorArgs']] access_monitor: A access monitor status of a bucket. See `access_monitor` below.
-        :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+        :param pulumi.Input[str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsRuleArgs']]]] cors_rules: A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
         :param pulumi.Input[str] creation_date: The creation date of the bucket.
         :param pulumi.Input[str] extranet_endpoint: The extranet access endpoint of the bucket.
@@ -1100,9 +1112,9 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketLoggingArgs']] logging: A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
         :param pulumi.Input[bool] logging_isenable: The flag of using logging enable container. Defaults true.
         :param pulumi.Input[str] owner: The bucket owner.
-        :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+        :param pulumi.Input[str] policy: Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketPolicy` instead.
         :param pulumi.Input[str] redundancy_type: The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
-        :param pulumi.Input[pulumi.InputType['BucketRefererConfigArgs']] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+        :param pulumi.Input[pulumi.InputType['BucketRefererConfigArgs']] referer_config: The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketReferer` instead. See `referer_config` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the bucket belongs.
         :param pulumi.Input[pulumi.InputType['BucketServerSideEncryptionRuleArgs']] server_side_encryption_rule: A configuration of server-side encryption. See `server_side_encryption_rule` below.
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
@@ -1151,10 +1163,13 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def acl(self) -> pulumi.Output[Optional[str]]:
+    def acl(self) -> pulumi.Output[str]:
         """
-        The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+        The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
         """
+        warnings.warn("""Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""", DeprecationWarning)
+        pulumi.log.warn("""acl is deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""")
+
         return pulumi.get(self, "acl")
 
     @property
@@ -1257,7 +1272,7 @@ class Bucket(pulumi.CustomResource):
     @pulumi.getter
     def policy(self) -> pulumi.Output[Optional[str]]:
         """
-        Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+        Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketPolicy` instead.
         """
         return pulumi.get(self, "policy")
 
@@ -1273,7 +1288,7 @@ class Bucket(pulumi.CustomResource):
     @pulumi.getter(name="refererConfig")
     def referer_config(self) -> pulumi.Output[Optional['outputs.BucketRefererConfig']]:
         """
-        The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+        The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `oss.BucketReferer` instead. See `referer_config` below.
         """
         return pulumi.get(self, "referer_config")
 

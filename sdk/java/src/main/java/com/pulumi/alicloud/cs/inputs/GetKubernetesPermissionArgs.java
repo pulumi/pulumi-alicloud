@@ -3,35 +3,16 @@
 
 package com.pulumi.alicloud.cs.inputs;
 
-import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionPermissionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetKubernetesPermissionArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetKubernetesPermissionArgs Empty = new GetKubernetesPermissionArgs();
-
-    /**
-     * A list of user permission.
-     * 
-     */
-    @Import(name="permissions")
-    private @Nullable Output<List<GetKubernetesPermissionPermissionArgs>> permissions;
-
-    /**
-     * @return A list of user permission.
-     * 
-     */
-    public Optional<Output<List<GetKubernetesPermissionPermissionArgs>>> permissions() {
-        return Optional.ofNullable(this.permissions);
-    }
 
     /**
      * The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
@@ -51,7 +32,6 @@ public final class GetKubernetesPermissionArgs extends com.pulumi.resources.Invo
     private GetKubernetesPermissionArgs() {}
 
     private GetKubernetesPermissionArgs(GetKubernetesPermissionArgs $) {
-        this.permissions = $.permissions;
         this.uid = $.uid;
     }
 
@@ -71,37 +51,6 @@ public final class GetKubernetesPermissionArgs extends com.pulumi.resources.Invo
 
         public Builder(GetKubernetesPermissionArgs defaults) {
             $ = new GetKubernetesPermissionArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param permissions A list of user permission.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder permissions(@Nullable Output<List<GetKubernetesPermissionPermissionArgs>> permissions) {
-            $.permissions = permissions;
-            return this;
-        }
-
-        /**
-         * @param permissions A list of user permission.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder permissions(List<GetKubernetesPermissionPermissionArgs> permissions) {
-            return permissions(Output.of(permissions));
-        }
-
-        /**
-         * @param permissions A list of user permission.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder permissions(GetKubernetesPermissionPermissionArgs... permissions) {
-            return permissions(List.of(permissions));
         }
 
         /**

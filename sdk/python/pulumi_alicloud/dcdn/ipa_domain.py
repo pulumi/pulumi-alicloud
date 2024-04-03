@@ -226,7 +226,7 @@ class IpaDomain(pulumi.CustomResource):
             status="online",
             sources=[alicloud.dcdn.IpaDomainSourceArgs(
                 content="www.alicloud-provider.cn",
-                port=80,
+                port=8898,
                 priority="20",
                 type="domain",
                 weight=10,
@@ -284,7 +284,7 @@ class IpaDomain(pulumi.CustomResource):
             status="online",
             sources=[alicloud.dcdn.IpaDomainSourceArgs(
                 content="www.alicloud-provider.cn",
-                port=80,
+                port=8898,
                 priority="20",
                 type="domain",
                 weight=10,

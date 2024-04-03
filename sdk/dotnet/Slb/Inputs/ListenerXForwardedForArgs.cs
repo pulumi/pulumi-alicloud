@@ -13,25 +13,25 @@ namespace Pulumi.AliCloud.Slb.Inputs
     public sealed class ListenerXForwardedForArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to retrieve the client ip. It is read-only attribute.
+        /// Whether to retrieve the client ip.
         /// </summary>
         [Input("retriveClientIp")]
         public Input<bool>? RetriveClientIp { get; set; }
 
         /// <summary>
-        /// Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
+        /// Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("retriveSlbId")]
         public Input<bool>? RetriveSlbId { get; set; }
 
         /// <summary>
-        /// Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
+        /// Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("retriveSlbIp")]
         public Input<bool>? RetriveSlbIp { get; set; }
 
         /// <summary>
-        /// Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+        /// Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("retriveSlbProto")]
         public Input<bool>? RetriveSlbProto { get; set; }

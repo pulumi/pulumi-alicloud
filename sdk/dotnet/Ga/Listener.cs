@@ -112,10 +112,17 @@ namespace Pulumi.AliCloud.Ga
         public Output<Outputs.ListenerForwardedForConfig?> ForwardedForConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+        /// &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+        /// </summary>
+        [Output("httpVersion")]
+        public Output<string> HttpVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The routing type of the listener. Default Value: `Standard`. Valid values:
         /// </summary>
         [Output("listenerType")]
-        public Output<string> ListenerType { get; private set; } = null!;
+        public Output<string?> ListenerType { get; private set; } = null!;
 
         /// <summary>
         /// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
@@ -238,6 +245,13 @@ namespace Pulumi.AliCloud.Ga
         public Input<Inputs.ListenerForwardedForConfigArgs>? ForwardedForConfig { get; set; }
 
         /// <summary>
+        /// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+        /// &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+        /// </summary>
+        [Input("httpVersion")]
+        public Input<string>? HttpVersion { get; set; }
+
+        /// <summary>
         /// The routing type of the listener. Default Value: `Standard`. Valid values:
         /// </summary>
         [Input("listenerType")]
@@ -324,6 +338,13 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("forwardedForConfig")]
         public Input<Inputs.ListenerForwardedForConfigGetArgs>? ForwardedForConfig { get; set; }
+
+        /// <summary>
+        /// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+        /// &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+        /// </summary>
+        [Input("httpVersion")]
+        public Input<string>? HttpVersion { get; set; }
 
         /// <summary>
         /// The routing type of the listener. Default Value: `Standard`. Valid values:

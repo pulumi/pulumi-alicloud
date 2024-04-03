@@ -23,8 +23,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:oss/bucket:Bucket":
 		r = &Bucket{}
+	case "alicloud:oss/bucketAcl:BucketAcl":
+		r = &BucketAcl{}
+	case "alicloud:oss/bucketHttpsConfig:BucketHttpsConfig":
+		r = &BucketHttpsConfig{}
 	case "alicloud:oss/bucketObject:BucketObject":
 		r = &BucketObject{}
+	case "alicloud:oss/bucketPolicy:BucketPolicy":
+		r = &BucketPolicy{}
+	case "alicloud:oss/bucketReferer:BucketReferer":
+		r = &BucketReferer{}
 	case "alicloud:oss/bucketReplication:BucketReplication":
 		r = &BucketReplication{}
 	default:
@@ -47,7 +55,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"oss/bucketAcl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketHttpsConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"oss/bucketObject",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketReferer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

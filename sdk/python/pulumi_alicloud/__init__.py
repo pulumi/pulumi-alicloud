@@ -5011,10 +5011,42 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "oss/bucketAcl",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketAcl:BucketAcl": "BucketAcl"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oss/bucketHttpsConfig",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketHttpsConfig:BucketHttpsConfig": "BucketHttpsConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "oss/bucketObject",
   "fqn": "pulumi_alicloud.oss",
   "classes": {
    "alicloud:oss/bucketObject:BucketObject": "BucketObject"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oss/bucketPolicy",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketPolicy:BucketPolicy": "BucketPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oss/bucketReferer",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketReferer:BucketReferer": "BucketReferer"
   }
  },
  {

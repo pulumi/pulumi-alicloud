@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.CS
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "tf-example-basic-edge";
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
@@ -81,7 +81,6 @@ namespace Pulumi.AliCloud.CS
     ///         {
     ///             defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         },
-    ///         Version = "1.20.11-aliyunedge.1",
     ///         WorkerNumber = 1,
     ///         Password = "Test12345",
     ///         PodCidr = "10.99.0.0/16",
@@ -157,7 +156,6 @@ namespace Pulumi.AliCloud.CS
     ///         {
     ///             defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         },
-    ///         Version = "1.20.11-aliyunedge.1",
     ///         ClusterSpec = "ack.pro.small",
     ///         WorkerNumber = 1,
     ///         Password = "Test12345",
@@ -170,14 +168,6 @@ namespace Pulumi.AliCloud.CS
     ///         InstallCloudMonitor = true,
     ///         SlbInternetEnabled = true,
     ///         IsEnterpriseSecurityGroup = true,
-    ///         Addons = new[]
-    ///         {
-    ///             new AliCloud.CS.Inputs.EdgeKubernetesAddonArgs
-    ///             {
-    ///                 Name = "alibaba-log-controller",
-    ///                 Config = "{\"IngressDashboardEnabled\":\"false\"}",
-    ///             },
-    ///         },
     ///         WorkerDataDisks = new[]
     ///         {
     ///             new AliCloud.CS.Inputs.EdgeKubernetesWorkerDataDiskArgs
@@ -186,11 +176,6 @@ namespace Pulumi.AliCloud.CS
     ///                 Size = "200",
     ///                 Encrypted = "false",
     ///             },
-    ///         },
-    ///         Runtime = new AliCloud.CS.Inputs.EdgeKubernetesRuntimeArgs
-    ///         {
-    ///             Name = "containerd",
-    ///             Version = "1.5.10",
     ///         },
     ///     });
     /// 

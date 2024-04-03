@@ -4,6 +4,7 @@
 package com.pulumi.alicloud;
 
 import com.pulumi.alicloud.config.inputs.AssumeRole;
+import com.pulumi.alicloud.config.inputs.AssumeRoleWithOidc;
 import com.pulumi.alicloud.config.inputs.Endpoints;
 import com.pulumi.alicloud.config.inputs.SignVersion;
 import com.pulumi.core.TypeShape;
@@ -35,6 +36,9 @@ public final class Config {
     }
     public Optional<AssumeRole> assumeRole() {
         return Codegen.objectProp("assumeRole", AssumeRole.class).config(config).get();
+    }
+    public Optional<AssumeRoleWithOidc> assumeRoleWithOidc() {
+        return Codegen.objectProp("assumeRoleWithOidc", AssumeRoleWithOidc.class).config(config).get();
     }
 /**
  * The maximum timeout of the client connection server.

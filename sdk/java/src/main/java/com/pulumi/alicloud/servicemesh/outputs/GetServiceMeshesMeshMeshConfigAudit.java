@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceMeshesMeshMeshConfigAudit {
     /**
-     * @return Whether to enable Service grid audit.
+     * @return Whether to enable CNI.
      * 
      */
     private Boolean enabled;
@@ -24,7 +24,7 @@ public final class GetServiceMeshesMeshMeshConfigAudit {
 
     private GetServiceMeshesMeshMeshConfigAudit() {}
     /**
-     * @return Whether to enable Service grid audit.
+     * @return Whether to enable CNI.
      * 
      */
     public Boolean enabled() {

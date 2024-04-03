@@ -241,6 +241,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly scalingConfig!: pulumi.Output<outputs.cs.NodePoolScalingConfig>;
     /**
+     * The ID of the scaling group.
+     */
+    public /*out*/ readonly scalingGroupId!: pulumi.Output<string>;
+    /**
      * Scaling group mode, default value: `release`. Valid values:
      */
     public readonly scalingPolicy!: pulumi.Output<string>;
@@ -399,6 +403,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["runtimeName"] = state ? state.runtimeName : undefined;
             resourceInputs["runtimeVersion"] = state ? state.runtimeVersion : undefined;
             resourceInputs["scalingConfig"] = state ? state.scalingConfig : undefined;
+            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
             resourceInputs["scalingPolicy"] = state ? state.scalingPolicy : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
@@ -504,6 +509,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["userData"] = args ? args.userData : undefined;
             resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
             resourceInputs["nodePoolId"] = undefined /*out*/;
+            resourceInputs["scalingGroupId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["kmsEncryptedPassword", "password"] };
@@ -709,6 +715,10 @@ export interface NodePoolState {
      * Automatic scaling configuration. See `scalingConfig` below.
      */
     scalingConfig?: pulumi.Input<inputs.cs.NodePoolScalingConfig>;
+    /**
+     * The ID of the scaling group.
+     */
+    scalingGroupId?: pulumi.Input<string>;
     /**
      * Scaling group mode, default value: `release`. Valid values:
      */

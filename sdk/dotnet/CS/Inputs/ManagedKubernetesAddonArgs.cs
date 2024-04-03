@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class ManagedKubernetesAddonArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If this parameter is left empty, no configurations are required.
+        /// If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }

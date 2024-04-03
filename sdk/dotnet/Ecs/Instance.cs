@@ -417,9 +417,10 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+        /// The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
         /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
         /// - [1-3] when `period_unit` in "Week"
+        /// 
         /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
@@ -971,9 +972,10 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+        /// The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
         /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
         /// - [1-3] when `period_unit` in "Week"
+        /// 
         /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
@@ -1525,9 +1527,10 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+        /// The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
         /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
         /// - [1-3] when `period_unit` in "Week"
+        /// 
         /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]

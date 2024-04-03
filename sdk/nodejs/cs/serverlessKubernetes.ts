@@ -53,6 +53,7 @@ import * as utilities from "../utilities";
  * });
  * const serverless = new alicloud.cs.ServerlessKubernetes("serverless", {
  *     namePrefix: name,
+ *     clusterSpec: "ack.pro.small",
  *     vpcId: defaultNetwork.id,
  *     vswitchIds: [defaultSwitch.id],
  *     newNatGateway: true,

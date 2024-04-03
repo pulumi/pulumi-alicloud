@@ -20,14 +20,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.cloudfirewall.Instance("example", {
- *     bandWidth: 10,
+ * const _default = new alicloud.cloudfirewall.Instance("default", {
+ *     bandWidth: 200,
  *     cfwLog: true,
  *     cfwLogStorage: 1000,
- *     ipNumber: 20,
- *     paymentType: "Subscription",
- *     period: 1,
- *     spec: "premium_version",
+ *     ipNumber: 400,
+ *     paymentType: "PayAsYouGo",
+ *     spec: "ultimate_version",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -117,25 +116,26 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly modifyType!: pulumi.Output<string | undefined>;
     /**
-     * The payment type of the resource. Valid values: `Subscription`.
+     * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
-     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `paymentType` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
      */
-    public readonly period!: pulumi.Output<number>;
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The release time.
      */
     public /*out*/ readonly releaseTime!: pulumi.Output<string>;
     /**
-     * Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+     * Automatic renewal period. Attribute `renewPeriod` has been deprecated since 1.209.1. Using `renewalDuration` instead.
      *
      * @deprecated Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
      */
     public readonly renewPeriod!: pulumi.Output<number>;
     /**
-     * Auto-Renewal Duration. It is required under the condition that renewalStatus is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * Auto-Renewal Duration. It is required under the condition that `renewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
      */
     public readonly renewalDuration!: pulumi.Output<number>;
     /**
@@ -202,9 +202,6 @@ export class Instance extends pulumi.CustomResource {
             }
             if ((!args || args.paymentType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
-            }
-            if ((!args || args.period === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'period'");
             }
             if ((!args || args.spec === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spec'");
@@ -289,11 +286,11 @@ export interface InstanceState {
      */
     modifyType?: pulumi.Input<string>;
     /**
-     * The payment type of the resource. Valid values: `Subscription`.
+     * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `paymentType` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
      */
     period?: pulumi.Input<number>;
     /**
@@ -301,13 +298,14 @@ export interface InstanceState {
      */
     releaseTime?: pulumi.Input<string>;
     /**
-     * Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+     * Automatic renewal period. Attribute `renewPeriod` has been deprecated since 1.209.1. Using `renewalDuration` instead.
      *
      * @deprecated Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
      */
     renewPeriod?: pulumi.Input<number>;
     /**
-     * Auto-Renewal Duration. It is required under the condition that renewalStatus is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * Auto-Renewal Duration. It is required under the condition that `renewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
      */
     renewalDuration?: pulumi.Input<number>;
     /**
@@ -373,21 +371,22 @@ export interface InstanceArgs {
      */
     modifyType?: pulumi.Input<string>;
     /**
-     * The payment type of the resource. Valid values: `Subscription`.
+     * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
      */
     paymentType: pulumi.Input<string>;
     /**
-     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `paymentType` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
      */
-    period: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
-     * Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+     * Automatic renewal period. Attribute `renewPeriod` has been deprecated since 1.209.1. Using `renewalDuration` instead.
      *
      * @deprecated Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
      */
     renewPeriod?: pulumi.Input<number>;
     /**
-     * Auto-Renewal Duration. It is required under the condition that renewalStatus is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * Auto-Renewal Duration. It is required under the condition that `renewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+     * **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
      */
     renewalDuration?: pulumi.Input<number>;
     /**

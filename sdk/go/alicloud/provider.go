@@ -95,8 +95,9 @@ type providerArgs struct {
 	AccessKey *string `pulumi:"accessKey"`
 	// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
 	// Alibaba Cloud console.
-	AccountId  *string             `pulumi:"accountId"`
-	AssumeRole *ProviderAssumeRole `pulumi:"assumeRole"`
+	AccountId          *string                     `pulumi:"accountId"`
+	AssumeRole         *ProviderAssumeRole         `pulumi:"assumeRole"`
+	AssumeRoleWithOidc *ProviderAssumeRoleWithOidc `pulumi:"assumeRoleWithOidc"`
 	// The maximum timeout of the client connection server.
 	ClientConnectTimeout *int `pulumi:"clientConnectTimeout"`
 	// The maximum timeout of the client read request.
@@ -149,8 +150,9 @@ type ProviderArgs struct {
 	AccessKey pulumi.StringPtrInput
 	// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
 	// Alibaba Cloud console.
-	AccountId  pulumi.StringPtrInput
-	AssumeRole ProviderAssumeRolePtrInput
+	AccountId          pulumi.StringPtrInput
+	AssumeRole         ProviderAssumeRolePtrInput
+	AssumeRoleWithOidc ProviderAssumeRoleWithOidcPtrInput
 	// The maximum timeout of the client connection server.
 	ClientConnectTimeout pulumi.IntPtrInput
 	// The maximum timeout of the client read request.

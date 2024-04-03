@@ -17,14 +17,14 @@ public final class GetServiceMeshesPlainArgs extends com.pulumi.resources.Invoke
     public static final GetServiceMeshesPlainArgs Empty = new GetServiceMeshesPlainArgs();
 
     /**
-     * Whether to query the detailed list of resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Whether to query the detailed list of resource attributes.
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -77,14 +77,14 @@ public final class GetServiceMeshesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The status of the resource. Valid values: `running` or `initial`.
+     * The status of the Service Mesh. Valid values: `running`, `initial`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource. Valid values: `running` or `initial`.
+     * @return The status of the Service Mesh. Valid values: `running`, `initial`.
      * 
      */
     public Optional<String> status() {
@@ -120,7 +120,7 @@ public final class GetServiceMeshesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param enableDetails Whether to query the detailed list of resource attributes.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class GetServiceMeshesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param status The status of the resource. Valid values: `running` or `initial`.
+         * @param status The status of the Service Mesh. Valid values: `running`, `initial`.
          * 
          * @return builder
          * 

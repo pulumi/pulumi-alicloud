@@ -122,6 +122,8 @@ def get_data_centers(cluster_id: Optional[str] = None,
 
     > **NOTE:**  Available in 1.88.0+.
 
+    > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+
     ## Example Usage
 
     <!--Start PulumiCodeChooser -->
@@ -169,6 +171,8 @@ def get_data_centers_output(cluster_id: Optional[pulumi.Input[str]] = None,
     Filters support regular expression for the cluster name or ids.
 
     > **NOTE:**  Available in 1.88.0+.
+
+    > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 
     ## Example Usage
 

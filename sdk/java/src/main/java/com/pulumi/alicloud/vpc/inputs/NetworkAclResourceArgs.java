@@ -47,14 +47,14 @@ public final class NetworkAclResourceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The status of the associated resource.
+     * The state of the network ACL.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the associated resource.
+     * @return The state of the network ACL.
      * 
      */
     public Optional<Output<String>> status() {
@@ -130,7 +130,7 @@ public final class NetworkAclResourceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param status The status of the associated resource.
+         * @param status The state of the network ACL.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class NetworkAclResourceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param status The status of the associated resource.
+         * @param status The state of the network ACL.
          * 
          * @return builder
          * 

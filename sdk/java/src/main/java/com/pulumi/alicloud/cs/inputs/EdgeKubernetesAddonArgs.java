@@ -17,14 +17,14 @@ public final class EdgeKubernetesAddonArgs extends com.pulumi.resources.Resource
     public static final EdgeKubernetesAddonArgs Empty = new EdgeKubernetesAddonArgs();
 
     /**
-     * The ACK add-on configurations.
+     * The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     @Import(name="config")
     private @Nullable Output<String> config;
 
     /**
-     * @return The ACK add-on configurations.
+     * @return The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     public Optional<Output<String>> config() {
@@ -65,12 +65,28 @@ public final class EdgeKubernetesAddonArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * It specifies the version of the component.
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<String> version;
+
+    /**
+     * @return It specifies the version of the component.
+     * 
+     */
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
+    }
+
     private EdgeKubernetesAddonArgs() {}
 
     private EdgeKubernetesAddonArgs(EdgeKubernetesAddonArgs $) {
         this.config = $.config;
         this.disabled = $.disabled;
         this.name = $.name;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -92,7 +108,7 @@ public final class EdgeKubernetesAddonArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param config The ACK add-on configurations.
+         * @param config The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
          * 
          * @return builder
          * 
@@ -103,7 +119,7 @@ public final class EdgeKubernetesAddonArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param config The ACK add-on configurations.
+         * @param config The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
          * 
          * @return builder
          * 
@@ -156,6 +172,27 @@ public final class EdgeKubernetesAddonArgs extends com.pulumi.resources.Resource
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param version It specifies the version of the component.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<String> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version It specifies the version of the component.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(String version) {
+            return version(Output.of(version));
         }
 
         public EdgeKubernetesAddonArgs build() {

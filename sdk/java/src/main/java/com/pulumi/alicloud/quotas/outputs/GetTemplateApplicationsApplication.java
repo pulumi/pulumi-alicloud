@@ -70,7 +70,7 @@ public final class GetTemplateApplicationsApplication {
      */
     private String quotaActionCode;
     /**
-     * @return The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+     * @return The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
      * 
      */
     private String quotaCategory;
@@ -159,7 +159,7 @@ public final class GetTemplateApplicationsApplication {
         return this.quotaActionCode;
     }
     /**
-     * @return The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+     * @return The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
      * 
      */
     public String quotaCategory() {

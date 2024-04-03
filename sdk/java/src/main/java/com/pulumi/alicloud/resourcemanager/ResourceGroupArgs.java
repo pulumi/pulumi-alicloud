@@ -6,7 +6,9 @@ package com.pulumi.alicloud.resourcemanager;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,14 +19,14 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final ResourceGroupArgs Empty = new ResourceGroupArgs();
 
     /**
-     * The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+     * The display name of the resource group. The name must be 1 to 50 characters in length.
      * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
-     * @return The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+     * @return The display name of the resource group. The name must be 1 to 50 characters in length.
      * 
      */
     public Output<String> displayName() {
@@ -32,41 +34,56 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
+     * Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from version 1.114.0. Use &#39;resource_group_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from version 1.114.0. Use &#39;resource_group_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+     * The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
      * 
      */
     @Import(name="resourceGroupName")
     private @Nullable Output<String> resourceGroupName;
 
     /**
-     * @return The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+     * @return The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
      * 
      */
     public Optional<Output<String>> resourceGroupName() {
         return Optional.ofNullable(this.resourceGroupName);
+    }
+
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     private ResourceGroupArgs() {}
@@ -75,6 +92,7 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.displayName = $.displayName;
         this.name = $.name;
         this.resourceGroupName = $.resourceGroupName;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -96,7 +114,7 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+         * @param displayName The display name of the resource group. The name must be 1 to 50 characters in length.
          * 
          * @return builder
          * 
@@ -107,7 +125,7 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+         * @param displayName The display name of the resource group. The name must be 1 to 50 characters in length.
          * 
          * @return builder
          * 
@@ -117,36 +135,36 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from version 1.114.0. Use &#39;resource_group_name&#39; instead.
+         * Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from version 1.114.0. Use &#39;resource_group_name&#39; instead.
+         * Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param resourceGroupName The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+         * @param resourceGroupName The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
          * 
          * @return builder
          * 
@@ -157,13 +175,34 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupName The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+         * @param resourceGroupName The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
          * 
          * @return builder
          * 
          */
         public Builder resourceGroupName(String resourceGroupName) {
             return resourceGroupName(Output.of(resourceGroupName));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         public ResourceGroupArgs build() {

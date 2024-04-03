@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class EdgeKubernetesAddonGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ACK add-on configurations.
+        /// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
@@ -31,6 +31,12 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// It specifies the version of the component.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public EdgeKubernetesAddonGetArgs()
         {

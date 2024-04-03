@@ -13,13 +13,25 @@ namespace Pulumi.AliCloud.Vpc.Inputs
     public sealed class NetworkAclIngressAclEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the inbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        /// Description of the inbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the inbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        /// The route entry type. The value can be `custom`, indicating custom.
+        /// </summary>
+        [Input("entryType")]
+        public Input<string>? EntryType { get; set; }
+
+        /// <summary>
+        /// The IP protocol version of the route entry. Valid values: "IPV4" and "IPV6'.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
+
+        /// <summary>
+        /// The name of the inbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("networkAclEntryName")]
         public Input<string>? NetworkAclEntryName { get; set; }
@@ -33,7 +45,7 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         public Input<string>? Policy { get; set; }
 
         /// <summary>
-        /// The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+        /// The source port range of the inbound rule.  When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }

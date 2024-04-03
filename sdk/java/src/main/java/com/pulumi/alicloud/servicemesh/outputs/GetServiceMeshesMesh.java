@@ -16,194 +16,194 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceMeshesMesh {
     /**
-     * @return Cluster List.
+     * @return The Cluster List.
      * 
      */
     private List<String> clusters;
     /**
-     * @return The created time of the resource.
+     * @return The created time of the Service Mesh instance.
      * 
      */
     private String createTime;
     /**
-     * @return Grid instance version type. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+     * @return Grid instance version type. **Note:** `edition` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private String edition;
     /**
-     * @return The endpoint details.
+     * @return The endpoint details. **Note:** `endpoints` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private List<GetServiceMeshesMeshEndpoint> endpoints;
     /**
-     * @return The Cause of the Error.
+     * @return The returned error message.
      * 
      */
     private String errorMessage;
     /**
-     * @return The ID of the Service Mesh.
+     * @return The ID of the Service Mesh instance.
      * 
      */
     private String id;
     /**
-     * @return The Istio Operator Version. **Note:** the `istio_operator_version` is available from the version v1.170.0.
+     * @return (Available since v1.170.0) The Istio Operator Version. **Note:** `istio_operator_version` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private String istioOperatorVersion;
     /**
-     * @return The content of Kube config.
+     * @return The content of Kube config. **Note:** `kube_config` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private String kubeConfig;
     /**
-     * @return The configuration of the Load Balancer.
+     * @return The configuration of the Load Balancer. **Note:** `load_balancer` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private List<GetServiceMeshesMeshLoadBalancer> loadBalancers;
     /**
-     * @return The configuration of the Service grid.
+     * @return The configuration of the Service grid. **Note:** `mesh_config` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private List<GetServiceMeshesMeshMeshConfig> meshConfigs;
     /**
-     * @return The configuration of the Service grid network.
+     * @return The configuration of the Service grid network. **Note:** `network` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private List<GetServiceMeshesMeshNetwork> networks;
     /**
-     * @return The first ID of the resource.
+     * @return The ID of the Service Mesh instance.
      * 
      */
     private String serviceMeshId;
     /**
-     * @return The name of the resource.
+     * @return The name of the Service Mesh instance.
      * 
      */
     private String serviceMeshName;
     /**
-     * @return The SideCar Version. **Note:** the `sidecar_version` is available from the version v1.170.0.
+     * @return (Available since v1.170.0) The SideCar Version. **Note:** `sidecar_version` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private String sidecarVersion;
     /**
-     * @return The status of the resource. Valid values: `running` or `initial`.
+     * @return The status of the Service Mesh. Valid values: `running`, `initial`.
      * 
      */
     private String status;
     /**
-     * @return The version of the resource.
+     * @return The version of the Service Mesh instance.
      * 
      */
     private String version;
 
     private GetServiceMeshesMesh() {}
     /**
-     * @return Cluster List.
+     * @return The Cluster List.
      * 
      */
     public List<String> clusters() {
         return this.clusters;
     }
     /**
-     * @return The created time of the resource.
+     * @return The created time of the Service Mesh instance.
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return Grid instance version type. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+     * @return Grid instance version type. **Note:** `edition` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public String edition() {
         return this.edition;
     }
     /**
-     * @return The endpoint details.
+     * @return The endpoint details. **Note:** `endpoints` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public List<GetServiceMeshesMeshEndpoint> endpoints() {
         return this.endpoints;
     }
     /**
-     * @return The Cause of the Error.
+     * @return The returned error message.
      * 
      */
     public String errorMessage() {
         return this.errorMessage;
     }
     /**
-     * @return The ID of the Service Mesh.
+     * @return The ID of the Service Mesh instance.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The Istio Operator Version. **Note:** the `istio_operator_version` is available from the version v1.170.0.
+     * @return (Available since v1.170.0) The Istio Operator Version. **Note:** `istio_operator_version` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public String istioOperatorVersion() {
         return this.istioOperatorVersion;
     }
     /**
-     * @return The content of Kube config.
+     * @return The content of Kube config. **Note:** `kube_config` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public String kubeConfig() {
         return this.kubeConfig;
     }
     /**
-     * @return The configuration of the Load Balancer.
+     * @return The configuration of the Load Balancer. **Note:** `load_balancer` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public List<GetServiceMeshesMeshLoadBalancer> loadBalancers() {
         return this.loadBalancers;
     }
     /**
-     * @return The configuration of the Service grid.
+     * @return The configuration of the Service grid. **Note:** `mesh_config` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public List<GetServiceMeshesMeshMeshConfig> meshConfigs() {
         return this.meshConfigs;
     }
     /**
-     * @return The configuration of the Service grid network.
+     * @return The configuration of the Service grid network. **Note:** `network` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public List<GetServiceMeshesMeshNetwork> networks() {
         return this.networks;
     }
     /**
-     * @return The first ID of the resource.
+     * @return The ID of the Service Mesh instance.
      * 
      */
     public String serviceMeshId() {
         return this.serviceMeshId;
     }
     /**
-     * @return The name of the resource.
+     * @return The name of the Service Mesh instance.
      * 
      */
     public String serviceMeshName() {
         return this.serviceMeshName;
     }
     /**
-     * @return The SideCar Version. **Note:** the `sidecar_version` is available from the version v1.170.0.
+     * @return (Available since v1.170.0) The SideCar Version. **Note:** `sidecar_version` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public String sidecarVersion() {
         return this.sidecarVersion;
     }
     /**
-     * @return The status of the resource. Valid values: `running` or `initial`.
+     * @return The status of the Service Mesh. Valid values: `running`, `initial`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The version of the resource.
+     * @return The version of the Service Mesh instance.
      * 
      */
     public String version() {

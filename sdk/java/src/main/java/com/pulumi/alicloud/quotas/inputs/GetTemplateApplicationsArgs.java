@@ -92,14 +92,14 @@ public final class GetTemplateApplicationsArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+     * The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
      * 
      */
     @Import(name="quotaCategory")
     private @Nullable Output<String> quotaCategory;
 
     /**
-     * @return The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+     * @return The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
      * 
      */
     public Optional<Output<String>> quotaCategory() {
@@ -251,7 +251,7 @@ public final class GetTemplateApplicationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param quotaCategory The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+         * @param quotaCategory The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class GetTemplateApplicationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param quotaCategory The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+         * @param quotaCategory The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
          * 
          * @return builder
          * 

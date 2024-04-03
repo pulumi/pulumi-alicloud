@@ -152,10 +152,10 @@ class ListenerXForwardedFor(dict):
                  retrive_slb_ip: Optional[bool] = None,
                  retrive_slb_proto: Optional[bool] = None):
         """
-        :param bool retrive_client_ip: Whether to retrieve the client ip. It is read-only attribute.
-        :param bool retrive_slb_id: Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
-        :param bool retrive_slb_ip: Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
-        :param bool retrive_slb_proto: Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+        :param bool retrive_client_ip: Whether to retrieve the client ip.
+        :param bool retrive_slb_id: Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
+        :param bool retrive_slb_ip: Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
+        :param bool retrive_slb_proto: Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
         """
         if retrive_client_ip is not None:
             pulumi.set(__self__, "retrive_client_ip", retrive_client_ip)
@@ -170,7 +170,7 @@ class ListenerXForwardedFor(dict):
     @pulumi.getter(name="retriveClientIp")
     def retrive_client_ip(self) -> Optional[bool]:
         """
-        Whether to retrieve the client ip. It is read-only attribute.
+        Whether to retrieve the client ip.
         """
         return pulumi.get(self, "retrive_client_ip")
 
@@ -178,7 +178,7 @@ class ListenerXForwardedFor(dict):
     @pulumi.getter(name="retriveSlbId")
     def retrive_slb_id(self) -> Optional[bool]:
         """
-        Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
+        Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "retrive_slb_id")
 
@@ -186,7 +186,7 @@ class ListenerXForwardedFor(dict):
     @pulumi.getter(name="retriveSlbIp")
     def retrive_slb_ip(self) -> Optional[bool]:
         """
-        Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
+        Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "retrive_slb_ip")
 
@@ -194,7 +194,7 @@ class ListenerXForwardedFor(dict):
     @pulumi.getter(name="retriveSlbProto")
     def retrive_slb_proto(self) -> Optional[bool]:
         """
-        Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+        Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "retrive_slb_proto")
 

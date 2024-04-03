@@ -5,46 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry's mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
- *
- * > **NOTE:** Available in 1.94.0+.
- *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const exampleZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "172.17.3.0/24",
- * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
- *     vswitchName: "terraform-example",
- *     cidrBlock: "172.17.3.0/24",
- *     vpcId: exampleNetwork.id,
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
- * });
- * const exampleCluster = new alicloud.mse.Cluster("exampleCluster", {
- *     clusterSpecification: "MSE_SC_1_2_60_c",
- *     clusterType: "Nacos-Ans",
- *     clusterVersion: "NACOS_2_0_0",
- *     instanceCount: 1,
- *     netType: "privatenet",
- *     pubNetworkFlow: "1",
- *     connectionType: "slb",
- *     clusterAliasName: "terraform-example",
- *     mseVersion: "mse_dev",
- *     vswitchId: exampleSwitch.id,
- *     vpcId: exampleNetwork.id,
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
  * ## Import
  *
  * MSE Cluster can be imported using the id, e.g.
@@ -130,6 +90,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly netType!: pulumi.Output<string>;
     /**
+     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+     */
+    public readonly paymentType!: pulumi.Output<string>;
+    /**
      * The specification of private network SLB.
      */
     public readonly privateSlbSpecification!: pulumi.Output<string | undefined>;
@@ -146,9 +110,17 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly requestPars!: pulumi.Output<string | undefined>;
     /**
+     * The resource group of the resource.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * The status of MSE Cluster.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The tag of the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The id of the VPC.
      */
@@ -183,11 +155,14 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["instanceCount"] = state ? state.instanceCount : undefined;
             resourceInputs["mseVersion"] = state ? state.mseVersion : undefined;
             resourceInputs["netType"] = state ? state.netType : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["privateSlbSpecification"] = state ? state.privateSlbSpecification : undefined;
             resourceInputs["pubNetworkFlow"] = state ? state.pubNetworkFlow : undefined;
             resourceInputs["pubSlbSpecification"] = state ? state.pubSlbSpecification : undefined;
             resourceInputs["requestPars"] = state ? state.requestPars : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
@@ -220,10 +195,13 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["instanceCount"] = args ? args.instanceCount : undefined;
             resourceInputs["mseVersion"] = args ? args.mseVersion : undefined;
             resourceInputs["netType"] = args ? args.netType : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["privateSlbSpecification"] = args ? args.privateSlbSpecification : undefined;
             resourceInputs["pubNetworkFlow"] = args ? args.pubNetworkFlow : undefined;
             resourceInputs["pubSlbSpecification"] = args ? args.pubSlbSpecification : undefined;
             resourceInputs["requestPars"] = args ? args.requestPars : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["appVersion"] = undefined /*out*/;
@@ -288,6 +266,10 @@ export interface ClusterState {
      */
     netType?: pulumi.Input<string>;
     /**
+     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
      * The specification of private network SLB.
      */
     privateSlbSpecification?: pulumi.Input<string>;
@@ -304,9 +286,17 @@ export interface ClusterState {
      */
     requestPars?: pulumi.Input<string>;
     /**
+     * The resource group of the resource.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * The status of MSE Cluster.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The id of the VPC.
      */
@@ -362,6 +352,10 @@ export interface ClusterArgs {
      */
     netType: pulumi.Input<string>;
     /**
+     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
      * The specification of private network SLB.
      */
     privateSlbSpecification?: pulumi.Input<string>;
@@ -377,6 +371,14 @@ export interface ClusterArgs {
      * The extended request parameters in the JSON format.
      */
     requestPars?: pulumi.Input<string>;
+    /**
+     * The resource group of the resource.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The id of the VPC.
      */

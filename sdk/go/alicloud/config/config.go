@@ -25,6 +25,9 @@ func GetAccountId(ctx *pulumi.Context) string {
 func GetAssumeRole(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:assumeRole")
 }
+func GetAssumeRoleWithOidc(ctx *pulumi.Context) string {
+	return config.Get(ctx, "alicloud:assumeRoleWithOidc")
+}
 
 // The maximum timeout of the client connection server.
 func GetClientConnectTimeout(ctx *pulumi.Context) int {

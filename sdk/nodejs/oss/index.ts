@@ -10,10 +10,30 @@ export type Bucket = import("./bucket").Bucket;
 export const Bucket: typeof import("./bucket").Bucket = null as any;
 utilities.lazyLoad(exports, ["Bucket"], () => require("./bucket"));
 
+export { BucketAclArgs, BucketAclState } from "./bucketAcl";
+export type BucketAcl = import("./bucketAcl").BucketAcl;
+export const BucketAcl: typeof import("./bucketAcl").BucketAcl = null as any;
+utilities.lazyLoad(exports, ["BucketAcl"], () => require("./bucketAcl"));
+
+export { BucketHttpsConfigArgs, BucketHttpsConfigState } from "./bucketHttpsConfig";
+export type BucketHttpsConfig = import("./bucketHttpsConfig").BucketHttpsConfig;
+export const BucketHttpsConfig: typeof import("./bucketHttpsConfig").BucketHttpsConfig = null as any;
+utilities.lazyLoad(exports, ["BucketHttpsConfig"], () => require("./bucketHttpsConfig"));
+
 export { BucketObjectArgs, BucketObjectState } from "./bucketObject";
 export type BucketObject = import("./bucketObject").BucketObject;
 export const BucketObject: typeof import("./bucketObject").BucketObject = null as any;
 utilities.lazyLoad(exports, ["BucketObject"], () => require("./bucketObject"));
+
+export { BucketPolicyArgs, BucketPolicyState } from "./bucketPolicy";
+export type BucketPolicy = import("./bucketPolicy").BucketPolicy;
+export const BucketPolicy: typeof import("./bucketPolicy").BucketPolicy = null as any;
+utilities.lazyLoad(exports, ["BucketPolicy"], () => require("./bucketPolicy"));
+
+export { BucketRefererArgs, BucketRefererState } from "./bucketReferer";
+export type BucketReferer = import("./bucketReferer").BucketReferer;
+export const BucketReferer: typeof import("./bucketReferer").BucketReferer = null as any;
+utilities.lazyLoad(exports, ["BucketReferer"], () => require("./bucketReferer"));
 
 export { BucketReplicationArgs, BucketReplicationState } from "./bucketReplication";
 export type BucketReplication = import("./bucketReplication").BucketReplication;
@@ -57,8 +77,16 @@ const _module = {
         switch (type) {
             case "alicloud:oss/bucket:Bucket":
                 return new Bucket(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketAcl:BucketAcl":
+                return new BucketAcl(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketHttpsConfig:BucketHttpsConfig":
+                return new BucketHttpsConfig(name, <any>undefined, { urn })
             case "alicloud:oss/bucketObject:BucketObject":
                 return new BucketObject(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketPolicy:BucketPolicy":
+                return new BucketPolicy(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketReferer:BucketReferer":
+                return new BucketReferer(name, <any>undefined, { urn })
             case "alicloud:oss/bucketReplication:BucketReplication":
                 return new BucketReplication(name, <any>undefined, { urn })
             default:
@@ -67,5 +95,9 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucket", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketAcl", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketHttpsConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketObject", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketReferer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketReplication", _module)

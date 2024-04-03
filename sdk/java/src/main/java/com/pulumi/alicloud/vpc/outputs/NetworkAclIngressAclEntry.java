@@ -12,12 +12,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworkAclIngressAclEntry {
     /**
-     * @return Description of the inbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return Description of the inbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     private @Nullable String description;
     /**
-     * @return The name of the inbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return The route entry type. The value can be `custom`, indicating custom.
+     * 
+     */
+    private @Nullable String entryType;
+    /**
+     * @return The IP protocol version of the route entry. Valid values: &#34;IPV4&#34; and &#34;IPV6&#39;.
+     * 
+     */
+    private @Nullable String ipVersion;
+    /**
+     * @return The name of the inbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     private @Nullable String networkAclEntryName;
@@ -29,7 +39,7 @@ public final class NetworkAclIngressAclEntry {
      */
     private @Nullable String policy;
     /**
-     * @return The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+     * @return The source port range of the inbound rule.  When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     private @Nullable String port;
@@ -51,14 +61,28 @@ public final class NetworkAclIngressAclEntry {
 
     private NetworkAclIngressAclEntry() {}
     /**
-     * @return Description of the inbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return Description of the inbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The name of the inbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return The route entry type. The value can be `custom`, indicating custom.
+     * 
+     */
+    public Optional<String> entryType() {
+        return Optional.ofNullable(this.entryType);
+    }
+    /**
+     * @return The IP protocol version of the route entry. Valid values: &#34;IPV4&#34; and &#34;IPV6&#39;.
+     * 
+     */
+    public Optional<String> ipVersion() {
+        return Optional.ofNullable(this.ipVersion);
+    }
+    /**
+     * @return The name of the inbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<String> networkAclEntryName() {
@@ -74,7 +98,7 @@ public final class NetworkAclIngressAclEntry {
         return Optional.ofNullable(this.policy);
     }
     /**
-     * @return The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+     * @return The source port range of the inbound rule.  When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     public Optional<String> port() {
@@ -110,6 +134,8 @@ public final class NetworkAclIngressAclEntry {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
+        private @Nullable String entryType;
+        private @Nullable String ipVersion;
         private @Nullable String networkAclEntryName;
         private @Nullable String policy;
         private @Nullable String port;
@@ -119,6 +145,8 @@ public final class NetworkAclIngressAclEntry {
         public Builder(NetworkAclIngressAclEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
+    	      this.entryType = defaults.entryType;
+    	      this.ipVersion = defaults.ipVersion;
     	      this.networkAclEntryName = defaults.networkAclEntryName;
     	      this.policy = defaults.policy;
     	      this.port = defaults.port;
@@ -130,6 +158,18 @@ public final class NetworkAclIngressAclEntry {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder entryType(@Nullable String entryType) {
+
+            this.entryType = entryType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipVersion(@Nullable String ipVersion) {
+
+            this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
@@ -165,6 +205,8 @@ public final class NetworkAclIngressAclEntry {
         public NetworkAclIngressAclEntry build() {
             final var _resultValue = new NetworkAclIngressAclEntry();
             _resultValue.description = description;
+            _resultValue.entryType = entryType;
+            _resultValue.ipVersion = ipVersion;
             _resultValue.networkAclEntryName = networkAclEntryName;
             _resultValue.policy = policy;
             _resultValue.port = port;

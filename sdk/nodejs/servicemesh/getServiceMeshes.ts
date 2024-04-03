@@ -29,7 +29,7 @@ export function getServiceMeshes(args?: GetServiceMeshesArgs, opts?: pulumi.Invo
  */
 export interface GetServiceMeshesArgs {
     /**
-     * Whether to query the detailed list of resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: boolean;
     /**
@@ -45,7 +45,7 @@ export interface GetServiceMeshesArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource. Valid values: `running` or `initial`.
+     * The status of the Service Mesh. Valid values: `running`, `initial`.
      */
     status?: string;
 }
@@ -71,7 +71,7 @@ export interface GetServiceMeshesResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the Service Mesh instance.
      */
     readonly status?: string;
 }
@@ -89,7 +89,7 @@ export function getServiceMeshesOutput(args?: GetServiceMeshesOutputArgs, opts?:
  */
 export interface GetServiceMeshesOutputArgs {
     /**
-     * Whether to query the detailed list of resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
@@ -105,7 +105,7 @@ export interface GetServiceMeshesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values: `running` or `initial`.
+     * The status of the Service Mesh. Valid values: `running`, `initial`.
      */
     status?: pulumi.Input<string>;
 }

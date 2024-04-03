@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Network Acl resource.
+ * Provides a VPC Network Acl resource. Network Access Control List (ACL) is a Network Access Control function in VPC. You can customize the network ACL rules and bind the network ACL to the switch to control the traffic of ECS instances in the switch.
  *
  * For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
  *
@@ -106,7 +106,7 @@ export class NetworkAcl extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -118,13 +118,13 @@ export class NetworkAcl extends pulumi.CustomResource {
      */
     public readonly ingressAclEntries!: pulumi.Output<outputs.vpc.NetworkAclIngressAclEntry[]>;
     /**
-     * Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+     * . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
      */
     public readonly networkAclName!: pulumi.Output<string>;
     /**
@@ -132,7 +132,11 @@ export class NetworkAcl extends pulumi.CustomResource {
      */
     public readonly resources!: pulumi.Output<outputs.vpc.NetworkAclResource[]>;
     /**
-     * The status of the associated resource.
+     * SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+     */
+    public readonly sourceNetworkAclId!: pulumi.Output<string | undefined>;
+    /**
+     * The state of the network ACL.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -166,6 +170,7 @@ export class NetworkAcl extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkAclName"] = state ? state.networkAclName : undefined;
             resourceInputs["resources"] = state ? state.resources : undefined;
+            resourceInputs["sourceNetworkAclId"] = state ? state.sourceNetworkAclId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
@@ -180,6 +185,7 @@ export class NetworkAcl extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkAclName"] = args ? args.networkAclName : undefined;
             resourceInputs["resources"] = args ? args.resources : undefined;
+            resourceInputs["sourceNetworkAclId"] = args ? args.sourceNetworkAclId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -199,7 +205,7 @@ export interface NetworkAclState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
      */
     description?: pulumi.Input<string>;
     /**
@@ -211,13 +217,13 @@ export interface NetworkAclState {
      */
     ingressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclIngressAclEntry>[]>;
     /**
-     * Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+     * . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
      */
     networkAclName?: pulumi.Input<string>;
     /**
@@ -225,7 +231,11 @@ export interface NetworkAclState {
      */
     resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[]>;
     /**
-     * The status of the associated resource.
+     * SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+     */
+    sourceNetworkAclId?: pulumi.Input<string>;
+    /**
+     * The state of the network ACL.
      */
     status?: pulumi.Input<string>;
     /**
@@ -245,7 +255,7 @@ export interface NetworkAclState {
  */
 export interface NetworkAclArgs {
     /**
-     * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
      */
     description?: pulumi.Input<string>;
     /**
@@ -257,19 +267,23 @@ export interface NetworkAclArgs {
      */
     ingressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclIngressAclEntry>[]>;
     /**
-     * Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+     * . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
      */
     networkAclName?: pulumi.Input<string>;
     /**
      * The associated resource. See `resources` below.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclResource>[]>;
+    /**
+     * SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+     */
+    sourceNetworkAclId?: pulumi.Input<string>;
     /**
      * The tags of this resource.
      */

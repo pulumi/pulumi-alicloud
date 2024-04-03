@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<ImmutableArray<string>> IpAddressLists { get; private set; } = null!;
 
         /// <summary>
-        /// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+        /// The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ip_version` can be set to `DUAL_STACK`.
         /// </summary>
         [Output("ipVersion")]
         public Output<string> IpVersion { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+        /// The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ip_version` can be set to `DUAL_STACK`.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -236,7 +236,7 @@ namespace Pulumi.AliCloud.Ga
         }
 
         /// <summary>
-        /// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+        /// The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ip_version` can be set to `DUAL_STACK`.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }

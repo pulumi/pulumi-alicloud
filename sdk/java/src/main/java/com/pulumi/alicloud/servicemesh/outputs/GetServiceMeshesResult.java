@@ -35,7 +35,7 @@ public final class GetServiceMeshesResult {
     private List<String> names;
     private @Nullable String outputFile;
     /**
-     * @return The status of the resource.
+     * @return The status of the Service Mesh instance.
      * 
      */
     private @Nullable String status;
@@ -75,7 +75,7 @@ public final class GetServiceMeshesResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the Service Mesh instance.
      * 
      */
     public Optional<String> status() {

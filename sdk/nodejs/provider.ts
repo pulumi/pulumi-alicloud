@@ -112,6 +112,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["accessKey"] = args ? args.accessKey : undefined;
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["assumeRole"] = pulumi.output(args ? args.assumeRole : undefined).apply(JSON.stringify);
+            resourceInputs["assumeRoleWithOidc"] = pulumi.output(args ? args.assumeRoleWithOidc : undefined).apply(JSON.stringify);
             resourceInputs["clientConnectTimeout"] = pulumi.output(args ? args.clientConnectTimeout : undefined).apply(JSON.stringify);
             resourceInputs["clientReadTimeout"] = pulumi.output(args ? args.clientReadTimeout : undefined).apply(JSON.stringify);
             resourceInputs["configurationSource"] = args ? args.configurationSource : undefined;
@@ -155,6 +156,7 @@ export interface ProviderArgs {
      */
     accountId?: pulumi.Input<string>;
     assumeRole?: pulumi.Input<inputs.ProviderAssumeRole>;
+    assumeRoleWithOidc?: pulumi.Input<inputs.ProviderAssumeRoleWithOidc>;
     /**
      * The maximum timeout of the client connection server.
      */

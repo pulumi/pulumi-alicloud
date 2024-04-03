@@ -1665,7 +1665,11 @@ class ScalingConfigurationInstancePatternInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "instanceFamilyLevel":
+        if key == "burstablePerformance":
+            suggest = "burstable_performance"
+        elif key == "excludedInstanceTypes":
+            suggest = "excluded_instance_types"
+        elif key == "instanceFamilyLevel":
             suggest = "instance_family_level"
         elif key == "maxPrice":
             suggest = "max_price"
@@ -1682,18 +1686,30 @@ class ScalingConfigurationInstancePatternInfo(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 architectures: Optional[Sequence[str]] = None,
+                 burstable_performance: Optional[str] = None,
                  cores: Optional[int] = None,
+                 excluded_instance_types: Optional[Sequence[str]] = None,
                  instance_family_level: Optional[str] = None,
                  max_price: Optional[float] = None,
                  memory: Optional[float] = None):
         """
+        :param Sequence[str] architectures: Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+        :param str burstable_performance: Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
         :param int cores: The number of vCPUs that are specified for an instance type in instancePatternInfo.
+        :param Sequence[str] excluded_instance_types: Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
         :param str instance_family_level: The instance family level in instancePatternInfo.
         :param float max_price: The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
         :param float memory: The memory size that is specified for an instance type in instancePatternInfo.
         """
+        if architectures is not None:
+            pulumi.set(__self__, "architectures", architectures)
+        if burstable_performance is not None:
+            pulumi.set(__self__, "burstable_performance", burstable_performance)
         if cores is not None:
             pulumi.set(__self__, "cores", cores)
+        if excluded_instance_types is not None:
+            pulumi.set(__self__, "excluded_instance_types", excluded_instance_types)
         if instance_family_level is not None:
             pulumi.set(__self__, "instance_family_level", instance_family_level)
         if max_price is not None:
@@ -1703,11 +1719,35 @@ class ScalingConfigurationInstancePatternInfo(dict):
 
     @property
     @pulumi.getter
+    def architectures(self) -> Optional[Sequence[str]]:
+        """
+        Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+        """
+        return pulumi.get(self, "architectures")
+
+    @property
+    @pulumi.getter(name="burstablePerformance")
+    def burstable_performance(self) -> Optional[str]:
+        """
+        Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+        """
+        return pulumi.get(self, "burstable_performance")
+
+    @property
+    @pulumi.getter
     def cores(self) -> Optional[int]:
         """
         The number of vCPUs that are specified for an instance type in instancePatternInfo.
         """
         return pulumi.get(self, "cores")
+
+    @property
+    @pulumi.getter(name="excludedInstanceTypes")
+    def excluded_instance_types(self) -> Optional[Sequence[str]]:
+        """
+        Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+        """
+        return pulumi.get(self, "excluded_instance_types")
 
     @property
     @pulumi.getter(name="instanceFamilyLevel")

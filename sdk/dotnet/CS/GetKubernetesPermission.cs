@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides a list of Ram user permissions.
         /// 
-        /// &gt; **NOTE:** Available in v1.122.0+.
+        /// &gt; **NOTE:** Available since v1.122.0.
         /// 
         /// ## Example Usage
         /// 
@@ -27,19 +27,16 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var usersDs = AliCloud.Ram.GetUsers.Invoke(new()
-        ///     {
-        ///         NameRegex = "your_user_name",
-        ///     });
+        ///     var defaultUsers = AliCloud.Ram.GetUsers.Invoke();
         /// 
-        ///     var @default = AliCloud.CS.GetKubernetesPermission.Invoke(new()
+        ///     var defaultKubernetesPermission = AliCloud.CS.GetKubernetesPermission.Invoke(new()
         ///     {
-        ///         Uid = usersDs.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///         Uid = defaultUsers.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["permissions"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions)),
+        ///         ["permissions"] = defaultKubernetesPermission.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions),
         ///     };
         /// });
         /// ```
@@ -51,7 +48,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides a list of Ram user permissions.
         /// 
-        /// &gt; **NOTE:** Available in v1.122.0+.
+        /// &gt; **NOTE:** Available since v1.122.0.
         /// 
         /// ## Example Usage
         /// 
@@ -64,19 +61,16 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var usersDs = AliCloud.Ram.GetUsers.Invoke(new()
-        ///     {
-        ///         NameRegex = "your_user_name",
-        ///     });
+        ///     var defaultUsers = AliCloud.Ram.GetUsers.Invoke();
         /// 
-        ///     var @default = AliCloud.CS.GetKubernetesPermission.Invoke(new()
+        ///     var defaultKubernetesPermission = AliCloud.CS.GetKubernetesPermission.Invoke(new()
         ///     {
-        ///         Uid = usersDs.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///         Uid = defaultUsers.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["permissions"] = @default.Apply(@default =&gt; @default.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions)),
+        ///         ["permissions"] = defaultKubernetesPermission.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions),
         ///     };
         /// });
         /// ```
@@ -89,18 +83,6 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class GetKubernetesPermissionArgs : global::Pulumi.InvokeArgs
     {
-        [Input("permissions")]
-        private List<Inputs.GetKubernetesPermissionPermissionArgs>? _permissions;
-
-        /// <summary>
-        /// A list of user permission.
-        /// </summary>
-        public List<Inputs.GetKubernetesPermissionPermissionArgs> Permissions
-        {
-            get => _permissions ?? (_permissions = new List<Inputs.GetKubernetesPermissionPermissionArgs>());
-            set => _permissions = value;
-        }
-
         /// <summary>
         /// The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
         /// </summary>
@@ -115,18 +97,6 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class GetKubernetesPermissionInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("permissions")]
-        private InputList<Inputs.GetKubernetesPermissionPermissionInputArgs>? _permissions;
-
-        /// <summary>
-        /// A list of user permission.
-        /// </summary>
-        public InputList<Inputs.GetKubernetesPermissionPermissionInputArgs> Permissions
-        {
-            get => _permissions ?? (_permissions = new InputList<Inputs.GetKubernetesPermissionPermissionInputArgs>());
-            set => _permissions = value;
-        }
-
         /// <summary>
         /// The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
         /// </summary>
@@ -148,7 +118,7 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of user permission.
+        /// A list of user permission. See `permissions` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesPermissionPermissionResult> Permissions;
         /// <summary>

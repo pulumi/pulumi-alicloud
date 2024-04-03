@@ -2481,7 +2481,7 @@ type GetTemplateApplicationsApplication struct {
 	ProductCode string `pulumi:"productCode"`
 	// The quota ID.
 	QuotaActionCode string `pulumi:"quotaActionCode"`
-	// The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+	// The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
 	QuotaCategory string `pulumi:"quotaCategory"`
 	// Reason for quota application.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	Reason string `pulumi:"reason"`
@@ -2521,7 +2521,7 @@ type GetTemplateApplicationsApplicationArgs struct {
 	ProductCode pulumi.StringInput `pulumi:"productCode"`
 	// The quota ID.
 	QuotaActionCode pulumi.StringInput `pulumi:"quotaActionCode"`
-	// The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+	// The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
 	QuotaCategory pulumi.StringInput `pulumi:"quotaCategory"`
 	// Reason for quota application.> The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
 	Reason pulumi.StringInput `pulumi:"reason"`
@@ -2637,7 +2637,7 @@ func (o GetTemplateApplicationsApplicationOutput) QuotaActionCode() pulumi.Strin
 	return o.ApplyT(func(v GetTemplateApplicationsApplication) string { return v.QuotaActionCode }).(pulumi.StringOutput)
 }
 
-// The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+// The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
 func (o GetTemplateApplicationsApplicationOutput) QuotaCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTemplateApplicationsApplication) string { return v.QuotaCategory }).(pulumi.StringOutput)
 }

@@ -1564,7 +1564,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "tf-example-basic-edge"
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
             cpu_core_count=4,
@@ -1581,7 +1581,6 @@ class EdgeKubernetes(pulumi.CustomResource):
         default_edge_kubernetes = alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes",
             worker_vswitch_ids=[default_switch.id],
             worker_instance_types=[default_instance_types.instance_types[0].id],
-            version="1.20.11-aliyunedge.1",
             worker_number=1,
             password="Test12345",
             pod_cidr="10.99.0.0/16",
@@ -1627,7 +1626,6 @@ class EdgeKubernetes(pulumi.CustomResource):
         default_edge_kubernetes = alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes",
             worker_vswitch_ids=[default_switch.id],
             worker_instance_types=[default_instance_types.instance_types[0].id],
-            version="1.20.11-aliyunedge.1",
             cluster_spec="ack.pro.small",
             worker_number=1,
             password="Test12345",
@@ -1640,19 +1638,11 @@ class EdgeKubernetes(pulumi.CustomResource):
             install_cloud_monitor=True,
             slb_internet_enabled=True,
             is_enterprise_security_group=True,
-            addons=[alicloud.cs.EdgeKubernetesAddonArgs(
-                name="alibaba-log-controller",
-                config="{\\"IngressDashboardEnabled\\":\\"false\\"}",
-            )],
             worker_data_disks=[alicloud.cs.EdgeKubernetesWorkerDataDiskArgs(
                 category="cloud_ssd",
                 size="200",
                 encrypted="false",
-            )],
-            runtime=alicloud.cs.EdgeKubernetesRuntimeArgs(
-                name="containerd",
-                version="1.5.10",
-            ))
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1754,7 +1744,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "tf-example-basic-edge"
         default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
             cpu_core_count=4,
@@ -1771,7 +1761,6 @@ class EdgeKubernetes(pulumi.CustomResource):
         default_edge_kubernetes = alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes",
             worker_vswitch_ids=[default_switch.id],
             worker_instance_types=[default_instance_types.instance_types[0].id],
-            version="1.20.11-aliyunedge.1",
             worker_number=1,
             password="Test12345",
             pod_cidr="10.99.0.0/16",
@@ -1817,7 +1806,6 @@ class EdgeKubernetes(pulumi.CustomResource):
         default_edge_kubernetes = alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes",
             worker_vswitch_ids=[default_switch.id],
             worker_instance_types=[default_instance_types.instance_types[0].id],
-            version="1.20.11-aliyunedge.1",
             cluster_spec="ack.pro.small",
             worker_number=1,
             password="Test12345",
@@ -1830,19 +1818,11 @@ class EdgeKubernetes(pulumi.CustomResource):
             install_cloud_monitor=True,
             slb_internet_enabled=True,
             is_enterprise_security_group=True,
-            addons=[alicloud.cs.EdgeKubernetesAddonArgs(
-                name="alibaba-log-controller",
-                config="{\\"IngressDashboardEnabled\\":\\"false\\"}",
-            )],
             worker_data_disks=[alicloud.cs.EdgeKubernetesWorkerDataDiskArgs(
                 category="cloud_ssd",
                 size="200",
                 encrypted="false",
-            )],
-            runtime=alicloud.cs.EdgeKubernetesRuntimeArgs(
-                name="containerd",
-                version="1.5.10",
-            ))
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
