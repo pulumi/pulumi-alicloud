@@ -75,6 +75,7 @@ jobs:
           github.com/alibabacloud-go/darabonba-map/client,
           github.com/alibabacloud-go/darabonba-signature-util/client,
           github.com/alibabacloud-go/alibabacloud-gateway-oss/client,
+          github.com/alibabacloud-go/alibabacloud-gateway-oss-util/client,
           github.com/aead/chacha20,
           github.com/apache/arrow/go/v12,
           github.com/apache/thrift/lib/go/thrift,
