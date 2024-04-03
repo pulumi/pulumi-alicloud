@@ -116,7 +116,7 @@ type DbCluster struct {
 	DbNodeGroupCount pulumi.IntOutput `pulumi:"dbNodeGroupCount"`
 	// The db node storage.
 	DbNodeStorage pulumi.StringOutput `pulumi:"dbNodeStorage"`
-	// Key management service KMS key ID.
+	// Key management service KMS key ID. It is valid and required when encryptionType is `CloudDisk`.
 	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
 	// Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
 	EncryptionType pulumi.StringPtrOutput `pulumi:"encryptionType"`
@@ -124,7 +124,7 @@ type DbCluster struct {
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
 	// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+	// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
 	Period pulumi.StringPtrOutput `pulumi:"period"`
 	// (Available since v1.196.0) The connection port of the cluster.
 	Port pulumi.StringOutput `pulumi:"port"`
@@ -132,7 +132,7 @@ type DbCluster struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
-	// The used time of DBCluster.
+	// The used time of DBCluster. It is valid and required when paymentType is `Subscription`.
 	UsedTime pulumi.StringPtrOutput `pulumi:"usedTime"`
 	// The id of the VPC.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
@@ -216,7 +216,7 @@ type dbClusterState struct {
 	DbNodeGroupCount *int `pulumi:"dbNodeGroupCount"`
 	// The db node storage.
 	DbNodeStorage *string `pulumi:"dbNodeStorage"`
-	// Key management service KMS key ID.
+	// Key management service KMS key ID. It is valid and required when encryptionType is `CloudDisk`.
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
 	EncryptionType *string `pulumi:"encryptionType"`
@@ -224,7 +224,7 @@ type dbClusterState struct {
 	MaintainTime *string `pulumi:"maintainTime"`
 	// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
-	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+	// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
 	Period *string `pulumi:"period"`
 	// (Available since v1.196.0) The connection port of the cluster.
 	Port *string `pulumi:"port"`
@@ -232,7 +232,7 @@ type dbClusterState struct {
 	Status *string `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType *string `pulumi:"storageType"`
-	// The used time of DBCluster.
+	// The used time of DBCluster. It is valid and required when paymentType is `Subscription`.
 	UsedTime *string `pulumi:"usedTime"`
 	// The id of the VPC.
 	VpcId *string `pulumi:"vpcId"`
@@ -263,7 +263,7 @@ type DbClusterState struct {
 	DbNodeGroupCount pulumi.IntPtrInput
 	// The db node storage.
 	DbNodeStorage pulumi.StringPtrInput
-	// Key management service KMS key ID.
+	// Key management service KMS key ID. It is valid and required when encryptionType is `CloudDisk`.
 	EncryptionKey pulumi.StringPtrInput
 	// Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
 	EncryptionType pulumi.StringPtrInput
@@ -271,7 +271,7 @@ type DbClusterState struct {
 	MaintainTime pulumi.StringPtrInput
 	// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
 	PaymentType pulumi.StringPtrInput
-	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+	// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
 	Period pulumi.StringPtrInput
 	// (Available since v1.196.0) The connection port of the cluster.
 	Port pulumi.StringPtrInput
@@ -279,7 +279,7 @@ type DbClusterState struct {
 	Status pulumi.StringPtrInput
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType pulumi.StringPtrInput
-	// The used time of DBCluster.
+	// The used time of DBCluster. It is valid and required when paymentType is `Subscription`.
 	UsedTime pulumi.StringPtrInput
 	// The id of the VPC.
 	VpcId pulumi.StringPtrInput
@@ -312,7 +312,7 @@ type dbClusterArgs struct {
 	DbNodeGroupCount int `pulumi:"dbNodeGroupCount"`
 	// The db node storage.
 	DbNodeStorage string `pulumi:"dbNodeStorage"`
-	// Key management service KMS key ID.
+	// Key management service KMS key ID. It is valid and required when encryptionType is `CloudDisk`.
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
 	EncryptionType *string `pulumi:"encryptionType"`
@@ -320,13 +320,13 @@ type dbClusterArgs struct {
 	MaintainTime *string `pulumi:"maintainTime"`
 	// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
 	PaymentType string `pulumi:"paymentType"`
-	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+	// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
 	Period *string `pulumi:"period"`
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status *string `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType string `pulumi:"storageType"`
-	// The used time of DBCluster.
+	// The used time of DBCluster. It is valid and required when paymentType is `Subscription`.
 	UsedTime *string `pulumi:"usedTime"`
 	// The id of the VPC.
 	VpcId *string `pulumi:"vpcId"`
@@ -356,7 +356,7 @@ type DbClusterArgs struct {
 	DbNodeGroupCount pulumi.IntInput
 	// The db node storage.
 	DbNodeStorage pulumi.StringInput
-	// Key management service KMS key ID.
+	// Key management service KMS key ID. It is valid and required when encryptionType is `CloudDisk`.
 	EncryptionKey pulumi.StringPtrInput
 	// Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
 	EncryptionType pulumi.StringPtrInput
@@ -364,13 +364,13 @@ type DbClusterArgs struct {
 	MaintainTime pulumi.StringPtrInput
 	// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
 	PaymentType pulumi.StringInput
-	// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+	// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
 	Period pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status pulumi.StringPtrInput
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
 	StorageType pulumi.StringInput
-	// The used time of DBCluster.
+	// The used time of DBCluster. It is valid and required when paymentType is `Subscription`.
 	UsedTime pulumi.StringPtrInput
 	// The id of the VPC.
 	VpcId pulumi.StringPtrInput
@@ -514,7 +514,7 @@ func (o DbClusterOutput) DbNodeStorage() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.DbNodeStorage }).(pulumi.StringOutput)
 }
 
-// Key management service KMS key ID.
+// Key management service KMS key ID. It is valid and required when encryptionType is `CloudDisk`.
 func (o DbClusterOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
 }
@@ -534,7 +534,7 @@ func (o DbClusterOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
 func (o DbClusterOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringPtrOutput { return v.Period }).(pulumi.StringPtrOutput)
 }
@@ -554,7 +554,7 @@ func (o DbClusterOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
 }
 
-// The used time of DBCluster.
+// The used time of DBCluster. It is valid and required when paymentType is `Subscription`.
 func (o DbClusterOutput) UsedTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringPtrOutput { return v.UsedTime }).(pulumi.StringPtrOutput)
 }

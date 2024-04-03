@@ -37,14 +37,14 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+     * @return The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<Output<String>> description() {
@@ -82,37 +82,37 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     @Import(name="networkAclName")
     private @Nullable Output<String> networkAclName;
 
     /**
-     * @return The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+     * @return The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<Output<String>> networkAclName() {
@@ -135,14 +135,29 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the associated resource.
+     * SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+     * 
+     */
+    @Import(name="sourceNetworkAclId")
+    private @Nullable Output<String> sourceNetworkAclId;
+
+    /**
+     * @return SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+     * 
+     */
+    public Optional<Output<String>> sourceNetworkAclId() {
+        return Optional.ofNullable(this.sourceNetworkAclId);
+    }
+
+    /**
+     * The state of the network ACL.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the associated resource.
+     * @return The state of the network ACL.
      * 
      */
     public Optional<Output<String>> status() {
@@ -193,6 +208,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.networkAclName = $.networkAclName;
         this.resources = $.resources;
+        this.sourceNetworkAclId = $.sourceNetworkAclId;
         this.status = $.status;
         this.tags = $.tags;
         this.vpcId = $.vpcId;
@@ -238,7 +254,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * @param description The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -249,7 +265,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * @param description The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -321,36 +337,36 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param networkAclName The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * @param networkAclName The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -361,7 +377,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkAclName The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * @param networkAclName The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -402,7 +418,28 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the associated resource.
+         * @param sourceNetworkAclId SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceNetworkAclId(@Nullable Output<String> sourceNetworkAclId) {
+            $.sourceNetworkAclId = sourceNetworkAclId;
+            return this;
+        }
+
+        /**
+         * @param sourceNetworkAclId SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceNetworkAclId(String sourceNetworkAclId) {
+            return sourceNetworkAclId(Output.of(sourceNetworkAclId));
+        }
+
+        /**
+         * @param status The state of the network ACL.
          * 
          * @return builder
          * 
@@ -413,7 +450,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the associated resource.
+         * @param status The state of the network ACL.
          * 
          * @return builder
          * 

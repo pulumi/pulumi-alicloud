@@ -10,20 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Slb
 {
     /// <summary>
-    /// Provides an Application Load Balancer Listener resource.
+    /// Provides a Classic Load Balancer (SLB) Load Balancer Listener resource.
     /// 
-    /// For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
+    /// For information about Classic Load Balancer (SLB) and how to use it, see [What is Classic Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
     /// 
-    /// For information about listener and how to use it, to see the following:
+    /// For information about listener and how to use it, please see the following:
     /// 
-    /// * [Configure a HTTP Listener](https://www.alibabacloud.com/help/doc-detail/27592.htm).
-    /// * [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
-    /// * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
-    /// * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
+    /// * [Configure a HTTP Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27592.htm).
+    /// * [Configure a HTTPS Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+    /// * [Configure a TCP Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
+    /// * [Configure a UDP Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.0.0.
     /// 
     /// ## Example Usage
+    /// 
+    /// Basic Usage
     /// 
     /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
@@ -106,211 +108,175 @@ namespace Pulumi.AliCloud.Slb
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
-    /// ## Listener fields and protocol mapping
-    /// 
-    /// load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
-    /// 
-    /// listener parameter | support protocol | value range |
-    /// ------------- | ------------- | ------------- |
-    /// backend_port | http &amp; https &amp; tcp &amp; udp | 1-65535 |
-    /// frontend_port | http &amp; https &amp; tcp &amp; udp | 1-65535 |
-    /// protocol | http &amp; https &amp; tcp &amp; udp |
-    /// bandwidth | http &amp; https &amp; tcp &amp; udp | -1 / 1-1000 |
-    /// scheduler | http &amp; https &amp; tcp &amp; udp | wrr, rr, wlc, tch, qch |
-    /// sticky_session | http &amp; https | on or off |
-    /// sticky_session_type | http &amp; https | insert or server |
-    /// cookie_timeout | http &amp; https | 1-86400  |
-    /// cookie | http &amp; https |   |
-    /// persistence_timeout | tcp &amp; udp | 0-3600 |
-    /// health_check | http &amp; https | on or off |
-    /// health_check_type | tcp | tcp or http |
-    /// health_check_domain | http &amp; https &amp; tcp |
-    /// health_check_method | http &amp; https &amp; tcp |
-    /// health_check_uri | http &amp; https &amp; tcp |  |
-    /// health_check_connect_port | http &amp; https &amp; tcp &amp; udp | 1-65535 or -520 |
-    /// healthy_threshold | http &amp; https &amp; tcp &amp; udp | 1-10 |
-    /// unhealthy_threshold | http &amp; https &amp; tcp &amp; udp | 1-10 |
-    /// health_check_timeout | http &amp; https &amp; tcp &amp; udp | 1-300 |
-    /// health_check_interval | http &amp; https &amp; tcp &amp; udp | 1-50 |
-    /// health_check_http_code | http &amp; https &amp; tcp | http_2xx,http_3xx,http_4xx,http_5xx |
-    /// server_certificate_id | https |  |
-    /// gzip | http &amp; https | true or false  |
-    /// x_forwarded_for | http &amp; https |  |
-    /// acl_status | http &amp; https &amp; tcp &amp; udp | on or off |
-    /// acl_type   | http &amp; https &amp; tcp &amp; udp | white or black |
-    /// acl_id     | http &amp; https &amp; tcp &amp; udp | the id of resource alicloud_slb_acl|
-    /// established_timeout | tcp       | 10-900|
-    /// idle_timeout |http &amp; https      | 1-60  |
-    /// request_timeout |http &amp; https   | 1-180 |
-    /// enable_http2    |https          | on or off |
-    /// tls_cipher_policy |https        |  tls_cipher_policy_1_0, tls_cipher_policy_1_1, tls_cipher_policy_1_2, tls_cipher_policy_1_2_strict |
-    /// server_group_id    | http &amp; https &amp; tcp &amp; udp | the id of resource alicloud.slb.ServerGroup |
-    /// 
-    /// The listener mapping supports the following:
-    /// 
     /// ## Import
     /// 
-    /// Load balancer listener can be imported using the id, e.g.
+    /// Classic Load Balancer (SLB) Load Balancer Listener can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:slb/listener:Listener example "lb-abc123456:tcp:22"
+    /// $ pulumi import alicloud:slb/listener:Listener example &lt;load_balancer_id&gt;:&lt;protocol&gt;:&lt;frontend_port&gt;
+    /// ```
+    /// 
+    /// ```sh
+    /// $ pulumi import alicloud:slb/listener:Listener example &lt;load_balancer_id&gt;:&lt;frontend_port&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:slb/listener:Listener")]
     public partial class Listener : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
+        /// The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
         /// </summary>
         [Output("aclId")]
         public Output<string?> AclId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable "acl(access control list)", the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+        /// Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
         /// </summary>
         [Output("aclStatus")]
         public Output<string?> AclStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+        /// The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
         /// </summary>
         [Output("aclType")]
         public Output<string?> AclType { get; private set; } = null!;
 
         /// <summary>
-        /// Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
+        /// The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
         /// </summary>
         [Output("backendPort")]
         public Output<int?> BackendPort { get; private set; } = null!;
 
         /// <summary>
-        /// Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+        /// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+        /// - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
         /// </summary>
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+        /// The ID of the certification authority (CA) certificate.
         /// </summary>
         [Output("caCertificateId")]
         public Output<string?> CaCertificateId { get; private set; } = null!;
 
         /// <summary>
-        /// The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+        /// The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
         /// </summary>
         [Output("cookie")]
         public Output<string?> Cookie { get; private set; } = null!;
 
         /// <summary>
-        /// Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+        /// The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
         /// </summary>
         [Output("cookieTimeout")]
         public Output<int?> CookieTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         /// </summary>
         [Output("deleteProtectionValidation")]
         public Output<bool?> DeleteProtectionValidation { get; private set; } = null!;
 
         /// <summary>
-        /// The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+        /// The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+        /// Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
         /// </summary>
         [Output("enableHttp2")]
         public Output<string?> EnableHttp2 { get; private set; } = null!;
 
         /// <summary>
-        /// Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+        /// The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
         /// </summary>
         [Output("establishedTimeout")]
         public Output<int?> EstablishedTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The port that http redirect to https.
+        /// The listening port that is used to redirect HTTP requests to HTTPS.
         /// </summary>
         [Output("forwardPort")]
         public Output<int?> ForwardPort { get; private set; } = null!;
 
         /// <summary>
-        /// Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+        /// The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
         /// </summary>
         [Output("frontendPort")]
         public Output<int> FrontendPort { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
+        /// Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
         /// </summary>
         [Output("gzip")]
         public Output<bool?> Gzip { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
+        /// Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
         /// </summary>
         [Output("healthCheck")]
         public Output<string?> HealthCheck { get; private set; } = null!;
 
         /// <summary>
-        /// The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
+        /// The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Output("healthCheckConnectPort")]
         public Output<int> HealthCheckConnectPort { get; private set; } = null!;
 
         /// <summary>
-        /// Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+        /// The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Output("healthCheckDomain")]
         public Output<string?> HealthCheckDomain { get; private set; } = null!;
 
         /// <summary>
-        /// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+        /// The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Output("healthCheckHttpCode")]
         public Output<string> HealthCheckHttpCode { get; private set; } = null!;
 
         /// <summary>
-        /// Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+        /// The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Output("healthCheckInterval")]
         public Output<int?> HealthCheckInterval { get; private set; } = null!;
 
         /// <summary>
-        /// HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
+        /// The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Output("healthCheckMethod")]
         public Output<string> HealthCheckMethod { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
+        /// The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Output("healthCheckTimeout")]
         public Output<int?> HealthCheckTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
+        /// The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
         /// </summary>
         [Output("healthCheckType")]
         public Output<string?> HealthCheckType { get; private set; } = null!;
 
         /// <summary>
-        /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+        /// The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+        /// **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Output("healthCheckUri")]
         public Output<string?> HealthCheckUri { get; private set; } = null!;
 
         /// <summary>
-        /// The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Output("healthyThreshold")]
         public Output<int?> HealthyThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+        /// The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
         /// </summary>
         [Output("idleTimeout")]
         public Output<int?> IdleTimeout { get; private set; } = null!;
@@ -322,7 +288,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string?> LbProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+        /// Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
         /// </summary>
         [Output("listenerForward")]
         public Output<string> ListenerForward { get; private set; } = null!;
@@ -334,90 +300,85 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> LoadBalancerId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the master slave server group.
+        /// The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
         /// </summary>
         [Output("masterSlaveServerGroupId")]
         public Output<string?> MasterSlaveServerGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+        /// The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
         /// </summary>
         [Output("persistenceTimeout")]
         public Output<int?> PersistenceTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+        /// The protocol to listen on. Valid values: `http`.
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-        /// 
-        /// &gt; **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-        /// 
-        /// &gt; **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+        /// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Output("proxyProtocolV2Enabled")]
         public Output<bool> ProxyProtocolV2Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+        /// The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
         /// </summary>
         [Output("requestTimeout")]
         public Output<int?> RequestTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
-        /// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
+        /// The scheduling algorithm. Default value: `wrr`. Valid values:
         /// </summary>
         [Output("scheduler")]
         public Output<string?> Scheduler { get; private set; } = null!;
 
         /// <summary>
-        /// SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
+        /// The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
         /// </summary>
         [Output("serverCertificateId")]
         public Output<string> ServerCertificateId { get; private set; } = null!;
 
         /// <summary>
-        /// the id of server group to be apply on the listener, is the id of resource `alicloud.slb.ServerGroup`.
+        /// The ID of the vServer group. It's the ID of resource `alicloud.slb.ServerGroup`.
         /// </summary>
         [Output("serverGroupId")]
         public Output<string?> ServerGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        /// The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
         /// </summary>
         [Output("sslCertificateId")]
         public Output<string> SslCertificateId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
+        /// Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
         /// </summary>
         [Output("stickySession")]
         public Output<string?> StickySession { get; private set; } = null!;
 
         /// <summary>
-        /// Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+        /// The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
         /// </summary>
         [Output("stickySessionType")]
         public Output<string?> StickySessionType { get; private set; } = null!;
 
         /// <summary>
-        /// Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
+        /// The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
         /// </summary>
         [Output("tlsCipherPolicy")]
         public Output<string?> TlsCipherPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Output("unhealthyThreshold")]
         public Output<int?> UnhealthyThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+        /// Whether to set additional HTTP Header field "X-Forwarded-For". See `x_forwarded_for` below.
         /// </summary>
         [Output("xForwardedFor")]
         public Output<Outputs.ListenerXForwardedFor> XForwardedFor { get; private set; } = null!;
@@ -469,157 +430,159 @@ namespace Pulumi.AliCloud.Slb
     public sealed class ListenerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
+        /// The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
         /// </summary>
         [Input("aclId")]
         public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// Whether to enable "acl(access control list)", the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+        /// Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
         /// </summary>
         [Input("aclStatus")]
         public Input<string>? AclStatus { get; set; }
 
         /// <summary>
-        /// Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+        /// The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
         /// </summary>
         [Input("aclType")]
         public Input<string>? AclType { get; set; }
 
         /// <summary>
-        /// Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
+        /// The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
         /// </summary>
         [Input("backendPort")]
         public Input<int>? BackendPort { get; set; }
 
         /// <summary>
-        /// Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+        /// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+        /// - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+        /// The ID of the certification authority (CA) certificate.
         /// </summary>
         [Input("caCertificateId")]
         public Input<string>? CaCertificateId { get; set; }
 
         /// <summary>
-        /// The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+        /// The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
         /// </summary>
         [Input("cookie")]
         public Input<string>? Cookie { get; set; }
 
         /// <summary>
-        /// Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+        /// The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
         /// </summary>
         [Input("cookieTimeout")]
         public Input<int>? CookieTimeout { get; set; }
 
         /// <summary>
-        /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         /// </summary>
         [Input("deleteProtectionValidation")]
         public Input<bool>? DeleteProtectionValidation { get; set; }
 
         /// <summary>
-        /// The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+        /// The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+        /// Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
         /// </summary>
         [Input("enableHttp2")]
         public Input<string>? EnableHttp2 { get; set; }
 
         /// <summary>
-        /// Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+        /// The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
         /// </summary>
         [Input("establishedTimeout")]
         public Input<int>? EstablishedTimeout { get; set; }
 
         /// <summary>
-        /// The port that http redirect to https.
+        /// The listening port that is used to redirect HTTP requests to HTTPS.
         /// </summary>
         [Input("forwardPort")]
         public Input<int>? ForwardPort { get; set; }
 
         /// <summary>
-        /// Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+        /// The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
         /// </summary>
         [Input("frontendPort", required: true)]
         public Input<int> FrontendPort { get; set; } = null!;
 
         /// <summary>
-        /// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
+        /// Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
         /// </summary>
         [Input("gzip")]
         public Input<bool>? Gzip { get; set; }
 
         /// <summary>
-        /// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
+        /// Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
         /// </summary>
         [Input("healthCheck")]
         public Input<string>? HealthCheck { get; set; }
 
         /// <summary>
-        /// The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
+        /// The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckConnectPort")]
         public Input<int>? HealthCheckConnectPort { get; set; }
 
         /// <summary>
-        /// Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+        /// The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckDomain")]
         public Input<string>? HealthCheckDomain { get; set; }
 
         /// <summary>
-        /// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+        /// The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckHttpCode")]
         public Input<string>? HealthCheckHttpCode { get; set; }
 
         /// <summary>
-        /// Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+        /// The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckInterval")]
         public Input<int>? HealthCheckInterval { get; set; }
 
         /// <summary>
-        /// HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
+        /// The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckMethod")]
         public Input<string>? HealthCheckMethod { get; set; }
 
         /// <summary>
-        /// Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
+        /// The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckTimeout")]
         public Input<int>? HealthCheckTimeout { get; set; }
 
         /// <summary>
-        /// Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
+        /// The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+        /// The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+        /// **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckUri")]
         public Input<string>? HealthCheckUri { get; set; }
 
         /// <summary>
-        /// The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthyThreshold")]
         public Input<int>? HealthyThreshold { get; set; }
 
         /// <summary>
-        /// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+        /// The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
@@ -631,7 +594,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? LbProtocol { get; set; }
 
         /// <summary>
-        /// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+        /// Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
         /// </summary>
         [Input("listenerForward")]
         public Input<string>? ListenerForward { get; set; }
@@ -643,90 +606,85 @@ namespace Pulumi.AliCloud.Slb
         public Input<string> LoadBalancerId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the master slave server group.
+        /// The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
         /// </summary>
         [Input("masterSlaveServerGroupId")]
         public Input<string>? MasterSlaveServerGroupId { get; set; }
 
         /// <summary>
-        /// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+        /// The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
         /// </summary>
         [Input("persistenceTimeout")]
         public Input<int>? PersistenceTimeout { get; set; }
 
         /// <summary>
-        /// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+        /// The protocol to listen on. Valid values: `http`.
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
 
         /// <summary>
-        /// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-        /// 
-        /// &gt; **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-        /// 
-        /// &gt; **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+        /// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("proxyProtocolV2Enabled")]
         public Input<bool>? ProxyProtocolV2Enabled { get; set; }
 
         /// <summary>
-        /// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+        /// The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
         /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }
 
         /// <summary>
-        /// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
-        /// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
+        /// The scheduling algorithm. Default value: `wrr`. Valid values:
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
 
         /// <summary>
-        /// SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
+        /// The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
         /// </summary>
         [Input("serverCertificateId")]
         public Input<string>? ServerCertificateId { get; set; }
 
         /// <summary>
-        /// the id of server group to be apply on the listener, is the id of resource `alicloud.slb.ServerGroup`.
+        /// The ID of the vServer group. It's the ID of resource `alicloud.slb.ServerGroup`.
         /// </summary>
         [Input("serverGroupId")]
         public Input<string>? ServerGroupId { get; set; }
 
         /// <summary>
-        /// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        /// The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
         /// </summary>
         [Input("sslCertificateId")]
         public Input<string>? SslCertificateId { get; set; }
 
         /// <summary>
-        /// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
+        /// Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
         /// </summary>
         [Input("stickySession")]
         public Input<string>? StickySession { get; set; }
 
         /// <summary>
-        /// Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+        /// The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
         /// </summary>
         [Input("stickySessionType")]
         public Input<string>? StickySessionType { get; set; }
 
         /// <summary>
-        /// Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
+        /// The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
         /// </summary>
         [Input("tlsCipherPolicy")]
         public Input<string>? TlsCipherPolicy { get; set; }
 
         /// <summary>
-        /// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("unhealthyThreshold")]
         public Input<int>? UnhealthyThreshold { get; set; }
 
         /// <summary>
-        /// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+        /// Whether to set additional HTTP Header field "X-Forwarded-For". See `x_forwarded_for` below.
         /// </summary>
         [Input("xForwardedFor")]
         public Input<Inputs.ListenerXForwardedForArgs>? XForwardedFor { get; set; }
@@ -740,157 +698,159 @@ namespace Pulumi.AliCloud.Slb
     public sealed class ListenerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
+        /// The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
         /// </summary>
         [Input("aclId")]
         public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// Whether to enable "acl(access control list)", the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+        /// Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
         /// </summary>
         [Input("aclStatus")]
         public Input<string>? AclStatus { get; set; }
 
         /// <summary>
-        /// Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+        /// The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
         /// </summary>
         [Input("aclType")]
         public Input<string>? AclType { get; set; }
 
         /// <summary>
-        /// Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
+        /// The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
         /// </summary>
         [Input("backendPort")]
         public Input<int>? BackendPort { get; set; }
 
         /// <summary>
-        /// Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+        /// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+        /// - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+        /// The ID of the certification authority (CA) certificate.
         /// </summary>
         [Input("caCertificateId")]
         public Input<string>? CaCertificateId { get; set; }
 
         /// <summary>
-        /// The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+        /// The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
         /// </summary>
         [Input("cookie")]
         public Input<string>? Cookie { get; set; }
 
         /// <summary>
-        /// Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+        /// The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
         /// </summary>
         [Input("cookieTimeout")]
         public Input<int>? CookieTimeout { get; set; }
 
         /// <summary>
-        /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         /// </summary>
         [Input("deleteProtectionValidation")]
         public Input<bool>? DeleteProtectionValidation { get; set; }
 
         /// <summary>
-        /// The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+        /// The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+        /// Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
         /// </summary>
         [Input("enableHttp2")]
         public Input<string>? EnableHttp2 { get; set; }
 
         /// <summary>
-        /// Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+        /// The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
         /// </summary>
         [Input("establishedTimeout")]
         public Input<int>? EstablishedTimeout { get; set; }
 
         /// <summary>
-        /// The port that http redirect to https.
+        /// The listening port that is used to redirect HTTP requests to HTTPS.
         /// </summary>
         [Input("forwardPort")]
         public Input<int>? ForwardPort { get; set; }
 
         /// <summary>
-        /// Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+        /// The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
         /// </summary>
         [Input("frontendPort")]
         public Input<int>? FrontendPort { get; set; }
 
         /// <summary>
-        /// Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
+        /// Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
         /// </summary>
         [Input("gzip")]
         public Input<bool>? Gzip { get; set; }
 
         /// <summary>
-        /// Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
+        /// Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
         /// </summary>
         [Input("healthCheck")]
         public Input<string>? HealthCheck { get; set; }
 
         /// <summary>
-        /// The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
+        /// The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckConnectPort")]
         public Input<int>? HealthCheckConnectPort { get; set; }
 
         /// <summary>
-        /// Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+        /// The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckDomain")]
         public Input<string>? HealthCheckDomain { get; set; }
 
         /// <summary>
-        /// Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+        /// The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckHttpCode")]
         public Input<string>? HealthCheckHttpCode { get; set; }
 
         /// <summary>
-        /// Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+        /// The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckInterval")]
         public Input<int>? HealthCheckInterval { get; set; }
 
         /// <summary>
-        /// HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
+        /// The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckMethod")]
         public Input<string>? HealthCheckMethod { get; set; }
 
         /// <summary>
-        /// Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
+        /// The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckTimeout")]
         public Input<int>? HealthCheckTimeout { get; set; }
 
         /// <summary>
-        /// Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
+        /// The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+        /// The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+        /// **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckUri")]
         public Input<string>? HealthCheckUri { get; set; }
 
         /// <summary>
-        /// The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthyThreshold")]
         public Input<int>? HealthyThreshold { get; set; }
 
         /// <summary>
-        /// Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+        /// The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
         /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
@@ -902,7 +862,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? LbProtocol { get; set; }
 
         /// <summary>
-        /// Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+        /// Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
         /// </summary>
         [Input("listenerForward")]
         public Input<string>? ListenerForward { get; set; }
@@ -914,90 +874,85 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? LoadBalancerId { get; set; }
 
         /// <summary>
-        /// The ID of the master slave server group.
+        /// The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
         /// </summary>
         [Input("masterSlaveServerGroupId")]
         public Input<string>? MasterSlaveServerGroupId { get; set; }
 
         /// <summary>
-        /// Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+        /// The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
         /// </summary>
         [Input("persistenceTimeout")]
         public Input<int>? PersistenceTimeout { get; set; }
 
         /// <summary>
-        /// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+        /// The protocol to listen on. Valid values: `http`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-        /// 
-        /// &gt; **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-        /// 
-        /// &gt; **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+        /// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("proxyProtocolV2Enabled")]
         public Input<bool>? ProxyProtocolV2Enabled { get; set; }
 
         /// <summary>
-        /// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+        /// The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
         /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }
 
         /// <summary>
-        /// Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
-        /// Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
+        /// The scheduling algorithm. Default value: `wrr`. Valid values:
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
 
         /// <summary>
-        /// SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
+        /// The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
         /// </summary>
         [Input("serverCertificateId")]
         public Input<string>? ServerCertificateId { get; set; }
 
         /// <summary>
-        /// the id of server group to be apply on the listener, is the id of resource `alicloud.slb.ServerGroup`.
+        /// The ID of the vServer group. It's the ID of resource `alicloud.slb.ServerGroup`.
         /// </summary>
         [Input("serverGroupId")]
         public Input<string>? ServerGroupId { get; set; }
 
         /// <summary>
-        /// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        /// The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
         /// </summary>
         [Input("sslCertificateId")]
         public Input<string>? SslCertificateId { get; set; }
 
         /// <summary>
-        /// Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
+        /// Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
         /// </summary>
         [Input("stickySession")]
         public Input<string>? StickySession { get; set; }
 
         /// <summary>
-        /// Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+        /// The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
         /// </summary>
         [Input("stickySessionType")]
         public Input<string>? StickySessionType { get; set; }
 
         /// <summary>
-        /// Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
+        /// The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
         /// </summary>
         [Input("tlsCipherPolicy")]
         public Input<string>? TlsCipherPolicy { get; set; }
 
         /// <summary>
-        /// The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("unhealthyThreshold")]
         public Input<int>? UnhealthyThreshold { get; set; }
 
         /// <summary>
-        /// Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+        /// Whether to set additional HTTP Header field "X-Forwarded-For". See `x_forwarded_for` below.
         /// </summary>
         [Input("xForwardedFor")]
         public Input<Inputs.ListenerXForwardedForGetArgs>? XForwardedFor { get; set; }

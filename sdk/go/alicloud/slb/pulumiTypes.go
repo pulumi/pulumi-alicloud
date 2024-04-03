@@ -226,13 +226,13 @@ func (o BackendServerBackendServerArrayOutput) Index(i pulumi.IntInput) BackendS
 }
 
 type ListenerXForwardedFor struct {
-	// Whether to retrieve the client ip. It is read-only attribute.
+	// Whether to retrieve the client ip.
 	RetriveClientIp *bool `pulumi:"retriveClientIp"`
-	// Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
+	// Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
 	RetriveSlbId *bool `pulumi:"retriveSlbId"`
-	// Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
+	// Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
 	RetriveSlbIp *bool `pulumi:"retriveSlbIp"`
-	// Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+	// Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
 	RetriveSlbProto *bool `pulumi:"retriveSlbProto"`
 }
 
@@ -248,13 +248,13 @@ type ListenerXForwardedForInput interface {
 }
 
 type ListenerXForwardedForArgs struct {
-	// Whether to retrieve the client ip. It is read-only attribute.
+	// Whether to retrieve the client ip.
 	RetriveClientIp pulumi.BoolPtrInput `pulumi:"retriveClientIp"`
-	// Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
+	// Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
 	RetriveSlbId pulumi.BoolPtrInput `pulumi:"retriveSlbId"`
-	// Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
+	// Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
 	RetriveSlbIp pulumi.BoolPtrInput `pulumi:"retriveSlbIp"`
-	// Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+	// Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
 	RetriveSlbProto pulumi.BoolPtrInput `pulumi:"retriveSlbProto"`
 }
 
@@ -335,22 +335,22 @@ func (o ListenerXForwardedForOutput) ToListenerXForwardedForPtrOutputWithContext
 	}).(ListenerXForwardedForPtrOutput)
 }
 
-// Whether to retrieve the client ip. It is read-only attribute.
+// Whether to retrieve the client ip.
 func (o ListenerXForwardedForOutput) RetriveClientIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveClientIp }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
+// Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
 func (o ListenerXForwardedForOutput) RetriveSlbId() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveSlbId }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
+// Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
 func (o ListenerXForwardedForOutput) RetriveSlbIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveSlbIp }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+// Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
 func (o ListenerXForwardedForOutput) RetriveSlbProto() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerXForwardedFor) *bool { return v.RetriveSlbProto }).(pulumi.BoolPtrOutput)
 }
@@ -379,7 +379,7 @@ func (o ListenerXForwardedForPtrOutput) Elem() ListenerXForwardedForOutput {
 	}).(ListenerXForwardedForOutput)
 }
 
-// Whether to retrieve the client ip. It is read-only attribute.
+// Whether to retrieve the client ip.
 func (o ListenerXForwardedForPtrOutput) RetriveClientIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedFor) *bool {
 		if v == nil {
@@ -389,7 +389,7 @@ func (o ListenerXForwardedForPtrOutput) RetriveClientIp() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
+// Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
 func (o ListenerXForwardedForPtrOutput) RetriveSlbId() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedFor) *bool {
 		if v == nil {
@@ -399,7 +399,7 @@ func (o ListenerXForwardedForPtrOutput) RetriveSlbId() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
+// Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
 func (o ListenerXForwardedForPtrOutput) RetriveSlbIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedFor) *bool {
 		if v == nil {
@@ -409,7 +409,7 @@ func (o ListenerXForwardedForPtrOutput) RetriveSlbIp() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+// Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
 func (o ListenerXForwardedForPtrOutput) RetriveSlbProto() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerXForwardedFor) *bool {
 		if v == nil {

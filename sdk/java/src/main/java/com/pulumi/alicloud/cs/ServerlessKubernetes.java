@@ -94,6 +94,7 @@ import javax.annotation.Nullable;
  * 
  *         var serverless = new ServerlessKubernetes(&#34;serverless&#34;, ServerlessKubernetesArgs.builder()        
  *             .namePrefix(name)
+ *             .clusterSpec(&#34;ack.pro.small&#34;)
  *             .vpcId(defaultNetwork.id())
  *             .vswitchIds(defaultSwitch.id())
  *             .newNatGateway(true)

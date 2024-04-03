@@ -12,72 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry's mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
-//
-// > **NOTE:** Available in 1.94.0+.
-//
-// ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("terraform-example"),
-//				CidrBlock: pulumi.String("172.17.3.0/24"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String("terraform-example"),
-//				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = mse.NewCluster(ctx, "exampleCluster", &mse.ClusterArgs{
-//				ClusterSpecification: pulumi.String("MSE_SC_1_2_60_c"),
-//				ClusterType:          pulumi.String("Nacos-Ans"),
-//				ClusterVersion:       pulumi.String("NACOS_2_0_0"),
-//				InstanceCount:        pulumi.Int(1),
-//				NetType:              pulumi.String("privatenet"),
-//				PubNetworkFlow:       pulumi.String("1"),
-//				ConnectionType:       pulumi.String("slb"),
-//				ClusterAliasName:     pulumi.String("terraform-example"),
-//				MseVersion:           pulumi.String("mse_dev"),
-//				VswitchId:            exampleSwitch.ID(),
-//				VpcId:                exampleNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
 // ## Import
 //
 // MSE Cluster can be imported using the id, e.g.
@@ -112,6 +46,8 @@ type Cluster struct {
 	MseVersion pulumi.StringOutput `pulumi:"mseVersion"`
 	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType pulumi.StringOutput `pulumi:"netType"`
+	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The specification of private network SLB.
 	PrivateSlbSpecification pulumi.StringPtrOutput `pulumi:"privateSlbSpecification"`
 	// The public network bandwidth. `0` means no access to the public network.
@@ -120,8 +56,12 @@ type Cluster struct {
 	PubSlbSpecification pulumi.StringPtrOutput `pulumi:"pubSlbSpecification"`
 	// The extended request parameters in the JSON format.
 	RequestPars pulumi.StringPtrOutput `pulumi:"requestPars"`
+	// The resource group of the resource.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The status of MSE Cluster.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The tag of the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The id of the VPC.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The id of VSwitch.
@@ -200,6 +140,8 @@ type clusterState struct {
 	MseVersion *string `pulumi:"mseVersion"`
 	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType *string `pulumi:"netType"`
+	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+	PaymentType *string `pulumi:"paymentType"`
 	// The specification of private network SLB.
 	PrivateSlbSpecification *string `pulumi:"privateSlbSpecification"`
 	// The public network bandwidth. `0` means no access to the public network.
@@ -208,8 +150,12 @@ type clusterState struct {
 	PubSlbSpecification *string `pulumi:"pubSlbSpecification"`
 	// The extended request parameters in the JSON format.
 	RequestPars *string `pulumi:"requestPars"`
+	// The resource group of the resource.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of MSE Cluster.
 	Status *string `pulumi:"status"`
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The id of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 	// The id of VSwitch.
@@ -241,6 +187,8 @@ type ClusterState struct {
 	MseVersion pulumi.StringPtrInput
 	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType pulumi.StringPtrInput
+	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+	PaymentType pulumi.StringPtrInput
 	// The specification of private network SLB.
 	PrivateSlbSpecification pulumi.StringPtrInput
 	// The public network bandwidth. `0` means no access to the public network.
@@ -249,8 +197,12 @@ type ClusterState struct {
 	PubSlbSpecification pulumi.StringPtrInput
 	// The extended request parameters in the JSON format.
 	RequestPars pulumi.StringPtrInput
+	// The resource group of the resource.
+	ResourceGroupId pulumi.StringPtrInput
 	// The status of MSE Cluster.
 	Status pulumi.StringPtrInput
+	// The tag of the resource.
+	Tags pulumi.MapInput
 	// The id of the VPC.
 	VpcId pulumi.StringPtrInput
 	// The id of VSwitch.
@@ -282,6 +234,8 @@ type clusterArgs struct {
 	MseVersion *string `pulumi:"mseVersion"`
 	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType string `pulumi:"netType"`
+	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+	PaymentType *string `pulumi:"paymentType"`
 	// The specification of private network SLB.
 	PrivateSlbSpecification *string `pulumi:"privateSlbSpecification"`
 	// The public network bandwidth. `0` means no access to the public network.
@@ -290,6 +244,10 @@ type clusterArgs struct {
 	PubSlbSpecification *string `pulumi:"pubSlbSpecification"`
 	// The extended request parameters in the JSON format.
 	RequestPars *string `pulumi:"requestPars"`
+	// The resource group of the resource.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The id of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 	// The id of VSwitch.
@@ -318,6 +276,8 @@ type ClusterArgs struct {
 	MseVersion pulumi.StringPtrInput
 	// The type of network. Valid values: "privatenet" and "pubnet".
 	NetType pulumi.StringInput
+	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+	PaymentType pulumi.StringPtrInput
 	// The specification of private network SLB.
 	PrivateSlbSpecification pulumi.StringPtrInput
 	// The public network bandwidth. `0` means no access to the public network.
@@ -326,6 +286,10 @@ type ClusterArgs struct {
 	PubSlbSpecification pulumi.StringPtrInput
 	// The extended request parameters in the JSON format.
 	RequestPars pulumi.StringPtrInput
+	// The resource group of the resource.
+	ResourceGroupId pulumi.StringPtrInput
+	// The tag of the resource.
+	Tags pulumi.MapInput
 	// The id of the VPC.
 	VpcId pulumi.StringPtrInput
 	// The id of VSwitch.
@@ -479,6 +443,11 @@ func (o ClusterOutput) NetType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.NetType }).(pulumi.StringOutput)
 }
 
+// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+func (o ClusterOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
 // The specification of private network SLB.
 func (o ClusterOutput) PrivateSlbSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PrivateSlbSpecification }).(pulumi.StringPtrOutput)
@@ -499,9 +468,19 @@ func (o ClusterOutput) RequestPars() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.RequestPars }).(pulumi.StringPtrOutput)
 }
 
+// The resource group of the resource.
+func (o ClusterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
 // The status of MSE Cluster.
 func (o ClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o ClusterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 // The id of the VPC.

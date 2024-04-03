@@ -124,14 +124,14 @@ public final class GetQuotasArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
+     * The category of quota. Valid Values: `FlowControl` and `CommonQuota`, `WhiteListLabel`.
      * 
      */
     @Import(name="quotaCategory")
     private @Nullable Output<String> quotaCategory;
 
     /**
-     * @return The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
+     * @return The category of quota. Valid Values: `FlowControl` and `CommonQuota`, `WhiteListLabel`.
      * 
      */
     public Optional<Output<String>> quotaCategory() {
@@ -359,7 +359,7 @@ public final class GetQuotasArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param quotaCategory The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
+         * @param quotaCategory The category of quota. Valid Values: `FlowControl` and `CommonQuota`, `WhiteListLabel`.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class GetQuotasArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param quotaCategory The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
+         * @param quotaCategory The category of quota. Valid Values: `FlowControl` and `CommonQuota`, `WhiteListLabel`.
          * 
          * @return builder
          * 

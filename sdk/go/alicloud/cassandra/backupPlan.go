@@ -18,6 +18,8 @@ import (
 //
 // > **NOTE:** Available in v1.128.0+.
 //
+// > **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+//
 // ## Import
 //
 // Cassandra Backup Plan can be imported using the id, e.g.

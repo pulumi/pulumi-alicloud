@@ -14,9 +14,9 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ResourceGroupRegionStatus struct {
-	// The region ID.
+	// The status of the region.
 	RegionId *string `pulumi:"regionId"`
-	// The status of the regional resource group.
+	// The status of the resource group.
 	Status *string `pulumi:"status"`
 }
 
@@ -32,9 +32,9 @@ type ResourceGroupRegionStatusInput interface {
 }
 
 type ResourceGroupRegionStatusArgs struct {
-	// The region ID.
+	// The status of the region.
 	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
-	// The status of the regional resource group.
+	// The status of the resource group.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -89,12 +89,12 @@ func (o ResourceGroupRegionStatusOutput) ToResourceGroupRegionStatusOutputWithCo
 	return o
 }
 
-// The region ID.
+// The status of the region.
 func (o ResourceGroupRegionStatusOutput) RegionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGroupRegionStatus) *string { return v.RegionId }).(pulumi.StringPtrOutput)
 }
 
-// The status of the regional resource group.
+// The status of the resource group.
 func (o ResourceGroupRegionStatusOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGroupRegionStatus) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

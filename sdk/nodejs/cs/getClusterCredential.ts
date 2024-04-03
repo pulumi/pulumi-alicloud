@@ -9,23 +9,9 @@ import * as utilities from "../utilities";
 /**
  * This data source provides Container Service cluster credential on Alibaba Cloud.
  *
- * > **NOTE:** Available in v1.187.0+
+ * > **NOTE:** Available since v1.187.0
  *
  * > **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
- *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const auth = alicloud.cs.getClusterCredential({
- *     clusterId: "cluster-id",
- *     temporaryDurationMinutes: 60,
- * });
- * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClusterCredential(args: GetClusterCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterCredentialResult> {
 
@@ -89,23 +75,9 @@ export interface GetClusterCredentialResult {
 /**
  * This data source provides Container Service cluster credential on Alibaba Cloud.
  *
- * > **NOTE:** Available in v1.187.0+
+ * > **NOTE:** Available since v1.187.0
  *
  * > **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
- *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const auth = alicloud.cs.getClusterCredential({
- *     clusterId: "cluster-id",
- *     temporaryDurationMinutes: 60,
- * });
- * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClusterCredentialOutput(args: GetClusterCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterCredentialResult> {
     return pulumi.output(args).apply((a: any) => getClusterCredential(a, opts))

@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .status(&#34;online&#34;)
  *             .sources(IpaDomainSourceArgs.builder()
  *                 .content(&#34;www.alicloud-provider.cn&#34;)
- *                 .port(80)
+ *                 .port(8898)
  *                 .priority(&#34;20&#34;)
  *                 .type(&#34;domain&#34;)
  *                 .weight(10)

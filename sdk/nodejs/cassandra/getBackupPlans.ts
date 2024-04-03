@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.128.0+.
  *
+ * > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -67,6 +69,8 @@ export interface GetBackupPlansResult {
  * This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.128.0+.
+ *
+ * > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
  *
  * ## Example Usage
  *

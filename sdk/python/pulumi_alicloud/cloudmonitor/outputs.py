@@ -14,6 +14,7 @@ __all__ = [
     'ServiceGroupMonitoringAgentProcessAlertConfig',
     'ServiceGroupMonitoringAgentProcessAlertConfigTargetList',
     'ServiceGroupMonitoringAgentProcessMatchExpress',
+    'GetServiceHybridDoubleWritesHybridDoubleWriteResult',
 ]
 
 @pulumi.output_type
@@ -266,5 +267,67 @@ class ServiceGroupMonitoringAgentProcessMatchExpress(dict):
         The keyword used to match the instance name.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServiceHybridDoubleWritesHybridDoubleWriteResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 namespace: str,
+                 source_namespace: str,
+                 source_user_id: str,
+                 user_id: str):
+        """
+        :param str id: The ID of the Hybrid Double Write. It formats as `<source_namespace>:<source_user_id>`.
+        :param str namespace: Target Namespace.
+        :param str source_namespace: Source Namespace.
+        :param str source_user_id: Source UserId.
+        :param str user_id: Target UserId.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "source_namespace", source_namespace)
+        pulumi.set(__self__, "source_user_id", source_user_id)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Hybrid Double Write. It formats as `<source_namespace>:<source_user_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> str:
+        """
+        Target Namespace.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="sourceNamespace")
+    def source_namespace(self) -> str:
+        """
+        Source Namespace.
+        """
+        return pulumi.get(self, "source_namespace")
+
+    @property
+    @pulumi.getter(name="sourceUserId")
+    def source_user_id(self) -> str:
+        """
+        Source UserId.
+        """
+        return pulumi.get(self, "source_user_id")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        """
+        Target UserId.
+        """
+        return pulumi.get(self, "user_id")
 
 

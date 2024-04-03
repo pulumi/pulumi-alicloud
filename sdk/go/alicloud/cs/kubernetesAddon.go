@@ -30,9 +30,11 @@ type KubernetesAddon struct {
 
 	// Is the addon ready for upgrade.
 	CanUpgrade pulumi.BoolOutput `pulumi:"canUpgrade"`
+	// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
+	CleanupCloudResources pulumi.BoolPtrOutput `pulumi:"cleanupCloudResources"`
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
+	// The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
 	Config pulumi.StringOutput `pulumi:"config"`
 	// The name of addon.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -53,9 +55,6 @@ func NewKubernetesAddon(ctx *pulumi.Context,
 
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
-	}
-	if args.Version == nil {
-		return nil, errors.New("invalid value for required argument 'Version'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KubernetesAddon
@@ -82,9 +81,11 @@ func GetKubernetesAddon(ctx *pulumi.Context,
 type kubernetesAddonState struct {
 	// Is the addon ready for upgrade.
 	CanUpgrade *bool `pulumi:"canUpgrade"`
+	// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
+	CleanupCloudResources *bool `pulumi:"cleanupCloudResources"`
 	// The id of kubernetes cluster.
 	ClusterId *string `pulumi:"clusterId"`
-	// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
+	// The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
 	Config *string `pulumi:"config"`
 	// The name of addon.
 	Name *string `pulumi:"name"`
@@ -99,9 +100,11 @@ type kubernetesAddonState struct {
 type KubernetesAddonState struct {
 	// Is the addon ready for upgrade.
 	CanUpgrade pulumi.BoolPtrInput
+	// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
+	CleanupCloudResources pulumi.BoolPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringPtrInput
-	// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
+	// The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
 	Config pulumi.StringPtrInput
 	// The name of addon.
 	Name pulumi.StringPtrInput
@@ -118,26 +121,30 @@ func (KubernetesAddonState) ElementType() reflect.Type {
 }
 
 type kubernetesAddonArgs struct {
+	// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
+	CleanupCloudResources *bool `pulumi:"cleanupCloudResources"`
 	// The id of kubernetes cluster.
 	ClusterId string `pulumi:"clusterId"`
-	// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
+	// The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
 	Config *string `pulumi:"config"`
 	// The name of addon.
 	Name *string `pulumi:"name"`
 	// The current version of addon.
-	Version string `pulumi:"version"`
+	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a KubernetesAddon resource.
 type KubernetesAddonArgs struct {
+	// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
+	CleanupCloudResources pulumi.BoolPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringInput
-	// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
+	// The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
 	Config pulumi.StringPtrInput
 	// The name of addon.
 	Name pulumi.StringPtrInput
 	// The current version of addon.
-	Version pulumi.StringInput
+	Version pulumi.StringPtrInput
 }
 
 func (KubernetesAddonArgs) ElementType() reflect.Type {
@@ -232,12 +239,17 @@ func (o KubernetesAddonOutput) CanUpgrade() pulumi.BoolOutput {
 	return o.ApplyT(func(v *KubernetesAddon) pulumi.BoolOutput { return v.CanUpgrade }).(pulumi.BoolOutput)
 }
 
+// Whether to clean up cloud resources when deleting. Currently only works for addon `ack-virtual-node` and you must specify it when uninstall addon `ack-virtual-node`. Valid values: `true`: clean up, `false`: do not clean up.
+func (o KubernetesAddonOutput) CleanupCloudResources() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesAddon) pulumi.BoolPtrOutput { return v.CleanupCloudResources }).(pulumi.BoolPtrOutput)
+}
+
 // The id of kubernetes cluster.
 func (o KubernetesAddonOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesAddon) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
+// The customized configuration of addon. Your customized configuration will be merged to existed configuration stored in server. If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. You can checkout the customized configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
 func (o KubernetesAddonOutput) Config() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesAddon) pulumi.StringOutput { return v.Config }).(pulumi.StringOutput)
 }

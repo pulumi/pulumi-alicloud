@@ -26,7 +26,7 @@ func GetServiceMeshes(ctx *pulumi.Context, args *GetServiceMeshesArgs, opts ...p
 
 // A collection of arguments for invoking getServiceMeshes.
 type GetServiceMeshesArgs struct {
-	// Whether to query the detailed list of resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Service Mesh IDs.
 	Ids []string `pulumi:"ids"`
@@ -34,7 +34,7 @@ type GetServiceMeshesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource. Valid values: `running` or `initial`.
+	// The status of the Service Mesh. Valid values: `running`, `initial`.
 	Status *string `pulumi:"status"`
 }
 
@@ -50,7 +50,7 @@ type GetServiceMeshesResult struct {
 	// A list of Service Mesh names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the Service Mesh instance.
 	Status *string `pulumi:"status"`
 }
 
@@ -69,7 +69,7 @@ func GetServiceMeshesOutput(ctx *pulumi.Context, args GetServiceMeshesOutputArgs
 
 // A collection of arguments for invoking getServiceMeshes.
 type GetServiceMeshesOutputArgs struct {
-	// Whether to query the detailed list of resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Service Mesh IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -77,7 +77,7 @@ type GetServiceMeshesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource. Valid values: `running` or `initial`.
+	// The status of the Service Mesh. Valid values: `running`, `initial`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -131,7 +131,7 @@ func (o GetServiceMeshesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceMeshesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// The status of the resource.
+// The status of the Service Mesh instance.
 func (o GetServiceMeshesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceMeshesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

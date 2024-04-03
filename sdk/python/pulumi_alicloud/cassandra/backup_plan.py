@@ -235,6 +235,8 @@ class BackupPlan(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.128.0+.
 
+        > **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+
         ## Import
 
         Cassandra Backup Plan can be imported using the id, e.g.
@@ -264,6 +266,8 @@ class BackupPlan(pulumi.CustomResource):
         For information about Cassandra Backup Plan and how to use it, see [What is Backup Plan](https://www.alibabacloud.com/help/doc-detail/157522.htm).
 
         > **NOTE:** Available in v1.128.0+.
+
+        > **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 
         ## Import
 

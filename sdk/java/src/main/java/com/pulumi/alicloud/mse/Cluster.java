@@ -11,81 +11,14 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry&#39;s mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
- * 
- * &gt; **NOTE:** Available in 1.94.0+.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.mse.Cluster;
- * import com.pulumi.alicloud.mse.ClusterArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
- *             .build());
- * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
- *             .build());
- * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
- *             .vpcId(exampleNetwork.id())
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .build());
- * 
- *         var exampleCluster = new Cluster(&#34;exampleCluster&#34;, ClusterArgs.builder()        
- *             .clusterSpecification(&#34;MSE_SC_1_2_60_c&#34;)
- *             .clusterType(&#34;Nacos-Ans&#34;)
- *             .clusterVersion(&#34;NACOS_2_0_0&#34;)
- *             .instanceCount(1)
- *             .netType(&#34;privatenet&#34;)
- *             .pubNetworkFlow(&#34;1&#34;)
- *             .connectionType(&#34;slb&#34;)
- *             .clusterAliasName(&#34;terraform-example&#34;)
- *             .mseVersion(&#34;mse_dev&#34;)
- *             .vswitchId(exampleSwitch.id())
- *             .vpcId(exampleNetwork.id())
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * MSE Cluster can be imported using the id, e.g.
@@ -266,6 +199,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.netType;
     }
     /**
+     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+     * 
+     */
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
+    private Output<String> paymentType;
+
+    /**
+     * @return Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+     * 
+     */
+    public Output<String> paymentType() {
+        return this.paymentType;
+    }
+    /**
      * The specification of private network SLB.
      * 
      */
@@ -322,6 +269,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.requestPars);
     }
     /**
+     * The resource group of the resource.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The resource group of the resource.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
      * The status of MSE Cluster.
      * 
      */
@@ -334,6 +295,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The id of the VPC.

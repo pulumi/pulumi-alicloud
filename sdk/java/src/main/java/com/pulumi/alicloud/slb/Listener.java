@@ -18,20 +18,22 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an Application Load Balancer Listener resource.
+ * Provides a Classic Load Balancer (SLB) Load Balancer Listener resource.
  * 
- * For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
+ * For information about Classic Load Balancer (SLB) and how to use it, see [What is Classic Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
  * 
- * For information about listener and how to use it, to see the following:
+ * For information about listener and how to use it, please see the following:
  * 
- * * [Configure a HTTP Listener](https://www.alibabacloud.com/help/doc-detail/27592.htm).
- * * [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
- * * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
- * * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
+ * * [Configure a HTTP Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27592.htm).
+ * * [Configure a HTTPS Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+ * * [Configure a TCP Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
+ * * [Configure a UDP Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
  * 
  * &gt; **NOTE:** Available since v1.0.0.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
@@ -129,418 +131,384 @@ import javax.annotation.Nullable;
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Listener fields and protocol mapping
- * 
- * load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
- * 
- * listener parameter | support protocol | value range |
- * ------------- | ------------- | ------------- |
- * backend_port | http &amp; https &amp; tcp &amp; udp | 1-65535 |
- * frontend_port | http &amp; https &amp; tcp &amp; udp | 1-65535 |
- * protocol | http &amp; https &amp; tcp &amp; udp |
- * bandwidth | http &amp; https &amp; tcp &amp; udp | -1 / 1-1000 |
- * scheduler | http &amp; https &amp; tcp &amp; udp | wrr, rr, wlc, tch, qch |
- * sticky_session | http &amp; https | on or off |
- * sticky_session_type | http &amp; https | insert or server |
- * cookie_timeout | http &amp; https | 1-86400  |
- * cookie | http &amp; https |   |
- * persistence_timeout | tcp &amp; udp | 0-3600 |
- * health_check | http &amp; https | on or off |
- * health_check_type | tcp | tcp or http |
- * health_check_domain | http &amp; https &amp; tcp |
- * health_check_method | http &amp; https &amp; tcp |
- * health_check_uri | http &amp; https &amp; tcp |  |
- * health_check_connect_port | http &amp; https &amp; tcp &amp; udp | 1-65535 or -520 |
- * healthy_threshold | http &amp; https &amp; tcp &amp; udp | 1-10 |
- * unhealthy_threshold | http &amp; https &amp; tcp &amp; udp | 1-10 |
- * health_check_timeout | http &amp; https &amp; tcp &amp; udp | 1-300 |
- * health_check_interval | http &amp; https &amp; tcp &amp; udp | 1-50 |
- * health_check_http_code | http &amp; https &amp; tcp | http_2xx,http_3xx,http_4xx,http_5xx |
- * server_certificate_id | https |  |
- * gzip | http &amp; https | true or false  |
- * x_forwarded_for | http &amp; https |  |
- * acl_status | http &amp; https &amp; tcp &amp; udp | on or off |
- * acl_type   | http &amp; https &amp; tcp &amp; udp | white or black |
- * acl_id     | http &amp; https &amp; tcp &amp; udp | the id of resource alicloud_slb_acl|
- * established_timeout | tcp       | 10-900|
- * idle_timeout |http &amp; https      | 1-60  |
- * request_timeout |http &amp; https   | 1-180 |
- * enable_http2    |https          | on or off |
- * tls_cipher_policy |https        |  tls_cipher_policy_1_0, tls_cipher_policy_1_1, tls_cipher_policy_1_2, tls_cipher_policy_1_2_strict |
- * server_group_id    | http &amp; https &amp; tcp &amp; udp | the id of resource alicloud.slb.ServerGroup |
- * 
- * The listener mapping supports the following:
- * 
  * ## Import
  * 
- * Load balancer listener can be imported using the id, e.g.
+ * Classic Load Balancer (SLB) Load Balancer Listener can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:slb/listener:Listener example &#34;lb-abc123456:tcp:22&#34;
+ * $ pulumi import alicloud:slb/listener:Listener example &lt;load_balancer_id&gt;:&lt;protocol&gt;:&lt;frontend_port&gt;
+ * ```
+ * 
+ * ```sh
+ * $ pulumi import alicloud:slb/listener:Listener example &lt;load_balancer_id&gt;:&lt;frontend_port&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:slb/listener:Listener")
 public class Listener extends com.pulumi.resources.CustomResource {
     /**
-     * the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored.
+     * The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
      * 
      */
     @Export(name="aclId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> aclId;
 
     /**
-     * @return the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored.
+     * @return The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
      * 
      */
     public Output<Optional<String>> aclId() {
         return Codegen.optional(this.aclId);
     }
     /**
-     * Whether to enable &#34;acl(access control list)&#34;, the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+     * Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
      * 
      */
     @Export(name="aclStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> aclStatus;
 
     /**
-     * @return Whether to enable &#34;acl(access control list)&#34;, the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+     * @return Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
      * 
      */
     public Output<Optional<String>> aclStatus() {
         return Codegen.optional(this.aclStatus);
     }
     /**
-     * Mode for handling the acl specified by acl_id. If `acl_status` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+     * The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
      * 
      */
     @Export(name="aclType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> aclType;
 
     /**
-     * @return Mode for handling the acl specified by acl_id. If `acl_status` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+     * @return The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
      * 
      */
     public Output<Optional<String>> aclType() {
         return Codegen.optional(this.aclType);
     }
     /**
-     * Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
+     * The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
      * 
      */
     @Export(name="backendPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> backendPort;
 
     /**
-     * @return Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
+     * @return The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
      * 
      */
     public Output<Optional<Integer>> backendPort() {
         return Codegen.optional(this.backendPort);
     }
     /**
-     * Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+     * The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+     * - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
      * 
      */
     @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
-     * @return Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+     * @return The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+     * - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
      * 
      */
     public Output<Integer> bandwidth() {
         return this.bandwidth;
     }
     /**
-     * SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+     * The ID of the certification authority (CA) certificate.
      * 
      */
     @Export(name="caCertificateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> caCertificateId;
 
     /**
-     * @return SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+     * @return The ID of the certification authority (CA) certificate.
      * 
      */
     public Output<Optional<String>> caCertificateId() {
         return Codegen.optional(this.caCertificateId);
     }
     /**
-     * The cookie configured on the server. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;server&#34;. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+     * The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
      * 
      */
     @Export(name="cookie", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cookie;
 
     /**
-     * @return The cookie configured on the server. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;server&#34;. Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+     * @return The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
      * 
      */
     public Output<Optional<String>> cookie() {
         return Codegen.optional(this.cookie);
     }
     /**
-     * Cookie timeout. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;insert&#34;. Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+     * The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
      * 
      */
     @Export(name="cookieTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cookieTimeout;
 
     /**
-     * @return Cookie timeout. It is mandatory when `sticky_session` is &#34;on&#34; and `sticky_session_type` is &#34;insert&#34;. Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+     * @return The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
      * 
      */
     public Output<Optional<Integer>> cookieTimeout() {
         return Codegen.optional(this.cookieTimeout);
     }
     /**
-     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
      * 
      */
     @Export(name="deleteProtectionValidation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteProtectionValidation;
 
     /**
-     * @return Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+     * @return Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
      * 
      */
     public Output<Optional<Boolean>> deleteProtectionValidation() {
         return Codegen.optional(this.deleteProtectionValidation);
     }
     /**
-     * The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+     * The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+     * @return The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+     * Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
      * 
      */
     @Export(name="enableHttp2", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> enableHttp2;
 
     /**
-     * @return Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+     * @return Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
      * 
      */
     public Output<Optional<String>> enableHttp2() {
         return Codegen.optional(this.enableHttp2);
     }
     /**
-     * Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+     * The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
      * 
      */
     @Export(name="establishedTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> establishedTimeout;
 
     /**
-     * @return Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+     * @return The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
      * 
      */
     public Output<Optional<Integer>> establishedTimeout() {
         return Codegen.optional(this.establishedTimeout);
     }
     /**
-     * The port that http redirect to https.
+     * The listening port that is used to redirect HTTP requests to HTTPS.
      * 
      */
     @Export(name="forwardPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> forwardPort;
 
     /**
-     * @return The port that http redirect to https.
+     * @return The listening port that is used to redirect HTTP requests to HTTPS.
      * 
      */
     public Output<Optional<Integer>> forwardPort() {
         return Codegen.optional(this.forwardPort);
     }
     /**
-     * Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+     * The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
      * 
      */
     @Export(name="frontendPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> frontendPort;
 
     /**
-     * @return Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+     * @return The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
      * 
      */
     public Output<Integer> frontendPort() {
         return this.frontendPort;
     }
     /**
-     * Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
+     * Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
      * 
      */
     @Export(name="gzip", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> gzip;
 
     /**
-     * @return Whether to enable &#34;Gzip Compression&#34;. If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
+     * @return Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
      * 
      */
     public Output<Optional<Boolean>> gzip() {
         return Codegen.optional(this.gzip);
     }
     /**
-     * Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener&#39;s HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
+     * Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener&#39;s HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
      * 
      */
     @Export(name="healthCheck", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheck;
 
     /**
-     * @return Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener&#39;s HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
+     * @return Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener&#39;s HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
      * 
      */
     public Output<Optional<String>> healthCheck() {
         return Codegen.optional(this.healthCheck);
     }
     /**
-     * The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
+     * The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Export(name="healthCheckConnectPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> healthCheckConnectPort;
 
     /**
-     * @return The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
+     * @return The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Output<Integer> healthCheckConnectPort() {
         return this.healthCheckConnectPort;
     }
     /**
-     * Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+     * The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Export(name="healthCheckDomain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckDomain;
 
     /**
-     * @return Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+     * @return The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Output<Optional<String>> healthCheckDomain() {
         return Codegen.optional(this.healthCheckDomain);
     }
     /**
-     * Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+     * The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Export(name="healthCheckHttpCode", refs={String.class}, tree="[0]")
     private Output<String> healthCheckHttpCode;
 
     /**
-     * @return Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+     * @return The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Output<String> healthCheckHttpCode() {
         return this.healthCheckHttpCode;
     }
     /**
-     * Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+     * The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Export(name="healthCheckInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthCheckInterval;
 
     /**
-     * @return Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+     * @return The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Output<Optional<Integer>> healthCheckInterval() {
         return Codegen.optional(this.healthCheckInterval);
     }
     /**
-     * HealthCheckMethod used for health check.Valid values: [&#34;head&#34;, &#34;get&#34;] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou&#34;, cn-beijing, cn-shanghai.This function does not support the TCP protocol .
+     * The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Export(name="healthCheckMethod", refs={String.class}, tree="[0]")
     private Output<String> healthCheckMethod;
 
     /**
-     * @return HealthCheckMethod used for health check.Valid values: [&#34;head&#34;, &#34;get&#34;] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou&#34;, cn-beijing, cn-shanghai.This function does not support the TCP protocol .
+     * @return The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Output<String> healthCheckMethod() {
         return this.healthCheckMethod;
     }
     /**
-     * Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
+     * The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Export(name="healthCheckTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthCheckTimeout;
 
     /**
-     * @return Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` &lt; `health_check_interval`, its will be replaced by `health_check_interval`.
+     * @return The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Output<Optional<Integer>> healthCheckTimeout() {
         return Codegen.optional(this.healthCheckTimeout);
     }
     /**
-     * Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
+     * The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
      * 
      */
     @Export(name="healthCheckType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckType;
 
     /**
-     * @return Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
+     * @return The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
      * 
      */
     public Output<Optional<String>> healthCheckType() {
         return Codegen.optional(this.healthCheckType);
     }
     /**
-     * URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+     * The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+     * **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Export(name="healthCheckUri", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckUri;
 
     /**
-     * @return URI used for health check. When it used to launch TCP listener, `health_check_type` must be &#34;http&#34;. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+     * @return The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+     * **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Output<Optional<String>> healthCheckUri() {
         return Codegen.optional(this.healthCheckUri);
     }
     /**
-     * The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+     * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Export(name="healthyThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> healthyThreshold;
 
     /**
-     * @return The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+     * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Output<Optional<Integer>> healthyThreshold() {
         return Codegen.optional(this.healthyThreshold);
     }
     /**
-     * Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+     * The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
      * 
      */
     @Export(name="idleTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> idleTimeout;
 
     /**
-     * @return Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+     * @return The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
      * 
      */
     public Output<Optional<Integer>> idleTimeout() {
@@ -571,14 +539,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.lbProtocol);
     }
     /**
-     * Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+     * Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
      * 
      */
     @Export(name="listenerForward", refs={String.class}, tree="[0]")
     private Output<String> listenerForward;
 
     /**
-     * @return Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+     * @return Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
      * 
      */
     public Output<String> listenerForward() {
@@ -599,129 +567,119 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.loadBalancerId;
     }
     /**
-     * The ID of the master slave server group.
+     * The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
      * 
      */
     @Export(name="masterSlaveServerGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> masterSlaveServerGroupId;
 
     /**
-     * @return The ID of the master slave server group.
+     * @return The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
      * 
      */
     public Output<Optional<String>> masterSlaveServerGroupId() {
         return Codegen.optional(this.masterSlaveServerGroupId);
     }
     /**
-     * Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+     * The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
      * 
      */
     @Export(name="persistenceTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> persistenceTimeout;
 
     /**
-     * @return Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+     * @return The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
      * 
      */
     public Output<Optional<Integer>> persistenceTimeout() {
         return Codegen.optional(this.persistenceTimeout);
     }
     /**
-     * The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+     * The protocol to listen on. Valid values: `http`.
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
-     * @return The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+     * @return The protocol to listen on. Valid values: `http`.
      * 
      */
     public Output<String> protocol() {
         return this.protocol;
     }
     /**
-     * Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-     * 
-     * &gt; **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-     * 
-     * &gt; **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is &#34;Shared-Performance&#34;. More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+     * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Export(name="proxyProtocolV2Enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> proxyProtocolV2Enabled;
 
     /**
-     * @return Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-     * 
-     * &gt; **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-     * 
-     * &gt; **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is &#34;Shared-Performance&#34;. More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+     * @return Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Output<Boolean> proxyProtocolV2Enabled() {
         return this.proxyProtocolV2Enabled;
     }
     /**
-     * Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+     * The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
      * 
      */
     @Export(name="requestTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> requestTimeout;
 
     /**
-     * @return Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+     * @return The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
      * 
      */
     public Output<Optional<Integer>> requestTimeout() {
         return Codegen.optional(this.requestTimeout);
     }
     /**
-     * Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
-     * Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
+     * The scheduling algorithm. Default value: `wrr`. Valid values:
      * 
      */
     @Export(name="scheduler", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scheduler;
 
     /**
-     * @return Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`.
-     * Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
+     * @return The scheduling algorithm. Default value: `wrr`. Valid values:
      * 
      */
     public Output<Optional<String>> scheduler() {
         return Codegen.optional(this.scheduler);
     }
     /**
-     * SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
+     * The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
      * 
      */
     @Export(name="serverCertificateId", refs={String.class}, tree="[0]")
     private Output<String> serverCertificateId;
 
     /**
-     * @return SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
+     * @return The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
      * 
      */
     public Output<String> serverCertificateId() {
         return this.serverCertificateId;
     }
     /**
-     * the id of server group to be apply on the listener, is the id of resource `alicloud.slb.ServerGroup`.
+     * The ID of the vServer group. It&#39;s the ID of resource `alicloud.slb.ServerGroup`.
      * 
      */
     @Export(name="serverGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverGroupId;
 
     /**
-     * @return the id of server group to be apply on the listener, is the id of resource `alicloud.slb.ServerGroup`.
+     * @return The ID of the vServer group. It&#39;s the ID of resource `alicloud.slb.ServerGroup`.
      * 
      */
     public Output<Optional<String>> serverGroupId() {
         return Codegen.optional(this.serverGroupId);
     }
     /**
-     * SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+     * The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
      * 
      * @deprecated
      * Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
@@ -732,77 +690,77 @@ public class Listener extends com.pulumi.resources.CustomResource {
     private Output<String> sslCertificateId;
 
     /**
-     * @return SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+     * @return The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
      * 
      */
     public Output<String> sslCertificateId() {
         return this.sslCertificateId;
     }
     /**
-     * Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
+     * Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
      * 
      */
     @Export(name="stickySession", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stickySession;
 
     /**
-     * @return Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
+     * @return Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
      * 
      */
     public Output<Optional<String>> stickySession() {
         return Codegen.optional(this.stickySession);
     }
     /**
-     * Mode for handling the cookie. If `sticky_session` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+     * The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
      * 
      */
     @Export(name="stickySessionType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stickySessionType;
 
     /**
-     * @return Mode for handling the cookie. If `sticky_session` is &#34;on&#34;, it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+     * @return The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
      * 
      */
     public Output<Optional<String>> stickySessionType() {
         return Codegen.optional(this.stickySessionType);
     }
     /**
-     * Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is &#34;Shared-Performance&#34;.
+     * The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
      * 
      */
     @Export(name="tlsCipherPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tlsCipherPolicy;
 
     /**
-     * @return Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is &#34;Shared-Performance&#34;.
+     * @return The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
      * 
      */
     public Output<Optional<String>> tlsCipherPolicy() {
         return Codegen.optional(this.tlsCipherPolicy);
     }
     /**
-     * The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+     * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
      * 
      */
     @Export(name="unhealthyThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> unhealthyThreshold;
 
     /**
-     * @return The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+     * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
      * 
      */
     public Output<Optional<Integer>> unhealthyThreshold() {
         return Codegen.optional(this.unhealthyThreshold);
     }
     /**
-     * Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+     * Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34;. See `x_forwarded_for` below.
      * 
      */
     @Export(name="xForwardedFor", refs={ListenerXForwardedFor.class}, tree="[0]")
     private Output<ListenerXForwardedFor> xForwardedFor;
 
     /**
-     * @return Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34; (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+     * @return Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34;. See `x_forwarded_for` below.
      * 
      */
     public Output<ListenerXForwardedFor> xForwardedFor() {

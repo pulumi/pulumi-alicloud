@@ -17,14 +17,14 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
     public static final ManagedKubernetesAddonArgs Empty = new ManagedKubernetesAddonArgs();
 
     /**
-     * If this parameter is left empty, no configurations are required.
+     * If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     @Import(name="config")
     private @Nullable Output<String> config;
 
     /**
-     * @return If this parameter is left empty, no configurations are required.
+     * @return If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     public Optional<Output<String>> config() {
@@ -124,7 +124,7 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param config If this parameter is left empty, no configurations are required.
+         * @param config If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ManagedKubernetesAddonArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param config If this parameter is left empty, no configurations are required.
+         * @param config If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
          * 
          * @return builder
          * 

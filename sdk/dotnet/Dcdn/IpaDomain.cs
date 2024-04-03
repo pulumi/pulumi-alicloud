@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Dcdn
     ///             new AliCloud.Dcdn.Inputs.IpaDomainSourceArgs
     ///             {
     ///                 Content = "www.alicloud-provider.cn",
-    ///                 Port = 80,
+    ///                 Port = 8898,
     ///                 Priority = "20",
     ///                 Type = "domain",
     ///                 Weight = 10,

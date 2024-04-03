@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class GetServiceMeshesMeshMeshConfigOpaResult
     {
         /// <summary>
-        /// Whether to enable Service grid audit.
+        /// Whether to enable CNI.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

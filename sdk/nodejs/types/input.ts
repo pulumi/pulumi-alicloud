@@ -22,6 +22,34 @@ export interface ProviderAssumeRole {
     sessionName?: pulumi.Input<string>;
 }
 
+export interface ProviderAssumeRoleWithOidc {
+    /**
+     * ARN of the OIDC IdP.
+     */
+    oidcProviderArn: pulumi.Input<string>;
+    oidcToken?: pulumi.Input<string>;
+    /**
+     * The file path of OIDC token that is issued by the external IdP.
+     */
+    oidcTokenFile?: pulumi.Input<string>;
+    /**
+     * The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
+     */
+    policy?: pulumi.Input<string>;
+    /**
+     * ARN of a RAM role to assume prior to making API calls.
+     */
+    roleArn: pulumi.Input<string>;
+    /**
+     * The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
+     */
+    roleSessionName?: pulumi.Input<string>;
+    /**
+     * The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+     */
+    sessionExpiration?: pulumi.Input<number>;
+}
+
 export interface ProviderEndpoint {
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
@@ -3674,7 +3702,7 @@ export namespace cs {
 
     export interface EdgeKubernetesAddon {
         /**
-         * The ACK add-on configurations.
+         * The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
          */
         config?: pulumi.Input<string>;
         /**
@@ -3687,6 +3715,10 @@ export namespace cs {
          * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          */
         name?: pulumi.Input<string>;
+        /**
+         * It specifies the version of the component.
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface EdgeKubernetesCertificateAuthority {
@@ -3799,63 +3831,9 @@ export namespace cs {
         privateIp?: pulumi.Input<string>;
     }
 
-    export interface GetKubernetesPermissionPermission {
-        /**
-         * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-         */
-        isOwner?: boolean;
-        /**
-         * Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
-         */
-        isRamRole?: boolean;
-        /**
-         * The permission settings to manage ACK clusters.
-         */
-        resourceId: string;
-        /**
-         * The authorization type. Valid values `cluster`, `namespace` and `console`.
-         */
-        resourceType: string;
-        /**
-         * The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
-         */
-        roleName: string;
-        /**
-         * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
-         */
-        roleType?: string;
-    }
-
-    export interface GetKubernetesPermissionPermissionArgs {
-        /**
-         * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-         */
-        isOwner?: pulumi.Input<boolean>;
-        /**
-         * Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
-         */
-        isRamRole?: pulumi.Input<boolean>;
-        /**
-         * The permission settings to manage ACK clusters.
-         */
-        resourceId: pulumi.Input<string>;
-        /**
-         * The authorization type. Valid values `cluster`, `namespace` and `console`.
-         */
-        resourceType: pulumi.Input<string>;
-        /**
-         * The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
-         */
-        roleName: pulumi.Input<string>;
-        /**
-         * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
-         */
-        roleType?: pulumi.Input<string>;
-    }
-
     export interface KubernetesAddon {
         /**
-         * The ACK add-on configurations.
+         * The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
          */
         config?: pulumi.Input<string>;
         /**
@@ -3940,7 +3918,7 @@ export namespace cs {
 
     export interface KubernetesPermissionPermission {
         /**
-         * The ID of the cluster that you want to manage.
+         * The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `roleType` must be null.
          */
         cluster: pulumi.Input<string>;
         /**
@@ -3960,7 +3938,7 @@ export namespace cs {
          */
         roleName: pulumi.Input<string>;
         /**
-         * The authorization type. Valid values `cluster`, `namespace`.
+         * The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
          */
         roleType: pulumi.Input<string>;
     }
@@ -3978,7 +3956,7 @@ export namespace cs {
 
     export interface ManagedKubernetesAddon {
         /**
-         * If this parameter is left empty, no configurations are required.
+         * If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
          */
         config?: pulumi.Input<string>;
         /**
@@ -4377,7 +4355,7 @@ export namespace cs {
 
     export interface ServerlessKubernetesAddon {
         /**
-         * The ACK add-on configurations.
+         * The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
          */
         config?: pulumi.Input<string>;
         /**
@@ -7821,9 +7799,21 @@ export namespace ess {
 
     export interface ScalingConfigurationInstancePatternInfo {
         /**
+         * Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+         */
+        architectures?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+         */
+        burstablePerformance?: pulumi.Input<string>;
+        /**
          * The number of vCPUs that are specified for an instance type in instancePatternInfo.
          */
         cores?: pulumi.Input<number>;
+        /**
+         * Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+         */
+        excludedInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The instance family level in instancePatternInfo.
          */
@@ -11352,11 +11342,11 @@ export namespace realtimecompute {
 export namespace resourcemanager {
     export interface ResourceGroupRegionStatus {
         /**
-         * The region ID.
+         * The status of the region.
          */
         regionId?: pulumi.Input<string>;
         /**
-         * The status of the regional resource group.
+         * The status of the resource group.
          */
         status?: pulumi.Input<string>;
     }
@@ -12620,19 +12610,19 @@ export namespace slb {
 
     export interface ListenerXForwardedFor {
         /**
-         * Whether to retrieve the client ip. It is read-only attribute.
+         * Whether to retrieve the client ip.
          */
         retriveClientIp?: pulumi.Input<boolean>;
         /**
-         * Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
+         * Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
          */
         retriveSlbId?: pulumi.Input<boolean>;
         /**
-         * Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
+         * Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
          */
         retriveSlbIp?: pulumi.Input<boolean>;
         /**
-         * Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+         * Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
          */
         retriveSlbProto?: pulumi.Input<boolean>;
     }
@@ -12786,7 +12776,7 @@ export namespace vpc {
 
     export interface NetworkAclEgressAclEntry {
         /**
-         * The description of the outbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: pulumi.Input<string>;
         /**
@@ -12794,7 +12784,15 @@ export namespace vpc {
          */
         destinationCidrIp?: pulumi.Input<string>;
         /**
-         * Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * The route entry type. The value can be `custom`, indicating custom.
+         */
+        entryType?: pulumi.Input<string>;
+        /**
+         * The IP protocol version of the route entry. Valid values: "IPV4" and "IPV4'.
+         */
+        ipVersion?: pulumi.Input<string>;
+        /**
+         * Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: pulumi.Input<string>;
         /**
@@ -12804,7 +12802,7 @@ export namespace vpc {
          */
         policy?: pulumi.Input<string>;
         /**
-         * The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+         * The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          */
         port?: pulumi.Input<string>;
         /**
@@ -12882,11 +12880,19 @@ export namespace vpc {
 
     export interface NetworkAclIngressAclEntry {
         /**
-         * Description of the inbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * Description of the inbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: pulumi.Input<string>;
         /**
-         * The name of the inbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * The route entry type. The value can be `custom`, indicating custom.
+         */
+        entryType?: pulumi.Input<string>;
+        /**
+         * The IP protocol version of the route entry. Valid values: "IPV4" and "IPV6'.
+         */
+        ipVersion?: pulumi.Input<string>;
+        /**
+         * The name of the inbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: pulumi.Input<string>;
         /**
@@ -12896,7 +12902,7 @@ export namespace vpc {
          */
         policy?: pulumi.Input<string>;
         /**
-         * The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+         * The source port range of the inbound rule.  When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          */
         port?: pulumi.Input<string>;
         /**
@@ -12924,7 +12930,7 @@ export namespace vpc {
          */
         resourceType: pulumi.Input<string>;
         /**
-         * The status of the associated resource.
+         * The state of the network ACL.
          */
         status?: pulumi.Input<string>;
     }

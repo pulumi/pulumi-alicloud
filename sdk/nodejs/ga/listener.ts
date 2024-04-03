@@ -107,9 +107,14 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly forwardedForConfig!: pulumi.Output<outputs.ga.ListenerForwardedForConfig | undefined>;
     /**
+     * The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+     * > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
+     */
+    public readonly httpVersion!: pulumi.Output<string>;
+    /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
      */
-    public readonly listenerType!: pulumi.Output<string>;
+    public readonly listenerType!: pulumi.Output<string | undefined>;
     /**
      * The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
      */
@@ -154,6 +159,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["clientAffinity"] = state ? state.clientAffinity : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["forwardedForConfig"] = state ? state.forwardedForConfig : undefined;
+            resourceInputs["httpVersion"] = state ? state.httpVersion : undefined;
             resourceInputs["listenerType"] = state ? state.listenerType : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["portRanges"] = state ? state.portRanges : undefined;
@@ -174,6 +180,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["clientAffinity"] = args ? args.clientAffinity : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["forwardedForConfig"] = args ? args.forwardedForConfig : undefined;
+            resourceInputs["httpVersion"] = args ? args.httpVersion : undefined;
             resourceInputs["listenerType"] = args ? args.listenerType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["portRanges"] = args ? args.portRanges : undefined;
@@ -212,6 +219,11 @@ export interface ListenerState {
      * The XForward headers. See `forwardedForConfig` below.
      */
     forwardedForConfig?: pulumi.Input<inputs.ga.ListenerForwardedForConfig>;
+    /**
+     * The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+     * > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
+     */
+    httpVersion?: pulumi.Input<string>;
     /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
      */
@@ -268,6 +280,11 @@ export interface ListenerArgs {
      * The XForward headers. See `forwardedForConfig` below.
      */
     forwardedForConfig?: pulumi.Input<inputs.ga.ListenerForwardedForConfig>;
+    /**
+     * The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+     * > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
+     */
+    httpVersion?: pulumi.Input<string>;
     /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
      */

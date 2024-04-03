@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ManagedKubernetesAddon {
     /**
-     * @return If this parameter is left empty, no configurations are required.
+     * @return If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     private @Nullable String config;
@@ -45,7 +45,7 @@ public final class ManagedKubernetesAddon {
 
     private ManagedKubernetesAddon() {}
     /**
-     * @return If this parameter is left empty, no configurations are required.
+     * @return If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     public Optional<String> config() {

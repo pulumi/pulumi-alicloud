@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.88.0+.
  *
+ * > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+ *
  * ## Example Usage
  *
  * <!--Start PulumiCodeChooser -->
@@ -72,6 +74,8 @@ export interface GetZonesResult {
  * This data source provides availability zones for Cassandra that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
  * > **NOTE:** Available in v1.88.0+.
+ *
+ * > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
  *
  * ## Example Usage
  *

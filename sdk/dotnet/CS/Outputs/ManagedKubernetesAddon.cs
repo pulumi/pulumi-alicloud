@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class ManagedKubernetesAddon
     {
         /// <summary>
-        /// If this parameter is left empty, no configurations are required.
+        /// If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
         /// </summary>
         public readonly string? Config;
         /// <summary>

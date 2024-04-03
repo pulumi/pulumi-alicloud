@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         public Input<string> ResourceType { get; set; } = null!;
 
         /// <summary>
-        /// The status of the associated resource.
+        /// The state of the network ACL.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

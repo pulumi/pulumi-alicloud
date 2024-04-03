@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "tf-example-basic-edge";
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
@@ -59,7 +59,6 @@ import * as utilities from "../utilities";
  * const defaultEdgeKubernetes = new alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes", {
  *     workerVswitchIds: [defaultSwitch.id],
  *     workerInstanceTypes: [defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id)],
- *     version: "1.20.11-aliyunedge.1",
  *     workerNumber: 1,
  *     password: "Test12345",
  *     podCidr: "10.99.0.0/16",
@@ -110,7 +109,6 @@ import * as utilities from "../utilities";
  * const defaultEdgeKubernetes = new alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes", {
  *     workerVswitchIds: [defaultSwitch.id],
  *     workerInstanceTypes: [defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id)],
- *     version: "1.20.11-aliyunedge.1",
  *     clusterSpec: "ack.pro.small",
  *     workerNumber: 1,
  *     password: "Test12345",
@@ -123,19 +121,11 @@ import * as utilities from "../utilities";
  *     installCloudMonitor: true,
  *     slbInternetEnabled: true,
  *     isEnterpriseSecurityGroup: true,
- *     addons: [{
- *         name: "alibaba-log-controller",
- *         config: "{\"IngressDashboardEnabled\":\"false\"}",
- *     }],
  *     workerDataDisks: [{
  *         category: "cloud_ssd",
  *         size: "200",
  *         encrypted: "false",
  *     }],
- *     runtime: {
- *         name: "containerd",
- *         version: "1.5.10",
- *     },
  * });
  * ```
  * <!--End PulumiCodeChooser -->

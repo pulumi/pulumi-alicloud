@@ -16,14 +16,14 @@ public final class ListenerXForwardedForArgs extends com.pulumi.resources.Resour
     public static final ListenerXForwardedForArgs Empty = new ListenerXForwardedForArgs();
 
     /**
-     * Whether to retrieve the client ip. It is read-only attribute.
+     * Whether to retrieve the client ip.
      * 
      */
     @Import(name="retriveClientIp")
     private @Nullable Output<Boolean> retriveClientIp;
 
     /**
-     * @return Whether to retrieve the client ip. It is read-only attribute.
+     * @return Whether to retrieve the client ip.
      * 
      */
     public Optional<Output<Boolean>> retriveClientIp() {
@@ -31,14 +31,14 @@ public final class ListenerXForwardedForArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
+     * Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Import(name="retriveSlbId")
     private @Nullable Output<Boolean> retriveSlbId;
 
     /**
-     * @return Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
+     * @return Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> retriveSlbId() {
@@ -46,14 +46,14 @@ public final class ListenerXForwardedForArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
+     * Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Import(name="retriveSlbIp")
     private @Nullable Output<Boolean> retriveSlbIp;
 
     /**
-     * @return Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
+     * @return Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> retriveSlbIp() {
@@ -61,14 +61,14 @@ public final class ListenerXForwardedForArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+     * Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Import(name="retriveSlbProto")
     private @Nullable Output<Boolean> retriveSlbProto;
 
     /**
-     * @return Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+     * @return Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> retriveSlbProto() {
@@ -103,7 +103,7 @@ public final class ListenerXForwardedForArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param retriveClientIp Whether to retrieve the client ip. It is read-only attribute.
+         * @param retriveClientIp Whether to retrieve the client ip.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ListenerXForwardedForArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param retriveClientIp Whether to retrieve the client ip. It is read-only attribute.
+         * @param retriveClientIp Whether to retrieve the client ip.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ListenerXForwardedForArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param retriveSlbId Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
+         * @param retriveSlbId Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ListenerXForwardedForArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param retriveSlbId Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
+         * @param retriveSlbId Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ListenerXForwardedForArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param retriveSlbIp Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
+         * @param retriveSlbIp Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ListenerXForwardedForArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param retriveSlbIp Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
+         * @param retriveSlbIp Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class ListenerXForwardedForArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param retriveSlbProto Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+         * @param retriveSlbProto Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ListenerXForwardedForArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param retriveSlbProto Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+         * @param retriveSlbProto Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 

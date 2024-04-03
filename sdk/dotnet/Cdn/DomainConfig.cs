@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cdn
 {
     /// <summary>
-    /// Provides a CDN Accelerated Domain resource.
+    /// Provides a Cdn Domain Config resource.
     /// 
-    /// For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/90915.htm)
+    /// For information about Cdn Domain Config and how to use it, see [What is Domain Config](https://www.alibabacloud.com/help/en/doc-detail/90915.htm)
     /// 
-    /// &gt; **NOTE:** Available since v1.34.0+.
+    /// &gt; **NOTE:** Available since v1.34.0.
     /// 
     /// ## Example Usage
     /// 
@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Cdn
     public partial class DomainConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Available in 1.132.0+) The ID of the domain config function.
+        /// (Available since v1.132.0) The ID of the domain config function.
         /// </summary>
         [Output("configId")]
         public Output<string> ConfigId { get; private set; } = null!;
@@ -113,7 +113,13 @@ namespace Pulumi.AliCloud.Cdn
         public Output<string> FunctionName { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        /// By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+        /// </summary>
+        [Output("parentId")]
+        public Output<string> ParentId { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.132.0) The Status of the function.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -188,6 +194,12 @@ namespace Pulumi.AliCloud.Cdn
         [Input("functionName", required: true)]
         public Input<string> FunctionName { get; set; } = null!;
 
+        /// <summary>
+        /// By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+        /// </summary>
+        [Input("parentId")]
+        public Input<string>? ParentId { get; set; }
+
         public DomainConfigArgs()
         {
         }
@@ -197,7 +209,7 @@ namespace Pulumi.AliCloud.Cdn
     public sealed class DomainConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Available in 1.132.0+) The ID of the domain config function.
+        /// (Available since v1.132.0) The ID of the domain config function.
         /// </summary>
         [Input("configId")]
         public Input<string>? ConfigId { get; set; }
@@ -227,7 +239,13 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string>? FunctionName { get; set; }
 
         /// <summary>
-        /// (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+        /// By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+        /// </summary>
+        [Input("parentId")]
+        public Input<string>? ParentId { get; set; }
+
+        /// <summary>
+        /// (Available since v1.132.0) The Status of the function.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

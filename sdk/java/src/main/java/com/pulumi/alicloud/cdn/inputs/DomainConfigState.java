@@ -18,14 +18,14 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
     public static final DomainConfigState Empty = new DomainConfigState();
 
     /**
-     * (Available in 1.132.0+) The ID of the domain config function.
+     * (Available since v1.132.0) The ID of the domain config function.
      * 
      */
     @Import(name="configId")
     private @Nullable Output<String> configId;
 
     /**
-     * @return (Available in 1.132.0+) The ID of the domain config function.
+     * @return (Available since v1.132.0) The ID of the domain config function.
      * 
      */
     public Optional<Output<String>> configId() {
@@ -78,14 +78,29 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+     * By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+     * 
+     */
+    @Import(name="parentId")
+    private @Nullable Output<String> parentId;
+
+    /**
+     * @return By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+     * 
+     */
+    public Optional<Output<String>> parentId() {
+        return Optional.ofNullable(this.parentId);
+    }
+
+    /**
+     * (Available since v1.132.0) The Status of the function.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+     * @return (Available since v1.132.0) The Status of the function.
      * 
      */
     public Optional<Output<String>> status() {
@@ -99,6 +114,7 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
         this.domainName = $.domainName;
         this.functionArgs = $.functionArgs;
         this.functionName = $.functionName;
+        this.parentId = $.parentId;
         this.status = $.status;
     }
 
@@ -121,7 +137,7 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configId (Available in 1.132.0+) The ID of the domain config function.
+         * @param configId (Available since v1.132.0) The ID of the domain config function.
          * 
          * @return builder
          * 
@@ -132,7 +148,7 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configId (Available in 1.132.0+) The ID of the domain config function.
+         * @param configId (Available since v1.132.0) The ID of the domain config function.
          * 
          * @return builder
          * 
@@ -215,7 +231,28 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+         * @param parentId By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentId(@Nullable Output<String> parentId) {
+            $.parentId = parentId;
+            return this;
+        }
+
+        /**
+         * @param parentId By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentId(String parentId) {
+            return parentId(Output.of(parentId));
+        }
+
+        /**
+         * @param status (Available since v1.132.0) The Status of the function.
          * 
          * @return builder
          * 
@@ -226,7 +263,7 @@ public final class DomainConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+         * @param status (Available since v1.132.0) The Status of the function.
          * 
          * @return builder
          * 

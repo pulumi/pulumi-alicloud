@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class KubernetesAddon
     {
         /// <summary>
-        /// The ACK add-on configurations.
+        /// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
         /// </summary>
         public readonly string? Config;
         /// <summary>

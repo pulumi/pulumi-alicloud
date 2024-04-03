@@ -7,11 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a CDN Accelerated Domain resource.
+ * Provides a Cdn Domain Config resource.
  *
- * For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/90915.htm)
+ * For information about Cdn Domain Config and how to use it, see [What is Domain Config](https://www.alibabacloud.com/help/en/doc-detail/90915.htm)
  *
- * > **NOTE:** Available since v1.34.0+.
+ * > **NOTE:** Available since v1.34.0.
  *
  * ## Example Usage
  *
@@ -92,7 +92,7 @@ export class DomainConfig extends pulumi.CustomResource {
     }
 
     /**
-     * (Available in 1.132.0+) The ID of the domain config function.
+     * (Available since v1.132.0) The ID of the domain config function.
      */
     public /*out*/ readonly configId!: pulumi.Output<string>;
     /**
@@ -108,7 +108,11 @@ export class DomainConfig extends pulumi.CustomResource {
      */
     public readonly functionName!: pulumi.Output<string>;
     /**
-     * (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+     * By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+     */
+    public readonly parentId!: pulumi.Output<string>;
+    /**
+     * (Available since v1.132.0) The Status of the function.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -129,6 +133,7 @@ export class DomainConfig extends pulumi.CustomResource {
             resourceInputs["domainName"] = state ? state.domainName : undefined;
             resourceInputs["functionArgs"] = state ? state.functionArgs : undefined;
             resourceInputs["functionName"] = state ? state.functionName : undefined;
+            resourceInputs["parentId"] = state ? state.parentId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as DomainConfigArgs | undefined;
@@ -144,6 +149,7 @@ export class DomainConfig extends pulumi.CustomResource {
             resourceInputs["domainName"] = args ? args.domainName : undefined;
             resourceInputs["functionArgs"] = args ? args.functionArgs : undefined;
             resourceInputs["functionName"] = args ? args.functionName : undefined;
+            resourceInputs["parentId"] = args ? args.parentId : undefined;
             resourceInputs["configId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -157,7 +163,7 @@ export class DomainConfig extends pulumi.CustomResource {
  */
 export interface DomainConfigState {
     /**
-     * (Available in 1.132.0+) The ID of the domain config function.
+     * (Available since v1.132.0) The ID of the domain config function.
      */
     configId?: pulumi.Input<string>;
     /**
@@ -173,7 +179,11 @@ export interface DomainConfigState {
      */
     functionName?: pulumi.Input<string>;
     /**
-     * (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+     * By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+     */
+    parentId?: pulumi.Input<string>;
+    /**
+     * (Available since v1.132.0) The Status of the function.
      */
     status?: pulumi.Input<string>;
 }
@@ -194,4 +204,8 @@ export interface DomainConfigArgs {
      * The name of the domain config.
      */
     functionName: pulumi.Input<string>;
+    /**
+     * By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+     */
+    parentId?: pulumi.Input<string>;
 }

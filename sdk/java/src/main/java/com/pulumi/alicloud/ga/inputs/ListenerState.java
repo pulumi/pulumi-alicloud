@@ -98,6 +98,23 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+     * &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+     * 
+     */
+    @Import(name="httpVersion")
+    private @Nullable Output<String> httpVersion;
+
+    /**
+     * @return The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+     * &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+     * 
+     */
+    public Optional<Output<String>> httpVersion() {
+        return Optional.ofNullable(this.httpVersion);
+    }
+
+    /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
      * 
      */
@@ -212,6 +229,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         this.clientAffinity = $.clientAffinity;
         this.description = $.description;
         this.forwardedForConfig = $.forwardedForConfig;
+        this.httpVersion = $.httpVersion;
         this.listenerType = $.listenerType;
         this.name = $.name;
         this.portRanges = $.portRanges;
@@ -355,6 +373,29 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder forwardedForConfig(ListenerForwardedForConfigArgs forwardedForConfig) {
             return forwardedForConfig(Output.of(forwardedForConfig));
+        }
+
+        /**
+         * @param httpVersion The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+         * &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpVersion(@Nullable Output<String> httpVersion) {
+            $.httpVersion = httpVersion;
+            return this;
+        }
+
+        /**
+         * @param httpVersion The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+         * &gt; **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpVersion(String httpVersion) {
+            return httpVersion(Output.of(httpVersion));
         }
 
         /**

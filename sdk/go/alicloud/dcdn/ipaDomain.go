@@ -60,7 +60,7 @@ import (
 //				Sources: dcdn.IpaDomainSourceArray{
 //					&dcdn.IpaDomainSourceArgs{
 //						Content:  pulumi.String("www.alicloud-provider.cn"),
-//						Port:     pulumi.Int(80),
+//						Port:     pulumi.Int(8898),
 //						Priority: pulumi.String("20"),
 //						Type:     pulumi.String("domain"),
 //						Weight:   pulumi.Int(10),

@@ -47,7 +47,6 @@ __all__ = [
     'ServerlessKubernetesAddonArgs',
     'ServerlessKubernetesRrsaMetadataArgs',
     'SwarmNodeArgs',
-    'GetKubernetesPermissionPermissionArgs',
 ]
 
 @pulumi.input_type
@@ -173,13 +172,15 @@ class EdgeKubernetesAddonArgs:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] config: The ACK add-on configurations.
+        :param pulumi.Input[str] config: The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
         :param pulumi.Input[bool] disabled: Disables the automatic installation of a component. Default is `false`.
                
                The following example is the definition of addons block, The type of this field is list:
         :param pulumi.Input[str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
+        :param pulumi.Input[str] version: It specifies the version of the component.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -187,12 +188,14 @@ class EdgeKubernetesAddonArgs:
             pulumi.set(__self__, "disabled", disabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[str]]:
         """
-        The ACK add-on configurations.
+        The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
         """
         return pulumi.get(self, "config")
 
@@ -225,6 +228,18 @@ class EdgeKubernetesAddonArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        It specifies the version of the component.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
@@ -644,7 +659,7 @@ class KubernetesAddonArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] config: The ACK add-on configurations.
+        :param pulumi.Input[str] config: The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
         :param pulumi.Input[bool] disabled: Disables the automatic installation of a component. Default is `false`.
                
                The following example is the definition of addons block, The type of this field is list:
@@ -664,7 +679,7 @@ class KubernetesAddonArgs:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[str]]:
         """
-        The ACK add-on configurations.
+        The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
         """
         return pulumi.get(self, "config")
 
@@ -957,9 +972,9 @@ class KubernetesPermissionPermissionArgs:
                  is_ram_role: Optional[pulumi.Input[bool]] = None,
                  namespace: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] cluster: The ID of the cluster that you want to manage.
+        :param pulumi.Input[str] cluster: The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
         :param pulumi.Input[str] role_name: Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
-        :param pulumi.Input[str] role_type: The authorization type. Valid values `cluster`, `namespace`.
+        :param pulumi.Input[str] role_type: The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
         :param pulumi.Input[bool] is_custom: Specifies whether to perform a custom authorization. To perform a custom authorization, set `role_name` to a custom cluster role.
         :param pulumi.Input[bool] is_ram_role: Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
         :param pulumi.Input[str] namespace: The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
@@ -978,7 +993,7 @@ class KubernetesPermissionPermissionArgs:
     @pulumi.getter
     def cluster(self) -> pulumi.Input[str]:
         """
-        The ID of the cluster that you want to manage.
+        The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
         """
         return pulumi.get(self, "cluster")
 
@@ -1002,7 +1017,7 @@ class KubernetesPermissionPermissionArgs:
     @pulumi.getter(name="roleType")
     def role_type(self) -> pulumi.Input[str]:
         """
-        The authorization type. Valid values `cluster`, `namespace`.
+        The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
         """
         return pulumi.get(self, "role_type")
 
@@ -1094,7 +1109,7 @@ class ManagedKubernetesAddonArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] config: If this parameter is left empty, no configurations are required.
+        :param pulumi.Input[str] config: If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
         :param pulumi.Input[bool] disabled: It specifies whether to disable automatic installation. 
                
                It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
@@ -1122,7 +1137,7 @@ class ManagedKubernetesAddonArgs:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[str]]:
         """
-        If this parameter is left empty, no configurations are required.
+        If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
         """
         return pulumi.get(self, "config")
 
@@ -2555,7 +2570,7 @@ class ServerlessKubernetesAddonArgs:
                  disabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] config: The ACK add-on configurations.
+        :param pulumi.Input[str] config: The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
         :param pulumi.Input[bool] disabled: Disables the automatic installation of a component. Default is `false`.
                
                The following example is the definition of addons block, The type of this field is list:
@@ -2572,7 +2587,7 @@ class ServerlessKubernetesAddonArgs:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[str]]:
         """
-        The ACK add-on configurations.
+        The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
         """
         return pulumi.get(self, "config")
 
@@ -2741,105 +2756,5 @@ class SwarmNodeArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
-
-
-@pulumi.input_type
-class GetKubernetesPermissionPermissionArgs:
-    def __init__(__self__, *,
-                 resource_id: str,
-                 resource_type: str,
-                 role_name: str,
-                 is_owner: Optional[bool] = None,
-                 is_ram_role: Optional[bool] = None,
-                 role_type: Optional[str] = None):
-        """
-        :param str resource_id: The permission settings to manage ACK clusters.
-        :param str resource_type: The authorization type. Valid values `cluster`, `namespace` and `console`.
-        :param str role_name: The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
-        :param bool is_owner: ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-        :param bool is_ram_role: Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
-        :param str role_type: The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
-        """
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_type", resource_type)
-        pulumi.set(__self__, "role_name", role_name)
-        if is_owner is not None:
-            pulumi.set(__self__, "is_owner", is_owner)
-        if is_ram_role is not None:
-            pulumi.set(__self__, "is_ram_role", is_ram_role)
-        if role_type is not None:
-            pulumi.set(__self__, "role_type", role_type)
-
-    @property
-    @pulumi.getter(name="resourceId")
-    def resource_id(self) -> str:
-        """
-        The permission settings to manage ACK clusters.
-        """
-        return pulumi.get(self, "resource_id")
-
-    @resource_id.setter
-    def resource_id(self, value: str):
-        pulumi.set(self, "resource_id", value)
-
-    @property
-    @pulumi.getter(name="resourceType")
-    def resource_type(self) -> str:
-        """
-        The authorization type. Valid values `cluster`, `namespace` and `console`.
-        """
-        return pulumi.get(self, "resource_type")
-
-    @resource_type.setter
-    def resource_type(self, value: str):
-        pulumi.set(self, "resource_type", value)
-
-    @property
-    @pulumi.getter(name="roleName")
-    def role_name(self) -> str:
-        """
-        The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
-        """
-        return pulumi.get(self, "role_name")
-
-    @role_name.setter
-    def role_name(self, value: str):
-        pulumi.set(self, "role_name", value)
-
-    @property
-    @pulumi.getter(name="isOwner")
-    def is_owner(self) -> Optional[bool]:
-        """
-        ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-        """
-        return pulumi.get(self, "is_owner")
-
-    @is_owner.setter
-    def is_owner(self, value: Optional[bool]):
-        pulumi.set(self, "is_owner", value)
-
-    @property
-    @pulumi.getter(name="isRamRole")
-    def is_ram_role(self) -> Optional[bool]:
-        """
-        Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
-        """
-        return pulumi.get(self, "is_ram_role")
-
-    @is_ram_role.setter
-    def is_ram_role(self, value: Optional[bool]):
-        pulumi.set(self, "is_ram_role", value)
-
-    @property
-    @pulumi.getter(name="roleType")
-    def role_type(self) -> Optional[str]:
-        """
-        The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
-        """
-        return pulumi.get(self, "role_type")
-
-    @role_type.setter
-    def role_type(self, value: Optional[str]):
-        pulumi.set(self, "role_type", value)
 
 

@@ -13,7 +13,8 @@ import (
 )
 
 // Provides a Resource Manager Resource Group resource. If you need to group cloud resources according to business departments, projects, and other dimensions, you can create resource groups.
-// For information about Resource Manager Resoource Group and how to use it, see [What is Resource Manager Resource Group](https://www.alibabacloud.com/help/en/doc-detail/94485.htm)
+//
+// For information about Resource Manager Resource Group and how to use it, see [What is Resource Group](https://www.alibabacloud.com/help/en/resource-management/developer-reference/api-createresourcegroup).
 //
 // > **NOTE:** Available since v1.82.0.
 //
@@ -36,13 +37,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tfexample"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			_, err := resourcemanager.NewResourceGroup(ctx, "example", &resourcemanager.ResourceGroupArgs{
-//				ResourceGroupName: pulumi.String(name),
 //				DisplayName:       pulumi.String(name),
+//				ResourceGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -59,25 +60,27 @@ import (
 // Resource Manager Resource Group can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
+// $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example <id>
 // ```
 type ResourceGroup struct {
 	pulumi.CustomResourceState
 
 	// The ID of the Alibaba Cloud account to which the resource group belongs.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+	// The display name of the resource group. The name must be 1 to 50 characters in length.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
+	// Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The status of the resource group in all regions. See `regionStatuses` below.
+	// The status of the resource group in all regions.
 	RegionStatuses ResourceGroupRegionStatusArrayOutput `pulumi:"regionStatuses"`
-	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+	// The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
 	ResourceGroupName pulumi.StringOutput `pulumi:"resourceGroupName"`
-	// The status of the regional resource group.
+	// The status of the resource group.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
 // NewResourceGroup registers a new resource with the given unique name, arguments, and options.
@@ -115,35 +118,39 @@ func GetResourceGroup(ctx *pulumi.Context,
 type resourceGroupState struct {
 	// The ID of the Alibaba Cloud account to which the resource group belongs.
 	AccountId *string `pulumi:"accountId"`
-	// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+	// The display name of the resource group. The name must be 1 to 50 characters in length.
 	DisplayName *string `pulumi:"displayName"`
-	// Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
+	// Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
 	Name *string `pulumi:"name"`
-	// The status of the resource group in all regions. See `regionStatuses` below.
+	// The status of the resource group in all regions.
 	RegionStatuses []ResourceGroupRegionStatus `pulumi:"regionStatuses"`
-	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+	// The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
 	ResourceGroupName *string `pulumi:"resourceGroupName"`
-	// The status of the regional resource group.
+	// The status of the resource group.
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type ResourceGroupState struct {
 	// The ID of the Alibaba Cloud account to which the resource group belongs.
 	AccountId pulumi.StringPtrInput
-	// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+	// The display name of the resource group. The name must be 1 to 50 characters in length.
 	DisplayName pulumi.StringPtrInput
-	// Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
+	// Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
 	Name pulumi.StringPtrInput
-	// The status of the resource group in all regions. See `regionStatuses` below.
+	// The status of the resource group in all regions.
 	RegionStatuses ResourceGroupRegionStatusArrayInput
-	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+	// The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
 	ResourceGroupName pulumi.StringPtrInput
-	// The status of the regional resource group.
+	// The status of the resource group.
 	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 }
 
 func (ResourceGroupState) ElementType() reflect.Type {
@@ -151,26 +158,30 @@ func (ResourceGroupState) ElementType() reflect.Type {
 }
 
 type resourceGroupArgs struct {
-	// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+	// The display name of the resource group. The name must be 1 to 50 characters in length.
 	DisplayName string `pulumi:"displayName"`
-	// Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
+	// Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
 	Name *string `pulumi:"name"`
-	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+	// The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
 	ResourceGroupName *string `pulumi:"resourceGroupName"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a ResourceGroup resource.
 type ResourceGroupArgs struct {
-	// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+	// The display name of the resource group. The name must be 1 to 50 characters in length.
 	DisplayName pulumi.StringInput
-	// Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
+	// Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
 	Name pulumi.StringPtrInput
-	// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+	// The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
 	ResourceGroupName pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 }
 
 func (ResourceGroupArgs) ElementType() reflect.Type {
@@ -265,31 +276,36 @@ func (o ResourceGroupOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+// The display name of the resource group. The name must be 1 to 50 characters in length.
 func (o ResourceGroupOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Field `name` has been deprecated from version 1.114.0. Use `resourceGroupName` instead.
+// Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
 //
-// Deprecated: Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.
+// Deprecated: Field `name` has been deprecated from provider version 1.114.0. New field `resourceGroupName` instead.
 func (o ResourceGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The status of the resource group in all regions. See `regionStatuses` below.
+// The status of the resource group in all regions.
 func (o ResourceGroupOutput) RegionStatuses() ResourceGroupRegionStatusArrayOutput {
 	return o.ApplyT(func(v *ResourceGroup) ResourceGroupRegionStatusArrayOutput { return v.RegionStatuses }).(ResourceGroupRegionStatusArrayOutput)
 }
 
-// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+// The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
 func (o ResourceGroupOutput) ResourceGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.ResourceGroupName }).(pulumi.StringOutput)
 }
 
-// The status of the regional resource group.
+// The status of the resource group.
 func (o ResourceGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o ResourceGroupOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 type ResourceGroupArrayOutput struct{ *pulumi.OutputState }

@@ -218,6 +218,253 @@ func (o ProviderAssumeRolePtrOutput) SessionName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ProviderAssumeRoleWithOidc struct {
+	// ARN of the OIDC IdP.
+	OidcProviderArn string  `pulumi:"oidcProviderArn"`
+	OidcToken       *string `pulumi:"oidcToken"`
+	// The file path of OIDC token that is issued by the external IdP.
+	OidcTokenFile *string `pulumi:"oidcTokenFile"`
+	// The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
+	Policy *string `pulumi:"policy"`
+	// ARN of a RAM role to assume prior to making API calls.
+	RoleArn string `pulumi:"roleArn"`
+	// The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
+	RoleSessionName *string `pulumi:"roleSessionName"`
+	// The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+	SessionExpiration *int `pulumi:"sessionExpiration"`
+}
+
+// ProviderAssumeRoleWithOidcInput is an input type that accepts ProviderAssumeRoleWithOidcArgs and ProviderAssumeRoleWithOidcOutput values.
+// You can construct a concrete instance of `ProviderAssumeRoleWithOidcInput` via:
+//
+//	ProviderAssumeRoleWithOidcArgs{...}
+type ProviderAssumeRoleWithOidcInput interface {
+	pulumi.Input
+
+	ToProviderAssumeRoleWithOidcOutput() ProviderAssumeRoleWithOidcOutput
+	ToProviderAssumeRoleWithOidcOutputWithContext(context.Context) ProviderAssumeRoleWithOidcOutput
+}
+
+type ProviderAssumeRoleWithOidcArgs struct {
+	// ARN of the OIDC IdP.
+	OidcProviderArn pulumi.StringInput    `pulumi:"oidcProviderArn"`
+	OidcToken       pulumi.StringPtrInput `pulumi:"oidcToken"`
+	// The file path of OIDC token that is issued by the external IdP.
+	OidcTokenFile pulumi.StringPtrInput `pulumi:"oidcTokenFile"`
+	// The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	// ARN of a RAM role to assume prior to making API calls.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
+	// The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
+	RoleSessionName pulumi.StringPtrInput `pulumi:"roleSessionName"`
+	// The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+	SessionExpiration pulumi.IntPtrInput `pulumi:"sessionExpiration"`
+}
+
+func (ProviderAssumeRoleWithOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderAssumeRoleWithOidc)(nil)).Elem()
+}
+
+func (i ProviderAssumeRoleWithOidcArgs) ToProviderAssumeRoleWithOidcOutput() ProviderAssumeRoleWithOidcOutput {
+	return i.ToProviderAssumeRoleWithOidcOutputWithContext(context.Background())
+}
+
+func (i ProviderAssumeRoleWithOidcArgs) ToProviderAssumeRoleWithOidcOutputWithContext(ctx context.Context) ProviderAssumeRoleWithOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderAssumeRoleWithOidcOutput)
+}
+
+func (i ProviderAssumeRoleWithOidcArgs) ToProviderAssumeRoleWithOidcPtrOutput() ProviderAssumeRoleWithOidcPtrOutput {
+	return i.ToProviderAssumeRoleWithOidcPtrOutputWithContext(context.Background())
+}
+
+func (i ProviderAssumeRoleWithOidcArgs) ToProviderAssumeRoleWithOidcPtrOutputWithContext(ctx context.Context) ProviderAssumeRoleWithOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderAssumeRoleWithOidcOutput).ToProviderAssumeRoleWithOidcPtrOutputWithContext(ctx)
+}
+
+// ProviderAssumeRoleWithOidcPtrInput is an input type that accepts ProviderAssumeRoleWithOidcArgs, ProviderAssumeRoleWithOidcPtr and ProviderAssumeRoleWithOidcPtrOutput values.
+// You can construct a concrete instance of `ProviderAssumeRoleWithOidcPtrInput` via:
+//
+//	        ProviderAssumeRoleWithOidcArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProviderAssumeRoleWithOidcPtrInput interface {
+	pulumi.Input
+
+	ToProviderAssumeRoleWithOidcPtrOutput() ProviderAssumeRoleWithOidcPtrOutput
+	ToProviderAssumeRoleWithOidcPtrOutputWithContext(context.Context) ProviderAssumeRoleWithOidcPtrOutput
+}
+
+type providerAssumeRoleWithOidcPtrType ProviderAssumeRoleWithOidcArgs
+
+func ProviderAssumeRoleWithOidcPtr(v *ProviderAssumeRoleWithOidcArgs) ProviderAssumeRoleWithOidcPtrInput {
+	return (*providerAssumeRoleWithOidcPtrType)(v)
+}
+
+func (*providerAssumeRoleWithOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderAssumeRoleWithOidc)(nil)).Elem()
+}
+
+func (i *providerAssumeRoleWithOidcPtrType) ToProviderAssumeRoleWithOidcPtrOutput() ProviderAssumeRoleWithOidcPtrOutput {
+	return i.ToProviderAssumeRoleWithOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *providerAssumeRoleWithOidcPtrType) ToProviderAssumeRoleWithOidcPtrOutputWithContext(ctx context.Context) ProviderAssumeRoleWithOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderAssumeRoleWithOidcPtrOutput)
+}
+
+type ProviderAssumeRoleWithOidcOutput struct{ *pulumi.OutputState }
+
+func (ProviderAssumeRoleWithOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderAssumeRoleWithOidc)(nil)).Elem()
+}
+
+func (o ProviderAssumeRoleWithOidcOutput) ToProviderAssumeRoleWithOidcOutput() ProviderAssumeRoleWithOidcOutput {
+	return o
+}
+
+func (o ProviderAssumeRoleWithOidcOutput) ToProviderAssumeRoleWithOidcOutputWithContext(ctx context.Context) ProviderAssumeRoleWithOidcOutput {
+	return o
+}
+
+func (o ProviderAssumeRoleWithOidcOutput) ToProviderAssumeRoleWithOidcPtrOutput() ProviderAssumeRoleWithOidcPtrOutput {
+	return o.ToProviderAssumeRoleWithOidcPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderAssumeRoleWithOidcOutput) ToProviderAssumeRoleWithOidcPtrOutputWithContext(ctx context.Context) ProviderAssumeRoleWithOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderAssumeRoleWithOidc) *ProviderAssumeRoleWithOidc {
+		return &v
+	}).(ProviderAssumeRoleWithOidcPtrOutput)
+}
+
+// ARN of the OIDC IdP.
+func (o ProviderAssumeRoleWithOidcOutput) OidcProviderArn() pulumi.StringOutput {
+	return o.ApplyT(func(v ProviderAssumeRoleWithOidc) string { return v.OidcProviderArn }).(pulumi.StringOutput)
+}
+
+func (o ProviderAssumeRoleWithOidcOutput) OidcToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAssumeRoleWithOidc) *string { return v.OidcToken }).(pulumi.StringPtrOutput)
+}
+
+// The file path of OIDC token that is issued by the external IdP.
+func (o ProviderAssumeRoleWithOidcOutput) OidcTokenFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAssumeRoleWithOidc) *string { return v.OidcTokenFile }).(pulumi.StringPtrOutput)
+}
+
+// The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
+func (o ProviderAssumeRoleWithOidcOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAssumeRoleWithOidc) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+// ARN of a RAM role to assume prior to making API calls.
+func (o ProviderAssumeRoleWithOidcOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v ProviderAssumeRoleWithOidc) string { return v.RoleArn }).(pulumi.StringOutput)
+}
+
+// The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
+func (o ProviderAssumeRoleWithOidcOutput) RoleSessionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderAssumeRoleWithOidc) *string { return v.RoleSessionName }).(pulumi.StringPtrOutput)
+}
+
+// The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+func (o ProviderAssumeRoleWithOidcOutput) SessionExpiration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProviderAssumeRoleWithOidc) *int { return v.SessionExpiration }).(pulumi.IntPtrOutput)
+}
+
+type ProviderAssumeRoleWithOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (ProviderAssumeRoleWithOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderAssumeRoleWithOidc)(nil)).Elem()
+}
+
+func (o ProviderAssumeRoleWithOidcPtrOutput) ToProviderAssumeRoleWithOidcPtrOutput() ProviderAssumeRoleWithOidcPtrOutput {
+	return o
+}
+
+func (o ProviderAssumeRoleWithOidcPtrOutput) ToProviderAssumeRoleWithOidcPtrOutputWithContext(ctx context.Context) ProviderAssumeRoleWithOidcPtrOutput {
+	return o
+}
+
+func (o ProviderAssumeRoleWithOidcPtrOutput) Elem() ProviderAssumeRoleWithOidcOutput {
+	return o.ApplyT(func(v *ProviderAssumeRoleWithOidc) ProviderAssumeRoleWithOidc {
+		if v != nil {
+			return *v
+		}
+		var ret ProviderAssumeRoleWithOidc
+		return ret
+	}).(ProviderAssumeRoleWithOidcOutput)
+}
+
+// ARN of the OIDC IdP.
+func (o ProviderAssumeRoleWithOidcPtrOutput) OidcProviderArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAssumeRoleWithOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OidcProviderArn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderAssumeRoleWithOidcPtrOutput) OidcToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAssumeRoleWithOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OidcToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// The file path of OIDC token that is issued by the external IdP.
+func (o ProviderAssumeRoleWithOidcPtrOutput) OidcTokenFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAssumeRoleWithOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OidcTokenFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
+func (o ProviderAssumeRoleWithOidcPtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAssumeRoleWithOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARN of a RAM role to assume prior to making API calls.
+func (o ProviderAssumeRoleWithOidcPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAssumeRoleWithOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
+func (o ProviderAssumeRoleWithOidcPtrOutput) RoleSessionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderAssumeRoleWithOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleSessionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+func (o ProviderAssumeRoleWithOidcPtrOutput) SessionExpiration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProviderAssumeRoleWithOidc) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SessionExpiration
+	}).(pulumi.IntPtrOutput)
+}
+
 type ProviderEndpoint struct {
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
 	Acr *string `pulumi:"acr"`
@@ -2415,6 +2662,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAssumeRoleInput)(nil)).Elem(), ProviderAssumeRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAssumeRolePtrInput)(nil)).Elem(), ProviderAssumeRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAssumeRoleWithOidcInput)(nil)).Elem(), ProviderAssumeRoleWithOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAssumeRoleWithOidcPtrInput)(nil)).Elem(), ProviderAssumeRoleWithOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointInput)(nil)).Elem(), ProviderEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderEndpointArrayInput)(nil)).Elem(), ProviderEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSignVersionInput)(nil)).Elem(), ProviderSignVersionArgs{})
@@ -2431,6 +2680,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(ProviderAssumeRoleOutput{})
 	pulumi.RegisterOutputType(ProviderAssumeRolePtrOutput{})
+	pulumi.RegisterOutputType(ProviderAssumeRoleWithOidcOutput{})
+	pulumi.RegisterOutputType(ProviderAssumeRoleWithOidcPtrOutput{})
 	pulumi.RegisterOutputType(ProviderEndpointOutput{})
 	pulumi.RegisterOutputType(ProviderEndpointArrayOutput{})
 	pulumi.RegisterOutputType(ProviderSignVersionOutput{})

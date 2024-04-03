@@ -55,8 +55,8 @@ class ResourceGroupRegionStatus(dict):
                  region_id: Optional[str] = None,
                  status: Optional[str] = None):
         """
-        :param str region_id: The region ID.
-        :param str status: The status of the regional resource group.
+        :param str region_id: The status of the region.
+        :param str status: The status of the resource group.
         """
         if region_id is not None:
             pulumi.set(__self__, "region_id", region_id)
@@ -67,7 +67,7 @@ class ResourceGroupRegionStatus(dict):
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[str]:
         """
-        The region ID.
+        The status of the region.
         """
         return pulumi.get(self, "region_id")
 
@@ -75,7 +75,7 @@ class ResourceGroupRegionStatus(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        The status of the regional resource group.
+        The status of the resource group.
         """
         return pulumi.get(self, "status")
 

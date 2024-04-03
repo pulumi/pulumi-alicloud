@@ -101,7 +101,7 @@ type IpSet struct {
 	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
 	// The list of accelerated IP addresses in the acceleration region.
 	IpAddressLists pulumi.StringArrayOutput `pulumi:"ipAddressLists"`
-	// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+	// The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ipVersion` can be set to `DUAL_STACK`.
 	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
 	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
 	IspType pulumi.StringPtrOutput `pulumi:"ispType"`
@@ -154,7 +154,7 @@ type ipSetState struct {
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The list of accelerated IP addresses in the acceleration region.
 	IpAddressLists []string `pulumi:"ipAddressLists"`
-	// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+	// The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ipVersion` can be set to `DUAL_STACK`.
 	IpVersion *string `pulumi:"ipVersion"`
 	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
 	IspType *string `pulumi:"ispType"`
@@ -172,7 +172,7 @@ type IpSetState struct {
 	Bandwidth pulumi.IntPtrInput
 	// The list of accelerated IP addresses in the acceleration region.
 	IpAddressLists pulumi.StringArrayInput
-	// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+	// The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ipVersion` can be set to `DUAL_STACK`.
 	IpVersion pulumi.StringPtrInput
 	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
 	IspType pulumi.StringPtrInput
@@ -192,7 +192,7 @@ type ipSetArgs struct {
 	// The bandwidth allocated to the acceleration region.
 	// > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
 	Bandwidth *int `pulumi:"bandwidth"`
-	// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+	// The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ipVersion` can be set to `DUAL_STACK`.
 	IpVersion *string `pulumi:"ipVersion"`
 	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
 	IspType *string `pulumi:"ispType"`
@@ -207,7 +207,7 @@ type IpSetArgs struct {
 	// The bandwidth allocated to the acceleration region.
 	// > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
 	Bandwidth pulumi.IntPtrInput
-	// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+	// The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ipVersion` can be set to `DUAL_STACK`.
 	IpVersion pulumi.StringPtrInput
 	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
 	IspType pulumi.StringPtrInput
@@ -321,7 +321,7 @@ func (o IpSetOutput) IpAddressLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IpSet) pulumi.StringArrayOutput { return v.IpAddressLists }).(pulumi.StringArrayOutput)
 }
 
-// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+// The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ipVersion` can be set to `DUAL_STACK`.
 func (o IpSetOutput) IpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpSet) pulumi.StringOutput { return v.IpVersion }).(pulumi.StringOutput)
 }

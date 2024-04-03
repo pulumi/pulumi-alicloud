@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EdgeKubernetesAddon {
     /**
-     * @return The ACK add-on configurations.
+     * @return The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     private @Nullable String config;
@@ -29,10 +29,15 @@ public final class EdgeKubernetesAddon {
      * 
      */
     private @Nullable String name;
+    /**
+     * @return It specifies the version of the component.
+     * 
+     */
+    private @Nullable String version;
 
     private EdgeKubernetesAddon() {}
     /**
-     * @return The ACK add-on configurations.
+     * @return The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     public Optional<String> config() {
@@ -54,6 +59,13 @@ public final class EdgeKubernetesAddon {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return It specifies the version of the component.
+     * 
+     */
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -67,12 +79,14 @@ public final class EdgeKubernetesAddon {
         private @Nullable String config;
         private @Nullable Boolean disabled;
         private @Nullable String name;
+        private @Nullable String version;
         public Builder() {}
         public Builder(EdgeKubernetesAddon defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
     	      this.disabled = defaults.disabled;
     	      this.name = defaults.name;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -93,11 +107,18 @@ public final class EdgeKubernetesAddon {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder version(@Nullable String version) {
+
+            this.version = version;
+            return this;
+        }
         public EdgeKubernetesAddon build() {
             final var _resultValue = new EdgeKubernetesAddon();
             _resultValue.config = config;
             _resultValue.disabled = disabled;
             _resultValue.name = name;
+            _resultValue.version = version;
             return _resultValue;
         }
     }

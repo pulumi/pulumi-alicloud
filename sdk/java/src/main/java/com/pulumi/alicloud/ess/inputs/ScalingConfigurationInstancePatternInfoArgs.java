@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,36 @@ import javax.annotation.Nullable;
 public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ScalingConfigurationInstancePatternInfoArgs Empty = new ScalingConfigurationInstancePatternInfoArgs();
+
+    /**
+     * Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+     * 
+     */
+    @Import(name="architectures")
+    private @Nullable Output<List<String>> architectures;
+
+    /**
+     * @return Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+     * 
+     */
+    public Optional<Output<List<String>>> architectures() {
+        return Optional.ofNullable(this.architectures);
+    }
+
+    /**
+     * Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+     * 
+     */
+    @Import(name="burstablePerformance")
+    private @Nullable Output<String> burstablePerformance;
+
+    /**
+     * @return Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+     * 
+     */
+    public Optional<Output<String>> burstablePerformance() {
+        return Optional.ofNullable(this.burstablePerformance);
+    }
 
     /**
      * The number of vCPUs that are specified for an instance type in instancePatternInfo.
@@ -30,6 +61,21 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
      */
     public Optional<Output<Integer>> cores() {
         return Optional.ofNullable(this.cores);
+    }
+
+    /**
+     * Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+     * 
+     */
+    @Import(name="excludedInstanceTypes")
+    private @Nullable Output<List<String>> excludedInstanceTypes;
+
+    /**
+     * @return Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+     * 
+     */
+    public Optional<Output<List<String>>> excludedInstanceTypes() {
+        return Optional.ofNullable(this.excludedInstanceTypes);
     }
 
     /**
@@ -80,7 +126,10 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
     private ScalingConfigurationInstancePatternInfoArgs() {}
 
     private ScalingConfigurationInstancePatternInfoArgs(ScalingConfigurationInstancePatternInfoArgs $) {
+        this.architectures = $.architectures;
+        this.burstablePerformance = $.burstablePerformance;
         this.cores = $.cores;
+        this.excludedInstanceTypes = $.excludedInstanceTypes;
         this.instanceFamilyLevel = $.instanceFamilyLevel;
         this.maxPrice = $.maxPrice;
         this.memory = $.memory;
@@ -105,6 +154,58 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
         }
 
         /**
+         * @param architectures Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder architectures(@Nullable Output<List<String>> architectures) {
+            $.architectures = architectures;
+            return this;
+        }
+
+        /**
+         * @param architectures Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder architectures(List<String> architectures) {
+            return architectures(Output.of(architectures));
+        }
+
+        /**
+         * @param architectures Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder architectures(String... architectures) {
+            return architectures(List.of(architectures));
+        }
+
+        /**
+         * @param burstablePerformance Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder burstablePerformance(@Nullable Output<String> burstablePerformance) {
+            $.burstablePerformance = burstablePerformance;
+            return this;
+        }
+
+        /**
+         * @param burstablePerformance Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder burstablePerformance(String burstablePerformance) {
+            return burstablePerformance(Output.of(burstablePerformance));
+        }
+
+        /**
          * @param cores The number of vCPUs that are specified for an instance type in instancePatternInfo.
          * 
          * @return builder
@@ -123,6 +224,37 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
          */
         public Builder cores(Integer cores) {
             return cores(Output.of(cores));
+        }
+
+        /**
+         * @param excludedInstanceTypes Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedInstanceTypes(@Nullable Output<List<String>> excludedInstanceTypes) {
+            $.excludedInstanceTypes = excludedInstanceTypes;
+            return this;
+        }
+
+        /**
+         * @param excludedInstanceTypes Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedInstanceTypes(List<String> excludedInstanceTypes) {
+            return excludedInstanceTypes(Output.of(excludedInstanceTypes));
+        }
+
+        /**
+         * @param excludedInstanceTypes Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedInstanceTypes(String... excludedInstanceTypes) {
+            return excludedInstanceTypes(List.of(excludedInstanceTypes));
         }
 
         /**

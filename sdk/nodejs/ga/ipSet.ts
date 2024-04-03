@@ -101,7 +101,7 @@ export class IpSet extends pulumi.CustomResource {
      */
     public /*out*/ readonly ipAddressLists!: pulumi.Output<string[]>;
     /**
-     * The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+     * The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ipVersion` can be set to `DUAL_STACK`.
      */
     public readonly ipVersion!: pulumi.Output<string>;
     /**
@@ -176,7 +176,7 @@ export interface IpSetState {
      */
     ipAddressLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+     * The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ipVersion` can be set to `DUAL_STACK`.
      */
     ipVersion?: pulumi.Input<string>;
     /**
@@ -207,7 +207,7 @@ export interface IpSetArgs {
      */
     bandwidth?: pulumi.Input<number>;
     /**
-     * The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+     * The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ipVersion` can be set to `DUAL_STACK`.
      */
     ipVersion?: pulumi.Input<string>;
     /**

@@ -9,7 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKubernetesPermissionResult {
@@ -19,10 +18,10 @@ public final class GetKubernetesPermissionResult {
      */
     private String id;
     /**
-     * @return A list of user permission.
+     * @return A list of user permission. See `permissions` below.
      * 
      */
-    private @Nullable List<GetKubernetesPermissionPermission> permissions;
+    private List<GetKubernetesPermissionPermission> permissions;
     /**
      * @return The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
      * 
@@ -38,11 +37,11 @@ public final class GetKubernetesPermissionResult {
         return this.id;
     }
     /**
-     * @return A list of user permission.
+     * @return A list of user permission. See `permissions` below.
      * 
      */
     public List<GetKubernetesPermissionPermission> permissions() {
-        return this.permissions == null ? List.of() : this.permissions;
+        return this.permissions;
     }
     /**
      * @return The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
@@ -62,7 +61,7 @@ public final class GetKubernetesPermissionResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
-        private @Nullable List<GetKubernetesPermissionPermission> permissions;
+        private List<GetKubernetesPermissionPermission> permissions;
         private String uid;
         public Builder() {}
         public Builder(GetKubernetesPermissionResult defaults) {
@@ -81,8 +80,10 @@ public final class GetKubernetesPermissionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder permissions(@Nullable List<GetKubernetesPermissionPermission> permissions) {
-
+        public Builder permissions(List<GetKubernetesPermissionPermission> permissions) {
+            if (permissions == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesPermissionResult", "permissions");
+            }
             this.permissions = permissions;
             return this;
         }

@@ -95,6 +95,8 @@ def get_zones(multi: Optional[bool] = None,
 
     > **NOTE:** Available in v1.88.0+.
 
+    > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+
     ## Example Usage
 
     <!--Start PulumiCodeChooser -->
@@ -135,6 +137,8 @@ def get_zones_output(multi: Optional[pulumi.Input[Optional[bool]]] = None,
     This data source provides availability zones for Cassandra that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
     > **NOTE:** Available in v1.88.0+.
+
+    > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 
     ## Example Usage
 

@@ -96,7 +96,7 @@ class GetServiceMeshesResult:
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        The status of the resource.
+        The status of the Service Mesh instance.
         """
         return pulumi.get(self, "status")
 
@@ -129,11 +129,11 @@ def get_service_meshes(enable_details: Optional[bool] = None,
     > **NOTE:** Available since v1.138.0.
 
 
-    :param bool enable_details: Whether to query the detailed list of resource attributes.
+    :param bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[str] ids: A list of Service Mesh IDs.
     :param str name_regex: A regex string to filter results by Service Mesh name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource. Valid values: `running` or `initial`.
+    :param str status: The status of the Service Mesh. Valid values: `running`, `initial`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -168,10 +168,10 @@ def get_service_meshes_output(enable_details: Optional[pulumi.Input[Optional[boo
     > **NOTE:** Available since v1.138.0.
 
 
-    :param bool enable_details: Whether to query the detailed list of resource attributes.
+    :param bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[str] ids: A list of Service Mesh IDs.
     :param str name_regex: A regex string to filter results by Service Mesh name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource. Valid values: `running` or `initial`.
+    :param str status: The status of the Service Mesh. Valid values: `running`, `initial`.
     """
     ...

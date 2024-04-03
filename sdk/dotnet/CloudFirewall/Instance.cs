@@ -29,15 +29,14 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.CloudFirewall.Instance("example", new()
+    ///     var @default = new AliCloud.CloudFirewall.Instance("default", new()
     ///     {
-    ///         BandWidth = 10,
+    ///         BandWidth = 200,
     ///         CfwLog = true,
     ///         CfwLogStorage = 1000,
-    ///         IpNumber = 20,
-    ///         PaymentType = "Subscription",
-    ///         Period = 1,
-    ///         Spec = "premium_version",
+    ///         IpNumber = 400,
+    ///         PaymentType = "PayAsYouGo",
+    ///         Spec = "ultimate_version",
     ///     });
     /// 
     /// });
@@ -128,16 +127,16 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string?> ModifyType { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `Subscription`.
+        /// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+        /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
         /// </summary>
         [Output("period")]
-        public Output<int> Period { get; private set; } = null!;
+        public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
         /// The release time.
@@ -146,13 +145,14 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> ReleaseTime { get; private set; } = null!;
 
         /// <summary>
-        /// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        /// Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
         /// </summary>
         [Output("renewPeriod")]
         public Output<int> RenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        /// Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        /// **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         /// </summary>
         [Output("renewalDuration")]
         public Output<int> RenewalDuration { get; private set; } = null!;
@@ -288,25 +288,26 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `Subscription`.
+        /// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+        /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
         /// </summary>
-        [Input("period", required: true)]
-        public Input<int> Period { get; set; } = null!;
+        [Input("period")]
+        public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        /// Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        /// Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        /// **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         /// </summary>
         [Input("renewalDuration")]
         public Input<int>? RenewalDuration { get; set; }
@@ -410,13 +411,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values: `Subscription`.
+        /// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+        /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -428,13 +429,14 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? ReleaseTime { get; set; }
 
         /// <summary>
-        /// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        /// Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        /// Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        /// **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         /// </summary>
         [Input("renewalDuration")]
         public Input<int>? RenewalDuration { get; set; }

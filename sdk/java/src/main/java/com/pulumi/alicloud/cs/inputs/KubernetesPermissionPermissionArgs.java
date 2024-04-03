@@ -18,14 +18,14 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
     public static final KubernetesPermissionPermissionArgs Empty = new KubernetesPermissionPermissionArgs();
 
     /**
-     * The ID of the cluster that you want to manage.
+     * The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
      * 
      */
     @Import(name="cluster", required=true)
     private Output<String> cluster;
 
     /**
-     * @return The ID of the cluster that you want to manage.
+     * @return The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
      * 
      */
     public Output<String> cluster() {
@@ -93,14 +93,14 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
     }
 
     /**
-     * The authorization type. Valid values `cluster`, `namespace`.
+     * The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
      * 
      */
     @Import(name="roleType", required=true)
     private Output<String> roleType;
 
     /**
-     * @return The authorization type. Valid values `cluster`, `namespace`.
+     * @return The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
      * 
      */
     public Output<String> roleType() {
@@ -137,7 +137,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cluster The ID of the cluster that you want to manage.
+         * @param cluster The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cluster The ID of the cluster that you want to manage.
+         * @param cluster The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param roleType The authorization type. Valid values `cluster`, `namespace`.
+         * @param roleType The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param roleType The authorization type. Valid values `cluster`, `namespace`.
+         * @param roleType The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
          * 
          * @return builder
          * 

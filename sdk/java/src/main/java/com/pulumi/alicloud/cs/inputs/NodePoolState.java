@@ -751,6 +751,21 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the scaling group.
+     * 
+     */
+    @Import(name="scalingGroupId")
+    private @Nullable Output<String> scalingGroupId;
+
+    /**
+     * @return The ID of the scaling group.
+     * 
+     */
+    public Optional<Output<String>> scalingGroupId() {
+        return Optional.ofNullable(this.scalingGroupId);
+    }
+
+    /**
      * Scaling group mode, default value: `release`. Valid values:
      * 
      */
@@ -1169,6 +1184,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         this.runtimeName = $.runtimeName;
         this.runtimeVersion = $.runtimeVersion;
         this.scalingConfig = $.scalingConfig;
+        this.scalingGroupId = $.scalingGroupId;
         this.scalingPolicy = $.scalingPolicy;
         this.securityGroupId = $.securityGroupId;
         this.securityGroupIds = $.securityGroupIds;
@@ -2257,6 +2273,27 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder scalingConfig(NodePoolScalingConfigArgs scalingConfig) {
             return scalingConfig(Output.of(scalingConfig));
+        }
+
+        /**
+         * @param scalingGroupId The ID of the scaling group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scalingGroupId(@Nullable Output<String> scalingGroupId) {
+            $.scalingGroupId = scalingGroupId;
+            return this;
+        }
+
+        /**
+         * @param scalingGroupId The ID of the scaling group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scalingGroupId(String scalingGroupId) {
+            return scalingGroupId(Output.of(scalingGroupId));
         }
 
         /**

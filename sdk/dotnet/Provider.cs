@@ -157,6 +157,9 @@ namespace Pulumi.AliCloud
         [Input("assumeRole", json: true)]
         public Input<Inputs.ProviderAssumeRoleArgs>? AssumeRole { get; set; }
 
+        [Input("assumeRoleWithOidc", json: true)]
+        public Input<Inputs.ProviderAssumeRoleWithOidcArgs>? AssumeRoleWithOidc { get; set; }
+
         /// <summary>
         /// The maximum timeout of the client connection server.
         /// </summary>

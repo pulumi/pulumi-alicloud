@@ -78,7 +78,7 @@ export interface GetQuotasArgs {
      */
     quotaActionCode?: string;
     /**
-     * The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
+     * The category of quota. Valid Values: `FlowControl` and `CommonQuota`, `WhiteListLabel`.
      */
     quotaCategory?: string;
     /**
@@ -172,7 +172,7 @@ export interface GetQuotasOutputArgs {
      */
     quotaActionCode?: pulumi.Input<string>;
     /**
-     * The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
+     * The category of quota. Valid Values: `FlowControl` and `CommonQuota`, `WhiteListLabel`.
      */
     quotaCategory?: pulumi.Input<string>;
     /**

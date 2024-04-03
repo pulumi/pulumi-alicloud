@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Network Acl resource.
+// Provides a VPC Network Acl resource. Network Access Control List (ACL) is a Network Access Control function in VPC. You can customize the network ACL rules and bind the network ACL to the switch to control the traffic of ECS instances in the switch.
 //
 // For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
 //
@@ -119,21 +119,23 @@ type NetworkAcl struct {
 
 	// The creation time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+	// The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Out direction rule information. See `egressAclEntries` below.
 	EgressAclEntries NetworkAclEgressAclEntryArrayOutput `pulumi:"egressAclEntries"`
 	// Inward direction rule information. See `ingressAclEntries` below.
 	IngressAclEntries NetworkAclIngressAclEntryArrayOutput `pulumi:"ingressAclEntries"`
-	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+	// . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+	// The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclName pulumi.StringOutput `pulumi:"networkAclName"`
 	// The associated resource. See `resources` below.
 	Resources NetworkAclResourceArrayOutput `pulumi:"resources"`
-	// The status of the associated resource.
+	// SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+	SourceNetworkAclId pulumi.StringPtrOutput `pulumi:"sourceNetworkAclId"`
+	// The state of the network ACL.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags of this resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -178,21 +180,23 @@ func GetNetworkAcl(ctx *pulumi.Context,
 type networkAclState struct {
 	// The creation time of the resource.
 	CreateTime *string `pulumi:"createTime"`
-	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+	// The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description *string `pulumi:"description"`
 	// Out direction rule information. See `egressAclEntries` below.
 	EgressAclEntries []NetworkAclEgressAclEntry `pulumi:"egressAclEntries"`
 	// Inward direction rule information. See `ingressAclEntries` below.
 	IngressAclEntries []NetworkAclIngressAclEntry `pulumi:"ingressAclEntries"`
-	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+	// . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.
 	Name *string `pulumi:"name"`
-	// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+	// The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclName *string `pulumi:"networkAclName"`
 	// The associated resource. See `resources` below.
 	Resources []NetworkAclResource `pulumi:"resources"`
-	// The status of the associated resource.
+	// SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+	SourceNetworkAclId *string `pulumi:"sourceNetworkAclId"`
+	// The state of the network ACL.
 	Status *string `pulumi:"status"`
 	// The tags of this resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -205,21 +209,23 @@ type networkAclState struct {
 type NetworkAclState struct {
 	// The creation time of the resource.
 	CreateTime pulumi.StringPtrInput
-	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+	// The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrInput
 	// Out direction rule information. See `egressAclEntries` below.
 	EgressAclEntries NetworkAclEgressAclEntryArrayInput
 	// Inward direction rule information. See `ingressAclEntries` below.
 	IngressAclEntries NetworkAclIngressAclEntryArrayInput
-	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+	// . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.
 	Name pulumi.StringPtrInput
-	// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+	// The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclName pulumi.StringPtrInput
 	// The associated resource. See `resources` below.
 	Resources NetworkAclResourceArrayInput
-	// The status of the associated resource.
+	// SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+	SourceNetworkAclId pulumi.StringPtrInput
+	// The state of the network ACL.
 	Status pulumi.StringPtrInput
 	// The tags of this resource.
 	Tags pulumi.MapInput
@@ -234,20 +240,22 @@ func (NetworkAclState) ElementType() reflect.Type {
 }
 
 type networkAclArgs struct {
-	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+	// The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description *string `pulumi:"description"`
 	// Out direction rule information. See `egressAclEntries` below.
 	EgressAclEntries []NetworkAclEgressAclEntry `pulumi:"egressAclEntries"`
 	// Inward direction rule information. See `ingressAclEntries` below.
 	IngressAclEntries []NetworkAclIngressAclEntry `pulumi:"ingressAclEntries"`
-	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+	// . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.
 	Name *string `pulumi:"name"`
-	// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+	// The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclName *string `pulumi:"networkAclName"`
 	// The associated resource. See `resources` below.
 	Resources []NetworkAclResource `pulumi:"resources"`
+	// SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+	SourceNetworkAclId *string `pulumi:"sourceNetworkAclId"`
 	// The tags of this resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the associated VPC.
@@ -258,20 +266,22 @@ type networkAclArgs struct {
 
 // The set of arguments for constructing a NetworkAcl resource.
 type NetworkAclArgs struct {
-	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+	// The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrInput
 	// Out direction rule information. See `egressAclEntries` below.
 	EgressAclEntries NetworkAclEgressAclEntryArrayInput
 	// Inward direction rule information. See `ingressAclEntries` below.
 	IngressAclEntries NetworkAclIngressAclEntryArrayInput
-	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+	// . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.
 	Name pulumi.StringPtrInput
-	// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+	// The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclName pulumi.StringPtrInput
 	// The associated resource. See `resources` below.
 	Resources NetworkAclResourceArrayInput
+	// SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+	SourceNetworkAclId pulumi.StringPtrInput
 	// The tags of this resource.
 	Tags pulumi.MapInput
 	// The ID of the associated VPC.
@@ -372,7 +382,7 @@ func (o NetworkAclOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+// The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
 func (o NetworkAclOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkAcl) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -387,14 +397,14 @@ func (o NetworkAclOutput) IngressAclEntries() NetworkAclIngressAclEntryArrayOutp
 	return o.ApplyT(func(v *NetworkAcl) NetworkAclIngressAclEntryArrayOutput { return v.IngressAclEntries }).(NetworkAclIngressAclEntryArrayOutput)
 }
 
-// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+// . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 //
-// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+// Deprecated: Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.
 func (o NetworkAclOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+// The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
 func (o NetworkAclOutput) NetworkAclName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.NetworkAclName }).(pulumi.StringOutput)
 }
@@ -404,7 +414,12 @@ func (o NetworkAclOutput) Resources() NetworkAclResourceArrayOutput {
 	return o.ApplyT(func(v *NetworkAcl) NetworkAclResourceArrayOutput { return v.Resources }).(NetworkAclResourceArrayOutput)
 }
 
-// The status of the associated resource.
+// SOURCE NetworkAcl specified by CopyNetworkAclEntries.
+func (o NetworkAclOutput) SourceNetworkAclId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkAcl) pulumi.StringPtrOutput { return v.SourceNetworkAclId }).(pulumi.StringPtrOutput)
+}
+
+// The state of the network ACL.
 func (o NetworkAclOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

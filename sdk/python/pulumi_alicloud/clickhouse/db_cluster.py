@@ -49,12 +49,12 @@ class DbClusterArgs:
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param pulumi.Input[Sequence[pulumi.Input['DbClusterDbClusterAccessWhiteListArgs']]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
         :param pulumi.Input[str] db_cluster_description: The DBCluster description.
-        :param pulumi.Input[str] encryption_key: Key management service KMS key ID.
+        :param pulumi.Input[str] encryption_key: Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         :param pulumi.Input[str] encryption_type: Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
-        :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
-        :param pulumi.Input[str] used_time: The used time of DBCluster.
+        :param pulumi.Input[str] used_time: The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The vswitch id of DBCluster.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -216,7 +216,7 @@ class DbClusterArgs:
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Key management service KMS key ID.
+        Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         """
         return pulumi.get(self, "encryption_key")
 
@@ -252,7 +252,7 @@ class DbClusterArgs:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[str]]:
         """
-        Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+        Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "period")
 
@@ -276,7 +276,7 @@ class DbClusterArgs:
     @pulumi.getter(name="usedTime")
     def used_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The used time of DBCluster.
+        The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
         """
         return pulumi.get(self, "used_time")
 
@@ -358,15 +358,15 @@ class _DbClusterState:
         :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         :param pulumi.Input[int] db_node_group_count: The db node group count. The number should between 1 and 48.
         :param pulumi.Input[str] db_node_storage: The db node storage.
-        :param pulumi.Input[str] encryption_key: Key management service KMS key ID.
+        :param pulumi.Input[str] encryption_key: Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         :param pulumi.Input[str] encryption_type: Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
-        :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the cluster.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
-        :param pulumi.Input[str] used_time: The used time of DBCluster.
+        :param pulumi.Input[str] used_time: The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The vswitch id of DBCluster.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -528,7 +528,7 @@ class _DbClusterState:
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Key management service KMS key ID.
+        Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         """
         return pulumi.get(self, "encryption_key")
 
@@ -576,7 +576,7 @@ class _DbClusterState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[str]]:
         """
-        Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+        Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "period")
 
@@ -624,7 +624,7 @@ class _DbClusterState:
     @pulumi.getter(name="usedTime")
     def used_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The used time of DBCluster.
+        The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
         """
         return pulumi.get(self, "used_time")
 
@@ -757,14 +757,14 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         :param pulumi.Input[int] db_node_group_count: The db node group count. The number should between 1 and 48.
         :param pulumi.Input[str] db_node_storage: The db node storage.
-        :param pulumi.Input[str] encryption_key: Key management service KMS key ID.
+        :param pulumi.Input[str] encryption_key: Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         :param pulumi.Input[str] encryption_type: Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
-        :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
-        :param pulumi.Input[str] used_time: The used time of DBCluster.
+        :param pulumi.Input[str] used_time: The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The vswitch id of DBCluster.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -955,15 +955,15 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] db_cluster_version: The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         :param pulumi.Input[int] db_node_group_count: The db node group count. The number should between 1 and 48.
         :param pulumi.Input[str] db_node_storage: The db node storage.
-        :param pulumi.Input[str] encryption_key: Key management service KMS key ID.
+        :param pulumi.Input[str] encryption_key: Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         :param pulumi.Input[str] encryption_type: Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
-        :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the cluster.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
-        :param pulumi.Input[str] used_time: The used time of DBCluster.
+        :param pulumi.Input[str] used_time: The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The vswitch id of DBCluster.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -1073,7 +1073,7 @@ class DbCluster(pulumi.CustomResource):
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> pulumi.Output[Optional[str]]:
         """
-        Key management service KMS key ID.
+        Key management service KMS key ID. It is valid and required when encryption_type is `CloudDisk`.
         """
         return pulumi.get(self, "encryption_key")
 
@@ -1105,7 +1105,7 @@ class DbCluster(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[str]]:
         """
-        Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+        Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "period")
 
@@ -1137,7 +1137,7 @@ class DbCluster(pulumi.CustomResource):
     @pulumi.getter(name="usedTime")
     def used_time(self) -> pulumi.Output[Optional[str]]:
         """
-        The used time of DBCluster.
+        The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
         """
         return pulumi.get(self, "used_time")
 

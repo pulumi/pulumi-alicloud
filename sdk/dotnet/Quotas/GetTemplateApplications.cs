@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Quotas
         public string? QuotaActionCode { get; set; }
 
         /// <summary>
-        /// The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+        /// The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
         /// </summary>
         [Input("quotaCategory")]
         public string? QuotaCategory { get; set; }
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Quotas
         public Input<string>? QuotaActionCode { get; set; }
 
         /// <summary>
-        /// The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+        /// The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
         /// </summary>
         [Input("quotaCategory")]
         public Input<string>? QuotaCategory { get; set; }

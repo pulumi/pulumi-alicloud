@@ -65,14 +65,14 @@ public final class IpSetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+     * The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ip_version` can be set to `DUAL_STACK`.
      * 
      */
     @Import(name="ipVersion")
     private @Nullable Output<String> ipVersion;
 
     /**
-     * @return The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+     * @return The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ip_version` can be set to `DUAL_STACK`.
      * 
      */
     public Optional<Output<String>> ipVersion() {
@@ -188,7 +188,7 @@ public final class IpSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipVersion The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+         * @param ipVersion The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ip_version` can be set to `DUAL_STACK`.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class IpSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipVersion The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+         * @param ipVersion The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ip_version` can be set to `DUAL_STACK`.
          * 
          * @return builder
          * 

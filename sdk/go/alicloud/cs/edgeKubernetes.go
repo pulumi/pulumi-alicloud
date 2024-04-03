@@ -53,7 +53,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "tf-example-basic-edge"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -95,7 +95,6 @@ import (
 //				WorkerInstanceTypes: pulumi.StringArray{
 //					pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				},
-//				Version:                   pulumi.String("1.20.11-aliyunedge.1"),
 //				WorkerNumber:              pulumi.Int(1),
 //				Password:                  pulumi.String("Test12345"),
 //				PodCidr:                   pulumi.String("10.99.0.0/16"),
@@ -186,7 +185,6 @@ import (
 //				WorkerInstanceTypes: pulumi.StringArray{
 //					pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
 //				},
-//				Version:                   pulumi.String("1.20.11-aliyunedge.1"),
 //				ClusterSpec:               pulumi.String("ack.pro.small"),
 //				WorkerNumber:              pulumi.Int(1),
 //				Password:                  pulumi.String("Test12345"),
@@ -199,22 +197,12 @@ import (
 //				InstallCloudMonitor:       pulumi.Bool(true),
 //				SlbInternetEnabled:        pulumi.Bool(true),
 //				IsEnterpriseSecurityGroup: pulumi.Bool(true),
-//				Addons: cs.EdgeKubernetesAddonArray{
-//					&cs.EdgeKubernetesAddonArgs{
-//						Name:   pulumi.String("alibaba-log-controller"),
-//						Config: pulumi.String("{\"IngressDashboardEnabled\":\"false\"}"),
-//					},
-//				},
 //				WorkerDataDisks: cs.EdgeKubernetesWorkerDataDiskArray{
 //					&cs.EdgeKubernetesWorkerDataDiskArgs{
 //						Category:  pulumi.String("cloud_ssd"),
 //						Size:      pulumi.String("200"),
 //						Encrypted: pulumi.String("false"),
 //					},
-//				},
-//				Runtime: &cs.EdgeKubernetesRuntimeArgs{
-//					Name:    pulumi.String("containerd"),
-//					Version: pulumi.String("1.5.10"),
 //				},
 //			})
 //			if err != nil {

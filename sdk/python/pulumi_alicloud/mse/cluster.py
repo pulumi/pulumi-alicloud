@@ -25,9 +25,12 @@ class ClusterArgs:
                  connection_type: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  mse_version: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  private_slb_specification: Optional[pulumi.Input[str]] = None,
                  pub_slb_specification: Optional[pulumi.Input[str]] = None,
                  request_pars: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
@@ -43,9 +46,12 @@ class ClusterArgs:
         :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro`.
+        :param pulumi.Input[str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
         :param pulumi.Input[str] request_pars: The extended request parameters in the JSON format.
+        :param pulumi.Input[str] resource_group_id: The resource group of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
@@ -65,12 +71,18 @@ class ClusterArgs:
             pulumi.set(__self__, "disk_type", disk_type)
         if mse_version is not None:
             pulumi.set(__self__, "mse_version", mse_version)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if private_slb_specification is not None:
             pulumi.set(__self__, "private_slb_specification", private_slb_specification)
         if pub_slb_specification is not None:
             pulumi.set(__self__, "pub_slb_specification", pub_slb_specification)
         if request_pars is not None:
             pulumi.set(__self__, "request_pars", request_pars)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
@@ -209,6 +221,18 @@ class ClusterArgs:
         pulumi.set(self, "mse_version", value)
 
     @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
+
+    @property
     @pulumi.getter(name="privateSlbSpecification")
     def private_slb_specification(self) -> Optional[pulumi.Input[str]]:
         """
@@ -243,6 +267,30 @@ class ClusterArgs:
     @request_pars.setter
     def request_pars(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_pars", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource group of the resource.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -284,11 +332,14 @@ class _ClusterState:
                  instance_count: Optional[pulumi.Input[int]] = None,
                  mse_version: Optional[pulumi.Input[str]] = None,
                  net_type: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  private_slb_specification: Optional[pulumi.Input[str]] = None,
                  pub_network_flow: Optional[pulumi.Input[str]] = None,
                  pub_slb_specification: Optional[pulumi.Input[str]] = None,
                  request_pars: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
@@ -305,11 +356,14 @@ class _ClusterState:
         :param pulumi.Input[int] instance_count: The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
         :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro`.
         :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
+        :param pulumi.Input[str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
         :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
         :param pulumi.Input[str] request_pars: The extended request parameters in the JSON format.
+        :param pulumi.Input[str] resource_group_id: The resource group of the resource.
         :param pulumi.Input[str] status: The status of MSE Cluster.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
@@ -337,6 +391,8 @@ class _ClusterState:
             pulumi.set(__self__, "mse_version", mse_version)
         if net_type is not None:
             pulumi.set(__self__, "net_type", net_type)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if private_slb_specification is not None:
             pulumi.set(__self__, "private_slb_specification", private_slb_specification)
         if pub_network_flow is not None:
@@ -345,8 +401,12 @@ class _ClusterState:
             pulumi.set(__self__, "pub_slb_specification", pub_slb_specification)
         if request_pars is not None:
             pulumi.set(__self__, "request_pars", request_pars)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
@@ -497,6 +557,18 @@ class _ClusterState:
         pulumi.set(self, "net_type", value)
 
     @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payment_type", value)
+
+    @property
     @pulumi.getter(name="privateSlbSpecification")
     def private_slb_specification(self) -> Optional[pulumi.Input[str]]:
         """
@@ -545,6 +617,18 @@ class _ClusterState:
         pulumi.set(self, "request_pars", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource group of the resource.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -555,6 +639,18 @@ class _ClusterState:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -596,49 +692,17 @@ class Cluster(pulumi.CustomResource):
                  instance_count: Optional[pulumi.Input[int]] = None,
                  mse_version: Optional[pulumi.Input[str]] = None,
                  net_type: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  private_slb_specification: Optional[pulumi.Input[str]] = None,
                  pub_network_flow: Optional[pulumi.Input[str]] = None,
                  pub_slb_specification: Optional[pulumi.Input[str]] = None,
                  request_pars: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry's mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
-
-        > **NOTE:** Available in 1.94.0+.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_cluster = alicloud.mse.Cluster("exampleCluster",
-            cluster_specification="MSE_SC_1_2_60_c",
-            cluster_type="Nacos-Ans",
-            cluster_version="NACOS_2_0_0",
-            instance_count=1,
-            net_type="privatenet",
-            pub_network_flow="1",
-            connection_type="slb",
-            cluster_alias_name="terraform-example",
-            mse_version="mse_dev",
-            vswitch_id=example_switch.id,
-            vpc_id=example_network.id)
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Import
 
         MSE Cluster can be imported using the id, e.g.
@@ -659,10 +723,13 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[int] instance_count: The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
         :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro`.
         :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
+        :param pulumi.Input[str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
         :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
         :param pulumi.Input[str] request_pars: The extended request parameters in the JSON format.
+        :param pulumi.Input[str] resource_group_id: The resource group of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
@@ -673,41 +740,6 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry's mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
-
-        > **NOTE:** Available in 1.94.0+.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_cluster = alicloud.mse.Cluster("exampleCluster",
-            cluster_specification="MSE_SC_1_2_60_c",
-            cluster_type="Nacos-Ans",
-            cluster_version="NACOS_2_0_0",
-            instance_count=1,
-            net_type="privatenet",
-            pub_network_flow="1",
-            connection_type="slb",
-            cluster_alias_name="terraform-example",
-            mse_version="mse_dev",
-            vswitch_id=example_switch.id,
-            vpc_id=example_network.id)
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Import
 
         MSE Cluster can be imported using the id, e.g.
@@ -741,10 +773,13 @@ class Cluster(pulumi.CustomResource):
                  instance_count: Optional[pulumi.Input[int]] = None,
                  mse_version: Optional[pulumi.Input[str]] = None,
                  net_type: Optional[pulumi.Input[str]] = None,
+                 payment_type: Optional[pulumi.Input[str]] = None,
                  private_slb_specification: Optional[pulumi.Input[str]] = None,
                  pub_network_flow: Optional[pulumi.Input[str]] = None,
                  pub_slb_specification: Optional[pulumi.Input[str]] = None,
                  request_pars: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -776,12 +811,15 @@ class Cluster(pulumi.CustomResource):
             if net_type is None and not opts.urn:
                 raise TypeError("Missing required property 'net_type'")
             __props__.__dict__["net_type"] = net_type
+            __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["private_slb_specification"] = private_slb_specification
             if pub_network_flow is None and not opts.urn:
                 raise TypeError("Missing required property 'pub_network_flow'")
             __props__.__dict__["pub_network_flow"] = pub_network_flow
             __props__.__dict__["pub_slb_specification"] = pub_slb_specification
             __props__.__dict__["request_pars"] = request_pars
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["app_version"] = None
@@ -809,11 +847,14 @@ class Cluster(pulumi.CustomResource):
             instance_count: Optional[pulumi.Input[int]] = None,
             mse_version: Optional[pulumi.Input[str]] = None,
             net_type: Optional[pulumi.Input[str]] = None,
+            payment_type: Optional[pulumi.Input[str]] = None,
             private_slb_specification: Optional[pulumi.Input[str]] = None,
             pub_network_flow: Optional[pulumi.Input[str]] = None,
             pub_slb_specification: Optional[pulumi.Input[str]] = None,
             request_pars: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
@@ -835,11 +876,14 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[int] instance_count: The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
         :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro`.
         :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
+        :param pulumi.Input[str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
         :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
         :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
         :param pulumi.Input[str] request_pars: The extended request parameters in the JSON format.
+        :param pulumi.Input[str] resource_group_id: The resource group of the resource.
         :param pulumi.Input[str] status: The status of MSE Cluster.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
@@ -859,11 +903,14 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["instance_count"] = instance_count
         __props__.__dict__["mse_version"] = mse_version
         __props__.__dict__["net_type"] = net_type
+        __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["private_slb_specification"] = private_slb_specification
         __props__.__dict__["pub_network_flow"] = pub_network_flow
         __props__.__dict__["pub_slb_specification"] = pub_slb_specification
         __props__.__dict__["request_pars"] = request_pars
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         return Cluster(resource_name, opts=opts, __props__=__props__)
@@ -965,6 +1012,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "net_type")
 
     @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Output[str]:
+        """
+        Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @property
     @pulumi.getter(name="privateSlbSpecification")
     def private_slb_specification(self) -> pulumi.Output[Optional[str]]:
         """
@@ -997,12 +1052,28 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "request_pars")
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The resource group of the resource.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
         The status of MSE Cluster.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcId")

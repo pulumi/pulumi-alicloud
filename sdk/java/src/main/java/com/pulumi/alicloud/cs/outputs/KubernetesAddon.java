@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KubernetesAddon {
     /**
-     * @return The ACK add-on configurations.
+     * @return The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     private @Nullable String config;
@@ -37,7 +37,7 @@ public final class KubernetesAddon {
 
     private KubernetesAddon() {}
     /**
-     * @return The ACK add-on configurations.
+     * @return The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     public Optional<String> config() {

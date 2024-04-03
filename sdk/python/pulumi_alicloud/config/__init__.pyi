@@ -24,6 +24,8 @@ Alibaba Cloud console.
 
 assumeRole: Optional[str]
 
+assumeRoleWithOidc: Optional[str]
+
 clientConnectTimeout: Optional[int]
 """
 The maximum timeout of the client connection server.

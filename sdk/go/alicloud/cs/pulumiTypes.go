@@ -244,7 +244,7 @@ func (o ClusterNodeArrayOutput) Index(i pulumi.IntInput) ClusterNodeOutput {
 }
 
 type EdgeKubernetesAddon struct {
-	// The ACK add-on configurations.
+	// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
 	Config *string `pulumi:"config"`
 	// Disables the automatic installation of a component. Default is `false`.
 	//
@@ -252,6 +252,8 @@ type EdgeKubernetesAddon struct {
 	Disabled *bool `pulumi:"disabled"`
 	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name *string `pulumi:"name"`
+	// It specifies the version of the component.
+	Version *string `pulumi:"version"`
 }
 
 // EdgeKubernetesAddonInput is an input type that accepts EdgeKubernetesAddonArgs and EdgeKubernetesAddonOutput values.
@@ -266,7 +268,7 @@ type EdgeKubernetesAddonInput interface {
 }
 
 type EdgeKubernetesAddonArgs struct {
-	// The ACK add-on configurations.
+	// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
 	Config pulumi.StringPtrInput `pulumi:"config"`
 	// Disables the automatic installation of a component. Default is `false`.
 	//
@@ -274,6 +276,8 @@ type EdgeKubernetesAddonArgs struct {
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// It specifies the version of the component.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (EdgeKubernetesAddonArgs) ElementType() reflect.Type {
@@ -327,7 +331,7 @@ func (o EdgeKubernetesAddonOutput) ToEdgeKubernetesAddonOutputWithContext(ctx co
 	return o
 }
 
-// The ACK add-on configurations.
+// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
 func (o EdgeKubernetesAddonOutput) Config() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
@@ -342,6 +346,11 @@ func (o EdgeKubernetesAddonOutput) Disabled() pulumi.BoolPtrOutput {
 // Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 func (o EdgeKubernetesAddonOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesAddon) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// It specifies the version of the component.
+func (o EdgeKubernetesAddonOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeKubernetesAddon) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type EdgeKubernetesAddonArrayOutput struct{ *pulumi.OutputState }
@@ -1330,7 +1339,7 @@ func (o EdgeKubernetesWorkerNodeArrayOutput) Index(i pulumi.IntInput) EdgeKubern
 }
 
 type KubernetesAddonType struct {
-	// The ACK add-on configurations.
+	// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
 	Config *string `pulumi:"config"`
 	// Disables the automatic installation of a component. Default is `false`.
 	//
@@ -1354,7 +1363,7 @@ type KubernetesAddonTypeInput interface {
 }
 
 type KubernetesAddonTypeArgs struct {
-	// The ACK add-on configurations.
+	// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
 	Config pulumi.StringPtrInput `pulumi:"config"`
 	// Disables the automatic installation of a component. Default is `false`.
 	//
@@ -1417,7 +1426,7 @@ func (o KubernetesAddonTypeOutput) ToKubernetesAddonTypeOutputWithContext(ctx co
 	return o
 }
 
-// The ACK add-on configurations.
+// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
 func (o KubernetesAddonTypeOutput) Config() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesAddonType) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
@@ -2059,7 +2068,7 @@ func (o KubernetesMasterNodeArrayOutput) Index(i pulumi.IntInput) KubernetesMast
 }
 
 type KubernetesPermissionPermission struct {
-	// The ID of the cluster that you want to manage.
+	// The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `roleType` must be null.
 	Cluster string `pulumi:"cluster"`
 	// Specifies whether to perform a custom authorization. To perform a custom authorization, set `roleName` to a custom cluster role.
 	IsCustom *bool `pulumi:"isCustom"`
@@ -2069,7 +2078,7 @@ type KubernetesPermissionPermission struct {
 	Namespace *string `pulumi:"namespace"`
 	// Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
 	RoleName string `pulumi:"roleName"`
-	// The authorization type. Valid values `cluster`, `namespace`.
+	// The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
 	RoleType string `pulumi:"roleType"`
 }
 
@@ -2085,7 +2094,7 @@ type KubernetesPermissionPermissionInput interface {
 }
 
 type KubernetesPermissionPermissionArgs struct {
-	// The ID of the cluster that you want to manage.
+	// The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `roleType` must be null.
 	Cluster pulumi.StringInput `pulumi:"cluster"`
 	// Specifies whether to perform a custom authorization. To perform a custom authorization, set `roleName` to a custom cluster role.
 	IsCustom pulumi.BoolPtrInput `pulumi:"isCustom"`
@@ -2095,7 +2104,7 @@ type KubernetesPermissionPermissionArgs struct {
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
 	RoleName pulumi.StringInput `pulumi:"roleName"`
-	// The authorization type. Valid values `cluster`, `namespace`.
+	// The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
 	RoleType pulumi.StringInput `pulumi:"roleType"`
 }
 
@@ -2150,7 +2159,7 @@ func (o KubernetesPermissionPermissionOutput) ToKubernetesPermissionPermissionOu
 	return o
 }
 
-// The ID of the cluster that you want to manage.
+// The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `roleType` must be null.
 func (o KubernetesPermissionPermissionOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesPermissionPermission) string { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -2175,7 +2184,7 @@ func (o KubernetesPermissionPermissionOutput) RoleName() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesPermissionPermission) string { return v.RoleName }).(pulumi.StringOutput)
 }
 
-// The authorization type. Valid values `cluster`, `namespace`.
+// The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
 func (o KubernetesPermissionPermissionOutput) RoleType() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesPermissionPermission) string { return v.RoleType }).(pulumi.StringOutput)
 }
@@ -2357,7 +2366,7 @@ func (o KubernetesRuntimePtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type ManagedKubernetesAddon struct {
-	// If this parameter is left empty, no configurations are required.
+	// If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
 	Config *string `pulumi:"config"`
 	// It specifies whether to disable automatic installation.
 	//
@@ -2389,7 +2398,7 @@ type ManagedKubernetesAddonInput interface {
 }
 
 type ManagedKubernetesAddonArgs struct {
-	// If this parameter is left empty, no configurations are required.
+	// If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
 	Config pulumi.StringPtrInput `pulumi:"config"`
 	// It specifies whether to disable automatic installation.
 	//
@@ -2460,7 +2469,7 @@ func (o ManagedKubernetesAddonOutput) ToManagedKubernetesAddonOutputWithContext(
 	return o
 }
 
-// If this parameter is left empty, no configurations are required.
+// If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
 func (o ManagedKubernetesAddonOutput) Config() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
@@ -5770,7 +5779,7 @@ func (o NodePoolTeeConfigPtrOutput) TeeEnable() pulumi.BoolPtrOutput {
 }
 
 type ServerlessKubernetesAddon struct {
-	// The ACK add-on configurations.
+	// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
 	Config *string `pulumi:"config"`
 	// Disables the automatic installation of a component. Default is `false`.
 	//
@@ -5792,7 +5801,7 @@ type ServerlessKubernetesAddonInput interface {
 }
 
 type ServerlessKubernetesAddonArgs struct {
-	// The ACK add-on configurations.
+	// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
 	Config pulumi.StringPtrInput `pulumi:"config"`
 	// Disables the automatic installation of a component. Default is `false`.
 	//
@@ -5853,7 +5862,7 @@ func (o ServerlessKubernetesAddonOutput) ToServerlessKubernetesAddonOutputWithCo
 	return o
 }
 
-// The ACK add-on configurations.
+// The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
 func (o ServerlessKubernetesAddonOutput) Config() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerlessKubernetesAddon) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
@@ -7543,10 +7552,10 @@ func (o GetKubernetesClustersClusterWorkerNodeArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetKubernetesPermissionPermission struct {
-	// ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-	IsOwner *bool `pulumi:"isOwner"`
-	// Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
-	IsRamRole *bool `pulumi:"isRamRole"`
+	// Indicates whether the permissions are granted to the cluster owner. Valid values `false`, `true`.
+	IsOwner bool `pulumi:"isOwner"`
+	// Indicates whether the permissions are granted to the RAM role. Valid values `false`, `true`.
+	IsRamRole bool `pulumi:"isRamRole"`
 	// The permission settings to manage ACK clusters.
 	ResourceId string `pulumi:"resourceId"`
 	// The authorization type. Valid values `cluster`, `namespace` and `console`.
@@ -7554,7 +7563,7 @@ type GetKubernetesPermissionPermission struct {
 	// The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
 	RoleName string `pulumi:"roleName"`
 	// The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
-	RoleType *string `pulumi:"roleType"`
+	RoleType string `pulumi:"roleType"`
 }
 
 // GetKubernetesPermissionPermissionInput is an input type that accepts GetKubernetesPermissionPermissionArgs and GetKubernetesPermissionPermissionOutput values.
@@ -7569,10 +7578,10 @@ type GetKubernetesPermissionPermissionInput interface {
 }
 
 type GetKubernetesPermissionPermissionArgs struct {
-	// ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-	IsOwner pulumi.BoolPtrInput `pulumi:"isOwner"`
-	// Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
-	IsRamRole pulumi.BoolPtrInput `pulumi:"isRamRole"`
+	// Indicates whether the permissions are granted to the cluster owner. Valid values `false`, `true`.
+	IsOwner pulumi.BoolInput `pulumi:"isOwner"`
+	// Indicates whether the permissions are granted to the RAM role. Valid values `false`, `true`.
+	IsRamRole pulumi.BoolInput `pulumi:"isRamRole"`
 	// The permission settings to manage ACK clusters.
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 	// The authorization type. Valid values `cluster`, `namespace` and `console`.
@@ -7580,7 +7589,7 @@ type GetKubernetesPermissionPermissionArgs struct {
 	// The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
 	RoleName pulumi.StringInput `pulumi:"roleName"`
 	// The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
-	RoleType pulumi.StringPtrInput `pulumi:"roleType"`
+	RoleType pulumi.StringInput `pulumi:"roleType"`
 }
 
 func (GetKubernetesPermissionPermissionArgs) ElementType() reflect.Type {
@@ -7634,14 +7643,14 @@ func (o GetKubernetesPermissionPermissionOutput) ToGetKubernetesPermissionPermis
 	return o
 }
 
-// ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
-func (o GetKubernetesPermissionPermissionOutput) IsOwner() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetKubernetesPermissionPermission) *bool { return v.IsOwner }).(pulumi.BoolPtrOutput)
+// Indicates whether the permissions are granted to the cluster owner. Valid values `false`, `true`.
+func (o GetKubernetesPermissionPermissionOutput) IsOwner() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesPermissionPermission) bool { return v.IsOwner }).(pulumi.BoolOutput)
 }
 
-// Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
-func (o GetKubernetesPermissionPermissionOutput) IsRamRole() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetKubernetesPermissionPermission) *bool { return v.IsRamRole }).(pulumi.BoolPtrOutput)
+// Indicates whether the permissions are granted to the RAM role. Valid values `false`, `true`.
+func (o GetKubernetesPermissionPermissionOutput) IsRamRole() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesPermissionPermission) bool { return v.IsRamRole }).(pulumi.BoolOutput)
 }
 
 // The permission settings to manage ACK clusters.
@@ -7660,8 +7669,8 @@ func (o GetKubernetesPermissionPermissionOutput) RoleName() pulumi.StringOutput 
 }
 
 // The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
-func (o GetKubernetesPermissionPermissionOutput) RoleType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetKubernetesPermissionPermission) *string { return v.RoleType }).(pulumi.StringPtrOutput)
+func (o GetKubernetesPermissionPermissionOutput) RoleType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesPermissionPermission) string { return v.RoleType }).(pulumi.StringOutput)
 }
 
 type GetKubernetesPermissionPermissionArrayOutput struct{ *pulumi.OutputState }

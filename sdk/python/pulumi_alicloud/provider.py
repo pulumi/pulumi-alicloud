@@ -18,6 +18,7 @@ class ProviderArgs:
                  access_key: Optional[pulumi.Input[str]] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  assume_role: Optional[pulumi.Input['ProviderAssumeRoleArgs']] = None,
+                 assume_role_with_oidc: Optional[pulumi.Input['ProviderAssumeRoleWithOidcArgs']] = None,
                  client_connect_timeout: Optional[pulumi.Input[int]] = None,
                  client_read_timeout: Optional[pulumi.Input[int]] = None,
                  configuration_source: Optional[pulumi.Input[str]] = None,
@@ -70,6 +71,8 @@ class ProviderArgs:
             pulumi.set(__self__, "account_id", account_id)
         if assume_role is not None:
             pulumi.set(__self__, "assume_role", assume_role)
+        if assume_role_with_oidc is not None:
+            pulumi.set(__self__, "assume_role_with_oidc", assume_role_with_oidc)
         if client_connect_timeout is not None:
             pulumi.set(__self__, "client_connect_timeout", client_connect_timeout)
         if client_read_timeout is not None:
@@ -167,6 +170,15 @@ class ProviderArgs:
     @assume_role.setter
     def assume_role(self, value: Optional[pulumi.Input['ProviderAssumeRoleArgs']]):
         pulumi.set(self, "assume_role", value)
+
+    @property
+    @pulumi.getter(name="assumeRoleWithOidc")
+    def assume_role_with_oidc(self) -> Optional[pulumi.Input['ProviderAssumeRoleWithOidcArgs']]:
+        return pulumi.get(self, "assume_role_with_oidc")
+
+    @assume_role_with_oidc.setter
+    def assume_role_with_oidc(self, value: Optional[pulumi.Input['ProviderAssumeRoleWithOidcArgs']]):
+        pulumi.set(self, "assume_role_with_oidc", value)
 
     @property
     @pulumi.getter(name="clientConnectTimeout")
@@ -432,6 +444,7 @@ class Provider(pulumi.ProviderResource):
                  access_key: Optional[pulumi.Input[str]] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  assume_role: Optional[pulumi.Input[pulumi.InputType['ProviderAssumeRoleArgs']]] = None,
+                 assume_role_with_oidc: Optional[pulumi.Input[pulumi.InputType['ProviderAssumeRoleWithOidcArgs']]] = None,
                  client_connect_timeout: Optional[pulumi.Input[int]] = None,
                  client_read_timeout: Optional[pulumi.Input[int]] = None,
                  configuration_source: Optional[pulumi.Input[str]] = None,
@@ -515,6 +528,7 @@ class Provider(pulumi.ProviderResource):
                  access_key: Optional[pulumi.Input[str]] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  assume_role: Optional[pulumi.Input[pulumi.InputType['ProviderAssumeRoleArgs']]] = None,
+                 assume_role_with_oidc: Optional[pulumi.Input[pulumi.InputType['ProviderAssumeRoleWithOidcArgs']]] = None,
                  client_connect_timeout: Optional[pulumi.Input[int]] = None,
                  client_read_timeout: Optional[pulumi.Input[int]] = None,
                  configuration_source: Optional[pulumi.Input[str]] = None,
@@ -549,6 +563,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["access_key"] = access_key
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["assume_role"] = pulumi.Output.from_input(assume_role).apply(pulumi.runtime.to_json) if assume_role is not None else None
+            __props__.__dict__["assume_role_with_oidc"] = pulumi.Output.from_input(assume_role_with_oidc).apply(pulumi.runtime.to_json) if assume_role_with_oidc is not None else None
             __props__.__dict__["client_connect_timeout"] = pulumi.Output.from_input(client_connect_timeout).apply(pulumi.runtime.to_json) if client_connect_timeout is not None else None
             __props__.__dict__["client_read_timeout"] = pulumi.Output.from_input(client_read_timeout).apply(pulumi.runtime.to_json) if client_read_timeout is not None else None
             __props__.__dict__["configuration_source"] = configuration_source

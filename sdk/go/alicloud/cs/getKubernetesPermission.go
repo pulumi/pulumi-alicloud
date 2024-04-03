@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of Ram user permissions.
 //
-// > **NOTE:** Available in v1.122.0+.
+// > **NOTE:** Available since v1.122.0.
 //
 // ## Example Usage
 //
@@ -31,19 +31,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			usersDs, err := ram.GetUsers(ctx, &ram.GetUsersArgs{
-//				NameRegex: pulumi.StringRef("your_user_name"),
+//			defaultUsers, err := ram.GetUsers(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultKubernetesPermission, err := cs.LookupKubernetesPermission(ctx, &cs.LookupKubernetesPermissionArgs{
+//				Uid: defaultUsers.Users[0].Id,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_default, err := cs.LookupKubernetesPermission(ctx, &cs.LookupKubernetesPermissionArgs{
-//				Uid: usersDs.Users[0].Id,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("permissions", _default.Permissions)
+//			ctx.Export("permissions", defaultKubernetesPermission.Permissions)
 //			return nil
 //		})
 //	}
@@ -62,8 +60,6 @@ func LookupKubernetesPermission(ctx *pulumi.Context, args *LookupKubernetesPermi
 
 // A collection of arguments for invoking getKubernetesPermission.
 type LookupKubernetesPermissionArgs struct {
-	// A list of user permission.
-	Permissions []GetKubernetesPermissionPermission `pulumi:"permissions"`
 	// The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
 	Uid string `pulumi:"uid"`
 }
@@ -72,7 +68,7 @@ type LookupKubernetesPermissionArgs struct {
 type LookupKubernetesPermissionResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of user permission.
+	// A list of user permission. See `permissions` below.
 	Permissions []GetKubernetesPermissionPermission `pulumi:"permissions"`
 	// The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
 	Uid string `pulumi:"uid"`
@@ -93,8 +89,6 @@ func LookupKubernetesPermissionOutput(ctx *pulumi.Context, args LookupKubernetes
 
 // A collection of arguments for invoking getKubernetesPermission.
 type LookupKubernetesPermissionOutputArgs struct {
-	// A list of user permission.
-	Permissions GetKubernetesPermissionPermissionArrayInput `pulumi:"permissions"`
 	// The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
 	Uid pulumi.StringInput `pulumi:"uid"`
 }
@@ -123,7 +117,7 @@ func (o LookupKubernetesPermissionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesPermissionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of user permission.
+// A list of user permission. See `permissions` below.
 func (o LookupKubernetesPermissionResultOutput) Permissions() GetKubernetesPermissionPermissionArrayOutput {
 	return o.ApplyT(func(v LookupKubernetesPermissionResult) []GetKubernetesPermissionPermission { return v.Permissions }).(GetKubernetesPermissionPermissionArrayOutput)
 }

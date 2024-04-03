@@ -127,7 +127,7 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly dbNodeStorage!: pulumi.Output<string>;
     /**
-     * Key management service KMS key ID.
+     * Key management service KMS key ID. It is valid and required when encryptionType is `CloudDisk`.
      */
     public readonly encryptionKey!: pulumi.Output<string | undefined>;
     /**
@@ -143,7 +143,7 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
-     * Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+     * Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
      */
     public readonly period!: pulumi.Output<string | undefined>;
     /**
@@ -159,7 +159,7 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly storageType!: pulumi.Output<string>;
     /**
-     * The used time of DBCluster.
+     * The used time of DBCluster. It is valid and required when paymentType is `Subscription`.
      */
     public readonly usedTime!: pulumi.Output<string | undefined>;
     /**
@@ -305,7 +305,7 @@ export interface DbClusterState {
      */
     dbNodeStorage?: pulumi.Input<string>;
     /**
-     * Key management service KMS key ID.
+     * Key management service KMS key ID. It is valid and required when encryptionType is `CloudDisk`.
      */
     encryptionKey?: pulumi.Input<string>;
     /**
@@ -321,7 +321,7 @@ export interface DbClusterState {
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+     * Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
      */
     period?: pulumi.Input<string>;
     /**
@@ -337,7 +337,7 @@ export interface DbClusterState {
      */
     storageType?: pulumi.Input<string>;
     /**
-     * The used time of DBCluster.
+     * The used time of DBCluster. It is valid and required when paymentType is `Subscription`.
      */
     usedTime?: pulumi.Input<string>;
     /**
@@ -393,7 +393,7 @@ export interface DbClusterArgs {
      */
     dbNodeStorage: pulumi.Input<string>;
     /**
-     * Key management service KMS key ID.
+     * Key management service KMS key ID. It is valid and required when encryptionType is `CloudDisk`.
      */
     encryptionKey?: pulumi.Input<string>;
     /**
@@ -409,7 +409,7 @@ export interface DbClusterArgs {
      */
     paymentType: pulumi.Input<string>;
     /**
-     * Pre-paid cluster of the pay-as-you-go cycle. Valid values: `Month`, `Year`.
+     * Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
      */
     period?: pulumi.Input<string>;
     /**
@@ -421,7 +421,7 @@ export interface DbClusterArgs {
      */
     storageType: pulumi.Input<string>;
     /**
-     * The used time of DBCluster.
+     * The used time of DBCluster. It is valid and required when paymentType is `Subscription`.
      */
     usedTime?: pulumi.Input<string>;
     /**

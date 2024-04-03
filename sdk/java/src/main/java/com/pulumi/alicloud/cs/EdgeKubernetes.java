@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-basic-edge&#34;);
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
@@ -109,7 +109,6 @@ import javax.annotation.Nullable;
  *         var defaultEdgeKubernetes = new EdgeKubernetes(&#34;defaultEdgeKubernetes&#34;, EdgeKubernetesArgs.builder()        
  *             .workerVswitchIds(defaultSwitch.id())
  *             .workerInstanceTypes(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .version(&#34;1.20.11-aliyunedge.1&#34;)
  *             .workerNumber(&#34;1&#34;)
  *             .password(&#34;Test12345&#34;)
  *             .podCidr(&#34;10.99.0.0/16&#34;)
@@ -151,9 +150,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.cs.EdgeKubernetes;
  * import com.pulumi.alicloud.cs.EdgeKubernetesArgs;
- * import com.pulumi.alicloud.cs.inputs.EdgeKubernetesAddonArgs;
  * import com.pulumi.alicloud.cs.inputs.EdgeKubernetesWorkerDataDiskArgs;
- * import com.pulumi.alicloud.cs.inputs.EdgeKubernetesRuntimeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -195,7 +192,6 @@ import javax.annotation.Nullable;
  *         var defaultEdgeKubernetes = new EdgeKubernetes(&#34;defaultEdgeKubernetes&#34;, EdgeKubernetesArgs.builder()        
  *             .workerVswitchIds(defaultSwitch.id())
  *             .workerInstanceTypes(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .version(&#34;1.20.11-aliyunedge.1&#34;)
  *             .clusterSpec(&#34;ack.pro.small&#34;)
  *             .workerNumber(&#34;1&#34;)
  *             .password(&#34;Test12345&#34;)
@@ -208,18 +204,10 @@ import javax.annotation.Nullable;
  *             .installCloudMonitor(&#34;true&#34;)
  *             .slbInternetEnabled(&#34;true&#34;)
  *             .isEnterpriseSecurityGroup(&#34;true&#34;)
- *             .addons(EdgeKubernetesAddonArgs.builder()
- *                 .name(&#34;alibaba-log-controller&#34;)
- *                 .config(&#34;{\&#34;IngressDashboardEnabled\&#34;:\&#34;false\&#34;}&#34;)
- *                 .build())
  *             .workerDataDisks(EdgeKubernetesWorkerDataDiskArgs.builder()
  *                 .category(&#34;cloud_ssd&#34;)
  *                 .size(&#34;200&#34;)
  *                 .encrypted(&#34;false&#34;)
- *                 .build())
- *             .runtime(EdgeKubernetesRuntimeArgs.builder()
- *                 .name(&#34;containerd&#34;)
- *                 .version(&#34;1.5.10&#34;)
  *                 .build())
  *             .build());
  * 

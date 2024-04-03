@@ -254,9 +254,10 @@ type Instance struct {
 	OsType pulumi.StringOutput `pulumi:"osType"`
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
+	// The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntOutput `pulumi:"period"`
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -498,9 +499,10 @@ type instanceState struct {
 	OsType *string `pulumi:"osType"`
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password *string `pulumi:"password"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
+	// The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -706,9 +708,10 @@ type InstanceState struct {
 	OsType pulumi.StringPtrInput
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password pulumi.StringPtrInput
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
+	// The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -906,9 +909,10 @@ type instanceArgs struct {
 	OperatorType *string `pulumi:"operatorType"`
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password *string `pulumi:"password"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
+	// The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -1097,9 +1101,10 @@ type InstanceArgs struct {
 	OperatorType pulumi.StringPtrInput
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password pulumi.StringPtrInput
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
+	// The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
+	//
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -1523,9 +1528,10 @@ func (o InstanceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
+// The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
 // - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 // - [1-3] when `periodUnit` in "Week"
+//
 // > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 func (o InstanceOutput) Period() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)

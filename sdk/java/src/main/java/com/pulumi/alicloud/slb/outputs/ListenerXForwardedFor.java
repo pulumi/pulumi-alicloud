@@ -12,50 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ListenerXForwardedFor {
     /**
-     * @return Whether to retrieve the client ip. It is read-only attribute.
+     * @return Whether to retrieve the client ip.
      * 
      */
     private @Nullable Boolean retriveClientIp;
     /**
-     * @return Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
+     * @return Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     private @Nullable Boolean retriveSlbId;
     /**
-     * @return Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
+     * @return Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     private @Nullable Boolean retriveSlbIp;
     /**
-     * @return Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+     * @return Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     private @Nullable Boolean retriveSlbProto;
 
     private ListenerXForwardedFor() {}
     /**
-     * @return Whether to retrieve the client ip. It is read-only attribute.
+     * @return Whether to retrieve the client ip.
      * 
      */
     public Optional<Boolean> retriveClientIp() {
         return Optional.ofNullable(this.retriveClientIp);
     }
     /**
-     * @return Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
+     * @return Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Boolean> retriveSlbId() {
         return Optional.ofNullable(this.retriveSlbId);
     }
     /**
-     * @return Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
+     * @return Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Boolean> retriveSlbIp() {
         return Optional.ofNullable(this.retriveSlbIp);
     }
     /**
-     * @return Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+     * @return Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Boolean> retriveSlbProto() {

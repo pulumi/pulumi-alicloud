@@ -248,18 +248,22 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return this.accessMonitor;
     }
     /**
-     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. Defaults to &#34;private&#34;.
+     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
+     * 
+     * @deprecated
+     * Field &#39;acl&#39; has been deprecated since provider version 1.220.0. New resource &#39;alicloud_oss_bucket_acl&#39; instead.
      * 
      */
+    @Deprecated /* Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead. */
     @Export(name="acl", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> acl;
+    private Output<String> acl;
 
     /**
-     * @return The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. Defaults to &#34;private&#34;.
+     * @return The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
      * 
      */
-    public Output<Optional<String>> acl() {
-        return Codegen.optional(this.acl);
+    public Output<String> acl() {
+        return this.acl;
     }
     @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bucket;
@@ -426,14 +430,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return this.owner;
     }
     /**
-     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketPolicy` instead.
      * 
      */
     @Export(name="policy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policy;
 
     /**
-     * @return Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+     * @return Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketPolicy` instead.
      * 
      */
     public Output<Optional<String>> policy() {
@@ -454,14 +458,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.redundancyType);
     }
     /**
-     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `referer_config` below.
      * 
      */
     @Export(name="refererConfig", refs={BucketRefererConfig.class}, tree="[0]")
     private Output</* @Nullable */ BucketRefererConfig> refererConfig;
 
     /**
-     * @return The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+     * @return The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `referer_config` below.
      * 
      */
     public Output<Optional<BucketRefererConfig>> refererConfig() {

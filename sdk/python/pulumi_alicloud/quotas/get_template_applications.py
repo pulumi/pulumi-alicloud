@@ -144,7 +144,7 @@ def get_template_applications(batch_quota_application_id: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: Cloud service name abbreviation.> For more information about cloud services that support quota centers, see Cloud services that support quota centers.
     :param str quota_action_code: The quota ID.
-    :param str quota_category: The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+    :param str quota_category: The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
     """
     __args__ = dict()
     __args__['batchQuotaApplicationId'] = batch_quota_application_id
@@ -186,6 +186,6 @@ def get_template_applications_output(batch_quota_application_id: Optional[pulumi
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: Cloud service name abbreviation.> For more information about cloud services that support quota centers, see Cloud services that support quota centers.
     :param str quota_action_code: The quota ID.
-    :param str quota_category: The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+    :param str quota_category: The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
     """
     ...

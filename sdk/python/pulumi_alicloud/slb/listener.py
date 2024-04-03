@@ -62,53 +62,50 @@ class ListenerArgs:
                  x_forwarded_for: Optional[pulumi.Input['ListenerXForwardedForArgs']] = None):
         """
         The set of arguments for constructing a Listener resource.
-        :param pulumi.Input[int] frontend_port: Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+        :param pulumi.Input[int] frontend_port: The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new listener.
-        :param pulumi.Input[str] protocol: The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
-        :param pulumi.Input[str] acl_id: the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
-        :param pulumi.Input[str] acl_status: Whether to enable "acl(access control list)", the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
-        :param pulumi.Input[str] acl_type: Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
-        :param pulumi.Input[int] backend_port: Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
-        :param pulumi.Input[int] bandwidth: Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
-        :param pulumi.Input[str] ca_certificate_id: SLB CA certificate ID. Only when `protocol` is `https` can be specified.
-        :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
-        :param pulumi.Input[int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
-        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
-        :param pulumi.Input[str] description: The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
-        :param pulumi.Input[str] enable_http2: Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
-        :param pulumi.Input[int] established_timeout: Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
-        :param pulumi.Input[int] forward_port: The port that http redirect to https.
-        :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
-        :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
-        :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
-        :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
-        :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
-        :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
-        :param pulumi.Input[str] health_check_method: HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
-        :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
-        :param pulumi.Input[str] health_check_type: Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
-        :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
-        :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
-        :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
-        :param pulumi.Input[str] master_slave_server_group_id: The ID of the master slave server group.
-        :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
-        :param pulumi.Input[bool] proxy_protocol_v2_enabled: Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-               
-               > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-               
-               > **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
-        :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
-        :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
-               Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
-        :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
-        :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
-        :param pulumi.Input[str] ssl_certificate_id: SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
-        :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
-        :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
-        :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
-        :param pulumi.Input[int] unhealthy_threshold: The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
-        :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+        :param pulumi.Input[str] protocol: The protocol to listen on. Valid values: `http`.
+        :param pulumi.Input[str] acl_id: The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[str] acl_status: Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
+        :param pulumi.Input[str] acl_type: The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[int] backend_port: The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
+        :param pulumi.Input[int] bandwidth: The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+               - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
+        :param pulumi.Input[str] ca_certificate_id: The ID of the certification authority (CA) certificate.
+        :param pulumi.Input[str] cookie: The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[int] cookie_timeout: The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
+        :param pulumi.Input[str] description: The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        :param pulumi.Input[str] enable_http2: Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
+        :param pulumi.Input[int] established_timeout: The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
+        :param pulumi.Input[int] forward_port: The listening port that is used to redirect HTTP requests to HTTPS.
+        :param pulumi.Input[bool] gzip: Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] health_check: Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
+        :param pulumi.Input[int] health_check_connect_port: The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_domain: The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_http_code: The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] health_check_interval: The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_method: The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] health_check_timeout: The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` < `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_type: The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
+        :param pulumi.Input[str] health_check_uri: The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+               **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] idle_timeout: The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
+        :param pulumi.Input[str] listener_forward: Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
+        :param pulumi.Input[str] master_slave_server_group_id: The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
+        :param pulumi.Input[int] persistence_timeout: The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
+        :param pulumi.Input[bool] proxy_protocol_v2_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[int] request_timeout: The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
+        :param pulumi.Input[str] scheduler: The scheduling algorithm. Default value: `wrr`. Valid values:
+        :param pulumi.Input[str] server_certificate_id: The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
+        :param pulumi.Input[str] server_group_id: The ID of the vServer group. It's the ID of resource `slb.ServerGroup`.
+        :param pulumi.Input[str] ssl_certificate_id: The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
+        :param pulumi.Input[str] sticky_session: Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
+        :param pulumi.Input[str] sticky_session_type: The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[str] tls_cipher_policy: The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
+        :param pulumi.Input[int] unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For". See `x_forwarded_for` below.
         """
         pulumi.set(__self__, "frontend_port", frontend_port)
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
@@ -209,7 +206,7 @@ class ListenerArgs:
     @pulumi.getter(name="frontendPort")
     def frontend_port(self) -> pulumi.Input[int]:
         """
-        Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+        The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
         """
         return pulumi.get(self, "frontend_port")
 
@@ -233,7 +230,7 @@ class ListenerArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[str]:
         """
-        The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+        The protocol to listen on. Valid values: `http`.
         """
         return pulumi.get(self, "protocol")
 
@@ -245,7 +242,7 @@ class ListenerArgs:
     @pulumi.getter(name="aclId")
     def acl_id(self) -> Optional[pulumi.Input[str]]:
         """
-        the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
+        The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "acl_id")
 
@@ -257,7 +254,7 @@ class ListenerArgs:
     @pulumi.getter(name="aclStatus")
     def acl_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable "acl(access control list)", the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+        Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "acl_status")
 
@@ -269,7 +266,7 @@ class ListenerArgs:
     @pulumi.getter(name="aclType")
     def acl_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+        The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "acl_type")
 
@@ -281,7 +278,7 @@ class ListenerArgs:
     @pulumi.getter(name="backendPort")
     def backend_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
+        The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
         """
         return pulumi.get(self, "backend_port")
 
@@ -293,7 +290,8 @@ class ListenerArgs:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+        The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+        - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -305,7 +303,7 @@ class ListenerArgs:
     @pulumi.getter(name="caCertificateId")
     def ca_certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
-        SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+        The ID of the certification authority (CA) certificate.
         """
         return pulumi.get(self, "ca_certificate_id")
 
@@ -317,7 +315,7 @@ class ListenerArgs:
     @pulumi.getter
     def cookie(self) -> Optional[pulumi.Input[str]]:
         """
-        The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+        The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "cookie")
 
@@ -329,7 +327,7 @@ class ListenerArgs:
     @pulumi.getter(name="cookieTimeout")
     def cookie_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+        The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "cookie_timeout")
 
@@ -341,7 +339,7 @@ class ListenerArgs:
     @pulumi.getter(name="deleteProtectionValidation")
     def delete_protection_validation(self) -> Optional[pulumi.Input[bool]]:
         """
-        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         """
         return pulumi.get(self, "delete_protection_validation")
 
@@ -353,7 +351,7 @@ class ListenerArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+        The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         """
         return pulumi.get(self, "description")
 
@@ -365,7 +363,7 @@ class ListenerArgs:
     @pulumi.getter(name="enableHttp2")
     def enable_http2(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+        Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "enable_http2")
 
@@ -377,7 +375,7 @@ class ListenerArgs:
     @pulumi.getter(name="establishedTimeout")
     def established_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+        The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
         """
         return pulumi.get(self, "established_timeout")
 
@@ -389,7 +387,7 @@ class ListenerArgs:
     @pulumi.getter(name="forwardPort")
     def forward_port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port that http redirect to https.
+        The listening port that is used to redirect HTTP requests to HTTPS.
         """
         return pulumi.get(self, "forward_port")
 
@@ -401,7 +399,7 @@ class ListenerArgs:
     @pulumi.getter
     def gzip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
+        Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "gzip")
 
@@ -413,7 +411,7 @@ class ListenerArgs:
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
+        Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
         """
         return pulumi.get(self, "health_check")
 
@@ -425,7 +423,7 @@ class ListenerArgs:
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
+        The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -437,7 +435,7 @@ class ListenerArgs:
     @pulumi.getter(name="healthCheckDomain")
     def health_check_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+        The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_domain")
 
@@ -449,7 +447,7 @@ class ListenerArgs:
     @pulumi.getter(name="healthCheckHttpCode")
     def health_check_http_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+        The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_http_code")
 
@@ -461,7 +459,7 @@ class ListenerArgs:
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+        The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -473,7 +471,7 @@ class ListenerArgs:
     @pulumi.getter(name="healthCheckMethod")
     def health_check_method(self) -> Optional[pulumi.Input[str]]:
         """
-        HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
+        The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_method")
 
@@ -485,7 +483,7 @@ class ListenerArgs:
     @pulumi.getter(name="healthCheckTimeout")
     def health_check_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
+        The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` < `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_timeout")
 
@@ -497,7 +495,7 @@ class ListenerArgs:
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
+        The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
         """
         return pulumi.get(self, "health_check_type")
 
@@ -509,7 +507,8 @@ class ListenerArgs:
     @pulumi.getter(name="healthCheckUri")
     def health_check_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
+        The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+        **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_uri")
 
@@ -521,7 +520,7 @@ class ListenerArgs:
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -533,7 +532,7 @@ class ListenerArgs:
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+        The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -569,7 +568,7 @@ class ListenerArgs:
     @pulumi.getter(name="listenerForward")
     def listener_forward(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+        Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "listener_forward")
 
@@ -581,7 +580,7 @@ class ListenerArgs:
     @pulumi.getter(name="masterSlaveServerGroupId")
     def master_slave_server_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the master slave server group.
+        The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
         """
         return pulumi.get(self, "master_slave_server_group_id")
 
@@ -593,7 +592,7 @@ class ListenerArgs:
     @pulumi.getter(name="persistenceTimeout")
     def persistence_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+        The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
         """
         return pulumi.get(self, "persistence_timeout")
 
@@ -605,11 +604,7 @@ class ListenerArgs:
     @pulumi.getter(name="proxyProtocolV2Enabled")
     def proxy_protocol_v2_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-
-        > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-
-        > **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+        Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "proxy_protocol_v2_enabled")
 
@@ -621,7 +616,7 @@ class ListenerArgs:
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+        The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
         """
         return pulumi.get(self, "request_timeout")
 
@@ -633,8 +628,7 @@ class ListenerArgs:
     @pulumi.getter
     def scheduler(self) -> Optional[pulumi.Input[str]]:
         """
-        Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
-        Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
+        The scheduling algorithm. Default value: `wrr`. Valid values:
         """
         return pulumi.get(self, "scheduler")
 
@@ -646,7 +640,7 @@ class ListenerArgs:
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
-        SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
+        The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
         """
         return pulumi.get(self, "server_certificate_id")
 
@@ -658,7 +652,7 @@ class ListenerArgs:
     @pulumi.getter(name="serverGroupId")
     def server_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
+        The ID of the vServer group. It's the ID of resource `slb.ServerGroup`.
         """
         return pulumi.get(self, "server_group_id")
 
@@ -670,7 +664,7 @@ class ListenerArgs:
     @pulumi.getter(name="sslCertificateId")
     def ssl_certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
-        SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
         """
         warnings.warn("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
@@ -685,7 +679,7 @@ class ListenerArgs:
     @pulumi.getter(name="stickySession")
     def sticky_session(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
+        Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "sticky_session")
 
@@ -697,7 +691,7 @@ class ListenerArgs:
     @pulumi.getter(name="stickySessionType")
     def sticky_session_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+        The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "sticky_session_type")
 
@@ -709,7 +703,7 @@ class ListenerArgs:
     @pulumi.getter(name="tlsCipherPolicy")
     def tls_cipher_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
+        The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
         """
         return pulumi.get(self, "tls_cipher_policy")
 
@@ -721,7 +715,7 @@ class ListenerArgs:
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -733,7 +727,7 @@ class ListenerArgs:
     @pulumi.getter(name="xForwardedFor")
     def x_forwarded_for(self) -> Optional[pulumi.Input['ListenerXForwardedForArgs']]:
         """
-        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+        Whether to set additional HTTP Header field "X-Forwarded-For". See `x_forwarded_for` below.
         """
         return pulumi.get(self, "x_forwarded_for")
 
@@ -791,53 +785,50 @@ class _ListenerState:
                  x_forwarded_for: Optional[pulumi.Input['ListenerXForwardedForArgs']] = None):
         """
         Input properties used for looking up and filtering Listener resources.
-        :param pulumi.Input[str] acl_id: the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
-        :param pulumi.Input[str] acl_status: Whether to enable "acl(access control list)", the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
-        :param pulumi.Input[str] acl_type: Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
-        :param pulumi.Input[int] backend_port: Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
-        :param pulumi.Input[int] bandwidth: Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
-        :param pulumi.Input[str] ca_certificate_id: SLB CA certificate ID. Only when `protocol` is `https` can be specified.
-        :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
-        :param pulumi.Input[int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
-        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
-        :param pulumi.Input[str] description: The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
-        :param pulumi.Input[str] enable_http2: Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
-        :param pulumi.Input[int] established_timeout: Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
-        :param pulumi.Input[int] forward_port: The port that http redirect to https.
-        :param pulumi.Input[int] frontend_port: Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
-        :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
-        :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
-        :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
-        :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
-        :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
-        :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
-        :param pulumi.Input[str] health_check_method: HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
-        :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
-        :param pulumi.Input[str] health_check_type: Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
-        :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
-        :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
-        :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+        :param pulumi.Input[str] acl_id: The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[str] acl_status: Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
+        :param pulumi.Input[str] acl_type: The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[int] backend_port: The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
+        :param pulumi.Input[int] bandwidth: The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+               - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
+        :param pulumi.Input[str] ca_certificate_id: The ID of the certification authority (CA) certificate.
+        :param pulumi.Input[str] cookie: The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[int] cookie_timeout: The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
+        :param pulumi.Input[str] description: The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        :param pulumi.Input[str] enable_http2: Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
+        :param pulumi.Input[int] established_timeout: The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
+        :param pulumi.Input[int] forward_port: The listening port that is used to redirect HTTP requests to HTTPS.
+        :param pulumi.Input[int] frontend_port: The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
+        :param pulumi.Input[bool] gzip: Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] health_check: Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
+        :param pulumi.Input[int] health_check_connect_port: The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_domain: The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_http_code: The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] health_check_interval: The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_method: The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] health_check_timeout: The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` < `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_type: The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
+        :param pulumi.Input[str] health_check_uri: The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+               **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] idle_timeout: The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
+        :param pulumi.Input[str] listener_forward: Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new listener.
-        :param pulumi.Input[str] master_slave_server_group_id: The ID of the master slave server group.
-        :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
-        :param pulumi.Input[str] protocol: The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
-        :param pulumi.Input[bool] proxy_protocol_v2_enabled: Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-               
-               > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-               
-               > **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
-        :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
-        :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
-               Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
-        :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
-        :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
-        :param pulumi.Input[str] ssl_certificate_id: SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
-        :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
-        :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
-        :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
-        :param pulumi.Input[int] unhealthy_threshold: The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
-        :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+        :param pulumi.Input[str] master_slave_server_group_id: The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
+        :param pulumi.Input[int] persistence_timeout: The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
+        :param pulumi.Input[str] protocol: The protocol to listen on. Valid values: `http`.
+        :param pulumi.Input[bool] proxy_protocol_v2_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[int] request_timeout: The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
+        :param pulumi.Input[str] scheduler: The scheduling algorithm. Default value: `wrr`. Valid values:
+        :param pulumi.Input[str] server_certificate_id: The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
+        :param pulumi.Input[str] server_group_id: The ID of the vServer group. It's the ID of resource `slb.ServerGroup`.
+        :param pulumi.Input[str] ssl_certificate_id: The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
+        :param pulumi.Input[str] sticky_session: Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
+        :param pulumi.Input[str] sticky_session_type: The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[str] tls_cipher_policy: The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
+        :param pulumi.Input[int] unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input['ListenerXForwardedForArgs'] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For". See `x_forwarded_for` below.
         """
         if acl_id is not None:
             pulumi.set(__self__, "acl_id", acl_id)
@@ -941,7 +932,7 @@ class _ListenerState:
     @pulumi.getter(name="aclId")
     def acl_id(self) -> Optional[pulumi.Input[str]]:
         """
-        the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
+        The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "acl_id")
 
@@ -953,7 +944,7 @@ class _ListenerState:
     @pulumi.getter(name="aclStatus")
     def acl_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable "acl(access control list)", the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+        Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "acl_status")
 
@@ -965,7 +956,7 @@ class _ListenerState:
     @pulumi.getter(name="aclType")
     def acl_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+        The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "acl_type")
 
@@ -977,7 +968,7 @@ class _ListenerState:
     @pulumi.getter(name="backendPort")
     def backend_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
+        The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
         """
         return pulumi.get(self, "backend_port")
 
@@ -989,7 +980,8 @@ class _ListenerState:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+        The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+        - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -1001,7 +993,7 @@ class _ListenerState:
     @pulumi.getter(name="caCertificateId")
     def ca_certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
-        SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+        The ID of the certification authority (CA) certificate.
         """
         return pulumi.get(self, "ca_certificate_id")
 
@@ -1013,7 +1005,7 @@ class _ListenerState:
     @pulumi.getter
     def cookie(self) -> Optional[pulumi.Input[str]]:
         """
-        The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+        The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "cookie")
 
@@ -1025,7 +1017,7 @@ class _ListenerState:
     @pulumi.getter(name="cookieTimeout")
     def cookie_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+        The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "cookie_timeout")
 
@@ -1037,7 +1029,7 @@ class _ListenerState:
     @pulumi.getter(name="deleteProtectionValidation")
     def delete_protection_validation(self) -> Optional[pulumi.Input[bool]]:
         """
-        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         """
         return pulumi.get(self, "delete_protection_validation")
 
@@ -1049,7 +1041,7 @@ class _ListenerState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+        The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         """
         return pulumi.get(self, "description")
 
@@ -1061,7 +1053,7 @@ class _ListenerState:
     @pulumi.getter(name="enableHttp2")
     def enable_http2(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+        Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "enable_http2")
 
@@ -1073,7 +1065,7 @@ class _ListenerState:
     @pulumi.getter(name="establishedTimeout")
     def established_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+        The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
         """
         return pulumi.get(self, "established_timeout")
 
@@ -1085,7 +1077,7 @@ class _ListenerState:
     @pulumi.getter(name="forwardPort")
     def forward_port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port that http redirect to https.
+        The listening port that is used to redirect HTTP requests to HTTPS.
         """
         return pulumi.get(self, "forward_port")
 
@@ -1097,7 +1089,7 @@ class _ListenerState:
     @pulumi.getter(name="frontendPort")
     def frontend_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+        The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
         """
         return pulumi.get(self, "frontend_port")
 
@@ -1109,7 +1101,7 @@ class _ListenerState:
     @pulumi.getter
     def gzip(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
+        Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "gzip")
 
@@ -1121,7 +1113,7 @@ class _ListenerState:
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
+        Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
         """
         return pulumi.get(self, "health_check")
 
@@ -1133,7 +1125,7 @@ class _ListenerState:
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
+        The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -1145,7 +1137,7 @@ class _ListenerState:
     @pulumi.getter(name="healthCheckDomain")
     def health_check_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+        The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_domain")
 
@@ -1157,7 +1149,7 @@ class _ListenerState:
     @pulumi.getter(name="healthCheckHttpCode")
     def health_check_http_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+        The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_http_code")
 
@@ -1169,7 +1161,7 @@ class _ListenerState:
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+        The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -1181,7 +1173,7 @@ class _ListenerState:
     @pulumi.getter(name="healthCheckMethod")
     def health_check_method(self) -> Optional[pulumi.Input[str]]:
         """
-        HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
+        The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_method")
 
@@ -1193,7 +1185,7 @@ class _ListenerState:
     @pulumi.getter(name="healthCheckTimeout")
     def health_check_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
+        The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` < `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_timeout")
 
@@ -1205,7 +1197,7 @@ class _ListenerState:
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
+        The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
         """
         return pulumi.get(self, "health_check_type")
 
@@ -1217,7 +1209,8 @@ class _ListenerState:
     @pulumi.getter(name="healthCheckUri")
     def health_check_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
+        The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+        **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_uri")
 
@@ -1229,7 +1222,7 @@ class _ListenerState:
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -1241,7 +1234,7 @@ class _ListenerState:
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+        The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -1277,7 +1270,7 @@ class _ListenerState:
     @pulumi.getter(name="listenerForward")
     def listener_forward(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+        Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "listener_forward")
 
@@ -1301,7 +1294,7 @@ class _ListenerState:
     @pulumi.getter(name="masterSlaveServerGroupId")
     def master_slave_server_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the master slave server group.
+        The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
         """
         return pulumi.get(self, "master_slave_server_group_id")
 
@@ -1313,7 +1306,7 @@ class _ListenerState:
     @pulumi.getter(name="persistenceTimeout")
     def persistence_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+        The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
         """
         return pulumi.get(self, "persistence_timeout")
 
@@ -1325,7 +1318,7 @@ class _ListenerState:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+        The protocol to listen on. Valid values: `http`.
         """
         return pulumi.get(self, "protocol")
 
@@ -1337,11 +1330,7 @@ class _ListenerState:
     @pulumi.getter(name="proxyProtocolV2Enabled")
     def proxy_protocol_v2_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-
-        > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-
-        > **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+        Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "proxy_protocol_v2_enabled")
 
@@ -1353,7 +1342,7 @@ class _ListenerState:
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+        The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
         """
         return pulumi.get(self, "request_timeout")
 
@@ -1365,8 +1354,7 @@ class _ListenerState:
     @pulumi.getter
     def scheduler(self) -> Optional[pulumi.Input[str]]:
         """
-        Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
-        Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
+        The scheduling algorithm. Default value: `wrr`. Valid values:
         """
         return pulumi.get(self, "scheduler")
 
@@ -1378,7 +1366,7 @@ class _ListenerState:
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
-        SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
+        The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
         """
         return pulumi.get(self, "server_certificate_id")
 
@@ -1390,7 +1378,7 @@ class _ListenerState:
     @pulumi.getter(name="serverGroupId")
     def server_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
+        The ID of the vServer group. It's the ID of resource `slb.ServerGroup`.
         """
         return pulumi.get(self, "server_group_id")
 
@@ -1402,7 +1390,7 @@ class _ListenerState:
     @pulumi.getter(name="sslCertificateId")
     def ssl_certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
-        SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
         """
         warnings.warn("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
@@ -1417,7 +1405,7 @@ class _ListenerState:
     @pulumi.getter(name="stickySession")
     def sticky_session(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
+        Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "sticky_session")
 
@@ -1429,7 +1417,7 @@ class _ListenerState:
     @pulumi.getter(name="stickySessionType")
     def sticky_session_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+        The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "sticky_session_type")
 
@@ -1441,7 +1429,7 @@ class _ListenerState:
     @pulumi.getter(name="tlsCipherPolicy")
     def tls_cipher_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
+        The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
         """
         return pulumi.get(self, "tls_cipher_policy")
 
@@ -1453,7 +1441,7 @@ class _ListenerState:
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -1465,7 +1453,7 @@ class _ListenerState:
     @pulumi.getter(name="xForwardedFor")
     def x_forwarded_for(self) -> Optional[pulumi.Input['ListenerXForwardedForArgs']]:
         """
-        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+        Whether to set additional HTTP Header field "X-Forwarded-For". See `x_forwarded_for` below.
         """
         return pulumi.get(self, "x_forwarded_for")
 
@@ -1525,20 +1513,22 @@ class Listener(pulumi.CustomResource):
                  x_forwarded_for: Optional[pulumi.Input[pulumi.InputType['ListenerXForwardedForArgs']]] = None,
                  __props__=None):
         """
-        Provides an Application Load Balancer Listener resource.
+        Provides a Classic Load Balancer (SLB) Load Balancer Listener resource.
 
-        For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
+        For information about Classic Load Balancer (SLB) and how to use it, see [What is Classic Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
 
-        For information about listener and how to use it, to see the following:
+        For information about listener and how to use it, please see the following:
 
-        * [Configure a HTTP Listener](https://www.alibabacloud.com/help/doc-detail/27592.htm).
-        * [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
-        * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
-        * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
+        * [Configure a HTTP Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27592.htm).
+        * [Configure a HTTPS Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+        * [Configure a TCP Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
+        * [Configure a UDP Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
 
         > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
+
+        Basic Usage
 
         <!--Start PulumiCodeChooser -->
         ```python
@@ -1598,105 +1588,64 @@ class Listener(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
-        ## Listener fields and protocol mapping
-
-        load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
-
-        listener parameter | support protocol | value range |
-        ------------- | ------------- | ------------- |
-        backend_port | http & https & tcp & udp | 1-65535 |
-        frontend_port | http & https & tcp & udp | 1-65535 |
-        protocol | http & https & tcp & udp |
-        bandwidth | http & https & tcp & udp | -1 / 1-1000 |
-        scheduler | http & https & tcp & udp | wrr, rr, wlc, tch, qch |
-        sticky_session | http & https | on or off |
-        sticky_session_type | http & https | insert or server |
-        cookie_timeout | http & https | 1-86400  |
-        cookie | http & https |   |
-        persistence_timeout | tcp & udp | 0-3600 |
-        health_check | http & https | on or off |
-        health_check_type | tcp | tcp or http |
-        health_check_domain | http & https & tcp |
-        health_check_method | http & https & tcp |
-        health_check_uri | http & https & tcp |  |
-        health_check_connect_port | http & https & tcp & udp | 1-65535 or -520 |
-        healthy_threshold | http & https & tcp & udp | 1-10 |
-        unhealthy_threshold | http & https & tcp & udp | 1-10 |
-        health_check_timeout | http & https & tcp & udp | 1-300 |
-        health_check_interval | http & https & tcp & udp | 1-50 |
-        health_check_http_code | http & https & tcp | http_2xx,http_3xx,http_4xx,http_5xx |
-        server_certificate_id | https |  |
-        gzip | http & https | true or false  |
-        x_forwarded_for | http & https |  |
-        acl_status | http & https & tcp & udp | on or off |
-        acl_type   | http & https & tcp & udp | white or black |
-        acl_id     | http & https & tcp & udp | the id of resource alicloud_slb_acl|
-        established_timeout | tcp       | 10-900|
-        idle_timeout |http & https      | 1-60  |
-        request_timeout |http & https   | 1-180 |
-        enable_http2    |https          | on or off |
-        tls_cipher_policy |https        |  tls_cipher_policy_1_0, tls_cipher_policy_1_1, tls_cipher_policy_1_2, tls_cipher_policy_1_2_strict |
-        server_group_id    | http & https & tcp & udp | the id of resource slb.ServerGroup |
-
-        The listener mapping supports the following:
-
         ## Import
 
-        Load balancer listener can be imported using the id, e.g.
+        Classic Load Balancer (SLB) Load Balancer Listener can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:slb/listener:Listener example "lb-abc123456:tcp:22"
+        $ pulumi import alicloud:slb/listener:Listener example <load_balancer_id>:<protocol>:<frontend_port>
+        ```
+
+        ```sh
+        $ pulumi import alicloud:slb/listener:Listener example <load_balancer_id>:<frontend_port>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl_id: the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
-        :param pulumi.Input[str] acl_status: Whether to enable "acl(access control list)", the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
-        :param pulumi.Input[str] acl_type: Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
-        :param pulumi.Input[int] backend_port: Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
-        :param pulumi.Input[int] bandwidth: Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
-        :param pulumi.Input[str] ca_certificate_id: SLB CA certificate ID. Only when `protocol` is `https` can be specified.
-        :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
-        :param pulumi.Input[int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
-        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
-        :param pulumi.Input[str] description: The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
-        :param pulumi.Input[str] enable_http2: Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
-        :param pulumi.Input[int] established_timeout: Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
-        :param pulumi.Input[int] forward_port: The port that http redirect to https.
-        :param pulumi.Input[int] frontend_port: Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
-        :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
-        :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
-        :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
-        :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
-        :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
-        :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
-        :param pulumi.Input[str] health_check_method: HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
-        :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
-        :param pulumi.Input[str] health_check_type: Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
-        :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
-        :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
-        :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+        :param pulumi.Input[str] acl_id: The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[str] acl_status: Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
+        :param pulumi.Input[str] acl_type: The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[int] backend_port: The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
+        :param pulumi.Input[int] bandwidth: The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+               - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
+        :param pulumi.Input[str] ca_certificate_id: The ID of the certification authority (CA) certificate.
+        :param pulumi.Input[str] cookie: The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[int] cookie_timeout: The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
+        :param pulumi.Input[str] description: The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        :param pulumi.Input[str] enable_http2: Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
+        :param pulumi.Input[int] established_timeout: The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
+        :param pulumi.Input[int] forward_port: The listening port that is used to redirect HTTP requests to HTTPS.
+        :param pulumi.Input[int] frontend_port: The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
+        :param pulumi.Input[bool] gzip: Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] health_check: Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
+        :param pulumi.Input[int] health_check_connect_port: The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_domain: The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_http_code: The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] health_check_interval: The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_method: The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] health_check_timeout: The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` < `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_type: The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
+        :param pulumi.Input[str] health_check_uri: The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+               **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] idle_timeout: The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
+        :param pulumi.Input[str] listener_forward: Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new listener.
-        :param pulumi.Input[str] master_slave_server_group_id: The ID of the master slave server group.
-        :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
-        :param pulumi.Input[str] protocol: The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
-        :param pulumi.Input[bool] proxy_protocol_v2_enabled: Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-               
-               > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-               
-               > **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
-        :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
-        :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
-               Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
-        :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
-        :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
-        :param pulumi.Input[str] ssl_certificate_id: SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
-        :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
-        :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
-        :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
-        :param pulumi.Input[int] unhealthy_threshold: The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
-        :param pulumi.Input[pulumi.InputType['ListenerXForwardedForArgs']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+        :param pulumi.Input[str] master_slave_server_group_id: The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
+        :param pulumi.Input[int] persistence_timeout: The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
+        :param pulumi.Input[str] protocol: The protocol to listen on. Valid values: `http`.
+        :param pulumi.Input[bool] proxy_protocol_v2_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[int] request_timeout: The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
+        :param pulumi.Input[str] scheduler: The scheduling algorithm. Default value: `wrr`. Valid values:
+        :param pulumi.Input[str] server_certificate_id: The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
+        :param pulumi.Input[str] server_group_id: The ID of the vServer group. It's the ID of resource `slb.ServerGroup`.
+        :param pulumi.Input[str] ssl_certificate_id: The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
+        :param pulumi.Input[str] sticky_session: Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
+        :param pulumi.Input[str] sticky_session_type: The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[str] tls_cipher_policy: The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
+        :param pulumi.Input[int] unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[pulumi.InputType['ListenerXForwardedForArgs']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For". See `x_forwarded_for` below.
         """
         ...
     @overload
@@ -1705,20 +1654,22 @@ class Listener(pulumi.CustomResource):
                  args: ListenerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an Application Load Balancer Listener resource.
+        Provides a Classic Load Balancer (SLB) Load Balancer Listener resource.
 
-        For information about slb and how to use it, see [What is Server Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
+        For information about Classic Load Balancer (SLB) and how to use it, see [What is Classic Load Balancer](https://www.alibabacloud.com/help/doc-detail/27539.htm).
 
-        For information about listener and how to use it, to see the following:
+        For information about listener and how to use it, please see the following:
 
-        * [Configure a HTTP Listener](https://www.alibabacloud.com/help/doc-detail/27592.htm).
-        * [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
-        * [Configure a TCP Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
-        * [Configure a UDP Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
+        * [Configure a HTTP Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27592.htm).
+        * [Configure a HTTPS Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+        * [Configure a TCP Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27594.htm).
+        * [Configure a UDP Classic Load Balancer (SLB) Listener](https://www.alibabacloud.com/help/doc-detail/27595.htm).
 
         > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
+
+        Basic Usage
 
         <!--Start PulumiCodeChooser -->
         ```python
@@ -1778,54 +1729,16 @@ class Listener(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
-        ## Listener fields and protocol mapping
-
-        load balance support 4 protocol to listen on, they are `http`,`https`,`tcp`,`udp`, the every listener support which portocal following:
-
-        listener parameter | support protocol | value range |
-        ------------- | ------------- | ------------- |
-        backend_port | http & https & tcp & udp | 1-65535 |
-        frontend_port | http & https & tcp & udp | 1-65535 |
-        protocol | http & https & tcp & udp |
-        bandwidth | http & https & tcp & udp | -1 / 1-1000 |
-        scheduler | http & https & tcp & udp | wrr, rr, wlc, tch, qch |
-        sticky_session | http & https | on or off |
-        sticky_session_type | http & https | insert or server |
-        cookie_timeout | http & https | 1-86400  |
-        cookie | http & https |   |
-        persistence_timeout | tcp & udp | 0-3600 |
-        health_check | http & https | on or off |
-        health_check_type | tcp | tcp or http |
-        health_check_domain | http & https & tcp |
-        health_check_method | http & https & tcp |
-        health_check_uri | http & https & tcp |  |
-        health_check_connect_port | http & https & tcp & udp | 1-65535 or -520 |
-        healthy_threshold | http & https & tcp & udp | 1-10 |
-        unhealthy_threshold | http & https & tcp & udp | 1-10 |
-        health_check_timeout | http & https & tcp & udp | 1-300 |
-        health_check_interval | http & https & tcp & udp | 1-50 |
-        health_check_http_code | http & https & tcp | http_2xx,http_3xx,http_4xx,http_5xx |
-        server_certificate_id | https |  |
-        gzip | http & https | true or false  |
-        x_forwarded_for | http & https |  |
-        acl_status | http & https & tcp & udp | on or off |
-        acl_type   | http & https & tcp & udp | white or black |
-        acl_id     | http & https & tcp & udp | the id of resource alicloud_slb_acl|
-        established_timeout | tcp       | 10-900|
-        idle_timeout |http & https      | 1-60  |
-        request_timeout |http & https   | 1-180 |
-        enable_http2    |https          | on or off |
-        tls_cipher_policy |https        |  tls_cipher_policy_1_0, tls_cipher_policy_1_1, tls_cipher_policy_1_2, tls_cipher_policy_1_2_strict |
-        server_group_id    | http & https & tcp & udp | the id of resource slb.ServerGroup |
-
-        The listener mapping supports the following:
-
         ## Import
 
-        Load balancer listener can be imported using the id, e.g.
+        Classic Load Balancer (SLB) Load Balancer Listener can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:slb/listener:Listener example "lb-abc123456:tcp:22"
+        $ pulumi import alicloud:slb/listener:Listener example <load_balancer_id>:<protocol>:<frontend_port>
+        ```
+
+        ```sh
+        $ pulumi import alicloud:slb/listener:Listener example <load_balancer_id>:<frontend_port>
         ```
 
         :param str resource_name: The name of the resource.
@@ -2007,53 +1920,50 @@ class Listener(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl_id: the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
-        :param pulumi.Input[str] acl_status: Whether to enable "acl(access control list)", the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
-        :param pulumi.Input[str] acl_type: Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
-        :param pulumi.Input[int] backend_port: Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
-        :param pulumi.Input[int] bandwidth: Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
-        :param pulumi.Input[str] ca_certificate_id: SLB CA certificate ID. Only when `protocol` is `https` can be specified.
-        :param pulumi.Input[str] cookie: The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
-        :param pulumi.Input[int] cookie_timeout: Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
-        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
-        :param pulumi.Input[str] description: The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
-        :param pulumi.Input[str] enable_http2: Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
-        :param pulumi.Input[int] established_timeout: Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
-        :param pulumi.Input[int] forward_port: The port that http redirect to https.
-        :param pulumi.Input[int] frontend_port: Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
-        :param pulumi.Input[bool] gzip: Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
-        :param pulumi.Input[str] health_check: Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
-        :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
-        :param pulumi.Input[str] health_check_domain: Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
-        :param pulumi.Input[str] health_check_http_code: Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
-        :param pulumi.Input[int] health_check_interval: Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
-        :param pulumi.Input[str] health_check_method: HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
-        :param pulumi.Input[int] health_check_timeout: Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
-        :param pulumi.Input[str] health_check_type: Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
-        :param pulumi.Input[str] health_check_uri: URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
-        :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
-        :param pulumi.Input[int] idle_timeout: Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
-        :param pulumi.Input[str] listener_forward: Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+        :param pulumi.Input[str] acl_id: The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[str] acl_status: Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
+        :param pulumi.Input[str] acl_type: The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[int] backend_port: The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
+        :param pulumi.Input[int] bandwidth: The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+               - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
+        :param pulumi.Input[str] ca_certificate_id: The ID of the certification authority (CA) certificate.
+        :param pulumi.Input[str] cookie: The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[int] cookie_timeout: The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
+        :param pulumi.Input[str] description: The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        :param pulumi.Input[str] enable_http2: Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
+        :param pulumi.Input[int] established_timeout: The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
+        :param pulumi.Input[int] forward_port: The listening port that is used to redirect HTTP requests to HTTPS.
+        :param pulumi.Input[int] frontend_port: The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
+        :param pulumi.Input[bool] gzip: Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] health_check: Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
+        :param pulumi.Input[int] health_check_connect_port: The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_domain: The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_http_code: The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] health_check_interval: The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_method: The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] health_check_timeout: The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` < `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[str] health_check_type: The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
+        :param pulumi.Input[str] health_check_uri: The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+               **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[int] idle_timeout: The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
+        :param pulumi.Input[str] listener_forward: Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new listener.
-        :param pulumi.Input[str] master_slave_server_group_id: The ID of the master slave server group.
-        :param pulumi.Input[int] persistence_timeout: Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
-        :param pulumi.Input[str] protocol: The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
-        :param pulumi.Input[bool] proxy_protocol_v2_enabled: Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-               
-               > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-               
-               > **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
-        :param pulumi.Input[int] request_timeout: Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
-        :param pulumi.Input[str] scheduler: Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
-               Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
-        :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
-        :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
-        :param pulumi.Input[str] ssl_certificate_id: SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
-        :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
-        :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
-        :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
-        :param pulumi.Input[int] unhealthy_threshold: The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
-        :param pulumi.Input[pulumi.InputType['ListenerXForwardedForArgs']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+        :param pulumi.Input[str] master_slave_server_group_id: The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
+        :param pulumi.Input[int] persistence_timeout: The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
+        :param pulumi.Input[str] protocol: The protocol to listen on. Valid values: `http`.
+        :param pulumi.Input[bool] proxy_protocol_v2_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[int] request_timeout: The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
+        :param pulumi.Input[str] scheduler: The scheduling algorithm. Default value: `wrr`. Valid values:
+        :param pulumi.Input[str] server_certificate_id: The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
+        :param pulumi.Input[str] server_group_id: The ID of the vServer group. It's the ID of resource `slb.ServerGroup`.
+        :param pulumi.Input[str] ssl_certificate_id: The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
+        :param pulumi.Input[str] sticky_session: Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
+        :param pulumi.Input[str] sticky_session_type: The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[str] tls_cipher_policy: The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
+        :param pulumi.Input[int] unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
+        :param pulumi.Input[pulumi.InputType['ListenerXForwardedForArgs']] x_forwarded_for: Whether to set additional HTTP Header field "X-Forwarded-For". See `x_forwarded_for` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2109,7 +2019,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="aclId")
     def acl_id(self) -> pulumi.Output[Optional[str]]:
         """
-        the id of access control list to be apply on the listener, is the id of resource alicloud_slb_acl. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored.
+        The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "acl_id")
 
@@ -2117,7 +2027,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="aclStatus")
     def acl_status(self) -> pulumi.Output[Optional[str]]:
         """
-        Whether to enable "acl(access control list)", the acl is specified by `acl_id`. Valid values are `on` and `off`. Default to `off`.
+        Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "acl_status")
 
@@ -2125,7 +2035,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="aclType")
     def acl_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Mode for handling the acl specified by acl_id. If `acl_status` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `white` and `black`. `white` means the Listener can only be accessed by client ip belongs to the acl; `black` means the Listener can not be accessed by client ip belongs to the acl.
+        The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "acl_type")
 
@@ -2133,7 +2043,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="backendPort")
     def backend_port(self) -> pulumi.Output[Optional[int]]:
         """
-        Port used by the Server Load Balancer instance backend. Valid value range: [1-65535].
+        The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
         """
         return pulumi.get(self, "backend_port")
 
@@ -2141,7 +2051,8 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[int]:
         """
-        Bandwidth peak of Listener. For the public network instance charged per traffic consumed, the Bandwidth on Listener can be set to -1, indicating the bandwidth peak is unlimited. Valid values are [-1, 1-1000] in Mbps.
+        The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
+        - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -2149,7 +2060,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="caCertificateId")
     def ca_certificate_id(self) -> pulumi.Output[Optional[str]]:
         """
-        SLB CA certificate ID. Only when `protocol` is `https` can be specified.
+        The ID of the certification authority (CA) certificate.
         """
         return pulumi.get(self, "ca_certificate_id")
 
@@ -2157,7 +2068,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter
     def cookie(self) -> pulumi.Output[Optional[str]]:
         """
-        The cookie configured on the server. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "server". Otherwise, it will be ignored. Valid value：String in line with RFC 2965, with length being 1- 200. It only contains characters such as ASCII codes, English letters and digits instead of the comma, semicolon or spacing, and it cannot start with $.
+        The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "cookie")
 
@@ -2165,7 +2076,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="cookieTimeout")
     def cookie_timeout(self) -> pulumi.Output[Optional[int]]:
         """
-        Cookie timeout. It is mandatory when `sticky_session` is "on" and `sticky_session_type` is "insert". Otherwise, it will be ignored. Valid value range: [1-86400] in seconds.
+        The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "cookie_timeout")
 
@@ -2173,7 +2084,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="deleteProtectionValidation")
     def delete_protection_validation(self) -> pulumi.Output[Optional[bool]]:
         """
-        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
         """
         return pulumi.get(self, "delete_protection_validation")
 
@@ -2181,7 +2092,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of slb listener. This description can have a string of 1 to 80 characters. Default value: null.
+        The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         """
         return pulumi.get(self, "description")
 
@@ -2189,7 +2100,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="enableHttp2")
     def enable_http2(self) -> pulumi.Output[Optional[str]]:
         """
-        Whether to enable https listener support http2 or not. Valid values are `on` and `off`. Default to `on`.
+        Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "enable_http2")
 
@@ -2197,7 +2108,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="establishedTimeout")
     def established_timeout(self) -> pulumi.Output[Optional[int]]:
         """
-        Timeout of tcp listener established connection idle timeout. Valid value range: [10-900] in seconds. Default to 900.
+        The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
         """
         return pulumi.get(self, "established_timeout")
 
@@ -2205,7 +2116,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="forwardPort")
     def forward_port(self) -> pulumi.Output[Optional[int]]:
         """
-        The port that http redirect to https.
+        The listening port that is used to redirect HTTP requests to HTTPS.
         """
         return pulumi.get(self, "forward_port")
 
@@ -2213,7 +2124,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="frontendPort")
     def frontend_port(self) -> pulumi.Output[int]:
         """
-        Port used by the Server Load Balancer instance frontend. Valid value range: [1-65535].
+        The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
         """
         return pulumi.get(self, "frontend_port")
 
@@ -2221,7 +2132,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter
     def gzip(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to enable "Gzip Compression". If enabled, files of specific file types will be compressed, otherwise, no files will be compressed. Default to true. Available since v1.13.0+.
+        Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "gzip")
 
@@ -2229,7 +2140,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> pulumi.Output[Optional[str]]:
         """
-        Whether to enable health check. Valid values are`on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener.
+        Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
         """
         return pulumi.get(self, "health_check")
 
@@ -2237,7 +2148,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> pulumi.Output[int]:
         """
-        The port that is used for health checks. Valid value range: [0-65535]. Default to `0` means that the port on a backend server is used for health checks.
+        The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -2245,7 +2156,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckDomain")
     def health_check_domain(self) -> pulumi.Output[Optional[str]]:
         """
-        Domain name used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and only characters such as letters, digits, ‘-‘ and ‘.’ are allowed. When it is not set or empty,  Server Load Balancer uses the private network IP address of each backend server as Domain used for health check.
+        The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_domain")
 
@@ -2253,7 +2164,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckHttpCode")
     def health_check_http_code(self) -> pulumi.Output[str]:
         """
-        Regular health check HTTP status code. Multiple codes are segmented by “,”. It is required when `health_check` is on. Default to `http_2xx`.  Valid values are: `http_2xx`,  `http_3xx`, `http_4xx` and `http_5xx`.
+        The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_http_code")
 
@@ -2261,7 +2172,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> pulumi.Output[Optional[int]]:
         """
-        Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2.
+        The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -2269,7 +2180,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckMethod")
     def health_check_method(self) -> pulumi.Output[str]:
         """
-        HealthCheckMethod used for health check.Valid values: ["head", "get"] `http` and `https` support regions ap-northeast-1, ap-southeast-1, ap-southeast-2, ap-southeast-3, us-east-1, us-west-1, eu-central-1, ap-south-1, me-east-1, cn-huhehaote, cn-zhangjiakou, ap-southeast-5, cn-shenzhen, cn-hongkong, cn-qingdao, cn-chengdu, eu-west-1, cn-hangzhou", cn-beijing, cn-shanghai.This function does not support the TCP protocol .
+        The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_method")
 
@@ -2277,7 +2188,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckTimeout")
     def health_check_timeout(self) -> pulumi.Output[Optional[int]]:
         """
-        Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`.
+        The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` < `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_timeout")
 
@@ -2285,7 +2196,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckType")
     def health_check_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Type of health check. Valid values are: `tcp` and `http`. Default to `tcp` . TCP supports TCP and HTTP health check mode, you can select the particular mode depending on your application.
+        The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
         """
         return pulumi.get(self, "health_check_type")
 
@@ -2293,7 +2204,8 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckUri")
     def health_check_uri(self) -> pulumi.Output[Optional[str]]:
         """
-        URI used for health check. When it used to launch TCP listener, `health_check_type` must be "http". Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
+        The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+        **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "health_check_uri")
 
@@ -2301,7 +2213,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of health checks that an unhealthy backend server must consecutively pass before it can be declared healthy. In this case, the health check state is changed from fail to success. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -2309,7 +2221,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> pulumi.Output[Optional[int]]:
         """
-        Timeout of http or https listener established connection idle timeout. Valid value range: [1-60] in seconds. Default to 15.
+        The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -2333,7 +2245,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="listenerForward")
     def listener_forward(self) -> pulumi.Output[str]:
         """
-        Whether to enable http redirect to https, Valid values are `on` and `off`. Default to `off`.
+        Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "listener_forward")
 
@@ -2349,7 +2261,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="masterSlaveServerGroupId")
     def master_slave_server_group_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the master slave server group.
+        The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
         """
         return pulumi.get(self, "master_slave_server_group_id")
 
@@ -2357,7 +2269,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="persistenceTimeout")
     def persistence_timeout(self) -> pulumi.Output[Optional[int]]:
         """
-        Timeout of connection persistence. Valid value range: [0-3600] in seconds. Default to 0 and means closing it.
+        The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
         """
         return pulumi.get(self, "persistence_timeout")
 
@@ -2365,7 +2277,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter
     def protocol(self) -> pulumi.Output[str]:
         """
-        The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
+        The protocol to listen on. Valid values: `http`.
         """
         return pulumi.get(self, "protocol")
 
@@ -2373,11 +2285,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="proxyProtocolV2Enabled")
     def proxy_protocol_v2_enabled(self) -> pulumi.Output[bool]:
         """
-        Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
-
-        > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
-
-        > **NOTE:** Advantanced feature such as `tls_cipher_policy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
+        Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "proxy_protocol_v2_enabled")
 
@@ -2385,7 +2293,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> pulumi.Output[Optional[int]]:
         """
-        Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
+        The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
         """
         return pulumi.get(self, "request_timeout")
 
@@ -2393,8 +2301,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter
     def scheduler(self) -> pulumi.Output[Optional[str]]:
         """
-        Scheduling algorithm,  Valid values: `wrr`, `rr`, `wlc`, `sch`, `tcp`, `qch`. Default to `wrr`. 
-        Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
+        The scheduling algorithm. Default value: `wrr`. Valid values:
         """
         return pulumi.get(self, "scheduler")
 
@@ -2402,7 +2309,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="serverCertificateId")
     def server_certificate_id(self) -> pulumi.Output[str]:
         """
-        SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
+        The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
         """
         return pulumi.get(self, "server_certificate_id")
 
@@ -2410,7 +2317,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="serverGroupId")
     def server_group_id(self) -> pulumi.Output[Optional[str]]:
         """
-        the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
+        The ID of the vServer group. It's the ID of resource `slb.ServerGroup`.
         """
         return pulumi.get(self, "server_group_id")
 
@@ -2418,7 +2325,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="sslCertificateId")
     def ssl_certificate_id(self) -> pulumi.Output[str]:
         """
-        SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
         """
         warnings.warn("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
@@ -2429,7 +2336,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="stickySession")
     def sticky_session(self) -> pulumi.Output[Optional[str]]:
         """
-        Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
+        Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "sticky_session")
 
@@ -2437,7 +2344,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="stickySessionType")
     def sticky_session_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
+        The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "sticky_session_type")
 
@@ -2445,7 +2352,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="tlsCipherPolicy")
     def tls_cipher_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
+        The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
         """
         return pulumi.get(self, "tls_cipher_policy")
 
@@ -2453,7 +2360,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy. In this case, the health check state is changed from success to fail. It is required when `health_check` is on. Valid value range: [2-10] in seconds. Default to 3. **NOTE:** This parameter takes effect only if the `health_check` parameter is set to `on`.
+        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -2461,7 +2368,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="xForwardedFor")
     def x_forwarded_for(self) -> pulumi.Output['outputs.ListenerXForwardedFor']:
         """
-        Whether to set additional HTTP Header field "X-Forwarded-For" (documented below). Available since v1.13.0+. See `x_forwarded_for` below.
+        Whether to set additional HTTP Header field "X-Forwarded-For". See `x_forwarded_for` below.
         """
         return pulumi.get(self, "x_forwarded_for")
 

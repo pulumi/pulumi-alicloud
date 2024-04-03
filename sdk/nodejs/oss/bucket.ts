@@ -151,9 +151,11 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly accessMonitor!: pulumi.Output<outputs.oss.BucketAccessMonitor>;
     /**
-     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
+     *
+     * @deprecated Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
      */
-    public readonly acl!: pulumi.Output<string | undefined>;
+    public readonly acl!: pulumi.Output<string>;
     public readonly bucket!: pulumi.Output<string | undefined>;
     /**
      * A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `corsRule` below.
@@ -202,7 +204,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly owner!: pulumi.Output<string>;
     /**
-     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketPolicy` instead.
      */
     public readonly policy!: pulumi.Output<string | undefined>;
     /**
@@ -210,7 +212,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly redundancyType!: pulumi.Output<string | undefined>;
     /**
-     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
+     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `refererConfig` below.
      */
     public readonly refererConfig!: pulumi.Output<outputs.oss.BucketRefererConfig | undefined>;
     /**
@@ -320,7 +322,9 @@ export interface BucketState {
      */
     accessMonitor?: pulumi.Input<inputs.oss.BucketAccessMonitor>;
     /**
-     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
+     *
+     * @deprecated Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
      */
     acl?: pulumi.Input<string>;
     bucket?: pulumi.Input<string>;
@@ -371,7 +375,7 @@ export interface BucketState {
      */
     owner?: pulumi.Input<string>;
     /**
-     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketPolicy` instead.
      */
     policy?: pulumi.Input<string>;
     /**
@@ -379,7 +383,7 @@ export interface BucketState {
      */
     redundancyType?: pulumi.Input<string>;
     /**
-     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
+     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `refererConfig` below.
      */
     refererConfig?: pulumi.Input<inputs.oss.BucketRefererConfig>;
     /**
@@ -421,7 +425,9 @@ export interface BucketArgs {
      */
     accessMonitor?: pulumi.Input<inputs.oss.BucketAccessMonitor>;
     /**
-     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". Defaults to "private".
+     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
+     *
+     * @deprecated Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
      */
     acl?: pulumi.Input<string>;
     bucket?: pulumi.Input<string>;
@@ -452,7 +458,7 @@ export interface BucketArgs {
      */
     loggingIsenable?: pulumi.Input<boolean>;
     /**
-     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketPolicy` instead.
      */
     policy?: pulumi.Input<string>;
     /**
@@ -460,7 +466,7 @@ export interface BucketArgs {
      */
     redundancyType?: pulumi.Input<string>;
     /**
-     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `refererConfig` below.
+     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `refererConfig` below.
      */
     refererConfig?: pulumi.Input<inputs.oss.BucketRefererConfig>;
     /**

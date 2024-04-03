@@ -80,8 +80,9 @@ import (
 //				return err
 //			}
 //			_, err = cs.NewServerlessKubernetes(ctx, "serverless", &cs.ServerlessKubernetesArgs{
-//				NamePrefix: pulumi.String(name),
-//				VpcId:      defaultNetwork.ID(),
+//				NamePrefix:  pulumi.String(name),
+//				ClusterSpec: pulumi.String("ack.pro.small"),
+//				VpcId:       defaultNetwork.ID(),
 //				VswitchIds: pulumi.StringArray{
 //					defaultSwitch.ID(),
 //				},

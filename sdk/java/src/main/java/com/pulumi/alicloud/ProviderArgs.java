@@ -4,6 +4,7 @@
 package com.pulumi.alicloud;
 
 import com.pulumi.alicloud.inputs.ProviderAssumeRoleArgs;
+import com.pulumi.alicloud.inputs.ProviderAssumeRoleWithOidcArgs;
 import com.pulumi.alicloud.inputs.ProviderEndpointArgs;
 import com.pulumi.alicloud.inputs.ProviderSignVersionArgs;
 import com.pulumi.core.Output;
@@ -61,6 +62,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<ProviderAssumeRoleArgs>> assumeRole() {
         return Optional.ofNullable(this.assumeRole);
+    }
+
+    @Import(name="assumeRoleWithOidc", json=true)
+    private @Nullable Output<ProviderAssumeRoleWithOidcArgs> assumeRoleWithOidc;
+
+    public Optional<Output<ProviderAssumeRoleWithOidcArgs>> assumeRoleWithOidc() {
+        return Optional.ofNullable(this.assumeRoleWithOidc);
     }
 
     /**
@@ -389,6 +397,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.accessKey = $.accessKey;
         this.accountId = $.accountId;
         this.assumeRole = $.assumeRole;
+        this.assumeRoleWithOidc = $.assumeRoleWithOidc;
         this.clientConnectTimeout = $.clientConnectTimeout;
         this.clientReadTimeout = $.clientReadTimeout;
         this.configurationSource = $.configurationSource;
@@ -484,6 +493,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder assumeRole(ProviderAssumeRoleArgs assumeRole) {
             return assumeRole(Output.of(assumeRole));
+        }
+
+        public Builder assumeRoleWithOidc(@Nullable Output<ProviderAssumeRoleWithOidcArgs> assumeRoleWithOidc) {
+            $.assumeRoleWithOidc = assumeRoleWithOidc;
+            return this;
+        }
+
+        public Builder assumeRoleWithOidc(ProviderAssumeRoleWithOidcArgs assumeRoleWithOidc) {
+            return assumeRoleWithOidc(Output.of(assumeRoleWithOidc));
         }
 
         /**

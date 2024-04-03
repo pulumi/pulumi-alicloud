@@ -35,14 +35,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudfirewall.NewInstance(ctx, "example", &cloudfirewall.InstanceArgs{
-//				BandWidth:     pulumi.Int(10),
+//			_, err := cloudfirewall.NewInstance(ctx, "default", &cloudfirewall.InstanceArgs{
+//				BandWidth:     pulumi.Int(200),
 //				CfwLog:        pulumi.Bool(true),
 //				CfwLogStorage: pulumi.Int(1000),
-//				IpNumber:      pulumi.Int(20),
-//				PaymentType:   pulumi.String("Subscription"),
-//				Period:        pulumi.Int(1),
-//				Spec:          pulumi.String("premium_version"),
+//				IpNumber:      pulumi.Int(400),
+//				PaymentType:   pulumi.String("PayAsYouGo"),
+//				Spec:          pulumi.String("ultimate_version"),
 //			})
 //			if err != nil {
 //				return err
@@ -88,17 +87,18 @@ type Instance struct {
 	Logistics pulumi.StringPtrOutput `pulumi:"logistics"`
 	// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
 	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
-	// The payment type of the resource. Valid values: `Subscription`.
+	// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
-	Period pulumi.IntOutput `pulumi:"period"`
+	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `paymentType` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The release time.
 	ReleaseTime pulumi.StringOutput `pulumi:"releaseTime"`
-	// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+	// Automatic renewal period. Attribute `renewPeriod` has been deprecated since 1.209.1. Using `renewalDuration` instead.
 	//
 	// Deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 	RenewPeriod pulumi.IntOutput `pulumi:"renewPeriod"`
-	// Auto-Renewal Duration. It is required under the condition that renewalStatus is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+	// Auto-Renewal Duration. It is required under the condition that `renewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+	// **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
 	RenewalDuration pulumi.IntOutput `pulumi:"renewalDuration"`
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit pulumi.StringPtrOutput `pulumi:"renewalDurationUnit"`
@@ -128,9 +128,6 @@ func NewInstance(ctx *pulumi.Context,
 	}
 	if args.PaymentType == nil {
 		return nil, errors.New("invalid value for required argument 'PaymentType'")
-	}
-	if args.Period == nil {
-		return nil, errors.New("invalid value for required argument 'Period'")
 	}
 	if args.Spec == nil {
 		return nil, errors.New("invalid value for required argument 'Spec'")
@@ -182,17 +179,18 @@ type instanceState struct {
 	Logistics *string `pulumi:"logistics"`
 	// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
 	ModifyType *string `pulumi:"modifyType"`
-	// The payment type of the resource. Valid values: `Subscription`.
+	// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `paymentType` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
 	Period *int `pulumi:"period"`
 	// The release time.
 	ReleaseTime *string `pulumi:"releaseTime"`
-	// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+	// Automatic renewal period. Attribute `renewPeriod` has been deprecated since 1.209.1. Using `renewalDuration` instead.
 	//
 	// Deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 	RenewPeriod *int `pulumi:"renewPeriod"`
-	// Auto-Renewal Duration. It is required under the condition that renewalStatus is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+	// Auto-Renewal Duration. It is required under the condition that `renewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+	// **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
 	RenewalDuration *int `pulumi:"renewalDuration"`
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
@@ -229,17 +227,18 @@ type InstanceState struct {
 	Logistics pulumi.StringPtrInput
 	// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
 	ModifyType pulumi.StringPtrInput
-	// The payment type of the resource. Valid values: `Subscription`.
+	// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
-	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `paymentType` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
 	Period pulumi.IntPtrInput
 	// The release time.
 	ReleaseTime pulumi.StringPtrInput
-	// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+	// Automatic renewal period. Attribute `renewPeriod` has been deprecated since 1.209.1. Using `renewalDuration` instead.
 	//
 	// Deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 	RenewPeriod pulumi.IntPtrInput
-	// Auto-Renewal Duration. It is required under the condition that renewalStatus is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+	// Auto-Renewal Duration. It is required under the condition that `renewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+	// **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
 	RenewalDuration pulumi.IntPtrInput
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit pulumi.StringPtrInput
@@ -276,15 +275,16 @@ type instanceArgs struct {
 	Logistics *string `pulumi:"logistics"`
 	// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
 	ModifyType *string `pulumi:"modifyType"`
-	// The payment type of the resource. Valid values: `Subscription`.
+	// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
 	PaymentType string `pulumi:"paymentType"`
-	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
-	Period int `pulumi:"period"`
-	// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `paymentType` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
+	Period *int `pulumi:"period"`
+	// Automatic renewal period. Attribute `renewPeriod` has been deprecated since 1.209.1. Using `renewalDuration` instead.
 	//
 	// Deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 	RenewPeriod *int `pulumi:"renewPeriod"`
-	// Auto-Renewal Duration. It is required under the condition that renewalStatus is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+	// Auto-Renewal Duration. It is required under the condition that `renewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+	// **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
 	RenewalDuration *int `pulumi:"renewalDuration"`
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
@@ -316,15 +316,16 @@ type InstanceArgs struct {
 	Logistics pulumi.StringPtrInput
 	// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
 	ModifyType pulumi.StringPtrInput
-	// The payment type of the resource. Valid values: `Subscription`.
+	// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
 	PaymentType pulumi.StringInput
-	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
-	Period pulumi.IntInput
-	// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `paymentType` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
+	Period pulumi.IntPtrInput
+	// Automatic renewal period. Attribute `renewPeriod` has been deprecated since 1.209.1. Using `renewalDuration` instead.
 	//
 	// Deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 	RenewPeriod pulumi.IntPtrInput
-	// Auto-Renewal Duration. It is required under the condition that renewalStatus is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+	// Auto-Renewal Duration. It is required under the condition that `renewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+	// **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
 	RenewalDuration pulumi.IntPtrInput
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit pulumi.StringPtrInput
@@ -481,14 +482,14 @@ func (o InstanceOutput) ModifyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ModifyType }).(pulumi.StringPtrOutput)
 }
 
-// The payment type of the resource. Valid values: `Subscription`.
+// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
 func (o InstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
-func (o InstanceOutput) Period() pulumi.IntOutput {
-	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
+// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `paymentType` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
+func (o InstanceOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
 // The release time.
@@ -496,14 +497,15 @@ func (o InstanceOutput) ReleaseTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ReleaseTime }).(pulumi.StringOutput)
 }
 
-// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+// Automatic renewal period. Attribute `renewPeriod` has been deprecated since 1.209.1. Using `renewalDuration` instead.
 //
 // Deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 func (o InstanceOutput) RenewPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.RenewPeriod }).(pulumi.IntOutput)
 }
 
-// Auto-Renewal Duration. It is required under the condition that renewalStatus is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+// Auto-Renewal Duration. It is required under the condition that `renewalStatus` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+// **NOTE:** `renewalDuration` takes effect only if `paymentType` is set to `Subscription`, and `renewalStatus` is set to `AutoRenewal`.
 func (o InstanceOutput) RenewalDuration() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.RenewalDuration }).(pulumi.IntOutput)
 }

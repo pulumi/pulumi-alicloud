@@ -18,7 +18,6 @@ class InstanceArgs:
                  cfw_log: pulumi.Input[bool],
                  ip_number: pulumi.Input[int],
                  payment_type: pulumi.Input[str],
-                 period: pulumi.Input[int],
                  spec: pulumi.Input[str],
                  account_number: Optional[pulumi.Input[int]] = None,
                  cfw_account: Optional[pulumi.Input[bool]] = None,
@@ -27,6 +26,7 @@ class InstanceArgs:
                  instance_count: Optional[pulumi.Input[int]] = None,
                  logistics: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_duration: Optional[pulumi.Input[int]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[str]] = None,
@@ -36,8 +36,7 @@ class InstanceArgs:
         :param pulumi.Input[int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         :param pulumi.Input[bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`.
         :param pulumi.Input[int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
-        :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         :param pulumi.Input[int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
         :param pulumi.Input[bool] cfw_account: Whether to use multi-account. Valid values: `true`, `false`.
@@ -46,8 +45,10 @@ class InstanceArgs:
         :param pulumi.Input[int] instance_count: The number of assets.
         :param pulumi.Input[str] logistics: The logistics.
         :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
-        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
-        :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
+        :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+               **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
         """
@@ -55,7 +56,6 @@ class InstanceArgs:
         pulumi.set(__self__, "cfw_log", cfw_log)
         pulumi.set(__self__, "ip_number", ip_number)
         pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "period", period)
         pulumi.set(__self__, "spec", spec)
         if account_number is not None:
             pulumi.set(__self__, "account_number", account_number)
@@ -71,6 +71,8 @@ class InstanceArgs:
             pulumi.set(__self__, "logistics", logistics)
         if modify_type is not None:
             pulumi.set(__self__, "modify_type", modify_type)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
         if renew_period is not None:
             warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
             pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
@@ -123,25 +125,13 @@ class InstanceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[str]:
         """
-        The payment type of the resource. Valid values: `Subscription`.
+        The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
     def payment_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "payment_type", value)
-
-    @property
-    @pulumi.getter
-    def period(self) -> pulumi.Input[int]:
-        """
-        The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
-        """
-        return pulumi.get(self, "period")
-
-    @period.setter
-    def period(self, value: pulumi.Input[int]):
-        pulumi.set(self, "period", value)
 
     @property
     @pulumi.getter
@@ -240,10 +230,22 @@ class InstanceArgs:
         pulumi.set(self, "modify_type", value)
 
     @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
         """
         warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
         pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
@@ -258,7 +260,8 @@ class InstanceArgs:
     @pulumi.getter(name="renewalDuration")
     def renewal_duration(self) -> Optional[pulumi.Input[int]]:
         """
-        Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         """
         return pulumi.get(self, "renewal_duration")
 
@@ -329,11 +332,12 @@ class _InstanceState:
         :param pulumi.Input[int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
         :param pulumi.Input[str] logistics: The logistics.
         :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
-        :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
+        :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
         :param pulumi.Input[str] release_time: The release time.
-        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
-        :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
+        :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+               **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
@@ -533,7 +537,7 @@ class _InstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the resource. Valid values: `Subscription`.
+        The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -545,7 +549,7 @@ class _InstanceState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+        The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "period")
 
@@ -569,7 +573,7 @@ class _InstanceState:
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
         """
         warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
         pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
@@ -584,7 +588,8 @@ class _InstanceState:
     @pulumi.getter(name="renewalDuration")
     def renewal_duration(self) -> Optional[pulumi.Input[int]]:
         """
-        Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         """
         return pulumi.get(self, "renewal_duration")
 
@@ -680,14 +685,13 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cloudfirewall.Instance("example",
-            band_width=10,
+        default = alicloud.cloudfirewall.Instance("default",
+            band_width=200,
             cfw_log=True,
             cfw_log_storage=1000,
-            ip_number=20,
-            payment_type="Subscription",
-            period=1,
-            spec="premium_version")
+            ip_number=400,
+            payment_type="PayAsYouGo",
+            spec="ultimate_version")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -711,10 +715,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
         :param pulumi.Input[str] logistics: The logistics.
         :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
-        :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
-        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
-        :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
+        :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
+        :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+               **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
@@ -741,14 +746,13 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cloudfirewall.Instance("example",
-            band_width=10,
+        default = alicloud.cloudfirewall.Instance("default",
+            band_width=200,
             cfw_log=True,
             cfw_log_storage=1000,
-            ip_number=20,
-            payment_type="Subscription",
-            period=1,
-            spec="premium_version")
+            ip_number=400,
+            payment_type="PayAsYouGo",
+            spec="ultimate_version")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -820,8 +824,6 @@ class Instance(pulumi.CustomResource):
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
-            if period is None and not opts.urn:
-                raise TypeError("Missing required property 'period'")
             __props__.__dict__["period"] = period
             __props__.__dict__["renew_period"] = renew_period
             __props__.__dict__["renewal_duration"] = renewal_duration
@@ -884,11 +886,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
         :param pulumi.Input[str] logistics: The logistics.
         :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
-        :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
+        :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
         :param pulumi.Input[str] release_time: The release time.
-        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
-        :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
+        :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+               **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
@@ -1021,15 +1024,15 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The payment type of the resource. Valid values: `Subscription`.
+        The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[int]:
+    def period(self) -> pulumi.Output[Optional[int]]:
         """
-        The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
+        The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
         """
         return pulumi.get(self, "period")
 
@@ -1045,7 +1048,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> pulumi.Output[int]:
         """
-        Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
         """
         warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
         pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
@@ -1056,7 +1059,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="renewalDuration")
     def renewal_duration(self) -> pulumi.Output[int]:
         """
-        Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
+        **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         """
         return pulumi.get(self, "renewal_duration")
 

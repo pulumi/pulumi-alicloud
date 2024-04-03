@@ -11,7 +11,8 @@ namespace Pulumi.AliCloud.ResourceManager
 {
     /// <summary>
     /// Provides a Resource Manager Resource Group resource. If you need to group cloud resources according to business departments, projects, and other dimensions, you can create resource groups.
-    /// For information about Resource Manager Resoource Group and how to use it, see [What is Resource Manager Resource Group](https://www.alibabacloud.com/help/en/doc-detail/94485.htm)
+    /// 
+    /// For information about Resource Manager Resource Group and how to use it, see [What is Resource Group](https://www.alibabacloud.com/help/en/resource-management/developer-reference/api-createresourcegroup).
     /// 
     /// &gt; **NOTE:** Available since v1.82.0.
     /// 
@@ -29,11 +30,11 @@ namespace Pulumi.AliCloud.ResourceManager
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var example = new AliCloud.ResourceManager.ResourceGroup("example", new()
     ///     {
-    ///         ResourceGroupName = name,
     ///         DisplayName = name,
+    ///         ResourceGroupName = name,
     ///     });
     /// 
     /// });
@@ -45,7 +46,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// Resource Manager Resource Group can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
+    /// $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:resourcemanager/resourceGroup:ResourceGroup")]
@@ -58,34 +59,40 @@ namespace Pulumi.AliCloud.ResourceManager
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+        /// The display name of the resource group. The name must be 1 to 50 characters in length.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
+        /// Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource group in all regions. See `region_statuses` below.
+        /// The status of the resource group in all regions.
         /// </summary>
         [Output("regionStatuses")]
         public Output<ImmutableArray<Outputs.ResourceGroupRegionStatus>> RegionStatuses { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+        /// The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
         /// </summary>
         [Output("resourceGroupName")]
         public Output<string> ResourceGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the regional resource group.
+        /// The status of the resource group.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -134,22 +141,34 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class ResourceGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+        /// The display name of the resource group. The name must be 1 to 50 characters in length.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
+        /// Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+        /// The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
         /// </summary>
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public ResourceGroupArgs()
         {
@@ -166,13 +185,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+        /// The display name of the resource group. The name must be 1 to 50 characters in length.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
+        /// Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -181,7 +200,7 @@ namespace Pulumi.AliCloud.ResourceManager
         private InputList<Inputs.ResourceGroupRegionStatusGetArgs>? _regionStatuses;
 
         /// <summary>
-        /// The status of the resource group in all regions. See `region_statuses` below.
+        /// The status of the resource group in all regions.
         /// </summary>
         public InputList<Inputs.ResourceGroupRegionStatusGetArgs> RegionStatuses
         {
@@ -190,16 +209,28 @@ namespace Pulumi.AliCloud.ResourceManager
         }
 
         /// <summary>
-        /// The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+        /// The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
         /// </summary>
         [Input("resourceGroupName")]
         public Input<string>? ResourceGroupName { get; set; }
 
         /// <summary>
-        /// The status of the regional resource group.
+        /// The status of the resource group.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public ResourceGroupState()
         {

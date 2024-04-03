@@ -12,11 +12,41 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
     public sealed class ScalingConfigurationInstancePatternInfoArgs : global::Pulumi.ResourceArgs
     {
+        [Input("architectures")]
+        private InputList<string>? _architectures;
+
+        /// <summary>
+        /// Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+        /// </summary>
+        public InputList<string> Architectures
+        {
+            get => _architectures ?? (_architectures = new InputList<string>());
+            set => _architectures = value;
+        }
+
+        /// <summary>
+        /// Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+        /// </summary>
+        [Input("burstablePerformance")]
+        public Input<string>? BurstablePerformance { get; set; }
+
         /// <summary>
         /// The number of vCPUs that are specified for an instance type in instancePatternInfo.
         /// </summary>
         [Input("cores")]
         public Input<int>? Cores { get; set; }
+
+        [Input("excludedInstanceTypes")]
+        private InputList<string>? _excludedInstanceTypes;
+
+        /// <summary>
+        /// Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+        /// </summary>
+        public InputList<string> ExcludedInstanceTypes
+        {
+            get => _excludedInstanceTypes ?? (_excludedInstanceTypes = new InputList<string>());
+            set => _excludedInstanceTypes = value;
+        }
 
         /// <summary>
         /// The instance family level in instancePatternInfo.

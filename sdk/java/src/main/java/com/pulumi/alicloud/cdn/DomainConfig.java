@@ -16,11 +16,11 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CDN Accelerated Domain resource.
+ * Provides a Cdn Domain Config resource.
  * 
- * For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/90915.htm)
+ * For information about Cdn Domain Config and how to use it, see [What is Domain Config](https://www.alibabacloud.com/help/en/doc-detail/90915.htm)
  * 
- * &gt; **NOTE:** Available since v1.34.0+.
+ * &gt; **NOTE:** Available since v1.34.0.
  * 
  * ## Example Usage
  * 
@@ -103,14 +103,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cdn/domainConfig:DomainConfig")
 public class DomainConfig extends com.pulumi.resources.CustomResource {
     /**
-     * (Available in 1.132.0+) The ID of the domain config function.
+     * (Available since v1.132.0) The ID of the domain config function.
      * 
      */
     @Export(name="configId", refs={String.class}, tree="[0]")
     private Output<String> configId;
 
     /**
-     * @return (Available in 1.132.0+) The ID of the domain config function.
+     * @return (Available since v1.132.0) The ID of the domain config function.
      * 
      */
     public Output<String> configId() {
@@ -159,14 +159,28 @@ public class DomainConfig extends com.pulumi.resources.CustomResource {
         return this.functionName;
     }
     /**
-     * (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+     * By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+     * 
+     */
+    @Export(name="parentId", refs={String.class}, tree="[0]")
+    private Output<String> parentId;
+
+    /**
+     * @return By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+     * 
+     */
+    public Output<String> parentId() {
+        return this.parentId;
+    }
+    /**
+     * (Available since v1.132.0) The Status of the function.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return (Available in 1.132.0+) The Status of the function. Valid values: `success`, `testing`, `failed`, and `configuring`.
+     * @return (Available since v1.132.0) The Status of the function.
      * 
      */
     public Output<String> status() {

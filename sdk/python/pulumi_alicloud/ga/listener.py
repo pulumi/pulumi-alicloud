@@ -22,6 +22,7 @@ class ListenerArgs:
                  client_affinity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  forwarded_for_config: Optional[pulumi.Input['ListenerForwardedForConfigArgs']] = None,
+                 http_version: Optional[pulumi.Input[str]] = None,
                  listener_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -37,6 +38,8 @@ class ListenerArgs:
         :param pulumi.Input[str] client_affinity: The clientAffinity of the listener. Default value: `NONE`. Valid values:
         :param pulumi.Input[str] description: The description of the listener.
         :param pulumi.Input['ListenerForwardedForConfigArgs'] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
+        :param pulumi.Input[str] http_version: The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+               > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
         :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
         :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
@@ -53,6 +56,8 @@ class ListenerArgs:
             pulumi.set(__self__, "description", description)
         if forwarded_for_config is not None:
             pulumi.set(__self__, "forwarded_for_config", forwarded_for_config)
+        if http_version is not None:
+            pulumi.set(__self__, "http_version", http_version)
         if listener_type is not None:
             pulumi.set(__self__, "listener_type", listener_type)
         if name is not None:
@@ -139,6 +144,19 @@ class ListenerArgs:
         pulumi.set(self, "forwarded_for_config", value)
 
     @property
+    @pulumi.getter(name="httpVersion")
+    def http_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+        > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+        """
+        return pulumi.get(self, "http_version")
+
+    @http_version.setter
+    def http_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_version", value)
+
+    @property
     @pulumi.getter(name="listenerType")
     def listener_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -207,6 +225,7 @@ class _ListenerState:
                  client_affinity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  forwarded_for_config: Optional[pulumi.Input['ListenerForwardedForConfigArgs']] = None,
+                 http_version: Optional[pulumi.Input[str]] = None,
                  listener_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]]] = None,
@@ -222,6 +241,8 @@ class _ListenerState:
         :param pulumi.Input[str] client_affinity: The clientAffinity of the listener. Default value: `NONE`. Valid values:
         :param pulumi.Input[str] description: The description of the listener.
         :param pulumi.Input['ListenerForwardedForConfigArgs'] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
+        :param pulumi.Input[str] http_version: The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+               > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
         :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
         :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]] port_ranges: The portRanges of the listener. See `port_ranges` below.
@@ -241,6 +262,8 @@ class _ListenerState:
             pulumi.set(__self__, "description", description)
         if forwarded_for_config is not None:
             pulumi.set(__self__, "forwarded_for_config", forwarded_for_config)
+        if http_version is not None:
+            pulumi.set(__self__, "http_version", http_version)
         if listener_type is not None:
             pulumi.set(__self__, "listener_type", listener_type)
         if name is not None:
@@ -316,6 +339,19 @@ class _ListenerState:
     @forwarded_for_config.setter
     def forwarded_for_config(self, value: Optional[pulumi.Input['ListenerForwardedForConfigArgs']]):
         pulumi.set(self, "forwarded_for_config", value)
+
+    @property
+    @pulumi.getter(name="httpVersion")
+    def http_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+        > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+        """
+        return pulumi.get(self, "http_version")
+
+    @http_version.setter
+    def http_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_version", value)
 
     @property
     @pulumi.getter(name="listenerType")
@@ -413,6 +449,7 @@ class Listener(pulumi.CustomResource):
                  client_affinity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  forwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerForwardedForConfigArgs']]] = None,
+                 http_version: Optional[pulumi.Input[str]] = None,
                  listener_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]]] = None,
@@ -475,6 +512,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] client_affinity: The clientAffinity of the listener. Default value: `NONE`. Valid values:
         :param pulumi.Input[str] description: The description of the listener.
         :param pulumi.Input[pulumi.InputType['ListenerForwardedForConfigArgs']] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
+        :param pulumi.Input[str] http_version: The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+               > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
         :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
         :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]] port_ranges: The portRanges of the listener. See `port_ranges` below.
@@ -556,6 +595,7 @@ class Listener(pulumi.CustomResource):
                  client_affinity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  forwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerForwardedForConfigArgs']]] = None,
+                 http_version: Optional[pulumi.Input[str]] = None,
                  listener_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]]] = None,
@@ -578,6 +618,7 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["client_affinity"] = client_affinity
             __props__.__dict__["description"] = description
             __props__.__dict__["forwarded_for_config"] = forwarded_for_config
+            __props__.__dict__["http_version"] = http_version
             __props__.__dict__["listener_type"] = listener_type
             __props__.__dict__["name"] = name
             if port_ranges is None and not opts.urn:
@@ -602,6 +643,7 @@ class Listener(pulumi.CustomResource):
             client_affinity: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             forwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerForwardedForConfigArgs']]] = None,
+            http_version: Optional[pulumi.Input[str]] = None,
             listener_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]]] = None,
@@ -622,6 +664,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] client_affinity: The clientAffinity of the listener. Default value: `NONE`. Valid values:
         :param pulumi.Input[str] description: The description of the listener.
         :param pulumi.Input[pulumi.InputType['ListenerForwardedForConfigArgs']] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
+        :param pulumi.Input[str] http_version: The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+               > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
         :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
         :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]] port_ranges: The portRanges of the listener. See `port_ranges` below.
@@ -640,6 +684,7 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["client_affinity"] = client_affinity
         __props__.__dict__["description"] = description
         __props__.__dict__["forwarded_for_config"] = forwarded_for_config
+        __props__.__dict__["http_version"] = http_version
         __props__.__dict__["listener_type"] = listener_type
         __props__.__dict__["name"] = name
         __props__.__dict__["port_ranges"] = port_ranges
@@ -691,8 +736,17 @@ class Listener(pulumi.CustomResource):
         return pulumi.get(self, "forwarded_for_config")
 
     @property
+    @pulumi.getter(name="httpVersion")
+    def http_version(self) -> pulumi.Output[str]:
+        """
+        The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
+        > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+        """
+        return pulumi.get(self, "http_version")
+
+    @property
     @pulumi.getter(name="listenerType")
-    def listener_type(self) -> pulumi.Output[str]:
+    def listener_type(self) -> pulumi.Output[Optional[str]]:
         """
         The routing type of the listener. Default Value: `Standard`. Valid values:
         """

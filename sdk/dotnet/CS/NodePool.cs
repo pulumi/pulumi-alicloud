@@ -305,6 +305,12 @@ namespace Pulumi.AliCloud.CS
         public Output<Outputs.NodePoolScalingConfig> ScalingConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the scaling group.
+        /// </summary>
+        [Output("scalingGroupId")]
+        public Output<string> ScalingGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// Scaling group mode, default value: `release`. Valid values:
         /// </summary>
         [Output("scalingPolicy")]
@@ -1352,6 +1358,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("scalingConfig")]
         public Input<Inputs.NodePoolScalingConfigGetArgs>? ScalingConfig { get; set; }
+
+        /// <summary>
+        /// The ID of the scaling group.
+        /// </summary>
+        [Input("scalingGroupId")]
+        public Input<string>? ScalingGroupId { get; set; }
 
         /// <summary>
         /// Scaling group mode, default value: `release`. Valid values:

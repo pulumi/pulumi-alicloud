@@ -11,13 +11,17 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a Resource Manager Resource Group resource. If you need to group cloud resources according to business departments, projects, and other dimensions, you can create resource groups.
- * For information about Resource Manager Resoource Group and how to use it, see [What is Resource Manager Resource Group](https://www.alibabacloud.com/help/en/doc-detail/94485.htm)
+ * 
+ * For information about Resource Manager Resource Group and how to use it, see [What is Resource Group](https://www.alibabacloud.com/help/en/resource-management/developer-reference/api-createresourcegroup).
  * 
  * &gt; **NOTE:** Available since v1.82.0.
  * 
@@ -48,10 +52,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var example = new ResourceGroup(&#34;example&#34;, ResourceGroupArgs.builder()        
- *             .resourceGroupName(name)
  *             .displayName(name)
+ *             .resourceGroupName(name)
  *             .build());
  * 
  *     }
@@ -64,7 +68,7 @@ import javax.annotation.Nullable;
  * Resource Manager Resource Group can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example abc123456
+ * $ pulumi import alicloud:resourcemanager/resourceGroup:ResourceGroup example &lt;id&gt;
  * ```
  * 
  */
@@ -85,78 +89,92 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+     * The display name of the resource group. The name must be 1 to 50 characters in length.
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
-     * @return The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
+     * @return The display name of the resource group. The name must be 1 to 50 characters in length.
      * 
      */
     public Output<String> displayName() {
         return this.displayName;
     }
     /**
-     * Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
+     * Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from version 1.114.0. Use &#39;resource_group_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from version 1.114.0. Use `resource_group_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The status of the resource group in all regions. See `region_statuses` below.
+     * The status of the resource group in all regions.
      * 
      */
     @Export(name="regionStatuses", refs={List.class,ResourceGroupRegionStatus.class}, tree="[0,1]")
     private Output<List<ResourceGroupRegionStatus>> regionStatuses;
 
     /**
-     * @return The status of the resource group in all regions. See `region_statuses` below.
+     * @return The status of the resource group in all regions.
      * 
      */
     public Output<List<ResourceGroupRegionStatus>> regionStatuses() {
         return this.regionStatuses;
     }
     /**
-     * The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+     * The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
      * 
      */
     @Export(name="resourceGroupName", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupName;
 
     /**
-     * @return The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
+     * @return The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
      * 
      */
     public Output<String> resourceGroupName() {
         return this.resourceGroupName;
     }
     /**
-     * The status of the regional resource group.
+     * The status of the resource group.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the regional resource group.
+     * @return The status of the resource group.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

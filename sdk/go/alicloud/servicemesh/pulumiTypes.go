@@ -3007,37 +3007,37 @@ func (o GetExtensionProvidersProviderArrayOutput) Index(i pulumi.IntInput) GetEx
 }
 
 type GetServiceMeshesMesh struct {
-	// Cluster List.
+	// The Cluster List.
 	Clusters []string `pulumi:"clusters"`
-	// The created time of the resource.
+	// The created time of the Service Mesh instance.
 	CreateTime string `pulumi:"createTime"`
-	// Grid instance version type. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+	// Grid instance version type. **Note:** `edition` takes effect only if `enableDetails` is set to `true`.
 	Edition string `pulumi:"edition"`
-	// The endpoint details.
+	// The endpoint details. **Note:** `endpoints` takes effect only if `enableDetails` is set to `true`.
 	Endpoints []GetServiceMeshesMeshEndpoint `pulumi:"endpoints"`
-	// The Cause of the Error.
+	// The returned error message.
 	ErrorMessage string `pulumi:"errorMessage"`
-	// The ID of the Service Mesh.
+	// The ID of the Service Mesh instance.
 	Id string `pulumi:"id"`
-	// The Istio Operator Version. **Note:** the `istioOperatorVersion` is available from the version v1.170.0.
+	// (Available since v1.170.0) The Istio Operator Version. **Note:** `istioOperatorVersion` takes effect only if `enableDetails` is set to `true`.
 	IstioOperatorVersion string `pulumi:"istioOperatorVersion"`
-	// The content of Kube config.
+	// The content of Kube config. **Note:** `kubeConfig` takes effect only if `enableDetails` is set to `true`.
 	KubeConfig string `pulumi:"kubeConfig"`
-	// The configuration of the Load Balancer.
+	// The configuration of the Load Balancer. **Note:** `loadBalancer` takes effect only if `enableDetails` is set to `true`.
 	LoadBalancers []GetServiceMeshesMeshLoadBalancer `pulumi:"loadBalancers"`
-	// The configuration of the Service grid.
+	// The configuration of the Service grid. **Note:** `meshConfig` takes effect only if `enableDetails` is set to `true`.
 	MeshConfigs []GetServiceMeshesMeshMeshConfig `pulumi:"meshConfigs"`
-	// The configuration of the Service grid network.
+	// The configuration of the Service grid network. **Note:** `network` takes effect only if `enableDetails` is set to `true`.
 	Networks []GetServiceMeshesMeshNetwork `pulumi:"networks"`
-	// The first ID of the resource.
+	// The ID of the Service Mesh instance.
 	ServiceMeshId string `pulumi:"serviceMeshId"`
-	// The name of the resource.
+	// The name of the Service Mesh instance.
 	ServiceMeshName string `pulumi:"serviceMeshName"`
-	// The SideCar Version. **Note:** the `sidecarVersion` is available from the version v1.170.0.
+	// (Available since v1.170.0) The SideCar Version. **Note:** `sidecarVersion` takes effect only if `enableDetails` is set to `true`.
 	SidecarVersion string `pulumi:"sidecarVersion"`
-	// The status of the resource. Valid values: `running` or `initial`.
+	// The status of the Service Mesh. Valid values: `running`, `initial`.
 	Status string `pulumi:"status"`
-	// The version of the resource.
+	// The version of the Service Mesh instance.
 	Version string `pulumi:"version"`
 }
 
@@ -3053,37 +3053,37 @@ type GetServiceMeshesMeshInput interface {
 }
 
 type GetServiceMeshesMeshArgs struct {
-	// Cluster List.
+	// The Cluster List.
 	Clusters pulumi.StringArrayInput `pulumi:"clusters"`
-	// The created time of the resource.
+	// The created time of the Service Mesh instance.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Grid instance version type. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+	// Grid instance version type. **Note:** `edition` takes effect only if `enableDetails` is set to `true`.
 	Edition pulumi.StringInput `pulumi:"edition"`
-	// The endpoint details.
+	// The endpoint details. **Note:** `endpoints` takes effect only if `enableDetails` is set to `true`.
 	Endpoints GetServiceMeshesMeshEndpointArrayInput `pulumi:"endpoints"`
-	// The Cause of the Error.
+	// The returned error message.
 	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
-	// The ID of the Service Mesh.
+	// The ID of the Service Mesh instance.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The Istio Operator Version. **Note:** the `istioOperatorVersion` is available from the version v1.170.0.
+	// (Available since v1.170.0) The Istio Operator Version. **Note:** `istioOperatorVersion` takes effect only if `enableDetails` is set to `true`.
 	IstioOperatorVersion pulumi.StringInput `pulumi:"istioOperatorVersion"`
-	// The content of Kube config.
+	// The content of Kube config. **Note:** `kubeConfig` takes effect only if `enableDetails` is set to `true`.
 	KubeConfig pulumi.StringInput `pulumi:"kubeConfig"`
-	// The configuration of the Load Balancer.
+	// The configuration of the Load Balancer. **Note:** `loadBalancer` takes effect only if `enableDetails` is set to `true`.
 	LoadBalancers GetServiceMeshesMeshLoadBalancerArrayInput `pulumi:"loadBalancers"`
-	// The configuration of the Service grid.
+	// The configuration of the Service grid. **Note:** `meshConfig` takes effect only if `enableDetails` is set to `true`.
 	MeshConfigs GetServiceMeshesMeshMeshConfigArrayInput `pulumi:"meshConfigs"`
-	// The configuration of the Service grid network.
+	// The configuration of the Service grid network. **Note:** `network` takes effect only if `enableDetails` is set to `true`.
 	Networks GetServiceMeshesMeshNetworkArrayInput `pulumi:"networks"`
-	// The first ID of the resource.
+	// The ID of the Service Mesh instance.
 	ServiceMeshId pulumi.StringInput `pulumi:"serviceMeshId"`
-	// The name of the resource.
+	// The name of the Service Mesh instance.
 	ServiceMeshName pulumi.StringInput `pulumi:"serviceMeshName"`
-	// The SideCar Version. **Note:** the `sidecarVersion` is available from the version v1.170.0.
+	// (Available since v1.170.0) The SideCar Version. **Note:** `sidecarVersion` takes effect only if `enableDetails` is set to `true`.
 	SidecarVersion pulumi.StringInput `pulumi:"sidecarVersion"`
-	// The status of the resource. Valid values: `running` or `initial`.
+	// The status of the Service Mesh. Valid values: `running`, `initial`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The version of the resource.
+	// The version of the Service Mesh instance.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -3138,82 +3138,82 @@ func (o GetServiceMeshesMeshOutput) ToGetServiceMeshesMeshOutputWithContext(ctx 
 	return o
 }
 
-// Cluster List.
+// The Cluster List.
 func (o GetServiceMeshesMeshOutput) Clusters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) []string { return v.Clusters }).(pulumi.StringArrayOutput)
 }
 
-// The created time of the resource.
+// The created time of the Service Mesh instance.
 func (o GetServiceMeshesMeshOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Grid instance version type. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+// Grid instance version type. **Note:** `edition` takes effect only if `enableDetails` is set to `true`.
 func (o GetServiceMeshesMeshOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.Edition }).(pulumi.StringOutput)
 }
 
-// The endpoint details.
+// The endpoint details. **Note:** `endpoints` takes effect only if `enableDetails` is set to `true`.
 func (o GetServiceMeshesMeshOutput) Endpoints() GetServiceMeshesMeshEndpointArrayOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) []GetServiceMeshesMeshEndpoint { return v.Endpoints }).(GetServiceMeshesMeshEndpointArrayOutput)
 }
 
-// The Cause of the Error.
+// The returned error message.
 func (o GetServiceMeshesMeshOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
-// The ID of the Service Mesh.
+// The ID of the Service Mesh instance.
 func (o GetServiceMeshesMeshOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The Istio Operator Version. **Note:** the `istioOperatorVersion` is available from the version v1.170.0.
+// (Available since v1.170.0) The Istio Operator Version. **Note:** `istioOperatorVersion` takes effect only if `enableDetails` is set to `true`.
 func (o GetServiceMeshesMeshOutput) IstioOperatorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.IstioOperatorVersion }).(pulumi.StringOutput)
 }
 
-// The content of Kube config.
+// The content of Kube config. **Note:** `kubeConfig` takes effect only if `enableDetails` is set to `true`.
 func (o GetServiceMeshesMeshOutput) KubeConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.KubeConfig }).(pulumi.StringOutput)
 }
 
-// The configuration of the Load Balancer.
+// The configuration of the Load Balancer. **Note:** `loadBalancer` takes effect only if `enableDetails` is set to `true`.
 func (o GetServiceMeshesMeshOutput) LoadBalancers() GetServiceMeshesMeshLoadBalancerArrayOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) []GetServiceMeshesMeshLoadBalancer { return v.LoadBalancers }).(GetServiceMeshesMeshLoadBalancerArrayOutput)
 }
 
-// The configuration of the Service grid.
+// The configuration of the Service grid. **Note:** `meshConfig` takes effect only if `enableDetails` is set to `true`.
 func (o GetServiceMeshesMeshOutput) MeshConfigs() GetServiceMeshesMeshMeshConfigArrayOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) []GetServiceMeshesMeshMeshConfig { return v.MeshConfigs }).(GetServiceMeshesMeshMeshConfigArrayOutput)
 }
 
-// The configuration of the Service grid network.
+// The configuration of the Service grid network. **Note:** `network` takes effect only if `enableDetails` is set to `true`.
 func (o GetServiceMeshesMeshOutput) Networks() GetServiceMeshesMeshNetworkArrayOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) []GetServiceMeshesMeshNetwork { return v.Networks }).(GetServiceMeshesMeshNetworkArrayOutput)
 }
 
-// The first ID of the resource.
+// The ID of the Service Mesh instance.
 func (o GetServiceMeshesMeshOutput) ServiceMeshId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.ServiceMeshId }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the Service Mesh instance.
 func (o GetServiceMeshesMeshOutput) ServiceMeshName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.ServiceMeshName }).(pulumi.StringOutput)
 }
 
-// The SideCar Version. **Note:** the `sidecarVersion` is available from the version v1.170.0.
+// (Available since v1.170.0) The SideCar Version. **Note:** `sidecarVersion` takes effect only if `enableDetails` is set to `true`.
 func (o GetServiceMeshesMeshOutput) SidecarVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.SidecarVersion }).(pulumi.StringOutput)
 }
 
-// The status of the resource. Valid values: `running` or `initial`.
+// The status of the Service Mesh. Valid values: `running`, `initial`.
 func (o GetServiceMeshesMeshOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The version of the resource.
+// The version of the Service Mesh instance.
 func (o GetServiceMeshesMeshOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMeshesMesh) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -3491,7 +3491,7 @@ type GetServiceMeshesMeshMeshConfig struct {
 	AccessLogs []GetServiceMeshesMeshMeshConfigAccessLog `pulumi:"accessLogs"`
 	// The configuration of the Service grid audit.
 	Audits []GetServiceMeshesMeshMeshConfigAudit `pulumi:"audits"`
-	// The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
+	// (Available since v1.174.0) The configuration of the control plane logging.
 	ControlPlaneLogs []GetServiceMeshesMeshMeshConfigControlPlaneLog `pulumi:"controlPlaneLogs"`
 	// Whether or not to enable the use of a custom zipkin.
 	CustomizedZipkin bool `pulumi:"customizedZipkin"`
@@ -3503,7 +3503,7 @@ type GetServiceMeshesMeshMeshConfig struct {
 	Kialis []GetServiceMeshesMeshMeshConfigKiali `pulumi:"kialis"`
 	// The open-door policy of agent (OPA) plug-in information.
 	Opas []GetServiceMeshesMeshMeshConfigOpa `pulumi:"opas"`
-	// The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+	// The policy of the Out to the traffic.
 	OutboundTrafficPolicy string `pulumi:"outboundTrafficPolicy"`
 	// The configuration of the Link trace sampling.
 	Pilots []GetServiceMeshesMeshMeshConfigPilot `pulumi:"pilots"`
@@ -3535,7 +3535,7 @@ type GetServiceMeshesMeshMeshConfigArgs struct {
 	AccessLogs GetServiceMeshesMeshMeshConfigAccessLogArrayInput `pulumi:"accessLogs"`
 	// The configuration of the Service grid audit.
 	Audits GetServiceMeshesMeshMeshConfigAuditArrayInput `pulumi:"audits"`
-	// The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
+	// (Available since v1.174.0) The configuration of the control plane logging.
 	ControlPlaneLogs GetServiceMeshesMeshMeshConfigControlPlaneLogArrayInput `pulumi:"controlPlaneLogs"`
 	// Whether or not to enable the use of a custom zipkin.
 	CustomizedZipkin pulumi.BoolInput `pulumi:"customizedZipkin"`
@@ -3547,7 +3547,7 @@ type GetServiceMeshesMeshMeshConfigArgs struct {
 	Kialis GetServiceMeshesMeshMeshConfigKialiArrayInput `pulumi:"kialis"`
 	// The open-door policy of agent (OPA) plug-in information.
 	Opas GetServiceMeshesMeshMeshConfigOpaArrayInput `pulumi:"opas"`
-	// The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+	// The policy of the Out to the traffic.
 	OutboundTrafficPolicy pulumi.StringInput `pulumi:"outboundTrafficPolicy"`
 	// The configuration of the Link trace sampling.
 	Pilots GetServiceMeshesMeshMeshConfigPilotArrayInput `pulumi:"pilots"`
@@ -3624,7 +3624,7 @@ func (o GetServiceMeshesMeshMeshConfigOutput) Audits() GetServiceMeshesMeshMeshC
 	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfig) []GetServiceMeshesMeshMeshConfigAudit { return v.Audits }).(GetServiceMeshesMeshMeshConfigAuditArrayOutput)
 }
 
-// The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
+// (Available since v1.174.0) The configuration of the control plane logging.
 func (o GetServiceMeshesMeshMeshConfigOutput) ControlPlaneLogs() GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput {
 	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfig) []GetServiceMeshesMeshMeshConfigControlPlaneLog {
 		return v.ControlPlaneLogs
@@ -3656,7 +3656,7 @@ func (o GetServiceMeshesMeshMeshConfigOutput) Opas() GetServiceMeshesMeshMeshCon
 	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfig) []GetServiceMeshesMeshMeshConfigOpa { return v.Opas }).(GetServiceMeshesMeshMeshConfigOpaArrayOutput)
 }
 
-// The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+// The policy of the Out to the traffic.
 func (o GetServiceMeshesMeshMeshConfigOutput) OutboundTrafficPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfig) string { return v.OutboundTrafficPolicy }).(pulumi.StringOutput)
 }
@@ -3716,7 +3716,7 @@ func (o GetServiceMeshesMeshMeshConfigArrayOutput) Index(i pulumi.IntInput) GetS
 }
 
 type GetServiceMeshesMeshMeshConfigAccessLog struct {
-	// Whether to enable Service grid audit.
+	// Whether to enable CNI.
 	Enabled bool `pulumi:"enabled"`
 	// The Service grid audit that to the project.
 	Project string `pulumi:"project"`
@@ -3734,7 +3734,7 @@ type GetServiceMeshesMeshMeshConfigAccessLogInput interface {
 }
 
 type GetServiceMeshesMeshMeshConfigAccessLogArgs struct {
-	// Whether to enable Service grid audit.
+	// Whether to enable CNI.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The Service grid audit that to the project.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -3791,7 +3791,7 @@ func (o GetServiceMeshesMeshMeshConfigAccessLogOutput) ToGetServiceMeshesMeshMes
 	return o
 }
 
-// Whether to enable Service grid audit.
+// Whether to enable CNI.
 func (o GetServiceMeshesMeshMeshConfigAccessLogOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfigAccessLog) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -3822,7 +3822,7 @@ func (o GetServiceMeshesMeshMeshConfigAccessLogArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetServiceMeshesMeshMeshConfigAudit struct {
-	// Whether to enable Service grid audit.
+	// Whether to enable CNI.
 	Enabled bool `pulumi:"enabled"`
 	// The Service grid audit that to the project.
 	Project string `pulumi:"project"`
@@ -3840,7 +3840,7 @@ type GetServiceMeshesMeshMeshConfigAuditInput interface {
 }
 
 type GetServiceMeshesMeshMeshConfigAuditArgs struct {
-	// Whether to enable Service grid audit.
+	// Whether to enable CNI.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The Service grid audit that to the project.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -3897,7 +3897,7 @@ func (o GetServiceMeshesMeshMeshConfigAuditOutput) ToGetServiceMeshesMeshMeshCon
 	return o
 }
 
-// Whether to enable Service grid audit.
+// Whether to enable CNI.
 func (o GetServiceMeshesMeshMeshConfigAuditOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfigAudit) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -3928,7 +3928,7 @@ func (o GetServiceMeshesMeshMeshConfigAuditArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetServiceMeshesMeshMeshConfigControlPlaneLog struct {
-	// Whether to enable Service grid audit.
+	// Whether to enable CNI.
 	Enabled bool `pulumi:"enabled"`
 	// The Service grid audit that to the project.
 	Project string `pulumi:"project"`
@@ -3946,7 +3946,7 @@ type GetServiceMeshesMeshMeshConfigControlPlaneLogInput interface {
 }
 
 type GetServiceMeshesMeshMeshConfigControlPlaneLogArgs struct {
-	// Whether to enable Service grid audit.
+	// Whether to enable CNI.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The Service grid audit that to the project.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -4003,7 +4003,7 @@ func (o GetServiceMeshesMeshMeshConfigControlPlaneLogOutput) ToGetServiceMeshesM
 	return o
 }
 
-// Whether to enable Service grid audit.
+// Whether to enable CNI.
 func (o GetServiceMeshesMeshMeshConfigControlPlaneLogOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfigControlPlaneLog) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -4034,7 +4034,7 @@ func (o GetServiceMeshesMeshMeshConfigControlPlaneLogArrayOutput) Index(i pulumi
 }
 
 type GetServiceMeshesMeshMeshConfigKiali struct {
-	// Whether to enable Service grid audit.
+	// Whether to enable CNI.
 	Enabled bool `pulumi:"enabled"`
 	// The service address of the Kiali.
 	Url string `pulumi:"url"`
@@ -4052,7 +4052,7 @@ type GetServiceMeshesMeshMeshConfigKialiInput interface {
 }
 
 type GetServiceMeshesMeshMeshConfigKialiArgs struct {
-	// Whether to enable Service grid audit.
+	// Whether to enable CNI.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The service address of the Kiali.
 	Url pulumi.StringInput `pulumi:"url"`
@@ -4109,7 +4109,7 @@ func (o GetServiceMeshesMeshMeshConfigKialiOutput) ToGetServiceMeshesMeshMeshCon
 	return o
 }
 
-// Whether to enable Service grid audit.
+// Whether to enable CNI.
 func (o GetServiceMeshesMeshMeshConfigKialiOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfigKiali) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -4140,7 +4140,7 @@ func (o GetServiceMeshesMeshMeshConfigKialiArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetServiceMeshesMeshMeshConfigOpa struct {
-	// Whether to enable Service grid audit.
+	// Whether to enable CNI.
 	Enabled bool `pulumi:"enabled"`
 	// Sidecar injector Pods on the throttle.
 	LimitCpu string `pulumi:"limitCpu"`
@@ -4166,7 +4166,7 @@ type GetServiceMeshesMeshMeshConfigOpaInput interface {
 }
 
 type GetServiceMeshesMeshMeshConfigOpaArgs struct {
-	// Whether to enable Service grid audit.
+	// Whether to enable CNI.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Sidecar injector Pods on the throttle.
 	LimitCpu pulumi.StringInput `pulumi:"limitCpu"`
@@ -4231,7 +4231,7 @@ func (o GetServiceMeshesMeshMeshConfigOpaOutput) ToGetServiceMeshesMeshMeshConfi
 	return o
 }
 
-// Whether to enable Service grid audit.
+// Whether to enable CNI.
 func (o GetServiceMeshesMeshMeshConfigOpaOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfigOpa) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -4789,7 +4789,7 @@ func (o GetServiceMeshesMeshMeshConfigSidecarInjectorArrayOutput) Index(i pulumi
 }
 
 type GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration struct {
-	// Whether to enable Service grid audit.
+	// Whether to enable CNI.
 	Enabled bool `pulumi:"enabled"`
 	// The excluded namespace of the CNI.
 	ExcludeNamespaces string `pulumi:"excludeNamespaces"`
@@ -4807,7 +4807,7 @@ type GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationInput inte
 }
 
 type GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationArgs struct {
-	// Whether to enable Service grid audit.
+	// Whether to enable CNI.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The excluded namespace of the CNI.
 	ExcludeNamespaces pulumi.StringInput `pulumi:"excludeNamespaces"`
@@ -4864,7 +4864,7 @@ func (o GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationOutput)
 	return o
 }
 
-// Whether to enable Service grid audit.
+// Whether to enable CNI.
 func (o GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfigurationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration) bool { return v.Enabled }).(pulumi.BoolOutput)
 }

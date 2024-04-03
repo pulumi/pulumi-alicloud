@@ -9131,6 +9131,29 @@ export namespace cloudfirewall {
 }
 
 export namespace cloudmonitor {
+    export interface GetServiceHybridDoubleWritesHybridDoubleWrite {
+        /**
+         * The ID of the Hybrid Double Write. It formats as `<source_namespace>:<source_user_id>`.
+         */
+        id: string;
+        /**
+         * Target Namespace.
+         */
+        namespace: string;
+        /**
+         * Source Namespace.
+         */
+        sourceNamespace: string;
+        /**
+         * Source UserId.
+         */
+        sourceUserId: string;
+        /**
+         * Target UserId.
+         */
+        userId: string;
+    }
+
     export interface ServiceGroupMonitoringAgentProcessAlertConfig {
         /**
          * The operator that is used to compare the metric value with the threshold. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
@@ -11953,6 +11976,34 @@ export namespace config {
         sessionName?: string;
     }
 
+    export interface AssumeRoleWithOidc {
+        /**
+         * ARN of the OIDC IdP.
+         */
+        oidcProviderArn: string;
+        oidcToken?: string;
+        /**
+         * The file path of OIDC token that is issued by the external IdP.
+         */
+        oidcTokenFile?: string;
+        /**
+         * The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
+         */
+        policy?: string;
+        /**
+         * ARN of a RAM role to assume prior to making API calls.
+         */
+        roleArn: string;
+        /**
+         * The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
+         */
+        roleSessionName?: string;
+        /**
+         * The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
+         */
+        sessionExpiration?: number;
+    }
+
     export interface Endpoints {
         /**
          * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom acr endpoints.
@@ -12919,7 +12970,7 @@ export namespace cs {
 
     export interface EdgeKubernetesAddon {
         /**
-         * The ACK add-on configurations.
+         * The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
          */
         config?: string;
         /**
@@ -12932,6 +12983,10 @@ export namespace cs {
          * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          */
         name?: string;
+        /**
+         * It specifies the version of the component.
+         */
+        version?: string;
     }
 
     export interface EdgeKubernetesCertificateAuthority {
@@ -13317,13 +13372,13 @@ export namespace cs {
 
     export interface GetKubernetesPermissionPermission {
         /**
-         * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
+         * Indicates whether the permissions are granted to the cluster owner. Valid values `false`, `true`.
          */
-        isOwner?: boolean;
+        isOwner: boolean;
         /**
-         * Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
+         * Indicates whether the permissions are granted to the RAM role. Valid values `false`, `true`.
          */
-        isRamRole?: boolean;
+        isRamRole: boolean;
         /**
          * The permission settings to manage ACK clusters.
          */
@@ -13339,7 +13394,7 @@ export namespace cs {
         /**
          * The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
          */
-        roleType?: string;
+        roleType: string;
     }
 
     export interface GetKubernetesVersionMetadata {
@@ -13732,7 +13787,7 @@ export namespace cs {
 
     export interface KubernetesAddon {
         /**
-         * The ACK add-on configurations.
+         * The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
          */
         config?: string;
         /**
@@ -13817,7 +13872,7 @@ export namespace cs {
 
     export interface KubernetesPermissionPermission {
         /**
-         * The ID of the cluster that you want to manage.
+         * The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `roleType` must be null.
          */
         cluster: string;
         /**
@@ -13837,7 +13892,7 @@ export namespace cs {
          */
         roleName: string;
         /**
-         * The authorization type. Valid values `cluster`, `namespace`.
+         * The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
          */
         roleType: string;
     }
@@ -13855,7 +13910,7 @@ export namespace cs {
 
     export interface ManagedKubernetesAddon {
         /**
-         * If this parameter is left empty, no configurations are required.
+         * If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
          */
         config?: string;
         /**
@@ -14254,7 +14309,7 @@ export namespace cs {
 
     export interface ServerlessKubernetesAddon {
         /**
-         * The ACK add-on configurations.
+         * The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
          */
         config?: string;
         /**
@@ -27384,9 +27439,21 @@ export namespace ess {
 
     export interface ScalingConfigurationInstancePatternInfo {
         /**
+         * Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+         */
+        architectures?: string[];
+        /**
+         * Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+         */
+        burstablePerformance: string;
+        /**
          * The number of vCPUs that are specified for an instance type in instancePatternInfo.
          */
         cores?: number;
+        /**
+         * Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+         */
+        excludedInstanceTypes?: string[];
         /**
          * The instance family level in instancePatternInfo.
          */
@@ -39209,7 +39276,7 @@ export namespace quotas {
          */
         quotaActionCode: string;
         /**
-         * The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+         * The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
          */
         quotaCategory: string;
         /**
@@ -41235,11 +41302,11 @@ export namespace resourcemanager {
 
     export interface ResourceGroupRegionStatus {
         /**
-         * The region ID.
+         * The status of the region.
          */
         regionId: string;
         /**
-         * The status of the regional resource group.
+         * The status of the resource group.
          */
         status: string;
     }
@@ -44306,67 +44373,67 @@ export namespace servicemesh {
 
     export interface GetServiceMeshesMesh {
         /**
-         * Cluster List.
+         * The Cluster List.
          */
         clusters: string[];
         /**
-         * The created time of the resource.
+         * The created time of the Service Mesh instance.
          */
         createTime: string;
         /**
-         * Grid instance version type. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
+         * Grid instance version type. **Note:** `edition` takes effect only if `enableDetails` is set to `true`.
          */
         edition: string;
         /**
-         * The endpoint details.
+         * The endpoint details. **Note:** `endpoints` takes effect only if `enableDetails` is set to `true`.
          */
         endpoints: outputs.servicemesh.GetServiceMeshesMeshEndpoint[];
         /**
-         * The Cause of the Error.
+         * The returned error message.
          */
         errorMessage: string;
         /**
-         * The ID of the Service Mesh.
+         * The ID of the Service Mesh instance.
          */
         id: string;
         /**
-         * The Istio Operator Version. **Note:** the `istioOperatorVersion` is available from the version v1.170.0.
+         * (Available since v1.170.0) The Istio Operator Version. **Note:** `istioOperatorVersion` takes effect only if `enableDetails` is set to `true`.
          */
         istioOperatorVersion: string;
         /**
-         * The content of Kube config.
+         * The content of Kube config. **Note:** `kubeConfig` takes effect only if `enableDetails` is set to `true`.
          */
         kubeConfig: string;
         /**
-         * The configuration of the Load Balancer.
+         * The configuration of the Load Balancer. **Note:** `loadBalancer` takes effect only if `enableDetails` is set to `true`.
          */
         loadBalancers: outputs.servicemesh.GetServiceMeshesMeshLoadBalancer[];
         /**
-         * The configuration of the Service grid.
+         * The configuration of the Service grid. **Note:** `meshConfig` takes effect only if `enableDetails` is set to `true`.
          */
         meshConfigs: outputs.servicemesh.GetServiceMeshesMeshMeshConfig[];
         /**
-         * The configuration of the Service grid network.
+         * The configuration of the Service grid network. **Note:** `network` takes effect only if `enableDetails` is set to `true`.
          */
         networks: outputs.servicemesh.GetServiceMeshesMeshNetwork[];
         /**
-         * The first ID of the resource.
+         * The ID of the Service Mesh instance.
          */
         serviceMeshId: string;
         /**
-         * The name of the resource.
+         * The name of the Service Mesh instance.
          */
         serviceMeshName: string;
         /**
-         * The SideCar Version. **Note:** the `sidecarVersion` is available from the version v1.170.0.
+         * (Available since v1.170.0) The SideCar Version. **Note:** `sidecarVersion` takes effect only if `enableDetails` is set to `true`.
          */
         sidecarVersion: string;
         /**
-         * The status of the resource. Valid values: `running` or `initial`.
+         * The status of the Service Mesh. Valid values: `running`, `initial`.
          */
         status: string;
         /**
-         * The version of the resource.
+         * The version of the Service Mesh instance.
          */
         version: string;
     }
@@ -44419,7 +44486,7 @@ export namespace servicemesh {
          */
         audits: outputs.servicemesh.GetServiceMeshesMeshMeshConfigAudit[];
         /**
-         * The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
+         * (Available since v1.174.0) The configuration of the control plane logging.
          */
         controlPlaneLogs: outputs.servicemesh.GetServiceMeshesMeshMeshConfigControlPlaneLog[];
         /**
@@ -44443,7 +44510,7 @@ export namespace servicemesh {
          */
         opas: outputs.servicemesh.GetServiceMeshesMeshMeshConfigOpa[];
         /**
-         * The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+         * The policy of the Out to the traffic.
          */
         outboundTrafficPolicy: string;
         /**
@@ -44474,7 +44541,7 @@ export namespace servicemesh {
 
     export interface GetServiceMeshesMeshMeshConfigAccessLog {
         /**
-         * Whether to enable Service grid audit.
+         * Whether to enable CNI.
          */
         enabled: boolean;
         /**
@@ -44485,7 +44552,7 @@ export namespace servicemesh {
 
     export interface GetServiceMeshesMeshMeshConfigAudit {
         /**
-         * Whether to enable Service grid audit.
+         * Whether to enable CNI.
          */
         enabled: boolean;
         /**
@@ -44496,7 +44563,7 @@ export namespace servicemesh {
 
     export interface GetServiceMeshesMeshMeshConfigControlPlaneLog {
         /**
-         * Whether to enable Service grid audit.
+         * Whether to enable CNI.
          */
         enabled: boolean;
         /**
@@ -44507,7 +44574,7 @@ export namespace servicemesh {
 
     export interface GetServiceMeshesMeshMeshConfigKiali {
         /**
-         * Whether to enable Service grid audit.
+         * Whether to enable CNI.
          */
         enabled: boolean;
         /**
@@ -44518,7 +44585,7 @@ export namespace servicemesh {
 
     export interface GetServiceMeshesMeshMeshConfigOpa {
         /**
-         * Whether to enable Service grid audit.
+         * Whether to enable CNI.
          */
         enabled: boolean;
         /**
@@ -44625,7 +44692,7 @@ export namespace servicemesh {
 
     export interface GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration {
         /**
-         * Whether to enable Service grid audit.
+         * Whether to enable CNI.
          */
         enabled: boolean;
         /**
@@ -46131,19 +46198,19 @@ export namespace slb {
 
     export interface ListenerXForwardedFor {
         /**
-         * Whether to retrieve the client ip. It is read-only attribute.
+         * Whether to retrieve the client ip.
          */
         retriveClientIp: boolean;
         /**
-         * Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
+         * Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
          */
         retriveSlbId?: boolean;
         /**
-         * Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
+         * Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
          */
         retriveSlbIp?: boolean;
         /**
-         * Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
+         * Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
          */
         retriveSlbProto?: boolean;
     }
@@ -48826,7 +48893,7 @@ export namespace vpc {
 
     export interface NetworkAclEgressAclEntry {
         /**
-         * The description of the outbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * The description of the outbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: string;
         /**
@@ -48834,7 +48901,15 @@ export namespace vpc {
          */
         destinationCidrIp?: string;
         /**
-         * Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * The route entry type. The value can be `custom`, indicating custom.
+         */
+        entryType: string;
+        /**
+         * The IP protocol version of the route entry. Valid values: "IPV4" and "IPV4'.
+         */
+        ipVersion: string;
+        /**
+         * Name of the outbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: string;
         /**
@@ -48844,7 +48919,7 @@ export namespace vpc {
          */
         policy?: string;
         /**
-         * The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+         * The destination port range of the outbound rule.  When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          */
         port?: string;
         /**
@@ -48922,11 +48997,19 @@ export namespace vpc {
 
     export interface NetworkAclIngressAclEntry {
         /**
-         * Description of the inbound rule.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+         * Description of the inbound rule.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: string;
         /**
-         * The name of the inbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+         * The route entry type. The value can be `custom`, indicating custom.
+         */
+        entryType: string;
+        /**
+         * The IP protocol version of the route entry. Valid values: "IPV4" and "IPV6'.
+         */
+        ipVersion: string;
+        /**
+         * The name of the inbound rule entry.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: string;
         /**
@@ -48936,7 +49019,7 @@ export namespace vpc {
          */
         policy?: string;
         /**
-         * The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+         * The source port range of the inbound rule.  When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted. When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          */
         port?: string;
         /**
@@ -48964,7 +49047,7 @@ export namespace vpc {
          */
         resourceType: string;
         /**
-         * The status of the associated resource.
+         * The state of the network ACL.
          */
         status: string;
     }

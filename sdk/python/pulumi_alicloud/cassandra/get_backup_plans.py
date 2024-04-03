@@ -89,6 +89,8 @@ def get_backup_plans(cluster_id: Optional[str] = None,
 
     > **NOTE:** Available in v1.128.0+.
 
+    > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
+
     ## Example Usage
 
     Basic Usage
@@ -129,6 +131,8 @@ def get_backup_plans_output(cluster_id: Optional[pulumi.Input[str]] = None,
     This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.128.0+.
+
+    > **DEPRECATED:**  This data source has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-cassandra/latest/cassandra-delisting-notice) from version `1.220.0`.
 
     ## Example Usage
 

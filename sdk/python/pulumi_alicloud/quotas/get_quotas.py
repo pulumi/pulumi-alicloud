@@ -202,7 +202,7 @@ def get_quotas(dimensions: Optional[Sequence[pulumi.InputType['GetQuotasDimensio
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: The product code.
     :param str quota_action_code: The quota action code.
-    :param str quota_category: The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
+    :param str quota_category: The category of quota. Valid Values: `FlowControl` and `CommonQuota`, `WhiteListLabel`.
     :param str sort_field: Cloud service ECS specification quota supports setting sorting fields. Valid Values: `TIME`, `TOTAL` and `RESERVED`.
     :param str sort_order: Ranking of cloud service ECS specification quota support. Valid Values: `Ascending` and `Descending`.
     """
@@ -277,7 +277,7 @@ def get_quotas_output(dimensions: Optional[pulumi.Input[Optional[Sequence[pulumi
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: The product code.
     :param str quota_action_code: The quota action code.
-    :param str quota_category: The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
+    :param str quota_category: The category of quota. Valid Values: `FlowControl` and `CommonQuota`, `WhiteListLabel`.
     :param str sort_field: Cloud service ECS specification quota supports setting sorting fields. Valid Values: `TIME`, `TOTAL` and `RESERVED`.
     :param str sort_order: Ranking of cloud service ECS specification quota support. Valid Values: `Ascending` and `Descending`.
     """

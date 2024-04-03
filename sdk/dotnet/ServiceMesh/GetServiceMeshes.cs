@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     public sealed class GetServiceMeshesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `running` or `initial`.
+        /// The status of the Service Mesh. Valid values: `running`, `initial`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.ServiceMesh
     public sealed class GetServiceMeshesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to query the detailed list of resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `running` or `initial`.
+        /// The status of the Service Mesh. Valid values: `running`, `initial`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the Service Mesh instance.
         /// </summary>
         public readonly string? Status;
 

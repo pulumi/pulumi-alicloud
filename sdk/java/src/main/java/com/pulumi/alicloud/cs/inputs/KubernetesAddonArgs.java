@@ -17,14 +17,14 @@ public final class KubernetesAddonArgs extends com.pulumi.resources.ResourceArgs
     public static final KubernetesAddonArgs Empty = new KubernetesAddonArgs();
 
     /**
-     * The ACK add-on configurations.
+     * The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     @Import(name="config")
     private @Nullable Output<String> config;
 
     /**
-     * @return The ACK add-on configurations.
+     * @return The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
      * 
      */
     public Optional<Output<String>> config() {
@@ -108,7 +108,7 @@ public final class KubernetesAddonArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param config The ACK add-on configurations.
+         * @param config The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class KubernetesAddonArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param config The ACK add-on configurations.
+         * @param config The ACK add-on configurations. For more config information, see cs_kubernetes_addon_metadata.
          * 
          * @return builder
          * 

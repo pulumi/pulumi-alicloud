@@ -44,16 +44,24 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. Defaults to &#34;private&#34;.
+     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
+     * 
+     * @deprecated
+     * Field &#39;acl&#39; has been deprecated since provider version 1.220.0. New resource &#39;alicloud_oss_bucket_acl&#39; instead.
      * 
      */
+    @Deprecated /* Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead. */
     @Import(name="acl")
     private @Nullable Output<String> acl;
 
     /**
-     * @return The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. Defaults to &#34;private&#34;.
+     * @return The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
+     * 
+     * @deprecated
+     * Field &#39;acl&#39; has been deprecated since provider version 1.220.0. New resource &#39;alicloud_oss_bucket_acl&#39; instead.
      * 
      */
+    @Deprecated /* Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead. */
     public Optional<Output<String>> acl() {
         return Optional.ofNullable(this.acl);
     }
@@ -164,14 +172,14 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+     * Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketPolicy` instead.
      * 
      */
     @Import(name="policy")
     private @Nullable Output<String> policy;
 
     /**
-     * @return Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+     * @return Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketPolicy` instead.
      * 
      */
     public Optional<Output<String>> policy() {
@@ -194,14 +202,14 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+     * The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `referer_config` below.
      * 
      */
     @Import(name="refererConfig")
     private @Nullable Output<BucketRefererConfigArgs> refererConfig;
 
     /**
-     * @return The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+     * @return The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `referer_config` below.
      * 
      */
     public Optional<Output<BucketRefererConfigArgs>> refererConfig() {
@@ -377,22 +385,30 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acl The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. Defaults to &#34;private&#34;.
+         * @param acl The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;acl&#39; has been deprecated since provider version 1.220.0. New resource &#39;alicloud_oss_bucket_acl&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead. */
         public Builder acl(@Nullable Output<String> acl) {
             $.acl = acl;
             return this;
         }
 
         /**
-         * @param acl The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. Defaults to &#34;private&#34;.
+         * @param acl The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be &#34;private&#34;, &#34;public-read&#34; and &#34;public-read-write&#34;. This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;acl&#39; has been deprecated since provider version 1.220.0. New resource &#39;alicloud_oss_bucket_acl&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead. */
         public Builder acl(String acl) {
             return acl(Output.of(acl));
         }
@@ -561,7 +577,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policy Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+         * @param policy Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketPolicy` instead.
          * 
          * @return builder
          * 
@@ -572,7 +588,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policy Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm).
+         * @param policy Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketPolicy` instead.
          * 
          * @return builder
          * 
@@ -603,7 +619,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param refererConfig The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+         * @param refererConfig The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `referer_config` below.
          * 
          * @return builder
          * 
@@ -614,7 +630,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param refererConfig The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). See `referer_config` below.
+         * @param refererConfig The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `referer_config` below.
          * 
          * @return builder
          * 

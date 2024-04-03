@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Quotas.Outputs
         /// </summary>
         public readonly string QuotaActionCode;
         /// <summary>
-        /// The quota type. Value:-CommonQuota (default): Generic quota.-FlowControl:API rate quota.-WhiteListLabel: Equity quota.
+        /// The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
         /// </summary>
         public readonly string QuotaCategory;
         /// <summary>

@@ -72,7 +72,7 @@ type GetQuotasArgs struct {
 	ProductCode string `pulumi:"productCode"`
 	// The quota action code.
 	QuotaActionCode *string `pulumi:"quotaActionCode"`
-	// The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
+	// The category of quota. Valid Values: `FlowControl` and `CommonQuota`, `WhiteListLabel`.
 	QuotaCategory *string `pulumi:"quotaCategory"`
 	// Cloud service ECS specification quota supports setting sorting fields. Valid Values: `TIME`, `TOTAL` and `RESERVED`.
 	SortField *string `pulumi:"sortField"`
@@ -128,7 +128,7 @@ type GetQuotasOutputArgs struct {
 	ProductCode pulumi.StringInput `pulumi:"productCode"`
 	// The quota action code.
 	QuotaActionCode pulumi.StringPtrInput `pulumi:"quotaActionCode"`
-	// The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
+	// The category of quota. Valid Values: `FlowControl` and `CommonQuota`, `WhiteListLabel`.
 	QuotaCategory pulumi.StringPtrInput `pulumi:"quotaCategory"`
 	// Cloud service ECS specification quota supports setting sorting fields. Valid Values: `TIME`, `TOTAL` and `RESERVED`.
 	SortField pulumi.StringPtrInput `pulumi:"sortField"`

@@ -37,6 +37,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('assumeRole')
 
     @property
+    def assume_role_with_oidc(self) -> Optional[str]:
+        return __config__.get('assumeRoleWithOidc')
+
+    @property
     def client_connect_timeout(self) -> Optional[int]:
         """
         The maximum timeout of the client connection server.

@@ -41,6 +41,14 @@ Object.defineProperty(exports, "assumeRole", {
     enumerable: true,
 });
 
+export declare const assumeRoleWithOidc: outputs.config.AssumeRoleWithOidc | undefined;
+Object.defineProperty(exports, "assumeRoleWithOidc", {
+    get() {
+        return __config.getObject<outputs.config.AssumeRoleWithOidc>("assumeRoleWithOidc");
+    },
+    enumerable: true,
+});
+
 /**
  * The maximum timeout of the client connection server.
  */
