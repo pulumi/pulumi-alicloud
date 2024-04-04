@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Log
         /// 
         /// For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.96.0+
+        /// &gt; **NOTE:** Available since v1.96.0
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Log
         /// 
         /// For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.96.0+
+        /// &gt; **NOTE:** Available since v1.96.0
         /// 
         /// ## Example Usage
         /// 

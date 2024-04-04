@@ -72,7 +72,7 @@ def get_service(enable: Optional[str] = None,
 
     For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
 
-    > **NOTE:** Available in v1.96.0+
+    > **NOTE:** Available since v1.96.0
 
     ## Example Usage
 
@@ -109,7 +109,7 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
 
     For information about Log service and how to use it, see [What is Log Service](https://www.alibabacloud.com/help/product/28958.htm).
 
-    > **NOTE:** Available in v1.96.0+
+    > **NOTE:** Available since v1.96.0
 
     ## Example Usage
 
