@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available since v1.40.0.
  *
  * > **NOTE:**  The following regions don't support create Classic network MongoDB Sharding Instance.
- * [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
+ * [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-3`,`ap-southeast-5`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
  *
  * > **NOTE:**  Create MongoDB Sharding instance or change instance type and storage would cost 10~20 minutes. Please make full preparation.
  *
