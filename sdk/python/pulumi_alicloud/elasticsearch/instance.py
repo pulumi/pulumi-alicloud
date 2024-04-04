@@ -73,7 +73,7 @@ class InstanceArgs:
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
-        :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
+        :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
         :param pulumi.Input[int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
         :param pulumi.Input[str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
@@ -428,7 +428,7 @@ class InstanceArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
+        The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
         """
         return pulumi.get(self, "password")
 
@@ -627,7 +627,7 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
-        :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
+        :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
         :param pulumi.Input[int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[int] port: Instance connection port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
@@ -1020,7 +1020,7 @@ class _InstanceState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
+        The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
         """
         return pulumi.get(self, "password")
 
@@ -1293,7 +1293,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
-        :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
+        :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
         :param pulumi.Input[int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
         :param pulumi.Input[str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
@@ -1517,7 +1517,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
-        :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
+        :param pulumi.Input[str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
         :param pulumi.Input[int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[int] port: Instance connection port.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
@@ -1778,7 +1778,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
-        The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%!^(MISSING)&*()_+-=`).
+        The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
         """
         return pulumi.get(self, "password")
 

@@ -123,7 +123,7 @@ class ApplicationArgs:
         :param pulumi.Input[str] micro_registration: Select the Nacos registry. Valid values: `0`, `1`, `2`.
         :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
                * `-1`: Initialization value, indicating that percentages are not used.
-               * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
+               * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         :param pulumi.Input[int] min_ready_instances: The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
         :param pulumi.Input[str] namespace_id: SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]] nas_configs: The configurations for mounting the NAS file system. See `nas_configs` below.
@@ -743,7 +743,7 @@ class ApplicationArgs:
         """
         Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
         * `-1`: Initialization value, indicating that percentages are not used.
-        * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
+        * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         """
         return pulumi.get(self, "min_ready_instance_ratio")
 
@@ -1300,7 +1300,7 @@ class _ApplicationState:
         :param pulumi.Input[str] micro_registration: Select the Nacos registry. Valid values: `0`, `1`, `2`.
         :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
                * `-1`: Initialization value, indicating that percentages are not used.
-               * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
+               * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         :param pulumi.Input[int] min_ready_instances: The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
         :param pulumi.Input[str] namespace_id: SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]] nas_configs: The configurations for mounting the NAS file system. See `nas_configs` below.
@@ -1901,7 +1901,7 @@ class _ApplicationState:
         """
         Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
         * `-1`: Initialization value, indicating that percentages are not used.
-        * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
+        * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         """
         return pulumi.get(self, "min_ready_instance_ratio")
 
@@ -2552,7 +2552,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] micro_registration: Select the Nacos registry. Valid values: `0`, `1`, `2`.
         :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
                * `-1`: Initialization value, indicating that percentages are not used.
-               * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
+               * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         :param pulumi.Input[int] min_ready_instances: The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
         :param pulumi.Input[str] namespace_id: SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationNasConfigArgs']]]] nas_configs: The configurations for mounting the NAS file system. See `nas_configs` below.
@@ -2956,7 +2956,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] micro_registration: Select the Nacos registry. Valid values: `0`, `1`, `2`.
         :param pulumi.Input[int] min_ready_instance_ratio: Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
                * `-1`: Initialization value, indicating that percentages are not used.
-               * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
+               * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         :param pulumi.Input[int] min_ready_instances: The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
         :param pulumi.Input[str] namespace_id: SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationNasConfigArgs']]]] nas_configs: The configurations for mounting the NAS file system. See `nas_configs` below.
@@ -3339,7 +3339,7 @@ class Application(pulumi.CustomResource):
         """
         Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
         * `-1`: Initialization value, indicating that percentages are not used.
-        * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
+        * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         """
         return pulumi.get(self, "min_ready_instance_ratio")
 

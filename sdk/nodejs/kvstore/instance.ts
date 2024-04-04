@@ -222,7 +222,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly parameters!: pulumi.Output<outputs.kvstore.InstanceParameter[]>;
     /**
-     * The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ %!^(MISSING) & * ( ) _ + - =`
+     * The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -662,7 +662,7 @@ export interface InstanceState {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.kvstore.InstanceParameter>[]>;
     /**
-     * The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ %!^(MISSING) & * ( ) _ + - =`
+     * The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
      */
     password?: pulumi.Input<string>;
     /**
@@ -932,7 +932,7 @@ export interface InstanceArgs {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.kvstore.InstanceParameter>[]>;
     /**
-     * The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ %!^(MISSING) & * ( ) _ + - =`
+     * The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
      */
     password?: pulumi.Input<string>;
     /**

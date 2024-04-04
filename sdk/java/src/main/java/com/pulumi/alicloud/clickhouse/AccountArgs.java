@@ -48,14 +48,14 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)&amp; author (s):_+-=) in a length of 8-32 bit.
+     * The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^&amp; author (s):_+-=) in a length of 8-32 bit.
      * 
      */
     @Import(name="accountPassword", required=true)
     private Output<String> accountPassword;
 
     /**
-     * @return The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)&amp; author (s):_+-=) in a length of 8-32 bit.
+     * @return The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^&amp; author (s):_+-=) in a length of 8-32 bit.
      * 
      */
     public Output<String> accountPassword() {
@@ -243,7 +243,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPassword The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)&amp; author (s):_+-=) in a length of 8-32 bit.
+         * @param accountPassword The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^&amp; author (s):_+-=) in a length of 8-32 bit.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPassword The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)&amp; author (s):_+-=) in a length of 8-32 bit.
+         * @param accountPassword The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^&amp; author (s):_+-=) in a length of 8-32 bit.
          * 
          * @return builder
          * 

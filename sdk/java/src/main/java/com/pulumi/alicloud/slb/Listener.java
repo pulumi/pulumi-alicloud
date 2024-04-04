@@ -471,7 +471,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.healthCheckType);
     }
     /**
-     * The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+     * The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
      * **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
      * 
      */
@@ -479,7 +479,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> healthCheckUri;
 
     /**
-     * @return The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+     * @return The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
      * **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
      * 
      */

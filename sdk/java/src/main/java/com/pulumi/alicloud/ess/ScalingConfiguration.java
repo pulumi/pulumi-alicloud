@@ -495,14 +495,14 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.override);
     }
     /**
-     * The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%!^(MISSING)&amp;*-_+=\|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+     * The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&amp;*-_+=\|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%!^(MISSING)&amp;*-_+=\|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+     * @return The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&amp;*-_+=\|{}[]:;&#39;&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
      * 
      */
     public Output<Optional<String>> password() {

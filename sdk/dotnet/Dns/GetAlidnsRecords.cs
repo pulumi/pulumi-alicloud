@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Dns
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
+        /// The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
         /// </summary>
         [Input("rrKeyWord")]
         public string? RrKeyWord { get; set; }
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Dns
         public string? TypeKeyWord { get; set; }
 
         /// <summary>
-        /// The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
+        /// The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
         /// </summary>
         [Input("valueKeyWord")]
         public string? ValueKeyWord { get; set; }
@@ -238,7 +238,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
+        /// The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
         /// </summary>
         [Input("rrKeyWord")]
         public Input<string>? RrKeyWord { get; set; }
@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? TypeKeyWord { get; set; }
 
         /// <summary>
-        /// The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
+        /// The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
         /// </summary>
         [Input("valueKeyWord")]
         public Input<string>? ValueKeyWord { get; set; }

@@ -263,7 +263,7 @@ def get_alidns_domains(ali_domain: Optional[bool] = None,
     :param str group_name_regex: A regex string to filter results by the group name.
     :param Sequence[str] ids: A list of domain IDs.
     :param str instance_id: Cloud analysis product ID.
-    :param str key_word: The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
+    :param str key_word: The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
     :param str lang: User language.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the dns belongs.
@@ -354,7 +354,7 @@ def get_alidns_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]]
     :param str group_name_regex: A regex string to filter results by the group name.
     :param Sequence[str] ids: A list of domain IDs.
     :param str instance_id: Cloud analysis product ID.
-    :param str key_word: The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
+    :param str key_word: The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
     :param str lang: User language.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the dns belongs.

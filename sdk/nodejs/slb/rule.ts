@@ -169,7 +169,7 @@ export class Rule extends pulumi.CustomResource {
      */
     public readonly healthCheckTimeout!: pulumi.Output<number | undefined>;
     /**
-     * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
+     * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
      */
     public readonly healthCheckUri!: pulumi.Output<string | undefined>;
     /**
@@ -209,7 +209,7 @@ export class Rule extends pulumi.CustomResource {
      */
     public readonly unhealthyThreshold!: pulumi.Output<number | undefined>;
     /**
-     * Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+     * Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
      */
     public readonly url!: pulumi.Output<string | undefined>;
 
@@ -339,7 +339,7 @@ export interface RuleState {
      */
     healthCheckTimeout?: pulumi.Input<number>;
     /**
-     * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
+     * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
      */
     healthCheckUri?: pulumi.Input<string>;
     /**
@@ -379,7 +379,7 @@ export interface RuleState {
      */
     unhealthyThreshold?: pulumi.Input<number>;
     /**
-     * Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+     * Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
      */
     url?: pulumi.Input<string>;
 }
@@ -436,7 +436,7 @@ export interface RuleArgs {
      */
     healthCheckTimeout?: pulumi.Input<number>;
     /**
-     * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&’ are allowed.
+     * URI used for health check. When it used to launch TCP listener, `healthCheckType` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&’ are allowed.
      */
     healthCheckUri?: pulumi.Input<string>;
     /**
@@ -476,7 +476,7 @@ export interface RuleArgs {
      */
     unhealthyThreshold?: pulumi.Input<number>;
     /**
-     * Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%!'(MISSING) '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+     * Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
      */
     url?: pulumi.Input<string>;
 }

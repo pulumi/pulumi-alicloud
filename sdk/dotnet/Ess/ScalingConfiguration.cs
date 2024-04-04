@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool?> Override { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%!^(MISSING)&amp;*-_+=\|{}[]:;'&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+        /// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&amp;*-_+=\|{}[]:;'&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -631,7 +631,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? Override { get; set; }
 
         /// <summary>
-        /// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%!^(MISSING)&amp;*-_+=\|{}[]:;'&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+        /// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&amp;*-_+=\|{}[]:;'&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -968,7 +968,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? Override { get; set; }
 
         /// <summary>
-        /// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%!^(MISSING)&amp;*-_+=\|{}[]:;'&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+        /// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&amp;*-_+=\|{}[]:;'&lt;&gt;,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }

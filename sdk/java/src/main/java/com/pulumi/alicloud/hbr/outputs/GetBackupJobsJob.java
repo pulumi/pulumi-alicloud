@@ -140,7 +140,7 @@ public final class GetBackupJobsJob {
      */
     private String prefix;
     /**
-     * @return Backup progress. The value is 100%!(BADWIDTH)%!1(MISSING)00.
+     * @return Backup progress. The value is 100%*100.
      * 
      */
     private String progress;
@@ -350,7 +350,7 @@ public final class GetBackupJobsJob {
         return this.prefix;
     }
     /**
-     * @return Backup progress. The value is 100%!(BADWIDTH)%!1(MISSING)00.
+     * @return Backup progress. The value is 100%*100.
      * 
      */
     public String progress() {

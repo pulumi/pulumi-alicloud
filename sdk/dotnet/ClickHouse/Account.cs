@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)&amp; author (s):_+-=) in a length of 8-32 bit.
+        /// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^&amp; author (s):_+-=) in a length of 8-32 bit.
         /// </summary>
         [Output("accountPassword")]
         public Output<string> AccountPassword { get; private set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string> AccountName { get; set; } = null!;
 
         /// <summary>
-        /// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)&amp; author (s):_+-=) in a length of 8-32 bit.
+        /// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^&amp; author (s):_+-=) in a length of 8-32 bit.
         /// </summary>
         [Input("accountPassword", required: true)]
         public Input<string> AccountPassword { get; set; } = null!;
@@ -286,7 +286,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? AccountName { get; set; }
 
         /// <summary>
-        /// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)&amp; author (s):_+-=) in a length of 8-32 bit.
+        /// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^&amp; author (s):_+-=) in a length of 8-32 bit.
         /// </summary>
         [Input("accountPassword")]
         public Input<string>? AccountPassword { get; set; }

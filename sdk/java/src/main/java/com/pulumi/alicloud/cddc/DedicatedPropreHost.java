@@ -266,7 +266,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * Host login password, which can be set later. The password must meet the following requirements:
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-     * - Special symbol &#39;()\&#39; ~! @#$%!^(MISSING)&amp; *-_+ =|{}[]:;&#39;,.? /&#39;
+     * - Special symbol &#39;()\&#39; ~! @#$%^&amp; *-_+ =|{}[]:;&#39;,.? /&#39;
      * &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      * 
      */
@@ -277,7 +277,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * @return Host login password, which can be set later. The password must meet the following requirements:
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-     * - Special symbol &#39;()\&#39; ~! @#$%!^(MISSING)&amp; *-_+ =|{}[]:;&#39;,.? /&#39;
+     * - Special symbol &#39;()\&#39; ~! @#$%^&amp; *-_+ =|{}[]:;&#39;,.? /&#39;
      * &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      * 
      */

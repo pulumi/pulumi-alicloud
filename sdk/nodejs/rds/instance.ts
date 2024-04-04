@@ -125,7 +125,7 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
      * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
-     * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\|{};:'",<>/?
+     * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
      */
     public readonly connectionStringPrefix!: pulumi.Output<string>;
     /**
@@ -780,7 +780,7 @@ export interface InstanceState {
     connectionString?: pulumi.Input<string>;
     /**
      * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
-     * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\|{};:'",<>/?
+     * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
      */
     connectionStringPrefix?: pulumi.Input<string>;
     /**
@@ -1243,7 +1243,7 @@ export interface InstanceArgs {
     clientCrlEnabled?: pulumi.Input<number>;
     /**
      * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
-     * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\|{};:'",<>/?
+     * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
      */
     connectionStringPrefix?: pulumi.Input<string>;
     /**

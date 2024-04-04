@@ -56,7 +56,7 @@ class OssShipperArgs:
                `type` - (Required) Type of configuration name.
         :param pulumi.Input[str] logstore_name: The name of the log logstore.
         :param pulumi.Input[str] oss_bucket: The name of the oss bucket.
-        :param pulumi.Input[str] path_format: The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+        :param pulumi.Input[str] path_format: The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
         :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
         :param pulumi.Input[str] shipper_name: Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
         :param pulumi.Input[str] compress_type: OSS data storage compression method, support: none, snappy. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
@@ -172,7 +172,7 @@ class OssShipperArgs:
     @pulumi.getter(name="pathFormat")
     def path_format(self) -> pulumi.Input[str]:
         """
-        The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+        The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
         """
         return pulumi.get(self, "path_format")
 
@@ -358,7 +358,7 @@ class _OssShipperState:
         :param pulumi.Input[str] logstore_name: The name of the log logstore.
         :param pulumi.Input[str] oss_bucket: The name of the oss bucket.
         :param pulumi.Input[str] oss_prefix: The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
-        :param pulumi.Input[str] path_format: The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+        :param pulumi.Input[str] path_format: The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
         :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
         :param pulumi.Input[str] role_arn: Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
         :param pulumi.Input[str] shipper_name: Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
@@ -576,7 +576,7 @@ class _OssShipperState:
     @pulumi.getter(name="pathFormat")
     def path_format(self) -> Optional[pulumi.Input[str]]:
         """
-        The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+        The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
         """
         return pulumi.get(self, "path_format")
 
@@ -723,7 +723,7 @@ class OssShipper(pulumi.CustomResource):
         :param pulumi.Input[str] logstore_name: The name of the log logstore.
         :param pulumi.Input[str] oss_bucket: The name of the oss bucket.
         :param pulumi.Input[str] oss_prefix: The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
-        :param pulumi.Input[str] path_format: The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+        :param pulumi.Input[str] path_format: The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
         :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
         :param pulumi.Input[str] role_arn: Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
         :param pulumi.Input[str] shipper_name: Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
@@ -923,7 +923,7 @@ class OssShipper(pulumi.CustomResource):
         :param pulumi.Input[str] logstore_name: The name of the log logstore.
         :param pulumi.Input[str] oss_bucket: The name of the oss bucket.
         :param pulumi.Input[str] oss_prefix: The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
-        :param pulumi.Input[str] path_format: The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+        :param pulumi.Input[str] path_format: The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
         :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
         :param pulumi.Input[str] role_arn: Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
         :param pulumi.Input[str] shipper_name: Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
@@ -1067,7 +1067,7 @@ class OssShipper(pulumi.CustomResource):
     @pulumi.getter(name="pathFormat")
     def path_format(self) -> pulumi.Output[str]:
         """
-        The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+        The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
         """
         return pulumi.get(self, "path_format")
 

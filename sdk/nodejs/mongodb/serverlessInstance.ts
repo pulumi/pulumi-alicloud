@@ -99,7 +99,7 @@ export class ServerlessInstance extends pulumi.CustomResource {
     /**
      * The password of the database logon account.
      * * The password length is `8` to `32` bits.
-     * * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+     * * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
      */
     public readonly accountPassword!: pulumi.Output<string>;
     /**
@@ -264,7 +264,7 @@ export interface ServerlessInstanceState {
     /**
      * The password of the database logon account.
      * * The password length is `8` to `32` bits.
-     * * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+     * * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
      */
     accountPassword?: pulumi.Input<string>;
     /**
@@ -348,7 +348,7 @@ export interface ServerlessInstanceArgs {
     /**
      * The password of the database logon account.
      * * The password length is `8` to `32` bits.
-     * * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+     * * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
      */
     accountPassword: pulumi.Input<string>;
     /**

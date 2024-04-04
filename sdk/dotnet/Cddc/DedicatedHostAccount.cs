@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.Cddc
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&amp;*()_+-=`.
+        /// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&amp;*()_+-=`.
         /// </summary>
         [Output("accountPassword")]
         public Output<string> AccountPassword { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.Cddc
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&amp;*()_+-=`.
+        /// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&amp;*()_+-=`.
         /// </summary>
         public Input<string>? AccountPassword
         {
@@ -233,7 +233,7 @@ namespace Pulumi.AliCloud.Cddc
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&amp;*()_+-=`.
+        /// The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&amp;*()_+-=`.
         /// </summary>
         public Input<string>? AccountPassword
         {

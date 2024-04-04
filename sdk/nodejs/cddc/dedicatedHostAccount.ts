@@ -113,7 +113,7 @@ export class DedicatedHostAccount extends pulumi.CustomResource {
      */
     public readonly accountName!: pulumi.Output<string>;
     /**
-     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
+     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
      */
     public readonly accountPassword!: pulumi.Output<string>;
     /**
@@ -174,7 +174,7 @@ export interface DedicatedHostAccountState {
      */
     accountName?: pulumi.Input<string>;
     /**
-     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
+     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
      */
     accountPassword?: pulumi.Input<string>;
     /**
@@ -196,7 +196,7 @@ export interface DedicatedHostAccountArgs {
      */
     accountName: pulumi.Input<string>;
     /**
-     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
+     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
      */
     accountPassword: pulumi.Input<string>;
     /**
