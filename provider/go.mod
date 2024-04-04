@@ -24,7 +24,7 @@ replace github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-ex
 require (
 	github.com/aliyun/terraform-provider-alicloud v1.220.1
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.79.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.79.1-0.20240404153132-0441ef3e0b01
 	github.com/pulumi/pulumi/sdk/v3 v3.112.0
 )
 
