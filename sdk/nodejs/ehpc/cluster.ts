@@ -236,7 +236,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly osTag!: pulumi.Output<string>;
     /**
-     * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
+     * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -649,7 +649,7 @@ export interface ClusterState {
      */
     osTag?: pulumi.Input<string>;
     /**
-     * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
+     * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
      */
     password?: pulumi.Input<string>;
     /**
@@ -901,7 +901,7 @@ export interface ClusterArgs {
      */
     osTag: pulumi.Input<string>;
     /**
-     * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
+     * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
      */
     password?: pulumi.Input<string>;
     /**

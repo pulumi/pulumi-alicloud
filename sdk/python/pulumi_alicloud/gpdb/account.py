@@ -25,7 +25,7 @@ class AccountArgs:
                * Contains only lowercase letters, digits, or underscores (_).
                * Be up to 16 characters in length.
                * Contains no reserved keywords.
-        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) & * ( ) _ + - =`.
+        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
         :param pulumi.Input[str] account_description: The description of the account.
                * Starts with a letter.
@@ -59,7 +59,7 @@ class AccountArgs:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Input[str]:
         """
-        The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) & * ( ) _ + - =`.
+        The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
         """
         return pulumi.get(self, "account_password")
 
@@ -116,7 +116,7 @@ class _AccountState:
                * Contains only lowercase letters, digits, or underscores (_).
                * Be up to 16 characters in length.
                * Contains no reserved keywords.
-        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) & * ( ) _ + - =`.
+        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
         :param pulumi.Input[str] status: The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
         """
@@ -167,7 +167,7 @@ class _AccountState:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) & * ( ) _ + - =`.
+        The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
         """
         return pulumi.get(self, "account_password")
 
@@ -283,7 +283,7 @@ class Account(pulumi.CustomResource):
                * Contains only lowercase letters, digits, or underscores (_).
                * Be up to 16 characters in length.
                * Contains no reserved keywords.
-        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) & * ( ) _ + - =`.
+        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
         """
         ...
@@ -424,7 +424,7 @@ class Account(pulumi.CustomResource):
                * Contains only lowercase letters, digits, or underscores (_).
                * Be up to 16 characters in length.
                * Contains no reserved keywords.
-        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) & * ( ) _ + - =`.
+        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
         :param pulumi.Input[str] status: The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
         """
@@ -467,7 +467,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Output[str]:
         """
-        The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ %!^(MISSING) & * ( ) _ + - =`.
+        The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ & * ( ) _ + - =`.
         """
         return pulumi.get(self, "account_password")
 

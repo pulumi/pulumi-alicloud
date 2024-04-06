@@ -176,7 +176,7 @@ export class OssExport extends pulumi.CustomResource {
      */
     public readonly logstoreName!: pulumi.Output<string>;
     /**
-     * The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+     * The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
      */
     public readonly pathFormat!: pulumi.Output<string>;
     /**
@@ -380,7 +380,7 @@ export interface OssExportState {
      */
     logstoreName?: pulumi.Input<string>;
     /**
-     * The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+     * The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
      */
     pathFormat?: pulumi.Input<string>;
     /**
@@ -487,7 +487,7 @@ export interface OssExportArgs {
      */
     logstoreName: pulumi.Input<string>;
     /**
-     * The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+     * The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
      */
     pathFormat: pulumi.Input<string>;
     /**

@@ -29,7 +29,7 @@ class AccountArgs:
                * The name can be up to 100 characters in length.
                * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
-        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
@@ -84,7 +84,7 @@ class AccountArgs:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "account_password")
 
@@ -173,7 +173,7 @@ class _AccountState:
                * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
                * The name can be up to 100 characters in length.
                * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
-        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
@@ -222,7 +222,7 @@ class _AccountState:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "account_password")
 
@@ -399,7 +399,7 @@ class Account(pulumi.CustomResource):
                * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
                * The name can be up to 100 characters in length.
                * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
-        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
@@ -554,7 +554,7 @@ class Account(pulumi.CustomResource):
                * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
                * The name can be up to 100 characters in length.
                * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
-        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
@@ -595,7 +595,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Output[Optional[str]]:
         """
-        The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ %!^(MISSING) & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
+        The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
         """
         return pulumi.get(self, "account_password")
 

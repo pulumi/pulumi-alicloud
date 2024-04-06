@@ -139,14 +139,14 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.accountName;
     }
     /**
-     * The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)&amp; author (s):_+-=) in a length of 8-32 bit.
+     * The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^&amp; author (s):_+-=) in a length of 8-32 bit.
      * 
      */
     @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output<String> accountPassword;
 
     /**
-     * @return The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)&amp; author (s):_+-=) in a length of 8-32 bit.
+     * @return The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^&amp; author (s):_+-=) in a length of 8-32 bit.
      * 
      */
     public Output<String> accountPassword() {

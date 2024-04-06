@@ -191,7 +191,7 @@ type Listener struct {
 	HealthCheckTimeout pulumi.IntPtrOutput `pulumi:"healthCheckTimeout"`
 	// The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
 	HealthCheckType pulumi.StringPtrOutput `pulumi:"healthCheckType"`
-	// The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+	// The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
 	// **NOTE:** `healthCheckUri` takes effect only if `healthCheck` is set to `on`.
 	HealthCheckUri pulumi.StringPtrOutput `pulumi:"healthCheckUri"`
 	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthyThreshold` takes effect only if `healthCheck` is set to `on`.
@@ -324,7 +324,7 @@ type listenerState struct {
 	HealthCheckTimeout *int `pulumi:"healthCheckTimeout"`
 	// The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
 	HealthCheckType *string `pulumi:"healthCheckType"`
-	// The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+	// The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
 	// **NOTE:** `healthCheckUri` takes effect only if `healthCheck` is set to `on`.
 	HealthCheckUri *string `pulumi:"healthCheckUri"`
 	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthyThreshold` takes effect only if `healthCheck` is set to `on`.
@@ -419,7 +419,7 @@ type ListenerState struct {
 	HealthCheckTimeout pulumi.IntPtrInput
 	// The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
 	HealthCheckType pulumi.StringPtrInput
-	// The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+	// The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
 	// **NOTE:** `healthCheckUri` takes effect only if `healthCheck` is set to `on`.
 	HealthCheckUri pulumi.StringPtrInput
 	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthyThreshold` takes effect only if `healthCheck` is set to `on`.
@@ -518,7 +518,7 @@ type listenerArgs struct {
 	HealthCheckTimeout *int `pulumi:"healthCheckTimeout"`
 	// The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
 	HealthCheckType *string `pulumi:"healthCheckType"`
-	// The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+	// The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
 	// **NOTE:** `healthCheckUri` takes effect only if `healthCheck` is set to `on`.
 	HealthCheckUri *string `pulumi:"healthCheckUri"`
 	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthyThreshold` takes effect only if `healthCheck` is set to `on`.
@@ -614,7 +614,7 @@ type ListenerArgs struct {
 	HealthCheckTimeout pulumi.IntPtrInput
 	// The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
 	HealthCheckType pulumi.StringPtrInput
-	// The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+	// The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
 	// **NOTE:** `healthCheckUri` takes effect only if `healthCheck` is set to `on`.
 	HealthCheckUri pulumi.StringPtrInput
 	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthyThreshold` takes effect only if `healthCheck` is set to `on`.
@@ -864,7 +864,7 @@ func (o ListenerOutput) HealthCheckType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.HealthCheckType }).(pulumi.StringPtrOutput)
 }
 
-// The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+// The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
 // **NOTE:** `healthCheckUri` takes effect only if `healthCheck` is set to `on`.
 func (o ListenerOutput) HealthCheckUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.HealthCheckUri }).(pulumi.StringPtrOutput)

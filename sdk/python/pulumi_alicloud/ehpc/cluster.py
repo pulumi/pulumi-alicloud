@@ -106,7 +106,7 @@ class ClusterArgs:
         :param pulumi.Input[str] job_queue: The queue to which the compute nodes are added.
         :param pulumi.Input[str] key_pair_name: The name of the AccessKey pair.
         :param pulumi.Input[int] manager_count: The number of the management nodes. Valid values: 1 and 2.
-        :param pulumi.Input[str] password: The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+        :param pulumi.Input[str] password: The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
         :param pulumi.Input[int] period: The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
                * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
                * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -619,7 +619,7 @@ class ClusterArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+        The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
         """
         return pulumi.get(self, "password")
 
@@ -1056,7 +1056,7 @@ class _ClusterState:
         :param pulumi.Input[int] manager_count: The number of the management nodes. Valid values: 1 and 2.
         :param pulumi.Input[str] manager_instance_type: The instance type of the management nodes.
         :param pulumi.Input[str] os_tag: The image tag of the operating system.
-        :param pulumi.Input[str] password: The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+        :param pulumi.Input[str] password: The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
         :param pulumi.Input[int] period: The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
                * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
                * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -1579,7 +1579,7 @@ class _ClusterState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+        The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
         """
         return pulumi.get(self, "password")
 
@@ -2102,7 +2102,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[int] manager_count: The number of the management nodes. Valid values: 1 and 2.
         :param pulumi.Input[str] manager_instance_type: The instance type of the management nodes.
         :param pulumi.Input[str] os_tag: The image tag of the operating system.
-        :param pulumi.Input[str] password: The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+        :param pulumi.Input[str] password: The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
         :param pulumi.Input[int] period: The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
                * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
                * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -2482,7 +2482,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[int] manager_count: The number of the management nodes. Valid values: 1 and 2.
         :param pulumi.Input[str] manager_instance_type: The instance type of the management nodes.
         :param pulumi.Input[str] os_tag: The image tag of the operating system.
-        :param pulumi.Input[str] password: The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+        :param pulumi.Input[str] password: The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
         :param pulumi.Input[int] period: The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
                * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
                * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -2831,7 +2831,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
-        The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ %!^(MISSING) & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+        The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
         """
         return pulumi.get(self, "password")
 

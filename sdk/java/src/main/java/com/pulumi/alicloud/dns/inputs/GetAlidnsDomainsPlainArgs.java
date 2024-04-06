@@ -116,14 +116,14 @@ public final class GetAlidnsDomainsPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
+     * The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
      * 
      */
     @Import(name="keyWord")
     private @Nullable String keyWord;
 
     /**
-     * @return The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
+     * @return The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
      * 
      */
     public Optional<String> keyWord() {
@@ -355,7 +355,7 @@ public final class GetAlidnsDomainsPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param keyWord The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
+         * @param keyWord The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
          * 
          * @return builder
          * 

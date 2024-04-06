@@ -21,7 +21,7 @@ class DedicatedHostAccountArgs:
         """
         The set of arguments for constructing a DedicatedHostAccount resource.
         :param pulumi.Input[str] account_name: The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
-        :param pulumi.Input[str] account_password: The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
+        :param pulumi.Input[str] account_password: The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
         :param pulumi.Input[str] dedicated_host_id: The ID of Dedicated the host.
         :param pulumi.Input[str] account_type: The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
         """
@@ -47,7 +47,7 @@ class DedicatedHostAccountArgs:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Input[str]:
         """
-        The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
+        The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
         """
         return pulumi.get(self, "account_password")
 
@@ -90,7 +90,7 @@ class _DedicatedHostAccountState:
         """
         Input properties used for looking up and filtering DedicatedHostAccount resources.
         :param pulumi.Input[str] account_name: The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
-        :param pulumi.Input[str] account_password: The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
+        :param pulumi.Input[str] account_password: The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
         :param pulumi.Input[str] account_type: The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
         :param pulumi.Input[str] dedicated_host_id: The ID of Dedicated the host.
         """
@@ -119,7 +119,7 @@ class _DedicatedHostAccountState:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
+        The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
         """
         return pulumi.get(self, "account_password")
 
@@ -236,7 +236,7 @@ class DedicatedHostAccount(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
-        :param pulumi.Input[str] account_password: The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
+        :param pulumi.Input[str] account_password: The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
         :param pulumi.Input[str] account_type: The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
         :param pulumi.Input[str] dedicated_host_id: The ID of Dedicated the host.
         """
@@ -379,7 +379,7 @@ class DedicatedHostAccount(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_name: The name of the Dedicated host account. The account name must be 2 to 16 characters in length, contain lower case letters, digits, and underscore(_). At the same time, the name must start with a letter and end with a letter or number.
-        :param pulumi.Input[str] account_password: The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
+        :param pulumi.Input[str] account_password: The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
         :param pulumi.Input[str] account_type: The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
         :param pulumi.Input[str] dedicated_host_id: The ID of Dedicated the host.
         """
@@ -405,7 +405,7 @@ class DedicatedHostAccount(pulumi.CustomResource):
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Output[str]:
         """
-        The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&*()_+-=`.
+        The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
         """
         return pulumi.get(self, "account_password")
 

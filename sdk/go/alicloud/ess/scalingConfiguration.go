@@ -211,7 +211,7 @@ type ScalingConfiguration struct {
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
 	// Indicates whether to overwrite the existing data. Default to false.
 	Override pulumi.BoolPtrOutput `pulumi:"override"`
-	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%!^(MISSING)&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
 	PasswordInherit pulumi.BoolPtrOutput `pulumi:"passwordInherit"`
@@ -352,7 +352,7 @@ type scalingConfigurationState struct {
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// Indicates whether to overwrite the existing data. Default to false.
 	Override *bool `pulumi:"override"`
-	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%!^(MISSING)&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
 	Password *string `pulumi:"password"`
 	// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
 	PasswordInherit *bool `pulumi:"passwordInherit"`
@@ -461,7 +461,7 @@ type ScalingConfigurationState struct {
 	KmsEncryptionContext pulumi.MapInput
 	// Indicates whether to overwrite the existing data. Default to false.
 	Override pulumi.BoolPtrInput
-	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%!^(MISSING)&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
 	Password pulumi.StringPtrInput
 	// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
 	PasswordInherit pulumi.BoolPtrInput
@@ -574,7 +574,7 @@ type scalingConfigurationArgs struct {
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
 	// Indicates whether to overwrite the existing data. Default to false.
 	Override *bool `pulumi:"override"`
-	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%!^(MISSING)&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
 	Password *string `pulumi:"password"`
 	// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
 	PasswordInherit *bool `pulumi:"passwordInherit"`
@@ -684,7 +684,7 @@ type ScalingConfigurationArgs struct {
 	KmsEncryptionContext pulumi.MapInput
 	// Indicates whether to overwrite the existing data. Default to false.
 	Override pulumi.BoolPtrInput
-	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%!^(MISSING)&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
 	Password pulumi.StringPtrInput
 	// Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
 	PasswordInherit pulumi.BoolPtrInput
@@ -952,7 +952,7 @@ func (o ScalingConfigurationOutput) Override() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.BoolPtrOutput { return v.Override }).(pulumi.BoolPtrOutput)
 }
 
-// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%!^(MISSING)&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
+// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
 func (o ScalingConfigurationOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }

@@ -210,14 +210,14 @@ public final class OssShipperArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+     * The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
      * 
      */
     @Import(name="pathFormat", required=true)
     private Output<String> pathFormat;
 
     /**
-     * @return The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+     * @return The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
      * 
      */
     public Output<String> pathFormat() {
@@ -567,7 +567,7 @@ public final class OssShipperArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pathFormat The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+         * @param pathFormat The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
          * 
          * @return builder
          * 
@@ -578,7 +578,7 @@ public final class OssShipperArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pathFormat The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+         * @param pathFormat The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
          * 
          * @return builder
          * 

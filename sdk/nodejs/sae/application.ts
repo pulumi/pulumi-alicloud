@@ -242,7 +242,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
      * * `-1`: Initialization value, indicating that percentages are not used.
-     * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
+     * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
      */
     public readonly minReadyInstanceRatio!: pulumi.Output<number>;
     /**
@@ -718,7 +718,7 @@ export interface ApplicationState {
     /**
      * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
      * * `-1`: Initialization value, indicating that percentages are not used.
-     * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
+     * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
      */
     minReadyInstanceRatio?: pulumi.Input<number>;
     /**
@@ -1025,7 +1025,7 @@ export interface ApplicationArgs {
     /**
      * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
      * * `-1`: Initialization value, indicating that percentages are not used.
-     * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
+     * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
      */
     minReadyInstanceRatio?: pulumi.Input<number>;
     /**

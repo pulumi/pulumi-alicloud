@@ -46,7 +46,7 @@ type GetAlidnsRecordsArgs struct {
 	OrderBy *string `pulumi:"orderBy"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
+	// The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
 	RrKeyWord *string `pulumi:"rrKeyWord"`
 	// Host record regex.
 	RrRegex *string `pulumi:"rrRegex"`
@@ -58,7 +58,7 @@ type GetAlidnsRecordsArgs struct {
 	Type *string `pulumi:"type"`
 	// Analyze type keywords, search by full match, not case sensitive.
 	TypeKeyWord *string `pulumi:"typeKeyWord"`
-	// The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
+	// The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
 	ValueKeyWord *string `pulumi:"valueKeyWord"`
 	// Host record value regex.
 	ValueRegex *string `pulumi:"valueRegex"`
@@ -127,7 +127,7 @@ type GetAlidnsRecordsOutputArgs struct {
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
+	// The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
 	RrKeyWord pulumi.StringPtrInput `pulumi:"rrKeyWord"`
 	// Host record regex.
 	RrRegex pulumi.StringPtrInput `pulumi:"rrRegex"`
@@ -139,7 +139,7 @@ type GetAlidnsRecordsOutputArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Analyze type keywords, search by full match, not case sensitive.
 	TypeKeyWord pulumi.StringPtrInput `pulumi:"typeKeyWord"`
-	// The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
+	// The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
 	ValueKeyWord pulumi.StringPtrInput `pulumi:"valueKeyWord"`
 	// Host record value regex.
 	ValueRegex pulumi.StringPtrInput `pulumi:"valueRegex"`

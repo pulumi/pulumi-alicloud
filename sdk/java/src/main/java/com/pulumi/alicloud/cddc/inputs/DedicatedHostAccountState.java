@@ -31,14 +31,14 @@ public final class DedicatedHostAccountState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&amp;*()_+-=`.
+     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&amp;*()_+-=`.
      * 
      */
     @Import(name="accountPassword")
     private @Nullable Output<String> accountPassword;
 
     /**
-     * @return The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&amp;*()_+-=`.
+     * @return The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&amp;*()_+-=`.
      * 
      */
     public Optional<Output<String>> accountPassword() {
@@ -124,7 +124,7 @@ public final class DedicatedHostAccountState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountPassword The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&amp;*()_+-=`.
+         * @param accountPassword The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&amp;*()_+-=`.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class DedicatedHostAccountState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountPassword The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&amp;*()_+-=`.
+         * @param accountPassword The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&amp;*()_+-=`.
          * 
          * @return builder
          * 

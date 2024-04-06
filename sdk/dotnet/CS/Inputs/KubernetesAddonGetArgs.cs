@@ -22,6 +22,17 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// Disables the automatic installation of a component. Default is `false`.
         /// 
         /// The following example is the definition of addons block, The type of this field is list:
+        /// 
+        /// ```
+        /// # install nginx ingress, conflict with SLB ingress
+        /// addons {
+        /// name = "nginx-ingress-controller"
+        /// # use internet
+        /// config = "{\"IngressSlbNetworkType\":\"internet",\"IngressSlbSpec\":\"slb.s2.small\"}"
+        /// # if use intranet, detail below.
+        /// # config = "{\"IngressSlbNetworkType\":\"intranet",\"IngressSlbSpec\":\"slb.s2.small\"}"
+        /// }
+        /// ```
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

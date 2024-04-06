@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Dns
         public string? InstanceId { get; set; }
 
         /// <summary>
-        /// The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
+        /// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
         /// </summary>
         [Input("keyWord")]
         public string? KeyWord { get; set; }
@@ -234,7 +234,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
+        /// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
         /// </summary>
         [Input("keyWord")]
         public Input<string>? KeyWord { get; set; }

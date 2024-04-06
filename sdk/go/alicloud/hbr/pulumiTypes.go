@@ -731,7 +731,7 @@ type GetBackupJobsJob struct {
 	PlanId string `pulumi:"planId"`
 	// The prefix of Oss bucket files.
 	Prefix string `pulumi:"prefix"`
-	// Backup progress. The value is 100%!(BADWIDTH)%!1(MISSING)00.
+	// Backup progress. The value is 100%*100.
 	Progress string `pulumi:"progress"`
 	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
 	SourceType string `pulumi:"sourceType"`
@@ -808,7 +808,7 @@ type GetBackupJobsJobArgs struct {
 	PlanId pulumi.StringInput `pulumi:"planId"`
 	// The prefix of Oss bucket files.
 	Prefix pulumi.StringInput `pulumi:"prefix"`
-	// Backup progress. The value is 100%!(BADWIDTH)%!1(MISSING)00.
+	// Backup progress. The value is 100%*100.
 	Progress pulumi.StringInput `pulumi:"progress"`
 	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
@@ -1002,7 +1002,7 @@ func (o GetBackupJobsJobOutput) Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupJobsJob) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
-// Backup progress. The value is 100%!(BADWIDTH)%!1(MISSING)00.
+// Backup progress. The value is 100%*100.
 func (o GetBackupJobsJobOutput) Progress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupJobsJob) string { return v.Progress }).(pulumi.StringOutput)
 }

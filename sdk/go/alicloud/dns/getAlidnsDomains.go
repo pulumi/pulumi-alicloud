@@ -69,7 +69,7 @@ type GetAlidnsDomainsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// Cloud analysis product ID.
 	InstanceId *string `pulumi:"instanceId"`
-	// The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
+	// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
 	KeyWord *string `pulumi:"keyWord"`
 	// User language.
 	Lang *string `pulumi:"lang"`
@@ -146,7 +146,7 @@ type GetAlidnsDomainsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// Cloud analysis product ID.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	// The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
+	// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
 	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
 	// User language.
 	Lang pulumi.StringPtrInput `pulumi:"lang"`

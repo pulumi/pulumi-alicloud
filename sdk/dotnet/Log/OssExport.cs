@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> LogstoreName { get; private set; } = null!;
 
         /// <summary>
-        /// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+        /// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
         /// </summary>
         [Output("pathFormat")]
         public Output<string> PathFormat { get; private set; } = null!;
@@ -415,7 +415,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string> LogstoreName { get; set; } = null!;
 
         /// <summary>
-        /// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+        /// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
         /// </summary>
         [Input("pathFormat", required: true)]
         public Input<string> PathFormat { get; set; } = null!;
@@ -586,7 +586,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? LogstoreName { get; set; }
 
         /// <summary>
-        /// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%!Y(MISSING)/%!m(MISSING)/%!d(MISSING)/%!H(MISSING)/%!M(MISSING)`.
+        /// The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
         /// </summary>
         [Input("pathFormat")]
         public Input<string>? PathFormat { get; set; }

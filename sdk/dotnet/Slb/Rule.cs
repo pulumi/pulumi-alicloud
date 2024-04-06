@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<int?> HealthCheckTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+        /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
         /// </summary>
         [Output("healthCheckUri")]
         public Output<string?> HealthCheckUri { get; private set; } = null!;
@@ -252,7 +252,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<int?> UnhealthyThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%!'(MISSING) '#' and '&amp;' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+        /// Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%' '#' and '&amp;' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         /// </summary>
         [Output("url")]
         public Output<string?> Url { get; private set; } = null!;
@@ -373,7 +373,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? HealthCheckTimeout { get; set; }
 
         /// <summary>
-        /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+        /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
         /// </summary>
         [Input("healthCheckUri")]
         public Input<string>? HealthCheckUri { get; set; }
@@ -433,7 +433,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? UnhealthyThreshold { get; set; }
 
         /// <summary>
-        /// Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%!'(MISSING) '#' and '&amp;' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+        /// Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%' '#' and '&amp;' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
@@ -516,7 +516,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? HealthCheckTimeout { get; set; }
 
         /// <summary>
-        /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+        /// URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
         /// </summary>
         [Input("healthCheckUri")]
         public Input<string>? HealthCheckUri { get; set; }
@@ -576,7 +576,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<int>? UnhealthyThreshold { get; set; }
 
         /// <summary>
-        /// Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%!'(MISSING) '#' and '&amp;' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
+        /// Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%' '#' and '&amp;' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
