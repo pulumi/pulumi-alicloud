@@ -154,14 +154,14 @@ public final class GetAlidnsRecordsArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
+     * The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
      * 
      */
     @Import(name="rrKeyWord")
     private @Nullable Output<String> rrKeyWord;
 
     /**
-     * @return The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
+     * @return The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
      * 
      */
     public Optional<Output<String>> rrKeyWord() {
@@ -244,14 +244,14 @@ public final class GetAlidnsRecordsArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
+     * The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
      * 
      */
     @Import(name="valueKeyWord")
     private @Nullable Output<String> valueKeyWord;
 
     /**
-     * @return The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
+     * @return The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
      * 
      */
     public Optional<Output<String>> valueKeyWord() {
@@ -513,7 +513,7 @@ public final class GetAlidnsRecordsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param rrKeyWord The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
+         * @param rrKeyWord The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
          * 
          * @return builder
          * 
@@ -524,7 +524,7 @@ public final class GetAlidnsRecordsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param rrKeyWord The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
+         * @param rrKeyWord The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
          * 
          * @return builder
          * 
@@ -639,7 +639,7 @@ public final class GetAlidnsRecordsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param valueKeyWord The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
+         * @param valueKeyWord The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
          * 
          * @return builder
          * 
@@ -650,7 +650,7 @@ public final class GetAlidnsRecordsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param valueKeyWord The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
+         * @param valueKeyWord The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
          * 
          * @return builder
          * 

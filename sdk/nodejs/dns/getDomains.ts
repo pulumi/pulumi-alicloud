@@ -79,7 +79,7 @@ export interface GetDomainsArgs {
      */
     instanceId?: string;
     /**
-     * The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
+     * The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
      */
     keyWord?: string;
     /**
@@ -216,7 +216,7 @@ export interface GetDomainsOutputArgs {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The keywords are searched according to the `%!K(MISSING)eyWord%!`(MISSING) mode, which is not case sensitive.
+     * The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
      */
     keyWord?: pulumi.Input<string>;
     /**

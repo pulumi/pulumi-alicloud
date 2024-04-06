@@ -403,7 +403,7 @@ func (o DdrInstancePgHbaConfArrayOutput) Index(i pulumi.IntInput) DdrInstancePgH
 type InstanceBabelfishConfig struct {
 	// specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
 	BabelfishEnabled string `pulumi:"babelfishEnabled"`
-	// The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ %!^(MISSING) & * () _ + - =
+	// The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
 	MasterUserPassword string `pulumi:"masterUserPassword"`
 	// The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
 	MasterUsername string `pulumi:"masterUsername"`
@@ -425,7 +425,7 @@ type InstanceBabelfishConfigInput interface {
 type InstanceBabelfishConfigArgs struct {
 	// specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
 	BabelfishEnabled pulumi.StringInput `pulumi:"babelfishEnabled"`
-	// The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ %!^(MISSING) & * () _ + - =
+	// The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
 	MasterUserPassword pulumi.StringInput `pulumi:"masterUserPassword"`
 	// The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
 	MasterUsername pulumi.StringInput `pulumi:"masterUsername"`
@@ -489,7 +489,7 @@ func (o InstanceBabelfishConfigOutput) BabelfishEnabled() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceBabelfishConfig) string { return v.BabelfishEnabled }).(pulumi.StringOutput)
 }
 
-// The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ %!^(MISSING) & * () _ + - =
+// The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
 func (o InstanceBabelfishConfigOutput) MasterUserPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceBabelfishConfig) string { return v.MasterUserPassword }).(pulumi.StringOutput)
 }

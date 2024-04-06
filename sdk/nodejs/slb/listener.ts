@@ -219,7 +219,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
     /**
-     * The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+     * The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
      * **NOTE:** `healthCheckUri` takes effect only if `healthCheck` is set to `on`.
      */
     public readonly healthCheckUri!: pulumi.Output<string | undefined>;
@@ -522,7 +522,7 @@ export interface ListenerState {
      */
     healthCheckType?: pulumi.Input<string>;
     /**
-     * The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+     * The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
      * **NOTE:** `healthCheckUri` takes effect only if `healthCheck` is set to `on`.
      */
     healthCheckUri?: pulumi.Input<string>;
@@ -708,7 +708,7 @@ export interface ListenerArgs {
      */
     healthCheckType?: pulumi.Input<string>;
     /**
-     * The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+     * The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
      * **NOTE:** `healthCheckUri` takes effect only if `healthCheck` is set to `on`.
      */
     healthCheckUri?: pulumi.Input<string>;

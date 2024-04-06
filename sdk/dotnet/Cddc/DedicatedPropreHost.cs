@@ -125,7 +125,7 @@ namespace Pulumi.AliCloud.Cddc
         /// Host login password, which can be set later. The password must meet the following requirements:
         /// - Length is 8~30 characters.
         /// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-        /// - Special symbol '()\' ~! @#$%!^(MISSING)&amp; *-_+ =|{}[]:;',.? /'
+        /// - Special symbol '()\' ~! @#$%^&amp; *-_+ =|{}[]:;',.? /'
         /// &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         /// </summary>
         [Output("osPassword")]
@@ -350,7 +350,7 @@ namespace Pulumi.AliCloud.Cddc
         /// Host login password, which can be set later. The password must meet the following requirements:
         /// - Length is 8~30 characters.
         /// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-        /// - Special symbol '()\' ~! @#$%!^(MISSING)&amp; *-_+ =|{}[]:;',.? /'
+        /// - Special symbol '()\' ~! @#$%^&amp; *-_+ =|{}[]:;',.? /'
         /// &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         /// </summary>
         [Input("osPassword")]
@@ -549,7 +549,7 @@ namespace Pulumi.AliCloud.Cddc
         /// Host login password, which can be set later. The password must meet the following requirements:
         /// - Length is 8~30 characters.
         /// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-        /// - Special symbol '()\' ~! @#$%!^(MISSING)&amp; *-_+ =|{}[]:;',.? /'
+        /// - Special symbol '()\' ~! @#$%^&amp; *-_+ =|{}[]:;',.? /'
         /// &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         /// </summary>
         [Input("osPassword")]

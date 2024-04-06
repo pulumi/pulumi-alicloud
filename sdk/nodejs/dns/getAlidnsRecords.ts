@@ -78,7 +78,7 @@ export interface GetAlidnsRecordsArgs {
      */
     outputFile?: string;
     /**
-     * The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
+     * The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
      */
     rrKeyWord?: string;
     /**
@@ -102,7 +102,7 @@ export interface GetAlidnsRecordsArgs {
      */
     typeKeyWord?: string;
     /**
-     * The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
+     * The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
      */
     valueKeyWord?: string;
     /**
@@ -208,7 +208,7 @@ export interface GetAlidnsRecordsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The keywords recorded by the host are searched according to the `%!R(MISSING)RKeyWord%!`(MISSING) mode, and are not case sensitive.
+     * The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
      */
     rrKeyWord?: pulumi.Input<string>;
     /**
@@ -232,7 +232,7 @@ export interface GetAlidnsRecordsOutputArgs {
      */
     typeKeyWord?: pulumi.Input<string>;
     /**
-     * The keywords of the recorded value are searched according to the `%!V(MISSING)alueKeyWord%!`(MISSING) mode, and are not case sensitive.
+     * The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
      */
     valueKeyWord?: pulumi.Input<string>;
     /**

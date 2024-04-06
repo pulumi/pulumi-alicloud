@@ -251,7 +251,7 @@ class InstanceBabelfishConfigArgs:
                  migration_mode: pulumi.Input[str]):
         """
         :param pulumi.Input[str] babelfish_enabled: specifies whether to enable the Babelfish for the instance. If you set this parameter to **true**, you enable Babelfish for the instance. If you leave this parameter empty, you disable Babelfish for the instance.
-        :param pulumi.Input[str] master_user_password: The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ %!^(MISSING) & * () _ + - =
+        :param pulumi.Input[str] master_user_password: The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
         :param pulumi.Input[str] master_username: The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
         :param pulumi.Input[str] migration_mode: The migration mode of the instance. Valid values: **single-db** and **multi-db**.
         """
@@ -276,7 +276,7 @@ class InstanceBabelfishConfigArgs:
     @pulumi.getter(name="masterUserPassword")
     def master_user_password(self) -> pulumi.Input[str]:
         """
-        The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ %!^(MISSING) & * () _ + - =
+        The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
         """
         return pulumi.get(self, "master_user_password")
 

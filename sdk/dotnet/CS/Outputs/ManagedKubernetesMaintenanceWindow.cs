@@ -29,17 +29,14 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
         /// 
         /// for example:
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// maintenance_window {
+        /// enable            = true
+        /// maintenance_time  = "01:00:00Z"
+        /// duration          = "3h"
+        /// weekly_period     = "Monday,Friday"
+        /// }
+        /// ```
         /// </summary>
         public readonly string WeeklyPeriod;
 

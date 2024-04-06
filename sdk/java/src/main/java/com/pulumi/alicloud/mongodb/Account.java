@@ -147,7 +147,7 @@ public class Account extends com.pulumi.resources.CustomResource {
     }
     /**
      * The Password of the Account.
-     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&amp;*()_+-=`.
+     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
      * * The password must be `8` to `32` characters in length.
      * 
      */
@@ -156,7 +156,7 @@ public class Account extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The Password of the Account.
-     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%!^(MISSING)&amp;*()_+-=`.
+     * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
      * * The password must be `8` to `32` characters in length.
      * 
      */

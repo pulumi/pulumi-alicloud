@@ -263,7 +263,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string?> HealthCheckType { get; private set; } = null!;
 
         /// <summary>
-        /// The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+        /// The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
         /// **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Output("healthCheckUri")]
@@ -569,7 +569,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+        /// The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
         /// **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckUri")]
@@ -837,7 +837,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? HealthCheckType { get; set; }
 
         /// <summary>
-        /// The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%!)(MISSING), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
+        /// The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
         /// **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
         /// </summary>
         [Input("healthCheckUri")]

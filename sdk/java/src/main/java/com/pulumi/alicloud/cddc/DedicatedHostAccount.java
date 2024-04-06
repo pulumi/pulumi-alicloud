@@ -146,14 +146,14 @@ public class DedicatedHostAccount extends com.pulumi.resources.CustomResource {
         return this.accountName;
     }
     /**
-     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&amp;*()_+-=`.
+     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&amp;*()_+-=`.
      * 
      */
     @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output<String> accountPassword;
 
     /**
-     * @return The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%!^(MISSING)&amp;*()_+-=`.
+     * @return The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&amp;*()_+-=`.
      * 
      */
     public Output<String> accountPassword() {

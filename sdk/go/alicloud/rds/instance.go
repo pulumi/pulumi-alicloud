@@ -77,7 +77,7 @@ type Instance struct {
 	// RDS database connection string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
-	// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\|{};:'",<>/?
+	// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
 	ConnectionStringPrefix pulumi.StringOutput `pulumi:"connectionStringPrefix"`
 	// (Available since 1.204.1) The creation time of db instance.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -425,7 +425,7 @@ type instanceState struct {
 	// RDS database connection string.
 	ConnectionString *string `pulumi:"connectionString"`
 	// The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
-	// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\|{};:'",<>/?
+	// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
 	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
 	// (Available since 1.204.1) The creation time of db instance.
 	CreateTime *string `pulumi:"createTime"`
@@ -732,7 +732,7 @@ type InstanceState struct {
 	// RDS database connection string.
 	ConnectionString pulumi.StringPtrInput
 	// The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
-	// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\|{};:'",<>/?
+	// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
 	ConnectionStringPrefix pulumi.StringPtrInput
 	// (Available since 1.204.1) The creation time of db instance.
 	CreateTime pulumi.StringPtrInput
@@ -1041,7 +1041,7 @@ type instanceArgs struct {
 	// - 0: disables the CRL
 	ClientCrlEnabled *int `pulumi:"clientCrlEnabled"`
 	// The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
-	// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\|{};:'",<>/?
+	// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
 	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
 	// The attribute of the IP address whitelist. By default, this parameter is empty.
 	//
@@ -1339,7 +1339,7 @@ type InstanceArgs struct {
 	// - 0: disables the CRL
 	ClientCrlEnabled pulumi.IntPtrInput
 	// The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
-	// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\|{};:'",<>/?
+	// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
 	ConnectionStringPrefix pulumi.StringPtrInput
 	// The attribute of the IP address whitelist. By default, this parameter is empty.
 	//
@@ -1763,7 +1763,7 @@ func (o InstanceOutput) ConnectionString() pulumi.StringOutput {
 }
 
 // The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
-// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%!^(MISSING)&*=+\|{};:'",<>/?
+// > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
 func (o InstanceOutput) ConnectionStringPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionStringPrefix }).(pulumi.StringOutput)
 }

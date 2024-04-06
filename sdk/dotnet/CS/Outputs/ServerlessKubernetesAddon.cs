@@ -21,6 +21,35 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// Disables the automatic installation of a component. Default is `false`.
         /// 
         /// The following example is the definition of addons block, The type of this field is list:
+        /// 
+        /// ```
+        /// # install nginx ingress, conflict with SLB ingress
+        /// addons {
+        /// name = "nginx-ingress-controller"
+        /// # use internet
+        /// config = "{\"IngressSlbNetworkType\":\"internet",\"IngressSlbSpec\":\"slb.s2.small\"}"
+        /// # if use intranet, detail below.
+        /// # config = "{\"IngressSlbNetworkType\":\"intranet",\"IngressSlbSpec\":\"slb.s2.small\"}"
+        /// }
+        /// # install SLB ingress, conflict with nginx ingress
+        /// addons {
+        /// name = "alb-ingress-controller"
+        /// }
+        /// # install metric server
+        /// addons {
+        /// name = "metrics-server"
+        /// }
+        /// # install knative
+        /// addons {
+        /// name = "knative"
+        /// }
+        /// # install prometheus
+        /// addons {
+        /// name = "arms-prometheus"
+        /// # prometheus also provides managed version, specify with name `managed-arms-prometheus` for professional serverless clusters
+        /// # name = "managed-arms-prometheus"
+        /// }
+        /// ```
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>

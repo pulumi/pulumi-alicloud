@@ -185,6 +185,17 @@ class EdgeKubernetesAddon(dict):
         :param bool disabled: Disables the automatic installation of a component. Default is `false`.
                
                The following example is the definition of addons block, The type of this field is list:
+               
+               ```
+               # install nginx ingress, conflict with SLB ingress
+               addons {
+               name = "nginx-ingress-controller"
+               # use internet
+               config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+               # if use intranet, detail below.
+               # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+               }
+               ```
         :param str name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         :param str version: It specifies the version of the component.
         """
@@ -212,6 +223,17 @@ class EdgeKubernetesAddon(dict):
         Disables the automatic installation of a component. Default is `false`.
 
         The following example is the definition of addons block, The type of this field is list:
+
+        ```
+        # install nginx ingress, conflict with SLB ingress
+        addons {
+        name = "nginx-ingress-controller"
+        # use internet
+        config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+        # if use intranet, detail below.
+        # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+        }
+        ```
         """
         return pulumi.get(self, "disabled")
 
@@ -645,6 +667,17 @@ class KubernetesAddon(dict):
         :param bool disabled: Disables the automatic installation of a component. Default is `false`.
                
                The following example is the definition of addons block, The type of this field is list:
+               
+               ```
+               # install nginx ingress, conflict with SLB ingress
+               addons {
+               name = "nginx-ingress-controller"
+               # use internet
+               config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+               # if use intranet, detail below.
+               # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+               }
+               ```
         :param str name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         :param str version: The version of the component.
         """
@@ -672,6 +705,17 @@ class KubernetesAddon(dict):
         Disables the automatic installation of a component. Default is `false`.
 
         The following example is the definition of addons block, The type of this field is list:
+
+        ```
+        # install nginx ingress, conflict with SLB ingress
+        addons {
+        name = "nginx-ingress-controller"
+        # use internet
+        config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+        # if use intranet, detail below.
+        # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+        }
+        ```
         """
         return pulumi.get(self, "disabled")
 
@@ -1317,11 +1361,14 @@ class ManagedKubernetesMaintenanceWindow(dict):
         :param str weekly_period: Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
                
                for example:
-               <!--Start PulumiCodeChooser -->
-               ```python
-               import pulumi
                ```
-               <!--End PulumiCodeChooser -->
+               maintenance_window {
+               enable            = true
+               maintenance_time  = "01:00:00Z"
+               duration          = "3h"
+               weekly_period     = "Monday,Friday"
+               }
+               ```
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "enable", enable)
@@ -1359,11 +1406,14 @@ class ManagedKubernetesMaintenanceWindow(dict):
         Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 
         for example:
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
         ```
-        <!--End PulumiCodeChooser -->
+        maintenance_window {
+        enable            = true
+        maintenance_time  = "01:00:00Z"
+        duration          = "3h"
+        weekly_period     = "Monday,Friday"
+        }
+        ```
         """
         return pulumi.get(self, "weekly_period")
 
@@ -2555,6 +2605,35 @@ class ServerlessKubernetesAddon(dict):
         :param bool disabled: Disables the automatic installation of a component. Default is `false`.
                
                The following example is the definition of addons block, The type of this field is list:
+               
+               ```
+               # install nginx ingress, conflict with SLB ingress
+               addons {
+               name = "nginx-ingress-controller"
+               # use internet
+               config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+               # if use intranet, detail below.
+               # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+               }
+               # install SLB ingress, conflict with nginx ingress
+               addons {
+               name = "alb-ingress-controller"
+               }
+               # install metric server
+               addons {
+               name = "metrics-server"
+               }
+               # install knative
+               addons {
+               name = "knative"
+               }
+               # install prometheus
+               addons {
+               name = "arms-prometheus"
+               # prometheus also provides managed version, specify with name `managed-arms-prometheus` for professional serverless clusters
+               # name = "managed-arms-prometheus"
+               }
+               ```
         :param str name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
         if config is not None:
@@ -2579,6 +2658,35 @@ class ServerlessKubernetesAddon(dict):
         Disables the automatic installation of a component. Default is `false`.
 
         The following example is the definition of addons block, The type of this field is list:
+
+        ```
+        # install nginx ingress, conflict with SLB ingress
+        addons {
+        name = "nginx-ingress-controller"
+        # use internet
+        config = "{\\"IngressSlbNetworkType\\":\\"internet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+        # if use intranet, detail below.
+        # config = "{\\"IngressSlbNetworkType\\":\\"intranet",\\"IngressSlbSpec\\":\\"slb.s2.small\\"}"
+        }
+        # install SLB ingress, conflict with nginx ingress
+        addons {
+        name = "alb-ingress-controller"
+        }
+        # install metric server
+        addons {
+        name = "metrics-server"
+        }
+        # install knative
+        addons {
+        name = "knative"
+        }
+        # install prometheus
+        addons {
+        name = "arms-prometheus"
+        # prometheus also provides managed version, specify with name `managed-arms-prometheus` for professional serverless clusters
+        # name = "managed-arms-prometheus"
+        }
+        ```
         """
         return pulumi.get(self, "disabled")
 

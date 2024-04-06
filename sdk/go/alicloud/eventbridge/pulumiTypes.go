@@ -2062,22 +2062,6 @@ type RuleTargetParamList struct {
 	//
 	// > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
 	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
-	//
 	// In order to fix the diff, from version 1.160.0, this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
 	// If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
 	Value *string `pulumi:"value"`
@@ -2104,22 +2088,6 @@ type RuleTargetParamListArgs struct {
 	// The value of the event target parameter.
 	//
 	// > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
-	//
-	// <!--Start PulumiCodeChooser -->
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
-	// <!--End PulumiCodeChooser -->
 	//
 	// In order to fix the diff, from version 1.160.0, this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
 	// If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
@@ -2195,25 +2163,6 @@ func (o RuleTargetParamListOutput) Template() pulumi.StringPtrOutput {
 // The value of the event target parameter.
 //
 // > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 //
 // In order to fix the diff, from version 1.160.0, this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
 // If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.

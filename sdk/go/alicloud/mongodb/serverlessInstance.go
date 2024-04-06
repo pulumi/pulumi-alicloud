@@ -108,7 +108,7 @@ type ServerlessInstance struct {
 
 	// The password of the database logon account.
 	// * The password length is `8` to `32` bits.
-	// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+	// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
 	AccountPassword pulumi.StringOutput `pulumi:"accountPassword"`
 	// Set whether the instance is automatically renewed.
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
@@ -208,7 +208,7 @@ func GetServerlessInstance(ctx *pulumi.Context,
 type serverlessInstanceState struct {
 	// The password of the database logon account.
 	// * The password length is `8` to `32` bits.
-	// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+	// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
 	AccountPassword *string `pulumi:"accountPassword"`
 	// Set whether the instance is automatically renewed.
 	AutoRenew *bool `pulumi:"autoRenew"`
@@ -251,7 +251,7 @@ type serverlessInstanceState struct {
 type ServerlessInstanceState struct {
 	// The password of the database logon account.
 	// * The password length is `8` to `32` bits.
-	// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+	// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
 	AccountPassword pulumi.StringPtrInput
 	// Set whether the instance is automatically renewed.
 	AutoRenew pulumi.BoolPtrInput
@@ -298,7 +298,7 @@ func (ServerlessInstanceState) ElementType() reflect.Type {
 type serverlessInstanceArgs struct {
 	// The password of the database logon account.
 	// * The password length is `8` to `32` bits.
-	// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+	// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
 	AccountPassword string `pulumi:"accountPassword"`
 	// Set whether the instance is automatically renewed.
 	AutoRenew *bool `pulumi:"autoRenew"`
@@ -340,7 +340,7 @@ type serverlessInstanceArgs struct {
 type ServerlessInstanceArgs struct {
 	// The password of the database logon account.
 	// * The password length is `8` to `32` bits.
-	// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+	// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
 	AccountPassword pulumi.StringInput
 	// Set whether the instance is automatically renewed.
 	AutoRenew pulumi.BoolPtrInput
@@ -467,7 +467,7 @@ func (o ServerlessInstanceOutput) ToServerlessInstanceOutputWithContext(ctx cont
 
 // The password of the database logon account.
 // * The password length is `8` to `32` bits.
-// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%!^(MISSING)&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
+// * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
 func (o ServerlessInstanceOutput) AccountPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerlessInstance) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
 }

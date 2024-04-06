@@ -109,7 +109,7 @@ type Account struct {
 	AccountDescription pulumi.StringPtrOutput `pulumi:"accountDescription"`
 	// Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
-	// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
+	// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
 	AccountPassword pulumi.StringOutput `pulumi:"accountPassword"`
 	// The list of databases to which you want to grant permissions. Separate databases with commas (,).
 	AllowDatabases pulumi.StringOutput `pulumi:"allowDatabases"`
@@ -174,7 +174,7 @@ type accountState struct {
 	AccountDescription *string `pulumi:"accountDescription"`
 	// Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
 	AccountName *string `pulumi:"accountName"`
-	// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
+	// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
 	AccountPassword *string `pulumi:"accountPassword"`
 	// The list of databases to which you want to grant permissions. Separate databases with commas (,).
 	AllowDatabases *string `pulumi:"allowDatabases"`
@@ -201,7 +201,7 @@ type AccountState struct {
 	AccountDescription pulumi.StringPtrInput
 	// Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
 	AccountName pulumi.StringPtrInput
-	// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
+	// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
 	AccountPassword pulumi.StringPtrInput
 	// The list of databases to which you want to grant permissions. Separate databases with commas (,).
 	AllowDatabases pulumi.StringPtrInput
@@ -232,7 +232,7 @@ type accountArgs struct {
 	AccountDescription *string `pulumi:"accountDescription"`
 	// Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
 	AccountName string `pulumi:"accountName"`
-	// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
+	// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
 	AccountPassword string `pulumi:"accountPassword"`
 	// The list of databases to which you want to grant permissions. Separate databases with commas (,).
 	AllowDatabases *string `pulumi:"allowDatabases"`
@@ -256,7 +256,7 @@ type AccountArgs struct {
 	AccountDescription pulumi.StringPtrInput
 	// Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
 	AccountName pulumi.StringInput
-	// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
+	// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
 	AccountPassword pulumi.StringInput
 	// The list of databases to which you want to grant permissions. Separate databases with commas (,).
 	AllowDatabases pulumi.StringPtrInput
@@ -371,7 +371,7 @@ func (o AccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
 
-// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%!^(MISSING)& author (s):_+-=) in a length of 8-32 bit.
+// The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^& author (s):_+-=) in a length of 8-32 bit.
 func (o AccountOutput) AccountPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
 }

@@ -302,7 +302,7 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
         /// * `-1`: Initialization value, indicating that percentages are not used.
-        /// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
+        /// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         /// </summary>
         [Output("minReadyInstanceRatio")]
         public Output<int> MinReadyInstanceRatio { get; private set; } = null!;
@@ -790,7 +790,7 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
         /// * `-1`: Initialization value, indicating that percentages are not used.
-        /// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
+        /// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         /// </summary>
         [Input("minReadyInstanceRatio")]
         public Input<int>? MinReadyInstanceRatio { get; set; }
@@ -1273,7 +1273,7 @@ namespace Pulumi.AliCloud.Sae
         /// <summary>
         /// Minimum Survival Instance Percentage. **NOTE:** When `min_ready_instances` and `min_ready_instance_ratio` are passed at the same time, and the value of `min_ready_instance_ratio` is not -1, the `min_ready_instance_ratio` parameter shall prevail. Assuming that `min_ready_instances` is 5 and `min_ready_instance_ratio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
         /// * `-1`: Initialization value, indicating that percentages are not used.
-        /// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%!,(MISSING) if there are currently 5 instances, the minimum number of surviving instances is 3.
+        /// * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
         /// </summary>
         [Input("minReadyInstanceRatio")]
         public Input<int>? MinReadyInstanceRatio { get; set; }

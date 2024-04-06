@@ -190,14 +190,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+     * URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
      * 
      */
     @Import(name="healthCheckUri")
     private @Nullable Output<String> healthCheckUri;
 
     /**
-     * @return URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+     * @return URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
      * 
      */
     public Optional<Output<String>> healthCheckUri() {
@@ -340,14 +340,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters &#39;-&#39; &#39;/&#39; &#39;?&#39; &#39;%!&#39;(MISSING) &#39;#&#39; and &#39;&amp;&#39; are allowed. URLs must be started with the character &#39;/&#39;, but cannot be &#39;/&#39; alone.
+     * Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters &#39;-&#39; &#39;/&#39; &#39;?&#39; &#39;%&#39; &#39;#&#39; and &#39;&amp;&#39; are allowed. URLs must be started with the character &#39;/&#39;, but cannot be &#39;/&#39; alone.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters &#39;-&#39; &#39;/&#39; &#39;?&#39; &#39;%!&#39;(MISSING) &#39;#&#39; and &#39;&amp;&#39; are allowed. URLs must be started with the character &#39;/&#39;, but cannot be &#39;/&#39; alone.
+     * @return Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters &#39;-&#39; &#39;/&#39; &#39;?&#39; &#39;%&#39; &#39;#&#39; and &#39;&amp;&#39; are allowed. URLs must be started with the character &#39;/&#39;, but cannot be &#39;/&#39; alone.
      * 
      */
     public Optional<Output<String>> url() {
@@ -637,7 +637,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckUri URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+         * @param healthCheckUri URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
          * 
          * @return builder
          * 
@@ -648,7 +648,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckUri URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%!’(MISSING), ‘?’, #’ and ‘&amp;’ are allowed.
+         * @param healthCheckUri URI used for health check. When it used to launch TCP listener, `health_check_type` must be `http`. Its length is limited to 1-80 and it must start with /. Only characters such as letters, digits, ‘-’, ‘/’, ‘.’, ‘%’, ‘?’, #’ and ‘&amp;’ are allowed.
          * 
          * @return builder
          * 
@@ -847,7 +847,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters &#39;-&#39; &#39;/&#39; &#39;?&#39; &#39;%!&#39;(MISSING) &#39;#&#39; and &#39;&amp;&#39; are allowed. URLs must be started with the character &#39;/&#39;, but cannot be &#39;/&#39; alone.
+         * @param url Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters &#39;-&#39; &#39;/&#39; &#39;?&#39; &#39;%&#39; &#39;#&#39; and &#39;&amp;&#39; are allowed. URLs must be started with the character &#39;/&#39;, but cannot be &#39;/&#39; alone.
          * 
          * @return builder
          * 
@@ -858,7 +858,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters &#39;-&#39; &#39;/&#39; &#39;?&#39; &#39;%!&#39;(MISSING) &#39;#&#39; and &#39;&amp;&#39; are allowed. URLs must be started with the character &#39;/&#39;, but cannot be &#39;/&#39; alone.
+         * @param url Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters &#39;-&#39; &#39;/&#39; &#39;?&#39; &#39;%&#39; &#39;#&#39; and &#39;&amp;&#39; are allowed. URLs must be started with the character &#39;/&#39;, but cannot be &#39;/&#39; alone.
          * 
          * @return builder
          * 

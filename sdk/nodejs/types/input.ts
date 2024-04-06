@@ -1016,7 +1016,7 @@ export namespace alb {
          */
         httpCode?: pulumi.Input<string>;
         /**
-         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " %!;(MISSING) ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
          */
         path?: pulumi.Input<string>;
         /**
@@ -1048,7 +1048,7 @@ export namespace alb {
          */
         host?: pulumi.Input<string>;
         /**
-         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " %!;(MISSING) ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
          */
         path?: pulumi.Input<string>;
         /**
@@ -3709,6 +3709,17 @@ export namespace cs {
          * Disables the automatic installation of a component. Default is `false`.
          *
          * The following example is the definition of addons block, The type of this field is list:
+         *
+         * ```
+         * # install nginx ingress, conflict with SLB ingress
+         * addons {
+         * name = "nginx-ingress-controller"
+         * # use internet
+         * config = "{\"IngressSlbNetworkType\":\"internet",\"IngressSlbSpec\":\"slb.s2.small\"}"
+         * # if use intranet, detail below.
+         * # config = "{\"IngressSlbNetworkType\":\"intranet",\"IngressSlbSpec\":\"slb.s2.small\"}"
+         * }
+         * ```
          */
         disabled?: pulumi.Input<boolean>;
         /**
@@ -3840,6 +3851,17 @@ export namespace cs {
          * Disables the automatic installation of a component. Default is `false`.
          *
          * The following example is the definition of addons block, The type of this field is list:
+         *
+         * ```
+         * # install nginx ingress, conflict with SLB ingress
+         * addons {
+         * name = "nginx-ingress-controller"
+         * # use internet
+         * config = "{\"IngressSlbNetworkType\":\"internet",\"IngressSlbSpec\":\"slb.s2.small\"}"
+         * # if use intranet, detail below.
+         * # config = "{\"IngressSlbNetworkType\":\"intranet",\"IngressSlbSpec\":\"slb.s2.small\"}"
+         * }
+         * ```
          */
         disabled?: pulumi.Input<boolean>;
         /**
@@ -4034,11 +4056,14 @@ export namespace cs {
          * Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
          *
          * for example:
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
+         * maintenance_window {
+         * enable            = true
+         * maintenance_time  = "01:00:00Z"
+         * duration          = "3h"
+         * weekly_period     = "Monday,Friday"
+         * }
+         * ```
          */
         weeklyPeriod: pulumi.Input<string>;
     }
@@ -4362,6 +4387,35 @@ export namespace cs {
          * Disables the automatic installation of a component. Default is `false`.
          *
          * The following example is the definition of addons block, The type of this field is list:
+         *
+         * ```
+         * # install nginx ingress, conflict with SLB ingress
+         * addons {
+         * name = "nginx-ingress-controller"
+         * # use internet
+         * config = "{\"IngressSlbNetworkType\":\"internet",\"IngressSlbSpec\":\"slb.s2.small\"}"
+         * # if use intranet, detail below.
+         * # config = "{\"IngressSlbNetworkType\":\"intranet",\"IngressSlbSpec\":\"slb.s2.small\"}"
+         * }
+         * # install SLB ingress, conflict with nginx ingress
+         * addons {
+         * name = "alb-ingress-controller"
+         * }
+         * # install metric server
+         * addons {
+         * name = "metrics-server"
+         * }
+         * # install knative
+         * addons {
+         * name = "knative"
+         * }
+         * # install prometheus
+         * addons {
+         * name = "arms-prometheus"
+         * # prometheus also provides managed version, specify with name `managed-arms-prometheus` for professional serverless clusters
+         * # name = "managed-arms-prometheus"
+         * }
+         * ```
          */
         disabled?: pulumi.Input<boolean>;
         /**
@@ -8140,11 +8194,14 @@ export namespace eventbridge {
          *
          * > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
          *
-         * <!--Start PulumiCodeChooser -->
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
          * ```
-         * <!--End PulumiCodeChooser -->
+         * param_list {
+         * resource_key = "IsBase64Encode"
+         * form         = "CONSTANT"
+         * value        = "false"
+         * template     = ""
+         * }
+         * ```
          *
          * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
          * If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
@@ -11054,7 +11111,7 @@ export namespace rds {
          */
         babelfishEnabled: pulumi.Input<string>;
         /**
-         * The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ %!^(MISSING) & * () _ + - =
+         * The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ & * () _ + - =
          */
         masterUserPassword: pulumi.Input<string>;
         /**
