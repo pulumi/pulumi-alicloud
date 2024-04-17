@@ -42,11 +42,11 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = arms.NewSyntheticTask(ctx, "defaultSyntheticTask", &arms.SyntheticTaskArgs{
+//			_, err = arms.NewSyntheticTask(ctx, "default", &arms.SyntheticTaskArgs{
 //				Monitors: arms.SyntheticTaskMonitorArray{
 //					&arms.SyntheticTaskMonitorArgs{
 //						CityCode:     pulumi.String("1200101"),
@@ -218,7 +218,7 @@ import (
 //					IsOpenTrace:     pulumi.Bool(true),
 //					TraceClientType: pulumi.Int(1),
 //				},
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[1]),
+//				ResourceGroupId: pulumi.String(_default.Ids[1]),
 //			})
 //			if err != nil {
 //				return err

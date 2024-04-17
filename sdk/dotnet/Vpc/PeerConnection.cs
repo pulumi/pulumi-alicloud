@@ -29,49 +29,30 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
     ///     var config = new Config();
     ///     var acceptingRegion = config.Get("acceptingRegion") ?? "cn-beijing";
-    ///     var local = new AliCloud.Provider("local", new()
-    ///     {
-    ///         Region = "cn-hangzhou",
-    ///     });
-    /// 
-    ///     var accepting = new AliCloud.Provider("accepting", new()
-    ///     {
-    ///         Region = acceptingRegion,
-    ///     });
-    /// 
-    ///     var localVpc = new AliCloud.Vpc.Network("localVpc", new()
+    ///     var localVpc = new AliCloud.Vpc.Network("local_vpc", new()
     ///     {
     ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Local,
     ///     });
     /// 
-    ///     var acceptingVpc = new AliCloud.Vpc.Network("acceptingVpc", new()
+    ///     var acceptingVpc = new AliCloud.Vpc.Network("accepting_vpc", new()
     ///     {
     ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Accepting,
     ///     });
     /// 
-    ///     var defaultPeerConnection = new AliCloud.Vpc.PeerConnection("defaultPeerConnection", new()
+    ///     var defaultPeerConnection = new AliCloud.Vpc.PeerConnection("default", new()
     ///     {
     ///         PeerConnectionName = "terraform-example",
     ///         VpcId = localVpc.Id,
-    ///         AcceptingAliUid = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         AcceptingAliUid = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
     ///         AcceptingRegionId = acceptingRegion,
     ///         AcceptingVpcId = acceptingVpc.Id,
     ///         Description = "terraform-example",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Local,
     ///     });
     /// 
     /// });

@@ -29,6 +29,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var zonesIds = AliCloud.Cassandra.GetZones.Invoke();
         /// 
         ///     // Create an Cassandra cluster with the first matched zone
@@ -37,7 +38,6 @@ namespace Pulumi.AliCloud.Cassandra
         ///         ZoneId = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
         ///     });
         /// 
-        ///     // Other properties...
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;
@@ -63,6 +63,7 @@ namespace Pulumi.AliCloud.Cassandra
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var zonesIds = AliCloud.Cassandra.GetZones.Invoke();
         /// 
         ///     // Create an Cassandra cluster with the first matched zone
@@ -71,7 +72,6 @@ namespace Pulumi.AliCloud.Cassandra
         ///         ZoneId = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
         ///     });
         /// 
-        ///     // Other properties...
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;

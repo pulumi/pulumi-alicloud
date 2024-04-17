@@ -26,6 +26,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/datahub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -40,12 +42,14 @@ import (
 //				name = param
 //			}
 //			example, err := datahub.NewProject(ctx, "example", &datahub.ProjectArgs{
+//				Name:    pulumi.String(name),
 //				Comment: pulumi.String("created by terraform"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datahub.NewTopic(ctx, "exampleBlob", &datahub.TopicArgs{
+//			_, err = datahub.NewTopic(ctx, "example_blob", &datahub.TopicArgs{
+//				Name:        pulumi.String(fmt.Sprintf("%v_blob", name)),
 //				ProjectName: example.Name,
 //				RecordType:  pulumi.String("BLOB"),
 //				ShardCount:  pulumi.Int(3),
@@ -55,7 +59,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datahub.NewTopic(ctx, "exampleTuple", &datahub.TopicArgs{
+//			_, err = datahub.NewTopic(ctx, "example_tuple", &datahub.TopicArgs{
+//				Name:        pulumi.String(fmt.Sprintf("%v_tuple", name)),
 //				ProjectName: example.Name,
 //				RecordType:  pulumi.String("TUPLE"),
 //				RecordSchema: pulumi.Map{

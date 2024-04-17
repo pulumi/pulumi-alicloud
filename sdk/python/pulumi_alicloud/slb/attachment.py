@@ -247,35 +247,39 @@ class Attachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "slb-attachment-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_network = alicloud.vpc.Network("default",
+            name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/16",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("default",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             internet_charge_type="PayByTraffic",
             internet_max_bandwidth_out=5,
             system_disk_category="cloud_efficiency",
             security_groups=[default_security_group.id],
             instance_name=name,
             vswitch_id=default_switch.id)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("default",
             load_balancer_name=name,
             vswitch_id=default_switch.id,
             load_balancer_spec="slb.s1.small")
-        default_attachment = alicloud.slb.Attachment("defaultAttachment",
+        default_attachment = alicloud.slb.Attachment("default",
             load_balancer_id=default_application_load_balancer.id,
             instance_ids=[default_instance.id],
             weight=90)
@@ -323,35 +327,39 @@ class Attachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "slb-attachment-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_network = alicloud.vpc.Network("default",
+            name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/16",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("default",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             internet_charge_type="PayByTraffic",
             internet_max_bandwidth_out=5,
             system_disk_category="cloud_efficiency",
             security_groups=[default_security_group.id],
             instance_name=name,
             vswitch_id=default_switch.id)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("default",
             load_balancer_name=name,
             vswitch_id=default_switch.id,
             load_balancer_spec="slb.s1.small")
-        default_attachment = alicloud.slb.Attachment("defaultAttachment",
+        default_attachment = alicloud.slb.Attachment("default",
             load_balancer_id=default_application_load_balancer.id,
             instance_ids=[default_instance.id],
             weight=90)

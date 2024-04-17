@@ -216,7 +216,7 @@ class StaticAccount(pulumi.CustomResource):
         secret_key = config.get("secretKey")
         if secret_key is None:
             secret_key = "secret_key"
-        default_instance = alicloud.amqp.Instance("defaultInstance",
+        default = alicloud.amqp.Instance("default",
             instance_type="enterprise",
             max_tps="3000",
             queue_capacity="200",
@@ -225,8 +225,8 @@ class StaticAccount(pulumi.CustomResource):
             max_eip_tps="128",
             payment_type="Subscription",
             period=1)
-        default_static_account = alicloud.amqp.StaticAccount("defaultStaticAccount",
-            instance_id=default_instance.id,
+        default_static_account = alicloud.amqp.StaticAccount("default",
+            instance_id=default.id,
             access_key=access_key,
             secret_key=secret_key)
         ```
@@ -275,7 +275,7 @@ class StaticAccount(pulumi.CustomResource):
         secret_key = config.get("secretKey")
         if secret_key is None:
             secret_key = "secret_key"
-        default_instance = alicloud.amqp.Instance("defaultInstance",
+        default = alicloud.amqp.Instance("default",
             instance_type="enterprise",
             max_tps="3000",
             queue_capacity="200",
@@ -284,8 +284,8 @@ class StaticAccount(pulumi.CustomResource):
             max_eip_tps="128",
             payment_type="Subscription",
             period=1)
-        default_static_account = alicloud.amqp.StaticAccount("defaultStaticAccount",
-            instance_id=default_instance.id,
+        default_static_account = alicloud.amqp.StaticAccount("default",
+            instance_id=default.id,
             access_key=access_key,
             secret_key=secret_key)
         ```

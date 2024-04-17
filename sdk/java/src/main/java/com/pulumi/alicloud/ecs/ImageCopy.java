@@ -37,8 +37,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.Provider;
- * import com.pulumi.alicloud.ProviderArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
@@ -56,7 +54,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.ImageArgs;
  * import com.pulumi.alicloud.ecs.ImageCopy;
  * import com.pulumi.alicloud.ecs.ImageCopyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -70,23 +67,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sh = new Provider(&#34;sh&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-shanghai&#34;)
- *             .build());
- * 
- *         var hz = new Provider(&#34;hz&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-hangzhou&#34;)
- *             .build());
- * 
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;Instance&#34;)
  *             .build());
  * 
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
  *             .build());
  * 
- *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
  *             .owners(&#34;system&#34;)
  *             .build());
@@ -94,44 +83,35 @@ import javax.annotation.Nullable;
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.17.3.0/24&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vswitchName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(&#34;terraform-example&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .availabilityZone(default_.zones()[0].id())
  *             .instanceName(&#34;terraform-example&#34;)
  *             .securityGroups(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
- *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.ids()[0]))
- *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.ids()[0]))
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
  *             .internetMaxBandwidthOut(10)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
  *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
  *             .instanceId(defaultInstance.id())
  *             .imageName(&#34;terraform-example&#34;)
  *             .description(&#34;terraform-example&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
  *         var defaultImageCopy = new ImageCopy(&#34;defaultImageCopy&#34;, ImageCopyArgs.builder()        
  *             .sourceImageId(defaultImage.id())
@@ -139,9 +119,7 @@ import javax.annotation.Nullable;
  *             .imageName(&#34;terraform-example&#34;)
  *             .description(&#34;terraform-example&#34;)
  *             .tags(Map.of(&#34;FinanceDept&#34;, &#34;FinanceDeptJoshua&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.sh())
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

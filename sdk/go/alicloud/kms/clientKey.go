@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			aAP0, err := kms.NewApplicationAccessPoint(ctx, "aAP0", &kms.ApplicationAccessPointArgs{
+//			AAP0, err := kms.NewApplicationAccessPoint(ctx, "AAP0", &kms.ApplicationAccessPointArgs{
 //				Policies: pulumi.StringArray{
 //					pulumi.String("aa"),
 //				},
@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			_, err = kms.NewClientKey(ctx, "default", &kms.ClientKeyArgs{
-//				AapName:            aAP0.ApplicationAccessPointName,
+//				AapName:            AAP0.ApplicationAccessPointName,
 //				Password:           pulumi.String("YouPassword123!"),
 //				NotBefore:          pulumi.String("2023-09-01T14:11:22Z"),
 //				NotAfter:           pulumi.String("2028-09-01T14:11:22Z"),

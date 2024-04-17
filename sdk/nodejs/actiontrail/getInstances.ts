@@ -20,16 +20,17 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const instanceName = config.get("instanceName") || "alikafkaInstanceName";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {cidrBlock: "172.16.0.0/12"});
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.alikafka.Instance("default", {
+ *     name: instanceName,
  *     partitionNum: 50,
  *     diskType: 1,
  *     diskSize: 500,
@@ -114,16 +115,17 @@ export interface GetInstancesResult {
  *
  * const config = new pulumi.Config();
  * const instanceName = config.get("instanceName") || "alikafkaInstanceName";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {cidrBlock: "172.16.0.0/12"});
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.alikafka.Instance("default", {
+ *     name: instanceName,
  *     partitionNum: 50,
  *     diskType: 1,
  *     diskSize: 500,

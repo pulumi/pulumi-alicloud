@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultGetZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const vpc = new alicloud.vpc.Network("vpc", {
@@ -35,12 +35,12 @@ import * as utilities from "../utilities";
  * const vswich = new alicloud.vpc.Switch("vswich", {
  *     vpcId: vpc.id,
  *     cidrBlock: "172.168.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
  *     vswitchName: name,
  *     ipv6CidrBlockMask: 1,
  * });
- * const defaultIpv6Address = new alicloud.vpc.Ipv6Address("defaultIpv6Address", {
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ * const defaultIpv6Address = new alicloud.vpc.Ipv6Address("default", {
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
  *     vswitchId: vswich.id,
  *     ipv6AddressDescription: "create_description",
  *     ipv6AddressName: name,

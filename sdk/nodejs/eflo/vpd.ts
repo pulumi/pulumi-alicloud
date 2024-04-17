@@ -22,11 +22,11 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultVpd = new alicloud.eflo.Vpd("defaultVpd", {
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultVpd = new alicloud.eflo.Vpd("default", {
  *     cidr: "10.0.0.0/8",
  *     vpdName: name,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -29,14 +29,15 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
+    ///         Name = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///         Tags = 
     ///         {
@@ -45,18 +46,19 @@ namespace Pulumi.AliCloud.Log
     ///         },
     ///     });
     /// 
-    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         Project = exampleProject.Name,
+    ///         Project = example.Name,
+    ///         Name = "example-store",
     ///         RetentionPeriod = 3650,
     ///         AutoSplit = true,
     ///         MaxSplitShardCount = 60,
     ///         AppendMeta = true,
     ///     });
     /// 
-    ///     var exampleOssShipper = new AliCloud.Log.OssShipper("exampleOssShipper", new()
+    ///     var exampleOssShipper = new AliCloud.Log.OssShipper("example", new()
     ///     {
-    ///         ProjectName = exampleProject.Name,
+    ///         ProjectName = example.Name,
     ///         LogstoreName = exampleStore.Name,
     ///         ShipperName = "terraform-example",
     ///         OssBucket = "example_bucket",

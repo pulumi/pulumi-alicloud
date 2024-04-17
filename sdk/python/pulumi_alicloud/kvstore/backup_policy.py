@@ -149,19 +149,19 @@ class BackupPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "kvstorebackuppolicyvpc"
-        default_zones = alicloud.kvstore.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.kvstore.get_zones()
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_instance = alicloud.kvstore.Instance("defaultInstance",
+        default_instance = alicloud.kvstore.Instance("default",
             db_instance_name=name,
             vswitch_id=default_switch.id,
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             instance_class="redis.master.large.default",
             instance_type="Redis",
             engine_version="5.0",
@@ -174,7 +174,7 @@ class BackupPolicy(pulumi.CustomResource):
                 "Created": "TF",
                 "For": "example",
             })
-        default_backup_policy = alicloud.kvstore.BackupPolicy("defaultBackupPolicy",
+        default_backup_policy = alicloud.kvstore.BackupPolicy("default",
             instance_id=default_instance.id,
             backup_periods=[
                 "Tuesday",
@@ -222,19 +222,19 @@ class BackupPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "kvstorebackuppolicyvpc"
-        default_zones = alicloud.kvstore.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.kvstore.get_zones()
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_instance = alicloud.kvstore.Instance("defaultInstance",
+        default_instance = alicloud.kvstore.Instance("default",
             db_instance_name=name,
             vswitch_id=default_switch.id,
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             instance_class="redis.master.large.default",
             instance_type="Redis",
             engine_version="5.0",
@@ -247,7 +247,7 @@ class BackupPolicy(pulumi.CustomResource):
                 "Created": "TF",
                 "For": "example",
             })
-        default_backup_policy = alicloud.kvstore.BackupPolicy("defaultBackupPolicy",
+        default_backup_policy = alicloud.kvstore.BackupPolicy("default",
             instance_id=default_instance.id,
             backup_periods=[
                 "Tuesday",

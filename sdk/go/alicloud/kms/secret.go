@@ -34,11 +34,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := kms.NewSecret(ctx, "default", &kms.SecretArgs{
-//				Description:                pulumi.String("from terraform"),
-//				ForceDeleteWithoutRecovery: pulumi.Bool(true),
-//				SecretData:                 pulumi.String("Secret data."),
 //				SecretName:                 pulumi.String("secret-foo"),
+//				Description:                pulumi.String("from terraform"),
+//				SecretData:                 pulumi.String("Secret data."),
 //				VersionId:                  pulumi.String("000000000001"),
+//				ForceDeleteWithoutRecovery: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

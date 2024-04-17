@@ -36,22 +36,22 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "defaultCommonBandwithPackage", &vpc.CommonBandwithPackageArgs{
+//			_, err := vpc.NewCommonBandwithPackage(ctx, "default", &vpc.CommonBandwithPackageArgs{
 //				Bandwidth:          pulumi.String("3"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
 //				Bandwidth:          pulumi.String("3"),
 //				InternetChargeType: pulumi.String("PayByTraffic"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewCommonBandwithPackageAttachment(ctx, "defaultCommonBandwithPackageAttachment", &vpc.CommonBandwithPackageAttachmentArgs{
-//				BandwidthPackageId:        defaultCommonBandwithPackage.ID(),
+//			_, err = vpc.NewCommonBandwithPackageAttachment(ctx, "default", &vpc.CommonBandwithPackageAttachmentArgs{
+//				BandwidthPackageId:        _default.ID(),
 //				InstanceId:                defaultEipAddress.ID(),
 //				BandwidthPackageBandwidth: pulumi.String("2"),
 //				IpType:                    pulumi.String("EIP"),

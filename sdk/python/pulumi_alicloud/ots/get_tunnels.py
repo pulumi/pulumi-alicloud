@@ -144,9 +144,9 @@ def get_tunnels(ids: Optional[Sequence[str]] = None,
     import pulumi_alicloud as alicloud
 
     tunnels_ds = alicloud.ots.get_tunnels(instance_name="sample-instance",
+        table_name="sample-table",
         name_regex="sample-tunnel",
-        output_file="tunnels.txt",
-        table_name="sample-table")
+        output_file="tunnels.txt")
     pulumi.export("firstTunnelId", tunnels_ds.tunnels[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -200,9 +200,9 @@ def get_tunnels_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     import pulumi_alicloud as alicloud
 
     tunnels_ds = alicloud.ots.get_tunnels(instance_name="sample-instance",
+        table_name="sample-table",
         name_regex="sample-tunnel",
-        output_file="tunnels.txt",
-        table_name="sample-table")
+        output_file="tunnels.txt")
     pulumi.export("firstTunnelId", tunnels_ds.tunnels[0].id)
     ```
     <!--End PulumiCodeChooser -->

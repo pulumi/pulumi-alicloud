@@ -42,27 +42,27 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := eds.GetZones(ctx, nil, nil)
+//			_default, err := eds.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Ids[0]),
+//				ZoneId:      pulumi.String(_default.Ids[0]),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = eds.NewRamDirectory(ctx, "defaultRamDirectory", &eds.RamDirectoryArgs{
+//			_, err = eds.NewRamDirectory(ctx, "default", &eds.RamDirectoryArgs{
 //				DesktopAccessType: pulumi.String("INTERNET"),
 //				EnableAdminAccess: pulumi.Bool(true),
 //				RamDirectoryName:  pulumi.String(name),

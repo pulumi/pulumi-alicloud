@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.log.Project;
@@ -58,30 +58,30 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         final var exampleRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var example = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         final var exampleAccount = AlicloudFunctions.getAccount();
+ *         final var exampleGetAccount = AlicloudFunctions.getAccount();
  * 
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .projectName(default_.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .projectName(String.format(&#34;%s-%s&#34;, name,default_.result()))
  *             .description(&#34;tf actiontrail example&#34;)
  *             .build());
  * 
- *         final var exampleRoles = RamFunctions.getRoles(GetRolesArgs.builder()
+ *         final var exampleGetRoles = RamFunctions.getRoles(GetRolesArgs.builder()
  *             .nameRegex(&#34;AliyunServiceRoleForActionTrail&#34;)
  *             .build());
  * 
  *         var exampleTrail = new Trail(&#34;exampleTrail&#34;, TrailArgs.builder()        
  *             .trailName(name)
- *             .slsWriteRoleArn(exampleRoles.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].arn()))
- *             .slsProjectArn(exampleProject.name().applyValue(name -&gt; String.format(&#34;acs:log:%s:%s:project/%s&#34;, exampleRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),exampleAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
+ *             .slsWriteRoleArn(exampleGetRoles.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].arn()))
+ *             .slsProjectArn(exampleProject.name().applyValue(name -&gt; String.format(&#34;acs:log:%s:%s:project/%s&#34;, example.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),exampleGetAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
  *             .build());
  * 
  *     }

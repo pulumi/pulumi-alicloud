@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
+ *             .name(name)
  *             .comment(&#34;created by terraform&#34;)
  *             .build());
  * 

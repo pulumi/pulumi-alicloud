@@ -39,24 +39,24 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := mongodb.GetZones(ctx, nil, nil)
+//			_default, err := mongodb.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("default-NODELETING"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Zones[0].Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -67,13 +67,13 @@ import (
 //				StorageEngine:         pulumi.String("WiredTiger"),
 //				CapacityUnit:          pulumi.Int(100),
 //				Engine:                pulumi.String("MongoDB"),
-//				ResourceGroupId:       pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId:       pulumi.String(defaultGetResourceGroups.Groups[0].Id),
 //				EngineVersion:         pulumi.String("4.2"),
 //				Period:                pulumi.Int(1),
 //				PeriodPriceType:       pulumi.String("Month"),
-//				VpcId:                 pulumi.String(defaultNetworks.Ids[0]),
-//				ZoneId:                pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchId:             pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:                 pulumi.String(defaultGetNetworks.Ids[0]),
+//				ZoneId:                pulumi.String(_default.Zones[0].Id),
+//				VswitchId:             pulumi.String(defaultGetSwitches.Ids[0]),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("MongodbServerlessInstance"),
 //					"For":     pulumi.Any("TF"),

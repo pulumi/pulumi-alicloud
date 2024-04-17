@@ -223,10 +223,10 @@ def get_subnets(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.eflo.get_subnets(name_regex=alicloud_eflo_subnet["default"]["name"],
+    default = alicloud.eflo.get_subnets(name_regex=default_alicloud_eflo_subnet["name"],
         subnet_name="SubnetTestForTerraform",
-        vpd_id=var["vpdId"],
-        zone_id=var["zoneId"])
+        vpd_id=vpd_id,
+        zone_id=zone_id)
     pulumi.export("alicloudEfloSubnetExampleId", default.subnets[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -305,10 +305,10 @@ def get_subnets_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.eflo.get_subnets(name_regex=alicloud_eflo_subnet["default"]["name"],
+    default = alicloud.eflo.get_subnets(name_regex=default_alicloud_eflo_subnet["name"],
         subnet_name="SubnetTestForTerraform",
-        vpd_id=var["vpdId"],
-        zone_id=var["zoneId"])
+        vpd_id=vpd_id,
+        zone_id=zone_id)
     pulumi.export("alicloudEfloSubnetExampleId", default.subnets[0].id)
     ```
     <!--End PulumiCodeChooser -->

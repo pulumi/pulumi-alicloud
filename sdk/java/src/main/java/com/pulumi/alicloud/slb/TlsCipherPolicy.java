@@ -48,11 +48,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new TlsCipherPolicy(&#34;example&#34;, TlsCipherPolicyArgs.builder()        
+ *             .tlsCipherPolicyName(&#34;Test-example_value&#34;)
+ *             .tlsVersions(&#34;TLSv1.2&#34;)
  *             .ciphers(            
  *                 &#34;AES256-SHA256&#34;,
  *                 &#34;AES128-GCM-SHA256&#34;)
- *             .tlsCipherPolicyName(&#34;Test-example_value&#34;)
- *             .tlsVersions(&#34;TLSv1.2&#34;)
  *             .build());
  * 
  *     }

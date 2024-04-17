@@ -25,14 +25,14 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-chengdu";
  * const name = config.get("name") || "terraform-example";
- * const defaultConnection = new alicloud.eventbridge.Connection("defaultConnection", {
+ * const _default = new alicloud.eventbridge.Connection("default", {
  *     connectionName: name,
  *     networkParameters: {
  *         networkType: "PublicNetwork",
  *     },
  * });
- * const defaultApiDestination = new alicloud.eventbridge.ApiDestination("defaultApiDestination", {
- *     connectionName: defaultConnection.connectionName,
+ * const defaultApiDestination = new alicloud.eventbridge.ApiDestination("default", {
+ *     connectionName: _default.connectionName,
  *     apiDestinationName: name,
  *     description: "test-api-destination-connection",
  *     httpApiParameters: {

@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.cdn.DomainNew;
  * import com.pulumi.alicloud.cdn.DomainNewArgs;
  * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
@@ -55,20 +55,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
- *             .max(99999)
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .min(10000)
+ *             .max(99999)
  *             .build());
  * 
  *         var defaultDomainNew = new DomainNew(&#34;defaultDomainNew&#34;, DomainNewArgs.builder()        
- *             .cdnType(&#34;web&#34;)
- *             .domainName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;mycdndomain-%s.alicloud-provider.cn&#34;, result)))
  *             .scope(&#34;overseas&#34;)
+ *             .domainName(String.format(&#34;mycdndomain-%s.alicloud-provider.cn&#34;, default_.result()))
+ *             .cdnType(&#34;web&#34;)
  *             .sources(DomainNewSourceArgs.builder()
- *                 .content(&#34;1.1.1.1&#34;)
- *                 .port(80)
- *                 .priority(20)
  *                 .type(&#34;ipaddr&#34;)
+ *                 .content(&#34;1.1.1.1&#34;)
+ *                 .priority(20)
+ *                 .port(80)
  *                 .weight(15)
  *                 .build())
  *             .build());

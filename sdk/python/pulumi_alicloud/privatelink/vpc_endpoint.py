@@ -559,16 +559,18 @@ class VpcEndpoint(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
+        example = alicloud.privatelink.VpcEndpointService("example",
             service_description=name,
             connect_bandwidth=103,
             auto_accept_connection=False)
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example_network = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint",
-            service_id=example_vpc_endpoint_service.id,
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example_network.id)
+        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("example",
+            service_id=example.id,
             security_group_ids=[example_security_group.id],
             vpc_id=example_network.id,
             vpc_endpoint_name=name)
@@ -628,16 +630,18 @@ class VpcEndpoint(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
+        example = alicloud.privatelink.VpcEndpointService("example",
             service_description=name,
             connect_bandwidth=103,
             auto_accept_connection=False)
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example_network = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint",
-            service_id=example_vpc_endpoint_service.id,
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example_network.id)
+        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("example",
+            service_id=example.id,
             security_group_ids=[example_security_group.id],
             vpc_id=example_network.id,
             vpc_endpoint_name=name)

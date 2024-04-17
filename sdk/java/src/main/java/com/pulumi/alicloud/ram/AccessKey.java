@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new RAM access key for user.
  *         var user = new User(&#34;user&#34;, UserArgs.builder()        
+ *             .name(&#34;terraform-example&#34;)
  *             .displayName(&#34;user_display_name&#34;)
  *             .mobile(&#34;86-18688888888&#34;)
  *             .email(&#34;hello.uuu@aaa.com&#34;)
@@ -97,6 +98,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new RAM access key for user.
  *         var user = new User(&#34;user&#34;, UserArgs.builder()        
+ *             .name(&#34;terraform-example&#34;)
  *             .displayName(&#34;user_display_name&#34;)
  *             .mobile(&#34;86-18688888888&#34;)
  *             .email(&#34;hello.uuu@aaa.com&#34;)

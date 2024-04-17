@@ -163,36 +163,36 @@ class InstanceClusterAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default = alicloud.get_regions(current=True)
+        default_get_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             owners="system")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_get_zones.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_get_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("default",
+            availability_zone=default_get_zones.zones[0].id,
             instance_name=name,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             security_groups=[default_security_group.id],
             vswitch_id=default_switch.id)
-        default_cluster = alicloud.edas.Cluster("defaultCluster",
+        default_cluster = alicloud.edas.Cluster("default",
             cluster_name=name,
             cluster_type=2,
             network_mode=2,
-            logical_region_id=default_regions.regions[0].id,
+            logical_region_id=default.regions[0].id,
             vpc_id=default_network.id)
-        default_instance_cluster_attachment = alicloud.edas.InstanceClusterAttachment("defaultInstanceClusterAttachment",
+        default_instance_cluster_attachment = alicloud.edas.InstanceClusterAttachment("default",
             cluster_id=default_cluster.id,
             instance_ids=[default_instance.id])
         ```
@@ -227,36 +227,36 @@ class InstanceClusterAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default = alicloud.get_regions(current=True)
+        default_get_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             owners="system")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_get_zones.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            availability_zone=default_zones.zones[0].id,
+            zone_id=default_get_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("default",
+            availability_zone=default_get_zones.zones[0].id,
             instance_name=name,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             security_groups=[default_security_group.id],
             vswitch_id=default_switch.id)
-        default_cluster = alicloud.edas.Cluster("defaultCluster",
+        default_cluster = alicloud.edas.Cluster("default",
             cluster_name=name,
             cluster_type=2,
             network_mode=2,
-            logical_region_id=default_regions.regions[0].id,
+            logical_region_id=default.regions[0].id,
             vpc_id=default_network.id)
-        default_instance_cluster_attachment = alicloud.edas.InstanceClusterAttachment("defaultInstanceClusterAttachment",
+        default_instance_cluster_attachment = alicloud.edas.InstanceClusterAttachment("default",
             cluster_id=default_cluster.id,
             instance_ids=[default_instance.id])
         ```

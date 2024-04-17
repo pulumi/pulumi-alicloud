@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultInstance = new alicloud.ens.Instance("defaultInstance", {
+ * const _default = new alicloud.ens.Instance("default", {
  *     systemDisk: {
  *         size: 20,
  *     },
@@ -38,12 +38,12 @@ import * as utilities from "../utilities";
  *     ensRegionId: "cn-chenzhou-telecom_unicom_cmcc",
  *     periodUnit: "Month",
  * });
- * const defaultSecurityGroup = new alicloud.ens.SecurityGroup("defaultSecurityGroup", {
+ * const defaultSecurityGroup = new alicloud.ens.SecurityGroup("default", {
  *     description: "InstanceSecurityGroupAttachment_Description",
  *     securityGroupName: name,
  * });
- * const defaultInstanceSecurityGroupAttachment = new alicloud.ens.InstanceSecurityGroupAttachment("defaultInstanceSecurityGroupAttachment", {
- *     instanceId: defaultInstance.id,
+ * const defaultInstanceSecurityGroupAttachment = new alicloud.ens.InstanceSecurityGroupAttachment("default", {
+ *     instanceId: _default.id,
  *     securityGroupId: defaultSecurityGroup.id,
  * });
  * ```

@@ -20,22 +20,25 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.rds.getZones({
+ * const default = alicloud.rds.getZones({
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstance = new alicloud.rds.Instance("default", {
  *     engine: "MySQL",
  *     engineVersion: "5.7",
  *     instanceType: "rds.mysql.c1.large",
@@ -45,7 +48,7 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  *     dbInstanceStorageType: "local_ssd",
  * });
- * const defaultReadOnlyInstance = new alicloud.rds.ReadOnlyInstance("defaultReadOnlyInstance", {
+ * const defaultReadOnlyInstance = new alicloud.rds.ReadOnlyInstance("default", {
  *     zoneId: defaultInstance.zoneId,
  *     masterDbInstanceId: defaultInstance.id,
  *     engineVersion: defaultInstance.engineVersion,
@@ -54,7 +57,7 @@ import * as utilities from "../utilities";
  *     instanceName: `${name}readonly`,
  *     vswitchId: defaultSwitch.id,
  * });
- * const defaultRdsDbProxy = new alicloud.rds.RdsDbProxy("defaultRdsDbProxy", {
+ * const defaultRdsDbProxy = new alicloud.rds.RdsDbProxy("default", {
  *     instanceId: defaultInstance.id,
  *     instanceNetworkType: "VPC",
  *     vpcId: defaultInstance.vpcId,

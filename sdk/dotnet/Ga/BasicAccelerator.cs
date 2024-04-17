@@ -31,13 +31,13 @@ namespace Pulumi.AliCloud.Ga
     /// {
     ///     var @default = new AliCloud.Ga.BasicAccelerator("default", new()
     ///     {
-    ///         AutoPay = true,
-    ///         AutoUseCoupon = "true",
-    ///         BandwidthBillingType = "BandwidthPackage",
-    ///         BasicAcceleratorName = "tf-example-value",
-    ///         Description = "tf-example-value",
     ///         Duration = 1,
     ///         PricingCycle = "Month",
+    ///         BasicAcceleratorName = "tf-example-value",
+    ///         Description = "tf-example-value",
+    ///         BandwidthBillingType = "BandwidthPackage",
+    ///         AutoPay = true,
+    ///         AutoUseCoupon = "true",
     ///     });
     /// 
     /// });

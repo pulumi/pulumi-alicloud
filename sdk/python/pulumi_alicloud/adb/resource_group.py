@@ -243,17 +243,17 @@ class ResourceGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_zones = alicloud.adb.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.adb.get_zones()
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="10.4.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
+        default_db_cluster = alicloud.adb.DBCluster("default",
             compute_resource="48Core192GBNEW",
             db_cluster_category="MixedStorage",
             db_cluster_version="3.0",
@@ -265,19 +265,19 @@ class ResourceGroup(pulumi.CustomResource):
             maintain_time="04:00Z-05:00Z",
             mode="flexible",
             payment_type="PayAsYouGo",
-            resource_group_id=default_resource_groups.ids[0],
+            resource_group_id=default_get_resource_groups.ids[0],
             security_ips=[
                 "10.168.1.12",
                 "10.168.1.11",
             ],
             vpc_id=default_network.id,
             vswitch_id=default_switch.id,
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             tags={
                 "Created": "TF",
                 "For": "example",
             })
-        default_resource_group = alicloud.adb.ResourceGroup("defaultResourceGroup",
+        default_resource_group = alicloud.adb.ResourceGroup("default",
             group_name="TF_EXAMPLE",
             group_type="batch",
             node_num=1,
@@ -329,17 +329,17 @@ class ResourceGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_zones = alicloud.adb.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.adb.get_zones()
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="10.4.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
+        default_db_cluster = alicloud.adb.DBCluster("default",
             compute_resource="48Core192GBNEW",
             db_cluster_category="MixedStorage",
             db_cluster_version="3.0",
@@ -351,19 +351,19 @@ class ResourceGroup(pulumi.CustomResource):
             maintain_time="04:00Z-05:00Z",
             mode="flexible",
             payment_type="PayAsYouGo",
-            resource_group_id=default_resource_groups.ids[0],
+            resource_group_id=default_get_resource_groups.ids[0],
             security_ips=[
                 "10.168.1.12",
                 "10.168.1.11",
             ],
             vpc_id=default_network.id,
             vswitch_id=default_switch.id,
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             tags={
                 "Created": "TF",
                 "For": "example",
             })
-        default_resource_group = alicloud.adb.ResourceGroup("defaultResourceGroup",
+        default_resource_group = alicloud.adb.ResourceGroup("default",
             group_name="TF_EXAMPLE",
             group_type="batch",
             node_num=1,

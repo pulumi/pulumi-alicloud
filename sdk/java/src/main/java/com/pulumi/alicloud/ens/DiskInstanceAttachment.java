@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultDisk = new Disk(&#34;defaultDisk&#34;, DiskArgs.builder()        
+ *         var default_ = new Disk(&#34;default&#34;, DiskArgs.builder()        
  *             .size(&#34;20&#34;)
  *             .ensRegionId(&#34;cn-chenzhou-telecom_unicom_cmcc&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *         var defaultDiskInstanceAttachment = new DiskInstanceAttachment(&#34;defaultDiskInstanceAttachment&#34;, DiskInstanceAttachmentArgs.builder()        
  *             .instanceId(defaultInstance.id())
  *             .deleteWithInstance(&#34;false&#34;)
- *             .diskId(defaultDisk.id())
+ *             .diskId(default_.id())
  *             .build());
  * 
  *     }

@@ -43,7 +43,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -59,13 +59,13 @@ import (
 //			defaultyVSwitch, err := vpc.NewSwitch(ctx, "defaultyVSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultVpc.ID(),
 //				CidrBlock:   pulumi.String("172.16.2.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ackone.NewCluster(ctx, "defaultCluster", &ackone.ClusterArgs{
+//			_, err = ackone.NewCluster(ctx, "default", &ackone.ClusterArgs{
 //				Network: &ackone.ClusterNetworkArgs{
 //					VpcId: defaultVpc.ID(),
 //					Vswitches: pulumi.StringArray{

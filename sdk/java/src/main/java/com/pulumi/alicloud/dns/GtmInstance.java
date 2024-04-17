@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;alicloud-provider.com&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
  *             .alarmContactGroupName(&#34;tf_example&#34;)
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             .publicCnameMode(&#34;SYSTEM_ASSIGN&#34;)
  *             .ttl(60)
  *             .cnameType(&#34;PUBLIC&#34;)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(default_.groups()[0].id())
  *             .alertGroups(defaultAlarmContactGroup.alarmContactGroupName())
  *             .publicUserDomainName(domainName)
  *             .alertConfigs(GtmInstanceAlertConfigArgs.builder()

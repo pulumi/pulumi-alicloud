@@ -31,38 +31,39 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var defaultProject = new AliCloud.Log.Project("defaultProject", new()
+    ///     var defaultProject = new AliCloud.Log.Project("default", new()
     ///     {
-    ///         ProjectName = defaultRandomInteger.Result.Apply(result =&gt; $"example-value-{result}"),
+    ///         ProjectName = $"example-value-{defaultInteger.Result}",
     ///     });
     /// 
-    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
+    ///     var defaultStore = new AliCloud.Log.Store("default", new()
     ///     {
     ///         ProjectName = defaultProject.Name,
     ///         LogstoreName = "example-value",
     ///     });
     /// 
-    ///     var sourceStore = new AliCloud.Log.Store("sourceStore", new()
+    ///     var sourceStore = new AliCloud.Log.Store("source_store", new()
     ///     {
     ///         ProjectName = defaultProject.Name,
     ///         LogstoreName = "example-source-store",
     ///     });
     /// 
-    ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()
+    ///     var defaultRole = new AliCloud.Ram.Role("default", new()
     ///     {
+    ///         Name = $"fcservicerole-{defaultInteger.Result}",
     ///         Document = @"  {
     ///       ""Statement"": [
     ///         {
@@ -82,15 +83,16 @@ namespace Pulumi.AliCloud.FC
     ///         Force = true,
     ///     });
     /// 
-    ///     var defaultRolePolicyAttachment = new AliCloud.Ram.RolePolicyAttachment("defaultRolePolicyAttachment", new()
+    ///     var defaultRolePolicyAttachment = new AliCloud.Ram.RolePolicyAttachment("default", new()
     ///     {
     ///         RoleName = defaultRole.Name,
     ///         PolicyName = "AliyunLogFullAccess",
     ///         PolicyType = "System",
     ///     });
     /// 
-    ///     var defaultService = new AliCloud.FC.Service("defaultService", new()
+    ///     var defaultService = new AliCloud.FC.Service("default", new()
     ///     {
+    ///         Name = $"example-value-{defaultInteger.Result}",
     ///         Description = "example-value",
     ///         Role = defaultRole.Arn,
     ///         LogConfig = new AliCloud.FC.Inputs.ServiceLogConfigArgs
@@ -102,13 +104,13 @@ namespace Pulumi.AliCloud.FC
     ///         },
     ///     });
     /// 
-    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
-    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         BucketName = $"terraform-example-{defaultInteger.Result}",
     ///     });
     /// 
     ///     // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new()
+    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("default", new()
     ///     {
     ///         Bucket = defaultBucket.Id,
     ///         Key = "index.py",
@@ -119,9 +121,10 @@ namespace Pulumi.AliCloud.FC
     /// return 'hello world'",
     ///     });
     /// 
-    ///     var defaultFunction = new AliCloud.FC.Function("defaultFunction", new()
+    ///     var defaultFunction = new AliCloud.FC.Function("default", new()
     ///     {
     ///         Service = defaultService.Name,
+    ///         Name = "terraform-example",
     ///         Description = "example",
     ///         OssBucket = defaultBucket.Id,
     ///         OssKey = defaultBucketObject.Key,
@@ -130,17 +133,18 @@ namespace Pulumi.AliCloud.FC
     ///         Handler = "hello.handler",
     ///     });
     /// 
-    ///     var defaultTrigger = new AliCloud.FC.Trigger("defaultTrigger", new()
+    ///     var defaultTrigger = new AliCloud.FC.Trigger("default", new()
     ///     {
     ///         Service = defaultService.Name,
     ///         Function = defaultFunction.Name,
+    ///         Name = "terraform-example",
     ///         Role = defaultRole.Arn,
-    ///         SourceArn = Output.Tuple(defaultRegions, defaultAccount, defaultProject.Name).Apply(values =&gt;
+    ///         SourceArn = Output.Tuple(defaultGetRegions, @default, defaultProject.Name).Apply(values =&gt;
     ///         {
-    ///             var defaultRegions = values.Item1;
-    ///             var defaultAccount = values.Item2;
+    ///             var defaultGetRegions = values.Item1;
+    ///             var @default = values.Item2;
     ///             var name = values.Item3;
-    ///             return $"acs:log:{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{name}";
+    ///             return $"acs:log:{defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{name}";
     ///         }),
     ///         Type = "log",
     ///         Config = Output.Tuple(sourceStore.Name, defaultProject.Name, defaultStore.Name).Apply(values =&gt;
@@ -189,23 +193,27 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var defaultTopic = new AliCloud.Mns.Topic("defaultTopic");
-    /// 
-    ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()
+    ///     var defaultTopic = new AliCloud.Mns.Topic("default", new()
     ///     {
+    ///         Name = $"example-value-{defaultInteger.Result}",
+    ///     });
+    /// 
+    ///     var defaultRole = new AliCloud.Ram.Role("default", new()
+    ///     {
+    ///         Name = $"fcservicerole-{defaultInteger.Result}",
     ///         Document = @"  {
     ///       ""Statement"": [
     ///         {
@@ -225,26 +233,27 @@ namespace Pulumi.AliCloud.FC
     ///         Force = true,
     ///     });
     /// 
-    ///     var defaultRolePolicyAttachment = new AliCloud.Ram.RolePolicyAttachment("defaultRolePolicyAttachment", new()
+    ///     var defaultRolePolicyAttachment = new AliCloud.Ram.RolePolicyAttachment("default", new()
     ///     {
     ///         RoleName = defaultRole.Name,
     ///         PolicyName = "AliyunMNSNotificationRolePolicy",
     ///         PolicyType = "System",
     ///     });
     /// 
-    ///     var defaultService = new AliCloud.FC.Service("defaultService", new()
+    ///     var defaultService = new AliCloud.FC.Service("default", new()
     ///     {
+    ///         Name = $"example-value-{defaultInteger.Result}",
     ///         Description = "example-value",
     ///         InternetAccess = false,
     ///     });
     /// 
-    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
-    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         BucketName = $"terraform-example-{defaultInteger.Result}",
     ///     });
     /// 
     ///     // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new()
+    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("default", new()
     ///     {
     ///         Bucket = defaultBucket.Id,
     ///         Key = "index.py",
@@ -255,9 +264,10 @@ namespace Pulumi.AliCloud.FC
     /// return 'hello world'",
     ///     });
     /// 
-    ///     var defaultFunction = new AliCloud.FC.Function("defaultFunction", new()
+    ///     var defaultFunction = new AliCloud.FC.Function("default", new()
     ///     {
     ///         Service = defaultService.Name,
+    ///         Name = $"terraform-example-{defaultInteger.Result}",
     ///         Description = "example",
     ///         OssBucket = defaultBucket.Id,
     ///         OssKey = defaultBucketObject.Key,
@@ -266,17 +276,18 @@ namespace Pulumi.AliCloud.FC
     ///         Handler = "hello.handler",
     ///     });
     /// 
-    ///     var defaultTrigger = new AliCloud.FC.Trigger("defaultTrigger", new()
+    ///     var defaultTrigger = new AliCloud.FC.Trigger("default", new()
     ///     {
     ///         Service = defaultService.Name,
     ///         Function = defaultFunction.Name,
+    ///         Name = "terraform-example",
     ///         Role = defaultRole.Arn,
-    ///         SourceArn = Output.Tuple(defaultRegions, defaultAccount, defaultTopic.Name).Apply(values =&gt;
+    ///         SourceArn = Output.Tuple(defaultGetRegions, @default, defaultTopic.Name).Apply(values =&gt;
     ///         {
-    ///             var defaultRegions = values.Item1;
-    ///             var defaultAccount = values.Item2;
+    ///             var defaultGetRegions = values.Item1;
+    ///             var @default = values.Item2;
     ///             var name = values.Item3;
-    ///             return $"acs:mns:{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:/topics/{name}";
+    ///             return $"acs:mns:{defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}:/topics/{name}";
     ///         }),
     ///         Type = "mns_topic",
     ///         ConfigMns = @"  {
@@ -303,17 +314,17 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var defaultDomainNew = new AliCloud.Cdn.DomainNew("defaultDomainNew", new()
+    ///     var defaultDomainNew = new AliCloud.Cdn.DomainNew("default", new()
     ///     {
-    ///         DomainName = defaultRandomInteger.Result.Apply(result =&gt; $"example{result}.tf.com"),
+    ///         DomainName = $"example{defaultInteger.Result}.tf.com",
     ///         CdnType = "web",
     ///         Scope = "overseas",
     ///         Sources = new[]
@@ -329,14 +340,16 @@ namespace Pulumi.AliCloud.FC
     ///         },
     ///     });
     /// 
-    ///     var defaultService = new AliCloud.FC.Service("defaultService", new()
+    ///     var defaultService = new AliCloud.FC.Service("default", new()
     ///     {
+    ///         Name = $"example-value-{defaultInteger.Result}",
     ///         Description = "example-value",
     ///         InternetAccess = false,
     ///     });
     /// 
-    ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()
+    ///     var defaultRole = new AliCloud.Ram.Role("default", new()
     ///     {
+    ///         Name = $"fcservicerole-{defaultInteger.Result}",
     ///         Document = @"    {
     ///       ""Statement"": [
     ///         {
@@ -356,9 +369,9 @@ namespace Pulumi.AliCloud.FC
     ///         Force = true,
     ///     });
     /// 
-    ///     var defaultPolicy = new AliCloud.Ram.Policy("defaultPolicy", new()
+    ///     var defaultPolicy = new AliCloud.Ram.Policy("default", new()
     ///     {
-    ///         PolicyName = defaultRandomInteger.Result.Apply(result =&gt; $"fcservicepolicy-{result}"),
+    ///         PolicyName = $"fcservicepolicy-{defaultInteger.Result}",
     ///         PolicyDocument = Output.Tuple(defaultService.Name, defaultService.Name).Apply(values =&gt;
     ///         {
     ///             var defaultServiceName = values.Item1;
@@ -384,20 +397,20 @@ namespace Pulumi.AliCloud.FC
     ///         Force = true,
     ///     });
     /// 
-    ///     var defaultRolePolicyAttachment = new AliCloud.Ram.RolePolicyAttachment("defaultRolePolicyAttachment", new()
+    ///     var defaultRolePolicyAttachment = new AliCloud.Ram.RolePolicyAttachment("default", new()
     ///     {
     ///         RoleName = defaultRole.Name,
     ///         PolicyName = defaultPolicy.Name,
     ///         PolicyType = "Custom",
     ///     });
     /// 
-    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
-    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         BucketName = $"terraform-example-{defaultInteger.Result}",
     ///     });
     /// 
     ///     // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new()
+    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("default", new()
     ///     {
     ///         Bucket = defaultBucket.Id,
     ///         Key = "index.py",
@@ -408,9 +421,10 @@ namespace Pulumi.AliCloud.FC
     /// return 'hello world'",
     ///     });
     /// 
-    ///     var defaultFunction = new AliCloud.FC.Function("defaultFunction", new()
+    ///     var defaultFunction = new AliCloud.FC.Function("default", new()
     ///     {
     ///         Service = defaultService.Name,
+    ///         Name = $"terraform-example-{defaultInteger.Result}",
     ///         Description = "example",
     ///         OssBucket = defaultBucket.Id,
     ///         OssKey = defaultBucketObject.Key,
@@ -419,12 +433,13 @@ namespace Pulumi.AliCloud.FC
     ///         Handler = "hello.handler",
     ///     });
     /// 
-    ///     var defaultTrigger = new AliCloud.FC.Trigger("defaultTrigger", new()
+    ///     var defaultTrigger = new AliCloud.FC.Trigger("default", new()
     ///     {
     ///         Service = defaultService.Name,
     ///         Function = defaultFunction.Name,
+    ///         Name = "terraform-example",
     ///         Role = defaultRole.Arn,
-    ///         SourceArn = $"acs:cdn:*:{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}",
+    ///         SourceArn = @default.Apply(@default =&gt; $"acs:cdn:*:{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}"),
     ///         Type = "cdn_events",
     ///         Config = defaultDomainNew.DomainName.Apply(domainName =&gt; @$"      {{""eventName"":""LogFileCreated"",
     ///      ""eventVersion"":""1.0.0"",
@@ -452,37 +467,38 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var serviceLinkedRole = new AliCloud.EventBridge.ServiceLinkedRole("serviceLinkedRole", new()
+    ///     var serviceLinkedRole = new AliCloud.EventBridge.ServiceLinkedRole("service_linked_role", new()
     ///     {
     ///         ProductName = "AliyunServiceRoleForEventBridgeSendToFC",
     ///     });
     /// 
-    ///     var defaultService = new AliCloud.FC.Service("defaultService", new()
+    ///     var defaultService = new AliCloud.FC.Service("default", new()
     ///     {
+    ///         Name = $"example-value-{defaultInteger.Result}",
     ///         Description = "example-value",
     ///         InternetAccess = false,
     ///     });
     /// 
-    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
-    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         BucketName = $"terraform-example-{defaultInteger.Result}",
     ///     });
     /// 
     ///     // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new()
+    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("default", new()
     ///     {
     ///         Bucket = defaultBucket.Id,
     ///         Key = "index.py",
@@ -493,9 +509,10 @@ namespace Pulumi.AliCloud.FC
     /// return 'hello world'",
     ///     });
     /// 
-    ///     var defaultFunction = new AliCloud.FC.Function("defaultFunction", new()
+    ///     var defaultFunction = new AliCloud.FC.Function("default", new()
     ///     {
     ///         Service = defaultService.Name,
+    ///         Name = "terraform-example",
     ///         Description = "example",
     ///         OssBucket = defaultBucket.Id,
     ///         OssKey = defaultBucketObject.Key,
@@ -504,10 +521,11 @@ namespace Pulumi.AliCloud.FC
     ///         Handler = "hello.handler",
     ///     });
     /// 
-    ///     var ossTrigger = new AliCloud.FC.Trigger("ossTrigger", new()
+    ///     var ossTrigger = new AliCloud.FC.Trigger("oss_trigger", new()
     ///     {
     ///         Service = defaultService.Name,
     ///         Function = defaultFunction.Name,
+    ///         Name = "terraform-example-oss",
     ///         Type = "eventbridge",
     ///         Config = @"    {
     ///         ""triggerEnable"": false,
@@ -527,10 +545,11 @@ namespace Pulumi.AliCloud.FC
     /// ",
     ///     });
     /// 
-    ///     var mnsTrigger = new AliCloud.FC.Trigger("mnsTrigger", new()
+    ///     var mnsTrigger = new AliCloud.FC.Trigger("mns_trigger", new()
     ///     {
     ///         Service = defaultService.Name,
     ///         Function = defaultFunction.Name,
+    ///         Name = "terraform-example-mns",
     ///         Type = "eventbridge",
     ///         Config = @"    {
     ///         ""triggerEnable"": false,
@@ -550,20 +569,20 @@ namespace Pulumi.AliCloud.FC
     /// ",
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.RocketMQ.Instance("default", new()
     ///     {
-    ///         InstanceName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         InstanceName = $"terraform-example-{defaultInteger.Result}",
     ///         Remark = "terraform-example",
     ///     });
     /// 
-    ///     var defaultGroup = new AliCloud.RocketMQ.Group("defaultGroup", new()
+    ///     var defaultGroup = new AliCloud.RocketMQ.Group("default", new()
     ///     {
     ///         GroupName = "GID-example",
     ///         InstanceId = defaultInstance.Id,
     ///         Remark = "terraform-example",
     ///     });
     /// 
-    ///     var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new()
+    ///     var defaultTopic = new AliCloud.RocketMQ.Topic("default", new()
     ///     {
     ///         TopicName = "mytopic",
     ///         InstanceId = defaultInstance.Id,
@@ -571,14 +590,15 @@ namespace Pulumi.AliCloud.FC
     ///         Remark = "terraform-example",
     ///     });
     /// 
-    ///     var rocketmqTrigger = new AliCloud.FC.Trigger("rocketmqTrigger", new()
+    ///     var rocketmqTrigger = new AliCloud.FC.Trigger("rocketmq_trigger", new()
     ///     {
     ///         Service = defaultService.Name,
     ///         Function = defaultFunction.Name,
+    ///         Name = "terraform-example-rocketmq",
     ///         Type = "eventbridge",
-    ///         Config = Output.Tuple(defaultRegions, defaultInstance.Id, defaultGroup.GroupName, defaultTopic.TopicName).Apply(values =&gt;
+    ///         Config = Output.Tuple(defaultGetRegions, defaultInstance.Id, defaultGroup.GroupName, defaultTopic.TopicName).Apply(values =&gt;
     ///         {
-    ///             var defaultRegions = values.Item1;
+    ///             var defaultGetRegions = values.Item1;
     ///             var id = values.Item2;
     ///             var groupName = values.Item3;
     ///             var topicName = values.Item4;
@@ -590,7 +610,7 @@ namespace Pulumi.AliCloud.FC
     ///             ""eventSourceType"": ""RocketMQ"",
     ///             ""eventSourceParameters"": {{
     ///                 ""sourceRocketMQParameters"": {{
-    ///                     ""RegionId"": ""{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}"",
+    ///                     ""RegionId"": ""{defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}"",
     ///                     ""InstanceId"": ""{id}"",
     ///                     ""GroupID"": ""{groupName}"",
     ///                     ""Topic"": ""{topicName}"",
@@ -605,9 +625,9 @@ namespace Pulumi.AliCloud.FC
     ///         }),
     ///     });
     /// 
-    ///     var defaultAmqp_instanceInstance = new AliCloud.Amqp.Instance("defaultAmqp/instanceInstance", new()
+    ///     var defaultInstance2 = new AliCloud.Amqp.Instance("default", new()
     ///     {
-    ///         InstanceName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         InstanceName = $"terraform-example-{defaultInteger.Result}",
     ///         InstanceType = "professional",
     ///         MaxTps = "1000",
     ///         QueueCapacity = "50",
@@ -617,29 +637,31 @@ namespace Pulumi.AliCloud.FC
     ///         Period = 1,
     ///     });
     /// 
-    ///     var defaultVirtualHost = new AliCloud.Amqp.VirtualHost("defaultVirtualHost", new()
+    ///     var defaultVirtualHost = new AliCloud.Amqp.VirtualHost("default", new()
     ///     {
-    ///         InstanceId = defaultAmqp / instanceInstance.Id,
+    ///         InstanceId = defaultInstance2.Id,
     ///         VirtualHostName = "example-VirtualHost",
     ///     });
     /// 
-    ///     var defaultQueue = new AliCloud.Amqp.Queue("defaultQueue", new()
+    ///     var defaultQueue = new AliCloud.Amqp.Queue("default", new()
     ///     {
     ///         InstanceId = defaultVirtualHost.InstanceId,
     ///         QueueName = "example-queue",
     ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
     ///     });
     /// 
-    ///     var rabbitmqTrigger = new AliCloud.FC.Trigger("rabbitmqTrigger", new()
+    ///     var rabbitmqTrigger = new AliCloud.FC.Trigger("rabbitmq_trigger", new()
     ///     {
     ///         Service = defaultService.Name,
     ///         Function = defaultFunction.Name,
+    ///         Name = "terraform-example-rabbitmq",
     ///         Type = "eventbridge",
-    ///         Config = Output.Tuple(defaultRegions, defaultVirtualHost.VirtualHostName, defaultQueue.QueueName).Apply(values =&gt;
+    ///         Config = Output.Tuple(defaultGetRegions, defaultInstance2.Id, defaultVirtualHost.VirtualHostName, defaultQueue.QueueName).Apply(values =&gt;
     ///         {
-    ///             var defaultRegions = values.Item1;
-    ///             var virtualHostName = values.Item2;
-    ///             var queueName = values.Item3;
+    ///             var defaultGetRegions = values.Item1;
+    ///             var id = values.Item2;
+    ///             var virtualHostName = values.Item3;
+    ///             var queueName = values.Item4;
     ///             return @$"    {{
     ///         ""triggerEnable"": false,
     ///         ""asyncInvocationType"": false,
@@ -648,8 +670,8 @@ namespace Pulumi.AliCloud.FC
     ///             ""eventSourceType"": ""RabbitMQ"",
     ///             ""eventSourceParameters"": {{
     ///                 ""sourceRabbitMQParameters"": {{
-    ///                     ""RegionId"": ""{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}"",
-    ///                     ""InstanceId"": ""{defaultAmqp / instanceInstance.Id}"",
+    ///                     ""RegionId"": ""{defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}"",
+    ///                     ""InstanceId"": ""{id}"",
     ///                     ""VirtualHostName"": ""{virtualHostName}"",
     ///                     ""QueueName"": ""{queueName}""
     ///                 }}

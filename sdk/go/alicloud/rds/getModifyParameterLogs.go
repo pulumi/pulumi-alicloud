@@ -34,8 +34,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rds.GetModifyParameterLogs(ctx, &rds.GetModifyParameterLogsArgs{
 //				DbInstanceId: "example_value",
-//				EndTime:      "2022-06-08T13:56Z",
 //				StartTime:    "2022-06-04T13:56Z",
+//				EndTime:      "2022-06-08T13:56Z",
 //			}, nil)
 //			if err != nil {
 //				return err

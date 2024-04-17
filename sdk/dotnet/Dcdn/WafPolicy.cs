@@ -32,16 +32,16 @@ namespace Pulumi.AliCloud.Dcdn
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
-    ///         Max = 99999,
     ///         Min = 10000,
+    ///         Max = 99999,
     ///     });
     /// 
     ///     var example = new AliCloud.Dcdn.WafPolicy("example", new()
     ///     {
     ///         DefenseScene = "waf_group",
-    ///         PolicyName = @default.Result.Apply(result =&gt; $"{name}_{result}"),
+    ///         PolicyName = $"{name}_{@default.Result}",
     ///         PolicyType = "custom",
     ///         Status = "on",
     ///     });

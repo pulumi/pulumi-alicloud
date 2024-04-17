@@ -29,11 +29,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := mns.NewQueue(ctx, "queue", &mns.QueueArgs{
+//				Name:                   pulumi.String("tf-example-mnsqueue"),
 //				DelaySeconds:           pulumi.Int(0),
 //				MaximumMessageSize:     pulumi.Int(65536),
 //				MessageRetentionPeriod: pulumi.Int(345600),
-//				PollingWaitSeconds:     pulumi.Int(0),
 //				VisibilityTimeout:      pulumi.Int(30),
+//				PollingWaitSeconds:     pulumi.Int(0),
 //			})
 //			if err != nil {
 //				return err

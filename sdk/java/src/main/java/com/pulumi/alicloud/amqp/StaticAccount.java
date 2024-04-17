@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var accessKey = config.get(&#34;accessKey&#34;).orElse(&#34;access_key&#34;);
  *         final var secretKey = config.get(&#34;secretKey&#34;).orElse(&#34;secret_key&#34;);
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
  *             .instanceType(&#34;enterprise&#34;)
  *             .maxTps(3000)
  *             .queueCapacity(200)
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultStaticAccount = new StaticAccount(&#34;defaultStaticAccount&#34;, StaticAccountArgs.builder()        
- *             .instanceId(defaultInstance.id())
+ *             .instanceId(default_.id())
  *             .accessKey(accessKey)
  *             .secretKey(secretKey)
  *             .build());

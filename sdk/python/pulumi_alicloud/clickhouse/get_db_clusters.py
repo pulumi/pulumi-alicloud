@@ -119,7 +119,7 @@ def get_db_clusters(db_cluster_description: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
+    default_db_cluster = alicloud.clickhouse.DbCluster("default",
         db_cluster_version="20.3.10.75",
         category="Basic",
         db_cluster_class="S8",
@@ -129,8 +129,8 @@ def get_db_clusters(db_cluster_description: Optional[str] = None,
         db_node_storage="500",
         storage_type="cloud_essd",
         vswitch_id="your_vswitch_id")
-    default_db_clusters = alicloud.clickhouse.get_db_clusters_output(ids=[default_db_cluster.id])
-    pulumi.export("dbCluster", default_db_clusters.ids[0])
+    default = alicloud.clickhouse.get_db_clusters_output(ids=[default_db_cluster.id])
+    pulumi.export("dbCluster", default.ids[0])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -181,7 +181,7 @@ def get_db_clusters_output(db_cluster_description: Optional[pulumi.Input[Optiona
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
+    default_db_cluster = alicloud.clickhouse.DbCluster("default",
         db_cluster_version="20.3.10.75",
         category="Basic",
         db_cluster_class="S8",
@@ -191,8 +191,8 @@ def get_db_clusters_output(db_cluster_description: Optional[pulumi.Input[Optiona
         db_node_storage="500",
         storage_type="cloud_essd",
         vswitch_id="your_vswitch_id")
-    default_db_clusters = alicloud.clickhouse.get_db_clusters_output(ids=[default_db_cluster.id])
-    pulumi.export("dbCluster", default_db_clusters.ids[0])
+    default = alicloud.clickhouse.get_db_clusters_output(ids=[default_db_cluster.id])
+    pulumi.export("dbCluster", default.ids[0])
     ```
     <!--End PulumiCodeChooser -->
 

@@ -2688,6 +2688,7 @@ class Instance(pulumi.CustomResource):
             cidr_block="172.16.0.0/16")
         # Create a new ECS instance for a VPC
         group = alicloud.ecs.SecurityGroup("group",
+            name=name,
             description="foo",
             vpc_id=vpc.id)
         key = alicloud.kms.Key("key",
@@ -2885,6 +2886,7 @@ class Instance(pulumi.CustomResource):
             cidr_block="172.16.0.0/16")
         # Create a new ECS instance for a VPC
         group = alicloud.ecs.SecurityGroup("group",
+            name=name,
             description="foo",
             vpc_id=vpc.id)
         key = alicloud.kms.Key("key",

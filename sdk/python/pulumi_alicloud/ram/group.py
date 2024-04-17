@@ -147,7 +147,9 @@ class Group(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Create a new RAM Group.
-        group = alicloud.ram.Group("group", comments="this is a group comments.")
+        group = alicloud.ram.Group("group",
+            name="groupName",
+            comments="this is a group comments.")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -186,7 +188,9 @@ class Group(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Create a new RAM Group.
-        group = alicloud.ram.Group("group", comments="this is a group comments.")
+        group = alicloud.ram.Group("group",
+            name="groupName",
+            comments="this is a group comments.")
         ```
         <!--End PulumiCodeChooser -->
 

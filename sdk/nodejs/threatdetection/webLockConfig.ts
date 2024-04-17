@@ -20,12 +20,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAssets = alicloud.threatdetection.getAssets({
+ * const default = alicloud.threatdetection.getAssets({
  *     machineTypes: "ecs",
  * });
- * const defaultWebLockConfig = new alicloud.threatdetection.WebLockConfig("defaultWebLockConfig", {
+ * const defaultWebLockConfig = new alicloud.threatdetection.WebLockConfig("default", {
  *     inclusiveFileType: "php;jsp;asp;aspx;js;cgi;html;htm;xml;shtml;shtm;jpg",
- *     uuid: defaultAssets.then(defaultAssets => defaultAssets.ids?.[0]),
+ *     uuid: _default.then(_default => _default.ids?.[0]),
  *     mode: "whitelist",
  *     localBackupDir: "/usr/local/aegis/bak",
  *     dir: "/tmp/",

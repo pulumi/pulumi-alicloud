@@ -31,9 +31,9 @@ namespace Pulumi.AliCloud.Ecs
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_ecs_capacity_reservation.Default.Id,
+        ///             defaultAlicloudEcsCapacityReservation.Id,
         ///         },
-        ///         NameRegex = alicloud_ecs_capacity_reservation.Default.Name,
+        ///         NameRegex = defaultAlicloudEcsCapacityReservation.Name,
         ///         InstanceType = "ecs.c6.large",
         ///         Platform = "linux",
         ///     });
@@ -69,9 +69,9 @@ namespace Pulumi.AliCloud.Ecs
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_ecs_capacity_reservation.Default.Id,
+        ///             defaultAlicloudEcsCapacityReservation.Id,
         ///         },
-        ///         NameRegex = alicloud_ecs_capacity_reservation.Default.Name,
+        ///         NameRegex = defaultAlicloudEcsCapacityReservation.Name,
         ///         InstanceType = "ecs.c6.large",
         ///         Platform = "linux",
         ///     });

@@ -30,7 +30,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -49,29 +48,17 @@ import (
 //			if param := cfg.Get("destinationRegion"); param != "" {
 //				destinationRegion = param
 //			}
-//			_, err := alicloud.NewProvider(ctx, "hz", &alicloud.ProviderArgs{
-//				Region: pulumi.String(sourceRegion),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alicloud.NewProvider(ctx, "sh", &alicloud.ProviderArgs{
-//				Region: pulumi.String(destinationRegion),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleHzNetwork, err := vpc.NewNetwork(ctx, "exampleHzNetwork", &vpc.NetworkArgs{
+//			exampleHz, err := vpc.NewNetwork(ctx, "example_hz", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("tf_example"),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
-//			}, pulumi.Provider(alicloud.Hz))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleShNetwork, err := vpc.NewNetwork(ctx, "exampleShNetwork", &vpc.NetworkArgs{
+//			exampleSh, err := vpc.NewNetwork(ctx, "example_sh", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("tf_example"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
-//			}, pulumi.Provider(alicloud.Sh))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -82,18 +69,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleHzInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "exampleHzInstanceAttachment", &cen.InstanceAttachmentArgs{
+//			exampleHzInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "example_hz", &cen.InstanceAttachmentArgs{
 //				InstanceId:            example.ID(),
-//				ChildInstanceId:       exampleHzNetwork.ID(),
+//				ChildInstanceId:       exampleHz.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: pulumi.String(sourceRegion),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleShInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "exampleShInstanceAttachment", &cen.InstanceAttachmentArgs{
+//			exampleShInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "example_sh", &cen.InstanceAttachmentArgs{
 //				InstanceId:            example.ID(),
-//				ChildInstanceId:       exampleShNetwork.ID(),
+//				ChildInstanceId:       exampleSh.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: pulumi.String(destinationRegion),
 //			})
@@ -120,10 +107,10 @@ import (
 //				},
 //				DestinationInstanceIdsReverseMatch: pulumi.Bool(false),
 //				SourceRouteTableIds: pulumi.StringArray{
-//					exampleHzNetwork.RouteTableId,
+//					exampleHz.RouteTableId,
 //				},
 //				DestinationRouteTableIds: pulumi.StringArray{
-//					exampleShNetwork.RouteTableId,
+//					exampleSh.RouteTableId,
 //				},
 //				SourceChildInstanceTypes: pulumi.StringArray{
 //					pulumi.String("VPC"),
@@ -132,7 +119,7 @@ import (
 //					pulumi.String("VPC"),
 //				},
 //				DestinationCidrBlocks: pulumi.StringArray{
-//					exampleShNetwork.CidrBlock,
+//					exampleSh.CidrBlock,
 //				},
 //				CidrMatchMode: pulumi.String("Include"),
 //				RouteTypes: pulumi.StringArray{

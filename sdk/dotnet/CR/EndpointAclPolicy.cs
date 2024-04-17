@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.CR
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", new()
+    ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("default", new()
     ///     {
     ///         PaymentType = "Subscription",
     ///         Period = 1,
@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.CR
     ///         InstanceName = name,
     ///     });
     /// 
-    ///     var defaultEndpointAclService = AliCloud.CR.GetEndpointAclService.Invoke(new()
+    ///     var @default = AliCloud.CR.GetEndpointAclService.Invoke(new()
     ///     {
     ///         EndpointType = "internet",
     ///         Enable = true,
@@ -48,9 +48,9 @@ namespace Pulumi.AliCloud.CR
     ///         ModuleName = "Registry",
     ///     });
     /// 
-    ///     var defaultEndpointAclPolicy = new AliCloud.CR.EndpointAclPolicy("defaultEndpointAclPolicy", new()
+    ///     var defaultEndpointAclPolicy = new AliCloud.CR.EndpointAclPolicy("default", new()
     ///     {
-    ///         InstanceId = defaultEndpointAclService.Apply(getEndpointAclServiceResult =&gt; getEndpointAclServiceResult.InstanceId),
+    ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getEndpointAclServiceResult =&gt; getEndpointAclServiceResult.InstanceId)),
     ///         Entry = "192.168.1.0/24",
     ///         Description = name,
     ///         ModuleName = "Registry",

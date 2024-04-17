@@ -355,13 +355,13 @@ class BaselineStrategy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.threatdetection.BaselineStrategy("default",
-            baseline_strategy_name="apispec",
             custom_type="custom",
-            cycle_days=3,
             end_time="08:00:00",
-            risk_sub_type_name="hc_exploit_redis",
+            baseline_strategy_name="apispec",
+            cycle_days=3,
+            target_type="groupId",
             start_time="05:00:00",
-            target_type="groupId")
+            risk_sub_type_name="hc_exploit_redis")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -415,13 +415,13 @@ class BaselineStrategy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.threatdetection.BaselineStrategy("default",
-            baseline_strategy_name="apispec",
             custom_type="custom",
-            cycle_days=3,
             end_time="08:00:00",
-            risk_sub_type_name="hc_exploit_redis",
+            baseline_strategy_name="apispec",
+            cycle_days=3,
+            target_type="groupId",
             start_time="05:00:00",
-            target_type="groupId")
+            risk_sub_type_name="hc_exploit_redis")
         ```
         <!--End PulumiCodeChooser -->
 

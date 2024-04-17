@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///         {
         ///             "example_id",
         ///         },
-        ///         VbrId = alicloud_express_connect_vbr_pconn_association.Default.Vbr_id,
+        ///         VbrId = defaultAlicloudExpressConnectVbrPconnAssociation.VbrId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///         {
         ///             "example_id",
         ///         },
-        ///         VbrId = alicloud_express_connect_vbr_pconn_association.Default.Vbr_id,
+        ///         VbrId = defaultAlicloudExpressConnectVbrPconnAssociation.VbrId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

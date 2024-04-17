@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new RAM Policy.
 //			_, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-//				Description: pulumi.String("this is a policy test"),
+//				PolicyName: pulumi.String("policyName"),
 //				PolicyDocument: pulumi.String(`  {
 //	    "Statement": [
 //	      {
@@ -58,7 +58,7 @@ import (
 //
 // `),
 //
-//				PolicyName: pulumi.String("policyName"),
+//				Description: pulumi.String("this is a policy test"),
 //			})
 //			if err != nil {
 //				return err

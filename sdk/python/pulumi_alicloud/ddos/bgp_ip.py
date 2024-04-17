@@ -166,19 +166,20 @@ class BgpIp(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default = alicloud.resourcemanager.get_resource_groups()
         instance = alicloud.ddos.DdosBgpInstance("instance",
+            name=name,
             base_bandwidth=20,
             bandwidth=-1,
             ip_count=100,
             ip_type="IPv4",
             normal_bandwidth=100,
             type="Enterprise")
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
-        default_bgp_ip = alicloud.ddos.BgpIp("defaultBgpIp",
+        default_eip_address = alicloud.ecs.EipAddress("default", address_name=name)
+        default_bgp_ip = alicloud.ddos.BgpIp("default",
             instance_id=instance.id,
             ip=default_eip_address.ip_address,
-            resource_group_id=default_resource_groups.groups[0].id)
+            resource_group_id=default.groups[0].id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -222,19 +223,20 @@ class BgpIp(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default = alicloud.resourcemanager.get_resource_groups()
         instance = alicloud.ddos.DdosBgpInstance("instance",
+            name=name,
             base_bandwidth=20,
             bandwidth=-1,
             ip_count=100,
             ip_type="IPv4",
             normal_bandwidth=100,
             type="Enterprise")
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
-        default_bgp_ip = alicloud.ddos.BgpIp("defaultBgpIp",
+        default_eip_address = alicloud.ecs.EipAddress("default", address_name=name)
+        default_bgp_ip = alicloud.ddos.BgpIp("default",
             instance_id=instance.id,
             ip=default_eip_address.ip_address,
-            resource_group_id=default_resource_groups.groups[0].id)
+            resource_group_id=default.groups[0].id)
         ```
         <!--End PulumiCodeChooser -->
 

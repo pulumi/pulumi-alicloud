@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstClusterName", data.Alicloud_alikafka_consumer_groups.Clusters.Clusters[0].Cluster_name)
+//			ctx.Export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.Clusters[0].ClusterName)
 //			return nil
 //		})
 //	}

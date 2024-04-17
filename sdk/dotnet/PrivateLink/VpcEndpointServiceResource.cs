@@ -31,38 +31,39 @@ namespace Pulumi.AliCloud.PrivateLink
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
+    ///     var example = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var exampleVpcEndpointService = new AliCloud.PrivateLink.VpcEndpointService("exampleVpcEndpointService", new()
+    ///     var exampleVpcEndpointService = new AliCloud.PrivateLink.VpcEndpointService("example", new()
     ///     {
     ///         ServiceDescription = name,
     ///         ConnectBandwidth = 103,
     ///         AutoAcceptConnection = false,
     ///     });
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.0.0.0/8",
     ///     });
     /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "10.1.0.0/16",
     ///         VpcId = exampleNetwork.Id,
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
     ///     {
+    ///         Name = name,
     ///         VpcId = exampleNetwork.Id,
     ///     });
     /// 
-    ///     var exampleApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("exampleApplicationLoadBalancer", new()
+    ///     var exampleApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("example", new()
     ///     {
     ///         LoadBalancerName = name,
     ///         VswitchId = exampleSwitch.Id,
@@ -70,7 +71,7 @@ namespace Pulumi.AliCloud.PrivateLink
     ///         AddressType = "intranet",
     ///     });
     /// 
-    ///     var exampleVpcEndpoint = new AliCloud.PrivateLink.VpcEndpoint("exampleVpcEndpoint", new()
+    ///     var exampleVpcEndpoint = new AliCloud.PrivateLink.VpcEndpoint("example", new()
     ///     {
     ///         ServiceId = exampleVpcEndpointService.Id,
     ///         SecurityGroupIds = new[]
@@ -81,7 +82,7 @@ namespace Pulumi.AliCloud.PrivateLink
     ///         VpcEndpointName = name,
     ///     });
     /// 
-    ///     var exampleVpcEndpointServiceResource = new AliCloud.PrivateLink.VpcEndpointServiceResource("exampleVpcEndpointServiceResource", new()
+    ///     var exampleVpcEndpointServiceResource = new AliCloud.PrivateLink.VpcEndpointServiceResource("example", new()
     ///     {
     ///         ServiceId = exampleVpcEndpointService.Id,
     ///         ResourceId = exampleApplicationLoadBalancer.Id,

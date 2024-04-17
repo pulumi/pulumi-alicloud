@@ -31,33 +31,33 @@ namespace Pulumi.AliCloud.Ga
     /// {
     ///     var config = new Config();
     ///     var region = config.Get("region") ?? "cn-hangzhou";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
+    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("default", new()
     ///     {
     ///         Duration = 1,
     ///         AutoUseCoupon = true,
     ///         Spec = "1",
     ///     });
     /// 
-    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
+    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("default", new()
     ///     {
     ///         Bandwidth = 100,
     ///         Type = "Basic",
@@ -67,13 +67,13 @@ namespace Pulumi.AliCloud.Ga
     ///         Ratio = 30,
     ///     });
     /// 
-    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("default", new()
     ///     {
     ///         AcceleratorId = defaultAccelerator.Id,
     ///         BandwidthPackageId = defaultBandwidthPackage.Id,
     ///     });
     /// 
-    ///     var defaultListener = new AliCloud.Ga.Listener("defaultListener", new()
+    ///     var defaultListener = new AliCloud.Ga.Listener("default", new()
     ///     {
     ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
     ///         ListenerType = "CustomRouting",
@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Ga
     ///         },
     ///     });
     /// 
-    ///     var defaultCustomRoutingEndpointGroup = new AliCloud.Ga.CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup", new()
+    ///     var defaultCustomRoutingEndpointGroup = new AliCloud.Ga.CustomRoutingEndpointGroup("default", new()
     ///     {
     ///         AcceleratorId = defaultListener.AcceleratorId,
     ///         ListenerId = defaultListener.Id,
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Ga
     ///         Description = "terraform-example",
     ///     });
     /// 
-    ///     var defaultCustomRoutingEndpoint = new AliCloud.Ga.CustomRoutingEndpoint("defaultCustomRoutingEndpoint", new()
+    ///     var defaultCustomRoutingEndpoint = new AliCloud.Ga.CustomRoutingEndpoint("default", new()
     ///     {
     ///         EndpointGroupId = defaultCustomRoutingEndpointGroup.Id,
     ///         Endpoint = defaultSwitch.Id,
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Ga
     ///         TrafficToEndpointPolicy = "AllowCustom",
     ///     });
     /// 
-    ///     var defaultCustomRoutingEndpointGroupDestination = new AliCloud.Ga.CustomRoutingEndpointGroupDestination("defaultCustomRoutingEndpointGroupDestination", new()
+    ///     var defaultCustomRoutingEndpointGroupDestination = new AliCloud.Ga.CustomRoutingEndpointGroupDestination("default", new()
     ///     {
     ///         EndpointGroupId = defaultCustomRoutingEndpointGroup.Id,
     ///         Protocols = new[]
@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Ga
     ///         ToPort = 10,
     ///     });
     /// 
-    ///     var defaultCustomRoutingEndpointTrafficPolicy = new AliCloud.Ga.CustomRoutingEndpointTrafficPolicy("defaultCustomRoutingEndpointTrafficPolicy", new()
+    ///     var defaultCustomRoutingEndpointTrafficPolicy = new AliCloud.Ga.CustomRoutingEndpointTrafficPolicy("default", new()
     ///     {
     ///         EndpointId = defaultCustomRoutingEndpoint.CustomRoutingEndpointId,
     ///         Address = "172.17.3.0",

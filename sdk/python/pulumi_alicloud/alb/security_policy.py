@@ -261,12 +261,12 @@ class SecurityPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.alb.SecurityPolicy("default",
+            security_policy_name="tf_example",
+            tls_versions=["TLSv1.0"],
             ciphers=[
                 "ECDHE-ECDSA-AES128-SHA",
                 "AES256-SHA",
-            ],
-            security_policy_name="tf_example",
-            tls_versions=["TLSv1.0"])
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -310,12 +310,12 @@ class SecurityPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.alb.SecurityPolicy("default",
+            security_policy_name="tf_example",
+            tls_versions=["TLSv1.0"],
             ciphers=[
                 "ECDHE-ECDSA-AES128-SHA",
                 "AES256-SHA",
-            ],
-            security_policy_name="tf_example",
-            tls_versions=["TLSv1.0"])
+            ])
         ```
         <!--End PulumiCodeChooser -->
 

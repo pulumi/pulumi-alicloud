@@ -23,31 +23,31 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultZones = alicloud.gpdb.getZones({});
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultGetZones = alicloud.gpdb.getZones({});
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "^default-NODELETING$",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.ids?.[0],
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, defaultGetZones]).then(([defaultGetNetworks, defaultGetZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: defaultGetZones.ids?.[0],
  * }));
- * const defaultInstance = new alicloud.gpdb.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.gpdb.Instance("default", {
  *     dbInstanceCategory: "HighAvailability",
  *     dbInstanceClass: "gpdb.group.segsdx1",
  *     dbInstanceMode: "StorageElastic",
  *     description: name,
  *     engine: "gpdb",
  *     engineVersion: "6.0",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.ids?.[0]),
  *     instanceNetworkType: "VPC",
  *     instanceSpec: "2C16G",
  *     paymentType: "PayAsYouGo",
  *     segStorageType: "cloud_essd",
  *     segNodeNum: 4,
  *     storageSize: 50,
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     ipWhitelists: [{
  *         securityIpList: "127.0.0.1",
  *     }],

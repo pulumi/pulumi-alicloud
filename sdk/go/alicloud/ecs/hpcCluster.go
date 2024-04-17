@@ -35,6 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.NewHpcCluster(ctx, "example", &ecs.HpcClusterArgs{
+//				Name:        pulumi.String("tf-testAcc"),
 //				Description: pulumi.String("For Terraform Test"),
 //			})
 //			if err != nil {

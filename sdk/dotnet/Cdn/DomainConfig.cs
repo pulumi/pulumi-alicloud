@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Cdn
     ///     // Create a new Domain config.
     ///     var domain = new AliCloud.Cdn.DomainNew("domain", new()
     ///     {
-    ///         DomainName = @default.Result.Apply(result =&gt; $"mycdndomain-{result}.alicloud-provider.cn"),
+    ///         DomainName = $"mycdndomain-{@default.Result}.alicloud-provider.cn",
     ///         CdnType = "web",
     ///         Scope = "overseas",
     ///         Sources = new[]

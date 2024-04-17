@@ -123,7 +123,7 @@ def get_chart_repositories(ids: Optional[Sequence[str]] = None,
             "example_value-1",
             "example_value-2",
         ])
-    pulumi.export("crChartRepositoryId1", data["alicloud_cr_chart_repositories"]["default"]["ids"])
+    pulumi.export("crChartRepositoryId1", default["ids"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -176,7 +176,7 @@ def get_chart_repositories_output(ids: Optional[pulumi.Input[Optional[Sequence[s
             "example_value-1",
             "example_value-2",
         ])
-    pulumi.export("crChartRepositoryId1", data["alicloud_cr_chart_repositories"]["default"]["ids"])
+    pulumi.export("crChartRepositoryId1", default["ids"])
     ```
     <!--End PulumiCodeChooser -->
 

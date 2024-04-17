@@ -546,23 +546,26 @@ class Cluster(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_keys = alicloud.kms.get_keys(status="Enabled")
-        default_zones = alicloud.get_zones(available_instance_type="ecs.g7.xlarge")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_keys = alicloud.kms.get_keys(status="Enabled")
+        default_get_zones = alicloud.get_zones(available_instance_type="ecs.g7.xlarge")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default_get_zones.zones[0].id,
             vswitch_name=name)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_ecs_key_pair = alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", key_pair_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_role = alicloud.ram.Role("defaultRole",
+        default_ecs_key_pair = alicloud.ecs.EcsKeyPair("default", key_pair_name=f"{name}-{default_integer['result']}")
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_role = alicloud.ram.Role("default",
+            name=name,
             document=\"\"\"    {
                 "Statement": [
                 {
@@ -581,7 +584,7 @@ class Cluster(pulumi.CustomResource):
         \"\"\",
             description="this is a role example.",
             force=True)
-        default_cluster = alicloud.emrv2.Cluster("defaultCluster",
+        default_cluster = alicloud.emrv2.Cluster("default",
             node_groups=[
                 alicloud.emrv2.ClusterNodeGroupArgs(
                     vswitch_ids=[default_switch.id],
@@ -643,10 +646,10 @@ class Cluster(pulumi.CustomResource):
                 "YARN",
             ],
             node_attributes=[alicloud.emrv2.ClusterNodeAttributeArgs(
-                zone_id=default_zones.zones[0].id,
+                zone_id=default_get_zones.zones[0].id,
                 key_pair_name=default_ecs_key_pair.id,
                 data_disk_encrypted=True,
-                data_disk_kms_key_id=default_keys.ids[0],
+                data_disk_kms_key_id=default_get_keys.ids[0],
                 vpc_id=default_network.id,
                 ram_role=default_role.name,
                 security_group_id=default_security_group.id,
@@ -655,7 +658,7 @@ class Cluster(pulumi.CustomResource):
                 "open": ["all"],
                 "close": [""],
             }),
-            resource_group_id=default_resource_groups.ids[0],
+            resource_group_id=default.ids[0],
             cluster_name=name,
             payment_type="PayAsYouGo",
             cluster_type="DATAFLOW")
@@ -716,23 +719,26 @@ class Cluster(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_keys = alicloud.kms.get_keys(status="Enabled")
-        default_zones = alicloud.get_zones(available_instance_type="ecs.g7.xlarge")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_keys = alicloud.kms.get_keys(status="Enabled")
+        default_get_zones = alicloud.get_zones(available_instance_type="ecs.g7.xlarge")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default_get_zones.zones[0].id,
             vswitch_name=name)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_ecs_key_pair = alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", key_pair_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_role = alicloud.ram.Role("defaultRole",
+        default_ecs_key_pair = alicloud.ecs.EcsKeyPair("default", key_pair_name=f"{name}-{default_integer['result']}")
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_role = alicloud.ram.Role("default",
+            name=name,
             document=\"\"\"    {
                 "Statement": [
                 {
@@ -751,7 +757,7 @@ class Cluster(pulumi.CustomResource):
         \"\"\",
             description="this is a role example.",
             force=True)
-        default_cluster = alicloud.emrv2.Cluster("defaultCluster",
+        default_cluster = alicloud.emrv2.Cluster("default",
             node_groups=[
                 alicloud.emrv2.ClusterNodeGroupArgs(
                     vswitch_ids=[default_switch.id],
@@ -813,10 +819,10 @@ class Cluster(pulumi.CustomResource):
                 "YARN",
             ],
             node_attributes=[alicloud.emrv2.ClusterNodeAttributeArgs(
-                zone_id=default_zones.zones[0].id,
+                zone_id=default_get_zones.zones[0].id,
                 key_pair_name=default_ecs_key_pair.id,
                 data_disk_encrypted=True,
-                data_disk_kms_key_id=default_keys.ids[0],
+                data_disk_kms_key_id=default_get_keys.ids[0],
                 vpc_id=default_network.id,
                 ram_role=default_role.name,
                 security_group_id=default_security_group.id,
@@ -825,7 +831,7 @@ class Cluster(pulumi.CustomResource):
                 "open": ["all"],
                 "close": [""],
             }),
-            resource_group_id=default_resource_groups.ids[0],
+            resource_group_id=default.ids[0],
             cluster_name=name,
             payment_type="PayAsYouGo",
             cluster_type="DATAFLOW")

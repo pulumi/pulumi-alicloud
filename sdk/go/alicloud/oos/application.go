@@ -45,23 +45,21 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = oos.NewApplication(ctx, "defaultApplication", &oos.ApplicationArgs{
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
-//				ApplicationName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
-//				Description: pulumi.String(name),
+//			_, err = oos.NewApplication(ctx, "default", &oos.ApplicationArgs{
+//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
+//				ApplicationName: pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				Description:     pulumi.String(name),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
 //				},

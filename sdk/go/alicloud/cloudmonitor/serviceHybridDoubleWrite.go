@@ -45,7 +45,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -55,17 +55,17 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNamespace, err := cms.NewNamespace(ctx, "defaultNamespace", &cms.NamespaceArgs{
+//			defaultNamespace, err := cms.NewNamespace(ctx, "default", &cms.NamespaceArgs{
 //				Namespace: pulumi.String(fmt.Sprintf("%v-source", name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudmonitor.NewServiceHybridDoubleWrite(ctx, "defaultServiceHybridDoubleWrite", &cloudmonitor.ServiceHybridDoubleWriteArgs{
+//			_, err = cloudmonitor.NewServiceHybridDoubleWrite(ctx, "default", &cloudmonitor.ServiceHybridDoubleWriteArgs{
 //				SourceNamespace: source.ID(),
-//				SourceUserId:    pulumi.String(defaultAccount.Id),
+//				SourceUserId:    pulumi.String(_default.Id),
 //				Namespace:       defaultNamespace.ID(),
-//				UserId:          pulumi.String(defaultAccount.Id),
+//				UserId:          pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err

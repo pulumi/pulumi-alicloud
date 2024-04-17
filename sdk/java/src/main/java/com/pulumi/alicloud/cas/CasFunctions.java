@@ -22,41 +22,6 @@ public final class CasFunctions {
      * 
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cas.CasFunctions;
-     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .nameRegex(&#34;^cas&#34;)
-     *             .outputFile(String.format(&#34;%s/cas_certificates.json&#34;, path.module()))
-     *             .build());
-     * 
-     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
      * 
@@ -69,41 +34,6 @@ public final class CasFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
      * 
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cas.CasFunctions;
-     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .nameRegex(&#34;^cas&#34;)
-     *             .outputFile(String.format(&#34;%s/cas_certificates.json&#34;, path.module()))
-     *             .build());
-     * 
-     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
@@ -118,41 +48,6 @@ public final class CasFunctions {
      * 
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cas.CasFunctions;
-     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .nameRegex(&#34;^cas&#34;)
-     *             .outputFile(String.format(&#34;%s/cas_certificates.json&#34;, path.module()))
-     *             .build());
-     * 
-     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
      * 
@@ -165,41 +60,6 @@ public final class CasFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
      * 
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cas.CasFunctions;
-     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .nameRegex(&#34;^cas&#34;)
-     *             .outputFile(String.format(&#34;%s/cas_certificates.json&#34;, path.module()))
-     *             .build());
-     * 
-     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
@@ -214,41 +74,6 @@ public final class CasFunctions {
      * 
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cas.CasFunctions;
-     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .nameRegex(&#34;^cas&#34;)
-     *             .outputFile(String.format(&#34;%s/cas_certificates.json&#34;, path.module()))
-     *             .build());
-     * 
-     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates
      * 
@@ -261,41 +86,6 @@ public final class CasFunctions {
      * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
      * 
      * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cas.CasFunctions;
-     * import com.pulumi.alicloud.cas.inputs.GetCertificatesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .nameRegex(&#34;^cas&#34;)
-     *             .outputFile(String.format(&#34;%s/cas_certificates.json&#34;, path.module()))
-     *             .build());
-     * 
-     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * This resource has been deprecated in favour of getServiceCertificates

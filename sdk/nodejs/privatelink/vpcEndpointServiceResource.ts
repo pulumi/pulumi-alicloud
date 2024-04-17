@@ -22,38 +22,41 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const exampleZones = alicloud.getZones({
+ * const example = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const exampleVpcEndpointService = new alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService", {
+ * const exampleVpcEndpointService = new alicloud.privatelink.VpcEndpointService("example", {
  *     serviceDescription: name,
  *     connectBandwidth: 103,
  *     autoAcceptConnection: false,
  * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
  *     vpcName: name,
  *     cidrBlock: "10.0.0.0/8",
  * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
  *     vswitchName: name,
  *     cidrBlock: "10.1.0.0/16",
  *     vpcId: exampleNetwork.id,
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
  * });
- * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
- * const exampleApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("exampleApplicationLoadBalancer", {
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     name: name,
+ *     vpcId: exampleNetwork.id,
+ * });
+ * const exampleApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("example", {
  *     loadBalancerName: name,
  *     vswitchId: exampleSwitch.id,
  *     loadBalancerSpec: "slb.s2.small",
  *     addressType: "intranet",
  * });
- * const exampleVpcEndpoint = new alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint", {
+ * const exampleVpcEndpoint = new alicloud.privatelink.VpcEndpoint("example", {
  *     serviceId: exampleVpcEndpointService.id,
  *     securityGroupIds: [exampleSecurityGroup.id],
  *     vpcId: exampleNetwork.id,
  *     vpcEndpointName: name,
  * });
- * const exampleVpcEndpointServiceResource = new alicloud.privatelink.VpcEndpointServiceResource("exampleVpcEndpointServiceResource", {
+ * const exampleVpcEndpointServiceResource = new alicloud.privatelink.VpcEndpointServiceResource("example", {
  *     serviceId: exampleVpcEndpointService.id,
  *     resourceId: exampleApplicationLoadBalancer.id,
  *     resourceType: "slb",

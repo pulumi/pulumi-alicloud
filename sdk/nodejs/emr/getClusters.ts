@@ -24,13 +24,13 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testAccClusters";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ * const default = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
- * const defaultMainVersions = alicloud.emr.getMainVersions({});
- * const defaultInstanceTypes = defaultMainVersions.then(defaultMainVersions => alicloud.emr.getInstanceTypes({
+ * const defaultGetMainVersions = alicloud.emr.getMainVersions({});
+ * const defaultGetInstanceTypes = defaultGetMainVersions.then(defaultGetMainVersions => alicloud.emr.getInstanceTypes({
  *     destinationResource: "InstanceType",
- *     clusterType: defaultMainVersions.mainVersions?.[0]?.clusterTypes?.[0],
+ *     clusterType: defaultGetMainVersions.mainVersions?.[0]?.clusterTypes?.[0],
  *     supportLocalStorage: false,
  *     instanceChargeType: "PostPaid",
  *     supportNodeTypes: [
@@ -39,29 +39,33 @@ import * as utilities from "../utilities";
  *         "TASK",
  *     ],
  * }));
- * const dataDisk = Promise.all([defaultMainVersions, defaultInstanceTypes, defaultInstanceTypes]).then(([defaultMainVersions, defaultInstanceTypes, defaultInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ * const dataDisk = Promise.all([defaultGetMainVersions, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([defaultGetMainVersions, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
  *     destinationResource: "DataDisk",
- *     clusterType: defaultMainVersions.mainVersions?.[0]?.clusterTypes?.[0],
+ *     clusterType: defaultGetMainVersions.mainVersions?.[0]?.clusterTypes?.[0],
  *     instanceChargeType: "PostPaid",
- *     instanceType: defaultInstanceTypes.types?.[0]?.id,
- *     zoneId: defaultInstanceTypes1.types?.[0]?.zoneId,
+ *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
+ *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
  * }));
- * const systemDisk = Promise.all([defaultMainVersions, defaultInstanceTypes, defaultInstanceTypes]).then(([defaultMainVersions, defaultInstanceTypes, defaultInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ * const systemDisk = Promise.all([defaultGetMainVersions, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([defaultGetMainVersions, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
  *     destinationResource: "SystemDisk",
- *     clusterType: defaultMainVersions.mainVersions?.[0]?.clusterTypes?.[0],
+ *     clusterType: defaultGetMainVersions.mainVersions?.[0]?.clusterTypes?.[0],
  *     instanceChargeType: "PostPaid",
- *     instanceType: defaultInstanceTypes.types?.[0]?.id,
- *     zoneId: defaultInstanceTypes1.types?.[0]?.zoneId,
+ *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
+ *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
  * }));
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
- * const defaultSwitches = Promise.all([defaultNetworks, defaultInstanceTypes]).then(([defaultNetworks, defaultInstanceTypes]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultInstanceTypes.types?.[0]?.zoneId,
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, defaultGetInstanceTypes]).then(([defaultGetNetworks, defaultGetInstanceTypes]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: defaultGetInstanceTypes.types?.[0]?.zoneId,
  * }));
- * const defaultRole = new alicloud.ram.Role("defaultRole", {
+ * const defaultRole = new alicloud.ram.Role("default", {
+ *     name: name,
  *     document: `    {
  *         "Statement": [
  *         {
@@ -81,15 +85,16 @@ import * as utilities from "../utilities";
  *     description: "this is a role test.",
  *     force: true,
  * });
- * const defaultCluster = new alicloud.emr.Cluster("defaultCluster", {
- *     emrVer: defaultMainVersions.then(defaultMainVersions => defaultMainVersions.mainVersions?.[0]?.emrVersion),
- *     clusterType: defaultMainVersions.then(defaultMainVersions => defaultMainVersions.mainVersions?.[0]?.clusterTypes?.[0]),
+ * const defaultCluster = new alicloud.emr.Cluster("default", {
+ *     name: name,
+ *     emrVer: defaultGetMainVersions.then(defaultGetMainVersions => defaultGetMainVersions.mainVersions?.[0]?.emrVersion),
+ *     clusterType: defaultGetMainVersions.then(defaultGetMainVersions => defaultGetMainVersions.mainVersions?.[0]?.clusterTypes?.[0]),
  *     hostGroups: [
  *         {
  *             hostGroupName: "master_group",
  *             hostGroupType: "MASTER",
  *             nodeCount: "2",
- *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types?.[0]?.id),
+ *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
  *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
  *             diskCount: "1",
@@ -100,7 +105,7 @@ import * as utilities from "../utilities";
  *             hostGroupName: "core_group",
  *             hostGroupType: "CORE",
  *             nodeCount: "3",
- *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types?.[0]?.id),
+ *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
  *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
  *             diskCount: "4",
@@ -111,7 +116,7 @@ import * as utilities from "../utilities";
  *             hostGroupName: "task_group",
  *             hostGroupType: "TASK",
  *             nodeCount: "2",
- *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types?.[0]?.id),
+ *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
  *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
  *             diskCount: "4",
@@ -120,11 +125,11 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     highAvailabilityEnable: true,
- *     zoneId: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types?.[0]?.zoneId),
+ *     zoneId: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.zoneId),
  *     securityGroupId: defaultSecurityGroup.id,
  *     isOpenPublicIp: true,
  *     chargeType: "PostPaid",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     userDefinedEmrEcsRole: defaultRole.name,
  *     sshEnable: true,
  *     masterPwd: "ABCtest1234!",
@@ -276,13 +281,13 @@ export interface GetClustersResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testAccClusters";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ * const default = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
- * const defaultMainVersions = alicloud.emr.getMainVersions({});
- * const defaultInstanceTypes = defaultMainVersions.then(defaultMainVersions => alicloud.emr.getInstanceTypes({
+ * const defaultGetMainVersions = alicloud.emr.getMainVersions({});
+ * const defaultGetInstanceTypes = defaultGetMainVersions.then(defaultGetMainVersions => alicloud.emr.getInstanceTypes({
  *     destinationResource: "InstanceType",
- *     clusterType: defaultMainVersions.mainVersions?.[0]?.clusterTypes?.[0],
+ *     clusterType: defaultGetMainVersions.mainVersions?.[0]?.clusterTypes?.[0],
  *     supportLocalStorage: false,
  *     instanceChargeType: "PostPaid",
  *     supportNodeTypes: [
@@ -291,29 +296,33 @@ export interface GetClustersResult {
  *         "TASK",
  *     ],
  * }));
- * const dataDisk = Promise.all([defaultMainVersions, defaultInstanceTypes, defaultInstanceTypes]).then(([defaultMainVersions, defaultInstanceTypes, defaultInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ * const dataDisk = Promise.all([defaultGetMainVersions, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([defaultGetMainVersions, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
  *     destinationResource: "DataDisk",
- *     clusterType: defaultMainVersions.mainVersions?.[0]?.clusterTypes?.[0],
+ *     clusterType: defaultGetMainVersions.mainVersions?.[0]?.clusterTypes?.[0],
  *     instanceChargeType: "PostPaid",
- *     instanceType: defaultInstanceTypes.types?.[0]?.id,
- *     zoneId: defaultInstanceTypes1.types?.[0]?.zoneId,
+ *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
+ *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
  * }));
- * const systemDisk = Promise.all([defaultMainVersions, defaultInstanceTypes, defaultInstanceTypes]).then(([defaultMainVersions, defaultInstanceTypes, defaultInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ * const systemDisk = Promise.all([defaultGetMainVersions, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([defaultGetMainVersions, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
  *     destinationResource: "SystemDisk",
- *     clusterType: defaultMainVersions.mainVersions?.[0]?.clusterTypes?.[0],
+ *     clusterType: defaultGetMainVersions.mainVersions?.[0]?.clusterTypes?.[0],
  *     instanceChargeType: "PostPaid",
- *     instanceType: defaultInstanceTypes.types?.[0]?.id,
- *     zoneId: defaultInstanceTypes1.types?.[0]?.zoneId,
+ *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
+ *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
  * }));
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
- * const defaultSwitches = Promise.all([defaultNetworks, defaultInstanceTypes]).then(([defaultNetworks, defaultInstanceTypes]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultInstanceTypes.types?.[0]?.zoneId,
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, defaultGetInstanceTypes]).then(([defaultGetNetworks, defaultGetInstanceTypes]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: defaultGetInstanceTypes.types?.[0]?.zoneId,
  * }));
- * const defaultRole = new alicloud.ram.Role("defaultRole", {
+ * const defaultRole = new alicloud.ram.Role("default", {
+ *     name: name,
  *     document: `    {
  *         "Statement": [
  *         {
@@ -333,15 +342,16 @@ export interface GetClustersResult {
  *     description: "this is a role test.",
  *     force: true,
  * });
- * const defaultCluster = new alicloud.emr.Cluster("defaultCluster", {
- *     emrVer: defaultMainVersions.then(defaultMainVersions => defaultMainVersions.mainVersions?.[0]?.emrVersion),
- *     clusterType: defaultMainVersions.then(defaultMainVersions => defaultMainVersions.mainVersions?.[0]?.clusterTypes?.[0]),
+ * const defaultCluster = new alicloud.emr.Cluster("default", {
+ *     name: name,
+ *     emrVer: defaultGetMainVersions.then(defaultGetMainVersions => defaultGetMainVersions.mainVersions?.[0]?.emrVersion),
+ *     clusterType: defaultGetMainVersions.then(defaultGetMainVersions => defaultGetMainVersions.mainVersions?.[0]?.clusterTypes?.[0]),
  *     hostGroups: [
  *         {
  *             hostGroupName: "master_group",
  *             hostGroupType: "MASTER",
  *             nodeCount: "2",
- *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types?.[0]?.id),
+ *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
  *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
  *             diskCount: "1",
@@ -352,7 +362,7 @@ export interface GetClustersResult {
  *             hostGroupName: "core_group",
  *             hostGroupType: "CORE",
  *             nodeCount: "3",
- *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types?.[0]?.id),
+ *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
  *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
  *             diskCount: "4",
@@ -363,7 +373,7 @@ export interface GetClustersResult {
  *             hostGroupName: "task_group",
  *             hostGroupType: "TASK",
  *             nodeCount: "2",
- *             instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types?.[0]?.id),
+ *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
  *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
  *             diskCount: "4",
@@ -372,11 +382,11 @@ export interface GetClustersResult {
  *         },
  *     ],
  *     highAvailabilityEnable: true,
- *     zoneId: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.types?.[0]?.zoneId),
+ *     zoneId: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.zoneId),
  *     securityGroupId: defaultSecurityGroup.id,
  *     isOpenPublicIp: true,
  *     chargeType: "PostPaid",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     userDefinedEmrEcsRole: defaultRole.name,
  *     sshEnable: true,
  *     masterPwd: "ABCtest1234!",

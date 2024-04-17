@@ -100,6 +100,7 @@ def get_kubernetes_version(cluster_type: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
     default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
         kubernetes_version="1.22.3-aliyun.1",
         profile="Default")
@@ -112,6 +113,7 @@ def get_kubernetes_version(cluster_type: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
     default = alicloud.cs.get_kubernetes_version(cluster_type="Kubernetes",
         kubernetes_version="1.22.3-aliyun.1",
         profile="Default")
@@ -124,6 +126,7 @@ def get_kubernetes_version(cluster_type: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
     default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
         kubernetes_version="1.22.3-aliyun.1",
         profile="Serverless")
@@ -136,6 +139,7 @@ def get_kubernetes_version(cluster_type: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
     default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
         kubernetes_version="1.20.11-aliyunedge.1",
         profile="Edge")
@@ -180,6 +184,7 @@ def get_kubernetes_version_output(cluster_type: Optional[pulumi.Input[str]] = No
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
     default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
         kubernetes_version="1.22.3-aliyun.1",
         profile="Default")
@@ -192,6 +197,7 @@ def get_kubernetes_version_output(cluster_type: Optional[pulumi.Input[str]] = No
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
     default = alicloud.cs.get_kubernetes_version(cluster_type="Kubernetes",
         kubernetes_version="1.22.3-aliyun.1",
         profile="Default")
@@ -204,6 +210,7 @@ def get_kubernetes_version_output(cluster_type: Optional[pulumi.Input[str]] = No
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
     default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
         kubernetes_version="1.22.3-aliyun.1",
         profile="Serverless")
@@ -216,6 +223,7 @@ def get_kubernetes_version_output(cluster_type: Optional[pulumi.Input[str]] = No
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
     default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes",
         kubernetes_version="1.20.11-aliyunedge.1",
         profile="Edge")

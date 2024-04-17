@@ -20,8 +20,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const hbase = alicloud.hbase.getInstances({
- *     availabilityZone: "cn-shenzhen-b",
  *     nameRegex: "tf_testAccHBase",
+ *     availabilityZone: "cn-shenzhen-b",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -107,8 +107,8 @@ export interface GetInstancesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const hbase = alicloud.hbase.getInstances({
- *     availabilityZone: "cn-shenzhen-b",
  *     nameRegex: "tf_testAccHBase",
+ *     availabilityZone: "cn-shenzhen-b",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

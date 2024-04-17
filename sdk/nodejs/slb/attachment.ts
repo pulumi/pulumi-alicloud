@@ -20,31 +20,37 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "slb-attachment-example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
- * const defaultImages = alicloud.ecs.getImages({
+ * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     name: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/16",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstance = new alicloud.ecs.Instance("default", {
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *     internetChargeType: "PayByTraffic",
  *     internetMaxBandwidthOut: 5,
  *     systemDiskCategory: "cloud_efficiency",
@@ -52,12 +58,12 @@ import * as utilities from "../utilities";
  *     instanceName: name,
  *     vswitchId: defaultSwitch.id,
  * });
- * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("default", {
  *     loadBalancerName: name,
  *     vswitchId: defaultSwitch.id,
  *     loadBalancerSpec: "slb.s1.small",
  * });
- * const defaultAttachment = new alicloud.slb.Attachment("defaultAttachment", {
+ * const defaultAttachment = new alicloud.slb.Attachment("default", {
  *     loadBalancerId: defaultApplicationLoadBalancer.id,
  *     instanceIds: [defaultInstance.id],
  *     weight: 90,

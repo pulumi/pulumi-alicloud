@@ -609,8 +609,8 @@ class JobTemplate(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.ehpc.JobTemplate("default",
-            command_line="./LammpsTest/lammps.pbs",
-            job_template_name="example_value")
+            job_template_name="example_value",
+            command_line="./LammpsTest/lammps.pbs")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -665,8 +665,8 @@ class JobTemplate(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.ehpc.JobTemplate("default",
-            command_line="./LammpsTest/lammps.pbs",
-            job_template_name="example_value")
+            job_template_name="example_value",
+            command_line="./LammpsTest/lammps.pbs")
         ```
         <!--End PulumiCodeChooser -->
 

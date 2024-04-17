@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var dmsEnterpriseUsersDs = AliCloud.Dms.GetEnterpriseUsers.Invoke(new()
         ///     {
         ///         Ids = new[]
@@ -64,6 +65,7 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var dmsEnterpriseUsersDs = AliCloud.Dms.GetEnterpriseUsers.Invoke(new()
         ///     {
         ///         Ids = new[]

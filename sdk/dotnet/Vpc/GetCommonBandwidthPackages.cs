@@ -27,19 +27,20 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new()
+        ///     var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("foo", new()
         ///     {
         ///         Bandwidth = "2",
+        ///         Name = "tf-testAccCommonBandwidthPackage",
         ///         Description = "tf-testAcc-CommonBandwidthPackage",
         ///     });
         /// 
-        ///     var fooCommonBandwidthPackages = AliCloud.Vpc.GetCommonBandwidthPackages.Invoke(new()
+        ///     var foo = AliCloud.Vpc.GetCommonBandwidthPackages.Invoke(new()
         ///     {
+        ///         NameRegex = "^tf-testAcc.*",
         ///         Ids = new[]
         ///         {
         ///             fooCommonBandwithPackage.Id,
         ///         },
-        ///         NameRegex = "^tf-testAcc.*",
         ///     });
         /// 
         /// });
@@ -73,19 +74,20 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("fooCommonBandwithPackage", new()
+        ///     var fooCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("foo", new()
         ///     {
         ///         Bandwidth = "2",
+        ///         Name = "tf-testAccCommonBandwidthPackage",
         ///         Description = "tf-testAcc-CommonBandwidthPackage",
         ///     });
         /// 
-        ///     var fooCommonBandwidthPackages = AliCloud.Vpc.GetCommonBandwidthPackages.Invoke(new()
+        ///     var foo = AliCloud.Vpc.GetCommonBandwidthPackages.Invoke(new()
         ///     {
+        ///         NameRegex = "^tf-testAcc.*",
         ///         Ids = new[]
         ///         {
         ///             fooCommonBandwithPackage.Id,
         ///         },
-        ///         NameRegex = "^tf-testAcc.*",
         ///     });
         /// 
         /// });

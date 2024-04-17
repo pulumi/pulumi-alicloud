@@ -67,7 +67,7 @@ public final class SimpleapplicationserverFunctions {
      *             .instanceImageType(&#34;system&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, data.alicloud_simple_application_server_images().ids().images()[0].id());
+     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, ids.images()[0].id());
      *     }
      * }
      * ```
@@ -120,7 +120,7 @@ public final class SimpleapplicationserverFunctions {
      *             .instanceImageType(&#34;system&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, data.alicloud_simple_application_server_images().ids().images()[0].id());
+     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, ids.images()[0].id());
      *     }
      * }
      * ```
@@ -173,7 +173,7 @@ public final class SimpleapplicationserverFunctions {
      *             .instanceImageType(&#34;system&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, data.alicloud_simple_application_server_images().ids().images()[0].id());
+     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, ids.images()[0].id());
      *     }
      * }
      * ```
@@ -226,7 +226,7 @@ public final class SimpleapplicationserverFunctions {
      *             .instanceImageType(&#34;system&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, data.alicloud_simple_application_server_images().ids().images()[0].id());
+     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, ids.images()[0].id());
      *     }
      * }
      * ```
@@ -279,7 +279,7 @@ public final class SimpleapplicationserverFunctions {
      *             .instanceImageType(&#34;system&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, data.alicloud_simple_application_server_images().ids().images()[0].id());
+     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, ids.images()[0].id());
      *     }
      * }
      * ```
@@ -332,7 +332,7 @@ public final class SimpleapplicationserverFunctions {
      *             .instanceImageType(&#34;system&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, data.alicloud_simple_application_server_images().ids().images()[0].id());
+     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, ids.images()[0].id());
      *     }
      * }
      * ```
@@ -1571,7 +1571,7 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, data.alicloud_simple_application_server_plans().ids().plans()[0].id());
+     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, ids.plans()[0].id());
      *     }
      * }
      * ```
@@ -1620,7 +1620,7 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, data.alicloud_simple_application_server_plans().ids().plans()[0].id());
+     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, ids.plans()[0].id());
      *     }
      * }
      * ```
@@ -1669,7 +1669,7 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, data.alicloud_simple_application_server_plans().ids().plans()[0].id());
+     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, ids.plans()[0].id());
      *     }
      * }
      * ```
@@ -1718,7 +1718,7 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, data.alicloud_simple_application_server_plans().ids().plans()[0].id());
+     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, ids.plans()[0].id());
      *     }
      * }
      * ```
@@ -1767,7 +1767,7 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, data.alicloud_simple_application_server_plans().ids().plans()[0].id());
+     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, ids.plans()[0].id());
      *     }
      * }
      * ```
@@ -1816,7 +1816,7 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, data.alicloud_simple_application_server_plans().ids().plans()[0].id());
+     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, ids.plans()[0].id());
      *     }
      * }
      * ```

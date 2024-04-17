@@ -22,7 +22,10 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const example = new alicloud.datahub.Project("example", {comment: "created by terraform"});
+ * const example = new alicloud.datahub.Project("example", {
+ *     name: name,
+ *     comment: "created by terraform",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

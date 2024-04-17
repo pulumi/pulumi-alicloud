@@ -16,6 +16,46 @@ namespace Pulumi.AliCloud.Ebs
     /// 
     /// &gt; **NOTE:** Available since v1.187.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultGetRegions = AliCloud.Ebs.GetRegions.Invoke(new()
+    ///     {
+    ///         RegionId = @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultDiskReplicaGroup = new AliCloud.Ebs.DiskReplicaGroup("default", new()
+    ///     {
+    ///         SourceRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
+    ///         SourceZoneId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Zones[0]?.ZoneId),
+    ///         DestinationRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
+    ///         DestinationZoneId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Zones[1]?.ZoneId),
+    ///         GroupName = name,
+    ///         Description = name,
+    ///         Rpo = 900,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// EBS Disk Replica Group can be imported using the id, e.g.

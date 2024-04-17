@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "example_value";
  * const _default = new alicloud.mhub.App("default", {
  *     appName: name,
- *     productId: alicloud_mhub_product["default"].id,
+ *     productId: defaultAlicloudMhubProduct.id,
  *     packageName: "com.test.android",
  *     type: "2",
  * });
@@ -115,7 +115,7 @@ export interface GetAppsResult {
  * const name = config.get("name") || "example_value";
  * const _default = new alicloud.mhub.App("default", {
  *     appName: name,
- *     productId: alicloud_mhub_product["default"].id,
+ *     productId: defaultAlicloudMhubProduct.id,
  *     packageName: "com.test.android",
  *     type: "2",
  * });

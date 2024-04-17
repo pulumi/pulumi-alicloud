@@ -31,7 +31,10 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.RocketMQ.Acl("default");
+    ///     var @default = new AliCloud.RocketMQ.Acl("default", new()
+    ///     {
+    ///         Name = "terraform-example",
+    ///     });
     /// 
     /// });
     /// ```

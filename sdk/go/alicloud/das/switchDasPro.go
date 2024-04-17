@@ -44,11 +44,11 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNodeClasses, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
+//			defaultGetNodeClasses, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
 //				DbType:    pulumi.StringRef("MySQL"),
 //				DbVersion: pulumi.StringRef("8.0"),
 //				PayType:   "PostPaid",
@@ -56,23 +56,23 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultNodeClasses.Classes[0].ZoneId),
+//				ZoneId:      pulumi.String(defaultGetNodeClasses.Classes[0].ZoneId),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultCluster, err := polardb.NewCluster(ctx, "defaultCluster", &polardb.ClusterArgs{
+//			defaultCluster, err := polardb.NewCluster(ctx, "default", &polardb.ClusterArgs{
 //				DbType:      pulumi.String("MySQL"),
 //				DbVersion:   pulumi.String("8.0"),
 //				DbNodeClass: pulumi.String("polar.mysql.x4.large"),
@@ -92,10 +92,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = das.NewSwitchDasPro(ctx, "defaultSwitchDasPro", &das.SwitchDasProArgs{
+//			_, err = das.NewSwitchDasPro(ctx, "default", &das.SwitchDasProArgs{
 //				InstanceId:   defaultCluster.ID(),
 //				SqlRetention: pulumi.Int(30),
-//				UserId:       pulumi.String(defaultAccount.Id),
+//				UserId:       pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err

@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var exampleVpcEndpointService = new VpcEndpointService(&#34;exampleVpcEndpointService&#34;, VpcEndpointServiceArgs.builder()        
+ *         var example = new VpcEndpointService(&#34;example&#34;, VpcEndpointServiceArgs.builder()        
  *             .serviceDescription(name)
  *             .connectBandwidth(103)
  *             .autoAcceptConnection(false)
@@ -72,11 +72,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
  *         var exampleVpcEndpoint = new VpcEndpoint(&#34;exampleVpcEndpoint&#34;, VpcEndpointArgs.builder()        
- *             .serviceId(exampleVpcEndpointService.id())
+ *             .serviceId(example.id())
  *             .securityGroupIds(exampleSecurityGroup.id())
  *             .vpcId(exampleNetwork.id())
  *             .vpcEndpointName(name)

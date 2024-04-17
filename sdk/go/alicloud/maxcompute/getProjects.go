@@ -28,38 +28,36 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf_testaccmp"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultProject, err := maxcompute.NewProject(ctx, "defaultProject", &maxcompute.ProjectArgs{
-//				DefaultQuota: pulumi.String("默认后付费Quota"),
-//				ProjectName:  pulumi.String(name),
-//				Comment:      pulumi.String(name),
-//				ProductType:  pulumi.String("PAYASYOUGO"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultProjects := defaultProject.ID().ApplyT(func(id string) (maxcompute.GetProjectsResult, error) {
-//				return maxcompute.GetProjectsOutput(ctx, maxcompute.GetProjectsOutputArgs{
-//					Ids: []string{
-//						id,
-//					},
-//					NameRegex: defaultProject.Name,
-//				}, nil), nil
-//			}).(maxcompute.GetProjectsResultOutput)
-//			ctx.Export("alicloudMaxcomputeProjectExampleId", defaultProjects.ApplyT(func(defaultProjects maxcompute.GetProjectsResult) (*string, error) {
-//				return &defaultProjects.Projects[0].Id, nil
-//			}).(pulumi.StringPtrOutput))
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "tf_testaccmp";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// defaultProject, err := maxcompute.NewProject(ctx, "default", &maxcompute.ProjectArgs{
+// DefaultQuota: pulumi.String("默认后付费Quota"),
+// ProjectName: pulumi.String(name),
+// Comment: pulumi.String(name),
+// ProductType: pulumi.String("PAYASYOUGO"),
+// })
+// if err != nil {
+// return err
+// }
+// _default := defaultProject.ID().ApplyT(func(id string) (maxcompute.GetProjectsResult, error) {
+// return maxcompute.GetProjectsOutput(ctx, maxcompute.GetProjectsOutputArgs{
+// Ids: []string{
+// id,
+// },
+// NameRegex: defaultProject.Name,
+// }, nil), nil
+// }).(maxcompute.GetProjectsResultOutput)
+// ctx.Export("alicloudMaxcomputeProjectExampleId", _default.ApplyT(func(_default maxcompute.GetProjectsResult) (*string, error) {
+// return &default.Projects[0].Id, nil
+// }).(pulumi.StringPtrOutput))
+// return nil
+// })
+// }
 // ```
 // <!--End PulumiCodeChooser -->
 func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.InvokeOption) (*GetProjectsResult, error) {

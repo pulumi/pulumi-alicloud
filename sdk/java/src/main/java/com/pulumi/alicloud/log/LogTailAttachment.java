@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -58,17 +58,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
+ *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
  *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
- *             .project(exampleProject.name())
+ *             .project(example.name())
+ *             .name(&#34;example-store&#34;)
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -77,9 +79,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleLogTailConfig = new LogTailConfig(&#34;exampleLogTailConfig&#34;, LogTailConfigArgs.builder()        
- *             .project(exampleProject.name())
+ *             .project(example.name())
  *             .logstore(exampleStore.name())
  *             .inputType(&#34;file&#34;)
+ *             .name(&#34;terraform-example&#34;)
  *             .outputType(&#34;LogService&#34;)
  *             .inputDetail(&#34;&#34;&#34;
  *   	{
@@ -96,7 +99,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleMachineGroup = new MachineGroup(&#34;exampleMachineGroup&#34;, MachineGroupArgs.builder()        
- *             .project(exampleProject.name())
+ *             .project(example.name())
+ *             .name(&#34;terraform-example&#34;)
  *             .identifyType(&#34;ip&#34;)
  *             .topic(&#34;terraform&#34;)
  *             .identifyLists(            
@@ -105,7 +109,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleLogTailAttachment = new LogTailAttachment(&#34;exampleLogTailAttachment&#34;, LogTailAttachmentArgs.builder()        
- *             .project(exampleProject.name())
+ *             .project(example.name())
  *             .logtailConfigName(exampleLogTailConfig.name())
  *             .machineGroupName(exampleMachineGroup.name())
  *             .build());

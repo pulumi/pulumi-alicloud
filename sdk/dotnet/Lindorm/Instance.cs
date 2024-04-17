@@ -37,29 +37,29 @@ namespace Pulumi.AliCloud.Lindorm
     /// 
     ///     var zoneId = "cn-hangzhou-h";
     /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
     ///         NameRegex = "^default-NODELETING$",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         ZoneId = zoneId,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Lindorm.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Lindorm.Instance("default", new()
     ///     {
     ///         DiskCategory = "cloud_efficiency",
     ///         PaymentType = "PayAsYouGo",
     ///         ZoneId = zoneId,
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         InstanceName = name,
     ///         TableEngineSpecification = "lindorm.g.4xlarge",
     ///         TableEngineNodeCount = 2,

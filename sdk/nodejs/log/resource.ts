@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.log.Resource("example", {
+ *     type: "userdefine",
+ *     name: "user.tf.resource",
  *     description: "user tf resource desc",
  *     extInfo: "{}",
  *     schema: `    {
@@ -42,9 +44,7 @@ import * as utilities from "../utilities";
  *         }
  *       ]
  *     }
- *   
  * `,
- *     type: "userdefine",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

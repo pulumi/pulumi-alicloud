@@ -67,11 +67,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultZones = MongodbFunctions.getZones();
+ *         final var default = MongodbFunctions.getZones();
  * 
- *         final var index = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()).length() - 1;
+ *         final var index = default_.zones().length() - 1;
  * 
- *         final var zoneId = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones())[index].id();
+ *         final var zoneId = default_.zones()[index].id();
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
@@ -93,6 +93,7 @@ import javax.annotation.Nullable;
  *             .securityIpLists(            
  *                 &#34;10.168.1.12&#34;,
  *                 &#34;100.69.7.112&#34;)
+ *             .name(name)
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
  *                 Map.entry(&#34;For&#34;, &#34;example&#34;)

@@ -429,7 +429,7 @@ class HaVipv2(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-testacc-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_vpc = alicloud.vpc.Network("defaultVpc",
             description="tf-test-acc-vpc",
             vpc_name=name,
@@ -438,7 +438,7 @@ class HaVipv2(pulumi.CustomResource):
             vpc_id=default_vpc.id,
             cidr_block="192.168.0.0/21",
             vswitch_name=f"{name}1",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             description="tf-testacc-vswitch")
         default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
             display_name="tf-testacc-rg819",
@@ -446,7 +446,7 @@ class HaVipv2(pulumi.CustomResource):
         change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
             display_name="tf-testacc-changerg670",
             resource_group_name=f"{name}3")
-        default_ha_vipv2 = alicloud.vpc.HaVipv2("defaultHaVipv2",
+        default_ha_vipv2 = alicloud.vpc.HaVipv2("default",
             description="test",
             vswitch_id=default_vswitch.id,
             ha_vip_name=name,
@@ -499,7 +499,7 @@ class HaVipv2(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-testacc-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_vpc = alicloud.vpc.Network("defaultVpc",
             description="tf-test-acc-vpc",
             vpc_name=name,
@@ -508,7 +508,7 @@ class HaVipv2(pulumi.CustomResource):
             vpc_id=default_vpc.id,
             cidr_block="192.168.0.0/21",
             vswitch_name=f"{name}1",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             description="tf-testacc-vswitch")
         default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
             display_name="tf-testacc-rg819",
@@ -516,7 +516,7 @@ class HaVipv2(pulumi.CustomResource):
         change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
             display_name="tf-testacc-changerg670",
             resource_group_name=f"{name}3")
-        default_ha_vipv2 = alicloud.vpc.HaVipv2("defaultHaVipv2",
+        default_ha_vipv2 = alicloud.vpc.HaVipv2("default",
             description="test",
             vswitch_id=default_vswitch.id,
             ha_vip_name=name,

@@ -580,6 +580,7 @@ class RouterInterface(pulumi.CustomResource):
             router_id=foo.router_id,
             role="InitiatingSide",
             specification="Large.2",
+            name="test1",
             description="test1")
         ```
         <!--End PulumiCodeChooser -->
@@ -640,6 +641,7 @@ class RouterInterface(pulumi.CustomResource):
             router_id=foo.router_id,
             role="InitiatingSide",
             specification="Large.2",
+            name="test1",
             description="test1")
         ```
         <!--End PulumiCodeChooser -->

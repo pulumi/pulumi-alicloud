@@ -19,9 +19,9 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const foo = alicloud.slb.getDomainExtensions({
- *     frontendPort: "fake-port",
  *     ids: ["fake-de-id"],
  *     loadBalancerId: "fake-lb-id",
+ *     frontendPort: "fake-port",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -86,9 +86,9 @@ export interface GetDomainExtensionsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const foo = alicloud.slb.getDomainExtensions({
- *     frontendPort: "fake-port",
  *     ids: ["fake-de-id"],
  *     loadBalancerId: "fake-lb-id",
+ *     frontendPort: "fake-port",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

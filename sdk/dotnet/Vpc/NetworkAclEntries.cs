@@ -35,29 +35,32 @@ namespace Pulumi.AliCloud.Vpc
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "NetworkAclEntries";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
+    ///         Name = name,
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
-    ///     var defaultNetworkAcl = new AliCloud.Vpc.NetworkAcl("defaultNetworkAcl", new()
+    ///     var defaultNetworkAcl = new AliCloud.Vpc.NetworkAcl("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
+    ///         Name = name,
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/21",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         Name = name,
     ///     });
     /// 
-    ///     var defaultNetworkAclAttachment = new AliCloud.Vpc.NetworkAclAttachment("defaultNetworkAclAttachment", new()
+    ///     var defaultNetworkAclAttachment = new AliCloud.Vpc.NetworkAclAttachment("default", new()
     ///     {
     ///         NetworkAclId = defaultNetworkAcl.Id,
     ///         Resources = new[]
@@ -70,7 +73,7 @@ namespace Pulumi.AliCloud.Vpc
     ///         },
     ///     });
     /// 
-    ///     var defaultNetworkAclEntries = new AliCloud.Vpc.NetworkAclEntries("defaultNetworkAclEntries", new()
+    ///     var defaultNetworkAclEntries = new AliCloud.Vpc.NetworkAclEntries("default", new()
     ///     {
     ///         NetworkAclId = defaultNetworkAcl.Id,
     ///         Ingresses = new[]

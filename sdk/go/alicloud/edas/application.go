@@ -44,46 +44,40 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultCluster, err := edas.NewCluster(ctx, "defaultCluster", &edas.ClusterArgs{
-//				ClusterName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//			defaultCluster, err := edas.NewCluster(ctx, "default", &edas.ClusterArgs{
+//				ClusterName:     pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
 //				ClusterType:     pulumi.Int(2),
 //				NetworkMode:     pulumi.Int(2),
-//				LogicalRegionId: pulumi.String(defaultRegions.Regions[0].Id),
+//				LogicalRegionId: pulumi.String(_default.Regions[0].Id),
 //				VpcId:           defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = edas.NewApplication(ctx, "defaultApplication", &edas.ApplicationArgs{
-//				ApplicationName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
-//				ClusterId:   defaultCluster.ID(),
-//				PackageType: pulumi.String("JAR"),
+//			_, err = edas.NewApplication(ctx, "default", &edas.ApplicationArgs{
+//				ApplicationName: pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				ClusterId:       defaultCluster.ID(),
+//				PackageType:     pulumi.String("JAR"),
 //			})
 //			if err != nil {
 //				return err

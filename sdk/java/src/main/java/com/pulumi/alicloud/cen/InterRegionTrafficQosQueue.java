@@ -34,8 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.Provider;
- * import com.pulumi.alicloud.ProviderArgs;
  * import com.pulumi.alicloud.cen.Instance;
  * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.BandwidthPackage;
@@ -50,7 +48,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cen.InterRegionTrafficQosPolicyArgs;
  * import com.pulumi.alicloud.cen.InterRegionTrafficQosQueue;
  * import com.pulumi.alicloud.cen.InterRegionTrafficQosQueueArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -68,15 +65,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         final var defaultRegion = config.get(&#34;defaultRegion&#34;).orElse(&#34;cn-hangzhou&#34;);
  *         final var peerRegion = config.get(&#34;peerRegion&#34;).orElse(&#34;cn-beijing&#34;);
- *         var hz = new Provider(&#34;hz&#34;, ProviderArgs.builder()        
- *             .region(defaultRegion)
- *             .build());
- * 
- *         var bj = new Provider(&#34;bj&#34;, ProviderArgs.builder()        
- *             .region(peerRegion)
- *             .build());
- * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
  *             .cenInstanceName(name)
  *             .protectionLevel(&#34;REDUCED&#34;)
  *             .build());
@@ -86,33 +75,25 @@ import javax.annotation.Nullable;
  *             .cenBandwidthPackageName(&#34;tf_example&#34;)
  *             .geographicRegionAId(&#34;China&#34;)
  *             .geographicRegionBId(&#34;China&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
  *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
- *             .instanceId(defaultInstance.id())
+ *             .instanceId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
  *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(defaultInstance.id())
+ *             .cenId(default_.id())
  *             .supportMulticast(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
  *         var peer = new TransitRouter(&#34;peer&#34;, TransitRouterArgs.builder()        
  *             .cenId(defaultTransitRouter.cenId())
  *             .supportMulticast(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.bj())
- *                 .build());
+ *             .build());
  * 
  *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment(&#34;defaultTransitRouterPeerAttachment&#34;, TransitRouterPeerAttachmentArgs.builder()        
- *             .cenId(defaultInstance.id())
+ *             .cenId(default_.id())
  *             .transitRouterId(defaultTransitRouter.transitRouterId())
  *             .peerTransitRouterRegionId(peerRegion)
  *             .peerTransitRouterId(peer.transitRouterId())
@@ -120,18 +101,14 @@ import javax.annotation.Nullable;
  *             .bandwidth(5)
  *             .transitRouterAttachmentDescription(name)
  *             .transitRouterAttachmentName(name)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
  *         var defaultInterRegionTrafficQosPolicy = new InterRegionTrafficQosPolicy(&#34;defaultInterRegionTrafficQosPolicy&#34;, InterRegionTrafficQosPolicyArgs.builder()        
  *             .transitRouterId(defaultTransitRouter.transitRouterId())
  *             .transitRouterAttachmentId(defaultTransitRouterPeerAttachment.transitRouterAttachmentId())
  *             .interRegionTrafficQosPolicyName(name)
  *             .interRegionTrafficQosPolicyDescription(name)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
  *         var defaultInterRegionTrafficQosQueue = new InterRegionTrafficQosQueue(&#34;defaultInterRegionTrafficQosQueue&#34;, InterRegionTrafficQosQueueArgs.builder()        
  *             .remainBandwidthPercent(20)

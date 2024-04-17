@@ -31,8 +31,8 @@ namespace Pulumi.AliCloud.DataWorks
     /// {
     ///     var example = new AliCloud.DataWorks.Folder("example", new()
     ///     {
-    ///         FolderPath = "Business Flow/tfTestAcc/folderDi/tftest1",
     ///         ProjectId = "320687",
+    ///         FolderPath = "Business Flow/tfTestAcc/folderDi/tftest1",
     ///     });
     /// 
     /// });

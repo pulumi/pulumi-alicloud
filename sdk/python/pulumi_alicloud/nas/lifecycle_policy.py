@@ -209,11 +209,11 @@ class LifecyclePolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
+        example = alicloud.nas.FileSystem("example",
             protocol_type="NFS",
             storage_type="Capacity")
-        example_lifecycle_policy = alicloud.nas.LifecyclePolicy("exampleLifecyclePolicy",
-            file_system_id=example_file_system.id,
+        example_lifecycle_policy = alicloud.nas.LifecyclePolicy("example",
+            file_system_id=example.id,
             lifecycle_policy_name="terraform-example",
             lifecycle_rule_name="DEFAULT_ATIME_14",
             storage_type="InfrequentAccess",
@@ -259,11 +259,11 @@ class LifecyclePolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
+        example = alicloud.nas.FileSystem("example",
             protocol_type="NFS",
             storage_type="Capacity")
-        example_lifecycle_policy = alicloud.nas.LifecyclePolicy("exampleLifecyclePolicy",
-            file_system_id=example_file_system.id,
+        example_lifecycle_policy = alicloud.nas.LifecyclePolicy("example",
+            file_system_id=example.id,
             lifecycle_policy_name="terraform-example",
             lifecycle_rule_name="DEFAULT_ATIME_14",
             storage_type="InfrequentAccess",

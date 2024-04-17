@@ -48,8 +48,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleResource = new Resource(&#34;exampleResource&#34;, ResourceArgs.builder()        
+ *         var example = new Resource(&#34;example&#34;, ResourceArgs.builder()        
  *             .type(&#34;userdefine&#34;)
+ *             .name(&#34;user.tf.resource&#34;)
  *             .description(&#34;user tf resource desc&#34;)
  *             .extInfo(&#34;{}&#34;)
  *             .schema(&#34;&#34;&#34;
@@ -76,7 +77,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleResourceRecord = new ResourceRecord(&#34;exampleResourceRecord&#34;, ResourceRecordArgs.builder()        
- *             .resourceName(exampleResource.id())
+ *             .resourceName(example.id())
  *             .recordId(&#34;user_tf_resource_1&#34;)
  *             .tag(&#34;resource tag&#34;)
  *             .value(&#34;&#34;&#34;

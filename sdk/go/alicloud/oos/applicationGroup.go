@@ -46,23 +46,21 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultApplication, err := oos.NewApplication(ctx, "defaultApplication", &oos.ApplicationArgs{
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
-//				ApplicationName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
-//				Description: pulumi.String(name),
+//			defaultApplication, err := oos.NewApplication(ctx, "default", &oos.ApplicationArgs{
+//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
+//				ApplicationName: pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				Description:     pulumi.String(name),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
 //				},
@@ -70,16 +68,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			defaultGetRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = oos.NewApplicationGroup(ctx, "defaultApplicationGroup", &oos.ApplicationGroupArgs{
+//			_, err = oos.NewApplicationGroup(ctx, "default", &oos.ApplicationGroupArgs{
 //				ApplicationGroupName: pulumi.String(name),
 //				ApplicationName:      defaultApplication.ID(),
-//				DeployRegionId:       pulumi.String(defaultRegions.Regions[0].Id),
+//				DeployRegionId:       pulumi.String(defaultGetRegions.Regions[0].Id),
 //				Description:          pulumi.String(name),
 //				ImportTagKey:         pulumi.String("example_key"),
 //				ImportTagValue:       pulumi.String("example_value"),

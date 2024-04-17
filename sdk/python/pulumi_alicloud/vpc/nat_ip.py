@@ -311,16 +311,16 @@ class NatIp(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/12")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vpc_id=example_network.id,
             cidr_block="172.16.0.0/21",
-            zone_id=example_zones.zones[0].id,
+            zone_id=example.zones[0].id,
             vswitch_name="terraform-example")
-        example_nat_gateway = alicloud.vpc.NatGateway("exampleNatGateway",
+        example_nat_gateway = alicloud.vpc.NatGateway("example",
             vpc_id=example_network.id,
             internet_charge_type="PayByLcu",
             nat_gateway_name="terraform-example",
@@ -328,12 +328,12 @@ class NatIp(pulumi.CustomResource):
             nat_type="Enhanced",
             vswitch_id=example_switch.id,
             network_type="intranet")
-        example_nat_ip_cidr = alicloud.vpc.NatIpCidr("exampleNatIpCidr",
+        example_nat_ip_cidr = alicloud.vpc.NatIpCidr("example",
             nat_ip_cidr="192.168.0.0/16",
             nat_gateway_id=example_nat_gateway.id,
             nat_ip_cidr_description="terraform-example",
             nat_ip_cidr_name="terraform-example")
-        example_nat_ip = alicloud.vpc.NatIp("exampleNatIp",
+        example_nat_ip = alicloud.vpc.NatIp("example",
             nat_ip="192.168.0.37",
             nat_gateway_id=example_nat_gateway.id,
             nat_ip_description="example_value",
@@ -382,16 +382,16 @@ class NatIp(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/12")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vpc_id=example_network.id,
             cidr_block="172.16.0.0/21",
-            zone_id=example_zones.zones[0].id,
+            zone_id=example.zones[0].id,
             vswitch_name="terraform-example")
-        example_nat_gateway = alicloud.vpc.NatGateway("exampleNatGateway",
+        example_nat_gateway = alicloud.vpc.NatGateway("example",
             vpc_id=example_network.id,
             internet_charge_type="PayByLcu",
             nat_gateway_name="terraform-example",
@@ -399,12 +399,12 @@ class NatIp(pulumi.CustomResource):
             nat_type="Enhanced",
             vswitch_id=example_switch.id,
             network_type="intranet")
-        example_nat_ip_cidr = alicloud.vpc.NatIpCidr("exampleNatIpCidr",
+        example_nat_ip_cidr = alicloud.vpc.NatIpCidr("example",
             nat_ip_cidr="192.168.0.0/16",
             nat_gateway_id=example_nat_gateway.id,
             nat_ip_cidr_description="terraform-example",
             nat_ip_cidr_name="terraform-example")
-        example_nat_ip = alicloud.vpc.NatIp("exampleNatIp",
+        example_nat_ip = alicloud.vpc.NatIp("example",
             nat_ip="192.168.0.37",
             nat_gateway_id=example_nat_gateway.id,
             nat_ip_description="example_value",

@@ -20,15 +20,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
+ * const _default = new alicloud.eds.SimpleOfficeSite("default", {
  *     cidrBlock: "172.16.0.0/12",
  *     desktopAccessType: "Internet",
  *     officeSiteName: "your_office_site_name",
  *     enableInternetAccess: false,
  * });
- * const defaultNasFileSystem = new alicloud.eds.NasFileSystem("defaultNasFileSystem", {
+ * const defaultNasFileSystem = new alicloud.eds.NasFileSystem("default", {
  *     description: "your_description",
- *     officeSiteId: defaultSimpleOfficeSite.id,
+ *     officeSiteId: _default.id,
  *     nasFileSystemName: "your_nas_file_system_name",
  * });
  * const ids = alicloud.eds.getNasFileSystems({});
@@ -109,15 +109,15 @@ export interface GetNasFileSystemsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
+ * const _default = new alicloud.eds.SimpleOfficeSite("default", {
  *     cidrBlock: "172.16.0.0/12",
  *     desktopAccessType: "Internet",
  *     officeSiteName: "your_office_site_name",
  *     enableInternetAccess: false,
  * });
- * const defaultNasFileSystem = new alicloud.eds.NasFileSystem("defaultNasFileSystem", {
+ * const defaultNasFileSystem = new alicloud.eds.NasFileSystem("default", {
  *     description: "your_description",
- *     officeSiteId: defaultSimpleOfficeSite.id,
+ *     officeSiteId: _default.id,
  *     nasFileSystemName: "your_nas_file_system_name",
  * });
  * const ids = alicloud.eds.getNasFileSystems({});

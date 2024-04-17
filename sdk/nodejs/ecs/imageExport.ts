@@ -23,47 +23,50 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "Instance",
  * });
- * const defaultInstanceTypes = alicloud.ecs.getInstanceTypes({
+ * const defaultGetInstanceTypes = alicloud.ecs.getInstanceTypes({
  *     instanceTypeFamily: "ecs.sn1ne",
  * });
- * const defaultImages = alicloud.ecs.getImages({
+ * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
  *     owners: "system",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: "terraform-example",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstance = new alicloud.ecs.Instance("default", {
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
  *     instanceName: "terraform-example",
  *     securityGroups: [defaultSecurityGroup.id],
  *     vswitchId: defaultSwitch.id,
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.ids?.[0]),
- *     imageId: defaultImages.then(defaultImages => defaultImages.ids?.[0]),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.ids?.[0]),
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.ids?.[0]),
  *     internetMaxBandwidthOut: 10,
  * });
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const defaultImage = new alicloud.ecs.Image("defaultImage", {
+ * const defaultImage = new alicloud.ecs.Image("default", {
  *     instanceId: defaultInstance.id,
- *     imageName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ *     imageName: `terraform-example-${defaultInteger.result}`,
  *     description: "terraform-example",
  * });
- * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`example-value-${defaultRandomInteger.result}`});
- * const defaultImageExport = new alicloud.ecs.ImageExport("defaultImageExport", {
+ * const defaultBucket = new alicloud.oss.Bucket("default", {bucket: `example-value-${defaultInteger.result}`});
+ * const defaultImageExport = new alicloud.ecs.ImageExport("default", {
  *     imageId: defaultImage.id,
  *     ossBucket: defaultBucket.id,
  *     ossPrefix: "ecsExport",

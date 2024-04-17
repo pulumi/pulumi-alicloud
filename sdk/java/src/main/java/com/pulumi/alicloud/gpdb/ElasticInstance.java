@@ -58,16 +58,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;Gpdb&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .name(&#34;vpc-123456&#34;)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(default_.zones()[0].id())
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .vswitchName(&#34;vpc-123456&#34;)

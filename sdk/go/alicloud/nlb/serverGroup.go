@@ -43,19 +43,19 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = nlb.NewServerGroup(ctx, "defaultServerGroup", &nlb.ServerGroupArgs{
-//				ResourceGroupId:        pulumi.String(defaultResourceGroups.Ids[0]),
+//			_, err = nlb.NewServerGroup(ctx, "default", &nlb.ServerGroupArgs{
+//				ResourceGroupId:        pulumi.String(_default.Ids[0]),
 //				ServerGroupName:        pulumi.String(name),
 //				ServerGroupType:        pulumi.String("Instance"),
 //				VpcId:                  defaultNetwork.ID(),

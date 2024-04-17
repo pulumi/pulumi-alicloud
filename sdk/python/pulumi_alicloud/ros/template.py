@@ -214,12 +214,11 @@ class Template(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ros.Template("example",
+            template_name="example_value",
             template_body=\"\"\"    {
             	"ROSTemplateFormatVersion": "2015-09-01"
             }
-            
-        \"\"\",
-            template_name="example_value")
+        \"\"\")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -262,12 +261,11 @@ class Template(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ros.Template("example",
+            template_name="example_value",
             template_body=\"\"\"    {
             	"ROSTemplateFormatVersion": "2015-09-01"
             }
-            
-        \"\"\",
-            template_name="example_value")
+        \"\"\")
         ```
         <!--End PulumiCodeChooser -->
 

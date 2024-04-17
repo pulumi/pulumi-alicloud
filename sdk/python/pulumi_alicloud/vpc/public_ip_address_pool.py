@@ -310,12 +310,12 @@ class PublicIpAddressPool(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool",
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("default",
             description=name,
             public_ip_address_pool_name=name,
             isp="BGP",
-            resource_group_id=default_resource_groups.ids[0])
+            resource_group_id=default.ids[0])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -361,12 +361,12 @@ class PublicIpAddressPool(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool",
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("default",
             description=name,
             public_ip_address_pool_name=name,
             isp="BGP",
-            resource_group_id=default_resource_groups.ids[0])
+            resource_group_id=default.ids[0])
         ```
         <!--End PulumiCodeChooser -->
 

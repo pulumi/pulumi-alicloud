@@ -29,8 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			functionsDs, err := fc.GetFunctions(ctx, &fc.GetFunctionsArgs{
-//				NameRegex:   pulumi.StringRef("sample_fc_function"),
 //				ServiceName: "sample_service",
+//				NameRegex:   pulumi.StringRef("sample_fc_function"),
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -20,15 +20,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleAlertContact = new alicloud.arms.AlertContact("exampleAlertContact", {
+ * const example = new alicloud.arms.AlertContact("example", {
  *     alertContactName: "example_value",
  *     dingRobotWebhookUrl: "https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
  *     email: "someone@example.com",
  *     phoneNum: "1381111****",
  * });
- * const exampleAlertContactGroup = new alicloud.arms.AlertContactGroup("exampleAlertContactGroup", {
+ * const exampleAlertContactGroup = new alicloud.arms.AlertContactGroup("example", {
  *     alertContactGroupName: "example_value",
- *     contactIds: [exampleAlertContact.id],
+ *     contactIds: [example.id],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

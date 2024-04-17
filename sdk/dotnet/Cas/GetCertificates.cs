@@ -16,31 +16,6 @@ namespace Pulumi.AliCloud.Cas
         /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
         /// 
         /// This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var certs = AliCloud.Cas.GetCertificates.Invoke(new()
-        ///     {
-        ///         NameRegex = "^cas",
-        ///         OutputFile = $"{path.Module}/cas_certificates.json",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cert"] = certs.Apply(getCertificatesResult =&gt; getCertificatesResult.Certificates[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCertificatesResult> InvokeAsync(GetCertificatesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificatesResult>("alicloud:cas/getCertificates:getCertificates", args ?? new GetCertificatesArgs(), options.WithDefaults());
@@ -49,31 +24,6 @@ namespace Pulumi.AliCloud.Cas
         /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
         /// 
         /// This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var certs = AliCloud.Cas.GetCertificates.Invoke(new()
-        ///     {
-        ///         NameRegex = "^cas",
-        ///         OutputFile = $"{path.Module}/cas_certificates.json",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["cert"] = certs.Apply(getCertificatesResult =&gt; getCertificatesResult.Certificates[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCertificatesResult> Invoke(GetCertificatesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCertificatesResult>("alicloud:cas/getCertificates:getCertificates", args ?? new GetCertificatesInvokeArgs(), options.WithDefaults());

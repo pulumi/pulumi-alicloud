@@ -18,6 +18,67 @@ import (
 //
 // > **NOTE:** Available in v1.196.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("Instance"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				InstanceTypeFamily: pulumi.StringRef("ecs.c6"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewElasticityAssurance(ctx, "default", &ecs.ElasticityAssuranceArgs{
+//				InstanceAmount: pulumi.Int(1),
+//				Description:    pulumi.String("before"),
+//				ZoneIds: pulumi.StringArray{
+//					pulumi.String(defaultGetZones.Zones[0].Id),
+//				},
+//				PrivatePoolOptionsName:          pulumi.String("test_before"),
+//				Period:                          pulumi.Int(1),
+//				PrivatePoolOptionsMatchCriteria: pulumi.String("Open"),
+//				InstanceType:                    pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				PeriodUnit:                      pulumi.String("Month"),
+//				AssuranceTimes:                  pulumi.String("Unlimited"),
+//				ResourceGroupId:                 pulumi.String(_default.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // Ecs Elasticity Assurance can be imported using the id, e.g.

@@ -25,17 +25,17 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultZones = alicloud.dfs.getZones({});
- * const zoneId = defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId);
- * const storageType = defaultZones.then(defaultZones => defaultZones.zones?.[0]?.options?.[0]?.storageType);
- * const defaultFileSystem = new alicloud.dfs.FileSystem("defaultFileSystem", {
+ * const default = alicloud.dfs.getZones({});
+ * const zoneId = _default.then(_default => _default.zones?.[0]?.zoneId);
+ * const storageType = _default.then(_default => _default.zones?.[0]?.options?.[0]?.storageType);
+ * const defaultFileSystem = new alicloud.dfs.FileSystem("default", {
  *     protocolType: "HDFS",
  *     description: name,
- *     fileSystemName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
+ *     fileSystemName: `${name}-${defaultInteger.result}`,
  *     spaceCapacity: 1024,
  *     throughputMode: "Provisioned",
  *     provisionedThroughputInMiBps: 512,

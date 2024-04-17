@@ -28,6 +28,7 @@ namespace Pulumi.AliCloud.Ram
     ///     // Create a RAM User Policy attachment.
     ///     var user = new AliCloud.Ram.User("user", new()
     ///     {
+    ///         Name = "userName",
     ///         DisplayName = "user_display_name",
     ///         Mobile = "86-18688888888",
     ///         Email = "hello.uuu@aaa.com",
@@ -36,6 +37,7 @@ namespace Pulumi.AliCloud.Ram
     /// 
     ///     var policy = new AliCloud.Ram.Policy("policy", new()
     ///     {
+    ///         Name = "policyName",
     ///         Document = @"  {
     ///     ""Statement"": [
     ///       {

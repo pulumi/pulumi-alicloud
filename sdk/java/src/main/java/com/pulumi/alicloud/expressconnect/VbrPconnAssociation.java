@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var examplePhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *         final var example = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
  *             .nameRegex(&#34;^preserved-NODELETING&#34;)
  *             .build());
  * 
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .localGatewayIp(&#34;10.0.0.1&#34;)
  *             .peerGatewayIp(&#34;10.0.0.2&#34;)
  *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
- *             .physicalConnectionId(examplePhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
+ *             .physicalConnectionId(example.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
  *             .virtualBorderRouterName(name)
  *             .vlanId(110)
  *             .minRxInterval(1000)
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *         var exampleVbrPconnAssociation = new VbrPconnAssociation(&#34;exampleVbrPconnAssociation&#34;, VbrPconnAssociationArgs.builder()        
  *             .peerGatewayIp(&#34;10.0.0.6&#34;)
  *             .localGatewayIp(&#34;10.0.0.5&#34;)
- *             .physicalConnectionId(examplePhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[2].id()))
+ *             .physicalConnectionId(example.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[2].id()))
  *             .vbrId(default_.id())
  *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
  *             .vlanId(&#34;1122&#34;)

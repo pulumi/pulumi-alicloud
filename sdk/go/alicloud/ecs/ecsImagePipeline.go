@@ -38,19 +38,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
 //				NameRegex: pulumi.StringRef("default"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			defaultGetZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 //				NameRegex:  pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
 //				MostRecent: pulumi.BoolRef(true),
 //				Owners:     pulumi.StringRef("system"),
@@ -58,44 +58,45 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				ImageId: pulumi.StringRef(defaultImages.Ids[0]),
+//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				ImageId: pulumi.StringRef(defaultGetImages.Ids[0]),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			defaultGetAccount, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewEcsImagePipeline(ctx, "defaultEcsImagePipeline", &ecs.EcsImagePipelineArgs{
+//			_, err = ecs.NewEcsImagePipeline(ctx, "default", &ecs.EcsImagePipelineArgs{
 //				AddAccounts: pulumi.StringArray{
-//					pulumi.String(defaultAccount.Id),
+//					pulumi.String(defaultGetAccount.Id),
 //				},
-//				BaseImage:               pulumi.String(defaultImages.Ids[0]),
+//				BaseImage:               pulumi.String(defaultGetImages.Ids[0]),
 //				BaseImageType:           pulumi.String("IMAGE"),
 //				BuildContent:            pulumi.String("RUN yum update -y"),
 //				DeleteInstanceOnFailure: pulumi.Bool(false),
 //				ImageName:               pulumi.String("terraform-example"),
+//				Name:                    pulumi.String("terraform-example"),
 //				Description:             pulumi.String("terraform-example"),
-//				InstanceType:            pulumi.String(defaultInstanceTypes.Ids[0]),
-//				ResourceGroupId:         pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				InstanceType:            pulumi.String(defaultGetInstanceTypes.Ids[0]),
+//				ResourceGroupId:         pulumi.String(_default.Groups[0].Id),
 //				InternetMaxBandwidthOut: pulumi.Int(20),
 //				SystemDiskSize:          pulumi.Int(40),
 //				ToRegionIds: pulumi.StringArray{

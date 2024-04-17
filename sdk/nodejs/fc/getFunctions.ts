@@ -17,8 +17,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const functionsDs = alicloud.fc.getFunctions({
- *     nameRegex: "sample_fc_function",
  *     serviceName: "sample_service",
+ *     nameRegex: "sample_fc_function",
  * });
  * export const firstFcFunctionName = functionsDs.then(functionsDs => functionsDs.functions?.[0]?.name);
  * ```
@@ -92,8 +92,8 @@ export interface GetFunctionsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const functionsDs = alicloud.fc.getFunctions({
- *     nameRegex: "sample_fc_function",
  *     serviceName: "sample_service",
+ *     nameRegex: "sample_fc_function",
  * });
  * export const firstFcFunctionName = functionsDs.then(functionsDs => functionsDs.functions?.[0]?.name);
  * ```

@@ -41,19 +41,19 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultPhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//			_default, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
 //				NameRegex: pulumi.StringRef("preserved-NODELETING"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = expressconnect.NewEcFailoverTestJob(ctx, "defaultEcFailoverTestJob", &expressconnect.EcFailoverTestJobArgs{
+//			_, err = expressconnect.NewEcFailoverTestJob(ctx, "default", &expressconnect.EcFailoverTestJobArgs{
 //				Description: pulumi.String(name),
 //				JobType:     pulumi.String("StartNow"),
 //				ResourceIds: pulumi.StringArray{
-//					pulumi.String(defaultPhysicalConnections.Ids[0]),
-//					pulumi.String(defaultPhysicalConnections.Ids[1]),
-//					pulumi.String(defaultPhysicalConnections.Ids[2]),
+//					pulumi.String(_default.Ids[0]),
+//					pulumi.String(_default.Ids[1]),
+//					pulumi.String(_default.Ids[2]),
 //				},
 //				JobDuration:           pulumi.Int(1),
 //				ResourceType:          pulumi.String("PHYSICALCONNECTION"),

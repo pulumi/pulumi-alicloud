@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Amqp
     ///     var config = new Config();
     ///     var accessKey = config.Get("accessKey") ?? "access_key";
     ///     var secretKey = config.Get("secretKey") ?? "secret_key";
-    ///     var defaultInstance = new AliCloud.Amqp.Instance("defaultInstance", new()
+    ///     var @default = new AliCloud.Amqp.Instance("default", new()
     ///     {
     ///         InstanceType = "enterprise",
     ///         MaxTps = "3000",
@@ -44,9 +44,9 @@ namespace Pulumi.AliCloud.Amqp
     ///         Period = 1,
     ///     });
     /// 
-    ///     var defaultStaticAccount = new AliCloud.Amqp.StaticAccount("defaultStaticAccount", new()
+    ///     var defaultStaticAccount = new AliCloud.Amqp.StaticAccount("default", new()
     ///     {
-    ///         InstanceId = defaultInstance.Id,
+    ///         InstanceId = @default.Id,
     ///         AccessKey = accessKey,
     ///         SecretKey = secretKey,
     ///     });

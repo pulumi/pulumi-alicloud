@@ -54,25 +54,25 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         final var defaultImages = SimpleapplicationserverFunctions.getImages();
+ *         final var default = SimpleapplicationserverFunctions.getImages();
  * 
- *         final var defaultServerPlans = SimpleapplicationserverFunctions.getServerPlans();
+ *         final var defaultGetServerPlans = SimpleapplicationserverFunctions.getServerPlans();
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .paymentType(&#34;Subscription&#34;)
- *             .planId(defaultServerPlans.applyValue(getServerPlansResult -&gt; getServerPlansResult.plans()[0].id()))
+ *             .planId(defaultGetServerPlans.applyValue(getServerPlansResult -&gt; getServerPlansResult.plans()[0].id()))
  *             .instanceName(name)
- *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .imageId(default_.images()[0].id())
  *             .period(1)
  *             .dataDiskSize(100)
  *             .build());
  * 
- *         final var defaultServerDisks = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
+ *         final var defaultGetServerDisks = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .build());
  * 
  *         var defaultSnapshot = new Snapshot(&#34;defaultSnapshot&#34;, SnapshotArgs.builder()        
- *             .diskId(defaultServerDisks.applyValue(getServerDisksResult -&gt; getServerDisksResult).applyValue(defaultServerDisks -&gt; defaultServerDisks.applyValue(getServerDisksResult -&gt; getServerDisksResult.ids()[0])))
+ *             .diskId(defaultGetServerDisks.applyValue(getServerDisksResult -&gt; getServerDisksResult).applyValue(defaultGetServerDisks -&gt; defaultGetServerDisks.applyValue(getServerDisksResult -&gt; getServerDisksResult.ids()[0])))
  *             .snapshotName(name)
  *             .build());
  * 

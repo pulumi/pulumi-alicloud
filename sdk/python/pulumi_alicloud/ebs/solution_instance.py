@@ -257,10 +257,10 @@ class SolutionInstance(pulumi.CustomResource):
         region_id = config.get("regionId")
         if region_id is None:
             region_id = "cn-shanghai"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_solution_instance = alicloud.ebs.SolutionInstance("defaultSolutionInstance",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_solution_instance = alicloud.ebs.SolutionInstance("default",
             solution_instance_name=name,
-            resource_group_id=default_resource_groups.ids[0],
+            resource_group_id=default.ids[0],
             description="description",
             solution_id="mysql",
             parameters=[
@@ -376,10 +376,10 @@ class SolutionInstance(pulumi.CustomResource):
         region_id = config.get("regionId")
         if region_id is None:
             region_id = "cn-shanghai"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_solution_instance = alicloud.ebs.SolutionInstance("defaultSolutionInstance",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_solution_instance = alicloud.ebs.SolutionInstance("default",
             solution_instance_name=name,
-            resource_group_id=default_resource_groups.ids[0],
+            resource_group_id=default.ids[0],
             description="description",
             solution_id="mysql",
             parameters=[

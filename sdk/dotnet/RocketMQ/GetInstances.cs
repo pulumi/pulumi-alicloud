@@ -31,6 +31,7 @@ namespace Pulumi.AliCloud.RocketMQ
         ///     var name = config.Get("name") ?? "onsInstanceDatasourceName";
         ///     var @default = new AliCloud.RocketMQ.Instance("default", new()
         ///     {
+        ///         Name = name,
         ///         Remark = "default_ons_instance_remark",
         ///     });
         /// 
@@ -75,6 +76,7 @@ namespace Pulumi.AliCloud.RocketMQ
         ///     var name = config.Get("name") ?? "onsInstanceDatasourceName";
         ///     var @default = new AliCloud.RocketMQ.Instance("default", new()
         ///     {
+        ///         Name = name,
         ///         Remark = "default_ons_instance_remark",
         ///     });
         /// 

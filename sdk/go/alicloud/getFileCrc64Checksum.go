@@ -36,7 +36,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("fileCrc64Checksum", data.Alicloud_file_crc64_checksum.Defualt.Checksum)
+//			ctx.Export("fileCrc64Checksum", defualt.Checksum)
 //			return nil
 //		})
 //	}

@@ -20,12 +20,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleFileSystem = new alicloud.nas.FileSystem("exampleFileSystem", {
+ * const example = new alicloud.nas.FileSystem("example", {
  *     protocolType: "NFS",
  *     storageType: "Capacity",
  * });
- * const exampleLifecyclePolicy = new alicloud.nas.LifecyclePolicy("exampleLifecyclePolicy", {
- *     fileSystemId: exampleFileSystem.id,
+ * const exampleLifecyclePolicy = new alicloud.nas.LifecyclePolicy("example", {
+ *     fileSystemId: example.id,
  *     lifecyclePolicyName: "terraform-example",
  *     lifecycleRuleName: "DEFAULT_ATIME_14",
  *     storageType: "InfrequentAccess",

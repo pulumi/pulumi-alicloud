@@ -24,8 +24,8 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultSyntheticTask = new alicloud.arms.SyntheticTask("defaultSyntheticTask", {
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultSyntheticTask = new alicloud.arms.SyntheticTask("default", {
  *     monitors: [{
  *         cityCode: "1200101",
  *         operatorCode: "246",
@@ -193,7 +193,7 @@ import * as utilities from "../utilities";
  *         isOpenTrace: true,
  *         traceClientType: 1,
  *     },
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[1]),
+ *     resourceGroupId: _default.then(_default => _default.ids?.[1]),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

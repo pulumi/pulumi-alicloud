@@ -49,13 +49,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleFileSystem = new FileSystem(&#34;exampleFileSystem&#34;, FileSystemArgs.builder()        
+ *         var example = new FileSystem(&#34;example&#34;, FileSystemArgs.builder()        
  *             .protocolType(&#34;NFS&#34;)
  *             .storageType(&#34;Capacity&#34;)
  *             .build());
  * 
  *         var exampleLifecyclePolicy = new LifecyclePolicy(&#34;exampleLifecyclePolicy&#34;, LifecyclePolicyArgs.builder()        
- *             .fileSystemId(exampleFileSystem.id())
+ *             .fileSystemId(example.id())
  *             .lifecyclePolicyName(&#34;terraform-example&#34;)
  *             .lifecycleRuleName(&#34;DEFAULT_ATIME_14&#34;)
  *             .storageType(&#34;InfrequentAccess&#34;)

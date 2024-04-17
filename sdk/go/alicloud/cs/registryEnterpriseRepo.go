@@ -44,7 +44,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "exampleRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
+//			example, err := cr.NewRegistryEnterpriseInstance(ctx, "example", &cr.RegistryEnterpriseInstanceArgs{
 //				PaymentType:   pulumi.String("Subscription"),
 //				Period:        pulumi.Int(1),
 //				RenewPeriod:   pulumi.Int(0),
@@ -55,17 +55,19 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "exampleRegistryEnterpriseNamespace", &cs.RegistryEnterpriseNamespaceArgs{
-//				InstanceId:        exampleRegistryEnterpriseInstance.ID(),
+//			exampleRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "example", &cs.RegistryEnterpriseNamespaceArgs{
+//				InstanceId:        example.ID(),
+//				Name:              pulumi.String(name),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cs.NewRegistryEnterpriseRepo(ctx, "exampleRegistryEnterpriseRepo", &cs.RegistryEnterpriseRepoArgs{
-//				InstanceId: exampleRegistryEnterpriseInstance.ID(),
+//			_, err = cs.NewRegistryEnterpriseRepo(ctx, "example", &cs.RegistryEnterpriseRepoArgs{
+//				InstanceId: example.ID(),
 //				Namespace:  exampleRegistryEnterpriseNamespace.Name,
+//				Name:       pulumi.String(name),
 //				Summary:    pulumi.String("this is summary of my new repo"),
 //				RepoType:   pulumi.String("PUBLIC"),
 //				Detail:     pulumi.String("this is a public repo"),

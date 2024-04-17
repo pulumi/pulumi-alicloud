@@ -31,10 +31,10 @@ namespace Pulumi.AliCloud.Eds
     /// {
     ///     var @default = new AliCloud.Eds.User("default", new()
     ///     {
-    ///         Email = "tf.example@abc.com",
     ///         EndUserId = "terraform_example123",
-    ///         Password = "Example_123",
+    ///         Email = "tf.example@abc.com",
     ///         Phone = "18888888888",
+    ///         Password = "Example_123",
     ///     });
     /// 
     /// });

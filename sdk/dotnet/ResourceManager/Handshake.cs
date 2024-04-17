@@ -29,9 +29,9 @@ namespace Pulumi.AliCloud.ResourceManager
     ///     // Add a Resource Manager handshake.
     ///     var example = new AliCloud.ResourceManager.Handshake("example", new()
     ///     {
-    ///         Note = "test resource manager handshake",
     ///         TargetEntity = "1182775234******",
     ///         TargetType = "Account",
+    ///         Note = "test resource manager handshake",
     ///     });
     /// 
     /// });

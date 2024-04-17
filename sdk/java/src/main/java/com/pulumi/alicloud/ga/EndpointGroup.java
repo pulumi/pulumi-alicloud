@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         var defaultAccelerator = new Accelerator(&#34;defaultAccelerator&#34;, AcceleratorArgs.builder()        
+ *         var default_ = new Accelerator(&#34;default&#34;, AcceleratorArgs.builder()        
  *             .duration(1)
  *             .autoUseCoupon(true)
  *             .spec(&#34;1&#34;)
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
- *             .acceleratorId(defaultAccelerator.id())
+ *             .acceleratorId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
@@ -91,6 +91,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .clientAffinity(&#34;SOURCE_IP&#34;)
  *             .protocol(&#34;UDP&#34;)
+ *             .name(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         for (var i = 0; i &lt; 2; i++) {
@@ -103,7 +104,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         var defaultEndpointGroup = new EndpointGroup(&#34;defaultEndpointGroup&#34;, EndpointGroupArgs.builder()        
- *             .acceleratorId(defaultAccelerator.id())
+ *             .acceleratorId(default_.id())
  *             .endpointConfigurations(            
  *                 EndpointGroupEndpointConfigurationArgs.builder()
  *                     .endpoint(defaultEipAddress[0].ipAddress())

@@ -20,7 +20,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ram.Role("default", {document: `  {
+ * const _default = new alicloud.ram.Role("default", {
+ *     name: "tf-example-fnfflow",
+ *     document: `  {
  *     "Statement": [
  *       {
  *         "Action": "sts:AssumeRole",
@@ -34,7 +36,8 @@ import * as utilities from "../utilities";
  *     ],
  *     "Version": "1"
  *   }
- * `});
+ * `,
+ * });
  * const example = new alicloud.fnf.Flow("example", {
  *     definition: `  version: v1beta1
  *   type: flow
@@ -44,6 +47,7 @@ import * as utilities from "../utilities";
  * `,
  *     roleArn: _default.arn,
  *     description: "Test for terraform fnf_flow.",
+ *     name: "tf-example-flow",
  *     type: "FDL",
  * });
  * ```

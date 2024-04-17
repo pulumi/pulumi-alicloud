@@ -36,7 +36,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstFcCustomDomainName", data.Alicloud_fc_custom_domains.Fc_domains_ds.Domains[0].Domain_name)
+//			ctx.Export("firstFcCustomDomainName", fcDomainsDs.Domains[0].DomainName)
 //			return nil
 //		})
 //	}

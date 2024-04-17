@@ -36,16 +36,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.NewEcsPrefixList(ctx, "default", &ecs.EcsPrefixListArgs{
-//				AddressFamily: pulumi.String("IPv4"),
-//				Description:   pulumi.String("description"),
+//				AddressFamily:  pulumi.String("IPv4"),
+//				MaxEntries:     pulumi.Int(2),
+//				PrefixListName: pulumi.String("tftest"),
+//				Description:    pulumi.String("description"),
 //				Entries: ecs.EcsPrefixListEntryArray{
 //					&ecs.EcsPrefixListEntryArgs{
 //						Cidr:        pulumi.String("192.168.0.0/24"),
 //						Description: pulumi.String("description"),
 //					},
 //				},
-//				MaxEntries:     pulumi.Int(2),
-//				PrefixListName: pulumi.String("tftest"),
 //			})
 //			if err != nil {
 //				return err

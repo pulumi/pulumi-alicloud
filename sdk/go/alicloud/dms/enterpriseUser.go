@@ -38,7 +38,8 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultUser, err := ram.NewUser(ctx, "defaultUser", &ram.UserArgs{
+//			_, err := ram.NewUser(ctx, "default", &ram.UserArgs{
+//				Name:        pulumi.String(name),
 //				DisplayName: pulumi.String(name),
 //				Mobile:      pulumi.String("86-18688888888"),
 //				Email:       pulumi.String("hello.uuu@aaa.com"),
@@ -47,8 +48,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dms.NewEnterpriseUser(ctx, "defaultEnterpriseUser", &dms.EnterpriseUserArgs{
-//				Uid:      defaultUser.ID(),
+//			_, err = dms.NewEnterpriseUser(ctx, "default", &dms.EnterpriseUserArgs{
+//				Uid:      _default.ID(),
 //				UserName: pulumi.String(name),
 //				RoleNames: pulumi.StringArray{
 //					pulumi.String("DBA"),

@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "testaccountname";
  * const pwd = config.get("pwd") || "Tf-testpwd";
- * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
+ * const defaultDbCluster = new alicloud.clickhouse.DbCluster("default", {
  *     dbClusterVersion: "20.3.10.75",
  *     category: "Basic",
  *     dbClusterClass: "S8",
@@ -35,17 +35,17 @@ import * as utilities from "../utilities";
  *     storageType: "cloud_essd",
  *     vswitchId: "your_vswitch_id",
  * });
- * const defaultAccount = new alicloud.clickhouse.Account("defaultAccount", {
+ * const defaultAccount = new alicloud.clickhouse.Account("default", {
  *     dbClusterId: defaultDbCluster.id,
  *     accountDescription: "your_description",
  *     accountName: name,
  *     accountPassword: pwd,
  * });
- * const defaultAccounts = alicloud.clickhouse.getAccountsOutput({
+ * const default = alicloud.clickhouse.getAccountsOutput({
  *     ids: [defaultAccount.id],
  *     dbClusterId: defaultDbCluster.id,
  * });
- * export const accountId = defaultAccounts.apply(defaultAccounts => defaultAccounts.ids?.[0]);
+ * export const accountId = _default.apply(_default => _default.ids?.[0]);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -120,7 +120,7 @@ export interface GetAccountsResult {
  * const config = new pulumi.Config();
  * const name = config.get("name") || "testaccountname";
  * const pwd = config.get("pwd") || "Tf-testpwd";
- * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
+ * const defaultDbCluster = new alicloud.clickhouse.DbCluster("default", {
  *     dbClusterVersion: "20.3.10.75",
  *     category: "Basic",
  *     dbClusterClass: "S8",
@@ -132,17 +132,17 @@ export interface GetAccountsResult {
  *     storageType: "cloud_essd",
  *     vswitchId: "your_vswitch_id",
  * });
- * const defaultAccount = new alicloud.clickhouse.Account("defaultAccount", {
+ * const defaultAccount = new alicloud.clickhouse.Account("default", {
  *     dbClusterId: defaultDbCluster.id,
  *     accountDescription: "your_description",
  *     accountName: name,
  *     accountPassword: pwd,
  * });
- * const defaultAccounts = alicloud.clickhouse.getAccountsOutput({
+ * const default = alicloud.clickhouse.getAccountsOutput({
  *     ids: [defaultAccount.id],
  *     dbClusterId: defaultDbCluster.id,
  * });
- * export const accountId = defaultAccounts.apply(defaultAccounts => defaultAccounts.ids?.[0]);
+ * export const accountId = _default.apply(_default => _default.ids?.[0]);
  * ```
  * <!--End PulumiCodeChooser -->
  */

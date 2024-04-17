@@ -37,15 +37,15 @@ namespace Pulumi.AliCloud.PolarDB
         ///         Category = "Normal",
         ///     });
         /// 
-        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     var @default = new AliCloud.Vpc.Network("default", new()
         ///     {
         ///         VpcName = "terraform-example",
         ///         CidrBlock = "172.16.0.0/16",
         ///     });
         /// 
-        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
         ///     {
-        ///         VpcId = defaultNetwork.Id,
+        ///         VpcId = @default.Id,
         ///         CidrBlock = "172.16.0.0/24",
         ///         ZoneId = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId)),
         ///         VswitchName = "terraform-example",
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.PolarDB
         ///         VswitchId = defaultSwitch.Id,
         ///     });
         /// 
-        ///     var defaultGlobalDatabaseNetwork = new AliCloud.PolarDB.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", new()
+        ///     var defaultGlobalDatabaseNetwork = new AliCloud.PolarDB.GlobalDatabaseNetwork("default", new()
         ///     {
         ///         DbClusterId = cluster.Id,
         ///         Description = cluster.Id,
@@ -118,15 +118,15 @@ namespace Pulumi.AliCloud.PolarDB
         ///         Category = "Normal",
         ///     });
         /// 
-        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     var @default = new AliCloud.Vpc.Network("default", new()
         ///     {
         ///         VpcName = "terraform-example",
         ///         CidrBlock = "172.16.0.0/16",
         ///     });
         /// 
-        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
         ///     {
-        ///         VpcId = defaultNetwork.Id,
+        ///         VpcId = @default.Id,
         ///         CidrBlock = "172.16.0.0/24",
         ///         ZoneId = @this.Apply(@this =&gt; @this.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId)),
         ///         VswitchName = "terraform-example",
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.PolarDB
         ///         VswitchId = defaultSwitch.Id,
         ///     });
         /// 
-        ///     var defaultGlobalDatabaseNetwork = new AliCloud.PolarDB.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", new()
+        ///     var defaultGlobalDatabaseNetwork = new AliCloud.PolarDB.GlobalDatabaseNetwork("default", new()
         ///     {
         ///         DbClusterId = cluster.Id,
         ///         Description = cluster.Id,

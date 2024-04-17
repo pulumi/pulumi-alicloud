@@ -127,9 +127,9 @@ def get_ssl_vpn_servers(ids: Optional[Sequence[str]] = None,
     import pulumi_alicloud as alicloud
 
     foo = alicloud.vpc.get_ssl_vpn_servers(ids=["fake-server-id"],
-        name_regex="^foo",
+        vpn_gateway_id="fake-vpn-id",
         output_file="/tmp/sslserver",
-        vpn_gateway_id="fake-vpn-id")
+        name_regex="^foo")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -174,9 +174,9 @@ def get_ssl_vpn_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     import pulumi_alicloud as alicloud
 
     foo = alicloud.vpc.get_ssl_vpn_servers(ids=["fake-server-id"],
-        name_regex="^foo",
+        vpn_gateway_id="fake-vpn-id",
         output_file="/tmp/sslserver",
-        vpn_gateway_id="fake-vpn-id")
+        name_regex="^foo")
     ```
     <!--End PulumiCodeChooser -->
 

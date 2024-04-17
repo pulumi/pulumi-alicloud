@@ -202,12 +202,12 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_domain_new = alicloud.cdn.DomainNew("defaultDomainNew",
+        default_domain_new = alicloud.cdn.DomainNew("default",
             scope="overseas",
-            domain_name=default_random_integer.result.apply(lambda result: f"mycdndomain-{result}.alicloud-provider.cn"),
+            domain_name=f"mycdndomain-{default_integer['result']}.alicloud-provider.cn",
             cdn_type="web",
             sources=[alicloud.cdn.DomainNewSourceArgs(
                 type="ipaddr",
@@ -216,22 +216,22 @@ class RealTimeLogDelivery(pulumi.CustomResource):
                 port=80,
                 weight=15,
             )])
-        default_project = alicloud.log.Project("defaultProject",
-            project_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+        default_project = alicloud.log.Project("default",
+            project_name=f"terraform-example-{default_integer['result']}",
             description="terraform-example")
-        default_store = alicloud.log.Store("defaultStore",
+        default_store = alicloud.log.Store("default",
             project_name=default_project.name,
             logstore_name="example-store",
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        default_regions = alicloud.get_regions(current=True)
-        default_real_time_log_delivery = alicloud.cdn.RealTimeLogDelivery("defaultRealTimeLogDelivery",
+        default = alicloud.get_regions(current=True)
+        default_real_time_log_delivery = alicloud.cdn.RealTimeLogDelivery("default",
             domain=default_domain_new.domain_name,
             logstore=default_store.logstore_name,
             project=default_project.project_name,
-            sls_region=default_regions.regions[0].id)
+            sls_region=default.regions[0].id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -275,12 +275,12 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_domain_new = alicloud.cdn.DomainNew("defaultDomainNew",
+        default_domain_new = alicloud.cdn.DomainNew("default",
             scope="overseas",
-            domain_name=default_random_integer.result.apply(lambda result: f"mycdndomain-{result}.alicloud-provider.cn"),
+            domain_name=f"mycdndomain-{default_integer['result']}.alicloud-provider.cn",
             cdn_type="web",
             sources=[alicloud.cdn.DomainNewSourceArgs(
                 type="ipaddr",
@@ -289,22 +289,22 @@ class RealTimeLogDelivery(pulumi.CustomResource):
                 port=80,
                 weight=15,
             )])
-        default_project = alicloud.log.Project("defaultProject",
-            project_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+        default_project = alicloud.log.Project("default",
+            project_name=f"terraform-example-{default_integer['result']}",
             description="terraform-example")
-        default_store = alicloud.log.Store("defaultStore",
+        default_store = alicloud.log.Store("default",
             project_name=default_project.name,
             logstore_name="example-store",
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        default_regions = alicloud.get_regions(current=True)
-        default_real_time_log_delivery = alicloud.cdn.RealTimeLogDelivery("defaultRealTimeLogDelivery",
+        default = alicloud.get_regions(current=True)
+        default_real_time_log_delivery = alicloud.cdn.RealTimeLogDelivery("default",
             domain=default_domain_new.domain_name,
             logstore=default_store.logstore_name,
             project=default_project.project_name,
-            sls_region=default_regions.regions[0].id)
+            sls_region=default.regions[0].id)
         ```
         <!--End PulumiCodeChooser -->
 

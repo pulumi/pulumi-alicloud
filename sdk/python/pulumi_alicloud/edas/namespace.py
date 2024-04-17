@@ -191,11 +191,11 @@ class Namespace(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_namespace = alicloud.edas.Namespace("defaultNamespace",
+        default = alicloud.get_regions(current=True)
+        default_namespace = alicloud.edas.Namespace("default",
             debug_enable=False,
             description=name,
-            namespace_logical_id=f"{default_regions.regions[0].id}:example",
+            namespace_logical_id=f"{default.regions[0].id}:example",
             namespace_name=name)
         ```
         <!--End PulumiCodeChooser -->
@@ -243,11 +243,11 @@ class Namespace(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_namespace = alicloud.edas.Namespace("defaultNamespace",
+        default = alicloud.get_regions(current=True)
+        default_namespace = alicloud.edas.Namespace("default",
             debug_enable=False,
             description=name,
-            namespace_logical_id=f"{default_regions.regions[0].id}:example",
+            namespace_logical_id=f"{default.regions[0].id}:example",
             namespace_name=name)
         ```
         <!--End PulumiCodeChooser -->

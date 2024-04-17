@@ -142,6 +142,27 @@ def get_domains(accelerator_id: Optional[str] = None,
 
     > **NOTE:** Available in 1.197.0+
 
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.ga.get_accelerators(status="active")
+    default_accelerator = []
+    for range in [{"value": i} for i in range(0, 0 if len(default.accelerators) > 0 else 1)]:
+        default_accelerator.append(alicloud.ga.Accelerator(f"default-{range['value']}",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1"))
+    accelerator_id = default.accelerators[0].id if len(default.accelerators) > 0 else default_accelerator[0].id
+    default_get_domains = alicloud.ga.get_domains(accelerator_id=accelerator_id_locals,
+        domain="your_domain")
+    pulumi.export("alicloudGaDomainExampleId", default_get_domains.domains[0].id)
+    ```
+    <!--End PulumiCodeChooser -->
+
 
     :param str accelerator_id: The ID of the global acceleration instance.
     :param str domain: The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
@@ -185,6 +206,27 @@ def get_domains_output(accelerator_id: Optional[pulumi.Input[Optional[str]]] = N
     This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
 
     > **NOTE:** Available in 1.197.0+
+
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.ga.get_accelerators(status="active")
+    default_accelerator = []
+    for range in [{"value": i} for i in range(0, 0 if len(default.accelerators) > 0 else 1)]:
+        default_accelerator.append(alicloud.ga.Accelerator(f"default-{range['value']}",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1"))
+    accelerator_id = default.accelerators[0].id if len(default.accelerators) > 0 else default_accelerator[0].id
+    default_get_domains = alicloud.ga.get_domains(accelerator_id=accelerator_id_locals,
+        domain="your_domain")
+    pulumi.export("alicloudGaDomainExampleId", default_get_domains.domains[0].id)
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the global acceleration instance.

@@ -20,17 +20,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleZones = alicloud.nas.getZones({
+ * const example = alicloud.nas.getZones({
  *     fileSystemType: "standard",
  * });
- * const exampleFileSystem = new alicloud.nas.FileSystem("exampleFileSystem", {
+ * const exampleFileSystem = new alicloud.nas.FileSystem("example", {
  *     protocolType: "NFS",
  *     storageType: "Performance",
  *     description: "terraform-example",
  *     encryptType: 1,
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.zoneId),
+ *     zoneId: example.then(example => example.zones?.[0]?.zoneId),
  * });
- * const exampleRecycleBin = new alicloud.nas.RecycleBin("exampleRecycleBin", {
+ * const exampleRecycleBin = new alicloud.nas.RecycleBin("example", {
  *     fileSystemId: exampleFileSystem.id,
  *     reservedDays: 3,
  * });

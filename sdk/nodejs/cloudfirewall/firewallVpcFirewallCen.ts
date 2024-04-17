@@ -28,10 +28,10 @@ import * as utilities from "../utilities";
  *     localVpc: {
  *         networkInstanceId: "vpc-xxx",
  *     },
- *     memberUid: "14151*****827022",
  *     status: "open",
- *     vpcFirewallName: "tf-vpc-firewall-name",
+ *     memberUid: "14151*****827022",
  *     vpcRegion: "cn-hangzhou",
+ *     vpcFirewallName: "tf-vpc-firewall-name",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

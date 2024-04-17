@@ -31,7 +31,7 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := databasefilesystem.GetAutoSnapShotPolicies(ctx, &databasefilesystem.GetAutoSnapShotPoliciesArgs{
 // Ids: interface{}{
-// alicloud_dbfs_auto_snap_shot_policy.Default.Id,
+// defaultAlicloudDbfsAutoSnapShotPolicy.Id,
 // },
 // }, nil);
 // if err != nil {

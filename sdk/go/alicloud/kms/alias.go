@@ -33,15 +33,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			thisKey, err := kms.NewKey(ctx, "thisKey", &kms.KeyArgs{
+//			this, err := kms.NewKey(ctx, "this", &kms.KeyArgs{
 //				PendingWindowInDays: pulumi.Int(7),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewAlias(ctx, "thisAlias", &kms.AliasArgs{
+//			_, err = kms.NewAlias(ctx, "this", &kms.AliasArgs{
 //				AliasName: pulumi.String("alias/example_kms_alias"),
-//				KeyId:     thisKey.ID(),
+//				KeyId:     this.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -21,16 +21,16 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.waf.Certificate("default", {
- *     certificate: "your_certificate",
  *     certificateName: "your_certificate_name",
- *     domain: "your_domain_name",
  *     instanceId: "your_instance_id",
+ *     domain: "your_domain_name",
  *     privateKey: "your_private_key",
+ *     certificate: "your_certificate",
  * });
  * const default2 = new alicloud.waf.Certificate("default2", {
- *     certificateId: "your_certificate_id",
- *     domain: "your_domain_name",
  *     instanceId: "your_instance_id",
+ *     domain: "your_domain_name",
+ *     certificateId: "your_certificate_id",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

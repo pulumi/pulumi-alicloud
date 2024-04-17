@@ -38,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.eventbridge.EventBus;
  * import com.pulumi.alicloud.eventbridge.EventBusArgs;
  * import com.pulumi.alicloud.mns.Queue;
+ * import com.pulumi.alicloud.mns.QueueArgs;
  * import com.pulumi.alicloud.eventbridge.EventSource;
  * import com.pulumi.alicloud.eventbridge.EventSourceArgs;
  * import java.util.List;
@@ -55,14 +56,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var exampleEventBus = new EventBus(&#34;exampleEventBus&#34;, EventBusArgs.builder()        
+ *         var example = new EventBus(&#34;example&#34;, EventBusArgs.builder()        
  *             .eventBusName(name)
  *             .build());
  * 
- *         var exampleQueue = new Queue(&#34;exampleQueue&#34;);
+ *         var exampleQueue = new Queue(&#34;exampleQueue&#34;, QueueArgs.builder()        
+ *             .name(name)
+ *             .build());
  * 
  *         var exampleEventSource = new EventSource(&#34;exampleEventSource&#34;, EventSourceArgs.builder()        
- *             .eventBusName(exampleEventBus.eventBusName())
+ *             .eventBusName(example.eventBusName())
  *             .eventSourceName(name)
  *             .description(name)
  *             .linkedExternalSource(true)

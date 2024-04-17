@@ -33,15 +33,15 @@ namespace Pulumi.AliCloud.ResourceManager
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
-    ///         Max = 99999,
     ///         Min = 10000,
+    ///         Max = 99999,
     ///     });
     /// 
     ///     var example = new AliCloud.ResourceManager.Folder("example", new()
     ///     {
-    ///         FolderName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         FolderName = $"{name}-{@default.Result}",
     ///     });
     /// 
     /// });

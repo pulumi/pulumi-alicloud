@@ -41,14 +41,14 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultUserTenants, err := dms.GetUserTenants(ctx, &dms.GetUserTenantsArgs{
+//			_default, err := dms.GetUserTenants(ctx, &dms.GetUserTenantsArgs{
 //				Status: pulumi.StringRef("ACTIVE"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dms.NewEnterpriseAuthorityTemplate(ctx, "defaultEnterpriseAuthorityTemplate", &dms.EnterpriseAuthorityTemplateArgs{
-//				Tid:                   pulumi.String(defaultUserTenants.Ids[0]),
+//			_, err = dms.NewEnterpriseAuthorityTemplate(ctx, "default", &dms.EnterpriseAuthorityTemplateArgs{
+//				Tid:                   pulumi.String(_default.Ids[0]),
 //				AuthorityTemplateName: pulumi.String(name),
 //				Description:           pulumi.String(name),
 //			})

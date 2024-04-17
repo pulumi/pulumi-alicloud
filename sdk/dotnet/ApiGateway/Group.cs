@@ -25,6 +25,7 @@ namespace Pulumi.AliCloud.ApiGateway
     /// {
     ///     var @default = new AliCloud.ApiGateway.Group("default", new()
     ///     {
+    ///         Name = "tf_example",
     ///         Description = "tf_example",
     ///     });
     /// 

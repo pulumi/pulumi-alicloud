@@ -20,32 +20,36 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "auto_provisioning_group";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultImages = alicloud.ecs.getImages({
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
  *     mostRecent: true,
  *     owners: "system",
  * });
  * const template = new alicloud.ecs.EcsLaunchTemplate("template", {
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     name: name,
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
  *     instanceType: "ecs.n1.tiny",
  *     securityGroupId: defaultSecurityGroup.id,
  * });
- * const defaultAutoProvisioningGroup = new alicloud.ecs.AutoProvisioningGroup("defaultAutoProvisioningGroup", {
+ * const defaultAutoProvisioningGroup = new alicloud.ecs.AutoProvisioningGroup("default", {
  *     launchTemplateId: template.id,
  *     totalTargetCapacity: "4",
  *     payAsYouGoTargetCapacity: "1",

@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultMscSubContract, err := alicloud.NewMscSubContract(ctx, "defaultMscSubContract", &alicloud.MscSubContractArgs{
+//			defaultMscSubContract, err := alicloud.NewMscSubContract(ctx, "default", &alicloud.MscSubContractArgs{
 //				ContactName: pulumi.String("example_value"),
 //				Position:    pulumi.String("CEO"),
 //				Email:       pulumi.String("123@163.com"),

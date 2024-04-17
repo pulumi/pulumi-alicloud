@@ -167,31 +167,31 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
             name = "tf_example"
         default = alicloud.cen.get_transit_router_available_resources()
         zone = default.resources[0].master_zones[1]
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="192.168.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vswitch_name=name,
             cidr_block="192.168.1.0/24",
-            vpc_id=example_network.id,
+            vpc_id=example.id,
             zone_id=zone)
-        example_instance = alicloud.cen.Instance("exampleInstance", cen_instance_name=name)
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+        example_instance = alicloud.cen.Instance("example", cen_instance_name=name)
+        example_transit_router = alicloud.cen.TransitRouter("example",
             transit_router_name=name,
             cen_id=example_instance.id,
             support_multicast=True)
-        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain",
+        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("example",
             transit_router_id=example_transit_router.transit_router_id,
             transit_router_multicast_domain_name=name)
-        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment",
+        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("example",
             cen_id=example_transit_router.cen_id,
             transit_router_id=example_transit_router_multicast_domain.transit_router_id,
-            vpc_id=example_network.id,
+            vpc_id=example.id,
             zone_mappings=[alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
                 zone_id=zone,
                 vswitch_id=example_switch.id,
             )])
-        example_transit_router_multicast_domain_association = alicloud.cen.TransitRouterMulticastDomainAssociation("exampleTransitRouterMulticastDomainAssociation",
+        example_transit_router_multicast_domain_association = alicloud.cen.TransitRouterMulticastDomainAssociation("example",
             transit_router_multicast_domain_id=example_transit_router_multicast_domain.id,
             transit_router_attachment_id=example_transit_router_vpc_attachment.transit_router_attachment_id,
             vswitch_id=example_switch.id)
@@ -240,31 +240,31 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
             name = "tf_example"
         default = alicloud.cen.get_transit_router_available_resources()
         zone = default.resources[0].master_zones[1]
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="192.168.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vswitch_name=name,
             cidr_block="192.168.1.0/24",
-            vpc_id=example_network.id,
+            vpc_id=example.id,
             zone_id=zone)
-        example_instance = alicloud.cen.Instance("exampleInstance", cen_instance_name=name)
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+        example_instance = alicloud.cen.Instance("example", cen_instance_name=name)
+        example_transit_router = alicloud.cen.TransitRouter("example",
             transit_router_name=name,
             cen_id=example_instance.id,
             support_multicast=True)
-        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain",
+        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("example",
             transit_router_id=example_transit_router.transit_router_id,
             transit_router_multicast_domain_name=name)
-        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment",
+        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("example",
             cen_id=example_transit_router.cen_id,
             transit_router_id=example_transit_router_multicast_domain.transit_router_id,
-            vpc_id=example_network.id,
+            vpc_id=example.id,
             zone_mappings=[alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
                 zone_id=zone,
                 vswitch_id=example_switch.id,
             )])
-        example_transit_router_multicast_domain_association = alicloud.cen.TransitRouterMulticastDomainAssociation("exampleTransitRouterMulticastDomainAssociation",
+        example_transit_router_multicast_domain_association = alicloud.cen.TransitRouterMulticastDomainAssociation("example",
             transit_router_multicast_domain_id=example_transit_router_multicast_domain.id,
             transit_router_attachment_id=example_transit_router_vpc_attachment.transit_router_attachment_id,
             vswitch_id=example_switch.id)

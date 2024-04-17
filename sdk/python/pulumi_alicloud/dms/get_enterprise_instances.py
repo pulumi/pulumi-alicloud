@@ -206,10 +206,11 @@ def get_enterprise_instances(env_type: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    dms_enterprise_instances_ds = alicloud.dms.get_enterprise_instances(env_type="test",
+    # Declare the data source
+    dms_enterprise_instances_ds = alicloud.dms.get_enterprise_instances(net_type="CLASSIC",
         instance_type="mysql",
+        env_type="test",
         name_regex="tf_testAcc",
-        net_type="CLASSIC",
         output_file="dms_enterprise_instances.json")
     pulumi.export("firstDatabaseInstanceId", dms_enterprise_instances_ds.instances[0].instance_id)
     ```
@@ -282,10 +283,11 @@ def get_enterprise_instances_output(env_type: Optional[pulumi.Input[Optional[str
     import pulumi
     import pulumi_alicloud as alicloud
 
-    dms_enterprise_instances_ds = alicloud.dms.get_enterprise_instances(env_type="test",
+    # Declare the data source
+    dms_enterprise_instances_ds = alicloud.dms.get_enterprise_instances(net_type="CLASSIC",
         instance_type="mysql",
+        env_type="test",
         name_regex="tf_testAcc",
-        net_type="CLASSIC",
         output_file="dms_enterprise_instances.json")
     pulumi.export("firstDatabaseInstanceId", dms_enterprise_instances_ds.instances[0].instance_id)
     ```

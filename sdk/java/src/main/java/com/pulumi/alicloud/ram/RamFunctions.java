@@ -101,9 +101,9 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
-     *             .nameRegex(&#34;^group[0-9]*&#34;)
      *             .outputFile(&#34;groups.txt&#34;)
      *             .userName(&#34;user1&#34;)
+     *             .nameRegex(&#34;^group[0-9]*&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
@@ -146,9 +146,9 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
-     *             .nameRegex(&#34;^group[0-9]*&#34;)
      *             .outputFile(&#34;groups.txt&#34;)
      *             .userName(&#34;user1&#34;)
+     *             .nameRegex(&#34;^group[0-9]*&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
@@ -191,9 +191,9 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
-     *             .nameRegex(&#34;^group[0-9]*&#34;)
      *             .outputFile(&#34;groups.txt&#34;)
      *             .userName(&#34;user1&#34;)
+     *             .nameRegex(&#34;^group[0-9]*&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
@@ -236,9 +236,9 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
-     *             .nameRegex(&#34;^group[0-9]*&#34;)
      *             .outputFile(&#34;groups.txt&#34;)
      *             .userName(&#34;user1&#34;)
+     *             .nameRegex(&#34;^group[0-9]*&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
@@ -281,9 +281,9 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
-     *             .nameRegex(&#34;^group[0-9]*&#34;)
      *             .outputFile(&#34;groups.txt&#34;)
      *             .userName(&#34;user1&#34;)
+     *             .nameRegex(&#34;^group[0-9]*&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
@@ -326,9 +326,9 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
-     *             .nameRegex(&#34;^group[0-9]*&#34;)
      *             .outputFile(&#34;groups.txt&#34;)
      *             .userName(&#34;user1&#34;)
+     *             .nameRegex(&#34;^group[0-9]*&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
@@ -371,10 +371,10 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .groupName(&#34;group1&#34;)
      *             .outputFile(&#34;policies.txt&#34;)
-     *             .type(&#34;System&#34;)
      *             .userName(&#34;user1&#34;)
+     *             .groupName(&#34;group1&#34;)
+     *             .type(&#34;System&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
@@ -417,10 +417,10 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .groupName(&#34;group1&#34;)
      *             .outputFile(&#34;policies.txt&#34;)
-     *             .type(&#34;System&#34;)
      *             .userName(&#34;user1&#34;)
+     *             .groupName(&#34;group1&#34;)
+     *             .type(&#34;System&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
@@ -463,10 +463,10 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .groupName(&#34;group1&#34;)
      *             .outputFile(&#34;policies.txt&#34;)
-     *             .type(&#34;System&#34;)
      *             .userName(&#34;user1&#34;)
+     *             .groupName(&#34;group1&#34;)
+     *             .type(&#34;System&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
@@ -509,10 +509,10 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .groupName(&#34;group1&#34;)
      *             .outputFile(&#34;policies.txt&#34;)
-     *             .type(&#34;System&#34;)
      *             .userName(&#34;user1&#34;)
+     *             .groupName(&#34;group1&#34;)
+     *             .type(&#34;System&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
@@ -555,10 +555,10 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .groupName(&#34;group1&#34;)
      *             .outputFile(&#34;policies.txt&#34;)
-     *             .type(&#34;System&#34;)
      *             .userName(&#34;user1&#34;)
+     *             .groupName(&#34;group1&#34;)
+     *             .type(&#34;System&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
@@ -601,10 +601,10 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .groupName(&#34;group1&#34;)
      *             .outputFile(&#34;policies.txt&#34;)
-     *             .type(&#34;System&#34;)
      *             .userName(&#34;user1&#34;)
+     *             .groupName(&#34;group1&#34;)
+     *             .type(&#34;System&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
@@ -792,6 +792,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-ram&#34;)
      *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -841,6 +842,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-service&#34;)
      *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -895,6 +897,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-federated&#34;)
      *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -1085,6 +1088,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-ram&#34;)
      *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -1134,6 +1138,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-service&#34;)
      *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -1188,6 +1193,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-federated&#34;)
      *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -1378,6 +1384,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-ram&#34;)
      *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -1427,6 +1434,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-service&#34;)
      *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -1481,6 +1489,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-federated&#34;)
      *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -1671,6 +1680,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-ram&#34;)
      *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -1720,6 +1730,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-service&#34;)
      *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -1774,6 +1785,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-federated&#34;)
      *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -1964,6 +1976,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-ram&#34;)
      *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -2013,6 +2026,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-service&#34;)
      *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -2067,6 +2081,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-federated&#34;)
      *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -2257,6 +2272,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-ram&#34;)
      *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -2306,6 +2322,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-service&#34;)
      *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -2360,6 +2377,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+     *             .name(&#34;tf-example-role-federated&#34;)
      *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
@@ -2405,8 +2423,8 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .nameRegex(&#34;.*test.*&#34;)
      *             .outputFile(&#34;roles.txt&#34;)
+     *             .nameRegex(&#34;.*test.*&#34;)
      *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
      *             .policyType(&#34;Custom&#34;)
      *             .build());
@@ -2451,8 +2469,8 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .nameRegex(&#34;.*test.*&#34;)
      *             .outputFile(&#34;roles.txt&#34;)
+     *             .nameRegex(&#34;.*test.*&#34;)
      *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
      *             .policyType(&#34;Custom&#34;)
      *             .build());
@@ -2497,8 +2515,8 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .nameRegex(&#34;.*test.*&#34;)
      *             .outputFile(&#34;roles.txt&#34;)
+     *             .nameRegex(&#34;.*test.*&#34;)
      *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
      *             .policyType(&#34;Custom&#34;)
      *             .build());
@@ -2543,8 +2561,8 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .nameRegex(&#34;.*test.*&#34;)
      *             .outputFile(&#34;roles.txt&#34;)
+     *             .nameRegex(&#34;.*test.*&#34;)
      *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
      *             .policyType(&#34;Custom&#34;)
      *             .build());
@@ -2589,8 +2607,8 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .nameRegex(&#34;.*test.*&#34;)
      *             .outputFile(&#34;roles.txt&#34;)
+     *             .nameRegex(&#34;.*test.*&#34;)
      *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
      *             .policyType(&#34;Custom&#34;)
      *             .build());
@@ -2635,8 +2653,8 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .nameRegex(&#34;.*test.*&#34;)
      *             .outputFile(&#34;roles.txt&#34;)
+     *             .nameRegex(&#34;.*test.*&#34;)
      *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
      *             .policyType(&#34;Custom&#34;)
      *             .build());
@@ -2966,12 +2984,14 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
+     *             .name(&#34;group1&#34;)
      *             .comments(&#34;group comments&#34;)
      *             .force(true)
      *             .build());
      * 
      *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .name(&#34;user-example&#34;)
      *             .displayName(&#34;displayname&#34;)
      *             .mobile(&#34;86-18888888888&#34;)
      *             .email(&#34;hello.uuu@aaa.com&#34;)
@@ -2979,7 +2999,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
-     *             .groupName(defaultGroup.name())
+     *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
@@ -3015,7 +3035,7 @@ public final class RamFunctions {
      * 
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
      *             .outputFile(&#34;users.txt&#34;)
-     *             .groupName(defaultGroup.name())
+     *             .groupName(default_.name())
      *             .policyName(defaultPolicy.policyName())
      *             .policyType(&#34;Custom&#34;)
      *             .nameRegex(defaultUser.name())
@@ -3070,12 +3090,14 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
+     *             .name(&#34;group1&#34;)
      *             .comments(&#34;group comments&#34;)
      *             .force(true)
      *             .build());
      * 
      *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .name(&#34;user-example&#34;)
      *             .displayName(&#34;displayname&#34;)
      *             .mobile(&#34;86-18888888888&#34;)
      *             .email(&#34;hello.uuu@aaa.com&#34;)
@@ -3083,7 +3105,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
-     *             .groupName(defaultGroup.name())
+     *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
@@ -3119,7 +3141,7 @@ public final class RamFunctions {
      * 
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
      *             .outputFile(&#34;users.txt&#34;)
-     *             .groupName(defaultGroup.name())
+     *             .groupName(default_.name())
      *             .policyName(defaultPolicy.policyName())
      *             .policyType(&#34;Custom&#34;)
      *             .nameRegex(defaultUser.name())
@@ -3174,12 +3196,14 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
+     *             .name(&#34;group1&#34;)
      *             .comments(&#34;group comments&#34;)
      *             .force(true)
      *             .build());
      * 
      *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .name(&#34;user-example&#34;)
      *             .displayName(&#34;displayname&#34;)
      *             .mobile(&#34;86-18888888888&#34;)
      *             .email(&#34;hello.uuu@aaa.com&#34;)
@@ -3187,7 +3211,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
-     *             .groupName(defaultGroup.name())
+     *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
@@ -3223,7 +3247,7 @@ public final class RamFunctions {
      * 
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
      *             .outputFile(&#34;users.txt&#34;)
-     *             .groupName(defaultGroup.name())
+     *             .groupName(default_.name())
      *             .policyName(defaultPolicy.policyName())
      *             .policyType(&#34;Custom&#34;)
      *             .nameRegex(defaultUser.name())
@@ -3278,12 +3302,14 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
+     *             .name(&#34;group1&#34;)
      *             .comments(&#34;group comments&#34;)
      *             .force(true)
      *             .build());
      * 
      *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .name(&#34;user-example&#34;)
      *             .displayName(&#34;displayname&#34;)
      *             .mobile(&#34;86-18888888888&#34;)
      *             .email(&#34;hello.uuu@aaa.com&#34;)
@@ -3291,7 +3317,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
-     *             .groupName(defaultGroup.name())
+     *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
@@ -3327,7 +3353,7 @@ public final class RamFunctions {
      * 
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
      *             .outputFile(&#34;users.txt&#34;)
-     *             .groupName(defaultGroup.name())
+     *             .groupName(default_.name())
      *             .policyName(defaultPolicy.policyName())
      *             .policyType(&#34;Custom&#34;)
      *             .nameRegex(defaultUser.name())
@@ -3382,12 +3408,14 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
+     *             .name(&#34;group1&#34;)
      *             .comments(&#34;group comments&#34;)
      *             .force(true)
      *             .build());
      * 
      *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .name(&#34;user-example&#34;)
      *             .displayName(&#34;displayname&#34;)
      *             .mobile(&#34;86-18888888888&#34;)
      *             .email(&#34;hello.uuu@aaa.com&#34;)
@@ -3395,7 +3423,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
-     *             .groupName(defaultGroup.name())
+     *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
@@ -3431,7 +3459,7 @@ public final class RamFunctions {
      * 
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
      *             .outputFile(&#34;users.txt&#34;)
-     *             .groupName(defaultGroup.name())
+     *             .groupName(default_.name())
      *             .policyName(defaultPolicy.policyName())
      *             .policyType(&#34;Custom&#34;)
      *             .nameRegex(defaultUser.name())
@@ -3486,12 +3514,14 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+     *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
+     *             .name(&#34;group1&#34;)
      *             .comments(&#34;group comments&#34;)
      *             .force(true)
      *             .build());
      * 
      *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+     *             .name(&#34;user-example&#34;)
      *             .displayName(&#34;displayname&#34;)
      *             .mobile(&#34;86-18888888888&#34;)
      *             .email(&#34;hello.uuu@aaa.com&#34;)
@@ -3499,7 +3529,7 @@ public final class RamFunctions {
      *             .build());
      * 
      *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
-     *             .groupName(defaultGroup.name())
+     *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
@@ -3535,7 +3565,7 @@ public final class RamFunctions {
      * 
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
      *             .outputFile(&#34;users.txt&#34;)
-     *             .groupName(defaultGroup.name())
+     *             .groupName(default_.name())
      *             .policyName(defaultPolicy.policyName())
      *             .policyType(&#34;Custom&#34;)
      *             .nameRegex(defaultUser.name())

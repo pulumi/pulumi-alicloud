@@ -134,9 +134,9 @@ class SharedTarget(pulumi.CustomResource):
         if name is None:
             name = "tfexample"
         default = alicloud.resourcemanager.get_accounts()
-        example_resource_share = alicloud.resourcemanager.ResourceShare("exampleResourceShare", resource_share_name=name)
-        example_shared_target = alicloud.resourcemanager.SharedTarget("exampleSharedTarget",
-            resource_share_id=example_resource_share.id,
+        example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
+        example_shared_target = alicloud.resourcemanager.SharedTarget("example",
+            resource_share_id=example.id,
             target_id=default.ids[0])
         ```
         <!--End PulumiCodeChooser -->
@@ -181,9 +181,9 @@ class SharedTarget(pulumi.CustomResource):
         if name is None:
             name = "tfexample"
         default = alicloud.resourcemanager.get_accounts()
-        example_resource_share = alicloud.resourcemanager.ResourceShare("exampleResourceShare", resource_share_name=name)
-        example_shared_target = alicloud.resourcemanager.SharedTarget("exampleSharedTarget",
-            resource_share_id=example_resource_share.id,
+        example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
+        example_shared_target = alicloud.resourcemanager.SharedTarget("example",
+            resource_share_id=example.id,
             target_id=default.ids[0])
         ```
         <!--End PulumiCodeChooser -->

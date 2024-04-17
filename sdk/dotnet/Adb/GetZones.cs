@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var zonesIds = AliCloud.Adb.GetZones.Invoke();
         /// 
         /// });
@@ -52,6 +53,7 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var zonesIds = AliCloud.Adb.GetZones.Invoke();
         /// 
         /// });

@@ -28,6 +28,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -46,18 +48,20 @@ import (
 //			if param := cfg.Get("groupName"); param != "" {
 //				groupName = param
 //			}
-//			_, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", nil)
+//			defaultInstance, err := rocketmq.NewInstance(ctx, "default", &rocketmq.InstanceArgs{
+//				Name: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rocketmq.NewGroup(ctx, "defaultGroup", &rocketmq.GroupArgs{
+//			_, err = rocketmq.NewGroup(ctx, "default", &rocketmq.GroupArgs{
 //				GroupName:  pulumi.String(groupName),
 //				InstanceId: defaultInstance.ID(),
 //				Remark:     pulumi.String("dafault_ons_group_remark"),

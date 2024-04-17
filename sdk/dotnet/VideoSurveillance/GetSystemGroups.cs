@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultSystemGroup = new AliCloud.VideoSurveillance.SystemGroup("defaultSystemGroup", new()
+        ///     var defaultSystemGroup = new AliCloud.VideoSurveillance.SystemGroup("default", new()
         ///     {
         ///         GroupName = "groupname",
         ///         InProtocol = "rtmp",
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         ///         PushDomain = "your_push_domain",
         ///     });
         /// 
-        ///     var defaultSystemGroups = AliCloud.VideoSurveillance.GetSystemGroups.Invoke(new()
+        ///     var @default = AliCloud.VideoSurveillance.GetSystemGroups.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["vsGroup"] = defaultSystemGroups.Apply(getSystemGroupsResult =&gt; getSystemGroupsResult.Ids[0]),
+        ///         ["vsGroup"] = @default.Apply(@default =&gt; @default.Apply(getSystemGroupsResult =&gt; getSystemGroupsResult.Ids[0])),
         ///     };
         /// });
         /// ```
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultSystemGroup = new AliCloud.VideoSurveillance.SystemGroup("defaultSystemGroup", new()
+        ///     var defaultSystemGroup = new AliCloud.VideoSurveillance.SystemGroup("default", new()
         ///     {
         ///         GroupName = "groupname",
         ///         InProtocol = "rtmp",
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         ///         PushDomain = "your_push_domain",
         ///     });
         /// 
-        ///     var defaultSystemGroups = AliCloud.VideoSurveillance.GetSystemGroups.Invoke(new()
+        ///     var @default = AliCloud.VideoSurveillance.GetSystemGroups.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["vsGroup"] = defaultSystemGroups.Apply(getSystemGroupsResult =&gt; getSystemGroupsResult.Ids[0]),
+        ///         ["vsGroup"] = @default.Apply(@default =&gt; @default.Apply(getSystemGroupsResult =&gt; getSystemGroupsResult.Ids[0])),
         ///     };
         /// });
         /// ```

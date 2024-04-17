@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const foo = new alicloud.slb.CaCertificate("foo", {
+ *     caCertificateName: "tf-testAccSlbCACertificate",
  *     caCertificate: `-----BEGIN CERTIFICATE-----
  * MIIDRjCCAq+gAwIBAgIJAJn3ox4K13PoMA0GCSqGSIb3DQEBBQUAMHYxCzAJBgNV
  * BAYTAkNOMQswCQYDVQQIEwJCSjELMAkGA1UEBxMCQkoxDDAKBgNVBAoTA0FMSTEP
@@ -40,27 +41,12 @@ import * as utilities from "../utilities";
  * cQzfhiiG7ASjiPakw5wXoycHt5GCvLG5htp2TKVzgv9QTliA3gtfv6oV4zRZx7X1
  * Ofi6hVgErtHaXJheuPVeW6eAW8mHBoEfvDAfU3y9waYrtUevSl07643bzKL6v+Qd
  * DUBTxOAvSYfXTtI90EAxEG/bJJyOm5LqoiA=
- * -----END CERTIFICATE-----
- * `,
- *     caCertificateName: "tf-testAccSlbCACertificate",
+ * -----END CERTIFICATE-----`,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
  * * using CA certificate file
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * as fs from "fs";
- *
- * const foo_file = new alicloud.slb.CaCertificate("foo-file", {
- *     caCertificateName: "tf-testAccSlbCACertificate",
- *     caCertificate: fs.readFileSync(`${path.module}/ca_certificate.pem`, "utf8"),
- * });
- * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

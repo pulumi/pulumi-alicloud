@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_cloud_firewall_vpc_firewall_cen.Default.Id,
+        ///             defaultAlicloudCloudFirewallVpcFirewallCen.Id,
         ///         },
         ///         CenId = "cen-cjok7uyb5w2b27573v",
         ///         MemberUid = "1415189284827022",
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_cloud_firewall_vpc_firewall_cen.Default.Id,
+        ///             defaultAlicloudCloudFirewallVpcFirewallCen.Id,
         ///         },
         ///         CenId = "cen-cjok7uyb5w2b27573v",
         ///         MemberUid = "1415189284827022",

@@ -41,7 +41,8 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultCustomerGateway, err := vpn.NewCustomerGateway(ctx, "defaultCustomerGateway", &vpn.CustomerGatewayArgs{
+//			_, err := vpn.NewCustomerGateway(ctx, "default", &vpn.CustomerGatewayArgs{
+//				Name:        pulumi.String(name),
 //				IpAddress:   pulumi.String("42.104.22.210"),
 //				Asn:         pulumi.String("45014"),
 //				Description: pulumi.String(name),
@@ -49,8 +50,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpn.NewGatewayVpnAttachment(ctx, "defaultGatewayVpnAttachment", &vpn.GatewayVpnAttachmentArgs{
-//				CustomerGatewayId: defaultCustomerGateway.ID(),
+//			_, err = vpn.NewGatewayVpnAttachment(ctx, "default", &vpn.GatewayVpnAttachmentArgs{
+//				CustomerGatewayId: _default.ID(),
 //				NetworkType:       pulumi.String("public"),
 //				LocalSubnet:       pulumi.String("0.0.0.0/0"),
 //				RemoteSubnet:      pulumi.String("0.0.0.0/0"),

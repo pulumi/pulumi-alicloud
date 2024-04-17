@@ -63,18 +63,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultZones = MongodbFunctions.getZones();
+ *         final var default = MongodbFunctions.getZones();
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
  *             .nameRegex(&#34;default-NODELETING&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var example = new ServerlessInstance(&#34;example&#34;, ServerlessInstanceArgs.builder()        
  *             .accountPassword(&#34;Abc12345&#34;)
@@ -83,13 +83,13 @@ import javax.annotation.Nullable;
  *             .storageEngine(&#34;WiredTiger&#34;)
  *             .capacityUnit(100)
  *             .engine(&#34;MongoDB&#34;)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
  *             .engineVersion(&#34;4.2&#34;)
  *             .period(1)
  *             .periodPriceType(&#34;Month&#34;)
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(default_.zones()[0].id())
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;MongodbServerlessInstance&#34;),
  *                 Map.entry(&#34;For&#34;, &#34;TF&#34;)

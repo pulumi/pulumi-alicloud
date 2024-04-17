@@ -36,6 +36,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cms.NewSiteMonitor(ctx, "basic", &cms.SiteMonitorArgs{
 //				Address:  pulumi.String("http://www.alibabacloud.com"),
+//				TaskName: pulumi.String("tf-example"),
+//				TaskType: pulumi.String("HTTP"),
 //				Interval: pulumi.Int(5),
 //				IspCities: cms.SiteMonitorIspCityArray{
 //					&cms.SiteMonitorIspCityArgs{
@@ -61,8 +63,6 @@ import (
 //
 // `),
 //
-//				TaskName: pulumi.String("tf-example"),
-//				TaskType: pulumi.String("HTTP"),
 //			})
 //			if err != nil {
 //				return err

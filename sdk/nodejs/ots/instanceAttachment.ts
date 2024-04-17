@@ -19,11 +19,12 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultInstance = new alicloud.ots.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.ots.Instance("default", {
+ *     name: `${name}-${defaultInteger.result}`,
  *     description: name,
  *     accessedBy: "Vpc",
  *     tags: {
@@ -31,20 +32,20 @@ import * as utilities from "../utilities";
  *         For: "example",
  *     },
  * });
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultInstanceAttachment = new alicloud.ots.InstanceAttachment("defaultInstanceAttachment", {
+ * const defaultInstanceAttachment = new alicloud.ots.InstanceAttachment("default", {
  *     instanceName: defaultInstance.name,
  *     vpcName: "examplename",
  *     vswitchId: defaultSwitch.id,

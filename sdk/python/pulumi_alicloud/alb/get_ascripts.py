@@ -151,10 +151,10 @@ def get_ascripts(ascript_name: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.alb.get_ascripts(ids=[alicloud_alb_ascript["default"]["id"]],
-        name_regex=alicloud_alb_ascript["default"]["name"],
+    default = alicloud.alb.get_ascripts(ids=[default_alicloud_alb_ascript["id"]],
+        name_regex=default_alicloud_alb_ascript["name"],
         ascript_name="test",
-        listener_id=var["listenerId"])
+        listener_id=listener_id)
     pulumi.export("alicloudAlbAscriptExampleId", default.ascripts[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -208,10 +208,10 @@ def get_ascripts_output(ascript_name: Optional[pulumi.Input[Optional[str]]] = No
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.alb.get_ascripts(ids=[alicloud_alb_ascript["default"]["id"]],
-        name_regex=alicloud_alb_ascript["default"]["name"],
+    default = alicloud.alb.get_ascripts(ids=[default_alicloud_alb_ascript["id"]],
+        name_regex=default_alicloud_alb_ascript["name"],
         ascript_name="test",
-        listener_id=var["listenerId"])
+        listener_id=listener_id)
     pulumi.export("alicloudAlbAscriptExampleId", default.ascripts[0].id)
     ```
     <!--End PulumiCodeChooser -->

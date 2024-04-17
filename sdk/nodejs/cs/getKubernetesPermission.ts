@@ -18,11 +18,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultUsers = alicloud.ram.getUsers({});
- * const defaultKubernetesPermission = defaultUsers.then(defaultUsers => alicloud.cs.getKubernetesPermission({
- *     uid: defaultUsers.users?.[0]?.id,
+ * // Declare the data source
+ * const default = alicloud.ram.getUsers({});
+ * // permissions
+ * const defaultGetKubernetesPermission = _default.then(_default => alicloud.cs.getKubernetesPermission({
+ *     uid: _default.users?.[0]?.id,
  * }));
- * export const permissions = defaultKubernetesPermission.then(defaultKubernetesPermission => defaultKubernetesPermission.permissions);
+ * export const permissions = defaultGetKubernetesPermission.then(defaultGetKubernetesPermission => defaultGetKubernetesPermission.permissions);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -73,11 +75,13 @@ export interface GetKubernetesPermissionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultUsers = alicloud.ram.getUsers({});
- * const defaultKubernetesPermission = defaultUsers.then(defaultUsers => alicloud.cs.getKubernetesPermission({
- *     uid: defaultUsers.users?.[0]?.id,
+ * // Declare the data source
+ * const default = alicloud.ram.getUsers({});
+ * // permissions
+ * const defaultGetKubernetesPermission = _default.then(_default => alicloud.cs.getKubernetesPermission({
+ *     uid: _default.users?.[0]?.id,
  * }));
- * export const permissions = defaultKubernetesPermission.then(defaultKubernetesPermission => defaultKubernetesPermission.permissions);
+ * export const permissions = defaultGetKubernetesPermission.then(defaultGetKubernetesPermission => defaultGetKubernetesPermission.permissions);
  * ```
  * <!--End PulumiCodeChooser -->
  */

@@ -44,8 +44,8 @@ import (
 //				return err
 //			}
 //			ctx.Export("vpnGatewayVpnAttachmentId2", nameRegex.Attachments[0].Id)
-//			ctx.Export("localId", data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Ike_config[0].Local_id)
-//			ctx.Export("internetIp", data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Internet_ip)
+//			ctx.Export("localId", vpnAttachments.Attachments[0].IkeConfig[0].LocalId)
+//			ctx.Export("internetIp", vpnAttachments.Attachments[0].InternetIp)
 //			return nil
 //		})
 //	}

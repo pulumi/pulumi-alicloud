@@ -111,8 +111,8 @@ def get_ecs_backup_clients(ids: Optional[Sequence[str]] = None,
 
     default = alicloud.ecs.get_instances(name_regex="ecs_instance_name",
         status="Running")
-    ids = alicloud.hbr.get_ecs_backup_clients(ids=[alicloud_hbr_ecs_backup_client["default"]["id"]],
-        instance_ids=[alicloud_hbr_ecs_backup_client["default"]["instance_id"]])
+    ids = alicloud.hbr.get_ecs_backup_clients(ids=[default_alicloud_hbr_ecs_backup_client["id"]],
+        instance_ids=[default_alicloud_hbr_ecs_backup_client["instanceId"]])
     pulumi.export("hbrEcsBackupClientId1", ids.clients[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -162,8 +162,8 @@ def get_ecs_backup_clients_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
     default = alicloud.ecs.get_instances(name_regex="ecs_instance_name",
         status="Running")
-    ids = alicloud.hbr.get_ecs_backup_clients(ids=[alicloud_hbr_ecs_backup_client["default"]["id"]],
-        instance_ids=[alicloud_hbr_ecs_backup_client["default"]["instance_id"]])
+    ids = alicloud.hbr.get_ecs_backup_clients(ids=[default_alicloud_hbr_ecs_backup_client["id"]],
+        instance_ids=[default_alicloud_hbr_ecs_backup_client["instanceId"]])
     pulumi.export("hbrEcsBackupClientId1", ids.clients[0].id)
     ```
     <!--End PulumiCodeChooser -->

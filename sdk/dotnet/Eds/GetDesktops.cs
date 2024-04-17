@@ -29,19 +29,19 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
+        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("default", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
         ///         DesktopAccessType = "Internet",
         ///         OfficeSiteName = "your_office_site_name",
         ///     });
         /// 
-        ///     var defaultBundles = AliCloud.Eds.GetBundles.Invoke(new()
+        ///     var @default = AliCloud.Eds.GetBundles.Invoke(new()
         ///     {
         ///         BundleType = "SYSTEM",
         ///     });
         /// 
-        ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new()
+        ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("default", new()
         ///     {
         ///         PolicyGroupName = "your_policy_group_name",
         ///         Clipboard = "readwrite",
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Eds
         ///         },
         ///     });
         /// 
-        ///     var defaultUser = new AliCloud.Eds.User("defaultUser", new()
+        ///     var defaultUser = new AliCloud.Eds.User("default", new()
         ///     {
         ///         EndUserId = "your_end_user_id",
         ///         Email = "your_email",
@@ -77,11 +77,11 @@ namespace Pulumi.AliCloud.Eds
         ///         Password = "your_password",
         ///     });
         /// 
-        ///     var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new()
+        ///     var defaultDesktop = new AliCloud.Eds.Desktop("default", new()
         ///     {
         ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
         ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
-        ///         BundleId = defaultBundles.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[0]?.Id),
+        ///         BundleId = @default.Apply(@default =&gt; @default.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[0]?.Id)),
         ///         DesktopName = "your_desktop_name",
         ///         EndUserIds = new[]
         ///         {
@@ -132,19 +132,19 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
+        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("default", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
         ///         DesktopAccessType = "Internet",
         ///         OfficeSiteName = "your_office_site_name",
         ///     });
         /// 
-        ///     var defaultBundles = AliCloud.Eds.GetBundles.Invoke(new()
+        ///     var @default = AliCloud.Eds.GetBundles.Invoke(new()
         ///     {
         ///         BundleType = "SYSTEM",
         ///     });
         /// 
-        ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new()
+        ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("default", new()
         ///     {
         ///         PolicyGroupName = "your_policy_group_name",
         ///         Clipboard = "readwrite",
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.Eds
         ///         },
         ///     });
         /// 
-        ///     var defaultUser = new AliCloud.Eds.User("defaultUser", new()
+        ///     var defaultUser = new AliCloud.Eds.User("default", new()
         ///     {
         ///         EndUserId = "your_end_user_id",
         ///         Email = "your_email",
@@ -180,11 +180,11 @@ namespace Pulumi.AliCloud.Eds
         ///         Password = "your_password",
         ///     });
         /// 
-        ///     var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new()
+        ///     var defaultDesktop = new AliCloud.Eds.Desktop("default", new()
         ///     {
         ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
         ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
-        ///         BundleId = defaultBundles.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[0]?.Id),
+        ///         BundleId = @default.Apply(@default =&gt; @default.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[0]?.Id)),
         ///         DesktopName = "your_desktop_name",
         ///         EndUserIds = new[]
         ///         {

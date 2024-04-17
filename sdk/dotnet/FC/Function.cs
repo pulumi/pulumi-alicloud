@@ -31,25 +31,26 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var defaultProject = new AliCloud.Log.Project("defaultProject", new()
+    ///     var defaultProject = new AliCloud.Log.Project("default", new()
     ///     {
-    ///         ProjectName = defaultRandomInteger.Result.Apply(result =&gt; $"example-value-{result}"),
+    ///         ProjectName = $"example-value-{@default.Result}",
     ///     });
     /// 
-    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
+    ///     var defaultStore = new AliCloud.Log.Store("default", new()
     ///     {
     ///         ProjectName = defaultProject.Name,
     ///         LogstoreName = "example-value",
     ///     });
     /// 
-    ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()
+    ///     var defaultRole = new AliCloud.Ram.Role("default", new()
     ///     {
+    ///         Name = $"fcservicerole-{@default.Result}",
     ///         Document = @"  {
     ///       ""Statement"": [
     ///         {
@@ -69,15 +70,16 @@ namespace Pulumi.AliCloud.FC
     ///         Force = true,
     ///     });
     /// 
-    ///     var defaultRolePolicyAttachment = new AliCloud.Ram.RolePolicyAttachment("defaultRolePolicyAttachment", new()
+    ///     var defaultRolePolicyAttachment = new AliCloud.Ram.RolePolicyAttachment("default", new()
     ///     {
     ///         RoleName = defaultRole.Name,
     ///         PolicyName = "AliyunLogFullAccess",
     ///         PolicyType = "System",
     ///     });
     /// 
-    ///     var defaultService = new AliCloud.FC.Service("defaultService", new()
+    ///     var defaultService = new AliCloud.FC.Service("default", new()
     ///     {
+    ///         Name = $"example-value-{@default.Result}",
     ///         Description = "example-value",
     ///         Role = defaultRole.Arn,
     ///         LogConfig = new AliCloud.FC.Inputs.ServiceLogConfigArgs
@@ -89,13 +91,13 @@ namespace Pulumi.AliCloud.FC
     ///         },
     ///     });
     /// 
-    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
-    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         BucketName = $"terraform-example-{@default.Result}",
     ///     });
     /// 
     ///     // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new()
+    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("default", new()
     ///     {
     ///         Bucket = defaultBucket.Id,
     ///         Key = "index.py",
@@ -109,6 +111,7 @@ namespace Pulumi.AliCloud.FC
     ///     var foo = new AliCloud.FC.Function("foo", new()
     ///     {
     ///         Service = defaultService.Name,
+    ///         Name = "terraform-example",
     ///         Description = "example",
     ///         OssBucket = defaultBucket.Id,
     ///         OssKey = defaultBucketObject.Key,

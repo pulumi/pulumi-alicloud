@@ -252,6 +252,15 @@ class ImageEventOperation(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.threatdetection.ImageEventOperation("default",
+            event_type="maliciousFile",
+            operation_code="whitelist",
+            event_key="alibabacloud_ak",
+            scenarios=\"\"\"{
+          "type":"default",
+          "value":""
+        }
+        \"\"\",
+            event_name="阿里云AK",
             conditions=\"\"\"[
           {
               "condition":"MD5",
@@ -259,17 +268,6 @@ class ImageEventOperation(pulumi.CustomResource):
               "value":"0083a31cc0083a31ccf7c10367a6e783e"
           }
         ]
-
-        \"\"\",
-            event_key="alibabacloud_ak",
-            event_name="阿里云AK",
-            event_type="maliciousFile",
-            operation_code="whitelist",
-            scenarios=\"\"\"{
-          "type":"default",
-          "value":""
-        }
-
         \"\"\")
         ```
         <!--End PulumiCodeChooser -->
@@ -318,6 +316,15 @@ class ImageEventOperation(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.threatdetection.ImageEventOperation("default",
+            event_type="maliciousFile",
+            operation_code="whitelist",
+            event_key="alibabacloud_ak",
+            scenarios=\"\"\"{
+          "type":"default",
+          "value":""
+        }
+        \"\"\",
+            event_name="阿里云AK",
             conditions=\"\"\"[
           {
               "condition":"MD5",
@@ -325,17 +332,6 @@ class ImageEventOperation(pulumi.CustomResource):
               "value":"0083a31cc0083a31ccf7c10367a6e783e"
           }
         ]
-
-        \"\"\",
-            event_key="alibabacloud_ak",
-            event_name="阿里云AK",
-            event_type="maliciousFile",
-            operation_code="whitelist",
-            scenarios=\"\"\"{
-          "type":"default",
-          "value":""
-        }
-
         \"\"\")
         ```
         <!--End PulumiCodeChooser -->

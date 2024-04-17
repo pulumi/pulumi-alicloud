@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a RAM User Policy attachment.
  *         var user = new User(&#34;user&#34;, UserArgs.builder()        
+ *             .name(&#34;userName&#34;)
  *             .displayName(&#34;user_display_name&#34;)
  *             .mobile(&#34;86-18688888888&#34;)
  *             .email(&#34;hello.uuu@aaa.com&#34;)
@@ -55,6 +56,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
+ *             .name(&#34;policyName&#34;)
  *             .document(&#34;&#34;&#34;
  *   {
  *     &#34;Statement&#34;: [

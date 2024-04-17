@@ -190,19 +190,19 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.vpc.Network("example",
             cidr_block="172.16.0.0/12",
             vpc_name="terraform-example")
-        example_route_table = alicloud.vpc.RouteTable("exampleRouteTable",
-            vpc_id=example_network.id,
+        example_route_table = alicloud.vpc.RouteTable("example",
+            vpc_id=example.id,
             route_table_name="terraform-example",
             description="terraform-example",
             associate_type="Gateway")
-        example_ipv4_gateway = alicloud.vpc.Ipv4Gateway("exampleIpv4Gateway",
+        example_ipv4_gateway = alicloud.vpc.Ipv4Gateway("example",
             ipv4_gateway_name="terraform-example",
-            vpc_id=example_network.id,
+            vpc_id=example.id,
             enabled=True)
-        example_gateway_route_table_attachment = alicloud.vpc.GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment",
+        example_gateway_route_table_attachment = alicloud.vpc.GatewayRouteTableAttachment("example",
             ipv4_gateway_id=example_ipv4_gateway.id,
             route_table_id=example_route_table.id)
         ```
@@ -244,19 +244,19 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.vpc.Network("example",
             cidr_block="172.16.0.0/12",
             vpc_name="terraform-example")
-        example_route_table = alicloud.vpc.RouteTable("exampleRouteTable",
-            vpc_id=example_network.id,
+        example_route_table = alicloud.vpc.RouteTable("example",
+            vpc_id=example.id,
             route_table_name="terraform-example",
             description="terraform-example",
             associate_type="Gateway")
-        example_ipv4_gateway = alicloud.vpc.Ipv4Gateway("exampleIpv4Gateway",
+        example_ipv4_gateway = alicloud.vpc.Ipv4Gateway("example",
             ipv4_gateway_name="terraform-example",
-            vpc_id=example_network.id,
+            vpc_id=example.id,
             enabled=True)
-        example_gateway_route_table_attachment = alicloud.vpc.GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment",
+        example_gateway_route_table_attachment = alicloud.vpc.GatewayRouteTableAttachment("example",
             ipv4_gateway_id=example_ipv4_gateway.id,
             route_table_id=example_route_table.id)
         ```

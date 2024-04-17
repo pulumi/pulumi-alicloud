@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.arms.Environment;
@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  *         var env_ecs = new Environment(&#34;env-ecs&#34;, EnvironmentArgs.builder()        
  *             .environmentType(&#34;ECS&#34;)
- *             .environmentName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .environmentName(String.format(&#34;terraform-example-%s&#34;, default_.result()))
  *             .bindResourceId(vpc.id())
  *             .environmentSubType(&#34;ECS&#34;)
  *             .build());

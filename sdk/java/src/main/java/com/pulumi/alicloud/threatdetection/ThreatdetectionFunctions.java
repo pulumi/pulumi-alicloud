@@ -55,6 +55,53 @@ public final class ThreatdetectionFunctions {
      * 
      * &gt; **NOTE:** Available since v1.195.0.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.AntiBruteForceRule;
+     * import com.pulumi.alicloud.threatdetection.AntiBruteForceRuleArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule(&#34;defaultAntiBruteForceRule&#34;, AntiBruteForceRuleArgs.builder()        
+     *             .antiBruteForceRuleName(name)
+     *             .forbiddenTime(360)
+     *             .uuidLists(&#34;7567806c-4ec5-4597-9543-7c9543381a13&#34;)
+     *             .failCount(80)
+     *             .span(10)
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
+     *             .ids(defaultAntiBruteForceRule.id())
+     *             .nameRegex(defaultAntiBruteForceRule.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionAntiBruteForceRuleExampleId&#34;, default_.applyValue(default_ -&gt; default_.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetAntiBruteForceRulesResult> getAntiBruteForceRules() {
         return getAntiBruteForceRules(GetAntiBruteForceRulesArgs.Empty, InvokeOptions.Empty);
@@ -63,6 +110,53 @@ public final class ThreatdetectionFunctions {
      * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
      * 
      * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.AntiBruteForceRule;
+     * import com.pulumi.alicloud.threatdetection.AntiBruteForceRuleArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule(&#34;defaultAntiBruteForceRule&#34;, AntiBruteForceRuleArgs.builder()        
+     *             .antiBruteForceRuleName(name)
+     *             .forbiddenTime(360)
+     *             .uuidLists(&#34;7567806c-4ec5-4597-9543-7c9543381a13&#34;)
+     *             .failCount(80)
+     *             .span(10)
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
+     *             .ids(defaultAntiBruteForceRule.id())
+     *             .nameRegex(defaultAntiBruteForceRule.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionAntiBruteForceRuleExampleId&#34;, default_.applyValue(default_ -&gt; default_.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAntiBruteForceRulesResult> getAntiBruteForceRulesPlain() {
@@ -73,6 +167,53 @@ public final class ThreatdetectionFunctions {
      * 
      * &gt; **NOTE:** Available since v1.195.0.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.AntiBruteForceRule;
+     * import com.pulumi.alicloud.threatdetection.AntiBruteForceRuleArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule(&#34;defaultAntiBruteForceRule&#34;, AntiBruteForceRuleArgs.builder()        
+     *             .antiBruteForceRuleName(name)
+     *             .forbiddenTime(360)
+     *             .uuidLists(&#34;7567806c-4ec5-4597-9543-7c9543381a13&#34;)
+     *             .failCount(80)
+     *             .span(10)
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
+     *             .ids(defaultAntiBruteForceRule.id())
+     *             .nameRegex(defaultAntiBruteForceRule.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionAntiBruteForceRuleExampleId&#34;, default_.applyValue(default_ -&gt; default_.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetAntiBruteForceRulesResult> getAntiBruteForceRules(GetAntiBruteForceRulesArgs args) {
         return getAntiBruteForceRules(args, InvokeOptions.Empty);
@@ -81,6 +222,53 @@ public final class ThreatdetectionFunctions {
      * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
      * 
      * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.AntiBruteForceRule;
+     * import com.pulumi.alicloud.threatdetection.AntiBruteForceRuleArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule(&#34;defaultAntiBruteForceRule&#34;, AntiBruteForceRuleArgs.builder()        
+     *             .antiBruteForceRuleName(name)
+     *             .forbiddenTime(360)
+     *             .uuidLists(&#34;7567806c-4ec5-4597-9543-7c9543381a13&#34;)
+     *             .failCount(80)
+     *             .span(10)
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
+     *             .ids(defaultAntiBruteForceRule.id())
+     *             .nameRegex(defaultAntiBruteForceRule.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionAntiBruteForceRuleExampleId&#34;, default_.applyValue(default_ -&gt; default_.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAntiBruteForceRulesResult> getAntiBruteForceRulesPlain(GetAntiBruteForceRulesPlainArgs args) {
@@ -91,6 +279,53 @@ public final class ThreatdetectionFunctions {
      * 
      * &gt; **NOTE:** Available since v1.195.0.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.AntiBruteForceRule;
+     * import com.pulumi.alicloud.threatdetection.AntiBruteForceRuleArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule(&#34;defaultAntiBruteForceRule&#34;, AntiBruteForceRuleArgs.builder()        
+     *             .antiBruteForceRuleName(name)
+     *             .forbiddenTime(360)
+     *             .uuidLists(&#34;7567806c-4ec5-4597-9543-7c9543381a13&#34;)
+     *             .failCount(80)
+     *             .span(10)
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
+     *             .ids(defaultAntiBruteForceRule.id())
+     *             .nameRegex(defaultAntiBruteForceRule.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionAntiBruteForceRuleExampleId&#34;, default_.applyValue(default_ -&gt; default_.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetAntiBruteForceRulesResult> getAntiBruteForceRules(GetAntiBruteForceRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", TypeShape.of(GetAntiBruteForceRulesResult.class), args, Utilities.withVersion(options));
@@ -99,6 +334,53 @@ public final class ThreatdetectionFunctions {
      * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
      * 
      * &gt; **NOTE:** Available since v1.195.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.AntiBruteForceRule;
+     * import com.pulumi.alicloud.threatdetection.AntiBruteForceRuleArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetAntiBruteForceRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule(&#34;defaultAntiBruteForceRule&#34;, AntiBruteForceRuleArgs.builder()        
+     *             .antiBruteForceRuleName(name)
+     *             .forbiddenTime(360)
+     *             .uuidLists(&#34;7567806c-4ec5-4597-9543-7c9543381a13&#34;)
+     *             .failCount(80)
+     *             .span(10)
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getAntiBruteForceRules(GetAntiBruteForceRulesArgs.builder()
+     *             .ids(defaultAntiBruteForceRule.id())
+     *             .nameRegex(defaultAntiBruteForceRule.name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionAntiBruteForceRuleExampleId&#34;, default_.applyValue(default_ -&gt; default_.rules()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAntiBruteForceRulesResult> getAntiBruteForceRulesPlain(GetAntiBruteForceRulesPlainArgs args, InvokeOptions options) {
@@ -655,6 +937,54 @@ public final class ThreatdetectionFunctions {
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.BaselineStrategy;
+     * import com.pulumi.alicloud.threatdetection.BaselineStrategyArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultBaselineStrategy = new BaselineStrategy(&#34;defaultBaselineStrategy&#34;, BaselineStrategyArgs.builder()        
+     *             .customType(&#34;custom&#34;)
+     *             .endTime(&#34;08:00:00&#34;)
+     *             .baselineStrategyName(&#34;apispec&#34;)
+     *             .cycleDays(3)
+     *             .targetType(&#34;groupId&#34;)
+     *             .startTime(&#34;05:00:00&#34;)
+     *             .riskSubTypeName(&#34;hc_exploit_redis&#34;)
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
+     *             .ids(defaultBaselineStrategy.id())
+     *             .nameRegex(defaultBaselineStrategy.name())
+     *             .customType(&#34;custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionBaselineStrategyExampleId&#34;, defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetBaselineStrategiesResult> getBaselineStrategies() {
         return getBaselineStrategies(GetBaselineStrategiesArgs.Empty, InvokeOptions.Empty);
@@ -663,6 +993,54 @@ public final class ThreatdetectionFunctions {
      * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.BaselineStrategy;
+     * import com.pulumi.alicloud.threatdetection.BaselineStrategyArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultBaselineStrategy = new BaselineStrategy(&#34;defaultBaselineStrategy&#34;, BaselineStrategyArgs.builder()        
+     *             .customType(&#34;custom&#34;)
+     *             .endTime(&#34;08:00:00&#34;)
+     *             .baselineStrategyName(&#34;apispec&#34;)
+     *             .cycleDays(3)
+     *             .targetType(&#34;groupId&#34;)
+     *             .startTime(&#34;05:00:00&#34;)
+     *             .riskSubTypeName(&#34;hc_exploit_redis&#34;)
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
+     *             .ids(defaultBaselineStrategy.id())
+     *             .nameRegex(defaultBaselineStrategy.name())
+     *             .customType(&#34;custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionBaselineStrategyExampleId&#34;, defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBaselineStrategiesResult> getBaselineStrategiesPlain() {
@@ -673,6 +1051,54 @@ public final class ThreatdetectionFunctions {
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.BaselineStrategy;
+     * import com.pulumi.alicloud.threatdetection.BaselineStrategyArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultBaselineStrategy = new BaselineStrategy(&#34;defaultBaselineStrategy&#34;, BaselineStrategyArgs.builder()        
+     *             .customType(&#34;custom&#34;)
+     *             .endTime(&#34;08:00:00&#34;)
+     *             .baselineStrategyName(&#34;apispec&#34;)
+     *             .cycleDays(3)
+     *             .targetType(&#34;groupId&#34;)
+     *             .startTime(&#34;05:00:00&#34;)
+     *             .riskSubTypeName(&#34;hc_exploit_redis&#34;)
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
+     *             .ids(defaultBaselineStrategy.id())
+     *             .nameRegex(defaultBaselineStrategy.name())
+     *             .customType(&#34;custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionBaselineStrategyExampleId&#34;, defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetBaselineStrategiesResult> getBaselineStrategies(GetBaselineStrategiesArgs args) {
         return getBaselineStrategies(args, InvokeOptions.Empty);
@@ -681,6 +1107,54 @@ public final class ThreatdetectionFunctions {
      * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.BaselineStrategy;
+     * import com.pulumi.alicloud.threatdetection.BaselineStrategyArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultBaselineStrategy = new BaselineStrategy(&#34;defaultBaselineStrategy&#34;, BaselineStrategyArgs.builder()        
+     *             .customType(&#34;custom&#34;)
+     *             .endTime(&#34;08:00:00&#34;)
+     *             .baselineStrategyName(&#34;apispec&#34;)
+     *             .cycleDays(3)
+     *             .targetType(&#34;groupId&#34;)
+     *             .startTime(&#34;05:00:00&#34;)
+     *             .riskSubTypeName(&#34;hc_exploit_redis&#34;)
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
+     *             .ids(defaultBaselineStrategy.id())
+     *             .nameRegex(defaultBaselineStrategy.name())
+     *             .customType(&#34;custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionBaselineStrategyExampleId&#34;, defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBaselineStrategiesResult> getBaselineStrategiesPlain(GetBaselineStrategiesPlainArgs args) {
@@ -691,6 +1165,54 @@ public final class ThreatdetectionFunctions {
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.BaselineStrategy;
+     * import com.pulumi.alicloud.threatdetection.BaselineStrategyArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultBaselineStrategy = new BaselineStrategy(&#34;defaultBaselineStrategy&#34;, BaselineStrategyArgs.builder()        
+     *             .customType(&#34;custom&#34;)
+     *             .endTime(&#34;08:00:00&#34;)
+     *             .baselineStrategyName(&#34;apispec&#34;)
+     *             .cycleDays(3)
+     *             .targetType(&#34;groupId&#34;)
+     *             .startTime(&#34;05:00:00&#34;)
+     *             .riskSubTypeName(&#34;hc_exploit_redis&#34;)
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
+     *             .ids(defaultBaselineStrategy.id())
+     *             .nameRegex(defaultBaselineStrategy.name())
+     *             .customType(&#34;custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionBaselineStrategyExampleId&#34;, defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetBaselineStrategiesResult> getBaselineStrategies(GetBaselineStrategiesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", TypeShape.of(GetBaselineStrategiesResult.class), args, Utilities.withVersion(options));
@@ -699,6 +1221,54 @@ public final class ThreatdetectionFunctions {
      * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.BaselineStrategy;
+     * import com.pulumi.alicloud.threatdetection.BaselineStrategyArgs;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultBaselineStrategy = new BaselineStrategy(&#34;defaultBaselineStrategy&#34;, BaselineStrategyArgs.builder()        
+     *             .customType(&#34;custom&#34;)
+     *             .endTime(&#34;08:00:00&#34;)
+     *             .baselineStrategyName(&#34;apispec&#34;)
+     *             .cycleDays(3)
+     *             .targetType(&#34;groupId&#34;)
+     *             .startTime(&#34;05:00:00&#34;)
+     *             .riskSubTypeName(&#34;hc_exploit_redis&#34;)
+     *             .build());
+     * 
+     *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
+     *             .ids(defaultBaselineStrategy.id())
+     *             .nameRegex(defaultBaselineStrategy.name())
+     *             .customType(&#34;custom&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudThreatDetectionBaselineStrategyExampleId&#34;, defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBaselineStrategiesResult> getBaselineStrategiesPlain(GetBaselineStrategiesPlainArgs args, InvokeOptions options) {
@@ -1280,7 +1850,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotNodes(GetHoneypotNodesArgs.builder()
-     *             .ids(alicloud_threat_detection_honeypot_node.default().id())
+     *             .ids(defaultAlicloudThreatDetectionHoneypotNode.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionHoneypotNodeExampleId&#34;, default_.nodes()[0].id());
@@ -1323,7 +1893,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotNodes(GetHoneypotNodesArgs.builder()
-     *             .ids(alicloud_threat_detection_honeypot_node.default().id())
+     *             .ids(defaultAlicloudThreatDetectionHoneypotNode.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionHoneypotNodeExampleId&#34;, default_.nodes()[0].id());
@@ -1366,7 +1936,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotNodes(GetHoneypotNodesArgs.builder()
-     *             .ids(alicloud_threat_detection_honeypot_node.default().id())
+     *             .ids(defaultAlicloudThreatDetectionHoneypotNode.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionHoneypotNodeExampleId&#34;, default_.nodes()[0].id());
@@ -1409,7 +1979,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotNodes(GetHoneypotNodesArgs.builder()
-     *             .ids(alicloud_threat_detection_honeypot_node.default().id())
+     *             .ids(defaultAlicloudThreatDetectionHoneypotNode.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionHoneypotNodeExampleId&#34;, default_.nodes()[0].id());
@@ -1452,7 +2022,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotNodes(GetHoneypotNodesArgs.builder()
-     *             .ids(alicloud_threat_detection_honeypot_node.default().id())
+     *             .ids(defaultAlicloudThreatDetectionHoneypotNode.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionHoneypotNodeExampleId&#34;, default_.nodes()[0].id());
@@ -1495,7 +2065,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotNodes(GetHoneypotNodesArgs.builder()
-     *             .ids(alicloud_threat_detection_honeypot_node.default().id())
+     *             .ids(defaultAlicloudThreatDetectionHoneypotNode.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionHoneypotNodeExampleId&#34;, default_.nodes()[0].id());
@@ -1538,7 +2108,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotPresets(GetHoneypotPresetsArgs.builder()
-     *             .ids(alicloud_threat_detection_honeypot_preset.default().id())
+     *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.id())
      *             .honeypotImageName(&#34;shiro&#34;)
      *             .nodeId(&#34;example_value&#34;)
      *             .presetName(&#34;apiapec_test&#34;)
@@ -1584,7 +2154,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotPresets(GetHoneypotPresetsArgs.builder()
-     *             .ids(alicloud_threat_detection_honeypot_preset.default().id())
+     *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.id())
      *             .honeypotImageName(&#34;shiro&#34;)
      *             .nodeId(&#34;example_value&#34;)
      *             .presetName(&#34;apiapec_test&#34;)
@@ -1630,7 +2200,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotPresets(GetHoneypotPresetsArgs.builder()
-     *             .ids(alicloud_threat_detection_honeypot_preset.default().id())
+     *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.id())
      *             .honeypotImageName(&#34;shiro&#34;)
      *             .nodeId(&#34;example_value&#34;)
      *             .presetName(&#34;apiapec_test&#34;)
@@ -1676,7 +2246,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotPresets(GetHoneypotPresetsArgs.builder()
-     *             .ids(alicloud_threat_detection_honeypot_preset.default().id())
+     *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.id())
      *             .honeypotImageName(&#34;shiro&#34;)
      *             .nodeId(&#34;example_value&#34;)
      *             .presetName(&#34;apiapec_test&#34;)
@@ -1722,7 +2292,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotPresets(GetHoneypotPresetsArgs.builder()
-     *             .ids(alicloud_threat_detection_honeypot_preset.default().id())
+     *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.id())
      *             .honeypotImageName(&#34;shiro&#34;)
      *             .nodeId(&#34;example_value&#34;)
      *             .presetName(&#34;apiapec_test&#34;)
@@ -1768,7 +2338,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotPresets(GetHoneypotPresetsArgs.builder()
-     *             .ids(alicloud_threat_detection_honeypot_preset.default().id())
+     *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.id())
      *             .honeypotImageName(&#34;shiro&#34;)
      *             .nodeId(&#34;example_value&#34;)
      *             .presetName(&#34;apiapec_test&#34;)
@@ -1834,14 +2404,14 @@ public final class ThreatdetectionFunctions {
      *             .arp(true)
      *             .build());
      * 
-     *         final var defaultHoneypotProbes = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
+     *         final var default = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
      *             .ids(defaultHoneypotProbe.id())
      *             .displayName(name)
      *             .probeType(&#34;host_probe&#34;)
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, defaultHoneypotProbes.applyValue(getHoneypotProbesResult -&gt; getHoneypotProbesResult).applyValue(defaultHoneypotProbes -&gt; defaultHoneypotProbes.applyValue(getHoneypotProbesResult -&gt; getHoneypotProbesResult.probes()[0].id())));
+     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, default_.applyValue(default_ -&gt; default_.probes()[0].id()));
      *     }
      * }
      * ```
@@ -1901,14 +2471,14 @@ public final class ThreatdetectionFunctions {
      *             .arp(true)
      *             .build());
      * 
-     *         final var defaultHoneypotProbes = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
+     *         final var default = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
      *             .ids(defaultHoneypotProbe.id())
      *             .displayName(name)
      *             .probeType(&#34;host_probe&#34;)
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, defaultHoneypotProbes.applyValue(getHoneypotProbesResult -&gt; getHoneypotProbesResult).applyValue(defaultHoneypotProbes -&gt; defaultHoneypotProbes.applyValue(getHoneypotProbesResult -&gt; getHoneypotProbesResult.probes()[0].id())));
+     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, default_.applyValue(default_ -&gt; default_.probes()[0].id()));
      *     }
      * }
      * ```
@@ -1968,14 +2538,14 @@ public final class ThreatdetectionFunctions {
      *             .arp(true)
      *             .build());
      * 
-     *         final var defaultHoneypotProbes = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
+     *         final var default = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
      *             .ids(defaultHoneypotProbe.id())
      *             .displayName(name)
      *             .probeType(&#34;host_probe&#34;)
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, defaultHoneypotProbes.applyValue(getHoneypotProbesResult -&gt; getHoneypotProbesResult).applyValue(defaultHoneypotProbes -&gt; defaultHoneypotProbes.applyValue(getHoneypotProbesResult -&gt; getHoneypotProbesResult.probes()[0].id())));
+     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, default_.applyValue(default_ -&gt; default_.probes()[0].id()));
      *     }
      * }
      * ```
@@ -2035,14 +2605,14 @@ public final class ThreatdetectionFunctions {
      *             .arp(true)
      *             .build());
      * 
-     *         final var defaultHoneypotProbes = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
+     *         final var default = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
      *             .ids(defaultHoneypotProbe.id())
      *             .displayName(name)
      *             .probeType(&#34;host_probe&#34;)
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, defaultHoneypotProbes.applyValue(getHoneypotProbesResult -&gt; getHoneypotProbesResult).applyValue(defaultHoneypotProbes -&gt; defaultHoneypotProbes.applyValue(getHoneypotProbesResult -&gt; getHoneypotProbesResult.probes()[0].id())));
+     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, default_.applyValue(default_ -&gt; default_.probes()[0].id()));
      *     }
      * }
      * ```
@@ -2102,14 +2672,14 @@ public final class ThreatdetectionFunctions {
      *             .arp(true)
      *             .build());
      * 
-     *         final var defaultHoneypotProbes = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
+     *         final var default = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
      *             .ids(defaultHoneypotProbe.id())
      *             .displayName(name)
      *             .probeType(&#34;host_probe&#34;)
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, defaultHoneypotProbes.applyValue(getHoneypotProbesResult -&gt; getHoneypotProbesResult).applyValue(defaultHoneypotProbes -&gt; defaultHoneypotProbes.applyValue(getHoneypotProbesResult -&gt; getHoneypotProbesResult.probes()[0].id())));
+     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, default_.applyValue(default_ -&gt; default_.probes()[0].id()));
      *     }
      * }
      * ```
@@ -2169,14 +2739,14 @@ public final class ThreatdetectionFunctions {
      *             .arp(true)
      *             .build());
      * 
-     *         final var defaultHoneypotProbes = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
+     *         final var default = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
      *             .ids(defaultHoneypotProbe.id())
      *             .displayName(name)
      *             .probeType(&#34;host_probe&#34;)
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, defaultHoneypotProbes.applyValue(getHoneypotProbesResult -&gt; getHoneypotProbesResult).applyValue(defaultHoneypotProbes -&gt; defaultHoneypotProbes.applyValue(getHoneypotProbesResult -&gt; getHoneypotProbesResult.probes()[0].id())));
+     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, default_.applyValue(default_ -&gt; default_.probes()[0].id()));
      *     }
      * }
      * ```
@@ -2216,7 +2786,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(alicloud_threat_detection_instance.default().id())
+     *             .ids(defaultAlicloudThreatDetectionInstance.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
@@ -2259,7 +2829,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(alicloud_threat_detection_instance.default().id())
+     *             .ids(defaultAlicloudThreatDetectionInstance.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
@@ -2302,7 +2872,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(alicloud_threat_detection_instance.default().id())
+     *             .ids(defaultAlicloudThreatDetectionInstance.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
@@ -2345,7 +2915,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(alicloud_threat_detection_instance.default().id())
+     *             .ids(defaultAlicloudThreatDetectionInstance.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
@@ -2388,7 +2958,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(alicloud_threat_detection_instance.default().id())
+     *             .ids(defaultAlicloudThreatDetectionInstance.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
@@ -2431,7 +3001,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(alicloud_threat_detection_instance.default().id())
+     *             .ids(defaultAlicloudThreatDetectionInstance.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
@@ -3020,7 +3590,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getWebLockConfigs(GetWebLockConfigsArgs.builder()
-     *             .ids(alicloud_threat_detection_web_lock_config.default().id())
+     *             .ids(defaultAlicloudThreatDetectionWebLockConfig.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionWebLockConfigExampleId&#34;, default_.configs()[0].id());
@@ -3063,7 +3633,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getWebLockConfigs(GetWebLockConfigsArgs.builder()
-     *             .ids(alicloud_threat_detection_web_lock_config.default().id())
+     *             .ids(defaultAlicloudThreatDetectionWebLockConfig.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionWebLockConfigExampleId&#34;, default_.configs()[0].id());
@@ -3106,7 +3676,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getWebLockConfigs(GetWebLockConfigsArgs.builder()
-     *             .ids(alicloud_threat_detection_web_lock_config.default().id())
+     *             .ids(defaultAlicloudThreatDetectionWebLockConfig.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionWebLockConfigExampleId&#34;, default_.configs()[0].id());
@@ -3149,7 +3719,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getWebLockConfigs(GetWebLockConfigsArgs.builder()
-     *             .ids(alicloud_threat_detection_web_lock_config.default().id())
+     *             .ids(defaultAlicloudThreatDetectionWebLockConfig.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionWebLockConfigExampleId&#34;, default_.configs()[0].id());
@@ -3192,7 +3762,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getWebLockConfigs(GetWebLockConfigsArgs.builder()
-     *             .ids(alicloud_threat_detection_web_lock_config.default().id())
+     *             .ids(defaultAlicloudThreatDetectionWebLockConfig.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionWebLockConfigExampleId&#34;, default_.configs()[0].id());
@@ -3235,7 +3805,7 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getWebLockConfigs(GetWebLockConfigsArgs.builder()
-     *             .ids(alicloud_threat_detection_web_lock_config.default().id())
+     *             .ids(defaultAlicloudThreatDetectionWebLockConfig.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudThreatDetectionWebLockConfigExampleId&#34;, default_.configs()[0].id());

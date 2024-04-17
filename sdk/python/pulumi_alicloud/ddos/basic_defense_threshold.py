@@ -313,13 +313,13 @@ class BasicDefenseThreshold(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+        default = alicloud.ecs.EipAddress("default",
             address_name=name,
             isp="BGP",
             internet_charge_type="PayByBandwidth",
             payment_type="PayAsYouGo")
-        default_basic_defense_threshold = alicloud.ddos.BasicDefenseThreshold("defaultBasicDefenseThreshold",
-            instance_id=default_eip_address.id,
+        default_basic_defense_threshold = alicloud.ddos.BasicDefenseThreshold("default",
+            instance_id=default.id,
             ddos_type="defense",
             instance_type="eip",
             bps=390,
@@ -371,13 +371,13 @@ class BasicDefenseThreshold(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+        default = alicloud.ecs.EipAddress("default",
             address_name=name,
             isp="BGP",
             internet_charge_type="PayByBandwidth",
             payment_type="PayAsYouGo")
-        default_basic_defense_threshold = alicloud.ddos.BasicDefenseThreshold("defaultBasicDefenseThreshold",
-            instance_id=default_eip_address.id,
+        default_basic_defense_threshold = alicloud.ddos.BasicDefenseThreshold("default",
+            instance_id=default.id,
             ddos_type="defense",
             instance_type="eip",
             bps=390,

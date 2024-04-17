@@ -192,24 +192,27 @@ def get_snat_entries(ids: Optional[Sequence[str]] = None,
     if name is None:
         name = "snat-entry-example-name"
     default = alicloud.get_zones(available_resource_creation="VSwitch")
-    foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
-    foo_switch = alicloud.vpc.Switch("fooSwitch",
+    foo_network = alicloud.vpc.Network("foo",
+        name=name,
+        cidr_block="172.16.0.0/12")
+    foo_switch = alicloud.vpc.Switch("foo",
         vpc_id=foo_network.id,
         cidr_block="172.16.0.0/21",
         availability_zone=default.zones[0].id,
         vswitch_name=name)
-    foo_nat_gateway = alicloud.vpc.NatGateway("fooNatGateway",
+    foo_nat_gateway = alicloud.vpc.NatGateway("foo",
         vpc_id=foo_network.id,
-        specification="Small")
-    foo_eip_address = alicloud.ecs.EipAddress("fooEipAddress", address_name=name)
-    foo_eip_association = alicloud.ecs.EipAssociation("fooEipAssociation",
+        specification="Small",
+        name=name)
+    foo_eip_address = alicloud.ecs.EipAddress("foo", address_name=name)
+    foo_eip_association = alicloud.ecs.EipAssociation("foo",
         allocation_id=foo_eip_address.id,
         instance_id=foo_nat_gateway.id)
-    foo_snat_entry = alicloud.vpc.SnatEntry("fooSnatEntry",
+    foo_snat_entry = alicloud.vpc.SnatEntry("foo",
         snat_table_id=foo_nat_gateway.snat_table_ids,
         source_vswitch_id=foo_switch.id,
         snat_ip=foo_eip_address.ip_address)
-    foo_snat_entries = alicloud.vpc.get_snat_entries_output(snat_table_id=foo_snat_entry.snat_table_id)
+    foo = alicloud.vpc.get_snat_entries_output(snat_table_id=foo_snat_entry.snat_table_id)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -280,24 +283,27 @@ def get_snat_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     if name is None:
         name = "snat-entry-example-name"
     default = alicloud.get_zones(available_resource_creation="VSwitch")
-    foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
-    foo_switch = alicloud.vpc.Switch("fooSwitch",
+    foo_network = alicloud.vpc.Network("foo",
+        name=name,
+        cidr_block="172.16.0.0/12")
+    foo_switch = alicloud.vpc.Switch("foo",
         vpc_id=foo_network.id,
         cidr_block="172.16.0.0/21",
         availability_zone=default.zones[0].id,
         vswitch_name=name)
-    foo_nat_gateway = alicloud.vpc.NatGateway("fooNatGateway",
+    foo_nat_gateway = alicloud.vpc.NatGateway("foo",
         vpc_id=foo_network.id,
-        specification="Small")
-    foo_eip_address = alicloud.ecs.EipAddress("fooEipAddress", address_name=name)
-    foo_eip_association = alicloud.ecs.EipAssociation("fooEipAssociation",
+        specification="Small",
+        name=name)
+    foo_eip_address = alicloud.ecs.EipAddress("foo", address_name=name)
+    foo_eip_association = alicloud.ecs.EipAssociation("foo",
         allocation_id=foo_eip_address.id,
         instance_id=foo_nat_gateway.id)
-    foo_snat_entry = alicloud.vpc.SnatEntry("fooSnatEntry",
+    foo_snat_entry = alicloud.vpc.SnatEntry("foo",
         snat_table_id=foo_nat_gateway.snat_table_ids,
         source_vswitch_id=foo_switch.id,
         snat_ip=foo_eip_address.ip_address)
-    foo_snat_entries = alicloud.vpc.get_snat_entries_output(snat_table_id=foo_snat_entry.snat_table_id)
+    foo = alicloud.vpc.get_snat_entries_output(snat_table_id=foo_snat_entry.snat_table_id)
     ```
     <!--End PulumiCodeChooser -->
 

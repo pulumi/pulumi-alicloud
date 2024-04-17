@@ -899,9 +899,9 @@ public final class OtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var tunnelsDs = OtsFunctions.getTunnels(GetTunnelsArgs.builder()
      *             .instanceName(&#34;sample-instance&#34;)
+     *             .tableName(&#34;sample-table&#34;)
      *             .nameRegex(&#34;sample-tunnel&#34;)
      *             .outputFile(&#34;tunnels.txt&#34;)
-     *             .tableName(&#34;sample-table&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstTunnelId&#34;, tunnelsDs.applyValue(getTunnelsResult -&gt; getTunnelsResult.tunnels()[0].id()));
@@ -947,9 +947,9 @@ public final class OtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var tunnelsDs = OtsFunctions.getTunnels(GetTunnelsArgs.builder()
      *             .instanceName(&#34;sample-instance&#34;)
+     *             .tableName(&#34;sample-table&#34;)
      *             .nameRegex(&#34;sample-tunnel&#34;)
      *             .outputFile(&#34;tunnels.txt&#34;)
-     *             .tableName(&#34;sample-table&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstTunnelId&#34;, tunnelsDs.applyValue(getTunnelsResult -&gt; getTunnelsResult.tunnels()[0].id()));
@@ -995,9 +995,9 @@ public final class OtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var tunnelsDs = OtsFunctions.getTunnels(GetTunnelsArgs.builder()
      *             .instanceName(&#34;sample-instance&#34;)
+     *             .tableName(&#34;sample-table&#34;)
      *             .nameRegex(&#34;sample-tunnel&#34;)
      *             .outputFile(&#34;tunnels.txt&#34;)
-     *             .tableName(&#34;sample-table&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstTunnelId&#34;, tunnelsDs.applyValue(getTunnelsResult -&gt; getTunnelsResult.tunnels()[0].id()));
@@ -1043,9 +1043,9 @@ public final class OtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var tunnelsDs = OtsFunctions.getTunnels(GetTunnelsArgs.builder()
      *             .instanceName(&#34;sample-instance&#34;)
+     *             .tableName(&#34;sample-table&#34;)
      *             .nameRegex(&#34;sample-tunnel&#34;)
      *             .outputFile(&#34;tunnels.txt&#34;)
-     *             .tableName(&#34;sample-table&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstTunnelId&#34;, tunnelsDs.applyValue(getTunnelsResult -&gt; getTunnelsResult.tunnels()[0].id()));

@@ -31,29 +31,29 @@ namespace Pulumi.AliCloud.Drds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
     ///     var config = new Config();
     ///     var instanceSeries = config.Get("instanceSeries") ?? "drds.sn1.4c8g";
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
     ///         NameRegex = "default-NODELETING",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Drds.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Drds.Instance("default", new()
     ///     {
     ///         Description = "drds instance",
     ///         InstanceChargeType = "PostPaid",
-    ///         ZoneId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.ZoneId),
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.Id),
+    ///         ZoneId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.ZoneId),
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.Id),
     ///         InstanceSeries = instanceSeries,
     ///         Specification = "drds.sn1.4c8g.8C16G",
     ///     });

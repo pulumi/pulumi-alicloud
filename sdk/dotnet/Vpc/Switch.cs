@@ -31,23 +31,23 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooZones = AliCloud.GetZones.Invoke(new()
+    ///     var foo = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     var fooNetwork = new AliCloud.Vpc.Network("foo", new()
     ///     {
     ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
-    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     var fooSwitch = new AliCloud.Vpc.Switch("foo", new()
     ///     {
     ///         VswitchName = "terraform-example",
     ///         CidrBlock = "172.16.0.0/21",
     ///         VpcId = fooNetwork.Id,
-    ///         ZoneId = fooZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = foo.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
     /// });
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Vpc
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
-    ///     var cidrBlocks = new AliCloud.Vpc.Ipv4CidrBlock("cidrBlocks", new()
+    ///     var cidrBlocks = new AliCloud.Vpc.Ipv4CidrBlock("cidr_blocks", new()
     ///     {
     ///         VpcId = vpc.Id,
     ///         SecondaryCidrBlock = "192.163.0.0/16",
@@ -110,28 +110,28 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooZones = AliCloud.GetZones.Invoke(new()
+    ///     var foo = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     var fooNetwork = new AliCloud.Vpc.Network("foo", new()
     ///     {
     ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
-    ///     var fooIpv4CidrBlock = new AliCloud.Vpc.Ipv4CidrBlock("fooIpv4CidrBlock", new()
+    ///     var fooIpv4CidrBlock = new AliCloud.Vpc.Ipv4CidrBlock("foo", new()
     ///     {
     ///         VpcId = fooNetwork.Id,
     ///         SecondaryCidrBlock = "192.163.0.0/16",
     ///     });
     /// 
-    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     var fooSwitch = new AliCloud.Vpc.Switch("foo", new()
     ///     {
     ///         VpcId = fooIpv4CidrBlock.VpcId,
     ///         CidrBlock = "192.163.0.0/24",
-    ///         ZoneId = fooZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = foo.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
     /// });

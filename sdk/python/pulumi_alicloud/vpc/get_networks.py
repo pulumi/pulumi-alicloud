@@ -268,8 +268,8 @@ def get_networks(cidr_block: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     vpcs_ds = alicloud.vpc.get_networks(cidr_block="172.16.0.0/12",
-        name_regex="^foo",
-        status="Available")
+        status="Available",
+        name_regex="^foo")
     pulumi.export("firstVpcId", vpcs_ds.vpcs[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -362,8 +362,8 @@ def get_networks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
     import pulumi_alicloud as alicloud
 
     vpcs_ds = alicloud.vpc.get_networks(cidr_block="172.16.0.0/12",
-        name_regex="^foo",
-        status="Available")
+        status="Available",
+        name_regex="^foo")
     pulumi.export("firstVpcId", vpcs_ds.vpcs[0].id)
     ```
     <!--End PulumiCodeChooser -->

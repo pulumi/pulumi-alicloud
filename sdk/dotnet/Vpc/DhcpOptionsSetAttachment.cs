@@ -31,13 +31,13 @@ namespace Pulumi.AliCloud.Vpc
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var example = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var exampleDhcpOptionsSet = new AliCloud.Vpc.DhcpOptionsSet("exampleDhcpOptionsSet", new()
+    ///     var exampleDhcpOptionsSet = new AliCloud.Vpc.DhcpOptionsSet("example", new()
     ///     {
     ///         DhcpOptionsSetName = name,
     ///         DhcpOptionsSetDescription = name,
@@ -45,9 +45,9 @@ namespace Pulumi.AliCloud.Vpc
     ///         DomainNameServers = "100.100.2.136",
     ///     });
     /// 
-    ///     var exampleDhcpOptionsSetAttachment = new AliCloud.Vpc.DhcpOptionsSetAttachment("exampleDhcpOptionsSetAttachment", new()
+    ///     var exampleDhcpOptionsSetAttachment = new AliCloud.Vpc.DhcpOptionsSetAttachment("example", new()
     ///     {
-    ///         VpcId = exampleNetwork.Id,
+    ///         VpcId = example.Id,
     ///         DhcpOptionsSetId = exampleDhcpOptionsSet.Id,
     ///     });
     /// 

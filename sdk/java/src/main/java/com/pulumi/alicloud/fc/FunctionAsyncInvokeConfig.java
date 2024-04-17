@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ram.Role;
  * import com.pulumi.alicloud.ram.RoleArgs;
  * import com.pulumi.alicloud.ram.Policy;
@@ -55,7 +55,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.fc.Function;
  * import com.pulumi.alicloud.fc.FunctionArgs;
  * import com.pulumi.alicloud.mns.Queue;
+ * import com.pulumi.alicloud.mns.QueueArgs;
  * import com.pulumi.alicloud.mns.Topic;
+ * import com.pulumi.alicloud.mns.TopicArgs;
  * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfig;
  * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfigArgs;
  * import com.pulumi.alicloud.fc.inputs.FunctionAsyncInvokeConfigDestinationConfigArgs;
@@ -74,18 +76,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultAccount = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount();
  * 
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+ *             .name(String.format(&#34;examplerole%s&#34;, defaultInteger.result()))
  *             .document(&#34;&#34;&#34;
  * 	{
  * 		&#34;Statement&#34;: [
@@ -107,7 +110,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
- *             .policyName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;examplepolicy%s&#34;, result)))
+ *             .policyName(String.format(&#34;examplepolicy%s&#34;, defaultInteger.result()))
  *             .policyDocument(&#34;&#34;&#34;
  * 	{
  * 		&#34;Version&#34;: &#34;1&#34;,
@@ -129,13 +132,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .name(String.format(&#34;example-value-%s&#34;, defaultInteger.result()))
  *             .description(&#34;example-value&#34;)
  *             .role(defaultRole.arn())
  *             .internetAccess(false)
  *             .build());
  * 
  *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .bucket(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can&#39;t upload by content.
@@ -152,6 +156,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
  *             .service(defaultService.name())
+ *             .name(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
  *             .description(&#34;example&#34;)
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
@@ -160,19 +165,23 @@ import javax.annotation.Nullable;
  *             .handler(&#34;hello.handler&#34;)
  *             .build());
  * 
- *         var defaultQueue = new Queue(&#34;defaultQueue&#34;);
+ *         var defaultQueue = new Queue(&#34;defaultQueue&#34;, QueueArgs.builder()        
+ *             .name(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
+ *             .build());
  * 
- *         var defaultTopic = new Topic(&#34;defaultTopic&#34;);
+ *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
+ *             .name(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
+ *             .build());
  * 
  *         var defaultFunctionAsyncInvokeConfig = new FunctionAsyncInvokeConfig(&#34;defaultFunctionAsyncInvokeConfig&#34;, FunctionAsyncInvokeConfigArgs.builder()        
  *             .serviceName(defaultService.name())
  *             .functionName(defaultFunction.name())
  *             .destinationConfig(FunctionAsyncInvokeConfigDestinationConfigArgs.builder()
  *                 .onFailure(FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs.builder()
- *                     .destination(defaultQueue.name().applyValue(name -&gt; String.format(&#34;acs:mns:%s:%s:/queues/%s/messages&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
+ *                     .destination(defaultQueue.name().applyValue(name -&gt; String.format(&#34;acs:mns:%s:%s:/queues/%s/messages&#34;, defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),default_.id(),name)))
  *                     .build())
  *                 .onSuccess(FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs.builder()
- *                     .destination(defaultTopic.name().applyValue(name -&gt; String.format(&#34;acs:mns:%s:%s:/topics/%s/messages&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
+ *                     .destination(defaultTopic.name().applyValue(name -&gt; String.format(&#34;acs:mns:%s:%s:/topics/%s/messages&#34;, defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),default_.id(),name)))
  *                     .build())
  *                 .build())
  *             .maximumEventAgeInSeconds(60)

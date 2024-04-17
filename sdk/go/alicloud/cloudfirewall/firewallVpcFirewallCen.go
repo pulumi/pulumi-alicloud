@@ -41,10 +41,10 @@ import (
 //				LocalVpc: &cloudfirewall.FirewallVpcFirewallCenLocalVpcArgs{
 //					NetworkInstanceId: pulumi.String("vpc-xxx"),
 //				},
-//				MemberUid:       pulumi.String("14151*****827022"),
 //				Status:          pulumi.String("open"),
-//				VpcFirewallName: pulumi.String("tf-vpc-firewall-name"),
+//				MemberUid:       pulumi.String("14151*****827022"),
 //				VpcRegion:       pulumi.String("cn-hangzhou"),
+//				VpcFirewallName: pulumi.String("tf-vpc-firewall-name"),
 //			})
 //			if err != nil {
 //				return err

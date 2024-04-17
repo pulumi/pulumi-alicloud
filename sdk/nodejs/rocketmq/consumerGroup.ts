@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const createVpc = new alicloud.vpc.Network("createVpc", {
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * const createVswitch = new alicloud.vpc.Switch("createVswitch", {
  *     description: "example",
  *     vpcId: createVpc.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     cidrBlock: "172.16.0.0/24",
  *     vswitchName: name,
  * });
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  *     paymentType: "PayAsYouGo",
  *     periodUnit: "Month",
  * });
- * const defaultConsumerGroup = new alicloud.rocketmq.ConsumerGroup("defaultConsumerGroup", {
+ * const defaultConsumerGroup = new alicloud.rocketmq.ConsumerGroup("default", {
  *     consumerGroupId: name,
  *     instanceId: createInstance.id,
  *     consumeRetryPolicy: {

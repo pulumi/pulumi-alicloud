@@ -34,9 +34,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new action trail.
 //			_, err := actiontrail.NewTrailDeprecated(ctx, "foo", &actiontrail.TrailDeprecatedArgs{
+//				Name:          pulumi.String("action-trail"),
 //				EventRw:       pulumi.String("Write-test"),
-//				OssBucketName: pulumi.Any(alicloud_oss_bucket.Bucket.Id),
-//				RoleName:      pulumi.Any(alicloud_ram_role_policy_attachment.Attach.Role_name),
+//				OssBucketName: pulumi.Any(bucket.Id),
+//				RoleName:      pulumi.Any(attach.RoleName),
 //				OssKeyPrefix:  pulumi.String("at-product-account-audit-B"),
 //			})
 //			if err != nil {

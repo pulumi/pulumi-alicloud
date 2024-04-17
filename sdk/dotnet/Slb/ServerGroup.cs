@@ -40,35 +40,36 @@ namespace Pulumi.AliCloud.Slb
     /// {
     ///     var config = new Config();
     ///     var slbServerGroupName = config.Get("slbServerGroupName") ?? "forSlbServerGroup";
-    ///     var serverGroupZones = AliCloud.GetZones.Invoke(new()
+    ///     var serverGroup = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var serverGroupNetwork = new AliCloud.Vpc.Network("serverGroupNetwork", new()
+    ///     var serverGroupNetwork = new AliCloud.Vpc.Network("server_group", new()
     ///     {
     ///         VpcName = slbServerGroupName,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var serverGroupSwitch = new AliCloud.Vpc.Switch("serverGroupSwitch", new()
+    ///     var serverGroupSwitch = new AliCloud.Vpc.Switch("server_group", new()
     ///     {
     ///         VpcId = serverGroupNetwork.Id,
     ///         CidrBlock = "172.16.0.0/16",
-    ///         ZoneId = serverGroupZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = serverGroup.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = slbServerGroupName,
     ///     });
     /// 
-    ///     var serverGroupApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("serverGroupApplicationLoadBalancer", new()
+    ///     var serverGroupApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("server_group", new()
     ///     {
     ///         LoadBalancerName = slbServerGroupName,
     ///         VswitchId = serverGroupSwitch.Id,
     ///         InstanceChargeType = "PayByCLCU",
     ///     });
     /// 
-    ///     var serverGroupServerGroup = new AliCloud.Slb.ServerGroup("serverGroupServerGroup", new()
+    ///     var serverGroupServerGroup = new AliCloud.Slb.ServerGroup("server_group", new()
     ///     {
     ///         LoadBalancerId = serverGroupApplicationLoadBalancer.Id,
+    ///         Name = slbServerGroupName,
     ///     });
     /// 
     /// });

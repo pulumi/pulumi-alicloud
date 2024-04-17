@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Edas
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstClusterName"] = data.Alicloud_alikafka_consumer_groups.Clusters.Clusters[0].Cluster_name,
+        ///         ["firstClusterName"] = clustersAlicloudAlikafkaConsumerGroups.Clusters[0].ClusterName,
         ///     };
         /// });
         /// ```
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Edas
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstClusterName"] = data.Alicloud_alikafka_consumer_groups.Clusters.Clusters[0].Cluster_name,
+        ///         ["firstClusterName"] = clustersAlicloudAlikafkaConsumerGroups.Clusters[0].ClusterName,
         ///     };
         /// });
         /// ```

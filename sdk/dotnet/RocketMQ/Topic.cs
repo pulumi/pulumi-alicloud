@@ -33,18 +33,19 @@ namespace Pulumi.AliCloud.RocketMQ
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "onsInstanceName";
     ///     var topic = config.Get("topic") ?? "onsTopicName";
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.RocketMQ.Instance("default", new()
     ///     {
+    ///         Name = $"{name}-{@default.Result}",
     ///         Remark = "default_ons_instance_remark",
     ///     });
     /// 
-    ///     var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new()
+    ///     var defaultTopic = new AliCloud.RocketMQ.Topic("default", new()
     ///     {
     ///         TopicName = topic,
     ///         InstanceId = defaultInstance.Id,

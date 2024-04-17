@@ -23,18 +23,21 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const defaultProject = new alicloud.log.Project("defaultProject", {});
- * const defaultStore = new alicloud.log.Store("defaultStore", {project: defaultProject.name});
- * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
+ * const defaultProject = new alicloud.log.Project("default", {name: `terraform-example-${_default.result}`});
+ * const defaultStore = new alicloud.log.Store("default", {
+ *     project: defaultProject.name,
+ *     name: "terraform-example",
+ * });
+ * const defaultAccelerator = new alicloud.ga.Accelerator("default", {
  *     duration: 1,
  *     autoUseCoupon: true,
  *     spec: "2",
  * });
- * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("default", {
  *     bandwidth: 100,
  *     type: "Basic",
  *     bandwidthType: "Basic",
@@ -42,25 +45,26 @@ import * as utilities from "../utilities";
  *     billingType: "PayBy95",
  *     ratio: 30,
  * });
- * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("default", {
  *     acceleratorId: defaultAccelerator.id,
  *     bandwidthPackageId: defaultBandwidthPackage.id,
  * });
- * const defaultListener = new alicloud.ga.Listener("defaultListener", {
+ * const defaultListener = new alicloud.ga.Listener("default", {
  *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
  *     clientAffinity: "SOURCE_IP",
  *     protocol: "HTTP",
+ *     name: "terraform-example",
  *     portRanges: [{
  *         fromPort: 70,
  *         toPort: 70,
  *     }],
  * });
- * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("default", {
  *     bandwidth: "10",
  *     internetChargeType: "PayByBandwidth",
  *     addressName: "terraform-example",
  * });
- * const defaultEndpointGroup = new alicloud.ga.EndpointGroup("defaultEndpointGroup", {
+ * const defaultEndpointGroup = new alicloud.ga.EndpointGroup("default", {
  *     acceleratorId: defaultListener.acceleratorId,
  *     endpointConfigurations: [{
  *         endpoint: defaultEipAddress.ipAddress,
@@ -70,7 +74,7 @@ import * as utilities from "../utilities";
  *     endpointGroupRegion: region,
  *     listenerId: defaultListener.id,
  * });
- * const defaultAccessLog = new alicloud.ga.AccessLog("defaultAccessLog", {
+ * const defaultAccessLog = new alicloud.ga.AccessLog("default", {
  *     acceleratorId: defaultAccelerator.id,
  *     listenerId: defaultListener.id,
  *     endpointGroupId: defaultEndpointGroup.id,

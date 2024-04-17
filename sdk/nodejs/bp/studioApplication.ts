@@ -24,14 +24,14 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultInstances = alicloud.ecs.getInstances({
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultGetInstances = alicloud.ecs.getInstances({
  *     status: "Running",
  * });
- * const defaultStudioApplication = new alicloud.bp.StudioApplication("defaultStudioApplication", {
+ * const defaultStudioApplication = new alicloud.bp.StudioApplication("default", {
  *     applicationName: name,
  *     templateId: "YAUUQIYRSV1CMFGX",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
  *     areaId: "cn-hangzhou",
  *     instances: [{
  *         id: "data.alicloud_instances.default.instances.0.id",

@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.CR
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["crChartRepositoryId1"] = data.Alicloud_cr_chart_repositories.Default.Ids[0],
+        ///         ["crChartRepositoryId1"] = @default.Ids[0],
         ///     };
         /// });
         /// ```
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.CR
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["crChartRepositoryId1"] = data.Alicloud_cr_chart_repositories.Default.Ids[0],
+        ///         ["crChartRepositoryId1"] = @default.Ids[0],
         ///     };
         /// });
         /// ```

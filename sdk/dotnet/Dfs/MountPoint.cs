@@ -32,55 +32,55 @@ namespace Pulumi.AliCloud.Dfs
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultZones = AliCloud.Dfs.GetZones.Invoke();
+    ///     var @default = AliCloud.Dfs.GetZones.Invoke();
     /// 
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultVPC = new AliCloud.Vpc.Network("defaultVPC", new()
+    ///     var defaultVPC = new AliCloud.Vpc.Network("DefaultVPC", new()
     ///     {
     ///         CidrBlock = "172.16.0.0/12",
     ///         VpcName = name,
     ///     });
     /// 
-    ///     var defaultVSwitch = new AliCloud.Vpc.Switch("defaultVSwitch", new()
+    ///     var defaultVSwitch = new AliCloud.Vpc.Switch("DefaultVSwitch", new()
     ///     {
     ///         Description = "example",
     ///         VpcId = defaultVPC.Id,
     ///         CidrBlock = "172.16.0.0/24",
     ///         VswitchName = name,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
     ///     });
     /// 
-    ///     var defaultAccessGroup = new AliCloud.Dfs.AccessGroup("defaultAccessGroup", new()
+    ///     var defaultAccessGroup = new AliCloud.Dfs.AccessGroup("DefaultAccessGroup", new()
     ///     {
     ///         Description = "AccessGroup resource manager center example",
     ///         NetworkType = "VPC",
-    ///         AccessGroupName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         AccessGroupName = $"{name}-{defaultInteger.Result}",
     ///     });
     /// 
-    ///     var updateAccessGroup = new AliCloud.Dfs.AccessGroup("updateAccessGroup", new()
+    ///     var updateAccessGroup = new AliCloud.Dfs.AccessGroup("UpdateAccessGroup", new()
     ///     {
     ///         Description = "Second AccessGroup resource manager center example",
     ///         NetworkType = "VPC",
-    ///         AccessGroupName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-update-{result}"),
+    ///         AccessGroupName = $"{name}-update-{defaultInteger.Result}",
     ///     });
     /// 
-    ///     var defaultFs = new AliCloud.Dfs.FileSystem("defaultFs", new()
+    ///     var defaultFs = new AliCloud.Dfs.FileSystem("DefaultFs", new()
     ///     {
     ///         SpaceCapacity = 1024,
     ///         Description = "for mountpoint  example",
     ///         StorageType = "STANDARD",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
     ///         ProtocolType = "HDFS",
     ///         DataRedundancyType = "LRS",
-    ///         FileSystemName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         FileSystemName = $"{name}-{defaultInteger.Result}",
     ///     });
     /// 
-    ///     var defaultMountPoint = new AliCloud.Dfs.MountPoint("defaultMountPoint", new()
+    ///     var defaultMountPoint = new AliCloud.Dfs.MountPoint("default", new()
     ///     {
     ///         VpcId = defaultVPC.Id,
     ///         Description = "mountpoint example",

@@ -24,15 +24,16 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const defaultAccount = alicloud.getAccount({});
- * const defaultRegions = alicloud.getRegions({
+ * const default = alicloud.getAccount({});
+ * const defaultGetRegions = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const defaultRole = new alicloud.ram.Role("defaultRole", {
+ * const defaultRole = new alicloud.ram.Role("default", {
+ *     name: `examplerole${defaultInteger.result}`,
  *     document: `	{
  * 		"Statement": [
  * 		  {
@@ -51,8 +52,8 @@ import * as utilities from "../utilities";
  *     description: "this is a example",
  *     force: true,
  * });
- * const defaultPolicy = new alicloud.ram.Policy("defaultPolicy", {
- *     policyName: pulumi.interpolate`examplepolicy${defaultRandomInteger.result}`,
+ * const defaultPolicy = new alicloud.ram.Policy("default", {
+ *     policyName: `examplepolicy${defaultInteger.result}`,
  *     policyDocument: `	{
  * 		"Version": "1",
  * 		"Statement": [
@@ -65,19 +66,20 @@ import * as utilities from "../utilities";
  * 	  }
  * `,
  * });
- * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment", {
+ * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("default", {
  *     roleName: defaultRole.name,
  *     policyName: defaultPolicy.name,
  *     policyType: "Custom",
  * });
- * const defaultService = new alicloud.fc.Service("defaultService", {
+ * const defaultService = new alicloud.fc.Service("default", {
+ *     name: `example-value-${defaultInteger.result}`,
  *     description: "example-value",
  *     role: defaultRole.arn,
  *     internetAccess: false,
  * });
- * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
+ * const defaultBucket = new alicloud.oss.Bucket("default", {bucket: `terraform-example-${defaultInteger.result}`});
  * // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
- * const defaultBucketObject = new alicloud.oss.BucketObject("defaultBucketObject", {
+ * const defaultBucketObject = new alicloud.oss.BucketObject("default", {
  *     bucket: defaultBucket.id,
  *     key: "index.py",
  *     content: `import logging 
@@ -86,8 +88,9 @@ import * as utilities from "../utilities";
  * logger.info('hello world') 
  * return 'hello world'`,
  * });
- * const defaultFunction = new alicloud.fc.Function("defaultFunction", {
+ * const defaultFunction = new alicloud.fc.Function("default", {
  *     service: defaultService.name,
+ *     name: `terraform-example-${defaultInteger.result}`,
  *     description: "example",
  *     ossBucket: defaultBucket.id,
  *     ossKey: defaultBucketObject.key,
@@ -95,17 +98,17 @@ import * as utilities from "../utilities";
  *     runtime: "python3.10",
  *     handler: "hello.handler",
  * });
- * const defaultQueue = new alicloud.mns.Queue("defaultQueue", {});
- * const defaultTopic = new alicloud.mns.Topic("defaultTopic", {});
- * const defaultFunctionAsyncInvokeConfig = new alicloud.fc.FunctionAsyncInvokeConfig("defaultFunctionAsyncInvokeConfig", {
+ * const defaultQueue = new alicloud.mns.Queue("default", {name: `terraform-example-${defaultInteger.result}`});
+ * const defaultTopic = new alicloud.mns.Topic("default", {name: `terraform-example-${defaultInteger.result}`});
+ * const defaultFunctionAsyncInvokeConfig = new alicloud.fc.FunctionAsyncInvokeConfig("default", {
  *     serviceName: defaultService.name,
  *     functionName: defaultFunction.name,
  *     destinationConfig: {
  *         onFailure: {
- *             destination: pulumi.all([defaultRegions, defaultAccount, defaultQueue.name]).apply(([defaultRegions, defaultAccount, name]) => `acs:mns:${defaultRegions.regions?.[0]?.id}:${defaultAccount.id}:/queues/${name}/messages`),
+ *             destination: pulumi.all([defaultGetRegions, _default, defaultQueue.name]).apply(([defaultGetRegions, _default, name]) => `acs:mns:${defaultGetRegions.regions?.[0]?.id}:${_default.id}:/queues/${name}/messages`),
  *         },
  *         onSuccess: {
- *             destination: pulumi.all([defaultRegions, defaultAccount, defaultTopic.name]).apply(([defaultRegions, defaultAccount, name]) => `acs:mns:${defaultRegions.regions?.[0]?.id}:${defaultAccount.id}:/topics/${name}/messages`),
+ *             destination: pulumi.all([defaultGetRegions, _default, defaultTopic.name]).apply(([defaultGetRegions, _default, name]) => `acs:mns:${defaultGetRegions.regions?.[0]?.id}:${_default.id}:/topics/${name}/messages`),
  *         },
  *     },
  *     maximumEventAgeInSeconds: 60,

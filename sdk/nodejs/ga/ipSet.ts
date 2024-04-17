@@ -22,12 +22,12 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
- * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
+ * const _default = new alicloud.ga.Accelerator("default", {
  *     duration: 1,
  *     autoUseCoupon: true,
  *     spec: "1",
  * });
- * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("default", {
  *     bandwidth: 100,
  *     type: "Basic",
  *     bandwidthType: "Basic",
@@ -35,8 +35,8 @@ import * as utilities from "../utilities";
  *     billingType: "PayBy95",
  *     ratio: 30,
  * });
- * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
- *     acceleratorId: defaultAccelerator.id,
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("default", {
+ *     acceleratorId: _default.id,
  *     bandwidthPackageId: defaultBandwidthPackage.id,
  * });
  * const example = new alicloud.ga.IpSet("example", {

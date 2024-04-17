@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var zoneId = &#34;cn-hangzhou-h&#34;;
  * 
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
@@ -77,6 +77,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 

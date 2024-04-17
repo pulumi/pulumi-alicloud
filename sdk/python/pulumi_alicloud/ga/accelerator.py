@@ -536,8 +536,8 @@ class Accelerator(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ga.Accelerator("example",
-            auto_use_coupon=True,
             duration=1,
+            auto_use_coupon=True,
             spec="1")
         ```
         <!--End PulumiCodeChooser -->
@@ -592,8 +592,8 @@ class Accelerator(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ga.Accelerator("example",
-            auto_use_coupon=True,
             duration=1,
+            auto_use_coupon=True,
             spec="1")
         ```
         <!--End PulumiCodeChooser -->

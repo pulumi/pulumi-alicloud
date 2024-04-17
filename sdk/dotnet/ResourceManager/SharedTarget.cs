@@ -33,14 +33,14 @@ namespace Pulumi.AliCloud.ResourceManager
     ///     var name = config.Get("name") ?? "tfexample";
     ///     var @default = AliCloud.ResourceManager.GetAccounts.Invoke();
     /// 
-    ///     var exampleResourceShare = new AliCloud.ResourceManager.ResourceShare("exampleResourceShare", new()
+    ///     var example = new AliCloud.ResourceManager.ResourceShare("example", new()
     ///     {
     ///         ResourceShareName = name,
     ///     });
     /// 
-    ///     var exampleSharedTarget = new AliCloud.ResourceManager.SharedTarget("exampleSharedTarget", new()
+    ///     var exampleSharedTarget = new AliCloud.ResourceManager.SharedTarget("example", new()
     ///     {
-    ///         ResourceShareId = exampleResourceShare.Id,
+    ///         ResourceShareId = example.Id,
     ///         TargetId = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0])),
     ///     });
     /// 

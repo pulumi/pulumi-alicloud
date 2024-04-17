@@ -32,6 +32,10 @@ namespace Pulumi.AliCloud.Ros
     ///     var example = new AliCloud.Ros.Stack("example", new()
     ///     {
     ///         StackName = "tf-testaccstack",
+    ///         TemplateBody = @"    {
+    ///     	""ROSTemplateFormatVersion"": ""2015-09-01""
+    ///     }
+    /// ",
     ///         StackPolicyBody = @"    {
     ///     	""Statement"": [{
     ///     		""Action"": ""Update:Delete"",
@@ -40,12 +44,6 @@ namespace Pulumi.AliCloud.Ros
     ///     		""Principal"": ""*""
     ///     	}]
     ///     }
-    ///     
-    /// ",
-    ///         TemplateBody = @"    {
-    ///     	""ROSTemplateFormatVersion"": ""2015-09-01""
-    ///     }
-    ///     
     /// ",
     ///     });
     /// 

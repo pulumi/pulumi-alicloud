@@ -31,23 +31,23 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var example = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         VpcName = "tf_example",
     ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("example", new()
     ///     {
     ///         CenInstanceName = "tf_example",
     ///         Description = "an example for cen",
     ///     });
     /// 
-    ///     var exampleTransitRouterGrantAttachment = new AliCloud.Cen.TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment", new()
+    ///     var exampleTransitRouterGrantAttachment = new AliCloud.Cen.TransitRouterGrantAttachment("example", new()
     ///     {
     ///         CenId = exampleInstance.Id,
     ///         CenOwnerId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
-    ///         InstanceId = exampleNetwork.Id,
+    ///         InstanceId = example.Id,
     ///         InstanceType = "VPC",
     ///         OrderType = "PayByCenOwner",
     ///     });

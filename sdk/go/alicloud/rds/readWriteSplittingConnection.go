@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//			example, err := rds.GetZones(ctx, &rds.GetZonesArgs{
 //				Engine:                pulumi.StringRef("MySQL"),
 //				EngineVersion:         pulumi.StringRef("5.7"),
 //				Category:              pulumi.StringRef("HighAvailability"),
@@ -50,8 +50,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
-//				ZoneId:                pulumi.StringRef(exampleZones.Ids[0]),
+//			exampleGetInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
+//				ZoneId:                pulumi.StringRef(example.Ids[0]),
 //				Engine:                pulumi.StringRef("MySQL"),
 //				EngineVersion:         pulumi.StringRef("5.7"),
 //				Category:              pulumi.StringRef("HighAvailability"),
@@ -60,34 +60,35 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//			_, err = ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
 //				VpcId: exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
+//			exampleInstance, err := rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("5.7"),
 //				Category:              pulumi.String("HighAvailability"),
-//				InstanceType:          pulumi.String(exampleInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       pulumi.String(exampleInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				DbInstanceStorageType: pulumi.String("local_ssd"),
 //				InstanceName:          pulumi.String(name),
@@ -100,7 +101,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleReadOnlyInstance, err := rds.NewReadOnlyInstance(ctx, "exampleReadOnlyInstance", &rds.ReadOnlyInstanceArgs{
+//			exampleReadOnlyInstance, err := rds.NewReadOnlyInstance(ctx, "example", &rds.ReadOnlyInstanceArgs{
 //				ZoneId:             exampleInstance.ZoneId,
 //				MasterDbInstanceId: exampleInstance.ID(),
 //				EngineVersion:      exampleInstance.EngineVersion,
@@ -112,7 +113,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rds.NewReadWriteSplittingConnection(ctx, "exampleReadWriteSplittingConnection", &rds.ReadWriteSplittingConnectionArgs{
+//			_, err = rds.NewReadWriteSplittingConnection(ctx, "example", &rds.ReadWriteSplittingConnectionArgs{
 //				InstanceId:       exampleReadOnlyInstance.MasterDbInstanceId,
 //				ConnectionPrefix: pulumi.String("example-con-123"),
 //				DistributionType: pulumi.String("Standard"),

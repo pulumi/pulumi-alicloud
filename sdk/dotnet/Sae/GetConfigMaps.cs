@@ -32,26 +32,27 @@ namespace Pulumi.AliCloud.Sae
         /// {
         ///     var config = new Config();
         ///     var configMapName = config.Get("configMapName") ?? "examplename";
-        ///     var exampleNamespace = new AliCloud.Sae.Namespace("exampleNamespace", new()
+        ///     var example = new AliCloud.Sae.Namespace("example", new()
         ///     {
         ///         NamespaceId = "cn-hangzhou:yourname",
         ///         NamespaceName = "example_value",
         ///         NamespaceDescription = "your_description",
         ///     });
         /// 
-        ///     var exampleConfigMap = new AliCloud.Sae.ConfigMap("exampleConfigMap", new()
+        ///     var exampleConfigMap = new AliCloud.Sae.ConfigMap("example", new()
         ///     {
         ///         Data = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
         ///         {
         ///             ["env.home"] = "/root",
         ///             ["env.shell"] = "/bin/sh",
         ///         }),
-        ///         NamespaceId = exampleNamespace.NamespaceId,
+        ///         Name = configMapName,
+        ///         NamespaceId = example.NamespaceId,
         ///     });
         /// 
         ///     var nameRegex = AliCloud.Sae.GetConfigMaps.Invoke(new()
         ///     {
-        ///         NamespaceId = exampleNamespace.NamespaceId,
+        ///         NamespaceId = example.NamespaceId,
         ///         NameRegex = "^example",
         ///     });
         /// 
@@ -87,26 +88,27 @@ namespace Pulumi.AliCloud.Sae
         /// {
         ///     var config = new Config();
         ///     var configMapName = config.Get("configMapName") ?? "examplename";
-        ///     var exampleNamespace = new AliCloud.Sae.Namespace("exampleNamespace", new()
+        ///     var example = new AliCloud.Sae.Namespace("example", new()
         ///     {
         ///         NamespaceId = "cn-hangzhou:yourname",
         ///         NamespaceName = "example_value",
         ///         NamespaceDescription = "your_description",
         ///     });
         /// 
-        ///     var exampleConfigMap = new AliCloud.Sae.ConfigMap("exampleConfigMap", new()
+        ///     var exampleConfigMap = new AliCloud.Sae.ConfigMap("example", new()
         ///     {
         ///         Data = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
         ///         {
         ///             ["env.home"] = "/root",
         ///             ["env.shell"] = "/bin/sh",
         ///         }),
-        ///         NamespaceId = exampleNamespace.NamespaceId,
+        ///         Name = configMapName,
+        ///         NamespaceId = example.NamespaceId,
         ///     });
         /// 
         ///     var nameRegex = AliCloud.Sae.GetConfigMaps.Invoke(new()
         ///     {
-        ///         NamespaceId = exampleNamespace.NamespaceId,
+        ///         NamespaceId = example.NamespaceId,
         ///         NameRegex = "^example",
         ///     });
         /// 

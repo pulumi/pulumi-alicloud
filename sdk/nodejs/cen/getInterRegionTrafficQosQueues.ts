@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.cen.getInterRegionTrafficQosQueues({
- *     ids: [alicloud_cen_inter_region_traffic_qos_queue["default"].id],
- *     nameRegex: alicloud_cen_inter_region_traffic_qos_queue["default"].name,
+ *     ids: [defaultAlicloudCenInterRegionTrafficQosQueue.id],
+ *     nameRegex: defaultAlicloudCenInterRegionTrafficQosQueue.name,
  *     trafficQosPolicyId: "qos-xxxxxxx",
  * });
  * export const alicloudCenInterRegionTrafficQosQueueExampleId = _default.then(_default => _default.queues?.[0]?.id);
@@ -100,8 +100,8 @@ export interface GetInterRegionTrafficQosQueuesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.cen.getInterRegionTrafficQosQueues({
- *     ids: [alicloud_cen_inter_region_traffic_qos_queue["default"].id],
- *     nameRegex: alicloud_cen_inter_region_traffic_qos_queue["default"].name,
+ *     ids: [defaultAlicloudCenInterRegionTrafficQosQueue.id],
+ *     nameRegex: defaultAlicloudCenInterRegionTrafficQosQueue.name,
  *     trafficQosPolicyId: "qos-xxxxxxx",
  * });
  * export const alicloudCenInterRegionTrafficQosQueueExampleId = _default.then(_default => _default.queues?.[0]?.id);

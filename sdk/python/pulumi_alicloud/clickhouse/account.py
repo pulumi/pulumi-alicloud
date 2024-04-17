@@ -412,16 +412,16 @@ class Account(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_regions = alicloud.clickhouse.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.clickhouse.get_regions(current=True)
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_regions.regions[0].zone_ids[0].zone_id)
-        default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
+            zone_id=default.regions[0].zone_ids[0].zone_id)
+        default_db_cluster = alicloud.clickhouse.DbCluster("default",
             db_cluster_version="22.8.5.29",
             category="Basic",
             db_cluster_class="S8",
@@ -432,7 +432,7 @@ class Account(pulumi.CustomResource):
             storage_type="cloud_essd",
             vswitch_id=default_switch.id,
             vpc_id=default_network.id)
-        default_account = alicloud.clickhouse.Account("defaultAccount",
+        default_account = alicloud.clickhouse.Account("default",
             db_cluster_id=default_db_cluster.id,
             account_description="tf-example-description",
             account_name="examplename",
@@ -487,16 +487,16 @@ class Account(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_regions = alicloud.clickhouse.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.clickhouse.get_regions(current=True)
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_regions.regions[0].zone_ids[0].zone_id)
-        default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
+            zone_id=default.regions[0].zone_ids[0].zone_id)
+        default_db_cluster = alicloud.clickhouse.DbCluster("default",
             db_cluster_version="22.8.5.29",
             category="Basic",
             db_cluster_class="S8",
@@ -507,7 +507,7 @@ class Account(pulumi.CustomResource):
             storage_type="cloud_essd",
             vswitch_id=default_switch.id,
             vpc_id=default_network.id)
-        default_account = alicloud.clickhouse.Account("defaultAccount",
+        default_account = alicloud.clickhouse.Account("default",
             db_cluster_id=default_db_cluster.id,
             account_description="tf-example-description",
             account_name="examplename",

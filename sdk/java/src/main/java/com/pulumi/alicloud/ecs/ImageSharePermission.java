@@ -64,15 +64,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;Instance&#34;)
  *             .build());
  * 
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
  *             .build());
  * 
- *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
  *             .owners(&#34;system&#34;)
  *             .build());
@@ -86,20 +86,21 @@ import javax.annotation.Nullable;
  *             .vswitchName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(&#34;terraform-example&#34;)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .availabilityZone(default_.zones()[0].id())
  *             .instanceName(&#34;terraform-example&#34;)
  *             .securityGroups(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
- *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.ids()[0]))
- *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.ids()[0]))
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
  *             .internetMaxBandwidthOut(10)
  *             .build());
  * 

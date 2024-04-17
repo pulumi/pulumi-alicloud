@@ -305,13 +305,13 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.threatdetection.MaliciousFileWhitelistConfig("default",
-            event_name="123",
-            field="fileMd6",
-            field_value="sadfas",
             operator="strEquals",
-            source="agentless",
+            field="fileMd6",
+            target_value="123",
             target_type="SELECTION_KEY",
-            target_value="123")
+            event_name="123",
+            source="agentless",
+            field_value="sadfas")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -361,13 +361,13 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.threatdetection.MaliciousFileWhitelistConfig("default",
-            event_name="123",
-            field="fileMd6",
-            field_value="sadfas",
             operator="strEquals",
-            source="agentless",
+            field="fileMd6",
+            target_value="123",
             target_type="SELECTION_KEY",
-            target_value="123")
+            event_name="123",
+            source="agentless",
+            field_value="sadfas")
         ```
         <!--End PulumiCodeChooser -->
 

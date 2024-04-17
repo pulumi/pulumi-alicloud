@@ -59,10 +59,10 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
      *             .ids(&#34;fake-conn-id&#34;)
-     *             .outputFile(&#34;/tmp/vpnconn&#34;)
      *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
+     *             .outputFile(&#34;/tmp/vpnconn&#34;)
      *             .build());
      * 
      *     }
@@ -104,10 +104,10 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
      *             .ids(&#34;fake-conn-id&#34;)
-     *             .outputFile(&#34;/tmp/vpnconn&#34;)
      *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
+     *             .outputFile(&#34;/tmp/vpnconn&#34;)
      *             .build());
      * 
      *     }
@@ -149,10 +149,10 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
      *             .ids(&#34;fake-conn-id&#34;)
-     *             .outputFile(&#34;/tmp/vpnconn&#34;)
      *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
+     *             .outputFile(&#34;/tmp/vpnconn&#34;)
      *             .build());
      * 
      *     }
@@ -194,10 +194,10 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
      *             .ids(&#34;fake-conn-id&#34;)
-     *             .outputFile(&#34;/tmp/vpnconn&#34;)
      *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
+     *             .outputFile(&#34;/tmp/vpnconn&#34;)
      *             .build());
      * 
      *     }
@@ -239,10 +239,10 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
      *             .ids(&#34;fake-conn-id&#34;)
-     *             .outputFile(&#34;/tmp/vpnconn&#34;)
      *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
+     *             .outputFile(&#34;/tmp/vpnconn&#34;)
      *             .build());
      * 
      *     }
@@ -284,10 +284,10 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
      *             .ids(&#34;fake-conn-id&#34;)
-     *             .outputFile(&#34;/tmp/vpnconn&#34;)
      *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
+     *             .outputFile(&#34;/tmp/vpnconn&#34;)
      *             .build());
      * 
      *     }
@@ -327,10 +327,10 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getCustomerGateways(GetCustomerGatewaysArgs.builder()
+     *             .nameRegex(&#34;testAcc*&#34;)
      *             .ids(            
      *                 &#34;fake-id1&#34;,
      *                 &#34;fake-id2&#34;)
-     *             .nameRegex(&#34;testAcc*&#34;)
      *             .outputFile(&#34;/tmp/cgws&#34;)
      *             .build());
      * 
@@ -371,10 +371,10 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getCustomerGateways(GetCustomerGatewaysArgs.builder()
+     *             .nameRegex(&#34;testAcc*&#34;)
      *             .ids(            
      *                 &#34;fake-id1&#34;,
      *                 &#34;fake-id2&#34;)
-     *             .nameRegex(&#34;testAcc*&#34;)
      *             .outputFile(&#34;/tmp/cgws&#34;)
      *             .build());
      * 
@@ -415,10 +415,10 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getCustomerGateways(GetCustomerGatewaysArgs.builder()
+     *             .nameRegex(&#34;testAcc*&#34;)
      *             .ids(            
      *                 &#34;fake-id1&#34;,
      *                 &#34;fake-id2&#34;)
-     *             .nameRegex(&#34;testAcc*&#34;)
      *             .outputFile(&#34;/tmp/cgws&#34;)
      *             .build());
      * 
@@ -459,10 +459,10 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getCustomerGateways(GetCustomerGatewaysArgs.builder()
+     *             .nameRegex(&#34;testAcc*&#34;)
      *             .ids(            
      *                 &#34;fake-id1&#34;,
      *                 &#34;fake-id2&#34;)
-     *             .nameRegex(&#34;testAcc*&#34;)
      *             .outputFile(&#34;/tmp/cgws&#34;)
      *             .build());
      * 
@@ -503,10 +503,10 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getCustomerGateways(GetCustomerGatewaysArgs.builder()
+     *             .nameRegex(&#34;testAcc*&#34;)
      *             .ids(            
      *                 &#34;fake-id1&#34;,
      *                 &#34;fake-id2&#34;)
-     *             .nameRegex(&#34;testAcc*&#34;)
      *             .outputFile(&#34;/tmp/cgws&#34;)
      *             .build());
      * 
@@ -547,10 +547,10 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getCustomerGateways(GetCustomerGatewaysArgs.builder()
+     *             .nameRegex(&#34;testAcc*&#34;)
      *             .ids(            
      *                 &#34;fake-id1&#34;,
      *                 &#34;fake-id2&#34;)
-     *             .nameRegex(&#34;testAcc*&#34;)
      *             .outputFile(&#34;/tmp/cgws&#34;)
      *             .build());
      * 
@@ -614,18 +614,19 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
-     *             .cenInstanceName(var_.name())
+     *             .cenInstanceName(name)
      *             .build());
      * 
      *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
      *             .cenId(defaultInstance.id())
      *             .transitRouterDescription(&#34;desd&#34;)
-     *             .transitRouterName(var_.name())
+     *             .transitRouterName(name)
      *             .build());
      * 
-     *         final var defaultTransitRouterAvailableResources = CenFunctions.getTransitRouterAvailableResources();
+     *         final var default = CenFunctions.getTransitRouterAvailableResources();
      * 
      *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+     *             .name(name)
      *             .ipAddress(&#34;42.104.22.210&#34;)
      *             .asn(&#34;45014&#34;)
      *             .description(&#34;testAccVpnConnectionDesc&#34;)
@@ -670,18 +671,18 @@ public final class VpnFunctions {
      *                 .build())
      *             .enableDpd(true)
      *             .enableNatTraversal(true)
-     *             .vpnAttachmentName(var_.name())
+     *             .vpnAttachmentName(name)
      *             .build());
      * 
      *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment(&#34;defaultTransitRouterVpnAttachment&#34;, TransitRouterVpnAttachmentArgs.builder()        
      *             .autoPublishRouteEnabled(false)
-     *             .transitRouterAttachmentDescription(var_.name())
-     *             .transitRouterAttachmentName(var_.name())
+     *             .transitRouterAttachmentDescription(name)
+     *             .transitRouterAttachmentName(name)
      *             .cenId(defaultTransitRouter.cenId())
      *             .transitRouterId(defaultTransitRouter.transitRouterId())
      *             .vpnId(defaultGatewayVpnAttachment.id())
      *             .zones(TransitRouterVpnAttachmentZoneArgs.builder()
-     *                 .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]))
+     *                 .zoneId(default_.resources()[0].masterZones()[0])
      *                 .build())
      *             .build());
      * 
@@ -692,11 +693,11 @@ public final class VpnFunctions {
      *             .weight(100)
      *             .build());
      * 
-     *         final var defaultGatewayVcoRoutes = VpnFunctions.getGatewayVcoRoutes(GetGatewayVcoRoutesArgs.builder()
+     *         final var defaultGetGatewayVcoRoutes = VpnFunctions.getGatewayVcoRoutes(GetGatewayVcoRoutesArgs.builder()
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .build());
      * 
-     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, data.alicloud_vpn_gateway_vco_routes().ids().routes()[0].id());
+     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, ids.routes()[0].id());
      *     }
      * }
      * ```
@@ -757,18 +758,19 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
-     *             .cenInstanceName(var_.name())
+     *             .cenInstanceName(name)
      *             .build());
      * 
      *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
      *             .cenId(defaultInstance.id())
      *             .transitRouterDescription(&#34;desd&#34;)
-     *             .transitRouterName(var_.name())
+     *             .transitRouterName(name)
      *             .build());
      * 
-     *         final var defaultTransitRouterAvailableResources = CenFunctions.getTransitRouterAvailableResources();
+     *         final var default = CenFunctions.getTransitRouterAvailableResources();
      * 
      *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+     *             .name(name)
      *             .ipAddress(&#34;42.104.22.210&#34;)
      *             .asn(&#34;45014&#34;)
      *             .description(&#34;testAccVpnConnectionDesc&#34;)
@@ -813,18 +815,18 @@ public final class VpnFunctions {
      *                 .build())
      *             .enableDpd(true)
      *             .enableNatTraversal(true)
-     *             .vpnAttachmentName(var_.name())
+     *             .vpnAttachmentName(name)
      *             .build());
      * 
      *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment(&#34;defaultTransitRouterVpnAttachment&#34;, TransitRouterVpnAttachmentArgs.builder()        
      *             .autoPublishRouteEnabled(false)
-     *             .transitRouterAttachmentDescription(var_.name())
-     *             .transitRouterAttachmentName(var_.name())
+     *             .transitRouterAttachmentDescription(name)
+     *             .transitRouterAttachmentName(name)
      *             .cenId(defaultTransitRouter.cenId())
      *             .transitRouterId(defaultTransitRouter.transitRouterId())
      *             .vpnId(defaultGatewayVpnAttachment.id())
      *             .zones(TransitRouterVpnAttachmentZoneArgs.builder()
-     *                 .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]))
+     *                 .zoneId(default_.resources()[0].masterZones()[0])
      *                 .build())
      *             .build());
      * 
@@ -835,11 +837,11 @@ public final class VpnFunctions {
      *             .weight(100)
      *             .build());
      * 
-     *         final var defaultGatewayVcoRoutes = VpnFunctions.getGatewayVcoRoutes(GetGatewayVcoRoutesArgs.builder()
+     *         final var defaultGetGatewayVcoRoutes = VpnFunctions.getGatewayVcoRoutes(GetGatewayVcoRoutesArgs.builder()
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .build());
      * 
-     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, data.alicloud_vpn_gateway_vco_routes().ids().routes()[0].id());
+     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, ids.routes()[0].id());
      *     }
      * }
      * ```
@@ -900,18 +902,19 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
-     *             .cenInstanceName(var_.name())
+     *             .cenInstanceName(name)
      *             .build());
      * 
      *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
      *             .cenId(defaultInstance.id())
      *             .transitRouterDescription(&#34;desd&#34;)
-     *             .transitRouterName(var_.name())
+     *             .transitRouterName(name)
      *             .build());
      * 
-     *         final var defaultTransitRouterAvailableResources = CenFunctions.getTransitRouterAvailableResources();
+     *         final var default = CenFunctions.getTransitRouterAvailableResources();
      * 
      *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+     *             .name(name)
      *             .ipAddress(&#34;42.104.22.210&#34;)
      *             .asn(&#34;45014&#34;)
      *             .description(&#34;testAccVpnConnectionDesc&#34;)
@@ -956,18 +959,18 @@ public final class VpnFunctions {
      *                 .build())
      *             .enableDpd(true)
      *             .enableNatTraversal(true)
-     *             .vpnAttachmentName(var_.name())
+     *             .vpnAttachmentName(name)
      *             .build());
      * 
      *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment(&#34;defaultTransitRouterVpnAttachment&#34;, TransitRouterVpnAttachmentArgs.builder()        
      *             .autoPublishRouteEnabled(false)
-     *             .transitRouterAttachmentDescription(var_.name())
-     *             .transitRouterAttachmentName(var_.name())
+     *             .transitRouterAttachmentDescription(name)
+     *             .transitRouterAttachmentName(name)
      *             .cenId(defaultTransitRouter.cenId())
      *             .transitRouterId(defaultTransitRouter.transitRouterId())
      *             .vpnId(defaultGatewayVpnAttachment.id())
      *             .zones(TransitRouterVpnAttachmentZoneArgs.builder()
-     *                 .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]))
+     *                 .zoneId(default_.resources()[0].masterZones()[0])
      *                 .build())
      *             .build());
      * 
@@ -978,11 +981,11 @@ public final class VpnFunctions {
      *             .weight(100)
      *             .build());
      * 
-     *         final var defaultGatewayVcoRoutes = VpnFunctions.getGatewayVcoRoutes(GetGatewayVcoRoutesArgs.builder()
+     *         final var defaultGetGatewayVcoRoutes = VpnFunctions.getGatewayVcoRoutes(GetGatewayVcoRoutesArgs.builder()
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .build());
      * 
-     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, data.alicloud_vpn_gateway_vco_routes().ids().routes()[0].id());
+     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, ids.routes()[0].id());
      *     }
      * }
      * ```
@@ -1043,18 +1046,19 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
-     *             .cenInstanceName(var_.name())
+     *             .cenInstanceName(name)
      *             .build());
      * 
      *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
      *             .cenId(defaultInstance.id())
      *             .transitRouterDescription(&#34;desd&#34;)
-     *             .transitRouterName(var_.name())
+     *             .transitRouterName(name)
      *             .build());
      * 
-     *         final var defaultTransitRouterAvailableResources = CenFunctions.getTransitRouterAvailableResources();
+     *         final var default = CenFunctions.getTransitRouterAvailableResources();
      * 
      *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+     *             .name(name)
      *             .ipAddress(&#34;42.104.22.210&#34;)
      *             .asn(&#34;45014&#34;)
      *             .description(&#34;testAccVpnConnectionDesc&#34;)
@@ -1099,18 +1103,18 @@ public final class VpnFunctions {
      *                 .build())
      *             .enableDpd(true)
      *             .enableNatTraversal(true)
-     *             .vpnAttachmentName(var_.name())
+     *             .vpnAttachmentName(name)
      *             .build());
      * 
      *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment(&#34;defaultTransitRouterVpnAttachment&#34;, TransitRouterVpnAttachmentArgs.builder()        
      *             .autoPublishRouteEnabled(false)
-     *             .transitRouterAttachmentDescription(var_.name())
-     *             .transitRouterAttachmentName(var_.name())
+     *             .transitRouterAttachmentDescription(name)
+     *             .transitRouterAttachmentName(name)
      *             .cenId(defaultTransitRouter.cenId())
      *             .transitRouterId(defaultTransitRouter.transitRouterId())
      *             .vpnId(defaultGatewayVpnAttachment.id())
      *             .zones(TransitRouterVpnAttachmentZoneArgs.builder()
-     *                 .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]))
+     *                 .zoneId(default_.resources()[0].masterZones()[0])
      *                 .build())
      *             .build());
      * 
@@ -1121,11 +1125,11 @@ public final class VpnFunctions {
      *             .weight(100)
      *             .build());
      * 
-     *         final var defaultGatewayVcoRoutes = VpnFunctions.getGatewayVcoRoutes(GetGatewayVcoRoutesArgs.builder()
+     *         final var defaultGetGatewayVcoRoutes = VpnFunctions.getGatewayVcoRoutes(GetGatewayVcoRoutesArgs.builder()
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .build());
      * 
-     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, data.alicloud_vpn_gateway_vco_routes().ids().routes()[0].id());
+     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, ids.routes()[0].id());
      *     }
      * }
      * ```
@@ -1174,8 +1178,8 @@ public final class VpnFunctions {
      *             .build());
      * 
      *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export(&#34;localId&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].ike_config()[0].local_id());
-     *         ctx.export(&#34;internetIp&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].internet_ip());
+     *         ctx.export(&#34;localId&#34;, vpnAttachments.attachments()[0].ikeConfig()[0].localId());
+     *         ctx.export(&#34;internetIp&#34;, vpnAttachments.attachments()[0].internetIp());
      *     }
      * }
      * ```
@@ -1224,8 +1228,8 @@ public final class VpnFunctions {
      *             .build());
      * 
      *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export(&#34;localId&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].ike_config()[0].local_id());
-     *         ctx.export(&#34;internetIp&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].internet_ip());
+     *         ctx.export(&#34;localId&#34;, vpnAttachments.attachments()[0].ikeConfig()[0].localId());
+     *         ctx.export(&#34;internetIp&#34;, vpnAttachments.attachments()[0].internetIp());
      *     }
      * }
      * ```
@@ -1274,8 +1278,8 @@ public final class VpnFunctions {
      *             .build());
      * 
      *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export(&#34;localId&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].ike_config()[0].local_id());
-     *         ctx.export(&#34;internetIp&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].internet_ip());
+     *         ctx.export(&#34;localId&#34;, vpnAttachments.attachments()[0].ikeConfig()[0].localId());
+     *         ctx.export(&#34;internetIp&#34;, vpnAttachments.attachments()[0].internetIp());
      *     }
      * }
      * ```
@@ -1324,8 +1328,8 @@ public final class VpnFunctions {
      *             .build());
      * 
      *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export(&#34;localId&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].ike_config()[0].local_id());
-     *         ctx.export(&#34;internetIp&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].internet_ip());
+     *         ctx.export(&#34;localId&#34;, vpnAttachments.attachments()[0].ikeConfig()[0].localId());
+     *         ctx.export(&#34;internetIp&#34;, vpnAttachments.attachments()[0].internetIp());
      *     }
      * }
      * ```
@@ -1374,8 +1378,8 @@ public final class VpnFunctions {
      *             .build());
      * 
      *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export(&#34;localId&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].ike_config()[0].local_id());
-     *         ctx.export(&#34;internetIp&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].internet_ip());
+     *         ctx.export(&#34;localId&#34;, vpnAttachments.attachments()[0].ikeConfig()[0].localId());
+     *         ctx.export(&#34;internetIp&#34;, vpnAttachments.attachments()[0].internetIp());
      *     }
      * }
      * ```
@@ -1424,8 +1428,8 @@ public final class VpnFunctions {
      *             .build());
      * 
      *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export(&#34;localId&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].ike_config()[0].local_id());
-     *         ctx.export(&#34;internetIp&#34;, data.alicloud_vpn_gateway_vpn_attachments().vpn_attachments().attachments()[0].internet_ip());
+     *         ctx.export(&#34;localId&#34;, vpnAttachments.attachments()[0].ikeConfig()[0].localId());
+     *         ctx.export(&#34;internetIp&#34;, vpnAttachments.attachments()[0].internetIp());
      *     }
      * }
      * ```

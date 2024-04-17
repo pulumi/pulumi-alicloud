@@ -31,27 +31,27 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// defaultEcsBackupPlans, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
+// _default, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
 // NameRegex: pulumi.StringRef("plan-name"),
 // }, nil);
 // if err != nil {
 // return err
 // }
-// defaultBackupJobs, err := hbr.GetBackupJobs(ctx, &hbr.GetBackupJobsArgs{
+// defaultGetBackupJobs, err := hbr.GetBackupJobs(ctx, &hbr.GetBackupJobsArgs{
 // SourceType: "ECS_FILE",
 // Filters: []hbr.GetBackupJobsFilter{
 // {
 // Key: pulumi.StringRef("VaultId"),
 // Operator: pulumi.StringRef("IN"),
 // Values: interface{}{
-// defaultEcsBackupPlans.Plans[0].VaultId,
+// _default.Plans[0].VaultId,
 // },
 // },
 // {
 // Key: pulumi.StringRef("InstanceId"),
 // Operator: pulumi.StringRef("IN"),
 // Values: interface{}{
-// defaultEcsBackupPlans.Plans[0].InstanceId,
+// _default.Plans[0].InstanceId,
 // },
 // },
 // {
@@ -75,14 +75,14 @@ import (
 // Key: pulumi.StringRef("VaultId"),
 // Operator: pulumi.StringRef("IN"),
 // Values: interface{}{
-// defaultEcsBackupPlans.Plans[0].VaultId,
+// _default.Plans[0].VaultId,
 // },
 // },
 // {
 // Key: pulumi.StringRef("InstanceId"),
 // Operator: pulumi.StringRef("IN"),
 // Values: interface{}{
-// defaultEcsBackupPlans.Plans[0].InstanceId,
+// _default.Plans[0].InstanceId,
 // },
 // },
 // {
@@ -97,7 +97,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("alicloudHbrBackupJobsDefault1", defaultBackupJobs.Jobs[0].Id)
+// ctx.Export("alicloudHbrBackupJobsDefault1", defaultGetBackupJobs.Jobs[0].Id)
 // ctx.Export("alicloudHbrBackupJobsExample1", example.Jobs[0].Id)
 // return nil
 // })

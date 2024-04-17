@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
  *             .networkName(name)
  *             .description(name)
  *             .cidrBlock(&#34;192.168.2.0/24&#34;)
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .cidrBlock(&#34;192.168.2.0/24&#34;)
  *             .vswitchName(name)
  *             .ensRegionId(&#34;cn-chenzhou-telecom_unicom_cmcc&#34;)
- *             .networkId(defaultNetwork.id())
+ *             .networkId(default_.id())
  *             .build());
  * 
  *     }

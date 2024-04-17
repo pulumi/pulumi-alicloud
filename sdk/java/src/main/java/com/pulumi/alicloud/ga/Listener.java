@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultAccelerator = new Accelerator(&#34;defaultAccelerator&#34;, AcceleratorArgs.builder()        
+ *         var default_ = new Accelerator(&#34;default&#34;, AcceleratorArgs.builder()        
  *             .duration(1)
  *             .autoUseCoupon(true)
  *             .spec(&#34;1&#34;)
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
- *             .acceleratorId(defaultAccelerator.id())
+ *             .acceleratorId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 

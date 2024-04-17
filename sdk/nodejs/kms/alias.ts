@@ -18,10 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const thisKey = new alicloud.kms.Key("thisKey", {pendingWindowInDays: 7});
- * const thisAlias = new alicloud.kms.Alias("thisAlias", {
+ * const _this = new alicloud.kms.Key("this", {pendingWindowInDays: 7});
+ * const thisAlias = new alicloud.kms.Alias("this", {
  *     aliasName: "alias/example_kms_alias",
- *     keyId: thisKey.id,
+ *     keyId: _this.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

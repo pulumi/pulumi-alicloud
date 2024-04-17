@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.eflo.getVpds({
- *     ids: [alicloud_eflo_vpd["default"].id],
- *     nameRegex: alicloud_eflo_vpd["default"].name,
+ *     ids: [defaultAlicloudEfloVpd.id],
+ *     nameRegex: defaultAlicloudEfloVpd.name,
  *     vpdName: "RMC-Terraform-Test",
  * });
  * export const alicloudEfloVpdExampleId = _default.then(_default => _default.vpds?.[0]?.id);
@@ -140,8 +140,8 @@ export interface GetVpdsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.eflo.getVpds({
- *     ids: [alicloud_eflo_vpd["default"].id],
- *     nameRegex: alicloud_eflo_vpd["default"].name,
+ *     ids: [defaultAlicloudEfloVpd.id],
+ *     nameRegex: defaultAlicloudEfloVpd.name,
  *     vpdName: "RMC-Terraform-Test",
  * });
  * export const alicloudEfloVpdExampleId = _default.then(_default => _default.vpds?.[0]?.id);

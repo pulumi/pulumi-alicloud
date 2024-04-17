@@ -32,13 +32,13 @@ namespace Pulumi.AliCloud.ResourceManager
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var exampleControlPolicy = new AliCloud.ResourceManager.ControlPolicy("exampleControlPolicy", new()
+    ///     var example = new AliCloud.ResourceManager.ControlPolicy("example", new()
     ///     {
     ///         ControlPolicyName = name,
     ///         Description = name,
@@ -61,14 +61,14 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ",
     ///     });
     /// 
-    ///     var exampleFolder = new AliCloud.ResourceManager.Folder("exampleFolder", new()
+    ///     var exampleFolder = new AliCloud.ResourceManager.Folder("example", new()
     ///     {
-    ///         FolderName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         FolderName = $"{name}-{@default.Result}",
     ///     });
     /// 
-    ///     var exampleControlPolicyAttachment = new AliCloud.ResourceManager.ControlPolicyAttachment("exampleControlPolicyAttachment", new()
+    ///     var exampleControlPolicyAttachment = new AliCloud.ResourceManager.ControlPolicyAttachment("example", new()
     ///     {
-    ///         PolicyId = exampleControlPolicy.Id,
+    ///         PolicyId = example.Id,
     ///         TargetId = exampleFolder.Id,
     ///     });
     /// 

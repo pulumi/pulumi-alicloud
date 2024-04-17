@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
 //			_default, err := cs.GetKubernetesVersion(ctx, &cs.GetKubernetesVersionArgs{
 //				ClusterType:       "ManagedKubernetes",
 //				KubernetesVersion: pulumi.StringRef("1.22.3-aliyun.1"),
@@ -59,6 +60,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
 //			_default, err := cs.GetKubernetesVersion(ctx, &cs.GetKubernetesVersionArgs{
 //				ClusterType:       "Kubernetes",
 //				KubernetesVersion: pulumi.StringRef("1.22.3-aliyun.1"),
@@ -88,6 +90,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
 //			_default, err := cs.GetKubernetesVersion(ctx, &cs.GetKubernetesVersionArgs{
 //				ClusterType:       "ManagedKubernetes",
 //				KubernetesVersion: pulumi.StringRef("1.22.3-aliyun.1"),
@@ -117,6 +120,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
 //			_default, err := cs.GetKubernetesVersion(ctx, &cs.GetKubernetesVersionArgs{
 //				ClusterType:       "ManagedKubernetes",
 //				KubernetesVersion: pulumi.StringRef("1.20.11-aliyunedge.1"),

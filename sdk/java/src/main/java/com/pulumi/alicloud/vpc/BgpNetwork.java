@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
  * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
  * import com.pulumi.alicloud.vpc.BgpNetwork;
@@ -54,11 +54,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var examplePhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *         final var example = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
  *             .nameRegex(&#34;^preserved-NODELETING&#34;)
  *             .build());
  * 
- *         var vlanId = new RandomInteger(&#34;vlanId&#34;, RandomIntegerArgs.builder()        
+ *         var vlanId = new Integer(&#34;vlanId&#34;, IntegerArgs.builder()        
  *             .max(2999)
  *             .min(1)
  *             .build());
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .localGatewayIp(&#34;10.0.0.1&#34;)
  *             .peerGatewayIp(&#34;10.0.0.2&#34;)
  *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
- *             .physicalConnectionId(examplePhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
+ *             .physicalConnectionId(example.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
  *             .virtualBorderRouterName(name)
  *             .vlanId(vlanId.id())
  *             .minRxInterval(1000)

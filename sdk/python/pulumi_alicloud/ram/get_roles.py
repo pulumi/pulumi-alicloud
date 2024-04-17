@@ -135,8 +135,8 @@ def get_roles(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    roles_ds = alicloud.ram.get_roles(name_regex=".*test.*",
-        output_file="roles.txt",
+    roles_ds = alicloud.ram.get_roles(output_file="roles.txt",
+        name_regex=".*test.*",
         policy_name="AliyunACSDefaultAccess",
         policy_type="Custom")
     pulumi.export("firstRoleId", roles_ds.roles[0].id)
@@ -189,8 +189,8 @@ def get_roles_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
     import pulumi
     import pulumi_alicloud as alicloud
 
-    roles_ds = alicloud.ram.get_roles(name_regex=".*test.*",
-        output_file="roles.txt",
+    roles_ds = alicloud.ram.get_roles(output_file="roles.txt",
+        name_regex=".*test.*",
         policy_name="AliyunACSDefaultAccess",
         policy_type="Custom")
     pulumi.export("firstRoleId", roles_ds.roles[0].id)

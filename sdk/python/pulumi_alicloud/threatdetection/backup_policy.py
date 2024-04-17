@@ -226,12 +226,12 @@ class BackupPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_assets = alicloud.threatdetection.get_assets(machine_types="ecs")
-        default_backup_policy = alicloud.threatdetection.BackupPolicy("defaultBackupPolicy",
+        default = alicloud.threatdetection.get_assets(machine_types="ecs")
+        default_backup_policy = alicloud.threatdetection.BackupPolicy("default",
             backup_policy_name="tf-example-name",
             policy="{\\"Exclude\\":[\\"/bin/\\",\\"/usr/bin/\\",\\"/sbin/\\",\\"/boot/\\",\\"/proc/\\",\\"/sys/\\",\\"/srv/\\",\\"/lib/\\",\\"/selinux/\\",\\"/usr/sbin/\\",\\"/run/\\",\\"/lib32/\\",\\"/lib64/\\",\\"/lost+found/\\",\\"/var/lib/kubelet/\\",\\"/var/lib/ntp/proc\\",\\"/var/lib/container\\"],\\"ExcludeSystemPath\\":true,\\"Include\\":[],\\"IsDefault\\":1,\\"Retention\\":7,\\"Schedule\\":\\"I|1668703620|PT24H\\",\\"Source\\":[],\\"SpeedLimiter\\":\\"\\",\\"UseVss\\":true}",
             policy_version="2.0.0",
-            uuid_lists=[default_assets.ids[0]])
+            uuid_lists=[default.ids[0]])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -273,12 +273,12 @@ class BackupPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_assets = alicloud.threatdetection.get_assets(machine_types="ecs")
-        default_backup_policy = alicloud.threatdetection.BackupPolicy("defaultBackupPolicy",
+        default = alicloud.threatdetection.get_assets(machine_types="ecs")
+        default_backup_policy = alicloud.threatdetection.BackupPolicy("default",
             backup_policy_name="tf-example-name",
             policy="{\\"Exclude\\":[\\"/bin/\\",\\"/usr/bin/\\",\\"/sbin/\\",\\"/boot/\\",\\"/proc/\\",\\"/sys/\\",\\"/srv/\\",\\"/lib/\\",\\"/selinux/\\",\\"/usr/sbin/\\",\\"/run/\\",\\"/lib32/\\",\\"/lib64/\\",\\"/lost+found/\\",\\"/var/lib/kubelet/\\",\\"/var/lib/ntp/proc\\",\\"/var/lib/container\\"],\\"ExcludeSystemPath\\":true,\\"Include\\":[],\\"IsDefault\\":1,\\"Retention\\":7,\\"Schedule\\":\\"I|1668703620|PT24H\\",\\"Source\\":[],\\"SpeedLimiter\\":\\"\\",\\"UseVss\\":true}",
             policy_version="2.0.0",
-            uuid_lists=[default_assets.ids[0]])
+            uuid_lists=[default.ids[0]])
         ```
         <!--End PulumiCodeChooser -->
 

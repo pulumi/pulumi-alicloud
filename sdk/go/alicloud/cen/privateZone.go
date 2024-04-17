@@ -39,40 +39,40 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("tf_example"),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			exampleInstance, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String("tf_example"),
 //				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &cen.InstanceAttachmentArgs{
+//			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "example", &cen.InstanceAttachmentArgs{
 //				InstanceId:            exampleInstance.ID(),
-//				ChildInstanceId:       exampleNetwork.ID(),
+//				ChildInstanceId:       example.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: pulumi.String(defaultRegions.Regions[0].Id),
+//				ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewPrivateZone(ctx, "defaultPrivateZone", &cen.PrivateZoneArgs{
-//				AccessRegionId: pulumi.String(defaultRegions.Regions[0].Id),
+//			_, err = cen.NewPrivateZone(ctx, "default", &cen.PrivateZoneArgs{
+//				AccessRegionId: pulumi.String(_default.Regions[0].Id),
 //				CenId:          exampleInstanceAttachment.InstanceId,
-//				HostRegionId:   pulumi.String(defaultRegions.Regions[0].Id),
-//				HostVpcId:      exampleNetwork.ID(),
+//				HostRegionId:   pulumi.String(_default.Regions[0].Id),
+//				HostVpcId:      example.ID(),
 //			})
 //			if err != nil {
 //				return err

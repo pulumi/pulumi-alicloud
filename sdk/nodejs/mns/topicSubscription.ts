@@ -15,15 +15,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const topic = new alicloud.mns.Topic("topic", {
- *     loggingEnabled: false,
+ *     name: "tf-example-mnstopic",
  *     maximumMessageSize: 65536,
+ *     loggingEnabled: false,
  * });
  * const subscription = new alicloud.mns.TopicSubscription("subscription", {
- *     endpoint: "http://www.xxx.com/xxx",
- *     filterTag: "test",
- *     notifyContentFormat: "XML",
- *     notifyStrategy: "BACKOFF_RETRY",
  *     topicName: "tf-example-mnstopic",
+ *     name: "tf-example-mnstopic-sub",
+ *     filterTag: "test",
+ *     endpoint: "http://www.xxx.com/xxx",
+ *     notifyStrategy: "BACKOFF_RETRY",
+ *     notifyContentFormat: "XML",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

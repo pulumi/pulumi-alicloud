@@ -25,21 +25,21 @@ namespace Pulumi.AliCloud.Vpc
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultCommonBandwithPackage = new AliCloud.Vpc.CommonBandwithPackage("defaultCommonBandwithPackage", new()
+    ///     var @default = new AliCloud.Vpc.CommonBandwithPackage("default", new()
     ///     {
     ///         Bandwidth = "3",
     ///         InternetChargeType = "PayByBandwidth",
     ///     });
     /// 
-    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("default", new()
     ///     {
     ///         Bandwidth = "3",
     ///         InternetChargeType = "PayByTraffic",
     ///     });
     /// 
-    ///     var defaultCommonBandwithPackageAttachment = new AliCloud.Vpc.CommonBandwithPackageAttachment("defaultCommonBandwithPackageAttachment", new()
+    ///     var defaultCommonBandwithPackageAttachment = new AliCloud.Vpc.CommonBandwithPackageAttachment("default", new()
     ///     {
-    ///         BandwidthPackageId = defaultCommonBandwithPackage.Id,
+    ///         BandwidthPackageId = @default.Id,
     ///         InstanceId = defaultEipAddress.Id,
     ///         BandwidthPackageBandwidth = "2",
     ///         IpType = "EIP",

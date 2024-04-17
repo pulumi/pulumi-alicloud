@@ -19,7 +19,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const snapshot = new alicloud.ecs.Snapshot("snapshot", {
- *     diskId: alicloud_disk_attachment["instance-attachment"].disk_id,
+ *     diskId: instance_attachment.diskId,
+ *     name: "test-snapshot",
  *     description: "this snapshot is created for testing",
  *     tags: {
  *         version: "1.2",

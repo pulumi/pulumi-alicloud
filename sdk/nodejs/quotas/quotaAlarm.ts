@@ -25,19 +25,19 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
- *     max: 99999,
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
+ *     max: 99999,
  * });
- * const defaultQuotaAlarm = new alicloud.quotas.QuotaAlarm("defaultQuotaAlarm", {
- *     productCode: "gws",
+ * const defaultQuotaAlarm = new alicloud.quotas.QuotaAlarm("default", {
  *     quotaActionCode: "q_desktop-count",
- *     quotaAlarmName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
  *     quotaDimensions: [{
  *         key: "regionId",
  *         value: "cn-hangzhou",
  *     }],
  *     thresholdPercent: 80,
+ *     productCode: "gws",
+ *     quotaAlarmName: `${name}-${_default.result}`,
  *     thresholdType: "used",
  * });
  * ```

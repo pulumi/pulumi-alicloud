@@ -721,15 +721,15 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.adb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
-        default_db_cluster_lake_version = alicloud.adb.DBClusterLakeVersion("defaultDBClusterLakeVersion",
+        default = alicloud.adb.get_zones()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        default_db_cluster_lake_version = alicloud.adb.DBClusterLakeVersion("default",
             db_cluster_version="5.0",
-            vpc_id=default_networks.ids[0],
-            vswitch_id=default_switches.ids[0],
-            zone_id=default_zones.ids[0],
+            vpc_id=default_get_networks.ids[0],
+            vswitch_id=default_get_switches.ids[0],
+            zone_id=default.ids[0],
             compute_resource="16ACU",
             storage_resource="0ACU",
             payment_type="PayAsYouGo",
@@ -787,15 +787,15 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.adb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
-        default_db_cluster_lake_version = alicloud.adb.DBClusterLakeVersion("defaultDBClusterLakeVersion",
+        default = alicloud.adb.get_zones()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        default_db_cluster_lake_version = alicloud.adb.DBClusterLakeVersion("default",
             db_cluster_version="5.0",
-            vpc_id=default_networks.ids[0],
-            vswitch_id=default_switches.ids[0],
-            zone_id=default_zones.ids[0],
+            vpc_id=default_get_networks.ids[0],
+            vswitch_id=default_get_switches.ids[0],
+            zone_id=default.ids[0],
             compute_resource="16ACU",
             storage_resource="0ACU",
             payment_type="PayAsYouGo",

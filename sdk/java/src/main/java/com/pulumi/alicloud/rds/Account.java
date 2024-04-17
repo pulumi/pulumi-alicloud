@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;Rds&#34;);
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;dbaccountmysql&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(creation)
  *             .build());
  * 
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
@@ -85,6 +85,7 @@ import javax.annotation.Nullable;
  * 
  *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
  *             .instanceId(instance.id())
+ *             .name(&#34;tftestnormal&#34;)
  *             .password(&#34;Test12345&#34;)
  *             .build());
  * 

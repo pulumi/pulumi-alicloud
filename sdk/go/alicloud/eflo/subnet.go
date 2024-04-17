@@ -43,25 +43,25 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, nil, nil)
+//			_default, err := alicloud.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultVpd, err := eflo.NewVpd(ctx, "defaultVpd", &eflo.VpdArgs{
+//			defaultVpd, err := eflo.NewVpd(ctx, "default", &eflo.VpdArgs{
 //				Cidr:            pulumi.String("10.0.0.0/8"),
 //				VpdName:         pulumi.String(name),
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Groups[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = eflo.NewSubnet(ctx, "defaultSubnet", &eflo.SubnetArgs{
+//			_, err = eflo.NewSubnet(ctx, "default", &eflo.SubnetArgs{
 //				SubnetName: pulumi.String(name),
-//				ZoneId:     pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:     pulumi.String(_default.Zones[0].Id),
 //				Cidr:       pulumi.String("10.0.0.0/16"),
 //				VpdId:      defaultVpd.ID(),
 //			})

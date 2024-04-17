@@ -31,32 +31,32 @@ namespace Pulumi.AliCloud.Ocean
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke();
+    ///     var @default = AliCloud.GetZones.Invoke();
     /// 
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultBaseInstance = new AliCloud.Ocean.BaseInstance("defaultBaseInstance", new()
+    ///     var defaultBaseInstance = new AliCloud.Ocean.BaseInstance("default", new()
     ///     {
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
     ///         Zones = new[]
     ///         {
-    ///             Output.Tuple(defaultZones, defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids).Length).Apply(values =&gt;
+    ///             Output.Tuple(@default, @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids)).Length).Apply(values =&gt;
     ///             {
-    ///                 var defaultZones = values.Item1;
+    ///                 var @default = values.Item1;
     ///                 var length = values.Item2;
-    ///                 return defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 2];
+    ///                 return @default.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 2];
     ///             }),
-    ///             Output.Tuple(defaultZones, defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids).Length).Apply(values =&gt;
+    ///             Output.Tuple(@default, @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids)).Length).Apply(values =&gt;
     ///             {
-    ///                 var defaultZones = values.Item1;
+    ///                 var @default = values.Item1;
     ///                 var length = values.Item2;
-    ///                 return defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 3];
+    ///                 return @default.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 3];
     ///             }),
-    ///             Output.Tuple(defaultZones, defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids).Length).Apply(values =&gt;
+    ///             Output.Tuple(@default, @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids)).Length).Apply(values =&gt;
     ///             {
-    ///                 var defaultZones = values.Item1;
+    ///                 var @default = values.Item1;
     ///                 var length = values.Item2;
-    ///                 return defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 4];
+    ///                 return @default.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 4];
     ///             }),
     ///         },
     ///         AutoRenew = false,

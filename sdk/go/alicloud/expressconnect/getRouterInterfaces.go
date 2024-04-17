@@ -31,9 +31,9 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := expressconnect.GetRouterInterfaces(ctx, &expressconnect.GetRouterInterfacesArgs{
 // Ids: interface{}{
-// alicloud_router_interface.Default.Id,
+// defaultAlicloudRouterInterface.Id,
 // },
-// NameRegex: pulumi.StringRef(alicloud_router_interface.Default.Name),
+// NameRegex: pulumi.StringRef(defaultAlicloudRouterInterface.Name),
 // }, nil);
 // if err != nil {
 // return err

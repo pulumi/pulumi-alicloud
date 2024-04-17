@@ -21,14 +21,14 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const slbDomainExtensionName = config.get("slbDomainExtensionName") || "forDomainExtension";
- * const domainExtensionZones = alicloud.getZones({
+ * const domainExtension = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const domainExtensionNetwork = new alicloud.vpc.Network("domainExtensionNetwork", {vpcName: slbDomainExtensionName});
- * const domainExtensionSwitch = new alicloud.vpc.Switch("domainExtensionSwitch", {
+ * const domainExtensionNetwork = new alicloud.vpc.Network("domain_extension", {vpcName: slbDomainExtensionName});
+ * const domainExtensionSwitch = new alicloud.vpc.Switch("domain_extension", {
  *     vpcId: domainExtensionNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: domainExtensionZones.then(domainExtensionZones => domainExtensionZones.zones?.[0]?.id),
+ *     zoneId: domainExtension.then(domainExtension => domainExtension.zones?.[0]?.id),
  *     vswitchName: slbDomainExtensionName,
  * });
  * const instance = new alicloud.slb.ApplicationLoadBalancer("instance", {
@@ -37,7 +37,8 @@ import * as utilities from "../utilities";
  *     loadBalancerSpec: "slb.s2.small",
  *     vswitchId: domainExtensionSwitch.id,
  * });
- * const domainExtensionServerCertificate = new alicloud.slb.ServerCertificate("domainExtensionServerCertificate", {
+ * const domainExtensionServerCertificate = new alicloud.slb.ServerCertificate("domain_extension", {
+ *     name: "tf-testAccSlbServerCertificate",
  *     serverCertificate: `-----BEGIN CERTIFICATE-----
  * MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
  * bjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcxDzANBgNVBAoMBmFsaXl1

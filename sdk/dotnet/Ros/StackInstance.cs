@@ -33,9 +33,9 @@ namespace Pulumi.AliCloud.Ros
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var @this = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultRegions = AliCloud.Ros.GetRegions.Invoke();
+    ///     var @default = AliCloud.Ros.GetRegions.Invoke();
     /// 
-    ///     var defaultStackGroup = new AliCloud.Ros.StackGroup("defaultStackGroup", new()
+    ///     var defaultStackGroup = new AliCloud.Ros.StackGroup("default", new()
     ///     {
     ///         StackGroupName = name,
     ///         TemplateBody = "{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}",
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Ros
     ///     {
     ///         StackGroupName = defaultStackGroup.StackGroupName,
     ///         StackInstanceAccountId = @this.Apply(@this =&gt; @this.Apply(getAccountResult =&gt; getAccountResult.Id)),
-    ///         StackInstanceRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.RegionId),
+    ///         StackInstanceRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.RegionId)),
     ///         OperationPreferences = "{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}",
     ///         TimeoutInMinutes = "60",
     ///         OperationDescription = "tf-example",

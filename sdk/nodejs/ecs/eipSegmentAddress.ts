@@ -23,10 +23,10 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.ecs.EipSegmentAddress("default", {
- *     bandwidth: "5",
  *     eipMask: "28",
- *     internetChargeType: "PayByBandwidth",
+ *     bandwidth: "5",
  *     isp: "BGP",
+ *     internetChargeType: "PayByBandwidth",
  *     netmode: "public",
  * });
  * ```

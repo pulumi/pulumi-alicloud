@@ -22,16 +22,16 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.getZones({});
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultVpd = new alicloud.eflo.Vpd("defaultVpd", {
+ * const default = alicloud.getZones({});
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultVpd = new alicloud.eflo.Vpd("default", {
  *     cidr: "10.0.0.0/8",
  *     vpdName: name,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[0]?.id),
  * });
- * const defaultSubnet = new alicloud.eflo.Subnet("defaultSubnet", {
+ * const defaultSubnet = new alicloud.eflo.Subnet("default", {
  *     subnetName: name,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     cidr: "10.0.0.0/16",
  *     vpdId: defaultVpd.id,
  * });

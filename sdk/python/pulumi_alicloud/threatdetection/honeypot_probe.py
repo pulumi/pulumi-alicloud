@@ -444,19 +444,19 @@ class HoneypotProbe(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.threatdetection.HoneypotProbe("default",
-            arp=True,
+            uuid="032b618f-b220-4a0d-bd37-fbdc6ef58b6a",
+            probe_type="host_probe",
             control_node_id="a44e1ab3-6945-444c-889d-5bacee7056e8",
-            display_name="apispec",
+            ping=True,
             honeypot_bind_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListArgs(
                 bind_port_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListBindPortListArgs(
-                    end_port=80,
                     start_port=80,
+                    end_port=80,
                 )],
                 honeypot_id="ede59ccdb1b7a2e21735d4593a6eb5ed31883af320c5ab63ab33818e94307be9",
             )],
-            ping=True,
-            probe_type="host_probe",
-            uuid="032b618f-b220-4a0d-bd37-fbdc6ef58b6a")
+            display_name="apispec",
+            arp=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -505,19 +505,19 @@ class HoneypotProbe(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.threatdetection.HoneypotProbe("default",
-            arp=True,
+            uuid="032b618f-b220-4a0d-bd37-fbdc6ef58b6a",
+            probe_type="host_probe",
             control_node_id="a44e1ab3-6945-444c-889d-5bacee7056e8",
-            display_name="apispec",
+            ping=True,
             honeypot_bind_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListArgs(
                 bind_port_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListBindPortListArgs(
-                    end_port=80,
                     start_port=80,
+                    end_port=80,
                 )],
                 honeypot_id="ede59ccdb1b7a2e21735d4593a6eb5ed31883af320c5ab63ab33818e94307be9",
             )],
-            ping=True,
-            probe_type="host_probe",
-            uuid="032b618f-b220-4a0d-bd37-fbdc6ef58b6a")
+            display_name="apispec",
+            arp=True)
         ```
         <!--End PulumiCodeChooser -->
 

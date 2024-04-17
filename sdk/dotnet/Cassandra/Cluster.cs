@@ -38,19 +38,19 @@ namespace Pulumi.AliCloud.Cassandra
     /// {
     ///     var @default = new AliCloud.Cassandra.Cluster("default", new()
     ///     {
-    ///         AutoRenew = false,
     ///         ClusterName = "cassandra-cluster-name-tf",
     ///         DataCenterName = "dc-1",
-    ///         DiskSize = 160,
-    ///         DiskType = "cloud_ssd",
+    ///         AutoRenew = false,
     ///         InstanceType = "cassandra.c.large",
-    ///         IpWhite = "127.0.0.1",
-    ///         MaintainEndTime = "20:00Z",
-    ///         MaintainStartTime = "18:00Z",
     ///         MajorVersion = "3.11",
     ///         NodeCount = 2,
     ///         PayType = "PayAsYouGo",
     ///         VswitchId = "vsw-xxxx",
+    ///         DiskSize = 160,
+    ///         DiskType = "cloud_ssd",
+    ///         MaintainStartTime = "18:00Z",
+    ///         MaintainEndTime = "20:00Z",
+    ///         IpWhite = "127.0.0.1",
     ///     });
     /// 
     /// });

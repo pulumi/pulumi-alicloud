@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Amqp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInstance = new AliCloud.Amqp.Instance("defaultInstance", new()
+    ///     var @default = new AliCloud.Amqp.Instance("default", new()
     ///     {
     ///         InstanceType = "enterprise",
     ///         MaxTps = "3000",
@@ -41,25 +41,25 @@ namespace Pulumi.AliCloud.Amqp
     ///         Period = 1,
     ///     });
     /// 
-    ///     var defaultVirtualHost = new AliCloud.Amqp.VirtualHost("defaultVirtualHost", new()
+    ///     var defaultVirtualHost = new AliCloud.Amqp.VirtualHost("default", new()
     ///     {
-    ///         InstanceId = defaultInstance.Id,
+    ///         InstanceId = @default.Id,
     ///         VirtualHostName = "tf-example",
     ///     });
     /// 
-    ///     var defaultExchange = new AliCloud.Amqp.Exchange("defaultExchange", new()
+    ///     var defaultExchange = new AliCloud.Amqp.Exchange("default", new()
     ///     {
     ///         AutoDeleteState = false,
     ///         ExchangeName = "tf-example",
     ///         ExchangeType = "DIRECT",
-    ///         InstanceId = defaultInstance.Id,
+    ///         InstanceId = @default.Id,
     ///         Internal = false,
     ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
     ///     });
     /// 
     ///     var example = new AliCloud.Amqp.Queue("example", new()
     ///     {
-    ///         InstanceId = defaultInstance.Id,
+    ///         InstanceId = @default.Id,
     ///         QueueName = "tf-example",
     ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
     ///     });

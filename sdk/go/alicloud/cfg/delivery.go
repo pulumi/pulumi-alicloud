@@ -45,34 +45,37 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			thisAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			this, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			thisRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			thisGetRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultProject, err := log.NewProject(ctx, "defaultProject", nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
-//				Project: defaultProject.Name,
+//			_, err = log.NewProject(ctx, "default", &log.ProjectArgs{
+//				Name: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cfg.NewDelivery(ctx, "defaultDelivery", &cfg.DeliveryArgs{
+//			defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
+//				Name:    pulumi.String(name),
+//				Project: _default.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cfg.NewDelivery(ctx, "default", &cfg.DeliveryArgs{
 //				ConfigurationItemChangeNotification: pulumi.Bool(true),
 //				NonCompliantNotification:            pulumi.Bool(true),
 //				DeliveryChannelName:                 pulumi.String(name),
-//				DeliveryChannelTargetArn: pulumi.All(defaultProject.Name, defaultStore.Name).ApplyT(func(_args []interface{}) (string, error) {
-//					defaultProjectName := _args[0].(string)
+//				DeliveryChannelTargetArn: pulumi.All(_default.Name, defaultStore.Name).ApplyT(func(_args []interface{}) (string, error) {
+//					defaultName := _args[0].(string)
 //					defaultStoreName := _args[1].(string)
-//					return fmt.Sprintf("acs:log:%v:%v:project/%v/logstore/%v", thisRegions.Ids[0], thisAccount.Id, defaultProjectName, defaultStoreName), nil
+//					return fmt.Sprintf("acs:log:%v:%v:project/%v/logstore/%v", thisGetRegions.Ids[0], this.Id, defaultName, defaultStoreName), nil
 //				}).(pulumi.StringOutput),
 //				DeliveryChannelType: pulumi.String("SLS"),
 //				Description:         pulumi.String(name),

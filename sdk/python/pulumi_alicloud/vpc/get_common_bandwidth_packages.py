@@ -174,11 +174,12 @@ def get_common_bandwidth_packages(bandwidth_package_name: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    foo_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage",
+    foo_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("foo",
         bandwidth="2",
+        name="tf-testAccCommonBandwidthPackage",
         description="tf-testAcc-CommonBandwidthPackage")
-    foo_common_bandwidth_packages = alicloud.vpc.get_common_bandwidth_packages_output(ids=[foo_common_bandwith_package.id],
-        name_regex="^tf-testAcc.*")
+    foo = alicloud.vpc.get_common_bandwidth_packages_output(name_regex="^tf-testAcc.*",
+        ids=[foo_common_bandwith_package.id])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -248,11 +249,12 @@ def get_common_bandwidth_packages_output(bandwidth_package_name: Optional[pulumi
     import pulumi
     import pulumi_alicloud as alicloud
 
-    foo_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage",
+    foo_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("foo",
         bandwidth="2",
+        name="tf-testAccCommonBandwidthPackage",
         description="tf-testAcc-CommonBandwidthPackage")
-    foo_common_bandwidth_packages = alicloud.vpc.get_common_bandwidth_packages_output(ids=[foo_common_bandwith_package.id],
-        name_regex="^tf-testAcc.*")
+    foo = alicloud.vpc.get_common_bandwidth_packages_output(name_regex="^tf-testAcc.*",
+        ids=[foo_common_bandwith_package.id])
     ```
     <!--End PulumiCodeChooser -->
 

@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.eds.SimpleOfficeSite;
  * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
  * import java.util.List;
@@ -51,16 +51,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
- *             .max(99999)
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .min(10000)
+ *             .max(99999)
  *             .build());
  * 
  *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
- *             .desktopAccessType(&#34;Internet&#34;)
  *             .enableAdminAccess(true)
- *             .officeSiteName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .desktopAccessType(&#34;Internet&#34;)
+ *             .officeSiteName(String.format(&#34;terraform-example-%s&#34;, default_.result()))
  *             .build());
  * 
  *     }

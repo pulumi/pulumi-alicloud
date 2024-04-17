@@ -74,13 +74,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .instanceTypeFamily(&#34;ecs.g7&#34;)
  *             .build());
  * 
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;Instance&#34;)
- *             .availableInstanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .availableInstanceType(default_.instanceTypes()[0].id())
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
@@ -92,15 +92,16 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock(&#34;10.4.0.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
  *             .description(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
  *             .mostRecent(true)
  *             .owners(&#34;system&#34;)
@@ -108,11 +109,11 @@ import javax.annotation.Nullable;
  * 
  *         for (var i = 0; i &lt; 2; i++) {
  *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
- *                 .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *                 .availabilityZone(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *                 .instanceName(name)
  *                 .hostName(name)
- *                 .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *                 .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *                 .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *                 .instanceType(default_.instanceTypes()[0].id())
  *                 .securityGroups(defaultSecurityGroup.id())
  *                 .vswitchId(defaultSwitch.id())
  *                 .systemDiskCategory(&#34;cloud_essd&#34;)

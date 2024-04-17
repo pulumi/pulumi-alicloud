@@ -38,21 +38,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ros.NewChangeSet(ctx, "example", &ros.ChangeSetArgs{
 //				ChangeSetName: pulumi.String("example_value"),
+//				StackName:     pulumi.String(fmt.Sprintf("tf-example-%v", _default.Result)),
 //				ChangeSetType: pulumi.String("CREATE"),
 //				Description:   pulumi.String("Test From Terraform"),
-//				StackName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("tf-example-%v", result), nil
-//				}).(pulumi.StringOutput),
-//				TemplateBody: pulumi.String("{\"ROSTemplateFormatVersion\":\"2015-09-01\"}"),
+//				TemplateBody:  pulumi.String("{\"ROSTemplateFormatVersion\":\"2015-09-01\"}"),
 //			})
 //			if err != nil {
 //				return err

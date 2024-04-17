@@ -25,15 +25,15 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.quotas.TemplateQuota("default", {
- *     desireValue: 1001,
+ *     quotaActionCode: "q_desktop-count",
+ *     productCode: "gws",
+ *     noticeType: 3,
  *     dimensions: [{
  *         key: "regionId",
  *         value: "cn-hangzhou",
  *     }],
+ *     desireValue: 1001,
  *     envLanguage: "zh",
- *     noticeType: 3,
- *     productCode: "gws",
- *     quotaActionCode: "q_desktop-count",
  *     quotaCategory: "CommonQuota",
  * });
  * ```

@@ -28,22 +28,22 @@ namespace Pulumi.AliCloud.Rds
     ///     var config = new Config();
     ///     var creation = config.Get("creation") ?? "Rds";
     ///     var name = config.Get("name") ?? "dbaccountmysql";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = creation,
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         VswitchName = name,
     ///     });
     /// 
@@ -60,6 +60,7 @@ namespace Pulumi.AliCloud.Rds
     ///     var account = new AliCloud.Rds.Account("account", new()
     ///     {
     ///         InstanceId = instance.Id,
+    ///         Name = "tftestnormal",
     ///         Password = "Test12345",
     ///     });
     /// 

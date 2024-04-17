@@ -18,18 +18,18 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "vswitchDatasourceName";
- * const defaultZones = alicloud.getZones({});
+ * const default = alicloud.getZones({});
  * const vpc = new alicloud.vpc.Network("vpc", {
  *     cidrBlock: "172.16.0.0/16",
  *     vpcName: name,
  * });
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
  *     cidrBlock: "172.16.0.0/24",
  *     vpcId: vpc.id,
- *     vswitchName: name,
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultSwitches = alicloud.vpc.getSwitchesOutput({
+ * const defaultGetSwitches = alicloud.vpc.getSwitchesOutput({
  *     nameRegex: vswitch.vswitchName,
  * });
  * ```
@@ -192,18 +192,18 @@ export interface GetSwitchesResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "vswitchDatasourceName";
- * const defaultZones = alicloud.getZones({});
+ * const default = alicloud.getZones({});
  * const vpc = new alicloud.vpc.Network("vpc", {
  *     cidrBlock: "172.16.0.0/16",
  *     vpcName: name,
  * });
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
  *     cidrBlock: "172.16.0.0/24",
  *     vpcId: vpc.id,
- *     vswitchName: name,
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultSwitches = alicloud.vpc.getSwitchesOutput({
+ * const defaultGetSwitches = alicloud.vpc.getSwitchesOutput({
  *     nameRegex: vswitch.vswitchName,
  * });
  * ```

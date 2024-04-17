@@ -246,16 +246,16 @@ class AccessRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
+        default = alicloud.dfs.AccessGroup("default",
             description="example",
             network_type="VPC",
             access_group_name=name)
-        default_access_rule = alicloud.dfs.AccessRule("defaultAccessRule",
+        default_access_rule = alicloud.dfs.AccessRule("default",
             description="example",
             rw_access_type="RDWR",
             priority=1,
             network_segment="192.168.81.1",
-            access_group_id=default_access_group.id)
+            access_group_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -301,16 +301,16 @@ class AccessRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_access_group = alicloud.dfs.AccessGroup("defaultAccessGroup",
+        default = alicloud.dfs.AccessGroup("default",
             description="example",
             network_type="VPC",
             access_group_name=name)
-        default_access_rule = alicloud.dfs.AccessRule("defaultAccessRule",
+        default_access_rule = alicloud.dfs.AccessRule("default",
             description="example",
             rw_access_type="RDWR",
             priority=1,
             network_segment="192.168.81.1",
-            access_group_id=default_access_group.id)
+            access_group_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 

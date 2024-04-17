@@ -94,7 +94,6 @@ def get_zones(output_file: Optional[str] = None,
 
     zones_ids = alicloud.hbase.get_zones()
     hbase = alicloud.hbase.Instance("hbase", zone_id=zones_ids.zones[0].id)
-    # Other properties...
     ```
     <!--End PulumiCodeChooser -->
 
@@ -130,7 +129,6 @@ def get_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
 
     zones_ids = alicloud.hbase.get_zones()
     hbase = alicloud.hbase.Instance("hbase", zone_id=zones_ids.zones[0].id)
-    # Other properties...
     ```
     <!--End PulumiCodeChooser -->
 

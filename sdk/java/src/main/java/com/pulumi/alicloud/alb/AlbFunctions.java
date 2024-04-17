@@ -359,10 +359,10 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
-     *             .ids(alicloud_alb_ascript.default().id())
-     *             .nameRegex(alicloud_alb_ascript.default().name())
+     *             .ids(defaultAlicloudAlbAscript.id())
+     *             .nameRegex(defaultAlicloudAlbAscript.name())
      *             .ascriptName(&#34;test&#34;)
-     *             .listenerId(var_.listenerId())
+     *             .listenerId(listenerId)
      *             .build());
      * 
      *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
@@ -405,10 +405,10 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
-     *             .ids(alicloud_alb_ascript.default().id())
-     *             .nameRegex(alicloud_alb_ascript.default().name())
+     *             .ids(defaultAlicloudAlbAscript.id())
+     *             .nameRegex(defaultAlicloudAlbAscript.name())
      *             .ascriptName(&#34;test&#34;)
-     *             .listenerId(var_.listenerId())
+     *             .listenerId(listenerId)
      *             .build());
      * 
      *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
@@ -451,10 +451,10 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
-     *             .ids(alicloud_alb_ascript.default().id())
-     *             .nameRegex(alicloud_alb_ascript.default().name())
+     *             .ids(defaultAlicloudAlbAscript.id())
+     *             .nameRegex(defaultAlicloudAlbAscript.name())
      *             .ascriptName(&#34;test&#34;)
-     *             .listenerId(var_.listenerId())
+     *             .listenerId(listenerId)
      *             .build());
      * 
      *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
@@ -497,10 +497,10 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
-     *             .ids(alicloud_alb_ascript.default().id())
-     *             .nameRegex(alicloud_alb_ascript.default().name())
+     *             .ids(defaultAlicloudAlbAscript.id())
+     *             .nameRegex(defaultAlicloudAlbAscript.name())
      *             .ascriptName(&#34;test&#34;)
-     *             .listenerId(var_.listenerId())
+     *             .listenerId(listenerId)
      *             .build());
      * 
      *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
@@ -543,10 +543,10 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
-     *             .ids(alicloud_alb_ascript.default().id())
-     *             .nameRegex(alicloud_alb_ascript.default().name())
+     *             .ids(defaultAlicloudAlbAscript.id())
+     *             .nameRegex(defaultAlicloudAlbAscript.name())
      *             .ascriptName(&#34;test&#34;)
-     *             .listenerId(var_.listenerId())
+     *             .listenerId(listenerId)
      *             .build());
      * 
      *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
@@ -589,10 +589,10 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
-     *             .ids(alicloud_alb_ascript.default().id())
-     *             .nameRegex(alicloud_alb_ascript.default().name())
+     *             .ids(defaultAlicloudAlbAscript.id())
+     *             .nameRegex(defaultAlicloudAlbAscript.name())
      *             .ascriptName(&#34;test&#34;)
-     *             .listenerId(var_.listenerId())
+     *             .listenerId(listenerId)
      *             .build());
      * 
      *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());

@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Cms
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_cms_metric_rule_black_lists.Default.Id,
+        ///             defaultAlicloudCmsMetricRuleBlackLists.Id,
         ///         },
         ///         Category = "ecs",
         ///         Namespace = "acs_ecs_dashboard",
@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Cms
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudCmsRuleBlackListExampleId"] = data.Alicloud_cms_metric_rule_black_lists.Lists[0].Id,
+        ///         ["alicloudCmsRuleBlackListExampleId"] = lists[0].Id,
         ///     };
         /// });
         /// ```
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Cms
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_cms_metric_rule_black_lists.Default.Id,
+        ///             defaultAlicloudCmsMetricRuleBlackLists.Id,
         ///         },
         ///         Category = "ecs",
         ///         Namespace = "acs_ecs_dashboard",
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Cms
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudCmsRuleBlackListExampleId"] = data.Alicloud_cms_metric_rule_black_lists.Lists[0].Id,
+        ///         ["alicloudCmsRuleBlackListExampleId"] = lists[0].Id,
         ///     };
         /// });
         /// ```

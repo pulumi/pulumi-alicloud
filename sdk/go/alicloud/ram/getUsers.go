@@ -30,14 +30,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultGroup, err := ram.NewGroup(ctx, "defaultGroup", &ram.GroupArgs{
+//			_, err := ram.NewGroup(ctx, "default", &ram.GroupArgs{
+//				Name:     pulumi.String("group1"),
 //				Comments: pulumi.String("group comments"),
 //				Force:    pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultUser, err := ram.NewUser(ctx, "defaultUser", &ram.UserArgs{
+//			defaultUser, err := ram.NewUser(ctx, "default", &ram.UserArgs{
+//				Name:        pulumi.String("user-example"),
 //				DisplayName: pulumi.String("displayname"),
 //				Mobile:      pulumi.String("86-18888888888"),
 //				Email:       pulumi.String("hello.uuu@aaa.com"),
@@ -46,8 +48,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ram.NewGroupMembership(ctx, "defaultGroupMembership", &ram.GroupMembershipArgs{
-//				GroupName: defaultGroup.Name,
+//			_, err = ram.NewGroupMembership(ctx, "default", &ram.GroupMembershipArgs{
+//				GroupName: _default.Name,
 //				UserNames: pulumi.StringArray{
 //					defaultUser.Name,
 //				},
@@ -55,7 +57,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultPolicy, err := ram.NewPolicy(ctx, "defaultPolicy", &ram.PolicyArgs{
+//			defaultPolicy, err := ram.NewPolicy(ctx, "default", &ram.PolicyArgs{
 //				PolicyName: pulumi.String("ram-policy-example"),
 //				PolicyDocument: pulumi.String(`			{
 //					"Statement": [
@@ -82,7 +84,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ram.NewUserPolicyAttachment(ctx, "defaultUserPolicyAttachment", &ram.UserPolicyAttachmentArgs{
+//			_, err = ram.NewUserPolicyAttachment(ctx, "default", &ram.UserPolicyAttachmentArgs{
 //				PolicyName: defaultPolicy.PolicyName,
 //				UserName:   defaultUser.Name,
 //				PolicyType: defaultPolicy.Type,
@@ -92,7 +94,7 @@ import (
 //			}
 //			usersDs := ram.GetUsersOutput(ctx, ram.GetUsersOutputArgs{
 //				OutputFile: pulumi.String("users.txt"),
-//				GroupName:  defaultGroup.Name,
+//				GroupName:  _default.Name,
 //				PolicyName: defaultPolicy.PolicyName,
 //				PolicyType: pulumi.String("Custom"),
 //				NameRegex:  defaultUser.Name,

@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ens
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultInstance = new AliCloud.Ens.Instance("defaultInstance", new()
+    ///     var @default = new AliCloud.Ens.Instance("default", new()
     ///     {
     ///         SystemDisk = new AliCloud.Ens.Inputs.InstanceSystemDiskArgs
     ///         {
@@ -50,10 +50,10 @@ namespace Pulumi.AliCloud.Ens
     ///         Status = "Stopped",
     ///     });
     /// 
-    ///     var defaultImage = new AliCloud.Ens.Image("defaultImage", new()
+    ///     var defaultImage = new AliCloud.Ens.Image("default", new()
     ///     {
     ///         ImageName = name,
-    ///         InstanceId = defaultInstance.Id,
+    ///         InstanceId = @default.Id,
     ///         DeleteAfterImageUpload = "false",
     ///     });
     /// 

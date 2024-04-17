@@ -184,7 +184,9 @@ class Domain(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Add a new Domain.
-        dns = alicloud.dns.Domain("dns", group_id="85ab8713-4a30-4de4-9d20-155ff830f651")
+        dns = alicloud.dns.Domain("dns",
+            name="starmove.com",
+            group_id="85ab8713-4a30-4de4-9d20-155ff830f651")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -223,7 +225,9 @@ class Domain(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Add a new Domain.
-        dns = alicloud.dns.Domain("dns", group_id="85ab8713-4a30-4de4-9d20-155ff830f651")
+        dns = alicloud.dns.Domain("dns",
+            name="starmove.com",
+            group_id="85ab8713-4a30-4de4-9d20-155ff830f651")
         ```
         <!--End PulumiCodeChooser -->
 

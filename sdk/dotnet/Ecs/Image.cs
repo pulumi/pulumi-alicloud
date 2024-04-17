@@ -32,70 +32,71 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
     ///     });
     /// 
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
     ///         InstanceTypeFamily = "ecs.sn1ne",
     ///     });
     /// 
-    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
+    ///         Name = "terraform-example",
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
     ///     {
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         InstanceName = "terraform-example",
     ///         SecurityGroups = new[]
     ///         {
     ///             defaultSecurityGroup.Id,
     ///         },
     ///         VswitchId = defaultSwitch.Id,
-    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0]),
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0]),
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
     ///         InternetMaxBandwidthOut = 10,
     ///     });
     /// 
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultImage = new AliCloud.Ecs.Image("defaultImage", new()
+    ///     var defaultImage = new AliCloud.Ecs.Image("default", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
-    ///         ImageName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         ImageName = $"terraform-example-{defaultInteger.Result}",
     ///         Description = "terraform-example",
     ///         Architecture = "x86_64",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
     ///         Tags = 
     ///         {
     ///             { "FinanceDept", "FinanceDeptJoshua" },

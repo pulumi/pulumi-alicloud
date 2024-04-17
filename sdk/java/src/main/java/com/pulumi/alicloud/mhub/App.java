@@ -53,13 +53,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
- *         var defaultProduct = new Product(&#34;defaultProduct&#34;, ProductArgs.builder()        
+ *         var default_ = new Product(&#34;default&#34;, ProductArgs.builder()        
  *             .productName(name)
  *             .build());
  * 
  *         var defaultApp = new App(&#34;defaultApp&#34;, AppArgs.builder()        
  *             .appName(name)
- *             .productId(defaultProduct.id())
+ *             .productId(default_.id())
  *             .packageName(&#34;com.example.android&#34;)
  *             .type(&#34;Android&#34;)
  *             .build());

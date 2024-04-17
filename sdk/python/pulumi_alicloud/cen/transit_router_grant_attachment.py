@@ -211,16 +211,16 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.get_account()
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.vpc.Network("example",
             vpc_name="tf_example",
             cidr_block="172.17.3.0/24")
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example_instance = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_transit_router_grant_attachment = alicloud.cen.TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment",
+        example_transit_router_grant_attachment = alicloud.cen.TransitRouterGrantAttachment("example",
             cen_id=example_instance.id,
             cen_owner_id=default.id,
-            instance_id=example_network.id,
+            instance_id=example.id,
             instance_type="VPC",
             order_type="PayByCenOwner")
         ```
@@ -265,16 +265,16 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.get_account()
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.vpc.Network("example",
             vpc_name="tf_example",
             cidr_block="172.17.3.0/24")
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example_instance = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_transit_router_grant_attachment = alicloud.cen.TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment",
+        example_transit_router_grant_attachment = alicloud.cen.TransitRouterGrantAttachment("example",
             cen_id=example_instance.id,
             cen_owner_id=default.id,
-            instance_id=example_network.id,
+            instance_id=example.id,
             instance_type="VPC",
             order_type="PayByCenOwner")
         ```

@@ -32,14 +32,14 @@ namespace Pulumi.AliCloud.Dns
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
     ///     var domainName = config.Get("domainName") ?? "alicloud-provider.com";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
+    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("default", new()
     ///     {
     ///         AlarmContactGroupName = name,
     ///     });
     /// 
-    ///     var defaultGtmInstance = new AliCloud.Dns.GtmInstance("defaultGtmInstance", new()
+    ///     var defaultGtmInstance = new AliCloud.Dns.GtmInstance("default", new()
     ///     {
     ///         InstanceName = name,
     ///         PaymentType = "Subscription",
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Dns
     ///         PublicCnameMode = "SYSTEM_ASSIGN",
     ///         Ttl = 60,
     ///         CnameType = "PUBLIC",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
     ///         AlertGroups = new[]
     ///         {
     ///             defaultAlarmContactGroup.AlarmContactGroupName,
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Dns
     ///         },
     ///     });
     /// 
-    ///     var defaultAddressPool = new AliCloud.Dns.AddressPool("defaultAddressPool", new()
+    ///     var defaultAddressPool = new AliCloud.Dns.AddressPool("default", new()
     ///     {
     ///         AddressPoolName = name,
     ///         InstanceId = defaultGtmInstance.Id,
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Dns
     ///         },
     ///     });
     /// 
-    ///     var defaultMonitorConfig = new AliCloud.Dns.MonitorConfig("defaultMonitorConfig", new()
+    ///     var defaultMonitorConfig = new AliCloud.Dns.MonitorConfig("default", new()
     ///     {
     ///         AddrPoolId = defaultAddressPool.Id,
     ///         EvaluationCount = 1,

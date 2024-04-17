@@ -30,20 +30,22 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
+    ///         Name = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
-    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         Project = exampleProject.Name,
+    ///         Project = example.Name,
+    ///         Name = "example-store",
     ///         RetentionPeriod = 3650,
     ///         ShardCount = 3,
     ///         AutoSplit = true,
@@ -53,7 +55,8 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var example2 = new AliCloud.Log.Store("example2", new()
     ///     {
-    ///         Project = exampleProject.Name,
+    ///         Project = example.Name,
+    ///         Name = "example-store2",
     ///         RetentionPeriod = 3650,
     ///         ShardCount = 3,
     ///         AutoSplit = true,
@@ -63,7 +66,8 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var example3 = new AliCloud.Log.Store("example3", new()
     ///     {
-    ///         Project = exampleProject.Name,
+    ///         Project = example.Name,
+    ///         Name = "example-store3",
     ///         RetentionPeriod = 3650,
     ///         ShardCount = 3,
     ///         AutoSplit = true,
@@ -71,10 +75,10 @@ namespace Pulumi.AliCloud.Log
     ///         AppendMeta = true,
     ///     });
     /// 
-    ///     var exampleEtl = new AliCloud.Log.Etl("exampleEtl", new()
+    ///     var exampleEtl = new AliCloud.Log.Etl("example", new()
     ///     {
     ///         EtlName = "terraform-example",
-    ///         Project = exampleProject.Name,
+    ///         Project = example.Name,
     ///         DisplayName = "terraform-example",
     ///         Description = "terraform-example",
     ///         AccessKeyId = "access_key_id",
@@ -89,7 +93,7 @@ namespace Pulumi.AliCloud.Log
     ///                 AccessKeyId = "example2_access_key_id",
     ///                 AccessKeySecret = "example2_access_key_secret",
     ///                 Endpoint = "cn-hangzhou.log.aliyuncs.com",
-    ///                 Project = exampleProject.Name,
+    ///                 Project = example.Name,
     ///                 Logstore = example2.Name,
     ///             },
     ///             new AliCloud.Log.Inputs.EtlEtlSinkArgs
@@ -98,7 +102,7 @@ namespace Pulumi.AliCloud.Log
     ///                 AccessKeyId = "example3_access_key_id",
     ///                 AccessKeySecret = "example3_access_key_secret",
     ///                 Endpoint = "cn-hangzhou.log.aliyuncs.com",
-    ///                 Project = exampleProject.Name,
+    ///                 Project = example.Name,
     ///                 Logstore = example3.Name,
     ///             },
     ///         },

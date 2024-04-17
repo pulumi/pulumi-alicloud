@@ -42,33 +42,33 @@ namespace Pulumi.AliCloud.Slb
     /// {
     ///     var config = new Config();
     ///     var slbRuleName = config.Get("slbRuleName") ?? "terraform-example";
-    ///     var ruleZones = AliCloud.GetZones.Invoke(new()
+    ///     var rule = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var ruleNetwork = new AliCloud.Vpc.Network("ruleNetwork", new()
+    ///     var ruleNetwork = new AliCloud.Vpc.Network("rule", new()
     ///     {
     ///         VpcName = slbRuleName,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var ruleSwitch = new AliCloud.Vpc.Switch("ruleSwitch", new()
+    ///     var ruleSwitch = new AliCloud.Vpc.Switch("rule", new()
     ///     {
     ///         VpcId = ruleNetwork.Id,
     ///         CidrBlock = "172.16.0.0/16",
-    ///         ZoneId = ruleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = rule.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = slbRuleName,
     ///     });
     /// 
-    ///     var ruleApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("ruleApplicationLoadBalancer", new()
+    ///     var ruleApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("rule", new()
     ///     {
     ///         LoadBalancerName = slbRuleName,
     ///         VswitchId = ruleSwitch.Id,
     ///         InstanceChargeType = "PayByCLCU",
     ///     });
     /// 
-    ///     var ruleListener = new AliCloud.Slb.Listener("ruleListener", new()
+    ///     var ruleListener = new AliCloud.Slb.Listener("rule", new()
     ///     {
     ///         LoadBalancerId = ruleApplicationLoadBalancer.Id,
     ///         BackendPort = 22,
@@ -78,15 +78,17 @@ namespace Pulumi.AliCloud.Slb
     ///         HealthCheckConnectPort = 20,
     ///     });
     /// 
-    ///     var ruleServerGroup = new AliCloud.Slb.ServerGroup("ruleServerGroup", new()
+    ///     var ruleServerGroup = new AliCloud.Slb.ServerGroup("rule", new()
     ///     {
     ///         LoadBalancerId = ruleApplicationLoadBalancer.Id,
+    ///         Name = slbRuleName,
     ///     });
     /// 
-    ///     var ruleRule = new AliCloud.Slb.Rule("ruleRule", new()
+    ///     var ruleRule = new AliCloud.Slb.Rule("rule", new()
     ///     {
     ///         LoadBalancerId = ruleApplicationLoadBalancer.Id,
     ///         FrontendPort = ruleListener.FrontendPort,
+    ///         Name = slbRuleName,
     ///         Domain = "*.aliyun.com",
     ///         Url = "/image",
     ///         ServerGroupId = ruleServerGroup.Id,

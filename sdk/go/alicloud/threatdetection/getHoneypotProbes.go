@@ -28,51 +28,49 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-testAccThreatDetectionHoneypotProbe"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultHoneypotProbe, err := threatdetection.NewHoneypotProbe(ctx, "defaultHoneypotProbe", &threatdetection.HoneypotProbeArgs{
-//				Uuid:          pulumi.String("e52c7872-29d1-4aa1-9908-0299abd53606"),
-//				ProbeType:     pulumi.String("host_probe"),
-//				ControlNodeId: pulumi.String("e1397077-4941-4b14-b533-ca2bdebd00a3"),
-//				Ping:          pulumi.Bool(true),
-//				HoneypotBindLists: threatdetection.HoneypotProbeHoneypotBindListArray{
-//					&threatdetection.HoneypotProbeHoneypotBindListArgs{
-//						BindPortLists: threatdetection.HoneypotProbeHoneypotBindListBindPortListArray{
-//							&threatdetection.HoneypotProbeHoneypotBindListBindPortListArgs{
-//								StartPort: pulumi.Int(80),
-//								EndPort:   pulumi.Int(80),
-//							},
-//						},
-//						HoneypotId: pulumi.String("4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05"),
-//					},
-//				},
-//				DisplayName: pulumi.String(name),
-//				Arp:         pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultHoneypotProbes := threatdetection.GetHoneypotProbesOutput(ctx, threatdetection.GetHoneypotProbesOutputArgs{
-//				Ids: pulumi.StringArray{
-//					defaultHoneypotProbe.ID(),
-//				},
-//				DisplayName:   pulumi.String(name),
-//				ProbeType:     pulumi.String("host_probe"),
-//				EnableDetails: pulumi.Bool(true),
-//			}, nil)
-//			ctx.Export("alicloudThreatDetectionHoneypotProbeExampleId", defaultHoneypotProbes.ApplyT(func(defaultHoneypotProbes threatdetection.GetHoneypotProbesResult) (*string, error) {
-//				return &defaultHoneypotProbes.Probes[0].Id, nil
-//			}).(pulumi.StringPtrOutput))
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "tf-testAccThreatDetectionHoneypotProbe";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// defaultHoneypotProbe, err := threatdetection.NewHoneypotProbe(ctx, "default", &threatdetection.HoneypotProbeArgs{
+// Uuid: pulumi.String("e52c7872-29d1-4aa1-9908-0299abd53606"),
+// ProbeType: pulumi.String("host_probe"),
+// ControlNodeId: pulumi.String("e1397077-4941-4b14-b533-ca2bdebd00a3"),
+// Ping: pulumi.Bool(true),
+// HoneypotBindLists: threatdetection.HoneypotProbeHoneypotBindListArray{
+// &threatdetection.HoneypotProbeHoneypotBindListArgs{
+// BindPortLists: threatdetection.HoneypotProbeHoneypotBindListBindPortListArray{
+// &threatdetection.HoneypotProbeHoneypotBindListBindPortListArgs{
+// StartPort: pulumi.Int(80),
+// EndPort: pulumi.Int(80),
+// },
+// },
+// HoneypotId: pulumi.String("4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05"),
+// },
+// },
+// DisplayName: pulumi.String(name),
+// Arp: pulumi.Bool(true),
+// })
+// if err != nil {
+// return err
+// }
+// _default := threatdetection.GetHoneypotProbesOutput(ctx, threatdetection.GetHoneypotProbesOutputArgs{
+// Ids: pulumi.StringArray{
+// defaultHoneypotProbe.ID(),
+// },
+// DisplayName: pulumi.String(name),
+// ProbeType: pulumi.String("host_probe"),
+// EnableDetails: pulumi.Bool(true),
+// }, nil);
+// ctx.Export("alicloudThreatDetectionHoneypotProbeExampleId", _default.ApplyT(func(_default threatdetection.GetHoneypotProbesResult) (*string, error) {
+// return &default.Probes[0].Id, nil
+// }).(pulumi.StringPtrOutput))
+// return nil
+// })
+// }
 // ```
 // <!--End PulumiCodeChooser -->
 func GetHoneypotProbes(ctx *pulumi.Context, args *GetHoneypotProbesArgs, opts ...pulumi.InvokeOption) (*GetHoneypotProbesResult, error) {

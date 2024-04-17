@@ -35,21 +35,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String("tf_example"),
 //				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
 //				TransitRouterName: pulumi.String("tf_example"),
-//				CenId:             exampleInstance.ID(),
+//				CenId:             example.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterCidr(ctx, "exampleTransitRouterCidr", &cen.TransitRouterCidrArgs{
+//			_, err = cen.NewTransitRouterCidr(ctx, "example", &cen.TransitRouterCidrArgs{
 //				TransitRouterId:       exampleTransitRouter.TransitRouterId,
 //				Cidr:                  pulumi.String("192.168.0.0/16"),
 //				TransitRouterCidrName: pulumi.String("tf_example"),

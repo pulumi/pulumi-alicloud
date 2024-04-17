@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.dcdn.getWafRules({
- *     ids: [alicloud_dcdn_waf_rule["default"].id],
+ *     ids: [defaultAlicloudDcdnWafRule.id],
  * });
  * export const alicloudDcdnWafRuleExampleId = _default.then(_default => _default.wafRules?.[0]?.id);
  * ```
@@ -89,7 +89,7 @@ export interface GetWafRulesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.dcdn.getWafRules({
- *     ids: [alicloud_dcdn_waf_rule["default"].id],
+ *     ids: [defaultAlicloudDcdnWafRule.id],
  * });
  * export const alicloudDcdnWafRuleExampleId = _default.then(_default => _default.wafRules?.[0]?.id);
  * ```

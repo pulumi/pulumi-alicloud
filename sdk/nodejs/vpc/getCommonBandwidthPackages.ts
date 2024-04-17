@@ -18,13 +18,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const fooCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage", {
+ * const fooCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("foo", {
  *     bandwidth: "2",
+ *     name: "tf-testAccCommonBandwidthPackage",
  *     description: "tf-testAcc-CommonBandwidthPackage",
  * });
- * const fooCommonBandwidthPackages = alicloud.vpc.getCommonBandwidthPackagesOutput({
- *     ids: [fooCommonBandwithPackage.id],
+ * const foo = alicloud.vpc.getCommonBandwidthPackagesOutput({
  *     nameRegex: "^tf-testAcc.*",
+ *     ids: [fooCommonBandwithPackage.id],
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -140,13 +141,14 @@ export interface GetCommonBandwidthPackagesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const fooCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("fooCommonBandwithPackage", {
+ * const fooCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("foo", {
  *     bandwidth: "2",
+ *     name: "tf-testAccCommonBandwidthPackage",
  *     description: "tf-testAcc-CommonBandwidthPackage",
  * });
- * const fooCommonBandwidthPackages = alicloud.vpc.getCommonBandwidthPackagesOutput({
- *     ids: [fooCommonBandwithPackage.id],
+ * const foo = alicloud.vpc.getCommonBandwidthPackagesOutput({
  *     nameRegex: "^tf-testAcc.*",
+ *     ids: [fooCommonBandwithPackage.id],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

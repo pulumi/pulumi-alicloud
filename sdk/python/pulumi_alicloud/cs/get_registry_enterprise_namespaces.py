@@ -128,6 +128,7 @@ def get_registry_enterprise_namespaces(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     my_namespaces = alicloud.cs.get_registry_enterprise_namespaces(instance_id="cri-xxx",
         name_regex="my-namespace",
         output_file="my-namespace-json")
@@ -177,6 +178,7 @@ def get_registry_enterprise_namespaces_output(ids: Optional[pulumi.Input[Optiona
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     my_namespaces = alicloud.cs.get_registry_enterprise_namespaces(instance_id="cri-xxx",
         name_regex="my-namespace",
         output_file="my-namespace-json")

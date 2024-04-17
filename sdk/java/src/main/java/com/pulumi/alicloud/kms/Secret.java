@@ -51,11 +51,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Secret(&#34;default&#34;, SecretArgs.builder()        
- *             .description(&#34;from terraform&#34;)
- *             .forceDeleteWithoutRecovery(true)
- *             .secretData(&#34;Secret data.&#34;)
  *             .secretName(&#34;secret-foo&#34;)
+ *             .description(&#34;from terraform&#34;)
+ *             .secretData(&#34;Secret data.&#34;)
  *             .versionId(&#34;000000000001&#34;)
+ *             .forceDeleteWithoutRecovery(true)
  *             .build());
  * 
  *     }

@@ -128,8 +128,8 @@ def get_lifecycle_hooks(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ds = alicloud.ess.get_lifecycle_hooks(name_regex="lifecyclehook_name",
-        scaling_group_id="scaling_group_id")
+    ds = alicloud.ess.get_lifecycle_hooks(scaling_group_id="scaling_group_id",
+        name_regex="lifecyclehook_name")
     pulumi.export("firstLifecycleHook", ds.hooks[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -176,8 +176,8 @@ def get_lifecycle_hooks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ds = alicloud.ess.get_lifecycle_hooks(name_regex="lifecyclehook_name",
-        scaling_group_id="scaling_group_id")
+    ds = alicloud.ess.get_lifecycle_hooks(scaling_group_id="scaling_group_id",
+        name_regex="lifecyclehook_name")
     pulumi.export("firstLifecycleHook", ds.hooks[0].id)
     ```
     <!--End PulumiCodeChooser -->

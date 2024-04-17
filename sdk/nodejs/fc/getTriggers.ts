@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const fcTriggersDs = alicloud.fc.getTriggers({
+ *     serviceName: "sample_service",
  *     functionName: "sample_function",
  *     nameRegex: "sample_fc_trigger",
- *     serviceName: "sample_service",
  * });
  * export const firstFcTriggerName = fcTriggersDs.then(fcTriggersDs => fcTriggersDs.triggers?.[0]?.name);
  * ```
@@ -99,9 +99,9 @@ export interface GetTriggersResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const fcTriggersDs = alicloud.fc.getTriggers({
+ *     serviceName: "sample_service",
  *     functionName: "sample_function",
  *     nameRegex: "sample_fc_trigger",
- *     serviceName: "sample_service",
  * });
  * export const firstFcTriggerName = fcTriggersDs.then(fcTriggersDs => fcTriggersDs.triggers?.[0]?.name);
  * ```

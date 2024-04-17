@@ -192,7 +192,7 @@ def get_honeypot_presets(current_page: Optional[int] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.threatdetection.get_honeypot_presets(ids=[alicloud_threat_detection_honeypot_preset["default"]["id"]],
+    default = alicloud.threatdetection.get_honeypot_presets(ids=[default_alicloud_threat_detection_honeypot_preset["id"]],
         honeypot_image_name="shiro",
         node_id="example_value",
         preset_name="apiapec_test")
@@ -264,7 +264,7 @@ def get_honeypot_presets_output(current_page: Optional[pulumi.Input[Optional[int
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.threatdetection.get_honeypot_presets(ids=[alicloud_threat_detection_honeypot_preset["default"]["id"]],
+    default = alicloud.threatdetection.get_honeypot_presets(ids=[default_alicloud_threat_detection_honeypot_preset["id"]],
         honeypot_image_name="shiro",
         node_id="example_value",
         preset_name="apiapec_test")

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * // Create a new RAM Role.
  * const role = new alicloud.ram.Role("role", {
- *     description: "this is a role test.",
+ *     name: "terraform-example",
  *     document: `  {
  *     "Statement": [
  *       {
@@ -36,8 +36,8 @@ import * as utilities from "../utilities";
  *     ],
  *     "Version": "1"
  *   }
- *   
  * `,
+ *     description: "this is a role test.",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

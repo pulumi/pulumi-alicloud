@@ -29,15 +29,15 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     var @default = new AliCloud.Cen.Instance("default", new()
     ///     {
     ///         CenInstanceName = name,
     ///         ProtectionLevel = "REDUCED",
     ///     });
     /// 
-    ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new()
+    ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("default", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
+    ///         CenId = @default.Id,
     ///     });
     /// 
     ///     var nameRegex = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Cen
     ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
-    ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("defaultVirtualBorderRouter", new()
+    ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("default", new()
     ///     {
     ///         LocalGatewayIp = "10.0.0.1",
     ///         PeerGatewayIp = "10.0.0.2",
@@ -58,13 +58,13 @@ namespace Pulumi.AliCloud.Cen
     ///         DetectMultiplier = 10,
     ///     });
     /// 
-    ///     var defaultTransitRouterVbrAttachment = new AliCloud.Cen.TransitRouterVbrAttachment("defaultTransitRouterVbrAttachment", new()
+    ///     var defaultTransitRouterVbrAttachment = new AliCloud.Cen.TransitRouterVbrAttachment("default", new()
     ///     {
     ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
     ///         TransitRouterAttachmentName = "example",
     ///         TransitRouterAttachmentDescription = "example",
     ///         VbrId = defaultVirtualBorderRouter.Id,
-    ///         CenId = defaultInstance.Id,
+    ///         CenId = @default.Id,
     ///     });
     /// 
     /// });

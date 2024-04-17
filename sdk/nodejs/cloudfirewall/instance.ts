@@ -21,12 +21,12 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.cloudfirewall.Instance("default", {
+ *     paymentType: "PayAsYouGo",
+ *     spec: "ultimate_version",
+ *     ipNumber: 400,
  *     bandWidth: 200,
  *     cfwLog: true,
  *     cfwLogStorage: 1000,
- *     ipNumber: 400,
- *     paymentType: "PayAsYouGo",
- *     spec: "ultimate_version",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

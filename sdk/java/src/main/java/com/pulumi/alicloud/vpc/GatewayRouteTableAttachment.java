@@ -54,13 +54,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .vpcName(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleRouteTable = new RouteTable(&#34;exampleRouteTable&#34;, RouteTableArgs.builder()        
- *             .vpcId(exampleNetwork.id())
+ *             .vpcId(example.id())
  *             .routeTableName(&#34;terraform-example&#34;)
  *             .description(&#34;terraform-example&#34;)
  *             .associateType(&#34;Gateway&#34;)
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleIpv4Gateway = new Ipv4Gateway(&#34;exampleIpv4Gateway&#34;, Ipv4GatewayArgs.builder()        
  *             .ipv4GatewayName(&#34;terraform-example&#34;)
- *             .vpcId(exampleNetwork.id())
+ *             .vpcId(example.id())
  *             .enabled(&#34;true&#34;)
  *             .build());
  * 

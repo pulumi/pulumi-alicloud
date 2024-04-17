@@ -321,12 +321,12 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
-            resource_group_id=default_resource_groups.ids[0],
+        default_server_group = alicloud.nlb.ServerGroup("default",
+            resource_group_id=default.ids[0],
             server_group_name=name,
             server_group_type="Ip",
             vpc_id=default_network.id,
@@ -336,7 +336,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
                 health_check_enabled=False,
             ),
             address_ip_version="Ipv4")
-        default_server_group_server_attachment = alicloud.nlb.ServerGroupServerAttachment("defaultServerGroupServerAttachment",
+        default_server_group_server_attachment = alicloud.nlb.ServerGroupServerAttachment("default",
             server_type="Ip",
             server_id="10.0.0.0",
             description=name,
@@ -393,12 +393,12 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
-            resource_group_id=default_resource_groups.ids[0],
+        default_server_group = alicloud.nlb.ServerGroup("default",
+            resource_group_id=default.ids[0],
             server_group_name=name,
             server_group_type="Ip",
             vpc_id=default_network.id,
@@ -408,7 +408,7 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
                 health_check_enabled=False,
             ),
             address_ip_version="Ipv4")
-        default_server_group_server_attachment = alicloud.nlb.ServerGroupServerAttachment("defaultServerGroupServerAttachment",
+        default_server_group_server_attachment = alicloud.nlb.ServerGroupServerAttachment("default",
             server_type="Ip",
             server_id="10.0.0.0",
             description=name,

@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var exampleCluster = new Cluster(&#34;exampleCluster&#34;, ClusterArgs.builder()        

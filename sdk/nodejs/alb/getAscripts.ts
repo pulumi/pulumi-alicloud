@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.alb.getAscripts({
- *     ids: [alicloud_alb_ascript["default"].id],
- *     nameRegex: alicloud_alb_ascript["default"].name,
+ *     ids: [defaultAlicloudAlbAscript.id],
+ *     nameRegex: defaultAlicloudAlbAscript.name,
  *     ascriptName: "test",
- *     listenerId: _var.listenerId,
+ *     listenerId: listenerId,
  * });
  * export const alicloudAlbAscriptExampleId = _default.then(_default => _default.ascripts?.[0]?.id);
  * ```
@@ -114,10 +114,10 @@ export interface GetAscriptsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.alb.getAscripts({
- *     ids: [alicloud_alb_ascript["default"].id],
- *     nameRegex: alicloud_alb_ascript["default"].name,
+ *     ids: [defaultAlicloudAlbAscript.id],
+ *     nameRegex: defaultAlicloudAlbAscript.name,
  *     ascriptName: "test",
- *     listenerId: _var.listenerId,
+ *     listenerId: listenerId,
  * });
  * export const alicloudAlbAscriptExampleId = _default.then(_default => _default.ascripts?.[0]?.id);
  * ```

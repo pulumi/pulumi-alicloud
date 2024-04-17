@@ -29,12 +29,12 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
     ///         Status = "OK",
     ///     });
     /// 
-    ///     var defaultRule = new AliCloud.Cfg.Rule("defaultRule", new()
+    ///     var defaultRule = new AliCloud.Cfg.Rule("default", new()
     ///     {
     ///         Description = "If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.",
     ///         SourceOwner = "ALIYUN",
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Cfg
     ///         ExcludeResourceIdsScope = "example-resource_id",
     ///         RegionIdsScope = "cn-hangzhou",
     ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
-    ///         ResourceGroupIdsScope = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ResourceGroupIdsScope = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///         ResourceTypesScopes = new[]
     ///         {
     ///             "ACS::RDS::DBInstance",

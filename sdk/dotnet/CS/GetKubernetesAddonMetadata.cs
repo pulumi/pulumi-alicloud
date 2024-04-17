@@ -29,14 +29,14 @@ namespace Pulumi.AliCloud.CS
         /// {
         ///     var @default = AliCloud.CS.GetKubernetesAddonMetadata.Invoke(new()
         ///     {
-        ///         ClusterId = @var.Cluster_id,
+        ///         ClusterId = clusterId,
         ///         Name = "nginx-ingress-controller",
         ///         Version = "v1.1.2-aliyun.2",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["addonConfigSchema"] = data.Alicloud_cs_kubernetes_addons.Default.Config_schema,
+        ///         ["addonConfigSchema"] = defaultAlicloudCsKubernetesAddons.ConfigSchema,
         ///     };
         /// });
         /// ```
@@ -63,14 +63,14 @@ namespace Pulumi.AliCloud.CS
         /// {
         ///     var @default = AliCloud.CS.GetKubernetesAddonMetadata.Invoke(new()
         ///     {
-        ///         ClusterId = @var.Cluster_id,
+        ///         ClusterId = clusterId,
         ///         Name = "nginx-ingress-controller",
         ///         Version = "v1.1.2-aliyun.2",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["addonConfigSchema"] = data.Alicloud_cs_kubernetes_addons.Default.Config_schema,
+        ///         ["addonConfigSchema"] = defaultAlicloudCsKubernetesAddons.ConfigSchema,
         ///     };
         /// });
         /// ```

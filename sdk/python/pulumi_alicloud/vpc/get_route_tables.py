@@ -236,15 +236,15 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
     name = config.get("name")
     if name is None:
         name = "route-tables-datasource-example-name"
-    foo_network = alicloud.vpc.Network("fooNetwork",
+    foo_network = alicloud.vpc.Network("foo",
         cidr_block="172.16.0.0/12",
         vpc_name=name)
-    foo_route_table = alicloud.vpc.RouteTable("fooRouteTable",
-        description=name,
+    foo_route_table = alicloud.vpc.RouteTable("foo",
+        vpc_id=foo_network.id,
         route_table_name=name,
-        vpc_id=foo_network.id)
-    foo_route_tables = alicloud.vpc.get_route_tables_output(ids=[foo_route_table.id])
-    pulumi.export("routeTableIds", foo_route_tables.ids)
+        description=name)
+    foo = alicloud.vpc.get_route_tables_output(ids=[foo_route_table.id])
+    pulumi.export("routeTableIds", foo.ids)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -325,15 +325,15 @@ def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     name = config.get("name")
     if name is None:
         name = "route-tables-datasource-example-name"
-    foo_network = alicloud.vpc.Network("fooNetwork",
+    foo_network = alicloud.vpc.Network("foo",
         cidr_block="172.16.0.0/12",
         vpc_name=name)
-    foo_route_table = alicloud.vpc.RouteTable("fooRouteTable",
-        description=name,
+    foo_route_table = alicloud.vpc.RouteTable("foo",
+        vpc_id=foo_network.id,
         route_table_name=name,
-        vpc_id=foo_network.id)
-    foo_route_tables = alicloud.vpc.get_route_tables_output(ids=[foo_route_table.id])
-    pulumi.export("routeTableIds", foo_route_tables.ids)
+        description=name)
+    foo = alicloud.vpc.get_route_tables_output(ids=[foo_route_table.id])
+    pulumi.export("routeTableIds", foo.ids)
     ```
     <!--End PulumiCodeChooser -->
 

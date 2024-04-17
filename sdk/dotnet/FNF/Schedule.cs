@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.FNF
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleFlow = new AliCloud.FNF.Flow("exampleFlow", new()
+    ///     var example = new AliCloud.FNF.Flow("example", new()
     ///     {
     ///         Definition = @"  version: v1beta1
     ///   type: flow
@@ -38,15 +38,16 @@ namespace Pulumi.AliCloud.FNF
     ///       name: helloworld
     /// ",
     ///         Description = "tf-exampleFnFFlow983041",
+    ///         Name = "tf-exampleSchedule",
     ///         Type = "FDL",
     ///     });
     /// 
-    ///     var exampleSchedule = new AliCloud.FNF.Schedule("exampleSchedule", new()
+    ///     var exampleSchedule = new AliCloud.FNF.Schedule("example", new()
     ///     {
     ///         CronExpression = "30 9 * * * *",
     ///         Description = "tf-exampleFnFSchedule983041",
     ///         Enable = true,
-    ///         FlowName = exampleFlow.Name,
+    ///         FlowName = example.Name,
     ///         Payload = "{\"tf-example\": \"example success\"}",
     ///         ScheduleName = "tf-exampleFnFSchedule983041",
     ///     });

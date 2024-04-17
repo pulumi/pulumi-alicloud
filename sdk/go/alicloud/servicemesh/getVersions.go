@@ -38,7 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("serviceMeshVersion", data.Alicloud_service_mesh_versions.Versions[0].Version)
+//			ctx.Export("serviceMeshVersion", versions[0].Version)
 //			return nil
 //		})
 //	}

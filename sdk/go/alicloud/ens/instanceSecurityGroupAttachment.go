@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultInstance, err := ens.NewInstance(ctx, "defaultInstance", &ens.InstanceArgs{
+//			_, err := ens.NewInstance(ctx, "default", &ens.InstanceArgs{
 //				SystemDisk: &ens.InstanceSystemDiskArgs{
 //					Size: pulumi.Int(20),
 //				},
@@ -60,15 +60,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ens.NewSecurityGroup(ctx, "defaultSecurityGroup", &ens.SecurityGroupArgs{
+//			defaultSecurityGroup, err := ens.NewSecurityGroup(ctx, "default", &ens.SecurityGroupArgs{
 //				Description:       pulumi.String("InstanceSecurityGroupAttachment_Description"),
 //				SecurityGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ens.NewInstanceSecurityGroupAttachment(ctx, "defaultInstanceSecurityGroupAttachment", &ens.InstanceSecurityGroupAttachmentArgs{
-//				InstanceId:      defaultInstance.ID(),
+//			_, err = ens.NewInstanceSecurityGroupAttachment(ctx, "default", &ens.InstanceSecurityGroupAttachmentArgs{
+//				InstanceId:      _default.ID(),
 //				SecurityGroupId: defaultSecurityGroup.ID(),
 //			})
 //			if err != nil {

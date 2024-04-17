@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     var sampleDs = AliCloud.Slb.GetAttachments.Invoke(new()
         ///     {
-        ///         LoadBalancerId = alicloud_slb_load_balancer.Sample_slb.Id,
+        ///         LoadBalancerId = sampleSlb.Id,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     var sampleDs = AliCloud.Slb.GetAttachments.Invoke(new()
         ///     {
-        ///         LoadBalancerId = alicloud_slb_load_balancer.Sample_slb.Id,
+        ///         LoadBalancerId = sampleSlb.Id,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

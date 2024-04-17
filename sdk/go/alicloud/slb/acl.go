@@ -51,6 +51,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := slb.NewAcl(ctx, "acl", &slb.AclArgs{
+//				Name:      pulumi.String("terraformslbaclconfig"),
 //				IpVersion: pulumi.String("ipv4"),
 //			})
 //			if err != nil {

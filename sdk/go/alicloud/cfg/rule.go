@@ -36,13 +36,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
 //				Status: pulumi.StringRef("OK"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cfg.NewRule(ctx, "defaultRule", &cfg.RuleArgs{
+//			_, err = cfg.NewRule(ctx, "default", &cfg.RuleArgs{
 //				Description:             pulumi.String("If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant."),
 //				SourceOwner:             pulumi.String("ALIYUN"),
 //				SourceIdentifier:        pulumi.String("contains-tag"),
@@ -52,7 +52,7 @@ import (
 //				ExcludeResourceIdsScope: pulumi.String("example-resource_id"),
 //				RegionIdsScope:          pulumi.String("cn-hangzhou"),
 //				ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
-//				ResourceGroupIdsScope:   pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupIdsScope:   pulumi.String(_default.Ids[0]),
 //				ResourceTypesScopes: pulumi.StringArray{
 //					pulumi.String("ACS::RDS::DBInstance"),
 //				},

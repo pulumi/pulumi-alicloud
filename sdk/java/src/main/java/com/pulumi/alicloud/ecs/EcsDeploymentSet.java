@@ -48,11 +48,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new EcsDeploymentSet(&#34;default&#34;, EcsDeploymentSetArgs.builder()        
- *             .deploymentSetName(&#34;example_value&#34;)
- *             .description(&#34;example_value&#34;)
+ *             .strategy(&#34;Availability&#34;)
  *             .domain(&#34;Default&#34;)
  *             .granularity(&#34;Host&#34;)
- *             .strategy(&#34;Availability&#34;)
+ *             .deploymentSetName(&#34;example_value&#34;)
+ *             .description(&#34;example_value&#34;)
  *             .build());
  * 
  *     }

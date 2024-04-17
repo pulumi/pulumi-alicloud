@@ -29,7 +29,8 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var snapshot = new AliCloud.Ecs.Snapshot("snapshot", new()
     ///     {
-    ///         DiskId = alicloud_disk_attachment.Instance_attachment.Disk_id,
+    ///         DiskId = instance_attachment.DiskId,
+    ///         Name = "test-snapshot",
     ///         Description = "this snapshot is created for testing",
     ///         Tags = 
     ///         {

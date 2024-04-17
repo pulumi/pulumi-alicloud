@@ -1540,27 +1540,29 @@ class EcsInstanceSet(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             most_recent=True,
             owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="172.17.3.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        beijing_k = alicloud.ecs.EcsInstanceSet("beijingK",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        beijing_k = alicloud.ecs.EcsInstanceSet("beijing_k",
             amount=10,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             instance_name=name,
             instance_charge_type="PostPaid",
             system_disk_performance_level="PL0",
@@ -1568,7 +1570,7 @@ class EcsInstanceSet(pulumi.CustomResource):
             system_disk_size=200,
             vswitch_id=default_switch.id,
             security_group_ids=[__item.id for __item in [default_security_group]],
-            zone_id=default_zones.zones[0].id)
+            zone_id=default.zones[0].id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1653,27 +1655,29 @@ class EcsInstanceSet(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             most_recent=True,
             owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="172.17.3.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        beijing_k = alicloud.ecs.EcsInstanceSet("beijingK",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        beijing_k = alicloud.ecs.EcsInstanceSet("beijing_k",
             amount=10,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             instance_name=name,
             instance_charge_type="PostPaid",
             system_disk_performance_level="PL0",
@@ -1681,7 +1685,7 @@ class EcsInstanceSet(pulumi.CustomResource):
             system_disk_size=200,
             vswitch_id=default_switch.id,
             security_group_ids=[__item.id for __item in [default_security_group]],
-            zone_id=default_zones.zones[0].id)
+            zone_id=default.zones[0].id)
         ```
         <!--End PulumiCodeChooser -->
 

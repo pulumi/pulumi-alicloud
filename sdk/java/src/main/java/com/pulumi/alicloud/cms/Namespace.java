@@ -48,9 +48,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
- *             .description(&#34;tf-example&#34;)
  *             .namespace(&#34;tf-example&#34;)
  *             .specification(&#34;cms.s1.large&#34;)
+ *             .description(&#34;tf-example&#34;)
  *             .build());
  * 
  *     }

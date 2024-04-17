@@ -813,8 +813,8 @@ class Rule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_rule = alicloud.cfg.Rule("defaultRule",
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_rule = alicloud.cfg.Rule("default",
             description="If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.",
             source_owner="ALIYUN",
             source_identifier="contains-tag",
@@ -824,7 +824,7 @@ class Rule(pulumi.CustomResource):
             exclude_resource_ids_scope="example-resource_id",
             region_ids_scope="cn-hangzhou",
             config_rule_trigger_types="ConfigurationItemChangeNotification",
-            resource_group_ids_scope=default_resource_groups.ids[0],
+            resource_group_ids_scope=default.ids[0],
             resource_types_scopes=["ACS::RDS::DBInstance"],
             rule_name="contains-tag",
             input_parameters={
@@ -887,8 +887,8 @@ class Rule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_rule = alicloud.cfg.Rule("defaultRule",
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_rule = alicloud.cfg.Rule("default",
             description="If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.",
             source_owner="ALIYUN",
             source_identifier="contains-tag",
@@ -898,7 +898,7 @@ class Rule(pulumi.CustomResource):
             exclude_resource_ids_scope="example-resource_id",
             region_ids_scope="cn-hangzhou",
             config_rule_trigger_types="ConfigurationItemChangeNotification",
-            resource_group_ids_scope=default_resource_groups.ids[0],
+            resource_group_ids_scope=default.ids[0],
             resource_types_scopes=["ACS::RDS::DBInstance"],
             rule_name="contains-tag",
             input_parameters={

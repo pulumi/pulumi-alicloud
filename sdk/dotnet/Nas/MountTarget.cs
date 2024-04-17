@@ -15,6 +15,77 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// &gt; **NOTE:** Available since v1.34.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = AliCloud.Nas.GetZones.Invoke(new()
+    ///     {
+    ///         FileSystemType = "extreme",
+    ///     });
+    /// 
+    ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length;
+    /// 
+    ///     var zoneId = Output.Tuple(@default, countSize).Apply(values =&gt;
+    ///     {
+    ///         var @default = values.Item1;
+    ///         var countSize = values.Item2;
+    ///         return @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[countSize - 1].ZoneId;
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Vpc.Network("example", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+    ///     {
+    ///         VswitchName = example.VpcName,
+    ///         CidrBlock = example.CidrBlock,
+    ///         VpcId = example.Id,
+    ///         ZoneId = zoneId,
+    ///     });
+    /// 
+    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("example", new()
+    ///     {
+    ///         ProtocolType = "NFS",
+    ///         StorageType = "advance",
+    ///         FileSystemType = "extreme",
+    ///         Capacity = 100,
+    ///         ZoneId = zoneId,
+    ///     });
+    /// 
+    ///     var exampleAccessGroup = new AliCloud.Nas.AccessGroup("example", new()
+    ///     {
+    ///         AccessGroupName = "access_group_xxx",
+    ///         AccessGroupType = "Vpc",
+    ///         Description = "test_access_group",
+    ///         FileSystemType = "extreme",
+    ///     });
+    /// 
+    ///     var exampleMountTarget = new AliCloud.Nas.MountTarget("example", new()
+    ///     {
+    ///         FileSystemId = exampleFileSystem.Id,
+    ///         AccessGroupName = exampleAccessGroup.AccessGroupName,
+    ///         VswitchId = exampleSwitch.Id,
+    ///         VpcId = example.Id,
+    ///         NetworkType = exampleAccessGroup.AccessGroupType,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// NAS MountTarget can be imported using the id, e.g.

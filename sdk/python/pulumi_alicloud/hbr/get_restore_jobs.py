@@ -168,10 +168,10 @@ def get_restore_jobs(output_file: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_ecs_backup_plans = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
-    default_restore_jobs = alicloud.hbr.get_restore_jobs(restore_type="ECS_FILE",
-        vault_ids=[default_ecs_backup_plans.plans[0].vault_id],
-        target_instance_ids=[default_ecs_backup_plans.plans[0].instance_id])
+    default = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
+    default_get_restore_jobs = alicloud.hbr.get_restore_jobs(restore_type="ECS_FILE",
+        vault_ids=[default.plans[0].vault_id],
+        target_instance_ids=[default.plans[0].instance_id])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -239,10 +239,10 @@ def get_restore_jobs_output(output_file: Optional[pulumi.Input[Optional[str]]] =
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_ecs_backup_plans = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
-    default_restore_jobs = alicloud.hbr.get_restore_jobs(restore_type="ECS_FILE",
-        vault_ids=[default_ecs_backup_plans.plans[0].vault_id],
-        target_instance_ids=[default_ecs_backup_plans.plans[0].instance_id])
+    default = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
+    default_get_restore_jobs = alicloud.hbr.get_restore_jobs(restore_type="ECS_FILE",
+        vault_ids=[default.plans[0].vault_id],
+        target_instance_ids=[default.plans[0].instance_id])
     ```
     <!--End PulumiCodeChooser -->
 

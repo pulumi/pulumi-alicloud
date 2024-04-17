@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.servicemesh.ServicemeshFunctions;
  * import com.pulumi.alicloud.servicemesh.inputs.GetVersionsArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
  * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.ram.User;
+ * import com.pulumi.alicloud.ram.UserArgs;
  * import com.pulumi.alicloud.servicemesh.ServiceMesh;
  * import com.pulumi.alicloud.servicemesh.ServiceMeshArgs;
  * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshNetworkArgs;
@@ -65,38 +66,40 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         final var defaultVersions = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
+ *         final var default = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
  *             .edition(&#34;Default&#34;)
  *             .build());
  * 
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
  *             .nameRegex(&#34;^default-NODELETING$&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultUser = new User(&#34;defaultUser&#34;);
+ *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+ *             .name(name)
+ *             .build());
  * 
  *         var default1 = new ServiceMesh(&#34;default1&#34;, ServiceMeshArgs.builder()        
- *             .serviceMeshName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .serviceMeshName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
  *             .edition(&#34;Default&#34;)
  *             .clusterSpec(&#34;standard&#34;)
- *             .version(defaultVersions.applyValue(getVersionsResult -&gt; getVersionsResult.versions()[0].version()))
+ *             .version(default_.versions()[0].version())
  *             .network(ServiceMeshNetworkArgs.builder()
- *                 .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *                 .vswitcheList(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *                 .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *                 .vswitcheLists(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
  *                 .build())
  *             .loadBalancer(ServiceMeshLoadBalancerArgs.builder()
  *                 .pilotPublicEip(false)

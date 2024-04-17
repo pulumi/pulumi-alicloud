@@ -345,12 +345,12 @@ class LayerVersion(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default['result']}")
         # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+        default_bucket_object = alicloud.oss.BucketObject("default",
             bucket=default_bucket.id,
             key="index.py",
             content=\"\"\"import logging 
@@ -359,7 +359,7 @@ class LayerVersion(pulumi.CustomResource):
         logger.info('hello world') 
         return 'hello world'\"\"\")
         example = alicloud.fc.LayerVersion("example",
-            layer_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            layer_name=f"terraform-example-{default['result']}",
             compatible_runtimes=["python2.7"],
             oss_bucket_name=default_bucket.bucket,
             oss_object_name=default_bucket_object.key)
@@ -403,12 +403,12 @@ class LayerVersion(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default['result']}")
         # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+        default_bucket_object = alicloud.oss.BucketObject("default",
             bucket=default_bucket.id,
             key="index.py",
             content=\"\"\"import logging 
@@ -417,7 +417,7 @@ class LayerVersion(pulumi.CustomResource):
         logger.info('hello world') 
         return 'hello world'\"\"\")
         example = alicloud.fc.LayerVersion("example",
-            layer_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            layer_name=f"terraform-example-{default['result']}",
             compatible_runtimes=["python2.7"],
             oss_bucket_name=default_bucket.bucket,
             oss_object_name=default_bucket_object.key)

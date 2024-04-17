@@ -51,62 +51,62 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
 //				Status: pulumi.StringRef("OK"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultKeys, err := kms.GetKeys(ctx, &kms.GetKeysArgs{
+//			defaultGetKeys, err := kms.GetKeys(ctx, &kms.GetKeysArgs{
 //				Status: pulumi.StringRef("Enabled"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			defaultGetZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableInstanceType: pulumi.StringRef("ecs.g7.xlarge"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultEcsKeyPair, err := ecs.NewEcsKeyPair(ctx, "defaultEcsKeyPair", &ecs.EcsKeyPairArgs{
-//				KeyPairName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//			defaultEcsKeyPair, err := ecs.NewEcsKeyPair(ctx, "default", &ecs.EcsKeyPairArgs{
+//				KeyPairName: pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
+//			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
+//				Name: pulumi.String(name),
 //				Document: pulumi.String(`    {
 //	        "Statement": [
 //	        {
@@ -143,7 +143,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err = emrv2.NewCluster(ctx, "defaultCluster", &emrv2.ClusterArgs{
+//			_, err = emrv2.NewCluster(ctx, "default", &emrv2.ClusterArgs{
 //				NodeGroups: emrv2.ClusterNodeGroupArray{
 //					&emrv2.ClusterNodeGroupArgs{
 //						VswitchIds: pulumi.StringArray{
@@ -218,17 +218,17 @@ import (
 //				},
 //				NodeAttributes: emrv2.ClusterNodeAttributeArray{
 //					&emrv2.ClusterNodeAttributeArgs{
-//						ZoneId:            pulumi.String(defaultZones.Zones[0].Id),
+//						ZoneId:            pulumi.String(defaultGetZones.Zones[0].Id),
 //						KeyPairName:       defaultEcsKeyPair.ID(),
 //						DataDiskEncrypted: pulumi.Bool(true),
-//						DataDiskKmsKeyId:  pulumi.String(defaultKeys.Ids[0]),
+//						DataDiskKmsKeyId:  pulumi.String(defaultGetKeys.Ids[0]),
 //						VpcId:             defaultNetwork.ID(),
 //						RamRole:           defaultRole.Name,
 //						SecurityGroupId:   defaultSecurityGroup.ID(),
 //					},
 //				},
 //				LogCollectStrategy: pulumi.String(json0),
-//				ResourceGroupId:    pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:    pulumi.String(_default.Ids[0]),
 //				ClusterName:        pulumi.String(name),
 //				PaymentType:        pulumi.String("PayAsYouGo"),
 //				ClusterType:        pulumi.String("DATAFLOW"),

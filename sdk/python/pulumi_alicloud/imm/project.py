@@ -119,6 +119,7 @@ class Project(pulumi.CustomResource):
         if name is None:
             name = "tfexample"
         role = alicloud.ram.Role("role",
+            name=name,
             document=\"\"\"  {
             "Statement": [
               {
@@ -182,6 +183,7 @@ class Project(pulumi.CustomResource):
         if name is None:
             name = "tfexample"
         role = alicloud.ram.Role("role",
+            name=name,
             document=\"\"\"  {
             "Statement": [
               {

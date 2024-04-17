@@ -61,11 +61,11 @@ public final class OpensearchFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var defaultAppGroups = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
+     *         final var default = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;appGroups&#34;, defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult).applyValue(defaultAppGroups -&gt; defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult.groups())));
+     *         ctx.export(&#34;appGroups&#34;, default_.applyValue(default_ -&gt; default_.groups()));
      *     }
      * }
      * ```
@@ -122,11 +122,11 @@ public final class OpensearchFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var defaultAppGroups = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
+     *         final var default = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;appGroups&#34;, defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult).applyValue(defaultAppGroups -&gt; defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult.groups())));
+     *         ctx.export(&#34;appGroups&#34;, default_.applyValue(default_ -&gt; default_.groups()));
      *     }
      * }
      * ```
@@ -183,11 +183,11 @@ public final class OpensearchFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var defaultAppGroups = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
+     *         final var default = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;appGroups&#34;, defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult).applyValue(defaultAppGroups -&gt; defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult.groups())));
+     *         ctx.export(&#34;appGroups&#34;, default_.applyValue(default_ -&gt; default_.groups()));
      *     }
      * }
      * ```
@@ -244,11 +244,11 @@ public final class OpensearchFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var defaultAppGroups = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
+     *         final var default = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;appGroups&#34;, defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult).applyValue(defaultAppGroups -&gt; defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult.groups())));
+     *         ctx.export(&#34;appGroups&#34;, default_.applyValue(default_ -&gt; default_.groups()));
      *     }
      * }
      * ```
@@ -305,11 +305,11 @@ public final class OpensearchFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var defaultAppGroups = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
+     *         final var default = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;appGroups&#34;, defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult).applyValue(defaultAppGroups -&gt; defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult.groups())));
+     *         ctx.export(&#34;appGroups&#34;, default_.applyValue(default_ -&gt; default_.groups()));
      *     }
      * }
      * ```
@@ -366,11 +366,11 @@ public final class OpensearchFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var defaultAppGroups = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
+     *         final var default = OpensearchFunctions.getAppGroups(GetAppGroupsArgs.builder()
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;appGroups&#34;, defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult).applyValue(defaultAppGroups -&gt; defaultAppGroups.applyValue(getAppGroupsResult -&gt; getAppGroupsResult.groups())));
+     *         ctx.export(&#34;appGroups&#34;, default_.applyValue(default_ -&gt; default_.groups()));
      *     }
      * }
      * ```

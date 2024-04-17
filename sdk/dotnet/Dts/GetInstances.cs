@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Dts
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_dts_instance.Default.Id,
+        ///             defaultAlicloudDtsInstance.Id,
         ///         },
         ///         ResourceGroupId = "example_value",
         ///     });
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.Dts
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_dts_instance.Default.Id,
+        ///             defaultAlicloudDtsInstance.Id,
         ///         },
         ///         ResourceGroupId = "example_value",
         ///     });

@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.CS
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var sourceRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("sourceRegistryEnterpriseInstance", new()
+    ///     var source = new AliCloud.CR.RegistryEnterpriseInstance("source", new()
     ///     {
     ///         PaymentType = "Subscription",
     ///         Period = 1,
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.CS
     ///         InstanceName = $"{name}-source",
     ///     });
     /// 
-    ///     var targetRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("targetRegistryEnterpriseInstance", new()
+    ///     var target = new AliCloud.CR.RegistryEnterpriseInstance("target", new()
     ///     {
     ///         PaymentType = "Subscription",
     ///         Period = 1,
@@ -53,49 +53,54 @@ namespace Pulumi.AliCloud.CS
     ///         InstanceName = $"{name}-target",
     ///     });
     /// 
-    ///     var sourceRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("sourceRegistryEnterpriseNamespace", new()
+    ///     var sourceRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("source", new()
     ///     {
-    ///         InstanceId = sourceRegistryEnterpriseInstance.Id,
+    ///         InstanceId = source.Id,
+    ///         Name = name,
     ///         AutoCreate = false,
     ///         DefaultVisibility = "PUBLIC",
     ///     });
     /// 
-    ///     var targetRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("targetRegistryEnterpriseNamespace", new()
+    ///     var targetRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("target", new()
     ///     {
-    ///         InstanceId = targetRegistryEnterpriseInstance.Id,
+    ///         InstanceId = target.Id,
+    ///         Name = name,
     ///         AutoCreate = false,
     ///         DefaultVisibility = "PUBLIC",
     ///     });
     /// 
-    ///     var sourceRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("sourceRegistryEnterpriseRepo", new()
+    ///     var sourceRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("source", new()
     ///     {
-    ///         InstanceId = sourceRegistryEnterpriseInstance.Id,
+    ///         InstanceId = source.Id,
     ///         Namespace = sourceRegistryEnterpriseNamespace.Name,
+    ///         Name = name,
     ///         Summary = "this is summary of my new repo",
     ///         RepoType = "PUBLIC",
     ///         Detail = "this is a public repo",
     ///     });
     /// 
-    ///     var targetRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("targetRegistryEnterpriseRepo", new()
+    ///     var targetRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("target", new()
     ///     {
-    ///         InstanceId = targetRegistryEnterpriseInstance.Id,
+    ///         InstanceId = target.Id,
     ///         Namespace = targetRegistryEnterpriseNamespace.Name,
+    ///         Name = name,
     ///         Summary = "this is summary of my new repo",
     ///         RepoType = "PUBLIC",
     ///         Detail = "this is a public repo",
     ///     });
     /// 
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultRegistryEnterpriseSyncRule = new AliCloud.CS.RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule", new()
+    ///     var defaultRegistryEnterpriseSyncRule = new AliCloud.CS.RegistryEnterpriseSyncRule("default", new()
     ///     {
-    ///         InstanceId = sourceRegistryEnterpriseInstance.Id,
+    ///         InstanceId = source.Id,
     ///         NamespaceName = sourceRegistryEnterpriseNamespace.Name,
-    ///         TargetRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
-    ///         TargetInstanceId = targetRegistryEnterpriseInstance.Id,
+    ///         Name = name,
+    ///         TargetRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
+    ///         TargetInstanceId = target.Id,
     ///         TargetNamespaceName = targetRegistryEnterpriseNamespace.Name,
     ///         TagFilter = ".*",
     ///         RepoName = sourceRegistryEnterpriseRepo.Name,

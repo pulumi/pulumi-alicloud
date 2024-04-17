@@ -32,9 +32,9 @@ import (
 //				Ids: []string{
 //					"fake-cert-id",
 //				},
-//				NameRegex:      pulumi.StringRef("^foo"),
-//				OutputFile:     pulumi.StringRef("/tmp/clientcert"),
 //				SslVpnServerId: pulumi.StringRef("fake-server-id"),
+//				OutputFile:     pulumi.StringRef("/tmp/clientcert"),
+//				NameRegex:      pulumi.StringRef("^foo"),
 //			}, nil)
 //			if err != nil {
 //				return err

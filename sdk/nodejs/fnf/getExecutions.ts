@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *         "my-Execution-2",
  *     ],
  * });
- * export const fnfExecutionId1 = data.alicloud_fn_f_executions.ids.executions[0].id;
+ * export const fnfExecutionId1 = idsAlicloudFnFExecutions.executions[0].id;
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -112,7 +112,7 @@ export interface GetExecutionsResult {
  *         "my-Execution-2",
  *     ],
  * });
- * export const fnfExecutionId1 = data.alicloud_fn_f_executions.ids.executions[0].id;
+ * export const fnfExecutionId1 = idsAlicloudFnFExecutions.executions[0].id;
  * ```
  * <!--End PulumiCodeChooser -->
  */

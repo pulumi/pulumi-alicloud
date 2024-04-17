@@ -188,13 +188,13 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool",
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("default",
             description=name,
             public_ip_address_pool_name=name,
             isp="BGP",
-            resource_group_id=default_resource_groups.ids[0])
-        default_public_ip_address_pool_cidr_block = alicloud.vpc.PublicIpAddressPoolCidrBlock("defaultPublicIpAddressPoolCidrBlock",
+            resource_group_id=default.ids[0])
+        default_public_ip_address_pool_cidr_block = alicloud.vpc.PublicIpAddressPoolCidrBlock("default",
             public_ip_address_pool_id=default_public_ip_address_pool.id,
             cidr_block="47.118.126.0/25")
         ```
@@ -242,13 +242,13 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool",
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("default",
             description=name,
             public_ip_address_pool_name=name,
             isp="BGP",
-            resource_group_id=default_resource_groups.ids[0])
-        default_public_ip_address_pool_cidr_block = alicloud.vpc.PublicIpAddressPoolCidrBlock("defaultPublicIpAddressPoolCidrBlock",
+            resource_group_id=default.ids[0])
+        default_public_ip_address_pool_cidr_block = alicloud.vpc.PublicIpAddressPoolCidrBlock("default",
             public_ip_address_pool_id=default_public_ip_address_pool.id,
             cidr_block="47.118.126.0/25")
         ```

@@ -41,31 +41,31 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultImages, err := simpleapplicationserver.GetImages(ctx, nil, nil)
+//			_default, err := simpleapplicationserver.GetImages(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultServerPlans, err := simpleapplicationserver.GetServerPlans(ctx, nil, nil)
+//			defaultGetServerPlans, err := simpleapplicationserver.GetServerPlans(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := simpleapplicationserver.NewInstance(ctx, "defaultInstance", &simpleapplicationserver.InstanceArgs{
+//			defaultInstance, err := simpleapplicationserver.NewInstance(ctx, "default", &simpleapplicationserver.InstanceArgs{
 //				PaymentType:  pulumi.String("Subscription"),
-//				PlanId:       pulumi.String(defaultServerPlans.Plans[0].Id),
+//				PlanId:       pulumi.String(defaultGetServerPlans.Plans[0].Id),
 //				InstanceName: pulumi.String(name),
-//				ImageId:      pulumi.String(defaultImages.Images[0].Id),
+//				ImageId:      pulumi.String(_default.Images[0].Id),
 //				Period:       pulumi.Int(1),
 //				DataDiskSize: pulumi.Int(100),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultServerDisks := simpleapplicationserver.GetServerDisksOutput(ctx, simpleapplicationserver.GetServerDisksOutputArgs{
+//			defaultGetServerDisks := simpleapplicationserver.GetServerDisksOutput(ctx, simpleapplicationserver.GetServerDisksOutputArgs{
 //				InstanceId: defaultInstance.ID(),
 //			}, nil)
-//			_, err = simpleapplicationserver.NewSnapshot(ctx, "defaultSnapshot", &simpleapplicationserver.SnapshotArgs{
-//				DiskId: defaultServerDisks.ApplyT(func(defaultServerDisks simpleapplicationserver.GetServerDisksResult) (*string, error) {
-//					return &defaultServerDisks.Ids[0], nil
+//			_, err = simpleapplicationserver.NewSnapshot(ctx, "default", &simpleapplicationserver.SnapshotArgs{
+//				DiskId: defaultGetServerDisks.ApplyT(func(defaultGetServerDisks simpleapplicationserver.GetServerDisksResult) (*string, error) {
+//					return &defaultGetServerDisks.Ids[0], nil
 //				}).(pulumi.StringPtrOutput),
 //				SnapshotName: pulumi.String(name),
 //			})

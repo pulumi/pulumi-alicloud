@@ -33,8 +33,8 @@ namespace Pulumi.AliCloud.Log
         /// {
         ///     var exampleUser = AliCloud.Log.GetAlertResource.Invoke(new()
         ///     {
-        ///         Lang = "cn",
         ///         Type = "user",
+        ///         Lang = "cn",
         ///     });
         /// 
         /// });
@@ -66,8 +66,8 @@ namespace Pulumi.AliCloud.Log
         /// {
         ///     var exampleUser = AliCloud.Log.GetAlertResource.Invoke(new()
         ///     {
-        ///         Lang = "cn",
         ///         Type = "user",
+        ///         Lang = "cn",
         ///     });
         /// 
         /// });

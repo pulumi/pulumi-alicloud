@@ -43,12 +43,14 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultAcl, err := rocketmq.NewAcl(ctx, "defaultAcl", nil)
+//			_, err := rocketmq.NewAcl(ctx, "default", &rocketmq.AclArgs{
+//				Name: pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rocketmq.NewAclRule(ctx, "defaultAclRule", &rocketmq.AclRuleArgs{
-//				AclId:           defaultAcl.ID(),
+//			_, err = rocketmq.NewAclRule(ctx, "default", &rocketmq.AclRuleArgs{
+//				AclId:           _default.ID(),
 //				Description:     pulumi.String(name),
 //				Policy:          pulumi.String("accept"),
 //				IpProtocol:      pulumi.String("ALL"),

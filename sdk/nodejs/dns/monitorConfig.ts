@@ -25,9 +25,9 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
  * const domainName = config.get("domainName") || "alicloud-provider.com";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {alarmContactGroupName: name});
- * const defaultGtmInstance = new alicloud.dns.GtmInstance("defaultGtmInstance", {
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("default", {alarmContactGroupName: name});
+ * const defaultGtmInstance = new alicloud.dns.GtmInstance("default", {
  *     instanceName: name,
  *     paymentType: "Subscription",
  *     period: 1,
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *     publicCnameMode: "SYSTEM_ASSIGN",
  *     ttl: 60,
  *     cnameType: "PUBLIC",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
  *     alertGroups: [defaultAlarmContactGroup.alarmContactGroupName],
  *     publicUserDomainName: domainName,
  *     alertConfigs: [{
@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  *         dingtalkNotice: true,
  *     }],
  * });
- * const defaultAddressPool = new alicloud.dns.AddressPool("defaultAddressPool", {
+ * const defaultAddressPool = new alicloud.dns.AddressPool("default", {
  *     addressPoolName: name,
  *     instanceId: defaultGtmInstance.id,
  *     lbaStrategy: "RATIO",
@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  *         lbaWeight: 1,
  *     }],
  * });
- * const defaultMonitorConfig = new alicloud.dns.MonitorConfig("defaultMonitorConfig", {
+ * const defaultMonitorConfig = new alicloud.dns.MonitorConfig("default", {
  *     addrPoolId: defaultAddressPool.id,
  *     evaluationCount: 1,
  *     interval: 60,

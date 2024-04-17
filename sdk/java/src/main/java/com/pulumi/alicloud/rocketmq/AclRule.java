@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.rocketmq.Acl;
+ * import com.pulumi.alicloud.rocketmq.AclArgs;
  * import com.pulumi.alicloud.rocketmq.AclRule;
  * import com.pulumi.alicloud.rocketmq.AclRuleArgs;
  * import java.util.List;
@@ -53,10 +54,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         var defaultAcl = new Acl(&#34;defaultAcl&#34;);
+ *         var default_ = new Acl(&#34;default&#34;, AclArgs.builder()        
+ *             .name(name)
+ *             .build());
  * 
  *         var defaultAclRule = new AclRule(&#34;defaultAclRule&#34;, AclRuleArgs.builder()        
- *             .aclId(defaultAcl.id())
+ *             .aclId(default_.id())
  *             .description(name)
  *             .policy(&#34;accept&#34;)
  *             .ipProtocol(&#34;ALL&#34;)

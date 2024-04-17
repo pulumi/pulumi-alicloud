@@ -18,10 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultDomainGroup = new alicloud.dns.DomainGroup("defaultDomainGroup", {domainGroupName: "tf-example"});
- * const defaultAlidnsDomain = new alicloud.dns.AlidnsDomain("defaultAlidnsDomain", {
+ * const _default = new alicloud.dns.DomainGroup("default", {domainGroupName: "tf-example"});
+ * const defaultAlidnsDomain = new alicloud.dns.AlidnsDomain("default", {
  *     domainName: "starmove.com",
- *     groupId: defaultDomainGroup.id,
+ *     groupId: _default.id,
  *     tags: {
  *         Created: "TF",
  *         For: "example",

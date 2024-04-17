@@ -693,7 +693,7 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getAttachments(GetAttachmentsArgs.builder()
-     *             .loadBalancerId(alicloud_slb_load_balancer.sample_slb().id())
+     *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
      *         ctx.export(&#34;firstSlbAttachmentInstanceId&#34;, sampleDs.applyValue(getAttachmentsResult -&gt; getAttachmentsResult.slbAttachments()[0].instanceId()));
@@ -734,7 +734,7 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getAttachments(GetAttachmentsArgs.builder()
-     *             .loadBalancerId(alicloud_slb_load_balancer.sample_slb().id())
+     *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
      *         ctx.export(&#34;firstSlbAttachmentInstanceId&#34;, sampleDs.applyValue(getAttachmentsResult -&gt; getAttachmentsResult.slbAttachments()[0].instanceId()));
@@ -775,7 +775,7 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getAttachments(GetAttachmentsArgs.builder()
-     *             .loadBalancerId(alicloud_slb_load_balancer.sample_slb().id())
+     *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
      *         ctx.export(&#34;firstSlbAttachmentInstanceId&#34;, sampleDs.applyValue(getAttachmentsResult -&gt; getAttachmentsResult.slbAttachments()[0].instanceId()));
@@ -816,7 +816,7 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getAttachments(GetAttachmentsArgs.builder()
-     *             .loadBalancerId(alicloud_slb_load_balancer.sample_slb().id())
+     *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
      *         ctx.export(&#34;firstSlbAttachmentInstanceId&#34;, sampleDs.applyValue(getAttachmentsResult -&gt; getAttachmentsResult.slbAttachments()[0].instanceId()));
@@ -859,7 +859,7 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getBackendServers(GetBackendServersArgs.builder()
-     *             .loadBalancerId(alicloud_slb_load_balancer.sample_slb().id())
+     *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
      *         ctx.export(&#34;firstSlbBackendServerId&#34;, sampleDs.applyValue(getBackendServersResult -&gt; getBackendServersResult.backendServers()[0].id()));
@@ -902,7 +902,7 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getBackendServers(GetBackendServersArgs.builder()
-     *             .loadBalancerId(alicloud_slb_load_balancer.sample_slb().id())
+     *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
      *         ctx.export(&#34;firstSlbBackendServerId&#34;, sampleDs.applyValue(getBackendServersResult -&gt; getBackendServersResult.backendServers()[0].id()));
@@ -945,7 +945,7 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getBackendServers(GetBackendServersArgs.builder()
-     *             .loadBalancerId(alicloud_slb_load_balancer.sample_slb().id())
+     *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
      *         ctx.export(&#34;firstSlbBackendServerId&#34;, sampleDs.applyValue(getBackendServersResult -&gt; getBackendServersResult.backendServers()[0].id()));
@@ -988,7 +988,7 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getBackendServers(GetBackendServersArgs.builder()
-     *             .loadBalancerId(alicloud_slb_load_balancer.sample_slb().id())
+     *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
      *         ctx.export(&#34;firstSlbBackendServerId&#34;, sampleDs.applyValue(getBackendServersResult -&gt; getBackendServersResult.backendServers()[0].id()));
@@ -1265,9 +1265,9 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SlbFunctions.getDomainExtensions(GetDomainExtensionsArgs.builder()
-     *             .frontendPort(&#34;fake-port&#34;)
      *             .ids(&#34;fake-de-id&#34;)
      *             .loadBalancerId(&#34;fake-lb-id&#34;)
+     *             .frontendPort(&#34;fake-port&#34;)
      *             .build());
      * 
      *     }
@@ -1309,9 +1309,9 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SlbFunctions.getDomainExtensions(GetDomainExtensionsArgs.builder()
-     *             .frontendPort(&#34;fake-port&#34;)
      *             .ids(&#34;fake-de-id&#34;)
      *             .loadBalancerId(&#34;fake-lb-id&#34;)
+     *             .frontendPort(&#34;fake-port&#34;)
      *             .build());
      * 
      *     }
@@ -1353,9 +1353,9 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SlbFunctions.getDomainExtensions(GetDomainExtensionsArgs.builder()
-     *             .frontendPort(&#34;fake-port&#34;)
      *             .ids(&#34;fake-de-id&#34;)
      *             .loadBalancerId(&#34;fake-lb-id&#34;)
+     *             .frontendPort(&#34;fake-port&#34;)
      *             .build());
      * 
      *     }
@@ -1397,9 +1397,9 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SlbFunctions.getDomainExtensions(GetDomainExtensionsArgs.builder()
-     *             .frontendPort(&#34;fake-port&#34;)
      *             .ids(&#34;fake-de-id&#34;)
      *             .loadBalancerId(&#34;fake-lb-id&#34;)
+     *             .frontendPort(&#34;fake-port&#34;)
      *             .build());
      * 
      *     }
@@ -1694,6 +1694,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.LoadBalancer;
+     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
@@ -1709,7 +1710,9 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer(&#34;default&#34;);
+     *         var default_ = new LoadBalancer(&#34;default&#34;, LoadBalancerArgs.builder()        
+     *             .name(&#34;sample_slb&#34;)
+     *             .build());
      * 
      *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex(&#34;sample_slb&#34;)
@@ -1740,6 +1743,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.LoadBalancer;
+     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
@@ -1755,7 +1759,9 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer(&#34;default&#34;);
+     *         var default_ = new LoadBalancer(&#34;default&#34;, LoadBalancerArgs.builder()        
+     *             .name(&#34;sample_slb&#34;)
+     *             .build());
      * 
      *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex(&#34;sample_slb&#34;)
@@ -1786,6 +1792,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.LoadBalancer;
+     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
@@ -1801,7 +1808,9 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer(&#34;default&#34;);
+     *         var default_ = new LoadBalancer(&#34;default&#34;, LoadBalancerArgs.builder()        
+     *             .name(&#34;sample_slb&#34;)
+     *             .build());
      * 
      *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex(&#34;sample_slb&#34;)
@@ -1832,6 +1841,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.LoadBalancer;
+     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
@@ -1847,7 +1857,9 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer(&#34;default&#34;);
+     *         var default_ = new LoadBalancer(&#34;default&#34;, LoadBalancerArgs.builder()        
+     *             .name(&#34;sample_slb&#34;)
+     *             .build());
      * 
      *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex(&#34;sample_slb&#34;)
@@ -1878,6 +1890,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.LoadBalancer;
+     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
@@ -1893,7 +1906,9 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer(&#34;default&#34;);
+     *         var default_ = new LoadBalancer(&#34;default&#34;, LoadBalancerArgs.builder()        
+     *             .name(&#34;sample_slb&#34;)
+     *             .build());
      * 
      *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex(&#34;sample_slb&#34;)
@@ -1924,6 +1939,7 @@ public final class SlbFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.slb.LoadBalancer;
+     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
      * import com.pulumi.alicloud.slb.SlbFunctions;
      * import com.pulumi.alicloud.slb.inputs.GetLoadBalancersArgs;
      * import java.util.List;
@@ -1939,7 +1955,9 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer(&#34;default&#34;);
+     *         var default_ = new LoadBalancer(&#34;default&#34;, LoadBalancerArgs.builder()        
+     *             .name(&#34;sample_slb&#34;)
+     *             .build());
      * 
      *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
      *             .nameRegex(&#34;sample_slb&#34;)
@@ -2034,19 +2052,20 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbrulebasicconfig&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
      *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .name(name)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -2071,6 +2090,7 @@ public final class SlbFunctions {
      *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(defaultListener.frontendPort())
+     *             .name(name)
      *             .domain(&#34;*.aliyun.com&#34;)
      *             .url(&#34;/image&#34;)
      *             .serverGroupId(defaultServerGroup.id())
@@ -2134,19 +2154,20 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbrulebasicconfig&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
      *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .name(name)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -2171,6 +2192,7 @@ public final class SlbFunctions {
      *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(defaultListener.frontendPort())
+     *             .name(name)
      *             .domain(&#34;*.aliyun.com&#34;)
      *             .url(&#34;/image&#34;)
      *             .serverGroupId(defaultServerGroup.id())
@@ -2234,19 +2256,20 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbrulebasicconfig&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
      *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .name(name)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -2271,6 +2294,7 @@ public final class SlbFunctions {
      *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(defaultListener.frontendPort())
+     *             .name(name)
      *             .domain(&#34;*.aliyun.com&#34;)
      *             .url(&#34;/image&#34;)
      *             .serverGroupId(defaultServerGroup.id())
@@ -2334,19 +2358,20 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbrulebasicconfig&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
      *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .name(name)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -2371,6 +2396,7 @@ public final class SlbFunctions {
      *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(defaultListener.frontendPort())
+     *             .name(name)
      *             .domain(&#34;*.aliyun.com&#34;)
      *             .url(&#34;/image&#34;)
      *             .serverGroupId(defaultServerGroup.id())
@@ -2664,7 +2690,7 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbservergroups&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
@@ -2677,7 +2703,7 @@ public final class SlbFunctions {
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -2743,7 +2769,7 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbservergroups&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
@@ -2756,7 +2782,7 @@ public final class SlbFunctions {
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -2822,7 +2848,7 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbservergroups&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
@@ -2835,7 +2861,7 @@ public final class SlbFunctions {
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -2901,7 +2927,7 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbservergroups&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
@@ -2914,7 +2940,7 @@ public final class SlbFunctions {
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -3283,8 +3309,8 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zonesIds = SlbFunctions.getZones(GetZonesArgs.builder()
-     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
      *             .availableSlbAddressType(&#34;vpc&#34;)
+     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
      *             .build());
      * 
      *     }
@@ -3326,8 +3352,8 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zonesIds = SlbFunctions.getZones(GetZonesArgs.builder()
-     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
      *             .availableSlbAddressType(&#34;vpc&#34;)
+     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
      *             .build());
      * 
      *     }
@@ -3369,8 +3395,8 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zonesIds = SlbFunctions.getZones(GetZonesArgs.builder()
-     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
      *             .availableSlbAddressType(&#34;vpc&#34;)
+     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
      *             .build());
      * 
      *     }
@@ -3412,8 +3438,8 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zonesIds = SlbFunctions.getZones(GetZonesArgs.builder()
-     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
      *             .availableSlbAddressType(&#34;vpc&#34;)
+     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
      *             .build());
      * 
      *     }
@@ -3455,8 +3481,8 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zonesIds = SlbFunctions.getZones(GetZonesArgs.builder()
-     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
      *             .availableSlbAddressType(&#34;vpc&#34;)
+     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
      *             .build());
      * 
      *     }
@@ -3498,8 +3524,8 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zonesIds = SlbFunctions.getZones(GetZonesArgs.builder()
-     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
      *             .availableSlbAddressType(&#34;vpc&#34;)
+     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
      *             .build());
      * 
      *     }

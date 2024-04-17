@@ -191,10 +191,11 @@ def get_security_groups(enable_details: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Filter security groups and print the results into a file
     sec_groups_ds = alicloud.ecs.get_security_groups(name_regex="^web-",
         output_file="web_access.json")
     # In conjunction with a VPC
-    primary_vpc_ds = alicloud.vpc.Network("primaryVpcDs")
+    primary_vpc_ds = alicloud.vpc.Network("primary_vpc_ds")
     primary_sec_groups_ds = alicloud.ecs.get_security_groups_output(vpc_id=primary_vpc_ds.id)
     pulumi.export("firstGroupId", primary_sec_groups_ds.groups[0].id)
     ```
@@ -269,10 +270,11 @@ def get_security_groups_output(enable_details: Optional[pulumi.Input[Optional[bo
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Filter security groups and print the results into a file
     sec_groups_ds = alicloud.ecs.get_security_groups(name_regex="^web-",
         output_file="web_access.json")
     # In conjunction with a VPC
-    primary_vpc_ds = alicloud.vpc.Network("primaryVpcDs")
+    primary_vpc_ds = alicloud.vpc.Network("primary_vpc_ds")
     primary_sec_groups_ds = alicloud.ecs.get_security_groups_output(vpc_id=primary_vpc_ds.id)
     pulumi.export("firstGroupId", primary_sec_groups_ds.groups[0].id)
     ```

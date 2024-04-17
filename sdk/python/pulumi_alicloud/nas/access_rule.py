@@ -295,12 +295,12 @@ class AccessRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo_access_group = alicloud.nas.AccessGroup("fooAccessGroup",
+        foo = alicloud.nas.AccessGroup("foo",
             access_group_name="tf-NasConfigName",
             access_group_type="Vpc",
             description="tf-testAccNasConfig")
-        foo_access_rule = alicloud.nas.AccessRule("fooAccessRule",
-            access_group_name=foo_access_group.access_group_name,
+        foo_access_rule = alicloud.nas.AccessRule("foo",
+            access_group_name=foo.access_group_name,
             source_cidr_ip="168.1.1.0/16",
             rw_access_type="RDWR",
             user_access_type="no_squash",
@@ -348,12 +348,12 @@ class AccessRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo_access_group = alicloud.nas.AccessGroup("fooAccessGroup",
+        foo = alicloud.nas.AccessGroup("foo",
             access_group_name="tf-NasConfigName",
             access_group_type="Vpc",
             description="tf-testAccNasConfig")
-        foo_access_rule = alicloud.nas.AccessRule("fooAccessRule",
-            access_group_name=foo_access_group.access_group_name,
+        foo_access_rule = alicloud.nas.AccessRule("foo",
+            access_group_name=foo.access_group_name,
             source_cidr_ip="168.1.1.0/16",
             rw_access_type="RDWR",
             user_access_type="no_squash",

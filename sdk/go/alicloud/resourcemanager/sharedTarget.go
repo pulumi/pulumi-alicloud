@@ -45,14 +45,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleResourceShare, err := resourcemanager.NewResourceShare(ctx, "exampleResourceShare", &resourcemanager.ResourceShareArgs{
+//			example, err := resourcemanager.NewResourceShare(ctx, "example", &resourcemanager.ResourceShareArgs{
 //				ResourceShareName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = resourcemanager.NewSharedTarget(ctx, "exampleSharedTarget", &resourcemanager.SharedTargetArgs{
-//				ResourceShareId: exampleResourceShare.ID(),
+//			_, err = resourcemanager.NewSharedTarget(ctx, "example", &resourcemanager.SharedTargetArgs{
+//				ResourceShareId: example.ID(),
 //				TargetId:        pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {

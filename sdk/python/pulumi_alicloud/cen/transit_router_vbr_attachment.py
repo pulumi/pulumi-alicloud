@@ -485,12 +485,12 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_instance = alicloud.cen.Instance("defaultInstance",
+        default = alicloud.cen.Instance("default",
             cen_instance_name=name,
             protection_level="REDUCED")
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
+        default_transit_router = alicloud.cen.TransitRouter("default", cen_id=default.id)
         name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("defaultVirtualBorderRouter",
+        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
             peering_subnet_mask="255.255.255.252",
@@ -500,12 +500,12 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
-        default_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("defaultTransitRouterVbrAttachment",
+        default_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("default",
             transit_router_id=default_transit_router.transit_router_id,
             transit_router_attachment_name="example",
             transit_router_attachment_description="example",
             vbr_id=default_virtual_border_router.id,
-            cen_id=default_instance.id)
+            cen_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -558,12 +558,12 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_instance = alicloud.cen.Instance("defaultInstance",
+        default = alicloud.cen.Instance("default",
             cen_instance_name=name,
             protection_level="REDUCED")
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
+        default_transit_router = alicloud.cen.TransitRouter("default", cen_id=default.id)
         name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("defaultVirtualBorderRouter",
+        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
             peering_subnet_mask="255.255.255.252",
@@ -573,12 +573,12 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
-        default_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("defaultTransitRouterVbrAttachment",
+        default_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("default",
             transit_router_id=default_transit_router.transit_router_id,
             transit_router_attachment_name="example",
             transit_router_attachment_description="example",
             vbr_id=default_virtual_border_router.id,
-            cen_id=default_instance.id)
+            cen_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 

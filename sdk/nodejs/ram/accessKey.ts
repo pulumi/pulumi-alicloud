@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *
  * // Create a new RAM access key for user.
  * const user = new alicloud.ram.User("user", {
+ *     name: "terraform-example",
  *     displayName: "user_display_name",
  *     mobile: "86-18688888888",
  *     email: "hello.uuu@aaa.com",
@@ -44,6 +45,7 @@ import * as utilities from "../utilities";
  *
  * // Create a new RAM access key for user.
  * const user = new alicloud.ram.User("user", {
+ *     name: "terraform-example",
  *     displayName: "user_display_name",
  *     mobile: "86-18688888888",
  *     email: "hello.uuu@aaa.com",

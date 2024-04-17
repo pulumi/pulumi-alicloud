@@ -119,13 +119,13 @@ class BucketPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        create_bucket = alicloud.oss.Bucket("createBucket",
+        create_bucket = alicloud.oss.Bucket("CreateBucket",
             storage_class="Standard",
-            bucket=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
-        default_bucket_policy = alicloud.oss.BucketPolicy("defaultBucketPolicy",
+            bucket=f"{name}-{default['result']}")
+        default_bucket_policy = alicloud.oss.BucketPolicy("default",
             policy=json.dumps({
                 "Version": "1",
                 "Statement": [{
@@ -183,13 +183,13 @@ class BucketPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        create_bucket = alicloud.oss.Bucket("createBucket",
+        create_bucket = alicloud.oss.Bucket("CreateBucket",
             storage_class="Standard",
-            bucket=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
-        default_bucket_policy = alicloud.oss.BucketPolicy("defaultBucketPolicy",
+            bucket=f"{name}-{default['result']}")
+        default_bucket_policy = alicloud.oss.BucketPolicy("default",
             policy=json.dumps({
                 "Version": "1",
                 "Statement": [{

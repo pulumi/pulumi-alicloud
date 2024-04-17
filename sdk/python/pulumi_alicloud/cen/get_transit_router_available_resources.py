@@ -80,8 +80,8 @@ def get_transit_router_available_resources(output_file: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     ids = alicloud.cen.get_transit_router_available_resources()
-    pulumi.export("masterId", data["alicloud_cen_transit_router_available_resources"]["default"]["resources"][0]["master_zones"])
-    pulumi.export("slaveId", data["alicloud_cen_transit_router_available_resources"]["default"]["resources"][0]["slave_zones"])
+    pulumi.export("masterId", default["resources"][0]["masterZones"])
+    pulumi.export("slaveId", default["resources"][0]["slaveZones"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -117,8 +117,8 @@ def get_transit_router_available_resources_output(output_file: Optional[pulumi.I
     import pulumi_alicloud as alicloud
 
     ids = alicloud.cen.get_transit_router_available_resources()
-    pulumi.export("masterId", data["alicloud_cen_transit_router_available_resources"]["default"]["resources"][0]["master_zones"])
-    pulumi.export("slaveId", data["alicloud_cen_transit_router_available_resources"]["default"]["resources"][0]["slave_zones"])
+    pulumi.export("masterId", default["resources"][0]["masterZones"])
+    pulumi.export("slaveId", default["resources"][0]["slaveZones"])
     ```
     <!--End PulumiCodeChooser -->
 

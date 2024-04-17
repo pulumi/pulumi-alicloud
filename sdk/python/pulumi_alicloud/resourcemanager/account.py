@@ -365,13 +365,13 @@ class Account(pulumi.CustomResource):
         display_name = config.get("displayName")
         if display_name is None:
             display_name = "EAccount"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_folders = alicloud.resourcemanager.get_folders()
-        example_account = alicloud.resourcemanager.Account("exampleAccount",
-            display_name=default.result.apply(lambda result: f"{display_name}-{result}"),
-            folder_id=example_folders.ids[0])
+        example = alicloud.resourcemanager.get_folders()
+        example_account = alicloud.resourcemanager.Account("example",
+            display_name=f"{display_name}-{default['result']}",
+            folder_id=example.ids[0])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -432,13 +432,13 @@ class Account(pulumi.CustomResource):
         display_name = config.get("displayName")
         if display_name is None:
             display_name = "EAccount"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_folders = alicloud.resourcemanager.get_folders()
-        example_account = alicloud.resourcemanager.Account("exampleAccount",
-            display_name=default.result.apply(lambda result: f"{display_name}-{result}"),
-            folder_id=example_folders.ids[0])
+        example = alicloud.resourcemanager.get_folders()
+        example_account = alicloud.resourcemanager.Account("example",
+            display_name=f"{display_name}-{default['result']}",
+            folder_id=example.ids[0])
         ```
         <!--End PulumiCodeChooser -->
 

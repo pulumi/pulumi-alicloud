@@ -23,24 +23,24 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.eds.EcdPolicyGroup("default", {
- *     authorizeAccessPolicyRules: [{
- *         cidrIp: "1.2.3.45/24",
- *         description: "terraform-example",
- *     }],
- *     authorizeSecurityPolicyRules: [{
- *         cidrIp: "1.2.3.4/24",
- *         description: "terraform-example",
- *         ipProtocol: "TCP",
- *         policy: "accept",
- *         portRange: "80/80",
- *         priority: "1",
- *         type: "inflow",
- *     }],
+ *     policyGroupName: "terraform-example",
  *     clipboard: "read",
  *     localDrive: "read",
- *     policyGroupName: "terraform-example",
  *     usbRedirect: "off",
  *     watermark: "off",
+ *     authorizeAccessPolicyRules: [{
+ *         description: "terraform-example",
+ *         cidrIp: "1.2.3.45/24",
+ *     }],
+ *     authorizeSecurityPolicyRules: [{
+ *         type: "inflow",
+ *         policy: "accept",
+ *         description: "terraform-example",
+ *         portRange: "80/80",
+ *         ipProtocol: "TCP",
+ *         priority: "1",
+ *         cidrIp: "1.2.3.4/24",
+ *     }],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

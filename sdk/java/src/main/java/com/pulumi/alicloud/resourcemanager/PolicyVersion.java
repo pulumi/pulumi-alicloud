@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
- *         var examplePolicy = new Policy(&#34;examplePolicy&#34;, PolicyArgs.builder()        
+ *         var example = new Policy(&#34;example&#34;, PolicyArgs.builder()        
  *             .policyName(name)
  *             .policyDocument(&#34;&#34;&#34;
  * 		{
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var examplePolicyVersion = new PolicyVersion(&#34;examplePolicyVersion&#34;, PolicyVersionArgs.builder()        
- *             .policyName(examplePolicy.policyName())
+ *             .policyName(example.policyName())
  *             .policyDocument(&#34;&#34;&#34;
  * 		{
  * 			&#34;Statement&#34;: [{

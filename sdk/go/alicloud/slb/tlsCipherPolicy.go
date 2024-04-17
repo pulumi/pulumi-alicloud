@@ -36,13 +36,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := slb.NewTlsCipherPolicy(ctx, "example", &slb.TlsCipherPolicyArgs{
-//				Ciphers: pulumi.StringArray{
-//					pulumi.String("AES256-SHA256"),
-//					pulumi.String("AES128-GCM-SHA256"),
-//				},
 //				TlsCipherPolicyName: pulumi.String("Test-example_value"),
 //				TlsVersions: pulumi.StringArray{
 //					pulumi.String("TLSv1.2"),
+//				},
+//				Ciphers: pulumi.StringArray{
+//					pulumi.String("AES256-SHA256"),
+//					pulumi.String("AES128-GCM-SHA256"),
 //				},
 //			})
 //			if err != nil {

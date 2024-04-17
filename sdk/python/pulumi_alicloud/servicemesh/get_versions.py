@@ -100,7 +100,7 @@ def get_versions(edition: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     default = alicloud.servicemesh.get_versions(edition="Default")
-    pulumi.export("serviceMeshVersion", data["alicloud_service_mesh_versions"]["versions"][0]["version"])
+    pulumi.export("serviceMeshVersion", versions[0]["version"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -144,7 +144,7 @@ def get_versions_output(edition: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi_alicloud as alicloud
 
     default = alicloud.servicemesh.get_versions(edition="Default")
-    pulumi.export("serviceMeshVersion", data["alicloud_service_mesh_versions"]["versions"][0]["version"])
+    pulumi.export("serviceMeshVersion", versions[0]["version"])
     ```
     <!--End PulumiCodeChooser -->
 

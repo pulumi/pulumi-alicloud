@@ -24,13 +24,14 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("defaultCustomerGateway", {
+ * const _default = new alicloud.vpn.CustomerGateway("default", {
+ *     name: name,
  *     ipAddress: "42.104.22.210",
  *     asn: "45014",
  *     description: name,
  * });
- * const defaultGatewayVpnAttachment = new alicloud.vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment", {
- *     customerGatewayId: defaultCustomerGateway.id,
+ * const defaultGatewayVpnAttachment = new alicloud.vpn.GatewayVpnAttachment("default", {
+ *     customerGatewayId: _default.id,
  *     networkType: "public",
  *     localSubnet: "0.0.0.0/0",
  *     remoteSubnet: "0.0.0.0/0",

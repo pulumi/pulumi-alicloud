@@ -18,10 +18,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const example = alicloud.oos.getExecutions({
  *     ids: ["execution_id"],
- *     status: "Success",
  *     templateName: "name",
+ *     status: "Success",
  * });
  * export const firstExecutionId = example.then(example => example.executions?.[0]?.id);
  * ```
@@ -171,10 +172,11 @@ export interface GetExecutionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const example = alicloud.oos.getExecutions({
  *     ids: ["execution_id"],
- *     status: "Success",
  *     templateName: "name",
+ *     status: "Success",
  * });
  * export const firstExecutionId = example.then(example => example.executions?.[0]?.id);
  * ```

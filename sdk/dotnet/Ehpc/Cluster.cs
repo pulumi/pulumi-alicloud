@@ -31,72 +31,72 @@ namespace Pulumi.AliCloud.Ehpc
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         NameRegex = "^centos_7_6_x64*",
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.0.0.0/8",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "10.1.0.0/16",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new()
+    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("default", new()
     ///     {
     ///         StorageType = "Performance",
     ///         ProtocolType = "NFS",
     ///     });
     /// 
-    ///     var defaultMountTarget = new AliCloud.Nas.MountTarget("defaultMountTarget", new()
+    ///     var defaultMountTarget = new AliCloud.Nas.MountTarget("default", new()
     ///     {
     ///         FileSystemId = defaultFileSystem.Id,
     ///         AccessGroupName = "DEFAULT_VPC_GROUP_NAME",
     ///         VswitchId = defaultSwitch.Id,
     ///     });
     /// 
-    ///     var defaultCluster = new AliCloud.Ehpc.Cluster("defaultCluster", new()
+    ///     var defaultCluster = new AliCloud.Ehpc.Cluster("default", new()
     ///     {
     ///         ClusterName = name,
     ///         DeployMode = "Simple",
     ///         Description = name,
     ///         HaEnable = false,
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///         ImageOwnerAlias = "system",
     ///         VolumeProtocol = "nfs",
     ///         VolumeId = defaultFileSystem.Id,
     ///         VolumeMountpoint = defaultMountTarget.MountTargetDomain,
     ///         ComputeCount = 1,
-    ///         ComputeInstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         ComputeInstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         LoginCount = 1,
-    ///         LoginInstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         LoginInstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         ManagerCount = 1,
-    ///         ManagerInstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         ManagerInstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         OsTag = "CentOS_7.6_64",
     ///         SchedulerType = "pbs",
     ///         Password = "your-password123",
     ///         VswitchId = defaultSwitch.Id,
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
     /// });

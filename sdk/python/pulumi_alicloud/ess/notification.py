@@ -158,23 +158,23 @@ class Notification(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        my_name = default_random_integer.result.apply(lambda result: f"{name}-{result}")
-        default_regions = alicloud.get_regions(current=True)
-        default_account = alicloud.get_account()
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        my_name = f"{name}-{default_integer['result']}"
+        default = alicloud.get_regions(current=True)
+        default_get_account = alicloud.get_account()
+        default_get_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=my_name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default_get_zones.zones[0].id,
             vswitch_name=my_name)
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+        default_scaling_group = alicloud.ess.ScalingGroup("default",
             min_size=1,
             max_size=1,
             scaling_group_name=my_name,
@@ -183,14 +183,14 @@ class Notification(pulumi.CustomResource):
                 "NewestInstance",
             ],
             vswitch_ids=[default_switch.id])
-        default_queue = alicloud.mns.Queue("defaultQueue")
-        default_notification = alicloud.ess.Notification("defaultNotification",
+        default_queue = alicloud.mns.Queue("default", name=my_name)
+        default_notification = alicloud.ess.Notification("default",
             scaling_group_id=default_scaling_group.id,
             notification_types=[
                 "AUTOSCALING:SCALE_OUT_SUCCESS",
                 "AUTOSCALING:SCALE_OUT_ERROR",
             ],
-            notification_arn=default_queue.name.apply(lambda name: f"acs:ess:{default_regions.regions[0].id}:{default_account.id}:queue/{name}"))
+            notification_arn=default_queue.name.apply(lambda name: f"acs:ess:{default.regions[0].id}:{default_get_account.id}:queue/{name}"))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -234,23 +234,23 @@ class Notification(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        my_name = default_random_integer.result.apply(lambda result: f"{name}-{result}")
-        default_regions = alicloud.get_regions(current=True)
-        default_account = alicloud.get_account()
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        my_name = f"{name}-{default_integer['result']}"
+        default = alicloud.get_regions(current=True)
+        default_get_account = alicloud.get_account()
+        default_get_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=my_name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default_get_zones.zones[0].id,
             vswitch_name=my_name)
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+        default_scaling_group = alicloud.ess.ScalingGroup("default",
             min_size=1,
             max_size=1,
             scaling_group_name=my_name,
@@ -259,14 +259,14 @@ class Notification(pulumi.CustomResource):
                 "NewestInstance",
             ],
             vswitch_ids=[default_switch.id])
-        default_queue = alicloud.mns.Queue("defaultQueue")
-        default_notification = alicloud.ess.Notification("defaultNotification",
+        default_queue = alicloud.mns.Queue("default", name=my_name)
+        default_notification = alicloud.ess.Notification("default",
             scaling_group_id=default_scaling_group.id,
             notification_types=[
                 "AUTOSCALING:SCALE_OUT_SUCCESS",
                 "AUTOSCALING:SCALE_OUT_ERROR",
             ],
-            notification_arn=default_queue.name.apply(lambda name: f"acs:ess:{default_regions.regions[0].id}:{default_account.id}:queue/{name}"))
+            notification_arn=default_queue.name.apply(lambda name: f"acs:ess:{default.regions[0].id}:{default_get_account.id}:queue/{name}"))
         ```
         <!--End PulumiCodeChooser -->
 

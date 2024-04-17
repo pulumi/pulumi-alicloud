@@ -70,14 +70,13 @@ import javax.annotation.Nullable;
  *         &#34;Action&#34;: &#34;ACS::ExecuteApi&#34;
  *       }]
  *   }
- *   
  *             &#34;&#34;&#34;)
+ *             .templateName(&#34;test-name&#34;)
+ *             .versionName(&#34;test&#34;)
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
  *                 Map.entry(&#34;For&#34;, &#34;acceptance Test&#34;)
  *             ))
- *             .templateName(&#34;test-name&#34;)
- *             .versionName(&#34;test&#34;)
  *             .build());
  * 
  *     }

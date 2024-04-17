@@ -142,8 +142,11 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Create a RAM Group Policy attachment.
-        group = alicloud.ram.Group("group", comments="this is a group comments.")
+        group = alicloud.ram.Group("group",
+            name="groupName",
+            comments="this is a group comments.")
         policy = alicloud.ram.Policy("policy",
+            name="policyName",
             document=\"\"\"    {
               "Statement": [
                 {
@@ -202,8 +205,11 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Create a RAM Group Policy attachment.
-        group = alicloud.ram.Group("group", comments="this is a group comments.")
+        group = alicloud.ram.Group("group",
+            name="groupName",
+            comments="this is a group comments.")
         policy = alicloud.ram.Policy("policy",
+            name="policyName",
             document=\"\"\"    {
               "Statement": [
                 {

@@ -486,21 +486,21 @@ class FileSystem(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.nas.get_zones(file_system_type="cpfs")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.nas.get_zones(file_system_type="cpfs")
+        example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vswitch_name="terraform-example",
             cidr_block="172.17.3.0/24",
             vpc_id=example_network.id,
-            zone_id=example_zones.zones[1].zone_id)
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
+            zone_id=example.zones[1].zone_id)
+        example_file_system = alicloud.nas.FileSystem("example",
             protocol_type="cpfs",
             storage_type="advance_200",
             file_system_type="cpfs",
             capacity=3600,
-            zone_id=example_zones.zones[1].zone_id,
+            zone_id=example.zones[1].zone_id,
             vpc_id=example_network.id,
             vswitch_id=example_switch.id)
         ```
@@ -593,21 +593,21 @@ class FileSystem(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.nas.get_zones(file_system_type="cpfs")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.nas.get_zones(file_system_type="cpfs")
+        example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vswitch_name="terraform-example",
             cidr_block="172.17.3.0/24",
             vpc_id=example_network.id,
-            zone_id=example_zones.zones[1].zone_id)
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
+            zone_id=example.zones[1].zone_id)
+        example_file_system = alicloud.nas.FileSystem("example",
             protocol_type="cpfs",
             storage_type="advance_200",
             file_system_type="cpfs",
             capacity=3600,
-            zone_id=example_zones.zones[1].zone_id,
+            zone_id=example.zones[1].zone_id,
             vpc_id=example_network.id,
             vswitch_id=example_switch.id)
         ```

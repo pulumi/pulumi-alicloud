@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const zonesIds = alicloud.slb.getZones({
- *     availableSlbAddressIpVersion: "ipv4",
  *     availableSlbAddressType: "vpc",
+ *     availableSlbAddressIpVersion: "ipv4",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -119,8 +119,8 @@ export interface GetZonesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const zonesIds = alicloud.slb.getZones({
- *     availableSlbAddressIpVersion: "ipv4",
  *     availableSlbAddressType: "vpc",
+ *     availableSlbAddressIpVersion: "ipv4",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -28,12 +28,13 @@ namespace Pulumi.AliCloud.Ecs
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new ECS disk-attachment and use it attach one disk to a new instance.
-    ///     var ecsSg = new AliCloud.Ecs.SecurityGroup("ecsSg", new()
+    ///     var ecsSg = new AliCloud.Ecs.SecurityGroup("ecs_sg", new()
     ///     {
+    ///         Name = "terraform-test-group",
     ///         Description = "New security group",
     ///     });
     /// 
-    ///     var ecsDisk = new AliCloud.Ecs.Disk("ecsDisk", new()
+    ///     var ecsDisk = new AliCloud.Ecs.Disk("ecs_disk", new()
     ///     {
     ///         AvailabilityZone = "cn-beijing-a",
     ///         Size = 50,
@@ -43,7 +44,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         },
     ///     });
     /// 
-    ///     var ecsInstance = new AliCloud.Ecs.Instance("ecsInstance", new()
+    ///     var ecsInstance = new AliCloud.Ecs.Instance("ecs_instance", new()
     ///     {
     ///         ImageId = "ubuntu_18_04_64_20G_alibase_20190624.vhd",
     ///         InstanceType = "ecs.n4.small",
@@ -60,7 +61,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         },
     ///     });
     /// 
-    ///     var ecsDiskAtt = new AliCloud.Ecs.DiskAttachment("ecsDiskAtt", new()
+    ///     var ecsDiskAtt = new AliCloud.Ecs.DiskAttachment("ecs_disk_att", new()
     ///     {
     ///         DiskId = ecsDisk.Id,
     ///         InstanceId = ecsInstance.Id,

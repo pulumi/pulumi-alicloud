@@ -25,13 +25,14 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const sagId = config.get("sagId") || "sag-9bifkf***";
- * const defaultNetwork = new alicloud.cloudconnect.Network("defaultNetwork", {
+ * const _default = new alicloud.cloudconnect.Network("default", {
+ *     name: name,
  *     description: name,
  *     cidrBlock: "192.168.0.0/24",
  *     isDefault: true,
  * });
- * const defaultNetworkAttachment = new alicloud.cloudconnect.NetworkAttachment("defaultNetworkAttachment", {
- *     ccnId: defaultNetwork.id,
+ * const defaultNetworkAttachment = new alicloud.cloudconnect.NetworkAttachment("default", {
+ *     ccnId: _default.id,
  *     sagId: sagId,
  * });
  * ```

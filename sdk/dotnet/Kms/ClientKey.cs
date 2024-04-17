@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Kms
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var aAP0 = new AliCloud.Kms.ApplicationAccessPoint("aAP0", new()
+    ///     var AAP0 = new AliCloud.Kms.ApplicationAccessPoint("AAP0", new()
     ///     {
     ///         Policies = new[]
     ///         {
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Kms
     /// 
     ///     var @default = new AliCloud.Kms.ClientKey("default", new()
     ///     {
-    ///         AapName = aAP0.ApplicationAccessPointName,
+    ///         AapName = AAP0.ApplicationAccessPointName,
     ///         Password = "YouPassword123!",
     ///         NotBefore = "2023-09-01T14:11:22Z",
     ///         NotAfter = "2028-09-01T14:11:22Z",

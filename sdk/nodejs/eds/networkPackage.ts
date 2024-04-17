@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultSimpleOfficeSites = alicloud.eds.getSimpleOfficeSites({
+ * const default = alicloud.eds.getSimpleOfficeSites({
  *     status: "REGISTERED",
  *     nameRegex: "default",
  * });
- * const defaultNetworkPackage = new alicloud.eds.NetworkPackage("defaultNetworkPackage", {
+ * const defaultNetworkPackage = new alicloud.eds.NetworkPackage("default", {
  *     bandwidth: 10,
- *     officeSiteId: defaultSimpleOfficeSites.then(defaultSimpleOfficeSites => defaultSimpleOfficeSites.ids?.[0]),
+ *     officeSiteId: _default.then(_default => _default.ids?.[0]),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

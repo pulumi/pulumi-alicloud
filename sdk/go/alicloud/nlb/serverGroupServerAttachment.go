@@ -43,19 +43,19 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultServerGroup, err := nlb.NewServerGroup(ctx, "defaultServerGroup", &nlb.ServerGroupArgs{
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[0]),
+//			defaultServerGroup, err := nlb.NewServerGroup(ctx, "default", &nlb.ServerGroupArgs{
+//				ResourceGroupId: pulumi.String(_default.Ids[0]),
 //				ServerGroupName: pulumi.String(name),
 //				ServerGroupType: pulumi.String("Ip"),
 //				VpcId:           defaultNetwork.ID(),
@@ -69,7 +69,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = nlb.NewServerGroupServerAttachment(ctx, "defaultServerGroupServerAttachment", &nlb.ServerGroupServerAttachmentArgs{
+//			_, err = nlb.NewServerGroupServerAttachment(ctx, "default", &nlb.ServerGroupServerAttachmentArgs{
 //				ServerType:    pulumi.String("Ip"),
 //				ServerId:      pulumi.String("10.0.0.0"),
 //				Description:   pulumi.String(name),

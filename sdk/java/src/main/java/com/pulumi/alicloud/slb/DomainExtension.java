@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var slbDomainExtensionName = config.get(&#34;slbDomainExtensionName&#34;).orElse(&#34;forDomainExtension&#34;);
- *         final var domainExtensionZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var domainExtension = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *         var domainExtensionSwitch = new Switch(&#34;domainExtensionSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(domainExtensionNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/21&#34;)
- *             .zoneId(domainExtensionZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(domainExtension.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .vswitchName(slbDomainExtensionName)
  *             .build());
  * 
@@ -85,6 +85,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var domainExtensionServerCertificate = new ServerCertificate(&#34;domainExtensionServerCertificate&#34;, ServerCertificateArgs.builder()        
+ *             .name(&#34;tf-testAccSlbServerCertificate&#34;)
  *             .serverCertificate(&#34;&#34;&#34;
  * -----BEGIN CERTIFICATE-----
  * MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj

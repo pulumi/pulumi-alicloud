@@ -31,6 +31,8 @@ namespace Pulumi.AliCloud.Cms
     ///     var basic = new AliCloud.Cms.SiteMonitor("basic", new()
     ///     {
     ///         Address = "http://www.alibabacloud.com",
+    ///         TaskName = "tf-example",
+    ///         TaskType = "HTTP",
     ///         Interval = 5,
     ///         IspCities = new[]
     ///         {
@@ -55,10 +57,7 @@ namespace Pulumi.AliCloud.Cms
     ///     ],
     ///     ""time_out"": 30000
     /// }
-    /// 
     /// ",
-    ///         TaskName = "tf-example",
-    ///         TaskType = "HTTP",
     ///     });
     /// 
     /// });

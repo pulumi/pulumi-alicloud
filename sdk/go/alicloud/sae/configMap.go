@@ -46,23 +46,21 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultNamespace, err := sae.NewNamespace(ctx, "defaultNamespace", &sae.NamespaceArgs{
-//				NamespaceId: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v:example%v", defaultRegions.Regions[0].Id, result), nil
-//				}).(pulumi.StringOutput),
+//			defaultNamespace, err := sae.NewNamespace(ctx, "default", &sae.NamespaceArgs{
+//				NamespaceId:             pulumi.String(fmt.Sprintf("%v:example%v", _default.Regions[0].Id, defaultInteger.Result)),
 //				NamespaceName:           pulumi.String(name),
 //				NamespaceDescription:    pulumi.String(name),
 //				EnableMicroRegistration: pulumi.Bool(false),
@@ -78,8 +76,9 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err = sae.NewConfigMap(ctx, "defaultConfigMap", &sae.ConfigMapArgs{
+//			_, err = sae.NewConfigMap(ctx, "default", &sae.ConfigMapArgs{
 //				Data:        pulumi.String(json0),
+//				Name:        pulumi.String(name),
 //				NamespaceId: defaultNamespace.NamespaceId,
 //			})
 //			if err != nil {

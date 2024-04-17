@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("region"); param != "" {
 //				region = param
 //			}
-//			defaultBasicAccelerator, err := ga.NewBasicAccelerator(ctx, "defaultBasicAccelerator", &ga.BasicAcceleratorArgs{
+//			_, err := ga.NewBasicAccelerator(ctx, "default", &ga.BasicAcceleratorArgs{
 //				Duration:             pulumi.Int(1),
 //				PricingCycle:         pulumi.String("Month"),
 //				BandwidthBillingType: pulumi.String("CDT"),
@@ -53,8 +53,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ga.NewBasicIpSet(ctx, "defaultBasicIpSet", &ga.BasicIpSetArgs{
-//				AcceleratorId:      defaultBasicAccelerator.ID(),
+//			_, err = ga.NewBasicIpSet(ctx, "default", &ga.BasicIpSetArgs{
+//				AcceleratorId:      _default.ID(),
 //				AccelerateRegionId: pulumi.String(region),
 //				IspType:            pulumi.String("BGP"),
 //				Bandwidth:          pulumi.Int(5),

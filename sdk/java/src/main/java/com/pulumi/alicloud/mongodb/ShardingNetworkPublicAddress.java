@@ -62,11 +62,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultZones = MongodbFunctions.getZones();
+ *         final var default = MongodbFunctions.getZones();
  * 
- *         final var index = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()).length() - 1;
+ *         final var index = default_.zones().length() - 1;
  * 
- *         final var zoneId = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones())[index].id();
+ *         final var zoneId = default_.zones()[index].id();
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
@@ -84,6 +84,7 @@ import javax.annotation.Nullable;
  *             .zoneId(zoneId)
  *             .vswitchId(defaultSwitch.id())
  *             .engineVersion(&#34;4.2&#34;)
+ *             .name(name)
  *             .shardLists(            
  *                 ShardingInstanceShardListArgs.builder()
  *                     .nodeClass(&#34;dds.shard.mid&#34;)

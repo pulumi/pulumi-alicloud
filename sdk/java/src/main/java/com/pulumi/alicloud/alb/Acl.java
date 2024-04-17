@@ -54,11 +54,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
  *             .aclName(&#34;tf_example&#34;)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(default_.groups()[0].id())
  *             .build());
  * 
  *     }

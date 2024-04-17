@@ -440,14 +440,13 @@ class Template(pulumi.CustomResource):
                 "Action": "ACS::ExecuteApi"
               }]
           }
-          
         \"\"\",
+            template_name="test-name",
+            version_name="test",
             tags={
                 "Created": "TF",
                 "For": "acceptance Test",
-            },
-            template_name="test-name",
-            version_name="test")
+            })
         ```
         <!--End PulumiCodeChooser -->
 
@@ -509,14 +508,13 @@ class Template(pulumi.CustomResource):
                 "Action": "ACS::ExecuteApi"
               }]
           }
-          
         \"\"\",
+            template_name="test-name",
+            version_name="test",
             tags={
                 "Created": "TF",
                 "For": "acceptance Test",
-            },
-            template_name="test-name",
-            version_name="test")
+            })
         ```
         <!--End PulumiCodeChooser -->
 

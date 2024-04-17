@@ -30,25 +30,26 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Gpdb",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
+    ///         Name = "vpc-123456",
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
     ///         VswitchName = "vpc-123456",
     ///     });
     /// 
-    ///     var adbPgInstance = new AliCloud.Gpdb.ElasticInstance("adbPgInstance", new()
+    ///     var adbPgInstance = new AliCloud.Gpdb.ElasticInstance("adb_pg_instance", new()
     ///     {
     ///         Engine = "gpdb",
     ///         EngineVersion = "6.0",

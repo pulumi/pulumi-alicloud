@@ -31,11 +31,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			saslAclsDs, err := actiontrail.GetSaslAcls(ctx, &actiontrail.GetSaslAclsArgs{
-//				AclResourceName: "testTopic",
-//				AclResourceType: "Topic",
 //				InstanceId:      "xxx",
-//				OutputFile:      pulumi.StringRef("saslAcls.txt"),
 //				Username:        "username",
+//				AclResourceType: "Topic",
+//				AclResourceName: "testTopic",
+//				OutputFile:      pulumi.StringRef("saslAcls.txt"),
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -52,44 +52,40 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			example, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			exampleGetAccount, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
-//				ProjectName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//			exampleProject, err := log.NewProject(ctx, "example", &log.ProjectArgs{
+//				ProjectName: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
 //				Description: pulumi.String("tf actiontrail example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTrail, err := actiontrail.NewTrail(ctx, "exampleTrail", &actiontrail.TrailArgs{
-//				TrailName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//			exampleTrail, err := actiontrail.NewTrail(ctx, "example", &actiontrail.TrailArgs{
+//				TrailName: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
 //				SlsProjectArn: exampleProject.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("acs:log:%v:%v:project/%v", exampleRegions.Regions[0].Id, exampleAccount.Id, name), nil
+//					return fmt.Sprintf("acs:log:%v:%v:project/%v", example.Regions[0].Id, exampleGetAccount.Id, name), nil
 //				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = actiontrail.NewHistoryDeliveryJob(ctx, "exampleHistoryDeliveryJob", &actiontrail.HistoryDeliveryJobArgs{
+//			_, err = actiontrail.NewHistoryDeliveryJob(ctx, "example", &actiontrail.HistoryDeliveryJobArgs{
 //				TrailName: exampleTrail.ID(),
 //			})
 //			if err != nil {

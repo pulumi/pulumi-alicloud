@@ -22,10 +22,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ * const default = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
- * const defaultRule = new alicloud.cfg.Rule("defaultRule", {
+ * const defaultRule = new alicloud.cfg.Rule("default", {
  *     description: "If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.",
  *     sourceOwner: "ALIYUN",
  *     sourceIdentifier: "contains-tag",
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     excludeResourceIdsScope: "example-resource_id",
  *     regionIdsScope: "cn-hangzhou",
  *     configRuleTriggerTypes: "ConfigurationItemChangeNotification",
- *     resourceGroupIdsScope: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     resourceGroupIdsScope: _default.then(_default => _default.ids?.[0]),
  *     resourceTypesScopes: ["ACS::RDS::DBInstance"],
  *     ruleName: "contains-tag",
  *     inputParameters: {

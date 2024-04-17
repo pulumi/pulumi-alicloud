@@ -48,17 +48,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .certificate(&#34;your_certificate&#34;)
  *             .certificateName(&#34;your_certificate_name&#34;)
- *             .domain(&#34;your_domain_name&#34;)
  *             .instanceId(&#34;your_instance_id&#34;)
+ *             .domain(&#34;your_domain_name&#34;)
  *             .privateKey(&#34;your_private_key&#34;)
+ *             .certificate(&#34;your_certificate&#34;)
  *             .build());
  * 
  *         var default2 = new Certificate(&#34;default2&#34;, CertificateArgs.builder()        
- *             .certificateId(&#34;your_certificate_id&#34;)
- *             .domain(&#34;your_domain_name&#34;)
  *             .instanceId(&#34;your_instance_id&#34;)
+ *             .domain(&#34;your_domain_name&#34;)
+ *             .certificateId(&#34;your_certificate_id&#34;)
  *             .build());
  * 
  *     }

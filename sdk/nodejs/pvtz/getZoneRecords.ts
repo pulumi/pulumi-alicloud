@@ -17,8 +17,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const recordsDs = alicloud.pvtz.getZoneRecords({
- *     keyword: alicloud_pvtz_zone_record.foo.value,
- *     zoneId: alicloud_pvtz_zone.basic.id,
+ *     zoneId: basic.id,
+ *     keyword: foo.value,
  * });
  * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.id);
  * ```
@@ -125,8 +125,8 @@ export interface GetZoneRecordsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const recordsDs = alicloud.pvtz.getZoneRecords({
- *     keyword: alicloud_pvtz_zone_record.foo.value,
- *     zoneId: alicloud_pvtz_zone.basic.id,
+ *     zoneId: basic.id,
+ *     keyword: foo.value,
  * });
  * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.id);
  * ```

@@ -27,32 +27,33 @@ namespace Pulumi.AliCloud.Rds
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var exampleZones = AliCloud.Rds.GetZones.Invoke(new()
+    ///     var example = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "5.6",
     ///     });
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
     ///     {
     ///         VpcId = exampleNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
     ///     {
+    ///         Name = name,
     ///         VpcId = exampleNetwork.Id,
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new()
+    ///     var exampleInstance = new AliCloud.Rds.Instance("example", new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "5.6",
@@ -68,7 +69,7 @@ namespace Pulumi.AliCloud.Rds
     ///         },
     ///     });
     /// 
-    ///     var exampleReadOnlyInstance = new AliCloud.Rds.ReadOnlyInstance("exampleReadOnlyInstance", new()
+    ///     var exampleReadOnlyInstance = new AliCloud.Rds.ReadOnlyInstance("example", new()
     ///     {
     ///         ZoneId = exampleInstance.ZoneId,
     ///         MasterDbInstanceId = exampleInstance.Id,

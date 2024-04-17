@@ -50,24 +50,24 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       example.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewNetworkAcl(ctx, "exampleNetworkAcl", &vpc.NetworkAclArgs{
-//				VpcId:          exampleNetwork.ID(),
+//			_, err = vpc.NewNetworkAcl(ctx, "example", &vpc.NetworkAclArgs{
+//				VpcId:          example.ID(),
 //				NetworkAclName: pulumi.String(name),
 //				Description:    pulumi.String(name),
 //				IngressAclEntries: vpc.NetworkAclIngressAclEntryArray{

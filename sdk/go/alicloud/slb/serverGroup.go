@@ -52,29 +52,29 @@ import (
 //			if param := cfg.Get("slbServerGroupName"); param != "" {
 //				slbServerGroupName = param
 //			}
-//			serverGroupZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			serverGroup, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			serverGroupNetwork, err := vpc.NewNetwork(ctx, "serverGroupNetwork", &vpc.NetworkArgs{
+//			serverGroupNetwork, err := vpc.NewNetwork(ctx, "server_group", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(slbServerGroupName),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			serverGroupSwitch, err := vpc.NewSwitch(ctx, "serverGroupSwitch", &vpc.SwitchArgs{
+//			serverGroupSwitch, err := vpc.NewSwitch(ctx, "server_group", &vpc.SwitchArgs{
 //				VpcId:       serverGroupNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
-//				ZoneId:      pulumi.String(serverGroupZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(serverGroup.Zones[0].Id),
 //				VswitchName: pulumi.String(slbServerGroupName),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			serverGroupApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "serverGroupApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+//			serverGroupApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "server_group", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName:   pulumi.String(slbServerGroupName),
 //				VswitchId:          serverGroupSwitch.ID(),
 //				InstanceChargeType: pulumi.String("PayByCLCU"),
@@ -82,8 +82,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = slb.NewServerGroup(ctx, "serverGroupServerGroup", &slb.ServerGroupArgs{
+//			_, err = slb.NewServerGroup(ctx, "server_group", &slb.ServerGroupArgs{
 //				LoadBalancerId: serverGroupApplicationLoadBalancer.ID(),
+//				Name:           pulumi.String(slbServerGroupName),
 //			})
 //			if err != nil {
 //				return err

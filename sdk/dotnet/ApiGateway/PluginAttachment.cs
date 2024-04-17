@@ -26,14 +26,16 @@ namespace Pulumi.AliCloud.ApiGateway
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform_example";
-    ///     var exampleGroup = new AliCloud.ApiGateway.Group("exampleGroup", new()
+    ///     var example = new AliCloud.ApiGateway.Group("example", new()
     ///     {
+    ///         Name = name,
     ///         Description = name,
     ///     });
     /// 
-    ///     var exampleApi = new AliCloud.ApiGateway.Api("exampleApi", new()
+    ///     var exampleApi = new AliCloud.ApiGateway.Api("example", new()
     ///     {
-    ///         GroupId = exampleGroup.Id,
+    ///         GroupId = example.Id,
+    ///         Name = name,
     ///         Description = name,
     ///         AuthType = "APP",
     ///         ForceNonceCheck = false,
@@ -72,7 +74,7 @@ namespace Pulumi.AliCloud.ApiGateway
     ///         },
     ///     });
     /// 
-    ///     var examplePlugin = new AliCloud.ApiGateway.Plugin("examplePlugin", new()
+    ///     var examplePlugin = new AliCloud.ApiGateway.Plugin("example", new()
     ///     {
     ///         Description = "tf_example",
     ///         PluginName = "tf_example",
@@ -88,10 +90,10 @@ namespace Pulumi.AliCloud.ApiGateway
     ///         PluginType = "cors",
     ///     });
     /// 
-    ///     var examplePluginAttachment = new AliCloud.ApiGateway.PluginAttachment("examplePluginAttachment", new()
+    ///     var examplePluginAttachment = new AliCloud.ApiGateway.PluginAttachment("example", new()
     ///     {
     ///         ApiId = exampleApi.ApiId,
-    ///         GroupId = exampleGroup.Id,
+    ///         GroupId = example.Id,
     ///         PluginId = examplePlugin.Id,
     ///         StageName = "RELEASE",
     ///     });

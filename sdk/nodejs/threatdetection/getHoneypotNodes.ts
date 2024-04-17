@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.threatdetection.getHoneypotNodes({
- *     ids: [alicloud_threat_detection_honeypot_node["default"].id],
+ *     ids: [defaultAlicloudThreatDetectionHoneypotNode.id],
  * });
  * export const alicloudThreatDetectionHoneypotNodeExampleId = _default.then(_default => _default.nodes?.[0]?.id);
  * ```
@@ -114,7 +114,7 @@ export interface GetHoneypotNodesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.threatdetection.getHoneypotNodes({
- *     ids: [alicloud_threat_detection_honeypot_node["default"].id],
+ *     ids: [defaultAlicloudThreatDetectionHoneypotNode.id],
  * });
  * export const alicloudThreatDetectionHoneypotNodeExampleId = _default.then(_default => _default.nodes?.[0]?.id);
  * ```

@@ -56,8 +56,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+ *         var foo = new Network(&#34;foo&#34;, NetworkArgs.builder()        
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .name(name)
  *             .build());
  * 
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -65,13 +66,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(fooNetwork.id())
+ *             .vpcId(foo.id())
  *             .cidrBlock(&#34;172.16.0.0/21&#34;)
  *             .zoneId(default_.zones()[0].id())
+ *             .name(name)
  *             .build());
  * 
  *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
- *             .vpcId(fooNetwork.id())
+ *             .vpcId(foo.id())
  *             .routeTableName(name)
  *             .description(&#34;route_table_attachment&#34;)
  *             .build());

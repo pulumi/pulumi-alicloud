@@ -21,37 +21,40 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const myName = pulumi.interpolate`${name}-${defaultRandomInteger.result}`;
- * const defaultZones = alicloud.getZones({
+ * const myName = `${name}-${defaultInteger.result}`;
+ * const default = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
  *     cpuCoreCount: 2,
  *     memorySize: 4,
  * }));
- * const defaultImages = alicloud.ecs.getImages({
+ * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: myName,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: myName,
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: myName,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {
  *     minSize: 1,
  *     maxSize: 1,
  *     scalingGroupName: myName,
@@ -59,16 +62,16 @@ import * as utilities from "../utilities";
  *     removalPolicies: ["OldestInstance"],
  *     defaultCooldown: 200,
  * });
- * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("defaultScalingConfiguration", {
+ * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("default", {
  *     scalingGroupId: defaultScalingGroup.id,
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *     securityGroupId: defaultSecurityGroup.id,
  *     forceDelete: true,
  *     active: true,
  *     enable: true,
  * });
- * const defaultSuspendProcess = new alicloud.ess.SuspendProcess("defaultSuspendProcess", {
+ * const defaultSuspendProcess = new alicloud.ess.SuspendProcess("default", {
  *     scalingGroupId: defaultScalingConfiguration.scalingGroupId,
  *     process: "ScaleIn",
  * });

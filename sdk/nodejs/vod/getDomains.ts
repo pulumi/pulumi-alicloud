@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultDomain = new alicloud.vod.Domain("defaultDomain", {
+ * const defaultDomain = new alicloud.vod.Domain("default", {
  *     domainName: "your_domain_name",
  *     scope: "domestic",
  *     sources: [{
@@ -33,14 +33,14 @@ import * as utilities from "../utilities";
  *         key2: "value2",
  *     },
  * });
- * const defaultDomains = alicloud.vod.getDomainsOutput({
+ * const default = alicloud.vod.getDomainsOutput({
  *     ids: [defaultDomain.id],
  *     tags: {
  *         key1: "value1",
  *         key2: "value2",
  *     },
  * });
- * export const vodDomain = defaultDomains.apply(defaultDomains => defaultDomains.domains?.[0]);
+ * export const vodDomain = _default.apply(_default => _default.domains?.[0]);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -119,7 +119,7 @@ export interface GetDomainsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultDomain = new alicloud.vod.Domain("defaultDomain", {
+ * const defaultDomain = new alicloud.vod.Domain("default", {
  *     domainName: "your_domain_name",
  *     scope: "domestic",
  *     sources: [{
@@ -132,14 +132,14 @@ export interface GetDomainsResult {
  *         key2: "value2",
  *     },
  * });
- * const defaultDomains = alicloud.vod.getDomainsOutput({
+ * const default = alicloud.vod.getDomainsOutput({
  *     ids: [defaultDomain.id],
  *     tags: {
  *         key1: "value1",
  *         key2: "value2",
  *     },
  * });
- * export const vodDomain = defaultDomains.apply(defaultDomains => defaultDomains.domains?.[0]);
+ * export const vodDomain = _default.apply(_default => _default.domains?.[0]);
  * ```
  * <!--End PulumiCodeChooser -->
  */

@@ -22,6 +22,35 @@ namespace Pulumi.AliCloud.ResourceManager
     ///   - All member accounts must be removed from the resource directory.
     ///   - All folders except the root folder must be deleted from the resource directory.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Threading.Tasks;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(async() =&gt; 
+    /// {
+    ///     var @default = await AliCloud.ResourceManager.GetResourceDirectories.InvokeAsync();
+    /// 
+    ///     var defaultResourceDirectory = new List&lt;AliCloud.ResourceManager.ResourceDirectory&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Directories.Length &gt; 0 ? 0 : 1; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultResourceDirectory.Add(new AliCloud.ResourceManager.ResourceDirectory($"default-{range.Value}", new()
+    ///         {
+    ///             Status = "Enabled",
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// Resource Manager Resource Directory can be imported using the id, e.g.

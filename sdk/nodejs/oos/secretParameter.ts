@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const exampleKey = new alicloud.kms.Key("exampleKey", {
+ * const example = alicloud.resourcemanager.getResourceGroups({});
+ * const exampleKey = new alicloud.kms.Key("example", {
  *     description: "terraform-example",
  *     status: "Enabled",
  *     pendingWindowInDays: 7,
  * });
- * const exampleSecretParameter = new alicloud.oos.SecretParameter("exampleSecretParameter", {
+ * const exampleSecretParameter = new alicloud.oos.SecretParameter("example", {
  *     secretParameterName: "terraform-example",
  *     value: "terraform-example",
  *     type: "Secret",
@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *         Created: "TF",
  *         For: "OosSecretParameter",
  *     },
- *     resourceGroupId: exampleResourceGroups.then(exampleResourceGroups => exampleResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: example.then(example => example.groups?.[0]?.id),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

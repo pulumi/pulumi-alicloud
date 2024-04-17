@@ -21,9 +21,9 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.cms.Namespace("example", {
- *     description: "tf-example",
  *     namespace: "tf-example",
  *     specification: "cms.s1.large",
+ *     description: "tf-example",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

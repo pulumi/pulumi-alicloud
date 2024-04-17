@@ -30,10 +30,10 @@ namespace Pulumi.AliCloud.Dns
         ///     var recordsDs = AliCloud.Dns.GetRecords.Invoke(new()
         ///     {
         ///         DomainName = "xiaozhu.top",
-        ///         HostRecordRegex = "^@",
         ///         IsLocked = false,
-        ///         OutputFile = "records.txt",
         ///         Type = "A",
+        ///         HostRecordRegex = "^@",
+        ///         OutputFile = "records.txt",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -66,10 +66,10 @@ namespace Pulumi.AliCloud.Dns
         ///     var recordsDs = AliCloud.Dns.GetRecords.Invoke(new()
         ///     {
         ///         DomainName = "xiaozhu.top",
-        ///         HostRecordRegex = "^@",
         ///         IsLocked = false,
-        ///         OutputFile = "records.txt",
         ///         Type = "A",
+        ///         HostRecordRegex = "^@",
+        ///         OutputFile = "records.txt",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

@@ -215,18 +215,21 @@ class Dashboard(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        example_dashboard = alicloud.log.Dashboard("exampleDashboard",
-            project_name=example_project.name,
+        example_dashboard = alicloud.log.Dashboard("example",
+            project_name=example.name,
             dashboard_name="terraform-example",
             display_name="terraform-example",
             attribute=\"\"\"  {
@@ -303,18 +306,21 @@ class Dashboard(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        example_dashboard = alicloud.log.Dashboard("exampleDashboard",
-            project_name=example_project.name,
+        example_dashboard = alicloud.log.Dashboard("example",
+            project_name=example.name,
             dashboard_name="terraform-example",
             display_name="terraform-example",
             attribute=\"\"\"  {

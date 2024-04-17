@@ -232,39 +232,37 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "alicloudRouterInterfaceConnectionBasic"
-        foo_network = alicloud.vpc.Network("fooNetwork",
+        foo = alicloud.vpc.Network("foo",
             vpc_name=name,
             cidr_block="172.16.0.0/12")
-        bar_network = alicloud.vpc.Network("barNetwork",
+        bar = alicloud.vpc.Network("bar",
             vpc_name=name,
-            cidr_block="192.168.0.0/16",
-            opts=pulumi.ResourceOptions(provider=alicloud))
+            cidr_block="192.168.0.0/16")
         initiate = alicloud.vpc.RouterInterface("initiate",
             opposite_region=region,
             router_type="VRouter",
-            router_id=foo_network.router_id,
+            router_id=foo.router_id,
             role="InitiatingSide",
             specification="Large.2",
+            name=name,
             description=name,
             instance_charge_type="PostPaid")
         opposite = alicloud.vpc.RouterInterface("opposite",
             opposite_region=region,
             router_type="VRouter",
-            router_id=bar_network.router_id,
+            router_id=bar.router_id,
             role="AcceptingSide",
             specification="Large.1",
-            description=f"{name}-opposite",
-            opts=pulumi.ResourceOptions(provider=alicloud))
-        bar_router_interface_connection = alicloud.vpc.RouterInterfaceConnection("barRouterInterfaceConnection",
+            name=f"{name}-opposite",
+            description=f"{name}-opposite")
+        bar_router_interface_connection = alicloud.vpc.RouterInterfaceConnection("bar",
             interface_id=opposite.id,
-            opposite_interface_id=initiate.id,
-            opts=pulumi.ResourceOptions(provider=alicloud))
+            opposite_interface_id=initiate.id)
         # A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
-        foo_router_interface_connection = alicloud.vpc.RouterInterfaceConnection("fooRouterInterfaceConnection",
+        foo_router_interface_connection = alicloud.vpc.RouterInterfaceConnection("foo",
             interface_id=initiate.id,
             opposite_interface_id=opposite.id,
             opts=pulumi.ResourceOptions(depends_on=[bar_router_interface_connection]))
-        # The connection must start from the accepting side.
         ```
         <!--End PulumiCodeChooser -->
 
@@ -320,39 +318,37 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "alicloudRouterInterfaceConnectionBasic"
-        foo_network = alicloud.vpc.Network("fooNetwork",
+        foo = alicloud.vpc.Network("foo",
             vpc_name=name,
             cidr_block="172.16.0.0/12")
-        bar_network = alicloud.vpc.Network("barNetwork",
+        bar = alicloud.vpc.Network("bar",
             vpc_name=name,
-            cidr_block="192.168.0.0/16",
-            opts=pulumi.ResourceOptions(provider=alicloud))
+            cidr_block="192.168.0.0/16")
         initiate = alicloud.vpc.RouterInterface("initiate",
             opposite_region=region,
             router_type="VRouter",
-            router_id=foo_network.router_id,
+            router_id=foo.router_id,
             role="InitiatingSide",
             specification="Large.2",
+            name=name,
             description=name,
             instance_charge_type="PostPaid")
         opposite = alicloud.vpc.RouterInterface("opposite",
             opposite_region=region,
             router_type="VRouter",
-            router_id=bar_network.router_id,
+            router_id=bar.router_id,
             role="AcceptingSide",
             specification="Large.1",
-            description=f"{name}-opposite",
-            opts=pulumi.ResourceOptions(provider=alicloud))
-        bar_router_interface_connection = alicloud.vpc.RouterInterfaceConnection("barRouterInterfaceConnection",
+            name=f"{name}-opposite",
+            description=f"{name}-opposite")
+        bar_router_interface_connection = alicloud.vpc.RouterInterfaceConnection("bar",
             interface_id=opposite.id,
-            opposite_interface_id=initiate.id,
-            opts=pulumi.ResourceOptions(provider=alicloud))
+            opposite_interface_id=initiate.id)
         # A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
-        foo_router_interface_connection = alicloud.vpc.RouterInterfaceConnection("fooRouterInterfaceConnection",
+        foo_router_interface_connection = alicloud.vpc.RouterInterfaceConnection("foo",
             interface_id=initiate.id,
             opposite_interface_id=opposite.id,
             opts=pulumi.ResourceOptions(depends_on=[bar_router_interface_connection]))
-        # The connection must start from the accepting side.
         ```
         <!--End PulumiCodeChooser -->
 

@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			examplePhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//			example, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
 //				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
 //			}, nil)
 //			if err != nil {
@@ -51,7 +51,7 @@ import (
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-//				PhysicalConnectionId:    pulumi.String(examplePhysicalConnections.Connections[0].Id),
+//				PhysicalConnectionId:    pulumi.String(example.Connections[0].Id),
 //				VirtualBorderRouterName: pulumi.String(name),
 //				VlanId:                  pulumi.Int(110),
 //				MinRxInterval:           pulumi.Int(1000),
@@ -65,10 +65,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = expressconnect.NewVbrPconnAssociation(ctx, "exampleVbrPconnAssociation", &expressconnect.VbrPconnAssociationArgs{
+//			_, err = expressconnect.NewVbrPconnAssociation(ctx, "example", &expressconnect.VbrPconnAssociationArgs{
 //				PeerGatewayIp:         pulumi.String("10.0.0.6"),
 //				LocalGatewayIp:        pulumi.String("10.0.0.5"),
-//				PhysicalConnectionId:  pulumi.String(examplePhysicalConnections.Connections[2].Id),
+//				PhysicalConnectionId:  pulumi.String(example.Connections[2].Id),
 //				VbrId:                 _default.ID(),
 //				PeeringSubnetMask:     pulumi.String("255.255.255.252"),
 //				VlanId:                pulumi.Int(1122),

@@ -15,13 +15,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const order = new alicloud.marketplace.Order("order", {
- *     couponId: "",
- *     duration: 1,
- *     packageVersion: "yuncode2713600001",
- *     payType: "prepay",
- *     pricingCycle: "Month",
  *     productCode: "cmapi033136",
+ *     payType: "prepay",
  *     quantity: 1,
+ *     duration: 1,
+ *     pricingCycle: "Month",
+ *     packageVersion: "yuncode2713600001",
+ *     couponId: "",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

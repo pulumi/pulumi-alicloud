@@ -31,16 +31,19 @@ namespace Pulumi.AliCloud.Sag
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultAcls = AliCloud.Sag.GetAcls.Invoke(new()
+        ///     var @default = AliCloud.Sag.GetAcls.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_sag_acls.Default.Id,
+        ///             defaultAlicloudSagAcls.Id,
         ///         },
         ///         NameRegex = "^tf-testAcc.*",
         ///     });
         /// 
-        ///     var defaultAcl = new AliCloud.RocketMQ.Acl("defaultAcl");
+        ///     var defaultAcl = new AliCloud.RocketMQ.Acl("default", new()
+        ///     {
+        ///         Name = "tf-testAccSagAclName",
+        ///     });
         /// 
         /// });
         /// ```
@@ -69,16 +72,19 @@ namespace Pulumi.AliCloud.Sag
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultAcls = AliCloud.Sag.GetAcls.Invoke(new()
+        ///     var @default = AliCloud.Sag.GetAcls.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_sag_acls.Default.Id,
+        ///             defaultAlicloudSagAcls.Id,
         ///         },
         ///         NameRegex = "^tf-testAcc.*",
         ///     });
         /// 
-        ///     var defaultAcl = new AliCloud.RocketMQ.Acl("defaultAcl");
+        ///     var defaultAcl = new AliCloud.RocketMQ.Acl("default", new()
+        ///     {
+        ///         Name = "tf-testAccSagAclName",
+        ///     });
         /// 
         /// });
         /// ```

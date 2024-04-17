@@ -30,18 +30,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := mns.NewTopic(ctx, "topic", &mns.TopicArgs{
-//				LoggingEnabled:     pulumi.Bool(false),
+//				Name:               pulumi.String("tf-example-mnstopic"),
 //				MaximumMessageSize: pulumi.Int(65536),
+//				LoggingEnabled:     pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = mns.NewTopicSubscription(ctx, "subscription", &mns.TopicSubscriptionArgs{
-//				Endpoint:            pulumi.String("http://www.xxx.com/xxx"),
-//				FilterTag:           pulumi.String("test"),
-//				NotifyContentFormat: pulumi.String("XML"),
-//				NotifyStrategy:      pulumi.String("BACKOFF_RETRY"),
 //				TopicName:           pulumi.String("tf-example-mnstopic"),
+//				Name:                pulumi.String("tf-example-mnstopic-sub"),
+//				FilterTag:           pulumi.String("test"),
+//				Endpoint:            pulumi.String("http://www.xxx.com/xxx"),
+//				NotifyStrategy:      pulumi.String("BACKOFF_RETRY"),
+//				NotifyContentFormat: pulumi.String("XML"),
 //			})
 //			if err != nil {
 //				return err

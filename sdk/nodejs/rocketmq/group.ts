@@ -24,12 +24,12 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "GID-tf-example";
  * const groupName = config.get("groupName") || "GID-tf-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {});
- * const defaultGroup = new alicloud.rocketmq.Group("defaultGroup", {
+ * const defaultInstance = new alicloud.rocketmq.Instance("default", {name: `${name}-${_default.result}`});
+ * const defaultGroup = new alicloud.rocketmq.Group("default", {
  *     groupName: groupName,
  *     instanceId: defaultInstance.id,
  *     remark: "dafault_ons_group_remark",

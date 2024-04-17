@@ -31,12 +31,12 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// {
     ///     var @default = new AliCloud.CloudFirewall.Instance("default", new()
     ///     {
+    ///         PaymentType = "PayAsYouGo",
+    ///         Spec = "ultimate_version",
+    ///         IpNumber = 400,
     ///         BandWidth = 200,
     ///         CfwLog = true,
     ///         CfwLogStorage = 1000,
-    ///         IpNumber = 400,
-    ///         PaymentType = "PayAsYouGo",
-    ///         Spec = "ultimate_version",
     ///     });
     /// 
     /// });

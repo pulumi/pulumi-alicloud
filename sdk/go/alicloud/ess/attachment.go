@@ -44,22 +44,22 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
 //				CpuCoreCount:     pulumi.IntRef(2),
 //				MemorySize:       pulumi.Float64Ref(4),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 //				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
 //				MostRecent: pulumi.BoolRef(true),
 //				Owners:     pulumi.StringRef("system"),
@@ -67,29 +67,30 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewSecurityGroupRule(ctx, "defaultSecurityGroupRule", &ecs.SecurityGroupRuleArgs{
+//			_, err = ecs.NewSecurityGroupRule(ctx, "default", &ecs.SecurityGroupRuleArgs{
 //				Type:            pulumi.String("ingress"),
 //				IpProtocol:      pulumi.String("tcp"),
 //				NicType:         pulumi.String("intranet"),
@@ -102,7 +103,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
+//			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "default", &ess.ScalingGroupArgs{
 //				MinSize:          pulumi.Int(0),
 //				MaxSize:          pulumi.Int(2),
 //				ScalingGroupName: pulumi.String(name),
@@ -117,10 +118,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ess.NewScalingConfiguration(ctx, "defaultScalingConfiguration", &ess.ScalingConfigurationArgs{
+//			_, err = ess.NewScalingConfiguration(ctx, "default", &ess.ScalingConfigurationArgs{
 //				ScalingGroupId:  defaultScalingGroup.ID(),
-//				ImageId:         pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:    pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:         pulumi.String(defaultGetImages.Images[0].Id),
+//				InstanceType:    pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroupId: defaultSecurityGroup.ID(),
 //				ForceDelete:     pulumi.Bool(true),
 //				Active:          pulumi.Bool(true),
@@ -133,9 +134,9 @@ import (
 //			for index := 0; index < 2; index++ {
 //				key0 := index
 //				_ := index
-//				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("defaultInstance-%v", key0), &ecs.InstanceArgs{
-//					ImageId:      pulumi.String(defaultImages.Images[0].Id),
-//					InstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("default-%v", key0), &ecs.InstanceArgs{
+//					ImageId:      pulumi.String(defaultGetImages.Images[0].Id),
+//					InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //					SecurityGroups: pulumi.StringArray{
 //						defaultSecurityGroup.ID(),
 //					},
@@ -151,7 +152,7 @@ import (
 //				}
 //				defaultInstance = append(defaultInstance, __res)
 //			}
-//			_, err = ess.NewAttachment(ctx, "defaultAttachment", &ess.AttachmentArgs{
+//			_, err = ess.NewAttachment(ctx, "default", &ess.AttachmentArgs{
 //				ScalingGroupId: defaultScalingGroup.ID(),
 //				InstanceIds: pulumi.StringArray{
 //					defaultInstance[0].ID(),

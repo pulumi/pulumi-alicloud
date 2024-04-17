@@ -20,8 +20,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const drdsInstancesDs = alicloud.drds.getInstances({
- *     ids: ["drdsabc123456"],
  *     nameRegex: "drds-\\d+",
+ *     ids: ["drdsabc123456"],
  * });
  * export const firstDbInstanceId = drdsInstancesDs.then(drdsInstancesDs => drdsInstancesDs.instances?.[0]?.id);
  * ```
@@ -101,8 +101,8 @@ export interface GetInstancesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const drdsInstancesDs = alicloud.drds.getInstances({
- *     ids: ["drdsabc123456"],
  *     nameRegex: "drds-\\d+",
+ *     ids: ["drdsabc123456"],
  * });
  * export const firstDbInstanceId = drdsInstancesDs.then(drdsInstancesDs => drdsInstancesDs.instances?.[0]?.id);
  * ```

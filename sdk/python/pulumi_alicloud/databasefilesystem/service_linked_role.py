@@ -95,7 +95,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        service_linked_role = alicloud.databasefilesystem.ServiceLinkedRole("serviceLinkedRole", product_name="AliyunServiceRoleForDbfs")
+        service_linked_role = alicloud.databasefilesystem.ServiceLinkedRole("service_linked_role", product_name="AliyunServiceRoleForDbfs")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -131,7 +131,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        service_linked_role = alicloud.databasefilesystem.ServiceLinkedRole("serviceLinkedRole", product_name="AliyunServiceRoleForDbfs")
+        service_linked_role = alicloud.databasefilesystem.ServiceLinkedRole("service_linked_role", product_name="AliyunServiceRoleForDbfs")
         ```
         <!--End PulumiCodeChooser -->
 

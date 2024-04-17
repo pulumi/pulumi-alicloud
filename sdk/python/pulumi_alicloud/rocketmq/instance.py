@@ -272,11 +272,11 @@ class Instance(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
         example = alicloud.rocketmq.Instance("example",
-            instance_name=default.result.apply(lambda result: f"{name}-{result}"),
+            instance_name=f"{name}-{default['result']}",
             remark=name)
         ```
         <!--End PulumiCodeChooser -->
@@ -327,11 +327,11 @@ class Instance(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
         example = alicloud.rocketmq.Instance("example",
-            instance_name=default.result.apply(lambda result: f"{name}-{result}"),
+            instance_name=f"{name}-{default['result']}",
             remark=name)
         ```
         <!--End PulumiCodeChooser -->

@@ -58,14 +58,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
+ *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
  *             .status(&#34;CreateSuccess&#34;)
  *             .build());
  * 
  *         var defaultAggregator = new Aggregator(&#34;defaultAggregator&#34;, AggregatorArgs.builder()        
  *             .aggregatorAccounts(AggregatorAggregatorAccountArgs.builder()
- *                 .accountId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].accountId()))
- *                 .accountName(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].displayName()))
+ *                 .accountId(default_.accounts()[0].accountId())
+ *                 .accountName(default_.accounts()[0].displayName())
  *                 .accountType(&#34;ResourceDirectory&#34;)
  *                 .build())
  *             .aggregatorName(name)

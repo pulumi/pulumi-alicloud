@@ -31,20 +31,20 @@ namespace Pulumi.AliCloud.Gpdb
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultZones = AliCloud.Gpdb.GetZones.Invoke();
+    ///     var @default = AliCloud.Gpdb.GetZones.Invoke();
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
     ///         NameRegex = "^default-NODELETING$",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Gpdb.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Gpdb.Instance("default", new()
     ///     {
     ///         DbInstanceCategory = "HighAvailability",
     ///         DbInstanceClass = "gpdb.group.segsdx1",
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Gpdb
     ///         Description = name,
     ///         Engine = "gpdb",
     ///         EngineVersion = "6.0",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0])),
     ///         InstanceNetworkType = "VPC",
     ///         InstanceSpec = "2C16G",
     ///         MasterNodeNum = 1,
@@ -61,8 +61,8 @@ namespace Pulumi.AliCloud.Gpdb
     ///         SegStorageType = "cloud_essd",
     ///         SegNodeNum = 4,
     ///         StorageSize = 50,
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///         IpWhitelists = new[]
     ///         {
     ///             new AliCloud.Gpdb.Inputs.InstanceIpWhitelistArgs
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Gpdb
     ///         },
     ///     });
     /// 
-    ///     var defaultDbInstancePlan = new AliCloud.Gpdb.DbInstancePlan("defaultDbInstancePlan", new()
+    ///     var defaultDbInstancePlan = new AliCloud.Gpdb.DbInstancePlan("default", new()
     ///     {
     ///         DbInstancePlanName = name,
     ///         PlanDesc = name,

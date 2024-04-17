@@ -186,16 +186,16 @@ class VscMountPoint(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_zones = alicloud.dfs.get_zones()
-        zone_id = default_zones.zones[0].zone_id
-        storage_type = default_zones.zones[0].options[0].storage_type
-        default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
+        default = alicloud.dfs.get_zones()
+        zone_id = default.zones[0].zone_id
+        storage_type = default.zones[0].options[0].storage_type
+        default_file_system = alicloud.dfs.FileSystem("default",
             protocol_type="HDFS",
             description=name,
-            file_system_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+            file_system_name=f"{name}-{default_integer['result']}",
             space_capacity=1024,
             throughput_mode="Provisioned",
             provisioned_throughput_in_mi_bps=512,
@@ -245,16 +245,16 @@ class VscMountPoint(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_zones = alicloud.dfs.get_zones()
-        zone_id = default_zones.zones[0].zone_id
-        storage_type = default_zones.zones[0].options[0].storage_type
-        default_file_system = alicloud.dfs.FileSystem("defaultFileSystem",
+        default = alicloud.dfs.get_zones()
+        zone_id = default.zones[0].zone_id
+        storage_type = default.zones[0].options[0].storage_type
+        default_file_system = alicloud.dfs.FileSystem("default",
             protocol_type="HDFS",
             description=name,
-            file_system_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+            file_system_name=f"{name}-{default_integer['result']}",
             space_capacity=1024,
             throughput_mode="Provisioned",
             provisioned_throughput_in_mi_bps=512,

@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import java.util.List;
@@ -51,12 +51,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
+ *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
  *             .description(&#34;terraform-example&#34;)
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
@@ -78,8 +79,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import java.util.List;
@@ -95,12 +96,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var examplePolicy = new Project(&#34;examplePolicy&#34;, ProjectArgs.builder()        
+ *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
  *             .description(&#34;terraform-example&#34;)
  *             .policy(&#34;&#34;&#34;
  * {
@@ -122,7 +124,6 @@ import javax.annotation.Nullable;
  *   ],
  *   &#34;Version&#34;: &#34;1&#34;
  * }
- * 
  *             &#34;&#34;&#34;)
  *             .build());
  * 

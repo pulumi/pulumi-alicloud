@@ -2092,37 +2092,37 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.rds.get_zones(engine="PostgreSQL",
+        example = alicloud.rds.get_zones(engine="PostgreSQL",
             engine_version="13.0",
             instance_charge_type="PostPaid",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd")
-        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.zones[0].id,
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.zones[0].id,
             engine="PostgreSQL",
             engine_version="13.0",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd",
             instance_charge_type="PostPaid")
-        example_cross_regions = alicloud.rds.get_cross_regions()
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example_get_cross_regions = alicloud.rds.get_cross_regions()
+        example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vpc_id=example_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=example_zones.zones[0].id,
+            zone_id=example.zones[0].id,
             vswitch_name="terraform-example")
-        example_instance = alicloud.rds.Instance("exampleInstance",
+        example_instance = alicloud.rds.Instance("example",
             engine="PostgreSQL",
             engine_version="13.0",
             db_instance_storage_type="cloud_essd",
-            instance_type=example_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=example_switch.id,
             monitoring_period=60)
-        example_rds_upgrade_db_instance = alicloud.rds.RdsUpgradeDbInstance("exampleRdsUpgradeDbInstance",
+        example_rds_upgrade_db_instance = alicloud.rds.RdsUpgradeDbInstance("example",
             source_db_instance_id=example_instance.id,
             target_major_version="14.0",
             db_instance_class=example_instance.instance_type,
@@ -2287,37 +2287,37 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.rds.get_zones(engine="PostgreSQL",
+        example = alicloud.rds.get_zones(engine="PostgreSQL",
             engine_version="13.0",
             instance_charge_type="PostPaid",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd")
-        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.zones[0].id,
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.zones[0].id,
             engine="PostgreSQL",
             engine_version="13.0",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd",
             instance_charge_type="PostPaid")
-        example_cross_regions = alicloud.rds.get_cross_regions()
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example_get_cross_regions = alicloud.rds.get_cross_regions()
+        example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vpc_id=example_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=example_zones.zones[0].id,
+            zone_id=example.zones[0].id,
             vswitch_name="terraform-example")
-        example_instance = alicloud.rds.Instance("exampleInstance",
+        example_instance = alicloud.rds.Instance("example",
             engine="PostgreSQL",
             engine_version="13.0",
             db_instance_storage_type="cloud_essd",
-            instance_type=example_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
             instance_charge_type="Postpaid",
             instance_name="terraform-example",
             vswitch_id=example_switch.id,
             monitoring_period=60)
-        example_rds_upgrade_db_instance = alicloud.rds.RdsUpgradeDbInstance("exampleRdsUpgradeDbInstance",
+        example_rds_upgrade_db_instance = alicloud.rds.RdsUpgradeDbInstance("example",
             source_db_instance_id=example_instance.id,
             target_major_version="14.0",
             db_instance_class=example_instance.instance_type,

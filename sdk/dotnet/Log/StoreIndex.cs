@@ -27,29 +27,31 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
+    ///         Name = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
-    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         Project = exampleProject.Name,
+    ///         Project = example.Name,
+    ///         Name = "example-store",
     ///         ShardCount = 3,
     ///         AutoSplit = true,
     ///         MaxSplitShardCount = 60,
     ///         AppendMeta = true,
     ///     });
     /// 
-    ///     var exampleStoreIndex = new AliCloud.Log.StoreIndex("exampleStoreIndex", new()
+    ///     var exampleStoreIndex = new AliCloud.Log.StoreIndex("example", new()
     ///     {
-    ///         Project = exampleProject.Name,
+    ///         Project = example.Name,
     ///         Logstore = exampleStore.Name,
     ///         FullText = new AliCloud.Log.Inputs.StoreIndexFullTextArgs
     ///         {

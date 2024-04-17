@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZones = AliCloud.Rds.GetZones.Invoke(new()
+    ///     var example = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
     ///         Engine = "PostgreSQL",
     ///         EngineVersion = "13.0",
@@ -38,9 +38,9 @@ namespace Pulumi.AliCloud.Rds
     ///         DbInstanceStorageType = "cloud_essd",
     ///     });
     /// 
-    ///     var exampleInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     var exampleGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
     ///     {
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         Engine = "PostgreSQL",
     ///         EngineVersion = "13.0",
     ///         Category = "HighAvailability",
@@ -48,39 +48,39 @@ namespace Pulumi.AliCloud.Rds
     ///         InstanceChargeType = "PostPaid",
     ///     });
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
     ///     {
     ///         VpcId = exampleNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = "terraform-example",
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new()
+    ///     var exampleInstance = new AliCloud.Rds.Instance("example", new()
     ///     {
     ///         Engine = "PostgreSQL",
     ///         EngineVersion = "13.0",
-    ///         InstanceType = exampleInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = exampleInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
     ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = "terraform-example",
     ///         VswitchId = exampleSwitch.Id,
     ///         MonitoringPeriod = 60,
     ///     });
     /// 
-    ///     var exampleRdsBackup = new AliCloud.Rds.RdsBackup("exampleRdsBackup", new()
+    ///     var exampleRdsBackup = new AliCloud.Rds.RdsBackup("example", new()
     ///     {
     ///         DbInstanceId = exampleInstance.Id,
     ///         RemoveFromState = true,
     ///     });
     /// 
-    ///     var exampleRdsCloneDbInstance = new AliCloud.Rds.RdsCloneDbInstance("exampleRdsCloneDbInstance", new()
+    ///     var exampleRdsCloneDbInstance = new AliCloud.Rds.RdsCloneDbInstance("example", new()
     ///     {
     ///         SourceDbInstanceId = exampleInstance.Id,
     ///         DbInstanceStorageType = "cloud_essd",

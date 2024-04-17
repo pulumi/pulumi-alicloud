@@ -34,9 +34,9 @@ namespace Pulumi.AliCloud.Ens
     ///     var @default = new AliCloud.Ens.Disk("default", new()
     ///     {
     ///         Category = "cloud_ssd",
-    ///         EnsRegionId = "cn-chongqing-11",
-    ///         PaymentType = "PayAsYouGo",
     ///         Size = 20,
+    ///         PaymentType = "PayAsYouGo",
+    ///         EnsRegionId = "cn-chongqing-11",
     ///     });
     /// 
     /// });

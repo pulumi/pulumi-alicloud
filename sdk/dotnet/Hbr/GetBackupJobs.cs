@@ -29,12 +29,12 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultEcsBackupPlans = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
+        ///     var @default = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
         ///     {
         ///         NameRegex = "plan-name",
         ///     });
         /// 
-        ///     var defaultBackupJobs = AliCloud.Hbr.GetBackupJobs.Invoke(new()
+        ///     var defaultGetBackupJobs = AliCloud.Hbr.GetBackupJobs.Invoke(new()
         ///     {
         ///         SourceType = "ECS_FILE",
         ///         Filters = new[]
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Hbr
         ///                 Operator = "IN",
         ///                 Values = new[]
         ///                 {
-        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+        ///                     @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
         ///                 },
         ///             },
         ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Hbr
         ///                 Operator = "IN",
         ///                 Values = new[]
         ///                 {
-        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+        ///                     @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
         ///                 },
         ///             },
         ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Hbr
         ///                 Operator = "IN",
         ///                 Values = new[]
         ///                 {
-        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+        ///                     @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
         ///                 },
         ///             },
         ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Hbr
         ///                 Operator = "IN",
         ///                 Values = new[]
         ///                 {
-        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+        ///                     @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
         ///                 },
         ///             },
         ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudHbrBackupJobsDefault1"] = defaultBackupJobs.Apply(getBackupJobsResult =&gt; getBackupJobsResult.Jobs[0]?.Id),
+        ///         ["alicloudHbrBackupJobsDefault1"] = defaultGetBackupJobs.Apply(getBackupJobsResult =&gt; getBackupJobsResult.Jobs[0]?.Id),
         ///         ["alicloudHbrBackupJobsExample1"] = example.Apply(getBackupJobsResult =&gt; getBackupJobsResult.Jobs[0]?.Id),
         ///     };
         /// });
@@ -136,12 +136,12 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultEcsBackupPlans = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
+        ///     var @default = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
         ///     {
         ///         NameRegex = "plan-name",
         ///     });
         /// 
-        ///     var defaultBackupJobs = AliCloud.Hbr.GetBackupJobs.Invoke(new()
+        ///     var defaultGetBackupJobs = AliCloud.Hbr.GetBackupJobs.Invoke(new()
         ///     {
         ///         SourceType = "ECS_FILE",
         ///         Filters = new[]
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Hbr
         ///                 Operator = "IN",
         ///                 Values = new[]
         ///                 {
-        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+        ///                     @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
         ///                 },
         ///             },
         ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.Hbr
         ///                 Operator = "IN",
         ///                 Values = new[]
         ///                 {
-        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+        ///                     @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
         ///                 },
         ///             },
         ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Hbr
         ///                 Operator = "IN",
         ///                 Values = new[]
         ///                 {
-        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+        ///                     @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
         ///                 },
         ///             },
         ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.Hbr
         ///                 Operator = "IN",
         ///                 Values = new[]
         ///                 {
-        ///                     defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+        ///                     @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
         ///                 },
         ///             },
         ///             new AliCloud.Hbr.Inputs.GetBackupJobsFilterInputArgs
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudHbrBackupJobsDefault1"] = defaultBackupJobs.Apply(getBackupJobsResult =&gt; getBackupJobsResult.Jobs[0]?.Id),
+        ///         ["alicloudHbrBackupJobsDefault1"] = defaultGetBackupJobs.Apply(getBackupJobsResult =&gt; getBackupJobsResult.Jobs[0]?.Id),
         ///         ["alicloudHbrBackupJobsExample1"] = example.Apply(getBackupJobsResult =&gt; getBackupJobsResult.Jobs[0]?.Id),
         ///     };
         /// });

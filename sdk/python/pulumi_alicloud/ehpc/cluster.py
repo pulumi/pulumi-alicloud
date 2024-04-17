@@ -2018,47 +2018,47 @@ class Cluster(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_images = alicloud.ecs.get_images(name_regex="^centos_7_6_x64*",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(name_regex="^centos_7_6_x64*",
             owners="system")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id)
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.1.0.0/16",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
+            zone_id=default.zones[0].id)
+        default_file_system = alicloud.nas.FileSystem("default",
             storage_type="Performance",
             protocol_type="NFS")
-        default_mount_target = alicloud.nas.MountTarget("defaultMountTarget",
+        default_mount_target = alicloud.nas.MountTarget("default",
             file_system_id=default_file_system.id,
             access_group_name="DEFAULT_VPC_GROUP_NAME",
             vswitch_id=default_switch.id)
-        default_cluster = alicloud.ehpc.Cluster("defaultCluster",
+        default_cluster = alicloud.ehpc.Cluster("default",
             cluster_name=name,
             deploy_mode="Simple",
             description=name,
             ha_enable=False,
-            image_id=default_images.images[0].id,
+            image_id=default_get_images.images[0].id,
             image_owner_alias="system",
             volume_protocol="nfs",
             volume_id=default_file_system.id,
             volume_mountpoint=default_mount_target.mount_target_domain,
             compute_count=1,
-            compute_instance_type=default_instance_types.instance_types[0].id,
+            compute_instance_type=default_get_instance_types.instance_types[0].id,
             login_count=1,
-            login_instance_type=default_instance_types.instance_types[0].id,
+            login_instance_type=default_get_instance_types.instance_types[0].id,
             manager_count=1,
-            manager_instance_type=default_instance_types.instance_types[0].id,
+            manager_instance_type=default_get_instance_types.instance_types[0].id,
             os_tag="CentOS_7.6_64",
             scheduler_type="pbs",
             password="your-password123",
             vswitch_id=default_switch.id,
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
+            zone_id=default.zones[0].id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -2167,47 +2167,47 @@ class Cluster(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_images = alicloud.ecs.get_images(name_regex="^centos_7_6_x64*",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(name_regex="^centos_7_6_x64*",
             owners="system")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id)
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.1.0.0/16",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
+            zone_id=default.zones[0].id)
+        default_file_system = alicloud.nas.FileSystem("default",
             storage_type="Performance",
             protocol_type="NFS")
-        default_mount_target = alicloud.nas.MountTarget("defaultMountTarget",
+        default_mount_target = alicloud.nas.MountTarget("default",
             file_system_id=default_file_system.id,
             access_group_name="DEFAULT_VPC_GROUP_NAME",
             vswitch_id=default_switch.id)
-        default_cluster = alicloud.ehpc.Cluster("defaultCluster",
+        default_cluster = alicloud.ehpc.Cluster("default",
             cluster_name=name,
             deploy_mode="Simple",
             description=name,
             ha_enable=False,
-            image_id=default_images.images[0].id,
+            image_id=default_get_images.images[0].id,
             image_owner_alias="system",
             volume_protocol="nfs",
             volume_id=default_file_system.id,
             volume_mountpoint=default_mount_target.mount_target_domain,
             compute_count=1,
-            compute_instance_type=default_instance_types.instance_types[0].id,
+            compute_instance_type=default_get_instance_types.instance_types[0].id,
             login_count=1,
-            login_instance_type=default_instance_types.instance_types[0].id,
+            login_instance_type=default_get_instance_types.instance_types[0].id,
             manager_count=1,
-            manager_instance_type=default_instance_types.instance_types[0].id,
+            manager_instance_type=default_get_instance_types.instance_types[0].id,
             os_tag="CentOS_7.6_64",
             scheduler_type="pbs",
             password="your-password123",
             vswitch_id=default_switch.id,
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
+            zone_id=default.zones[0].id)
         ```
         <!--End PulumiCodeChooser -->
 

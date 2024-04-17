@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(name)
  *             .description(name)
  *             .cidrBlock(&#34;192.168.0.0/24&#34;)
  *             .isDefault(true)

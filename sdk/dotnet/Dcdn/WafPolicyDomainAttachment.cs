@@ -33,15 +33,15 @@ namespace Pulumi.AliCloud.Dcdn
     ///     var config = new Config();
     ///     var domainName = config.Get("domainName") ?? "tf-example.com";
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var exampleDomain = new AliCloud.Dcdn.Domain("exampleDomain", new()
+    ///     var example = new AliCloud.Dcdn.Domain("example", new()
     ///     {
-    ///         DomainName = @default.Result.Apply(result =&gt; $"{domainName}-{result}"),
+    ///         DomainName = $"{domainName}-{@default.Result}",
     ///         Scope = "overseas",
     ///         Sources = new[]
     ///         {
@@ -56,21 +56,21 @@ namespace Pulumi.AliCloud.Dcdn
     ///         },
     ///     });
     /// 
-    ///     var exampleWafDomain = new AliCloud.Dcdn.WafDomain("exampleWafDomain", new()
+    ///     var exampleWafDomain = new AliCloud.Dcdn.WafDomain("example", new()
     ///     {
-    ///         DomainName = exampleDomain.DomainName,
+    ///         DomainName = example.DomainName,
     ///         ClientIpTag = "X-Forwarded-For",
     ///     });
     /// 
-    ///     var exampleWafPolicy = new AliCloud.Dcdn.WafPolicy("exampleWafPolicy", new()
+    ///     var exampleWafPolicy = new AliCloud.Dcdn.WafPolicy("example", new()
     ///     {
     ///         DefenseScene = "waf_group",
-    ///         PolicyName = @default.Result.Apply(result =&gt; $"{name}_{result}"),
+    ///         PolicyName = $"{name}_{@default.Result}",
     ///         PolicyType = "custom",
     ///         Status = "on",
     ///     });
     /// 
-    ///     var exampleWafPolicyDomainAttachment = new AliCloud.Dcdn.WafPolicyDomainAttachment("exampleWafPolicyDomainAttachment", new()
+    ///     var exampleWafPolicyDomainAttachment = new AliCloud.Dcdn.WafPolicyDomainAttachment("example", new()
     ///     {
     ///         DomainName = exampleWafDomain.DomainName,
     ///         PolicyId = exampleWafPolicy.Id,

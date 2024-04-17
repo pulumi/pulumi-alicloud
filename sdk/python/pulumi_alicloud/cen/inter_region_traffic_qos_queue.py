@@ -237,46 +237,38 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
         peer_region = config.get("peerRegion")
         if peer_region is None:
             peer_region = "cn-beijing"
-        hz = alicloud.Provider("hz", region=default_region)
-        bj = alicloud.Provider("bj", region=peer_region)
-        default_instance = alicloud.cen.Instance("defaultInstance",
+        default = alicloud.cen.Instance("default",
             cen_instance_name=name,
             protection_level="REDUCED")
-        default_bandwidth_package = alicloud.cen.BandwidthPackage("defaultBandwidthPackage",
+        default_bandwidth_package = alicloud.cen.BandwidthPackage("default",
             bandwidth=5,
             cen_bandwidth_package_name="tf_example",
             geographic_region_a_id="China",
-            geographic_region_b_id="China",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            instance_id=default_instance.id,
-            bandwidth_package_id=default_bandwidth_package.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter",
-            cen_id=default_instance.id,
-            support_multicast=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+            geographic_region_b_id="China")
+        default_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("default",
+            instance_id=default.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_transit_router = alicloud.cen.TransitRouter("default",
+            cen_id=default.id,
+            support_multicast=True)
         peer = alicloud.cen.TransitRouter("peer",
             cen_id=default_transit_router.cen_id,
-            support_multicast=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        default_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment",
-            cen_id=default_instance.id,
+            support_multicast=True)
+        default_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("default",
+            cen_id=default.id,
             transit_router_id=default_transit_router.transit_router_id,
             peer_transit_router_region_id=peer_region,
             peer_transit_router_id=peer.transit_router_id,
             cen_bandwidth_package_id=default_bandwidth_package_attachment.bandwidth_package_id,
             bandwidth=5,
             transit_router_attachment_description=name,
-            transit_router_attachment_name=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_inter_region_traffic_qos_policy = alicloud.cen.InterRegionTrafficQosPolicy("defaultInterRegionTrafficQosPolicy",
+            transit_router_attachment_name=name)
+        default_inter_region_traffic_qos_policy = alicloud.cen.InterRegionTrafficQosPolicy("default",
             transit_router_id=default_transit_router.transit_router_id,
             transit_router_attachment_id=default_transit_router_peer_attachment.transit_router_attachment_id,
             inter_region_traffic_qos_policy_name=name,
-            inter_region_traffic_qos_policy_description=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_inter_region_traffic_qos_queue = alicloud.cen.InterRegionTrafficQosQueue("defaultInterRegionTrafficQosQueue",
+            inter_region_traffic_qos_policy_description=name)
+        default_inter_region_traffic_qos_queue = alicloud.cen.InterRegionTrafficQosQueue("default",
             remain_bandwidth_percent=20,
             traffic_qos_policy_id=default_inter_region_traffic_qos_policy.id,
             dscps=[
@@ -335,46 +327,38 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
         peer_region = config.get("peerRegion")
         if peer_region is None:
             peer_region = "cn-beijing"
-        hz = alicloud.Provider("hz", region=default_region)
-        bj = alicloud.Provider("bj", region=peer_region)
-        default_instance = alicloud.cen.Instance("defaultInstance",
+        default = alicloud.cen.Instance("default",
             cen_instance_name=name,
             protection_level="REDUCED")
-        default_bandwidth_package = alicloud.cen.BandwidthPackage("defaultBandwidthPackage",
+        default_bandwidth_package = alicloud.cen.BandwidthPackage("default",
             bandwidth=5,
             cen_bandwidth_package_name="tf_example",
             geographic_region_a_id="China",
-            geographic_region_b_id="China",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            instance_id=default_instance.id,
-            bandwidth_package_id=default_bandwidth_package.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter",
-            cen_id=default_instance.id,
-            support_multicast=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+            geographic_region_b_id="China")
+        default_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("default",
+            instance_id=default.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_transit_router = alicloud.cen.TransitRouter("default",
+            cen_id=default.id,
+            support_multicast=True)
         peer = alicloud.cen.TransitRouter("peer",
             cen_id=default_transit_router.cen_id,
-            support_multicast=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        default_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment",
-            cen_id=default_instance.id,
+            support_multicast=True)
+        default_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("default",
+            cen_id=default.id,
             transit_router_id=default_transit_router.transit_router_id,
             peer_transit_router_region_id=peer_region,
             peer_transit_router_id=peer.transit_router_id,
             cen_bandwidth_package_id=default_bandwidth_package_attachment.bandwidth_package_id,
             bandwidth=5,
             transit_router_attachment_description=name,
-            transit_router_attachment_name=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_inter_region_traffic_qos_policy = alicloud.cen.InterRegionTrafficQosPolicy("defaultInterRegionTrafficQosPolicy",
+            transit_router_attachment_name=name)
+        default_inter_region_traffic_qos_policy = alicloud.cen.InterRegionTrafficQosPolicy("default",
             transit_router_id=default_transit_router.transit_router_id,
             transit_router_attachment_id=default_transit_router_peer_attachment.transit_router_attachment_id,
             inter_region_traffic_qos_policy_name=name,
-            inter_region_traffic_qos_policy_description=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_inter_region_traffic_qos_queue = alicloud.cen.InterRegionTrafficQosQueue("defaultInterRegionTrafficQosQueue",
+            inter_region_traffic_qos_policy_description=name)
+        default_inter_region_traffic_qos_queue = alicloud.cen.InterRegionTrafficQosQueue("default",
             remain_bandwidth_percent=20,
             traffic_qos_policy_id=default_inter_region_traffic_qos_policy.id,
             dscps=[

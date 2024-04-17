@@ -25,8 +25,8 @@ import * as utilities from "../utilities";
  *     status: "Running",
  * });
  * const ids = alicloud.hbr.getEcsBackupClients({
- *     ids: [alicloud_hbr_ecs_backup_client["default"].id],
- *     instanceIds: [alicloud_hbr_ecs_backup_client["default"].instance_id],
+ *     ids: [defaultAlicloudHbrEcsBackupClient.id],
+ *     instanceIds: [defaultAlicloudHbrEcsBackupClient.instanceId],
  * });
  * export const hbrEcsBackupClientId1 = ids.then(ids => ids.clients?.[0]?.id);
  * ```
@@ -99,8 +99,8 @@ export interface GetEcsBackupClientsResult {
  *     status: "Running",
  * });
  * const ids = alicloud.hbr.getEcsBackupClients({
- *     ids: [alicloud_hbr_ecs_backup_client["default"].id],
- *     instanceIds: [alicloud_hbr_ecs_backup_client["default"].instance_id],
+ *     ids: [defaultAlicloudHbrEcsBackupClient.id],
+ *     instanceIds: [defaultAlicloudHbrEcsBackupClient.instanceId],
  * });
  * export const hbrEcsBackupClientId1 = ids.then(ids => ids.clients?.[0]?.id);
  * ```

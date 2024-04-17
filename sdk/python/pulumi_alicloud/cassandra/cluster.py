@@ -753,19 +753,19 @@ class Cluster(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.cassandra.Cluster("default",
-            auto_renew=False,
             cluster_name="cassandra-cluster-name-tf",
             data_center_name="dc-1",
-            disk_size=160,
-            disk_type="cloud_ssd",
+            auto_renew=False,
             instance_type="cassandra.c.large",
-            ip_white="127.0.0.1",
-            maintain_end_time="20:00Z",
-            maintain_start_time="18:00Z",
             major_version="3.11",
             node_count=2,
             pay_type="PayAsYouGo",
-            vswitch_id="vsw-xxxx")
+            vswitch_id="vsw-xxxx",
+            disk_size=160,
+            disk_type="cloud_ssd",
+            maintain_start_time="18:00Z",
+            maintain_end_time="20:00Z",
+            ip_white="127.0.0.1")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -833,19 +833,19 @@ class Cluster(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.cassandra.Cluster("default",
-            auto_renew=False,
             cluster_name="cassandra-cluster-name-tf",
             data_center_name="dc-1",
-            disk_size=160,
-            disk_type="cloud_ssd",
+            auto_renew=False,
             instance_type="cassandra.c.large",
-            ip_white="127.0.0.1",
-            maintain_end_time="20:00Z",
-            maintain_start_time="18:00Z",
             major_version="3.11",
             node_count=2,
             pay_type="PayAsYouGo",
-            vswitch_id="vsw-xxxx")
+            vswitch_id="vsw-xxxx",
+            disk_size=160,
+            disk_type="cloud_ssd",
+            maintain_start_time="18:00Z",
+            maintain_end_time="20:00Z",
+            ip_white="127.0.0.1")
         ```
         <!--End PulumiCodeChooser -->
 

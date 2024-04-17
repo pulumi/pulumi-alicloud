@@ -36,12 +36,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudfirewall.NewInstance(ctx, "default", &cloudfirewall.InstanceArgs{
+//				PaymentType:   pulumi.String("PayAsYouGo"),
+//				Spec:          pulumi.String("ultimate_version"),
+//				IpNumber:      pulumi.Int(400),
 //				BandWidth:     pulumi.Int(200),
 //				CfwLog:        pulumi.Bool(true),
 //				CfwLogStorage: pulumi.Int(1000),
-//				IpNumber:      pulumi.Int(400),
-//				PaymentType:   pulumi.String("PayAsYouGo"),
-//				Spec:          pulumi.String("ultimate_version"),
 //			})
 //			if err != nil {
 //				return err

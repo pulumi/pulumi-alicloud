@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.CloudMonitor
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
+    ///     var @default = new AliCloud.Cms.AlarmContactGroup("default", new()
     ///     {
     ///         AlarmContactGroupName = name,
     ///         Contacts = new[]
@@ -42,16 +42,16 @@ namespace Pulumi.AliCloud.CloudMonitor
     ///         },
     ///     });
     /// 
-    ///     var defaultMonitorGroup = new AliCloud.Cms.MonitorGroup("defaultMonitorGroup", new()
+    ///     var defaultMonitorGroup = new AliCloud.Cms.MonitorGroup("default", new()
     ///     {
     ///         MonitorGroupName = name,
     ///         ContactGroups = new[]
     ///         {
-    ///             defaultAlarmContactGroup.Id,
+    ///             @default.Id,
     ///         },
     ///     });
     /// 
-    ///     var defaultServiceGroupMonitoringAgentProcess = new AliCloud.CloudMonitor.ServiceGroupMonitoringAgentProcess("defaultServiceGroupMonitoringAgentProcess", new()
+    ///     var defaultServiceGroupMonitoringAgentProcess = new AliCloud.CloudMonitor.ServiceGroupMonitoringAgentProcess("default", new()
     ///     {
     ///         GroupId = defaultMonitorGroup.Id,
     ///         ProcessName = name,

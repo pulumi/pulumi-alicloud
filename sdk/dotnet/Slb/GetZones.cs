@@ -29,8 +29,8 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     var zonesIds = AliCloud.Slb.GetZones.Invoke(new()
         ///     {
-        ///         AvailableSlbAddressIpVersion = "ipv4",
         ///         AvailableSlbAddressType = "vpc",
+        ///         AvailableSlbAddressIpVersion = "ipv4",
         ///     });
         /// 
         /// });
@@ -58,8 +58,8 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     var zonesIds = AliCloud.Slb.GetZones.Invoke(new()
         ///     {
-        ///         AvailableSlbAddressIpVersion = "ipv4",
         ///         AvailableSlbAddressType = "vpc",
+        ///         AvailableSlbAddressIpVersion = "ipv4",
         ///     });
         /// 
         /// });

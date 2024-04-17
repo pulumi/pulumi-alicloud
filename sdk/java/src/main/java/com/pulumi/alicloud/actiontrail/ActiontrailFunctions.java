@@ -67,8 +67,8 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var consumerGroupsDs = ActiontrailFunctions.getConsumerGroups(GetConsumerGroupsArgs.builder()
-     *             .consumerIdRegex(&#34;CID-alikafkaGroupDatasourceName&#34;)
      *             .instanceId(&#34;xxx&#34;)
+     *             .consumerIdRegex(&#34;CID-alikafkaGroupDatasourceName&#34;)
      *             .outputFile(&#34;consumerGroups.txt&#34;)
      *             .build());
      * 
@@ -112,8 +112,8 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var consumerGroupsDs = ActiontrailFunctions.getConsumerGroups(GetConsumerGroupsArgs.builder()
-     *             .consumerIdRegex(&#34;CID-alikafkaGroupDatasourceName&#34;)
      *             .instanceId(&#34;xxx&#34;)
+     *             .consumerIdRegex(&#34;CID-alikafkaGroupDatasourceName&#34;)
      *             .outputFile(&#34;consumerGroups.txt&#34;)
      *             .build());
      * 
@@ -157,8 +157,8 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var consumerGroupsDs = ActiontrailFunctions.getConsumerGroups(GetConsumerGroupsArgs.builder()
-     *             .consumerIdRegex(&#34;CID-alikafkaGroupDatasourceName&#34;)
      *             .instanceId(&#34;xxx&#34;)
+     *             .consumerIdRegex(&#34;CID-alikafkaGroupDatasourceName&#34;)
      *             .outputFile(&#34;consumerGroups.txt&#34;)
      *             .build());
      * 
@@ -202,8 +202,8 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var consumerGroupsDs = ActiontrailFunctions.getConsumerGroups(GetConsumerGroupsArgs.builder()
-     *             .consumerIdRegex(&#34;CID-alikafkaGroupDatasourceName&#34;)
      *             .instanceId(&#34;xxx&#34;)
+     *             .consumerIdRegex(&#34;CID-alikafkaGroupDatasourceName&#34;)
      *             .outputFile(&#34;consumerGroups.txt&#34;)
      *             .build());
      * 
@@ -814,7 +814,7 @@ public final class ActiontrailFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var instanceName = config.get(&#34;instanceName&#34;).orElse(&#34;alikafkaInstanceName&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -825,10 +825,11 @@ public final class ActiontrailFunctions {
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .name(instanceName)
      *             .partitionNum(&#34;50&#34;)
      *             .diskType(&#34;1&#34;)
      *             .diskSize(&#34;500&#34;)
@@ -891,7 +892,7 @@ public final class ActiontrailFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var instanceName = config.get(&#34;instanceName&#34;).orElse(&#34;alikafkaInstanceName&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -902,10 +903,11 @@ public final class ActiontrailFunctions {
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .name(instanceName)
      *             .partitionNum(&#34;50&#34;)
      *             .diskType(&#34;1&#34;)
      *             .diskSize(&#34;500&#34;)
@@ -968,7 +970,7 @@ public final class ActiontrailFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var instanceName = config.get(&#34;instanceName&#34;).orElse(&#34;alikafkaInstanceName&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -979,10 +981,11 @@ public final class ActiontrailFunctions {
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .name(instanceName)
      *             .partitionNum(&#34;50&#34;)
      *             .diskType(&#34;1&#34;)
      *             .diskSize(&#34;500&#34;)
@@ -1045,7 +1048,7 @@ public final class ActiontrailFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var instanceName = config.get(&#34;instanceName&#34;).orElse(&#34;alikafkaInstanceName&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -1056,10 +1059,11 @@ public final class ActiontrailFunctions {
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .name(instanceName)
      *             .partitionNum(&#34;50&#34;)
      *             .diskType(&#34;1&#34;)
      *             .diskSize(&#34;500&#34;)
@@ -1122,7 +1126,7 @@ public final class ActiontrailFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var instanceName = config.get(&#34;instanceName&#34;).orElse(&#34;alikafkaInstanceName&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -1133,10 +1137,11 @@ public final class ActiontrailFunctions {
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .name(instanceName)
      *             .partitionNum(&#34;50&#34;)
      *             .diskType(&#34;1&#34;)
      *             .diskSize(&#34;500&#34;)
@@ -1199,7 +1204,7 @@ public final class ActiontrailFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var instanceName = config.get(&#34;instanceName&#34;).orElse(&#34;alikafkaInstanceName&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -1210,10 +1215,11 @@ public final class ActiontrailFunctions {
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
      *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *             .name(instanceName)
      *             .partitionNum(&#34;50&#34;)
      *             .diskType(&#34;1&#34;)
      *             .diskSize(&#34;500&#34;)
@@ -1267,11 +1273,11 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var saslAclsDs = ActiontrailFunctions.getSaslAcls(GetSaslAclsArgs.builder()
-     *             .aclResourceName(&#34;testTopic&#34;)
-     *             .aclResourceType(&#34;Topic&#34;)
      *             .instanceId(&#34;xxx&#34;)
-     *             .outputFile(&#34;saslAcls.txt&#34;)
      *             .username(&#34;username&#34;)
+     *             .aclResourceType(&#34;Topic&#34;)
+     *             .aclResourceName(&#34;testTopic&#34;)
+     *             .outputFile(&#34;saslAcls.txt&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstSaslAclUsername&#34;, saslAclsDs.applyValue(getSaslAclsResult -&gt; getSaslAclsResult.acls()[0].username()));
@@ -1314,11 +1320,11 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var saslAclsDs = ActiontrailFunctions.getSaslAcls(GetSaslAclsArgs.builder()
-     *             .aclResourceName(&#34;testTopic&#34;)
-     *             .aclResourceType(&#34;Topic&#34;)
      *             .instanceId(&#34;xxx&#34;)
-     *             .outputFile(&#34;saslAcls.txt&#34;)
      *             .username(&#34;username&#34;)
+     *             .aclResourceType(&#34;Topic&#34;)
+     *             .aclResourceName(&#34;testTopic&#34;)
+     *             .outputFile(&#34;saslAcls.txt&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstSaslAclUsername&#34;, saslAclsDs.applyValue(getSaslAclsResult -&gt; getSaslAclsResult.acls()[0].username()));
@@ -1361,11 +1367,11 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var saslAclsDs = ActiontrailFunctions.getSaslAcls(GetSaslAclsArgs.builder()
-     *             .aclResourceName(&#34;testTopic&#34;)
-     *             .aclResourceType(&#34;Topic&#34;)
      *             .instanceId(&#34;xxx&#34;)
-     *             .outputFile(&#34;saslAcls.txt&#34;)
      *             .username(&#34;username&#34;)
+     *             .aclResourceType(&#34;Topic&#34;)
+     *             .aclResourceName(&#34;testTopic&#34;)
+     *             .outputFile(&#34;saslAcls.txt&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstSaslAclUsername&#34;, saslAclsDs.applyValue(getSaslAclsResult -&gt; getSaslAclsResult.acls()[0].username()));
@@ -1408,11 +1414,11 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var saslAclsDs = ActiontrailFunctions.getSaslAcls(GetSaslAclsArgs.builder()
-     *             .aclResourceName(&#34;testTopic&#34;)
-     *             .aclResourceType(&#34;Topic&#34;)
      *             .instanceId(&#34;xxx&#34;)
-     *             .outputFile(&#34;saslAcls.txt&#34;)
      *             .username(&#34;username&#34;)
+     *             .aclResourceType(&#34;Topic&#34;)
+     *             .aclResourceName(&#34;testTopic&#34;)
+     *             .outputFile(&#34;saslAcls.txt&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstSaslAclUsername&#34;, saslAclsDs.applyValue(getSaslAclsResult -&gt; getSaslAclsResult.acls()[0].username()));

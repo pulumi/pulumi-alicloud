@@ -215,18 +215,18 @@ class EndpointAclPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
             instance_name=name)
-        default_endpoint_acl_service = alicloud.cr.get_endpoint_acl_service_output(endpoint_type="internet",
+        default = alicloud.cr.get_endpoint_acl_service_output(endpoint_type="internet",
             enable=True,
             instance_id=default_registry_enterprise_instance.id,
             module_name="Registry")
-        default_endpoint_acl_policy = alicloud.cr.EndpointAclPolicy("defaultEndpointAclPolicy",
-            instance_id=default_endpoint_acl_service.instance_id,
+        default_endpoint_acl_policy = alicloud.cr.EndpointAclPolicy("default",
+            instance_id=default.instance_id,
             entry="192.168.1.0/24",
             description=name,
             module_name="Registry",
@@ -276,18 +276,18 @@ class EndpointAclPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
             instance_name=name)
-        default_endpoint_acl_service = alicloud.cr.get_endpoint_acl_service_output(endpoint_type="internet",
+        default = alicloud.cr.get_endpoint_acl_service_output(endpoint_type="internet",
             enable=True,
             instance_id=default_registry_enterprise_instance.id,
             module_name="Registry")
-        default_endpoint_acl_policy = alicloud.cr.EndpointAclPolicy("defaultEndpointAclPolicy",
-            instance_id=default_endpoint_acl_service.instance_id,
+        default_endpoint_acl_policy = alicloud.cr.EndpointAclPolicy("default",
+            instance_id=default.instance_id,
             entry="192.168.1.0/24",
             description=name,
             module_name="Registry",

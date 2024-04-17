@@ -28,7 +28,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -36,19 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := alicloud.NewProvider(ctx, "hz", &alicloud.ProviderArgs{
-//				Region: pulumi.String("cn-hangzhou"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alicloud.NewProvider(ctx, "sgp", &alicloud.ProviderArgs{
-//				Region: pulumi.String("ap-southeast-1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = expressconnect.NewPhysicalConnection(ctx, "domestic", &expressconnect.PhysicalConnectionArgs{
+//			_, err := expressconnect.NewPhysicalConnection(ctx, "domestic", &expressconnect.PhysicalConnectionArgs{
 //				AccessPointId:          pulumi.String("ap-cn-hangzhou-yh-B"),
 //				LineOperator:           pulumi.String("CT"),
 //				PeerLocation:           pulumi.String("example_value"),
@@ -57,7 +44,7 @@ import (
 //				Description:            pulumi.String("my domestic connection"),
 //				PortType:               pulumi.String("1000Base-LX"),
 //				Bandwidth:              pulumi.String("100"),
-//			}, pulumi.Provider(alicloud.Hz))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -70,7 +57,7 @@ import (
 //				Description:            pulumi.String("my domestic connection"),
 //				PortType:               pulumi.String("1000Base-LX"),
 //				Bandwidth:              pulumi.String("100"),
-//			}, pulumi.Provider(alicloud.Sgp))
+//			})
 //			if err != nil {
 //				return err
 //			}

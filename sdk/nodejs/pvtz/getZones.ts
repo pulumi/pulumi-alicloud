@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const pvtzZonesDs = alicloud.pvtz.getZones({
- *     keyword: alicloud_pvtz_zone.basic.zone_name,
+ *     keyword: basic.zoneName,
  * });
  * export const firstZoneId = pvtzZonesDs.then(pvtzZonesDs => pvtzZonesDs.zones?.[0]?.id);
  * ```
@@ -130,7 +130,7 @@ export interface GetZonesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const pvtzZonesDs = alicloud.pvtz.getZones({
- *     keyword: alicloud_pvtz_zone.basic.zone_name,
+ *     keyword: basic.zoneName,
  * });
  * export const firstZoneId = pvtzZonesDs.then(pvtzZonesDs => pvtzZonesDs.zones?.[0]?.id);
  * ```

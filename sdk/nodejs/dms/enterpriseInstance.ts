@@ -21,44 +21,47 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const current = alicloud.getAccount({});
- * const defaultRegions = alicloud.getRegions({
+ * const default = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultUserTenants = alicloud.dms.getUserTenants({
+ * const defaultGetUserTenants = alicloud.dms.getUserTenants({
  *     status: "ACTIVE",
  * });
- * const defaultZones = alicloud.rds.getZones({
+ * const defaultGetZones = alicloud.rds.getZones({
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     instanceChargeType: "PostPaid",
  *     category: "HighAvailability",
  *     dbInstanceStorageType: "cloud_essd",
  * });
- * const defaultInstanceClasses = defaultZones.then(defaultZones => alicloud.rds.getInstanceClasses({
- *     zoneId: defaultZones.zones?.[0]?.id,
+ * const defaultGetInstanceClasses = defaultGetZones.then(defaultGetZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: defaultGetZones.zones?.[0]?.id,
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     category: "HighAvailability",
  *     dbInstanceStorageType: "cloud_essd",
  *     instanceChargeType: "PostPaid",
  * }));
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstance = new alicloud.rds.Instance("default", {
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     dbInstanceStorageType: "cloud_essd",
- *     instanceType: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
  *     vswitchId: defaultSwitch.id,
  *     instanceName: name,
  *     securityIps: [
@@ -70,14 +73,14 @@ import * as utilities from "../utilities";
  *         For: "example",
  *     },
  * });
- * const defaultAccount = new alicloud.rds.Account("defaultAccount", {
+ * const defaultAccount = new alicloud.rds.Account("default", {
  *     dbInstanceId: defaultInstance.id,
  *     accountName: "tfexamplename",
  *     accountPassword: "Example12345",
  *     accountType: "Normal",
  * });
- * const defaultEnterpriseInstance = new alicloud.dms.EnterpriseInstance("defaultEnterpriseInstance", {
- *     tid: defaultUserTenants.then(defaultUserTenants => defaultUserTenants.ids?.[0]),
+ * const defaultEnterpriseInstance = new alicloud.dms.EnterpriseInstance("default", {
+ *     tid: defaultGetUserTenants.then(defaultGetUserTenants => defaultGetUserTenants.ids?.[0]),
  *     instanceType: "mysql",
  *     instanceSource: "RDS",
  *     networkType: "VPC",
@@ -92,7 +95,7 @@ import * as utilities from "../utilities";
  *     useDsql: 1,
  *     queryTimeout: 60,
  *     exportTimeout: 600,
- *     ecsRegion: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     ecsRegion: _default.then(_default => _default.regions?.[0]?.id),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

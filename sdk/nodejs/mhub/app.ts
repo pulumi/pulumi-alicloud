@@ -24,10 +24,10 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "example_value";
- * const defaultProduct = new alicloud.mhub.Product("defaultProduct", {productName: name});
- * const defaultApp = new alicloud.mhub.App("defaultApp", {
+ * const _default = new alicloud.mhub.Product("default", {productName: name});
+ * const defaultApp = new alicloud.mhub.App("default", {
  *     appName: name,
- *     productId: defaultProduct.id,
+ *     productId: _default.id,
  *     packageName: "com.example.android",
  *     type: "Android",
  * });

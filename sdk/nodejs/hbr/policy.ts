@@ -25,16 +25,16 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
  * const defaultyk84Hc = new alicloud.hbr.Vault("defaultyk84Hc", {
  *     vaultType: "STANDARD",
- *     vaultName: pulumi.interpolate`example-value-${_default.result}`,
+ *     vaultName: `example-value-${_default.result}`,
  * });
  * const defaultoqWvHQ = new alicloud.hbr.Policy("defaultoqWvHQ", {
- *     policyName: pulumi.interpolate`example-value-${_default.result}`,
+ *     policyName: `example-value-${_default.result}`,
  *     rules: [{
  *         ruleType: "BACKUP",
  *         backupType: "COMPLETE",

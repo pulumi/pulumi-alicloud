@@ -54,10 +54,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultSecurityPolicy = new SecurityPolicy(&#34;defaultSecurityPolicy&#34;, SecurityPolicyArgs.builder()        
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(default_.ids()[0])
  *             .securityPolicyName(name)
  *             .ciphers(            
  *                 &#34;ECDHE-RSA-AES128-SHA&#34;,

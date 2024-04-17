@@ -18,17 +18,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const resourcesZones = alicloud.getZones({
+ * const resources = alicloud.getZones({
  *     availableResourceCreation: "KVStore",
  * });
- * const resourcesInstanceClasses = resourcesZones.then(resourcesZones => alicloud.kvstore.getInstanceClasses({
+ * const resourcesGetInstanceClasses = resources.then(resources => alicloud.kvstore.getInstanceClasses({
+ *     zoneId: resources.zones?.[0]?.id,
+ *     instanceChargeType: "PrePaid",
  *     engine: "Redis",
  *     engineVersion: "5.0",
- *     instanceChargeType: "PrePaid",
  *     outputFile: "./classes.txt",
- *     zoneId: resourcesZones.zones?.[0]?.id,
  * }));
- * export const firstKvstoreInstanceClass = resourcesInstanceClasses.then(resourcesInstanceClasses => resourcesInstanceClasses.instanceClasses);
+ * export const firstKvstoreInstanceClass = resourcesGetInstanceClasses.then(resourcesGetInstanceClasses => resourcesGetInstanceClasses.instanceClasses);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -176,17 +176,17 @@ export interface GetInstanceClassesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const resourcesZones = alicloud.getZones({
+ * const resources = alicloud.getZones({
  *     availableResourceCreation: "KVStore",
  * });
- * const resourcesInstanceClasses = resourcesZones.then(resourcesZones => alicloud.kvstore.getInstanceClasses({
+ * const resourcesGetInstanceClasses = resources.then(resources => alicloud.kvstore.getInstanceClasses({
+ *     zoneId: resources.zones?.[0]?.id,
+ *     instanceChargeType: "PrePaid",
  *     engine: "Redis",
  *     engineVersion: "5.0",
- *     instanceChargeType: "PrePaid",
  *     outputFile: "./classes.txt",
- *     zoneId: resourcesZones.zones?.[0]?.id,
  * }));
- * export const firstKvstoreInstanceClass = resourcesInstanceClasses.then(resourcesInstanceClasses => resourcesInstanceClasses.instanceClasses);
+ * export const firstKvstoreInstanceClass = resourcesGetInstanceClasses.then(resourcesGetInstanceClasses => resourcesGetInstanceClasses.instanceClasses);
  * ```
  * <!--End PulumiCodeChooser -->
  */

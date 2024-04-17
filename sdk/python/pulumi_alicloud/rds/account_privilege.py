@@ -204,15 +204,15 @@ class AccountPrivilege(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
+        default = alicloud.rds.get_zones(engine="MySQL",
             engine_version="5.6")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
         instance = alicloud.rds.Instance("instance",
             engine="MySQL",
@@ -225,6 +225,7 @@ class AccountPrivilege(pulumi.CustomResource):
         for range in [{"value": i} for i in range(0, 2)]:
             db.append(alicloud.rds.Database(f"db-{range['value']}",
                 instance_id=instance.id,
+                name=f"{name}_{range['value']}",
                 description="from terraform"))
         account = alicloud.rds.Account("account",
             db_instance_id=instance.id,
@@ -284,15 +285,15 @@ class AccountPrivilege(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
+        default = alicloud.rds.get_zones(engine="MySQL",
             engine_version="5.6")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
         instance = alicloud.rds.Instance("instance",
             engine="MySQL",
@@ -305,6 +306,7 @@ class AccountPrivilege(pulumi.CustomResource):
         for range in [{"value": i} for i in range(0, 2)]:
             db.append(alicloud.rds.Database(f"db-{range['value']}",
                 instance_id=instance.id,
+                name=f"{name}_{range['value']}",
                 description="from terraform"))
         account = alicloud.rds.Account("account",
             db_instance_id=instance.id,

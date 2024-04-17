@@ -35,6 +35,7 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var @default = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
+    ///         Name = "terraform-example",
     ///         Description = "New security group",
     ///     });
     /// 
@@ -61,6 +62,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
     ///     {
+    ///         Name = "terraform-example",
     ///         VpcId = vpc.Id,
     ///     });
     /// 

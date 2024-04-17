@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			var splat0 []interface{}
-//			for _, val0 := range alicloud_bastionhost_instances.Instance {
+//			for _, val0 := range instanceAlicloudBastionhostInstances {
 //				splat0 = append(splat0, val0.Id)
 //			}
 //			ctx.Export("instance", splat0)

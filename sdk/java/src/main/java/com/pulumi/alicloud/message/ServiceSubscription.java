@@ -51,14 +51,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var defaultServiceTopic = new ServiceTopic(&#34;defaultServiceTopic&#34;, ServiceTopicArgs.builder()        
+ *         var default_ = new ServiceTopic(&#34;default&#34;, ServiceTopicArgs.builder()        
  *             .topicName(name)
  *             .maxMessageSize(12357)
  *             .loggingEnabled(true)
  *             .build());
  * 
  *         var defaultServiceSubscription = new ServiceSubscription(&#34;defaultServiceSubscription&#34;, ServiceSubscriptionArgs.builder()        
- *             .topicName(defaultServiceTopic.topicName())
+ *             .topicName(default_.topicName())
  *             .subscriptionName(name)
  *             .endpoint(&#34;http://example.com&#34;)
  *             .pushType(&#34;http&#34;)

@@ -1540,17 +1540,19 @@ class Listener(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        listener_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer",
-            load_balancer_name=default.result.apply(lambda result: f"{name}-{result}"),
+        listener = alicloud.slb.ApplicationLoadBalancer("listener",
+            load_balancer_name=f"{name}-{default['result']}",
             internet_charge_type="PayByTraffic",
             address_type="internet",
             instance_charge_type="PayByCLCU")
-        listener_acl = alicloud.slb.Acl("listenerAcl", ip_version="ipv4")
-        listener_listener = alicloud.slb.Listener("listenerListener",
-            load_balancer_id=listener_application_load_balancer.id,
+        listener_acl = alicloud.slb.Acl("listener",
+            name=f"{name}-{default['result']}",
+            ip_version="ipv4")
+        listener_listener = alicloud.slb.Listener("listener",
+            load_balancer_id=listener.id,
             backend_port=80,
             frontend_port=80,
             protocol="http",
@@ -1681,17 +1683,19 @@ class Listener(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        listener_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer",
-            load_balancer_name=default.result.apply(lambda result: f"{name}-{result}"),
+        listener = alicloud.slb.ApplicationLoadBalancer("listener",
+            load_balancer_name=f"{name}-{default['result']}",
             internet_charge_type="PayByTraffic",
             address_type="internet",
             instance_charge_type="PayByCLCU")
-        listener_acl = alicloud.slb.Acl("listenerAcl", ip_version="ipv4")
-        listener_listener = alicloud.slb.Listener("listenerListener",
-            load_balancer_id=listener_application_load_balancer.id,
+        listener_acl = alicloud.slb.Acl("listener",
+            name=f"{name}-{default['result']}",
+            ip_version="ipv4")
+        listener_listener = alicloud.slb.Listener("listener",
+            load_balancer_id=listener.id,
             backend_port=80,
             frontend_port=80,
             protocol="http",

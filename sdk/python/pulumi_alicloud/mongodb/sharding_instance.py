@@ -885,21 +885,22 @@ class ShardingInstance(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.mongodb.get_zones()
-        index = len(default_zones.zones) - 1
-        zone_id = default_zones.zones[index].id
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.mongodb.get_zones()
+        index = len(default.zones) - 1
+        zone_id = default.zones[index].id
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="172.17.3.0/24",
             vpc_id=default_network.id,
             zone_id=zone_id)
-        default_sharding_instance = alicloud.mongodb.ShardingInstance("defaultShardingInstance",
+        default_sharding_instance = alicloud.mongodb.ShardingInstance("default",
             engine_version="4.2",
             vswitch_id=default_switch.id,
             zone_id=zone_id,
+            name=name,
             mongo_lists=[
                 alicloud.mongodb.ShardingInstanceMongoListArgs(
                     node_class="dds.mongos.mid",
@@ -994,21 +995,22 @@ class ShardingInstance(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.mongodb.get_zones()
-        index = len(default_zones.zones) - 1
-        zone_id = default_zones.zones[index].id
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.mongodb.get_zones()
+        index = len(default.zones) - 1
+        zone_id = default.zones[index].id
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="172.17.3.0/24",
             vpc_id=default_network.id,
             zone_id=zone_id)
-        default_sharding_instance = alicloud.mongodb.ShardingInstance("defaultShardingInstance",
+        default_sharding_instance = alicloud.mongodb.ShardingInstance("default",
             engine_version="4.2",
             vswitch_id=default_switch.id,
             zone_id=zone_id,
+            name=name,
             mongo_lists=[
                 alicloud.mongodb.ShardingInstanceMongoListArgs(
                     node_class="dds.mongos.mid",

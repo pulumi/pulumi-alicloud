@@ -198,11 +198,11 @@ class Vpd(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_vpd = alicloud.eflo.Vpd("defaultVpd",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_vpd = alicloud.eflo.Vpd("default",
             cidr="10.0.0.0/8",
             vpd_name=name,
-            resource_group_id=default_resource_groups.groups[0].id)
+            resource_group_id=default.groups[0].id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -246,11 +246,11 @@ class Vpd(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_vpd = alicloud.eflo.Vpd("defaultVpd",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_vpd = alicloud.eflo.Vpd("default",
             cidr="10.0.0.0/8",
             vpd_name=name,
-            resource_group_id=default_resource_groups.groups[0].id)
+            resource_group_id=default.groups[0].id)
         ```
         <!--End PulumiCodeChooser -->
 

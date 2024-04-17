@@ -46,41 +46,42 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VpcId:       defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//			defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
 //				Status: pulumi.StringRef("OK"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewEcsNetworkInterface(ctx, "defaultEcsNetworkInterface", &ecs.EcsNetworkInterfaceArgs{
+//			_, err = ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
 //				NetworkInterfaceName: pulumi.String(name),
 //				VswitchId:            defaultSwitch.ID(),
 //				SecurityGroupIds: pulumi.StringArray{
@@ -92,7 +93,7 @@ import (
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("Test"),
 //				},
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

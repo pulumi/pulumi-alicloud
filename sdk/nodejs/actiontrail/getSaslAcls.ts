@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const saslAclsDs = alicloud.actiontrail.getSaslAcls({
- *     aclResourceName: "testTopic",
- *     aclResourceType: "Topic",
  *     instanceId: "xxx",
- *     outputFile: "saslAcls.txt",
  *     username: "username",
+ *     aclResourceType: "Topic",
+ *     aclResourceName: "testTopic",
+ *     outputFile: "saslAcls.txt",
  * });
  * export const firstSaslAclUsername = saslAclsDs.then(saslAclsDs => saslAclsDs.acls?.[0]?.username);
  * ```
@@ -107,11 +107,11 @@ export interface GetSaslAclsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const saslAclsDs = alicloud.actiontrail.getSaslAcls({
- *     aclResourceName: "testTopic",
- *     aclResourceType: "Topic",
  *     instanceId: "xxx",
- *     outputFile: "saslAcls.txt",
  *     username: "username",
+ *     aclResourceType: "Topic",
+ *     aclResourceName: "testTopic",
+ *     outputFile: "saslAcls.txt",
  * });
  * export const firstSaslAclUsername = saslAclsDs.then(saslAclsDs => saslAclsDs.acls?.[0]?.username);
  * ```

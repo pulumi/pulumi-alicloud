@@ -31,10 +31,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			policiesDs, err := ram.GetPolicies(ctx, &ram.GetPoliciesArgs{
-//				GroupName:  pulumi.StringRef("group1"),
 //				OutputFile: pulumi.StringRef("policies.txt"),
-//				Type:       pulumi.StringRef("System"),
 //				UserName:   pulumi.StringRef("user1"),
+//				GroupName:  pulumi.StringRef("group1"),
+//				Type:       pulumi.StringRef("System"),
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -36,6 +36,7 @@ namespace Pulumi.AliCloud.Kms
         ///         Plaintext = "example",
         ///     });
         /// 
+        ///     // Decrypt encrypted ciphertext
         ///     var plaintext = AliCloud.Kms.GetPlaintext.Invoke(new()
         ///     {
         ///         CiphertextBlob = encrypted.CiphertextBlob,
@@ -77,6 +78,7 @@ namespace Pulumi.AliCloud.Kms
         ///         Plaintext = "example",
         ///     });
         /// 
+        ///     // Decrypt encrypted ciphertext
         ///     var plaintext = AliCloud.Kms.GetPlaintext.Invoke(new()
         ///     {
         ///         CiphertextBlob = encrypted.CiphertextBlob,

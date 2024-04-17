@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.cloudfirewall.getInstanceMembers({
- *     ids: [alicloud_cloud_firewall_instance_member["default"].id],
+ *     ids: [defaultAlicloudCloudFirewallInstanceMember.id],
  * });
  * export const alicloudCloudFirewallInstanceMemberExampleId = _default.then(_default => _default.members?.[0]?.id);
  * ```
@@ -89,7 +89,7 @@ export interface GetInstanceMembersResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.cloudfirewall.getInstanceMembers({
- *     ids: [alicloud_cloud_firewall_instance_member["default"].id],
+ *     ids: [defaultAlicloudCloudFirewallInstanceMember.id],
  * });
  * export const alicloudCloudFirewallInstanceMemberExampleId = _default.then(_default => _default.members?.[0]?.id);
  * ```

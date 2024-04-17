@@ -31,14 +31,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cs.GetKubernetesAddonMetadata(ctx, &cs.GetKubernetesAddonMetadataArgs{
-//				ClusterId: _var.Cluster_id,
+//				ClusterId: clusterId,
 //				Name:      "nginx-ingress-controller",
 //				Version:   "v1.1.2-aliyun.2",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("addonConfigSchema", data.Alicloud_cs_kubernetes_addons.Default.Config_schema)
+//			ctx.Export("addonConfigSchema", defaultAlicloudCsKubernetesAddons.ConfigSchema)
 //			return nil
 //		})
 //	}

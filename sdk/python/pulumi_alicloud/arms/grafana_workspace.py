@@ -283,11 +283,11 @@ class GrafanaWorkspace(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_grafana_workspace = alicloud.arms.GrafanaWorkspace("defaultGrafanaWorkspace",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_grafana_workspace = alicloud.arms.GrafanaWorkspace("default",
             grafana_version="9.0.x",
             description=name,
-            resource_group_id=default_resource_groups.ids[0],
+            resource_group_id=default.ids[0],
             grafana_workspace_edition="standard",
             grafana_workspace_name=name,
             tags={
@@ -340,11 +340,11 @@ class GrafanaWorkspace(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_grafana_workspace = alicloud.arms.GrafanaWorkspace("defaultGrafanaWorkspace",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_grafana_workspace = alicloud.arms.GrafanaWorkspace("default",
             grafana_version="9.0.x",
             description=name,
-            resource_group_id=default_resource_groups.ids[0],
+            resource_group_id=default.ids[0],
             grafana_workspace_edition="standard",
             grafana_workspace_name=name,
             tags={

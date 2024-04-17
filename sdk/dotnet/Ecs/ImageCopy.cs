@@ -31,88 +31,64 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sh = new AliCloud.Provider("sh", new()
-    ///     {
-    ///         Region = "cn-shanghai",
-    ///     });
-    /// 
-    ///     var hz = new AliCloud.Provider("hz", new()
-    ///     {
-    ///         Region = "cn-hangzhou",
-    ///     });
-    /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
     ///     });
     /// 
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
     ///         InstanceTypeFamily = "ecs.sn1ne",
     ///     });
     /// 
-    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Hz,
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Hz,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
+    ///         Name = "terraform-example",
     ///         VpcId = defaultNetwork.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Hz,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
     ///     {
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         InstanceName = "terraform-example",
     ///         SecurityGroups = new[]
     ///         {
     ///             defaultSecurityGroup.Id,
     ///         },
     ///         VswitchId = defaultSwitch.Id,
-    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0]),
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0]),
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
     ///         InternetMaxBandwidthOut = 10,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Hz,
     ///     });
     /// 
-    ///     var defaultImage = new AliCloud.Ecs.Image("defaultImage", new()
+    ///     var defaultImage = new AliCloud.Ecs.Image("default", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
     ///         ImageName = "terraform-example",
     ///         Description = "terraform-example",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Hz,
     ///     });
     /// 
-    ///     var defaultImageCopy = new AliCloud.Ecs.ImageCopy("defaultImageCopy", new()
+    ///     var defaultImageCopy = new AliCloud.Ecs.ImageCopy("default", new()
     ///     {
     ///         SourceImageId = defaultImage.Id,
     ///         SourceRegionId = "cn-hangzhou",
@@ -122,9 +98,6 @@ namespace Pulumi.AliCloud.Ecs
     ///         {
     ///             { "FinanceDept", "FinanceDeptJoshua" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Sh,
     ///     });
     /// 
     /// });

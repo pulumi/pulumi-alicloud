@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Amqp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInstance = new AliCloud.Amqp.Instance("defaultInstance", new()
+    ///     var @default = new AliCloud.Amqp.Instance("default", new()
     ///     {
     ///         InstanceType = "enterprise",
     ///         MaxTps = "3000",
@@ -41,36 +41,36 @@ namespace Pulumi.AliCloud.Amqp
     ///         Period = 1,
     ///     });
     /// 
-    ///     var defaultVirtualHost = new AliCloud.Amqp.VirtualHost("defaultVirtualHost", new()
+    ///     var defaultVirtualHost = new AliCloud.Amqp.VirtualHost("default", new()
     ///     {
-    ///         InstanceId = defaultInstance.Id,
+    ///         InstanceId = @default.Id,
     ///         VirtualHostName = "tf-example",
     ///     });
     /// 
-    ///     var defaultExchange = new AliCloud.Amqp.Exchange("defaultExchange", new()
+    ///     var defaultExchange = new AliCloud.Amqp.Exchange("default", new()
     ///     {
     ///         AutoDeleteState = false,
     ///         ExchangeName = "tf-example",
     ///         ExchangeType = "HEADERS",
-    ///         InstanceId = defaultInstance.Id,
+    ///         InstanceId = @default.Id,
     ///         Internal = false,
     ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
     ///     });
     /// 
-    ///     var defaultQueue = new AliCloud.Amqp.Queue("defaultQueue", new()
+    ///     var defaultQueue = new AliCloud.Amqp.Queue("default", new()
     ///     {
-    ///         InstanceId = defaultInstance.Id,
+    ///         InstanceId = @default.Id,
     ///         QueueName = "tf-example",
     ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
     ///     });
     /// 
-    ///     var defaultBinding = new AliCloud.Amqp.Binding("defaultBinding", new()
+    ///     var defaultBinding = new AliCloud.Amqp.Binding("default", new()
     ///     {
     ///         Argument = "x-match:all",
     ///         BindingKey = defaultQueue.QueueName,
     ///         BindingType = "QUEUE",
     ///         DestinationName = "tf-example",
-    ///         InstanceId = defaultInstance.Id,
+    ///         InstanceId = @default.Id,
     ///         SourceExchange = defaultExchange.ExchangeName,
     ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
     ///     });

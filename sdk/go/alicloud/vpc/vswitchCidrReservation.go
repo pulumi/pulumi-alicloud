@@ -44,7 +44,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -61,12 +61,12 @@ import (
 //				VpcId:       defaultVpc.ID(),
 //				CidrBlock:   pulumi.String("10.0.0.0/20"),
 //				VswitchName: pulumi.String(fmt.Sprintf("%v1", name)),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewVswitchCidrReservation(ctx, "defaultVswitchCidrReservation", &vpc.VswitchCidrReservationArgs{
+//			_, err = vpc.NewVswitchCidrReservation(ctx, "default", &vpc.VswitchCidrReservationArgs{
 //				IpVersion:                  pulumi.String("IPv4"),
 //				VswitchId:                  defaultVSwitch.ID(),
 //				CidrReservationDescription: pulumi.String(name),

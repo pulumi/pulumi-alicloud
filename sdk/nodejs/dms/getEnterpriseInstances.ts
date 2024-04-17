@@ -18,11 +18,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const dmsEnterpriseInstancesDs = alicloud.dms.getEnterpriseInstances({
- *     envType: "test",
- *     instanceType: "mysql",
- *     nameRegex: "tf_testAcc",
  *     netType: "CLASSIC",
+ *     instanceType: "mysql",
+ *     envType: "test",
+ *     nameRegex: "tf_testAcc",
  *     outputFile: "dms_enterprise_instances.json",
  * });
  * export const firstDatabaseInstanceId = dmsEnterpriseInstancesDs.then(dmsEnterpriseInstancesDs => dmsEnterpriseInstancesDs.instances?.[0]?.instanceId);
@@ -148,11 +149,12 @@ export interface GetEnterpriseInstancesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const dmsEnterpriseInstancesDs = alicloud.dms.getEnterpriseInstances({
- *     envType: "test",
- *     instanceType: "mysql",
- *     nameRegex: "tf_testAcc",
  *     netType: "CLASSIC",
+ *     instanceType: "mysql",
+ *     envType: "test",
+ *     nameRegex: "tf_testAcc",
  *     outputFile: "dms_enterprise_instances.json",
  * });
  * export const firstDatabaseInstanceId = dmsEnterpriseInstancesDs.then(dmsEnterpriseInstancesDs => dmsEnterpriseInstancesDs.instances?.[0]?.instanceId);

@@ -31,11 +31,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := slb.GetDomainExtensions(ctx, &slb.GetDomainExtensionsArgs{
-//				FrontendPort: "fake-port",
 //				Ids: []string{
 //					"fake-de-id",
 //				},
 //				LoadBalancerId: "fake-lb-id",
+//				FrontendPort:   "fake-port",
 //			}, nil)
 //			if err != nil {
 //				return err

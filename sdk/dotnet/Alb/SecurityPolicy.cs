@@ -31,15 +31,15 @@ namespace Pulumi.AliCloud.Alb
     /// {
     ///     var @default = new AliCloud.Alb.SecurityPolicy("default", new()
     ///     {
-    ///         Ciphers = new[]
-    ///         {
-    ///             "ECDHE-ECDSA-AES128-SHA",
-    ///             "AES256-SHA",
-    ///         },
     ///         SecurityPolicyName = "tf_example",
     ///         TlsVersions = new[]
     ///         {
     ///             "TLSv1.0",
+    ///         },
+    ///         Ciphers = new[]
+    ///         {
+    ///             "ECDHE-ECDSA-AES128-SHA",
+    ///             "AES256-SHA",
     ///         },
     ///     });
     /// 

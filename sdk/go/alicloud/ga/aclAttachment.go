@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
+//			_, err := ga.NewAccelerator(ctx, "default", &ga.AcceleratorArgs{
 //				Duration:      pulumi.Int(1),
 //				AutoUseCoupon: pulumi.Bool(true),
 //				Spec:          pulumi.String("1"),
@@ -43,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &ga.BandwidthPackageArgs{
+//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "default", &ga.BandwidthPackageArgs{
 //				Bandwidth:     pulumi.Int(100),
 //				Type:          pulumi.String("Basic"),
 //				BandwidthType: pulumi.String("Basic"),
@@ -54,14 +54,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      defaultAccelerator.ID(),
+//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      _default.ID(),
 //				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultListener, err := ga.NewListener(ctx, "defaultListener", &ga.ListenerArgs{
+//			defaultListener, err := ga.NewListener(ctx, "default", &ga.ListenerArgs{
 //				AcceleratorId: defaultBandwidthPackageAttachment.AcceleratorId,
 //				PortRanges: ga.ListenerPortRangeArray{
 //					&ga.ListenerPortRangeArgs{
@@ -73,14 +73,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultAcl, err := ga.NewAcl(ctx, "defaultAcl", &ga.AclArgs{
+//			defaultAcl, err := ga.NewAcl(ctx, "default", &ga.AclArgs{
 //				AclName:          pulumi.String("terraform-example"),
 //				AddressIpVersion: pulumi.String("IPv4"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ga.NewAclEntryAttachment(ctx, "defaultAclEntryAttachment", &ga.AclEntryAttachmentArgs{
+//			_, err = ga.NewAclEntryAttachment(ctx, "default", &ga.AclEntryAttachmentArgs{
 //				AclId:            defaultAcl.ID(),
 //				Entry:            pulumi.String("192.168.1.1/32"),
 //				EntryDescription: pulumi.String("terraform-example"),
@@ -88,7 +88,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ga.NewAclAttachment(ctx, "defaultAclAttachment", &ga.AclAttachmentArgs{
+//			_, err = ga.NewAclAttachment(ctx, "default", &ga.AclAttachmentArgs{
 //				ListenerId: defaultListener.ID(),
 //				AclId:      defaultAcl.ID(),
 //				AclType:    pulumi.String("white"),

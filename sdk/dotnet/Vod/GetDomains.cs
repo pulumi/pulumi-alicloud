@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Vod
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultDomain = new AliCloud.Vod.Domain("defaultDomain", new()
+        ///     var defaultDomain = new AliCloud.Vod.Domain("default", new()
         ///     {
         ///         DomainName = "your_domain_name",
         ///         Scope = "domestic",
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Vod
         ///         },
         ///     });
         /// 
-        ///     var defaultDomains = AliCloud.Vod.GetDomains.Invoke(new()
+        ///     var @default = AliCloud.Vod.GetDomains.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Vod
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["vodDomain"] = defaultDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]),
+        ///         ["vodDomain"] = @default.Apply(@default =&gt; @default.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0])),
         ///     };
         /// });
         /// ```
@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Vod
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultDomain = new AliCloud.Vod.Domain("defaultDomain", new()
+        ///     var defaultDomain = new AliCloud.Vod.Domain("default", new()
         ///     {
         ///         DomainName = "your_domain_name",
         ///         Scope = "domestic",
@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.Vod
         ///         },
         ///     });
         /// 
-        ///     var defaultDomains = AliCloud.Vod.GetDomains.Invoke(new()
+        ///     var @default = AliCloud.Vod.GetDomains.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Vod
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["vodDomain"] = defaultDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]),
+        ///         ["vodDomain"] = @default.Apply(@default =&gt; @default.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0])),
         ///     };
         /// });
         /// ```

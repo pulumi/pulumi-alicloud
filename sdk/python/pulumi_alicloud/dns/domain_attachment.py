@@ -112,11 +112,11 @@ class DomainAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         dns = alicloud.dns.DomainAttachment("dns",
+            instance_id="dns-cn-mp91lyq9xxxx",
             domain_names=[
                 "test111.abc",
                 "test222.abc",
-            ],
-            instance_id="dns-cn-mp91lyq9xxxx")
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -154,11 +154,11 @@ class DomainAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         dns = alicloud.dns.DomainAttachment("dns",
+            instance_id="dns-cn-mp91lyq9xxxx",
             domain_names=[
                 "test111.abc",
                 "test222.abc",
-            ],
-            instance_id="dns-cn-mp91lyq9xxxx")
+            ])
         ```
         <!--End PulumiCodeChooser -->
 

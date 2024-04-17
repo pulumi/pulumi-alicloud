@@ -1035,17 +1035,19 @@ class ContainerGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.eci.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.eci.get_zones()
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.1.0.0/16",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].zone_ids[0])
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_container_group = alicloud.eci.ContainerGroup("defaultContainerGroup",
+            zone_id=default.zones[0].zone_ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_container_group = alicloud.eci.ContainerGroup("default",
             container_group_name=name,
             cpu=8,
             memory=16,
@@ -1189,17 +1191,19 @@ class ContainerGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.eci.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.eci.get_zones()
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.1.0.0/16",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].zone_ids[0])
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_container_group = alicloud.eci.ContainerGroup("defaultContainerGroup",
+            zone_id=default.zones[0].zone_ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_container_group = alicloud.eci.ContainerGroup("default",
             container_group_name=name,
             cpu=8,
             memory=16,

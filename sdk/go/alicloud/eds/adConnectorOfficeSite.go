@@ -42,17 +42,17 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
+//			_, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(name),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = eds.NewAdConnectorOfficeSite(ctx, "defaultAdConnectorOfficeSite", &eds.AdConnectorOfficeSiteArgs{
+//			_, err = eds.NewAdConnectorOfficeSite(ctx, "default", &eds.AdConnectorOfficeSiteArgs{
 //				AdConnectorOfficeSiteName: pulumi.String(name),
 //				Bandwidth:                 pulumi.Int(100),
-//				CenId:                     defaultInstance.ID(),
+//				CenId:                     _default.ID(),
 //				CidrBlock:                 pulumi.String("10.0.0.0/12"),
 //				DesktopAccessType:         pulumi.String("INTERNET"),
 //				DnsAddresses: pulumi.StringArray{

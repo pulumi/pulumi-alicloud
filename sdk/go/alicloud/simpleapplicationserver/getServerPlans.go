@@ -42,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("simpleApplicationServerPlanId1", data.Alicloud_simple_application_server_plans.Ids.Plans[0].Id)
+//			ctx.Export("simpleApplicationServerPlanId1", ids.Plans[0].Id)
 //			return nil
 //		})
 //	}

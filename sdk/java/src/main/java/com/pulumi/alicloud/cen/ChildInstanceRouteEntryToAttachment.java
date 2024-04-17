@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  *         final var slaveZone = default_.resources()[0].slaveZones()[1];
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
  *             .cidrBlock(&#34;192.168.0.0/16&#34;)
  *             .build());
@@ -79,14 +79,14 @@ import javax.annotation.Nullable;
  *         var exampleMaster = new Switch(&#34;exampleMaster&#34;, SwitchArgs.builder()        
  *             .vswitchName(name)
  *             .cidrBlock(&#34;192.168.1.0/24&#34;)
- *             .vpcId(exampleNetwork.id())
+ *             .vpcId(example.id())
  *             .zoneId(masterZone)
  *             .build());
  * 
  *         var exampleSlave = new Switch(&#34;exampleSlave&#34;, SwitchArgs.builder()        
  *             .vswitchName(name)
  *             .cidrBlock(&#34;192.168.2.0/24&#34;)
- *             .vpcId(exampleNetwork.id())
+ *             .vpcId(example.id())
  *             .zoneId(slaveZone)
  *             .build());
  * 
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment(&#34;exampleTransitRouterVpcAttachment&#34;, TransitRouterVpcAttachmentArgs.builder()        
  *             .cenId(exampleInstance.id())
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
- *             .vpcId(exampleNetwork.id())
+ *             .vpcId(example.id())
  *             .zoneMappings(            
  *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
  *                     .zoneId(masterZone)
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleRouteTable = new RouteTable(&#34;exampleRouteTable&#34;, RouteTableArgs.builder()        
- *             .vpcId(exampleNetwork.id())
+ *             .vpcId(example.id())
  *             .routeTableName(name)
  *             .description(name)
  *             .build());

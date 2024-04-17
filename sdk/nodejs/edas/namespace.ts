@@ -22,13 +22,13 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultRegions = alicloud.getRegions({
+ * const default = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultNamespace = new alicloud.edas.Namespace("defaultNamespace", {
+ * const defaultNamespace = new alicloud.edas.Namespace("default", {
  *     debugEnable: false,
  *     description: name,
- *     namespaceLogicalId: defaultRegions.then(defaultRegions => `${defaultRegions.regions?.[0]?.id}:example`),
+ *     namespaceLogicalId: _default.then(_default => `${_default.regions?.[0]?.id}:example`),
  *     namespaceName: name,
  * });
  * ```

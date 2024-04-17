@@ -18,12 +18,12 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
- * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
+ * const _default = new alicloud.ga.Accelerator("default", {
  *     duration: 1,
  *     autoUseCoupon: true,
  *     spec: "1",
  * });
- * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("default", {
  *     bandwidth: 100,
  *     type: "Basic",
  *     bandwidthType: "Basic",
@@ -31,11 +31,11 @@ import * as utilities from "../utilities";
  *     billingType: "PayBy95",
  *     ratio: 30,
  * });
- * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
- *     acceleratorId: defaultAccelerator.id,
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("default", {
+ *     acceleratorId: _default.id,
  *     bandwidthPackageId: defaultBandwidthPackage.id,
  * });
- * const defaultListener = new alicloud.ga.Listener("defaultListener", {
+ * const defaultListener = new alicloud.ga.Listener("default", {
  *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
  *     portRanges: [{
  *         fromPort: 60,
@@ -43,17 +43,18 @@ import * as utilities from "../utilities";
  *     }],
  *     clientAffinity: "SOURCE_IP",
  *     protocol: "UDP",
+ *     name: "terraform-example",
  * });
  * const defaultEipAddress: alicloud.ecs.EipAddress[] = [];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultEipAddress.push(new alicloud.ecs.EipAddress(`defaultEipAddress-${range.value}`, {
+ *     defaultEipAddress.push(new alicloud.ecs.EipAddress(`default-${range.value}`, {
  *         bandwidth: "10",
  *         internetChargeType: "PayByBandwidth",
  *         addressName: "terraform-example",
  *     }));
  * }
- * const defaultEndpointGroup = new alicloud.ga.EndpointGroup("defaultEndpointGroup", {
- *     acceleratorId: defaultAccelerator.id,
+ * const defaultEndpointGroup = new alicloud.ga.EndpointGroup("default", {
+ *     acceleratorId: _default.id,
  *     endpointConfigurations: [
  *         {
  *             endpoint: defaultEipAddress[0].ipAddress,

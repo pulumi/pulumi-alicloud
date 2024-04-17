@@ -134,32 +134,34 @@ class InstanceAttachment(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         zone_id = "cn-hangzhou-i"
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=zone_id,
+        example = alicloud.ecs.get_instance_types(availability_zone=zone_id,
             instance_type_family="ecs.g7se")
-        example_images = alicloud.ecs.get_images(instance_type=example_instance_types.instance_types[len(example_instance_types.instance_types) - 1].id,
+        example_get_images = alicloud.ecs.get_images(instance_type=example.instance_types[len(example.instance_types) - 1].id,
             name_regex="^aliyun_2_1903_x64_20G_alibase_20231221.vhd",
             owners="system")
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0],
             zone_id=zone_id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=default_networks.ids[0])
-        default_instance = alicloud.ecs.Instance("defaultInstance",
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=default.ids[0])
+        default_instance = alicloud.ecs.Instance("default",
             availability_zone=zone_id,
             instance_name=name,
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[len(example_instance_types.instance_types) - 1].id,
+            image_id=example_get_images.images[0].id,
+            instance_type=example.instance_types[len(example.instance_types) - 1].id,
             security_groups=[example_security_group.id],
-            vswitch_id=default_switches.ids[0],
+            vswitch_id=default_get_switches.ids[0],
             system_disk_category="cloud_essd")
-        default_databasefilesystem_instance_instance = alicloud.databasefilesystem.Instance("defaultDatabasefilesystem/instanceInstance",
+        default_instance2 = alicloud.databasefilesystem.Instance("default",
             category="enterprise",
             zone_id=default_instance.availability_zone,
             performance_level="PL1",
             fs_name=name,
             size=100)
-        example_instance_attachment = alicloud.databasefilesystem.InstanceAttachment("exampleInstanceAttachment",
+        example_instance_attachment = alicloud.databasefilesystem.InstanceAttachment("example",
             ecs_id=default_instance.id,
-            instance_id=default_databasefilesystem / instance_instance["id"])
+            instance_id=default_instance2.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -203,32 +205,34 @@ class InstanceAttachment(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         zone_id = "cn-hangzhou-i"
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=zone_id,
+        example = alicloud.ecs.get_instance_types(availability_zone=zone_id,
             instance_type_family="ecs.g7se")
-        example_images = alicloud.ecs.get_images(instance_type=example_instance_types.instance_types[len(example_instance_types.instance_types) - 1].id,
+        example_get_images = alicloud.ecs.get_images(instance_type=example.instance_types[len(example.instance_types) - 1].id,
             name_regex="^aliyun_2_1903_x64_20G_alibase_20231221.vhd",
             owners="system")
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0],
             zone_id=zone_id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=default_networks.ids[0])
-        default_instance = alicloud.ecs.Instance("defaultInstance",
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=default.ids[0])
+        default_instance = alicloud.ecs.Instance("default",
             availability_zone=zone_id,
             instance_name=name,
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[len(example_instance_types.instance_types) - 1].id,
+            image_id=example_get_images.images[0].id,
+            instance_type=example.instance_types[len(example.instance_types) - 1].id,
             security_groups=[example_security_group.id],
-            vswitch_id=default_switches.ids[0],
+            vswitch_id=default_get_switches.ids[0],
             system_disk_category="cloud_essd")
-        default_databasefilesystem_instance_instance = alicloud.databasefilesystem.Instance("defaultDatabasefilesystem/instanceInstance",
+        default_instance2 = alicloud.databasefilesystem.Instance("default",
             category="enterprise",
             zone_id=default_instance.availability_zone,
             performance_level="PL1",
             fs_name=name,
             size=100)
-        example_instance_attachment = alicloud.databasefilesystem.InstanceAttachment("exampleInstanceAttachment",
+        example_instance_attachment = alicloud.databasefilesystem.InstanceAttachment("example",
             ecs_id=default_instance.id,
-            instance_id=default_databasefilesystem / instance_instance["id"])
+            instance_id=default_instance2.id)
         ```
         <!--End PulumiCodeChooser -->
 

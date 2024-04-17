@@ -23,17 +23,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
- *     max: 99999,
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
+ *     max: 99999,
  * });
- * const defaultDomain = new alicloud.vod.Domain("defaultDomain", {
- *     domainName: pulumi.interpolate`example-${defaultRandomInteger.result}.com`,
+ * const defaultDomain = new alicloud.vod.Domain("default", {
+ *     domainName: `example-${_default.result}.com`,
  *     scope: "domestic",
  *     sources: [{
+ *         sourceType: "domain",
  *         sourceContent: "outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com",
  *         sourcePort: "443",
- *         sourceType: "domain",
  *     }],
  *     tags: {
  *         Created: "terraform",

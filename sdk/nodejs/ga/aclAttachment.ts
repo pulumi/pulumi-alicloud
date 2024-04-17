@@ -20,12 +20,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
+ * const _default = new alicloud.ga.Accelerator("default", {
  *     duration: 1,
  *     autoUseCoupon: true,
  *     spec: "1",
  * });
- * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("default", {
  *     bandwidth: 100,
  *     type: "Basic",
  *     bandwidthType: "Basic",
@@ -33,27 +33,27 @@ import * as utilities from "../utilities";
  *     billingType: "PayBy95",
  *     ratio: 30,
  * });
- * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
- *     acceleratorId: defaultAccelerator.id,
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("default", {
+ *     acceleratorId: _default.id,
  *     bandwidthPackageId: defaultBandwidthPackage.id,
  * });
- * const defaultListener = new alicloud.ga.Listener("defaultListener", {
+ * const defaultListener = new alicloud.ga.Listener("default", {
  *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
  *     portRanges: [{
  *         fromPort: 80,
  *         toPort: 80,
  *     }],
  * });
- * const defaultAcl = new alicloud.ga.Acl("defaultAcl", {
+ * const defaultAcl = new alicloud.ga.Acl("default", {
  *     aclName: "terraform-example",
  *     addressIpVersion: "IPv4",
  * });
- * const defaultAclEntryAttachment = new alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment", {
+ * const defaultAclEntryAttachment = new alicloud.ga.AclEntryAttachment("default", {
  *     aclId: defaultAcl.id,
  *     entry: "192.168.1.1/32",
  *     entryDescription: "terraform-example",
  * });
- * const defaultAclAttachment = new alicloud.ga.AclAttachment("defaultAclAttachment", {
+ * const defaultAclAttachment = new alicloud.ga.AclAttachment("default", {
  *     listenerId: defaultListener.id,
  *     aclId: defaultAcl.id,
  *     aclType: "white",

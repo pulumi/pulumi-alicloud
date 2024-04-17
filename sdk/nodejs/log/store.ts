@@ -23,13 +23,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
- * const exampleStore = new alicloud.log.Store("exampleStore", {
- *     project: exampleProject.name,
+ * const example = new alicloud.log.Project("example", {
+ *     name: `terraform-example-${_default.result}`,
+ *     description: "terraform-example",
+ * });
+ * const exampleStore = new alicloud.log.Store("example", {
+ *     project: example.name,
+ *     name: "example-store",
  *     shardCount: 3,
  *     autoSplit: true,
  *     maxSplitShardCount: 60,
@@ -47,20 +51,25 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
+ * // The region of kms key.
  * const region = config.get("region") || "cn-hangzhou";
- * const exampleAccount = alicloud.getAccount({});
- * const _default = new random.RandomInteger("default", {
+ * const example = alicloud.getAccount({});
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const exampleKey = new alicloud.kms.Key("exampleKey", {
+ * const exampleKey = new alicloud.kms.Key("example", {
  *     description: "terraform-example",
  *     pendingWindowInDays: 7,
  *     status: "Enabled",
  * });
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
- * const exampleStore = new alicloud.log.Store("exampleStore", {
+ * const exampleProject = new alicloud.log.Project("example", {
+ *     name: `terraform-example-${_default.result}`,
+ *     description: "terraform-example",
+ * });
+ * const exampleStore = new alicloud.log.Store("example", {
  *     project: exampleProject.name,
+ *     name: "example-store",
  *     shardCount: 1,
  *     autoSplit: true,
  *     maxSplitShardCount: 60,
@@ -69,7 +78,7 @@ import * as utilities from "../utilities";
  *         encryptType: "default",
  *         userCmkInfo: {
  *             cmkKeyId: exampleKey.id,
- *             arn: exampleAccount.then(exampleAccount => `acs:ram::${exampleAccount.id}:role/aliyunlogdefaultrole`),
+ *             arn: example.then(example => `acs:ram::${example.id}:role/aliyunlogdefaultrole`),
  *             regionId: region,
  *         },
  *     },

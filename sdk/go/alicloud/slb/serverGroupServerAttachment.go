@@ -19,6 +19,145 @@ import (
 // > **NOTE:** Applying this resource may conflict with applying `slb.Listener`,
 // and the `slb.Listener` block should use `dependsOn = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
 //
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// slbServerGroupServerAttachment := "terraform-example";
+// if param := cfg.Get("slbServerGroupServerAttachment"); param != ""{
+// slbServerGroupServerAttachment = param
+// }
+// slbServerGroupServerAttachmentCount := float64(5);
+// if param := cfg.GetFloat64("slbServerGroupServerAttachmentCount"); param != 0 {
+// slbServerGroupServerAttachmentCount = param
+// }
+// serverAttachment, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// serverAttachmentGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(serverAttachment.Zones[0].Id),
+// CpuCoreCount: pulumi.IntRef(1),
+// MemorySize: pulumi.Float64Ref(2),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// serverAttachmentGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+// MostRecent: pulumi.BoolRef(true),
+// Owners: pulumi.StringRef("system"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// serverAttachmentNetwork, err := vpc.NewNetwork(ctx, "server_attachment", &vpc.NetworkArgs{
+// VpcName: pulumi.String(slbServerGroupServerAttachment),
+// CidrBlock: pulumi.String("172.17.3.0/24"),
+// })
+// if err != nil {
+// return err
+// }
+// serverAttachmentSwitch, err := vpc.NewSwitch(ctx, "server_attachment", &vpc.SwitchArgs{
+// VswitchName: pulumi.String(slbServerGroupServerAttachment),
+// CidrBlock: pulumi.String("172.17.3.0/24"),
+// VpcId: serverAttachmentNetwork.ID(),
+// ZoneId: pulumi.String(serverAttachment.Zones[0].Id),
+// })
+// if err != nil {
+// return err
+// }
+// serverAttachmentSecurityGroup, err := ecs.NewSecurityGroup(ctx, "server_attachment", &ecs.SecurityGroupArgs{
+// Name: pulumi.String(slbServerGroupServerAttachment),
+// VpcId: serverAttachmentNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
+// var serverAttachmentInstance []*ecs.Instance
+//
+//	for index := 0; index < slbServerGroupServerAttachmentCount; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := ecs.NewInstance(ctx, fmt.Sprintf("server_attachment-%v", key0), &ecs.InstanceArgs{
+// ImageId: pulumi.String(serverAttachmentGetImages.Images[0].Id),
+// InstanceType: pulumi.String(serverAttachmentGetInstanceTypes.InstanceTypes[0].Id),
+// InstanceName: pulumi.String(slbServerGroupServerAttachment),
+// SecurityGroups: splat0,
+// InternetChargeType: pulumi.String("PayByTraffic"),
+// InternetMaxBandwidthOut: pulumi.Int(10),
+// AvailabilityZone: pulumi.String(serverAttachment.Zones[0].Id),
+// InstanceChargeType: pulumi.String("PostPaid"),
+// SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// VswitchId: serverAttachmentSwitch.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// serverAttachmentInstance = append(serverAttachmentInstance, __res)
+// }
+// serverAttachmentApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "server_attachment", &slb.ApplicationLoadBalancerArgs{
+// LoadBalancerName: pulumi.String(slbServerGroupServerAttachment),
+// VswitchId: serverAttachmentSwitch.ID(),
+// LoadBalancerSpec: pulumi.String("slb.s2.small"),
+// AddressType: pulumi.String("intranet"),
+// })
+// if err != nil {
+// return err
+// }
+// serverAttachmentServerGroup, err := slb.NewServerGroup(ctx, "server_attachment", &slb.ServerGroupArgs{
+// LoadBalancerId: serverAttachmentApplicationLoadBalancer.ID(),
+// Name: pulumi.String(slbServerGroupServerAttachment),
+// })
+// if err != nil {
+// return err
+// }
+// var serverAttachmentServerGroupServerAttachment []*slb.ServerGroupServerAttachment
+//
+//	for index := 0; index < slbServerGroupServerAttachmentCount; index++ {
+//	    key0 := index
+//	    val0 := index
+//
+// __res, err := slb.NewServerGroupServerAttachment(ctx, fmt.Sprintf("server_attachment-%v", key0), &slb.ServerGroupServerAttachmentArgs{
+// ServerGroupId: serverAttachmentServerGroup.ID(),
+// ServerId: serverAttachmentInstance[val0].ID(),
+// Port: pulumi.Int(8080),
+// Weight: pulumi.Int(0),
+// })
+// if err != nil {
+// return err
+// }
+// serverAttachmentServerGroupServerAttachment = append(serverAttachmentServerGroupServerAttachment, __res)
+// }
+// return nil
+// })
+// }
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // Load balancer backend server group server attachment can be imported using the id, e.g.

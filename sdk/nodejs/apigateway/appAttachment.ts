@@ -16,9 +16,13 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform_example";
- * const exampleGroup = new alicloud.apigateway.Group("exampleGroup", {description: name});
- * const exampleApi = new alicloud.apigateway.Api("exampleApi", {
- *     groupId: exampleGroup.id,
+ * const example = new alicloud.apigateway.Group("example", {
+ *     name: name,
+ *     description: name,
+ * });
+ * const exampleApi = new alicloud.apigateway.Api("example", {
+ *     groupId: example.id,
+ *     name: name,
  *     description: name,
  *     authType: "APP",
  *     forceNonceCheck: false,
@@ -49,10 +53,13 @@ import * as utilities from "../utilities";
  *         "TEST",
  *     ],
  * });
- * const exampleApp = new alicloud.apigateway.App("exampleApp", {description: name});
- * const exampleAppAttachment = new alicloud.apigateway.AppAttachment("exampleAppAttachment", {
+ * const exampleApp = new alicloud.apigateway.App("example", {
+ *     name: name,
+ *     description: name,
+ * });
+ * const exampleAppAttachment = new alicloud.apigateway.AppAttachment("example", {
  *     apiId: exampleApi.apiId,
- *     groupId: exampleGroup.id,
+ *     groupId: example.id,
  *     appId: exampleApp.id,
  *     stageName: "PRE",
  * });

@@ -887,28 +887,30 @@ class ScalingGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        my_name = default_random_integer.result.apply(lambda result: f"{name}-{result}")
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        my_name = f"{name}-{default_integer['result']}"
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
             memory_size=4)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=my_name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=my_name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=my_name,
+            vpc_id=default_network.id)
+        default_security_group_rule = alicloud.ecs.SecurityGroupRule("default",
             type="ingress",
             ip_protocol="tcp",
             nic_type="intranet",
@@ -920,9 +922,9 @@ class ScalingGroup(pulumi.CustomResource):
         default2 = alicloud.vpc.Switch("default2",
             vpc_id=default_network.id,
             cidr_block="172.16.1.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=f"{name}-bar")
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+        default_scaling_group = alicloud.ess.ScalingGroup("default",
             min_size=1,
             max_size=1,
             scaling_group_name=my_name,
@@ -1021,28 +1023,30 @@ class ScalingGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        my_name = default_random_integer.result.apply(lambda result: f"{name}-{result}")
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        my_name = f"{name}-{default_integer['result']}"
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
             memory_size=4)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=my_name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=my_name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=my_name,
+            vpc_id=default_network.id)
+        default_security_group_rule = alicloud.ecs.SecurityGroupRule("default",
             type="ingress",
             ip_protocol="tcp",
             nic_type="intranet",
@@ -1054,9 +1058,9 @@ class ScalingGroup(pulumi.CustomResource):
         default2 = alicloud.vpc.Switch("default2",
             vpc_id=default_network.id,
             cidr_block="172.16.1.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=f"{name}-bar")
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+        default_scaling_group = alicloud.ess.ScalingGroup("default",
             min_size=1,
             max_size=1,
             scaling_group_name=my_name,

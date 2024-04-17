@@ -226,6 +226,7 @@ class CaCertificate(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         foo = alicloud.slb.CaCertificate("foo",
+            ca_certificate_name="tf-testAccSlbCACertificate",
             ca_certificate=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDRjCCAq+gAwIBAgIJAJn3ox4K13PoMA0GCSqGSIb3DQEBBQUAMHYxCzAJBgNV
         BAYTAkNOMQswCQYDVQQIEwJCSjELMAkGA1UEBxMCQkoxDDAKBgNVBAoTA0FMSTEP
@@ -245,24 +246,11 @@ class CaCertificate(pulumi.CustomResource):
         cQzfhiiG7ASjiPakw5wXoycHt5GCvLG5htp2TKVzgv9QTliA3gtfv6oV4zRZx7X1
         Ofi6hVgErtHaXJheuPVeW6eAW8mHBoEfvDAfU3y9waYrtUevSl07643bzKL6v+Qd
         DUBTxOAvSYfXTtI90EAxEG/bJJyOm5LqoiA=
-        -----END CERTIFICATE-----
-        \"\"\",
-            ca_certificate_name="tf-testAccSlbCACertificate")
+        -----END CERTIFICATE-----\"\"\")
         ```
         <!--End PulumiCodeChooser -->
 
         * using CA certificate file
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo_file = alicloud.slb.CaCertificate("foo-file",
-            ca_certificate_name="tf-testAccSlbCACertificate",
-            ca_certificate=(lambda path: open(path).read())(f"{path['module']}/ca_certificate.pem"))
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -303,6 +291,7 @@ class CaCertificate(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         foo = alicloud.slb.CaCertificate("foo",
+            ca_certificate_name="tf-testAccSlbCACertificate",
             ca_certificate=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDRjCCAq+gAwIBAgIJAJn3ox4K13PoMA0GCSqGSIb3DQEBBQUAMHYxCzAJBgNV
         BAYTAkNOMQswCQYDVQQIEwJCSjELMAkGA1UEBxMCQkoxDDAKBgNVBAoTA0FMSTEP
@@ -322,24 +311,11 @@ class CaCertificate(pulumi.CustomResource):
         cQzfhiiG7ASjiPakw5wXoycHt5GCvLG5htp2TKVzgv9QTliA3gtfv6oV4zRZx7X1
         Ofi6hVgErtHaXJheuPVeW6eAW8mHBoEfvDAfU3y9waYrtUevSl07643bzKL6v+Qd
         DUBTxOAvSYfXTtI90EAxEG/bJJyOm5LqoiA=
-        -----END CERTIFICATE-----
-        \"\"\",
-            ca_certificate_name="tf-testAccSlbCACertificate")
+        -----END CERTIFICATE-----\"\"\")
         ```
         <!--End PulumiCodeChooser -->
 
         * using CA certificate file
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo_file = alicloud.slb.CaCertificate("foo-file",
-            ca_certificate_name="tf-testAccSlbCACertificate",
-            ca_certificate=(lambda path: open(path).read())(f"{path['module']}/ca_certificate.pem"))
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

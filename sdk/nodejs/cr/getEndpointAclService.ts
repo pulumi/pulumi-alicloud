@@ -21,8 +21,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.cr.getEndpointAclService({
- *     enable: true,
  *     endpointType: "internet",
+ *     enable: true,
  *     instanceId: "example_id",
  *     moduleName: "Registry",
  * });
@@ -97,8 +97,8 @@ export interface GetEndpointAclServiceResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.cr.getEndpointAclService({
- *     enable: true,
  *     endpointType: "internet",
+ *     enable: true,
  *     instanceId: "example_id",
  *     moduleName: "Registry",
  * });

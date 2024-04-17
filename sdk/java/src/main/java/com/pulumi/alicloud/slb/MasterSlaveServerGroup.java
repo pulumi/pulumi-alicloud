@@ -82,13 +82,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var msServerGroupZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var msServerGroup = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var msServerGroupInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(msServerGroupZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var msServerGroupGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(msServerGroup.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .eniAmount(2)
  *             .build());
  * 
@@ -99,31 +99,32 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var slbMasterSlaveServerGroup = config.get(&#34;slbMasterSlaveServerGroup&#34;).orElse(&#34;forSlbMasterSlaveServerGroup&#34;);
- *         var mainNetwork = new Network(&#34;mainNetwork&#34;, NetworkArgs.builder()        
+ *         var main = new Network(&#34;main&#34;, NetworkArgs.builder()        
  *             .vpcName(slbMasterSlaveServerGroup)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
  *         var mainSwitch = new Switch(&#34;mainSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(mainNetwork.id())
+ *             .vpcId(main.id())
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
- *             .zoneId(msServerGroupZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(msServerGroup.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .vswitchName(slbMasterSlaveServerGroup)
  *             .build());
  * 
- *         var groupSecurityGroup = new SecurityGroup(&#34;groupSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .vpcId(mainNetwork.id())
+ *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *             .name(slbMasterSlaveServerGroup)
+ *             .vpcId(main.id())
  *             .build());
  * 
  *         for (var i = 0; i &lt; 2; i++) {
  *             new Instance(&#34;msServerGroupInstance-&#34; + i, InstanceArgs.builder()            
  *                 .imageId(image.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *                 .instanceType(msServerGroupInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *                 .instanceType(msServerGroupGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
  *                 .instanceName(slbMasterSlaveServerGroup)
- *                 .securityGroups(groupSecurityGroup.id())
+ *                 .securityGroups(group.id())
  *                 .internetChargeType(&#34;PayByTraffic&#34;)
  *                 .internetMaxBandwidthOut(&#34;10&#34;)
- *                 .availabilityZone(msServerGroupZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *                 .availabilityZone(msServerGroup.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *                 .instanceChargeType(&#34;PostPaid&#34;)
  *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
  *                 .vswitchId(mainSwitch.id())
@@ -140,7 +141,7 @@ import javax.annotation.Nullable;
  *         var msServerGroupEcsNetworkInterface = new EcsNetworkInterface(&#34;msServerGroupEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
  *             .networkInterfaceName(slbMasterSlaveServerGroup)
  *             .vswitchId(mainSwitch.id())
- *             .securityGroupIds(groupSecurityGroup.id())
+ *             .securityGroupIds(group.id())
  *             .build());
  * 
  *         var msServerGroupEcsNetworkInterfaceAttachment = new EcsNetworkInterfaceAttachment(&#34;msServerGroupEcsNetworkInterfaceAttachment&#34;, EcsNetworkInterfaceAttachmentArgs.builder()        
@@ -150,6 +151,7 @@ import javax.annotation.Nullable;
  * 
  *         var groupMasterSlaveServerGroup = new MasterSlaveServerGroup(&#34;groupMasterSlaveServerGroup&#34;, MasterSlaveServerGroupArgs.builder()        
  *             .loadBalancerId(msServerGroupApplicationLoadBalancer.id())
+ *             .name(slbMasterSlaveServerGroup)
  *             .servers(            
  *                 MasterSlaveServerGroupServerArgs.builder()
  *                     .serverId(msServerGroupInstance[0].id())

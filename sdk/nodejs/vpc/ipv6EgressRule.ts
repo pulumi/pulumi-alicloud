@@ -22,62 +22,63 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
  *     systemDiskCategory: "cloud_efficiency",
  *     cpuCoreCount: 4,
  *     minimumEniIpv6AddressQuantity: 1,
  * }));
- * const defaultImages = alicloud.ecs.getImages({
+ * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     enableIpv6: true,
  *     cidrBlock: "172.16.0.0/12",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  *     ipv6CidrBlockMask: 64,
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
  *     description: name,
  *     vpcId: defaultNetwork.id,
  * });
- * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * const defaultInstance = new alicloud.ecs.Instance("default", {
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
  *     ipv6AddressCount: 1,
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *     systemDiskCategory: "cloud_efficiency",
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
  *     instanceName: name,
  *     vswitchId: defaultSwitch.id,
  *     internetMaxBandwidthOut: 10,
  *     securityGroups: [defaultSecurityGroup.id],
  * });
- * const defaultIpv6Gateway = new alicloud.vpc.Ipv6Gateway("defaultIpv6Gateway", {
+ * const defaultIpv6Gateway = new alicloud.vpc.Ipv6Gateway("default", {
  *     ipv6GatewayName: name,
  *     vpcId: defaultNetwork.id,
  * });
- * const defaultIpv6Addresses = alicloud.vpc.getIpv6AddressesOutput({
+ * const defaultGetIpv6Addresses = alicloud.vpc.getIpv6AddressesOutput({
  *     associatedInstanceId: defaultInstance.id,
  *     status: "Available",
  * });
- * const defaultIpv6InternetBandwidth = new alicloud.vpc.Ipv6InternetBandwidth("defaultIpv6InternetBandwidth", {
- *     ipv6AddressId: defaultIpv6Addresses.apply(defaultIpv6Addresses => defaultIpv6Addresses.addresses?.[0]?.id),
+ * const defaultIpv6InternetBandwidth = new alicloud.vpc.Ipv6InternetBandwidth("default", {
+ *     ipv6AddressId: defaultGetIpv6Addresses.apply(defaultGetIpv6Addresses => defaultGetIpv6Addresses.addresses?.[0]?.id),
  *     ipv6GatewayId: defaultIpv6Gateway.ipv6GatewayId,
  *     internetChargeType: "PayByBandwidth",
  *     bandwidth: 20,
  * });
- * const defaultIpv6EgressRule = new alicloud.vpc.Ipv6EgressRule("defaultIpv6EgressRule", {
+ * const defaultIpv6EgressRule = new alicloud.vpc.Ipv6EgressRule("default", {
  *     instanceId: defaultIpv6InternetBandwidth.ipv6AddressId,
  *     ipv6EgressRuleName: name,
  *     description: name,

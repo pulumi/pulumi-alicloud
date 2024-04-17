@@ -143,6 +143,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
 
         # Create a RAM Role Policy attachment.
         role = alicloud.ram.Role("role",
+            name="roleName",
             document=\"\"\"    {
               "Statement": [
                 {
@@ -161,6 +162,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
         \"\"\",
             description="this is a role test.")
         policy = alicloud.ram.Policy("policy",
+            name="policyName",
             document=\"\"\"  {
             "Statement": [
               {
@@ -220,6 +222,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
 
         # Create a RAM Role Policy attachment.
         role = alicloud.ram.Role("role",
+            name="roleName",
             document=\"\"\"    {
               "Statement": [
                 {
@@ -238,6 +241,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
         \"\"\",
             description="this is a role test.")
         policy = alicloud.ram.Policy("policy",
+            name="policyName",
             document=\"\"\"  {
             "Statement": [
               {

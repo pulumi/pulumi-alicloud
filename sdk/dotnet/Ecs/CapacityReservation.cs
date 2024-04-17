@@ -29,31 +29,31 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var @default = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
     ///         InstanceTypeFamily = "ecs.g5",
     ///     });
     /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
-    ///         AvailableInstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0]),
+    ///         AvailableInstanceType = @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0]),
     ///     });
     /// 
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
     ///         Status = "OK",
     ///     });
     /// 
-    ///     var defaultCapacityReservation = new AliCloud.Ecs.CapacityReservation("defaultCapacityReservation", new()
+    ///     var defaultCapacityReservation = new AliCloud.Ecs.CapacityReservation("default", new()
     ///     {
     ///         Description = "terraform-example",
     ///         Platform = "linux",
     ///         CapacityReservationName = "terraform-example",
     ///         EndTimeType = "Unlimited",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
     ///         InstanceAmount = 1,
-    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0]),
+    ///         InstanceType = @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0])),
     ///         MatchCriteria = "Open",
     ///         Tags = 
     ///         {
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         },
     ///         ZoneIds = new[]
     ///         {
-    ///             defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///             defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         },
     ///     });
     /// 

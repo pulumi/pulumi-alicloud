@@ -1050,19 +1050,22 @@ class Alert(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        example_alert = alicloud.log.Alert("exampleAlert",
-            project_name=example_project.name,
+        example_alert = alicloud.log.Alert("example",
+            project_name=example.name,
             alert_name="example-alert",
             alert_displayname="example-alert",
             condition="count> 100",
@@ -1116,12 +1119,15 @@ class Alert(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
@@ -1130,7 +1136,7 @@ class Alert(pulumi.CustomResource):
         example_2 = alicloud.log.Alert("example-2",
             version="2.0",
             type="default",
-            project_name=example_project.name,
+            project_name=example.name,
             alert_name="example-alert",
             alert_displayname="example-alert",
             mute_until=1632486684,
@@ -1151,7 +1157,7 @@ class Alert(pulumi.CustomResource):
                 alicloud.log.AlertQueryListArgs(
                     store=example_store.name,
                     store_type="log",
-                    project=example_project.name,
+                    project=example.name,
                     region="cn-heyuan",
                     chart_title="chart_title",
                     start="-60s",
@@ -1162,7 +1168,7 @@ class Alert(pulumi.CustomResource):
                 alicloud.log.AlertQueryListArgs(
                     store=example_store.name,
                     store_type="log",
-                    project=example_project.name,
+                    project=example.name,
                     region="cn-heyuan",
                     chart_title="chart_title",
                     start="-60s",
@@ -1236,12 +1242,15 @@ class Alert(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
@@ -1250,7 +1259,7 @@ class Alert(pulumi.CustomResource):
         example_3 = alicloud.log.Alert("example-3",
             version="2.0",
             type="tpl",
-            project_name=example_project.name,
+            project_name=example.name,
             alert_name="example-alert",
             alert_displayname="example-alert",
             mute_until=1632486684,
@@ -1272,7 +1281,7 @@ class Alert(pulumi.CustomResource):
                     "default.action_policy": "sls.app.ack.builtin",
                     "default.severity": "6",
                     "sendResolved": "false",
-                    "default.project": example_project.name,
+                    "default.project": example.name,
                     "default.logstore": "k8s-event",
                     "default.repeatInterval": "4h",
                     "trigger_threshold": "1",
@@ -1344,19 +1353,22 @@ class Alert(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        example_alert = alicloud.log.Alert("exampleAlert",
-            project_name=example_project.name,
+        example_alert = alicloud.log.Alert("example",
+            project_name=example.name,
             alert_name="example-alert",
             alert_displayname="example-alert",
             condition="count> 100",
@@ -1410,12 +1422,15 @@ class Alert(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
@@ -1424,7 +1439,7 @@ class Alert(pulumi.CustomResource):
         example_2 = alicloud.log.Alert("example-2",
             version="2.0",
             type="default",
-            project_name=example_project.name,
+            project_name=example.name,
             alert_name="example-alert",
             alert_displayname="example-alert",
             mute_until=1632486684,
@@ -1445,7 +1460,7 @@ class Alert(pulumi.CustomResource):
                 alicloud.log.AlertQueryListArgs(
                     store=example_store.name,
                     store_type="log",
-                    project=example_project.name,
+                    project=example.name,
                     region="cn-heyuan",
                     chart_title="chart_title",
                     start="-60s",
@@ -1456,7 +1471,7 @@ class Alert(pulumi.CustomResource):
                 alicloud.log.AlertQueryListArgs(
                     store=example_store.name,
                     store_type="log",
-                    project=example_project.name,
+                    project=example.name,
                     region="cn-heyuan",
                     chart_title="chart_title",
                     start="-60s",
@@ -1530,12 +1545,15 @@ class Alert(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
@@ -1544,7 +1562,7 @@ class Alert(pulumi.CustomResource):
         example_3 = alicloud.log.Alert("example-3",
             version="2.0",
             type="tpl",
-            project_name=example_project.name,
+            project_name=example.name,
             alert_name="example-alert",
             alert_displayname="example-alert",
             mute_until=1632486684,
@@ -1566,7 +1584,7 @@ class Alert(pulumi.CustomResource):
                     "default.action_policy": "sls.app.ack.builtin",
                     "default.severity": "6",
                     "sendResolved": "false",
-                    "default.project": example_project.name,
+                    "default.project": example.name,
                     "default.logstore": "k8s-event",
                     "default.repeatInterval": "4h",
                     "trigger_threshold": "1",

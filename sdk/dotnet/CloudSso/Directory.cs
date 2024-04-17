@@ -18,6 +18,37 @@ namespace Pulumi.AliCloud.CloudSso
     /// 
     /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Threading.Tasks;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(async() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = await AliCloud.CloudSso.GetDirectories.InvokeAsync();
+    /// 
+    ///     var defaultDirectory = new List&lt;AliCloud.CloudSso.Directory&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Ids.Length &gt; 0 ? 0 : 1; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultDirectory.Add(new AliCloud.CloudSso.Directory($"default-{range.Value}", new()
+    ///         {
+    ///             DirectoryName = name,
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// Cloud SSO Directory can be imported using the id, e.g.

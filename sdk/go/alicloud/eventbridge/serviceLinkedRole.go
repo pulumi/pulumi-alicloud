@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eventbridge.NewServiceLinkedRole(ctx, "serviceLinkedRole", &eventbridge.ServiceLinkedRoleArgs{
+//			_, err := eventbridge.NewServiceLinkedRole(ctx, "service_linked_role", &eventbridge.ServiceLinkedRoleArgs{
 //				ProductName: pulumi.String("AliyunServiceRoleForEventBridgeSourceRocketMQ"),
 //			})
 //			if err != nil {

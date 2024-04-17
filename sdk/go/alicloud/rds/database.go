@@ -38,30 +38,30 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//			_default, err := rds.GetZones(ctx, &rds.GetZonesArgs{
 //				Engine:        pulumi.StringRef("MySQL"),
 //				EngineVersion: pulumi.StringRef("5.6"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
+//			defaultInstance, err := rds.NewInstance(ctx, "default", &rds.InstanceArgs{
 //				Engine:          pulumi.String("MySQL"),
 //				EngineVersion:   pulumi.String("5.6"),
 //				InstanceType:    pulumi.String("rds.mysql.s1.small"),
@@ -72,8 +72,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rds.NewDatabase(ctx, "defaultDatabase", &rds.DatabaseArgs{
+//			_, err = rds.NewDatabase(ctx, "default", &rds.DatabaseArgs{
 //				InstanceId: defaultInstance.ID(),
+//				Name:       pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

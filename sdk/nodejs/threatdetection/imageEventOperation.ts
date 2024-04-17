@@ -23,6 +23,15 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.threatdetection.ImageEventOperation("default", {
+ *     eventType: "maliciousFile",
+ *     operationCode: "whitelist",
+ *     eventKey: "alibabacloud_ak",
+ *     scenarios: `{
+ *   "type":"default",
+ *   "value":""
+ * }
+ * `,
+ *     eventName: "阿里云AK",
  *     conditions: `[
  *   {
  *       "condition":"MD5",
@@ -30,17 +39,6 @@ import * as utilities from "../utilities";
  *       "value":"0083a31cc0083a31ccf7c10367a6e783e"
  *   }
  * ]
- *
- * `,
- *     eventKey: "alibabacloud_ak",
- *     eventName: "阿里云AK",
- *     eventType: "maliciousFile",
- *     operationCode: "whitelist",
- *     scenarios: `{
- *   "type":"default",
- *   "value":""
- * }
- *
  * `,
  * });
  * ```

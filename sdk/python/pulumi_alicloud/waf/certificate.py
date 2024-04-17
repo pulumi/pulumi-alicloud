@@ -246,15 +246,15 @@ class Certificate(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.waf.Certificate("default",
-            certificate="your_certificate",
             certificate_name="your_certificate_name",
-            domain="your_domain_name",
             instance_id="your_instance_id",
-            private_key="your_private_key")
-        default2 = alicloud.waf.Certificate("default2",
-            certificate_id="your_certificate_id",
             domain="your_domain_name",
-            instance_id="your_instance_id")
+            private_key="your_private_key",
+            certificate="your_certificate")
+        default2 = alicloud.waf.Certificate("default2",
+            instance_id="your_instance_id",
+            domain="your_domain_name",
+            certificate_id="your_certificate_id")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -298,15 +298,15 @@ class Certificate(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.waf.Certificate("default",
-            certificate="your_certificate",
             certificate_name="your_certificate_name",
-            domain="your_domain_name",
             instance_id="your_instance_id",
-            private_key="your_private_key")
-        default2 = alicloud.waf.Certificate("default2",
-            certificate_id="your_certificate_id",
             domain="your_domain_name",
-            instance_id="your_instance_id")
+            private_key="your_private_key",
+            certificate="your_certificate")
+        default2 = alicloud.waf.Certificate("default2",
+            instance_id="your_instance_id",
+            domain="your_domain_name",
+            certificate_id="your_certificate_id")
         ```
         <!--End PulumiCodeChooser -->
 

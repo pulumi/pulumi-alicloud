@@ -267,30 +267,83 @@ class Chain(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
+        default = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
             instance_name=name)
-        default_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace",
-            instance_id=default_registry_enterprise_instance.id,
+        default_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("default",
+            instance_id=default.id,
+            name=name,
             auto_create=False,
             default_visibility="PUBLIC")
-        default_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo",
-            instance_id=default_registry_enterprise_instance.id,
+        default_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("default",
+            instance_id=default.id,
             namespace=default_registry_enterprise_namespace.name,
+            name=name,
             summary="this is summary of my new repo",
             repo_type="PUBLIC",
             detail="this is a public repo")
-        default_chain = alicloud.cr.Chain("defaultChain",
-            chain_name=name,
-            description=name,
-            instance_id=default_registry_enterprise_namespace.instance_id,
-            repo_name=default_registry_enterprise_repo.name,
-            repo_namespace_name=default_registry_enterprise_namespace.name,
+        default_chain = alicloud.cr.Chain("default",
             chain_configs=[alicloud.cr.ChainChainConfigArgs(
+                nodes=[
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                        enable=True,
+                        node_name="DOCKER_IMAGE_BUILD",
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                        enable=True,
+                        node_name="DOCKER_IMAGE_PUSH",
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=True,
+                        node_name="VULNERABILITY_SCANNING",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs(
+                                issue_level="MEDIUM",
+                                issue_count="1",
+                                action="BLOCK_DELETE_TAG",
+                                logic="AND",
+                            )],
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                        enable=True,
+                        node_name="ACTIVATE_REPLICATION",
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                        enable=True,
+                        node_name="TRIGGER",
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                        enable=False,
+                        node_name="SNAPSHOT",
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                        enable=False,
+                        node_name="TRIGGER_SNAPSHOT",
+                    ),
+                ],
                 routers=[
                     alicloud.cr.ChainChainConfigRouterArgs(
                         froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
@@ -341,63 +394,12 @@ class Chain(pulumi.CustomResource):
                         )],
                     ),
                 ],
-                nodes=[
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=True,
-                        node_name="DOCKER_IMAGE_BUILD",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=True,
-                        node_name="DOCKER_IMAGE_PUSH",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=True,
-                        node_name="VULNERABILITY_SCANNING",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs(
-                                issue_level="MEDIUM",
-                                issue_count="1",
-                                action="BLOCK_DELETE_TAG",
-                                logic="AND",
-                            )],
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=True,
-                        node_name="ACTIVATE_REPLICATION",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=True,
-                        node_name="TRIGGER",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=False,
-                        node_name="SNAPSHOT",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=False,
-                        node_name="TRIGGER_SNAPSHOT",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                    ),
-                ],
-            )])
+            )],
+            chain_name=name,
+            description=name,
+            instance_id=default_registry_enterprise_namespace.instance_id,
+            repo_name=default_registry_enterprise_repo.name,
+            repo_namespace_name=default_registry_enterprise_namespace.name)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -444,30 +446,83 @@ class Chain(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
+        default = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
             instance_name=name)
-        default_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace",
-            instance_id=default_registry_enterprise_instance.id,
+        default_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("default",
+            instance_id=default.id,
+            name=name,
             auto_create=False,
             default_visibility="PUBLIC")
-        default_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo",
-            instance_id=default_registry_enterprise_instance.id,
+        default_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("default",
+            instance_id=default.id,
             namespace=default_registry_enterprise_namespace.name,
+            name=name,
             summary="this is summary of my new repo",
             repo_type="PUBLIC",
             detail="this is a public repo")
-        default_chain = alicloud.cr.Chain("defaultChain",
-            chain_name=name,
-            description=name,
-            instance_id=default_registry_enterprise_namespace.instance_id,
-            repo_name=default_registry_enterprise_repo.name,
-            repo_namespace_name=default_registry_enterprise_namespace.name,
+        default_chain = alicloud.cr.Chain("default",
             chain_configs=[alicloud.cr.ChainChainConfigArgs(
+                nodes=[
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                        enable=True,
+                        node_name="DOCKER_IMAGE_BUILD",
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                        enable=True,
+                        node_name="DOCKER_IMAGE_PUSH",
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        enable=True,
+                        node_name="VULNERABILITY_SCANNING",
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs(
+                                issue_level="MEDIUM",
+                                issue_count="1",
+                                action="BLOCK_DELETE_TAG",
+                                logic="AND",
+                            )],
+                        )],
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                        enable=True,
+                        node_name="ACTIVATE_REPLICATION",
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                        enable=True,
+                        node_name="TRIGGER",
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                        enable=False,
+                        node_name="SNAPSHOT",
+                    ),
+                    alicloud.cr.ChainChainConfigNodeArgs(
+                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
+                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
+                        )],
+                        enable=False,
+                        node_name="TRIGGER_SNAPSHOT",
+                    ),
+                ],
                 routers=[
                     alicloud.cr.ChainChainConfigRouterArgs(
                         froms=[alicloud.cr.ChainChainConfigRouterFromArgs(
@@ -518,63 +573,12 @@ class Chain(pulumi.CustomResource):
                         )],
                     ),
                 ],
-                nodes=[
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=True,
-                        node_name="DOCKER_IMAGE_BUILD",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=True,
-                        node_name="DOCKER_IMAGE_PUSH",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=True,
-                        node_name="VULNERABILITY_SCANNING",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs(
-                                issue_level="MEDIUM",
-                                issue_count="1",
-                                action="BLOCK_DELETE_TAG",
-                                logic="AND",
-                            )],
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=True,
-                        node_name="ACTIVATE_REPLICATION",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=True,
-                        node_name="TRIGGER",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=False,
-                        node_name="SNAPSHOT",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                    ),
-                    alicloud.cr.ChainChainConfigNodeArgs(
-                        enable=False,
-                        node_name="TRIGGER_SNAPSHOT",
-                        node_configs=[alicloud.cr.ChainChainConfigNodeNodeConfigArgs(
-                            deny_policies=[alicloud.cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs()],
-                        )],
-                    ),
-                ],
-            )])
+            )],
+            chain_name=name,
+            description=name,
+            instance_id=default_registry_enterprise_namespace.instance_id,
+            repo_name=default_registry_enterprise_repo.name,
+            repo_namespace_name=default_registry_enterprise_namespace.name)
         ```
         <!--End PulumiCodeChooser -->
 

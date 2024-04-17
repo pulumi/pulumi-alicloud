@@ -37,28 +37,29 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example-basic-edge";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
  *     cpuCoreCount: 4,
  *     memorySize: 8,
  *     kubernetesNodeRole: "Master",
  * }));
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultEdgeKubernetes = new alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes", {
+ * const defaultEdgeKubernetes = new alicloud.cs.EdgeKubernetes("default", {
+ *     name: name,
  *     workerVswitchIds: [defaultSwitch.id],
- *     workerInstanceTypes: [defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id)],
+ *     workerInstanceTypes: [defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id)],
  *     workerNumber: 1,
  *     password: "Test12345",
  *     podCidr: "10.99.0.0/16",
@@ -87,28 +88,29 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
  *     cpuCoreCount: 4,
  *     memorySize: 8,
  *     kubernetesNodeRole: "Master",
  * }));
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultEdgeKubernetes = new alicloud.cs.EdgeKubernetes("defaultEdgeKubernetes", {
+ * const defaultEdgeKubernetes = new alicloud.cs.EdgeKubernetes("default", {
+ *     name: name,
  *     workerVswitchIds: [defaultSwitch.id],
- *     workerInstanceTypes: [defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id)],
+ *     workerInstanceTypes: [defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id)],
  *     clusterSpec: "ack.pro.small",
  *     workerNumber: 1,
  *     password: "Test12345",

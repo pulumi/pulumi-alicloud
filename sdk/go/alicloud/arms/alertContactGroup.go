@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleAlertContact, err := arms.NewAlertContact(ctx, "exampleAlertContact", &arms.AlertContactArgs{
+//			example, err := arms.NewAlertContact(ctx, "example", &arms.AlertContactArgs{
 //				AlertContactName:    pulumi.String("example_value"),
 //				DingRobotWebhookUrl: pulumi.String("https://oapi.dingtalk.com/robot/send?access_token=91f2f6****"),
 //				Email:               pulumi.String("someone@example.com"),
@@ -44,10 +44,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = arms.NewAlertContactGroup(ctx, "exampleAlertContactGroup", &arms.AlertContactGroupArgs{
+//			_, err = arms.NewAlertContactGroup(ctx, "example", &arms.AlertContactGroupArgs{
 //				AlertContactGroupName: pulumi.String("example_value"),
 //				ContactIds: pulumi.StringArray{
-//					exampleAlertContact.ID(),
+//					example.ID(),
 //				},
 //			})
 //			if err != nil {

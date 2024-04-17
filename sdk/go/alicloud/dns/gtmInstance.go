@@ -43,17 +43,17 @@ import (
 //			if param := cfg.Get("domainName"); param != "" {
 //				domainName = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
+//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
 //				AlarmContactGroupName: pulumi.String("tf_example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dns.NewGtmInstance(ctx, "defaultGtmInstance", &dns.GtmInstanceArgs{
+//			_, err = dns.NewGtmInstance(ctx, "default", &dns.GtmInstanceArgs{
 //				InstanceName:         pulumi.String("tf_example"),
 //				PaymentType:          pulumi.String("Subscription"),
 //				Period:               pulumi.Int(1),
@@ -64,7 +64,7 @@ import (
 //				PublicCnameMode:      pulumi.String("SYSTEM_ASSIGN"),
 //				Ttl:                  pulumi.Int(60),
 //				CnameType:            pulumi.String("PUBLIC"),
-//				ResourceGroupId:      pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId:      pulumi.String(_default.Groups[0].Id),
 //				AlertGroups: pulumi.StringArray{
 //					defaultAlarmContactGroup.AlarmContactGroupName,
 //				},

@@ -27,13 +27,13 @@ namespace Pulumi.AliCloud.Ess
         /// {
         ///     var scalingconfigurationsDs = AliCloud.Ess.GetScalingConfigurations.Invoke(new()
         ///     {
+        ///         ScalingGroupId = "scaling_group_id",
         ///         Ids = new[]
         ///         {
         ///             "scaling_configuration_id1",
         ///             "scaling_configuration_id2",
         ///         },
         ///         NameRegex = "scaling_configuration_name",
-        ///         ScalingGroupId = "scaling_group_id",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -63,13 +63,13 @@ namespace Pulumi.AliCloud.Ess
         /// {
         ///     var scalingconfigurationsDs = AliCloud.Ess.GetScalingConfigurations.Invoke(new()
         ///     {
+        ///         ScalingGroupId = "scaling_group_id",
         ///         Ids = new[]
         ///         {
         ///             "scaling_configuration_id1",
         ///             "scaling_configuration_id2",
         ///         },
         ///         NameRegex = "scaling_configuration_name",
-        ///         ScalingGroupId = "scaling_group_id",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

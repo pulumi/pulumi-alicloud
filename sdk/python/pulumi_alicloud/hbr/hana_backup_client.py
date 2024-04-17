@@ -244,38 +244,40 @@ class HanaBackupClient(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
+        example = alicloud.get_zones(available_resource_creation="Instance")
+        example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vswitch_name="terraform-example",
             cidr_block="172.17.3.0/24",
             vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            availability_zone=example_zones.zones[0].id,
+            zone_id=example.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name="terraform-example",
+            vpc_id=example_network.id)
+        example_instance = alicloud.ecs.Instance("example",
+            image_id=example_get_images.images[0].id,
+            instance_type=example_get_instance_types.instance_types[0].id,
+            availability_zone=example.zones[0].id,
             security_groups=[example_security_group.id],
             instance_name="terraform-example",
             internet_charge_type="PayByBandwidth",
             vswitch_id=example_switch.id)
-        example_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
-        example_hana_instance = alicloud.hbr.HanaInstance("exampleHanaInstance",
+        example_get_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        example_vault = alicloud.hbr.Vault("example", vault_name="terraform-example")
+        example_hana_instance = alicloud.hbr.HanaInstance("example",
             alert_setting="INHERITED",
             hana_name="terraform-example",
             host="1.1.1.1",
             instance_number=1,
             password="YouPassword123",
-            resource_group_id=example_resource_groups.groups[0].id,
+            resource_group_id=example_get_resource_groups.groups[0].id,
             sid="HXE",
             use_ssl=False,
             user_name="admin",
@@ -326,38 +328,40 @@ class HanaBackupClient(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.get_zones(available_resource_creation="Instance")
-        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
+        example = alicloud.get_zones(available_resource_creation="Instance")
+        example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             owners="system")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vswitch_name="terraform-example",
             cidr_block="172.17.3.0/24",
             vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.ecs.Instance("exampleInstance",
-            image_id=example_images.images[0].id,
-            instance_type=example_instance_types.instance_types[0].id,
-            availability_zone=example_zones.zones[0].id,
+            zone_id=example.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name="terraform-example",
+            vpc_id=example_network.id)
+        example_instance = alicloud.ecs.Instance("example",
+            image_id=example_get_images.images[0].id,
+            instance_type=example_get_instance_types.instance_types[0].id,
+            availability_zone=example.zones[0].id,
             security_groups=[example_security_group.id],
             instance_name="terraform-example",
             internet_charge_type="PayByBandwidth",
             vswitch_id=example_switch.id)
-        example_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
-        example_hana_instance = alicloud.hbr.HanaInstance("exampleHanaInstance",
+        example_get_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        example_vault = alicloud.hbr.Vault("example", vault_name="terraform-example")
+        example_hana_instance = alicloud.hbr.HanaInstance("example",
             alert_setting="INHERITED",
             hana_name="terraform-example",
             host="1.1.1.1",
             instance_number=1,
             password="YouPassword123",
-            resource_group_id=example_resource_groups.groups[0].id,
+            resource_group_id=example_get_resource_groups.groups[0].id,
             sid="HXE",
             use_ssl=False,
             user_name="admin",

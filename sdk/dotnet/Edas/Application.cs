@@ -30,35 +30,35 @@ namespace Pulumi.AliCloud.Edas
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
-    ///         VpcName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         VpcName = $"{name}-{defaultInteger.Result}",
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultCluster = new AliCloud.Edas.Cluster("defaultCluster", new()
+    ///     var defaultCluster = new AliCloud.Edas.Cluster("default", new()
     ///     {
-    ///         ClusterName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         ClusterName = $"{name}-{defaultInteger.Result}",
     ///         ClusterType = 2,
     ///         NetworkMode = 2,
-    ///         LogicalRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         LogicalRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var defaultApplication = new AliCloud.Edas.Application("defaultApplication", new()
+    ///     var defaultApplication = new AliCloud.Edas.Application("default", new()
     ///     {
-    ///         ApplicationName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         ApplicationName = $"{name}-{defaultInteger.Result}",
     ///         ClusterId = defaultCluster.Id,
     ///         PackageType = "JAR",
     ///     });

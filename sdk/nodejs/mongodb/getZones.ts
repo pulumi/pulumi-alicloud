@@ -18,10 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const zonesIds = alicloud.mongodb.getZones({});
  * // Create an mongoDB instance with the first matched zone
  * const mongodb = new alicloud.mongodb.Instance("mongodb", {zoneId: zonesIds.then(zonesIds => zonesIds.zones?.[0]?.id)});
- * // Other properties...
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -80,10 +80,10 @@ export interface GetZonesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const zonesIds = alicloud.mongodb.getZones({});
  * // Create an mongoDB instance with the first matched zone
  * const mongodb = new alicloud.mongodb.Instance("mongodb", {zoneId: zonesIds.then(zonesIds => zonesIds.zones?.[0]?.id)});
- * // Other properties...
  * ```
  * <!--End PulumiCodeChooser -->
  */

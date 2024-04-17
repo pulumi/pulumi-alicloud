@@ -67,17 +67,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;Instance&#34;)
  *             .build());
  * 
- *         final var exampleInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var exampleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
  * 
- *         final var exampleImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
  *             .owners(&#34;system&#34;)
  *             .build());
@@ -91,24 +91,25 @@ import javax.annotation.Nullable;
  *             .vswitchName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(&#34;terraform-example&#34;)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
  *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .imageId(exampleImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .availabilityZone(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .imageId(exampleGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .availabilityZone(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .securityGroups(exampleSecurityGroup.id())
  *             .instanceName(&#34;terraform-example&#34;)
  *             .internetChargeType(&#34;PayByBandwidth&#34;)
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
- *         final var exampleResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *         final var exampleGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .status(&#34;OK&#34;)
  *             .build());
  * 
@@ -122,7 +123,7 @@ import javax.annotation.Nullable;
  *             .host(&#34;1.1.1.1&#34;)
  *             .instanceNumber(1)
  *             .password(&#34;YouPassword123&#34;)
- *             .resourceGroupId(exampleResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(exampleGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
  *             .sid(&#34;HXE&#34;)
  *             .useSsl(false)
  *             .userName(&#34;admin&#34;)

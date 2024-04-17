@@ -29,17 +29,17 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultEcsBackupPlans = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
+        ///     var @default = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
         ///     {
         ///         NameRegex = "plan-tf-used-dont-delete",
         ///     });
         /// 
-        ///     var defaultOssBackupPlans = AliCloud.Hbr.GetOssBackupPlans.Invoke(new()
+        ///     var defaultGetOssBackupPlans = AliCloud.Hbr.GetOssBackupPlans.Invoke(new()
         ///     {
         ///         NameRegex = "plan-tf-used-dont-delete",
         ///     });
         /// 
-        ///     var defaultNasBackupPlans = AliCloud.Hbr.GetNasBackupPlans.Invoke(new()
+        ///     var defaultGetNasBackupPlans = AliCloud.Hbr.GetNasBackupPlans.Invoke(new()
         ///     {
         ///         NameRegex = "plan-tf-used-dont-delete",
         ///     });
@@ -47,15 +47,15 @@ namespace Pulumi.AliCloud.Hbr
         ///     var ecsSnapshots = AliCloud.Hbr.GetSnapshots.Invoke(new()
         ///     {
         ///         SourceType = "ECS_FILE",
-        ///         VaultId = defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
-        ///         InstanceId = defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+        ///         VaultId = @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+        ///         InstanceId = @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
         ///     });
         /// 
         ///     var ossSnapshots = AliCloud.Hbr.GetSnapshots.Invoke(new()
         ///     {
         ///         SourceType = "OSS",
-        ///         VaultId = defaultOssBackupPlans.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.VaultId),
-        ///         Bucket = defaultOssBackupPlans.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.Bucket),
+        ///         VaultId = defaultGetOssBackupPlans.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.VaultId),
+        ///         Bucket = defaultGetOssBackupPlans.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.Bucket),
         ///         CompleteTime = "2021-07-20T14:17:15CST,2021-07-24T14:17:15CST",
         ///         CompleteTimeChecker = "BETWEEN",
         ///     });
@@ -63,9 +63,9 @@ namespace Pulumi.AliCloud.Hbr
         ///     var nasSnapshots = AliCloud.Hbr.GetSnapshots.Invoke(new()
         ///     {
         ///         SourceType = "NAS",
-        ///         VaultId = defaultNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.VaultId),
-        ///         FileSystemId = defaultNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.FileSystemId),
-        ///         CreateTime = defaultNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.CreateTime),
+        ///         VaultId = defaultGetNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.VaultId),
+        ///         FileSystemId = defaultGetNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.FileSystemId),
+        ///         CreateTime = defaultGetNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.CreateTime),
         ///         CompleteTime = "2021-08-23T14:17:15CST",
         ///         CompleteTimeChecker = "GREATER_THAN_OR_EQUAL",
         ///     });
@@ -99,17 +99,17 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultEcsBackupPlans = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
+        ///     var @default = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
         ///     {
         ///         NameRegex = "plan-tf-used-dont-delete",
         ///     });
         /// 
-        ///     var defaultOssBackupPlans = AliCloud.Hbr.GetOssBackupPlans.Invoke(new()
+        ///     var defaultGetOssBackupPlans = AliCloud.Hbr.GetOssBackupPlans.Invoke(new()
         ///     {
         ///         NameRegex = "plan-tf-used-dont-delete",
         ///     });
         /// 
-        ///     var defaultNasBackupPlans = AliCloud.Hbr.GetNasBackupPlans.Invoke(new()
+        ///     var defaultGetNasBackupPlans = AliCloud.Hbr.GetNasBackupPlans.Invoke(new()
         ///     {
         ///         NameRegex = "plan-tf-used-dont-delete",
         ///     });
@@ -117,15 +117,15 @@ namespace Pulumi.AliCloud.Hbr
         ///     var ecsSnapshots = AliCloud.Hbr.GetSnapshots.Invoke(new()
         ///     {
         ///         SourceType = "ECS_FILE",
-        ///         VaultId = defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
-        ///         InstanceId = defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+        ///         VaultId = @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+        ///         InstanceId = @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
         ///     });
         /// 
         ///     var ossSnapshots = AliCloud.Hbr.GetSnapshots.Invoke(new()
         ///     {
         ///         SourceType = "OSS",
-        ///         VaultId = defaultOssBackupPlans.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.VaultId),
-        ///         Bucket = defaultOssBackupPlans.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.Bucket),
+        ///         VaultId = defaultGetOssBackupPlans.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.VaultId),
+        ///         Bucket = defaultGetOssBackupPlans.Apply(getOssBackupPlansResult =&gt; getOssBackupPlansResult.Plans[0]?.Bucket),
         ///         CompleteTime = "2021-07-20T14:17:15CST,2021-07-24T14:17:15CST",
         ///         CompleteTimeChecker = "BETWEEN",
         ///     });
@@ -133,9 +133,9 @@ namespace Pulumi.AliCloud.Hbr
         ///     var nasSnapshots = AliCloud.Hbr.GetSnapshots.Invoke(new()
         ///     {
         ///         SourceType = "NAS",
-        ///         VaultId = defaultNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.VaultId),
-        ///         FileSystemId = defaultNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.FileSystemId),
-        ///         CreateTime = defaultNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.CreateTime),
+        ///         VaultId = defaultGetNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.VaultId),
+        ///         FileSystemId = defaultGetNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.FileSystemId),
+        ///         CreateTime = defaultGetNasBackupPlans.Apply(getNasBackupPlansResult =&gt; getNasBackupPlansResult.Plans[0]?.CreateTime),
         ///         CompleteTime = "2021-08-23T14:17:15CST",
         ///         CompleteTimeChecker = "GREATER_THAN_OR_EQUAL",
         ///     });

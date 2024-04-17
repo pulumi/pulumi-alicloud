@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
  *         final var default = ResourcemanagerFunctions.getAccounts();
  * 
- *         var exampleResourceShare = new ResourceShare(&#34;exampleResourceShare&#34;, ResourceShareArgs.builder()        
+ *         var example = new ResourceShare(&#34;example&#34;, ResourceShareArgs.builder()        
  *             .resourceShareName(name)
  *             .build());
  * 
  *         var exampleSharedTarget = new SharedTarget(&#34;exampleSharedTarget&#34;, SharedTargetArgs.builder()        
- *             .resourceShareId(exampleResourceShare.id())
+ *             .resourceShareId(example.id())
  *             .targetId(default_.ids()[0])
  *             .build());
  * 

@@ -182,9 +182,9 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_user_tenants = alicloud.dms.get_user_tenants(status="ACTIVE")
-        default_enterprise_authority_template = alicloud.dms.EnterpriseAuthorityTemplate("defaultEnterpriseAuthorityTemplate",
-            tid=default_user_tenants.ids[0],
+        default = alicloud.dms.get_user_tenants(status="ACTIVE")
+        default_enterprise_authority_template = alicloud.dms.EnterpriseAuthorityTemplate("default",
+            tid=default.ids[0],
             authority_template_name=name,
             description=name)
         ```
@@ -230,9 +230,9 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_user_tenants = alicloud.dms.get_user_tenants(status="ACTIVE")
-        default_enterprise_authority_template = alicloud.dms.EnterpriseAuthorityTemplate("defaultEnterpriseAuthorityTemplate",
-            tid=default_user_tenants.ids[0],
+        default = alicloud.dms.get_user_tenants(status="ACTIVE")
+        default_enterprise_authority_template = alicloud.dms.EnterpriseAuthorityTemplate("default",
+            tid=default.ids[0],
             authority_template_name=name,
             description=name)
         ```

@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testacc";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const vpc = new alicloud.vpc.Network("vpc", {
@@ -32,15 +32,15 @@ import * as utilities from "../utilities";
  * const vsw = new alicloud.vpc.Switch("vsw", {
  *     vpcId: vpc.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
+ * const defaultNamespace = new alicloud.sae.Namespace("default", {
  *     namespaceDescription: name,
  *     namespaceId: "cn-hangzhou:tfacctest",
  *     namespaceName: name,
  * });
- * const defaultApplication = new alicloud.sae.Application("defaultApplication", {
+ * const defaultApplication = new alicloud.sae.Application("default", {
  *     appDescription: "tf-testaccDescription",
  *     appName: "tf-testaccAppName131",
  *     namespaceId: defaultNamespace.id,
@@ -52,10 +52,10 @@ import * as utilities from "../utilities";
  *     cpu: 500,
  *     memory: 2048,
  * });
- * const defaultApplications = alicloud.sae.getApplicationsOutput({
+ * const defaultGetApplications = alicloud.sae.getApplicationsOutput({
  *     ids: [defaultApplication.id],
  * });
- * export const saeApplicationId = defaultApplications.apply(defaultApplications => defaultApplications.applications?.[0]?.id);
+ * export const saeApplicationId = defaultGetApplications.apply(defaultGetApplications => defaultGetApplications.applications?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -159,7 +159,7 @@ export interface GetApplicationsResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testacc";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const vpc = new alicloud.vpc.Network("vpc", {
@@ -169,15 +169,15 @@ export interface GetApplicationsResult {
  * const vsw = new alicloud.vpc.Switch("vsw", {
  *     vpcId: vpc.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
+ * const defaultNamespace = new alicloud.sae.Namespace("default", {
  *     namespaceDescription: name,
  *     namespaceId: "cn-hangzhou:tfacctest",
  *     namespaceName: name,
  * });
- * const defaultApplication = new alicloud.sae.Application("defaultApplication", {
+ * const defaultApplication = new alicloud.sae.Application("default", {
  *     appDescription: "tf-testaccDescription",
  *     appName: "tf-testaccAppName131",
  *     namespaceId: defaultNamespace.id,
@@ -189,10 +189,10 @@ export interface GetApplicationsResult {
  *     cpu: 500,
  *     memory: 2048,
  * });
- * const defaultApplications = alicloud.sae.getApplicationsOutput({
+ * const defaultGetApplications = alicloud.sae.getApplicationsOutput({
  *     ids: [defaultApplication.id],
  * });
- * export const saeApplicationId = defaultApplications.apply(defaultApplications => defaultApplications.applications?.[0]?.id);
+ * export const saeApplicationId = defaultGetApplications.apply(defaultGetApplications => defaultGetApplications.applications?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */

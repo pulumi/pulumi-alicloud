@@ -27,15 +27,15 @@ namespace Pulumi.AliCloud.Alb
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultAcl = new AliCloud.Alb.Acl("defaultAcl", new()
+    ///     var defaultAcl = new AliCloud.Alb.Acl("default", new()
     ///     {
     ///         AclName = name,
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
     ///     });
     /// 
-    ///     var defaultAclEntryAttachment = new AliCloud.Alb.AclEntryAttachment("defaultAclEntryAttachment", new()
+    ///     var defaultAclEntryAttachment = new AliCloud.Alb.AclEntryAttachment("default", new()
     ///     {
     ///         AclId = defaultAcl.Id,
     ///         Entry = "168.10.10.0/24",

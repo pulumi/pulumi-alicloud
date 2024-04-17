@@ -70,9 +70,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         final var defaultZones = NlbFunctions.getZones();
+ *         final var defaultGetZones = NlbFunctions.getZones();
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
@@ -83,23 +83,24 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock(&#34;10.4.0.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var default1 = new Switch(&#34;default1&#34;, SwitchArgs.builder()        
  *             .vswitchName(name)
  *             .cidrBlock(&#34;10.4.1.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultLoadBalancer = new LoadBalancer(&#34;defaultLoadBalancer&#34;, LoadBalancerArgs.builder()        
  *             .loadBalancerName(name)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(default_.ids()[0])
  *             .loadBalancerType(&#34;Network&#34;)
  *             .addressType(&#34;Internet&#34;)
  *             .addressIpVersion(&#34;Ipv4&#34;)
@@ -111,16 +112,16 @@ import javax.annotation.Nullable;
  *             .zoneMappings(            
  *                 LoadBalancerZoneMappingArgs.builder()
  *                     .vswitchId(defaultSwitch.id())
- *                     .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *                     .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *                     .build(),
  *                 LoadBalancerZoneMappingArgs.builder()
  *                     .vswitchId(default1.id())
- *                     .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
+ *                     .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
  *                     .build())
  *             .build());
  * 
  *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(default_.ids()[0])
  *             .serverGroupName(name)
  *             .serverGroupType(&#34;Instance&#34;)
  *             .vpcId(defaultNetwork.id())

@@ -31,17 +31,17 @@ namespace Pulumi.AliCloud.Eds
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     var @default = new AliCloud.Cen.Instance("default", new()
     ///     {
     ///         CenInstanceName = name,
     ///         ProtectionLevel = "REDUCED",
     ///     });
     /// 
-    ///     var defaultAdConnectorOfficeSite = new AliCloud.Eds.AdConnectorOfficeSite("defaultAdConnectorOfficeSite", new()
+    ///     var defaultAdConnectorOfficeSite = new AliCloud.Eds.AdConnectorOfficeSite("default", new()
     ///     {
     ///         AdConnectorOfficeSiteName = name,
     ///         Bandwidth = 100,
-    ///         CenId = defaultInstance.Id,
+    ///         CenId = @default.Id,
     ///         CidrBlock = "10.0.0.0/12",
     ///         DesktopAccessType = "INTERNET",
     ///         DnsAddresses = new[]

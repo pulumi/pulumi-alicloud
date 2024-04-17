@@ -55,6 +55,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new Stack(&#34;example&#34;, StackArgs.builder()        
  *             .stackName(&#34;tf-testaccstack&#34;)
+ *             .templateBody(&#34;&#34;&#34;
+ *     {
+ *     	&#34;ROSTemplateFormatVersion&#34;: &#34;2015-09-01&#34;
+ *     }
+ *             &#34;&#34;&#34;)
  *             .stackPolicyBody(&#34;&#34;&#34;
  *     {
  *     	&#34;Statement&#34;: [{
@@ -64,13 +69,6 @@ import javax.annotation.Nullable;
  *     		&#34;Principal&#34;: &#34;*&#34;
  *     	}]
  *     }
- *     
- *             &#34;&#34;&#34;)
- *             .templateBody(&#34;&#34;&#34;
- *     {
- *     	&#34;ROSTemplateFormatVersion&#34;: &#34;2015-09-01&#34;
- *     }
- *     
  *             &#34;&#34;&#34;)
  *             .build());
  * 

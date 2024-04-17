@@ -43,11 +43,11 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
+//			defaultInstance, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(name),
 //				Description:     pulumi.String("example_value"),
 //				Tags: pulumi.Map{
@@ -58,7 +58,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudfirewall.NewFirewallVpcFirewallControlPolicy(ctx, "defaultFirewallVpcFirewallControlPolicy", &cloudfirewall.FirewallVpcFirewallControlPolicyArgs{
+//			_, err = cloudfirewall.NewFirewallVpcFirewallControlPolicy(ctx, "default", &cloudfirewall.FirewallVpcFirewallControlPolicyArgs{
 //				Order:           pulumi.Int(1),
 //				Destination:     pulumi.String("127.0.0.2/32"),
 //				ApplicationName: pulumi.String("ANY"),
@@ -72,7 +72,7 @@ import (
 //				DestPortType:    pulumi.String("port"),
 //				Proto:           pulumi.String("TCP"),
 //				Release:         pulumi.Bool(true),
-//				MemberUid:       pulumi.String(defaultAccount.Id),
+//				MemberUid:       pulumi.String(_default.Id),
 //				VpcFirewallId:   defaultInstance.ID(),
 //			})
 //			if err != nil {

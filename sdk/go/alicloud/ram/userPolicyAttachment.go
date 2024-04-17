@@ -33,6 +33,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a RAM User Policy attachment.
 //			user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+//				Name:        pulumi.String("userName"),
 //				DisplayName: pulumi.String("user_display_name"),
 //				Mobile:      pulumi.String("86-18688888888"),
 //				Email:       pulumi.String("hello.uuu@aaa.com"),
@@ -42,6 +43,7 @@ import (
 //				return err
 //			}
 //			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+//				Name: pulumi.String("policyName"),
 //				Document: pulumi.String(`  {
 //	    "Statement": [
 //	      {

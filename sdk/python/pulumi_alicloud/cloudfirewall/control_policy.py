@@ -589,11 +589,11 @@ class ControlPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.cloudfirewall.ControlPolicy("example",
-            acl_action="accept",
             application_name="ANY",
+            acl_action="accept",
             description="example",
-            destination="100.1.1.0/24",
             destination_type="net",
+            destination="100.1.1.0/24",
             direction="out",
             proto="ANY",
             source="1.2.3.0/24",
@@ -652,11 +652,11 @@ class ControlPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.cloudfirewall.ControlPolicy("example",
-            acl_action="accept",
             application_name="ANY",
+            acl_action="accept",
             description="example",
-            destination="100.1.1.0/24",
             destination_type="net",
+            destination="100.1.1.0/24",
             direction="out",
             proto="ANY",
             source="1.2.3.0/24",

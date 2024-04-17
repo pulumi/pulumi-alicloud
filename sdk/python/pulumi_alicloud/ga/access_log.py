@@ -262,38 +262,41 @@ class AccessLog(pulumi.CustomResource):
         region = config.get("region")
         if region is None:
             region = "cn-hangzhou"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+        default_project = alicloud.log.Project("default", name=f"terraform-example-{default['result']}")
+        default_store = alicloud.log.Store("default",
+            project=default_project.name,
+            name="terraform-example")
+        default_accelerator = alicloud.ga.Accelerator("default",
             duration=1,
             auto_use_coupon=True,
             spec="2")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
             bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
             payment_type="PayAsYouGo",
             billing_type="PayBy95",
             ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
             accelerator_id=default_accelerator.id,
             bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
+        default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             client_affinity="SOURCE_IP",
             protocol="HTTP",
+            name="terraform-example",
             port_ranges=[alicloud.ga.ListenerPortRangeArgs(
                 from_port=70,
                 to_port=70,
             )])
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+        default_eip_address = alicloud.ecs.EipAddress("default",
             bandwidth="10",
             internet_charge_type="PayByBandwidth",
             address_name="terraform-example")
-        default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
+        default_endpoint_group = alicloud.ga.EndpointGroup("default",
             accelerator_id=default_listener.accelerator_id,
             endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
                 endpoint=default_eip_address.ip_address,
@@ -302,7 +305,7 @@ class AccessLog(pulumi.CustomResource):
             )],
             endpoint_group_region=region,
             listener_id=default_listener.id)
-        default_access_log = alicloud.ga.AccessLog("defaultAccessLog",
+        default_access_log = alicloud.ga.AccessLog("default",
             accelerator_id=default_accelerator.id,
             listener_id=default_listener.id,
             endpoint_group_id=default_endpoint_group.id,
@@ -356,38 +359,41 @@ class AccessLog(pulumi.CustomResource):
         region = config.get("region")
         if region is None:
             region = "cn-hangzhou"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+        default_project = alicloud.log.Project("default", name=f"terraform-example-{default['result']}")
+        default_store = alicloud.log.Store("default",
+            project=default_project.name,
+            name="terraform-example")
+        default_accelerator = alicloud.ga.Accelerator("default",
             duration=1,
             auto_use_coupon=True,
             spec="2")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
             bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
             payment_type="PayAsYouGo",
             billing_type="PayBy95",
             ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
             accelerator_id=default_accelerator.id,
             bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
+        default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             client_affinity="SOURCE_IP",
             protocol="HTTP",
+            name="terraform-example",
             port_ranges=[alicloud.ga.ListenerPortRangeArgs(
                 from_port=70,
                 to_port=70,
             )])
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+        default_eip_address = alicloud.ecs.EipAddress("default",
             bandwidth="10",
             internet_charge_type="PayByBandwidth",
             address_name="terraform-example")
-        default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
+        default_endpoint_group = alicloud.ga.EndpointGroup("default",
             accelerator_id=default_listener.accelerator_id,
             endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
                 endpoint=default_eip_address.ip_address,
@@ -396,7 +402,7 @@ class AccessLog(pulumi.CustomResource):
             )],
             endpoint_group_region=region,
             listener_id=default_listener.id)
-        default_access_log = alicloud.ga.AccessLog("defaultAccessLog",
+        default_access_log = alicloud.ga.AccessLog("default",
             accelerator_id=default_accelerator.id,
             listener_id=default_listener.id,
             endpoint_group_id=default_endpoint_group.id,

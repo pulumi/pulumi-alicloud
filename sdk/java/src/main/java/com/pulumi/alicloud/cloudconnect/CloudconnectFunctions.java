@@ -47,14 +47,15 @@ public final class CloudconnectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultNetworks = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(alicloud_cloud_connect_networks.default().id())
+     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(defaultAlicloudCloudConnectNetworks.id())
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
      *             .build());
      * 
      *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .name(&#34;tf-testAccCloudConnectNetworkName&#34;)
      *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .isDefault(true)
      *             .build());
      * 
@@ -100,14 +101,15 @@ public final class CloudconnectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultNetworks = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(alicloud_cloud_connect_networks.default().id())
+     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(defaultAlicloudCloudConnectNetworks.id())
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
      *             .build());
      * 
      *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .name(&#34;tf-testAccCloudConnectNetworkName&#34;)
      *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .isDefault(true)
      *             .build());
      * 
@@ -153,14 +155,15 @@ public final class CloudconnectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultNetworks = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(alicloud_cloud_connect_networks.default().id())
+     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(defaultAlicloudCloudConnectNetworks.id())
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
      *             .build());
      * 
      *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .name(&#34;tf-testAccCloudConnectNetworkName&#34;)
      *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .isDefault(true)
      *             .build());
      * 
@@ -206,14 +209,15 @@ public final class CloudconnectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultNetworks = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(alicloud_cloud_connect_networks.default().id())
+     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(defaultAlicloudCloudConnectNetworks.id())
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
      *             .build());
      * 
      *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .name(&#34;tf-testAccCloudConnectNetworkName&#34;)
      *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .isDefault(true)
      *             .build());
      * 
@@ -259,14 +263,15 @@ public final class CloudconnectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultNetworks = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(alicloud_cloud_connect_networks.default().id())
+     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(defaultAlicloudCloudConnectNetworks.id())
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
      *             .build());
      * 
      *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .name(&#34;tf-testAccCloudConnectNetworkName&#34;)
      *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .isDefault(true)
      *             .build());
      * 
@@ -312,14 +317,15 @@ public final class CloudconnectFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultNetworks = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .ids(alicloud_cloud_connect_networks.default().id())
+     *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .ids(defaultAlicloudCloudConnectNetworks.id())
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
      *             .build());
      * 
      *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .name(&#34;tf-testAccCloudConnectNetworkName&#34;)
      *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .isDefault(true)
      *             .build());
      * 

@@ -31,21 +31,21 @@ namespace Pulumi.AliCloud.Eflo
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke();
+    ///     var @default = AliCloud.GetZones.Invoke();
     /// 
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultVpd = new AliCloud.Eflo.Vpd("defaultVpd", new()
+    ///     var defaultVpd = new AliCloud.Eflo.Vpd("default", new()
     ///     {
     ///         Cidr = "10.0.0.0/8",
     ///         VpdName = name,
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
     ///     });
     /// 
-    ///     var defaultSubnet = new AliCloud.Eflo.Subnet("defaultSubnet", new()
+    ///     var defaultSubnet = new AliCloud.Eflo.Subnet("default", new()
     ///     {
     ///         SubnetName = name,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         Cidr = "10.0.0.0/16",
     ///         VpdId = defaultVpd.Id,
     ///     });

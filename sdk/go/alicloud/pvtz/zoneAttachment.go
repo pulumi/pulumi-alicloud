@@ -132,7 +132,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/pvtz"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -161,16 +160,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = alicloud.NewProvider(ctx, "eu", &alicloud.ProviderArgs{
-//				Region: pulumi.String("eu-central-1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			third, err := vpc.NewNetwork(ctx, "third", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("the-third-vpc"),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
-//			}, pulumi.Provider(alicloud.Eu))
+//			})
 //			if err != nil {
 //				return err
 //			}

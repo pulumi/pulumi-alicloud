@@ -887,45 +887,45 @@ class RestoreJob(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_ecs_backup_plans = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-tf-used-dont-delete")
-        default_oss_backup_plans = alicloud.hbr.get_oss_backup_plans(name_regex="plan-tf-used-dont-delete")
-        default_nas_backup_plans = alicloud.hbr.get_nas_backup_plans(name_regex="plan-tf-used-dont-delete")
+        default = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-tf-used-dont-delete")
+        default_get_oss_backup_plans = alicloud.hbr.get_oss_backup_plans(name_regex="plan-tf-used-dont-delete")
+        default_get_nas_backup_plans = alicloud.hbr.get_nas_backup_plans(name_regex="plan-tf-used-dont-delete")
         ecs_snapshots = alicloud.hbr.get_snapshots(source_type="ECS_FILE",
-            vault_id=default_ecs_backup_plans.plans[0].vault_id,
-            instance_id=default_ecs_backup_plans.plans[0].instance_id)
+            vault_id=default.plans[0].vault_id,
+            instance_id=default.plans[0].instance_id)
         oss_snapshots = alicloud.hbr.get_snapshots(source_type="OSS",
-            vault_id=default_oss_backup_plans.plans[0].vault_id,
-            bucket=default_oss_backup_plans.plans[0].bucket)
+            vault_id=default_get_oss_backup_plans.plans[0].vault_id,
+            bucket=default_get_oss_backup_plans.plans[0].bucket)
         nas_snapshots = alicloud.hbr.get_snapshots(source_type="NAS",
-            vault_id=default_nas_backup_plans.plans[0].vault_id,
-            file_system_id=default_nas_backup_plans.plans[0].file_system_id,
-            create_time=default_nas_backup_plans.plans[0].create_time)
+            vault_id=default_get_nas_backup_plans.plans[0].vault_id,
+            file_system_id=default_get_nas_backup_plans.plans[0].file_system_id,
+            create_time=default_get_nas_backup_plans.plans[0].create_time)
         nas_job = alicloud.hbr.RestoreJob("nasJob",
             snapshot_hash=nas_snapshots.snapshots[0].snapshot_hash,
-            vault_id=default_nas_backup_plans.plans[0].vault_id,
+            vault_id=default_get_nas_backup_plans.plans[0].vault_id,
             source_type="NAS",
             restore_type="NAS",
             snapshot_id=nas_snapshots.snapshots[0].snapshot_id,
-            target_file_system_id=default_nas_backup_plans.plans[0].file_system_id,
-            target_create_time=default_nas_backup_plans.plans[0].create_time,
+            target_file_system_id=default_get_nas_backup_plans.plans[0].file_system_id,
+            target_create_time=default_get_nas_backup_plans.plans[0].create_time,
             target_path="/",
             options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
         oss_job = alicloud.hbr.RestoreJob("ossJob",
             snapshot_hash=oss_snapshots.snapshots[0].snapshot_hash,
-            vault_id=default_oss_backup_plans.plans[0].vault_id,
+            vault_id=default_get_oss_backup_plans.plans[0].vault_id,
             source_type="OSS",
             restore_type="OSS",
             snapshot_id=oss_snapshots.snapshots[0].snapshot_id,
-            target_bucket=default_oss_backup_plans.plans[0].bucket,
+            target_bucket=default_get_oss_backup_plans.plans[0].bucket,
             target_prefix="",
             options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
         ecs_job = alicloud.hbr.RestoreJob("ecsJob",
             snapshot_hash=ecs_snapshots.snapshots[0].snapshot_hash,
-            vault_id=default_ecs_backup_plans.plans[0].vault_id,
+            vault_id=default.plans[0].vault_id,
             source_type="ECS_FILE",
             restore_type="ECS_FILE",
             snapshot_id=ecs_snapshots.snapshots[0].snapshot_id,
-            target_instance_id=default_ecs_backup_plans.plans[0].instance_id,
+            target_instance_id=default.plans[0].instance_id,
             target_path="/")
         ```
         <!--End PulumiCodeChooser -->
@@ -990,45 +990,45 @@ class RestoreJob(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_ecs_backup_plans = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-tf-used-dont-delete")
-        default_oss_backup_plans = alicloud.hbr.get_oss_backup_plans(name_regex="plan-tf-used-dont-delete")
-        default_nas_backup_plans = alicloud.hbr.get_nas_backup_plans(name_regex="plan-tf-used-dont-delete")
+        default = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-tf-used-dont-delete")
+        default_get_oss_backup_plans = alicloud.hbr.get_oss_backup_plans(name_regex="plan-tf-used-dont-delete")
+        default_get_nas_backup_plans = alicloud.hbr.get_nas_backup_plans(name_regex="plan-tf-used-dont-delete")
         ecs_snapshots = alicloud.hbr.get_snapshots(source_type="ECS_FILE",
-            vault_id=default_ecs_backup_plans.plans[0].vault_id,
-            instance_id=default_ecs_backup_plans.plans[0].instance_id)
+            vault_id=default.plans[0].vault_id,
+            instance_id=default.plans[0].instance_id)
         oss_snapshots = alicloud.hbr.get_snapshots(source_type="OSS",
-            vault_id=default_oss_backup_plans.plans[0].vault_id,
-            bucket=default_oss_backup_plans.plans[0].bucket)
+            vault_id=default_get_oss_backup_plans.plans[0].vault_id,
+            bucket=default_get_oss_backup_plans.plans[0].bucket)
         nas_snapshots = alicloud.hbr.get_snapshots(source_type="NAS",
-            vault_id=default_nas_backup_plans.plans[0].vault_id,
-            file_system_id=default_nas_backup_plans.plans[0].file_system_id,
-            create_time=default_nas_backup_plans.plans[0].create_time)
+            vault_id=default_get_nas_backup_plans.plans[0].vault_id,
+            file_system_id=default_get_nas_backup_plans.plans[0].file_system_id,
+            create_time=default_get_nas_backup_plans.plans[0].create_time)
         nas_job = alicloud.hbr.RestoreJob("nasJob",
             snapshot_hash=nas_snapshots.snapshots[0].snapshot_hash,
-            vault_id=default_nas_backup_plans.plans[0].vault_id,
+            vault_id=default_get_nas_backup_plans.plans[0].vault_id,
             source_type="NAS",
             restore_type="NAS",
             snapshot_id=nas_snapshots.snapshots[0].snapshot_id,
-            target_file_system_id=default_nas_backup_plans.plans[0].file_system_id,
-            target_create_time=default_nas_backup_plans.plans[0].create_time,
+            target_file_system_id=default_get_nas_backup_plans.plans[0].file_system_id,
+            target_create_time=default_get_nas_backup_plans.plans[0].create_time,
             target_path="/",
             options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
         oss_job = alicloud.hbr.RestoreJob("ossJob",
             snapshot_hash=oss_snapshots.snapshots[0].snapshot_hash,
-            vault_id=default_oss_backup_plans.plans[0].vault_id,
+            vault_id=default_get_oss_backup_plans.plans[0].vault_id,
             source_type="OSS",
             restore_type="OSS",
             snapshot_id=oss_snapshots.snapshots[0].snapshot_id,
-            target_bucket=default_oss_backup_plans.plans[0].bucket,
+            target_bucket=default_get_oss_backup_plans.plans[0].bucket,
             target_prefix="",
             options="    {\\"includes\\":[], \\"excludes\\":[]}\\n")
         ecs_job = alicloud.hbr.RestoreJob("ecsJob",
             snapshot_hash=ecs_snapshots.snapshots[0].snapshot_hash,
-            vault_id=default_ecs_backup_plans.plans[0].vault_id,
+            vault_id=default.plans[0].vault_id,
             source_type="ECS_FILE",
             restore_type="ECS_FILE",
             snapshot_id=ecs_snapshots.snapshots[0].snapshot_id,
-            target_instance_id=default_ecs_backup_plans.plans[0].instance_id,
+            target_instance_id=default.plans[0].instance_id,
             target_path="/")
         ```
         <!--End PulumiCodeChooser -->

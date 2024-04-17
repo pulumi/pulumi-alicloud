@@ -55,15 +55,15 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var default_ = new TemplateQuota(&#34;default&#34;, TemplateQuotaArgs.builder()        
- *             .desireValue(1001)
+ *             .quotaActionCode(&#34;q_desktop-count&#34;)
+ *             .productCode(&#34;gws&#34;)
+ *             .noticeType(3)
  *             .dimensions(TemplateQuotaDimensionArgs.builder()
  *                 .key(&#34;regionId&#34;)
  *                 .value(&#34;cn-hangzhou&#34;)
  *                 .build())
+ *             .desireValue(1001)
  *             .envLanguage(&#34;zh&#34;)
- *             .noticeType(3)
- *             .productCode(&#34;gws&#34;)
- *             .quotaActionCode(&#34;q_desktop-count&#34;)
  *             .quotaCategory(&#34;CommonQuota&#34;)
  *             .build());
  * 

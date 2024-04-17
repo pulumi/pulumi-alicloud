@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
- *         final var defaultHoneypotImages = ThreatdetectionFunctions.getHoneypotImages(GetHoneypotImagesArgs.builder()
+ *         final var default = ThreatdetectionFunctions.getHoneypotImages(GetHoneypotImagesArgs.builder()
  *             .nameRegex(&#34;^ruoyi&#34;)
  *             .build());
  * 
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *         var defaultHoneypotPreset = new HoneypotPreset(&#34;defaultHoneypotPreset&#34;, HoneypotPresetArgs.builder()        
  *             .presetName(name)
  *             .nodeId(defaultHoneypotNode.id())
- *             .honeypotImageName(defaultHoneypotImages.applyValue(getHoneypotImagesResult -&gt; getHoneypotImagesResult.images()[0].honeypotImageName()))
+ *             .honeypotImageName(default_.images()[0].honeypotImageName())
  *             .meta(HoneypotPresetMetaArgs.builder()
  *                 .portraitOption(true)
  *                 .burp(&#34;open&#34;)

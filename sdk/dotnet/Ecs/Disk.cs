@@ -28,14 +28,15 @@ namespace Pulumi.AliCloud.Ecs
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new ECS disk.
-    ///     var ecsDisk = new AliCloud.Ecs.Disk("ecsDisk", new()
+    ///     var ecsDisk = new AliCloud.Ecs.Disk("ecs_disk", new()
     ///     {
     ///         AvailabilityZone = "cn-beijing-b",
-    ///         Category = "cloud_efficiency",
+    ///         Name = "New-disk",
     ///         Description = "Hello ecs disk.",
+    ///         Category = "cloud_efficiency",
+    ///         Size = 30,
     ///         Encrypted = true,
     ///         KmsKeyId = "2a6767f0-a16c-4679-a60f-13bf*****",
-    ///         Size = 30,
     ///         Tags = 
     ///         {
     ///             { "Name", "TerraformTest" },

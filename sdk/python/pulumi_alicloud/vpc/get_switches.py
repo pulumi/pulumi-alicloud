@@ -254,16 +254,16 @@ def get_switches(cidr_block: Optional[str] = None,
     name = config.get("name")
     if name is None:
         name = "vswitchDatasourceName"
-    default_zones = alicloud.get_zones()
+    default = alicloud.get_zones()
     vpc = alicloud.vpc.Network("vpc",
         cidr_block="172.16.0.0/16",
         vpc_name=name)
     vswitch = alicloud.vpc.Switch("vswitch",
-        availability_zone=default_zones.zones[0].id,
+        vswitch_name=name,
         cidr_block="172.16.0.0/24",
         vpc_id=vpc.id,
-        vswitch_name=name)
-    default_switches = alicloud.vpc.get_switches_output(name_regex=vswitch.vswitch_name)
+        availability_zone=default.zones[0].id)
+    default_get_switches = alicloud.vpc.get_switches_output(name_regex=vswitch.vswitch_name)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -351,16 +351,16 @@ def get_switches_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
     name = config.get("name")
     if name is None:
         name = "vswitchDatasourceName"
-    default_zones = alicloud.get_zones()
+    default = alicloud.get_zones()
     vpc = alicloud.vpc.Network("vpc",
         cidr_block="172.16.0.0/16",
         vpc_name=name)
     vswitch = alicloud.vpc.Switch("vswitch",
-        availability_zone=default_zones.zones[0].id,
+        vswitch_name=name,
         cidr_block="172.16.0.0/24",
         vpc_id=vpc.id,
-        vswitch_name=name)
-    default_switches = alicloud.vpc.get_switches_output(name_regex=vswitch.vswitch_name)
+        availability_zone=default.zones[0].id)
+    default_get_switches = alicloud.vpc.get_switches_output(name_regex=vswitch.vswitch_name)
     ```
     <!--End PulumiCodeChooser -->
 

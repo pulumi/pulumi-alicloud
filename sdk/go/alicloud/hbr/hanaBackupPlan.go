@@ -36,25 +36,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//			example, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
 //				Status: pulumi.StringRef("OK"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleVault, err := hbr.NewVault(ctx, "exampleVault", &hbr.VaultArgs{
+//			exampleVault, err := hbr.NewVault(ctx, "example", &hbr.VaultArgs{
 //				VaultName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleHanaInstance, err := hbr.NewHanaInstance(ctx, "exampleHanaInstance", &hbr.HanaInstanceArgs{
+//			exampleHanaInstance, err := hbr.NewHanaInstance(ctx, "example", &hbr.HanaInstanceArgs{
 //				AlertSetting:        pulumi.String("INHERITED"),
 //				HanaName:            pulumi.String("terraform-example"),
 //				Host:                pulumi.String("1.1.1.1"),
 //				InstanceNumber:      pulumi.Int(1),
 //				Password:            pulumi.String("YouPassword123"),
-//				ResourceGroupId:     pulumi.String(exampleResourceGroups.Groups[0].Id),
+//				ResourceGroupId:     pulumi.String(example.Groups[0].Id),
 //				Sid:                 pulumi.String("HXE"),
 //				UseSsl:              pulumi.Bool(false),
 //				UserName:            pulumi.String("admin"),
@@ -64,13 +64,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = hbr.NewHanaBackupPlan(ctx, "exampleHanaBackupPlan", &hbr.HanaBackupPlanArgs{
+//			_, err = hbr.NewHanaBackupPlan(ctx, "example", &hbr.HanaBackupPlanArgs{
 //				BackupPrefix:    pulumi.String("DIFF_DATA_BACKUP"),
 //				BackupType:      pulumi.String("COMPLETE"),
 //				ClusterId:       exampleHanaInstance.HanaInstanceId,
 //				DatabaseName:    pulumi.String("SYSTEMDB"),
 //				PlanName:        pulumi.String("terraform-example"),
-//				ResourceGroupId: pulumi.String(exampleResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(example.Groups[0].Id),
 //				Schedule:        pulumi.String("I|1602673264|P1D"),
 //				VaultId:         exampleHanaInstance.VaultId,
 //			})

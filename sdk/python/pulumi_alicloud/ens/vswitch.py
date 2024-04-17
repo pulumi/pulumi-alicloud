@@ -248,17 +248,17 @@ class Vswitch(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_network = alicloud.ens.Network("defaultNetwork",
+        default = alicloud.ens.Network("default",
             network_name=name,
             description=name,
             cidr_block="192.168.2.0/24",
             ens_region_id="cn-chenzhou-telecom_unicom_cmcc")
-        default_vswitch = alicloud.ens.Vswitch("defaultVswitch",
+        default_vswitch = alicloud.ens.Vswitch("default",
             description=name,
             cidr_block="192.168.2.0/24",
             vswitch_name=name,
             ens_region_id="cn-chenzhou-telecom_unicom_cmcc",
-            network_id=default_network.id)
+            network_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -304,17 +304,17 @@ class Vswitch(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_network = alicloud.ens.Network("defaultNetwork",
+        default = alicloud.ens.Network("default",
             network_name=name,
             description=name,
             cidr_block="192.168.2.0/24",
             ens_region_id="cn-chenzhou-telecom_unicom_cmcc")
-        default_vswitch = alicloud.ens.Vswitch("defaultVswitch",
+        default_vswitch = alicloud.ens.Vswitch("default",
             description=name,
             cidr_block="192.168.2.0/24",
             vswitch_name=name,
             ens_region_id="cn-chenzhou-telecom_unicom_cmcc",
-            network_id=default_network.id)
+            network_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 

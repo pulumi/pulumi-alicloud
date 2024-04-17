@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new BandwidthPackage(&#34;example&#34;, BandwidthPackageArgs.builder()        
- *             .autoPay(true)
  *             .bandwidth(20)
+ *             .type(&#34;Basic&#34;)
  *             .bandwidthType(&#34;Basic&#34;)
  *             .duration(1)
+ *             .autoPay(true)
  *             .ratio(30)
- *             .type(&#34;Basic&#34;)
  *             .build());
  * 
  *     }

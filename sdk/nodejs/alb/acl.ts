@@ -22,10 +22,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultAcl = new alicloud.alb.Acl("defaultAcl", {
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultAcl = new alicloud.alb.Acl("default", {
  *     aclName: "tf_example",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

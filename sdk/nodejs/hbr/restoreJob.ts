@@ -22,59 +22,59 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultEcsBackupPlans = alicloud.hbr.getEcsBackupPlans({
+ * const default = alicloud.hbr.getEcsBackupPlans({
  *     nameRegex: "plan-tf-used-dont-delete",
  * });
- * const defaultOssBackupPlans = alicloud.hbr.getOssBackupPlans({
+ * const defaultGetOssBackupPlans = alicloud.hbr.getOssBackupPlans({
  *     nameRegex: "plan-tf-used-dont-delete",
  * });
- * const defaultNasBackupPlans = alicloud.hbr.getNasBackupPlans({
+ * const defaultGetNasBackupPlans = alicloud.hbr.getNasBackupPlans({
  *     nameRegex: "plan-tf-used-dont-delete",
  * });
- * const ecsSnapshots = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getSnapshots({
+ * const ecsSnapshots = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getSnapshots({
  *     sourceType: "ECS_FILE",
- *     vaultId: defaultEcsBackupPlans.plans?.[0]?.vaultId,
- *     instanceId: defaultEcsBackupPlans1.plans?.[0]?.instanceId,
+ *     vaultId: _default.plans?.[0]?.vaultId,
+ *     instanceId: _default1.plans?.[0]?.instanceId,
  * }));
- * const ossSnapshots = Promise.all([defaultOssBackupPlans, defaultOssBackupPlans]).then(([defaultOssBackupPlans, defaultOssBackupPlans1]) => alicloud.hbr.getSnapshots({
+ * const ossSnapshots = Promise.all([defaultGetOssBackupPlans, defaultGetOssBackupPlans]).then(([defaultGetOssBackupPlans, defaultGetOssBackupPlans1]) => alicloud.hbr.getSnapshots({
  *     sourceType: "OSS",
- *     vaultId: defaultOssBackupPlans.plans?.[0]?.vaultId,
- *     bucket: defaultOssBackupPlans1.plans?.[0]?.bucket,
+ *     vaultId: defaultGetOssBackupPlans.plans?.[0]?.vaultId,
+ *     bucket: defaultGetOssBackupPlans1.plans?.[0]?.bucket,
  * }));
- * const nasSnapshots = Promise.all([defaultNasBackupPlans, defaultNasBackupPlans, defaultNasBackupPlans]).then(([defaultNasBackupPlans, defaultNasBackupPlans1, defaultNasBackupPlans2]) => alicloud.hbr.getSnapshots({
+ * const nasSnapshots = Promise.all([defaultGetNasBackupPlans, defaultGetNasBackupPlans, defaultGetNasBackupPlans]).then(([defaultGetNasBackupPlans, defaultGetNasBackupPlans1, defaultGetNasBackupPlans2]) => alicloud.hbr.getSnapshots({
  *     sourceType: "NAS",
- *     vaultId: defaultNasBackupPlans.plans?.[0]?.vaultId,
- *     fileSystemId: defaultNasBackupPlans1.plans?.[0]?.fileSystemId,
- *     createTime: defaultNasBackupPlans2.plans?.[0]?.createTime,
+ *     vaultId: defaultGetNasBackupPlans.plans?.[0]?.vaultId,
+ *     fileSystemId: defaultGetNasBackupPlans1.plans?.[0]?.fileSystemId,
+ *     createTime: defaultGetNasBackupPlans2.plans?.[0]?.createTime,
  * }));
  * const nasJob = new alicloud.hbr.RestoreJob("nasJob", {
  *     snapshotHash: nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots?.[0]?.snapshotHash),
- *     vaultId: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans?.[0]?.vaultId),
+ *     vaultId: defaultGetNasBackupPlans.then(defaultGetNasBackupPlans => defaultGetNasBackupPlans.plans?.[0]?.vaultId),
  *     sourceType: "NAS",
  *     restoreType: "NAS",
  *     snapshotId: nasSnapshots.then(nasSnapshots => nasSnapshots.snapshots?.[0]?.snapshotId),
- *     targetFileSystemId: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans?.[0]?.fileSystemId),
- *     targetCreateTime: defaultNasBackupPlans.then(defaultNasBackupPlans => defaultNasBackupPlans.plans?.[0]?.createTime),
+ *     targetFileSystemId: defaultGetNasBackupPlans.then(defaultGetNasBackupPlans => defaultGetNasBackupPlans.plans?.[0]?.fileSystemId),
+ *     targetCreateTime: defaultGetNasBackupPlans.then(defaultGetNasBackupPlans => defaultGetNasBackupPlans.plans?.[0]?.createTime),
  *     targetPath: "/",
  *     options: "    {\"includes\":[], \"excludes\":[]}\n",
  * });
  * const ossJob = new alicloud.hbr.RestoreJob("ossJob", {
  *     snapshotHash: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots?.[0]?.snapshotHash),
- *     vaultId: defaultOssBackupPlans.then(defaultOssBackupPlans => defaultOssBackupPlans.plans?.[0]?.vaultId),
+ *     vaultId: defaultGetOssBackupPlans.then(defaultGetOssBackupPlans => defaultGetOssBackupPlans.plans?.[0]?.vaultId),
  *     sourceType: "OSS",
  *     restoreType: "OSS",
  *     snapshotId: ossSnapshots.then(ossSnapshots => ossSnapshots.snapshots?.[0]?.snapshotId),
- *     targetBucket: defaultOssBackupPlans.then(defaultOssBackupPlans => defaultOssBackupPlans.plans?.[0]?.bucket),
+ *     targetBucket: defaultGetOssBackupPlans.then(defaultGetOssBackupPlans => defaultGetOssBackupPlans.plans?.[0]?.bucket),
  *     targetPrefix: "",
  *     options: "    {\"includes\":[], \"excludes\":[]}\n",
  * });
  * const ecsJob = new alicloud.hbr.RestoreJob("ecsJob", {
  *     snapshotHash: ecsSnapshots.then(ecsSnapshots => ecsSnapshots.snapshots?.[0]?.snapshotHash),
- *     vaultId: defaultEcsBackupPlans.then(defaultEcsBackupPlans => defaultEcsBackupPlans.plans?.[0]?.vaultId),
+ *     vaultId: _default.then(_default => _default.plans?.[0]?.vaultId),
  *     sourceType: "ECS_FILE",
  *     restoreType: "ECS_FILE",
  *     snapshotId: ecsSnapshots.then(ecsSnapshots => ecsSnapshots.snapshots?.[0]?.snapshotId),
- *     targetInstanceId: defaultEcsBackupPlans.then(defaultEcsBackupPlans => defaultEcsBackupPlans.plans?.[0]?.instanceId),
+ *     targetInstanceId: _default.then(_default => _default.plans?.[0]?.instanceId),
  *     targetPath: "/",
  * });
  * ```

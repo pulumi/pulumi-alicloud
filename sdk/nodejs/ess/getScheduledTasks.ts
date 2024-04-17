@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ds = alicloud.ess.getScheduledTasks({
- *     nameRegex: "scheduled_task_name",
  *     scheduledTaskId: "scheduled_task_id",
+ *     nameRegex: "scheduled_task_name",
  * });
  * export const firstScheduledTask = ds.then(ds => ds.tasks?.[0]?.id);
  * ```
@@ -106,8 +106,8 @@ export interface GetScheduledTasksResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ds = alicloud.ess.getScheduledTasks({
- *     nameRegex: "scheduled_task_name",
  *     scheduledTaskId: "scheduled_task_id",
+ *     nameRegex: "scheduled_task_name",
  * });
  * export const firstScheduledTask = ds.then(ds => ds.tasks?.[0]?.id);
  * ```

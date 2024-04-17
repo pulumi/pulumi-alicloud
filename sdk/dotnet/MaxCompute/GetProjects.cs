@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.MaxCompute
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "tf_testaccmp";
-        ///     var defaultProject = new AliCloud.MaxCompute.Project("defaultProject", new()
+        ///     var defaultProject = new AliCloud.MaxCompute.Project("default", new()
         ///     {
         ///         DefaultQuota = "默认后付费Quota",
         ///         ProjectName = name,
@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.MaxCompute
         ///         ProductType = "PAYASYOUGO",
         ///     });
         /// 
-        ///     var defaultProjects = AliCloud.MaxCompute.GetProjects.Invoke(new()
+        ///     var @default = AliCloud.MaxCompute.GetProjects.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.MaxCompute
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudMaxcomputeProjectExampleId"] = defaultProjects.Apply(getProjectsResult =&gt; getProjectsResult.Projects[0]?.Id),
+        ///         ["alicloudMaxcomputeProjectExampleId"] = @default.Apply(@default =&gt; @default.Apply(getProjectsResult =&gt; getProjectsResult.Projects[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.MaxCompute
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "tf_testaccmp";
-        ///     var defaultProject = new AliCloud.MaxCompute.Project("defaultProject", new()
+        ///     var defaultProject = new AliCloud.MaxCompute.Project("default", new()
         ///     {
         ///         DefaultQuota = "默认后付费Quota",
         ///         ProjectName = name,
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.MaxCompute
         ///         ProductType = "PAYASYOUGO",
         ///     });
         /// 
-        ///     var defaultProjects = AliCloud.MaxCompute.GetProjects.Invoke(new()
+        ///     var @default = AliCloud.MaxCompute.GetProjects.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.MaxCompute
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudMaxcomputeProjectExampleId"] = defaultProjects.Apply(getProjectsResult =&gt; getProjectsResult.Projects[0]?.Id),
+        ///         ["alicloudMaxcomputeProjectExampleId"] = @default.Apply(@default =&gt; @default.Apply(getProjectsResult =&gt; getProjectsResult.Projects[0]?.Id)),
         ///     };
         /// });
         /// ```

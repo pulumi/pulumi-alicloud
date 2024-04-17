@@ -36,13 +36,13 @@ namespace Pulumi.AliCloud.PolarDB
         ///         Category = "Normal",
         ///     });
         /// 
-        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
         ///         VpcName = "terraform-example",
         ///         CidrBlock = "172.16.0.0/16",
         ///     });
         /// 
-        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
         ///     {
         ///         VpcId = defaultNetwork.Id,
         ///         CidrBlock = "172.16.0.0/24",
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.PolarDB
         ///         Status = "Running",
         ///     });
         /// 
-        ///     var accountAccount = new AliCloud.PolarDB.Account("accountAccount", new()
+        ///     var account = new AliCloud.PolarDB.Account("account", new()
         ///     {
         ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
         ///         AccountName = "tfnormal_01",
@@ -75,15 +75,15 @@ namespace Pulumi.AliCloud.PolarDB
         ///         AccountType = "Normal",
         ///     });
         /// 
-        ///     var defaultAccounts = AliCloud.PolarDB.GetAccounts.Invoke(new()
+        ///     var @default = AliCloud.PolarDB.GetAccounts.Invoke(new()
         ///     {
         ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
-        ///         NameRegex = accountAccount.AccountName,
+        ///         NameRegex = account.AccountName,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["account"] = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountName),
+        ///         ["account"] = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountName)),
         ///     };
         /// });
         /// ```
@@ -117,13 +117,13 @@ namespace Pulumi.AliCloud.PolarDB
         ///         Category = "Normal",
         ///     });
         /// 
-        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
         ///         VpcName = "terraform-example",
         ///         CidrBlock = "172.16.0.0/16",
         ///     });
         /// 
-        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
         ///     {
         ///         VpcId = defaultNetwork.Id,
         ///         CidrBlock = "172.16.0.0/24",
@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.PolarDB
         ///         Status = "Running",
         ///     });
         /// 
-        ///     var accountAccount = new AliCloud.PolarDB.Account("accountAccount", new()
+        ///     var account = new AliCloud.PolarDB.Account("account", new()
         ///     {
         ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
         ///         AccountName = "tfnormal_01",
@@ -156,15 +156,15 @@ namespace Pulumi.AliCloud.PolarDB
         ///         AccountType = "Normal",
         ///     });
         /// 
-        ///     var defaultAccounts = AliCloud.PolarDB.GetAccounts.Invoke(new()
+        ///     var @default = AliCloud.PolarDB.GetAccounts.Invoke(new()
         ///     {
         ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
-        ///         NameRegex = accountAccount.AccountName,
+        ///         NameRegex = account.AccountName,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["account"] = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountName),
+        ///         ["account"] = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountName)),
         ///     };
         /// });
         /// ```

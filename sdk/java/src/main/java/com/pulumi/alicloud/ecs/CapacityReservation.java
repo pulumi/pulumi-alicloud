@@ -58,16 +58,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .instanceTypeFamily(&#34;ecs.g5&#34;)
  *             .build());
  * 
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;Instance&#34;)
- *             .availableInstanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.ids()[0]))
+ *             .availableInstanceType(default_.ids()[0])
  *             .build());
  * 
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .status(&#34;OK&#34;)
  *             .build());
  * 
@@ -76,12 +76,12 @@ import javax.annotation.Nullable;
  *             .platform(&#34;linux&#34;)
  *             .capacityReservationName(&#34;terraform-example&#34;)
  *             .endTimeType(&#34;Unlimited&#34;)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
  *             .instanceAmount(1)
- *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.ids()[0]))
+ *             .instanceType(default_.ids()[0])
  *             .matchCriteria(&#34;Open&#34;)
  *             .tags(Map.of(&#34;Created&#34;, &#34;terraform-example&#34;))
- *             .zoneIds(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneIds(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *     }

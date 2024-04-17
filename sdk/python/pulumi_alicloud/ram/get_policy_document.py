@@ -196,6 +196,7 @@ def get_policy_document(output_file: Optional[str] = None,
         )],
     )])
     role = alicloud.ram.Role("role",
+        name="tf-example-role-ram",
         document=ram_example.document,
         force=True)
     ```
@@ -219,6 +220,7 @@ def get_policy_document(output_file: Optional[str] = None,
         )],
     )])
     role = alicloud.ram.Role("role",
+        name="tf-example-role-service",
         document=service_example.document,
         force=True)
     ```
@@ -247,6 +249,7 @@ def get_policy_document(output_file: Optional[str] = None,
         )],
     )])
     role = alicloud.ram.Role("role",
+        name="tf-example-role-federated",
         document=federated_example.document,
         force=True)
     ```
@@ -386,6 +389,7 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
         )],
     )])
     role = alicloud.ram.Role("role",
+        name="tf-example-role-ram",
         document=ram_example.document,
         force=True)
     ```
@@ -409,6 +413,7 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
         )],
     )])
     role = alicloud.ram.Role("role",
+        name="tf-example-role-service",
         document=service_example.document,
         force=True)
     ```
@@ -437,6 +442,7 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
         )],
     )])
     role = alicloud.ram.Role("role",
+        name="tf-example-role-federated",
         document=federated_example.document,
         force=True)
     ```

@@ -314,6 +314,7 @@ class DdosBgpInstance(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         instance = alicloud.ddos.DdosBgpInstance("instance",
+            name=name,
             base_bandwidth=20,
             bandwidth=-1,
             ip_count=100,
@@ -369,6 +370,7 @@ class DdosBgpInstance(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         instance = alicloud.ddos.DdosBgpInstance("instance",
+            name=name,
             base_bandwidth=20,
             bandwidth=-1,
             ip_count=100,

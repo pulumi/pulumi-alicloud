@@ -132,6 +132,7 @@ def get_zones(engine: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     zones_ids = alicloud.kvstore.get_zones(instance_charge_type="PostPaid")
     ```
     <!--End PulumiCodeChooser -->
@@ -182,6 +183,7 @@ def get_zones_output(engine: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     zones_ids = alicloud.kvstore.get_zones(instance_charge_type="PostPaid")
     ```
     <!--End PulumiCodeChooser -->

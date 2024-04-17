@@ -29,21 +29,21 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZones = AliCloud.Nas.GetZones.Invoke(new()
+    ///     var example = AliCloud.Nas.GetZones.Invoke(new()
     ///     {
     ///         FileSystemType = "standard",
     ///     });
     /// 
-    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new()
+    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("example", new()
     ///     {
     ///         ProtocolType = "NFS",
     ///         StorageType = "Performance",
     ///         Description = "terraform-example",
     ///         EncryptType = 1,
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
     ///     });
     /// 
-    ///     var exampleRecycleBin = new AliCloud.Nas.RecycleBin("exampleRecycleBin", new()
+    ///     var exampleRecycleBin = new AliCloud.Nas.RecycleBin("example", new()
     ///     {
     ///         FileSystemId = exampleFileSystem.Id,
     ///         ReservedDays = 3,

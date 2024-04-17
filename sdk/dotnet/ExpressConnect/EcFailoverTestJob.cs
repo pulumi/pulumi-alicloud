@@ -31,20 +31,20 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultPhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     var @default = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
     ///     {
     ///         NameRegex = "preserved-NODELETING",
     ///     });
     /// 
-    ///     var defaultEcFailoverTestJob = new AliCloud.ExpressConnect.EcFailoverTestJob("defaultEcFailoverTestJob", new()
+    ///     var defaultEcFailoverTestJob = new AliCloud.ExpressConnect.EcFailoverTestJob("default", new()
     ///     {
     ///         Description = name,
     ///         JobType = "StartNow",
     ///         ResourceIds = new[]
     ///         {
-    ///             defaultPhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Ids[0]),
-    ///             defaultPhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Ids[1]),
-    ///             defaultPhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Ids[2]),
+    ///             @default.Apply(@default =&gt; @default.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Ids[0])),
+    ///             @default.Apply(@default =&gt; @default.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Ids[1])),
+    ///             @default.Apply(@default =&gt; @default.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Ids[2])),
     ///         },
     ///         JobDuration = 1,
     ///         ResourceType = "PHYSICALCONNECTION",

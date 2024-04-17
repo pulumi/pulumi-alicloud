@@ -42,17 +42,17 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultAccounts, err := resourcemanager.GetAccounts(ctx, &resourcemanager.GetAccountsArgs{
+//			_default, err := resourcemanager.GetAccounts(ctx, &resourcemanager.GetAccountsArgs{
 //				Status: pulumi.StringRef("CreateSuccess"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultAggregator, err := cfg.NewAggregator(ctx, "defaultAggregator", &cfg.AggregatorArgs{
+//			defaultAggregator, err := cfg.NewAggregator(ctx, "default", &cfg.AggregatorArgs{
 //				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
 //					&cfg.AggregatorAggregatorAccountArgs{
-//						AccountId:   pulumi.String(defaultAccounts.Accounts[0].AccountId),
-//						AccountName: pulumi.String(defaultAccounts.Accounts[0].DisplayName),
+//						AccountId:   pulumi.String(_default.Accounts[0].AccountId),
+//						AccountName: pulumi.String(_default.Accounts[0].DisplayName),
 //						AccountType: pulumi.String("ResourceDirectory"),
 //					},
 //				},
@@ -63,7 +63,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultAggregateConfigRule, err := cfg.NewAggregateConfigRule(ctx, "defaultAggregateConfigRule", &cfg.AggregateConfigRuleArgs{
+//			defaultAggregateConfigRule, err := cfg.NewAggregateConfigRule(ctx, "default", &cfg.AggregateConfigRuleArgs{
 //				AggregateConfigRuleName: pulumi.String("contains-tag"),
 //				AggregatorId:            defaultAggregator.ID(),
 //				ConfigRuleTriggerTypes:  pulumi.String("ConfigurationItemChangeNotification"),
@@ -82,7 +82,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cfg.NewAggregateCompliancePack(ctx, "defaultAggregateCompliancePack", &cfg.AggregateCompliancePackArgs{
+//			_, err = cfg.NewAggregateCompliancePack(ctx, "default", &cfg.AggregateCompliancePackArgs{
 //				AggregateCompliancePackName: pulumi.String(name),
 //				AggregatorId:                defaultAggregator.ID(),
 //				Description:                 pulumi.String(name),

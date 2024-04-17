@@ -24,25 +24,25 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
+ * const defaultAccelerator = new alicloud.ga.Accelerator("default", {
  *     duration: 1,
  *     autoUseCoupon: true,
  *     spec: "1",
  * });
- * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("default", {
  *     bandwidth: 100,
  *     type: "Basic",
  *     bandwidthType: "Basic",
@@ -50,11 +50,11 @@ import * as utilities from "../utilities";
  *     billingType: "PayBy95",
  *     ratio: 30,
  * });
- * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("default", {
  *     acceleratorId: defaultAccelerator.id,
  *     bandwidthPackageId: defaultBandwidthPackage.id,
  * });
- * const defaultListener = new alicloud.ga.Listener("defaultListener", {
+ * const defaultListener = new alicloud.ga.Listener("default", {
  *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
  *     listenerType: "CustomRouting",
  *     portRanges: [{
@@ -62,26 +62,26 @@ import * as utilities from "../utilities";
  *         toPort: 16000,
  *     }],
  * });
- * const defaultCustomRoutingEndpointGroup = new alicloud.ga.CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup", {
+ * const defaultCustomRoutingEndpointGroup = new alicloud.ga.CustomRoutingEndpointGroup("default", {
  *     acceleratorId: defaultListener.acceleratorId,
  *     listenerId: defaultListener.id,
  *     endpointGroupRegion: region,
  *     customRoutingEndpointGroupName: "terraform-example",
  *     description: "terraform-example",
  * });
- * const defaultCustomRoutingEndpoint = new alicloud.ga.CustomRoutingEndpoint("defaultCustomRoutingEndpoint", {
+ * const defaultCustomRoutingEndpoint = new alicloud.ga.CustomRoutingEndpoint("default", {
  *     endpointGroupId: defaultCustomRoutingEndpointGroup.id,
  *     endpoint: defaultSwitch.id,
  *     type: "PrivateSubNet",
  *     trafficToEndpointPolicy: "AllowCustom",
  * });
- * const defaultCustomRoutingEndpointGroupDestination = new alicloud.ga.CustomRoutingEndpointGroupDestination("defaultCustomRoutingEndpointGroupDestination", {
+ * const defaultCustomRoutingEndpointGroupDestination = new alicloud.ga.CustomRoutingEndpointGroupDestination("default", {
  *     endpointGroupId: defaultCustomRoutingEndpointGroup.id,
  *     protocols: ["TCP"],
  *     fromPort: 1,
  *     toPort: 10,
  * });
- * const defaultCustomRoutingEndpointTrafficPolicy = new alicloud.ga.CustomRoutingEndpointTrafficPolicy("defaultCustomRoutingEndpointTrafficPolicy", {
+ * const defaultCustomRoutingEndpointTrafficPolicy = new alicloud.ga.CustomRoutingEndpointTrafficPolicy("default", {
  *     endpointId: defaultCustomRoutingEndpoint.customRoutingEndpointId,
  *     address: "172.17.3.0",
  *     portRanges: [{

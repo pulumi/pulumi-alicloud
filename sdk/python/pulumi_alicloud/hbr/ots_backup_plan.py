@@ -457,20 +457,21 @@ class OtsBackupPlan(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_vault = alicloud.hbr.Vault("defaultVault",
-            vault_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+        default_vault = alicloud.hbr.Vault("default",
+            vault_name=f"terraform-example-{default_integer['result']}",
             vault_type="OTS_BACKUP")
-        default_instance = alicloud.ots.Instance("defaultInstance",
+        default_instance = alicloud.ots.Instance("default",
+            name=f"Example-{default_integer['result']}",
             description="terraform-example",
             accessed_by="Any",
             tags={
                 "Created": "TF",
                 "For": "example",
             })
-        default_table = alicloud.ots.Table("defaultTable",
+        default_table = alicloud.ots.Table("default",
             instance_name=default_instance.name,
             table_name="terraform_example",
             primary_keys=[alicloud.ots.TablePrimaryKeyArgs(
@@ -480,7 +481,8 @@ class OtsBackupPlan(pulumi.CustomResource):
             time_to_live=-1,
             max_version=1,
             deviation_cell_version_in_sec="1")
-        default_role = alicloud.ram.Role("defaultRole",
+        default_role = alicloud.ram.Role("default",
+            name="hbrexamplerole",
             document=\"\"\"		{
         			"Statement": [
         			{
@@ -497,15 +499,15 @@ class OtsBackupPlan(pulumi.CustomResource):
         		}
         \"\"\",
             force=True)
-        default_account = alicloud.get_account()
+        default = alicloud.get_account()
         example = alicloud.hbr.OtsBackupPlan("example",
-            ots_backup_plan_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            ots_backup_plan_name=f"terraform-example-{default_integer['result']}",
             vault_id=default_vault.id,
             backup_type="COMPLETE",
             retention="1",
             instance_name=default_instance.name,
             cross_account_type="SELF_ACCOUNT",
-            cross_account_user_id=default_account.id,
+            cross_account_user_id=default.id,
             cross_account_role_name=default_role.id,
             ots_details=[alicloud.hbr.OtsBackupPlanOtsDetailArgs(
                 table_names=[default_table.table_name],
@@ -566,20 +568,21 @@ class OtsBackupPlan(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_vault = alicloud.hbr.Vault("defaultVault",
-            vault_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+        default_vault = alicloud.hbr.Vault("default",
+            vault_name=f"terraform-example-{default_integer['result']}",
             vault_type="OTS_BACKUP")
-        default_instance = alicloud.ots.Instance("defaultInstance",
+        default_instance = alicloud.ots.Instance("default",
+            name=f"Example-{default_integer['result']}",
             description="terraform-example",
             accessed_by="Any",
             tags={
                 "Created": "TF",
                 "For": "example",
             })
-        default_table = alicloud.ots.Table("defaultTable",
+        default_table = alicloud.ots.Table("default",
             instance_name=default_instance.name,
             table_name="terraform_example",
             primary_keys=[alicloud.ots.TablePrimaryKeyArgs(
@@ -589,7 +592,8 @@ class OtsBackupPlan(pulumi.CustomResource):
             time_to_live=-1,
             max_version=1,
             deviation_cell_version_in_sec="1")
-        default_role = alicloud.ram.Role("defaultRole",
+        default_role = alicloud.ram.Role("default",
+            name="hbrexamplerole",
             document=\"\"\"		{
         			"Statement": [
         			{
@@ -606,15 +610,15 @@ class OtsBackupPlan(pulumi.CustomResource):
         		}
         \"\"\",
             force=True)
-        default_account = alicloud.get_account()
+        default = alicloud.get_account()
         example = alicloud.hbr.OtsBackupPlan("example",
-            ots_backup_plan_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            ots_backup_plan_name=f"terraform-example-{default_integer['result']}",
             vault_id=default_vault.id,
             backup_type="COMPLETE",
             retention="1",
             instance_name=default_instance.name,
             cross_account_type="SELF_ACCOUNT",
-            cross_account_user_id=default_account.id,
+            cross_account_user_id=default.id,
             cross_account_role_name=default_role.id,
             ots_details=[alicloud.hbr.OtsBackupPlanOtsDetailArgs(
                 table_names=[default_table.table_name],

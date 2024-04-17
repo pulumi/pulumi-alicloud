@@ -34,16 +34,17 @@ namespace Pulumi.AliCloud.CloudConnect
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var sagId = config.Get("sagId") ?? "sag-9bifkf***";
-    ///     var defaultNetwork = new AliCloud.CloudConnect.Network("defaultNetwork", new()
+    ///     var @default = new AliCloud.CloudConnect.Network("default", new()
     ///     {
+    ///         Name = name,
     ///         Description = name,
     ///         CidrBlock = "192.168.0.0/24",
     ///         IsDefault = true,
     ///     });
     /// 
-    ///     var defaultNetworkAttachment = new AliCloud.CloudConnect.NetworkAttachment("defaultNetworkAttachment", new()
+    ///     var defaultNetworkAttachment = new AliCloud.CloudConnect.NetworkAttachment("default", new()
     ///     {
-    ///         CcnId = defaultNetwork.Id,
+    ///         CcnId = @default.Id,
     ///         SagId = sagId,
     ///     });
     /// 

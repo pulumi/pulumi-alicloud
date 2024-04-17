@@ -145,18 +145,20 @@ def get_users(group_name: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_group = alicloud.ram.Group("defaultGroup",
+    default = alicloud.ram.Group("default",
+        name="group1",
         comments="group comments",
         force=True)
-    default_user = alicloud.ram.User("defaultUser",
+    default_user = alicloud.ram.User("default",
+        name="user-example",
         display_name="displayname",
         mobile="86-18888888888",
         email="hello.uuu@aaa.com",
         comments="yoyoyo")
-    default_group_membership = alicloud.ram.GroupMembership("defaultGroupMembership",
-        group_name=default_group.name,
+    default_group_membership = alicloud.ram.GroupMembership("default",
+        group_name=default.name,
         user_names=[default_user.name])
-    default_policy = alicloud.ram.Policy("defaultPolicy",
+    default_policy = alicloud.ram.Policy("default",
         policy_name="ram-policy-example",
         policy_document=\"\"\"			{
     				"Statement": [
@@ -177,12 +179,12 @@ def get_users(group_name: Optional[str] = None,
     \"\"\",
         description="this is a policy example",
         force=True)
-    default_user_policy_attachment = alicloud.ram.UserPolicyAttachment("defaultUserPolicyAttachment",
+    default_user_policy_attachment = alicloud.ram.UserPolicyAttachment("default",
         policy_name=default_policy.policy_name,
         user_name=default_user.name,
         policy_type=default_policy.type)
     users_ds = alicloud.ram.get_users_output(output_file="users.txt",
-        group_name=default_group.name,
+        group_name=default.name,
         policy_name=default_policy.policy_name,
         policy_type="Custom",
         name_regex=default_user.name)
@@ -240,18 +242,20 @@ def get_users_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_group = alicloud.ram.Group("defaultGroup",
+    default = alicloud.ram.Group("default",
+        name="group1",
         comments="group comments",
         force=True)
-    default_user = alicloud.ram.User("defaultUser",
+    default_user = alicloud.ram.User("default",
+        name="user-example",
         display_name="displayname",
         mobile="86-18888888888",
         email="hello.uuu@aaa.com",
         comments="yoyoyo")
-    default_group_membership = alicloud.ram.GroupMembership("defaultGroupMembership",
-        group_name=default_group.name,
+    default_group_membership = alicloud.ram.GroupMembership("default",
+        group_name=default.name,
         user_names=[default_user.name])
-    default_policy = alicloud.ram.Policy("defaultPolicy",
+    default_policy = alicloud.ram.Policy("default",
         policy_name="ram-policy-example",
         policy_document=\"\"\"			{
     				"Statement": [
@@ -272,12 +276,12 @@ def get_users_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
     \"\"\",
         description="this is a policy example",
         force=True)
-    default_user_policy_attachment = alicloud.ram.UserPolicyAttachment("defaultUserPolicyAttachment",
+    default_user_policy_attachment = alicloud.ram.UserPolicyAttachment("default",
         policy_name=default_policy.policy_name,
         user_name=default_user.name,
         policy_type=default_policy.type)
     users_ds = alicloud.ram.get_users_output(output_file="users.txt",
-        group_name=default_group.name,
+        group_name=default.name,
         policy_name=default_policy.policy_name,
         policy_type="Custom",
         name_regex=default_user.name)

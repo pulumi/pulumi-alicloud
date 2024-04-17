@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["fileCrc64Checksum"] = data.Alicloud_file_crc64_checksum.Defualt.Checksum,
+        ///         ["fileCrc64Checksum"] = defualt.Checksum,
         ///     };
         /// });
         /// ```
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["fileCrc64Checksum"] = data.Alicloud_file_crc64_checksum.Defualt.Checksum,
+        ///         ["fileCrc64Checksum"] = defualt.Checksum,
         ///     };
         /// });
         /// ```

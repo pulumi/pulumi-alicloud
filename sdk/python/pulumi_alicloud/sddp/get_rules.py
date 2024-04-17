@@ -208,14 +208,14 @@ def get_rules(category: Optional[int] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_rule = alicloud.sddp.Rule("defaultRule",
+    default_rule = alicloud.sddp.Rule("default",
         category=0,
         content="content",
         rule_name="rule_name",
         risk_level_id="4",
         product_code="ODPS")
-    default_rules = alicloud.sddp.get_rules_output(ids=[default_rule.id])
-    pulumi.export("sddpRuleId", default_rules.id)
+    default = alicloud.sddp.get_rules_output(ids=[default_rule.id])
+    pulumi.export("sddpRuleId", default.id)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -298,14 +298,14 @@ def get_rules_output(category: Optional[pulumi.Input[Optional[int]]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_rule = alicloud.sddp.Rule("defaultRule",
+    default_rule = alicloud.sddp.Rule("default",
         category=0,
         content="content",
         rule_name="rule_name",
         risk_level_id="4",
         product_code="ODPS")
-    default_rules = alicloud.sddp.get_rules_output(ids=[default_rule.id])
-    pulumi.export("sddpRuleId", default_rules.id)
+    default = alicloud.sddp.get_rules_output(ids=[default_rule.id])
+    pulumi.export("sddpRuleId", default.id)
     ```
     <!--End PulumiCodeChooser -->
 

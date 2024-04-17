@@ -19,6 +19,102 @@ import (
 //
 // > **NOTE:** Available since v1.158.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecp"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := ecp.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetInstanceTypes, err := ecp.GetInstanceTypes(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			countSize := len(_default.Zones)
+//			zoneId := _default.Zones[countSize-1].ZoneId
+//			instanceTypeCountSize := len(defaultGetInstanceTypes.InstanceTypes)
+//			_ := defaultGetInstanceTypes.InstanceTypes[instanceTypeCountSize-1].InstanceType
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(zoneId),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
+//				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultKeyPair, err := ecp.NewKeyPair(ctx, "default", &ecp.KeyPairArgs{
+//				KeyPairName:   pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				PublicKeyBody: pulumi.String("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecp.NewInstance(ctx, "default", &ecp.InstanceArgs{
+//				InstanceName:    pulumi.String(name),
+//				Description:     pulumi.String(name),
+//				KeyPairName:     defaultKeyPair.KeyPairName,
+//				SecurityGroupId: group.ID(),
+//				VswitchId:       pulumi.String(defaultGetSwitches.Ids[0]),
+//				ImageId:         pulumi.String("android_9_0_0_release_2851157_20211201.vhd"),
+//				InstanceType:    pulumi.String(defaultGetInstanceTypes.InstanceTypes[1].InstanceType),
+//				VncPassword:     pulumi.String("Ecp123"),
+//				PaymentType:     pulumi.String("PayAsYouGo"),
+//				Force:           pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.

@@ -52,14 +52,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
  *             .cenInstanceName(&#34;tf_example&#34;)
  *             .description(&#34;an example for cen&#34;)
  *             .build());
  * 
  *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
  *             .transitRouterName(&#34;tf_example&#34;)
- *             .cenId(exampleInstance.id())
+ *             .cenId(example.id())
  *             .build());
  * 
  *         var exampleTransitRouterCidr = new TransitRouterCidr(&#34;exampleTransitRouterCidr&#34;, TransitRouterCidrArgs.builder()        

@@ -30,11 +30,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			alicloudKmsKeyVersionsDs, err := kms.GetKeyVersions(ctx, &kms.GetKeyVersionsArgs{
+//				KeyId: "08438c-b4d5-4d05-928c-07b7xxxx",
 //				Ids: []string{
 //					"d89e8a53-b708-41aa-8c67-6873axxx",
 //				},
-//				KeyId: "08438c-b4d5-4d05-928c-07b7xxxx",
 //			}, nil)
 //			if err != nil {
 //				return err

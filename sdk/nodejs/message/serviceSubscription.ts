@@ -22,13 +22,13 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultServiceTopic = new alicloud.message.ServiceTopic("defaultServiceTopic", {
+ * const _default = new alicloud.message.ServiceTopic("default", {
  *     topicName: name,
  *     maxMessageSize: 12357,
  *     loggingEnabled: true,
  * });
- * const defaultServiceSubscription = new alicloud.message.ServiceSubscription("defaultServiceSubscription", {
- *     topicName: defaultServiceTopic.topicName,
+ * const defaultServiceSubscription = new alicloud.message.ServiceSubscription("default", {
+ *     topicName: _default.topicName,
  *     subscriptionName: name,
  *     endpoint: "http://example.com",
  *     pushType: "http",

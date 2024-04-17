@@ -155,13 +155,13 @@ def get_domains(backend: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_instances = alicloud.wafv3.get_instances()
-    ids = alicloud.wafv3.get_domains(instance_id=default_instances.ids[0],
+    default = alicloud.wafv3.get_instances()
+    ids = alicloud.wafv3.get_domains(instance_id=default.ids[0],
         ids=["example_id"])
     pulumi.export("wafv3DomainsId1", ids.domains[0].id)
-    default_domains = alicloud.wafv3.get_domains(instance_id=default_instances.ids[0],
+    default_get_domains = alicloud.wafv3.get_domains(instance_id=default.ids[0],
         domain="zctest12.wafqax.top")
-    pulumi.export("wafv3DomainsId2", default_domains.domains[0].id)
+    pulumi.export("wafv3DomainsId2", default_get_domains.domains[0].id)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -222,13 +222,13 @@ def get_domains_output(backend: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_instances = alicloud.wafv3.get_instances()
-    ids = alicloud.wafv3.get_domains(instance_id=default_instances.ids[0],
+    default = alicloud.wafv3.get_instances()
+    ids = alicloud.wafv3.get_domains(instance_id=default.ids[0],
         ids=["example_id"])
     pulumi.export("wafv3DomainsId1", ids.domains[0].id)
-    default_domains = alicloud.wafv3.get_domains(instance_id=default_instances.ids[0],
+    default_get_domains = alicloud.wafv3.get_domains(instance_id=default.ids[0],
         domain="zctest12.wafqax.top")
-    pulumi.export("wafv3DomainsId2", default_domains.domains[0].id)
+    pulumi.export("wafv3DomainsId2", default_get_domains.domains[0].id)
     ```
     <!--End PulumiCodeChooser -->
 

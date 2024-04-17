@@ -22,18 +22,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const fooZones = alicloud.getZones({
+ * const foo = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
+ * const fooNetwork = new alicloud.vpc.Network("foo", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.16.0.0/12",
  * });
- * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ * const fooSwitch = new alicloud.vpc.Switch("foo", {
  *     vswitchName: "terraform-example",
  *     cidrBlock: "172.16.0.0/21",
  *     vpcId: fooNetwork.id,
- *     zoneId: fooZones.then(fooZones => fooZones.zones?.[0]?.id),
+ *     zoneId: foo.then(foo => foo.zones?.[0]?.id),
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.16.0.0/12",
  * });
- * const cidrBlocks = new alicloud.vpc.Ipv4CidrBlock("cidrBlocks", {
+ * const cidrBlocks = new alicloud.vpc.Ipv4CidrBlock("cidr_blocks", {
  *     vpcId: vpc.id,
  *     secondaryCidrBlock: "192.163.0.0/16",
  * });
@@ -76,21 +76,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const fooZones = alicloud.getZones({
+ * const foo = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
+ * const fooNetwork = new alicloud.vpc.Network("foo", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.16.0.0/12",
  * });
- * const fooIpv4CidrBlock = new alicloud.vpc.Ipv4CidrBlock("fooIpv4CidrBlock", {
+ * const fooIpv4CidrBlock = new alicloud.vpc.Ipv4CidrBlock("foo", {
  *     vpcId: fooNetwork.id,
  *     secondaryCidrBlock: "192.163.0.0/16",
  * });
- * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ * const fooSwitch = new alicloud.vpc.Switch("foo", {
  *     vpcId: fooIpv4CidrBlock.vpcId,
  *     cidrBlock: "192.163.0.0/24",
- *     zoneId: fooZones.then(fooZones => fooZones.zones?.[0]?.id),
+ *     zoneId: foo.then(foo => foo.zones?.[0]?.id),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

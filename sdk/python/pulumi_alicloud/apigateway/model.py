@@ -178,9 +178,11 @@ class Model(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_group = alicloud.apigateway.Group("defaultGroup", description="example_value")
-        default_model = alicloud.apigateway.Model("defaultModel",
-            group_id=default_group.id,
+        default = alicloud.apigateway.Group("default",
+            name="example_value",
+            description="example_value")
+        default_model = alicloud.apigateway.Model("default",
+            group_id=default.id,
             model_name="example_value",
             schema="{\\"type\\":\\"object\\",\\"properties\\":{\\"id\\":{\\"format\\":\\"int64\\",\\"maximum\\":100,\\"exclusiveMaximum\\":true,\\"type\\":\\"integer\\"},\\"name\\":{\\"maxLength\\":10,\\"type\\":\\"string\\"}}}",
             description="example_value")
@@ -224,9 +226,11 @@ class Model(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_group = alicloud.apigateway.Group("defaultGroup", description="example_value")
-        default_model = alicloud.apigateway.Model("defaultModel",
-            group_id=default_group.id,
+        default = alicloud.apigateway.Group("default",
+            name="example_value",
+            description="example_value")
+        default_model = alicloud.apigateway.Model("default",
+            group_id=default.id,
             model_name="example_value",
             schema="{\\"type\\":\\"object\\",\\"properties\\":{\\"id\\":{\\"format\\":\\"int64\\",\\"maximum\\":100,\\"exclusiveMaximum\\":true,\\"type\\":\\"integer\\"},\\"name\\":{\\"maxLength\\":10,\\"type\\":\\"string\\"}}}",
             description="example_value")

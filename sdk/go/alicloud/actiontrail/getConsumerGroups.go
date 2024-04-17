@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			consumerGroupsDs, err := actiontrail.GetConsumerGroups(ctx, &actiontrail.GetConsumerGroupsArgs{
-//				ConsumerIdRegex: pulumi.StringRef("CID-alikafkaGroupDatasourceName"),
 //				InstanceId:      "xxx",
+//				ConsumerIdRegex: pulumi.StringRef("CID-alikafkaGroupDatasourceName"),
 //				OutputFile:      pulumi.StringRef("consumerGroups.txt"),
 //			}, nil)
 //			if err != nil {

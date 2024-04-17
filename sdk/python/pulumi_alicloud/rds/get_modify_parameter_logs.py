@@ -110,8 +110,8 @@ def get_modify_parameter_logs(db_instance_id: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     example = alicloud.rds.get_modify_parameter_logs(db_instance_id="example_value",
-        end_time="2022-06-08T13:56Z",
-        start_time="2022-06-04T13:56Z")
+        start_time="2022-06-04T13:56Z",
+        end_time="2022-06-08T13:56Z")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -159,8 +159,8 @@ def get_modify_parameter_logs_output(db_instance_id: Optional[pulumi.Input[str]]
     import pulumi_alicloud as alicloud
 
     example = alicloud.rds.get_modify_parameter_logs(db_instance_id="example_value",
-        end_time="2022-06-08T13:56Z",
-        start_time="2022-06-04T13:56Z")
+        start_time="2022-06-04T13:56Z",
+        end_time="2022-06-08T13:56Z")
     ```
     <!--End PulumiCodeChooser -->
 

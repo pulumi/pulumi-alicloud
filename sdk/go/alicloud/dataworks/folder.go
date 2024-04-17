@@ -36,8 +36,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataworks.NewFolder(ctx, "example", &dataworks.FolderArgs{
-//				FolderPath: pulumi.String("Business Flow/tfTestAcc/folderDi/tftest1"),
 //				ProjectId:  pulumi.String("320687"),
+//				FolderPath: pulumi.String("Business Flow/tfTestAcc/folderDi/tftest1"),
 //			})
 //			if err != nil {
 //				return err

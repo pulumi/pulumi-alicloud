@@ -29,12 +29,12 @@ namespace Pulumi.AliCloud.Chatbot
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAgents = AliCloud.Chatbot.GetAgents.Invoke();
+    ///     var @default = AliCloud.Chatbot.GetAgents.Invoke();
     /// 
-    ///     var defaultPublishTask = new AliCloud.Chatbot.PublishTask("defaultPublishTask", new()
+    ///     var defaultPublishTask = new AliCloud.Chatbot.PublishTask("default", new()
     ///     {
     ///         BizType = "faq",
-    ///         AgentKey = defaultAgents.Apply(getAgentsResult =&gt; getAgentsResult.Agents[0]?.AgentKey),
+    ///         AgentKey = @default.Apply(@default =&gt; @default.Apply(getAgentsResult =&gt; getAgentsResult.Agents[0]?.AgentKey)),
     ///     });
     /// 
     /// });

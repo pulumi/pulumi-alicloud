@@ -33,10 +33,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			drdsInstancesDs, err := drds.GetInstances(ctx, &drds.GetInstancesArgs{
+//				NameRegex: pulumi.StringRef("drds-\\d+"),
 //				Ids: []string{
 //					"drdsabc123456",
 //				},
-//				NameRegex: pulumi.StringRef("drds-\\d+"),
 //			}, nil)
 //			if err != nil {
 //				return err

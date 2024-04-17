@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const exampleRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance", {
+ * const example = new alicloud.cr.RegistryEnterpriseInstance("example", {
  *     paymentType: "Subscription",
  *     period: 1,
  *     renewPeriod: 0,
@@ -32,14 +32,16 @@ import * as utilities from "../utilities";
  *     instanceType: "Advanced",
  *     instanceName: name,
  * });
- * const exampleRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace", {
- *     instanceId: exampleRegistryEnterpriseInstance.id,
+ * const exampleRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("example", {
+ *     instanceId: example.id,
+ *     name: name,
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });
- * const exampleRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("exampleRegistryEnterpriseRepo", {
- *     instanceId: exampleRegistryEnterpriseInstance.id,
+ * const exampleRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("example", {
+ *     instanceId: example.id,
  *     namespace: exampleRegistryEnterpriseNamespace.name,
+ *     name: name,
  *     summary: "this is summary of my new repo",
  *     repoType: "PUBLIC",
  *     detail: "this is a public repo",

@@ -38,20 +38,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create a new Domain config.
 //			domain, err := cdn.NewDomainNew(ctx, "domain", &cdn.DomainNewArgs{
-//				DomainName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("mycdndomain-%v.alicloud-provider.cn", result), nil
-//				}).(pulumi.StringOutput),
-//				CdnType: pulumi.String("web"),
-//				Scope:   pulumi.String("overseas"),
+//				DomainName: pulumi.String(fmt.Sprintf("mycdndomain-%v.alicloud-provider.cn", _default.Result)),
+//				CdnType:    pulumi.String("web"),
+//				Scope:      pulumi.String("overseas"),
 //				Sources: cdn.DomainNewSourceArray{
 //					&cdn.DomainNewSourceArgs{
 //						Content:  pulumi.String("1.1.1.1"),

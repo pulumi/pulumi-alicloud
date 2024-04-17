@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var exampleRegistryEnterpriseInstance = new RegistryEnterpriseInstance(&#34;exampleRegistryEnterpriseInstance&#34;, RegistryEnterpriseInstanceArgs.builder()        
+ *         var example = new RegistryEnterpriseInstance(&#34;example&#34;, RegistryEnterpriseInstanceArgs.builder()        
  *             .paymentType(&#34;Subscription&#34;)
  *             .period(1)
  *             .renewPeriod(0)
@@ -65,14 +65,16 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace(&#34;exampleRegistryEnterpriseNamespace&#34;, RegistryEnterpriseNamespaceArgs.builder()        
- *             .instanceId(exampleRegistryEnterpriseInstance.id())
+ *             .instanceId(example.id())
+ *             .name(name)
  *             .autoCreate(false)
  *             .defaultVisibility(&#34;PUBLIC&#34;)
  *             .build());
  * 
  *         var exampleRegistryEnterpriseRepo = new RegistryEnterpriseRepo(&#34;exampleRegistryEnterpriseRepo&#34;, RegistryEnterpriseRepoArgs.builder()        
- *             .instanceId(exampleRegistryEnterpriseInstance.id())
+ *             .instanceId(example.id())
  *             .namespace(exampleRegistryEnterpriseNamespace.name())
+ *             .name(name)
  *             .summary(&#34;this is summary of my new repo&#34;)
  *             .repoType(&#34;PUBLIC&#34;)
  *             .detail(&#34;this is a public repo&#34;)

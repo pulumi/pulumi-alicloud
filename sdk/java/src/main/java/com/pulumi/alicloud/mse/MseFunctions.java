@@ -52,6 +52,7 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
      *             .ids(&#34;mse-cn-0d9xxxx&#34;)
      *             .status(&#34;INIT_SUCCESS&#34;)
@@ -96,6 +97,7 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
      *             .ids(&#34;mse-cn-0d9xxxx&#34;)
      *             .status(&#34;INIT_SUCCESS&#34;)
@@ -140,6 +142,7 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
      *             .ids(&#34;mse-cn-0d9xxxx&#34;)
      *             .status(&#34;INIT_SUCCESS&#34;)
@@ -184,6 +187,7 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
      *             .ids(&#34;mse-cn-0d9xxxx&#34;)
      *             .status(&#34;INIT_SUCCESS&#34;)
@@ -228,6 +232,7 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
      *             .ids(&#34;mse-cn-0d9xxxx&#34;)
      *             .status(&#34;INIT_SUCCESS&#34;)
@@ -272,6 +277,7 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
      *             .ids(&#34;mse-cn-0d9xxxx&#34;)
      *             .status(&#34;INIT_SUCCESS&#34;)

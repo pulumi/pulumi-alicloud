@@ -36,8 +36,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ros.NewTemplate(ctx, "example", &ros.TemplateArgs{
-//				TemplateBody: pulumi.String("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n"),
 //				TemplateName: pulumi.String("example_value"),
+//				TemplateBody: pulumi.String("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n"),
 //			})
 //			if err != nil {
 //				return err

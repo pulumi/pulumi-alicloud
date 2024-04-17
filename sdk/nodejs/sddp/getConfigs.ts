@@ -20,15 +20,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultConfig = new alicloud.sddp.Config("defaultConfig", {
+ * const defaultConfig = new alicloud.sddp.Config("default", {
  *     code: "access_failed_cnt",
  *     value: "10",
  * });
- * const defaultConfigs = alicloud.sddp.getConfigsOutput({
+ * const default = alicloud.sddp.getConfigsOutput({
  *     ids: [defaultConfig.id],
  *     outputFile: "./t.json",
  * });
- * export const sddpConfigId = defaultConfigs.apply(defaultConfigs => defaultConfigs.ids);
+ * export const sddpConfigId = _default.apply(_default => _default.ids);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -85,15 +85,15 @@ export interface GetConfigsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultConfig = new alicloud.sddp.Config("defaultConfig", {
+ * const defaultConfig = new alicloud.sddp.Config("default", {
  *     code: "access_failed_cnt",
  *     value: "10",
  * });
- * const defaultConfigs = alicloud.sddp.getConfigsOutput({
+ * const default = alicloud.sddp.getConfigsOutput({
  *     ids: [defaultConfig.id],
  *     outputFile: "./t.json",
  * });
- * export const sddpConfigId = defaultConfigs.apply(defaultConfigs => defaultConfigs.ids);
+ * export const sddpConfigId = _default.apply(_default => _default.ids);
  * ```
  * <!--End PulumiCodeChooser -->
  */

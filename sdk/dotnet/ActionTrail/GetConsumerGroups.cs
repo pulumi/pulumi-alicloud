@@ -29,8 +29,8 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {
         ///     var consumerGroupsDs = AliCloud.ActionTrail.GetConsumerGroups.Invoke(new()
         ///     {
-        ///         ConsumerIdRegex = "CID-alikafkaGroupDatasourceName",
         ///         InstanceId = "xxx",
+        ///         ConsumerIdRegex = "CID-alikafkaGroupDatasourceName",
         ///         OutputFile = "consumerGroups.txt",
         ///     });
         /// 
@@ -63,8 +63,8 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {
         ///     var consumerGroupsDs = AliCloud.ActionTrail.GetConsumerGroups.Invoke(new()
         ///     {
-        ///         ConsumerIdRegex = "CID-alikafkaGroupDatasourceName",
         ///         InstanceId = "xxx",
+        ///         ConsumerIdRegex = "CID-alikafkaGroupDatasourceName",
         ///         OutputFile = "consumerGroups.txt",
         ///     });
         /// 

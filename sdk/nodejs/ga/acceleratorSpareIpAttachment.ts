@@ -20,14 +20,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
+ * const _default = new alicloud.ga.Accelerator("default", {
  *     duration: 1,
  *     spec: "1",
  *     acceleratorName: "terraform-example",
  *     autoUseCoupon: true,
  *     description: "terraform-example",
  * });
- * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("default", {
  *     bandwidth: 100,
  *     type: "Basic",
  *     bandwidthType: "Basic",
@@ -38,11 +38,11 @@ import * as utilities from "../utilities";
  *     autoPay: true,
  *     autoUseCoupon: true,
  * });
- * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
- *     acceleratorId: defaultAccelerator.id,
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("default", {
+ *     acceleratorId: _default.id,
  *     bandwidthPackageId: defaultBandwidthPackage.id,
  * });
- * const defaultAcceleratorSpareIpAttachment = new alicloud.ga.AcceleratorSpareIpAttachment("defaultAcceleratorSpareIpAttachment", {
+ * const defaultAcceleratorSpareIpAttachment = new alicloud.ga.AcceleratorSpareIpAttachment("default", {
  *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
  *     spareIp: "127.0.0.1",
  * });

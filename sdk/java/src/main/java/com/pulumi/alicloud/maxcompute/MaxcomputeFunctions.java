@@ -57,12 +57,12 @@ public final class MaxcomputeFunctions {
      *             .productType(&#34;PAYASYOUGO&#34;)
      *             .build());
      * 
-     *         final var defaultProjects = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
+     *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
      *             .ids(defaultProject.id())
      *             .nameRegex(defaultProject.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, defaultProjects.applyValue(getProjectsResult -&gt; getProjectsResult).applyValue(defaultProjects -&gt; defaultProjects.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id())));
+     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, default_.applyValue(default_ -&gt; default_.projects()[0].id()));
      *     }
      * }
      * ```
@@ -112,12 +112,12 @@ public final class MaxcomputeFunctions {
      *             .productType(&#34;PAYASYOUGO&#34;)
      *             .build());
      * 
-     *         final var defaultProjects = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
+     *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
      *             .ids(defaultProject.id())
      *             .nameRegex(defaultProject.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, defaultProjects.applyValue(getProjectsResult -&gt; getProjectsResult).applyValue(defaultProjects -&gt; defaultProjects.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id())));
+     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, default_.applyValue(default_ -&gt; default_.projects()[0].id()));
      *     }
      * }
      * ```
@@ -167,12 +167,12 @@ public final class MaxcomputeFunctions {
      *             .productType(&#34;PAYASYOUGO&#34;)
      *             .build());
      * 
-     *         final var defaultProjects = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
+     *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
      *             .ids(defaultProject.id())
      *             .nameRegex(defaultProject.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, defaultProjects.applyValue(getProjectsResult -&gt; getProjectsResult).applyValue(defaultProjects -&gt; defaultProjects.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id())));
+     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, default_.applyValue(default_ -&gt; default_.projects()[0].id()));
      *     }
      * }
      * ```
@@ -222,12 +222,12 @@ public final class MaxcomputeFunctions {
      *             .productType(&#34;PAYASYOUGO&#34;)
      *             .build());
      * 
-     *         final var defaultProjects = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
+     *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
      *             .ids(defaultProject.id())
      *             .nameRegex(defaultProject.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, defaultProjects.applyValue(getProjectsResult -&gt; getProjectsResult).applyValue(defaultProjects -&gt; defaultProjects.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id())));
+     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, default_.applyValue(default_ -&gt; default_.projects()[0].id()));
      *     }
      * }
      * ```
@@ -277,12 +277,12 @@ public final class MaxcomputeFunctions {
      *             .productType(&#34;PAYASYOUGO&#34;)
      *             .build());
      * 
-     *         final var defaultProjects = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
+     *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
      *             .ids(defaultProject.id())
      *             .nameRegex(defaultProject.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, defaultProjects.applyValue(getProjectsResult -&gt; getProjectsResult).applyValue(defaultProjects -&gt; defaultProjects.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id())));
+     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, default_.applyValue(default_ -&gt; default_.projects()[0].id()));
      *     }
      * }
      * ```
@@ -332,12 +332,12 @@ public final class MaxcomputeFunctions {
      *             .productType(&#34;PAYASYOUGO&#34;)
      *             .build());
      * 
-     *         final var defaultProjects = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
+     *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
      *             .ids(defaultProject.id())
      *             .nameRegex(defaultProject.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, defaultProjects.applyValue(getProjectsResult -&gt; getProjectsResult).applyValue(defaultProjects -&gt; defaultProjects.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id())));
+     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, default_.applyValue(default_ -&gt; default_.projects()[0].id()));
      *     }
      * }
      * ```

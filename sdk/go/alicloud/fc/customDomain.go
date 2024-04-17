@@ -41,24 +41,28 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultProject, err := log.NewProject(ctx, "defaultProject", nil)
+//			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
+//				Name: pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
+//			defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
 //				Project: defaultProject.Name,
+//				Name:    pulumi.String("example-value"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
+//			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
+//				Name: pulumi.String(fmt.Sprintf("fcservicerole-%v", _default.Result)),
 //				Document: pulumi.String(`  {
 //	      "Statement": [
 //	        {
@@ -82,7 +86,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ram.NewRolePolicyAttachment(ctx, "defaultRolePolicyAttachment", &ram.RolePolicyAttachmentArgs{
+//			_, err = ram.NewRolePolicyAttachment(ctx, "default", &ram.RolePolicyAttachmentArgs{
 //				RoleName:   defaultRole.Name,
 //				PolicyName: pulumi.String("AliyunLogFullAccess"),
 //				PolicyType: pulumi.String("System"),
@@ -90,7 +94,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
+//			defaultService, err := fc.NewService(ctx, "default", &fc.ServiceArgs{
+//				Name:        pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
 //				Description: pulumi.String("example-value"),
 //				Role:        defaultRole.Arn,
 //				LogConfig: &fc.ServiceLogConfigArgs{
@@ -103,16 +108,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
-//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("terraform-example-%v", result), nil
-//				}).(pulumi.StringOutput),
+//			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
+//				Bucket: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-//			defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
+//			defaultBucketObject, err := oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
 //				Bucket:  defaultBucket.ID(),
 //				Key:     pulumi.String("index.py"),
 //				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
@@ -120,8 +123,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultFunction, err := fc.NewFunction(ctx, "defaultFunction", &fc.FunctionArgs{
+//			defaultFunction, err := fc.NewFunction(ctx, "default", &fc.FunctionArgs{
 //				Service:     defaultService.Name,
+//				Name:        pulumi.String("terraform-example"),
 //				Description: pulumi.String("example"),
 //				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
@@ -132,7 +136,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = fc.NewCustomDomain(ctx, "defaultCustomDomain", &fc.CustomDomainArgs{
+//			_, err = fc.NewCustomDomain(ctx, "default", &fc.CustomDomainArgs{
 //				DomainName: pulumi.String("terraform.functioncompute.com"),
 //				Protocol:   pulumi.String("HTTP"),
 //				RouteConfigs: fc.CustomDomainRouteConfigArray{

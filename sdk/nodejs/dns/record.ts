@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  *
  * // Create a new Domain record
  * const record = new alicloud.dns.Record("record", {
+ *     name: "domainname",
  *     hostRecord: "@",
  *     type: "A",
  *     value: "192.168.99.99",

@@ -25,34 +25,37 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const exampleZones = alicloud.getZones({
+ * const example = alicloud.getZones({
  *     availableResourceCreation: "Instance",
  * });
- * const exampleInstanceTypes = exampleZones.then(exampleZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: exampleZones.zones?.[0]?.id,
+ * const exampleGetInstanceTypes = example.then(example => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: example.zones?.[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
- * const exampleImages = alicloud.ecs.getImages({
+ * const exampleGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
  *     owners: "system",
  * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: exampleNetwork.id,
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
  * });
- * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
- * const exampleInstance = new alicloud.ecs.Instance("exampleInstance", {
- *     availabilityZone: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     name: name,
+ *     vpcId: exampleNetwork.id,
+ * });
+ * const exampleInstance = new alicloud.ecs.Instance("example", {
+ *     availabilityZone: example.then(example => example.zones?.[0]?.id),
  *     instanceName: name,
- *     imageId: exampleImages.then(exampleImages => exampleImages.images?.[0]?.id),
- *     instanceType: exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes?.[0]?.id),
+ *     imageId: exampleGetImages.then(exampleGetImages => exampleGetImages.images?.[0]?.id),
+ *     instanceType: exampleGetInstanceTypes.then(exampleGetInstanceTypes => exampleGetInstanceTypes.instanceTypes?.[0]?.id),
  *     securityGroups: [exampleSecurityGroup.id],
  *     vswitchId: exampleSwitch.id,
  *     tags: {
@@ -60,8 +63,8 @@ import * as utilities from "../utilities";
  *         For: "example",
  *     },
  * });
- * const exampleEipAddress = new alicloud.ecs.EipAddress("exampleEipAddress", {addressName: name});
- * const exampleEipAssociation = new alicloud.ecs.EipAssociation("exampleEipAssociation", {
+ * const exampleEipAddress = new alicloud.ecs.EipAddress("example", {addressName: name});
+ * const exampleEipAssociation = new alicloud.ecs.EipAssociation("example", {
  *     allocationId: exampleEipAddress.id,
  *     instanceId: exampleInstance.id,
  * });

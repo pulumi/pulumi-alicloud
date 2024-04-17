@@ -30,9 +30,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			_, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableDiskCategory: pulumi.StringRef("cloud_ssd"),
 //				AvailableInstanceType: pulumi.StringRef("ecs.n4.large"),
+//				AvailableDiskCategory: pulumi.StringRef("cloud_ssd"),
 //			}, nil)
 //			if err != nil {
 //				return err

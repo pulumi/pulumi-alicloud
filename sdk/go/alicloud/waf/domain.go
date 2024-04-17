@@ -36,30 +36,30 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := waf.NewDomain(ctx, "domain", &waf.DomainArgs{
+//				DomainName:      pulumi.String("alicloud-provider.cn"),
+//				InstanceId:      pulumi.String("waf-123455"),
+//				IsAccessProduct: pulumi.String("On"),
+//				SourceIps: pulumi.StringArray{
+//					pulumi.String("1.1.1.1"),
+//				},
 //				ClusterType: pulumi.String("PhysicalCluster"),
-//				DomainName:  pulumi.String("alicloud-provider.cn"),
 //				Http2Ports: pulumi.StringArray{
 //					pulumi.String("443"),
 //				},
 //				HttpPorts: pulumi.StringArray{
 //					pulumi.String("80"),
 //				},
-//				HttpToUserIp: pulumi.String("Off"),
 //				HttpsPorts: pulumi.StringArray{
 //					pulumi.String("443"),
 //				},
-//				HttpsRedirect:   pulumi.String("Off"),
-//				InstanceId:      pulumi.String("waf-123455"),
-//				IsAccessProduct: pulumi.String("On"),
-//				LoadBalancing:   pulumi.String("IpHash"),
+//				HttpToUserIp:  pulumi.String("Off"),
+//				HttpsRedirect: pulumi.String("Off"),
+//				LoadBalancing: pulumi.String("IpHash"),
 //				LogHeaders: waf.DomainLogHeaderArray{
 //					&waf.DomainLogHeaderArgs{
 //						Key:   pulumi.String("foo"),
 //						Value: pulumi.String("http"),
 //					},
-//				},
-//				SourceIps: pulumi.StringArray{
-//					pulumi.String("1.1.1.1"),
 //				},
 //			})
 //			if err != nil {

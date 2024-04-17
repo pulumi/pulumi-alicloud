@@ -52,13 +52,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new BasicAccelerator(&#34;default&#34;, BasicAcceleratorArgs.builder()        
- *             .autoPay(true)
- *             .autoUseCoupon(&#34;true&#34;)
- *             .bandwidthBillingType(&#34;BandwidthPackage&#34;)
- *             .basicAcceleratorName(&#34;tf-example-value&#34;)
- *             .description(&#34;tf-example-value&#34;)
  *             .duration(1)
  *             .pricingCycle(&#34;Month&#34;)
+ *             .basicAcceleratorName(&#34;tf-example-value&#34;)
+ *             .description(&#34;tf-example-value&#34;)
+ *             .bandwidthBillingType(&#34;BandwidthPackage&#34;)
+ *             .autoPay(true)
+ *             .autoUseCoupon(&#34;true&#34;)
  *             .build());
  * 
  *     }

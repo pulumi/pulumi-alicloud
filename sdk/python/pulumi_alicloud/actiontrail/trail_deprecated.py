@@ -479,9 +479,10 @@ class TrailDeprecated(pulumi.CustomResource):
 
         # Create a new action trail.
         foo = alicloud.actiontrail.TrailDeprecated("foo",
+            name="action-trail",
             event_rw="Write-test",
-            oss_bucket_name=alicloud_oss_bucket["bucket"]["id"],
-            role_name=alicloud_ram_role_policy_attachment["attach"]["role_name"],
+            oss_bucket_name=bucket["id"],
+            role_name=attach["roleName"],
             oss_key_prefix="at-product-account-audit-B")
         ```
         <!--End PulumiCodeChooser -->
@@ -528,9 +529,10 @@ class TrailDeprecated(pulumi.CustomResource):
 
         # Create a new action trail.
         foo = alicloud.actiontrail.TrailDeprecated("foo",
+            name="action-trail",
             event_rw="Write-test",
-            oss_bucket_name=alicloud_oss_bucket["bucket"]["id"],
-            role_name=alicloud_ram_role_policy_attachment["attach"]["role_name"],
+            oss_bucket_name=bucket["id"],
+            role_name=attach["roleName"],
             oss_key_prefix="at-product-account-audit-B")
         ```
         <!--End PulumiCodeChooser -->

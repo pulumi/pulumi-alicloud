@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			_default, err := dms.GetUserTenants(ctx, &dms.GetUserTenantsArgs{
 //				Status: pulumi.StringRef("ACTIVE"),
 //			}, nil)

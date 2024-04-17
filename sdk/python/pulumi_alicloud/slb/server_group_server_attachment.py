@@ -236,6 +236,70 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
         > **NOTE:** Applying this resource may conflict with applying `slb.Listener`,
         and the `slb.Listener` block should use `depends_on = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        slb_server_group_server_attachment = config.get("slbServerGroupServerAttachment")
+        if slb_server_group_server_attachment is None:
+            slb_server_group_server_attachment = "terraform-example"
+        slb_server_group_server_attachment_count = config.get_float("slbServerGroupServerAttachmentCount")
+        if slb_server_group_server_attachment_count is None:
+            slb_server_group_server_attachment_count = 5
+        server_attachment = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        server_attachment_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=server_attachment.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        server_attachment_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
+            owners="system")
+        server_attachment_network = alicloud.vpc.Network("server_attachment",
+            vpc_name=slb_server_group_server_attachment,
+            cidr_block="172.17.3.0/24")
+        server_attachment_switch = alicloud.vpc.Switch("server_attachment",
+            vswitch_name=slb_server_group_server_attachment,
+            cidr_block="172.17.3.0/24",
+            vpc_id=server_attachment_network.id,
+            zone_id=server_attachment.zones[0].id)
+        server_attachment_security_group = alicloud.ecs.SecurityGroup("server_attachment",
+            name=slb_server_group_server_attachment,
+            vpc_id=server_attachment_network.id)
+        server_attachment_instance = []
+        for range in [{"value": i} for i in range(0, slb_server_group_server_attachment_count)]:
+            server_attachment_instance.append(alicloud.ecs.Instance(f"server_attachment-{range['value']}",
+                image_id=server_attachment_get_images.images[0].id,
+                instance_type=server_attachment_get_instance_types.instance_types[0].id,
+                instance_name=slb_server_group_server_attachment,
+                security_groups=[__item.id for __item in [server_attachment_security_group]],
+                internet_charge_type="PayByTraffic",
+                internet_max_bandwidth_out=10,
+                availability_zone=server_attachment.zones[0].id,
+                instance_charge_type="PostPaid",
+                system_disk_category="cloud_efficiency",
+                vswitch_id=server_attachment_switch.id))
+        server_attachment_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("server_attachment",
+            load_balancer_name=slb_server_group_server_attachment,
+            vswitch_id=server_attachment_switch.id,
+            load_balancer_spec="slb.s2.small",
+            address_type="intranet")
+        server_attachment_server_group = alicloud.slb.ServerGroup("server_attachment",
+            load_balancer_id=server_attachment_application_load_balancer.id,
+            name=slb_server_group_server_attachment)
+        server_attachment_server_group_server_attachment = []
+        for range in [{"value": i} for i in range(0, slb_server_group_server_attachment_count)]:
+            server_attachment_server_group_server_attachment.append(alicloud.slb.ServerGroupServerAttachment(f"server_attachment-{range['value']}",
+                server_group_id=server_attachment_server_group.id,
+                server_id=server_attachment_instance[range["value"]].id,
+                port=8080,
+                weight=0))
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         Load balancer backend server group server attachment can be imported using the id, e.g.
@@ -266,6 +330,70 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
 
         > **NOTE:** Applying this resource may conflict with applying `slb.Listener`,
         and the `slb.Listener` block should use `depends_on = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        slb_server_group_server_attachment = config.get("slbServerGroupServerAttachment")
+        if slb_server_group_server_attachment is None:
+            slb_server_group_server_attachment = "terraform-example"
+        slb_server_group_server_attachment_count = config.get_float("slbServerGroupServerAttachmentCount")
+        if slb_server_group_server_attachment_count is None:
+            slb_server_group_server_attachment_count = 5
+        server_attachment = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        server_attachment_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=server_attachment.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        server_attachment_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            most_recent=True,
+            owners="system")
+        server_attachment_network = alicloud.vpc.Network("server_attachment",
+            vpc_name=slb_server_group_server_attachment,
+            cidr_block="172.17.3.0/24")
+        server_attachment_switch = alicloud.vpc.Switch("server_attachment",
+            vswitch_name=slb_server_group_server_attachment,
+            cidr_block="172.17.3.0/24",
+            vpc_id=server_attachment_network.id,
+            zone_id=server_attachment.zones[0].id)
+        server_attachment_security_group = alicloud.ecs.SecurityGroup("server_attachment",
+            name=slb_server_group_server_attachment,
+            vpc_id=server_attachment_network.id)
+        server_attachment_instance = []
+        for range in [{"value": i} for i in range(0, slb_server_group_server_attachment_count)]:
+            server_attachment_instance.append(alicloud.ecs.Instance(f"server_attachment-{range['value']}",
+                image_id=server_attachment_get_images.images[0].id,
+                instance_type=server_attachment_get_instance_types.instance_types[0].id,
+                instance_name=slb_server_group_server_attachment,
+                security_groups=[__item.id for __item in [server_attachment_security_group]],
+                internet_charge_type="PayByTraffic",
+                internet_max_bandwidth_out=10,
+                availability_zone=server_attachment.zones[0].id,
+                instance_charge_type="PostPaid",
+                system_disk_category="cloud_efficiency",
+                vswitch_id=server_attachment_switch.id))
+        server_attachment_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("server_attachment",
+            load_balancer_name=slb_server_group_server_attachment,
+            vswitch_id=server_attachment_switch.id,
+            load_balancer_spec="slb.s2.small",
+            address_type="intranet")
+        server_attachment_server_group = alicloud.slb.ServerGroup("server_attachment",
+            load_balancer_id=server_attachment_application_load_balancer.id,
+            name=slb_server_group_server_attachment)
+        server_attachment_server_group_server_attachment = []
+        for range in [{"value": i} for i in range(0, slb_server_group_server_attachment_count)]:
+            server_attachment_server_group_server_attachment.append(alicloud.slb.ServerGroupServerAttachment(f"server_attachment-{range['value']}",
+                server_group_id=server_attachment_server_group.id,
+                server_id=server_attachment_instance[range["value"]].id,
+                port=8080,
+                weight=0))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

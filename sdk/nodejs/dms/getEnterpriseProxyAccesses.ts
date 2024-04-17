@@ -18,17 +18,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultEnterpriseProxyAccess = new alicloud.dms.EnterpriseProxyAccess("defaultEnterpriseProxyAccess", {
+ * const defaultEnterpriseProxyAccess = new alicloud.dms.EnterpriseProxyAccess("default", {
  *     indepPassword: "PASSWORD-DEMO",
  *     proxyId: "1881",
  *     indepAccount: "dmstest",
  *     userId: "104442",
  * });
- * const defaultEnterpriseProxyAccesses = alicloud.dms.getEnterpriseProxyAccessesOutput({
+ * const default = alicloud.dms.getEnterpriseProxyAccessesOutput({
  *     ids: [defaultEnterpriseProxyAccess.id],
  *     proxyId: "1881",
  * });
- * export const alicloudDmsProxyAccesesExampleId = defaultEnterpriseProxyAccesses.apply(defaultEnterpriseProxyAccesses => defaultEnterpriseProxyAccesses.accesses?.[0]?.id);
+ * export const alicloudDmsProxyAccesesExampleId = _default.apply(_default => _default.accesses?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -97,17 +97,17 @@ export interface GetEnterpriseProxyAccessesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultEnterpriseProxyAccess = new alicloud.dms.EnterpriseProxyAccess("defaultEnterpriseProxyAccess", {
+ * const defaultEnterpriseProxyAccess = new alicloud.dms.EnterpriseProxyAccess("default", {
  *     indepPassword: "PASSWORD-DEMO",
  *     proxyId: "1881",
  *     indepAccount: "dmstest",
  *     userId: "104442",
  * });
- * const defaultEnterpriseProxyAccesses = alicloud.dms.getEnterpriseProxyAccessesOutput({
+ * const default = alicloud.dms.getEnterpriseProxyAccessesOutput({
  *     ids: [defaultEnterpriseProxyAccess.id],
  *     proxyId: "1881",
  * });
- * export const alicloudDmsProxyAccesesExampleId = defaultEnterpriseProxyAccesses.apply(defaultEnterpriseProxyAccesses => defaultEnterpriseProxyAccesses.accesses?.[0]?.id);
+ * export const alicloudDmsProxyAccesesExampleId = _default.apply(_default => _default.accesses?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */

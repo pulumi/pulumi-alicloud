@@ -26,12 +26,12 @@ import * as utilities from "../utilities";
  *     payType: "PostPaid",
  *     category: "Normal",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const _default = new alicloud.vpc.Network("default", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: _default.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: _this.then(_this => _this.classes?.[0]?.zoneId),
  *     vswitchName: "terraform-example",
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *     dbNodeClass: _this.then(_this => _this.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass),
  *     vswitchId: defaultSwitch.id,
  * });
- * const defaultGlobalDatabaseNetwork = new alicloud.polardb.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", {
+ * const defaultGlobalDatabaseNetwork = new alicloud.polardb.GlobalDatabaseNetwork("default", {
  *     dbClusterId: cluster.id,
  *     description: cluster.id,
  * });
@@ -160,12 +160,12 @@ export interface GetGlobalDatabaseNetworksResult {
  *     payType: "PostPaid",
  *     category: "Normal",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const _default = new alicloud.vpc.Network("default", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: _default.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: _this.then(_this => _this.classes?.[0]?.zoneId),
  *     vswitchName: "terraform-example",
@@ -178,7 +178,7 @@ export interface GetGlobalDatabaseNetworksResult {
  *     dbNodeClass: _this.then(_this => _this.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass),
  *     vswitchId: defaultSwitch.id,
  * });
- * const defaultGlobalDatabaseNetwork = new alicloud.polardb.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", {
+ * const defaultGlobalDatabaseNetwork = new alicloud.polardb.GlobalDatabaseNetwork("default", {
  *     dbClusterId: cluster.id,
  *     description: cluster.id,
  * });

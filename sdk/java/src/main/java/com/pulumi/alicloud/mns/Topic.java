@@ -44,8 +44,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var topic = new Topic(&#34;topic&#34;, TopicArgs.builder()        
- *             .loggingEnabled(false)
+ *             .name(&#34;tf-example-mnstopic&#34;)
  *             .maximumMessageSize(65536)
+ *             .loggingEnabled(false)
  *             .build());
  * 
  *     }

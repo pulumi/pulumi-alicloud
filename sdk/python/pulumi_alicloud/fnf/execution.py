@@ -183,7 +183,9 @@ class Execution(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example-fnfflow"
-        default_role = alicloud.ram.Role("defaultRole", document=\"\"\"  {
+        default = alicloud.ram.Role("default",
+            name=name,
+            document=\"\"\"  {
             "Statement": [
               {
                 "Action": "sts:AssumeRole",
@@ -198,7 +200,7 @@ class Execution(pulumi.CustomResource):
             "Version": "1"
           }
         \"\"\")
-        default_flow = alicloud.fnf.Flow("defaultFlow",
+        default_flow = alicloud.fnf.Flow("default",
             definition=\"\"\"  version: v1beta1
           type: flow
           steps:
@@ -206,10 +208,11 @@ class Execution(pulumi.CustomResource):
               name: custom_wait
               duration: $.wait
         \"\"\",
-            role_arn=default_role.arn,
+            role_arn=default.arn,
             description="Test for terraform fnf_flow.",
+            name=name,
             type="FDL")
-        default_execution = alicloud.fnf.Execution("defaultExecution",
+        default_execution = alicloud.fnf.Execution("default",
             execution_name=name,
             flow_name=default_flow.name,
             input="{\\"wait\\": 600}")
@@ -257,7 +260,9 @@ class Execution(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example-fnfflow"
-        default_role = alicloud.ram.Role("defaultRole", document=\"\"\"  {
+        default = alicloud.ram.Role("default",
+            name=name,
+            document=\"\"\"  {
             "Statement": [
               {
                 "Action": "sts:AssumeRole",
@@ -272,7 +277,7 @@ class Execution(pulumi.CustomResource):
             "Version": "1"
           }
         \"\"\")
-        default_flow = alicloud.fnf.Flow("defaultFlow",
+        default_flow = alicloud.fnf.Flow("default",
             definition=\"\"\"  version: v1beta1
           type: flow
           steps:
@@ -280,10 +285,11 @@ class Execution(pulumi.CustomResource):
               name: custom_wait
               duration: $.wait
         \"\"\",
-            role_arn=default_role.arn,
+            role_arn=default.arn,
             description="Test for terraform fnf_flow.",
+            name=name,
             type="FDL")
-        default_execution = alicloud.fnf.Execution("defaultExecution",
+        default_execution = alicloud.fnf.Execution("default",
             execution_name=name,
             flow_name=default_flow.name,
             input="{\\"wait\\": 600}")

@@ -241,9 +241,9 @@ class Handshake(pulumi.CustomResource):
 
         # Add a Resource Manager handshake.
         example = alicloud.resourcemanager.Handshake("example",
-            note="test resource manager handshake",
             target_entity="1182775234******",
-            target_type="Account")
+            target_type="Account",
+            note="test resource manager handshake")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -282,9 +282,9 @@ class Handshake(pulumi.CustomResource):
 
         # Add a Resource Manager handshake.
         example = alicloud.resourcemanager.Handshake("example",
-            note="test resource manager handshake",
             target_entity="1182775234******",
-            target_type="Account")
+            target_type="Account",
+            note="test resource manager handshake")
         ```
         <!--End PulumiCodeChooser -->
 

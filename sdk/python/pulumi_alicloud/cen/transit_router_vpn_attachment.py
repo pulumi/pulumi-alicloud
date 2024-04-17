@@ -366,16 +366,17 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         if name is None:
             name = "tf_example"
         default = alicloud.cen.get_transit_router_available_resources()
-        example_instance = alicloud.cen.Instance("exampleInstance", cen_instance_name=name)
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            cen_id=example_instance.id,
+        example = alicloud.cen.Instance("example", cen_instance_name=name)
+        example_transit_router = alicloud.cen.TransitRouter("example",
+            cen_id=example.id,
             transit_router_description=name,
             transit_router_name=name)
-        example_customer_gateway = alicloud.vpn.CustomerGateway("exampleCustomerGateway",
+        example_customer_gateway = alicloud.vpn.CustomerGateway("example",
+            name=name,
             ip_address="42.104.22.210",
             asn="45014",
             description=name)
-        example_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("exampleGatewayVpnAttachment",
+        example_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("example",
             customer_gateway_id=example_customer_gateway.id,
             network_type="public",
             local_subnet="0.0.0.0/0",
@@ -415,13 +416,13 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             enable_dpd=True,
             enable_nat_traversal=True,
             vpn_attachment_name=name)
-        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr",
+        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("example",
             transit_router_id=example_transit_router.transit_router_id,
             cidr="192.168.0.0/16",
             transit_router_cidr_name=name,
             description=name,
             publish_cidr_route=True)
-        example_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("exampleTransitRouterVpnAttachment",
+        example_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("example",
             auto_publish_route_enabled=False,
             transit_router_attachment_description=name,
             transit_router_attachment_name=name,
@@ -481,16 +482,17 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         if name is None:
             name = "tf_example"
         default = alicloud.cen.get_transit_router_available_resources()
-        example_instance = alicloud.cen.Instance("exampleInstance", cen_instance_name=name)
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            cen_id=example_instance.id,
+        example = alicloud.cen.Instance("example", cen_instance_name=name)
+        example_transit_router = alicloud.cen.TransitRouter("example",
+            cen_id=example.id,
             transit_router_description=name,
             transit_router_name=name)
-        example_customer_gateway = alicloud.vpn.CustomerGateway("exampleCustomerGateway",
+        example_customer_gateway = alicloud.vpn.CustomerGateway("example",
+            name=name,
             ip_address="42.104.22.210",
             asn="45014",
             description=name)
-        example_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("exampleGatewayVpnAttachment",
+        example_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("example",
             customer_gateway_id=example_customer_gateway.id,
             network_type="public",
             local_subnet="0.0.0.0/0",
@@ -530,13 +532,13 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             enable_dpd=True,
             enable_nat_traversal=True,
             vpn_attachment_name=name)
-        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr",
+        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("example",
             transit_router_id=example_transit_router.transit_router_id,
             cidr="192.168.0.0/16",
             transit_router_cidr_name=name,
             description=name,
             publish_cidr_route=True)
-        example_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("exampleTransitRouterVpnAttachment",
+        example_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("example",
             auto_publish_route_enabled=False,
             transit_router_attachment_description=name,
             transit_router_attachment_name=name,

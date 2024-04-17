@@ -150,13 +150,13 @@ class PolicyAttachment(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.get_account()
-        example_policy = alicloud.tag.Policy("examplePolicy",
+        example = alicloud.tag.Policy("example",
             policy_name=name,
             policy_desc=name,
             user_type="USER",
             policy_content="		{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
-        example_policy_attachment = alicloud.tag.PolicyAttachment("examplePolicyAttachment",
-            policy_id=example_policy.id,
+        example_policy_attachment = alicloud.tag.PolicyAttachment("example",
+            policy_id=example.id,
             target_id=default.id,
             target_type="USER")
         ```
@@ -203,13 +203,13 @@ class PolicyAttachment(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.get_account()
-        example_policy = alicloud.tag.Policy("examplePolicy",
+        example = alicloud.tag.Policy("example",
             policy_name=name,
             policy_desc=name,
             user_type="USER",
             policy_content="		{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
-        example_policy_attachment = alicloud.tag.PolicyAttachment("examplePolicyAttachment",
-            policy_id=example_policy.id,
+        example_policy_attachment = alicloud.tag.PolicyAttachment("example",
+            policy_id=example.id,
             target_id=default.id,
             target_type="USER")
         ```

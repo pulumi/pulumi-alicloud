@@ -364,9 +364,9 @@ class Disk(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.ens.Disk("default",
             category="cloud_ssd",
-            ens_region_id="cn-chongqing-11",
+            size=20,
             payment_type="PayAsYouGo",
-            size=20)
+            ens_region_id="cn-chongqing-11")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -421,9 +421,9 @@ class Disk(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.ens.Disk("default",
             category="cloud_ssd",
-            ens_region_id="cn-chongqing-11",
+            size=20,
             payment_type="PayAsYouGo",
-            size=20)
+            ens_region_id="cn-chongqing-11")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -69,16 +69,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock(&#34;10.4.0.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
- *             .namespaceId(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s:example%s&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),result)))
+ *             .namespaceId(String.format(&#34;%s:example%s&#34;, default_.regions()[0].id(),defaultInteger.result()))
  *             .namespaceName(name)
  *             .namespaceDescription(name)
  *             .enableMicroRegistration(false)
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
  *             .appDescription(name)
- *             .appName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .appName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
  *             .namespaceId(defaultNamespace.id())
  *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
  *             .packageType(&#34;Image&#34;)

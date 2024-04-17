@@ -41,19 +41,21 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultGateways, err := vpn.GetGateways(ctx, nil, nil)
+//			_default, err := vpn.GetGateways(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultCustomerGateway, err := vpn.NewCustomerGateway(ctx, "defaultCustomerGateway", &vpn.CustomerGatewayArgs{
+//			defaultCustomerGateway, err := vpn.NewCustomerGateway(ctx, "default", &vpn.CustomerGatewayArgs{
+//				Name:      pulumi.String(name),
 //				IpAddress: pulumi.String("192.168.1.1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultConnection, err := vpn.NewConnection(ctx, "defaultConnection", &vpn.ConnectionArgs{
+//			defaultConnection, err := vpn.NewConnection(ctx, "default", &vpn.ConnectionArgs{
+//				Name:              pulumi.String(name),
 //				CustomerGatewayId: defaultCustomerGateway.ID(),
-//				VpnGatewayId:      pulumi.String(defaultGateways.Ids[0]),
+//				VpnGatewayId:      pulumi.String(_default.Ids[0]),
 //				LocalSubnets: pulumi.StringArray{
 //					pulumi.String("192.168.2.0/24"),
 //				},
@@ -64,8 +66,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpn.NewPbrRouteEntry(ctx, "defaultPbrRouteEntry", &vpn.PbrRouteEntryArgs{
-//				VpnGatewayId: pulumi.String(defaultGateways.Ids[0]),
+//			_, err = vpn.NewPbrRouteEntry(ctx, "default", &vpn.PbrRouteEntryArgs{
+//				VpnGatewayId: pulumi.String(_default.Ids[0]),
 //				RouteSource:  pulumi.String("192.168.1.0/24"),
 //				RouteDest:    pulumi.String("10.0.0.0/24"),
 //				NextHop:      defaultConnection.ID(),

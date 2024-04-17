@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstCenFlowlogId", data.Alicloud_cen_instances.Default.Flowlogs[0].Id)
+//			ctx.Export("firstCenFlowlogId", defaultAlicloudCenInstances.Flowlogs[0].Id)
 //			return nil
 //		})
 //	}

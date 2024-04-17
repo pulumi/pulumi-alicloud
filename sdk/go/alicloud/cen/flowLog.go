@@ -39,18 +39,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a cen flowlog resource and use it to publish a route entry pointing to an ECS.
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", nil)
+//			_, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
+//				Name: pulumi.String("my-cen"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultProject, err := log.NewProject(ctx, "defaultProject", &log.ProjectArgs{
+//			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
+//				Name:        pulumi.String("sls-for-flowlog"),
 //				Description: pulumi.String("create by terraform"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
+//			defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
 //				Project:            defaultProject.Name,
+//				Name:               pulumi.String("sls-for-flowlog"),
 //				RetentionPeriod:    pulumi.Int(3650),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
@@ -60,9 +64,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewFlowLog(ctx, "defaultFlowLog", &cen.FlowLogArgs{
+//			_, err = cen.NewFlowLog(ctx, "default", &cen.FlowLogArgs{
 //				FlowLogName:  pulumi.String("my-flowlog"),
-//				CenId:        defaultInstance.ID(),
+//				CenId:        _default.ID(),
 //				ProjectName:  defaultProject.Name,
 //				LogStoreName: defaultStore.Name,
 //			})

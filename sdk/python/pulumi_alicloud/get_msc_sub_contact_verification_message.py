@@ -89,12 +89,12 @@ def get_msc_sub_contact_verification_message(contact_id: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_msc_sub_contract = alicloud.MscSubContract("defaultMscSubContract",
+    default_msc_sub_contract = alicloud.MscSubContract("default",
         contact_name="example_value",
         position="CEO",
         email="123@163.com",
         mobile="153xxxxx906")
-    default_msc_sub_contact_verification_message = default_msc_sub_contract.id.apply(lambda id: alicloud.get_msc_sub_contact_verification_message_output(contact_id=id,
+    default = default_msc_sub_contract.id.apply(lambda id: alicloud.get_msc_sub_contact_verification_message_output(contact_id=id,
         type=1))
     ```
     <!--End PulumiCodeChooser -->
@@ -132,12 +132,12 @@ def get_msc_sub_contact_verification_message_output(contact_id: Optional[pulumi.
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_msc_sub_contract = alicloud.MscSubContract("defaultMscSubContract",
+    default_msc_sub_contract = alicloud.MscSubContract("default",
         contact_name="example_value",
         position="CEO",
         email="123@163.com",
         mobile="153xxxxx906")
-    default_msc_sub_contact_verification_message = default_msc_sub_contract.id.apply(lambda id: alicloud.get_msc_sub_contact_verification_message_output(contact_id=id,
+    default = default_msc_sub_contract.id.apply(lambda id: alicloud.get_msc_sub_contact_verification_message_output(contact_id=id,
         type=1))
     ```
     <!--End PulumiCodeChooser -->

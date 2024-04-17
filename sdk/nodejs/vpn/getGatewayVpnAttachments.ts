@@ -26,8 +26,8 @@ import * as utilities from "../utilities";
  *     nameRegex: "^my-VpnAttachment",
  * });
  * export const vpnGatewayVpnAttachmentId2 = nameRegex.then(nameRegex => nameRegex.attachments?.[0]?.id);
- * export const localId = data.alicloud_vpn_gateway_vpn_attachments.vpn_attachments.attachments[0].ike_config[0].local_id;
- * export const internetIp = data.alicloud_vpn_gateway_vpn_attachments.vpn_attachments.attachments[0].internet_ip;
+ * export const localId = vpnAttachments.attachments[0].ikeConfig[0].localId;
+ * export const internetIp = vpnAttachments.attachments[0].internetIp;
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -117,8 +117,8 @@ export interface GetGatewayVpnAttachmentsResult {
  *     nameRegex: "^my-VpnAttachment",
  * });
  * export const vpnGatewayVpnAttachmentId2 = nameRegex.then(nameRegex => nameRegex.attachments?.[0]?.id);
- * export const localId = data.alicloud_vpn_gateway_vpn_attachments.vpn_attachments.attachments[0].ike_config[0].local_id;
- * export const internetIp = data.alicloud_vpn_gateway_vpn_attachments.vpn_attachments.attachments[0].internet_ip;
+ * export const localId = vpnAttachments.attachments[0].ikeConfig[0].localId;
+ * export const internetIp = vpnAttachments.attachments[0].internetIp;
  * ```
  * <!--End PulumiCodeChooser -->
  */

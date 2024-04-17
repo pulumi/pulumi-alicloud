@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Declare the data source
- * const defaultKeyPair = new alicloud.ecs.KeyPair("defaultKeyPair", {keyName: "keyPairDatasource"});
- * const defaultKeyPairs = alicloud.ecs.getKeyPairsOutput({
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {keyName: "keyPairDatasource"});
+ * const default = alicloud.ecs.getKeyPairsOutput({
  *     nameRegex: defaultKeyPair.keyName,
  * });
  * ```
@@ -118,8 +118,8 @@ export interface GetKeyPairsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Declare the data source
- * const defaultKeyPair = new alicloud.ecs.KeyPair("defaultKeyPair", {keyName: "keyPairDatasource"});
- * const defaultKeyPairs = alicloud.ecs.getKeyPairsOutput({
+ * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {keyName: "keyPairDatasource"});
+ * const default = alicloud.ecs.getKeyPairsOutput({
  *     nameRegex: defaultKeyPair.keyName,
  * });
  * ```

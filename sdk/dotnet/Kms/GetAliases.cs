@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.Kms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var kmsAliases = AliCloud.Kms.GetAliases.Invoke(new()
         ///     {
         ///         Ids = new[]
@@ -38,7 +39,7 @@ namespace Pulumi.AliCloud.Kms
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstKeyId"] = data.Alicloud_kms_keys.Kms_keys_ds.Keys[0].Id,
+        ///         ["firstKeyId"] = kmsKeysDs.Keys[0].Id,
         ///     };
         /// });
         /// ```
@@ -63,6 +64,7 @@ namespace Pulumi.AliCloud.Kms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var kmsAliases = AliCloud.Kms.GetAliases.Invoke(new()
         ///     {
         ///         Ids = new[]
@@ -74,7 +76,7 @@ namespace Pulumi.AliCloud.Kms
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstKeyId"] = data.Alicloud_kms_keys.Kms_keys_ds.Keys[0].Id,
+        ///         ["firstKeyId"] = kmsKeysDs.Keys[0].Id,
         ///     };
         /// });
         /// ```

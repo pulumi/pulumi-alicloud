@@ -22,53 +22,30 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const anotherUid = config.get("anotherUid") || "xxxx";
- * // Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
- * const childAccount = new alicloud.Provider("childAccount", {
- *     region: "cn-hangzhou",
- *     assumeRole: {
- *         roleArn: `acs:ram::${anotherUid}:role/terraform-example-assume-role`,
- *     },
- * });
- * // Method 2: Use the target cen account's access_key, secret_key
- * // provider "alicloud" {
- * //   region     = "cn-hangzhou"
- * //   access_key = "access_key"
- * //   secret_key = "secret_key"
- * //   alias      = "child_account"
- * // }
- * const yourAccount = new alicloud.Provider("yourAccount", {});
- * const yourAccountAccount = alicloud.getAccount({});
- * const childAccountAccount = alicloud.getAccount({});
+ * const yourAccount = alicloud.getAccount({});
+ * const childAccount = alicloud.getAccount({});
  * const default = alicloud.getRegions({
  *     current: true,
  * });
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ * const example = new alicloud.cen.Instance("example", {
  *     cenInstanceName: "tf_example",
  *     description: "an example for cen",
- * }, {
- *     provider: alicloud.your_account,
  * });
- * const childAccountNetwork = new alicloud.vpc.Network("childAccountNetwork", {
+ * const childAccountNetwork = new alicloud.vpc.Network("child_account", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
- * }, {
- *     provider: alicloud.child_account,
  * });
- * const childAccountInstanceGrant = new alicloud.cen.InstanceGrant("childAccountInstanceGrant", {
- *     cenId: exampleInstance.id,
+ * const childAccountInstanceGrant = new alicloud.cen.InstanceGrant("child_account", {
+ *     cenId: example.id,
  *     childInstanceId: childAccountNetwork.id,
- *     cenOwnerId: yourAccountAccount.then(yourAccountAccount => yourAccountAccount.id),
- * }, {
- *     provider: alicloud.child_account,
+ *     cenOwnerId: yourAccount.then(yourAccount => yourAccount.id),
  * });
- * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleInstanceAttachment", {
- *     instanceId: exampleInstance.id,
+ * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("example", {
+ *     instanceId: example.id,
  *     childInstanceId: childAccountInstanceGrant.childInstanceId,
  *     childInstanceType: "VPC",
  *     childInstanceRegionId: _default.then(_default => _default.regions?.[0]?.id),
- *     childInstanceOwnerId: childAccountAccount.then(childAccountAccount => childAccountAccount.id),
- * }, {
- *     provider: alicloud.your_account,
+ *     childInstanceOwnerId: childAccount.then(childAccount => childAccount.id),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

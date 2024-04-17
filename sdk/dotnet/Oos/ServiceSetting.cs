@@ -31,19 +31,22 @@ namespace Pulumi.AliCloud.Oos
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-testaccoossetting";
-    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     var @default = new AliCloud.Oss.Bucket("default", new()
     ///     {
     ///         BucketName = name,
     ///         Acl = "public-read-write",
     ///     });
     /// 
-    ///     var defaultProject = new AliCloud.Log.Project("defaultProject");
+    ///     var defaultProject = new AliCloud.Log.Project("default", new()
+    ///     {
+    ///         Name = name,
+    ///     });
     /// 
-    ///     var defaultServiceSetting = new AliCloud.Oos.ServiceSetting("defaultServiceSetting", new()
+    ///     var defaultServiceSetting = new AliCloud.Oos.ServiceSetting("default", new()
     ///     {
     ///         DeliveryOssEnabled = true,
     ///         DeliveryOssKeyPrefix = "path1/",
-    ///         DeliveryOssBucketName = defaultBucket.BucketName,
+    ///         DeliveryOssBucketName = @default.BucketName,
     ///         DeliverySlsEnabled = true,
     ///         DeliverySlsProjectName = defaultProject.Name,
     ///     });

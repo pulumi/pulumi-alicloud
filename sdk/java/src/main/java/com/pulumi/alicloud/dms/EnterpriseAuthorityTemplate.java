@@ -52,12 +52,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultUserTenants = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
+ *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
  *             .status(&#34;ACTIVE&#34;)
  *             .build());
  * 
  *         var defaultEnterpriseAuthorityTemplate = new EnterpriseAuthorityTemplate(&#34;defaultEnterpriseAuthorityTemplate&#34;, EnterpriseAuthorityTemplateArgs.builder()        
- *             .tid(defaultUserTenants.applyValue(getUserTenantsResult -&gt; getUserTenantsResult.ids()[0]))
+ *             .tid(default_.ids()[0])
  *             .authorityTemplateName(name)
  *             .description(name)
  *             .build());

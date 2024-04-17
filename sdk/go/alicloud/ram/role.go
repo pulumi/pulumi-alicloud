@@ -34,7 +34,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new RAM Role.
 //			_, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
-//				Description: pulumi.String("this is a role test."),
+//				Name: pulumi.String("terraform-example"),
 //				Document: pulumi.String(`  {
 //	    "Statement": [
 //	      {
@@ -53,6 +53,7 @@ import (
 //
 // `),
 //
+//				Description: pulumi.String("this is a role test."),
 //			})
 //			if err != nil {
 //				return err

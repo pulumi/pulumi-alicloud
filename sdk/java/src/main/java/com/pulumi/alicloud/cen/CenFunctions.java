@@ -823,7 +823,7 @@ public final class CenFunctions {
      *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenFlowlogId&#34;, data.alicloud_cen_instances().default().flowlogs()[0].id());
+     *         ctx.export(&#34;firstCenFlowlogId&#34;, defaultAlicloudCenInstances.flowlogs()[0].id());
      *     }
      * }
      * ```
@@ -869,7 +869,7 @@ public final class CenFunctions {
      *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenFlowlogId&#34;, data.alicloud_cen_instances().default().flowlogs()[0].id());
+     *         ctx.export(&#34;firstCenFlowlogId&#34;, defaultAlicloudCenInstances.flowlogs()[0].id());
      *     }
      * }
      * ```
@@ -915,7 +915,7 @@ public final class CenFunctions {
      *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenFlowlogId&#34;, data.alicloud_cen_instances().default().flowlogs()[0].id());
+     *         ctx.export(&#34;firstCenFlowlogId&#34;, defaultAlicloudCenInstances.flowlogs()[0].id());
      *     }
      * }
      * ```
@@ -961,7 +961,7 @@ public final class CenFunctions {
      *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenFlowlogId&#34;, data.alicloud_cen_instances().default().flowlogs()[0].id());
+     *         ctx.export(&#34;firstCenFlowlogId&#34;, defaultAlicloudCenInstances.flowlogs()[0].id());
      *     }
      * }
      * ```
@@ -1007,7 +1007,7 @@ public final class CenFunctions {
      *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenFlowlogId&#34;, data.alicloud_cen_instances().default().flowlogs()[0].id());
+     *         ctx.export(&#34;firstCenFlowlogId&#34;, defaultAlicloudCenInstances.flowlogs()[0].id());
      *     }
      * }
      * ```
@@ -1053,7 +1053,7 @@ public final class CenFunctions {
      *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenFlowlogId&#34;, data.alicloud_cen_instances().default().flowlogs()[0].id());
+     *         ctx.export(&#34;firstCenFlowlogId&#34;, defaultAlicloudCenInstances.flowlogs()[0].id());
      *     }
      * }
      * ```
@@ -1733,8 +1733,8 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
-     *             .ids(alicloud_cen_inter_region_traffic_qos_queue.default().id())
-     *             .nameRegex(alicloud_cen_inter_region_traffic_qos_queue.default().name())
+     *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.id())
+     *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.name())
      *             .trafficQosPolicyId(&#34;qos-xxxxxxx&#34;)
      *             .build());
      * 
@@ -1778,8 +1778,8 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
-     *             .ids(alicloud_cen_inter_region_traffic_qos_queue.default().id())
-     *             .nameRegex(alicloud_cen_inter_region_traffic_qos_queue.default().name())
+     *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.id())
+     *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.name())
      *             .trafficQosPolicyId(&#34;qos-xxxxxxx&#34;)
      *             .build());
      * 
@@ -1823,8 +1823,8 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
-     *             .ids(alicloud_cen_inter_region_traffic_qos_queue.default().id())
-     *             .nameRegex(alicloud_cen_inter_region_traffic_qos_queue.default().name())
+     *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.id())
+     *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.name())
      *             .trafficQosPolicyId(&#34;qos-xxxxxxx&#34;)
      *             .build());
      * 
@@ -1868,8 +1868,8 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
-     *             .ids(alicloud_cen_inter_region_traffic_qos_queue.default().id())
-     *             .nameRegex(alicloud_cen_inter_region_traffic_qos_queue.default().name())
+     *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.id())
+     *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.name())
      *             .trafficQosPolicyId(&#34;qos-xxxxxxx&#34;)
      *             .build());
      * 
@@ -3228,8 +3228,8 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export(&#34;masterId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].master_zones()[0]);
-     *         ctx.export(&#34;slaveId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].slave_zones()[0]);
+     *         ctx.export(&#34;masterId&#34;, default_.resources()[0].masterZones()[0]);
+     *         ctx.export(&#34;slaveId&#34;, default_.resources()[0].slaveZones()[0]);
      *     }
      * }
      * ```
@@ -3272,8 +3272,8 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export(&#34;masterId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].master_zones()[0]);
-     *         ctx.export(&#34;slaveId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].slave_zones()[0]);
+     *         ctx.export(&#34;masterId&#34;, default_.resources()[0].masterZones()[0]);
+     *         ctx.export(&#34;slaveId&#34;, default_.resources()[0].slaveZones()[0]);
      *     }
      * }
      * ```
@@ -3316,8 +3316,8 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export(&#34;masterId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].master_zones()[0]);
-     *         ctx.export(&#34;slaveId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].slave_zones()[0]);
+     *         ctx.export(&#34;masterId&#34;, default_.resources()[0].masterZones()[0]);
+     *         ctx.export(&#34;slaveId&#34;, default_.resources()[0].slaveZones()[0]);
      *     }
      * }
      * ```
@@ -3360,8 +3360,8 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export(&#34;masterId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].master_zones()[0]);
-     *         ctx.export(&#34;slaveId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].slave_zones()[0]);
+     *         ctx.export(&#34;masterId&#34;, default_.resources()[0].masterZones()[0]);
+     *         ctx.export(&#34;slaveId&#34;, default_.resources()[0].slaveZones()[0]);
      *     }
      * }
      * ```
@@ -3404,8 +3404,8 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export(&#34;masterId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].master_zones()[0]);
-     *         ctx.export(&#34;slaveId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].slave_zones()[0]);
+     *         ctx.export(&#34;masterId&#34;, default_.resources()[0].masterZones()[0]);
+     *         ctx.export(&#34;slaveId&#34;, default_.resources()[0].slaveZones()[0]);
      *     }
      * }
      * ```
@@ -3448,8 +3448,8 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export(&#34;masterId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].master_zones()[0]);
-     *         ctx.export(&#34;slaveId&#34;, data.alicloud_cen_transit_router_available_resources().default().resources()[0].slave_zones()[0]);
+     *         ctx.export(&#34;masterId&#34;, default_.resources()[0].masterZones()[0]);
+     *         ctx.export(&#34;slaveId&#34;, default_.resources()[0].slaveZones()[0]);
      *     }
      * }
      * ```

@@ -24,12 +24,14 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const exampleNamespace = new alicloud.cr.Namespace("exampleNamespace", {
+ * const example = new alicloud.cr.Namespace("example", {
+ *     name: name,
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });
- * const exampleRepo = new alicloud.cr.Repo("exampleRepo", {
- *     namespace: exampleNamespace.name,
+ * const exampleRepo = new alicloud.cr.Repo("example", {
+ *     namespace: example.name,
+ *     name: name,
  *     summary: "this is summary of my new repo",
  *     repoType: "PUBLIC",
  *     detail: "this is a public repo",

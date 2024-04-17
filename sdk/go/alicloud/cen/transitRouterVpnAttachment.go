@@ -46,21 +46,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
-//				CenId:                    exampleInstance.ID(),
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
+//				CenId:                    example.ID(),
 //				TransitRouterDescription: pulumi.String(name),
 //				TransitRouterName:        pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleCustomerGateway, err := vpn.NewCustomerGateway(ctx, "exampleCustomerGateway", &vpn.CustomerGatewayArgs{
+//			exampleCustomerGateway, err := vpn.NewCustomerGateway(ctx, "example", &vpn.CustomerGatewayArgs{
+//				Name:        pulumi.String(name),
 //				IpAddress:   pulumi.String("42.104.22.210"),
 //				Asn:         pulumi.String("45014"),
 //				Description: pulumi.String(name),
@@ -68,7 +69,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleGatewayVpnAttachment, err := vpn.NewGatewayVpnAttachment(ctx, "exampleGatewayVpnAttachment", &vpn.GatewayVpnAttachmentArgs{
+//			exampleGatewayVpnAttachment, err := vpn.NewGatewayVpnAttachment(ctx, "example", &vpn.GatewayVpnAttachmentArgs{
 //				CustomerGatewayId: exampleCustomerGateway.ID(),
 //				NetworkType:       pulumi.String("public"),
 //				LocalSubnet:       pulumi.String("0.0.0.0/0"),
@@ -112,7 +113,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleTransitRouterCidr, err := cen.NewTransitRouterCidr(ctx, "exampleTransitRouterCidr", &cen.TransitRouterCidrArgs{
+//			exampleTransitRouterCidr, err := cen.NewTransitRouterCidr(ctx, "example", &cen.TransitRouterCidrArgs{
 //				TransitRouterId:       exampleTransitRouter.TransitRouterId,
 //				Cidr:                  pulumi.String("192.168.0.0/16"),
 //				TransitRouterCidrName: pulumi.String(name),
@@ -122,7 +123,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterVpnAttachment(ctx, "exampleTransitRouterVpnAttachment", &cen.TransitRouterVpnAttachmentArgs{
+//			_, err = cen.NewTransitRouterVpnAttachment(ctx, "example", &cen.TransitRouterVpnAttachmentArgs{
 //				AutoPublishRouteEnabled:            pulumi.Bool(false),
 //				TransitRouterAttachmentDescription: pulumi.String(name),
 //				TransitRouterAttachmentName:        pulumi.String(name),

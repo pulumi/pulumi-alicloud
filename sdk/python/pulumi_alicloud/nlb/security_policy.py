@@ -244,9 +244,9 @@ class SecurityPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_security_policy = alicloud.nlb.SecurityPolicy("defaultSecurityPolicy",
-            resource_group_id=default_resource_groups.ids[0],
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_security_policy = alicloud.nlb.SecurityPolicy("default",
+            resource_group_id=default.ids[0],
             security_policy_name=name,
             ciphers=[
                 "ECDHE-RSA-AES128-SHA",
@@ -309,9 +309,9 @@ class SecurityPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_security_policy = alicloud.nlb.SecurityPolicy("defaultSecurityPolicy",
-            resource_group_id=default_resource_groups.ids[0],
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_security_policy = alicloud.nlb.SecurityPolicy("default",
+            resource_group_id=default.ids[0],
             security_policy_name=name,
             ciphers=[
                 "ECDHE-RSA-AES128-SHA",

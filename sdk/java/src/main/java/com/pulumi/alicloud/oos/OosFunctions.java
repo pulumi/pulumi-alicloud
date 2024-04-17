@@ -568,10 +568,11 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
      *             .ids(&#34;execution_id&#34;)
-     *             .status(&#34;Success&#34;)
      *             .templateName(&#34;name&#34;)
+     *             .status(&#34;Success&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
@@ -613,10 +614,11 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
      *             .ids(&#34;execution_id&#34;)
-     *             .status(&#34;Success&#34;)
      *             .templateName(&#34;name&#34;)
+     *             .status(&#34;Success&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
@@ -658,10 +660,11 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
      *             .ids(&#34;execution_id&#34;)
-     *             .status(&#34;Success&#34;)
      *             .templateName(&#34;name&#34;)
+     *             .status(&#34;Success&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
@@ -703,10 +706,11 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
      *             .ids(&#34;execution_id&#34;)
-     *             .status(&#34;Success&#34;)
      *             .templateName(&#34;name&#34;)
+     *             .status(&#34;Success&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
@@ -748,10 +752,11 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
      *             .ids(&#34;execution_id&#34;)
-     *             .status(&#34;Success&#34;)
      *             .templateName(&#34;name&#34;)
+     *             .status(&#34;Success&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
@@ -793,10 +798,11 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
      *             .ids(&#34;execution_id&#34;)
-     *             .status(&#34;Success&#34;)
      *             .templateName(&#34;name&#34;)
+     *             .status(&#34;Success&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
@@ -1594,14 +1600,15 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .hasTrigger(false)
      *             .nameRegex(&#34;test&#34;)
-     *             .shareType(&#34;Private&#34;)
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
      *             ))
+     *             .shareType(&#34;Private&#34;)
+     *             .hasTrigger(false)
      *             .build());
      * 
      *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
@@ -1643,14 +1650,15 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .hasTrigger(false)
      *             .nameRegex(&#34;test&#34;)
-     *             .shareType(&#34;Private&#34;)
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
      *             ))
+     *             .shareType(&#34;Private&#34;)
+     *             .hasTrigger(false)
      *             .build());
      * 
      *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
@@ -1692,14 +1700,15 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .hasTrigger(false)
      *             .nameRegex(&#34;test&#34;)
-     *             .shareType(&#34;Private&#34;)
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
      *             ))
+     *             .shareType(&#34;Private&#34;)
+     *             .hasTrigger(false)
      *             .build());
      * 
      *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
@@ -1741,14 +1750,15 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .hasTrigger(false)
      *             .nameRegex(&#34;test&#34;)
-     *             .shareType(&#34;Private&#34;)
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
      *             ))
+     *             .shareType(&#34;Private&#34;)
+     *             .hasTrigger(false)
      *             .build());
      * 
      *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
@@ -1790,14 +1800,15 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .hasTrigger(false)
      *             .nameRegex(&#34;test&#34;)
-     *             .shareType(&#34;Private&#34;)
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
      *             ))
+     *             .shareType(&#34;Private&#34;)
+     *             .hasTrigger(false)
      *             .build());
      * 
      *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
@@ -1839,14 +1850,15 @@ public final class OosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .hasTrigger(false)
      *             .nameRegex(&#34;test&#34;)
-     *             .shareType(&#34;Private&#34;)
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
      *             ))
+     *             .shareType(&#34;Private&#34;)
+     *             .hasTrigger(false)
      *             .build());
      * 
      *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));

@@ -70,19 +70,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
  *             .build());
  * 
- *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
  *             .owners(&#34;system&#34;)
  *             .build());
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock(&#34;10.1.0.0/16&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
@@ -104,12 +104,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
  *             .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
  *             .internetChargeType(&#34;PayByTraffic&#34;)
  *             .internetMaxBandwidthOut(&#34;10&#34;)
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .availabilityZone(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .instanceChargeType(&#34;PostPaid&#34;)
  *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
  *             .vswitchId(defaultSwitch.id())
@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  *             .serviceId(&#34;service-dd475e6e468348799f0f&#34;)
  *             .serviceVersion(&#34;1&#34;)
  *             .serviceInstanceName(name)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(default_.groups()[0].id())
  *             .paymentType(&#34;Permanent&#34;)
  *             .operationMetadata(NestServiceInstanceOperationMetadataArgs.builder()
  *                 .operationStartTime(&#34;1681281179000&#34;)

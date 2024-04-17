@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.SecurityCenter
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var serviceLinkedRole = new AliCloud.SecurityCenter.ServiceLinkedRole("serviceLinkedRole");
+    ///     var serviceLinkedRole = new AliCloud.SecurityCenter.ServiceLinkedRole("service_linked_role");
     /// 
     /// });
     /// ```

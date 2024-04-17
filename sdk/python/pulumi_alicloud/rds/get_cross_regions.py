@@ -92,8 +92,9 @@ def get_cross_regions(output_file: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     cross_regions = alicloud.rds.get_cross_regions()
-    pulumi.export("firstRdsCrossRegions", data["alicloud_rds_cross_regions"]["regions"]["ids"])
+    pulumi.export("firstRdsCrossRegions", regions["ids"])
     ```
     <!--End PulumiCodeChooser -->
     """
@@ -124,8 +125,9 @@ def get_cross_regions_output(output_file: Optional[pulumi.Input[Optional[str]]] 
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     cross_regions = alicloud.rds.get_cross_regions()
-    pulumi.export("firstRdsCrossRegions", data["alicloud_rds_cross_regions"]["regions"]["ids"])
+    pulumi.export("firstRdsCrossRegions", regions["ids"])
     ```
     <!--End PulumiCodeChooser -->
     """

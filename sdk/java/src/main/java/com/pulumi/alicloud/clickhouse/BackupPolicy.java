@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultRegions = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock(&#34;10.4.0.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].zoneIds()[0].zoneId()))
+ *             .zoneId(default_.regions()[0].zoneIds()[0].zoneId())
  *             .build());
  * 
  *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        

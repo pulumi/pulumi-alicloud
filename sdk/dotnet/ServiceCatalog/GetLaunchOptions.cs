@@ -29,19 +29,19 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultEndUserProducts = AliCloud.ServiceCatalog.GetEndUserProducts.Invoke(new()
+        ///     var @default = AliCloud.ServiceCatalog.GetEndUserProducts.Invoke(new()
         ///     {
         ///         NameRegex = "ram模板创建",
         ///     });
         /// 
-        ///     var defaultLaunchOptions = AliCloud.ServiceCatalog.GetLaunchOptions.Invoke(new()
+        ///     var defaultGetLaunchOptions = AliCloud.ServiceCatalog.GetLaunchOptions.Invoke(new()
         ///     {
         ///         ProductId = "data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudServiceCatalogLaunchOptionExampleId"] = defaultLaunchOptions.Apply(getLaunchOptionsResult =&gt; getLaunchOptionsResult.LaunchOptions[0]?.Id),
+        ///         ["alicloudServiceCatalogLaunchOptionExampleId"] = defaultGetLaunchOptions.Apply(getLaunchOptionsResult =&gt; getLaunchOptionsResult.LaunchOptions[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -68,19 +68,19 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultEndUserProducts = AliCloud.ServiceCatalog.GetEndUserProducts.Invoke(new()
+        ///     var @default = AliCloud.ServiceCatalog.GetEndUserProducts.Invoke(new()
         ///     {
         ///         NameRegex = "ram模板创建",
         ///     });
         /// 
-        ///     var defaultLaunchOptions = AliCloud.ServiceCatalog.GetLaunchOptions.Invoke(new()
+        ///     var defaultGetLaunchOptions = AliCloud.ServiceCatalog.GetLaunchOptions.Invoke(new()
         ///     {
         ///         ProductId = "data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudServiceCatalogLaunchOptionExampleId"] = defaultLaunchOptions.Apply(getLaunchOptionsResult =&gt; getLaunchOptionsResult.LaunchOptions[0]?.Id),
+        ///         ["alicloudServiceCatalogLaunchOptionExampleId"] = defaultGetLaunchOptions.Apply(getLaunchOptionsResult =&gt; getLaunchOptionsResult.LaunchOptions[0]?.Id),
         ///     };
         /// });
         /// ```

@@ -36,13 +36,13 @@ namespace Pulumi.AliCloud.PolarDB
         ///         Category = "Normal",
         ///     });
         /// 
-        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
         ///         VpcName = "terraform-example",
         ///         CidrBlock = "172.16.0.0/16",
         ///     });
         /// 
-        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
         ///     {
         ///         VpcId = defaultNetwork.Id,
         ///         CidrBlock = "172.16.0.0/24",
@@ -66,14 +66,14 @@ namespace Pulumi.AliCloud.PolarDB
         ///         Status = "Running",
         ///     });
         /// 
-        ///     var defaultDatabase = new AliCloud.PolarDB.Database("defaultDatabase", new()
+        ///     var defaultDatabase = new AliCloud.PolarDB.Database("default", new()
         ///     {
         ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
         ///         DbName = $"tfaccountpri_{polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id)}",
         ///         DbDescription = "from terraform",
         ///     });
         /// 
-        ///     var defaultDatabases = AliCloud.PolarDB.GetDatabases.Invoke(new()
+        ///     var @default = AliCloud.PolarDB.GetDatabases.Invoke(new()
         ///     {
         ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
         ///         NameRegex = defaultDatabase.DbName,
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["database"] = defaultDatabases.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases[0]?.DbName),
+        ///         ["database"] = @default.Apply(@default =&gt; @default.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases[0]?.DbName)),
         ///     };
         /// });
         /// ```
@@ -115,13 +115,13 @@ namespace Pulumi.AliCloud.PolarDB
         ///         Category = "Normal",
         ///     });
         /// 
-        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
         ///         VpcName = "terraform-example",
         ///         CidrBlock = "172.16.0.0/16",
         ///     });
         /// 
-        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
         ///     {
         ///         VpcId = defaultNetwork.Id,
         ///         CidrBlock = "172.16.0.0/24",
@@ -145,14 +145,14 @@ namespace Pulumi.AliCloud.PolarDB
         ///         Status = "Running",
         ///     });
         /// 
-        ///     var defaultDatabase = new AliCloud.PolarDB.Database("defaultDatabase", new()
+        ///     var defaultDatabase = new AliCloud.PolarDB.Database("default", new()
         ///     {
         ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
         ///         DbName = $"tfaccountpri_{polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id)}",
         ///         DbDescription = "from terraform",
         ///     });
         /// 
-        ///     var defaultDatabases = AliCloud.PolarDB.GetDatabases.Invoke(new()
+        ///     var @default = AliCloud.PolarDB.GetDatabases.Invoke(new()
         ///     {
         ///         DbClusterId = polardbClustersDs.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
         ///         NameRegex = defaultDatabase.DbName,
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["database"] = defaultDatabases.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases[0]?.DbName),
+        ///         ["database"] = @default.Apply(@default =&gt; @default.Apply(getDatabasesResult =&gt; getDatabasesResult.Databases[0]?.DbName)),
         ///     };
         /// });
         /// ```

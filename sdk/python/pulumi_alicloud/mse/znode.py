@@ -179,16 +179,16 @@ class Znode(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vswitch_name="terraform-example",
             cidr_block="172.17.3.0/24",
             vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_cluster = alicloud.mse.Cluster("exampleCluster",
+            zone_id=example.zones[0].id)
+        example_cluster = alicloud.mse.Cluster("example",
             cluster_specification="MSE_SC_1_2_60_c",
             cluster_type="ZooKeeper",
             cluster_version="ZooKeeper_3_8_0",
@@ -200,7 +200,7 @@ class Znode(pulumi.CustomResource):
             mse_version="mse_dev",
             vswitch_id=example_switch.id,
             vpc_id=example_network.id)
-        example_znode = alicloud.mse.Znode("exampleZnode",
+        example_znode = alicloud.mse.Znode("example",
             cluster_id=example_cluster.cluster_id,
             data="terraform-example",
             path="/example")
@@ -244,16 +244,16 @@ class Znode(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vswitch_name="terraform-example",
             cidr_block="172.17.3.0/24",
             vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_cluster = alicloud.mse.Cluster("exampleCluster",
+            zone_id=example.zones[0].id)
+        example_cluster = alicloud.mse.Cluster("example",
             cluster_specification="MSE_SC_1_2_60_c",
             cluster_type="ZooKeeper",
             cluster_version="ZooKeeper_3_8_0",
@@ -265,7 +265,7 @@ class Znode(pulumi.CustomResource):
             mse_version="mse_dev",
             vswitch_id=example_switch.id,
             vpc_id=example_network.id)
-        example_znode = alicloud.mse.Znode("exampleZnode",
+        example_znode = alicloud.mse.Znode("example",
             cluster_id=example_cluster.cluster_id,
             data="terraform-example",
             path="/example")

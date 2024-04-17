@@ -158,17 +158,18 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexampleuser"
-        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
+        example = alicloud.privatelink.VpcEndpointService("example",
             service_description=name,
             connect_bandwidth=103,
             auto_accept_connection=False)
-        example_user = alicloud.ram.User("exampleUser",
+        example_user = alicloud.ram.User("example",
+            name=name,
             display_name="user_display_name",
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",
             comments="yoyoyo")
-        example_vpc_endpoint_service_user = alicloud.privatelink.VpcEndpointServiceUser("exampleVpcEndpointServiceUser",
-            service_id=example_vpc_endpoint_service.id,
+        example_vpc_endpoint_service_user = alicloud.privatelink.VpcEndpointServiceUser("example",
+            service_id=example.id,
             user_id=example_user.id)
         ```
         <!--End PulumiCodeChooser -->
@@ -215,17 +216,18 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexampleuser"
-        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
+        example = alicloud.privatelink.VpcEndpointService("example",
             service_description=name,
             connect_bandwidth=103,
             auto_accept_connection=False)
-        example_user = alicloud.ram.User("exampleUser",
+        example_user = alicloud.ram.User("example",
+            name=name,
             display_name="user_display_name",
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",
             comments="yoyoyo")
-        example_vpc_endpoint_service_user = alicloud.privatelink.VpcEndpointServiceUser("exampleVpcEndpointServiceUser",
-            service_id=example_vpc_endpoint_service.id,
+        example_vpc_endpoint_service_user = alicloud.privatelink.VpcEndpointServiceUser("example",
+            service_id=example.id,
             user_id=example_user.id)
         ```
         <!--End PulumiCodeChooser -->

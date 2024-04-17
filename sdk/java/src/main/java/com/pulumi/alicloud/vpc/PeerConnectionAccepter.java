@@ -34,9 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.Provider;
- * import com.pulumi.alicloud.ProviderArgs;
- * import com.pulumi.alicloud.inputs.ProviderAssumeRoleArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
@@ -44,7 +41,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.PeerConnectionArgs;
  * import com.pulumi.alicloud.vpc.PeerConnectionAccepter;
  * import com.pulumi.alicloud.vpc.PeerConnectionAccepterArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,57 +58,30 @@ import javax.annotation.Nullable;
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var acceptingRegion = config.get(&#34;acceptingRegion&#34;).orElse(&#34;cn-beijing&#34;);
  *         final var acceptUid = config.get(&#34;acceptUid&#34;).orElse(&#34;xxxx&#34;);
- *         // Method 1: Use assume_role to operate resources in the target account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
- *         var accepting = new Provider(&#34;accepting&#34;, ProviderArgs.builder()        
- *             .region(acceptingRegion)
- *             .assumeRole(ProviderAssumeRoleArgs.builder()
- *                 .roleArn(String.format(&#34;acs:ram::%s:role/terraform-example-assume-role&#34;, acceptUid))
- *                 .build())
- *             .build());
- * 
- *         // Method 2: Use the target account&#39;s access_key, secret_key
- *         // provider &#34;alicloud&#34; {
- *         //   region     = &#34;cn-hangzhou&#34;
- *         //   access_key = &#34;access_key&#34;
- *         //   secret_key = &#34;secret_key&#34;
- *         //   alias      = &#34;accepting&#34;
- *         // }
- *         var local = new Provider(&#34;local&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-hangzhou&#34;)
- *             .build());
- * 
- *         var localNetwork = new Network(&#34;localNetwork&#34;, NetworkArgs.builder()        
+ *         var local = new Network(&#34;local&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
  *             .cidrBlock(&#34;10.4.0.0/16&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.local())
- *                 .build());
+ *             .build());
  * 
  *         var acceptingNetwork = new Network(&#34;acceptingNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
  *             .cidrBlock(&#34;192.168.0.0/16&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.accepting())
- *                 .build());
+ *             .build());
  * 
- *         final var acceptingAccount = AlicloudFunctions.getAccount();
+ *         final var accepting = AlicloudFunctions.getAccount();
  * 
- *         var defaultPeerConnection = new PeerConnection(&#34;defaultPeerConnection&#34;, PeerConnectionArgs.builder()        
+ *         var default_ = new PeerConnection(&#34;default&#34;, PeerConnectionArgs.builder()        
  *             .peerConnectionName(name)
- *             .vpcId(localNetwork.id())
- *             .acceptingAliUid(acceptingAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .vpcId(local.id())
+ *             .acceptingAliUid(accepting.applyValue(getAccountResult -&gt; getAccountResult.id()))
  *             .acceptingRegionId(acceptingRegion)
  *             .acceptingVpcId(acceptingNetwork.id())
  *             .description(name)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.local())
- *                 .build());
+ *             .build());
  * 
  *         var defaultPeerConnectionAccepter = new PeerConnectionAccepter(&#34;defaultPeerConnectionAccepter&#34;, PeerConnectionAccepterArgs.builder()        
- *             .instanceId(defaultPeerConnection.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.accepting())
- *                 .build());
+ *             .instanceId(default_.id())
+ *             .build());
  * 
  *     }
  * }

@@ -86,6 +86,19 @@ def get_connections(ids: Optional[str] = None,
 
     > **NOTE:** Available in v1.101.0+.
 
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    # Declare the data source
+    example = alicloud.kvstore.get_connections(ids="r-wer123456")
+    pulumi.export("connectionString", example.connections[0].connection_string)
+    ```
+    <!--End PulumiCodeChooser -->
+
 
     :param str ids: A list of KVStore DBInstance ids, only support one item.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -111,6 +124,19 @@ def get_connections_output(ids: Optional[pulumi.Input[str]] = None,
     This data source can query the public IP of the specified KVStore DBInstance.
 
     > **NOTE:** Available in v1.101.0+.
+
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    # Declare the data source
+    example = alicloud.kvstore.get_connections(ids="r-wer123456")
+    pulumi.export("connectionString", example.connections[0].connection_string)
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str ids: A list of KVStore DBInstance ids, only support one item.

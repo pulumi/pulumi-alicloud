@@ -24,9 +24,9 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const defaultAcl = new alicloud.rocketmq.Acl("defaultAcl", {});
- * const defaultAclRule = new alicloud.rocketmq.AclRule("defaultAclRule", {
- *     aclId: defaultAcl.id,
+ * const _default = new alicloud.rocketmq.Acl("default", {name: name});
+ * const defaultAclRule = new alicloud.rocketmq.AclRule("default", {
+ *     aclId: _default.id,
  *     description: name,
  *     policy: "accept",
  *     ipProtocol: "ALL",

@@ -315,35 +315,35 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
+        default = alicloud.rds.get_zones(engine="MySQL",
             engine_version="8.0",
             db_instance_storage_type="local_ssd",
             category="HighAvailability")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default.ids[0],
             engine="MySQL",
             engine_version="8.0",
             db_instance_storage_type="local_ssd",
             category="HighAvailability")
         regions = alicloud.rds.get_cross_regions()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
+            zone_id=default.ids[0],
             vswitch_name=name)
-        default_instance = alicloud.rds.Instance("defaultInstance",
+        default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
             engine_version="8.0",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
             instance_charge_type="Postpaid",
             category="HighAvailability",
             instance_name=name,
             vswitch_id=default_switch.id,
             db_instance_storage_type="local_ssd")
-        default_rds_instance_cross_backup_policy = alicloud.rds.RdsInstanceCrossBackupPolicy("defaultRdsInstanceCrossBackupPolicy",
+        default_rds_instance_cross_backup_policy = alicloud.rds.RdsInstanceCrossBackupPolicy("default",
             instance_id=default_instance.id,
             cross_backup_region=regions.ids[0])
         ```
@@ -390,35 +390,35 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
+        default = alicloud.rds.get_zones(engine="MySQL",
             engine_version="8.0",
             db_instance_storage_type="local_ssd",
             category="HighAvailability")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default.ids[0],
             engine="MySQL",
             engine_version="8.0",
             db_instance_storage_type="local_ssd",
             category="HighAvailability")
         regions = alicloud.rds.get_cross_regions()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
+            zone_id=default.ids[0],
             vswitch_name=name)
-        default_instance = alicloud.rds.Instance("defaultInstance",
+        default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
             engine_version="8.0",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
             instance_charge_type="Postpaid",
             category="HighAvailability",
             instance_name=name,
             vswitch_id=default_switch.id,
             db_instance_storage_type="local_ssd")
-        default_rds_instance_cross_backup_policy = alicloud.rds.RdsInstanceCrossBackupPolicy("defaultRdsInstanceCrossBackupPolicy",
+        default_rds_instance_cross_backup_policy = alicloud.rds.RdsInstanceCrossBackupPolicy("default",
             instance_id=default_instance.id,
             cross_backup_region=regions.ids[0])
         ```

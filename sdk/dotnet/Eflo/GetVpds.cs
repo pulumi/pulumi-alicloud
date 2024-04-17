@@ -31,9 +31,9 @@ namespace Pulumi.AliCloud.Eflo
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_eflo_vpd.Default.Id,
+        ///             defaultAlicloudEfloVpd.Id,
         ///         },
-        ///         NameRegex = alicloud_eflo_vpd.Default.Name,
+        ///         NameRegex = defaultAlicloudEfloVpd.Name,
         ///         VpdName = "RMC-Terraform-Test",
         ///     });
         /// 
@@ -68,9 +68,9 @@ namespace Pulumi.AliCloud.Eflo
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_eflo_vpd.Default.Id,
+        ///             defaultAlicloudEfloVpd.Id,
         ///         },
-        ///         NameRegex = alicloud_eflo_vpd.Default.Name,
+        ///         NameRegex = defaultAlicloudEfloVpd.Name,
         ///         VpdName = "RMC-Terraform-Test",
         ///     });
         /// 

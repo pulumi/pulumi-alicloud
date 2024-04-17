@@ -33,67 +33,33 @@ namespace Pulumi.AliCloud.Vpc
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var acceptingRegion = config.Get("acceptingRegion") ?? "cn-beijing";
     ///     var acceptUid = config.Get("acceptUid") ?? "xxxx";
-    ///     // Method 1: Use assume_role to operate resources in the target account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
-    ///     var accepting = new AliCloud.Provider("accepting", new()
-    ///     {
-    ///         Region = acceptingRegion,
-    ///         AssumeRole = new AliCloud.Inputs.ProviderAssumeRoleArgs
-    ///         {
-    ///             RoleArn = $"acs:ram::{acceptUid}:role/terraform-example-assume-role",
-    ///         },
-    ///     });
-    /// 
-    ///     // Method 2: Use the target account's access_key, secret_key
-    ///     // provider "alicloud" {
-    ///     //   region     = "cn-hangzhou"
-    ///     //   access_key = "access_key"
-    ///     //   secret_key = "secret_key"
-    ///     //   alias      = "accepting"
-    ///     // }
-    ///     var local = new AliCloud.Provider("local", new()
-    ///     {
-    ///         Region = "cn-hangzhou",
-    ///     });
-    /// 
-    ///     var localNetwork = new AliCloud.Vpc.Network("localNetwork", new()
+    ///     var local = new AliCloud.Vpc.Network("local", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.4.0.0/16",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Local,
     ///     });
     /// 
-    ///     var acceptingNetwork = new AliCloud.Vpc.Network("acceptingNetwork", new()
+    ///     var acceptingNetwork = new AliCloud.Vpc.Network("accepting", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "192.168.0.0/16",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Accepting,
     ///     });
     /// 
-    ///     var acceptingAccount = AliCloud.GetAccount.Invoke();
+    ///     var accepting = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultPeerConnection = new AliCloud.Vpc.PeerConnection("defaultPeerConnection", new()
+    ///     var @default = new AliCloud.Vpc.PeerConnection("default", new()
     ///     {
     ///         PeerConnectionName = name,
-    ///         VpcId = localNetwork.Id,
-    ///         AcceptingAliUid = acceptingAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         VpcId = local.Id,
+    ///         AcceptingAliUid = accepting.Apply(getAccountResult =&gt; getAccountResult.Id),
     ///         AcceptingRegionId = acceptingRegion,
     ///         AcceptingVpcId = acceptingNetwork.Id,
     ///         Description = name,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Local,
     ///     });
     /// 
-    ///     var defaultPeerConnectionAccepter = new AliCloud.Vpc.PeerConnectionAccepter("defaultPeerConnectionAccepter", new()
+    ///     var defaultPeerConnectionAccepter = new AliCloud.Vpc.PeerConnectionAccepter("default", new()
     ///     {
-    ///         InstanceId = defaultPeerConnection.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Accepting,
+    ///         InstanceId = @default.Id,
     ///     });
     /// 
     /// });

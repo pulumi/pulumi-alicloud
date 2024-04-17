@@ -31,25 +31,25 @@ namespace Pulumi.AliCloud.Drds
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var example = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         VpcName = name,
     ///     });
     /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
     ///     {
-    ///         VpcId = exampleNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VpcId = example.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         CidrBlock = "172.16.0.0/24",
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var defaultPolardbxInstance = new AliCloud.Drds.PolardbxInstance("defaultPolardbxInstance", new()
+    ///     var defaultPolardbxInstance = new AliCloud.Drds.PolardbxInstance("default", new()
     ///     {
     ///         TopologyType = "3azones",
     ///         VswitchId = exampleSwitch.Id,
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Drds
     ///         DnNodeCount = 2,
     ///         SecondaryZone = "ap-southeast-1b",
     ///         TertiaryZone = "ap-southeast-1c",
-    ///         VpcId = exampleNetwork.Id,
+    ///         VpcId = example.Id,
     ///     });
     /// 
     /// });

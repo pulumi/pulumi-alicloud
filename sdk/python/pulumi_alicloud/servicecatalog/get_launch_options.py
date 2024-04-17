@@ -127,9 +127,9 @@ def get_launch_options(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_end_user_products = alicloud.servicecatalog.get_end_user_products(name_regex="ram模板创建")
-    default_launch_options = alicloud.servicecatalog.get_launch_options(product_id="data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
-    pulumi.export("alicloudServiceCatalogLaunchOptionExampleId", default_launch_options.launch_options[0].id)
+    default = alicloud.servicecatalog.get_end_user_products(name_regex="ram模板创建")
+    default_get_launch_options = alicloud.servicecatalog.get_launch_options(product_id="data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
+    pulumi.export("alicloudServiceCatalogLaunchOptionExampleId", default_get_launch_options.launch_options[0].id)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -177,9 +177,9 @@ def get_launch_options_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_end_user_products = alicloud.servicecatalog.get_end_user_products(name_regex="ram模板创建")
-    default_launch_options = alicloud.servicecatalog.get_launch_options(product_id="data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
-    pulumi.export("alicloudServiceCatalogLaunchOptionExampleId", default_launch_options.launch_options[0].id)
+    default = alicloud.servicecatalog.get_end_user_products(name_regex="ram模板创建")
+    default_get_launch_options = alicloud.servicecatalog.get_launch_options(product_id="data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
+    pulumi.export("alicloudServiceCatalogLaunchOptionExampleId", default_get_launch_options.launch_options[0].id)
     ```
     <!--End PulumiCodeChooser -->
 

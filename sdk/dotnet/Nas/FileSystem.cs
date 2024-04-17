@@ -85,32 +85,32 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZones = AliCloud.Nas.GetZones.Invoke(new()
+    ///     var example = AliCloud.Nas.GetZones.Invoke(new()
     ///     {
     ///         FileSystemType = "cpfs",
     ///     });
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
     ///     {
     ///         VswitchName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///         VpcId = exampleNetwork.Id,
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId),
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId),
     ///     });
     /// 
-    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new()
+    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("example", new()
     ///     {
     ///         ProtocolType = "cpfs",
     ///         StorageType = "advance_200",
     ///         FileSystemType = "cpfs",
     ///         Capacity = 3600,
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId),
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId),
     ///         VpcId = exampleNetwork.Id,
     ///         VswitchId = exampleSwitch.Id,
     ///     });

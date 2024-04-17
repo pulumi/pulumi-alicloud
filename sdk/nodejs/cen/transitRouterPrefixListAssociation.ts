@@ -21,20 +21,20 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.getAccount({});
- * const examplePrefixList = new alicloud.vpc.PrefixList("examplePrefixList", {entrys: [{
+ * const example = new alicloud.vpc.PrefixList("example", {entrys: [{
  *     cidr: "192.168.0.0/16",
  * }]});
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ * const exampleInstance = new alicloud.cen.Instance("example", {
  *     cenInstanceName: "tf_example",
  *     description: "an example for cen",
  * });
- * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("example", {
  *     transitRouterName: "tf_example",
  *     cenId: exampleInstance.id,
  * });
- * const exampleTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", {transitRouterId: exampleTransitRouter.transitRouterId});
- * const exampleTransitRouterPrefixListAssociation = new alicloud.cen.TransitRouterPrefixListAssociation("exampleTransitRouterPrefixListAssociation", {
- *     prefixListId: examplePrefixList.id,
+ * const exampleTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("example", {transitRouterId: exampleTransitRouter.transitRouterId});
+ * const exampleTransitRouterPrefixListAssociation = new alicloud.cen.TransitRouterPrefixListAssociation("example", {
+ *     prefixListId: example.id,
  *     transitRouterId: exampleTransitRouter.transitRouterId,
  *     transitRouterTableId: exampleTransitRouterRouteTable.transitRouterRouteTableId,
  *     nextHop: "BlackHole",

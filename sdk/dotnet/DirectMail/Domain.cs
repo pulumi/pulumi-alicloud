@@ -30,15 +30,15 @@ namespace Pulumi.AliCloud.DirectMail
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
-    ///         Max = 99999,
     ///         Min = 10000,
+    ///         Max = 99999,
     ///     });
     /// 
     ///     var example = new AliCloud.DirectMail.Domain("example", new()
     ///     {
-    ///         DomainName = @default.Result.Apply(result =&gt; $"alicloud-provider-{result}.online"),
+    ///         DomainName = $"alicloud-provider-{@default.Result}.online",
     ///     });
     /// 
     /// });

@@ -39,14 +39,13 @@ import * as utilities from "../utilities";
  *         "Action": "ACS::ExecuteApi"
  *       }]
  *   }
- *   
  * `,
+ *     templateName: "test-name",
+ *     versionName: "test",
  *     tags: {
  *         Created: "TF",
  *         For: "acceptance Test",
  *     },
- *     templateName: "test-name",
- *     versionName: "test",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const example = new alicloud.cr.Namespace("example", {
+ *     name: name,
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });

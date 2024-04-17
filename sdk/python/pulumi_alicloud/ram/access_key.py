@@ -234,6 +234,7 @@ class AccessKey(pulumi.CustomResource):
 
         # Create a new RAM access key for user.
         user = alicloud.ram.User("user",
+            name="terraform-example",
             display_name="user_display_name",
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",
@@ -253,6 +254,7 @@ class AccessKey(pulumi.CustomResource):
 
         # Create a new RAM access key for user.
         user = alicloud.ram.User("user",
+            name="terraform-example",
             display_name="user_display_name",
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",
@@ -323,6 +325,7 @@ class AccessKey(pulumi.CustomResource):
 
         # Create a new RAM access key for user.
         user = alicloud.ram.User("user",
+            name="terraform-example",
             display_name="user_display_name",
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",
@@ -342,6 +345,7 @@ class AccessKey(pulumi.CustomResource):
 
         # Create a new RAM access key for user.
         user = alicloud.ram.User("user",
+            name="terraform-example",
             display_name="user_display_name",
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",

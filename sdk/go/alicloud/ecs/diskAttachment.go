@@ -34,13 +34,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new ECS disk-attachment and use it attach one disk to a new instance.
-//			ecsSg, err := ecs.NewSecurityGroup(ctx, "ecsSg", &ecs.SecurityGroupArgs{
+//			ecsSg, err := ecs.NewSecurityGroup(ctx, "ecs_sg", &ecs.SecurityGroupArgs{
+//				Name:        pulumi.String("terraform-test-group"),
 //				Description: pulumi.String("New security group"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ecsDisk, err := ecs.NewDisk(ctx, "ecsDisk", &ecs.DiskArgs{
+//			ecsDisk, err := ecs.NewDisk(ctx, "ecs_disk", &ecs.DiskArgs{
 //				AvailabilityZone: pulumi.String("cn-beijing-a"),
 //				Size:             pulumi.Int(50),
 //				Tags: pulumi.Map{
@@ -50,7 +51,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ecsInstance, err := ecs.NewInstance(ctx, "ecsInstance", &ecs.InstanceArgs{
+//			ecsInstance, err := ecs.NewInstance(ctx, "ecs_instance", &ecs.InstanceArgs{
 //				ImageId:          pulumi.String("ubuntu_18_04_64_20G_alibase_20190624.vhd"),
 //				InstanceType:     pulumi.String("ecs.n4.small"),
 //				AvailabilityZone: pulumi.String("cn-beijing-a"),
@@ -66,7 +67,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewDiskAttachment(ctx, "ecsDiskAtt", &ecs.DiskAttachmentArgs{
+//			_, err = ecs.NewDiskAttachment(ctx, "ecs_disk_att", &ecs.DiskAttachmentArgs{
 //				DiskId:     ecsDisk.ID(),
 //				InstanceId: ecsInstance.ID(),
 //			})

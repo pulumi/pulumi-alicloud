@@ -452,14 +452,14 @@ class SimpleOfficeSite(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
             cidr_block="172.16.0.0/12",
-            desktop_access_type="Internet",
             enable_admin_access=True,
-            office_site_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+            desktop_access_type="Internet",
+            office_site_name=f"terraform-example-{default['result']}")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -508,14 +508,14 @@ class SimpleOfficeSite(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
             cidr_block="172.16.0.0/12",
-            desktop_access_type="Internet",
             enable_admin_access=True,
-            office_site_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+            desktop_access_type="Internet",
+            office_site_name=f"terraform-example-{default['result']}")
         ```
         <!--End PulumiCodeChooser -->
 

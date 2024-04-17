@@ -215,17 +215,17 @@ class ChartRepository(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
+        example = alicloud.cr.RegistryEnterpriseInstance("example",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
             instance_name=name)
-        example_chart_namespace = alicloud.cr.ChartNamespace("exampleChartNamespace",
-            instance_id=example_registry_enterprise_instance.id,
+        example_chart_namespace = alicloud.cr.ChartNamespace("example",
+            instance_id=example.id,
             namespace_name=name)
-        example_chart_repository = alicloud.cr.ChartRepository("exampleChartRepository",
+        example_chart_repository = alicloud.cr.ChartRepository("example",
             repo_namespace_name=example_chart_namespace.namespace_name,
             instance_id=example_chart_namespace.instance_id,
             repo_name=name)
@@ -274,17 +274,17 @@ class ChartRepository(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
+        example = alicloud.cr.RegistryEnterpriseInstance("example",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
             instance_name=name)
-        example_chart_namespace = alicloud.cr.ChartNamespace("exampleChartNamespace",
-            instance_id=example_registry_enterprise_instance.id,
+        example_chart_namespace = alicloud.cr.ChartNamespace("example",
+            instance_id=example.id,
             namespace_name=name)
-        example_chart_repository = alicloud.cr.ChartRepository("exampleChartRepository",
+        example_chart_repository = alicloud.cr.ChartRepository("example",
             repo_namespace_name=example_chart_namespace.namespace_name,
             instance_id=example_chart_namespace.instance_id,
             repo_name=name)

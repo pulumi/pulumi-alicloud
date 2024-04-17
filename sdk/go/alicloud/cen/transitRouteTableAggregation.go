@@ -35,27 +35,27 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String("tf_example"),
 //				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
 //				TransitRouterName: pulumi.String("tf_example"),
-//				CenId:             exampleInstance.ID(),
+//				CenId:             example.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTransitRouterRouteTable, err := cen.NewTransitRouterRouteTable(ctx, "exampleTransitRouterRouteTable", &cen.TransitRouterRouteTableArgs{
+//			exampleTransitRouterRouteTable, err := cen.NewTransitRouterRouteTable(ctx, "example", &cen.TransitRouterRouteTableArgs{
 //				TransitRouterId: exampleTransitRouter.TransitRouterId,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouteTableAggregation(ctx, "exampleTransitRouteTableAggregation", &cen.TransitRouteTableAggregationArgs{
+//			_, err = cen.NewTransitRouteTableAggregation(ctx, "example", &cen.TransitRouteTableAggregationArgs{
 //				TransitRouteTableId:                     exampleTransitRouterRouteTable.TransitRouterRouteTableId,
 //				TransitRouteTableAggregationCidr:        pulumi.String("10.0.0.0/8"),
 //				TransitRouteTableAggregationScope:       pulumi.String("VPC"),

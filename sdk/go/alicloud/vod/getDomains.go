@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultDomain, err := vod.NewDomain(ctx, "defaultDomain", &vod.DomainArgs{
+//			defaultDomain, err := vod.NewDomain(ctx, "default", &vod.DomainArgs{
 //				DomainName: pulumi.String("your_domain_name"),
 //				Scope:      pulumi.String("domestic"),
 //				Sources: vod.DomainSourceArray{
@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultDomains := vod.GetDomainsOutput(ctx, vod.GetDomainsOutputArgs{
+//			_default := vod.GetDomainsOutput(ctx, vod.GetDomainsOutputArgs{
 //				Ids: pulumi.StringArray{
 //					defaultDomain.ID(),
 //				},
@@ -59,8 +59,8 @@ import (
 //					"key2": pulumi.Any("value2"),
 //				},
 //			}, nil)
-//			ctx.Export("vodDomain", defaultDomains.ApplyT(func(defaultDomains vod.GetDomainsResult) (vod.GetDomainsDomain, error) {
-//				return defaultDomains.Domains[0], nil
+//			ctx.Export("vodDomain", _default.ApplyT(func(_default vod.GetDomainsResult) (vod.GetDomainsDomain, error) {
+//				return _default.Domains[0], nil
 //			}).(vod.GetDomainsDomainOutput))
 //			return nil
 //		})

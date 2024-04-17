@@ -24,24 +24,27 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "192.168.0.0/24",
  * });
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "192.168.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vpcId: defaultNetwork.id,
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
- * const defaultEcsNetworkInterface = new alicloud.ecs.EcsNetworkInterface("defaultEcsNetworkInterface", {
+ * const defaultEcsNetworkInterface = new alicloud.ecs.EcsNetworkInterface("default", {
  *     networkInterfaceName: name,
  *     vswitchId: defaultSwitch.id,
  *     securityGroupIds: [defaultSecurityGroup.id],
@@ -51,7 +54,7 @@ import * as utilities from "../utilities";
  *         Created: "TF",
  *         For: "Test",
  *     },
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.ids?.[0]),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

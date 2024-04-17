@@ -31,13 +31,13 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// {
     ///     var @default = new AliCloud.ThreatDetection.BaselineStrategy("default", new()
     ///     {
-    ///         BaselineStrategyName = "apispec",
     ///         CustomType = "custom",
-    ///         CycleDays = 3,
     ///         EndTime = "08:00:00",
-    ///         RiskSubTypeName = "hc_exploit_redis",
-    ///         StartTime = "05:00:00",
+    ///         BaselineStrategyName = "apispec",
+    ///         CycleDays = 3,
     ///         TargetType = "groupId",
+    ///         StartTime = "05:00:00",
+    ///         RiskSubTypeName = "hc_exploit_redis",
     ///     });
     /// 
     /// });

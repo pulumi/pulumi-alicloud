@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.nas.getProtocols({
- *     outputFile: "protocols.txt",
  *     type: "Performance",
  *     zoneId: "cn-beijing-e",
+ *     outputFile: "protocols.txt",
  * });
  * export const nasProtocolsProtocol = _default.then(_default => _default.protocols?.[0]);
  * ```
@@ -82,9 +82,9 @@ export interface GetProtocolsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.nas.getProtocols({
- *     outputFile: "protocols.txt",
  *     type: "Performance",
  *     zoneId: "cn-beijing-e",
+ *     outputFile: "protocols.txt",
  * });
  * export const nasProtocolsProtocol = _default.then(_default => _default.protocols?.[0]);
  * ```

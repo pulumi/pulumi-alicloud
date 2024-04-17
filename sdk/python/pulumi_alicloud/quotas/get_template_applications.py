@@ -138,6 +138,45 @@ def get_template_applications(batch_quota_application_id: Optional[str] = None,
 
     > **NOTE:** Available since v1.214.0.
 
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
+    default_template_applications = alicloud.quotas.TemplateApplications("default",
+        quota_action_code="vpc_whitelist/ha_vip_whitelist",
+        product_code="vpc",
+        quota_category="FlowControl",
+        aliyun_uids=[default.ids[0]],
+        desire_value=6,
+        notice_type=0,
+        env_language="zh",
+        reason="example",
+        dimensions=[
+            alicloud.quotas.TemplateApplicationsDimensionArgs(
+                key="apiName",
+                value="GetProductQuotaDimension",
+            ),
+            alicloud.quotas.TemplateApplicationsDimensionArgs(
+                key="apiVersion",
+                value="2020-05-10",
+            ),
+            alicloud.quotas.TemplateApplicationsDimensionArgs(
+                key="regionId",
+                value="cn-hangzhou",
+            ),
+        ])
+    default_get_template_applications = alicloud.quotas.get_template_applications_output(ids=[default_template_applications.id],
+        product_code="vpc",
+        quota_action_code="vpc_whitelist/ha_vip_whitelist",
+        quota_category="FlowControl")
+    pulumi.export("alicloudQuotasTemplateApplicationsExampleId", default_get_template_applications.applications[0].id)
+    ```
+    <!--End PulumiCodeChooser -->
+
 
     :param str batch_quota_application_id: The ID of the quota application batch.
     :param Sequence[str] ids: A list of Template Applications IDs.
@@ -179,6 +218,45 @@ def get_template_applications_output(batch_quota_application_id: Optional[pulumi
     This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
 
     > **NOTE:** Available since v1.214.0.
+
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
+    default_template_applications = alicloud.quotas.TemplateApplications("default",
+        quota_action_code="vpc_whitelist/ha_vip_whitelist",
+        product_code="vpc",
+        quota_category="FlowControl",
+        aliyun_uids=[default.ids[0]],
+        desire_value=6,
+        notice_type=0,
+        env_language="zh",
+        reason="example",
+        dimensions=[
+            alicloud.quotas.TemplateApplicationsDimensionArgs(
+                key="apiName",
+                value="GetProductQuotaDimension",
+            ),
+            alicloud.quotas.TemplateApplicationsDimensionArgs(
+                key="apiVersion",
+                value="2020-05-10",
+            ),
+            alicloud.quotas.TemplateApplicationsDimensionArgs(
+                key="regionId",
+                value="cn-hangzhou",
+            ),
+        ])
+    default_get_template_applications = alicloud.quotas.get_template_applications_output(ids=[default_template_applications.id],
+        product_code="vpc",
+        quota_action_code="vpc_whitelist/ha_vip_whitelist",
+        quota_category="FlowControl")
+    pulumi.export("alicloudQuotasTemplateApplicationsExampleId", default_get_template_applications.applications[0].id)
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str batch_quota_application_id: The ID of the quota application batch.

@@ -154,13 +154,6 @@ class NetworkGrant(pulumi.CustomResource):
         cen_uid = config.get_float("cenUid")
         if cen_uid is None:
             cen_uid = 123456789
-        default = alicloud.Provider("default", region="cn-shanghai")
-        # Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
-        cen_account = alicloud.Provider("cenAccount",
-            region="cn-hangzhou",
-            assume_role=alicloud.ProviderAssumeRoleArgs(
-                role_arn=f"acs:ram::{cen_uid}:role/terraform-example-assume-role",
-            ))
         # Method 2: Use the target cen account's access_key, secret_key
         # provider "alicloud" {
         #   region     = "cn-hangzhou"
@@ -168,18 +161,16 @@ class NetworkGrant(pulumi.CustomResource):
         #   secret_key = "secret_key"
         #   alias      = "cen_account"
         # }
-        default_network = alicloud.cloudconnect.Network("defaultNetwork",
+        default = alicloud.cloudconnect.Network("default",
+            name=name,
             description=name,
             cidr_block="192.168.0.0/24",
-            is_default=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["default"]))
-        cen = alicloud.cen.Instance("cen", cen_instance_name=name,
-        opts=pulumi.ResourceOptions(provider=alicloud["cen_account"]))
-        default_network_grant = alicloud.cloudconnect.NetworkGrant("defaultNetworkGrant",
-            ccn_id=default_network.id,
+            is_default=True)
+        cen = alicloud.cen.Instance("cen", cen_instance_name=name)
+        default_network_grant = alicloud.cloudconnect.NetworkGrant("default",
+            ccn_id=default.id,
             cen_id=cen.id,
-            cen_uid=cen_uid,
-            opts=pulumi.ResourceOptions(provider=alicloud["default"]))
+            cen_uid=cen_uid)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -228,13 +219,6 @@ class NetworkGrant(pulumi.CustomResource):
         cen_uid = config.get_float("cenUid")
         if cen_uid is None:
             cen_uid = 123456789
-        default = alicloud.Provider("default", region="cn-shanghai")
-        # Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
-        cen_account = alicloud.Provider("cenAccount",
-            region="cn-hangzhou",
-            assume_role=alicloud.ProviderAssumeRoleArgs(
-                role_arn=f"acs:ram::{cen_uid}:role/terraform-example-assume-role",
-            ))
         # Method 2: Use the target cen account's access_key, secret_key
         # provider "alicloud" {
         #   region     = "cn-hangzhou"
@@ -242,18 +226,16 @@ class NetworkGrant(pulumi.CustomResource):
         #   secret_key = "secret_key"
         #   alias      = "cen_account"
         # }
-        default_network = alicloud.cloudconnect.Network("defaultNetwork",
+        default = alicloud.cloudconnect.Network("default",
+            name=name,
             description=name,
             cidr_block="192.168.0.0/24",
-            is_default=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["default"]))
-        cen = alicloud.cen.Instance("cen", cen_instance_name=name,
-        opts=pulumi.ResourceOptions(provider=alicloud["cen_account"]))
-        default_network_grant = alicloud.cloudconnect.NetworkGrant("defaultNetworkGrant",
-            ccn_id=default_network.id,
+            is_default=True)
+        cen = alicloud.cen.Instance("cen", cen_instance_name=name)
+        default_network_grant = alicloud.cloudconnect.NetworkGrant("default",
+            ccn_id=default.id,
             cen_id=cen.id,
-            cen_uid=cen_uid,
-            opts=pulumi.ResourceOptions(provider=alicloud["default"]))
+            cen_uid=cen_uid)
         ```
         <!--End PulumiCodeChooser -->
 

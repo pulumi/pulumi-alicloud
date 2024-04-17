@@ -480,12 +480,13 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
+        default = alicloud.vpn.CustomerGateway("default",
+            name=name,
             ip_address="42.104.22.210",
             asn="45014",
             description=name)
-        default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment",
-            customer_gateway_id=default_customer_gateway.id,
+        default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("default",
+            customer_gateway_id=default.id,
             network_type="public",
             local_subnet="0.0.0.0/0",
             remote_subnet="0.0.0.0/0",
@@ -576,12 +577,13 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
+        default = alicloud.vpn.CustomerGateway("default",
+            name=name,
             ip_address="42.104.22.210",
             asn="45014",
             description=name)
-        default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment",
-            customer_gateway_id=default_customer_gateway.id,
+        default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("default",
+            customer_gateway_id=default.id,
             network_type="public",
             local_subnet="0.0.0.0/0",
             remote_subnet="0.0.0.0/0",

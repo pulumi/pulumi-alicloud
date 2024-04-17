@@ -48,6 +48,7 @@ import (
 //				RouterId:       foo.RouterId,
 //				Role:           pulumi.String("InitiatingSide"),
 //				Specification:  pulumi.String("Large.2"),
+//				Name:           pulumi.String("test1"),
 //				Description:    pulumi.String("test1"),
 //			})
 //			if err != nil {

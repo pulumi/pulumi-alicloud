@@ -35,22 +35,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String("tf_example"),
 //				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
 //				TransitRouterName: pulumi.String("tf_example"),
-//				CenId:             exampleInstance.ID(),
+//				CenId:             example.ID(),
 //				SupportMulticast:  pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterMulticastDomain(ctx, "exampleTransitRouterMulticastDomain", &cen.TransitRouterMulticastDomainArgs{
+//			_, err = cen.NewTransitRouterMulticastDomain(ctx, "example", &cen.TransitRouterMulticastDomainArgs{
 //				TransitRouterId:                         exampleTransitRouter.TransitRouterId,
 //				TransitRouterMulticastDomainName:        pulumi.String("tf_example"),
 //				TransitRouterMulticastDomainDescription: pulumi.String("tf_example"),

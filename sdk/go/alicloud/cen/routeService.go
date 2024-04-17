@@ -45,33 +45,33 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("tf_example"),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			exampleInstance, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String("tf_example"),
 //				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &cen.InstanceAttachmentArgs{
+//			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "example", &cen.InstanceAttachmentArgs{
 //				InstanceId:            exampleInstance.ID(),
-//				ChildInstanceId:       exampleNetwork.ID(),
+//				ChildInstanceId:       example.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewRouteService(ctx, "exampleRouteService", &cen.RouteServiceArgs{
+//			_, err = cen.NewRouteService(ctx, "example", &cen.RouteServiceArgs{
 //				AccessRegionId: pulumi.String(_default.Regions[0].Id),
 //				HostRegionId:   pulumi.String(_default.Regions[0].Id),
-//				HostVpcId:      exampleNetwork.ID(),
+//				HostVpcId:      example.ID(),
 //				CenId:          exampleInstanceAttachment.InstanceId,
 //				Host:           pulumi.String("100.118.28.52/32"),
 //			})

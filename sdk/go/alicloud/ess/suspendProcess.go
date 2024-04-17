@@ -45,32 +45,30 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			myName := defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//				return fmt.Sprintf("%v-%v", name, result), nil
-//			}).(pulumi.StringOutput)
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			myName := fmt.Sprintf("%v-%v", name, defaultInteger.Result)
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
 //				CpuCoreCount:     pulumi.IntRef(2),
 //				MemorySize:       pulumi.Float64Ref(4),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 //				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
 //				MostRecent: pulumi.BoolRef(true),
 //				Owners:     pulumi.StringRef("system"),
@@ -78,29 +76,30 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(myName),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(myName),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(myName),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
+//			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "default", &ess.ScalingGroupArgs{
 //				MinSize:          pulumi.Int(1),
 //				MaxSize:          pulumi.Int(1),
 //				ScalingGroupName: pulumi.String(myName),
@@ -115,10 +114,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultScalingConfiguration, err := ess.NewScalingConfiguration(ctx, "defaultScalingConfiguration", &ess.ScalingConfigurationArgs{
+//			defaultScalingConfiguration, err := ess.NewScalingConfiguration(ctx, "default", &ess.ScalingConfigurationArgs{
 //				ScalingGroupId:  defaultScalingGroup.ID(),
-//				ImageId:         pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:    pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:         pulumi.String(defaultGetImages.Images[0].Id),
+//				InstanceType:    pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroupId: defaultSecurityGroup.ID(),
 //				ForceDelete:     pulumi.Bool(true),
 //				Active:          pulumi.Bool(true),
@@ -127,7 +126,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ess.NewSuspendProcess(ctx, "defaultSuspendProcess", &ess.SuspendProcessArgs{
+//			_, err = ess.NewSuspendProcess(ctx, "default", &ess.SuspendProcessArgs{
 //				ScalingGroupId: defaultScalingConfiguration.ScalingGroupId,
 //				Process:        pulumi.String("ScaleIn"),
 //			})

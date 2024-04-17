@@ -20,19 +20,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
+ * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("default", {
  *     cidrBlock: "172.16.0.0/12",
  *     desktopAccessType: "Internet",
  *     officeSiteName: "example_value",
  * });
- * const defaultNetworkPackage = new alicloud.eds.NetworkPackage("defaultNetworkPackage", {
+ * const defaultNetworkPackage = new alicloud.eds.NetworkPackage("default", {
  *     bandwidth: 10,
  *     officeSiteId: defaultSimpleOfficeSite.id,
  * });
- * const defaultNetworkPackages = alicloud.eds.getNetworkPackagesOutput({
+ * const default = alicloud.eds.getNetworkPackagesOutput({
  *     ids: [defaultNetworkPackage.id],
  * });
- * export const ecdNetworkPackageId1 = defaultNetworkPackages.apply(defaultNetworkPackages => defaultNetworkPackages.packages?.[0]?.id);
+ * export const ecdNetworkPackageId1 = _default.apply(_default => _default.packages?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -92,19 +92,19 @@ export interface GetNetworkPackagesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
+ * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("default", {
  *     cidrBlock: "172.16.0.0/12",
  *     desktopAccessType: "Internet",
  *     officeSiteName: "example_value",
  * });
- * const defaultNetworkPackage = new alicloud.eds.NetworkPackage("defaultNetworkPackage", {
+ * const defaultNetworkPackage = new alicloud.eds.NetworkPackage("default", {
  *     bandwidth: 10,
  *     officeSiteId: defaultSimpleOfficeSite.id,
  * });
- * const defaultNetworkPackages = alicloud.eds.getNetworkPackagesOutput({
+ * const default = alicloud.eds.getNetworkPackagesOutput({
  *     ids: [defaultNetworkPackage.id],
  * });
- * export const ecdNetworkPackageId1 = defaultNetworkPackages.apply(defaultNetworkPackages => defaultNetworkPackages.packages?.[0]?.id);
+ * export const ecdNetworkPackageId1 = _default.apply(_default => _default.packages?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */

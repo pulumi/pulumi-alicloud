@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.hbr.Vault;
  * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.hbr.Policy;
@@ -60,18 +60,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var defaultyk84Hc = new Vault(&#34;defaultyk84Hc&#34;, VaultArgs.builder()        
  *             .vaultType(&#34;STANDARD&#34;)
- *             .vaultName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
+ *             .vaultName(String.format(&#34;example-value-%s&#34;, default_.result()))
  *             .build());
  * 
  *         var defaultoqWvHQ = new Policy(&#34;defaultoqWvHQ&#34;, PolicyArgs.builder()        
- *             .policyName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
+ *             .policyName(String.format(&#34;example-value-%s&#34;, default_.result()))
  *             .rules(PolicyRuleArgs.builder()
  *                 .ruleType(&#34;BACKUP&#34;)
  *                 .backupType(&#34;COMPLETE&#34;)
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultKtt2XY = new Bucket(&#34;defaultKtt2XY&#34;, BucketArgs.builder()        
  *             .storageClass(&#34;Standard&#34;)
- *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
+ *             .bucket(String.format(&#34;example-value-%s&#34;, default_.result()))
  *             .build());
  * 
  *         var defaultPolicyBinding = new PolicyBinding(&#34;defaultPolicyBinding&#34;, PolicyBindingArgs.builder()        

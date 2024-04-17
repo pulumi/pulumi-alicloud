@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleVpcEndpointService, err := privatelink.NewVpcEndpointService(ctx, "exampleVpcEndpointService", &privatelink.VpcEndpointServiceArgs{
+//			example, err := privatelink.NewVpcEndpointService(ctx, "example", &privatelink.VpcEndpointServiceArgs{
 //				ServiceDescription:   pulumi.String(name),
 //				ConnectBandwidth:     pulumi.Int(103),
 //				AutoAcceptConnection: pulumi.Bool(false),
@@ -50,7 +50,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleUser, err := ram.NewUser(ctx, "exampleUser", &ram.UserArgs{
+//			exampleUser, err := ram.NewUser(ctx, "example", &ram.UserArgs{
+//				Name:        pulumi.String(name),
 //				DisplayName: pulumi.String("user_display_name"),
 //				Mobile:      pulumi.String("86-18688888888"),
 //				Email:       pulumi.String("hello.uuu@aaa.com"),
@@ -59,8 +60,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = privatelink.NewVpcEndpointServiceUser(ctx, "exampleVpcEndpointServiceUser", &privatelink.VpcEndpointServiceUserArgs{
-//				ServiceId: exampleVpcEndpointService.ID(),
+//			_, err = privatelink.NewVpcEndpointServiceUser(ctx, "example", &privatelink.VpcEndpointServiceUserArgs{
+//				ServiceId: example.ID(),
 //				UserId:    exampleUser.ID(),
 //			})
 //			if err != nil {

@@ -201,7 +201,7 @@ def get_vpc_firewall_cens(cen_id: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.cloudfirewall.get_vpc_firewall_cens(ids=[alicloud_cloud_firewall_vpc_firewall_cen["default"]["id"]],
+    default = alicloud.cloudfirewall.get_vpc_firewall_cens(ids=[default_alicloud_cloud_firewall_vpc_firewall_cen["id"]],
         cen_id="cen-cjok7uyb5w2b27573v",
         member_uid="1415189284827022",
         status="closed",
@@ -277,7 +277,7 @@ def get_vpc_firewall_cens_output(cen_id: Optional[pulumi.Input[Optional[str]]] =
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.cloudfirewall.get_vpc_firewall_cens(ids=[alicloud_cloud_firewall_vpc_firewall_cen["default"]["id"]],
+    default = alicloud.cloudfirewall.get_vpc_firewall_cens(ids=[default_alicloud_cloud_firewall_vpc_firewall_cen["id"]],
         cen_id="cen-cjok7uyb5w2b27573v",
         member_uid="1415189284827022",
         status="closed",

@@ -323,34 +323,34 @@ class VbrHealthCheck(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.RandomInteger("vlanId",
+        default = alicloud.get_regions(current=True)
+        default_get_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.index.Integer("vlan_id",
             max=2999,
             min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
+        example = alicloud.expressconnect.VirtualBorderRouter("example",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
             peering_subnet_mask="255.255.255.252",
-            physical_connection_id=default_physical_connections.connections[0].id,
+            physical_connection_id=default_get_physical_connections.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id.id,
+            vlan_id=vlan_id["id"],
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example_instance = alicloud.cen.Instance("example",
             cen_instance_name=name,
             protection_level="REDUCED")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+        example_instance_attachment = alicloud.cen.InstanceAttachment("example",
             instance_id=example_instance.id,
-            child_instance_id=example_virtual_border_router.id,
+            child_instance_id=example.id,
             child_instance_type="VBR",
-            child_instance_region_id=default_regions.regions[0].id)
-        example_vbr_health_check = alicloud.cen.VbrHealthCheck("exampleVbrHealthCheck",
+            child_instance_region_id=default.regions[0].id)
+        example_vbr_health_check = alicloud.cen.VbrHealthCheck("example",
             cen_id=example_instance.id,
             health_check_source_ip="192.168.1.2",
             health_check_target_ip="10.0.0.2",
-            vbr_instance_id=example_virtual_border_router.id,
+            vbr_instance_id=example.id,
             vbr_instance_region_id=example_instance_attachment.child_instance_region_id,
             health_check_interval=2,
             healthy_threshold=8)
@@ -406,34 +406,34 @@ class VbrHealthCheck(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.RandomInteger("vlanId",
+        default = alicloud.get_regions(current=True)
+        default_get_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.index.Integer("vlan_id",
             max=2999,
             min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
+        example = alicloud.expressconnect.VirtualBorderRouter("example",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
             peering_subnet_mask="255.255.255.252",
-            physical_connection_id=default_physical_connections.connections[0].id,
+            physical_connection_id=default_get_physical_connections.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id.id,
+            vlan_id=vlan_id["id"],
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example_instance = alicloud.cen.Instance("example",
             cen_instance_name=name,
             protection_level="REDUCED")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+        example_instance_attachment = alicloud.cen.InstanceAttachment("example",
             instance_id=example_instance.id,
-            child_instance_id=example_virtual_border_router.id,
+            child_instance_id=example.id,
             child_instance_type="VBR",
-            child_instance_region_id=default_regions.regions[0].id)
-        example_vbr_health_check = alicloud.cen.VbrHealthCheck("exampleVbrHealthCheck",
+            child_instance_region_id=default.regions[0].id)
+        example_vbr_health_check = alicloud.cen.VbrHealthCheck("example",
             cen_id=example_instance.id,
             health_check_source_ip="192.168.1.2",
             health_check_target_ip="10.0.0.2",
-            vbr_instance_id=example_virtual_border_router.id,
+            vbr_instance_id=example.id,
             vbr_instance_region_id=example_instance_attachment.child_instance_region_id,
             health_check_interval=2,
             healthy_threshold=8)

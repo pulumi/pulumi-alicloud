@@ -149,43 +149,25 @@ class InstanceGrant(pulumi.CustomResource):
         another_uid = config.get("anotherUid")
         if another_uid is None:
             another_uid = "xxxx"
-        # Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
-        child_account = alicloud.Provider("childAccount",
-            region="cn-hangzhou",
-            assume_role=alicloud.ProviderAssumeRoleArgs(
-                role_arn=f"acs:ram::{another_uid}:role/terraform-example-assume-role",
-            ))
-        # Method 2: Use the target cen account's access_key, secret_key
-        # provider "alicloud" {
-        #   region     = "cn-hangzhou"
-        #   access_key = "access_key"
-        #   secret_key = "secret_key"
-        #   alias      = "child_account"
-        # }
-        your_account = alicloud.Provider("yourAccount")
-        your_account_account = alicloud.get_account()
-        child_account_account = alicloud.get_account()
+        your_account = alicloud.get_account()
+        child_account = alicloud.get_account()
         default = alicloud.get_regions(current=True)
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
-            description="an example for cen",
-            opts=pulumi.ResourceOptions(provider=alicloud["your_account"]))
-        child_account_network = alicloud.vpc.Network("childAccountNetwork",
+            description="an example for cen")
+        child_account_network = alicloud.vpc.Network("child_account",
             vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            opts=pulumi.ResourceOptions(provider=alicloud["child_account"]))
-        child_account_instance_grant = alicloud.cen.InstanceGrant("childAccountInstanceGrant",
-            cen_id=example_instance.id,
+            cidr_block="172.17.3.0/24")
+        child_account_instance_grant = alicloud.cen.InstanceGrant("child_account",
+            cen_id=example.id,
             child_instance_id=child_account_network.id,
-            cen_owner_id=your_account_account.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["child_account"]))
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
-            instance_id=example_instance.id,
+            cen_owner_id=your_account.id)
+        example_instance_attachment = alicloud.cen.InstanceAttachment("example",
+            instance_id=example.id,
             child_instance_id=child_account_instance_grant.child_instance_id,
             child_instance_type="VPC",
             child_instance_region_id=default.regions[0].id,
-            child_instance_owner_id=child_account_account.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["your_account"]))
+            child_instance_owner_id=child_account.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -229,43 +211,25 @@ class InstanceGrant(pulumi.CustomResource):
         another_uid = config.get("anotherUid")
         if another_uid is None:
             another_uid = "xxxx"
-        # Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
-        child_account = alicloud.Provider("childAccount",
-            region="cn-hangzhou",
-            assume_role=alicloud.ProviderAssumeRoleArgs(
-                role_arn=f"acs:ram::{another_uid}:role/terraform-example-assume-role",
-            ))
-        # Method 2: Use the target cen account's access_key, secret_key
-        # provider "alicloud" {
-        #   region     = "cn-hangzhou"
-        #   access_key = "access_key"
-        #   secret_key = "secret_key"
-        #   alias      = "child_account"
-        # }
-        your_account = alicloud.Provider("yourAccount")
-        your_account_account = alicloud.get_account()
-        child_account_account = alicloud.get_account()
+        your_account = alicloud.get_account()
+        child_account = alicloud.get_account()
         default = alicloud.get_regions(current=True)
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
-            description="an example for cen",
-            opts=pulumi.ResourceOptions(provider=alicloud["your_account"]))
-        child_account_network = alicloud.vpc.Network("childAccountNetwork",
+            description="an example for cen")
+        child_account_network = alicloud.vpc.Network("child_account",
             vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24",
-            opts=pulumi.ResourceOptions(provider=alicloud["child_account"]))
-        child_account_instance_grant = alicloud.cen.InstanceGrant("childAccountInstanceGrant",
-            cen_id=example_instance.id,
+            cidr_block="172.17.3.0/24")
+        child_account_instance_grant = alicloud.cen.InstanceGrant("child_account",
+            cen_id=example.id,
             child_instance_id=child_account_network.id,
-            cen_owner_id=your_account_account.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["child_account"]))
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
-            instance_id=example_instance.id,
+            cen_owner_id=your_account.id)
+        example_instance_attachment = alicloud.cen.InstanceAttachment("example",
+            instance_id=example.id,
             child_instance_id=child_account_instance_grant.child_instance_id,
             child_instance_type="VPC",
             child_instance_region_id=default.regions[0].id,
-            child_instance_owner_id=child_account_account.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["your_account"]))
+            child_instance_owner_id=child_account.id)
         ```
         <!--End PulumiCodeChooser -->
 

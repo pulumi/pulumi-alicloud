@@ -31,8 +31,14 @@ namespace Pulumi.AliCloud.Waf
     /// {
     ///     var domain = new AliCloud.Waf.Domain("domain", new()
     ///     {
-    ///         ClusterType = "PhysicalCluster",
     ///         DomainName = "alicloud-provider.cn",
+    ///         InstanceId = "waf-123455",
+    ///         IsAccessProduct = "On",
+    ///         SourceIps = new[]
+    ///         {
+    ///             "1.1.1.1",
+    ///         },
+    ///         ClusterType = "PhysicalCluster",
     ///         Http2Ports = new[]
     ///         {
     ///             "443",
@@ -41,14 +47,12 @@ namespace Pulumi.AliCloud.Waf
     ///         {
     ///             "80",
     ///         },
-    ///         HttpToUserIp = "Off",
     ///         HttpsPorts = new[]
     ///         {
     ///             "443",
     ///         },
+    ///         HttpToUserIp = "Off",
     ///         HttpsRedirect = "Off",
-    ///         InstanceId = "waf-123455",
-    ///         IsAccessProduct = "On",
     ///         LoadBalancing = "IpHash",
     ///         LogHeaders = new[]
     ///         {
@@ -57,10 +61,6 @@ namespace Pulumi.AliCloud.Waf
     ///                 Key = "foo",
     ///                 Value = "http",
     ///             },
-    ///         },
-    ///         SourceIps = new[]
-    ///         {
-    ///             "1.1.1.1",
     ///         },
     ///     });
     /// 

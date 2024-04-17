@@ -345,23 +345,23 @@ class OssScanConfig(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        bucket_random = default_random_integer.result
+        bucket_random = default["result"]
         default8j4t1_r = alicloud.oss.Bucket("default8j4t1R",
-            bucket=bucket_random.apply(lambda bucket_random: f"{name}-1-{bucket_random}"),
+            bucket=f"{name}-1-{bucket_random}",
             storage_class="Standard")
         default9_h_mqf_t = alicloud.oss.Bucket("default9HMqfT",
-            bucket=bucket_random.apply(lambda bucket_random: f"{name}-2-{bucket_random}"),
+            bucket=f"{name}-2-{bucket_random}",
             storage_class="Standard")
         defaultx_b_xq_fq = alicloud.oss.Bucket("defaultxBXqFQ",
-            bucket=bucket_random.apply(lambda bucket_random: f"{name}-3-{bucket_random}"),
+            bucket=f"{name}-3-{bucket_random}",
             storage_class="Standard")
         defaulth_zv_cm_r = alicloud.oss.Bucket("defaulthZvCmR",
-            bucket=bucket_random.apply(lambda bucket_random: f"{name}-4-{bucket_random}"),
+            bucket=f"{name}-4-{bucket_random}",
             storage_class="Standard")
-        default_oss_scan_config = alicloud.threatdetection.OssScanConfig("defaultOssScanConfig",
+        default_oss_scan_config = alicloud.threatdetection.OssScanConfig("default",
             key_suffix_lists=[
                 ".jsp",
                 ".php",
@@ -438,23 +438,23 @@ class OssScanConfig(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        bucket_random = default_random_integer.result
+        bucket_random = default["result"]
         default8j4t1_r = alicloud.oss.Bucket("default8j4t1R",
-            bucket=bucket_random.apply(lambda bucket_random: f"{name}-1-{bucket_random}"),
+            bucket=f"{name}-1-{bucket_random}",
             storage_class="Standard")
         default9_h_mqf_t = alicloud.oss.Bucket("default9HMqfT",
-            bucket=bucket_random.apply(lambda bucket_random: f"{name}-2-{bucket_random}"),
+            bucket=f"{name}-2-{bucket_random}",
             storage_class="Standard")
         defaultx_b_xq_fq = alicloud.oss.Bucket("defaultxBXqFQ",
-            bucket=bucket_random.apply(lambda bucket_random: f"{name}-3-{bucket_random}"),
+            bucket=f"{name}-3-{bucket_random}",
             storage_class="Standard")
         defaulth_zv_cm_r = alicloud.oss.Bucket("defaulthZvCmR",
-            bucket=bucket_random.apply(lambda bucket_random: f"{name}-4-{bucket_random}"),
+            bucket=f"{name}-4-{bucket_random}",
             storage_class="Standard")
-        default_oss_scan_config = alicloud.threatdetection.OssScanConfig("defaultOssScanConfig",
+        default_oss_scan_config = alicloud.threatdetection.OssScanConfig("default",
             key_suffix_lists=[
                 ".jsp",
                 ".php",

@@ -31,16 +31,16 @@ namespace Pulumi.AliCloud.Cddc
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var @default = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultDedicatedHostGroup = new AliCloud.Cddc.DedicatedHostGroup("defaultDedicatedHostGroup", new()
+    ///     var defaultDedicatedHostGroup = new AliCloud.Cddc.DedicatedHostGroup("default", new()
     ///     {
     ///         Engine = "MySQL",
-    ///         VpcId = defaultNetwork.Id,
+    ///         VpcId = @default.Id,
     ///         CpuAllocationRatio = 101,
     ///         MemAllocationRatio = 50,
     ///         DiskAllocationRatio = 200,

@@ -30,9 +30,9 @@ namespace Pulumi.AliCloud.Emr
         /// {
         ///     var @default = AliCloud.Emr.GetDiskTypes.Invoke(new()
         ///     {
-        ///         ClusterType = "HADOOP",
         ///         DestinationResource = "DataDisk",
         ///         InstanceChargeType = "PostPaid",
+        ///         ClusterType = "HADOOP",
         ///         InstanceType = "ecs.g5.xlarge",
         ///         ZoneId = "cn-huhehaote-a",
         ///     });
@@ -67,9 +67,9 @@ namespace Pulumi.AliCloud.Emr
         /// {
         ///     var @default = AliCloud.Emr.GetDiskTypes.Invoke(new()
         ///     {
-        ///         ClusterType = "HADOOP",
         ///         DestinationResource = "DataDisk",
         ///         InstanceChargeType = "PostPaid",
+        ///         ClusterType = "HADOOP",
         ///         InstanceType = "ecs.g5.xlarge",
         ///         ZoneId = "cn-huhehaote-a",
         ///     });

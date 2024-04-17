@@ -46,11 +46,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultRegions, err := ros.GetRegions(ctx, nil, nil)
+//			_default, err := ros.GetRegions(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultStackGroup, err := ros.NewStackGroup(ctx, "defaultStackGroup", &ros.StackGroupArgs{
+//			defaultStackGroup, err := ros.NewStackGroup(ctx, "default", &ros.StackGroupArgs{
 //				StackGroupName: pulumi.String(name),
 //				TemplateBody:   pulumi.String("{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}"),
 //				Description:    pulumi.String("test for stack groups"),
@@ -71,7 +71,7 @@ import (
 //			_, err = ros.NewStackInstance(ctx, "example", &ros.StackInstanceArgs{
 //				StackGroupName:         defaultStackGroup.StackGroupName,
 //				StackInstanceAccountId: pulumi.String(this.Id),
-//				StackInstanceRegionId:  pulumi.String(defaultRegions.Regions[0].RegionId),
+//				StackInstanceRegionId:  pulumi.String(_default.Regions[0].RegionId),
 //				OperationPreferences:   pulumi.String("{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}"),
 //				TimeoutInMinutes:       pulumi.String("60"),
 //				OperationDescription:   pulumi.String("tf-example"),

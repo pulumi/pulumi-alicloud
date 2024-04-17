@@ -551,9 +551,12 @@ class Api(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_group = alicloud.apigateway.Group("exampleGroup", description="tf-example")
-        example_api = alicloud.apigateway.Api("exampleApi",
-            group_id=example_group.id,
+        example = alicloud.apigateway.Group("example",
+            name="tf-example",
+            description="tf-example")
+        example_api = alicloud.apigateway.Api("example",
+            group_id=example.id,
+            name="tf-example",
             description="tf-example",
             auth_type="APP",
             force_nonce_check=False,
@@ -628,9 +631,12 @@ class Api(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_group = alicloud.apigateway.Group("exampleGroup", description="tf-example")
-        example_api = alicloud.apigateway.Api("exampleApi",
-            group_id=example_group.id,
+        example = alicloud.apigateway.Group("example",
+            name="tf-example",
+            description="tf-example")
+        example_api = alicloud.apigateway.Api("example",
+            group_id=example.id,
+            name="tf-example",
             description="tf-example",
             auth_type="APP",
             force_nonce_check=False,

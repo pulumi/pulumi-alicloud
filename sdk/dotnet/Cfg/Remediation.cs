@@ -31,12 +31,12 @@ namespace Pulumi.AliCloud.Cfg
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example-oss";
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
     ///         BucketName = name,
     ///         Acl = "public-read",
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Cfg
     ///         },
     ///     });
     /// 
-    ///     var defaultRule = new AliCloud.Cfg.Rule("defaultRule", new()
+    ///     var defaultRule = new AliCloud.Cfg.Rule("default", new()
     ///     {
     ///         Description = "If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
     ///         SourceOwner = "ALIYUN",
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Cfg
     ///         RiskLevel = 1,
     ///         TagKeyScope = "For",
     ///         TagValueScope = "example",
-    ///         RegionIdsScope = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         RegionIdsScope = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
     ///         ResourceTypesScopes = new[]
     ///         {
@@ -63,17 +63,17 @@ namespace Pulumi.AliCloud.Cfg
     ///         RuleName = "oss-bucket-public-read-prohibited",
     ///     });
     /// 
-    ///     var defaultRemediation = new AliCloud.Cfg.Remediation("defaultRemediation", new()
+    ///     var defaultRemediation = new AliCloud.Cfg.Remediation("default", new()
     ///     {
     ///         ConfigRuleId = defaultRule.ConfigRuleId,
     ///         RemediationTemplateId = "ACS-OSS-PutBucketAcl",
     ///         RemediationSourceType = "ALIYUN",
     ///         InvokeType = "MANUAL_EXECUTION",
-    ///         Params = Output.Tuple(defaultBucket.BucketName, defaultRegions).Apply(values =&gt;
+    ///         Params = Output.Tuple(defaultBucket.BucketName, @default).Apply(values =&gt;
     ///         {
     ///             var bucket = values.Item1;
-    ///             var defaultRegions = values.Item2;
-    ///             return $"{{\"bucketName\": \"{bucket}\", \"regionId\": \"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}\", \"permissionName\": \"private\"}}";
+    ///             var @default = values.Item2;
+    ///             return $"{{\"bucketName\": \"{bucket}\", \"regionId\": \"{@default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}\", \"permissionName\": \"private\"}}";
     ///         }),
     ///         RemediationType = "OOS",
     ///     });

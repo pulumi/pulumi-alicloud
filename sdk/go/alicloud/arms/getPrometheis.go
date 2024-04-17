@@ -45,36 +45,36 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//			_default, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("default-NODELETING"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId: pulumi.StringRef(_default.Ids[0]),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: pulumi.String(defaultNetworks.Ids[0]),
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				VpcId: pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultPrometheus, err := arms.NewPrometheus(ctx, "defaultPrometheus", &arms.PrometheusArgs{
+//			defaultPrometheus, err := arms.NewPrometheus(ctx, "default", &arms.PrometheusArgs{
 //				ClusterType:       pulumi.String("ecs"),
 //				GrafanaInstanceId: pulumi.String("free"),
-//				VpcId:             pulumi.String(defaultNetworks.Ids[0]),
-//				VswitchId:         pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:             pulumi.String(_default.Ids[0]),
+//				VswitchId:         pulumi.String(defaultGetSwitches.Ids[0]),
 //				SecurityGroupId:   defaultSecurityGroup.ID(),
-//				ClusterName:       pulumi.String(fmt.Sprintf("%v-%v", name, defaultNetworks.Ids[0])),
-//				ResourceGroupId:   pulumi.String(defaultResourceGroups.Groups[1].Id),
+//				ClusterName:       pulumi.String(fmt.Sprintf("%v-%v", name, _default.Ids[0])),
+//				ResourceGroupId:   pulumi.String(defaultGetResourceGroups.Groups[1].Id),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("Prometheus"),

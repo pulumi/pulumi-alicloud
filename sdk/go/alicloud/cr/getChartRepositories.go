@@ -42,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("crChartRepositoryId1", data.Alicloud_cr_chart_repositories.Default.Ids[0])
+//			ctx.Export("crChartRepositoryId1", _default.Ids[0])
 //			return nil
 //		})
 //	}

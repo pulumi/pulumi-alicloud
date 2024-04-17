@@ -20,10 +20,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const k8sClusters = alicloud.cs.getKubernetesClusters({
- *     kubeConfigFilePrefix: "~/.kube/k8s",
  *     nameRegex: "my-first-k8s",
  *     outputFile: "my-first-k8s-json",
+ *     kubeConfigFilePrefix: "~/.kube/k8s",
  * });
  * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
  * ```
@@ -104,10 +105,11 @@ export interface GetKubernetesClustersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const k8sClusters = alicloud.cs.getKubernetesClusters({
- *     kubeConfigFilePrefix: "~/.kube/k8s",
  *     nameRegex: "my-first-k8s",
  *     outputFile: "my-first-k8s-json",
+ *     kubeConfigFilePrefix: "~/.kube/k8s",
  * });
  * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
  * ```

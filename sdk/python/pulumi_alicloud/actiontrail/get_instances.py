@@ -129,13 +129,14 @@ def get_instances(enable_details: Optional[bool] = None,
     instance_name = config.get("instanceName")
     if instance_name is None:
         instance_name = "alikafkaInstanceName"
-    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-    default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
-    default_switch = alicloud.vpc.Switch("defaultSwitch",
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("default", cidr_block="172.16.0.0/12")
+    default_switch = alicloud.vpc.Switch("default",
         vpc_id=default_network.id,
         cidr_block="172.16.0.0/24",
-        zone_id=default_zones.zones[0].id)
-    default_instance = alicloud.alikafka.Instance("defaultInstance",
+        zone_id=default.zones[0].id)
+    default_instance = alicloud.alikafka.Instance("default",
+        name=instance_name,
         partition_num=50,
         disk_type=1,
         disk_size=500,
@@ -193,13 +194,14 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     instance_name = config.get("instanceName")
     if instance_name is None:
         instance_name = "alikafkaInstanceName"
-    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-    default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
-    default_switch = alicloud.vpc.Switch("defaultSwitch",
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("default", cidr_block="172.16.0.0/12")
+    default_switch = alicloud.vpc.Switch("default",
         vpc_id=default_network.id,
         cidr_block="172.16.0.0/24",
-        zone_id=default_zones.zones[0].id)
-    default_instance = alicloud.alikafka.Instance("defaultInstance",
+        zone_id=default.zones[0].id)
+    default_instance = alicloud.alikafka.Instance("default",
+        name=instance_name,
         partition_num=50,
         disk_type=1,
         disk_size=500,

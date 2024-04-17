@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -59,17 +59,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
+ *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
  *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
- *             .project(exampleProject.name())
+ *             .project(example.name())
+ *             .name(&#34;example-store&#34;)
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -78,7 +80,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example2 = new Store(&#34;example2&#34;, StoreArgs.builder()        
- *             .project(exampleProject.name())
+ *             .project(example.name())
+ *             .name(&#34;example-store2&#34;)
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -87,7 +90,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example3 = new Store(&#34;example3&#34;, StoreArgs.builder()        
- *             .project(exampleProject.name())
+ *             .project(example.name())
+ *             .name(&#34;example-store3&#34;)
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -97,7 +101,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleEtl = new Etl(&#34;exampleEtl&#34;, EtlArgs.builder()        
  *             .etlName(&#34;terraform-example&#34;)
- *             .project(exampleProject.name())
+ *             .project(example.name())
  *             .displayName(&#34;terraform-example&#34;)
  *             .description(&#34;terraform-example&#34;)
  *             .accessKeyId(&#34;access_key_id&#34;)
@@ -110,7 +114,7 @@ import javax.annotation.Nullable;
  *                     .accessKeyId(&#34;example2_access_key_id&#34;)
  *                     .accessKeySecret(&#34;example2_access_key_secret&#34;)
  *                     .endpoint(&#34;cn-hangzhou.log.aliyuncs.com&#34;)
- *                     .project(exampleProject.name())
+ *                     .project(example.name())
  *                     .logstore(example2.name())
  *                     .build(),
  *                 EtlEtlSinkArgs.builder()
@@ -118,7 +122,7 @@ import javax.annotation.Nullable;
  *                     .accessKeyId(&#34;example3_access_key_id&#34;)
  *                     .accessKeySecret(&#34;example3_access_key_secret&#34;)
  *                     .endpoint(&#34;cn-hangzhou.log.aliyuncs.com&#34;)
- *                     .project(exampleProject.name())
+ *                     .project(example.name())
  *                     .logstore(example3.name())
  *                     .build())
  *             .build());

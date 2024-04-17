@@ -31,16 +31,17 @@ namespace Pulumi.AliCloud.Vpn
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultCustomerGateway = new AliCloud.Vpn.CustomerGateway("defaultCustomerGateway", new()
+    ///     var @default = new AliCloud.Vpn.CustomerGateway("default", new()
     ///     {
+    ///         Name = name,
     ///         IpAddress = "42.104.22.210",
     ///         Asn = "45014",
     ///         Description = name,
     ///     });
     /// 
-    ///     var defaultGatewayVpnAttachment = new AliCloud.Vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment", new()
+    ///     var defaultGatewayVpnAttachment = new AliCloud.Vpn.GatewayVpnAttachment("default", new()
     ///     {
-    ///         CustomerGatewayId = defaultCustomerGateway.Id,
+    ///         CustomerGatewayId = @default.Id,
     ///         NetworkType = "public",
     ///         LocalSubnet = "0.0.0.0/0",
     ///         RemoteSubnet = "0.0.0.0/0",

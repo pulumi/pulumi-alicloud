@@ -20,9 +20,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleTrafficMirrorFilter = new alicloud.vpc.TrafficMirrorFilter("exampleTrafficMirrorFilter", {trafficMirrorFilterName: "example_value"});
- * const exampleTrafficMirrorFilterIngressRule = new alicloud.vpc.TrafficMirrorFilterIngressRule("exampleTrafficMirrorFilterIngressRule", {
- *     trafficMirrorFilterId: exampleTrafficMirrorFilter.id,
+ * const example = new alicloud.vpc.TrafficMirrorFilter("example", {trafficMirrorFilterName: "example_value"});
+ * const exampleTrafficMirrorFilterIngressRule = new alicloud.vpc.TrafficMirrorFilterIngressRule("example", {
+ *     trafficMirrorFilterId: example.id,
  *     priority: 1,
  *     ruleAction: "accept",
  *     protocol: "UDP",

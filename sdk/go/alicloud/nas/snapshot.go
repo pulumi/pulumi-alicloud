@@ -43,16 +43,16 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+//			_default, err := nas.GetZones(ctx, &nas.GetZonesArgs{
 //				FileSystemType: pulumi.StringRef("extreme"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
+//			defaultFileSystem, err := nas.NewFileSystem(ctx, "default", &nas.FileSystemArgs{
 //				FileSystemType: pulumi.String("extreme"),
 //				ProtocolType:   pulumi.String("NFS"),
-//				ZoneId:         pulumi.String(defaultZones.Zones[0].ZoneId),
+//				ZoneId:         pulumi.String(_default.Zones[0].ZoneId),
 //				StorageType:    pulumi.String("standard"),
 //				Description:    pulumi.String(name),
 //				Capacity:       pulumi.Int(100),
@@ -60,7 +60,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = nas.NewSnapshot(ctx, "defaultSnapshot", &nas.SnapshotArgs{
+//			_, err = nas.NewSnapshot(ctx, "default", &nas.SnapshotArgs{
 //				FileSystemId:  defaultFileSystem.ID(),
 //				Description:   pulumi.String(name),
 //				RetentionDays: pulumi.Int(20),

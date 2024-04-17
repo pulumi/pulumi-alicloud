@@ -29,12 +29,12 @@ namespace Pulumi.AliCloud.Alb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultAcl = new AliCloud.Alb.Acl("defaultAcl", new()
+    ///     var defaultAcl = new AliCloud.Alb.Acl("default", new()
     ///     {
     ///         AclName = "tf_example",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
     ///     });
     /// 
     /// });

@@ -16,34 +16,37 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
  *     cpuCoreCount: 2,
  *     memorySize: 4,
  * }));
- * const defaultImages = alicloud.ecs.getImages({
+ * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
  *     mostRecent: true,
  *     owners: "system",
  * });
  * const config = new pulumi.Config();
  * const name = config.get("name") || "ecsInstanceVPCExample";
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule", {
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("default", {
  *     type: "ingress",
  *     ipProtocol: "tcp",
  *     nicType: "intranet",
@@ -55,8 +58,8 @@ import * as utilities from "../utilities";
  * });
  * const foo = new alicloud.ecs.Instance("foo", {
  *     vswitchId: defaultSwitch.id,
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *     systemDiskCategory: "cloud_efficiency",
  *     internetChargeType: "PayByTraffic",
  *     internetMaxBandwidthOut: 5,
@@ -64,6 +67,7 @@ import * as utilities from "../utilities";
  *     instanceName: name,
  * });
  * const role = new alicloud.ram.Role("role", {
+ *     name: "terraform-example",
  *     document: `  {
  *     "Statement": [
  *       {

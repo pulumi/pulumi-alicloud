@@ -31,26 +31,26 @@ namespace Pulumi.AliCloud.ClickHouse
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultRegions = AliCloud.ClickHouse.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.ClickHouse.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "10.4.0.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.ZoneIds[0]?.ZoneId),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.ZoneIds[0]?.ZoneId)),
     ///     });
     /// 
-    ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
+    ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("default", new()
     ///     {
     ///         DbClusterVersion = "22.8.5.29",
     ///         Category = "Basic",
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.ClickHouse
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var defaultAccount = new AliCloud.ClickHouse.Account("defaultAccount", new()
+    ///     var defaultAccount = new AliCloud.ClickHouse.Account("default", new()
     ///     {
     ///         DbClusterId = defaultDbCluster.Id,
     ///         AccountDescription = "tf-example-description",

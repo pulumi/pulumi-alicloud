@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var examplePrefixList = new PrefixList(&#34;examplePrefixList&#34;, PrefixListArgs.builder()        
+ *         var example = new PrefixList(&#34;example&#34;, PrefixListArgs.builder()        
  *             .entrys(PrefixListEntryArgs.builder()
  *                 .cidr(&#34;192.168.0.0/16&#34;)
  *                 .build())
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleTransitRouterPrefixListAssociation = new TransitRouterPrefixListAssociation(&#34;exampleTransitRouterPrefixListAssociation&#34;, TransitRouterPrefixListAssociationArgs.builder()        
- *             .prefixListId(examplePrefixList.id())
+ *             .prefixListId(example.id())
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .transitRouterTableId(exampleTransitRouterRouteTable.transitRouterRouteTableId())
  *             .nextHop(&#34;BlackHole&#34;)

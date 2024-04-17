@@ -69,22 +69,25 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;NetworkAclEntries&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .name(name)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
  * 
  *         var defaultNetworkAcl = new NetworkAcl(&#34;defaultNetworkAcl&#34;, NetworkAclArgs.builder()        
  *             .vpcId(defaultNetwork.id())
+ *             .name(name)
  *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/21&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(default_.zones()[0].id())
+ *             .name(name)
  *             .build());
  * 
  *         var defaultNetworkAclAttachment = new NetworkAclAttachment(&#34;defaultNetworkAclAttachment&#34;, NetworkAclAttachmentArgs.builder()        

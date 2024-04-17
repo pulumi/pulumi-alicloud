@@ -22,23 +22,23 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tfexample";
- * const defaultAccount = alicloud.getAccount({});
- * const defaultNodeClasses = alicloud.polardb.getNodeClasses({
+ * const default = alicloud.getAccount({});
+ * const defaultGetNodeClasses = alicloud.polardb.getNodeClasses({
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  *     payType: "PostPaid",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultNodeClasses.then(defaultNodeClasses => defaultNodeClasses.classes?.[0]?.zoneId),
+ *     zoneId: defaultGetNodeClasses.then(defaultGetNodeClasses => defaultGetNodeClasses.classes?.[0]?.zoneId),
  *     vswitchName: name,
  * });
- * const defaultCluster = new alicloud.polardb.Cluster("defaultCluster", {
+ * const defaultCluster = new alicloud.polardb.Cluster("default", {
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  *     dbNodeClass: "polar.mysql.x4.large",
@@ -53,10 +53,10 @@ import * as utilities from "../utilities";
  *         ],
  *     }],
  * });
- * const defaultSwitchDasPro = new alicloud.das.SwitchDasPro("defaultSwitchDasPro", {
+ * const defaultSwitchDasPro = new alicloud.das.SwitchDasPro("default", {
  *     instanceId: defaultCluster.id,
  *     sqlRetention: 30,
- *     userId: defaultAccount.then(defaultAccount => defaultAccount.id),
+ *     userId: _default.then(_default => _default.id),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

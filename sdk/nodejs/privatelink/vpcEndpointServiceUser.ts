@@ -22,19 +22,20 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tfexampleuser";
- * const exampleVpcEndpointService = new alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService", {
+ * const example = new alicloud.privatelink.VpcEndpointService("example", {
  *     serviceDescription: name,
  *     connectBandwidth: 103,
  *     autoAcceptConnection: false,
  * });
- * const exampleUser = new alicloud.ram.User("exampleUser", {
+ * const exampleUser = new alicloud.ram.User("example", {
+ *     name: name,
  *     displayName: "user_display_name",
  *     mobile: "86-18688888888",
  *     email: "hello.uuu@aaa.com",
  *     comments: "yoyoyo",
  * });
- * const exampleVpcEndpointServiceUser = new alicloud.privatelink.VpcEndpointServiceUser("exampleVpcEndpointServiceUser", {
- *     serviceId: exampleVpcEndpointService.id,
+ * const exampleVpcEndpointServiceUser = new alicloud.privatelink.VpcEndpointServiceUser("example", {
+ *     serviceId: example.id,
  *     userId: exampleUser.id,
  * });
  * ```

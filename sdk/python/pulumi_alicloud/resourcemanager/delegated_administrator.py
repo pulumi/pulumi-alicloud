@@ -121,14 +121,14 @@ class DelegatedAdministrator(pulumi.CustomResource):
         display_name = config.get("displayName")
         if display_name is None:
             display_name = "EAccount"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=default.result.apply(lambda result: f"{name}-{result}"))
-        example_account = alicloud.resourcemanager.Account("exampleAccount",
-            display_name=default.result.apply(lambda result: f"{display_name}-{result}"),
-            folder_id=example_folder.id)
-        example_delegated_administrator = alicloud.resourcemanager.DelegatedAdministrator("exampleDelegatedAdministrator",
+        example = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")
+        example_account = alicloud.resourcemanager.Account("example",
+            display_name=f"{display_name}-{default['result']}",
+            folder_id=example.id)
+        example_delegated_administrator = alicloud.resourcemanager.DelegatedAdministrator("example",
             account_id=example_account.id,
             service_principal="cloudfw.aliyuncs.com")
         ```
@@ -177,14 +177,14 @@ class DelegatedAdministrator(pulumi.CustomResource):
         display_name = config.get("displayName")
         if display_name is None:
             display_name = "EAccount"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=default.result.apply(lambda result: f"{name}-{result}"))
-        example_account = alicloud.resourcemanager.Account("exampleAccount",
-            display_name=default.result.apply(lambda result: f"{display_name}-{result}"),
-            folder_id=example_folder.id)
-        example_delegated_administrator = alicloud.resourcemanager.DelegatedAdministrator("exampleDelegatedAdministrator",
+        example = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")
+        example_account = alicloud.resourcemanager.Account("example",
+            display_name=f"{display_name}-{default['result']}",
+            folder_id=example.id)
+        example_delegated_administrator = alicloud.resourcemanager.DelegatedAdministrator("example",
             account_id=example_account.id,
             service_principal="cloudfw.aliyuncs.com")
         ```

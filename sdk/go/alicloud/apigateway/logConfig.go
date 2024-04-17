@@ -45,27 +45,23 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
-//				ProjectName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
+//				ProjectName: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
 //				Description: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleStore, err := log.NewStore(ctx, "exampleStore", &log.StoreArgs{
-//				ProjectName: exampleProject.ProjectName,
-//				LogstoreName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//			exampleStore, err := log.NewStore(ctx, "example", &log.StoreArgs{
+//				ProjectName:        example.ProjectName,
+//				LogstoreName:       pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
 //				MaxSplitShardCount: pulumi.Int(60),
@@ -74,8 +70,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apigateway.NewLogConfig(ctx, "exampleLogConfig", &apigateway.LogConfigArgs{
-//				SlsProject:  exampleProject.ProjectName,
+//			_, err = apigateway.NewLogConfig(ctx, "example", &apigateway.LogConfigArgs{
+//				SlsProject:  example.ProjectName,
 //				SlsLogStore: exampleStore.LogstoreName,
 //				LogType:     pulumi.String("PROVIDER"),
 //			})

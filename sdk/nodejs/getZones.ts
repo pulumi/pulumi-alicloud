@@ -18,9 +18,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const zonesDs = alicloud.getZones({
- *     availableDiskCategory: "cloud_ssd",
  *     availableInstanceType: "ecs.n4.large",
+ *     availableDiskCategory: "cloud_ssd",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -143,9 +144,10 @@ export interface GetZonesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const zonesDs = alicloud.getZones({
- *     availableDiskCategory: "cloud_ssd",
  *     availableInstanceType: "ecs.n4.large",
+ *     availableDiskCategory: "cloud_ssd",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

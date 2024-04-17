@@ -24,46 +24,47 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const exampleResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const exampleZones = alicloud.getZones({
+ * const example = alicloud.resourcemanager.getResourceGroups({});
+ * const exampleGetZones = alicloud.getZones({
  *     availableResourceCreation: "Instance",
  * });
- * const exampleInstanceTypes = exampleZones.then(exampleZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: exampleZones.zones?.[0]?.id,
+ * const exampleGetInstanceTypes = exampleGetZones.then(exampleGetZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: exampleGetZones.zones?.[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
- * const exampleImages = alicloud.ecs.getImages({
+ * const exampleGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
  *     owners: "system",
  * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/16",
  *     vpcId: exampleNetwork.id,
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     zoneId: exampleGetZones.then(exampleGetZones => exampleGetZones.zones?.[0]?.id),
  * });
- * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     name: name,
  *     description: name,
  *     vpcId: exampleNetwork.id,
  * });
- * const exampleInstance = new alicloud.ecs.Instance("exampleInstance", {
- *     availabilityZone: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ * const exampleInstance = new alicloud.ecs.Instance("example", {
+ *     availabilityZone: exampleGetZones.then(exampleGetZones => exampleGetZones.zones?.[0]?.id),
  *     instanceName: name,
- *     imageId: exampleImages.then(exampleImages => exampleImages.images?.[0]?.id),
- *     instanceType: exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes?.[0]?.id),
+ *     imageId: exampleGetImages.then(exampleGetImages => exampleGetImages.images?.[0]?.id),
+ *     instanceType: exampleGetInstanceTypes.then(exampleGetInstanceTypes => exampleGetInstanceTypes.instanceTypes?.[0]?.id),
  *     securityGroups: [exampleSecurityGroup.id],
  *     vswitchId: exampleSwitch.id,
  * });
- * const exampleServerGroup = new alicloud.alb.ServerGroup("exampleServerGroup", {
+ * const exampleServerGroup = new alicloud.alb.ServerGroup("example", {
  *     protocol: "HTTP",
  *     vpcId: exampleNetwork.id,
  *     serverGroupName: name,
- *     resourceGroupId: exampleResourceGroups.then(exampleResourceGroups => exampleResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: example.then(example => example.groups?.[0]?.id),
  *     stickySessionConfig: {
  *         stickySessionEnabled: true,
  *         cookie: "tf-example",

@@ -20,15 +20,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleZones = alicloud.getZones({
+ * const example = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const exampleKey = new alicloud.kms.Key("exampleKey", {
+ * const exampleKey = new alicloud.kms.Key("example", {
  *     description: "terraform-example",
  *     pendingWindowInDays: 7,
  *     status: "Enabled",
  * });
- * const exampleAutoSnapshotPolicy = new alicloud.ecs.AutoSnapshotPolicy("exampleAutoSnapshotPolicy", {
+ * const exampleAutoSnapshotPolicy = new alicloud.ecs.AutoSnapshotPolicy("example", {
+ *     name: "terraform-example",
  *     repeatWeekdays: [
  *         "1",
  *         "2",
@@ -41,8 +42,8 @@ import * as utilities from "../utilities";
  *         "23",
  *     ],
  * });
- * const exampleEcsDisk = new alicloud.ecs.EcsDisk("exampleEcsDisk", {
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ * const exampleEcsDisk = new alicloud.ecs.EcsDisk("example", {
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
  *     diskName: "terraform-example",
  *     description: "Hello ecs disk.",
  *     category: "cloud_efficiency",
@@ -53,7 +54,7 @@ import * as utilities from "../utilities";
  *         Name: "terraform-example",
  *     },
  * });
- * const exampleEcsAutoSnapshotPolicyAttachment = new alicloud.ecs.EcsAutoSnapshotPolicyAttachment("exampleEcsAutoSnapshotPolicyAttachment", {
+ * const exampleEcsAutoSnapshotPolicyAttachment = new alicloud.ecs.EcsAutoSnapshotPolicyAttachment("example", {
  *     autoSnapshotPolicyId: exampleAutoSnapshotPolicy.id,
  *     diskId: exampleEcsDisk.id,
  * });

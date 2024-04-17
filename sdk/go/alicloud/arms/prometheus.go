@@ -47,39 +47,40 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      defaultZones.Zones[len(defaultZones.Zones)-1].Id,
+//				ZoneId:      _default.Zones[len(_default.Zones)-1].Id,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = arms.NewPrometheus(ctx, "defaultPrometheus", &arms.PrometheusArgs{
+//			_, err = arms.NewPrometheus(ctx, "default", &arms.PrometheusArgs{
 //				ClusterType:       pulumi.String("ecs"),
 //				GrafanaInstanceId: pulumi.String("free"),
 //				VpcId:             defaultNetwork.ID(),
@@ -88,7 +89,7 @@ import (
 //				ClusterName: defaultNetwork.ID().ApplyT(func(id string) (string, error) {
 //					return fmt.Sprintf("%v-%v", name, id), nil
 //				}).(pulumi.StringOutput),
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Groups[0].Id),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("Prometheus"),

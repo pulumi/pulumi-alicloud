@@ -30,11 +30,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			_, err := rds.GetCrossRegions(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstRdsCrossRegions", data.Alicloud_rds_cross_regions.Regions.Ids[0])
+//			ctx.Export("firstRdsCrossRegions", regions.Ids[0])
 //			return nil
 //		})
 //	}

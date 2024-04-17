@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new ECS disk-attachment and use it attach one disk to a new instance.
  *         var ecsSg = new SecurityGroup(&#34;ecsSg&#34;, SecurityGroupArgs.builder()        
+ *             .name(&#34;terraform-test-group&#34;)
  *             .description(&#34;New security group&#34;)
  *             .build());
  * 

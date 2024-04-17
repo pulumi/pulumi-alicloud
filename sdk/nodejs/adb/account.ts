@@ -19,15 +19,15 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const creation = config.get("creation") || "ADB";
  * const name = config.get("name") || "tfexample";
- * const defaultZones = alicloud.adb.getZones({});
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const default = alicloud.adb.getZones({});
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "^default-NODELETING$",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.ids?.[0],
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[0],
  * }));
- * const vswitchId = defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]);
+ * const vswitchId = defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]);
  * const cluster = new alicloud.adb.DBCluster("cluster", {
  *     dbClusterCategory: "MixedStorage",
  *     mode: "flexible",
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     vswitchId: vswitchId,
  *     description: name,
  * });
- * const defaultAccount = new alicloud.adb.Account("defaultAccount", {
+ * const defaultAccount = new alicloud.adb.Account("default", {
  *     dbClusterId: cluster.id,
  *     accountName: name,
  *     accountPassword: "tf_example123",

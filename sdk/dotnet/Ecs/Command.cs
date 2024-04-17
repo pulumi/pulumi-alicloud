@@ -31,6 +31,7 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var example = new AliCloud.Ecs.Command("example", new()
     ///     {
+    ///         Name = "tf-testAcc",
     ///         CommandContent = "bHMK",
     ///         Description = "For Terraform Test",
     ///         Type = "RunShellScript",

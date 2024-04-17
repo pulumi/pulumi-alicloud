@@ -73,21 +73,21 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock(&#34;10.4.0.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
@@ -109,10 +109,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .availabilityZone(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .instanceName(name)
- *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
  *             .securityGroups(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
  *             .internetMaxBandwidthOut(&#34;10&#34;)
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *             .clusterName(name)
  *             .clusterType(&#34;2&#34;)
  *             .networkMode(&#34;2&#34;)
- *             .logicalRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .logicalRegionId(default_.regions()[0].id())
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
@@ -145,13 +145,13 @@ import javax.annotation.Nullable;
  *             .groupName(name)
  *             .build());
  * 
- *         final var defaultDeployGroups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
+ *         final var defaultGetDeployGroups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
  *             .appId(defaultDeployGroup.appId())
  *             .build());
  * 
  *         var defaultApplicationScale = new ApplicationScale(&#34;defaultApplicationScale&#34;, ApplicationScaleArgs.builder()        
  *             .appId(defaultApplication.id())
- *             .deployGroup(defaultDeployGroups.applyValue(getDeployGroupsResult -&gt; getDeployGroupsResult).applyValue(defaultDeployGroups -&gt; defaultDeployGroups.applyValue(getDeployGroupsResult -&gt; getDeployGroupsResult.groups()[0].groupId())))
+ *             .deployGroup(defaultGetDeployGroups.applyValue(getDeployGroupsResult -&gt; getDeployGroupsResult).applyValue(defaultGetDeployGroups -&gt; defaultGetDeployGroups.applyValue(getDeployGroupsResult -&gt; getDeployGroupsResult.groups()[0].groupId())))
  *             .ecuInfos(Output.tuple(defaultInstanceClusterAttachment.ecuMap(), defaultInstance.id()).applyValue(values -&gt; {
  *                 var ecuMap = values.t1;
  *                 var id = values.t2;

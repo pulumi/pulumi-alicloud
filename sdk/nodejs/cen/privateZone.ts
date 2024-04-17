@@ -22,28 +22,28 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultRegions = alicloud.getRegions({
+ * const default = alicloud.getRegions({
  *     current: true,
  * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const example = new alicloud.vpc.Network("example", {
  *     vpcName: "tf_example",
  *     cidrBlock: "172.17.3.0/24",
  * });
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ * const exampleInstance = new alicloud.cen.Instance("example", {
  *     cenInstanceName: "tf_example",
  *     description: "an example for cen",
  * });
- * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleInstanceAttachment", {
+ * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("example", {
  *     instanceId: exampleInstance.id,
- *     childInstanceId: exampleNetwork.id,
+ *     childInstanceId: example.id,
  *     childInstanceType: "VPC",
- *     childInstanceRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     childInstanceRegionId: _default.then(_default => _default.regions?.[0]?.id),
  * });
- * const defaultPrivateZone = new alicloud.cen.PrivateZone("defaultPrivateZone", {
- *     accessRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ * const defaultPrivateZone = new alicloud.cen.PrivateZone("default", {
+ *     accessRegionId: _default.then(_default => _default.regions?.[0]?.id),
  *     cenId: exampleInstanceAttachment.instanceId,
- *     hostRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
- *     hostVpcId: exampleNetwork.id,
+ *     hostRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ *     hostVpcId: example.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

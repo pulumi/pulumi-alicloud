@@ -27,15 +27,15 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisKey = new AliCloud.Kms.Key("thisKey", new()
+    ///     var @this = new AliCloud.Kms.Key("this", new()
     ///     {
     ///         PendingWindowInDays = 7,
     ///     });
     /// 
-    ///     var thisAlias = new AliCloud.Kms.Alias("thisAlias", new()
+    ///     var thisAlias = new AliCloud.Kms.Alias("this", new()
     ///     {
     ///         AliasName = "alias/example_kms_alias",
-    ///         KeyId = thisKey.Id,
+    ///         KeyId = @this.Id,
     ///     });
     /// 
     /// });

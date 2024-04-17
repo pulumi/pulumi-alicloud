@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testAccThreatDetectionHoneypotProbe";
- * const defaultHoneypotProbe = new alicloud.threatdetection.HoneypotProbe("defaultHoneypotProbe", {
+ * const defaultHoneypotProbe = new alicloud.threatdetection.HoneypotProbe("default", {
  *     uuid: "e52c7872-29d1-4aa1-9908-0299abd53606",
  *     probeType: "host_probe",
  *     controlNodeId: "e1397077-4941-4b14-b533-ca2bdebd00a3",
@@ -35,13 +35,13 @@ import * as utilities from "../utilities";
  *     displayName: name,
  *     arp: true,
  * });
- * const defaultHoneypotProbes = alicloud.threatdetection.getHoneypotProbesOutput({
+ * const default = alicloud.threatdetection.getHoneypotProbesOutput({
  *     ids: [defaultHoneypotProbe.id],
  *     displayName: name,
  *     probeType: "host_probe",
  *     enableDetails: true,
  * });
- * export const alicloudThreatDetectionHoneypotProbeExampleId = defaultHoneypotProbes.apply(defaultHoneypotProbes => defaultHoneypotProbes.probes?.[0]?.id);
+ * export const alicloudThreatDetectionHoneypotProbeExampleId = _default.apply(_default => _default.probes?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -134,7 +134,7 @@ export interface GetHoneypotProbesResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testAccThreatDetectionHoneypotProbe";
- * const defaultHoneypotProbe = new alicloud.threatdetection.HoneypotProbe("defaultHoneypotProbe", {
+ * const defaultHoneypotProbe = new alicloud.threatdetection.HoneypotProbe("default", {
  *     uuid: "e52c7872-29d1-4aa1-9908-0299abd53606",
  *     probeType: "host_probe",
  *     controlNodeId: "e1397077-4941-4b14-b533-ca2bdebd00a3",
@@ -149,13 +149,13 @@ export interface GetHoneypotProbesResult {
  *     displayName: name,
  *     arp: true,
  * });
- * const defaultHoneypotProbes = alicloud.threatdetection.getHoneypotProbesOutput({
+ * const default = alicloud.threatdetection.getHoneypotProbesOutput({
  *     ids: [defaultHoneypotProbe.id],
  *     displayName: name,
  *     probeType: "host_probe",
  *     enableDetails: true,
  * });
- * export const alicloudThreatDetectionHoneypotProbeExampleId = defaultHoneypotProbes.apply(defaultHoneypotProbes => defaultHoneypotProbes.probes?.[0]?.id);
+ * export const alicloudThreatDetectionHoneypotProbeExampleId = _default.apply(_default => _default.probes?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */

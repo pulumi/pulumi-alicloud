@@ -23,19 +23,19 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
- *     max: 99999,
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
+ *     max: 99999,
  * });
- * const defaultDomainNew = new alicloud.cdn.DomainNew("defaultDomainNew", {
- *     cdnType: "web",
- *     domainName: pulumi.interpolate`mycdndomain-${defaultRandomInteger.result}.alicloud-provider.cn`,
+ * const defaultDomainNew = new alicloud.cdn.DomainNew("default", {
  *     scope: "overseas",
+ *     domainName: `mycdndomain-${_default.result}.alicloud-provider.cn`,
+ *     cdnType: "web",
  *     sources: [{
- *         content: "1.1.1.1",
- *         port: 80,
- *         priority: 20,
  *         type: "ipaddr",
+ *         content: "1.1.1.1",
+ *         priority: 20,
+ *         port: 80,
  *         weight: 15,
  *     }],
  * });

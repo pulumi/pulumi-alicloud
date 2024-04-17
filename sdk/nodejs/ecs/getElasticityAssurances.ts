@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.ecs.getElasticityAssurances({
- *     ids: [alicloud_ecs_elasticity_assurance["default"].id],
+ *     ids: [defaultAlicloudEcsElasticityAssurance.id],
  * });
  * export const alicloudEcsElasticityAssuranceExampleId = _default.then(_default => _default.assurances?.[0]?.id);
  * ```
@@ -113,7 +113,7 @@ export interface GetElasticityAssurancesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.ecs.getElasticityAssurances({
- *     ids: [alicloud_ecs_elasticity_assurance["default"].id],
+ *     ids: [defaultAlicloudEcsElasticityAssurance.id],
  * });
  * export const alicloudEcsElasticityAssuranceExampleId = _default.then(_default => _default.assurances?.[0]?.id);
  * ```

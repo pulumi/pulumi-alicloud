@@ -115,7 +115,9 @@ class HpcCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.ecs.HpcCluster("example", description="For Terraform Test")
+        example = alicloud.ecs.HpcCluster("example",
+            name="tf-testAcc",
+            description="For Terraform Test")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -154,7 +156,9 @@ class HpcCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.ecs.HpcCluster("example", description="For Terraform Test")
+        example = alicloud.ecs.HpcCluster("example",
+            name="tf-testAcc",
+            description="For Terraform Test")
         ```
         <!--End PulumiCodeChooser -->
 

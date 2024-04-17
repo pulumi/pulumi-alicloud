@@ -15,6 +15,46 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultBaselineStrategy = new AliCloud.ThreatDetection.BaselineStrategy("default", new()
+        ///     {
+        ///         CustomType = "custom",
+        ///         EndTime = "08:00:00",
+        ///         BaselineStrategyName = "apispec",
+        ///         CycleDays = 3,
+        ///         TargetType = "groupId",
+        ///         StartTime = "05:00:00",
+        ///         RiskSubTypeName = "hc_exploit_redis",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.ThreatDetection.GetBaselineStrategies.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultBaselineStrategy.Id,
+        ///         },
+        ///         NameRegex = defaultBaselineStrategy.Name,
+        ///         CustomType = "custom",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudThreatDetectionBaselineStrategyExampleId"] = defaultAlicloudThreatDetectionBaselineStrategys.Strategys[0].Id,
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetBaselineStrategiesResult> InvokeAsync(GetBaselineStrategiesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBaselineStrategiesResult>("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", args ?? new GetBaselineStrategiesArgs(), options.WithDefaults());
@@ -23,6 +63,46 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var defaultBaselineStrategy = new AliCloud.ThreatDetection.BaselineStrategy("default", new()
+        ///     {
+        ///         CustomType = "custom",
+        ///         EndTime = "08:00:00",
+        ///         BaselineStrategyName = "apispec",
+        ///         CycleDays = 3,
+        ///         TargetType = "groupId",
+        ///         StartTime = "05:00:00",
+        ///         RiskSubTypeName = "hc_exploit_redis",
+        ///     });
+        /// 
+        ///     var @default = AliCloud.ThreatDetection.GetBaselineStrategies.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultBaselineStrategy.Id,
+        ///         },
+        ///         NameRegex = defaultBaselineStrategy.Name,
+        ///         CustomType = "custom",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudThreatDetectionBaselineStrategyExampleId"] = defaultAlicloudThreatDetectionBaselineStrategys.Strategys[0].Id,
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetBaselineStrategiesResult> Invoke(GetBaselineStrategiesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBaselineStrategiesResult>("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", args ?? new GetBaselineStrategiesInvokeArgs(), options.WithDefaults());

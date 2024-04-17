@@ -269,21 +269,21 @@ class RouteService(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.get_regions(current=True)
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.vpc.Network("example",
             vpc_name="tf_example",
             cidr_block="172.17.3.0/24")
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example_instance = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+        example_instance_attachment = alicloud.cen.InstanceAttachment("example",
             instance_id=example_instance.id,
-            child_instance_id=example_network.id,
+            child_instance_id=example.id,
             child_instance_type="VPC",
             child_instance_region_id=default.regions[0].id)
-        example_route_service = alicloud.cen.RouteService("exampleRouteService",
+        example_route_service = alicloud.cen.RouteService("example",
             access_region_id=default.regions[0].id,
             host_region_id=default.regions[0].id,
-            host_vpc_id=example_network.id,
+            host_vpc_id=example.id,
             cen_id=example_instance_attachment.instance_id,
             host="100.118.28.52/32")
         ```
@@ -333,21 +333,21 @@ class RouteService(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.get_regions(current=True)
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.vpc.Network("example",
             vpc_name="tf_example",
             cidr_block="172.17.3.0/24")
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example_instance = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+        example_instance_attachment = alicloud.cen.InstanceAttachment("example",
             instance_id=example_instance.id,
-            child_instance_id=example_network.id,
+            child_instance_id=example.id,
             child_instance_type="VPC",
             child_instance_region_id=default.regions[0].id)
-        example_route_service = alicloud.cen.RouteService("exampleRouteService",
+        example_route_service = alicloud.cen.RouteService("example",
             access_region_id=default.regions[0].id,
             host_region_id=default.regions[0].id,
-            host_vpc_id=example_network.id,
+            host_vpc_id=example.id,
             cen_id=example_instance_attachment.instance_id,
             host="100.118.28.52/32")
         ```

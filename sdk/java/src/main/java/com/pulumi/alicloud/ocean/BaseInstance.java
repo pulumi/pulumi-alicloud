@@ -56,16 +56,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones();
+ *         final var default = AlicloudFunctions.getZones();
  * 
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultBaseInstance = new BaseInstance(&#34;defaultBaseInstance&#34;, BaseInstanceArgs.builder()        
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
  *             .zones(            
- *                 defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids())[defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()).length() - 2],
- *                 defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids())[defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()).length() - 3],
- *                 defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids())[defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()).length() - 4])
+ *                 default_.ids()[default_.ids().length() - 2],
+ *                 default_.ids()[default_.ids().length() - 3],
+ *                 default_.ids()[default_.ids().length() - 4])
  *             .autoRenew(&#34;false&#34;)
  *             .diskSize(&#34;100&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)

@@ -47,11 +47,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new DedicatedBlockStorageCluster(&#34;default&#34;, DedicatedBlockStorageClusterArgs.builder()        
- *             .dedicatedBlockStorageClusterName(&#34;dedicated_block_storage_cluster_name&#34;)
- *             .regionId(&#34;cn-heyuan&#34;)
- *             .totalCapacity(61440)
  *             .type(&#34;Premium&#34;)
  *             .zoneId(&#34;cn-heyuan-b&#34;)
+ *             .dedicatedBlockStorageClusterName(&#34;dedicated_block_storage_cluster_name&#34;)
+ *             .totalCapacity(61440)
+ *             .regionId(&#34;cn-heyuan&#34;)
  *             .build());
  * 
  *     }

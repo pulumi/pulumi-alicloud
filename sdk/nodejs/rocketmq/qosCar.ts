@@ -24,9 +24,10 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const defaultQos = new alicloud.rocketmq.Qos("defaultQos", {});
- * const defaultQosCar = new alicloud.rocketmq.QosCar("defaultQosCar", {
- *     qosId: defaultQos.id,
+ * const _default = new alicloud.rocketmq.Qos("default", {name: name});
+ * const defaultQosCar = new alicloud.rocketmq.QosCar("default", {
+ *     qosId: _default.id,
+ *     name: name,
  *     description: name,
  *     priority: 1,
  *     limitType: "Absolute",

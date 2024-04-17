@@ -33,6 +33,7 @@ namespace Pulumi.AliCloud.Ram
     ///     // Create a new RAM access key for user.
     ///     var user = new AliCloud.Ram.User("user", new()
     ///     {
+    ///         Name = "terraform-example",
     ///         DisplayName = "user_display_name",
     ///         Mobile = "86-18688888888",
     ///         Email = "hello.uuu@aaa.com",
@@ -63,6 +64,7 @@ namespace Pulumi.AliCloud.Ram
     ///     // Create a new RAM access key for user.
     ///     var user = new AliCloud.Ram.User("user", new()
     ///     {
+    ///         Name = "terraform-example",
     ///         DisplayName = "user_display_name",
     ///         Mobile = "86-18688888888",
     ///         Email = "hello.uuu@aaa.com",

@@ -32,28 +32,29 @@ namespace Pulumi.AliCloud.EventBridge
     ///     var config = new Config();
     ///     var region = config.Get("region") ?? "cn-chengdu";
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke();
+    ///     var @default = AliCloud.GetZones.Invoke();
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
+    ///         Name = name,
     ///         VpcId = defaultSwitch.VpcId,
     ///     });
     /// 
-    ///     var defaultConnection = new AliCloud.EventBridge.Connection("defaultConnection", new()
+    ///     var defaultConnection = new AliCloud.EventBridge.Connection("default", new()
     ///     {
     ///         ConnectionName = name,
     ///         Description = "test-connection-basic-pre",

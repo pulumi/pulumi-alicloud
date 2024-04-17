@@ -929,7 +929,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .nameRegex(&#34;windows&#34;)
      *             .build());
@@ -956,8 +956,8 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
-     *             .desktopName(var_.name())
+     *             .bundleId(default_.bundles()[0].id())
+     *             .desktopName(name)
      *             .build());
      * 
      *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
@@ -1026,7 +1026,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .nameRegex(&#34;windows&#34;)
      *             .build());
@@ -1053,8 +1053,8 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
-     *             .desktopName(var_.name())
+     *             .bundleId(default_.bundles()[0].id())
+     *             .desktopName(name)
      *             .build());
      * 
      *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
@@ -1123,7 +1123,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .nameRegex(&#34;windows&#34;)
      *             .build());
@@ -1150,8 +1150,8 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
-     *             .desktopName(var_.name())
+     *             .bundleId(default_.bundles()[0].id())
+     *             .desktopName(name)
      *             .build());
      * 
      *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
@@ -1220,7 +1220,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .nameRegex(&#34;windows&#34;)
      *             .build());
@@ -1247,8 +1247,8 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
-     *             .desktopName(var_.name())
+     *             .bundleId(default_.bundles()[0].id())
+     *             .desktopName(name)
      *             .build());
      * 
      *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
@@ -1317,7 +1317,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .nameRegex(&#34;windows&#34;)
      *             .build());
@@ -1344,8 +1344,8 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
-     *             .desktopName(var_.name())
+     *             .bundleId(default_.bundles()[0].id())
+     *             .desktopName(name)
      *             .build());
      * 
      *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
@@ -1414,7 +1414,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .nameRegex(&#34;windows&#34;)
      *             .build());
@@ -1441,8 +1441,8 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
-     *             .desktopName(var_.name())
+     *             .bundleId(default_.bundles()[0].id())
+     *             .desktopName(name)
      *             .build());
      * 
      *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
@@ -2051,7 +2051,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .build());
      * 
@@ -2084,7 +2084,7 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(&#34;your_desktop_name&#34;)
      *             .endUserIds(defaultUser.id())
      *             .build());
@@ -2156,7 +2156,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .build());
      * 
@@ -2189,7 +2189,7 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(&#34;your_desktop_name&#34;)
      *             .endUserIds(defaultUser.id())
      *             .build());
@@ -2261,7 +2261,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .build());
      * 
@@ -2294,7 +2294,7 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(&#34;your_desktop_name&#34;)
      *             .endUserIds(defaultUser.id())
      *             .build());
@@ -2366,7 +2366,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .build());
      * 
@@ -2399,7 +2399,7 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(&#34;your_desktop_name&#34;)
      *             .endUserIds(defaultUser.id())
      *             .build());
@@ -2471,7 +2471,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .build());
      * 
@@ -2504,7 +2504,7 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(&#34;your_desktop_name&#34;)
      *             .endUserIds(defaultUser.id())
      *             .build());
@@ -2576,7 +2576,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .build());
      * 
@@ -2609,7 +2609,7 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
+     *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(&#34;your_desktop_name&#34;)
      *             .endUserIds(defaultUser.id())
      *             .build());
@@ -2681,7 +2681,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .build());
      * 
@@ -2707,7 +2707,7 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[1].id()))
+     *             .bundleId(default_.bundles()[1].id())
      *             .desktopName(&#34;your_desktop_name&#34;)
      *             .build());
      * 
@@ -2784,7 +2784,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .build());
      * 
@@ -2810,7 +2810,7 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[1].id()))
+     *             .bundleId(default_.bundles()[1].id())
      *             .desktopName(&#34;your_desktop_name&#34;)
      *             .build());
      * 
@@ -2887,7 +2887,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .build());
      * 
@@ -2913,7 +2913,7 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[1].id()))
+     *             .bundleId(default_.bundles()[1].id())
      *             .desktopName(&#34;your_desktop_name&#34;)
      *             .build());
      * 
@@ -2990,7 +2990,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .build());
      * 
@@ -3016,7 +3016,7 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[1].id()))
+     *             .bundleId(default_.bundles()[1].id())
      *             .desktopName(&#34;your_desktop_name&#34;)
      *             .build());
      * 
@@ -3093,7 +3093,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .build());
      * 
@@ -3119,7 +3119,7 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[1].id()))
+     *             .bundleId(default_.bundles()[1].id())
      *             .desktopName(&#34;your_desktop_name&#34;)
      *             .build());
      * 
@@ -3196,7 +3196,7 @@ public final class EdsFunctions {
      *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
      *             .build());
      * 
-     *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+     *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
      *             .bundleType(&#34;SYSTEM&#34;)
      *             .build());
      * 
@@ -3222,7 +3222,7 @@ public final class EdsFunctions {
      *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
-     *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[1].id()))
+     *             .bundleId(default_.bundles()[1].id())
      *             .desktopName(&#34;your_desktop_name&#34;)
      *             .build());
      * 
@@ -3286,7 +3286,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .desktopAccessType(&#34;Internet&#34;)
      *             .officeSiteName(&#34;your_office_site_name&#34;)
@@ -3295,7 +3295,7 @@ public final class EdsFunctions {
      * 
      *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
      *             .description(&#34;your_description&#34;)
-     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .officeSiteId(default_.id())
      *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
      *             .build());
      * 
@@ -3351,7 +3351,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .desktopAccessType(&#34;Internet&#34;)
      *             .officeSiteName(&#34;your_office_site_name&#34;)
@@ -3360,7 +3360,7 @@ public final class EdsFunctions {
      * 
      *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
      *             .description(&#34;your_description&#34;)
-     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .officeSiteId(default_.id())
      *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
      *             .build());
      * 
@@ -3416,7 +3416,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .desktopAccessType(&#34;Internet&#34;)
      *             .officeSiteName(&#34;your_office_site_name&#34;)
@@ -3425,7 +3425,7 @@ public final class EdsFunctions {
      * 
      *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
      *             .description(&#34;your_description&#34;)
-     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .officeSiteId(default_.id())
      *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
      *             .build());
      * 
@@ -3481,7 +3481,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .desktopAccessType(&#34;Internet&#34;)
      *             .officeSiteName(&#34;your_office_site_name&#34;)
@@ -3490,7 +3490,7 @@ public final class EdsFunctions {
      * 
      *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
      *             .description(&#34;your_description&#34;)
-     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .officeSiteId(default_.id())
      *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
      *             .build());
      * 
@@ -3546,7 +3546,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .desktopAccessType(&#34;Internet&#34;)
      *             .officeSiteName(&#34;your_office_site_name&#34;)
@@ -3555,7 +3555,7 @@ public final class EdsFunctions {
      * 
      *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
      *             .description(&#34;your_description&#34;)
-     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .officeSiteId(default_.id())
      *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
      *             .build());
      * 
@@ -3611,7 +3611,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
+     *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .desktopAccessType(&#34;Internet&#34;)
      *             .officeSiteName(&#34;your_office_site_name&#34;)
@@ -3620,7 +3620,7 @@ public final class EdsFunctions {
      * 
      *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
      *             .description(&#34;your_description&#34;)
-     *             .officeSiteId(defaultSimpleOfficeSite.id())
+     *             .officeSiteId(default_.id())
      *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
      *             .build());
      * 
@@ -3687,11 +3687,11 @@ public final class EdsFunctions {
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
-     *         final var defaultNetworkPackages = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
+     *         final var default = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult).applyValue(defaultNetworkPackages -&gt; defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult.packages()[0].id())));
+     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, default_.applyValue(default_ -&gt; default_.packages()[0].id()));
      *     }
      * }
      * ```
@@ -3747,11 +3747,11 @@ public final class EdsFunctions {
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
-     *         final var defaultNetworkPackages = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
+     *         final var default = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult).applyValue(defaultNetworkPackages -&gt; defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult.packages()[0].id())));
+     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, default_.applyValue(default_ -&gt; default_.packages()[0].id()));
      *     }
      * }
      * ```
@@ -3807,11 +3807,11 @@ public final class EdsFunctions {
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
-     *         final var defaultNetworkPackages = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
+     *         final var default = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult).applyValue(defaultNetworkPackages -&gt; defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult.packages()[0].id())));
+     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, default_.applyValue(default_ -&gt; default_.packages()[0].id()));
      *     }
      * }
      * ```
@@ -3867,11 +3867,11 @@ public final class EdsFunctions {
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
-     *         final var defaultNetworkPackages = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
+     *         final var default = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult).applyValue(defaultNetworkPackages -&gt; defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult.packages()[0].id())));
+     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, default_.applyValue(default_ -&gt; default_.packages()[0].id()));
      *     }
      * }
      * ```
@@ -3927,11 +3927,11 @@ public final class EdsFunctions {
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
-     *         final var defaultNetworkPackages = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
+     *         final var default = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult).applyValue(defaultNetworkPackages -&gt; defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult.packages()[0].id())));
+     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, default_.applyValue(default_ -&gt; default_.packages()[0].id()));
      *     }
      * }
      * ```
@@ -3987,11 +3987,11 @@ public final class EdsFunctions {
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
-     *         final var defaultNetworkPackages = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
+     *         final var default = EdsFunctions.getNetworkPackages(GetNetworkPackagesArgs.builder()
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult).applyValue(defaultNetworkPackages -&gt; defaultNetworkPackages.applyValue(getNetworkPackagesResult -&gt; getNetworkPackagesResult.packages()[0].id())));
+     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, default_.applyValue(default_ -&gt; default_.packages()[0].id()));
      *     }
      * }
      * ```

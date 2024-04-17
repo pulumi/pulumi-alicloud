@@ -31,26 +31,26 @@ namespace Pulumi.AliCloud.CR
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "10.4.0.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", new()
+    ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("default", new()
     ///     {
     ///         PaymentType = "Subscription",
     ///         Period = 1,
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.CR
     ///         InstanceName = name,
     ///     });
     /// 
-    ///     var defaultVpcEndpointLinkedVpc = new AliCloud.CR.VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc", new()
+    ///     var defaultVpcEndpointLinkedVpc = new AliCloud.CR.VpcEndpointLinkedVpc("default", new()
     ///     {
     ///         InstanceId = defaultRegistryEnterpriseInstance.Id,
     ///         VpcId = defaultNetwork.Id,

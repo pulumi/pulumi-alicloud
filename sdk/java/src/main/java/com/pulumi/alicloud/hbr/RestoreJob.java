@@ -54,45 +54,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+ *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
  *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
  *             .build());
  * 
- *         final var defaultOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+ *         final var defaultGetOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
  *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
  *             .build());
  * 
- *         final var defaultNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+ *         final var defaultGetNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
  *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
  *             .build());
  * 
  *         final var ecsSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
  *             .sourceType(&#34;ECS_FILE&#34;)
- *             .vaultId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
- *             .instanceId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+ *             .vaultId(default_.plans()[0].vaultId())
+ *             .instanceId(default_.plans()[0].instanceId())
  *             .build());
  * 
  *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
  *             .sourceType(&#34;OSS&#34;)
- *             .vaultId(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
- *             .bucket(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
+ *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
+ *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
  *             .build());
  * 
  *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
  *             .sourceType(&#34;NAS&#34;)
- *             .vaultId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
- *             .fileSystemId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
- *             .createTime(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
+ *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
+ *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
+ *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
  *             .build());
  * 
  *         var nasJob = new RestoreJob(&#34;nasJob&#34;, RestoreJobArgs.builder()        
  *             .snapshotHash(nasSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotHash()))
- *             .vaultId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
+ *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
  *             .sourceType(&#34;NAS&#34;)
  *             .restoreType(&#34;NAS&#34;)
  *             .snapshotId(nasSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotId()))
- *             .targetFileSystemId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
- *             .targetCreateTime(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
+ *             .targetFileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
+ *             .targetCreateTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
  *             .targetPath(&#34;/&#34;)
  *             .options(&#34;&#34;&#34;
  *     {&#34;includes&#34;:[], &#34;excludes&#34;:[]}
@@ -101,11 +101,11 @@ import javax.annotation.Nullable;
  * 
  *         var ossJob = new RestoreJob(&#34;ossJob&#34;, RestoreJobArgs.builder()        
  *             .snapshotHash(ossSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotHash()))
- *             .vaultId(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
+ *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
  *             .sourceType(&#34;OSS&#34;)
  *             .restoreType(&#34;OSS&#34;)
  *             .snapshotId(ossSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotId()))
- *             .targetBucket(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
+ *             .targetBucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
  *             .targetPrefix(&#34;&#34;)
  *             .options(&#34;&#34;&#34;
  *     {&#34;includes&#34;:[], &#34;excludes&#34;:[]}
@@ -114,11 +114,11 @@ import javax.annotation.Nullable;
  * 
  *         var ecsJob = new RestoreJob(&#34;ecsJob&#34;, RestoreJobArgs.builder()        
  *             .snapshotHash(ecsSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotHash()))
- *             .vaultId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+ *             .vaultId(default_.plans()[0].vaultId())
  *             .sourceType(&#34;ECS_FILE&#34;)
  *             .restoreType(&#34;ECS_FILE&#34;)
  *             .snapshotId(ecsSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotId()))
- *             .targetInstanceId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+ *             .targetInstanceId(default_.plans()[0].instanceId())
  *             .targetPath(&#34;/&#34;)
  *             .build());
  * 

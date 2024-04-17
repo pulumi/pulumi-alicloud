@@ -42,18 +42,18 @@ import (
 //				name = param
 //			}
 //			_, err := quotas.NewTemplateQuota(ctx, "default", &quotas.TemplateQuotaArgs{
-//				DesireValue: pulumi.Float64(1001),
+//				QuotaActionCode: pulumi.String("q_desktop-count"),
+//				ProductCode:     pulumi.String("gws"),
+//				NoticeType:      pulumi.Int(3),
 //				Dimensions: quotas.TemplateQuotaDimensionArray{
 //					&quotas.TemplateQuotaDimensionArgs{
 //						Key:   pulumi.String("regionId"),
 //						Value: pulumi.String("cn-hangzhou"),
 //					},
 //				},
-//				EnvLanguage:     pulumi.String("zh"),
-//				NoticeType:      pulumi.Int(3),
-//				ProductCode:     pulumi.String("gws"),
-//				QuotaActionCode: pulumi.String("q_desktop-count"),
-//				QuotaCategory:   pulumi.String("CommonQuota"),
+//				DesireValue:   pulumi.Float64(1001),
+//				EnvLanguage:   pulumi.String("zh"),
+//				QuotaCategory: pulumi.String("CommonQuota"),
 //			})
 //			if err != nil {
 //				return err

@@ -34,7 +34,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstApiId", data.Alicloud_api_gateway_apis.Data_apigatway.Apis[0].Id)
+//			ctx.Export("firstApiId", dataApigatway.Apis[0].Id)
 //			return nil
 //		})
 //	}

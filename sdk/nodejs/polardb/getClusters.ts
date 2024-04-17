@@ -25,12 +25,12 @@ import * as utilities from "../utilities";
  *     payType: "PostPaid",
  *     category: "Normal",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const _default = new alicloud.vpc.Network("default", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: _default.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: _this.then(_this => _this.classes?.[0]?.zoneId),
  *     vswitchName: "terraform-example",
@@ -148,12 +148,12 @@ export interface GetClustersResult {
  *     payType: "PostPaid",
  *     category: "Normal",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const _default = new alicloud.vpc.Network("default", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: _default.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: _this.then(_this => _this.classes?.[0]?.zoneId),
  *     vswitchName: "terraform-example",

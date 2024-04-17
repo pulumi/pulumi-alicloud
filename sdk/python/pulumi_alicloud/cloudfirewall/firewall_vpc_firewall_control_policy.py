@@ -719,15 +719,15 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_account = alicloud.get_account()
-        default_instance = alicloud.cen.Instance("defaultInstance",
+        default = alicloud.get_account()
+        default_instance = alicloud.cen.Instance("default",
             cen_instance_name=name,
             description="example_value",
             tags={
                 "Created": "TF",
                 "For": "acceptance test",
             })
-        default_firewall_vpc_firewall_control_policy = alicloud.cloudfirewall.FirewallVpcFirewallControlPolicy("defaultFirewallVpcFirewallControlPolicy",
+        default_firewall_vpc_firewall_control_policy = alicloud.cloudfirewall.FirewallVpcFirewallControlPolicy("default",
             order=1,
             destination="127.0.0.2/32",
             application_name="ANY",
@@ -741,7 +741,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
             dest_port_type="port",
             proto="TCP",
             release=True,
-            member_uid=default_account.id,
+            member_uid=default.id,
             vpc_firewall_id=default_instance.id)
         ```
         <!--End PulumiCodeChooser -->
@@ -804,15 +804,15 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_account = alicloud.get_account()
-        default_instance = alicloud.cen.Instance("defaultInstance",
+        default = alicloud.get_account()
+        default_instance = alicloud.cen.Instance("default",
             cen_instance_name=name,
             description="example_value",
             tags={
                 "Created": "TF",
                 "For": "acceptance test",
             })
-        default_firewall_vpc_firewall_control_policy = alicloud.cloudfirewall.FirewallVpcFirewallControlPolicy("defaultFirewallVpcFirewallControlPolicy",
+        default_firewall_vpc_firewall_control_policy = alicloud.cloudfirewall.FirewallVpcFirewallControlPolicy("default",
             order=1,
             destination="127.0.0.2/32",
             application_name="ANY",
@@ -826,7 +826,7 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
             dest_port_type="port",
             proto="TCP",
             release=True,
-            member_uid=default_account.id,
+            member_uid=default.id,
             vpc_firewall_id=default_instance.id)
         ```
         <!--End PulumiCodeChooser -->

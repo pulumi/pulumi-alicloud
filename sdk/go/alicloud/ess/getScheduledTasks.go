@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			ds, err := ess.GetScheduledTasks(ctx, &ess.GetScheduledTasksArgs{
-//				NameRegex:       pulumi.StringRef("scheduled_task_name"),
 //				ScheduledTaskId: pulumi.StringRef("scheduled_task_id"),
+//				NameRegex:       pulumi.StringRef("scheduled_task_name"),
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultEnterpriseProxyAccess = new AliCloud.Dms.EnterpriseProxyAccess("defaultEnterpriseProxyAccess", new()
+        ///     var defaultEnterpriseProxyAccess = new AliCloud.Dms.EnterpriseProxyAccess("default", new()
         ///     {
         ///         IndepPassword = "PASSWORD-DEMO",
         ///         ProxyId = "1881",
@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Dms
         ///         UserId = "104442",
         ///     });
         /// 
-        ///     var defaultEnterpriseProxyAccesses = AliCloud.Dms.GetEnterpriseProxyAccesses.Invoke(new()
+        ///     var @default = AliCloud.Dms.GetEnterpriseProxyAccesses.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Dms
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudDmsProxyAccesesExampleId"] = defaultEnterpriseProxyAccesses.Apply(getEnterpriseProxyAccessesResult =&gt; getEnterpriseProxyAccessesResult.Accesses[0]?.Id),
+        ///         ["alicloudDmsProxyAccesesExampleId"] = @default.Apply(@default =&gt; @default.Apply(getEnterpriseProxyAccessesResult =&gt; getEnterpriseProxyAccessesResult.Accesses[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultEnterpriseProxyAccess = new AliCloud.Dms.EnterpriseProxyAccess("defaultEnterpriseProxyAccess", new()
+        ///     var defaultEnterpriseProxyAccess = new AliCloud.Dms.EnterpriseProxyAccess("default", new()
         ///     {
         ///         IndepPassword = "PASSWORD-DEMO",
         ///         ProxyId = "1881",
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Dms
         ///         UserId = "104442",
         ///     });
         /// 
-        ///     var defaultEnterpriseProxyAccesses = AliCloud.Dms.GetEnterpriseProxyAccesses.Invoke(new()
+        ///     var @default = AliCloud.Dms.GetEnterpriseProxyAccesses.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Dms
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudDmsProxyAccesesExampleId"] = defaultEnterpriseProxyAccesses.Apply(getEnterpriseProxyAccessesResult =&gt; getEnterpriseProxyAccessesResult.Accesses[0]?.Id),
+        ///         ["alicloudDmsProxyAccesesExampleId"] = @default.Apply(@default =&gt; @default.Apply(getEnterpriseProxyAccessesResult =&gt; getEnterpriseProxyAccessesResult.Accesses[0]?.Id)),
         ///     };
         /// });
         /// ```

@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Cfg
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["listOfResourceTypes"] = data.Alicloud_config_configuration_recorders.This.Recorders[0].Resource_types,
+        ///         ["listOfResourceTypes"] = @this.Recorders[0].ResourceTypes,
         ///     };
         /// });
         /// ```
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Cfg
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["listOfResourceTypes"] = data.Alicloud_config_configuration_recorders.This.Recorders[0].Resource_types,
+        ///         ["listOfResourceTypes"] = @this.Recorders[0].ResourceTypes,
         ///     };
         /// });
         /// ```

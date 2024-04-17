@@ -243,9 +243,10 @@ def get_executions(category: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     example = alicloud.oos.get_executions(ids=["execution_id"],
-        status="Success",
-        template_name="name")
+        template_name="name",
+        status="Success")
     pulumi.export("firstExecutionId", example.executions[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -343,9 +344,10 @@ def get_executions_output(category: Optional[pulumi.Input[Optional[str]]] = None
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     example = alicloud.oos.get_executions(ids=["execution_id"],
-        status="Success",
-        template_name="name")
+        template_name="name",
+        status="Success")
     pulumi.export("firstExecutionId", example.executions[0].id)
     ```
     <!--End PulumiCodeChooser -->

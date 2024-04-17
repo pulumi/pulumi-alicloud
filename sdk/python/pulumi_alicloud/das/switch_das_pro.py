@@ -167,19 +167,19 @@ class SwitchDasPro(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexample"
-        default_account = alicloud.get_account()
-        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
+        default = alicloud.get_account()
+        default_get_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
             db_version="8.0",
             pay_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_node_classes.classes[0].zone_id,
+            zone_id=default_get_node_classes.classes[0].zone_id,
             vswitch_name=name)
-        default_cluster = alicloud.polardb.Cluster("defaultCluster",
+        default_cluster = alicloud.polardb.Cluster("default",
             db_type="MySQL",
             db_version="8.0",
             db_node_class="polar.mysql.x4.large",
@@ -193,10 +193,10 @@ class SwitchDasPro(pulumi.CustomResource):
                     "1.2.3.5",
                 ],
             )])
-        default_switch_das_pro = alicloud.das.SwitchDasPro("defaultSwitchDasPro",
+        default_switch_das_pro = alicloud.das.SwitchDasPro("default",
             instance_id=default_cluster.id,
             sql_retention=30,
-            user_id=default_account.id)
+            user_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -240,19 +240,19 @@ class SwitchDasPro(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexample"
-        default_account = alicloud.get_account()
-        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
+        default = alicloud.get_account()
+        default_get_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
             db_version="8.0",
             pay_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_node_classes.classes[0].zone_id,
+            zone_id=default_get_node_classes.classes[0].zone_id,
             vswitch_name=name)
-        default_cluster = alicloud.polardb.Cluster("defaultCluster",
+        default_cluster = alicloud.polardb.Cluster("default",
             db_type="MySQL",
             db_version="8.0",
             db_node_class="polar.mysql.x4.large",
@@ -266,10 +266,10 @@ class SwitchDasPro(pulumi.CustomResource):
                     "1.2.3.5",
                 ],
             )])
-        default_switch_das_pro = alicloud.das.SwitchDasPro("defaultSwitchDasPro",
+        default_switch_das_pro = alicloud.das.SwitchDasPro("default",
             instance_id=default_cluster.id,
             sql_retention=30,
-            user_id=default_account.id)
+            user_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 

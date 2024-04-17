@@ -18,9 +18,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleUser = new alicloud.log.AlertResource("exampleUser", {
- *     lang: "cn",
+ * const exampleUser = new alicloud.log.AlertResource("example_user", {
  *     type: "user",
+ *     lang: "cn",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

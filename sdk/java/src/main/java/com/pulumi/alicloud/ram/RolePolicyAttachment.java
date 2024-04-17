@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a RAM Role Policy attachment.
  *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+ *             .name(&#34;roleName&#34;)
  *             .document(&#34;&#34;&#34;
  *     {
  *       &#34;Statement&#34;: [
@@ -69,6 +70,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
+ *             .name(&#34;policyName&#34;)
  *             .document(&#34;&#34;&#34;
  *   {
  *     &#34;Statement&#34;: [

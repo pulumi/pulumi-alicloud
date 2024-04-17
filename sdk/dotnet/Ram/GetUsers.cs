@@ -27,30 +27,32 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultGroup = new AliCloud.Ram.Group("defaultGroup", new()
+        ///     var @default = new AliCloud.Ram.Group("default", new()
         ///     {
+        ///         Name = "group1",
         ///         Comments = "group comments",
         ///         Force = true,
         ///     });
         /// 
-        ///     var defaultUser = new AliCloud.Ram.User("defaultUser", new()
+        ///     var defaultUser = new AliCloud.Ram.User("default", new()
         ///     {
+        ///         Name = "user-example",
         ///         DisplayName = "displayname",
         ///         Mobile = "86-18888888888",
         ///         Email = "hello.uuu@aaa.com",
         ///         Comments = "yoyoyo",
         ///     });
         /// 
-        ///     var defaultGroupMembership = new AliCloud.Ram.GroupMembership("defaultGroupMembership", new()
+        ///     var defaultGroupMembership = new AliCloud.Ram.GroupMembership("default", new()
         ///     {
-        ///         GroupName = defaultGroup.Name,
+        ///         GroupName = @default.Name,
         ///         UserNames = new[]
         ///         {
         ///             defaultUser.Name,
         ///         },
         ///     });
         /// 
-        ///     var defaultPolicy = new AliCloud.Ram.Policy("defaultPolicy", new()
+        ///     var defaultPolicy = new AliCloud.Ram.Policy("default", new()
         ///     {
         ///         PolicyName = "ram-policy-example",
         ///         PolicyDocument = @"			{
@@ -74,7 +76,7 @@ namespace Pulumi.AliCloud.Ram
         ///         Force = true,
         ///     });
         /// 
-        ///     var defaultUserPolicyAttachment = new AliCloud.Ram.UserPolicyAttachment("defaultUserPolicyAttachment", new()
+        ///     var defaultUserPolicyAttachment = new AliCloud.Ram.UserPolicyAttachment("default", new()
         ///     {
         ///         PolicyName = defaultPolicy.PolicyName,
         ///         UserName = defaultUser.Name,
@@ -84,7 +86,7 @@ namespace Pulumi.AliCloud.Ram
         ///     var usersDs = AliCloud.Ram.GetUsers.Invoke(new()
         ///     {
         ///         OutputFile = "users.txt",
-        ///         GroupName = defaultGroup.Name,
+        ///         GroupName = @default.Name,
         ///         PolicyName = defaultPolicy.PolicyName,
         ///         PolicyType = "Custom",
         ///         NameRegex = defaultUser.Name,
@@ -117,30 +119,32 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultGroup = new AliCloud.Ram.Group("defaultGroup", new()
+        ///     var @default = new AliCloud.Ram.Group("default", new()
         ///     {
+        ///         Name = "group1",
         ///         Comments = "group comments",
         ///         Force = true,
         ///     });
         /// 
-        ///     var defaultUser = new AliCloud.Ram.User("defaultUser", new()
+        ///     var defaultUser = new AliCloud.Ram.User("default", new()
         ///     {
+        ///         Name = "user-example",
         ///         DisplayName = "displayname",
         ///         Mobile = "86-18888888888",
         ///         Email = "hello.uuu@aaa.com",
         ///         Comments = "yoyoyo",
         ///     });
         /// 
-        ///     var defaultGroupMembership = new AliCloud.Ram.GroupMembership("defaultGroupMembership", new()
+        ///     var defaultGroupMembership = new AliCloud.Ram.GroupMembership("default", new()
         ///     {
-        ///         GroupName = defaultGroup.Name,
+        ///         GroupName = @default.Name,
         ///         UserNames = new[]
         ///         {
         ///             defaultUser.Name,
         ///         },
         ///     });
         /// 
-        ///     var defaultPolicy = new AliCloud.Ram.Policy("defaultPolicy", new()
+        ///     var defaultPolicy = new AliCloud.Ram.Policy("default", new()
         ///     {
         ///         PolicyName = "ram-policy-example",
         ///         PolicyDocument = @"			{
@@ -164,7 +168,7 @@ namespace Pulumi.AliCloud.Ram
         ///         Force = true,
         ///     });
         /// 
-        ///     var defaultUserPolicyAttachment = new AliCloud.Ram.UserPolicyAttachment("defaultUserPolicyAttachment", new()
+        ///     var defaultUserPolicyAttachment = new AliCloud.Ram.UserPolicyAttachment("default", new()
         ///     {
         ///         PolicyName = defaultPolicy.PolicyName,
         ///         UserName = defaultUser.Name,
@@ -174,7 +178,7 @@ namespace Pulumi.AliCloud.Ram
         ///     var usersDs = AliCloud.Ram.GetUsers.Invoke(new()
         ///     {
         ///         OutputFile = "users.txt",
-        ///         GroupName = defaultGroup.Name,
+        ///         GroupName = @default.Name,
         ///         PolicyName = defaultPolicy.PolicyName,
         ///         PolicyType = "Custom",
         ///         NameRegex = defaultUser.Name,

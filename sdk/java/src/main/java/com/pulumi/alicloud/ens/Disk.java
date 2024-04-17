@@ -53,9 +53,9 @@ import javax.annotation.Nullable;
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var default_ = new Disk(&#34;default&#34;, DiskArgs.builder()        
  *             .category(&#34;cloud_ssd&#34;)
- *             .ensRegionId(&#34;cn-chongqing-11&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
  *             .size(&#34;20&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .ensRegionId(&#34;cn-chongqing-11&#34;)
  *             .build());
  * 
  *     }

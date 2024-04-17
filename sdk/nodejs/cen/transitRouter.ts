@@ -18,13 +18,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ * const example = new alicloud.cen.Instance("example", {
  *     cenInstanceName: "tf_example",
  *     description: "an example for cen",
  * });
- * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("example", {
  *     transitRouterName: "tf_example",
- *     cenId: exampleInstance.id,
+ *     cenId: example.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

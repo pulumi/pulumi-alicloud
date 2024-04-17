@@ -32,6 +32,8 @@ namespace Pulumi.AliCloud.Ecs
     ///     var @default = new AliCloud.Ecs.EcsPrefixList("default", new()
     ///     {
     ///         AddressFamily = "IPv4",
+    ///         MaxEntries = 2,
+    ///         PrefixListName = "tftest",
     ///         Description = "description",
     ///         Entries = new[]
     ///         {
@@ -41,8 +43,6 @@ namespace Pulumi.AliCloud.Ecs
     ///                 Description = "description",
     ///             },
     ///         },
-    ///         MaxEntries = 2,
-    ///         PrefixListName = "tftest",
     ///     });
     /// 
     /// });

@@ -22,44 +22,45 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "Instance",
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
  *     instanceTypeFamily: "ecs.sn1ne",
  * }));
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "10.4.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: "tf-example",
  *     description: "New security group",
  *     vpcId: defaultNetwork.id,
  * });
- * const defaultImages = alicloud.ecs.getImages({
+ * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * const defaultInstance = new alicloud.ecs.Instance("default", {
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
  *     instanceName: name,
  *     hostName: name,
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *     securityGroups: [defaultSecurityGroup.id],
  *     vswitchId: defaultSwitch.id,
  * });
  * const disk = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultEcsDisk = new alicloud.ecs.EcsDisk("defaultEcsDisk", {
+ * const defaultEcsDisk = new alicloud.ecs.EcsDisk("default", {
  *     zoneId: disk.then(disk => disk.zones?.[0]?.id),
  *     category: "cloud_efficiency",
  *     deleteAutoSnapshot: true,
@@ -73,7 +74,7 @@ import * as utilities from "../utilities";
  *         Environment: "Acceptance-test",
  *     },
  * });
- * const defaultEcsDiskAttachment = new alicloud.ecs.EcsDiskAttachment("defaultEcsDiskAttachment", {
+ * const defaultEcsDiskAttachment = new alicloud.ecs.EcsDiskAttachment("default", {
  *     diskId: defaultEcsDisk.id,
  *     instanceId: defaultInstance.id,
  * });

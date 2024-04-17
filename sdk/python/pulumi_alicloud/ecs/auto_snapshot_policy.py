@@ -367,6 +367,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ecs.AutoSnapshotPolicy("example",
+            name="tf-testAcc",
             repeat_weekdays=[
                 "1",
                 "2",
@@ -433,6 +434,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ecs.AutoSnapshotPolicy("example",
+            name="tf-testAcc",
             repeat_weekdays=[
                 "1",
                 "2",

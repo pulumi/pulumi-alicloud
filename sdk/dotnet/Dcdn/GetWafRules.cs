@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Dcdn
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_dcdn_waf_rule.Default.Id,
+        ///             defaultAlicloudDcdnWafRule.Id,
         ///         },
         ///     });
         /// 
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Dcdn
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_dcdn_waf_rule.Default.Id,
+        ///             defaultAlicloudDcdnWafRule.Id,
         ///         },
         ///     });
         /// 

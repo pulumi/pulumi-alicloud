@@ -341,14 +341,18 @@ class Topic(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        example = alicloud.datahub.Project("example", comment="created by terraform")
-        example_blob = alicloud.datahub.Topic("exampleBlob",
+        example = alicloud.datahub.Project("example",
+            name=name,
+            comment="created by terraform")
+        example_blob = alicloud.datahub.Topic("example_blob",
+            name=f"{name}_blob",
             project_name=example.name,
             record_type="BLOB",
             shard_count=3,
             life_cycle=7,
             comment="created by terraform")
-        example_tuple = alicloud.datahub.Topic("exampleTuple",
+        example_tuple = alicloud.datahub.Topic("example_tuple",
+            name=f"{name}_tuple",
             project_name=example.name,
             record_type="TUPLE",
             record_schema={
@@ -413,14 +417,18 @@ class Topic(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        example = alicloud.datahub.Project("example", comment="created by terraform")
-        example_blob = alicloud.datahub.Topic("exampleBlob",
+        example = alicloud.datahub.Project("example",
+            name=name,
+            comment="created by terraform")
+        example_blob = alicloud.datahub.Topic("example_blob",
+            name=f"{name}_blob",
             project_name=example.name,
             record_type="BLOB",
             shard_count=3,
             life_cycle=7,
             comment="created by terraform")
-        example_tuple = alicloud.datahub.Topic("exampleTuple",
+        example_tuple = alicloud.datahub.Topic("example_tuple",
+            name=f"{name}_tuple",
             project_name=example.name,
             record_type="TUPLE",
             record_schema={

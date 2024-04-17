@@ -29,26 +29,26 @@ namespace Pulumi.AliCloud.Vpc
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "forward-entry-config-example-name";
-        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
         /// 
-        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
         ///         VpcName = name,
         ///         CidrBlock = "172.16.0.0/12",
         ///     });
         /// 
-        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
         ///     {
         ///         VpcId = defaultNetwork.Id,
         ///         CidrBlock = "172.16.0.0/21",
-        ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
         ///         VswitchName = name,
         ///     });
         /// 
-        ///     var defaultNatGateway = new AliCloud.Vpc.NatGateway("defaultNatGateway", new()
+        ///     var defaultNatGateway = new AliCloud.Vpc.NatGateway("default", new()
         ///     {
         ///         VpcId = defaultNetwork.Id,
         ///         InternetChargeType = "PayByLcu",
@@ -57,18 +57,18 @@ namespace Pulumi.AliCloud.Vpc
         ///         VswitchId = defaultSwitch.Id,
         ///     });
         /// 
-        ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+        ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("default", new()
         ///     {
         ///         AddressName = name,
         ///     });
         /// 
-        ///     var defaultEipAssociation = new AliCloud.Ecs.EipAssociation("defaultEipAssociation", new()
+        ///     var defaultEipAssociation = new AliCloud.Ecs.EipAssociation("default", new()
         ///     {
         ///         AllocationId = defaultEipAddress.Id,
         ///         InstanceId = defaultNatGateway.Id,
         ///     });
         /// 
-        ///     var defaultForwardEntry = new AliCloud.Vpc.ForwardEntry("defaultForwardEntry", new()
+        ///     var defaultForwardEntry = new AliCloud.Vpc.ForwardEntry("default", new()
         ///     {
         ///         ForwardTableId = defaultNatGateway.ForwardTableIds,
         ///         ExternalIp = defaultEipAddress.IpAddress,
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Vpc
         ///         InternalPort = "8080",
         ///     });
         /// 
-        ///     var defaultForwardEntries = AliCloud.Vpc.GetForwardEntries.Invoke(new()
+        ///     var defaultGetForwardEntries = AliCloud.Vpc.GetForwardEntries.Invoke(new()
         ///     {
         ///         ForwardTableId = defaultForwardEntry.ForwardTableId,
         ///     });
@@ -108,26 +108,26 @@ namespace Pulumi.AliCloud.Vpc
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "forward-entry-config-example-name";
-        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
         /// 
-        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
         ///         VpcName = name,
         ///         CidrBlock = "172.16.0.0/12",
         ///     });
         /// 
-        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
         ///     {
         ///         VpcId = defaultNetwork.Id,
         ///         CidrBlock = "172.16.0.0/21",
-        ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
         ///         VswitchName = name,
         ///     });
         /// 
-        ///     var defaultNatGateway = new AliCloud.Vpc.NatGateway("defaultNatGateway", new()
+        ///     var defaultNatGateway = new AliCloud.Vpc.NatGateway("default", new()
         ///     {
         ///         VpcId = defaultNetwork.Id,
         ///         InternetChargeType = "PayByLcu",
@@ -136,18 +136,18 @@ namespace Pulumi.AliCloud.Vpc
         ///         VswitchId = defaultSwitch.Id,
         ///     });
         /// 
-        ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+        ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("default", new()
         ///     {
         ///         AddressName = name,
         ///     });
         /// 
-        ///     var defaultEipAssociation = new AliCloud.Ecs.EipAssociation("defaultEipAssociation", new()
+        ///     var defaultEipAssociation = new AliCloud.Ecs.EipAssociation("default", new()
         ///     {
         ///         AllocationId = defaultEipAddress.Id,
         ///         InstanceId = defaultNatGateway.Id,
         ///     });
         /// 
-        ///     var defaultForwardEntry = new AliCloud.Vpc.ForwardEntry("defaultForwardEntry", new()
+        ///     var defaultForwardEntry = new AliCloud.Vpc.ForwardEntry("default", new()
         ///     {
         ///         ForwardTableId = defaultNatGateway.ForwardTableIds,
         ///         ExternalIp = defaultEipAddress.IpAddress,
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.Vpc
         ///         InternalPort = "8080",
         ///     });
         /// 
-        ///     var defaultForwardEntries = AliCloud.Vpc.GetForwardEntries.Invoke(new()
+        ///     var defaultGetForwardEntries = AliCloud.Vpc.GetForwardEntries.Invoke(new()
         ///     {
         ///         ForwardTableId = defaultForwardEntry.ForwardTableId,
         ///     });

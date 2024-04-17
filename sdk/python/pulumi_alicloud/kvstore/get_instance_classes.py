@@ -241,13 +241,13 @@ def get_instance_classes(architecture: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    resources_zones = alicloud.get_zones(available_resource_creation="KVStore")
-    resources_instance_classes = alicloud.kvstore.get_instance_classes(engine="Redis",
-        engine_version="5.0",
+    resources = alicloud.get_zones(available_resource_creation="KVStore")
+    resources_get_instance_classes = alicloud.kvstore.get_instance_classes(zone_id=resources.zones[0].id,
         instance_charge_type="PrePaid",
-        output_file="./classes.txt",
-        zone_id=resources_zones.zones[0].id)
-    pulumi.export("firstKvstoreInstanceClass", resources_instance_classes.instance_classes)
+        engine="Redis",
+        engine_version="5.0",
+        output_file="./classes.txt")
+    pulumi.export("firstKvstoreInstanceClass", resources_get_instance_classes.instance_classes)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -338,13 +338,13 @@ def get_instance_classes_output(architecture: Optional[pulumi.Input[Optional[str
     import pulumi
     import pulumi_alicloud as alicloud
 
-    resources_zones = alicloud.get_zones(available_resource_creation="KVStore")
-    resources_instance_classes = alicloud.kvstore.get_instance_classes(engine="Redis",
-        engine_version="5.0",
+    resources = alicloud.get_zones(available_resource_creation="KVStore")
+    resources_get_instance_classes = alicloud.kvstore.get_instance_classes(zone_id=resources.zones[0].id,
         instance_charge_type="PrePaid",
-        output_file="./classes.txt",
-        zone_id=resources_zones.zones[0].id)
-    pulumi.export("firstKvstoreInstanceClass", resources_instance_classes.instance_classes)
+        engine="Redis",
+        engine_version="5.0",
+        output_file="./classes.txt")
+    pulumi.export("firstKvstoreInstanceClass", resources_get_instance_classes.instance_classes)
     ```
     <!--End PulumiCodeChooser -->
 

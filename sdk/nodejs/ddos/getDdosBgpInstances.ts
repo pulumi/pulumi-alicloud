@@ -18,20 +18,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const instanceDdosBgpInstance = new alicloud.ddos.DdosBgpInstance("instanceDdosBgpInstance", {
- *     baseBandwidth: 20,
- *     bandwidth: -1,
- *     ipCount: 100,
- *     ipType: "IPv4",
- *     normalBandwidth: 100,
- *     type: "Enterprise",
- * });
- * const instanceDdosBgpInstances = alicloud.ddos.getDdosBgpInstances({
- *     nameRegex: "ddosbgp",
- * });
- * export const instance = [instanceDdosBgpInstances].map(__item => __item.id);
+ * export = async () => {
+ *     const config = new pulumi.Config();
+ *     const name = config.get("name") || "tf-example";
+ *     const instanceDdosBgpInstance = new alicloud.ddos.DdosBgpInstance("instance", {
+ *         name: name,
+ *         baseBandwidth: 20,
+ *         bandwidth: -1,
+ *         ipCount: 100,
+ *         ipType: "IPv4",
+ *         normalBandwidth: 100,
+ *         type: "Enterprise",
+ *     });
+ *     const instance = await alicloud.ddos.getDdosBgpInstances({
+ *         nameRegex: "ddosbgp",
+ *     });
+ *     return {
+ *         instance: [instance].map(__item => __item.id),
+ *     };
+ * }
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -99,20 +104,25 @@ export interface GetDdosBgpInstancesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const instanceDdosBgpInstance = new alicloud.ddos.DdosBgpInstance("instanceDdosBgpInstance", {
- *     baseBandwidth: 20,
- *     bandwidth: -1,
- *     ipCount: 100,
- *     ipType: "IPv4",
- *     normalBandwidth: 100,
- *     type: "Enterprise",
- * });
- * const instanceDdosBgpInstances = alicloud.ddos.getDdosBgpInstances({
- *     nameRegex: "ddosbgp",
- * });
- * export const instance = [instanceDdosBgpInstances].map(__item => __item.id);
+ * export = async () => {
+ *     const config = new pulumi.Config();
+ *     const name = config.get("name") || "tf-example";
+ *     const instanceDdosBgpInstance = new alicloud.ddos.DdosBgpInstance("instance", {
+ *         name: name,
+ *         baseBandwidth: 20,
+ *         bandwidth: -1,
+ *         ipCount: 100,
+ *         ipType: "IPv4",
+ *         normalBandwidth: 100,
+ *         type: "Enterprise",
+ *     });
+ *     const instance = await alicloud.ddos.getDdosBgpInstances({
+ *         nameRegex: "ddosbgp",
+ *     });
+ *     return {
+ *         instance: [instance].map(__item => __item.id),
+ *     };
+ * }
  * ```
  * <!--End PulumiCodeChooser -->
  */

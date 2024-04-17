@@ -43,11 +43,12 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			instance, err := ddos.NewDdosBgpInstance(ctx, "instance", &ddos.DdosBgpInstanceArgs{
+//				Name:            pulumi.String(name),
 //				BaseBandwidth:   pulumi.Int(20),
 //				Bandwidth:       -1,
 //				IpCount:         pulumi.Int(100),
@@ -58,16 +59,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
 //				AddressName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ddos.NewBgpIp(ctx, "defaultBgpIp", &ddos.BgpIpArgs{
+//			_, err = ddos.NewBgpIp(ctx, "default", &ddos.BgpIpArgs{
 //				InstanceId:      instance.ID(),
 //				Ip:              defaultEipAddress.IpAddress,
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
 //			})
 //			if err != nil {
 //				return err

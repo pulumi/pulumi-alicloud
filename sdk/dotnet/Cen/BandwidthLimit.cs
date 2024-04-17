@@ -34,35 +34,19 @@ namespace Pulumi.AliCloud.Cen
     ///     var config = new Config();
     ///     var region1 = config.Get("region1") ?? "eu-central-1";
     ///     var region2 = config.Get("region2") ?? "ap-southeast-1";
-    ///     var ec = new AliCloud.Provider("ec", new()
-    ///     {
-    ///         Region = region1,
-    ///     });
-    /// 
-    ///     var @as = new AliCloud.Provider("as", new()
-    ///     {
-    ///         Region = region2,
-    ///     });
-    /// 
     ///     var vpc1 = new AliCloud.Vpc.Network("vpc1", new()
     ///     {
     ///         VpcName = "tf-example",
     ///         CidrBlock = "192.168.0.0/16",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Ec,
     ///     });
     /// 
     ///     var vpc2 = new AliCloud.Vpc.Network("vpc2", new()
     ///     {
     ///         VpcName = "tf-example",
     ///         CidrBlock = "172.16.0.0/12",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.As,
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     var example = new AliCloud.Cen.Instance("example", new()
     ///     {
     ///         CenInstanceName = "tf_example",
     ///         Description = "an example for cen",
@@ -70,7 +54,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     ///     var example1 = new AliCloud.Cen.InstanceAttachment("example1", new()
     ///     {
-    ///         InstanceId = exampleInstance.Id,
+    ///         InstanceId = example.Id,
     ///         ChildInstanceId = vpc1.Id,
     ///         ChildInstanceType = "VPC",
     ///         ChildInstanceRegionId = region1,
@@ -78,13 +62,13 @@ namespace Pulumi.AliCloud.Cen
     /// 
     ///     var example2 = new AliCloud.Cen.InstanceAttachment("example2", new()
     ///     {
-    ///         InstanceId = exampleInstance.Id,
+    ///         InstanceId = example.Id,
     ///         ChildInstanceId = vpc2.Id,
     ///         ChildInstanceType = "VPC",
     ///         ChildInstanceRegionId = region2,
     ///     });
     /// 
-    ///     var exampleBandwidthPackage = new AliCloud.Cen.BandwidthPackage("exampleBandwidthPackage", new()
+    ///     var exampleBandwidthPackage = new AliCloud.Cen.BandwidthPackage("example", new()
     ///     {
     ///         Bandwidth = 5,
     ///         CenBandwidthPackageName = "tf_example",
@@ -92,13 +76,13 @@ namespace Pulumi.AliCloud.Cen
     ///         GeographicRegionBId = "Asia-Pacific",
     ///     });
     /// 
-    ///     var exampleBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", new()
+    ///     var exampleBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("example", new()
     ///     {
-    ///         InstanceId = exampleInstance.Id,
+    ///         InstanceId = example.Id,
     ///         BandwidthPackageId = exampleBandwidthPackage.Id,
     ///     });
     /// 
-    ///     var exampleBandwidthLimit = new AliCloud.Cen.BandwidthLimit("exampleBandwidthLimit", new()
+    ///     var exampleBandwidthLimit = new AliCloud.Cen.BandwidthLimit("example", new()
     ///     {
     ///         InstanceId = exampleBandwidthPackageAttachment.InstanceId,
     ///         RegionIds = new[]

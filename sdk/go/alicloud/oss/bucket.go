@@ -37,18 +37,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-acl", &oss.BucketArgs{
-//				Acl: pulumi.String("private"),
-//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("example-value-%v", result), nil
-//				}).(pulumi.StringOutput),
+//				Bucket: pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
+//				Acl:    pulumi.String("private"),
 //			})
 //			if err != nil {
 //				return err
@@ -78,20 +76,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-website", &oss.BucketArgs{
-//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("example-value-%v", result), nil
-//				}).(pulumi.StringOutput),
+//				Bucket: pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
 //				Website: &oss.BucketWebsiteArgs{
-//					ErrorDocument: pulumi.String("error.html"),
 //					IndexDocument: pulumi.String("index.html"),
+//					ErrorDocument: pulumi.String("error.html"),
 //				},
 //			})
 //			if err != nil {
@@ -122,26 +118,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-target", &oss.BucketArgs{
-//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("example-value-%v", result), nil
-//				}).(pulumi.StringOutput),
-//				Acl: pulumi.String("public-read"),
+//				Bucket: pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
+//				Acl:    pulumi.String("public-read"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-logging", &oss.BucketArgs{
-//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("example-logging-%v", result), nil
-//				}).(pulumi.StringOutput),
+//				Bucket: pulumi.String(fmt.Sprintf("example-logging-%v", _default.Result)),
 //				Logging: &oss.BucketLoggingArgs{
 //					TargetBucket: bucket_target.ID(),
 //					TargetPrefix: pulumi.String("log/"),
@@ -175,18 +167,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-referer", &oss.BucketArgs{
-//				Acl: pulumi.String("private"),
-//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("example-value-%v", result), nil
-//				}).(pulumi.StringOutput),
+//				Bucket: pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
+//				Acl:    pulumi.String("private"),
 //				RefererConfig: &oss.BucketRefererConfigArgs{
 //					AllowEmpty: pulumi.Bool(false),
 //					Referers: pulumi.StringArray{

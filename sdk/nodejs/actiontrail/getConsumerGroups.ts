@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const consumerGroupsDs = alicloud.actiontrail.getConsumerGroups({
- *     consumerIdRegex: "CID-alikafkaGroupDatasourceName",
  *     instanceId: "xxx",
+ *     consumerIdRegex: "CID-alikafkaGroupDatasourceName",
  *     outputFile: "consumerGroups.txt",
  * });
  * export const firstGroupName = consumerGroupsDs.then(consumerGroupsDs => consumerGroupsDs.consumerIds?.[0]);
@@ -98,8 +98,8 @@ export interface GetConsumerGroupsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const consumerGroupsDs = alicloud.actiontrail.getConsumerGroups({
- *     consumerIdRegex: "CID-alikafkaGroupDatasourceName",
  *     instanceId: "xxx",
+ *     consumerIdRegex: "CID-alikafkaGroupDatasourceName",
  *     outputFile: "consumerGroups.txt",
  * });
  * export const firstGroupName = consumerGroupsDs.then(consumerGroupsDs => consumerGroupsDs.consumerIds?.[0]);

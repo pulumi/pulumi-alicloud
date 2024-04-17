@@ -113,12 +113,12 @@ def get_dynamic_tag_groups(ids: Optional[Sequence[str]] = None,
     name = config.get("name")
     if name is None:
         name = "example_value"
-    default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+    default = alicloud.cms.AlarmContactGroup("default",
         alarm_contact_group_name=name,
         describe="example_value",
         enable_subscribed=True)
-    default_dynamic_tag_group = alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup",
-        contact_group_lists=[default_alarm_contact_group.id],
+    default_dynamic_tag_group = alicloud.cms.DynamicTagGroup("default",
+        contact_group_lists=[default.id],
         tag_key="your_tag_key",
         match_expresses=[alicloud.cms.DynamicTagGroupMatchExpressArgs(
             tag_value="your_tag_value",
@@ -176,12 +176,12 @@ def get_dynamic_tag_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     name = config.get("name")
     if name is None:
         name = "example_value"
-    default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+    default = alicloud.cms.AlarmContactGroup("default",
         alarm_contact_group_name=name,
         describe="example_value",
         enable_subscribed=True)
-    default_dynamic_tag_group = alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup",
-        contact_group_lists=[default_alarm_contact_group.id],
+    default_dynamic_tag_group = alicloud.cms.DynamicTagGroup("default",
+        contact_group_lists=[default.id],
         tag_key="your_tag_key",
         match_expresses=[alicloud.cms.DynamicTagGroupMatchExpressArgs(
             tag_value="your_tag_value",

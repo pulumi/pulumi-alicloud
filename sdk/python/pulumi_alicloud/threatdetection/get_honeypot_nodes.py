@@ -161,7 +161,7 @@ def get_honeypot_nodes(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.threatdetection.get_honeypot_nodes(ids=[alicloud_threat_detection_honeypot_node["default"]["id"]])
+    default = alicloud.threatdetection.get_honeypot_nodes(ids=[default_alicloud_threat_detection_honeypot_node["id"]])
     pulumi.export("alicloudThreatDetectionHoneypotNodeExampleId", default.nodes[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -218,7 +218,7 @@ def get_honeypot_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.threatdetection.get_honeypot_nodes(ids=[alicloud_threat_detection_honeypot_node["default"]["id"]])
+    default = alicloud.threatdetection.get_honeypot_nodes(ids=[default_alicloud_threat_detection_honeypot_node["id"]])
     pulumi.export("alicloudThreatDetectionHoneypotNodeExampleId", default.nodes[0].id)
     ```
     <!--End PulumiCodeChooser -->

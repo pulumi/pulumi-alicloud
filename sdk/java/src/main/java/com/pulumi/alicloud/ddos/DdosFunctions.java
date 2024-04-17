@@ -34,48 +34,6 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ddos.DdosBgpInstance;
-     * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
-     * import com.pulumi.alicloud.ddos.DdosFunctions;
-     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         var instanceDdosBgpInstance = new DdosBgpInstance(&#34;instanceDdosBgpInstance&#34;, DdosBgpInstanceArgs.builder()        
-     *             .baseBandwidth(20)
-     *             .bandwidth(&#34;TODO: GenUnaryOpExpression&#34;)
-     *             .ipCount(100)
-     *             .ipType(&#34;IPv4&#34;)
-     *             .normalBandwidth(100)
-     *             .type(&#34;Enterprise&#34;)
-     *             .build());
-     * 
-     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
-     *             .nameRegex(&#34;ddosbgp&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instance&#34;, instanceDdosBgpInstances.applyValue(getDdosBgpInstancesResult -&gt; getDdosBgpInstancesResult).stream().map(element -&gt; element.id()).collect(toList()));
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -90,48 +48,6 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ddos.DdosBgpInstance;
-     * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
-     * import com.pulumi.alicloud.ddos.DdosFunctions;
-     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         var instanceDdosBgpInstance = new DdosBgpInstance(&#34;instanceDdosBgpInstance&#34;, DdosBgpInstanceArgs.builder()        
-     *             .baseBandwidth(20)
-     *             .bandwidth(&#34;TODO: GenUnaryOpExpression&#34;)
-     *             .ipCount(100)
-     *             .ipType(&#34;IPv4&#34;)
-     *             .normalBandwidth(100)
-     *             .type(&#34;Enterprise&#34;)
-     *             .build());
-     * 
-     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
-     *             .nameRegex(&#34;ddosbgp&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instance&#34;, instanceDdosBgpInstances.applyValue(getDdosBgpInstancesResult -&gt; getDdosBgpInstancesResult).stream().map(element -&gt; element.id()).collect(toList()));
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -146,48 +62,6 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ddos.DdosBgpInstance;
-     * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
-     * import com.pulumi.alicloud.ddos.DdosFunctions;
-     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         var instanceDdosBgpInstance = new DdosBgpInstance(&#34;instanceDdosBgpInstance&#34;, DdosBgpInstanceArgs.builder()        
-     *             .baseBandwidth(20)
-     *             .bandwidth(&#34;TODO: GenUnaryOpExpression&#34;)
-     *             .ipCount(100)
-     *             .ipType(&#34;IPv4&#34;)
-     *             .normalBandwidth(100)
-     *             .type(&#34;Enterprise&#34;)
-     *             .build());
-     * 
-     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
-     *             .nameRegex(&#34;ddosbgp&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instance&#34;, instanceDdosBgpInstances.applyValue(getDdosBgpInstancesResult -&gt; getDdosBgpInstancesResult).stream().map(element -&gt; element.id()).collect(toList()));
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -202,48 +76,6 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ddos.DdosBgpInstance;
-     * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
-     * import com.pulumi.alicloud.ddos.DdosFunctions;
-     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         var instanceDdosBgpInstance = new DdosBgpInstance(&#34;instanceDdosBgpInstance&#34;, DdosBgpInstanceArgs.builder()        
-     *             .baseBandwidth(20)
-     *             .bandwidth(&#34;TODO: GenUnaryOpExpression&#34;)
-     *             .ipCount(100)
-     *             .ipType(&#34;IPv4&#34;)
-     *             .normalBandwidth(100)
-     *             .type(&#34;Enterprise&#34;)
-     *             .build());
-     * 
-     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
-     *             .nameRegex(&#34;ddosbgp&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instance&#34;, instanceDdosBgpInstances.applyValue(getDdosBgpInstancesResult -&gt; getDdosBgpInstancesResult).stream().map(element -&gt; element.id()).collect(toList()));
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -258,48 +90,6 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ddos.DdosBgpInstance;
-     * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
-     * import com.pulumi.alicloud.ddos.DdosFunctions;
-     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         var instanceDdosBgpInstance = new DdosBgpInstance(&#34;instanceDdosBgpInstance&#34;, DdosBgpInstanceArgs.builder()        
-     *             .baseBandwidth(20)
-     *             .bandwidth(&#34;TODO: GenUnaryOpExpression&#34;)
-     *             .ipCount(100)
-     *             .ipType(&#34;IPv4&#34;)
-     *             .normalBandwidth(100)
-     *             .type(&#34;Enterprise&#34;)
-     *             .build());
-     * 
-     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
-     *             .nameRegex(&#34;ddosbgp&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instance&#34;, instanceDdosBgpInstances.applyValue(getDdosBgpInstancesResult -&gt; getDdosBgpInstancesResult).stream().map(element -&gt; element.id()).collect(toList()));
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -314,48 +104,6 @@ public final class DdosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.ddos.DdosBgpInstance;
-     * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
-     * import com.pulumi.alicloud.ddos.DdosFunctions;
-     * import com.pulumi.alicloud.ddos.inputs.GetDdosBgpInstancesArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         var instanceDdosBgpInstance = new DdosBgpInstance(&#34;instanceDdosBgpInstance&#34;, DdosBgpInstanceArgs.builder()        
-     *             .baseBandwidth(20)
-     *             .bandwidth(&#34;TODO: GenUnaryOpExpression&#34;)
-     *             .ipCount(100)
-     *             .ipType(&#34;IPv4&#34;)
-     *             .normalBandwidth(100)
-     *             .type(&#34;Enterprise&#34;)
-     *             .build());
-     * 
-     *         final var instanceDdosBgpInstances = DdosFunctions.getDdosBgpInstances(GetDdosBgpInstancesArgs.builder()
-     *             .nameRegex(&#34;ddosbgp&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;instance&#34;, instanceDdosBgpInstances.applyValue(getDdosBgpInstancesResult -&gt; getDdosBgpInstancesResult).stream().map(element -&gt; element.id()).collect(toList()));
-     *     }
-     * }
-     * ```
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -25,6 +25,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Filter security groups and print the results into a file
         ///     var secGroupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
         ///     {
         ///         NameRegex = "^web-",
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.Ecs
         ///     });
         /// 
         ///     // In conjunction with a VPC
-        ///     var primaryVpcDs = new AliCloud.Vpc.Network("primaryVpcDs");
+        ///     var primaryVpcDs = new AliCloud.Vpc.Network("primary_vpc_ds");
         /// 
         ///     var primarySecGroupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
         ///     {
@@ -64,6 +65,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Filter security groups and print the results into a file
         ///     var secGroupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
         ///     {
         ///         NameRegex = "^web-",
@@ -71,7 +73,7 @@ namespace Pulumi.AliCloud.Ecs
         ///     });
         /// 
         ///     // In conjunction with a VPC
-        ///     var primaryVpcDs = new AliCloud.Vpc.Network("primaryVpcDs");
+        ///     var primaryVpcDs = new AliCloud.Vpc.Network("primary_vpc_ds");
         /// 
         ///     var primarySecGroupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
         ///     {

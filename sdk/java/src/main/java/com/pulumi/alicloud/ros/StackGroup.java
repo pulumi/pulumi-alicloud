@@ -55,7 +55,6 @@ import javax.annotation.Nullable;
  *     {
  *     	&#34;ROSTemplateFormatVersion&#34;: &#34;2015-09-01&#34;
  *     }
- *     
  *             &#34;&#34;&#34;)
  *             .build());
  * 

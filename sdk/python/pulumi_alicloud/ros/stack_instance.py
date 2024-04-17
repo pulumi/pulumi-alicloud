@@ -333,8 +333,8 @@ class StackInstance(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         this = alicloud.get_account()
-        default_regions = alicloud.ros.get_regions()
-        default_stack_group = alicloud.ros.StackGroup("defaultStackGroup",
+        default = alicloud.ros.get_regions()
+        default_stack_group = alicloud.ros.StackGroup("default",
             stack_group_name=name,
             template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\", \\"Parameters\\": {\\"VpcName\\": {\\"Type\\": \\"String\\"},\\"InstanceType\\": {\\"Type\\": \\"String\\"}}}",
             description="test for stack groups",
@@ -351,7 +351,7 @@ class StackInstance(pulumi.CustomResource):
         example = alicloud.ros.StackInstance("example",
             stack_group_name=default_stack_group.stack_group_name,
             stack_instance_account_id=this.id,
-            stack_instance_region_id=default_regions.regions[0].region_id,
+            stack_instance_region_id=default.regions[0].region_id,
             operation_preferences="{\\"FailureToleranceCount\\": 1, \\"MaxConcurrentCount\\": 2}",
             timeout_in_minutes="60",
             operation_description="tf-example",
@@ -409,8 +409,8 @@ class StackInstance(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         this = alicloud.get_account()
-        default_regions = alicloud.ros.get_regions()
-        default_stack_group = alicloud.ros.StackGroup("defaultStackGroup",
+        default = alicloud.ros.get_regions()
+        default_stack_group = alicloud.ros.StackGroup("default",
             stack_group_name=name,
             template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\", \\"Parameters\\": {\\"VpcName\\": {\\"Type\\": \\"String\\"},\\"InstanceType\\": {\\"Type\\": \\"String\\"}}}",
             description="test for stack groups",
@@ -427,7 +427,7 @@ class StackInstance(pulumi.CustomResource):
         example = alicloud.ros.StackInstance("example",
             stack_group_name=default_stack_group.stack_group_name,
             stack_instance_account_id=this.id,
-            stack_instance_region_id=default_regions.regions[0].region_id,
+            stack_instance_region_id=default.regions[0].region_id,
             operation_preferences="{\\"FailureToleranceCount\\": 1, \\"MaxConcurrentCount\\": 2}",
             timeout_in_minutes="60",
             operation_description="tf-example",

@@ -52,15 +52,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new AddressBook(&#34;example&#34;, AddressBookArgs.builder()        
- *             .autoAddTagEcs(0)
  *             .description(&#34;example_value&#34;)
+ *             .groupName(&#34;example_value&#34;)
+ *             .groupType(&#34;tag&#34;)
+ *             .tagRelation(&#34;and&#34;)
+ *             .autoAddTagEcs(0)
  *             .ecsTags(AddressBookEcsTagArgs.builder()
  *                 .tagKey(&#34;created&#34;)
  *                 .tagValue(&#34;tfTestAcc0&#34;)
  *                 .build())
- *             .groupName(&#34;example_value&#34;)
- *             .groupType(&#34;tag&#34;)
- *             .tagRelation(&#34;and&#34;)
  *             .build());
  * 
  *     }

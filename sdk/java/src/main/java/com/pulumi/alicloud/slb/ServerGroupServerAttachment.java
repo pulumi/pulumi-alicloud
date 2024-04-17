@@ -22,6 +22,128 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Applying this resource may conflict with applying `alicloud.slb.Listener`,
  * and the `alicloud.slb.Listener` block should use `depends_on = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
+ * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
+ * import com.pulumi.alicloud.slb.ServerGroup;
+ * import com.pulumi.alicloud.slb.ServerGroupArgs;
+ * import com.pulumi.alicloud.slb.ServerGroupServerAttachment;
+ * import com.pulumi.alicloud.slb.ServerGroupServerAttachmentArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var slbServerGroupServerAttachment = config.get(&#34;slbServerGroupServerAttachment&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var slbServerGroupServerAttachmentCount = config.get(&#34;slbServerGroupServerAttachmentCount&#34;).orElse(5);
+ *         final var serverAttachment = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var serverAttachmentGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(serverAttachment.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(1)
+ *             .memorySize(2)
+ *             .build());
+ * 
+ *         final var serverAttachmentGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var serverAttachmentNetwork = new Network(&#34;serverAttachmentNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(slbServerGroupServerAttachment)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var serverAttachmentSwitch = new Switch(&#34;serverAttachmentSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(slbServerGroupServerAttachment)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(serverAttachmentNetwork.id())
+ *             .zoneId(serverAttachment.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var serverAttachmentSecurityGroup = new SecurityGroup(&#34;serverAttachmentSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(slbServerGroupServerAttachment)
+ *             .vpcId(serverAttachmentNetwork.id())
+ *             .build());
+ * 
+ *         for (var i = 0; i &lt; slbServerGroupServerAttachmentCount; i++) {
+ *             new Instance(&#34;serverAttachmentInstance-&#34; + i, InstanceArgs.builder()            
+ *                 .imageId(serverAttachmentGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *                 .instanceType(serverAttachmentGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *                 .instanceName(slbServerGroupServerAttachment)
+ *                 .securityGroups(serverAttachmentSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
+ *                 .internetChargeType(&#34;PayByTraffic&#34;)
+ *                 .internetMaxBandwidthOut(&#34;10&#34;)
+ *                 .availabilityZone(serverAttachment.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *                 .instanceChargeType(&#34;PostPaid&#34;)
+ *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *                 .vswitchId(serverAttachmentSwitch.id())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var serverAttachmentApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;serverAttachmentApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *             .loadBalancerName(slbServerGroupServerAttachment)
+ *             .vswitchId(serverAttachmentSwitch.id())
+ *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
+ *             .addressType(&#34;intranet&#34;)
+ *             .build());
+ * 
+ *         var serverAttachmentServerGroup = new ServerGroup(&#34;serverAttachmentServerGroup&#34;, ServerGroupArgs.builder()        
+ *             .loadBalancerId(serverAttachmentApplicationLoadBalancer.id())
+ *             .name(slbServerGroupServerAttachment)
+ *             .build());
+ * 
+ *         for (var i = 0; i &lt; slbServerGroupServerAttachmentCount; i++) {
+ *             new ServerGroupServerAttachment(&#34;serverAttachmentServerGroupServerAttachment-&#34; + i, ServerGroupServerAttachmentArgs.builder()            
+ *                 .serverGroupId(serverAttachmentServerGroup.id())
+ *                 .serverId(serverAttachmentInstance[range.value()].id())
+ *                 .port(8080)
+ *                 .weight(0)
+ *                 .build());
+ * 
+ *         
+ * }
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Load balancer backend server group server attachment can be imported using the id, e.g.

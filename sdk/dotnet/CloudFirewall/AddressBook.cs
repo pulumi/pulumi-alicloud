@@ -31,8 +31,11 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// {
     ///     var example = new AliCloud.CloudFirewall.AddressBook("example", new()
     ///     {
-    ///         AutoAddTagEcs = 0,
     ///         Description = "example_value",
+    ///         GroupName = "example_value",
+    ///         GroupType = "tag",
+    ///         TagRelation = "and",
+    ///         AutoAddTagEcs = 0,
     ///         EcsTags = new[]
     ///         {
     ///             new AliCloud.CloudFirewall.Inputs.AddressBookEcsTagArgs
@@ -41,9 +44,6 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///                 TagValue = "tfTestAcc0",
     ///             },
     ///         },
-    ///         GroupName = "example_value",
-    ///         GroupType = "tag",
-    ///         TagRelation = "and",
     ///     });
     /// 
     /// });

@@ -68,21 +68,22 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultZones = HbaseFunctions.getZones();
+ *         final var default = HbaseFunctions.getZones();
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
  *             .nameRegex(&#34;^default-NODELETING$&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .name(name)
+ *             .zoneId(default_.zones()[0].id())
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
  *             .engine(&#34;hbaseue&#34;)
  *             .engineVersion(&#34;2.0&#34;)
  *             .masterInstanceType(&#34;hbase.sn2.2xlarge&#34;)

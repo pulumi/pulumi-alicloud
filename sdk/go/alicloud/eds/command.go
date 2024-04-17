@@ -44,25 +44,23 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
+//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
 //				CidrBlock:         pulumi.String("172.16.0.0/12"),
 //				EnableAdminAccess: pulumi.Bool(true),
 //				DesktopAccessType: pulumi.String("Internet"),
-//				OfficeSiteName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//				OfficeSiteName:    pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "defaultEcdPolicyGroup", &eds.EcdPolicyGroupArgs{
+//			defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "default", &eds.EcdPolicyGroupArgs{
 //				PolicyGroupName: pulumi.String(name),
 //				Clipboard:       pulumi.String("read"),
 //				LocalDrive:      pulumi.String("read"),
@@ -89,22 +87,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultBundles, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
+//			_default, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
 //				BundleType: pulumi.StringRef("SYSTEM"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultDesktop, err := eds.NewDesktop(ctx, "defaultDesktop", &eds.DesktopArgs{
+//			defaultDesktop, err := eds.NewDesktop(ctx, "default", &eds.DesktopArgs{
 //				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
 //				PolicyGroupId: defaultEcdPolicyGroup.ID(),
-//				BundleId:      pulumi.String(defaultBundles.Bundles[0].Id),
+//				BundleId:      pulumi.String(_default.Bundles[0].Id),
 //				DesktopName:   pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = eds.NewCommand(ctx, "defaultCommand", &eds.CommandArgs{
+//			_, err = eds.NewCommand(ctx, "default", &eds.CommandArgs{
 //				CommandContent: pulumi.String("ipconfig"),
 //				CommandType:    pulumi.String("RunPowerShellScript"),
 //				DesktopId:      defaultDesktop.ID(),

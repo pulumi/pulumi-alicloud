@@ -41,17 +41,17 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
+//			_, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
 //				AlarmContactGroupName: pulumi.String(name),
 //				Describe:              pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "defaultMonitorGroup", &cms.MonitorGroupArgs{
+//			defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "default", &cms.MonitorGroupArgs{
 //				MonitorGroupName: pulumi.String(name),
 //				ContactGroups: pulumi.StringArray{
-//					defaultAlarmContactGroup.ID(),
+//					_default.ID(),
 //				},
 //			})
 //			if err != nil {

@@ -23,13 +23,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
  * const bucket_acl = new alicloud.oss.Bucket("bucket-acl", {
+ *     bucket: `example-value-${_default.result}`,
  *     acl: "private",
- *     bucket: pulumi.interpolate`example-value-${_default.result}`,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -42,15 +42,15 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
  * const bucket_website = new alicloud.oss.Bucket("bucket-website", {
- *     bucket: pulumi.interpolate`example-value-${_default.result}`,
+ *     bucket: `example-value-${_default.result}`,
  *     website: {
- *         errorDocument: "error.html",
  *         indexDocument: "index.html",
+ *         errorDocument: "error.html",
  *     },
  * });
  * ```
@@ -64,16 +64,16 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
  * const bucket_target = new alicloud.oss.Bucket("bucket-target", {
- *     bucket: pulumi.interpolate`example-value-${_default.result}`,
+ *     bucket: `example-value-${_default.result}`,
  *     acl: "public-read",
  * });
  * const bucket_logging = new alicloud.oss.Bucket("bucket-logging", {
- *     bucket: pulumi.interpolate`example-logging-${_default.result}`,
+ *     bucket: `example-logging-${_default.result}`,
  *     logging: {
  *         targetBucket: bucket_target.id,
  *         targetPrefix: "log/",
@@ -90,13 +90,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
  * const bucket_referer = new alicloud.oss.Bucket("bucket-referer", {
+ *     bucket: `example-value-${_default.result}`,
  *     acl: "private",
- *     bucket: pulumi.interpolate`example-value-${_default.result}`,
  *     refererConfig: {
  *         allowEmpty: false,
  *         referers: [

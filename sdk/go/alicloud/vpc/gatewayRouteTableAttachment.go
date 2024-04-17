@@ -35,15 +35,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //				VpcName:   pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleRouteTable, err := vpc.NewRouteTable(ctx, "exampleRouteTable", &vpc.RouteTableArgs{
-//				VpcId:          exampleNetwork.ID(),
+//			exampleRouteTable, err := vpc.NewRouteTable(ctx, "example", &vpc.RouteTableArgs{
+//				VpcId:          example.ID(),
 //				RouteTableName: pulumi.String("terraform-example"),
 //				Description:    pulumi.String("terraform-example"),
 //				AssociateType:  pulumi.String("Gateway"),
@@ -51,15 +51,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleIpv4Gateway, err := vpc.NewIpv4Gateway(ctx, "exampleIpv4Gateway", &vpc.Ipv4GatewayArgs{
+//			exampleIpv4Gateway, err := vpc.NewIpv4Gateway(ctx, "example", &vpc.Ipv4GatewayArgs{
 //				Ipv4GatewayName: pulumi.String("terraform-example"),
-//				VpcId:           exampleNetwork.ID(),
+//				VpcId:           example.ID(),
 //				Enabled:         pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewGatewayRouteTableAttachment(ctx, "exampleGatewayRouteTableAttachment", &vpc.GatewayRouteTableAttachmentArgs{
+//			_, err = vpc.NewGatewayRouteTableAttachment(ctx, "example", &vpc.GatewayRouteTableAttachmentArgs{
 //				Ipv4GatewayId: exampleIpv4Gateway.ID(),
 //				RouteTableId:  exampleRouteTable.ID(),
 //			})

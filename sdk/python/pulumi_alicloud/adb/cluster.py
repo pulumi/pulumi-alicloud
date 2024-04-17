@@ -943,16 +943,16 @@ class Cluster(pulumi.CustomResource):
         creation = config.get("creation")
         if creation is None:
             creation = "ADB"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation=creation)
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_cluster = alicloud.adb.Cluster("defaultCluster",
+        default_cluster = alicloud.adb.Cluster("default",
             db_cluster_version="3.0",
             db_cluster_category="Cluster",
             db_node_class="C8",
@@ -1026,16 +1026,16 @@ class Cluster(pulumi.CustomResource):
         creation = config.get("creation")
         if creation is None:
             creation = "ADB"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation=creation)
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_cluster = alicloud.adb.Cluster("defaultCluster",
+        default_cluster = alicloud.adb.Cluster("default",
             db_cluster_version="3.0",
             db_cluster_category="Cluster",
             db_node_class="C8",

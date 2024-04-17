@@ -144,14 +144,14 @@ def get_service_hybrid_double_writes(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_account = alicloud.get_account()
+    default = alicloud.get_account()
     source = alicloud.cms.Namespace("source", namespace="your-source-namespace")
-    default_namespace = alicloud.cms.Namespace("defaultNamespace", namespace="your-namespace")
-    default_service_hybrid_double_write = alicloud.cloudmonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite",
+    default_namespace = alicloud.cms.Namespace("default", namespace="your-namespace")
+    default_service_hybrid_double_write = alicloud.cloudmonitor.ServiceHybridDoubleWrite("default",
         source_namespace=source.id,
-        source_user_id=default_account.id,
+        source_user_id=default.id,
         namespace=default_namespace.id,
-        user_id=default_account.id)
+        user_id=default.id)
     ids = alicloud.cloudmonitor.get_service_hybrid_double_writes_output(ids=[default_service_hybrid_double_write.id])
     pulumi.export("cloudMonitorServiceHybridDoubleWritesId1", ids.hybrid_double_writes[0].id)
     ```
@@ -208,14 +208,14 @@ def get_service_hybrid_double_writes_output(ids: Optional[pulumi.Input[Optional[
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_account = alicloud.get_account()
+    default = alicloud.get_account()
     source = alicloud.cms.Namespace("source", namespace="your-source-namespace")
-    default_namespace = alicloud.cms.Namespace("defaultNamespace", namespace="your-namespace")
-    default_service_hybrid_double_write = alicloud.cloudmonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite",
+    default_namespace = alicloud.cms.Namespace("default", namespace="your-namespace")
+    default_service_hybrid_double_write = alicloud.cloudmonitor.ServiceHybridDoubleWrite("default",
         source_namespace=source.id,
-        source_user_id=default_account.id,
+        source_user_id=default.id,
         namespace=default_namespace.id,
-        user_id=default_account.id)
+        user_id=default.id)
     ids = alicloud.cloudmonitor.get_service_hybrid_double_writes_output(ids=[default_service_hybrid_double_write.id])
     pulumi.export("cloudMonitorServiceHybridDoubleWritesId1", ids.hybrid_double_writes[0].id)
     ```

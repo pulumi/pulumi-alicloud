@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "tf-testAccThreatDetectionHoneypotProbe";
-        ///     var defaultHoneypotProbe = new AliCloud.ThreatDetection.HoneypotProbe("defaultHoneypotProbe", new()
+        ///     var defaultHoneypotProbe = new AliCloud.ThreatDetection.HoneypotProbe("default", new()
         ///     {
         ///         Uuid = "e52c7872-29d1-4aa1-9908-0299abd53606",
         ///         ProbeType = "host_probe",
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///         Arp = true,
         ///     });
         /// 
-        ///     var defaultHoneypotProbes = AliCloud.ThreatDetection.GetHoneypotProbes.Invoke(new()
+        ///     var @default = AliCloud.ThreatDetection.GetHoneypotProbes.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudThreatDetectionHoneypotProbeExampleId"] = defaultHoneypotProbes.Apply(getHoneypotProbesResult =&gt; getHoneypotProbesResult.Probes[0]?.Id),
+        ///         ["alicloudThreatDetectionHoneypotProbeExampleId"] = @default.Apply(@default =&gt; @default.Apply(getHoneypotProbesResult =&gt; getHoneypotProbesResult.Probes[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "tf-testAccThreatDetectionHoneypotProbe";
-        ///     var defaultHoneypotProbe = new AliCloud.ThreatDetection.HoneypotProbe("defaultHoneypotProbe", new()
+        ///     var defaultHoneypotProbe = new AliCloud.ThreatDetection.HoneypotProbe("default", new()
         ///     {
         ///         Uuid = "e52c7872-29d1-4aa1-9908-0299abd53606",
         ///         ProbeType = "host_probe",
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///         Arp = true,
         ///     });
         /// 
-        ///     var defaultHoneypotProbes = AliCloud.ThreatDetection.GetHoneypotProbes.Invoke(new()
+        ///     var @default = AliCloud.ThreatDetection.GetHoneypotProbes.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["alicloudThreatDetectionHoneypotProbeExampleId"] = defaultHoneypotProbes.Apply(getHoneypotProbesResult =&gt; getHoneypotProbesResult.Probes[0]?.Id),
+        ///         ["alicloudThreatDetectionHoneypotProbeExampleId"] = @default.Apply(@default =&gt; @default.Apply(getHoneypotProbesResult =&gt; getHoneypotProbesResult.Probes[0]?.Id)),
         ///     };
         /// });
         /// ```

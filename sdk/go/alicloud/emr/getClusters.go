@@ -49,13 +49,13 @@ import (
 // if err != nil {
 // return err
 // }
-// defaultMainVersions, err := emr.GetMainVersions(ctx, nil, nil);
+// defaultGetMainVersions, err := emr.GetMainVersions(ctx, nil, nil);
 // if err != nil {
 // return err
 // }
-// defaultInstanceTypes, err := emr.GetInstanceTypes(ctx, &emr.GetInstanceTypesArgs{
+// defaultGetInstanceTypes, err := emr.GetInstanceTypes(ctx, &emr.GetInstanceTypesArgs{
 // DestinationResource: "InstanceType",
-// ClusterType: defaultMainVersions.MainVersions[0].ClusterTypes[0],
+// ClusterType: defaultGetMainVersions.MainVersions[0].ClusterTypes[0],
 // SupportLocalStorage: pulumi.BoolRef(false),
 // InstanceChargeType: "PostPaid",
 // SupportNodeTypes: []string{
@@ -69,44 +69,46 @@ import (
 // }
 // dataDisk, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
 // DestinationResource: "DataDisk",
-// ClusterType: defaultMainVersions.MainVersions[0].ClusterTypes[0],
+// ClusterType: defaultGetMainVersions.MainVersions[0].ClusterTypes[0],
 // InstanceChargeType: "PostPaid",
-// InstanceType: defaultInstanceTypes.Types[0].Id,
-// ZoneId: pulumi.StringRef(defaultInstanceTypes.Types[0].ZoneId),
+// InstanceType: defaultGetInstanceTypes.Types[0].Id,
+// ZoneId: pulumi.StringRef(defaultGetInstanceTypes.Types[0].ZoneId),
 // }, nil);
 // if err != nil {
 // return err
 // }
 // systemDisk, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
 // DestinationResource: "SystemDisk",
-// ClusterType: defaultMainVersions.MainVersions[0].ClusterTypes[0],
+// ClusterType: defaultGetMainVersions.MainVersions[0].ClusterTypes[0],
 // InstanceChargeType: "PostPaid",
-// InstanceType: defaultInstanceTypes.Types[0].Id,
-// ZoneId: pulumi.StringRef(defaultInstanceTypes.Types[0].ZoneId),
+// InstanceType: defaultGetInstanceTypes.Types[0].Id,
+// ZoneId: pulumi.StringRef(defaultGetInstanceTypes.Types[0].ZoneId),
 // }, nil);
 // if err != nil {
 // return err
 // }
-// defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+// defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 // NameRegex: pulumi.StringRef("default-NODELETING"),
 // }, nil);
 // if err != nil {
 // return err
 // }
-// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-// VpcId: pulumi.String(defaultNetworks.Ids[0]),
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+// Name: pulumi.String(name),
+// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
 // })
 // if err != nil {
 // return err
 // }
-// defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
-// ZoneId: pulumi.StringRef(defaultInstanceTypes.Types[0].ZoneId),
+// defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+// VpcId: pulumi.StringRef(defaultGetNetworks.Ids[0]),
+// ZoneId: pulumi.StringRef(defaultGetInstanceTypes.Types[0].ZoneId),
 // }, nil);
 // if err != nil {
 // return err
 // }
-// defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
+// defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
+// Name: pulumi.String(name),
 //
 //	Document: pulumi.String(`    {
 //	        "Statement": [
@@ -131,9 +133,10 @@ import (
 // if err != nil {
 // return err
 // }
-// defaultCluster, err := emr.NewCluster(ctx, "defaultCluster", &emr.ClusterArgs{
-// EmrVer: pulumi.String(defaultMainVersions.MainVersions[0].EmrVersion),
-// ClusterType: pulumi.String(defaultMainVersions.MainVersions[0].ClusterTypes[0]),
+// defaultCluster, err := emr.NewCluster(ctx, "default", &emr.ClusterArgs{
+// Name: pulumi.String(name),
+// EmrVer: pulumi.String(defaultGetMainVersions.MainVersions[0].EmrVersion),
+// ClusterType: pulumi.String(defaultGetMainVersions.MainVersions[0].ClusterTypes[0]),
 // HostGroups: emr.ClusterHostGroupArray{
 // var tmp0 pulumi.String
 // if dataDisk.Types[0].Min > 160 {
@@ -151,7 +154,7 @@ import (
 // HostGroupName: pulumi.String("master_group"),
 // HostGroupType: pulumi.String("MASTER"),
 // NodeCount: pulumi.String("2"),
-// InstanceType: pulumi.String(defaultInstanceTypes.Types[0].Id),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.Types[0].Id),
 // DiskType: pulumi.String(dataDisk.Types[0].Value),
 // DiskCapacity: pulumi.String(tmp0),
 // DiskCount: pulumi.String("1"),
@@ -174,7 +177,7 @@ import (
 // HostGroupName: pulumi.String("core_group"),
 // HostGroupType: pulumi.String("CORE"),
 // NodeCount: pulumi.String("3"),
-// InstanceType: pulumi.String(defaultInstanceTypes.Types[0].Id),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.Types[0].Id),
 // DiskType: pulumi.String(dataDisk.Types[0].Value),
 // DiskCapacity: pulumi.String(tmp2),
 // DiskCount: pulumi.String("4"),
@@ -197,7 +200,7 @@ import (
 // HostGroupName: pulumi.String("task_group"),
 // HostGroupType: pulumi.String("TASK"),
 // NodeCount: pulumi.String("2"),
-// InstanceType: pulumi.String(defaultInstanceTypes.Types[0].Id),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.Types[0].Id),
 // DiskType: pulumi.String(dataDisk.Types[0].Value),
 // DiskCapacity: pulumi.String(tmp4),
 // DiskCount: pulumi.String("4"),
@@ -206,11 +209,11 @@ import (
 // },
 // },
 // HighAvailabilityEnable: pulumi.Bool(true),
-// ZoneId: pulumi.String(defaultInstanceTypes.Types[0].ZoneId),
+// ZoneId: pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
 // SecurityGroupId: defaultSecurityGroup.ID(),
 // IsOpenPublicIp: pulumi.Bool(true),
 // ChargeType: pulumi.String("PostPaid"),
-// VswitchId: pulumi.String(defaultSwitches.Ids[0]),
+// VswitchId: pulumi.String(defaultGetSwitches.Ids[0]),
 // UserDefinedEmrEcsRole: defaultRole.Name,
 // SshEnable: pulumi.Bool(true),
 // MasterPwd: pulumi.String("ABCtest1234!"),

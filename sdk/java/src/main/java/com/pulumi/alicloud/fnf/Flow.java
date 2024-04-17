@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Role(&#34;default&#34;, RoleArgs.builder()        
+ *             .name(&#34;tf-example-fnfflow&#34;)
  *             .document(&#34;&#34;&#34;
  *   {
  *     &#34;Statement&#34;: [
@@ -78,6 +79,7 @@ import javax.annotation.Nullable;
  *             &#34;&#34;&#34;)
  *             .roleArn(default_.arn())
  *             .description(&#34;Test for terraform fnf_flow.&#34;)
+ *             .name(&#34;tf-example-flow&#34;)
  *             .type(&#34;FDL&#34;)
  *             .build());
  * 

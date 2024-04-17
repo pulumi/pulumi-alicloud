@@ -22,17 +22,17 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tfexample";
- * const defaultHoneypotImages = alicloud.threatdetection.getHoneypotImages({
+ * const default = alicloud.threatdetection.getHoneypotImages({
  *     nameRegex: "^ruoyi",
  * });
- * const defaultHoneypotNode = new alicloud.threatdetection.HoneypotNode("defaultHoneypotNode", {
+ * const defaultHoneypotNode = new alicloud.threatdetection.HoneypotNode("default", {
  *     nodeName: name,
  *     availableProbeNum: 20,
  *     securityGroupProbeIpLists: ["0.0.0.0/0"],
  * });
- * const defaultHoneyPot = new alicloud.threatdetection.HoneyPot("defaultHoneyPot", {
- *     honeypotImageName: defaultHoneypotImages.then(defaultHoneypotImages => defaultHoneypotImages.images?.[0]?.honeypotImageName),
- *     honeypotImageId: defaultHoneypotImages.then(defaultHoneypotImages => defaultHoneypotImages.images?.[0]?.honeypotImageId),
+ * const defaultHoneyPot = new alicloud.threatdetection.HoneyPot("default", {
+ *     honeypotImageName: _default.then(_default => _default.images?.[0]?.honeypotImageName),
+ *     honeypotImageId: _default.then(_default => _default.images?.[0]?.honeypotImageId),
  *     honeypotName: name,
  *     nodeId: defaultHoneypotNode.id,
  * });

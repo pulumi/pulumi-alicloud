@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databasefilesystem.NewServiceLinkedRole(ctx, "serviceLinkedRole", &databasefilesystem.ServiceLinkedRoleArgs{
+//			_, err := databasefilesystem.NewServiceLinkedRole(ctx, "service_linked_role", &databasefilesystem.ServiceLinkedRoleArgs{
 //				ProductName: pulumi.String("AliyunServiceRoleForDbfs"),
 //			})
 //			if err != nil {

@@ -20,29 +20,29 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleZones = alicloud.nas.getZones({
+ * const example = alicloud.nas.getZones({
  *     fileSystemType: "cpfs",
  * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
  * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
  *     vswitchName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
  *     vpcId: exampleNetwork.id,
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[1]?.zoneId),
+ *     zoneId: example.then(example => example.zones?.[1]?.zoneId),
  * });
- * const exampleFileSystem = new alicloud.nas.FileSystem("exampleFileSystem", {
+ * const exampleFileSystem = new alicloud.nas.FileSystem("example", {
  *     protocolType: "cpfs",
  *     storageType: "advance_200",
  *     fileSystemType: "cpfs",
  *     capacity: 3600,
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[1]?.zoneId),
+ *     zoneId: example.then(example => example.zones?.[1]?.zoneId),
  *     vpcId: exampleNetwork.id,
  *     vswitchId: exampleSwitch.id,
  * });
- * const exampleFileset = new alicloud.nas.Fileset("exampleFileset", {
+ * const exampleFileset = new alicloud.nas.Fileset("example", {
  *     fileSystemId: exampleFileSystem.id,
  *     description: "terraform-example",
  *     fileSystemPath: "/example_path/",

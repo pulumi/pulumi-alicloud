@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultAccount = alicloud.getAccount({});
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {
+ * const default = alicloud.getAccount({});
+ * const defaultInstance = new alicloud.cen.Instance("default", {
  *     cenInstanceName: name,
  *     description: "example_value",
  *     tags: {
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *         For: "acceptance test",
  *     },
  * });
- * const defaultFirewallVpcFirewallControlPolicy = new alicloud.cloudfirewall.FirewallVpcFirewallControlPolicy("defaultFirewallVpcFirewallControlPolicy", {
+ * const defaultFirewallVpcFirewallControlPolicy = new alicloud.cloudfirewall.FirewallVpcFirewallControlPolicy("default", {
  *     order: 1,
  *     destination: "127.0.0.2/32",
  *     applicationName: "ANY",
@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *     destPortType: "port",
  *     proto: "TCP",
  *     release: true,
- *     memberUid: defaultAccount.then(defaultAccount => defaultAccount.id),
+ *     memberUid: _default.then(_default => _default.id),
  *     vpcFirewallId: defaultInstance.id,
  * });
  * ```

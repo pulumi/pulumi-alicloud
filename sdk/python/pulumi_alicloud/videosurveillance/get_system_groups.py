@@ -138,14 +138,14 @@ def get_system_groups(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_system_group = alicloud.videosurveillance.SystemGroup("defaultSystemGroup",
+    default_system_group = alicloud.videosurveillance.SystemGroup("default",
         group_name="groupname",
         in_protocol="rtmp",
         out_protocol="flv",
         play_domain="your_plan_domain",
         push_domain="your_push_domain")
-    default_system_groups = alicloud.videosurveillance.get_system_groups_output(ids=[default_system_group.id])
-    pulumi.export("vsGroup", default_system_groups.ids[0])
+    default = alicloud.videosurveillance.get_system_groups_output(ids=[default_system_group.id])
+    pulumi.export("vsGroup", default.ids[0])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -201,14 +201,14 @@ def get_system_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_system_group = alicloud.videosurveillance.SystemGroup("defaultSystemGroup",
+    default_system_group = alicloud.videosurveillance.SystemGroup("default",
         group_name="groupname",
         in_protocol="rtmp",
         out_protocol="flv",
         play_domain="your_plan_domain",
         push_domain="your_push_domain")
-    default_system_groups = alicloud.videosurveillance.get_system_groups_output(ids=[default_system_group.id])
-    pulumi.export("vsGroup", default_system_groups.ids[0])
+    default = alicloud.videosurveillance.get_system_groups_output(ids=[default_system_group.id])
+    pulumi.export("vsGroup", default.ids[0])
     ```
     <!--End PulumiCodeChooser -->
 

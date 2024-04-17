@@ -32,19 +32,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultEcsBackupPlans, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
+//			_default, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
 //				NameRegex: pulumi.StringRef("plan-tf-used-dont-delete"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultOssBackupPlans, err := hbr.GetOssBackupPlans(ctx, &hbr.GetOssBackupPlansArgs{
+//			defaultGetOssBackupPlans, err := hbr.GetOssBackupPlans(ctx, &hbr.GetOssBackupPlansArgs{
 //				NameRegex: pulumi.StringRef("plan-tf-used-dont-delete"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNasBackupPlans, err := hbr.GetNasBackupPlans(ctx, &hbr.GetNasBackupPlansArgs{
+//			defaultGetNasBackupPlans, err := hbr.GetNasBackupPlans(ctx, &hbr.GetNasBackupPlansArgs{
 //				NameRegex: pulumi.StringRef("plan-tf-used-dont-delete"),
 //			}, nil)
 //			if err != nil {
@@ -52,16 +52,16 @@ import (
 //			}
 //			_, err = hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
 //				SourceType: "ECS_FILE",
-//				VaultId:    defaultEcsBackupPlans.Plans[0].VaultId,
-//				InstanceId: pulumi.StringRef(defaultEcsBackupPlans.Plans[0].InstanceId),
+//				VaultId:    _default.Plans[0].VaultId,
+//				InstanceId: pulumi.StringRef(_default.Plans[0].InstanceId),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
 //				SourceType:          "OSS",
-//				VaultId:             defaultOssBackupPlans.Plans[0].VaultId,
-//				Bucket:              pulumi.StringRef(defaultOssBackupPlans.Plans[0].Bucket),
+//				VaultId:             defaultGetOssBackupPlans.Plans[0].VaultId,
+//				Bucket:              pulumi.StringRef(defaultGetOssBackupPlans.Plans[0].Bucket),
 //				CompleteTime:        pulumi.StringRef("2021-07-20T14:17:15CST,2021-07-24T14:17:15CST"),
 //				CompleteTimeChecker: pulumi.StringRef("BETWEEN"),
 //			}, nil)
@@ -70,9 +70,9 @@ import (
 //			}
 //			nasSnapshots, err := hbr.GetSnapshots(ctx, &hbr.GetSnapshotsArgs{
 //				SourceType:          "NAS",
-//				VaultId:             defaultNasBackupPlans.Plans[0].VaultId,
-//				FileSystemId:        pulumi.StringRef(defaultNasBackupPlans.Plans[0].FileSystemId),
-//				CreateTime:          pulumi.StringRef(defaultNasBackupPlans.Plans[0].CreateTime),
+//				VaultId:             defaultGetNasBackupPlans.Plans[0].VaultId,
+//				FileSystemId:        pulumi.StringRef(defaultGetNasBackupPlans.Plans[0].FileSystemId),
+//				CreateTime:          pulumi.StringRef(defaultGetNasBackupPlans.Plans[0].CreateTime),
 //				CompleteTime:        pulumi.StringRef("2021-08-23T14:17:15CST"),
 //				CompleteTimeChecker: pulumi.StringRef("GREATER_THAN_OR_EQUAL"),
 //			}, nil)

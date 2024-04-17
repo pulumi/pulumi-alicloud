@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultVpc.id())
  *             .cidrBlock(&#34;10.0.0.0/20&#34;)
  *             .vswitchName(String.format(&#34;%s1&#34;, name))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
  *         var defaultVswitchCidrReservation = new VswitchCidrReservation(&#34;defaultVswitchCidrReservation&#34;, VswitchCidrReservationArgs.builder()        

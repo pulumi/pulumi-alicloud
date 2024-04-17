@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const sourceRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("sourceRegistryEnterpriseInstance", {
+ * const source = new alicloud.cr.RegistryEnterpriseInstance("source", {
  *     paymentType: "Subscription",
  *     period: 1,
  *     renewPeriod: 0,
@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     instanceType: "Advanced",
  *     instanceName: `${name}-source`,
  * });
- * const targetRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("targetRegistryEnterpriseInstance", {
+ * const target = new alicloud.cr.RegistryEnterpriseInstance("target", {
  *     paymentType: "Subscription",
  *     period: 1,
  *     renewPeriod: 0,
@@ -40,38 +40,43 @@ import * as utilities from "../utilities";
  *     instanceType: "Advanced",
  *     instanceName: `${name}-target`,
  * });
- * const sourceRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("sourceRegistryEnterpriseNamespace", {
- *     instanceId: sourceRegistryEnterpriseInstance.id,
+ * const sourceRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("source", {
+ *     instanceId: source.id,
+ *     name: name,
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });
- * const targetRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("targetRegistryEnterpriseNamespace", {
- *     instanceId: targetRegistryEnterpriseInstance.id,
+ * const targetRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("target", {
+ *     instanceId: target.id,
+ *     name: name,
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });
- * const sourceRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("sourceRegistryEnterpriseRepo", {
- *     instanceId: sourceRegistryEnterpriseInstance.id,
+ * const sourceRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("source", {
+ *     instanceId: source.id,
  *     namespace: sourceRegistryEnterpriseNamespace.name,
+ *     name: name,
  *     summary: "this is summary of my new repo",
  *     repoType: "PUBLIC",
  *     detail: "this is a public repo",
  * });
- * const targetRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("targetRegistryEnterpriseRepo", {
- *     instanceId: targetRegistryEnterpriseInstance.id,
+ * const targetRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("target", {
+ *     instanceId: target.id,
  *     namespace: targetRegistryEnterpriseNamespace.name,
+ *     name: name,
  *     summary: "this is summary of my new repo",
  *     repoType: "PUBLIC",
  *     detail: "this is a public repo",
  * });
- * const defaultRegions = alicloud.getRegions({
+ * const default = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultRegistryEnterpriseSyncRule = new alicloud.cs.RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule", {
- *     instanceId: sourceRegistryEnterpriseInstance.id,
+ * const defaultRegistryEnterpriseSyncRule = new alicloud.cs.RegistryEnterpriseSyncRule("default", {
+ *     instanceId: source.id,
  *     namespaceName: sourceRegistryEnterpriseNamespace.name,
- *     targetRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
- *     targetInstanceId: targetRegistryEnterpriseInstance.id,
+ *     name: name,
+ *     targetRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ *     targetInstanceId: target.id,
  *     targetNamespaceName: targetRegistryEnterpriseNamespace.name,
  *     tagFilter: ".*",
  *     repoName: sourceRegistryEnterpriseRepo.name,

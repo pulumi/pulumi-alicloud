@@ -31,9 +31,9 @@ namespace Pulumi.AliCloud.Vpc
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
@@ -50,14 +50,14 @@ namespace Pulumi.AliCloud.Vpc
     ///     {
     ///         VpcId = vpc.Id,
     ///         CidrBlock = "172.168.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = name,
     ///         Ipv6CidrBlockMask = 1,
     ///     });
     /// 
-    ///     var defaultIpv6Address = new AliCloud.Vpc.Ipv6Address("defaultIpv6Address", new()
+    ///     var defaultIpv6Address = new AliCloud.Vpc.Ipv6Address("default", new()
     ///     {
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///         VswitchId = vswich.Id,
     ///         Ipv6AddressDescription = "create_description",
     ///         Ipv6AddressName = name,

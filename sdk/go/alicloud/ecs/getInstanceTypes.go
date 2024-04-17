@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			typesDs, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
 //				CpuCoreCount: pulumi.IntRef(1),
 //				MemorySize:   pulumi.Float64Ref(2),
@@ -39,6 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create ECS instance with the first matched instance_type
 //			_, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
 //				InstanceType: pulumi.String(typesDs.InstanceTypes[0].Id),
 //			})

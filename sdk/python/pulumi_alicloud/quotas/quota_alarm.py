@@ -341,18 +341,18 @@ class QuotaAlarm(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_quota_alarm = alicloud.quotas.QuotaAlarm("defaultQuotaAlarm",
-            product_code="gws",
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_quota_alarm = alicloud.quotas.QuotaAlarm("default",
             quota_action_code="q_desktop-count",
-            quota_alarm_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
             quota_dimensions=[alicloud.quotas.QuotaAlarmQuotaDimensionArgs(
                 key="regionId",
                 value="cn-hangzhou",
             )],
             threshold_percent=80,
+            product_code="gws",
+            quota_alarm_name=f"{name}-{default['result']}",
             threshold_type="used")
         ```
         <!--End PulumiCodeChooser -->
@@ -405,18 +405,18 @@ class QuotaAlarm(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_quota_alarm = alicloud.quotas.QuotaAlarm("defaultQuotaAlarm",
-            product_code="gws",
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_quota_alarm = alicloud.quotas.QuotaAlarm("default",
             quota_action_code="q_desktop-count",
-            quota_alarm_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
             quota_dimensions=[alicloud.quotas.QuotaAlarmQuotaDimensionArgs(
                 key="regionId",
                 value="cn-hangzhou",
             )],
             threshold_percent=80,
+            product_code="gws",
+            quota_alarm_name=f"{name}-{default['result']}",
             threshold_type="used")
         ```
         <!--End PulumiCodeChooser -->

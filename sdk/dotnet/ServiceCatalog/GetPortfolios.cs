@@ -31,9 +31,9 @@ namespace Pulumi.AliCloud.ServiceCatalog
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_service_catalog_portfolio.Default.Id,
+        ///             defaultAlicloudServiceCatalogPortfolio.Id,
         ///         },
-        ///         NameRegex = alicloud_service_catalog_portfolio.Default.Name,
+        ///         NameRegex = defaultAlicloudServiceCatalogPortfolio.Name,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -67,9 +67,9 @@ namespace Pulumi.AliCloud.ServiceCatalog
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_service_catalog_portfolio.Default.Id,
+        ///             defaultAlicloudServiceCatalogPortfolio.Id,
         ///         },
-        ///         NameRegex = alicloud_service_catalog_portfolio.Default.Name,
+        ///         NameRegex = defaultAlicloudServiceCatalogPortfolio.Name,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

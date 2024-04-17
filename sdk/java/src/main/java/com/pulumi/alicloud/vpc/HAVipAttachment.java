@@ -63,13 +63,13 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var exampleInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *         final var example = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
  * 
- *         final var exampleImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
  *             .owners(&#34;system&#34;)
  *             .build());
@@ -92,6 +92,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
  *             .description(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
@@ -99,8 +100,8 @@ import javax.annotation.Nullable;
  *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
  *             .availabilityZone(default_.zones()[0].id())
  *             .vswitchId(exampleSwitch.id())
- *             .imageId(exampleImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(exampleGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(example.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
  *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
  *             .internetChargeType(&#34;PayByTraffic&#34;)
  *             .internetMaxBandwidthOut(5)

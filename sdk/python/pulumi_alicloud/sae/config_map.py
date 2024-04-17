@@ -185,20 +185,21 @@ class ConfigMap(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = alicloud.get_regions(current=True)
+        default_integer = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+        default_namespace = alicloud.sae.Namespace("default",
+            namespace_id=f"{default.regions[0].id}:example{default_integer['result']}",
             namespace_name=name,
             namespace_description=name,
             enable_micro_registration=False)
-        default_config_map = alicloud.sae.ConfigMap("defaultConfigMap",
+        default_config_map = alicloud.sae.ConfigMap("default",
             data=json.dumps({
                 "env.home": "/root",
                 "env.shell": "/bin/sh",
             }),
+            name=name,
             namespace_id=default_namespace.namespace_id)
         ```
         <!--End PulumiCodeChooser -->
@@ -246,20 +247,21 @@ class ConfigMap(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = alicloud.get_regions(current=True)
+        default_integer = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+        default_namespace = alicloud.sae.Namespace("default",
+            namespace_id=f"{default.regions[0].id}:example{default_integer['result']}",
             namespace_name=name,
             namespace_description=name,
             enable_micro_registration=False)
-        default_config_map = alicloud.sae.ConfigMap("defaultConfigMap",
+        default_config_map = alicloud.sae.ConfigMap("default",
             data=json.dumps({
                 "env.home": "/root",
                 "env.shell": "/bin/sh",
             }),
+            name=name,
             namespace_id=default_namespace.namespace_id)
         ```
         <!--End PulumiCodeChooser -->

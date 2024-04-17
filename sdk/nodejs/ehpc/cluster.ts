@@ -24,57 +24,57 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultImages = alicloud.ecs.getImages({
+ * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^centos_7_6_x64*",
  *     owners: "system",
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
  * }));
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.0.0.0/8",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.1.0.0/16",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultFileSystem = new alicloud.nas.FileSystem("defaultFileSystem", {
+ * const defaultFileSystem = new alicloud.nas.FileSystem("default", {
  *     storageType: "Performance",
  *     protocolType: "NFS",
  * });
- * const defaultMountTarget = new alicloud.nas.MountTarget("defaultMountTarget", {
+ * const defaultMountTarget = new alicloud.nas.MountTarget("default", {
  *     fileSystemId: defaultFileSystem.id,
  *     accessGroupName: "DEFAULT_VPC_GROUP_NAME",
  *     vswitchId: defaultSwitch.id,
  * });
- * const defaultCluster = new alicloud.ehpc.Cluster("defaultCluster", {
+ * const defaultCluster = new alicloud.ehpc.Cluster("default", {
  *     clusterName: name,
  *     deployMode: "Simple",
  *     description: name,
  *     haEnable: false,
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
  *     imageOwnerAlias: "system",
  *     volumeProtocol: "nfs",
  *     volumeId: defaultFileSystem.id,
  *     volumeMountpoint: defaultMountTarget.mountTargetDomain,
  *     computeCount: 1,
- *     computeInstanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     computeInstanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *     loginCount: 1,
- *     loginInstanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     loginInstanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *     managerCount: 1,
- *     managerInstanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     managerInstanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *     osTag: "CentOS_7.6_64",
  *     schedulerType: "pbs",
  *     password: "your-password123",
  *     vswitchId: defaultSwitch.id,
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

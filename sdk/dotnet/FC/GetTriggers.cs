@@ -27,9 +27,9 @@ namespace Pulumi.AliCloud.FC
         /// {
         ///     var fcTriggersDs = AliCloud.FC.GetTriggers.Invoke(new()
         ///     {
+        ///         ServiceName = "sample_service",
         ///         FunctionName = "sample_function",
         ///         NameRegex = "sample_fc_trigger",
-        ///         ServiceName = "sample_service",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -59,9 +59,9 @@ namespace Pulumi.AliCloud.FC
         /// {
         ///     var fcTriggersDs = AliCloud.FC.GetTriggers.Invoke(new()
         ///     {
+        ///         ServiceName = "sample_service",
         ///         FunctionName = "sample_function",
         ///         NameRegex = "sample_fc_trigger",
-        ///         ServiceName = "sample_service",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

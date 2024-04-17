@@ -60,9 +60,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
- *         final var defaultAccount = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount();
  * 
- *         final var defaultNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
+ *         final var defaultGetNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
  *             .dbType(&#34;MySQL&#34;)
  *             .dbVersion(&#34;8.0&#34;)
  *             .payType(&#34;PostPaid&#34;)
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()))
+ *             .zoneId(defaultGetNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()))
  *             .vswitchName(name)
  *             .build());
  * 
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *         var defaultSwitchDasPro = new SwitchDasPro(&#34;defaultSwitchDasPro&#34;, SwitchDasProArgs.builder()        
  *             .instanceId(defaultCluster.id())
  *             .sqlRetention(30)
- *             .userId(defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .userId(default_.id())
  *             .build());
  * 
  *     }

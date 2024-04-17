@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.CR
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "example-name";
-    ///     var exampleRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance", new()
+    ///     var example = new AliCloud.CR.RegistryEnterpriseInstance("example", new()
     ///     {
     ///         PaymentType = "Subscription",
     ///         Period = 1,
@@ -41,9 +41,9 @@ namespace Pulumi.AliCloud.CR
     ///         InstanceName = name,
     ///     });
     /// 
-    ///     var exampleChartNamespace = new AliCloud.CR.ChartNamespace("exampleChartNamespace", new()
+    ///     var exampleChartNamespace = new AliCloud.CR.ChartNamespace("example", new()
     ///     {
-    ///         InstanceId = exampleRegistryEnterpriseInstance.Id,
+    ///         InstanceId = example.Id,
     ///         NamespaceName = name,
     ///     });
     /// 

@@ -36,7 +36,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("listOfResourceTypes", data.Alicloud_config_configuration_recorders.This.Recorders[0].Resource_types)
+//			ctx.Export("listOfResourceTypes", this.Recorders[0].ResourceTypes)
 //			return nil
 //		})
 //	}

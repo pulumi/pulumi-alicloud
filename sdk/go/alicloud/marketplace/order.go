@@ -30,13 +30,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := marketplace.NewOrder(ctx, "order", &marketplace.OrderArgs{
-//				CouponId:       pulumi.String(""),
-//				Duration:       pulumi.Int(1),
-//				PackageVersion: pulumi.String("yuncode2713600001"),
-//				PayType:        pulumi.String("prepay"),
-//				PricingCycle:   pulumi.String("Month"),
 //				ProductCode:    pulumi.String("cmapi033136"),
+//				PayType:        pulumi.String("prepay"),
 //				Quantity:       pulumi.Int(1),
+//				Duration:       pulumi.Int(1),
+//				PricingCycle:   pulumi.String("Month"),
+//				PackageVersion: pulumi.String("yuncode2713600001"),
+//				CouponId:       pulumi.String(""),
 //			})
 //			if err != nil {
 //				return err

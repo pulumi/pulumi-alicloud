@@ -55,23 +55,23 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
  *             .nameRegex(&#34;^default-NODELETING$&#34;)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(default_.ids()[0])
  *             .zoneId(&#34;cn-hangzhou-k&#34;)
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .productVersion(&#34;3&#34;)
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(default_.ids()[0])
  *             .zoneIds(            
  *                 &#34;cn-hangzhou-k&#34;,
  *                 &#34;cn-hangzhou-j&#34;)
- *             .vswitchIds(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .vswitchIds(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
  *             .vpcNum(&#34;1&#34;)
  *             .keyNum(&#34;1000&#34;)
  *             .secretNum(&#34;0&#34;)

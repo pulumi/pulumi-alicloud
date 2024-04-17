@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var zonesIds = AliCloud.MongoDB.GetZones.Invoke();
         /// 
         ///     // Create an mongoDB instance with the first matched zone
@@ -35,7 +36,6 @@ namespace Pulumi.AliCloud.MongoDB
         ///         ZoneId = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
         ///     });
         /// 
-        ///     // Other properties...
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;
@@ -59,6 +59,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var zonesIds = AliCloud.MongoDB.GetZones.Invoke();
         /// 
         ///     // Create an mongoDB instance with the first matched zone
@@ -67,7 +68,6 @@ namespace Pulumi.AliCloud.MongoDB
         ///         ZoneId = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
         ///     });
         /// 
-        ///     // Other properties...
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;

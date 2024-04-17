@@ -31,15 +31,15 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// {
     ///     var @default = new AliCloud.DatabaseFilesystem.AutoSnapShotPolicy("default", new()
     ///     {
-    ///         PolicyName = "tf-example",
-    ///         RepeatWeekdays = new[]
-    ///         {
-    ///             "2",
-    ///         },
-    ///         RetentionDays = 1,
     ///         TimePoints = new[]
     ///         {
     ///             "01",
+    ///         },
+    ///         PolicyName = "tf-example",
+    ///         RetentionDays = 1,
+    ///         RepeatWeekdays = new[]
+    ///         {
+    ///             "2",
     ///         },
     ///     });
     /// 

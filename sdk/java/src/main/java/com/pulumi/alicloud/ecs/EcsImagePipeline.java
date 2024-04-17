@@ -63,25 +63,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .nameRegex(&#34;default&#34;)
  *             .build());
  * 
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
  *             .mostRecent(true)
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
  *             .build());
  * 
- *         final var defaultAccount = AlicloudFunctions.getAccount();
+ *         final var defaultGetAccount = AlicloudFunctions.getAccount();
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(&#34;terraform-example&#34;)
@@ -92,19 +92,20 @@ import javax.annotation.Nullable;
  *             .vswitchName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var defaultEcsImagePipeline = new EcsImagePipeline(&#34;defaultEcsImagePipeline&#34;, EcsImagePipelineArgs.builder()        
- *             .addAccounts(defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
- *             .baseImage(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
+ *             .addAccounts(defaultGetAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .baseImage(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
  *             .baseImageType(&#34;IMAGE&#34;)
  *             .buildContent(&#34;RUN yum update -y&#34;)
  *             .deleteInstanceOnFailure(false)
  *             .imageName(&#34;terraform-example&#34;)
+ *             .name(&#34;terraform-example&#34;)
  *             .description(&#34;terraform-example&#34;)
- *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.ids()[0]))
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.ids()[0]))
+ *             .resourceGroupId(default_.groups()[0].id())
  *             .internetMaxBandwidthOut(20)
  *             .systemDiskSize(40)
  *             .toRegionIds(            

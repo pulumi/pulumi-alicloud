@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
+ *         var default_ = new Cluster(&#34;default&#34;, ClusterArgs.builder()        
  *             .clusterName(&#34;cassandra-cluster-name-tf&#34;)
  *             .dataCenterName(&#34;dc-1&#34;)
  *             .autoRenew(&#34;false&#34;)
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultDataCenter = new DataCenter(&#34;defaultDataCenter&#34;, DataCenterArgs.builder()        
- *             .clusterId(defaultCluster.id())
+ *             .clusterId(default_.id())
  *             .dataCenterName(&#34;dc-2&#34;)
  *             .autoRenew(&#34;false&#34;)
  *             .instanceType(&#34;cassandra.c.large&#34;)

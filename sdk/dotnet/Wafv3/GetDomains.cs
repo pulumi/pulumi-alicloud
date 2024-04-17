@@ -29,27 +29,27 @@ namespace Pulumi.AliCloud.Wafv3
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultInstances = AliCloud.Wafv3.GetInstances.Invoke();
+        ///     var @default = AliCloud.Wafv3.GetInstances.Invoke();
         /// 
         ///     var ids = AliCloud.Wafv3.GetDomains.Invoke(new()
         ///     {
-        ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+        ///         InstanceId = @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
         ///         Ids = new[]
         ///         {
         ///             "example_id",
         ///         },
         ///     });
         /// 
-        ///     var defaultDomains = AliCloud.Wafv3.GetDomains.Invoke(new()
+        ///     var defaultGetDomains = AliCloud.Wafv3.GetDomains.Invoke(new()
         ///     {
-        ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+        ///         InstanceId = @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
         ///         Domain = "zctest12.wafqax.top",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["wafv3DomainsId1"] = ids.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///         ["wafv3DomainsId2"] = defaultDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
+        ///         ["wafv3DomainsId2"] = defaultGetDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -76,27 +76,27 @@ namespace Pulumi.AliCloud.Wafv3
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultInstances = AliCloud.Wafv3.GetInstances.Invoke();
+        ///     var @default = AliCloud.Wafv3.GetInstances.Invoke();
         /// 
         ///     var ids = AliCloud.Wafv3.GetDomains.Invoke(new()
         ///     {
-        ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+        ///         InstanceId = @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
         ///         Ids = new[]
         ///         {
         ///             "example_id",
         ///         },
         ///     });
         /// 
-        ///     var defaultDomains = AliCloud.Wafv3.GetDomains.Invoke(new()
+        ///     var defaultGetDomains = AliCloud.Wafv3.GetDomains.Invoke(new()
         ///     {
-        ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+        ///         InstanceId = @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
         ///         Domain = "zctest12.wafqax.top",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
         ///         ["wafv3DomainsId1"] = ids.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///         ["wafv3DomainsId2"] = defaultDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
+        ///         ["wafv3DomainsId2"] = defaultGetDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
         ///     };
         /// });
         /// ```

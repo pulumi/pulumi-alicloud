@@ -537,6 +537,32 @@ class ElasticityAssurance(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.196.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_get_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.c6")
+        default_elasticity_assurance = alicloud.ecs.ElasticityAssurance("default",
+            instance_amount=1,
+            description="before",
+            zone_ids=[default_get_zones.zones[0].id],
+            private_pool_options_name="test_before",
+            period=1,
+            private_pool_options_match_criteria="Open",
+            instance_type=default_get_instance_types.instance_types[0].id,
+            period_unit="Month",
+            assurance_times="Unlimited",
+            resource_group_id=default.ids[0])
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         Ecs Elasticity Assurance can be imported using the id, e.g.
@@ -574,6 +600,32 @@ class ElasticityAssurance(pulumi.CustomResource):
         For information about Ecs Elasticity Assurance and how to use it, see [What is Elasticity Assurance](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createelasticityassurance).
 
         > **NOTE:** Available in v1.196.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_get_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.c6")
+        default_elasticity_assurance = alicloud.ecs.ElasticityAssurance("default",
+            instance_amount=1,
+            description="before",
+            zone_ids=[default_get_zones.zones[0].id],
+            private_pool_options_name="test_before",
+            period=1,
+            private_pool_options_match_criteria="Open",
+            instance_type=default_get_instance_types.instance_types[0].id,
+            period_unit="Month",
+            assurance_times="Unlimited",
+            resource_group_id=default.ids[0])
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

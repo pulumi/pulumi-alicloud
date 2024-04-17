@@ -29,11 +29,11 @@ namespace Pulumi.AliCloud.Kms
     /// {
     ///     var @default = new AliCloud.Kms.Secret("default", new()
     ///     {
-    ///         Description = "from terraform",
-    ///         ForceDeleteWithoutRecovery = true,
-    ///         SecretData = "Secret data.",
     ///         SecretName = "secret-foo",
+    ///         Description = "from terraform",
+    ///         SecretData = "Secret data.",
     ///         VersionId = "000000000001",
+    ///         ForceDeleteWithoutRecovery = true,
     ///     });
     /// 
     /// });

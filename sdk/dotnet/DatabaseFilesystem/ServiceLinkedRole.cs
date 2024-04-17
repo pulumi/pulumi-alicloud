@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var serviceLinkedRole = new AliCloud.DatabaseFilesystem.ServiceLinkedRole("serviceLinkedRole", new()
+    ///     var serviceLinkedRole = new AliCloud.DatabaseFilesystem.ServiceLinkedRole("service_linked_role", new()
     ///     {
     ///         ProductName = "AliyunServiceRoleForDbfs",
     ///     });

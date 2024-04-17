@@ -33,23 +33,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
 //				CpuCoreCount:     pulumi.IntRef(1),
 //				MemorySize:       pulumi.Float64Ref(2),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				MostRecent: pulumi.BoolRef(true),
+//			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 //				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+//				MostRecent: pulumi.BoolRef(true),
 //				Owners:     pulumi.StringRef("system"),
 //			}, nil)
 //			if err != nil {
@@ -60,63 +60,65 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//			fooNetwork, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
+//				Name:      pulumi.String(name),
 //				CidrBlock: pulumi.String("10.1.0.0/21"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
-//				AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
-//				CidrBlock:        pulumi.String("10.1.1.0/24"),
+//			fooSwitch, err := vpc.NewSwitch(ctx, "foo", &vpc.SwitchArgs{
 //				VpcId:            fooNetwork.ID(),
+//				CidrBlock:        pulumi.String("10.1.1.0/24"),
+//				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 //				VswitchName:      pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			tfTestFoo, err := ecs.NewSecurityGroup(ctx, "tfTestFoo", &ecs.SecurityGroupArgs{
+//			tfTestFoo, err := ecs.NewSecurityGroup(ctx, "tf_test_foo", &ecs.SecurityGroupArgs{
+//				Name:        pulumi.String(name),
 //				Description: pulumi.String("foo"),
 //				VpcId:       fooNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooInstance, err := ecs.NewInstance(ctx, "fooInstance", &ecs.InstanceArgs{
-//				AllocatePublicIp:        pulumi.Bool(true),
-//				ImageId:                 pulumi.String(defaultImages.Images[0].Id),
-//				InstanceChargeType:      pulumi.String("PostPaid"),
-//				InstanceName:            pulumi.String(name),
-//				InstanceType:            pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-//				InternetChargeType:      pulumi.String("PayByTraffic"),
-//				InternetMaxBandwidthOut: pulumi.Int(5),
+//			fooInstance, err := ecs.NewInstance(ctx, "foo", &ecs.InstanceArgs{
 //				SecurityGroups: pulumi.StringArray{
 //					tfTestFoo.ID(),
 //				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				VswitchId:          fooSwitch.ID(),
+//				VswitchId:               fooSwitch.ID(),
+//				AllocatePublicIp:        pulumi.Bool(true),
+//				InstanceChargeType:      pulumi.String("PostPaid"),
+//				InstanceType:            pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				InternetChargeType:      pulumi.String("PayByTraffic"),
+//				InternetMaxBandwidthOut: pulumi.Int(5),
+//				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
+//				ImageId:                 pulumi.String(defaultGetImages.Images[0].Id),
+//				InstanceName:            pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooRouteEntry, err := vpc.NewRouteEntry(ctx, "fooRouteEntry", &vpc.RouteEntryArgs{
-//				DestinationCidrblock: pulumi.String("172.11.1.1/32"),
-//				NexthopId:            fooInstance.ID(),
-//				NexthopType:          pulumi.String("Instance"),
+//			fooRouteEntry, err := vpc.NewRouteEntry(ctx, "foo", &vpc.RouteEntryArgs{
 //				RouteTableId:         fooNetwork.RouteTableId,
+//				DestinationCidrblock: pulumi.String("172.11.1.1/32"),
+//				NexthopType:          pulumi.String("Instance"),
+//				NexthopId:            fooInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ecs.NewSecurityGroupRule(ctx, "ingress", &ecs.SecurityGroupRuleArgs{
-//				CidrIp:          pulumi.String("0.0.0.0/0"),
+//				Type:            pulumi.String("ingress"),
 //				IpProtocol:      pulumi.String("tcp"),
 //				NicType:         pulumi.String("intranet"),
 //				Policy:          pulumi.String("accept"),
 //				PortRange:       pulumi.String("22/22"),
 //				Priority:        pulumi.Int(1),
 //				SecurityGroupId: tfTestFoo.ID(),
-//				Type:            pulumi.String("ingress"),
+//				CidrIp:          pulumi.String("0.0.0.0/0"),
 //			})
 //			if err != nil {
 //				return err

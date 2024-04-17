@@ -29,12 +29,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			scalingconfigurationsDs, err := ess.GetScalingConfigurations(ctx, &ess.GetScalingConfigurationsArgs{
+//				ScalingGroupId: pulumi.StringRef("scaling_group_id"),
 //				Ids: []string{
 //					"scaling_configuration_id1",
 //					"scaling_configuration_id2",
 //				},
-//				NameRegex:      pulumi.StringRef("scaling_configuration_name"),
-//				ScalingGroupId: pulumi.StringRef("scaling_group_id"),
+//				NameRegex: pulumi.StringRef("scaling_configuration_name"),
 //			}, nil)
 //			if err != nil {
 //				return err

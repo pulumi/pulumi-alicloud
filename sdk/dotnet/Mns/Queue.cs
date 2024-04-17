@@ -25,11 +25,12 @@ namespace Pulumi.AliCloud.Mns
     /// {
     ///     var queue = new AliCloud.Mns.Queue("queue", new()
     ///     {
+    ///         Name = "tf-example-mnsqueue",
     ///         DelaySeconds = 0,
     ///         MaximumMessageSize = 65536,
     ///         MessageRetentionPeriod = 345600,
-    ///         PollingWaitSeconds = 0,
     ///         VisibilityTimeout = 30,
+    ///         PollingWaitSeconds = 0,
     ///     });
     /// 
     /// });

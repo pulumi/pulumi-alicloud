@@ -150,15 +150,15 @@ class Kv(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_kv_namespace = alicloud.dcdn.KvNamespace("defaultKvNamespace",
+        default_kv_namespace = alicloud.dcdn.KvNamespace("default",
             description=name,
-            namespace=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
-        default_kv = alicloud.dcdn.Kv("defaultKv",
+            namespace=f"{name}-{default['result']}")
+        default_kv = alicloud.dcdn.Kv("default",
             value="example-value",
-            key=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+            key=f"{name}-{default['result']}",
             namespace=default_kv_namespace.namespace)
         ```
         <!--End PulumiCodeChooser -->
@@ -204,15 +204,15 @@ class Kv(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_kv_namespace = alicloud.dcdn.KvNamespace("defaultKvNamespace",
+        default_kv_namespace = alicloud.dcdn.KvNamespace("default",
             description=name,
-            namespace=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
-        default_kv = alicloud.dcdn.Kv("defaultKv",
+            namespace=f"{name}-{default['result']}")
+        default_kv = alicloud.dcdn.Kv("default",
             value="example-value",
-            key=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+            key=f"{name}-{default['result']}",
             namespace=default_kv_namespace.namespace)
         ```
         <!--End PulumiCodeChooser -->

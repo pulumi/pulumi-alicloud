@@ -35,8 +35,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleResource, err := log.NewResource(ctx, "exampleResource", &log.ResourceArgs{
+//			example, err := log.NewResource(ctx, "example", &log.ResourceArgs{
 //				Type:        pulumi.String("userdefine"),
+//				Name:        pulumi.String("user.tf.resource"),
 //				Description: pulumi.String("user tf resource desc"),
 //				ExtInfo:     pulumi.String("{}"),
 //				Schema: pulumi.String(`    {
@@ -65,8 +66,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = log.NewResourceRecord(ctx, "exampleResourceRecord", &log.ResourceRecordArgs{
-//				ResourceName: exampleResource.ID(),
+//			_, err = log.NewResourceRecord(ctx, "example", &log.ResourceRecordArgs{
+//				ResourceName: example.ID(),
 //				RecordId:     pulumi.String("user_tf_resource_1"),
 //				Tag:          pulumi.String("resource tag"),
 //				Value:        pulumi.String("    {\n      \"col1\": \"this is col1 value\",\n      \"col2\": \"col2   value\"\n    }\n"),

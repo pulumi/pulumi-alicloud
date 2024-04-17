@@ -17,6 +17,84 @@ import (
 //
 // > **NOTE:** Available since v1.34.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+//				FileSystemType: pulumi.StringRef("extreme"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			countSize := len(_default.Zones)
+//			zoneId := _default.Zones[countSize-1].ZoneId
+//			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
+//				VswitchName: example.VpcName,
+//				CidrBlock:   example.CidrBlock,
+//				VpcId:       example.ID(),
+//				ZoneId:      pulumi.String(zoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleFileSystem, err := nas.NewFileSystem(ctx, "example", &nas.FileSystemArgs{
+//				ProtocolType:   pulumi.String("NFS"),
+//				StorageType:    pulumi.String("advance"),
+//				FileSystemType: pulumi.String("extreme"),
+//				Capacity:       pulumi.Int(100),
+//				ZoneId:         pulumi.String(zoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleAccessGroup, err := nas.NewAccessGroup(ctx, "example", &nas.AccessGroupArgs{
+//				AccessGroupName: pulumi.String("access_group_xxx"),
+//				AccessGroupType: pulumi.String("Vpc"),
+//				Description:     pulumi.String("test_access_group"),
+//				FileSystemType:  pulumi.String("extreme"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nas.NewMountTarget(ctx, "example", &nas.MountTargetArgs{
+//				FileSystemId:    exampleFileSystem.ID(),
+//				AccessGroupName: exampleAccessGroup.AccessGroupName,
+//				VswitchId:       exampleSwitch.ID(),
+//				VpcId:           example.ID(),
+//				NetworkType:     exampleAccessGroup.AccessGroupType,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // NAS MountTarget can be imported using the id, e.g.

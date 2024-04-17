@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var names = AliCloud.Rds.GetCharacterSetNames.Invoke(new()
         ///     {
         ///         Engine = "MySQL",
@@ -59,6 +60,7 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var names = AliCloud.Rds.GetCharacterSetNames.Invoke(new()
         ///     {
         ///         Engine = "MySQL",

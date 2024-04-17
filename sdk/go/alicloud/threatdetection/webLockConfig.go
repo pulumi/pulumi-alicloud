@@ -35,15 +35,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAssets, err := threatdetection.GetAssets(ctx, &threatdetection.GetAssetsArgs{
+//			_default, err := threatdetection.GetAssets(ctx, &threatdetection.GetAssetsArgs{
 //				MachineTypes: pulumi.StringRef("ecs"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = threatdetection.NewWebLockConfig(ctx, "defaultWebLockConfig", &threatdetection.WebLockConfigArgs{
+//			_, err = threatdetection.NewWebLockConfig(ctx, "default", &threatdetection.WebLockConfigArgs{
 //				InclusiveFileType: pulumi.String("php;jsp;asp;aspx;js;cgi;html;htm;xml;shtml;shtm;jpg"),
-//				Uuid:              pulumi.String(defaultAssets.Ids[0]),
+//				Uuid:              pulumi.String(_default.Ids[0]),
 //				Mode:              pulumi.String("whitelist"),
 //				LocalBackupDir:    pulumi.String("/usr/local/aegis/bak"),
 //				Dir:               pulumi.String("/tmp/"),

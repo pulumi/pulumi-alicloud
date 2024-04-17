@@ -31,10 +31,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := eflo.GetSubnets(ctx, &eflo.GetSubnetsArgs{
-//				NameRegex:  pulumi.StringRef(alicloud_eflo_subnet.Default.Name),
+//				NameRegex:  pulumi.StringRef(defaultAlicloudEfloSubnet.Name),
 //				SubnetName: pulumi.StringRef("SubnetTestForTerraform"),
-//				VpdId:      pulumi.StringRef(_var.VpdId),
-//				ZoneId:     pulumi.StringRef(_var.ZoneId),
+//				VpdId:      pulumi.StringRef(vpdId),
+//				ZoneId:     pulumi.StringRef(zoneId),
 //			}, nil)
 //			if err != nil {
 //				return err

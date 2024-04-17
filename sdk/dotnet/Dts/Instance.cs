@@ -29,26 +29,26 @@ namespace Pulumi.AliCloud.Dts
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
     ///         Status = "OK",
     ///     });
     /// 
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Dts.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Dts.Instance("default", new()
     ///     {
     ///         Type = "sync",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///         PaymentType = "Subscription",
     ///         InstanceClass = "large",
     ///         SourceEndpointEngineName = "MySQL",
-    ///         SourceRegion = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         SourceRegion = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
     ///         DestinationEndpointEngineName = "MySQL",
-    ///         DestinationRegion = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         DestinationRegion = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
     ///     });
     /// 
     /// });

@@ -42,8 +42,9 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//			foo, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				Name:      pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -54,23 +55,24 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
-//				VpcId:     fooNetwork.ID(),
+//			fooSwitch, err := vpc.NewSwitch(ctx, "foo", &vpc.SwitchArgs{
+//				VpcId:     foo.ID(),
 //				CidrBlock: pulumi.String("172.16.0.0/21"),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
+//				Name:      pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooRouteTable, err := vpc.NewRouteTable(ctx, "fooRouteTable", &vpc.RouteTableArgs{
-//				VpcId:          fooNetwork.ID(),
+//			fooRouteTable, err := vpc.NewRouteTable(ctx, "foo", &vpc.RouteTableArgs{
+//				VpcId:          foo.ID(),
 //				RouteTableName: pulumi.String(name),
 //				Description:    pulumi.String("route_table_attachment"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewRouteTableAttachment(ctx, "fooRouteTableAttachment", &vpc.RouteTableAttachmentArgs{
+//			_, err = vpc.NewRouteTableAttachment(ctx, "foo", &vpc.RouteTableAttachmentArgs{
 //				VswitchId:    fooSwitch.ID(),
 //				RouteTableId: fooRouteTable.ID(),
 //			})

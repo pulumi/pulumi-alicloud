@@ -33,13 +33,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new ECS disk.
-//			_, err := ecs.NewDisk(ctx, "ecsDisk", &ecs.DiskArgs{
+//			_, err := ecs.NewDisk(ctx, "ecs_disk", &ecs.DiskArgs{
 //				AvailabilityZone: pulumi.String("cn-beijing-b"),
-//				Category:         pulumi.String("cloud_efficiency"),
+//				Name:             pulumi.String("New-disk"),
 //				Description:      pulumi.String("Hello ecs disk."),
+//				Category:         pulumi.String("cloud_efficiency"),
+//				Size:             pulumi.Int(30),
 //				Encrypted:        pulumi.Bool(true),
 //				KmsKeyId:         pulumi.String("2a6767f0-a16c-4679-a60f-13bf*****"),
-//				Size:             pulumi.Int(30),
 //				Tags: pulumi.Map{
 //					"Name": pulumi.Any("TerraformTest"),
 //				},

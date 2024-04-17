@@ -162,26 +162,27 @@ class InstanceAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_instance = alicloud.ots.Instance("defaultInstance",
+        default_instance = alicloud.ots.Instance("default",
+            name=f"{name}-{default_integer['result']}",
             description=name,
             accessed_by="Vpc",
             tags={
                 "Created": "TF",
                 "For": "example",
             })
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_instance_attachment = alicloud.ots.InstanceAttachment("defaultInstanceAttachment",
+            zone_id=default.zones[0].id)
+        default_instance_attachment = alicloud.ots.InstanceAttachment("default",
             instance_name=default_instance.name,
             vpc_name="examplename",
             vswitch_id=default_switch.id)
@@ -217,26 +218,27 @@ class InstanceAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_instance = alicloud.ots.Instance("defaultInstance",
+        default_instance = alicloud.ots.Instance("default",
+            name=f"{name}-{default_integer['result']}",
             description=name,
             accessed_by="Vpc",
             tags={
                 "Created": "TF",
                 "For": "example",
             })
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_instance_attachment = alicloud.ots.InstanceAttachment("defaultInstanceAttachment",
+            zone_id=default.zones[0].id)
+        default_instance_attachment = alicloud.ots.InstanceAttachment("default",
             instance_name=default_instance.name,
             vpc_name="examplename",
             vswitch_id=default_switch.id)

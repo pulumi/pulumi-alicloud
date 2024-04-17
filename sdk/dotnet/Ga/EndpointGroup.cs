@@ -25,14 +25,14 @@ namespace Pulumi.AliCloud.Ga
     /// {
     ///     var config = new Config();
     ///     var region = config.Get("region") ?? "cn-hangzhou";
-    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
+    ///     var @default = new AliCloud.Ga.Accelerator("default", new()
     ///     {
     ///         Duration = 1,
     ///         AutoUseCoupon = true,
     ///         Spec = "1",
     ///     });
     /// 
-    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
+    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("default", new()
     ///     {
     ///         Bandwidth = 100,
     ///         Type = "Basic",
@@ -42,13 +42,13 @@ namespace Pulumi.AliCloud.Ga
     ///         Ratio = 30,
     ///     });
     /// 
-    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("default", new()
     ///     {
-    ///         AcceleratorId = defaultAccelerator.Id,
+    ///         AcceleratorId = @default.Id,
     ///         BandwidthPackageId = defaultBandwidthPackage.Id,
     ///     });
     /// 
-    ///     var defaultListener = new AliCloud.Ga.Listener("defaultListener", new()
+    ///     var defaultListener = new AliCloud.Ga.Listener("default", new()
     ///     {
     ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
     ///         PortRanges = new[]
@@ -61,22 +61,23 @@ namespace Pulumi.AliCloud.Ga
     ///         },
     ///         ClientAffinity = "SOURCE_IP",
     ///         Protocol = "UDP",
+    ///         Name = "terraform-example",
     ///     });
     /// 
     ///     var defaultEipAddress = new List&lt;AliCloud.Ecs.EipAddress&gt;();
     ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
-    ///         defaultEipAddress.Add(new AliCloud.Ecs.EipAddress($"defaultEipAddress-{range.Value}", new()
+    ///         defaultEipAddress.Add(new AliCloud.Ecs.EipAddress($"default-{range.Value}", new()
     ///         {
     ///             Bandwidth = "10",
     ///             InternetChargeType = "PayByBandwidth",
     ///             AddressName = "terraform-example",
     ///         }));
     ///     }
-    ///     var defaultEndpointGroup = new AliCloud.Ga.EndpointGroup("defaultEndpointGroup", new()
+    ///     var defaultEndpointGroup = new AliCloud.Ga.EndpointGroup("default", new()
     ///     {
-    ///         AcceleratorId = defaultAccelerator.Id,
+    ///         AcceleratorId = @default.Id,
     ///         EndpointConfigurations = new[]
     ///         {
     ///             new AliCloud.Ga.Inputs.EndpointGroupEndpointConfigurationArgs

@@ -29,18 +29,18 @@ namespace Pulumi.AliCloud.Dts
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultMigrationInstance = new AliCloud.Dts.MigrationInstance("defaultMigrationInstance", new()
+    ///     var defaultMigrationInstance = new AliCloud.Dts.MigrationInstance("default", new()
     ///     {
     ///         PaymentType = "PayAsYouGo",
     ///         SourceEndpointEngineName = "MySQL",
-    ///         SourceEndpointRegion = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         SourceEndpointRegion = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///         DestinationEndpointEngineName = "MySQL",
-    ///         DestinationEndpointRegion = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         DestinationEndpointRegion = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///         InstanceClass = "small",
     ///         SyncArchitecture = "oneway",
     ///     });

@@ -41,17 +41,17 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
 //				Status: pulumi.StringRef("OK"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewPublicIpAddressPool(ctx, "defaultPublicIpAddressPool", &vpc.PublicIpAddressPoolArgs{
+//			_, err = vpc.NewPublicIpAddressPool(ctx, "default", &vpc.PublicIpAddressPoolArgs{
 //				Description:             pulumi.String(name),
 //				PublicIpAddressPoolName: pulumi.String(name),
 //				Isp:                     pulumi.String("BGP"),
-//				ResourceGroupId:         pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:         pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

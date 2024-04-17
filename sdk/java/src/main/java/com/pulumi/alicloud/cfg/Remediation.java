@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-oss&#34;);
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .riskLevel(1)
  *             .tagKeyScope(&#34;For&#34;)
  *             .tagValueScope(&#34;example&#34;)
- *             .regionIdsScope(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .regionIdsScope(default_.regions()[0].id())
  *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
  *             .resourceTypesScopes(&#34;ACS::OSS::Bucket&#34;)
  *             .ruleName(&#34;oss-bucket-public-read-prohibited&#34;)
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *             .remediationTemplateId(&#34;ACS-OSS-PutBucketAcl&#34;)
  *             .remediationSourceType(&#34;ALIYUN&#34;)
  *             .invokeType(&#34;MANUAL_EXECUTION&#34;)
- *             .params(defaultBucket.bucket().applyValue(bucket -&gt; String.format(&#34;{{\&#34;bucketName\&#34;: \&#34;%s\&#34;, \&#34;regionId\&#34;: \&#34;%s\&#34;, \&#34;permissionName\&#34;: \&#34;private\&#34;}}&#34;, bucket,defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))))
+ *             .params(defaultBucket.bucket().applyValue(bucket -&gt; String.format(&#34;{{\&#34;bucketName\&#34;: \&#34;%s\&#34;, \&#34;regionId\&#34;: \&#34;%s\&#34;, \&#34;permissionName\&#34;: \&#34;private\&#34;}}&#34;, bucket,default_.regions()[0].id())))
  *             .remediationType(&#34;OOS&#34;)
  *             .build());
  * 

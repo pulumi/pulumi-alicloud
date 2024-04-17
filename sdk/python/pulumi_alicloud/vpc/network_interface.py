@@ -690,13 +690,16 @@ class NetworkInterface(pulumi.CustomResource):
         vpc = alicloud.vpc.Network("vpc",
             vpc_name=name,
             cidr_block="192.168.0.0/24")
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
         vswitch = alicloud.vpc.Switch("vswitch",
+            name=name,
             cidr_block="192.168.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vpc_id=vpc.id)
-        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
-        default_network_interface = alicloud.vpc.NetworkInterface("defaultNetworkInterface",
+        group = alicloud.ecs.SecurityGroup("group",
+            name=name,
+            vpc_id=vpc.id)
+        default_network_interface = alicloud.vpc.NetworkInterface("default",
             network_interface_name=name,
             vswitch_id=vswitch.id,
             security_group_ids=[group.id],
@@ -754,13 +757,16 @@ class NetworkInterface(pulumi.CustomResource):
         vpc = alicloud.vpc.Network("vpc",
             vpc_name=name,
             cidr_block="192.168.0.0/24")
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
         vswitch = alicloud.vpc.Switch("vswitch",
+            name=name,
             cidr_block="192.168.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vpc_id=vpc.id)
-        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
-        default_network_interface = alicloud.vpc.NetworkInterface("defaultNetworkInterface",
+        group = alicloud.ecs.SecurityGroup("group",
+            name=name,
+            vpc_id=vpc.id)
+        default_network_interface = alicloud.vpc.NetworkInterface("default",
             network_interface_name=name,
             vswitch_id=vswitch.id,
             security_group_ids=[group.id],

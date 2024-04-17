@@ -29,21 +29,21 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultEcsBackupPlans = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
+        ///     var @default = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
         ///     {
         ///         NameRegex = "plan-name",
         ///     });
         /// 
-        ///     var defaultRestoreJobs = AliCloud.Hbr.GetRestoreJobs.Invoke(new()
+        ///     var defaultGetRestoreJobs = AliCloud.Hbr.GetRestoreJobs.Invoke(new()
         ///     {
         ///         RestoreType = "ECS_FILE",
         ///         VaultIds = new[]
         ///         {
-        ///             defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+        ///             @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
         ///         },
         ///         TargetInstanceIds = new[]
         ///         {
-        ///             defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+        ///             @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
         ///         },
         ///     });
         /// 
@@ -72,21 +72,21 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultEcsBackupPlans = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
+        ///     var @default = AliCloud.Hbr.GetEcsBackupPlans.Invoke(new()
         ///     {
         ///         NameRegex = "plan-name",
         ///     });
         /// 
-        ///     var defaultRestoreJobs = AliCloud.Hbr.GetRestoreJobs.Invoke(new()
+        ///     var defaultGetRestoreJobs = AliCloud.Hbr.GetRestoreJobs.Invoke(new()
         ///     {
         ///         RestoreType = "ECS_FILE",
         ///         VaultIds = new[]
         ///         {
-        ///             defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
+        ///             @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.VaultId),
         ///         },
         ///         TargetInstanceIds = new[]
         ///         {
-        ///             defaultEcsBackupPlans.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
+        ///             @default.Apply(getEcsBackupPlansResult =&gt; getEcsBackupPlansResult.Plans[0]?.InstanceId),
         ///         },
         ///     });
         /// 

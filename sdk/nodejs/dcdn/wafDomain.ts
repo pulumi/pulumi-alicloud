@@ -23,12 +23,12 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const domainName = config.get("domainName") || "tf-example.com";
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const exampleDomain = new alicloud.dcdn.Domain("exampleDomain", {
- *     domainName: pulumi.interpolate`${domainName}-${_default.result}`,
+ * const example = new alicloud.dcdn.Domain("example", {
+ *     domainName: `${domainName}-${_default.result}`,
  *     scope: "overseas",
  *     sources: [{
  *         content: "1.1.1.1",
@@ -38,8 +38,8 @@ import * as utilities from "../utilities";
  *         weight: "10",
  *     }],
  * });
- * const exampleWafDomain = new alicloud.dcdn.WafDomain("exampleWafDomain", {
- *     domainName: exampleDomain.domainName,
+ * const exampleWafDomain = new alicloud.dcdn.WafDomain("example", {
+ *     domainName: example.domainName,
  *     clientIpTag: "X-Forwarded-For",
  * });
  * ```

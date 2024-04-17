@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ecs.EcsKeyPair;
  * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
@@ -79,15 +79,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .status(&#34;OK&#34;)
  *             .build());
  * 
- *         final var defaultKeys = KmsFunctions.getKeys(GetKeysArgs.builder()
+ *         final var defaultGetKeys = KmsFunctions.getKeys(GetKeysArgs.builder()
  *             .status(&#34;Enabled&#34;)
  *             .build());
  * 
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableInstanceType(&#34;ecs.g7.xlarge&#34;)
  *             .build());
  * 
@@ -99,24 +99,26 @@ import javax.annotation.Nullable;
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/21&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var defaultEcsKeyPair = new EcsKeyPair(&#34;defaultEcsKeyPair&#34;, EcsKeyPairArgs.builder()        
- *             .keyPairName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .keyPairName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+ *             .name(name)
  *             .document(&#34;&#34;&#34;
  *     {
  *         &#34;Statement&#34;: [
@@ -198,10 +200,10 @@ import javax.annotation.Nullable;
  *                 &#34;HDFS&#34;,
  *                 &#34;YARN&#34;)
  *             .nodeAttributes(ClusterNodeAttributeArgs.builder()
- *                 .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *                 .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *                 .keyPairName(defaultEcsKeyPair.id())
  *                 .dataDiskEncrypted(&#34;true&#34;)
- *                 .dataDiskKmsKeyId(defaultKeys.applyValue(getKeysResult -&gt; getKeysResult.ids()[0]))
+ *                 .dataDiskKmsKeyId(defaultGetKeys.applyValue(getKeysResult -&gt; getKeysResult.ids()[0]))
  *                 .vpcId(defaultNetwork.id())
  *                 .ramRole(defaultRole.name())
  *                 .securityGroupId(defaultSecurityGroup.id())
@@ -211,7 +213,7 @@ import javax.annotation.Nullable;
  *                     jsonProperty(&#34;open&#34;, jsonArray(&#34;all&#34;)),
  *                     jsonProperty(&#34;close&#34;, jsonArray(&#34;&#34;))
  *                 )))
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(default_.ids()[0])
  *             .clusterName(name)
  *             .paymentType(&#34;PayAsYouGo&#34;)
  *             .clusterType(&#34;DATAFLOW&#34;)

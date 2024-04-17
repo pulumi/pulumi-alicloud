@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const instance = new alicloud.ddos.DdosBgpInstance("instance", {
+ *     name: name,
  *     baseBandwidth: 20,
  *     bandwidth: -1,
  *     ipCount: 100,

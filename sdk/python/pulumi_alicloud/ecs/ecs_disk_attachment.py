@@ -265,32 +265,33 @@ class EcsDiskAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="Instance")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default = alicloud.get_zones(available_resource_creation="Instance")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             instance_type_family="ecs.sn1ne")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="10.4.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name="tf-example",
             description="New security group",
             vpc_id=default_network.id)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             most_recent=True,
             owners="system")
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            availability_zone=default_zones.zones[0].id,
+        default_instance = alicloud.ecs.Instance("default",
+            availability_zone=default.zones[0].id,
             instance_name=name,
             host_name=name,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             security_groups=[default_security_group.id],
             vswitch_id=default_switch.id)
         disk = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_ecs_disk = alicloud.ecs.EcsDisk("defaultEcsDisk",
+        default_ecs_disk = alicloud.ecs.EcsDisk("default",
             zone_id=disk.zones[0].id,
             category="cloud_efficiency",
             delete_auto_snapshot=True,
@@ -303,7 +304,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
                 "Created": "TF",
                 "Environment": "Acceptance-test",
             })
-        default_ecs_disk_attachment = alicloud.ecs.EcsDiskAttachment("defaultEcsDiskAttachment",
+        default_ecs_disk_attachment = alicloud.ecs.EcsDiskAttachment("default",
             disk_id=default_ecs_disk.id,
             instance_id=default_instance.id)
         ```
@@ -352,32 +353,33 @@ class EcsDiskAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="Instance")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default = alicloud.get_zones(available_resource_creation="Instance")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             instance_type_family="ecs.sn1ne")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="10.4.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name="tf-example",
             description="New security group",
             vpc_id=default_network.id)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             most_recent=True,
             owners="system")
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            availability_zone=default_zones.zones[0].id,
+        default_instance = alicloud.ecs.Instance("default",
+            availability_zone=default.zones[0].id,
             instance_name=name,
             host_name=name,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             security_groups=[default_security_group.id],
             vswitch_id=default_switch.id)
         disk = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_ecs_disk = alicloud.ecs.EcsDisk("defaultEcsDisk",
+        default_ecs_disk = alicloud.ecs.EcsDisk("default",
             zone_id=disk.zones[0].id,
             category="cloud_efficiency",
             delete_auto_snapshot=True,
@@ -390,7 +392,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
                 "Created": "TF",
                 "Environment": "Acceptance-test",
             })
-        default_ecs_disk_attachment = alicloud.ecs.EcsDiskAttachment("defaultEcsDiskAttachment",
+        default_ecs_disk_attachment = alicloud.ecs.EcsDiskAttachment("default",
             disk_id=default_ecs_disk.id,
             instance_id=default_instance.id)
         ```

@@ -49,13 +49,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultAssets = ThreatdetectionFunctions.getAssets(GetAssetsArgs.builder()
+ *         final var default = ThreatdetectionFunctions.getAssets(GetAssetsArgs.builder()
  *             .machineTypes(&#34;ecs&#34;)
  *             .build());
  * 
  *         var defaultWebLockConfig = new WebLockConfig(&#34;defaultWebLockConfig&#34;, WebLockConfigArgs.builder()        
  *             .inclusiveFileType(&#34;php;jsp;asp;aspx;js;cgi;html;htm;xml;shtml;shtm;jpg&#34;)
- *             .uuid(defaultAssets.applyValue(getAssetsResult -&gt; getAssetsResult.ids()[0]))
+ *             .uuid(default_.ids()[0])
  *             .mode(&#34;whitelist&#34;)
  *             .localBackupDir(&#34;/usr/local/aegis/bak&#34;)
  *             .dir(&#34;/tmp/&#34;)

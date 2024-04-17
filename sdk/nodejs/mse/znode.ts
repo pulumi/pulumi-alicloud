@@ -20,20 +20,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleZones = alicloud.getZones({
+ * const example = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
  * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
  *     vswitchName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
  *     vpcId: exampleNetwork.id,
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
  * });
- * const exampleCluster = new alicloud.mse.Cluster("exampleCluster", {
+ * const exampleCluster = new alicloud.mse.Cluster("example", {
  *     clusterSpecification: "MSE_SC_1_2_60_c",
  *     clusterType: "ZooKeeper",
  *     clusterVersion: "ZooKeeper_3_8_0",
@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *     vswitchId: exampleSwitch.id,
  *     vpcId: exampleNetwork.id,
  * });
- * const exampleZnode = new alicloud.mse.Znode("exampleZnode", {
+ * const exampleZnode = new alicloud.mse.Znode("example", {
  *     clusterId: exampleCluster.clusterId,
  *     data: "terraform-example",
  *     path: "/example",

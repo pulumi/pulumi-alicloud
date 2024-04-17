@@ -32,19 +32,22 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const listenerApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer", {
- *     loadBalancerName: pulumi.interpolate`${name}-${_default.result}`,
+ * const listener = new alicloud.slb.ApplicationLoadBalancer("listener", {
+ *     loadBalancerName: `${name}-${_default.result}`,
  *     internetChargeType: "PayByTraffic",
  *     addressType: "internet",
  *     instanceChargeType: "PayByCLCU",
  * });
- * const listenerAcl = new alicloud.slb.Acl("listenerAcl", {ipVersion: "ipv4"});
- * const listenerListener = new alicloud.slb.Listener("listenerListener", {
- *     loadBalancerId: listenerApplicationLoadBalancer.id,
+ * const listenerAcl = new alicloud.slb.Acl("listener", {
+ *     name: `${name}-${_default.result}`,
+ *     ipVersion: "ipv4",
+ * });
+ * const listenerListener = new alicloud.slb.Listener("listener", {
+ *     loadBalancerId: listener.id,
  *     backendPort: 80,
  *     frontendPort: 80,
  *     protocol: "http",

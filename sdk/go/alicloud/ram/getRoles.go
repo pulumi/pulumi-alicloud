@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			rolesDs, err := ram.GetRoles(ctx, &ram.GetRolesArgs{
-//				NameRegex:  pulumi.StringRef(".*test.*"),
 //				OutputFile: pulumi.StringRef("roles.txt"),
+//				NameRegex:  pulumi.StringRef(".*test.*"),
 //				PolicyName: pulumi.StringRef("AliyunACSDefaultAccess"),
 //				PolicyType: pulumi.StringRef("Custom"),
 //			}, nil)

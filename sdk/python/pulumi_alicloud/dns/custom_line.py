@@ -184,8 +184,8 @@ class CustomLine(pulumi.CustomResource):
             custom_line_name="tf-example",
             domain_name="alicloud-provider.com",
             ip_segment_lists=[alicloud.dns.CustomLineIpSegmentListArgs(
-                end_ip="192.0.2.125",
                 start_ip="192.0.2.123",
+                end_ip="192.0.2.125",
             )])
         ```
         <!--End PulumiCodeChooser -->
@@ -231,8 +231,8 @@ class CustomLine(pulumi.CustomResource):
             custom_line_name="tf-example",
             domain_name="alicloud-provider.com",
             ip_segment_lists=[alicloud.dns.CustomLineIpSegmentListArgs(
-                end_ip="192.0.2.125",
                 start_ip="192.0.2.123",
+                end_ip="192.0.2.125",
             )])
         ```
         <!--End PulumiCodeChooser -->

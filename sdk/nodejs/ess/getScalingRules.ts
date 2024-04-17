@@ -17,12 +17,12 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const scalingrulesDs = alicloud.ess.getScalingRules({
+ *     scalingGroupId: "scaling_group_id",
  *     ids: [
  *         "scaling_rule_id1",
  *         "scaling_rule_id2",
  *     ],
  *     nameRegex: "scaling_rule_name",
- *     scalingGroupId: "scaling_group_id",
  * });
  * export const firstScalingRule = scalingrulesDs.then(scalingrulesDs => scalingrulesDs.rules?.[0]?.id);
  * ```
@@ -109,12 +109,12 @@ export interface GetScalingRulesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const scalingrulesDs = alicloud.ess.getScalingRules({
+ *     scalingGroupId: "scaling_group_id",
  *     ids: [
  *         "scaling_rule_id1",
  *         "scaling_rule_id2",
  *     ],
  *     nameRegex: "scaling_rule_name",
- *     scalingGroupId: "scaling_group_id",
  * });
  * export const firstScalingRule = scalingrulesDs.then(scalingrulesDs => scalingrulesDs.rules?.[0]?.id);
  * ```

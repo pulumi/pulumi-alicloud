@@ -29,17 +29,17 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
+    ///     var @default = new AliCloud.Ga.Accelerator("default", new()
     ///     {
     ///         Duration = 1,
     ///         AutoUseCoupon = true,
     ///         Spec = "1",
     ///     });
     /// 
-    ///     var defaultDomain = new AliCloud.Ga.Domain("defaultDomain", new()
+    ///     var defaultDomain = new AliCloud.Ga.Domain("default", new()
     ///     {
     ///         AcceleratedDomain = "changes.com.cn",
-    ///         AcceleratorId = defaultAccelerator.Id,
+    ///         AcceleratorId = @default.Id,
     ///     });
     /// 
     /// });

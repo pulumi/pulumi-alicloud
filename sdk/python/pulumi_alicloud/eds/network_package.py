@@ -145,11 +145,11 @@ class NetworkPackage(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_simple_office_sites = alicloud.eds.get_simple_office_sites(status="REGISTERED",
+        default = alicloud.eds.get_simple_office_sites(status="REGISTERED",
             name_regex="default")
-        default_network_package = alicloud.eds.NetworkPackage("defaultNetworkPackage",
+        default_network_package = alicloud.eds.NetworkPackage("default",
             bandwidth=10,
-            office_site_id=default_simple_office_sites.ids[0])
+            office_site_id=default.ids[0])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -188,11 +188,11 @@ class NetworkPackage(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_simple_office_sites = alicloud.eds.get_simple_office_sites(status="REGISTERED",
+        default = alicloud.eds.get_simple_office_sites(status="REGISTERED",
             name_regex="default")
-        default_network_package = alicloud.eds.NetworkPackage("defaultNetworkPackage",
+        default_network_package = alicloud.eds.NetworkPackage("default",
             bandwidth=10,
-            office_site_id=default_simple_office_sites.ids[0])
+            office_site_id=default.ids[0])
         ```
         <!--End PulumiCodeChooser -->
 

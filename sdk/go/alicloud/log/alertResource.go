@@ -33,9 +33,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := log.NewAlertResource(ctx, "exampleUser", &log.AlertResourceArgs{
-//				Lang: pulumi.String("cn"),
+//			_, err := log.NewAlertResource(ctx, "example_user", &log.AlertResourceArgs{
 //				Type: pulumi.String("user"),
+//				Lang: pulumi.String("cn"),
 //			})
 //			if err != nil {
 //				return err

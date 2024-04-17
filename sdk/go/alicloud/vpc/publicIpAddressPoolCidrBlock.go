@@ -43,22 +43,22 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
 //				Status: pulumi.StringRef("OK"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultPublicIpAddressPool, err := vpc.NewPublicIpAddressPool(ctx, "defaultPublicIpAddressPool", &vpc.PublicIpAddressPoolArgs{
+//			defaultPublicIpAddressPool, err := vpc.NewPublicIpAddressPool(ctx, "default", &vpc.PublicIpAddressPoolArgs{
 //				Description:             pulumi.String(name),
 //				PublicIpAddressPoolName: pulumi.String(name),
 //				Isp:                     pulumi.String("BGP"),
-//				ResourceGroupId:         pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:         pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewPublicIpAddressPoolCidrBlock(ctx, "defaultPublicIpAddressPoolCidrBlock", &vpc.PublicIpAddressPoolCidrBlockArgs{
+//			_, err = vpc.NewPublicIpAddressPoolCidrBlock(ctx, "default", &vpc.PublicIpAddressPoolCidrBlockArgs{
 //				PublicIpAddressPoolId: defaultPublicIpAddressPool.ID(),
 //				CidrBlock:             pulumi.String("47.118.126.0/25"),
 //			})

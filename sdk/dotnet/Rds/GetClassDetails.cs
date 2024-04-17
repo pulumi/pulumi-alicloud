@@ -31,10 +31,10 @@ namespace Pulumi.AliCloud.Rds
         /// {
         ///     var @default = AliCloud.Rds.GetClassDetails.Invoke(new()
         ///     {
-        ///         ClassCode = "mysql.n4.medium.2c",
         ///         CommodityCode = "bards",
-        ///         Engine = "MySQL",
+        ///         ClassCode = "mysql.n4.medium.2c",
         ///         EngineVersion = "8.0",
+        ///         Engine = "MySQL",
         ///     });
         /// 
         /// });
@@ -64,10 +64,10 @@ namespace Pulumi.AliCloud.Rds
         /// {
         ///     var @default = AliCloud.Rds.GetClassDetails.Invoke(new()
         ///     {
-        ///         ClassCode = "mysql.n4.medium.2c",
         ///         CommodityCode = "bards",
-        ///         Engine = "MySQL",
+        ///         ClassCode = "mysql.n4.medium.2c",
         ///         EngineVersion = "8.0",
+        ///         Engine = "MySQL",
         ///     });
         /// 
         /// });

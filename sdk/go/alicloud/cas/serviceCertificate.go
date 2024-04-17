@@ -38,14 +38,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cas.NewServiceCertificate(ctx, "defaultServiceCertificate", &cas.ServiceCertificateArgs{
+//			_, err = cas.NewServiceCertificate(ctx, "default", &cas.ServiceCertificateArgs{
+//				CertificateName: pulumi.String(fmt.Sprintf("tf-example-%v", _default.Result)),
 //				Cert: pulumi.String(`-----BEGIN CERTIFICATE-----
 //
 // MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
@@ -68,12 +69,8 @@ import (
 // TTc40xwvQROekWUyxeJL7xaHuylUHE0bxsiIfx5bZsBizRjprIwGlj85CSPuTZyP
 // DPfaiZAN/61h5HNAnxLltOZfqabKYYw7l9LBDg==
 // -----END CERTIFICATE-----
-//
 // `),
 //
-//	CertificateName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//		return fmt.Sprintf("tf-example-%v", result), nil
-//	}).(pulumi.StringOutput),
 //	Key: pulumi.String(`-----BEGIN PRIVATE KEY-----
 //
 // MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDOST00lQfs8tJA
@@ -103,7 +100,6 @@ import (
 // CIFqfEL5NriQelqrFsvgHsmD+MpvDoSWm5C8IrTubtlNyWUzXSVT4OIwzPobzPqG
 // LILJ+e7bLw8RrM0HfgFnl8c=
 // -----END PRIVATE KEY-----
-//
 // `),
 //
 //			})

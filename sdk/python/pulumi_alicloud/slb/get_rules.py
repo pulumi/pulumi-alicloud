@@ -137,28 +137,31 @@ def get_rules(frontend_port: Optional[int] = None,
     name = config.get("name")
     if name is None:
         name = "slbrulebasicconfig"
-    default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+    default = alicloud.get_zones(available_disk_category="cloud_efficiency",
         available_resource_creation="VSwitch")
-    default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-    default_switch = alicloud.vpc.Switch("defaultSwitch",
+    default_network = alicloud.vpc.Network("default",
+        name=name,
+        cidr_block="172.16.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
         vpc_id=default_network.id,
         cidr_block="172.16.0.0/16",
-        zone_id=default_zones.zones[0].id,
+        zone_id=default.zones[0].id,
         vswitch_name=name)
-    default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+    default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("default",
         load_balancer_name=name,
         vswitch_id=default_switch.id)
-    default_listener = alicloud.slb.Listener("defaultListener",
+    default_listener = alicloud.slb.Listener("default",
         load_balancer_id=default_application_load_balancer.id,
         backend_port=22,
         frontend_port=22,
         protocol="http",
         bandwidth=5,
         health_check_connect_port=20)
-    default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_application_load_balancer.id)
-    default_rule = alicloud.slb.Rule("defaultRule",
+    default_server_group = alicloud.slb.ServerGroup("default", load_balancer_id=default_application_load_balancer.id)
+    default_rule = alicloud.slb.Rule("default",
         load_balancer_id=default_application_load_balancer.id,
         frontend_port=default_listener.frontend_port,
+        name=name,
         domain="*.aliyun.com",
         url="/image",
         server_group_id=default_server_group.id)
@@ -216,28 +219,31 @@ def get_rules_output(frontend_port: Optional[pulumi.Input[int]] = None,
     name = config.get("name")
     if name is None:
         name = "slbrulebasicconfig"
-    default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+    default = alicloud.get_zones(available_disk_category="cloud_efficiency",
         available_resource_creation="VSwitch")
-    default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-    default_switch = alicloud.vpc.Switch("defaultSwitch",
+    default_network = alicloud.vpc.Network("default",
+        name=name,
+        cidr_block="172.16.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
         vpc_id=default_network.id,
         cidr_block="172.16.0.0/16",
-        zone_id=default_zones.zones[0].id,
+        zone_id=default.zones[0].id,
         vswitch_name=name)
-    default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+    default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("default",
         load_balancer_name=name,
         vswitch_id=default_switch.id)
-    default_listener = alicloud.slb.Listener("defaultListener",
+    default_listener = alicloud.slb.Listener("default",
         load_balancer_id=default_application_load_balancer.id,
         backend_port=22,
         frontend_port=22,
         protocol="http",
         bandwidth=5,
         health_check_connect_port=20)
-    default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_application_load_balancer.id)
-    default_rule = alicloud.slb.Rule("defaultRule",
+    default_server_group = alicloud.slb.ServerGroup("default", load_balancer_id=default_application_load_balancer.id)
+    default_rule = alicloud.slb.Rule("default",
         load_balancer_id=default_application_load_balancer.id,
         frontend_port=default_listener.frontend_port,
+        name=name,
         domain="*.aliyun.com",
         url="/image",
         server_group_id=default_server_group.id)

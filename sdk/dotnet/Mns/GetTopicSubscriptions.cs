@@ -29,8 +29,8 @@ namespace Pulumi.AliCloud.Mns
         /// {
         ///     var subscriptions = AliCloud.Mns.GetTopicSubscriptions.Invoke(new()
         ///     {
-        ///         NamePrefix = "tf-",
         ///         TopicName = "topic_name",
+        ///         NamePrefix = "tf-",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -62,8 +62,8 @@ namespace Pulumi.AliCloud.Mns
         /// {
         ///     var subscriptions = AliCloud.Mns.GetTopicSubscriptions.Invoke(new()
         ///     {
-        ///         NamePrefix = "tf-",
         ///         TopicName = "topic_name",
+        ///         NamePrefix = "tf-",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

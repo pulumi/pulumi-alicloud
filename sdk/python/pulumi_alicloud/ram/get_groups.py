@@ -132,9 +132,9 @@ def get_groups(name_regex: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    groups_ds = alicloud.ram.get_groups(name_regex="^group[0-9]*",
-        output_file="groups.txt",
-        user_name="user1")
+    groups_ds = alicloud.ram.get_groups(output_file="groups.txt",
+        user_name="user1",
+        name_regex="^group[0-9]*")
     pulumi.export("firstGroupName", groups_ds.groups[0].name)
     ```
     <!--End PulumiCodeChooser -->
@@ -185,9 +185,9 @@ def get_groups_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    groups_ds = alicloud.ram.get_groups(name_regex="^group[0-9]*",
-        output_file="groups.txt",
-        user_name="user1")
+    groups_ds = alicloud.ram.get_groups(output_file="groups.txt",
+        user_name="user1",
+        name_regex="^group[0-9]*")
     pulumi.export("firstGroupName", groups_ds.groups[0].name)
     ```
     <!--End PulumiCodeChooser -->

@@ -42,18 +42,20 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleEventBus, err := eventbridge.NewEventBus(ctx, "exampleEventBus", &eventbridge.EventBusArgs{
+//			example, err := eventbridge.NewEventBus(ctx, "example", &eventbridge.EventBusArgs{
 //				EventBusName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleQueue, err := mns.NewQueue(ctx, "exampleQueue", nil)
+//			exampleQueue, err := mns.NewQueue(ctx, "example", &mns.QueueArgs{
+//				Name: pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = eventbridge.NewEventSource(ctx, "exampleEventSource", &eventbridge.EventSourceArgs{
-//				EventBusName:         exampleEventBus.EventBusName,
+//			_, err = eventbridge.NewEventSource(ctx, "example", &eventbridge.EventSourceArgs{
+//				EventBusName:         example.EventBusName,
 //				EventSourceName:      pulumi.String(name),
 //				Description:          pulumi.String(name),
 //				LinkedExternalSource: pulumi.Bool(true),

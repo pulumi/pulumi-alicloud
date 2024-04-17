@@ -14,6 +14,84 @@ import (
 // This data source provides the Ecp Instances of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.158.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecp"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := ecp.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetInstanceTypes, err := ecp.GetInstanceTypes(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			countSize := len(_default.Zones)
+//			zoneId := _default.Zones[countSize-1].ZoneId
+//			instanceTypeCountSize := len(defaultGetInstanceTypes.InstanceTypes)
+//			_ := defaultGetInstanceTypes.InstanceTypes[instanceTypeCountSize-1].InstanceType
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(zoneId),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.Any(name),
+//				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultKeyPair, err := ecp.NewKeyPair(ctx, "default", &ecp.KeyPairArgs{
+//				KeyPairName:   pulumi.Any(name),
+//				PublicKeyBody: pulumi.String("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecp.NewInstance(ctx, "default", &ecp.InstanceArgs{
+//				InstanceName: pulumi.Any(name),
+//				Description:  pulumi.Any(name),
+//				Force:        pulumi.Bool(true),
+//				KeyPairName:  defaultKeyPair.KeyPairName,
+//				VswitchId:    pulumi.String(defaultGetSwitches.Ids[0]),
+//				ImageId:      pulumi.String("android_9_0_0_release_2851157_20211201.vhd"),
+//				InstanceType: defaultGetInstanceTypes.InstanceTypes[instanceTypeCountSize-1].InstanceType,
+//				PaymentType:  pulumi.String("PayAsYouGo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult

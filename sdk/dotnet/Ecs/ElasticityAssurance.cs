@@ -16,6 +16,55 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:** Available in v1.196.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     {
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "Instance",
+    ///     });
+    /// 
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         InstanceTypeFamily = "ecs.c6",
+    ///     });
+    /// 
+    ///     var defaultElasticityAssurance = new AliCloud.Ecs.ElasticityAssurance("default", new()
+    ///     {
+    ///         InstanceAmount = 1,
+    ///         Description = "before",
+    ///         ZoneIds = new[]
+    ///         {
+    ///             defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         },
+    ///         PrivatePoolOptionsName = "test_before",
+    ///         Period = 1,
+    ///         PrivatePoolOptionsMatchCriteria = "Open",
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         PeriodUnit = "Month",
+    ///         AssuranceTimes = "Unlimited",
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// Ecs Elasticity Assurance can be imported using the id, e.g.

@@ -22,14 +22,14 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultAccount = alicloud.getAccount({});
+ * const default = alicloud.getAccount({});
  * const source = new alicloud.cms.Namespace("source", {namespace: name});
- * const defaultNamespace = new alicloud.cms.Namespace("defaultNamespace", {namespace: `${name}-source`});
- * const defaultServiceHybridDoubleWrite = new alicloud.cloudmonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", {
+ * const defaultNamespace = new alicloud.cms.Namespace("default", {namespace: `${name}-source`});
+ * const defaultServiceHybridDoubleWrite = new alicloud.cloudmonitor.ServiceHybridDoubleWrite("default", {
  *     sourceNamespace: source.id,
- *     sourceUserId: defaultAccount.then(defaultAccount => defaultAccount.id),
+ *     sourceUserId: _default.then(_default => _default.id),
  *     namespace: defaultNamespace.id,
- *     userId: defaultAccount.then(defaultAccount => defaultAccount.id),
+ *     userId: _default.then(_default => _default.id),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -1191,7 +1191,7 @@ public final class CfgFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getConfigurationRecorders();
      * 
-     *         ctx.export(&#34;listOfResourceTypes&#34;, data.alicloud_config_configuration_recorders().this().recorders()[0].resource_types());
+     *         ctx.export(&#34;listOfResourceTypes&#34;, this_.recorders()[0].resourceTypes());
      *     }
      * }
      * ```
@@ -1234,7 +1234,7 @@ public final class CfgFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getConfigurationRecorders();
      * 
-     *         ctx.export(&#34;listOfResourceTypes&#34;, data.alicloud_config_configuration_recorders().this().recorders()[0].resource_types());
+     *         ctx.export(&#34;listOfResourceTypes&#34;, this_.recorders()[0].resourceTypes());
      *     }
      * }
      * ```
@@ -1277,7 +1277,7 @@ public final class CfgFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getConfigurationRecorders();
      * 
-     *         ctx.export(&#34;listOfResourceTypes&#34;, data.alicloud_config_configuration_recorders().this().recorders()[0].resource_types());
+     *         ctx.export(&#34;listOfResourceTypes&#34;, this_.recorders()[0].resourceTypes());
      *     }
      * }
      * ```
@@ -1320,7 +1320,7 @@ public final class CfgFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getConfigurationRecorders();
      * 
-     *         ctx.export(&#34;listOfResourceTypes&#34;, data.alicloud_config_configuration_recorders().this().recorders()[0].resource_types());
+     *         ctx.export(&#34;listOfResourceTypes&#34;, this_.recorders()[0].resourceTypes());
      *     }
      * }
      * ```
@@ -1363,7 +1363,7 @@ public final class CfgFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getConfigurationRecorders();
      * 
-     *         ctx.export(&#34;listOfResourceTypes&#34;, data.alicloud_config_configuration_recorders().this().recorders()[0].resource_types());
+     *         ctx.export(&#34;listOfResourceTypes&#34;, this_.recorders()[0].resourceTypes());
      *     }
      * }
      * ```
@@ -1406,7 +1406,7 @@ public final class CfgFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getConfigurationRecorders();
      * 
-     *         ctx.export(&#34;listOfResourceTypes&#34;, data.alicloud_config_configuration_recorders().this().recorders()[0].resource_types());
+     *         ctx.export(&#34;listOfResourceTypes&#34;, this_.recorders()[0].resourceTypes());
      *     }
      * }
      * ```

@@ -19,9 +19,9 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const groupsDs = alicloud.ram.getGroups({
- *     nameRegex: "^group[0-9]*",
  *     outputFile: "groups.txt",
  *     userName: "user1",
+ *     nameRegex: "^group[0-9]*",
  * });
  * export const firstGroupName = groupsDs.then(groupsDs => groupsDs.groups?.[0]?.name);
  * ```
@@ -101,9 +101,9 @@ export interface GetGroupsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const groupsDs = alicloud.ram.getGroups({
- *     nameRegex: "^group[0-9]*",
  *     outputFile: "groups.txt",
  *     userName: "user1",
+ *     nameRegex: "^group[0-9]*",
  * });
  * export const firstGroupName = groupsDs.then(groupsDs => groupsDs.groups?.[0]?.name);
  * ```

@@ -214,13 +214,13 @@ class EcsPrefixList(pulumi.CustomResource):
 
         default = alicloud.ecs.EcsPrefixList("default",
             address_family="IPv4",
+            max_entries=2,
+            prefix_list_name="tftest",
             description="description",
             entries=[alicloud.ecs.EcsPrefixListEntryArgs(
                 cidr="192.168.0.0/24",
                 description="description",
-            )],
-            max_entries=2,
-            prefix_list_name="tftest")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -264,13 +264,13 @@ class EcsPrefixList(pulumi.CustomResource):
 
         default = alicloud.ecs.EcsPrefixList("default",
             address_family="IPv4",
+            max_entries=2,
+            prefix_list_name="tftest",
             description="description",
             entries=[alicloud.ecs.EcsPrefixListEntryArgs(
                 cidr="192.168.0.0/24",
                 description="description",
-            )],
-            max_entries=2,
-            prefix_list_name="tftest")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

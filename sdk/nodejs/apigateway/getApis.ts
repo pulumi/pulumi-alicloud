@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * const dataApigatwayApis = alicloud.apigateway.getApis({
  *     outputFile: "output_ApiGatawayApis",
  * });
- * export const firstApiId = data.alicloud_api_gateway_apis.data_apigatway.apis[0].id;
+ * export const firstApiId = dataApigatway.apis[0].id;
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -108,7 +108,7 @@ export interface GetApisResult {
  * const dataApigatwayApis = alicloud.apigateway.getApis({
  *     outputFile: "output_ApiGatawayApis",
  * });
- * export const firstApiId = data.alicloud_api_gateway_apis.data_apigatway.apis[0].id;
+ * export const firstApiId = dataApigatway.apis[0].id;
  * ```
  * <!--End PulumiCodeChooser -->
  */

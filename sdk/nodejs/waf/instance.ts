@@ -13,6 +13,36 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.83.0+ .
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * export = async () => {
+ *     const default = await alicloud.waf.getInstances({});
+ *     const defaultInstance: alicloud.waf.Instance[] = [];
+ *     for (const range = {value: 0}; range.value < (_default.instances.length > 0 ? 0 : 1); range.value++) {
+ *         defaultInstance.push(new alicloud.waf.Instance(`default-${range.value}`, {
+ *             bigScreen: "0",
+ *             exclusiveIpPackage: "1",
+ *             extBandwidth: "50",
+ *             extDomainPackage: "1",
+ *             packageCode: "version_3",
+ *             prefessionalService: "false",
+ *             subscriptionType: "Subscription",
+ *             period: 1,
+ *             wafLog: "false",
+ *             logStorage: "3",
+ *             logTime: "180",
+ *             resourceGroupId: "rs-abc12345",
+ *         }));
+ *     }
+ * }
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * WAF instance can be imported using the id, e.g.

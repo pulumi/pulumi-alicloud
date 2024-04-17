@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const myRepos = alicloud.cs.getRegistryEnterpriseRepos({
  *     instanceId: "cri-xx",
  *     nameRegex: "my-repos",
@@ -114,6 +115,7 @@ export interface GetRegistryEnterpriseReposResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const myRepos = alicloud.cs.getRegistryEnterpriseRepos({
  *     instanceId: "cri-xx",
  *     nameRegex: "my-repos",

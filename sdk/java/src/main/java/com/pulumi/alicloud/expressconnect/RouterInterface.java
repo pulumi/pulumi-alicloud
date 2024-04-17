@@ -60,13 +60,13 @@ import javax.annotation.Nullable;
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
  * 
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
  *         var defaultRouterInterface = new RouterInterface(&#34;defaultRouterInterface&#34;, RouterInterfaceArgs.builder()        
  *             .description(name)
- *             .oppositeRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .oppositeRegionId(default_.regions()[0].id())
  *             .routerId(defaultNetwork.routerId())
  *             .role(&#34;InitiatingSide&#34;)
  *             .routerType(&#34;VRouter&#34;)

@@ -29,33 +29,33 @@ namespace Pulumi.AliCloud.KVStore
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultZones = AliCloud.KVStore.GetZones.Invoke();
+    ///     var @default = AliCloud.KVStore.GetZones.Invoke();
     /// 
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
     ///         Status = "OK",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "10.4.0.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.KVStore.Instance("default", new()
     ///     {
     ///         DbInstanceName = name,
     ///         VswitchId = defaultSwitch.Id,
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         InstanceClass = "redis.master.large.default",
     ///         InstanceType = "Redis",
     ///         EngineVersion = "5.0",
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.KVStore
     ///         },
     ///     });
     /// 
-    ///     var defaultConnection = new AliCloud.KVStore.Connection("defaultConnection", new()
+    ///     var defaultConnection = new AliCloud.KVStore.Connection("default", new()
     ///     {
     ///         ConnectionStringPrefix = "exampleconnection",
     ///         InstanceId = defaultInstance.Id,

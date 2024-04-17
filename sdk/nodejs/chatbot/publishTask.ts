@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAgents = alicloud.chatbot.getAgents({});
- * const defaultPublishTask = new alicloud.chatbot.PublishTask("defaultPublishTask", {
+ * const default = alicloud.chatbot.getAgents({});
+ * const defaultPublishTask = new alicloud.chatbot.PublishTask("default", {
  *     bizType: "faq",
- *     agentKey: defaultAgents.then(defaultAgents => defaultAgents.agents?.[0]?.agentKey),
+ *     agentKey: _default.then(_default => _default.agents?.[0]?.agentKey),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -29,6 +29,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
@@ -46,40 +48,41 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:     defaultNetwork.ID(),
 //				CidrBlock: pulumi.String("172.16.0.0/24"),
-//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
+//			defaultInstance, err := alikafka.NewInstance(ctx, "default", &alikafka.InstanceArgs{
+//				Name:          pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
 //				PartitionNum:  pulumi.Int(50),
 //				DiskType:      pulumi.Int(1),
 //				DiskSize:      pulumi.Int(500),
@@ -91,7 +94,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = alikafka.NewConsumerGroup(ctx, "defaultConsumerGroup", &alikafka.ConsumerGroupArgs{
+//			_, err = alikafka.NewConsumerGroup(ctx, "default", &alikafka.ConsumerGroupArgs{
 //				ConsumerId: pulumi.String(name),
 //				InstanceId: defaultInstance.ID(),
 //			})

@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Ga
     ///         Current = true,
     ///     });
     /// 
-    ///     var exampleAccelerator = new AliCloud.Ga.Accelerator("exampleAccelerator", new()
+    ///     var example = new AliCloud.Ga.Accelerator("example", new()
     ///     {
     ///         Duration = 3,
     ///         Spec = "2",
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Ga
     ///         RenewalStatus = "AutoRenewal",
     ///     });
     /// 
-    ///     var exampleBandwidthPackage = new AliCloud.Ga.BandwidthPackage("exampleBandwidthPackage", new()
+    ///     var exampleBandwidthPackage = new AliCloud.Ga.BandwidthPackage("example", new()
     ///     {
     ///         Type = "Basic",
     ///         Bandwidth = 20,
@@ -61,17 +61,18 @@ namespace Pulumi.AliCloud.Ga
     ///         Description = name,
     ///     });
     /// 
-    ///     var exampleBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", new()
+    ///     var exampleBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("example", new()
     ///     {
-    ///         AcceleratorId = exampleAccelerator.Id,
+    ///         AcceleratorId = example.Id,
     ///         BandwidthPackageId = exampleBandwidthPackage.Id,
     ///     });
     /// 
-    ///     var exampleListener = new AliCloud.Ga.Listener("exampleListener", new()
+    ///     var exampleListener = new AliCloud.Ga.Listener("example", new()
     ///     {
     ///         AcceleratorId = exampleBandwidthPackageAttachment.AcceleratorId,
     ///         ClientAffinity = "SOURCE_IP",
     ///         Description = name,
+    ///         Name = name,
     ///         Protocol = "HTTP",
     ///         ProxyProtocol = true,
     ///         PortRanges = new[]
@@ -84,7 +85,7 @@ namespace Pulumi.AliCloud.Ga
     ///         },
     ///     });
     /// 
-    ///     var exampleEipAddress = new AliCloud.Ecs.EipAddress("exampleEipAddress", new()
+    ///     var exampleEipAddress = new AliCloud.Ecs.EipAddress("example", new()
     ///     {
     ///         Bandwidth = "10",
     ///         InternetChargeType = "PayByBandwidth",
@@ -92,7 +93,7 @@ namespace Pulumi.AliCloud.Ga
     /// 
     ///     var @virtual = new AliCloud.Ga.EndpointGroup("virtual", new()
     ///     {
-    ///         AcceleratorId = exampleAccelerator.Id,
+    ///         AcceleratorId = example.Id,
     ///         EndpointConfigurations = new[]
     ///         {
     ///             new AliCloud.Ga.Inputs.EndpointGroupEndpointConfigurationArgs
@@ -110,6 +111,7 @@ namespace Pulumi.AliCloud.Ga
     ///         EndpointRequestProtocol = "HTTPS",
     ///         HealthCheckIntervalSeconds = 4,
     ///         HealthCheckPath = "/path",
+    ///         Name = name,
     ///         ThresholdCount = 4,
     ///         TrafficPercentage = 20,
     ///         PortOverrides = new AliCloud.Ga.Inputs.EndpointGroupPortOverridesArgs
@@ -119,9 +121,9 @@ namespace Pulumi.AliCloud.Ga
     ///         },
     ///     });
     /// 
-    ///     var exampleForwardingRule = new AliCloud.Ga.ForwardingRule("exampleForwardingRule", new()
+    ///     var exampleForwardingRule = new AliCloud.Ga.ForwardingRule("example", new()
     ///     {
-    ///         AcceleratorId = exampleAccelerator.Id,
+    ///         AcceleratorId = example.Id,
     ///         ListenerId = exampleListener.Id,
     ///         RuleConditions = new[]
     ///         {

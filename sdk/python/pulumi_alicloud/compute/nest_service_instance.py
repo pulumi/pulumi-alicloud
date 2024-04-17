@@ -498,37 +498,37 @@ class NestServiceInstance(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexample"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_get_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_get_zones.zones[0].id,
             instance_type_family="ecs.sn1ne")
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.1.0.0/16",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
+            zone_id=default_get_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("default",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             security_groups=[__item.id for __item in [default_security_group]],
             internet_charge_type="PayByTraffic",
             internet_max_bandwidth_out=10,
-            availability_zone=default_zones.zones[0].id,
+            availability_zone=default_get_zones.zones[0].id,
             instance_charge_type="PostPaid",
             system_disk_category="cloud_efficiency",
             vswitch_id=default_switch.id)
-        default_nest_service_instance = alicloud.compute.NestServiceInstance("defaultNestServiceInstance",
+        default_nest_service_instance = alicloud.compute.NestServiceInstance("default",
             service_id="service-dd475e6e468348799f0f",
             service_version="1",
             service_instance_name=name,
-            resource_group_id=default_resource_groups.groups[0].id,
+            resource_group_id=default.groups[0].id,
             payment_type="Permanent",
             operation_metadata=alicloud.compute.NestServiceInstanceOperationMetadataArgs(
                 operation_start_time="1681281179000",
@@ -601,37 +601,37 @@ class NestServiceInstance(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexample"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_get_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_get_zones.zones[0].id,
             instance_type_family="ecs.sn1ne")
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.1.0.0/16",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
+            zone_id=default_get_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("default",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             security_groups=[__item.id for __item in [default_security_group]],
             internet_charge_type="PayByTraffic",
             internet_max_bandwidth_out=10,
-            availability_zone=default_zones.zones[0].id,
+            availability_zone=default_get_zones.zones[0].id,
             instance_charge_type="PostPaid",
             system_disk_category="cloud_efficiency",
             vswitch_id=default_switch.id)
-        default_nest_service_instance = alicloud.compute.NestServiceInstance("defaultNestServiceInstance",
+        default_nest_service_instance = alicloud.compute.NestServiceInstance("default",
             service_id="service-dd475e6e468348799f0f",
             service_version="1",
             service_instance_name=name,
-            resource_group_id=default_resource_groups.groups[0].id,
+            resource_group_id=default.groups[0].id,
             payment_type="Permanent",
             operation_metadata=alicloud.compute.NestServiceInstanceOperationMetadataArgs(
                 operation_start_time="1681281179000",

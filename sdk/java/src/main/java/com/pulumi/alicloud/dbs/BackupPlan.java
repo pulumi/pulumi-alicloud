@@ -70,11 +70,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .status(&#34;OK&#34;)
  *             .build());
  * 
- *         final var defaultZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *         final var defaultGetZones = RdsFunctions.getZones(GetZonesArgs.builder()
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
  *             .instanceChargeType(&#34;PostPaid&#34;)
@@ -82,8 +82,8 @@ import javax.annotation.Nullable;
  *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
  *             .build());
  * 
- *         final var defaultInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var defaultGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
  *             .category(&#34;HighAvailability&#34;)
@@ -91,35 +91,37 @@ import javax.annotation.Nullable;
  *             .instanceChargeType(&#34;PostPaid&#34;)
  *             .build());
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
  *             .nameRegex(&#34;^default-NODELETING&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         final var vswitchId = defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]);
+ *         final var vswitchId = defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]);
  * 
- *         final var zoneId = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]);
+ *         final var zoneId = defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]);
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .name(name)
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
  *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
- *             .instanceType(defaultInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(defaultInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceType(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
  *             .vswitchId(vswitchId)
  *             .instanceName(name)
  *             .build());
  * 
  *         var defaultDatabase = new Database(&#34;defaultDatabase&#34;, DatabaseArgs.builder()        
  *             .instanceId(defaultInstance.id())
+ *             .name(&#34;tfdatabase&#34;)
  *             .build());
  * 
  *         var defaultRdsAccount = new RdsAccount(&#34;defaultRdsAccount&#34;, RdsAccountArgs.builder()        
@@ -145,7 +147,7 @@ import javax.annotation.Nullable;
  *             .storageRegion(&#34;cn-hangzhou&#34;)
  *             .instanceType(&#34;RDS&#34;)
  *             .sourceEndpointInstanceType(&#34;RDS&#34;)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(default_.ids()[0])
  *             .sourceEndpointRegion(&#34;cn-hangzhou&#34;)
  *             .sourceEndpointInstanceId(defaultInstance.id())
  *             .sourceEndpointUserName(defaultAccountPrivilege.accountName())

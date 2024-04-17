@@ -34,50 +34,50 @@ namespace Pulumi.AliCloud.EipAnycast
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultZones = AliCloud.Slb.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Slb.GetZones.Invoke(new()
     ///     {
     ///         AvailableSlbAddressType = "vpc",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.0.0.0/8",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "10.1.0.0/16",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new()
+    ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("default", new()
     ///     {
     ///         AddressType = "intranet",
     ///         VswitchId = defaultSwitch.Id,
     ///         LoadBalancerName = name,
     ///         LoadBalancerSpec = "slb.s1.small",
-    ///         MasterZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         MasterZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var defaultAnycastEipAddress = new AliCloud.EipAnycast.AnycastEipAddress("defaultAnycastEipAddress", new()
+    ///     var defaultAnycastEipAddress = new AliCloud.EipAnycast.AnycastEipAddress("default", new()
     ///     {
     ///         AnycastEipAddressName = name,
     ///         ServiceLocation = "ChineseMainland",
     ///     });
     /// 
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultAnycastEipAddressAttachment = new AliCloud.EipAnycast.AnycastEipAddressAttachment("defaultAnycastEipAddressAttachment", new()
+    ///     var defaultAnycastEipAddressAttachment = new AliCloud.EipAnycast.AnycastEipAddressAttachment("default", new()
     ///     {
     ///         BindInstanceId = defaultApplicationLoadBalancer.Id,
     ///         BindInstanceType = "SlbInstance",
-    ///         BindInstanceRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         BindInstanceRegionId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
     ///         AnycastId = defaultAnycastEipAddress.Id,
     ///     });
     /// 
@@ -100,32 +100,22 @@ namespace Pulumi.AliCloud.EipAnycast
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var beijing = new AliCloud.Provider("beijing", new()
-    ///     {
-    ///         Region = "cn-beijing",
-    ///     });
-    /// 
-    ///     var hangzhou = new AliCloud.Provider("hangzhou", new()
-    ///     {
-    ///         Region = "cn-hangzhou",
-    ///     });
-    /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         NameRegex = "^ubuntu_18.*64",
     ///         MostRecent = true,
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 1,
     ///         MemorySize = 2,
     ///     });
@@ -134,33 +124,24 @@ namespace Pulumi.AliCloud.EipAnycast
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "192.168.0.0/16",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = "alicloud.beijing",
     ///     });
     /// 
     ///     var defaultVsw = new AliCloud.Vpc.Switch("defaultVsw", new()
     ///     {
     ///         VpcId = defaultVpc.Id,
     ///         CidrBlock = "192.168.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = "alicloud.beijing",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
     ///     var defaultuBsECI = new AliCloud.Ecs.SecurityGroup("defaultuBsECI", new()
     ///     {
     ///         VpcId = defaultVpc.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = "alicloud.beijing",
     ///     });
     /// 
     ///     var default9KDlN7 = new AliCloud.Ecs.Instance("default9KDlN7", new()
     ///     {
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         InstanceName = name,
     ///         SecurityGroups = new[]
     ///         {
@@ -170,44 +151,35 @@ namespace Pulumi.AliCloud.EipAnycast
     ///         InstanceChargeType = "PostPaid",
     ///         SystemDiskCategory = "cloud_efficiency",
     ///         VswitchId = defaultVsw.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = "alicloud.beijing",
     ///     });
     /// 
     ///     var defaultXkpFRs = new AliCloud.EipAnycast.AnycastEipAddress("defaultXkpFRs", new()
     ///     {
     ///         ServiceLocation = "ChineseMainland",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = "alicloud.hangzhou",
     ///     });
     /// 
     ///     var defaultVpc2 = new AliCloud.Vpc.Network("defaultVpc2", new()
     ///     {
     ///         VpcName = $"{name}6",
     ///         CidrBlock = "192.168.0.0/16",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = "alicloud.hangzhou",
     ///     });
     /// 
-    ///     var default2Zones = AliCloud.GetZones.Invoke(new()
+    ///     var default2 = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var default2Images = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var default2GetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         NameRegex = "^ubuntu_18.*64",
     ///         MostRecent = true,
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var default2InstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var default2GetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         AvailabilityZone = default2Zones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         AvailabilityZone = default2.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 1,
     ///         MemorySize = 2,
     ///     });
@@ -216,24 +188,18 @@ namespace Pulumi.AliCloud.EipAnycast
     ///     {
     ///         VpcId = defaultVpc2.Id,
     ///         CidrBlock = "192.168.0.0/24",
-    ///         ZoneId = default2Zones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = "alicloud.hangzhou",
+    ///         ZoneId = default2.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
     ///     });
     /// 
     ///     var defaultuBsECI2 = new AliCloud.Ecs.SecurityGroup("defaultuBsECI2", new()
     ///     {
     ///         VpcId = defaultVpc2.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = "alicloud.hangzhou",
     ///     });
     /// 
     ///     var defaultEcs2 = new AliCloud.Ecs.Instance("defaultEcs2", new()
     ///     {
-    ///         ImageId = default2Images.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceType = default2InstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         ImageId = default2GetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = default2GetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         InstanceName = name,
     ///         SecurityGroups = new[]
     ///         {
@@ -243,9 +209,6 @@ namespace Pulumi.AliCloud.EipAnycast
     ///         InstanceChargeType = "PostPaid",
     ///         SystemDiskCategory = "cloud_efficiency",
     ///         VswitchId = defaultdsVsw2.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = "alicloud.hangzhou",
     ///     });
     /// 
     ///     var defaultEfYBJY = new AliCloud.EipAnycast.AnycastEipAddressAttachment("defaultEfYBJY", new()
@@ -255,9 +218,6 @@ namespace Pulumi.AliCloud.EipAnycast
     ///         BindInstanceRegionId = "cn-beijing",
     ///         AnycastId = defaultXkpFRs.Id,
     ///         AssociationMode = "Default",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = "alicloud.beijing",
     ///     });
     /// 
     ///     var normal = new AliCloud.EipAnycast.AnycastEipAddressAttachment("normal", new()
@@ -266,9 +226,6 @@ namespace Pulumi.AliCloud.EipAnycast
     ///         BindInstanceType = "NetworkInterface",
     ///         BindInstanceRegionId = "cn-hangzhou",
     ///         AnycastId = defaultEfYBJY.AnycastId,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = "alicloud.hangzhou",
     ///     });
     /// 
     /// });

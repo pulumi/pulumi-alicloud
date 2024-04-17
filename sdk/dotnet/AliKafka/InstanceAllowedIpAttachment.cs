@@ -32,38 +32,39 @@ namespace Pulumi.AliCloud.AliKafka
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "10.4.0.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.AliKafka.Instance("default", new()
     ///     {
+    ///         Name = $"{name}-{defaultInteger.Result}",
     ///         PartitionNum = 50,
     ///         DiskType = 1,
     ///         DiskSize = 500,
@@ -73,7 +74,7 @@ namespace Pulumi.AliCloud.AliKafka
     ///         SecurityGroup = defaultSecurityGroup.Id,
     ///     });
     /// 
-    ///     var defaultInstanceAllowedIpAttachment = new AliCloud.AliKafka.InstanceAllowedIpAttachment("defaultInstanceAllowedIpAttachment", new()
+    ///     var defaultInstanceAllowedIpAttachment = new AliCloud.AliKafka.InstanceAllowedIpAttachment("default", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
     ///         AllowedType = "vpc",

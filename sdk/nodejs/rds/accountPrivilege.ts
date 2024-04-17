@@ -20,18 +20,18 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const defaultZones = alicloud.rds.getZones({
+ * const default = alicloud.rds.getZones({
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const instance = new alicloud.rds.Instance("instance", {
@@ -46,6 +46,7 @@ import * as utilities from "../utilities";
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     db.push(new alicloud.rds.Database(`db-${range.value}`, {
  *         instanceId: instance.id,
+ *         name: `${name}_${range.value}`,
  *         description: "from terraform",
  *     }));
  * }

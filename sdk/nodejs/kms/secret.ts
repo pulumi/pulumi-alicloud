@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.kms.Secret("default", {
- *     description: "from terraform",
- *     forceDeleteWithoutRecovery: true,
- *     secretData: "Secret data.",
  *     secretName: "secret-foo",
+ *     description: "from terraform",
+ *     secretData: "Secret data.",
  *     versionId: "000000000001",
+ *     forceDeleteWithoutRecovery: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

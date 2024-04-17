@@ -20,14 +20,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAccount = alicloud.getAccount({});
+ * const default = alicloud.getAccount({});
  * const source = new alicloud.cms.Namespace("source", {namespace: "your-source-namespace"});
- * const defaultNamespace = new alicloud.cms.Namespace("defaultNamespace", {namespace: "your-namespace"});
- * const defaultServiceHybridDoubleWrite = new alicloud.cloudmonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", {
+ * const defaultNamespace = new alicloud.cms.Namespace("default", {namespace: "your-namespace"});
+ * const defaultServiceHybridDoubleWrite = new alicloud.cloudmonitor.ServiceHybridDoubleWrite("default", {
  *     sourceNamespace: source.id,
- *     sourceUserId: defaultAccount.then(defaultAccount => defaultAccount.id),
+ *     sourceUserId: _default.then(_default => _default.id),
  *     namespace: defaultNamespace.id,
- *     userId: defaultAccount.then(defaultAccount => defaultAccount.id),
+ *     userId: _default.then(_default => _default.id),
  * });
  * const ids = alicloud.cloudmonitor.getServiceHybridDoubleWritesOutput({
  *     ids: [defaultServiceHybridDoubleWrite.id],
@@ -125,14 +125,14 @@ export interface GetServiceHybridDoubleWritesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAccount = alicloud.getAccount({});
+ * const default = alicloud.getAccount({});
  * const source = new alicloud.cms.Namespace("source", {namespace: "your-source-namespace"});
- * const defaultNamespace = new alicloud.cms.Namespace("defaultNamespace", {namespace: "your-namespace"});
- * const defaultServiceHybridDoubleWrite = new alicloud.cloudmonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", {
+ * const defaultNamespace = new alicloud.cms.Namespace("default", {namespace: "your-namespace"});
+ * const defaultServiceHybridDoubleWrite = new alicloud.cloudmonitor.ServiceHybridDoubleWrite("default", {
  *     sourceNamespace: source.id,
- *     sourceUserId: defaultAccount.then(defaultAccount => defaultAccount.id),
+ *     sourceUserId: _default.then(_default => _default.id),
  *     namespace: defaultNamespace.id,
- *     userId: defaultAccount.then(defaultAccount => defaultAccount.id),
+ *     userId: _default.then(_default => _default.id),
  * });
  * const ids = alicloud.cloudmonitor.getServiceHybridDoubleWritesOutput({
  *     ids: [defaultServiceHybridDoubleWrite.id],

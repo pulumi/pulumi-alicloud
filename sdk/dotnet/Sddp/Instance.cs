@@ -33,14 +33,14 @@ namespace Pulumi.AliCloud.Sddp
     /// {
     ///     var @default = new AliCloud.Sddp.Instance("default", new()
     ///     {
-    ///         Dataphin = "yes",
     ///         PaymentType = "Subscription",
-    ///         Period = 1,
-    ///         SdCbool = "yes",
-    ///         Sdc = "3",
     ///         SddpVersion = "version_company",
+    ///         SdCbool = "yes",
+    ///         Period = 1,
+    ///         Sdc = "3",
     ///         UdCbool = "yes",
     ///         Udc = "2000",
+    ///         Dataphin = "yes",
     ///     });
     /// 
     /// });

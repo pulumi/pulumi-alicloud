@@ -29,8 +29,9 @@ namespace Pulumi.AliCloud.Ddos
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "tf-example";
-        ///     var instanceDdosBgpInstance = new AliCloud.Ddos.DdosBgpInstance("instanceDdosBgpInstance", new()
+        ///     var instanceDdosBgpInstance = new AliCloud.Ddos.DdosBgpInstance("instance", new()
         ///     {
+        ///         Name = name,
         ///         BaseBandwidth = 20,
         ///         Bandwidth = -1,
         ///         IpCount = 100,
@@ -39,7 +40,7 @@ namespace Pulumi.AliCloud.Ddos
         ///         Type = "Enterprise",
         ///     });
         /// 
-        ///     var instanceDdosBgpInstances = AliCloud.Ddos.GetDdosBgpInstances.Invoke(new()
+        ///     var instance = AliCloud.Ddos.GetDdosBgpInstances.Invoke(new()
         ///     {
         ///         NameRegex = "ddosbgp",
         ///     });
@@ -48,7 +49,7 @@ namespace Pulumi.AliCloud.Ddos
         ///     {
         ///         ["instance"] = new[]
         ///         {
-        ///             instanceDdosBgpInstances,
+        ///             instance,
         ///         }.Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
@@ -76,8 +77,9 @@ namespace Pulumi.AliCloud.Ddos
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "tf-example";
-        ///     var instanceDdosBgpInstance = new AliCloud.Ddos.DdosBgpInstance("instanceDdosBgpInstance", new()
+        ///     var instanceDdosBgpInstance = new AliCloud.Ddos.DdosBgpInstance("instance", new()
         ///     {
+        ///         Name = name,
         ///         BaseBandwidth = 20,
         ///         Bandwidth = -1,
         ///         IpCount = 100,
@@ -86,7 +88,7 @@ namespace Pulumi.AliCloud.Ddos
         ///         Type = "Enterprise",
         ///     });
         /// 
-        ///     var instanceDdosBgpInstances = AliCloud.Ddos.GetDdosBgpInstances.Invoke(new()
+        ///     var instance = AliCloud.Ddos.GetDdosBgpInstances.Invoke(new()
         ///     {
         ///         NameRegex = "ddosbgp",
         ///     });
@@ -95,7 +97,7 @@ namespace Pulumi.AliCloud.Ddos
         ///     {
         ///         ["instance"] = new[]
         ///         {
-        ///             instanceDdosBgpInstances,
+        ///             instance,
         ///         }.Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });

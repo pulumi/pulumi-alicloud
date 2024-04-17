@@ -130,18 +130,18 @@ def get_backup_jobs(filters: Optional[Sequence[pulumi.InputType['GetBackupJobsFi
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_ecs_backup_plans = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
-    default_backup_jobs = alicloud.hbr.get_backup_jobs(source_type="ECS_FILE",
+    default = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
+    default_get_backup_jobs = alicloud.hbr.get_backup_jobs(source_type="ECS_FILE",
         filters=[
             alicloud.hbr.GetBackupJobsFilterArgs(
                 key="VaultId",
                 operator="IN",
-                values=[default_ecs_backup_plans.plans[0].vault_id],
+                values=[default.plans[0].vault_id],
             ),
             alicloud.hbr.GetBackupJobsFilterArgs(
                 key="InstanceId",
                 operator="IN",
-                values=[default_ecs_backup_plans.plans[0].instance_id],
+                values=[default.plans[0].instance_id],
             ),
             alicloud.hbr.GetBackupJobsFilterArgs(
                 key="CompleteTime",
@@ -158,12 +158,12 @@ def get_backup_jobs(filters: Optional[Sequence[pulumi.InputType['GetBackupJobsFi
             alicloud.hbr.GetBackupJobsFilterArgs(
                 key="VaultId",
                 operator="IN",
-                values=[default_ecs_backup_plans.plans[0].vault_id],
+                values=[default.plans[0].vault_id],
             ),
             alicloud.hbr.GetBackupJobsFilterArgs(
                 key="InstanceId",
                 operator="IN",
-                values=[default_ecs_backup_plans.plans[0].instance_id],
+                values=[default.plans[0].instance_id],
             ),
             alicloud.hbr.GetBackupJobsFilterArgs(
                 key="CompleteTime",
@@ -171,7 +171,7 @@ def get_backup_jobs(filters: Optional[Sequence[pulumi.InputType['GetBackupJobsFi
                 values=["2021-10-20T20:20:20CST"],
             ),
         ])
-    pulumi.export("alicloudHbrBackupJobsDefault1", default_backup_jobs.jobs[0].id)
+    pulumi.export("alicloudHbrBackupJobsDefault1", default_get_backup_jobs.jobs[0].id)
     pulumi.export("alicloudHbrBackupJobsExample1", example.jobs[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -226,18 +226,18 @@ def get_backup_jobs_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_ecs_backup_plans = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
-    default_backup_jobs = alicloud.hbr.get_backup_jobs(source_type="ECS_FILE",
+    default = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
+    default_get_backup_jobs = alicloud.hbr.get_backup_jobs(source_type="ECS_FILE",
         filters=[
             alicloud.hbr.GetBackupJobsFilterArgs(
                 key="VaultId",
                 operator="IN",
-                values=[default_ecs_backup_plans.plans[0].vault_id],
+                values=[default.plans[0].vault_id],
             ),
             alicloud.hbr.GetBackupJobsFilterArgs(
                 key="InstanceId",
                 operator="IN",
-                values=[default_ecs_backup_plans.plans[0].instance_id],
+                values=[default.plans[0].instance_id],
             ),
             alicloud.hbr.GetBackupJobsFilterArgs(
                 key="CompleteTime",
@@ -254,12 +254,12 @@ def get_backup_jobs_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
             alicloud.hbr.GetBackupJobsFilterArgs(
                 key="VaultId",
                 operator="IN",
-                values=[default_ecs_backup_plans.plans[0].vault_id],
+                values=[default.plans[0].vault_id],
             ),
             alicloud.hbr.GetBackupJobsFilterArgs(
                 key="InstanceId",
                 operator="IN",
-                values=[default_ecs_backup_plans.plans[0].instance_id],
+                values=[default.plans[0].instance_id],
             ),
             alicloud.hbr.GetBackupJobsFilterArgs(
                 key="CompleteTime",
@@ -267,7 +267,7 @@ def get_backup_jobs_output(filters: Optional[pulumi.Input[Optional[Sequence[pulu
                 values=["2021-10-20T20:20:20CST"],
             ),
         ])
-    pulumi.export("alicloudHbrBackupJobsDefault1", default_backup_jobs.jobs[0].id)
+    pulumi.export("alicloudHbrBackupJobsDefault1", default_get_backup_jobs.jobs[0].id)
     pulumi.export("alicloudHbrBackupJobsExample1", example.jobs[0].id)
     ```
     <!--End PulumiCodeChooser -->

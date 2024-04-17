@@ -29,13 +29,13 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZones = AliCloud.GetZones.Invoke();
+    ///     var example = AliCloud.GetZones.Invoke();
     /// 
-    ///     var exampleEcsDedicatedHostCluster = new AliCloud.Ecs.EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster", new()
+    ///     var exampleEcsDedicatedHostCluster = new AliCloud.Ecs.EcsDedicatedHostCluster("example", new()
     ///     {
     ///         DedicatedHostClusterName = "example_value",
     ///         Description = "example_value",
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         Tags = 
     ///         {
     ///             { "Create", "TF" },

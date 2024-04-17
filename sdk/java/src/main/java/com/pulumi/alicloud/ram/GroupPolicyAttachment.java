@@ -48,10 +48,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a RAM Group Policy attachment.
  *         var group = new Group(&#34;group&#34;, GroupArgs.builder()        
+ *             .name(&#34;groupName&#34;)
  *             .comments(&#34;this is a group comments.&#34;)
  *             .build());
  * 
  *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
+ *             .name(&#34;policyName&#34;)
  *             .document(&#34;&#34;&#34;
  *     {
  *       &#34;Statement&#34;: [

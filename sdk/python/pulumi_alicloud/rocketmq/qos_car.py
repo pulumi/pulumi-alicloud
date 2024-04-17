@@ -382,9 +382,10 @@ class QosCar(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_qos = alicloud.rocketmq.Qos("defaultQos")
-        default_qos_car = alicloud.rocketmq.QosCar("defaultQosCar",
-            qos_id=default_qos.id,
+        default = alicloud.rocketmq.Qos("default", name=name)
+        default_qos_car = alicloud.rocketmq.QosCar("default",
+            qos_id=default.id,
+            name=name,
             description=name,
             priority=1,
             limit_type="Absolute",
@@ -443,9 +444,10 @@ class QosCar(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_qos = alicloud.rocketmq.Qos("defaultQos")
-        default_qos_car = alicloud.rocketmq.QosCar("defaultQosCar",
-            qos_id=default_qos.id,
+        default = alicloud.rocketmq.Qos("default", name=name)
+        default_qos_car = alicloud.rocketmq.QosCar("default",
+            qos_id=default.id,
+            name=name,
             description=name,
             priority=1,
             limit_type="Absolute",

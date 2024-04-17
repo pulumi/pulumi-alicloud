@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
- *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .cidrBlock(&#34;192.168.0.0/16&#34;)
  *             .vpcId(exampleNetwork.id())
  *             .vswitchName(name)

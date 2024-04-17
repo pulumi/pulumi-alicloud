@@ -31,6 +31,7 @@ namespace Pulumi.AliCloud.Slb
     /// {
     ///     var foo = new AliCloud.Slb.CaCertificate("foo", new()
     ///     {
+    ///         CaCertificateName = "tf-testAccSlbCACertificate",
     ///         Certificate = @"-----BEGIN CERTIFICATE-----
     /// MIIDRjCCAq+gAwIBAgIJAJn3ox4K13PoMA0GCSqGSIb3DQEBBQUAMHYxCzAJBgNV
     /// BAYTAkNOMQswCQYDVQQIEwJCSjELMAkGA1UEBxMCQkoxDDAKBgNVBAoTA0FMSTEP
@@ -50,9 +51,7 @@ namespace Pulumi.AliCloud.Slb
     /// cQzfhiiG7ASjiPakw5wXoycHt5GCvLG5htp2TKVzgv9QTliA3gtfv6oV4zRZx7X1
     /// Ofi6hVgErtHaXJheuPVeW6eAW8mHBoEfvDAfU3y9waYrtUevSl07643bzKL6v+Qd
     /// DUBTxOAvSYfXTtI90EAxEG/bJJyOm5LqoiA=
-    /// -----END CERTIFICATE-----
-    /// ",
-    ///         CaCertificateName = "tf-testAccSlbCACertificate",
+    /// -----END CERTIFICATE-----",
     ///     });
     /// 
     /// });
@@ -60,26 +59,6 @@ namespace Pulumi.AliCloud.Slb
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// * using CA certificate file
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.IO;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foo_file = new AliCloud.Slb.CaCertificate("foo-file", new()
-    ///     {
-    ///         CaCertificateName = "tf-testAccSlbCACertificate",
-    ///         Certificate = File.ReadAllText($"{path.Module}/ca_certificate.pem"),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

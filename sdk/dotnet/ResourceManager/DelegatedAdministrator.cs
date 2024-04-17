@@ -33,24 +33,24 @@ namespace Pulumi.AliCloud.ResourceManager
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var displayName = config.Get("displayName") ?? "EAccount";
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var exampleFolder = new AliCloud.ResourceManager.Folder("exampleFolder", new()
+    ///     var example = new AliCloud.ResourceManager.Folder("example", new()
     ///     {
-    ///         FolderName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         FolderName = $"{name}-{@default.Result}",
     ///     });
     /// 
-    ///     var exampleAccount = new AliCloud.ResourceManager.Account("exampleAccount", new()
+    ///     var exampleAccount = new AliCloud.ResourceManager.Account("example", new()
     ///     {
-    ///         DisplayName = @default.Result.Apply(result =&gt; $"{displayName}-{result}"),
-    ///         FolderId = exampleFolder.Id,
+    ///         DisplayName = $"{displayName}-{@default.Result}",
+    ///         FolderId = example.Id,
     ///     });
     /// 
-    ///     var exampleDelegatedAdministrator = new AliCloud.ResourceManager.DelegatedAdministrator("exampleDelegatedAdministrator", new()
+    ///     var exampleDelegatedAdministrator = new AliCloud.ResourceManager.DelegatedAdministrator("example", new()
     ///     {
     ///         AccountId = exampleAccount.Id,
     ///         ServicePrincipal = "cloudfw.aliyuncs.com",

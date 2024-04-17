@@ -135,7 +135,7 @@ def get_accounts(db_cluster_id: Optional[str] = None,
     pwd = config.get("pwd")
     if pwd is None:
         pwd = "Tf-testpwd"
-    default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
+    default_db_cluster = alicloud.clickhouse.DbCluster("default",
         db_cluster_version="20.3.10.75",
         category="Basic",
         db_cluster_class="S8",
@@ -146,14 +146,14 @@ def get_accounts(db_cluster_id: Optional[str] = None,
         db_node_storage="500",
         storage_type="cloud_essd",
         vswitch_id="your_vswitch_id")
-    default_account = alicloud.clickhouse.Account("defaultAccount",
+    default_account = alicloud.clickhouse.Account("default",
         db_cluster_id=default_db_cluster.id,
         account_description="your_description",
         account_name=name,
         account_password=pwd)
-    default_accounts = alicloud.clickhouse.get_accounts_output(ids=[default_account.id],
+    default = alicloud.clickhouse.get_accounts_output(ids=[default_account.id],
         db_cluster_id=default_db_cluster.id)
-    pulumi.export("accountId", default_accounts.ids[0])
+    pulumi.export("accountId", default.ids[0])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -212,7 +212,7 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
     pwd = config.get("pwd")
     if pwd is None:
         pwd = "Tf-testpwd"
-    default_db_cluster = alicloud.clickhouse.DbCluster("defaultDbCluster",
+    default_db_cluster = alicloud.clickhouse.DbCluster("default",
         db_cluster_version="20.3.10.75",
         category="Basic",
         db_cluster_class="S8",
@@ -223,14 +223,14 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
         db_node_storage="500",
         storage_type="cloud_essd",
         vswitch_id="your_vswitch_id")
-    default_account = alicloud.clickhouse.Account("defaultAccount",
+    default_account = alicloud.clickhouse.Account("default",
         db_cluster_id=default_db_cluster.id,
         account_description="your_description",
         account_name=name,
         account_password=pwd)
-    default_accounts = alicloud.clickhouse.get_accounts_output(ids=[default_account.id],
+    default = alicloud.clickhouse.get_accounts_output(ids=[default_account.id],
         db_cluster_id=default_db_cluster.id)
-    pulumi.export("accountId", default_accounts.ids[0])
+    pulumi.export("accountId", default.ids[0])
     ```
     <!--End PulumiCodeChooser -->
 

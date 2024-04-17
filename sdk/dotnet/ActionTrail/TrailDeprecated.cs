@@ -30,9 +30,10 @@ namespace Pulumi.AliCloud.ActionTrail
     ///     // Create a new action trail.
     ///     var foo = new AliCloud.ActionTrail.TrailDeprecated("foo", new()
     ///     {
+    ///         Name = "action-trail",
     ///         EventRw = "Write-test",
-    ///         OssBucketName = alicloud_oss_bucket.Bucket.Id,
-    ///         RoleName = alicloud_ram_role_policy_attachment.Attach.Role_name,
+    ///         OssBucketName = bucket.Id,
+    ///         RoleName = attach.RoleName,
     ///         OssKeyPrefix = "at-product-account-audit-B",
     ///     });
     /// 

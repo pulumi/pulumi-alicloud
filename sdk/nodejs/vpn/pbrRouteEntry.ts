@@ -22,16 +22,20 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tfacc";
- * const defaultGateways = alicloud.vpn.getGateways({});
- * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("defaultCustomerGateway", {ipAddress: "192.168.1.1"});
- * const defaultConnection = new alicloud.vpn.Connection("defaultConnection", {
+ * const default = alicloud.vpn.getGateways({});
+ * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("default", {
+ *     name: name,
+ *     ipAddress: "192.168.1.1",
+ * });
+ * const defaultConnection = new alicloud.vpn.Connection("default", {
+ *     name: name,
  *     customerGatewayId: defaultCustomerGateway.id,
- *     vpnGatewayId: defaultGateways.then(defaultGateways => defaultGateways.ids?.[0]),
+ *     vpnGatewayId: _default.then(_default => _default.ids?.[0]),
  *     localSubnets: ["192.168.2.0/24"],
  *     remoteSubnets: ["192.168.3.0/24"],
  * });
- * const defaultPbrRouteEntry = new alicloud.vpn.PbrRouteEntry("defaultPbrRouteEntry", {
- *     vpnGatewayId: defaultGateways.then(defaultGateways => defaultGateways.ids?.[0]),
+ * const defaultPbrRouteEntry = new alicloud.vpn.PbrRouteEntry("default", {
+ *     vpnGatewayId: _default.then(_default => _default.ids?.[0]),
  *     routeSource: "192.168.1.0/24",
  *     routeDest: "10.0.0.0/24",
  *     nextHop: defaultConnection.id,

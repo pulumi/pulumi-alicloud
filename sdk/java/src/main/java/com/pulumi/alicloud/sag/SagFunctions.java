@@ -38,6 +38,7 @@ public final class SagFunctions {
      * import com.pulumi.alicloud.sag.SagFunctions;
      * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.rocketmq.Acl;
+     * import com.pulumi.alicloud.rocketmq.AclArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -51,12 +52,14 @@ public final class SagFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultAcls = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(alicloud_sag_acls.default().id())
+     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(defaultAlicloudSagAcls.id())
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
      *             .build());
      * 
-     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;);
+     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
+     *             .name(&#34;tf-testAccSagAclName&#34;)
+     *             .build());
      * 
      *     }
      * }
@@ -88,6 +91,7 @@ public final class SagFunctions {
      * import com.pulumi.alicloud.sag.SagFunctions;
      * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.rocketmq.Acl;
+     * import com.pulumi.alicloud.rocketmq.AclArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -101,12 +105,14 @@ public final class SagFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultAcls = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(alicloud_sag_acls.default().id())
+     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(defaultAlicloudSagAcls.id())
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
      *             .build());
      * 
-     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;);
+     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
+     *             .name(&#34;tf-testAccSagAclName&#34;)
+     *             .build());
      * 
      *     }
      * }
@@ -138,6 +144,7 @@ public final class SagFunctions {
      * import com.pulumi.alicloud.sag.SagFunctions;
      * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.rocketmq.Acl;
+     * import com.pulumi.alicloud.rocketmq.AclArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -151,12 +158,14 @@ public final class SagFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultAcls = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(alicloud_sag_acls.default().id())
+     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(defaultAlicloudSagAcls.id())
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
      *             .build());
      * 
-     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;);
+     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
+     *             .name(&#34;tf-testAccSagAclName&#34;)
+     *             .build());
      * 
      *     }
      * }
@@ -188,6 +197,7 @@ public final class SagFunctions {
      * import com.pulumi.alicloud.sag.SagFunctions;
      * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.rocketmq.Acl;
+     * import com.pulumi.alicloud.rocketmq.AclArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -201,12 +211,14 @@ public final class SagFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultAcls = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(alicloud_sag_acls.default().id())
+     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(defaultAlicloudSagAcls.id())
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
      *             .build());
      * 
-     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;);
+     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
+     *             .name(&#34;tf-testAccSagAclName&#34;)
+     *             .build());
      * 
      *     }
      * }
@@ -238,6 +250,7 @@ public final class SagFunctions {
      * import com.pulumi.alicloud.sag.SagFunctions;
      * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.rocketmq.Acl;
+     * import com.pulumi.alicloud.rocketmq.AclArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -251,12 +264,14 @@ public final class SagFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultAcls = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(alicloud_sag_acls.default().id())
+     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(defaultAlicloudSagAcls.id())
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
      *             .build());
      * 
-     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;);
+     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
+     *             .name(&#34;tf-testAccSagAclName&#34;)
+     *             .build());
      * 
      *     }
      * }
@@ -288,6 +303,7 @@ public final class SagFunctions {
      * import com.pulumi.alicloud.sag.SagFunctions;
      * import com.pulumi.alicloud.sag.inputs.GetAclsArgs;
      * import com.pulumi.alicloud.rocketmq.Acl;
+     * import com.pulumi.alicloud.rocketmq.AclArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -301,12 +317,14 @@ public final class SagFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultAcls = SagFunctions.getAcls(GetAclsArgs.builder()
-     *             .ids(alicloud_sag_acls.default().id())
+     *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
+     *             .ids(defaultAlicloudSagAcls.id())
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
      *             .build());
      * 
-     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;);
+     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
+     *             .name(&#34;tf-testAccSagAclName&#34;)
+     *             .build());
      * 
      *     }
      * }

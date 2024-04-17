@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  * });
  * // Create a new ECS instance for a VPC
  * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     name: name,
  *     description: "foo",
  *     vpcId: vpc.id,
  * });

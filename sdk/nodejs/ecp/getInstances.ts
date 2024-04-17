@@ -10,6 +10,49 @@ import * as utilities from "../utilities";
  * This data source provides the Ecp Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.158.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.ecp.getZones({});
+ * const defaultGetInstanceTypes = alicloud.ecp.getInstanceTypes({});
+ * const countSize = _default.then(_default => _default.zones).length;
+ * const zoneId = Promise.all([_default, countSize]).then(([_default, countSize]) => _default.zones[countSize - 1].zoneId);
+ * const instanceTypeCountSize = defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes).length;
+ * const instanceType = Promise.all([defaultGetInstanceTypes, instanceTypeCountSize]).then(([defaultGetInstanceTypes, instanceTypeCountSize]) => defaultGetInstanceTypes.instanceTypes[instanceTypeCountSize - 1].instanceType);
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: zoneId,
+ * }));
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     name: name,
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ * });
+ * const defaultKeyPair = new alicloud.ecp.KeyPair("default", {
+ *     keyPairName: name,
+ *     publicKeyBody: "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+ * });
+ * const defaultInstance = new alicloud.ecp.Instance("default", {
+ *     instanceName: name,
+ *     description: name,
+ *     force: true,
+ *     keyPairName: defaultKeyPair.keyPairName,
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     imageId: "android_9_0_0_release_2851157_20211201.vhd",
+ *     instanceType: Promise.all([defaultGetInstanceTypes, instanceTypeCountSize]).then(([defaultGetInstanceTypes, instanceTypeCountSize]) => defaultGetInstanceTypes.instanceTypes[instanceTypeCountSize - 1].instanceType),
+ *     paymentType: "PayAsYouGo",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -106,6 +149,49 @@ export interface GetInstancesResult {
  * This data source provides the Ecp Instances of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.158.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.ecp.getZones({});
+ * const defaultGetInstanceTypes = alicloud.ecp.getInstanceTypes({});
+ * const countSize = _default.then(_default => _default.zones).length;
+ * const zoneId = Promise.all([_default, countSize]).then(([_default, countSize]) => _default.zones[countSize - 1].zoneId);
+ * const instanceTypeCountSize = defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes).length;
+ * const instanceType = Promise.all([defaultGetInstanceTypes, instanceTypeCountSize]).then(([defaultGetInstanceTypes, instanceTypeCountSize]) => defaultGetInstanceTypes.instanceTypes[instanceTypeCountSize - 1].instanceType);
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: zoneId,
+ * }));
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     name: name,
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ * });
+ * const defaultKeyPair = new alicloud.ecp.KeyPair("default", {
+ *     keyPairName: name,
+ *     publicKeyBody: "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+ * });
+ * const defaultInstance = new alicloud.ecp.Instance("default", {
+ *     instanceName: name,
+ *     description: name,
+ *     force: true,
+ *     keyPairName: defaultKeyPair.keyPairName,
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     imageId: "android_9_0_0_release_2851157_20211201.vhd",
+ *     instanceType: Promise.all([defaultGetInstanceTypes, instanceTypeCountSize]).then(([defaultGetInstanceTypes, instanceTypeCountSize]) => defaultGetInstanceTypes.instanceTypes[instanceTypeCountSize - 1].instanceType),
+ *     paymentType: "PayAsYouGo",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))

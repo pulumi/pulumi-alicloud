@@ -29,12 +29,12 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
+    ///     var @default = new AliCloud.Hbr.Vault("default", new()
     ///     {
     ///         VaultName = "terraform-example2",
     ///     });
     /// 
-    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new()
+    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("default", new()
     ///     {
     ///         ProtocolType = "NFS",
     ///         StorageType = "Performance",
@@ -42,13 +42,13 @@ namespace Pulumi.AliCloud.Hbr
     ///         EncryptType = 1,
     ///     });
     /// 
-    ///     var defaultNasBackupPlan = new AliCloud.Hbr.NasBackupPlan("defaultNasBackupPlan", new()
+    ///     var defaultNasBackupPlan = new AliCloud.Hbr.NasBackupPlan("default", new()
     ///     {
     ///         NasBackupPlanName = "terraform-example",
     ///         FileSystemId = defaultFileSystem.Id,
     ///         Schedule = "I|1602673264|PT2H",
     ///         BackupType = "COMPLETE",
-    ///         VaultId = defaultVault.Id,
+    ///         VaultId = @default.Id,
     ///         Retention = "2",
     ///         Paths = new[]
     ///         {

@@ -41,15 +41,17 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleNamespace, err := cr.NewNamespace(ctx, "exampleNamespace", &cr.NamespaceArgs{
+//			example, err := cr.NewNamespace(ctx, "example", &cr.NamespaceArgs{
+//				Name:              pulumi.String(name),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cr.NewRepo(ctx, "exampleRepo", &cr.RepoArgs{
-//				Namespace: exampleNamespace.Name,
+//			_, err = cr.NewRepo(ctx, "example", &cr.RepoArgs{
+//				Namespace: example.Name,
+//				Name:      pulumi.String(name),
 //				Summary:   pulumi.String("this is summary of my new repo"),
 //				RepoType:  pulumi.String("PUBLIC"),
 //				Detail:    pulumi.String("this is a public repo"),

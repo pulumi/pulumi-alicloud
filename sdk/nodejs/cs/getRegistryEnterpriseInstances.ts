@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const myInstances = alicloud.cs.getRegistryEnterpriseInstances({
  *     nameRegex: "my-instances",
  *     outputFile: "my-instances-json",
@@ -96,6 +97,7 @@ export interface GetRegistryEnterpriseInstancesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const myInstances = alicloud.cs.getRegistryEnterpriseInstances({
  *     nameRegex: "my-instances",
  *     outputFile: "my-instances-json",

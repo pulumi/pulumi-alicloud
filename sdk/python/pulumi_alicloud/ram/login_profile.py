@@ -180,6 +180,7 @@ class LoginProfile(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         user = alicloud.ram.User("user",
+            name="terraform_example",
             display_name="terraform_example",
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",
@@ -229,6 +230,7 @@ class LoginProfile(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         user = alicloud.ram.User("user",
+            name="terraform_example",
             display_name="terraform_example",
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",

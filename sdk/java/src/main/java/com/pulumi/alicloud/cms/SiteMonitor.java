@@ -52,6 +52,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var basic = new SiteMonitor(&#34;basic&#34;, SiteMonitorArgs.builder()        
  *             .address(&#34;http://www.alibabacloud.com&#34;)
+ *             .taskName(&#34;tf-example&#34;)
+ *             .taskType(&#34;HTTP&#34;)
  *             .interval(5)
  *             .ispCities(SiteMonitorIspCityArgs.builder()
  *                 .city(&#34;546&#34;)
@@ -73,10 +75,7 @@ import javax.annotation.Nullable;
  *     ],
  *     &#34;time_out&#34;: 30000
  * }
- * 
  *             &#34;&#34;&#34;)
- *             .taskName(&#34;tf-example&#34;)
- *             .taskType(&#34;HTTP&#34;)
  *             .build());
  * 
  *     }

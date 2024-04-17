@@ -242,11 +242,12 @@ class Queue(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         queue = alicloud.mns.Queue("queue",
+            name="tf-example-mnsqueue",
             delay_seconds=0,
             maximum_message_size=65536,
             message_retention_period=345600,
-            polling_wait_seconds=0,
-            visibility_timeout=30)
+            visibility_timeout=30,
+            polling_wait_seconds=0)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -284,11 +285,12 @@ class Queue(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         queue = alicloud.mns.Queue("queue",
+            name="tf-example-mnsqueue",
             delay_seconds=0,
             maximum_message_size=65536,
             message_retention_period=345600,
-            polling_wait_seconds=0,
-            visibility_timeout=30)
+            visibility_timeout=30,
+            polling_wait_seconds=0)
         ```
         <!--End PulumiCodeChooser -->
 

@@ -22,17 +22,17 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultAccessGroup = new alicloud.dfs.AccessGroup("defaultAccessGroup", {
+ * const _default = new alicloud.dfs.AccessGroup("default", {
  *     description: "example",
  *     networkType: "VPC",
  *     accessGroupName: name,
  * });
- * const defaultAccessRule = new alicloud.dfs.AccessRule("defaultAccessRule", {
+ * const defaultAccessRule = new alicloud.dfs.AccessRule("default", {
  *     description: "example",
  *     rwAccessType: "RDWR",
  *     priority: 1,
  *     networkSegment: "192.168.81.1",
- *     accessGroupId: defaultAccessGroup.id,
+ *     accessGroupId: _default.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

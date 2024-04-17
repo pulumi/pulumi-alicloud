@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.OpenSearch
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "tf_testacc";
-        ///     var defaultAppGroup = new AliCloud.OpenSearch.AppGroup("defaultAppGroup", new()
+        ///     var defaultAppGroup = new AliCloud.OpenSearch.AppGroup("default", new()
         ///     {
         ///         AppGroupName = name,
         ///         PaymentType = "PayAsYouGo",
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.OpenSearch
         ///         },
         ///     });
         /// 
-        ///     var defaultAppGroups = AliCloud.OpenSearch.GetAppGroups.Invoke(new()
+        ///     var @default = AliCloud.OpenSearch.GetAppGroups.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.OpenSearch
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["appGroups"] = defaultAppGroups.Apply(getAppGroupsResult =&gt; getAppGroupsResult.Groups),
+        ///         ["appGroups"] = @default.Apply(@default =&gt; @default.Apply(getAppGroupsResult =&gt; getAppGroupsResult.Groups)),
         ///     };
         /// });
         /// ```
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.OpenSearch
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "tf_testacc";
-        ///     var defaultAppGroup = new AliCloud.OpenSearch.AppGroup("defaultAppGroup", new()
+        ///     var defaultAppGroup = new AliCloud.OpenSearch.AppGroup("default", new()
         ///     {
         ///         AppGroupName = name,
         ///         PaymentType = "PayAsYouGo",
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.OpenSearch
         ///         },
         ///     });
         /// 
-        ///     var defaultAppGroups = AliCloud.OpenSearch.GetAppGroups.Invoke(new()
+        ///     var @default = AliCloud.OpenSearch.GetAppGroups.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.OpenSearch
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["appGroups"] = defaultAppGroups.Apply(getAppGroupsResult =&gt; getAppGroupsResult.Groups),
+        ///         ["appGroups"] = @default.Apply(@default =&gt; @default.Apply(getAppGroupsResult =&gt; getAppGroupsResult.Groups)),
         ///     };
         /// });
         /// ```

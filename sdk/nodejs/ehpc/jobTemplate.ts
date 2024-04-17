@@ -21,8 +21,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.ehpc.JobTemplate("default", {
- *     commandLine: "./LammpsTest/lammps.pbs",
  *     jobTemplateName: "example_value",
+ *     commandLine: "./LammpsTest/lammps.pbs",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

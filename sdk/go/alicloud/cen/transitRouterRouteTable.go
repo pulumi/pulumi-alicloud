@@ -33,21 +33,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String("tf_example"),
 //				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
 //				TransitRouterName: pulumi.String("tf_example"),
-//				CenId:             exampleInstance.ID(),
+//				CenId:             example.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterRouteTable(ctx, "exampleTransitRouterRouteTable", &cen.TransitRouterRouteTableArgs{
+//			_, err = cen.NewTransitRouterRouteTable(ctx, "example", &cen.TransitRouterRouteTableArgs{
 //				TransitRouterId: exampleTransitRouter.TransitRouterId,
 //			})
 //			if err != nil {

@@ -154,7 +154,7 @@ def get_server_plans(bandwidth: Optional[int] = None,
         disk_size=40,
         flow=6,
         core=2)
-    pulumi.export("simpleApplicationServerPlanId1", data["alicloud_simple_application_server_plans"]["ids"]["plans"][0]["id"])
+    pulumi.export("simpleApplicationServerPlanId1", ids["plans"][0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -222,7 +222,7 @@ def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[int]]] = N
         disk_size=40,
         flow=6,
         core=2)
-    pulumi.export("simpleApplicationServerPlanId1", data["alicloud_simple_application_server_plans"]["ids"]["plans"][0]["id"])
+    pulumi.export("simpleApplicationServerPlanId1", ids["plans"][0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 

@@ -36,15 +36,15 @@ namespace Pulumi.AliCloud.Dcdn
     /// {
     ///     var config = new Config();
     ///     var domainName = config.Get("domainName") ?? "tf-example.com";
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
-    ///         Max = 99999,
     ///         Min = 10000,
+    ///         Max = 99999,
     ///     });
     /// 
     ///     var example = new AliCloud.Dcdn.Domain("example", new()
     ///     {
-    ///         DomainName = @default.Result.Apply(result =&gt; $"{domainName}-{result}"),
+    ///         DomainName = $"{domainName}-{@default.Result}",
     ///         Scope = "overseas",
     ///         Sources = new[]
     ///         {

@@ -18,6 +18,60 @@ import (
 //
 // > **NOTE:** Available in v1.194.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "AliyunTerraform"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAccount, err := resourcemanager.NewAccount(ctx, "default", &resourcemanager.AccountArgs{
+//				DisplayName: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudfirewall.NewInstanceMember(ctx, "default", &cloudfirewall.InstanceMemberArgs{
+//				MemberDesc: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				MemberUid:  defaultAccount.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // Cloud Firewall Instance Member can be imported using the id, e.g.

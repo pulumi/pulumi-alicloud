@@ -43,29 +43,29 @@ import (
 //			if param := cfg.Get("region"); param != "" {
 //				region = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
+//			defaultAccelerator, err := ga.NewAccelerator(ctx, "default", &ga.AcceleratorArgs{
 //				Duration:      pulumi.Int(1),
 //				AutoUseCoupon: pulumi.Bool(true),
 //				Spec:          pulumi.String("1"),
@@ -73,7 +73,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &ga.BandwidthPackageArgs{
+//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "default", &ga.BandwidthPackageArgs{
 //				Bandwidth:     pulumi.Int(100),
 //				Type:          pulumi.String("Basic"),
 //				BandwidthType: pulumi.String("Basic"),
@@ -84,14 +84,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
+//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
 //				AcceleratorId:      defaultAccelerator.ID(),
 //				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultListener, err := ga.NewListener(ctx, "defaultListener", &ga.ListenerArgs{
+//			defaultListener, err := ga.NewListener(ctx, "default", &ga.ListenerArgs{
 //				AcceleratorId: defaultBandwidthPackageAttachment.AcceleratorId,
 //				ListenerType:  pulumi.String("CustomRouting"),
 //				PortRanges: ga.ListenerPortRangeArray{
@@ -104,7 +104,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultCustomRoutingEndpointGroup, err := ga.NewCustomRoutingEndpointGroup(ctx, "defaultCustomRoutingEndpointGroup", &ga.CustomRoutingEndpointGroupArgs{
+//			defaultCustomRoutingEndpointGroup, err := ga.NewCustomRoutingEndpointGroup(ctx, "default", &ga.CustomRoutingEndpointGroupArgs{
 //				AcceleratorId:                  defaultListener.AcceleratorId,
 //				ListenerId:                     defaultListener.ID(),
 //				EndpointGroupRegion:            pulumi.String(region),
@@ -114,7 +114,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ga.NewCustomRoutingEndpoint(ctx, "defaultCustomRoutingEndpoint", &ga.CustomRoutingEndpointArgs{
+//			_, err = ga.NewCustomRoutingEndpoint(ctx, "default", &ga.CustomRoutingEndpointArgs{
 //				EndpointGroupId:         defaultCustomRoutingEndpointGroup.ID(),
 //				Endpoint:                defaultSwitch.ID(),
 //				Type:                    pulumi.String("PrivateSubNet"),

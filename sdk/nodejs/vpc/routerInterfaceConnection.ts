@@ -28,49 +28,44 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
  * const name = config.get("name") || "alicloudRouterInterfaceConnectionBasic";
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
+ * const foo = new alicloud.vpc.Network("foo", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/12",
  * });
- * const barNetwork = new alicloud.vpc.Network("barNetwork", {
+ * const bar = new alicloud.vpc.Network("bar", {
  *     vpcName: name,
  *     cidrBlock: "192.168.0.0/16",
- * }, {
- *     provider: alicloud,
  * });
  * const initiate = new alicloud.vpc.RouterInterface("initiate", {
  *     oppositeRegion: region,
  *     routerType: "VRouter",
- *     routerId: fooNetwork.routerId,
+ *     routerId: foo.routerId,
  *     role: "InitiatingSide",
  *     specification: "Large.2",
+ *     name: name,
  *     description: name,
  *     instanceChargeType: "PostPaid",
  * });
  * const opposite = new alicloud.vpc.RouterInterface("opposite", {
  *     oppositeRegion: region,
  *     routerType: "VRouter",
- *     routerId: barNetwork.routerId,
+ *     routerId: bar.routerId,
  *     role: "AcceptingSide",
  *     specification: "Large.1",
+ *     name: `${name}-opposite`,
  *     description: `${name}-opposite`,
- * }, {
- *     provider: alicloud,
  * });
- * const barRouterInterfaceConnection = new alicloud.vpc.RouterInterfaceConnection("barRouterInterfaceConnection", {
+ * const barRouterInterfaceConnection = new alicloud.vpc.RouterInterfaceConnection("bar", {
  *     interfaceId: opposite.id,
  *     oppositeInterfaceId: initiate.id,
- * }, {
- *     provider: alicloud,
  * });
  * // A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
- * const fooRouterInterfaceConnection = new alicloud.vpc.RouterInterfaceConnection("fooRouterInterfaceConnection", {
+ * const fooRouterInterfaceConnection = new alicloud.vpc.RouterInterfaceConnection("foo", {
  *     interfaceId: initiate.id,
  *     oppositeInterfaceId: opposite.id,
  * }, {
  *     dependsOn: [barRouterInterfaceConnection],
  * });
- * // The connection must start from the accepting side.
  * ```
  * <!--End PulumiCodeChooser -->
  *

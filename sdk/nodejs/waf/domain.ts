@@ -23,21 +23,21 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const domain = new alicloud.waf.Domain("domain", {
- *     clusterType: "PhysicalCluster",
  *     domainName: "alicloud-provider.cn",
- *     http2Ports: ["443"],
- *     httpPorts: ["80"],
- *     httpToUserIp: "Off",
- *     httpsPorts: ["443"],
- *     httpsRedirect: "Off",
  *     instanceId: "waf-123455",
  *     isAccessProduct: "On",
+ *     sourceIps: ["1.1.1.1"],
+ *     clusterType: "PhysicalCluster",
+ *     http2Ports: ["443"],
+ *     httpPorts: ["80"],
+ *     httpsPorts: ["443"],
+ *     httpToUserIp: "Off",
+ *     httpsRedirect: "Off",
  *     loadBalancing: "IpHash",
  *     logHeaders: [{
  *         key: "foo",
  *         value: "http",
  *     }],
- *     sourceIps: ["1.1.1.1"],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

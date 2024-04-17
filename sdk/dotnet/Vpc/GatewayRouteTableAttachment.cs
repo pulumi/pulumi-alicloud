@@ -29,28 +29,28 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var example = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         CidrBlock = "172.16.0.0/12",
     ///         VpcName = "terraform-example",
     ///     });
     /// 
-    ///     var exampleRouteTable = new AliCloud.Vpc.RouteTable("exampleRouteTable", new()
+    ///     var exampleRouteTable = new AliCloud.Vpc.RouteTable("example", new()
     ///     {
-    ///         VpcId = exampleNetwork.Id,
+    ///         VpcId = example.Id,
     ///         RouteTableName = "terraform-example",
     ///         Description = "terraform-example",
     ///         AssociateType = "Gateway",
     ///     });
     /// 
-    ///     var exampleIpv4Gateway = new AliCloud.Vpc.Ipv4Gateway("exampleIpv4Gateway", new()
+    ///     var exampleIpv4Gateway = new AliCloud.Vpc.Ipv4Gateway("example", new()
     ///     {
     ///         Ipv4GatewayName = "terraform-example",
-    ///         VpcId = exampleNetwork.Id,
+    ///         VpcId = example.Id,
     ///         Enabled = true,
     ///     });
     /// 
-    ///     var exampleGatewayRouteTableAttachment = new AliCloud.Vpc.GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment", new()
+    ///     var exampleGatewayRouteTableAttachment = new AliCloud.Vpc.GatewayRouteTableAttachment("example", new()
     ///     {
     ///         Ipv4GatewayId = exampleIpv4Gateway.Id,
     ///         RouteTableId = exampleRouteTable.Id,

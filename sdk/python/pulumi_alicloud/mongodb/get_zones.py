@@ -102,10 +102,10 @@ def get_zones(multi: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     zones_ids = alicloud.mongodb.get_zones()
     # Create an mongoDB instance with the first matched zone
     mongodb = alicloud.mongodb.Instance("mongodb", zone_id=zones_ids.zones[0].id)
-    # Other properties...
     ```
     <!--End PulumiCodeChooser -->
 
@@ -143,10 +143,10 @@ def get_zones_output(multi: Optional[pulumi.Input[Optional[bool]]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     zones_ids = alicloud.mongodb.get_zones()
     # Create an mongoDB instance with the first matched zone
     mongodb = alicloud.mongodb.Instance("mongodb", zone_id=zones_ids.zones[0].id)
-    # Other properties...
     ```
     <!--End PulumiCodeChooser -->
 

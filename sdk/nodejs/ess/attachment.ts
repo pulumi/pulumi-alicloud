@@ -22,32 +22,35 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
  *     cpuCoreCount: 2,
  *     memorySize: 4,
  * }));
- * const defaultImages = alicloud.ecs.getImages({
+ * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule", {
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("default", {
  *     type: "ingress",
  *     ipProtocol: "tcp",
  *     nicType: "intranet",
@@ -57,7 +60,7 @@ import * as utilities from "../utilities";
  *     securityGroupId: defaultSecurityGroup.id,
  *     cidrIp: "172.16.0.0/24",
  * });
- * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {
  *     minSize: 0,
  *     maxSize: 2,
  *     scalingGroupName: name,
@@ -67,10 +70,10 @@ import * as utilities from "../utilities";
  *     ],
  *     vswitchIds: [defaultSwitch.id],
  * });
- * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("defaultScalingConfiguration", {
+ * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("default", {
  *     scalingGroupId: defaultScalingGroup.id,
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *     securityGroupId: defaultSecurityGroup.id,
  *     forceDelete: true,
  *     active: true,
@@ -78,9 +81,9 @@ import * as utilities from "../utilities";
  * });
  * const defaultInstance: alicloud.ecs.Instance[] = [];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultInstance.push(new alicloud.ecs.Instance(`defaultInstance-${range.value}`, {
- *         imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *         instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     defaultInstance.push(new alicloud.ecs.Instance(`default-${range.value}`, {
+ *         imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *         instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *         securityGroups: [defaultSecurityGroup.id],
  *         internetChargeType: "PayByTraffic",
  *         internetMaxBandwidthOut: 10,
@@ -90,7 +93,7 @@ import * as utilities from "../utilities";
  *         instanceName: name,
  *     }));
  * }
- * const defaultAttachment = new alicloud.ess.Attachment("defaultAttachment", {
+ * const defaultAttachment = new alicloud.ess.Attachment("default", {
  *     scalingGroupId: defaultScalingGroup.id,
  *     instanceIds: [
  *         defaultInstance[0].id,

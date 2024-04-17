@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultDisk, err := ens.NewDisk(ctx, "defaultDisk", &ens.DiskArgs{
+//			_, err := ens.NewDisk(ctx, "default", &ens.DiskArgs{
 //				Size:        pulumi.Int(20),
 //				EnsRegionId: pulumi.String("cn-chenzhou-telecom_unicom_cmcc"),
 //				PaymentType: pulumi.String("PayAsYouGo"),
@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := ens.NewInstance(ctx, "defaultInstance", &ens.InstanceArgs{
+//			defaultInstance, err := ens.NewInstance(ctx, "default", &ens.InstanceArgs{
 //				SystemDisk: &ens.InstanceSystemDiskArgs{
 //					Size: pulumi.Int(20),
 //				},
@@ -70,10 +70,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ens.NewDiskInstanceAttachment(ctx, "defaultDiskInstanceAttachment", &ens.DiskInstanceAttachmentArgs{
+//			_, err = ens.NewDiskInstanceAttachment(ctx, "default", &ens.DiskInstanceAttachmentArgs{
 //				InstanceId:         defaultInstance.ID(),
 //				DeleteWithInstance: pulumi.String("false"),
-//				DiskId:             defaultDisk.ID(),
+//				DiskId:             _default.ID(),
 //			})
 //			if err != nil {
 //				return err

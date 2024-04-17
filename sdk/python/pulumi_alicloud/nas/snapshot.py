@@ -206,15 +206,15 @@ class Snapshot(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "testacc"
-        default_zones = alicloud.nas.get_zones(file_system_type="extreme")
-        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
+        default = alicloud.nas.get_zones(file_system_type="extreme")
+        default_file_system = alicloud.nas.FileSystem("default",
             file_system_type="extreme",
             protocol_type="NFS",
-            zone_id=default_zones.zones[0].zone_id,
+            zone_id=default.zones[0].zone_id,
             storage_type="standard",
             description=name,
             capacity=100)
-        default_snapshot = alicloud.nas.Snapshot("defaultSnapshot",
+        default_snapshot = alicloud.nas.Snapshot("default",
             file_system_id=default_file_system.id,
             description=name,
             retention_days=20,
@@ -266,15 +266,15 @@ class Snapshot(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "testacc"
-        default_zones = alicloud.nas.get_zones(file_system_type="extreme")
-        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
+        default = alicloud.nas.get_zones(file_system_type="extreme")
+        default_file_system = alicloud.nas.FileSystem("default",
             file_system_type="extreme",
             protocol_type="NFS",
-            zone_id=default_zones.zones[0].zone_id,
+            zone_id=default.zones[0].zone_id,
             storage_type="standard",
             description=name,
             capacity=100)
-        default_snapshot = alicloud.nas.Snapshot("defaultSnapshot",
+        default_snapshot = alicloud.nas.Snapshot("default",
             file_system_id=default_file_system.id,
             description=name,
             retention_days=20,

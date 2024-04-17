@@ -27,12 +27,13 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var dmsEnterpriseInstancesDs = AliCloud.Dms.GetEnterpriseInstances.Invoke(new()
         ///     {
-        ///         EnvType = "test",
-        ///         InstanceType = "mysql",
-        ///         NameRegex = "tf_testAcc",
         ///         NetType = "CLASSIC",
+        ///         InstanceType = "mysql",
+        ///         EnvType = "test",
+        ///         NameRegex = "tf_testAcc",
         ///         OutputFile = "dms_enterprise_instances.json",
         ///     });
         /// 
@@ -63,12 +64,13 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var dmsEnterpriseInstancesDs = AliCloud.Dms.GetEnterpriseInstances.Invoke(new()
         ///     {
-        ///         EnvType = "test",
-        ///         InstanceType = "mysql",
-        ///         NameRegex = "tf_testAcc",
         ///         NetType = "CLASSIC",
+        ///         InstanceType = "mysql",
+        ///         EnvType = "test",
+        ///         NameRegex = "tf_testAcc",
         ///         OutputFile = "dms_enterprise_instances.json",
         ///     });
         /// 

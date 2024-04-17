@@ -21,8 +21,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const exampleUser = alicloud.log.getAlertResource({
- *     lang: "cn",
  *     type: "user",
+ *     lang: "cn",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -84,8 +84,8 @@ export interface GetAlertResourceResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const exampleUser = alicloud.log.getAlertResource({
- *     lang: "cn",
  *     type: "user",
+ *     lang: "cn",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

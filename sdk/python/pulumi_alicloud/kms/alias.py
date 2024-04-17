@@ -135,10 +135,10 @@ class Alias(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        this_key = alicloud.kms.Key("thisKey", pending_window_in_days=7)
-        this_alias = alicloud.kms.Alias("thisAlias",
+        this = alicloud.kms.Key("this", pending_window_in_days=7)
+        this_alias = alicloud.kms.Alias("this",
             alias_name="alias/example_kms_alias",
-            key_id=this_key.id)
+            key_id=this.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -181,10 +181,10 @@ class Alias(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        this_key = alicloud.kms.Key("thisKey", pending_window_in_days=7)
-        this_alias = alicloud.kms.Alias("thisAlias",
+        this = alicloud.kms.Key("this", pending_window_in_days=7)
+        this_alias = alicloud.kms.Alias("this",
             alias_name="alias/example_kms_alias",
-            key_id=this_key.id)
+            key_id=this.id)
         ```
         <!--End PulumiCodeChooser -->
 

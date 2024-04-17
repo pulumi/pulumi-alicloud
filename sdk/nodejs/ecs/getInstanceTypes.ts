@@ -20,10 +20,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const typesDs = alicloud.ecs.getInstanceTypes({
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * });
+ * // Create ECS instance with the first matched instance_type
  * const instance = new alicloud.ecs.Instance("instance", {instanceType: typesDs.then(typesDs => typesDs.instanceTypes?.[0]?.id)});
  * ```
  * <!--End PulumiCodeChooser -->
@@ -183,10 +185,12 @@ export interface GetInstanceTypesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const typesDs = alicloud.ecs.getInstanceTypes({
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * });
+ * // Create ECS instance with the first matched instance_type
  * const instance = new alicloud.ecs.Instance("instance", {instanceType: typesDs.then(typesDs => typesDs.instanceTypes?.[0]?.id)});
  * ```
  * <!--End PulumiCodeChooser -->

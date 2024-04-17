@@ -196,14 +196,14 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+        example_transit_router = alicloud.cen.TransitRouter("example",
             transit_router_name="tf_example",
-            cen_id=example_instance.id,
+            cen_id=example.id,
             support_multicast=True)
-        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain",
+        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("example",
             transit_router_id=example_transit_router.transit_router_id,
             transit_router_multicast_domain_name="tf_example",
             transit_router_multicast_domain_description="tf_example")
@@ -247,14 +247,14 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+        example_transit_router = alicloud.cen.TransitRouter("example",
             transit_router_name="tf_example",
-            cen_id=example_instance.id,
+            cen_id=example.id,
             support_multicast=True)
-        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain",
+        example_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("example",
             transit_router_id=example_transit_router.transit_router_id,
             transit_router_multicast_domain_name="tf_example",
             transit_router_multicast_domain_description="tf_example")

@@ -35,14 +35,16 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleGroup, err := apigateway.NewGroup(ctx, "exampleGroup", &apigateway.GroupArgs{
+//			example, err := apigateway.NewGroup(ctx, "example", &apigateway.GroupArgs{
+//				Name:        pulumi.String(name),
 //				Description: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleApi, err := apigateway.NewApi(ctx, "exampleApi", &apigateway.ApiArgs{
-//				GroupId:         exampleGroup.ID(),
+//			exampleApi, err := apigateway.NewApi(ctx, "example", &apigateway.ApiArgs{
+//				GroupId:         example.ID(),
+//				Name:            pulumi.String(name),
 //				Description:     pulumi.String(name),
 //				AuthType:        pulumi.String("APP"),
 //				ForceNonceCheck: pulumi.Bool(false),
@@ -78,15 +80,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleApp, err := apigateway.NewApp(ctx, "exampleApp", &apigateway.AppArgs{
+//			exampleApp, err := apigateway.NewApp(ctx, "example", &apigateway.AppArgs{
+//				Name:        pulumi.String(name),
 //				Description: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apigateway.NewAppAttachment(ctx, "exampleAppAttachment", &apigateway.AppAttachmentArgs{
+//			_, err = apigateway.NewAppAttachment(ctx, "example", &apigateway.AppAttachmentArgs{
 //				ApiId:     exampleApi.ApiId,
-//				GroupId:   exampleGroup.ID(),
+//				GroupId:   example.ID(),
 //				AppId:     exampleApp.ID(),
 //				StageName: pulumi.String("PRE"),
 //			})

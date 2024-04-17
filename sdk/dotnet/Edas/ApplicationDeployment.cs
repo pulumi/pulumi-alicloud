@@ -29,54 +29,54 @@ namespace Pulumi.AliCloud.Edas
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         AvailabilityZone = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 1,
     ///         MemorySize = 2,
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "10.4.0.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
     ///     {
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         AvailabilityZone = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         InstanceName = name,
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         SecurityGroups = new[]
     ///         {
     ///             defaultSecurityGroup.Id,
@@ -84,16 +84,16 @@ namespace Pulumi.AliCloud.Edas
     ///         VswitchId = defaultSwitch.Id,
     ///     });
     /// 
-    ///     var defaultCluster = new AliCloud.Edas.Cluster("defaultCluster", new()
+    ///     var defaultCluster = new AliCloud.Edas.Cluster("default", new()
     ///     {
     ///         ClusterName = name,
     ///         ClusterType = 2,
     ///         NetworkMode = 2,
-    ///         LogicalRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         LogicalRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var defaultInstanceClusterAttachment = new AliCloud.Edas.InstanceClusterAttachment("defaultInstanceClusterAttachment", new()
+    ///     var defaultInstanceClusterAttachment = new AliCloud.Edas.InstanceClusterAttachment("default", new()
     ///     {
     ///         ClusterId = defaultCluster.Id,
     ///         InstanceIds = new[]
@@ -102,20 +102,20 @@ namespace Pulumi.AliCloud.Edas
     ///         },
     ///     });
     /// 
-    ///     var defaultApplication = new AliCloud.Edas.Application("defaultApplication", new()
+    ///     var defaultApplication = new AliCloud.Edas.Application("default", new()
     ///     {
     ///         ApplicationName = name,
     ///         ClusterId = defaultCluster.Id,
     ///         PackageType = "JAR",
     ///     });
     /// 
-    ///     var defaultDeployGroup = new AliCloud.Edas.DeployGroup("defaultDeployGroup", new()
+    ///     var defaultDeployGroup = new AliCloud.Edas.DeployGroup("default", new()
     ///     {
     ///         AppId = defaultApplication.Id,
     ///         GroupName = name,
     ///     });
     /// 
-    ///     var defaultApplicationDeployment = new AliCloud.Edas.ApplicationDeployment("defaultApplicationDeployment", new()
+    ///     var defaultApplicationDeployment = new AliCloud.Edas.ApplicationDeployment("default", new()
     ///     {
     ///         AppId = defaultApplication.Id,
     ///         GroupId = "all",

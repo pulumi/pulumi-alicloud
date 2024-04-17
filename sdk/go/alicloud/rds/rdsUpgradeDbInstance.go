@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//			example, err := rds.GetZones(ctx, &rds.GetZonesArgs{
 //				Engine:                pulumi.StringRef("PostgreSQL"),
 //				EngineVersion:         pulumi.StringRef("13.0"),
 //				InstanceChargeType:    pulumi.StringRef("PostPaid"),
@@ -46,8 +46,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
-//				ZoneId:                pulumi.StringRef(exampleZones.Zones[0].Id),
+//			exampleGetInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
+//				ZoneId:                pulumi.StringRef(example.Zones[0].Id),
 //				Engine:                pulumi.StringRef("PostgreSQL"),
 //				EngineVersion:         pulumi.StringRef("13.0"),
 //				Category:              pulumi.StringRef("HighAvailability"),
@@ -61,28 +61,28 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
 //				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
+//			exampleInstance, err := rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 //				Engine:                pulumi.String("PostgreSQL"),
 //				EngineVersion:         pulumi.String("13.0"),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
-//				InstanceType:          pulumi.String(exampleInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       pulumi.String(exampleInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				InstanceName:          pulumi.String("terraform-example"),
 //				VswitchId:             exampleSwitch.ID(),
@@ -91,7 +91,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rds.NewRdsUpgradeDbInstance(ctx, "exampleRdsUpgradeDbInstance", &rds.RdsUpgradeDbInstanceArgs{
+//			_, err = rds.NewRdsUpgradeDbInstance(ctx, "example", &rds.RdsUpgradeDbInstanceArgs{
 //				SourceDbInstanceId:    exampleInstance.ID(),
 //				TargetMajorVersion:    pulumi.String("14.0"),
 //				DbInstanceClass:       exampleInstance.InstanceType,

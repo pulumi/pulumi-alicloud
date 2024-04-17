@@ -29,10 +29,10 @@ namespace Pulumi.AliCloud.Ram
         /// {
         ///     var policiesDs = AliCloud.Ram.GetPolicies.Invoke(new()
         ///     {
-        ///         GroupName = "group1",
         ///         OutputFile = "policies.txt",
-        ///         Type = "System",
         ///         UserName = "user1",
+        ///         GroupName = "group1",
+        ///         Type = "System",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -64,10 +64,10 @@ namespace Pulumi.AliCloud.Ram
         /// {
         ///     var policiesDs = AliCloud.Ram.GetPolicies.Invoke(new()
         ///     {
-        ///         GroupName = "group1",
         ///         OutputFile = "policies.txt",
-        ///         Type = "System",
         ///         UserName = "user1",
+        ///         GroupName = "group1",
+        ///         Type = "System",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

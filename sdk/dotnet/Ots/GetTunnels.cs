@@ -32,9 +32,9 @@ namespace Pulumi.AliCloud.Ots
         ///     var tunnelsDs = AliCloud.Ots.GetTunnels.Invoke(new()
         ///     {
         ///         InstanceName = "sample-instance",
+        ///         TableName = "sample-table",
         ///         NameRegex = "sample-tunnel",
         ///         OutputFile = "tunnels.txt",
-        ///         TableName = "sample-table",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -69,9 +69,9 @@ namespace Pulumi.AliCloud.Ots
         ///     var tunnelsDs = AliCloud.Ots.GetTunnels.Invoke(new()
         ///     {
         ///         InstanceName = "sample-instance",
+        ///         TableName = "sample-table",
         ///         NameRegex = "sample-tunnel",
         ///         OutputFile = "tunnels.txt",
-        ///         TableName = "sample-table",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

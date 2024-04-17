@@ -461,7 +461,7 @@ class Queue(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_instance = alicloud.amqp.Instance("defaultInstance",
+        default = alicloud.amqp.Instance("default",
             instance_type="enterprise",
             max_tps="3000",
             queue_capacity="200",
@@ -470,18 +470,18 @@ class Queue(pulumi.CustomResource):
             max_eip_tps="128",
             payment_type="Subscription",
             period=1)
-        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
-            instance_id=default_instance.id,
+        default_virtual_host = alicloud.amqp.VirtualHost("default",
+            instance_id=default.id,
             virtual_host_name="tf-example")
-        default_exchange = alicloud.amqp.Exchange("defaultExchange",
+        default_exchange = alicloud.amqp.Exchange("default",
             auto_delete_state=False,
             exchange_name="tf-example",
             exchange_type="DIRECT",
-            instance_id=default_instance.id,
+            instance_id=default.id,
             internal=False,
             virtual_host_name=default_virtual_host.virtual_host_name)
         example = alicloud.amqp.Queue("example",
-            instance_id=default_instance.id,
+            instance_id=default.id,
             queue_name="tf-example",
             virtual_host_name=default_virtual_host.virtual_host_name)
         ```
@@ -544,7 +544,7 @@ class Queue(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_instance = alicloud.amqp.Instance("defaultInstance",
+        default = alicloud.amqp.Instance("default",
             instance_type="enterprise",
             max_tps="3000",
             queue_capacity="200",
@@ -553,18 +553,18 @@ class Queue(pulumi.CustomResource):
             max_eip_tps="128",
             payment_type="Subscription",
             period=1)
-        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
-            instance_id=default_instance.id,
+        default_virtual_host = alicloud.amqp.VirtualHost("default",
+            instance_id=default.id,
             virtual_host_name="tf-example")
-        default_exchange = alicloud.amqp.Exchange("defaultExchange",
+        default_exchange = alicloud.amqp.Exchange("default",
             auto_delete_state=False,
             exchange_name="tf-example",
             exchange_type="DIRECT",
-            instance_id=default_instance.id,
+            instance_id=default.id,
             internal=False,
             virtual_host_name=default_virtual_host.virtual_host_name)
         example = alicloud.amqp.Queue("example",
-            instance_id=default_instance.id,
+            instance_id=default.id,
             queue_name="tf-example",
             virtual_host_name=default_virtual_host.virtual_host_name)
         ```

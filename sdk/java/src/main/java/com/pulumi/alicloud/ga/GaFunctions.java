@@ -3114,6 +3114,60 @@ public final class GaFunctions {
      * 
      * &gt; **NOTE:** Available in 1.197.0+
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import com.pulumi.alicloud.ga.Accelerator;
+     * import com.pulumi.alicloud.ga.AcceleratorArgs;
+     * import com.pulumi.alicloud.ga.inputs.GetDomainsArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .status(&#34;active&#34;)
+     *             .build());
+     * 
+     *         for (var i = 0; i &lt; default_.accelerators().length() &gt; 0 ? 0 : 1; i++) {
+     *             new Accelerator(&#34;defaultAccelerator-&#34; + i, AcceleratorArgs.builder()            
+     *                 .duration(1)
+     *                 .autoUseCoupon(true)
+     *                 .spec(&#34;1&#34;)
+     *                 .build());
+     * 
+     *         
+     * }
+     *         final var acceleratorId = default_.accelerators().length() &gt; 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
+     * 
+     *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
+     *             .acceleratorId(acceleratorIdLocals)
+     *             .domain(&#34;your_domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudGaDomainExampleId&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetDomainsResult> getDomains() {
         return getDomains(GetDomainsArgs.Empty, InvokeOptions.Empty);
@@ -3122,6 +3176,60 @@ public final class GaFunctions {
      * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
      * 
      * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import com.pulumi.alicloud.ga.Accelerator;
+     * import com.pulumi.alicloud.ga.AcceleratorArgs;
+     * import com.pulumi.alicloud.ga.inputs.GetDomainsArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .status(&#34;active&#34;)
+     *             .build());
+     * 
+     *         for (var i = 0; i &lt; default_.accelerators().length() &gt; 0 ? 0 : 1; i++) {
+     *             new Accelerator(&#34;defaultAccelerator-&#34; + i, AcceleratorArgs.builder()            
+     *                 .duration(1)
+     *                 .autoUseCoupon(true)
+     *                 .spec(&#34;1&#34;)
+     *                 .build());
+     * 
+     *         
+     * }
+     *         final var acceleratorId = default_.accelerators().length() &gt; 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
+     * 
+     *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
+     *             .acceleratorId(acceleratorIdLocals)
+     *             .domain(&#34;your_domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudGaDomainExampleId&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain() {
@@ -3132,6 +3240,60 @@ public final class GaFunctions {
      * 
      * &gt; **NOTE:** Available in 1.197.0+
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import com.pulumi.alicloud.ga.Accelerator;
+     * import com.pulumi.alicloud.ga.AcceleratorArgs;
+     * import com.pulumi.alicloud.ga.inputs.GetDomainsArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .status(&#34;active&#34;)
+     *             .build());
+     * 
+     *         for (var i = 0; i &lt; default_.accelerators().length() &gt; 0 ? 0 : 1; i++) {
+     *             new Accelerator(&#34;defaultAccelerator-&#34; + i, AcceleratorArgs.builder()            
+     *                 .duration(1)
+     *                 .autoUseCoupon(true)
+     *                 .spec(&#34;1&#34;)
+     *                 .build());
+     * 
+     *         
+     * }
+     *         final var acceleratorId = default_.accelerators().length() &gt; 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
+     * 
+     *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
+     *             .acceleratorId(acceleratorIdLocals)
+     *             .domain(&#34;your_domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudGaDomainExampleId&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args) {
         return getDomains(args, InvokeOptions.Empty);
@@ -3140,6 +3302,60 @@ public final class GaFunctions {
      * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
      * 
      * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import com.pulumi.alicloud.ga.Accelerator;
+     * import com.pulumi.alicloud.ga.AcceleratorArgs;
+     * import com.pulumi.alicloud.ga.inputs.GetDomainsArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .status(&#34;active&#34;)
+     *             .build());
+     * 
+     *         for (var i = 0; i &lt; default_.accelerators().length() &gt; 0 ? 0 : 1; i++) {
+     *             new Accelerator(&#34;defaultAccelerator-&#34; + i, AcceleratorArgs.builder()            
+     *                 .duration(1)
+     *                 .autoUseCoupon(true)
+     *                 .spec(&#34;1&#34;)
+     *                 .build());
+     * 
+     *         
+     * }
+     *         final var acceleratorId = default_.accelerators().length() &gt; 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
+     * 
+     *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
+     *             .acceleratorId(acceleratorIdLocals)
+     *             .domain(&#34;your_domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudGaDomainExampleId&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args) {
@@ -3150,6 +3366,60 @@ public final class GaFunctions {
      * 
      * &gt; **NOTE:** Available in 1.197.0+
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import com.pulumi.alicloud.ga.Accelerator;
+     * import com.pulumi.alicloud.ga.AcceleratorArgs;
+     * import com.pulumi.alicloud.ga.inputs.GetDomainsArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .status(&#34;active&#34;)
+     *             .build());
+     * 
+     *         for (var i = 0; i &lt; default_.accelerators().length() &gt; 0 ? 0 : 1; i++) {
+     *             new Accelerator(&#34;defaultAccelerator-&#34; + i, AcceleratorArgs.builder()            
+     *                 .duration(1)
+     *                 .autoUseCoupon(true)
+     *                 .spec(&#34;1&#34;)
+     *                 .build());
+     * 
+     *         
+     * }
+     *         final var acceleratorId = default_.accelerators().length() &gt; 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
+     * 
+     *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
+     *             .acceleratorId(acceleratorIdLocals)
+     *             .domain(&#34;your_domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudGaDomainExampleId&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ga/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
@@ -3158,6 +3428,60 @@ public final class GaFunctions {
      * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
      * 
      * &gt; **NOTE:** Available in 1.197.0+
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ga.GaFunctions;
+     * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+     * import com.pulumi.alicloud.ga.Accelerator;
+     * import com.pulumi.alicloud.ga.AcceleratorArgs;
+     * import com.pulumi.alicloud.ga.inputs.GetDomainsArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *             .status(&#34;active&#34;)
+     *             .build());
+     * 
+     *         for (var i = 0; i &lt; default_.accelerators().length() &gt; 0 ? 0 : 1; i++) {
+     *             new Accelerator(&#34;defaultAccelerator-&#34; + i, AcceleratorArgs.builder()            
+     *                 .duration(1)
+     *                 .autoUseCoupon(true)
+     *                 .spec(&#34;1&#34;)
+     *                 .build());
+     * 
+     *         
+     * }
+     *         final var acceleratorId = default_.accelerators().length() &gt; 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
+     * 
+     *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
+     *             .acceleratorId(acceleratorIdLocals)
+     *             .domain(&#34;your_domain&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudGaDomainExampleId&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
@@ -3391,7 +3715,7 @@ public final class GaFunctions {
      *         final var config = ctx.config();
      *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultAccelerators = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
      *             .status(&#34;active&#34;)
      *             .build());
      * 
@@ -3408,7 +3732,7 @@ public final class GaFunctions {
      *             .build());
      * 
      *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
-     *             .acceleratorId(defaultAccelerators.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.ids()[0]))
+     *             .acceleratorId(default_.ids()[0])
      *             .bandwidthPackageId(defaultBandwidthPackage.id())
      *             .build());
      * 
@@ -3416,6 +3740,7 @@ public final class GaFunctions {
      *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
      *             .clientAffinity(&#34;SOURCE_IP&#34;)
      *             .protocol(&#34;UDP&#34;)
+     *             .name(name)
      *             .portRanges(ListenerPortRangeArgs.builder()
      *                 .fromPort(&#34;60&#34;)
      *                 .toPort(&#34;70&#34;)
@@ -3432,6 +3757,7 @@ public final class GaFunctions {
      *             .acceleratorId(defaultListener.acceleratorId())
      *             .listenerId(defaultListener.id())
      *             .description(name)
+     *             .name(name)
      *             .thresholdCount(4)
      *             .trafficPercentage(20)
      *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
@@ -3450,12 +3776,12 @@ public final class GaFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var defaultEndpointGroups = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
+     *         final var defaultGetEndpointGroups = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
      *             .acceleratorId(defaultEndpointGroup.acceleratorId())
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultEndpointGroups -&gt; defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
+     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -&gt; defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
      *     }
      * }
      * ```
@@ -3513,7 +3839,7 @@ public final class GaFunctions {
      *         final var config = ctx.config();
      *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultAccelerators = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
      *             .status(&#34;active&#34;)
      *             .build());
      * 
@@ -3530,7 +3856,7 @@ public final class GaFunctions {
      *             .build());
      * 
      *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
-     *             .acceleratorId(defaultAccelerators.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.ids()[0]))
+     *             .acceleratorId(default_.ids()[0])
      *             .bandwidthPackageId(defaultBandwidthPackage.id())
      *             .build());
      * 
@@ -3538,6 +3864,7 @@ public final class GaFunctions {
      *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
      *             .clientAffinity(&#34;SOURCE_IP&#34;)
      *             .protocol(&#34;UDP&#34;)
+     *             .name(name)
      *             .portRanges(ListenerPortRangeArgs.builder()
      *                 .fromPort(&#34;60&#34;)
      *                 .toPort(&#34;70&#34;)
@@ -3554,6 +3881,7 @@ public final class GaFunctions {
      *             .acceleratorId(defaultListener.acceleratorId())
      *             .listenerId(defaultListener.id())
      *             .description(name)
+     *             .name(name)
      *             .thresholdCount(4)
      *             .trafficPercentage(20)
      *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
@@ -3572,12 +3900,12 @@ public final class GaFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var defaultEndpointGroups = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
+     *         final var defaultGetEndpointGroups = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
      *             .acceleratorId(defaultEndpointGroup.acceleratorId())
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultEndpointGroups -&gt; defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
+     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -&gt; defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
      *     }
      * }
      * ```
@@ -3635,7 +3963,7 @@ public final class GaFunctions {
      *         final var config = ctx.config();
      *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultAccelerators = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
      *             .status(&#34;active&#34;)
      *             .build());
      * 
@@ -3652,7 +3980,7 @@ public final class GaFunctions {
      *             .build());
      * 
      *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
-     *             .acceleratorId(defaultAccelerators.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.ids()[0]))
+     *             .acceleratorId(default_.ids()[0])
      *             .bandwidthPackageId(defaultBandwidthPackage.id())
      *             .build());
      * 
@@ -3660,6 +3988,7 @@ public final class GaFunctions {
      *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
      *             .clientAffinity(&#34;SOURCE_IP&#34;)
      *             .protocol(&#34;UDP&#34;)
+     *             .name(name)
      *             .portRanges(ListenerPortRangeArgs.builder()
      *                 .fromPort(&#34;60&#34;)
      *                 .toPort(&#34;70&#34;)
@@ -3676,6 +4005,7 @@ public final class GaFunctions {
      *             .acceleratorId(defaultListener.acceleratorId())
      *             .listenerId(defaultListener.id())
      *             .description(name)
+     *             .name(name)
      *             .thresholdCount(4)
      *             .trafficPercentage(20)
      *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
@@ -3694,12 +4024,12 @@ public final class GaFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var defaultEndpointGroups = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
+     *         final var defaultGetEndpointGroups = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
      *             .acceleratorId(defaultEndpointGroup.acceleratorId())
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultEndpointGroups -&gt; defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
+     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -&gt; defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
      *     }
      * }
      * ```
@@ -3757,7 +4087,7 @@ public final class GaFunctions {
      *         final var config = ctx.config();
      *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultAccelerators = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+     *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
      *             .status(&#34;active&#34;)
      *             .build());
      * 
@@ -3774,7 +4104,7 @@ public final class GaFunctions {
      *             .build());
      * 
      *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
-     *             .acceleratorId(defaultAccelerators.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.ids()[0]))
+     *             .acceleratorId(default_.ids()[0])
      *             .bandwidthPackageId(defaultBandwidthPackage.id())
      *             .build());
      * 
@@ -3782,6 +4112,7 @@ public final class GaFunctions {
      *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
      *             .clientAffinity(&#34;SOURCE_IP&#34;)
      *             .protocol(&#34;UDP&#34;)
+     *             .name(name)
      *             .portRanges(ListenerPortRangeArgs.builder()
      *                 .fromPort(&#34;60&#34;)
      *                 .toPort(&#34;70&#34;)
@@ -3798,6 +4129,7 @@ public final class GaFunctions {
      *             .acceleratorId(defaultListener.acceleratorId())
      *             .listenerId(defaultListener.id())
      *             .description(name)
+     *             .name(name)
      *             .thresholdCount(4)
      *             .trafficPercentage(20)
      *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
@@ -3816,12 +4148,12 @@ public final class GaFunctions {
      *                 .build())
      *             .build());
      * 
-     *         final var defaultEndpointGroups = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
+     *         final var defaultGetEndpointGroups = GaFunctions.getEndpointGroups(GetEndpointGroupsArgs.builder()
      *             .acceleratorId(defaultEndpointGroup.acceleratorId())
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultEndpointGroups -&gt; defaultEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
+     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -&gt; defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
      *     }
      * }
      * ```

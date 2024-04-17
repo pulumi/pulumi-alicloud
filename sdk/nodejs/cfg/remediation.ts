@@ -22,34 +22,34 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example-oss";
- * const defaultRegions = alicloud.getRegions({
+ * const default = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {
+ * const defaultBucket = new alicloud.oss.Bucket("default", {
  *     bucket: name,
  *     acl: "public-read",
  *     tags: {
  *         For: "example",
  *     },
  * });
- * const defaultRule = new alicloud.cfg.Rule("defaultRule", {
+ * const defaultRule = new alicloud.cfg.Rule("default", {
  *     description: "If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
  *     sourceOwner: "ALIYUN",
  *     sourceIdentifier: "oss-bucket-public-read-prohibited",
  *     riskLevel: 1,
  *     tagKeyScope: "For",
  *     tagValueScope: "example",
- *     regionIdsScope: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     regionIdsScope: _default.then(_default => _default.regions?.[0]?.id),
  *     configRuleTriggerTypes: "ConfigurationItemChangeNotification",
  *     resourceTypesScopes: ["ACS::OSS::Bucket"],
  *     ruleName: "oss-bucket-public-read-prohibited",
  * });
- * const defaultRemediation = new alicloud.cfg.Remediation("defaultRemediation", {
+ * const defaultRemediation = new alicloud.cfg.Remediation("default", {
  *     configRuleId: defaultRule.configRuleId,
  *     remediationTemplateId: "ACS-OSS-PutBucketAcl",
  *     remediationSourceType: "ALIYUN",
  *     invokeType: "MANUAL_EXECUTION",
- *     params: pulumi.all([defaultBucket.bucket, defaultRegions]).apply(([bucket, defaultRegions]) => `{"bucketName": "${bucket}", "regionId": "${defaultRegions.regions?.[0]?.id}", "permissionName": "private"}`),
+ *     params: pulumi.all([defaultBucket.bucket, _default]).apply(([bucket, _default]) => `{"bucketName": "${bucket}", "regionId": "${_default.regions?.[0]?.id}", "permissionName": "private"}`),
  *     remediationType: "OOS",
  * });
  * ```

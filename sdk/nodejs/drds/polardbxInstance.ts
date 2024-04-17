@@ -22,17 +22,17 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {vpcName: name});
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
- *     vpcId: exampleNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * const example = new alicloud.vpc.Network("example", {vpcName: name});
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
+ *     vpcId: example.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     cidrBlock: "172.16.0.0/24",
  *     vswitchName: name,
  * });
- * const defaultPolardbxInstance = new alicloud.drds.PolardbxInstance("defaultPolardbxInstance", {
+ * const defaultPolardbxInstance = new alicloud.drds.PolardbxInstance("default", {
  *     topologyType: "3azones",
  *     vswitchId: exampleSwitch.id,
  *     primaryZone: "ap-southeast-1a",
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     dnNodeCount: 2,
  *     secondaryZone: "ap-southeast-1b",
  *     tertiaryZone: "ap-southeast-1c",
- *     vpcId: exampleNetwork.id,
+ *     vpcId: example.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

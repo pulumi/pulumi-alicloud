@@ -29,8 +29,8 @@ namespace Pulumi.AliCloud.Ram
         /// {
         ///     var rolesDs = AliCloud.Ram.GetRoles.Invoke(new()
         ///     {
-        ///         NameRegex = ".*test.*",
         ///         OutputFile = "roles.txt",
+        ///         NameRegex = ".*test.*",
         ///         PolicyName = "AliyunACSDefaultAccess",
         ///         PolicyType = "Custom",
         ///     });
@@ -64,8 +64,8 @@ namespace Pulumi.AliCloud.Ram
         /// {
         ///     var rolesDs = AliCloud.Ram.GetRoles.Invoke(new()
         ///     {
-        ///         NameRegex = ".*test.*",
         ///         OutputFile = "roles.txt",
+        ///         NameRegex = ".*test.*",
         ///         PolicyName = "AliyunACSDefaultAccess",
         ///         PolicyType = "Custom",
         ///     });

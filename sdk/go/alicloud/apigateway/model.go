@@ -35,14 +35,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultGroup, err := apigateway.NewGroup(ctx, "defaultGroup", &apigateway.GroupArgs{
+//			_, err := apigateway.NewGroup(ctx, "default", &apigateway.GroupArgs{
+//				Name:        pulumi.String("example_value"),
 //				Description: pulumi.String("example_value"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apigateway.NewModel(ctx, "defaultModel", &apigateway.ModelArgs{
-//				GroupId:     defaultGroup.ID(),
+//			_, err = apigateway.NewModel(ctx, "default", &apigateway.ModelArgs{
+//				GroupId:     _default.ID(),
 //				ModelName:   pulumi.String("example_value"),
 //				Schema:      pulumi.String("{\"type\":\"object\",\"properties\":{\"id\":{\"format\":\"int64\",\"maximum\":100,\"exclusiveMaximum\":true,\"type\":\"integer\"},\"name\":{\"maxLength\":10,\"type\":\"string\"}}}"),
 //				Description: pulumi.String("example_value"),

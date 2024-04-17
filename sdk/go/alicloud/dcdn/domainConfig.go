@@ -58,7 +58,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dcdn.NewDomainConfig(ctx, "ipAllowListSet", &dcdn.DomainConfigArgs{
+//			_, err = dcdn.NewDomainConfig(ctx, "ip_allow_list_set", &dcdn.DomainConfigArgs{
 //				DomainName:   example.DomainName,
 //				FunctionName: pulumi.String("ip_allow_list_set"),
 //				FunctionArgs: dcdn.DomainConfigFunctionArgArray{
@@ -71,7 +71,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dcdn.NewDomainConfig(ctx, "refererWhiteListSet", &dcdn.DomainConfigArgs{
+//			_, err = dcdn.NewDomainConfig(ctx, "referer_white_list_set", &dcdn.DomainConfigArgs{
 //				DomainName:   example.DomainName,
 //				FunctionName: pulumi.String("referer_white_list_set"),
 //				FunctionArgs: dcdn.DomainConfigFunctionArgArray{
@@ -84,7 +84,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dcdn.NewDomainConfig(ctx, "filetypeBasedTtlSet", &dcdn.DomainConfigArgs{
+//			_, err = dcdn.NewDomainConfig(ctx, "filetype_based_ttl_set", &dcdn.DomainConfigArgs{
 //				DomainName:   example.DomainName,
 //				FunctionName: pulumi.String("filetype_based_ttl_set"),
 //				FunctionArgs: dcdn.DomainConfigFunctionArgArray{

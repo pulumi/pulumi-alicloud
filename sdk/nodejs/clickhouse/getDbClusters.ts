@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
+ * const defaultDbCluster = new alicloud.clickhouse.DbCluster("default", {
  *     dbClusterVersion: "20.3.10.75",
  *     category: "Basic",
  *     dbClusterClass: "S8",
@@ -31,10 +31,10 @@ import * as utilities from "../utilities";
  *     storageType: "cloud_essd",
  *     vswitchId: "your_vswitch_id",
  * });
- * const defaultDbClusters = alicloud.clickhouse.getDbClustersOutput({
+ * const default = alicloud.clickhouse.getDbClustersOutput({
  *     ids: [defaultDbCluster.id],
  * });
- * export const dbCluster = defaultDbClusters.apply(defaultDbClusters => defaultDbClusters.ids?.[0]);
+ * export const dbCluster = _default.apply(_default => _default.ids?.[0]);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -106,7 +106,7 @@ export interface GetDbClustersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
+ * const defaultDbCluster = new alicloud.clickhouse.DbCluster("default", {
  *     dbClusterVersion: "20.3.10.75",
  *     category: "Basic",
  *     dbClusterClass: "S8",
@@ -117,10 +117,10 @@ export interface GetDbClustersResult {
  *     storageType: "cloud_essd",
  *     vswitchId: "your_vswitch_id",
  * });
- * const defaultDbClusters = alicloud.clickhouse.getDbClustersOutput({
+ * const default = alicloud.clickhouse.getDbClustersOutput({
  *     ids: [defaultDbCluster.id],
  * });
- * export const dbCluster = defaultDbClusters.apply(defaultDbClusters => defaultDbClusters.ids?.[0]);
+ * export const dbCluster = _default.apply(_default => _default.ids?.[0]);
  * ```
  * <!--End PulumiCodeChooser -->
  */

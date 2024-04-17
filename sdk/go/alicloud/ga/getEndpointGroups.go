@@ -43,13 +43,13 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultAccelerators, err := ga.GetAccelerators(ctx, &ga.GetAcceleratorsArgs{
+//			_default, err := ga.GetAccelerators(ctx, &ga.GetAcceleratorsArgs{
 //				Status: pulumi.StringRef("active"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &ga.BandwidthPackageArgs{
+//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "default", &ga.BandwidthPackageArgs{
 //				Bandwidth:            pulumi.Int(100),
 //				Type:                 pulumi.String("Basic"),
 //				BandwidthType:        pulumi.String("Basic"),
@@ -63,17 +63,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      pulumi.String(defaultAccelerators.Ids[0]),
+//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      pulumi.String(_default.Ids[0]),
 //				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultListener, err := ga.NewListener(ctx, "defaultListener", &ga.ListenerArgs{
+//			defaultListener, err := ga.NewListener(ctx, "default", &ga.ListenerArgs{
 //				AcceleratorId:  defaultBandwidthPackageAttachment.AcceleratorId,
 //				ClientAffinity: pulumi.String("SOURCE_IP"),
 //				Protocol:       pulumi.String("UDP"),
+//				Name:           pulumi.String(name),
 //				PortRanges: ga.ListenerPortRangeArray{
 //					&ga.ListenerPortRangeArgs{
 //						FromPort: pulumi.Int(60),
@@ -84,7 +85,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
 //				Bandwidth:          pulumi.String("10"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),
 //				AddressName:        pulumi.String(name),
@@ -92,10 +93,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultEndpointGroup, err := ga.NewEndpointGroup(ctx, "defaultEndpointGroup", &ga.EndpointGroupArgs{
+//			defaultEndpointGroup, err := ga.NewEndpointGroup(ctx, "default", &ga.EndpointGroupArgs{
 //				AcceleratorId:              defaultListener.AcceleratorId,
 //				ListenerId:                 defaultListener.ID(),
 //				Description:                pulumi.String(name),
+//				Name:                       pulumi.String(name),
 //				ThresholdCount:             pulumi.Int(4),
 //				TrafficPercentage:          pulumi.Int(20),
 //				EndpointGroupRegion:        pulumi.String("cn-hangzhou"),
@@ -118,14 +120,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultEndpointGroups := ga.GetEndpointGroupsOutput(ctx, ga.GetEndpointGroupsOutputArgs{
+//			defaultGetEndpointGroups := ga.GetEndpointGroupsOutput(ctx, ga.GetEndpointGroupsOutputArgs{
 //				AcceleratorId: defaultEndpointGroup.AcceleratorId,
 //				Ids: pulumi.StringArray{
 //					defaultEndpointGroup.ID(),
 //				},
 //			}, nil)
-//			ctx.Export("firstGaEndpointGroupId", defaultEndpointGroups.ApplyT(func(defaultEndpointGroups ga.GetEndpointGroupsResult) (*string, error) {
-//				return &defaultEndpointGroups.Groups[0].Id, nil
+//			ctx.Export("firstGaEndpointGroupId", defaultGetEndpointGroups.ApplyT(func(defaultGetEndpointGroups ga.GetEndpointGroupsResult) (*string, error) {
+//				return &defaultGetEndpointGroups.Groups[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

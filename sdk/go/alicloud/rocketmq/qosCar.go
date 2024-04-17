@@ -43,12 +43,15 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultQos, err := rocketmq.NewQos(ctx, "defaultQos", nil)
+//			_, err := rocketmq.NewQos(ctx, "default", &rocketmq.QosArgs{
+//				Name: pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rocketmq.NewQosCar(ctx, "defaultQosCar", &rocketmq.QosCarArgs{
-//				QosId:             defaultQos.ID(),
+//			_, err = rocketmq.NewQosCar(ctx, "default", &rocketmq.QosCarArgs{
+//				QosId:             _default.ID(),
+//				Name:              pulumi.String(name),
 //				Description:       pulumi.String(name),
 //				Priority:          pulumi.Int(1),
 //				LimitType:         pulumi.String("Absolute"),

@@ -31,24 +31,25 @@ namespace Pulumi.AliCloud.PrivateLink
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tfexampleuser";
-    ///     var exampleVpcEndpointService = new AliCloud.PrivateLink.VpcEndpointService("exampleVpcEndpointService", new()
+    ///     var example = new AliCloud.PrivateLink.VpcEndpointService("example", new()
     ///     {
     ///         ServiceDescription = name,
     ///         ConnectBandwidth = 103,
     ///         AutoAcceptConnection = false,
     ///     });
     /// 
-    ///     var exampleUser = new AliCloud.Ram.User("exampleUser", new()
+    ///     var exampleUser = new AliCloud.Ram.User("example", new()
     ///     {
+    ///         Name = name,
     ///         DisplayName = "user_display_name",
     ///         Mobile = "86-18688888888",
     ///         Email = "hello.uuu@aaa.com",
     ///         Comments = "yoyoyo",
     ///     });
     /// 
-    ///     var exampleVpcEndpointServiceUser = new AliCloud.PrivateLink.VpcEndpointServiceUser("exampleVpcEndpointServiceUser", new()
+    ///     var exampleVpcEndpointServiceUser = new AliCloud.PrivateLink.VpcEndpointServiceUser("example", new()
     ///     {
-    ///         ServiceId = exampleVpcEndpointService.Id,
+    ///         ServiceId = example.Id,
     ///         UserId = exampleUser.Id,
     ///     });
     /// 

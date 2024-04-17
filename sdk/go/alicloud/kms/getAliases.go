@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			_, err := kms.GetAliases(ctx, &kms.GetAliasesArgs{
 //				Ids: []string{
 //					"d89e8a53-b708-41aa-8c67-6873axxx",
@@ -39,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstKeyId", data.Alicloud_kms_keys.Kms_keys_ds.Keys[0].Id)
+//			ctx.Export("firstKeyId", kmsKeysDs.Keys[0].Id)
 //			return nil
 //		})
 //	}

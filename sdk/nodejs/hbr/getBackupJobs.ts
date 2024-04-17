@@ -20,21 +20,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultEcsBackupPlans = alicloud.hbr.getEcsBackupPlans({
+ * const default = alicloud.hbr.getEcsBackupPlans({
  *     nameRegex: "plan-name",
  * });
- * const defaultBackupJobs = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getBackupJobs({
+ * const defaultGetBackupJobs = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getBackupJobs({
  *     sourceType: "ECS_FILE",
  *     filters: [
  *         {
  *             key: "VaultId",
  *             operator: "IN",
- *             values: [defaultEcsBackupPlans.plans?.[0]?.vaultId],
+ *             values: [_default.plans?.[0]?.vaultId],
  *         },
  *         {
  *             key: "InstanceId",
  *             operator: "IN",
- *             values: [defaultEcsBackupPlans1.plans?.[0]?.instanceId],
+ *             values: [_default1.plans?.[0]?.instanceId],
  *         },
  *         {
  *             key: "CompleteTime",
@@ -46,19 +46,19 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * }));
- * const example = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getBackupJobs({
+ * const example = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getBackupJobs({
  *     sourceType: "ECS_FILE",
  *     status: "COMPLETE",
  *     filters: [
  *         {
  *             key: "VaultId",
  *             operator: "IN",
- *             values: [defaultEcsBackupPlans.plans?.[0]?.vaultId],
+ *             values: [_default.plans?.[0]?.vaultId],
  *         },
  *         {
  *             key: "InstanceId",
  *             operator: "IN",
- *             values: [defaultEcsBackupPlans1.plans?.[0]?.instanceId],
+ *             values: [_default1.plans?.[0]?.instanceId],
  *         },
  *         {
  *             key: "CompleteTime",
@@ -67,7 +67,7 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * }));
- * export const alicloudHbrBackupJobsDefault1 = defaultBackupJobs.then(defaultBackupJobs => defaultBackupJobs.jobs?.[0]?.id);
+ * export const alicloudHbrBackupJobsDefault1 = defaultGetBackupJobs.then(defaultGetBackupJobs => defaultGetBackupJobs.jobs?.[0]?.id);
  * export const alicloudHbrBackupJobsExample1 = example.then(example => example.jobs?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
@@ -142,21 +142,21 @@ export interface GetBackupJobsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultEcsBackupPlans = alicloud.hbr.getEcsBackupPlans({
+ * const default = alicloud.hbr.getEcsBackupPlans({
  *     nameRegex: "plan-name",
  * });
- * const defaultBackupJobs = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getBackupJobs({
+ * const defaultGetBackupJobs = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getBackupJobs({
  *     sourceType: "ECS_FILE",
  *     filters: [
  *         {
  *             key: "VaultId",
  *             operator: "IN",
- *             values: [defaultEcsBackupPlans.plans?.[0]?.vaultId],
+ *             values: [_default.plans?.[0]?.vaultId],
  *         },
  *         {
  *             key: "InstanceId",
  *             operator: "IN",
- *             values: [defaultEcsBackupPlans1.plans?.[0]?.instanceId],
+ *             values: [_default1.plans?.[0]?.instanceId],
  *         },
  *         {
  *             key: "CompleteTime",
@@ -168,19 +168,19 @@ export interface GetBackupJobsResult {
  *         },
  *     ],
  * }));
- * const example = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getBackupJobs({
+ * const example = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getBackupJobs({
  *     sourceType: "ECS_FILE",
  *     status: "COMPLETE",
  *     filters: [
  *         {
  *             key: "VaultId",
  *             operator: "IN",
- *             values: [defaultEcsBackupPlans.plans?.[0]?.vaultId],
+ *             values: [_default.plans?.[0]?.vaultId],
  *         },
  *         {
  *             key: "InstanceId",
  *             operator: "IN",
- *             values: [defaultEcsBackupPlans1.plans?.[0]?.instanceId],
+ *             values: [_default1.plans?.[0]?.instanceId],
  *         },
  *         {
  *             key: "CompleteTime",
@@ -189,7 +189,7 @@ export interface GetBackupJobsResult {
  *         },
  *     ],
  * }));
- * export const alicloudHbrBackupJobsDefault1 = defaultBackupJobs.then(defaultBackupJobs => defaultBackupJobs.jobs?.[0]?.id);
+ * export const alicloudHbrBackupJobsDefault1 = defaultGetBackupJobs.then(defaultGetBackupJobs => defaultGetBackupJobs.jobs?.[0]?.id);
  * export const alicloudHbrBackupJobsExample1 = example.then(example => example.jobs?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->

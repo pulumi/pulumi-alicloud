@@ -188,10 +188,10 @@ def get_records(domain_name: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     records_ds = alicloud.dns.get_records(domain_name="xiaozhu.top",
-        host_record_regex="^@",
         is_locked=False,
-        output_file="records.txt",
-        type="A")
+        type="A",
+        host_record_regex="^@",
+        output_file="records.txt")
     pulumi.export("firstRecordId", records_ds.records[0].record_id)
     ```
     <!--End PulumiCodeChooser -->
@@ -259,10 +259,10 @@ def get_records_output(domain_name: Optional[pulumi.Input[str]] = None,
     import pulumi_alicloud as alicloud
 
     records_ds = alicloud.dns.get_records(domain_name="xiaozhu.top",
-        host_record_regex="^@",
         is_locked=False,
-        output_file="records.txt",
-        type="A")
+        type="A",
+        host_record_regex="^@",
+        output_file="records.txt")
     pulumi.export("firstRecordId", records_ds.records[0].record_id)
     ```
     <!--End PulumiCodeChooser -->

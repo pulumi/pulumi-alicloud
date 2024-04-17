@@ -23,11 +23,12 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultInstance = new alicloud.ots.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.ots.Instance("default", {
+ *     name: `${name}-${_default.result}`,
  *     description: name,
  *     accessedBy: "Any",
  *     tags: {
@@ -35,7 +36,7 @@ import * as utilities from "../utilities";
  *         For: "example",
  *     },
  * });
- * const defaultTable = new alicloud.ots.Table("defaultTable", {
+ * const defaultTable = new alicloud.ots.Table("default", {
  *     instanceName: defaultInstance.name,
  *     tableName: "tf_example",
  *     timeToLive: -1,
@@ -57,7 +58,7 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * });
- * const defaultSearchIndex = new alicloud.ots.SearchIndex("defaultSearchIndex", {
+ * const defaultSearchIndex = new alicloud.ots.SearchIndex("default", {
  *     instanceName: defaultInstance.name,
  *     tableName: defaultTable.tableName,
  *     indexName: "example_index",

@@ -15,8 +15,9 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const topic = new alicloud.mns.Topic("topic", {
- *     loggingEnabled: false,
+ *     name: "tf-example-mnstopic",
  *     maximumMessageSize: 65536,
+ *     loggingEnabled: false,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

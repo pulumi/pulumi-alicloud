@@ -62,7 +62,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
+     *         final var default = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
@@ -70,7 +70,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
+     *         ctx.export(&#34;vodDomain&#34;, default_.applyValue(default_ -&gt; default_.domains()[0]));
      *     }
      * }
      * ```
@@ -128,7 +128,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
+     *         final var default = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
@@ -136,7 +136,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
+     *         ctx.export(&#34;vodDomain&#34;, default_.applyValue(default_ -&gt; default_.domains()[0]));
      *     }
      * }
      * ```
@@ -194,7 +194,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
+     *         final var default = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
@@ -202,7 +202,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
+     *         ctx.export(&#34;vodDomain&#34;, default_.applyValue(default_ -&gt; default_.domains()[0]));
      *     }
      * }
      * ```
@@ -260,7 +260,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
+     *         final var default = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
@@ -268,7 +268,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
+     *         ctx.export(&#34;vodDomain&#34;, default_.applyValue(default_ -&gt; default_.domains()[0]));
      *     }
      * }
      * ```
@@ -326,7 +326,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
+     *         final var default = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
@@ -334,7 +334,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
+     *         ctx.export(&#34;vodDomain&#34;, default_.applyValue(default_ -&gt; default_.domains()[0]));
      *     }
      * }
      * ```
@@ -392,7 +392,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         final var defaultDomains = VodFunctions.getDomains(GetDomainsArgs.builder()
+     *         final var default = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
@@ -400,7 +400,7 @@ public final class VodFunctions {
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;vodDomain&#34;, defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult).applyValue(defaultDomains -&gt; defaultDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0])));
+     *         ctx.export(&#34;vodDomain&#34;, default_.applyValue(default_ -&gt; default_.domains()[0]));
      *     }
      * }
      * ```

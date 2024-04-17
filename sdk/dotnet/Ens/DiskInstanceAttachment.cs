@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ens
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultDisk = new AliCloud.Ens.Disk("defaultDisk", new()
+    ///     var @default = new AliCloud.Ens.Disk("default", new()
     ///     {
     ///         Size = 20,
     ///         EnsRegionId = "cn-chenzhou-telecom_unicom_cmcc",
@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Ens
     ///         Category = "cloud_efficiency",
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Ens.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Ens.Instance("default", new()
     ///     {
     ///         SystemDisk = new AliCloud.Ens.Inputs.InstanceSystemDiskArgs
     ///         {
@@ -59,11 +59,11 @@ namespace Pulumi.AliCloud.Ens
     ///         Period = 1,
     ///     });
     /// 
-    ///     var defaultDiskInstanceAttachment = new AliCloud.Ens.DiskInstanceAttachment("defaultDiskInstanceAttachment", new()
+    ///     var defaultDiskInstanceAttachment = new AliCloud.Ens.DiskInstanceAttachment("default", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
     ///         DeleteWithInstance = "false",
-    ///         DiskId = defaultDisk.Id,
+    ///         DiskId = @default.Id,
     ///     });
     /// 
     /// });

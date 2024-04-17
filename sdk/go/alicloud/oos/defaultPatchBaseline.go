@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultPatchBaseline, err := oos.NewPatchBaseline(ctx, "defaultPatchBaseline", &oos.PatchBaselineArgs{
+//			_, err := oos.NewPatchBaseline(ctx, "default", &oos.PatchBaselineArgs{
 //				OperationSystem:   pulumi.String("Windows"),
 //				PatchBaselineName: pulumi.String("terraform-example"),
 //				Description:       pulumi.String("terraform-example"),
@@ -44,8 +44,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = oos.NewDefaultPatchBaseline(ctx, "defaultDefaultPatchBaseline", &oos.DefaultPatchBaselineArgs{
-//				PatchBaselineName: defaultPatchBaseline.ID(),
+//			_, err = oos.NewDefaultPatchBaseline(ctx, "default", &oos.DefaultPatchBaselineArgs{
+//				PatchBaselineName: _default.ID(),
 //			})
 //			if err != nil {
 //				return err

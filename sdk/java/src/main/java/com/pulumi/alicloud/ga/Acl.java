@@ -54,13 +54,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
+ *         var default_ = new Acl(&#34;default&#34;, AclArgs.builder()        
  *             .aclName(&#34;terraform-example&#34;)
  *             .addressIpVersion(&#34;IPv4&#34;)
  *             .build());
  * 
  *         var defaultAclEntryAttachment = new AclEntryAttachment(&#34;defaultAclEntryAttachment&#34;, AclEntryAttachmentArgs.builder()        
- *             .aclId(defaultAcl.id())
+ *             .aclId(default_.id())
  *             .entry(&#34;192.168.1.1/32&#34;)
  *             .entryDescription(&#34;terraform-example&#34;)
  *             .build());

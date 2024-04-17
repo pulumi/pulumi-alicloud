@@ -91,22 +91,22 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-name&#34;)
      *             .build());
      * 
-     *         final var defaultBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
+     *         final var defaultGetBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
      *             .sourceType(&#34;ECS_FILE&#34;)
      *             .filters(            
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;VaultId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;InstanceId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;CompleteTime&#34;)
@@ -124,12 +124,12 @@ public final class HbrFunctions {
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;VaultId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;InstanceId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;CompleteTime&#34;)
@@ -138,7 +138,7 @@ public final class HbrFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultGetBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
      *         ctx.export(&#34;alicloudHbrBackupJobsExample1&#34;, example.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
      *     }
      * }
@@ -181,22 +181,22 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-name&#34;)
      *             .build());
      * 
-     *         final var defaultBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
+     *         final var defaultGetBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
      *             .sourceType(&#34;ECS_FILE&#34;)
      *             .filters(            
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;VaultId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;InstanceId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;CompleteTime&#34;)
@@ -214,12 +214,12 @@ public final class HbrFunctions {
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;VaultId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;InstanceId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;CompleteTime&#34;)
@@ -228,7 +228,7 @@ public final class HbrFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultGetBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
      *         ctx.export(&#34;alicloudHbrBackupJobsExample1&#34;, example.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
      *     }
      * }
@@ -271,22 +271,22 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-name&#34;)
      *             .build());
      * 
-     *         final var defaultBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
+     *         final var defaultGetBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
      *             .sourceType(&#34;ECS_FILE&#34;)
      *             .filters(            
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;VaultId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;InstanceId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;CompleteTime&#34;)
@@ -304,12 +304,12 @@ public final class HbrFunctions {
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;VaultId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;InstanceId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;CompleteTime&#34;)
@@ -318,7 +318,7 @@ public final class HbrFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultGetBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
      *         ctx.export(&#34;alicloudHbrBackupJobsExample1&#34;, example.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
      *     }
      * }
@@ -361,22 +361,22 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-name&#34;)
      *             .build());
      * 
-     *         final var defaultBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
+     *         final var defaultGetBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
      *             .sourceType(&#34;ECS_FILE&#34;)
      *             .filters(            
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;VaultId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;InstanceId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;CompleteTime&#34;)
@@ -394,12 +394,12 @@ public final class HbrFunctions {
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;VaultId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
+     *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;InstanceId&#34;)
      *                     .operator(&#34;IN&#34;)
-     *                     .values(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
      *                     .key(&#34;CompleteTime&#34;)
@@ -408,7 +408,7 @@ public final class HbrFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultGetBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
      *         ctx.export(&#34;alicloudHbrBackupJobsExample1&#34;, example.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
      *     }
      * }
@@ -458,8 +458,8 @@ public final class HbrFunctions {
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
-     *             .ids(alicloud_hbr_ecs_backup_client.default().id())
-     *             .instanceIds(alicloud_hbr_ecs_backup_client.default().instance_id())
+     *             .ids(defaultAlicloudHbrEcsBackupClient.id())
+     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
      *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
@@ -511,8 +511,8 @@ public final class HbrFunctions {
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
-     *             .ids(alicloud_hbr_ecs_backup_client.default().id())
-     *             .instanceIds(alicloud_hbr_ecs_backup_client.default().instance_id())
+     *             .ids(defaultAlicloudHbrEcsBackupClient.id())
+     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
      *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
@@ -564,8 +564,8 @@ public final class HbrFunctions {
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
-     *             .ids(alicloud_hbr_ecs_backup_client.default().id())
-     *             .instanceIds(alicloud_hbr_ecs_backup_client.default().instance_id())
+     *             .ids(defaultAlicloudHbrEcsBackupClient.id())
+     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
      *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
@@ -617,8 +617,8 @@ public final class HbrFunctions {
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
-     *             .ids(alicloud_hbr_ecs_backup_client.default().id())
-     *             .instanceIds(alicloud_hbr_ecs_backup_client.default().instance_id())
+     *             .ids(defaultAlicloudHbrEcsBackupClient.id())
+     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
      *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
@@ -670,8 +670,8 @@ public final class HbrFunctions {
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
-     *             .ids(alicloud_hbr_ecs_backup_client.default().id())
-     *             .instanceIds(alicloud_hbr_ecs_backup_client.default().instance_id())
+     *             .ids(defaultAlicloudHbrEcsBackupClient.id())
+     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
      *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
@@ -723,8 +723,8 @@ public final class HbrFunctions {
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
-     *             .ids(alicloud_hbr_ecs_backup_client.default().id())
-     *             .instanceIds(alicloud_hbr_ecs_backup_client.default().instance_id())
+     *             .ids(defaultAlicloudHbrEcsBackupClient.id())
+     *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
      *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
@@ -2228,7 +2228,7 @@ public final class HbrFunctions {
      *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, data.alicloud_hbr_ots_backup_plans().plans()[0].id());
+     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, plans[0].id());
      *     }
      * }
      * ```
@@ -2273,7 +2273,7 @@ public final class HbrFunctions {
      *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, data.alicloud_hbr_ots_backup_plans().plans()[0].id());
+     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, plans[0].id());
      *     }
      * }
      * ```
@@ -2318,7 +2318,7 @@ public final class HbrFunctions {
      *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, data.alicloud_hbr_ots_backup_plans().plans()[0].id());
+     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, plans[0].id());
      *     }
      * }
      * ```
@@ -2363,7 +2363,7 @@ public final class HbrFunctions {
      *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, data.alicloud_hbr_ots_backup_plans().plans()[0].id());
+     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, plans[0].id());
      *     }
      * }
      * ```
@@ -2408,7 +2408,7 @@ public final class HbrFunctions {
      *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, data.alicloud_hbr_ots_backup_plans().plans()[0].id());
+     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, plans[0].id());
      *     }
      * }
      * ```
@@ -2453,7 +2453,7 @@ public final class HbrFunctions {
      *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, data.alicloud_hbr_ots_backup_plans().plans()[0].id());
+     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, plans[0].id());
      *     }
      * }
      * ```
@@ -3005,14 +3005,14 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-name&#34;)
      *             .build());
      * 
-     *         final var defaultRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
+     *         final var defaultGetRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
      *             .restoreType(&#34;ECS_FILE&#34;)
-     *             .vaultIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
-     *             .targetInstanceIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .vaultIds(default_.plans()[0].vaultId())
+     *             .targetInstanceIds(default_.plans()[0].instanceId())
      *             .build());
      * 
      *     }
@@ -3056,14 +3056,14 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-name&#34;)
      *             .build());
      * 
-     *         final var defaultRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
+     *         final var defaultGetRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
      *             .restoreType(&#34;ECS_FILE&#34;)
-     *             .vaultIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
-     *             .targetInstanceIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .vaultIds(default_.plans()[0].vaultId())
+     *             .targetInstanceIds(default_.plans()[0].instanceId())
      *             .build());
      * 
      *     }
@@ -3107,14 +3107,14 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-name&#34;)
      *             .build());
      * 
-     *         final var defaultRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
+     *         final var defaultGetRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
      *             .restoreType(&#34;ECS_FILE&#34;)
-     *             .vaultIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
-     *             .targetInstanceIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .vaultIds(default_.plans()[0].vaultId())
+     *             .targetInstanceIds(default_.plans()[0].instanceId())
      *             .build());
      * 
      *     }
@@ -3158,14 +3158,14 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-name&#34;)
      *             .build());
      * 
-     *         final var defaultRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
+     *         final var defaultGetRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
      *             .restoreType(&#34;ECS_FILE&#34;)
-     *             .vaultIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
-     *             .targetInstanceIds(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .vaultIds(default_.plans()[0].vaultId())
+     *             .targetInstanceIds(default_.plans()[0].instanceId())
      *             .build());
      * 
      *     }
@@ -3817,37 +3817,37 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
      *             .build());
      * 
-     *         final var defaultOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+     *         final var defaultGetOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
      *             .build());
      * 
-     *         final var defaultNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+     *         final var defaultGetNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
      *             .build());
      * 
      *         final var ecsSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType(&#34;ECS_FILE&#34;)
-     *             .vaultId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
-     *             .instanceId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .vaultId(default_.plans()[0].vaultId())
+     *             .instanceId(default_.plans()[0].instanceId())
      *             .build());
      * 
      *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType(&#34;OSS&#34;)
-     *             .vaultId(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
-     *             .bucket(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
+     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
+     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
      *             .completeTime(&#34;2021-07-20T14:17:15CST,2021-07-24T14:17:15CST&#34;)
      *             .completeTimeChecker(&#34;BETWEEN&#34;)
      *             .build());
      * 
      *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType(&#34;NAS&#34;)
-     *             .vaultId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
-     *             .fileSystemId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
-     *             .createTime(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
+     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
+     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
+     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
      *             .completeTime(&#34;2021-08-23T14:17:15CST&#34;)
      *             .completeTimeChecker(&#34;GREATER_THAN_OR_EQUAL&#34;)
      *             .build());
@@ -3896,37 +3896,37 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
      *             .build());
      * 
-     *         final var defaultOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+     *         final var defaultGetOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
      *             .build());
      * 
-     *         final var defaultNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+     *         final var defaultGetNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
      *             .build());
      * 
      *         final var ecsSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType(&#34;ECS_FILE&#34;)
-     *             .vaultId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
-     *             .instanceId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .vaultId(default_.plans()[0].vaultId())
+     *             .instanceId(default_.plans()[0].instanceId())
      *             .build());
      * 
      *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType(&#34;OSS&#34;)
-     *             .vaultId(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
-     *             .bucket(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
+     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
+     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
      *             .completeTime(&#34;2021-07-20T14:17:15CST,2021-07-24T14:17:15CST&#34;)
      *             .completeTimeChecker(&#34;BETWEEN&#34;)
      *             .build());
      * 
      *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType(&#34;NAS&#34;)
-     *             .vaultId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
-     *             .fileSystemId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
-     *             .createTime(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
+     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
+     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
+     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
      *             .completeTime(&#34;2021-08-23T14:17:15CST&#34;)
      *             .completeTimeChecker(&#34;GREATER_THAN_OR_EQUAL&#34;)
      *             .build());
@@ -3975,37 +3975,37 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
      *             .build());
      * 
-     *         final var defaultOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+     *         final var defaultGetOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
      *             .build());
      * 
-     *         final var defaultNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+     *         final var defaultGetNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
      *             .build());
      * 
      *         final var ecsSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType(&#34;ECS_FILE&#34;)
-     *             .vaultId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
-     *             .instanceId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .vaultId(default_.plans()[0].vaultId())
+     *             .instanceId(default_.plans()[0].instanceId())
      *             .build());
      * 
      *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType(&#34;OSS&#34;)
-     *             .vaultId(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
-     *             .bucket(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
+     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
+     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
      *             .completeTime(&#34;2021-07-20T14:17:15CST,2021-07-24T14:17:15CST&#34;)
      *             .completeTimeChecker(&#34;BETWEEN&#34;)
      *             .build());
      * 
      *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType(&#34;NAS&#34;)
-     *             .vaultId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
-     *             .fileSystemId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
-     *             .createTime(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
+     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
+     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
+     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
      *             .completeTime(&#34;2021-08-23T14:17:15CST&#34;)
      *             .completeTimeChecker(&#34;GREATER_THAN_OR_EQUAL&#34;)
      *             .build());
@@ -4054,37 +4054,37 @@ public final class HbrFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEcsBackupPlans = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
+     *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
      *             .build());
      * 
-     *         final var defaultOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
+     *         final var defaultGetOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
      *             .build());
      * 
-     *         final var defaultNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
+     *         final var defaultGetNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
      *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
      *             .build());
      * 
      *         final var ecsSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType(&#34;ECS_FILE&#34;)
-     *             .vaultId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].vaultId()))
-     *             .instanceId(defaultEcsBackupPlans.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].instanceId()))
+     *             .vaultId(default_.plans()[0].vaultId())
+     *             .instanceId(default_.plans()[0].instanceId())
      *             .build());
      * 
      *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType(&#34;OSS&#34;)
-     *             .vaultId(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
-     *             .bucket(defaultOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
+     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
+     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
      *             .completeTime(&#34;2021-07-20T14:17:15CST,2021-07-24T14:17:15CST&#34;)
      *             .completeTimeChecker(&#34;BETWEEN&#34;)
      *             .build());
      * 
      *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
      *             .sourceType(&#34;NAS&#34;)
-     *             .vaultId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
-     *             .fileSystemId(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
-     *             .createTime(defaultNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
+     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
+     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
+     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
      *             .completeTime(&#34;2021-08-23T14:17:15CST&#34;)
      *             .completeTimeChecker(&#34;GREATER_THAN_OR_EQUAL&#34;)
      *             .build());

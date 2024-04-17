@@ -24,11 +24,11 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const _default = new random.RandomInteger("default", {
- *     max: 99999,
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
+ *     max: 99999,
  * });
- * const example = new alicloud.resourcemanager.Folder("example", {folderName: pulumi.interpolate`${name}-${_default.result}`});
+ * const example = new alicloud.resourcemanager.Folder("example", {folderName: `${name}-${_default.result}`});
  * ```
  * <!--End PulumiCodeChooser -->
  *

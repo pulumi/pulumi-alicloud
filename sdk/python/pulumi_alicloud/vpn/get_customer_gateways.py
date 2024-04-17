@@ -113,11 +113,11 @@ def get_customer_gateways(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    foo = alicloud.vpn.get_customer_gateways(ids=[
+    foo = alicloud.vpn.get_customer_gateways(name_regex="testAcc*",
+        ids=[
             "fake-id1",
             "fake-id2",
         ],
-        name_regex="testAcc*",
         output_file="/tmp/cgws")
     ```
     <!--End PulumiCodeChooser -->
@@ -158,11 +158,11 @@ def get_customer_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     import pulumi
     import pulumi_alicloud as alicloud
 
-    foo = alicloud.vpn.get_customer_gateways(ids=[
+    foo = alicloud.vpn.get_customer_gateways(name_regex="testAcc*",
+        ids=[
             "fake-id1",
             "fake-id2",
         ],
-        name_regex="testAcc*",
         output_file="/tmp/cgws")
     ```
     <!--End PulumiCodeChooser -->

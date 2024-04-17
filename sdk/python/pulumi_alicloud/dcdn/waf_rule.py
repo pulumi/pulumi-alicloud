@@ -581,16 +581,16 @@ class WafRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_waf_policy = alicloud.dcdn.WafPolicy("exampleWafPolicy",
+        example = alicloud.dcdn.WafPolicy("example",
             defense_scene="waf_group",
-            policy_name=default.result.apply(lambda result: f"{name}_{result}"),
+            policy_name=f"{name}_{default['result']}",
             policy_type="custom",
             status="on")
-        example_waf_rule = alicloud.dcdn.WafRule("exampleWafRule",
-            policy_id=example_waf_policy.id,
+        example_waf_rule = alicloud.dcdn.WafRule("example",
+            policy_id=example.id,
             rule_name=name,
             conditions=[
                 alicloud.dcdn.WafRuleConditionArgs(
@@ -673,16 +673,16 @@ class WafRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_waf_policy = alicloud.dcdn.WafPolicy("exampleWafPolicy",
+        example = alicloud.dcdn.WafPolicy("example",
             defense_scene="waf_group",
-            policy_name=default.result.apply(lambda result: f"{name}_{result}"),
+            policy_name=f"{name}_{default['result']}",
             policy_type="custom",
             status="on")
-        example_waf_rule = alicloud.dcdn.WafRule("exampleWafRule",
-            policy_id=example_waf_policy.id,
+        example_waf_rule = alicloud.dcdn.WafRule("example",
+            policy_id=example.id,
             rule_name=name,
             conditions=[
                 alicloud.dcdn.WafRuleConditionArgs(

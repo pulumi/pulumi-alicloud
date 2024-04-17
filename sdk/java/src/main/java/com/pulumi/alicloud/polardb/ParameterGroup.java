@@ -51,13 +51,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ParameterGroup(&#34;example&#34;, ParameterGroupArgs.builder()        
+ *             .name(&#34;example_value&#34;)
  *             .dbType(&#34;MySQL&#34;)
  *             .dbVersion(&#34;8.0&#34;)
- *             .description(&#34;example_value&#34;)
  *             .parameters(ParameterGroupParameterArgs.builder()
  *                 .paramName(&#34;wait_timeout&#34;)
  *                 .paramValue(&#34;86400&#34;)
  *                 .build())
+ *             .description(&#34;example_value&#34;)
  *             .build());
  * 
  *     }

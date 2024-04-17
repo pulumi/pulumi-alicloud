@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Ram
     ///     // Create a new RAM Role.
     ///     var role = new AliCloud.Ram.Role("role", new()
     ///     {
-    ///         Description = "this is a role test.",
+    ///         Name = "terraform-example",
     ///         Document = @"  {
     ///     ""Statement"": [
     ///       {
@@ -46,8 +46,8 @@ namespace Pulumi.AliCloud.Ram
     ///     ],
     ///     ""Version"": ""1""
     ///   }
-    ///   
     /// ",
+    ///         Description = "this is a role test.",
     ///     });
     /// 
     /// });

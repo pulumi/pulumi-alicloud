@@ -19,30 +19,30 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const myName = pulumi.interpolate`${name}-${defaultRandomInteger.result}`;
- * const defaultRegions = alicloud.getRegions({
+ * const myName = `${name}-${defaultInteger.result}`;
+ * const default = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultAccount = alicloud.getAccount({});
- * const defaultZones = alicloud.getZones({
+ * const defaultGetAccount = alicloud.getAccount({});
+ * const defaultGetZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: myName,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
  *     vswitchName: myName,
  * });
- * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {
  *     minSize: 1,
  *     maxSize: 1,
  *     scalingGroupName: myName,
@@ -52,14 +52,14 @@ import * as utilities from "../utilities";
  *     ],
  *     vswitchIds: [defaultSwitch.id],
  * });
- * const defaultQueue = new alicloud.mns.Queue("defaultQueue", {});
- * const defaultNotification = new alicloud.ess.Notification("defaultNotification", {
+ * const defaultQueue = new alicloud.mns.Queue("default", {name: myName});
+ * const defaultNotification = new alicloud.ess.Notification("default", {
  *     scalingGroupId: defaultScalingGroup.id,
  *     notificationTypes: [
  *         "AUTOSCALING:SCALE_OUT_SUCCESS",
  *         "AUTOSCALING:SCALE_OUT_ERROR",
  *     ],
- *     notificationArn: pulumi.all([defaultRegions, defaultAccount, defaultQueue.name]).apply(([defaultRegions, defaultAccount, name]) => `acs:ess:${defaultRegions.regions?.[0]?.id}:${defaultAccount.id}:queue/${name}`),
+ *     notificationArn: pulumi.all([_default, defaultGetAccount, defaultQueue.name]).apply(([_default, defaultGetAccount, name]) => `acs:ess:${_default.regions?.[0]?.id}:${defaultGetAccount.id}:queue/${name}`),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

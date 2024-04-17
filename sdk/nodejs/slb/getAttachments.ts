@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const sampleDs = alicloud.slb.getAttachments({
- *     loadBalancerId: alicloud_slb_load_balancer.sample_slb.id,
+ *     loadBalancerId: sampleSlb.id,
  * });
  * export const firstSlbAttachmentInstanceId = sampleDs.then(sampleDs => sampleDs.slbAttachments?.[0]?.instanceId);
  * ```
@@ -78,7 +78,7 @@ export interface GetAttachmentsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const sampleDs = alicloud.slb.getAttachments({
- *     loadBalancerId: alicloud_slb_load_balancer.sample_slb.id,
+ *     loadBalancerId: sampleSlb.id,
  * });
  * export const firstSlbAttachmentInstanceId = sampleDs.then(sampleDs => sampleDs.slbAttachments?.[0]?.instanceId);
  * ```

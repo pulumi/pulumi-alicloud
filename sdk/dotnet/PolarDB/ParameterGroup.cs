@@ -31,9 +31,9 @@ namespace Pulumi.AliCloud.PolarDB
     /// {
     ///     var example = new AliCloud.PolarDB.ParameterGroup("example", new()
     ///     {
+    ///         Name = "example_value",
     ///         DbType = "MySQL",
     ///         DbVersion = "8.0",
-    ///         Description = "example_value",
     ///         Parameters = new[]
     ///         {
     ///             new AliCloud.PolarDB.Inputs.ParameterGroupParameterArgs
@@ -42,6 +42,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///                 ParamValue = "86400",
     ///             },
     ///         },
+    ///         Description = "example_value",
     ///     });
     /// 
     /// });

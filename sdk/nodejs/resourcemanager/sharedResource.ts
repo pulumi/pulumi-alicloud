@@ -22,21 +22,21 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tfexample";
- * const exampleZones = alicloud.getZones({
+ * const example = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
  *     vpcName: name,
  *     cidrBlock: "192.168.0.0/16",
  * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
  *     cidrBlock: "192.168.0.0/16",
  *     vpcId: exampleNetwork.id,
  *     vswitchName: name,
  * });
- * const exampleResourceShare = new alicloud.resourcemanager.ResourceShare("exampleResourceShare", {resourceShareName: name});
- * const exampleSharedResource = new alicloud.resourcemanager.SharedResource("exampleSharedResource", {
+ * const exampleResourceShare = new alicloud.resourcemanager.ResourceShare("example", {resourceShareName: name});
+ * const exampleSharedResource = new alicloud.resourcemanager.SharedResource("example", {
  *     resourceId: exampleSwitch.id,
  *     resourceShareId: exampleResourceShare.id,
  *     resourceType: "VSwitch",

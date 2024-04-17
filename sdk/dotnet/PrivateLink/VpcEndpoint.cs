@@ -31,27 +31,28 @@ namespace Pulumi.AliCloud.PrivateLink
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var exampleVpcEndpointService = new AliCloud.PrivateLink.VpcEndpointService("exampleVpcEndpointService", new()
+    ///     var example = new AliCloud.PrivateLink.VpcEndpointService("example", new()
     ///     {
     ///         ServiceDescription = name,
     ///         ConnectBandwidth = 103,
     ///         AutoAcceptConnection = false,
     ///     });
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.0.0.0/8",
     ///     });
     /// 
-    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
     ///     {
+    ///         Name = name,
     ///         VpcId = exampleNetwork.Id,
     ///     });
     /// 
-    ///     var exampleVpcEndpoint = new AliCloud.PrivateLink.VpcEndpoint("exampleVpcEndpoint", new()
+    ///     var exampleVpcEndpoint = new AliCloud.PrivateLink.VpcEndpoint("example", new()
     ///     {
-    ///         ServiceId = exampleVpcEndpointService.Id,
+    ///         ServiceId = example.Id,
     ///         SecurityGroupIds = new[]
     ///         {
     ///             exampleSecurityGroup.Id,

@@ -66,6 +66,7 @@ import javax.annotation.Nullable;
  *         final var instances = EcsFunctions.getInstances();
  * 
  *         var template = new LaunchTemplate(&#34;template&#34;, LaunchTemplateArgs.builder()        
+ *             .name(&#34;tf-test-template&#34;)
  *             .description(&#34;test1&#34;)
  *             .imageId(images.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
  *             .hostName(&#34;tf-test-host&#34;)

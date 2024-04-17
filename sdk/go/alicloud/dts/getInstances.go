@@ -31,7 +31,7 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := dts.GetInstances(ctx, &dts.GetInstancesArgs{
 // Ids: interface{}{
-// alicloud_dts_instance.Default.Id,
+// defaultAlicloudDtsInstance.Id,
 // },
 // ResourceGroupId: pulumi.StringRef("example_value"),
 // }, nil);

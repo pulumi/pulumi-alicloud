@@ -27,23 +27,23 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var resourcesZones = AliCloud.GetZones.Invoke(new()
+        ///     var resources = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "KVStore",
         ///     });
         /// 
-        ///     var resourcesInstanceClasses = AliCloud.KVStore.GetInstanceClasses.Invoke(new()
+        ///     var resourcesGetInstanceClasses = AliCloud.KVStore.GetInstanceClasses.Invoke(new()
         ///     {
+        ///         ZoneId = resources.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         InstanceChargeType = "PrePaid",
         ///         Engine = "Redis",
         ///         EngineVersion = "5.0",
-        ///         InstanceChargeType = "PrePaid",
         ///         OutputFile = "./classes.txt",
-        ///         ZoneId = resourcesZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstKvstoreInstanceClass"] = resourcesInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses),
+        ///         ["firstKvstoreInstanceClass"] = resourcesGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses),
         ///     };
         /// });
         /// ```
@@ -68,23 +68,23 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var resourcesZones = AliCloud.GetZones.Invoke(new()
+        ///     var resources = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "KVStore",
         ///     });
         /// 
-        ///     var resourcesInstanceClasses = AliCloud.KVStore.GetInstanceClasses.Invoke(new()
+        ///     var resourcesGetInstanceClasses = AliCloud.KVStore.GetInstanceClasses.Invoke(new()
         ///     {
+        ///         ZoneId = resources.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         InstanceChargeType = "PrePaid",
         ///         Engine = "Redis",
         ///         EngineVersion = "5.0",
-        ///         InstanceChargeType = "PrePaid",
         ///         OutputFile = "./classes.txt",
-        ///         ZoneId = resourcesZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstKvstoreInstanceClass"] = resourcesInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses),
+        ///         ["firstKvstoreInstanceClass"] = resourcesGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses),
         ///     };
         /// });
         /// ```

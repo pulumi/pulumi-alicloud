@@ -35,28 +35,28 @@ import (
 // if param := cfg.Get("name"); param != ""{
 // name = param
 // }
-// fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+// fooNetwork, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
 // CidrBlock: pulumi.String("172.16.0.0/12"),
 // VpcName: pulumi.String(name),
 // })
 // if err != nil {
 // return err
 // }
-// fooRouteTable, err := vpc.NewRouteTable(ctx, "fooRouteTable", &vpc.RouteTableArgs{
-// Description: pulumi.String(name),
-// RouteTableName: pulumi.String(name),
+// fooRouteTable, err := vpc.NewRouteTable(ctx, "foo", &vpc.RouteTableArgs{
 // VpcId: fooNetwork.ID(),
+// RouteTableName: pulumi.String(name),
+// Description: pulumi.String(name),
 // })
 // if err != nil {
 // return err
 // }
-// fooRouteTables := vpc.GetRouteTablesOutput(ctx, vpc.GetRouteTablesOutputArgs{
+// foo := vpc.GetRouteTablesOutput(ctx, vpc.GetRouteTablesOutputArgs{
 // Ids: pulumi.StringArray{
 // fooRouteTable.ID(),
 // },
 // }, nil);
-// ctx.Export("routeTableIds", fooRouteTables.ApplyT(func(fooRouteTables vpc.GetRouteTablesResult) (interface{}, error) {
-// return fooRouteTables.Ids, nil
+// ctx.Export("routeTableIds", foo.ApplyT(func(foo vpc.GetRouteTablesResult) (interface{}, error) {
+// return foo.Ids, nil
 // }).(pulumi.Interface{}Output))
 // return nil
 // })

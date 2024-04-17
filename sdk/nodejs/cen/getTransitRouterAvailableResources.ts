@@ -21,8 +21,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.cen.getTransitRouterAvailableResources({});
- * export const masterId = data.alicloud_cen_transit_router_available_resources["default"].resources[0].master_zones[0];
- * export const slaveId = data.alicloud_cen_transit_router_available_resources["default"].resources[0].slave_zones[0];
+ * export const masterId = _default.resources[0].masterZones[0];
+ * export const slaveId = _default.resources[0].slaveZones[0];
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -71,8 +71,8 @@ export interface GetTransitRouterAvailableResourcesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.cen.getTransitRouterAvailableResources({});
- * export const masterId = data.alicloud_cen_transit_router_available_resources["default"].resources[0].master_zones[0];
- * export const slaveId = data.alicloud_cen_transit_router_available_resources["default"].resources[0].slave_zones[0];
+ * export const masterId = _default.resources[0].masterZones[0];
+ * export const slaveId = _default.resources[0].slaveZones[0];
  * ```
  * <!--End PulumiCodeChooser -->
  */

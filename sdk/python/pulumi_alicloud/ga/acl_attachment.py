@@ -194,34 +194,34 @@ class AclAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+        default = alicloud.ga.Accelerator("default",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
             bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
             payment_type="PayAsYouGo",
             billing_type="PayBy95",
             ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
+            accelerator_id=default.id,
             bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
+        default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             port_ranges=[alicloud.ga.ListenerPortRangeArgs(
                 from_port=80,
                 to_port=80,
             )])
-        default_acl = alicloud.ga.Acl("defaultAcl",
+        default_acl = alicloud.ga.Acl("default",
             acl_name="terraform-example",
             address_ip_version="IPv4")
-        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
+        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("default",
             acl_id=default_acl.id,
             entry="192.168.1.1/32",
             entry_description="terraform-example")
-        default_acl_attachment = alicloud.ga.AclAttachment("defaultAclAttachment",
+        default_acl_attachment = alicloud.ga.AclAttachment("default",
             listener_id=default_listener.id,
             acl_id=default_acl.id,
             acl_type="white")
@@ -265,34 +265,34 @@ class AclAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+        default = alicloud.ga.Accelerator("default",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
             bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
             payment_type="PayAsYouGo",
             billing_type="PayBy95",
             ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
+            accelerator_id=default.id,
             bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
+        default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             port_ranges=[alicloud.ga.ListenerPortRangeArgs(
                 from_port=80,
                 to_port=80,
             )])
-        default_acl = alicloud.ga.Acl("defaultAcl",
+        default_acl = alicloud.ga.Acl("default",
             acl_name="terraform-example",
             address_ip_version="IPv4")
-        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
+        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("default",
             acl_id=default_acl.id,
             entry="192.168.1.1/32",
             entry_description="terraform-example")
-        default_acl_attachment = alicloud.ga.AclAttachment("defaultAclAttachment",
+        default_acl_attachment = alicloud.ga.AclAttachment("default",
             listener_id=default_listener.id,
             acl_id=default_acl.id,
             acl_type="white")

@@ -36,27 +36,27 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
 //				Status: pulumi.StringRef("OK"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			defaultGetRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dts.NewInstance(ctx, "defaultInstance", &dts.InstanceArgs{
+//			_, err = dts.NewInstance(ctx, "default", &dts.InstanceArgs{
 //				Type:                          pulumi.String("sync"),
-//				ResourceGroupId:               pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:               pulumi.String(_default.Ids[0]),
 //				PaymentType:                   pulumi.String("Subscription"),
 //				InstanceClass:                 pulumi.String("large"),
 //				SourceEndpointEngineName:      pulumi.String("MySQL"),
-//				SourceRegion:                  pulumi.String(defaultRegions.Regions[0].Id),
+//				SourceRegion:                  pulumi.String(defaultGetRegions.Regions[0].Id),
 //				DestinationEndpointEngineName: pulumi.String("MySQL"),
-//				DestinationRegion:             pulumi.String(defaultRegions.Regions[0].Id),
+//				DestinationRegion:             pulumi.String(defaultGetRegions.Regions[0].Id),
 //			})
 //			if err != nil {
 //				return err

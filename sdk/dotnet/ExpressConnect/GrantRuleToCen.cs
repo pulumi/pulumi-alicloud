@@ -32,23 +32,23 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var examplePhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     var example = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
     ///     {
     ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
-    ///     var vlanId = new Random.RandomInteger("vlanId", new()
+    ///     var vlanId = new Random.Index.Integer("vlan_id", new()
     ///     {
     ///         Max = 2999,
     ///         Min = 1,
     ///     });
     /// 
-    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("exampleVirtualBorderRouter", new()
+    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("example", new()
     ///     {
     ///         LocalGatewayIp = "10.0.0.1",
     ///         PeerGatewayIp = "10.0.0.2",
     ///         PeeringSubnetMask = "255.255.255.252",
-    ///         PhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         PhysicalConnectionId = example.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
     ///         VirtualBorderRouterName = name,
     ///         VlanId = vlanId.Id,
     ///         MinRxInterval = 1000,
@@ -56,14 +56,14 @@ namespace Pulumi.AliCloud.ExpressConnect
     ///         DetectMultiplier = 10,
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("example", new()
     ///     {
     ///         CenInstanceName = name,
     ///     });
     /// 
     ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var exampleGrantRuleToCen = new AliCloud.ExpressConnect.GrantRuleToCen("exampleGrantRuleToCen", new()
+    ///     var exampleGrantRuleToCen = new AliCloud.ExpressConnect.GrantRuleToCen("example", new()
     ///     {
     ///         CenId = exampleInstance.Id,
     ///         CenOwnerId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),

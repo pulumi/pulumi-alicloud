@@ -25,11 +25,11 @@ import * as utilities from "../utilities";
  *     payType: "PostPaid",
  *     category: "Normal",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: _this.then(_this => _this.classes?.[0]?.zoneId),
@@ -47,10 +47,10 @@ import * as utilities from "../utilities";
  *     descriptionRegex: cluster.description,
  *     status: "Running",
  * });
- * const defaultEndpoints = polardbClustersDs.apply(polardbClustersDs => alicloud.polardb.getEndpointsOutput({
+ * const default = polardbClustersDs.apply(polardbClustersDs => alicloud.polardb.getEndpointsOutput({
  *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
  * }));
- * export const endpoint = defaultEndpoints.apply(defaultEndpoints => defaultEndpoints.endpoints?.[0]?.dbEndpointId);
+ * export const endpoint = _default.apply(_default => _default.endpoints?.[0]?.dbEndpointId);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -114,11 +114,11 @@ export interface GetEndpointsResult {
  *     payType: "PostPaid",
  *     category: "Normal",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: _this.then(_this => _this.classes?.[0]?.zoneId),
@@ -136,10 +136,10 @@ export interface GetEndpointsResult {
  *     descriptionRegex: cluster.description,
  *     status: "Running",
  * });
- * const defaultEndpoints = polardbClustersDs.apply(polardbClustersDs => alicloud.polardb.getEndpointsOutput({
+ * const default = polardbClustersDs.apply(polardbClustersDs => alicloud.polardb.getEndpointsOutput({
  *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
  * }));
- * export const endpoint = defaultEndpoints.apply(defaultEndpoints => defaultEndpoints.endpoints?.[0]?.dbEndpointId);
+ * export const endpoint = _default.apply(_default => _default.endpoints?.[0]?.dbEndpointId);
  * ```
  * <!--End PulumiCodeChooser -->
  */

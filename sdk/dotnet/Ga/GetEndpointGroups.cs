@@ -32,12 +32,12 @@ namespace Pulumi.AliCloud.Ga
         ///     var config = new Config();
         ///     var region = config.Get("region") ?? "cn-hangzhou";
         ///     var name = config.Get("name") ?? "tf-example";
-        ///     var defaultAccelerators = AliCloud.Ga.GetAccelerators.Invoke(new()
+        ///     var @default = AliCloud.Ga.GetAccelerators.Invoke(new()
         ///     {
         ///         Status = "active",
         ///     });
         /// 
-        ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
+        ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("default", new()
         ///     {
         ///         Bandwidth = 100,
         ///         Type = "Basic",
@@ -50,17 +50,18 @@ namespace Pulumi.AliCloud.Ga
         ///         AutoUseCoupon = true,
         ///     });
         /// 
-        ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+        ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("default", new()
         ///     {
-        ///         AcceleratorId = defaultAccelerators.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Ids[0]),
+        ///         AcceleratorId = @default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Ids[0])),
         ///         BandwidthPackageId = defaultBandwidthPackage.Id,
         ///     });
         /// 
-        ///     var defaultListener = new AliCloud.Ga.Listener("defaultListener", new()
+        ///     var defaultListener = new AliCloud.Ga.Listener("default", new()
         ///     {
         ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
         ///         ClientAffinity = "SOURCE_IP",
         ///         Protocol = "UDP",
+        ///         Name = name,
         ///         PortRanges = new[]
         ///         {
         ///             new AliCloud.Ga.Inputs.ListenerPortRangeArgs
@@ -71,18 +72,19 @@ namespace Pulumi.AliCloud.Ga
         ///         },
         ///     });
         /// 
-        ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+        ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("default", new()
         ///     {
         ///         Bandwidth = "10",
         ///         InternetChargeType = "PayByBandwidth",
         ///         AddressName = name,
         ///     });
         /// 
-        ///     var defaultEndpointGroup = new AliCloud.Ga.EndpointGroup("defaultEndpointGroup", new()
+        ///     var defaultEndpointGroup = new AliCloud.Ga.EndpointGroup("default", new()
         ///     {
         ///         AcceleratorId = defaultListener.AcceleratorId,
         ///         ListenerId = defaultListener.Id,
         ///         Description = name,
+        ///         Name = name,
         ///         ThresholdCount = 4,
         ///         TrafficPercentage = 20,
         ///         EndpointGroupRegion = "cn-hangzhou",
@@ -106,7 +108,7 @@ namespace Pulumi.AliCloud.Ga
         ///         },
         ///     });
         /// 
-        ///     var defaultEndpointGroups = AliCloud.Ga.GetEndpointGroups.Invoke(new()
+        ///     var defaultGetEndpointGroups = AliCloud.Ga.GetEndpointGroups.Invoke(new()
         ///     {
         ///         AcceleratorId = defaultEndpointGroup.AcceleratorId,
         ///         Ids = new[]
@@ -117,7 +119,7 @@ namespace Pulumi.AliCloud.Ga
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstGaEndpointGroupId"] = defaultEndpointGroups.Apply(getEndpointGroupsResult =&gt; getEndpointGroupsResult.Groups[0]?.Id),
+        ///         ["firstGaEndpointGroupId"] = defaultGetEndpointGroups.Apply(getEndpointGroupsResult =&gt; getEndpointGroupsResult.Groups[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -147,12 +149,12 @@ namespace Pulumi.AliCloud.Ga
         ///     var config = new Config();
         ///     var region = config.Get("region") ?? "cn-hangzhou";
         ///     var name = config.Get("name") ?? "tf-example";
-        ///     var defaultAccelerators = AliCloud.Ga.GetAccelerators.Invoke(new()
+        ///     var @default = AliCloud.Ga.GetAccelerators.Invoke(new()
         ///     {
         ///         Status = "active",
         ///     });
         /// 
-        ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
+        ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("default", new()
         ///     {
         ///         Bandwidth = 100,
         ///         Type = "Basic",
@@ -165,17 +167,18 @@ namespace Pulumi.AliCloud.Ga
         ///         AutoUseCoupon = true,
         ///     });
         /// 
-        ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+        ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("default", new()
         ///     {
-        ///         AcceleratorId = defaultAccelerators.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Ids[0]),
+        ///         AcceleratorId = @default.Apply(@default =&gt; @default.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Ids[0])),
         ///         BandwidthPackageId = defaultBandwidthPackage.Id,
         ///     });
         /// 
-        ///     var defaultListener = new AliCloud.Ga.Listener("defaultListener", new()
+        ///     var defaultListener = new AliCloud.Ga.Listener("default", new()
         ///     {
         ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
         ///         ClientAffinity = "SOURCE_IP",
         ///         Protocol = "UDP",
+        ///         Name = name,
         ///         PortRanges = new[]
         ///         {
         ///             new AliCloud.Ga.Inputs.ListenerPortRangeArgs
@@ -186,18 +189,19 @@ namespace Pulumi.AliCloud.Ga
         ///         },
         ///     });
         /// 
-        ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+        ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("default", new()
         ///     {
         ///         Bandwidth = "10",
         ///         InternetChargeType = "PayByBandwidth",
         ///         AddressName = name,
         ///     });
         /// 
-        ///     var defaultEndpointGroup = new AliCloud.Ga.EndpointGroup("defaultEndpointGroup", new()
+        ///     var defaultEndpointGroup = new AliCloud.Ga.EndpointGroup("default", new()
         ///     {
         ///         AcceleratorId = defaultListener.AcceleratorId,
         ///         ListenerId = defaultListener.Id,
         ///         Description = name,
+        ///         Name = name,
         ///         ThresholdCount = 4,
         ///         TrafficPercentage = 20,
         ///         EndpointGroupRegion = "cn-hangzhou",
@@ -221,7 +225,7 @@ namespace Pulumi.AliCloud.Ga
         ///         },
         ///     });
         /// 
-        ///     var defaultEndpointGroups = AliCloud.Ga.GetEndpointGroups.Invoke(new()
+        ///     var defaultGetEndpointGroups = AliCloud.Ga.GetEndpointGroups.Invoke(new()
         ///     {
         ///         AcceleratorId = defaultEndpointGroup.AcceleratorId,
         ///         Ids = new[]
@@ -232,7 +236,7 @@ namespace Pulumi.AliCloud.Ga
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstGaEndpointGroupId"] = defaultEndpointGroups.Apply(getEndpointGroupsResult =&gt; getEndpointGroupsResult.Groups[0]?.Id),
+        ///         ["firstGaEndpointGroupId"] = defaultGetEndpointGroups.Apply(getEndpointGroupsResult =&gt; getEndpointGroupsResult.Groups[0]?.Id),
         ///     };
         /// });
         /// ```

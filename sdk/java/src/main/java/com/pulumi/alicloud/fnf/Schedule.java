@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleFlow = new Flow(&#34;exampleFlow&#34;, FlowArgs.builder()        
+ *         var example = new Flow(&#34;example&#34;, FlowArgs.builder()        
  *             .definition(&#34;&#34;&#34;
  *   version: v1beta1
  *   type: flow
@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  *       name: helloworld
  *             &#34;&#34;&#34;)
  *             .description(&#34;tf-exampleFnFFlow983041&#34;)
+ *             .name(&#34;tf-exampleSchedule&#34;)
  *             .type(&#34;FDL&#34;)
  *             .build());
  * 
@@ -66,7 +67,7 @@ import javax.annotation.Nullable;
  *             .cronExpression(&#34;30 9 * * * *&#34;)
  *             .description(&#34;tf-exampleFnFSchedule983041&#34;)
  *             .enable(&#34;true&#34;)
- *             .flowName(exampleFlow.name())
+ *             .flowName(example.name())
  *             .payload(&#34;{\&#34;tf-example\&#34;: \&#34;example success\&#34;}&#34;)
  *             .scheduleName(&#34;tf-exampleFnFSchedule983041&#34;)
  *             .build());

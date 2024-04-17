@@ -29,13 +29,13 @@ namespace Pulumi.AliCloud.Sddp
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultConfig = new AliCloud.Sddp.Config("defaultConfig", new()
+        ///     var defaultConfig = new AliCloud.Sddp.Config("default", new()
         ///     {
         ///         Code = "access_failed_cnt",
         ///         Value = "10",
         ///     });
         /// 
-        ///     var defaultConfigs = AliCloud.Sddp.GetConfigs.Invoke(new()
+        ///     var @default = AliCloud.Sddp.GetConfigs.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Sddp
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["sddpConfigId"] = defaultConfigs.Apply(getConfigsResult =&gt; getConfigsResult.Ids),
+        ///         ["sddpConfigId"] = @default.Apply(@default =&gt; @default.Apply(getConfigsResult =&gt; getConfigsResult.Ids)),
         ///     };
         /// });
         /// ```
@@ -73,13 +73,13 @@ namespace Pulumi.AliCloud.Sddp
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultConfig = new AliCloud.Sddp.Config("defaultConfig", new()
+        ///     var defaultConfig = new AliCloud.Sddp.Config("default", new()
         ///     {
         ///         Code = "access_failed_cnt",
         ///         Value = "10",
         ///     });
         /// 
-        ///     var defaultConfigs = AliCloud.Sddp.GetConfigs.Invoke(new()
+        ///     var @default = AliCloud.Sddp.GetConfigs.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Sddp
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["sddpConfigId"] = defaultConfigs.Apply(getConfigsResult =&gt; getConfigsResult.Ids),
+        ///         ["sddpConfigId"] = @default.Apply(@default =&gt; @default.Apply(getConfigsResult =&gt; getConfigsResult.Ids)),
         ///     };
         /// });
         /// ```

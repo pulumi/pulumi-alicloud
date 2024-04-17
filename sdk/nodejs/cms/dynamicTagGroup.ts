@@ -22,13 +22,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {
+ * const _default = new alicloud.cms.AlarmContactGroup("default", {
  *     alarmContactGroupName: "example_value",
  *     describe: "example_value",
  *     enableSubscribed: true,
  * });
- * const defaultDynamicTagGroup = new alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup", {
- *     contactGroupLists: [defaultAlarmContactGroup.id],
+ * const defaultDynamicTagGroup = new alicloud.cms.DynamicTagGroup("default", {
+ *     contactGroupLists: [_default.id],
  *     tagKey: "your_tag_key",
  *     matchExpresses: [{
  *         tagValue: "your_tag_value",

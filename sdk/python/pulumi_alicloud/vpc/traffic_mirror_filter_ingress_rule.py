@@ -434,9 +434,9 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_traffic_mirror_filter = alicloud.vpc.TrafficMirrorFilter("exampleTrafficMirrorFilter", traffic_mirror_filter_name="example_value")
-        example_traffic_mirror_filter_ingress_rule = alicloud.vpc.TrafficMirrorFilterIngressRule("exampleTrafficMirrorFilterIngressRule",
-            traffic_mirror_filter_id=example_traffic_mirror_filter.id,
+        example = alicloud.vpc.TrafficMirrorFilter("example", traffic_mirror_filter_name="example_value")
+        example_traffic_mirror_filter_ingress_rule = alicloud.vpc.TrafficMirrorFilterIngressRule("example",
+            traffic_mirror_filter_id=example.id,
             priority=1,
             rule_action="accept",
             protocol="UDP",
@@ -494,9 +494,9 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_traffic_mirror_filter = alicloud.vpc.TrafficMirrorFilter("exampleTrafficMirrorFilter", traffic_mirror_filter_name="example_value")
-        example_traffic_mirror_filter_ingress_rule = alicloud.vpc.TrafficMirrorFilterIngressRule("exampleTrafficMirrorFilterIngressRule",
-            traffic_mirror_filter_id=example_traffic_mirror_filter.id,
+        example = alicloud.vpc.TrafficMirrorFilter("example", traffic_mirror_filter_name="example_value")
+        example_traffic_mirror_filter_ingress_rule = alicloud.vpc.TrafficMirrorFilterIngressRule("example",
+            traffic_mirror_filter_id=example.id,
             priority=1,
             rule_action="accept",
             protocol="UDP",

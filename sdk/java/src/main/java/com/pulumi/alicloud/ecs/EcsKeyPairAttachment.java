@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.Instance;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ecs.EcsKeyPair;
  * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
  * import com.pulumi.alicloud.ecs.EcsKeyPairAttachment;
@@ -66,17 +66,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;Instance&#34;)
  *             .build());
  * 
- *         final var exampleInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var exampleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
  * 
- *         final var exampleImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
  *             .owners(&#34;system&#34;)
  *             .build());
@@ -90,30 +90,31 @@ import javax.annotation.Nullable;
  *             .vswitchName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(&#34;terraform-example&#34;)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
  *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .imageId(exampleImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .availabilityZone(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .imageId(exampleGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .availabilityZone(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .securityGroups(exampleSecurityGroup.id())
  *             .instanceName(&#34;terraform-example&#34;)
  *             .internetChargeType(&#34;PayByBandwidth&#34;)
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
  *         var exampleEcsKeyPair = new EcsKeyPair(&#34;exampleEcsKeyPair&#34;, EcsKeyPairArgs.builder()        
- *             .keyPairName(default_.result().applyValue(result -&gt; String.format(&#34;tf-example-%s&#34;, result)))
+ *             .keyPairName(String.format(&#34;tf-example-%s&#34;, default_.result()))
  *             .build());
  * 
  *         var exampleEcsKeyPairAttachment = new EcsKeyPairAttachment(&#34;exampleEcsKeyPairAttachment&#34;, EcsKeyPairAttachmentArgs.builder()        

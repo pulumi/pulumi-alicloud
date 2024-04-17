@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
  *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleDhcpOptionsSetAttachment = new DhcpOptionsSetAttachment(&#34;exampleDhcpOptionsSetAttachment&#34;, DhcpOptionsSetAttachmentArgs.builder()        
- *             .vpcId(exampleNetwork.id())
+ *             .vpcId(example.id())
  *             .dhcpOptionsSetId(exampleDhcpOptionsSet.id())
  *             .build());
  * 

@@ -34,24 +34,24 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+//			example, err := nas.GetZones(ctx, &nas.GetZonesArgs{
 //				FileSystemType: pulumi.StringRef("standard"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleFileSystem, err := nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
+//			exampleFileSystem, err := nas.NewFileSystem(ctx, "example", &nas.FileSystemArgs{
 //				ProtocolType:   pulumi.String("SMB"),
 //				StorageType:    pulumi.String("Capacity"),
 //				Description:    pulumi.String("terraform-example"),
 //				EncryptType:    pulumi.Int(0),
 //				FileSystemType: pulumi.String("standard"),
-//				ZoneId:         pulumi.String(exampleZones.Zones[0].ZoneId),
+//				ZoneId:         pulumi.String(example.Zones[0].ZoneId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = nas.NewSmbAclAttachment(ctx, "exampleSmbAclAttachment", &nas.SmbAclAttachmentArgs{
+//			_, err = nas.NewSmbAclAttachment(ctx, "example", &nas.SmbAclAttachmentArgs{
 //				FileSystemId: exampleFileSystem.ID(),
 //				Keytab:       pulumi.String("BQIAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAQAIqIx6v7p11oUAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAwAIqIx6v7p11oUAAABPAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAFwAQnQZWB3RAPHU7PMIJyBWePAAAAF8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQASACAGJ7F0s+bcBjf6jD5HlvlRLmPSOW+qDZe0Qk0lQcf8WwAAAE8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQARABDdFmanrSIatnDDhoOXYadj"),
 //				KeytabMd5:    pulumi.String("E3CCF7E2416DF04FA958AA4513EA29E8"),

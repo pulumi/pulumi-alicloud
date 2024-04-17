@@ -23,24 +23,24 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const exampleProject = new alicloud.log.Project("exampleProject", {
- *     projectName: pulumi.interpolate`${name}-${_default.result}`,
+ * const example = new alicloud.log.Project("example", {
+ *     projectName: `${name}-${_default.result}`,
  *     description: name,
  * });
- * const exampleStore = new alicloud.log.Store("exampleStore", {
- *     projectName: exampleProject.projectName,
- *     logstoreName: pulumi.interpolate`${name}-${_default.result}`,
+ * const exampleStore = new alicloud.log.Store("example", {
+ *     projectName: example.projectName,
+ *     logstoreName: `${name}-${_default.result}`,
  *     shardCount: 3,
  *     autoSplit: true,
  *     maxSplitShardCount: 60,
  *     appendMeta: true,
  * });
- * const exampleLogConfig = new alicloud.apigateway.LogConfig("exampleLogConfig", {
- *     slsProject: exampleProject.projectName,
+ * const exampleLogConfig = new alicloud.apigateway.LogConfig("example", {
+ *     slsProject: example.projectName,
  *     slsLogStore: exampleStore.logstoreName,
  *     logType: "PROVIDER",
  * });

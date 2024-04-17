@@ -1179,8 +1179,8 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var recordsDs = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
-     *             .keyword(alicloud_pvtz_zone_record.foo().value())
-     *             .zoneId(alicloud_pvtz_zone.basic().id())
+     *             .zoneId(basic.id())
+     *             .keyword(foo.value())
      *             .build());
      * 
      *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getZoneRecordsResult -&gt; getZoneRecordsResult.records()[0].id()));
@@ -1221,8 +1221,8 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var recordsDs = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
-     *             .keyword(alicloud_pvtz_zone_record.foo().value())
-     *             .zoneId(alicloud_pvtz_zone.basic().id())
+     *             .zoneId(basic.id())
+     *             .keyword(foo.value())
      *             .build());
      * 
      *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getZoneRecordsResult -&gt; getZoneRecordsResult.records()[0].id()));
@@ -1263,8 +1263,8 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var recordsDs = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
-     *             .keyword(alicloud_pvtz_zone_record.foo().value())
-     *             .zoneId(alicloud_pvtz_zone.basic().id())
+     *             .zoneId(basic.id())
+     *             .keyword(foo.value())
      *             .build());
      * 
      *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getZoneRecordsResult -&gt; getZoneRecordsResult.records()[0].id()));
@@ -1305,8 +1305,8 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var recordsDs = PvtzFunctions.getZoneRecords(GetZoneRecordsArgs.builder()
-     *             .keyword(alicloud_pvtz_zone_record.foo().value())
-     *             .zoneId(alicloud_pvtz_zone.basic().id())
+     *             .zoneId(basic.id())
+     *             .keyword(foo.value())
      *             .build());
      * 
      *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getZoneRecordsResult -&gt; getZoneRecordsResult.records()[0].id()));
@@ -1347,7 +1347,7 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
-     *             .keyword(alicloud_pvtz_zone.basic().zone_name())
+     *             .keyword(basic.zoneName())
      *             .build());
      * 
      *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
@@ -1388,7 +1388,7 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
-     *             .keyword(alicloud_pvtz_zone.basic().zone_name())
+     *             .keyword(basic.zoneName())
      *             .build());
      * 
      *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
@@ -1429,7 +1429,7 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
-     *             .keyword(alicloud_pvtz_zone.basic().zone_name())
+     *             .keyword(basic.zoneName())
      *             .build());
      * 
      *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
@@ -1470,7 +1470,7 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
-     *             .keyword(alicloud_pvtz_zone.basic().zone_name())
+     *             .keyword(basic.zoneName())
      *             .build());
      * 
      *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
@@ -1511,7 +1511,7 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
-     *             .keyword(alicloud_pvtz_zone.basic().zone_name())
+     *             .keyword(basic.zoneName())
      *             .build());
      * 
      *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
@@ -1552,7 +1552,7 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pvtzZonesDs = PvtzFunctions.getZones(GetZonesArgs.builder()
-     *             .keyword(alicloud_pvtz_zone.basic().zone_name())
+     *             .keyword(basic.zoneName())
      *             .build());
      * 
      *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));

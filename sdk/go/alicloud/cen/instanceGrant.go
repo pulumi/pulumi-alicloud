@@ -28,8 +28,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
@@ -45,25 +43,11 @@ import (
 //			if param := cfg.Get("anotherUid"); param != "" {
 //				anotherUid = param
 //			}
-//			// Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
-//			_, err := alicloud.NewProvider(ctx, "childAccount", &alicloud.ProviderArgs{
-//				Region: pulumi.String("cn-hangzhou"),
-//				AssumeRole: &alicloud.ProviderAssumeRoleArgs{
-//					RoleArn: pulumi.String(fmt.Sprintf("acs:ram::%v:role/terraform-example-assume-role", anotherUid)),
-//				},
-//			})
+//			yourAccount, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = alicloud.NewProvider(ctx, "yourAccount", nil)
-//			if err != nil {
-//				return err
-//			}
-//			yourAccountAccount, err := alicloud.GetAccount(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			childAccountAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			childAccount, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -73,35 +57,35 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String("tf_example"),
 //				Description:     pulumi.String("an example for cen"),
-//			}, pulumi.Provider(alicloud.Your_account))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			childAccountNetwork, err := vpc.NewNetwork(ctx, "childAccountNetwork", &vpc.NetworkArgs{
+//			childAccountNetwork, err := vpc.NewNetwork(ctx, "child_account", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
-//			}, pulumi.Provider(alicloud.Child_account))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			childAccountInstanceGrant, err := cen.NewInstanceGrant(ctx, "childAccountInstanceGrant", &cen.InstanceGrantArgs{
-//				CenId:           exampleInstance.ID(),
+//			childAccountInstanceGrant, err := cen.NewInstanceGrant(ctx, "child_account", &cen.InstanceGrantArgs{
+//				CenId:           example.ID(),
 //				ChildInstanceId: childAccountNetwork.ID(),
-//				CenOwnerId:      pulumi.String(yourAccountAccount.Id),
-//			}, pulumi.Provider(alicloud.Child_account))
+//				CenOwnerId:      pulumi.String(yourAccount.Id),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &cen.InstanceAttachmentArgs{
-//				InstanceId:            exampleInstance.ID(),
+//			_, err = cen.NewInstanceAttachment(ctx, "example", &cen.InstanceAttachmentArgs{
+//				InstanceId:            example.ID(),
 //				ChildInstanceId:       childAccountInstanceGrant.ChildInstanceId,
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
-//				ChildInstanceOwnerId:  pulumi.String(childAccountAccount.Id),
-//			}, pulumi.Provider(alicloud.Your_account))
+//				ChildInstanceOwnerId:  pulumi.String(childAccount.Id),
+//			})
 //			if err != nil {
 //				return err
 //			}

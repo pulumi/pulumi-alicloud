@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ddos
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+    ///     var @default = new AliCloud.Ecs.EipAddress("default", new()
     ///     {
     ///         AddressName = name,
     ///         Isp = "BGP",
@@ -39,9 +39,9 @@ namespace Pulumi.AliCloud.Ddos
     ///         PaymentType = "PayAsYouGo",
     ///     });
     /// 
-    ///     var defaultBasicDefenseThreshold = new AliCloud.Ddos.BasicDefenseThreshold("defaultBasicDefenseThreshold", new()
+    ///     var defaultBasicDefenseThreshold = new AliCloud.Ddos.BasicDefenseThreshold("default", new()
     ///     {
-    ///         InstanceId = defaultEipAddress.Id,
+    ///         InstanceId = @default.Id,
     ///         DdosType = "defense",
     ///         InstanceType = "eip",
     ///         Bps = 390,

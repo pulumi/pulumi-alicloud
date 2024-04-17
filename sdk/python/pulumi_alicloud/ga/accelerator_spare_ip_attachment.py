@@ -162,13 +162,13 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+        default = alicloud.ga.Accelerator("default",
             duration=1,
             spec="1",
             accelerator_name="terraform-example",
             auto_use_coupon=True,
             description="terraform-example")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
             bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
@@ -178,10 +178,10 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
             bandwidth_package_name="terraform-example",
             auto_pay=True,
             auto_use_coupon=True)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
+            accelerator_id=default.id,
             bandwidth_package_id=default_bandwidth_package.id)
-        default_accelerator_spare_ip_attachment = alicloud.ga.AcceleratorSpareIpAttachment("defaultAcceleratorSpareIpAttachment",
+        default_accelerator_spare_ip_attachment = alicloud.ga.AcceleratorSpareIpAttachment("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             spare_ip="127.0.0.1")
         ```
@@ -223,13 +223,13 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+        default = alicloud.ga.Accelerator("default",
             duration=1,
             spec="1",
             accelerator_name="terraform-example",
             auto_use_coupon=True,
             description="terraform-example")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
             bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
@@ -239,10 +239,10 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
             bandwidth_package_name="terraform-example",
             auto_pay=True,
             auto_use_coupon=True)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
+            accelerator_id=default.id,
             bandwidth_package_id=default_bandwidth_package.id)
-        default_accelerator_spare_ip_attachment = alicloud.ga.AcceleratorSpareIpAttachment("defaultAcceleratorSpareIpAttachment",
+        default_accelerator_spare_ip_attachment = alicloud.ga.AcceleratorSpareIpAttachment("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             spare_ip="127.0.0.1")
         ```

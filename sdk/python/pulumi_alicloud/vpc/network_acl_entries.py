@@ -157,20 +157,25 @@ class NetworkAclEntries(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "NetworkAclEntries"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
-        default_network_acl = alicloud.vpc.NetworkAcl("defaultNetworkAcl", vpc_id=default_network.id)
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
+            name=name,
+            cidr_block="172.16.0.0/12")
+        default_network_acl = alicloud.vpc.NetworkAcl("default",
+            vpc_id=default_network.id,
+            name=name)
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id)
-        default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment",
+            zone_id=default.zones[0].id,
+            name=name)
+        default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("default",
             network_acl_id=default_network_acl.id,
             resources=[alicloud.vpc.NetworkAclAttachmentResourceArgs(
                 resource_id=default_switch.id,
                 resource_type="VSwitch",
             )])
-        default_network_acl_entries = alicloud.vpc.NetworkAclEntries("defaultNetworkAclEntries",
+        default_network_acl_entries = alicloud.vpc.NetworkAclEntries("default",
             network_acl_id=default_network_acl.id,
             ingresses=[alicloud.vpc.NetworkAclEntriesIngressArgs(
                 protocol="all",
@@ -229,20 +234,25 @@ class NetworkAclEntries(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "NetworkAclEntries"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/12")
-        default_network_acl = alicloud.vpc.NetworkAcl("defaultNetworkAcl", vpc_id=default_network.id)
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
+            name=name,
+            cidr_block="172.16.0.0/12")
+        default_network_acl = alicloud.vpc.NetworkAcl("default",
+            vpc_id=default_network.id,
+            name=name)
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id)
-        default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment",
+            zone_id=default.zones[0].id,
+            name=name)
+        default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("default",
             network_acl_id=default_network_acl.id,
             resources=[alicloud.vpc.NetworkAclAttachmentResourceArgs(
                 resource_id=default_switch.id,
                 resource_type="VSwitch",
             )])
-        default_network_acl_entries = alicloud.vpc.NetworkAclEntries("defaultNetworkAclEntries",
+        default_network_acl_entries = alicloud.vpc.NetworkAclEntries("default",
             network_acl_id=default_network_acl.id,
             ingresses=[alicloud.vpc.NetworkAclEntriesIngressArgs(
                 protocol="all",

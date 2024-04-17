@@ -232,17 +232,19 @@ class Instance(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         zone_id = "cn-hangzhou-h"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.1.0.0/16",
             vpc_id=default_network.id,
             zone_id=zone_id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.eais.Instance("defaultInstance",
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.eais.Instance("default",
             instance_type="eais.ei-a6.2xlarge",
             instance_name=name,
             security_group_id=default_security_group.id,
@@ -293,17 +295,19 @@ class Instance(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         zone_id = "cn-hangzhou-h"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.1.0.0/16",
             vpc_id=default_network.id,
             zone_id=zone_id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.eais.Instance("defaultInstance",
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.eais.Instance("default",
             instance_type="eais.ei-a6.2xlarge",
             instance_name=name,
             security_group_id=default_security_group.id,

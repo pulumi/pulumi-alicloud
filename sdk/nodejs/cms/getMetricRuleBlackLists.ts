@@ -19,11 +19,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.cms.getMetricRuleBlackLists({
- *     ids: [alicloud_cms_metric_rule_black_lists["default"].id],
+ *     ids: [defaultAlicloudCmsMetricRuleBlackLists.id],
  *     category: "ecs",
  *     namespace: "acs_ecs_dashboard",
  * });
- * export const alicloudCmsRuleBlackListExampleId = data.alicloud_cms_metric_rule_black_lists.lists[0].id;
+ * export const alicloudCmsRuleBlackListExampleId = lists[0].id;
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -128,11 +128,11 @@ export interface GetMetricRuleBlackListsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.cms.getMetricRuleBlackLists({
- *     ids: [alicloud_cms_metric_rule_black_lists["default"].id],
+ *     ids: [defaultAlicloudCmsMetricRuleBlackLists.id],
  *     category: "ecs",
  *     namespace: "acs_ecs_dashboard",
  * });
- * export const alicloudCmsRuleBlackListExampleId = data.alicloud_cms_metric_rule_black_lists.lists[0].id;
+ * export const alicloudCmsRuleBlackListExampleId = lists[0].id;
  * ```
  * <!--End PulumiCodeChooser -->
  */

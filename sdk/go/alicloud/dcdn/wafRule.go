@@ -44,26 +44,24 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleWafPolicy, err := dcdn.NewWafPolicy(ctx, "exampleWafPolicy", &dcdn.WafPolicyArgs{
+//			example, err := dcdn.NewWafPolicy(ctx, "example", &dcdn.WafPolicyArgs{
 //				DefenseScene: pulumi.String("waf_group"),
-//				PolicyName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v_%v", name, result), nil
-//				}).(pulumi.StringOutput),
-//				PolicyType: pulumi.String("custom"),
-//				Status:     pulumi.String("on"),
+//				PolicyName:   pulumi.String(fmt.Sprintf("%v_%v", name, _default.Result)),
+//				PolicyType:   pulumi.String("custom"),
+//				Status:       pulumi.String("on"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dcdn.NewWafRule(ctx, "exampleWafRule", &dcdn.WafRuleArgs{
-//				PolicyId: exampleWafPolicy.ID(),
+//			_, err = dcdn.NewWafRule(ctx, "example", &dcdn.WafRuleArgs{
+//				PolicyId: example.ID(),
 //				RuleName: pulumi.String(name),
 //				Conditions: dcdn.WafRuleConditionArray{
 //					&dcdn.WafRuleConditionArgs{

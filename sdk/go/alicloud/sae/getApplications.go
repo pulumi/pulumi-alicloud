@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -56,13 +56,13 @@ import (
 //			vsw, err := vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
 //				VpcId:       vpc.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultNamespace, err := sae.NewNamespace(ctx, "defaultNamespace", &sae.NamespaceArgs{
+//			defaultNamespace, err := sae.NewNamespace(ctx, "default", &sae.NamespaceArgs{
 //				NamespaceDescription: pulumi.String(name),
 //				NamespaceId:          pulumi.String("cn-hangzhou:tfacctest"),
 //				NamespaceName:        pulumi.String(name),
@@ -70,7 +70,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultApplication, err := sae.NewApplication(ctx, "defaultApplication", &sae.ApplicationArgs{
+//			defaultApplication, err := sae.NewApplication(ctx, "default", &sae.ApplicationArgs{
 //				AppDescription: pulumi.String("tf-testaccDescription"),
 //				AppName:        pulumi.String("tf-testaccAppName131"),
 //				NamespaceId:    defaultNamespace.ID(),
@@ -85,13 +85,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultApplications := sae.GetApplicationsOutput(ctx, sae.GetApplicationsOutputArgs{
+//			defaultGetApplications := sae.GetApplicationsOutput(ctx, sae.GetApplicationsOutputArgs{
 //				Ids: pulumi.StringArray{
 //					defaultApplication.ID(),
 //				},
 //			}, nil)
-//			ctx.Export("saeApplicationId", defaultApplications.ApplyT(func(defaultApplications sae.GetApplicationsResult) (*string, error) {
-//				return &defaultApplications.Applications[0].Id, nil
+//			ctx.Export("saeApplicationId", defaultGetApplications.ApplyT(func(defaultGetApplications sae.GetApplicationsResult) (*string, error) {
+//				return &defaultGetApplications.Applications[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

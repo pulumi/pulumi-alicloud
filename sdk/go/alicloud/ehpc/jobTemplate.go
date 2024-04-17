@@ -36,8 +36,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ehpc.NewJobTemplate(ctx, "default", &ehpc.JobTemplateArgs{
-//				CommandLine:     pulumi.String("./LammpsTest/lammps.pbs"),
 //				JobTemplateName: pulumi.String("example_value"),
+//				CommandLine:     pulumi.String("./LammpsTest/lammps.pbs"),
 //			})
 //			if err != nil {
 //				return err

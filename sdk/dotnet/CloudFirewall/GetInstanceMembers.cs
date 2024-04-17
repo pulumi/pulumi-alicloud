@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_cloud_firewall_instance_member.Default.Id,
+        ///             defaultAlicloudCloudFirewallInstanceMember.Id,
         ///         },
         ///     });
         /// 
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_cloud_firewall_instance_member.Default.Id,
+        ///             defaultAlicloudCloudFirewallInstanceMember.Id,
         ///         },
         ///     });
         /// 

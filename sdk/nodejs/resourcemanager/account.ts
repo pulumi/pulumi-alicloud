@@ -23,14 +23,14 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const displayName = config.get("displayName") || "EAccount";
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const exampleFolders = alicloud.resourcemanager.getFolders({});
- * const exampleAccount = new alicloud.resourcemanager.Account("exampleAccount", {
- *     displayName: pulumi.interpolate`${displayName}-${_default.result}`,
- *     folderId: exampleFolders.then(exampleFolders => exampleFolders.ids?.[0]),
+ * const example = alicloud.resourcemanager.getFolders({});
+ * const exampleAccount = new alicloud.resourcemanager.Account("example", {
+ *     displayName: `${displayName}-${_default.result}`,
+ *     folderId: example.then(example => example.ids?.[0]),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

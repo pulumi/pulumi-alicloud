@@ -181,14 +181,14 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_account = alicloud.get_account()
+        default = alicloud.get_account()
         source = alicloud.cms.Namespace("source", namespace=name)
-        default_namespace = alicloud.cms.Namespace("defaultNamespace", namespace=f"{name}-source")
-        default_service_hybrid_double_write = alicloud.cloudmonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite",
+        default_namespace = alicloud.cms.Namespace("default", namespace=f"{name}-source")
+        default_service_hybrid_double_write = alicloud.cloudmonitor.ServiceHybridDoubleWrite("default",
             source_namespace=source.id,
-            source_user_id=default_account.id,
+            source_user_id=default.id,
             namespace=default_namespace.id,
-            user_id=default_account.id)
+            user_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -233,14 +233,14 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_account = alicloud.get_account()
+        default = alicloud.get_account()
         source = alicloud.cms.Namespace("source", namespace=name)
-        default_namespace = alicloud.cms.Namespace("defaultNamespace", namespace=f"{name}-source")
-        default_service_hybrid_double_write = alicloud.cloudmonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite",
+        default_namespace = alicloud.cms.Namespace("default", namespace=f"{name}-source")
+        default_service_hybrid_double_write = alicloud.cloudmonitor.ServiceHybridDoubleWrite("default",
             source_namespace=source.id,
-            source_user_id=default_account.id,
+            source_user_id=default.id,
             namespace=default_namespace.id,
-            user_id=default_account.id)
+            user_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 

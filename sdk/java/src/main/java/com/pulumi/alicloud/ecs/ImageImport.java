@@ -51,17 +51,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var this_ = new ImageImport(&#34;this&#34;, ImageImportArgs.builder()        
- *             .architecture(&#34;x86_64&#34;)
  *             .description(&#34;test import image&#34;)
+ *             .architecture(&#34;x86_64&#34;)
+ *             .imageName(&#34;test-import-image&#34;)
+ *             .licenseType(&#34;Auto&#34;)
+ *             .platform(&#34;Ubuntu&#34;)
+ *             .osType(&#34;linux&#34;)
  *             .diskDeviceMappings(ImageImportDiskDeviceMappingArgs.builder()
  *                 .diskImageSize(5)
  *                 .ossBucket(&#34;testimportimage&#34;)
  *                 .ossObject(&#34;root.img&#34;)
  *                 .build())
- *             .imageName(&#34;test-import-image&#34;)
- *             .licenseType(&#34;Auto&#34;)
- *             .osType(&#34;linux&#34;)
- *             .platform(&#34;Ubuntu&#34;)
  *             .build());
  * 
  *     }

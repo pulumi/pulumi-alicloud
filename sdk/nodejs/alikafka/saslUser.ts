@@ -26,25 +26,26 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: defaultNetwork.id});
+ * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.alikafka.Instance("default", {
+ *     name: `${name}-${defaultInteger.result}`,
  *     partitionNum: 50,
  *     diskType: 1,
  *     diskSize: 500,
@@ -59,7 +60,7 @@ import * as utilities from "../utilities";
  *   }
  * `,
  * });
- * const defaultSaslUser = new alicloud.alikafka.SaslUser("defaultSaslUser", {
+ * const defaultSaslUser = new alicloud.alikafka.SaslUser("default", {
  *     instanceId: defaultInstance.id,
  *     username: name,
  *     password: "tf_example123",

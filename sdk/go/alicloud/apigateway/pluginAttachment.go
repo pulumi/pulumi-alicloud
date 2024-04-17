@@ -37,14 +37,16 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleGroup, err := apigateway.NewGroup(ctx, "exampleGroup", &apigateway.GroupArgs{
+//			example, err := apigateway.NewGroup(ctx, "example", &apigateway.GroupArgs{
+//				Name:        pulumi.String(name),
 //				Description: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleApi, err := apigateway.NewApi(ctx, "exampleApi", &apigateway.ApiArgs{
-//				GroupId:         exampleGroup.ID(),
+//			exampleApi, err := apigateway.NewApi(ctx, "example", &apigateway.ApiArgs{
+//				GroupId:         example.ID(),
+//				Name:            pulumi.String(name),
 //				Description:     pulumi.String(name),
 //				AuthType:        pulumi.String("APP"),
 //				ForceNonceCheck: pulumi.Bool(false),
@@ -92,7 +94,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			examplePlugin, err := apigateway.NewPlugin(ctx, "examplePlugin", &apigateway.PluginArgs{
+//			examplePlugin, err := apigateway.NewPlugin(ctx, "example", &apigateway.PluginArgs{
 //				Description: pulumi.String("tf_example"),
 //				PluginName:  pulumi.String("tf_example"),
 //				PluginData:  pulumi.String(json0),
@@ -101,9 +103,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apigateway.NewPluginAttachment(ctx, "examplePluginAttachment", &apigateway.PluginAttachmentArgs{
+//			_, err = apigateway.NewPluginAttachment(ctx, "example", &apigateway.PluginAttachmentArgs{
 //				ApiId:     exampleApi.ApiId,
-//				GroupId:   exampleGroup.ID(),
+//				GroupId:   example.ID(),
 //				PluginId:  examplePlugin.ID(),
 //				StageName: pulumi.String("RELEASE"),
 //			})

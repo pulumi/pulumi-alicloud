@@ -32,9 +32,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
-//				ClusterType:         "HADOOP",
 //				DestinationResource: "DataDisk",
 //				InstanceChargeType:  "PostPaid",
+//				ClusterType:         "HADOOP",
 //				InstanceType:        "ecs.g5.xlarge",
 //				ZoneId:              pulumi.StringRef("cn-huhehaote-a"),
 //			}, nil)

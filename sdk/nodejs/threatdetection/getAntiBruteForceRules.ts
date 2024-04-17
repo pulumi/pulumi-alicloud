@@ -10,6 +10,30 @@ import * as utilities from "../utilities";
  * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
  *
  * > **NOTE:** Available since v1.195.0.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example_value";
+ * const defaultAntiBruteForceRule = new alicloud.threatdetection.AntiBruteForceRule("default", {
+ *     antiBruteForceRuleName: name,
+ *     forbiddenTime: 360,
+ *     uuidLists: ["7567806c-4ec5-4597-9543-7c9543381a13"],
+ *     failCount: 80,
+ *     span: 10,
+ * });
+ * const default = defaultAntiBruteForceRule.id.apply(id => alicloud.threatdetection.getAntiBruteForceRulesOutput({
+ *     ids: [id],
+ *     nameRegex: defaultAntiBruteForceRule.name,
+ * }));
+ * export const alicloudThreatDetectionAntiBruteForceRuleExampleId = _default.apply(_default => _default.rules?.[0]?.id);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAntiBruteForceRules(args?: GetAntiBruteForceRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAntiBruteForceRulesResult> {
     args = args || {};
@@ -67,6 +91,30 @@ export interface GetAntiBruteForceRulesResult {
  * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
  *
  * > **NOTE:** Available since v1.195.0.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example_value";
+ * const defaultAntiBruteForceRule = new alicloud.threatdetection.AntiBruteForceRule("default", {
+ *     antiBruteForceRuleName: name,
+ *     forbiddenTime: 360,
+ *     uuidLists: ["7567806c-4ec5-4597-9543-7c9543381a13"],
+ *     failCount: 80,
+ *     span: 10,
+ * });
+ * const default = defaultAntiBruteForceRule.id.apply(id => alicloud.threatdetection.getAntiBruteForceRulesOutput({
+ *     ids: [id],
+ *     nameRegex: defaultAntiBruteForceRule.name,
+ * }));
+ * export const alicloudThreatDetectionAntiBruteForceRuleExampleId = _default.apply(_default => _default.rules?.[0]?.id);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAntiBruteForceRulesOutput(args?: GetAntiBruteForceRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAntiBruteForceRulesResult> {
     return pulumi.output(args).apply((a: any) => getAntiBruteForceRules(a, opts))

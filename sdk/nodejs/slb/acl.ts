@@ -38,7 +38,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const acl = new alicloud.slb.Acl("acl", {ipVersion: "ipv4"});
+ * const acl = new alicloud.slb.Acl("acl", {
+ *     name: "terraformslbaclconfig",
+ *     ipVersion: "ipv4",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

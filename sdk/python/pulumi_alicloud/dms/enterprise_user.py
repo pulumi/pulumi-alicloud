@@ -357,13 +357,14 @@ class EnterpriseUser(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexamplename"
-        default_user = alicloud.ram.User("defaultUser",
+        default = alicloud.ram.User("default",
+            name=name,
             display_name=name,
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",
             comments="example")
-        default_enterprise_user = alicloud.dms.EnterpriseUser("defaultEnterpriseUser",
-            uid=default_user.id,
+        default_enterprise_user = alicloud.dms.EnterpriseUser("default",
+            uid=default.id,
             user_name=name,
             role_names=["DBA"],
             mobile="86-18688888888")
@@ -412,13 +413,14 @@ class EnterpriseUser(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexamplename"
-        default_user = alicloud.ram.User("defaultUser",
+        default = alicloud.ram.User("default",
+            name=name,
             display_name=name,
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",
             comments="example")
-        default_enterprise_user = alicloud.dms.EnterpriseUser("defaultEnterpriseUser",
-            uid=default_user.id,
+        default_enterprise_user = alicloud.dms.EnterpriseUser("default",
+            uid=default.id,
             user_name=name,
             role_names=["DBA"],
             mobile="86-18688888888")

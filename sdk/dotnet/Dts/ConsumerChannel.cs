@@ -31,12 +31,12 @@ namespace Pulumi.AliCloud.Dts
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var exampleRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var example = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var exampleZones = AliCloud.Rds.GetZones.Invoke(new()
+    ///     var exampleGetZones = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
@@ -45,9 +45,9 @@ namespace Pulumi.AliCloud.Dts
     ///         DbInstanceStorageType = "cloud_essd",
     ///     });
     /// 
-    ///     var exampleInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     var exampleGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
     ///     {
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = exampleGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
     ///         InstanceChargeType = "PostPaid",
@@ -55,31 +55,32 @@ namespace Pulumi.AliCloud.Dts
     ///         DbInstanceStorageType = "cloud_essd",
     ///     });
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
     ///     {
     ///         VpcId = exampleNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = exampleGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
     ///     {
+    ///         Name = name,
     ///         VpcId = exampleNetwork.Id,
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new()
+    ///     var exampleInstance = new AliCloud.Rds.Instance("example", new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
-    ///         InstanceType = exampleInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = exampleInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
     ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = name,
     ///         VswitchId = exampleSwitch.Id,
@@ -91,19 +92,20 @@ namespace Pulumi.AliCloud.Dts
     ///         },
     ///     });
     /// 
-    ///     var exampleRdsAccount = new AliCloud.Rds.RdsAccount("exampleRdsAccount", new()
+    ///     var exampleRdsAccount = new AliCloud.Rds.RdsAccount("example", new()
     ///     {
     ///         DbInstanceId = exampleInstance.Id,
     ///         AccountName = "example_name",
     ///         AccountPassword = "example_1234",
     ///     });
     /// 
-    ///     var exampleDatabase = new AliCloud.Rds.Database("exampleDatabase", new()
+    ///     var exampleDatabase = new AliCloud.Rds.Database("example", new()
     ///     {
     ///         InstanceId = exampleInstance.Id,
+    ///         Name = name,
     ///     });
     /// 
-    ///     var exampleAccountPrivilege = new AliCloud.Rds.AccountPrivilege("exampleAccountPrivilege", new()
+    ///     var exampleAccountPrivilege = new AliCloud.Rds.AccountPrivilege("example", new()
     ///     {
     ///         InstanceId = exampleInstance.Id,
     ///         AccountName = exampleRdsAccount.Name,
@@ -114,12 +116,12 @@ namespace Pulumi.AliCloud.Dts
     ///         },
     ///     });
     /// 
-    ///     var exampleSubscriptionJob = new AliCloud.Dts.SubscriptionJob("exampleSubscriptionJob", new()
+    ///     var exampleSubscriptionJob = new AliCloud.Dts.SubscriptionJob("example", new()
     ///     {
     ///         DtsJobName = name,
     ///         PaymentType = "PayAsYouGo",
     ///         SourceEndpointEngineName = "MySQL",
-    ///         SourceEndpointRegion = exampleRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         SourceEndpointRegion = example.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
     ///         SourceEndpointInstanceType = "RDS",
     ///         SourceEndpointInstanceId = exampleInstance.Id,
     ///         SourceEndpointDatabaseName = exampleDatabase.Name,
@@ -137,7 +139,7 @@ namespace Pulumi.AliCloud.Dts
     ///         Status = "Normal",
     ///     });
     /// 
-    ///     var exampleConsumerChannel = new AliCloud.Dts.ConsumerChannel("exampleConsumerChannel", new()
+    ///     var exampleConsumerChannel = new AliCloud.Dts.ConsumerChannel("example", new()
     ///     {
     ///         DtsInstanceId = exampleSubscriptionJob.DtsInstanceId,
     ///         ConsumerGroupName = name,

@@ -253,20 +253,21 @@ class SaslUser(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_instance = alicloud.alikafka.Instance("defaultInstance",
+        default_instance = alicloud.alikafka.Instance("default",
+            name=f"{name}-{default_integer['result']}",
             partition_num=50,
             disk_type=1,
             disk_size=500,
@@ -280,7 +281,7 @@ class SaslUser(pulumi.CustomResource):
             "enable.acl": "true"
           }
         \"\"\")
-        default_sasl_user = alicloud.alikafka.SaslUser("defaultSaslUser",
+        default_sasl_user = alicloud.alikafka.SaslUser("default",
             instance_id=default_instance.id,
             username=name,
             password="tf_example123")
@@ -334,20 +335,21 @@ class SaslUser(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_instance = alicloud.alikafka.Instance("defaultInstance",
+        default_instance = alicloud.alikafka.Instance("default",
+            name=f"{name}-{default_integer['result']}",
             partition_num=50,
             disk_type=1,
             disk_size=500,
@@ -361,7 +363,7 @@ class SaslUser(pulumi.CustomResource):
             "enable.acl": "true"
           }
         \"\"\")
-        default_sasl_user = alicloud.alikafka.SaslUser("defaultSaslUser",
+        default_sasl_user = alicloud.alikafka.SaslUser("default",
             instance_id=default_instance.id,
             username=name,
             password="tf_example123")

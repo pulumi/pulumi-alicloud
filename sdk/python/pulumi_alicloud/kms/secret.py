@@ -572,11 +572,11 @@ class Secret(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.kms.Secret("default",
-            description="from terraform",
-            force_delete_without_recovery=True,
-            secret_data="Secret data.",
             secret_name="secret-foo",
-            version_id="000000000001")
+            description="from terraform",
+            secret_data="Secret data.",
+            version_id="000000000001",
+            force_delete_without_recovery=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -627,11 +627,11 @@ class Secret(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.kms.Secret("default",
-            description="from terraform",
-            force_delete_without_recovery=True,
-            secret_data="Secret data.",
             secret_name="secret-foo",
-            version_id="000000000001")
+            description="from terraform",
+            secret_data="Secret data.",
+            version_id="000000000001",
+            force_delete_without_recovery=True)
         ```
         <!--End PulumiCodeChooser -->
 

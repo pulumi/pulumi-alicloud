@@ -22,56 +22,62 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ * const default = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
- * const defaultZones = alicloud.rds.getZones({
+ * const defaultGetZones = alicloud.rds.getZones({
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     instanceChargeType: "PostPaid",
  *     category: "HighAvailability",
  *     dbInstanceStorageType: "cloud_essd",
  * });
- * const defaultInstanceClasses = defaultZones.then(defaultZones => alicloud.rds.getInstanceClasses({
- *     zoneId: defaultZones.zones?.[0]?.id,
+ * const defaultGetInstanceClasses = defaultGetZones.then(defaultGetZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: defaultGetZones.zones?.[0]?.id,
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     category: "HighAvailability",
  *     dbInstanceStorageType: "cloud_essd",
  *     instanceChargeType: "PostPaid",
  * }));
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "^default-NODELETING",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.id,
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, defaultGetZones]).then(([defaultGetNetworks, defaultGetZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: defaultGetZones.zones?.[0]?.id,
  * }));
- * const vswitchId = defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]);
- * const zoneId = defaultZones.then(defaultZones => defaultZones.ids?.[0]);
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
- * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
+ * const vswitchId = defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]);
+ * const zoneId = defaultGetZones.then(defaultGetZones => defaultGetZones.ids?.[0]);
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ * });
+ * const defaultInstance = new alicloud.rds.Instance("default", {
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     dbInstanceStorageType: "cloud_essd",
- *     instanceType: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
  *     vswitchId: vswitchId,
  *     instanceName: name,
  * });
- * const defaultDatabase = new alicloud.rds.Database("defaultDatabase", {instanceId: defaultInstance.id});
- * const defaultRdsAccount = new alicloud.rds.RdsAccount("defaultRdsAccount", {
+ * const defaultDatabase = new alicloud.rds.Database("default", {
+ *     instanceId: defaultInstance.id,
+ *     name: "tfdatabase",
+ * });
+ * const defaultRdsAccount = new alicloud.rds.RdsAccount("default", {
  *     dbInstanceId: defaultInstance.id,
  *     accountName: "tfnormal000",
  *     accountPassword: "Test12345",
  * });
- * const defaultAccountPrivilege = new alicloud.rds.AccountPrivilege("defaultAccountPrivilege", {
+ * const defaultAccountPrivilege = new alicloud.rds.AccountPrivilege("default", {
  *     instanceId: defaultInstance.id,
  *     accountName: defaultRdsAccount.accountName,
  *     privilege: "ReadWrite",
  *     dbNames: [defaultDatabase.name],
  * });
- * const defaultBackupPlan = new alicloud.dbs.BackupPlan("defaultBackupPlan", {
+ * const defaultBackupPlan = new alicloud.dbs.BackupPlan("default", {
  *     backupPlanName: name,
  *     paymentType: "PayAsYouGo",
  *     instanceClass: "xlarge",
@@ -81,7 +87,7 @@ import * as utilities from "../utilities";
  *     storageRegion: "cn-hangzhou",
  *     instanceType: "RDS",
  *     sourceEndpointInstanceType: "RDS",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
  *     sourceEndpointRegion: "cn-hangzhou",
  *     sourceEndpointInstanceId: defaultInstance.id,
  *     sourceEndpointUserName: defaultAccountPrivilege.accountName,

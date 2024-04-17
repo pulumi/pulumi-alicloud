@@ -45,69 +45,63 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := dfs.GetZones(ctx, nil, nil)
+//			_default, err := dfs.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultVPC, err := vpc.NewNetwork(ctx, "defaultVPC", &vpc.NetworkArgs{
+//			defaultVPC, err := vpc.NewNetwork(ctx, "DefaultVPC", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //				VpcName:   pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultVSwitch, err := vpc.NewSwitch(ctx, "defaultVSwitch", &vpc.SwitchArgs{
+//			defaultVSwitch, err := vpc.NewSwitch(ctx, "DefaultVSwitch", &vpc.SwitchArgs{
 //				Description: pulumi.String("example"),
 //				VpcId:       defaultVPC.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String(name),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].ZoneId),
+//				ZoneId:      pulumi.String(_default.Zones[0].ZoneId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultAccessGroup, err := dfs.NewAccessGroup(ctx, "defaultAccessGroup", &dfs.AccessGroupArgs{
-//				Description: pulumi.String("AccessGroup resource manager center example"),
-//				NetworkType: pulumi.String("VPC"),
-//				AccessGroupName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//			defaultAccessGroup, err := dfs.NewAccessGroup(ctx, "DefaultAccessGroup", &dfs.AccessGroupArgs{
+//				Description:     pulumi.String("AccessGroup resource manager center example"),
+//				NetworkType:     pulumi.String("VPC"),
+//				AccessGroupName: pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dfs.NewAccessGroup(ctx, "updateAccessGroup", &dfs.AccessGroupArgs{
-//				Description: pulumi.String("Second AccessGroup resource manager center example"),
-//				NetworkType: pulumi.String("VPC"),
-//				AccessGroupName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-update-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//			_, err = dfs.NewAccessGroup(ctx, "UpdateAccessGroup", &dfs.AccessGroupArgs{
+//				Description:     pulumi.String("Second AccessGroup resource manager center example"),
+//				NetworkType:     pulumi.String("VPC"),
+//				AccessGroupName: pulumi.String(fmt.Sprintf("%v-update-%v", name, defaultInteger.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultFs, err := dfs.NewFileSystem(ctx, "defaultFs", &dfs.FileSystemArgs{
+//			defaultFs, err := dfs.NewFileSystem(ctx, "DefaultFs", &dfs.FileSystemArgs{
 //				SpaceCapacity:      pulumi.Int(1024),
 //				Description:        pulumi.String("for mountpoint  example"),
 //				StorageType:        pulumi.String("STANDARD"),
-//				ZoneId:             pulumi.String(defaultZones.Zones[0].ZoneId),
+//				ZoneId:             pulumi.String(_default.Zones[0].ZoneId),
 //				ProtocolType:       pulumi.String("HDFS"),
 //				DataRedundancyType: pulumi.String("LRS"),
-//				FileSystemName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//				FileSystemName:     pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dfs.NewMountPoint(ctx, "defaultMountPoint", &dfs.MountPointArgs{
+//			_, err = dfs.NewMountPoint(ctx, "default", &dfs.MountPointArgs{
 //				VpcId:         defaultVPC.ID(),
 //				Description:   pulumi.String("mountpoint example"),
 //				NetworkType:   pulumi.String("VPC"),

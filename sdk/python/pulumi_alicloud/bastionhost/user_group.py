@@ -166,23 +166,23 @@ class UserGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
             cidr_block="10.4.0.0/16")
-        default_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
-            vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
-        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+        default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
+            vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_get_networks.ids[0])
+        default_instance = alicloud.bastionhost.Instance("default",
             description=name,
             license_code="bhah_ent_50_asset",
             plan_code="cloudbastion",
             storage="5",
             bandwidth="5",
             period=1,
-            vswitch_id=default_switches.ids[0],
+            vswitch_id=default_get_switches.ids[0],
             security_group_ids=[default_security_group.id])
-        default_user_group = alicloud.bastionhost.UserGroup("defaultUserGroup",
+        default_user_group = alicloud.bastionhost.UserGroup("default",
             instance_id=default_instance.id,
             user_group_name=name)
         ```
@@ -228,23 +228,23 @@ class UserGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
             cidr_block="10.4.0.0/16")
-        default_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
-            vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
-        default_instance = alicloud.bastionhost.Instance("defaultInstance",
+        default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
+            vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_get_networks.ids[0])
+        default_instance = alicloud.bastionhost.Instance("default",
             description=name,
             license_code="bhah_ent_50_asset",
             plan_code="cloudbastion",
             storage="5",
             bandwidth="5",
             period=1,
-            vswitch_id=default_switches.ids[0],
+            vswitch_id=default_get_switches.ids[0],
             security_group_ids=[default_security_group.id])
-        default_user_group = alicloud.bastionhost.UserGroup("defaultUserGroup",
+        default_user_group = alicloud.bastionhost.UserGroup("default",
             instance_id=default_instance.id,
             user_group_name=name)
         ```

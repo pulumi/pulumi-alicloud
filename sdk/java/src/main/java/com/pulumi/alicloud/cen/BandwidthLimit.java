@@ -35,8 +35,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.Provider;
- * import com.pulumi.alicloud.ProviderArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.cen.Instance;
@@ -49,7 +47,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cen.BandwidthPackageAttachmentArgs;
  * import com.pulumi.alicloud.cen.BandwidthLimit;
  * import com.pulumi.alicloud.cen.BandwidthLimitArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -66,42 +63,30 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var region1 = config.get(&#34;region1&#34;).orElse(&#34;eu-central-1&#34;);
  *         final var region2 = config.get(&#34;region2&#34;).orElse(&#34;ap-southeast-1&#34;);
- *         var ec = new Provider(&#34;ec&#34;, ProviderArgs.builder()        
- *             .region(region1)
- *             .build());
- * 
- *         var as = new Provider(&#34;as&#34;, ProviderArgs.builder()        
- *             .region(region2)
- *             .build());
- * 
  *         var vpc1 = new Network(&#34;vpc1&#34;, NetworkArgs.builder()        
  *             .vpcName(&#34;tf-example&#34;)
  *             .cidrBlock(&#34;192.168.0.0/16&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.ec())
- *                 .build());
+ *             .build());
  * 
  *         var vpc2 = new Network(&#34;vpc2&#34;, NetworkArgs.builder()        
  *             .vpcName(&#34;tf-example&#34;)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.as())
- *                 .build());
+ *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
  *             .cenInstanceName(&#34;tf_example&#34;)
  *             .description(&#34;an example for cen&#34;)
  *             .build());
  * 
  *         var example1 = new InstanceAttachment(&#34;example1&#34;, InstanceAttachmentArgs.builder()        
- *             .instanceId(exampleInstance.id())
+ *             .instanceId(example.id())
  *             .childInstanceId(vpc1.id())
  *             .childInstanceType(&#34;VPC&#34;)
  *             .childInstanceRegionId(region1)
  *             .build());
  * 
  *         var example2 = new InstanceAttachment(&#34;example2&#34;, InstanceAttachmentArgs.builder()        
- *             .instanceId(exampleInstance.id())
+ *             .instanceId(example.id())
  *             .childInstanceId(vpc2.id())
  *             .childInstanceType(&#34;VPC&#34;)
  *             .childInstanceRegionId(region2)
@@ -115,7 +100,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;exampleBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
- *             .instanceId(exampleInstance.id())
+ *             .instanceId(example.id())
  *             .bandwidthPackageId(exampleBandwidthPackage.id())
  *             .build());
  * 

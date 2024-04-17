@@ -30,6 +30,7 @@ namespace Pulumi.AliCloud.Dns
     ///     // Create a new Domain record
     ///     var record = new AliCloud.Dns.Record("record", new()
     ///     {
+    ///         Name = "domainname",
     ///         HostRecord = "@",
     ///         Type = "A",
     ///         Value = "192.168.99.99",

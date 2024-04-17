@@ -14,6 +14,75 @@ import (
 // This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
 //
 // > **NOTE:** Available since v1.214.0.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/quotas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := resourcemanager.GetAccounts(ctx, &resourcemanager.GetAccountsArgs{
+//				Status: pulumi.StringRef("CreateSuccess"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultTemplateApplications, err := quotas.NewTemplateApplications(ctx, "default", &quotas.TemplateApplicationsArgs{
+//				QuotaActionCode: pulumi.String("vpc_whitelist/ha_vip_whitelist"),
+//				ProductCode:     pulumi.String("vpc"),
+//				QuotaCategory:   pulumi.String("FlowControl"),
+//				AliyunUids: pulumi.StringArray{
+//					pulumi.String(_default.Ids[0]),
+//				},
+//				DesireValue: pulumi.Float64(6),
+//				NoticeType:  pulumi.Int(0),
+//				EnvLanguage: pulumi.String("zh"),
+//				Reason:      pulumi.String("example"),
+//				Dimensions: quotas.TemplateApplicationsDimensionArray{
+//					&quotas.TemplateApplicationsDimensionArgs{
+//						Key:   pulumi.String("apiName"),
+//						Value: pulumi.String("GetProductQuotaDimension"),
+//					},
+//					&quotas.TemplateApplicationsDimensionArgs{
+//						Key:   pulumi.String("apiVersion"),
+//						Value: pulumi.String("2020-05-10"),
+//					},
+//					&quotas.TemplateApplicationsDimensionArgs{
+//						Key:   pulumi.String("regionId"),
+//						Value: pulumi.String("cn-hangzhou"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetTemplateApplications := quotas.LookupTemplateApplicationsOutput(ctx, quotas.GetTemplateApplicationsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultTemplateApplications.ID(),
+//				},
+//				ProductCode:     pulumi.String("vpc"),
+//				QuotaActionCode: pulumi.String("vpc_whitelist/ha_vip_whitelist"),
+//				QuotaCategory:   pulumi.String("FlowControl"),
+//			}, nil)
+//			ctx.Export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.ApplyT(func(defaultGetTemplateApplications quotas.GetTemplateApplicationsResult) (*string, error) {
+//				return &defaultGetTemplateApplications.Applications[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 func LookupTemplateApplications(ctx *pulumi.Context, args *LookupTemplateApplicationsArgs, opts ...pulumi.InvokeOption) (*LookupTemplateApplicationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTemplateApplicationsResult

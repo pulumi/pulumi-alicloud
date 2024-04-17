@@ -22,63 +22,49 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const hz = new alicloud.Provider("hz", {region: "cn-hangzhou"});
- * const qd = new alicloud.Provider("qd", {region: "cn-qingdao"});
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {cenInstanceName: name});
- * const defaultBandwidthPackage = new alicloud.cen.BandwidthPackage("defaultBandwidthPackage", {
+ * const _default = new alicloud.cen.Instance("default", {cenInstanceName: name});
+ * const defaultBandwidthPackage = new alicloud.cen.BandwidthPackage("default", {
  *     bandwidth: 5,
  *     cenBandwidthPackageName: name,
  *     geographicRegionAId: "China",
  *     geographicRegionBId: "China",
  * });
- * const defaultBandwidthPackageAttachment = new alicloud.cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
- *     instanceId: defaultInstance.id,
+ * const defaultBandwidthPackageAttachment = new alicloud.cen.BandwidthPackageAttachment("default", {
+ *     instanceId: _default.id,
  *     bandwidthPackageId: defaultBandwidthPackage.id,
  * });
- * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {
+ * const defaultTransitRouter = new alicloud.cen.TransitRouter("default", {
  *     cenId: defaultBandwidthPackageAttachment.instanceId,
  *     supportMulticast: true,
- * }, {
- *     provider: alicloud.hz,
  * });
- * const peerTransitRouter = new alicloud.cen.TransitRouter("peerTransitRouter", {
+ * const peer = new alicloud.cen.TransitRouter("peer", {
  *     cenId: defaultBandwidthPackageAttachment.instanceId,
  *     supportMulticast: true,
- * }, {
- *     provider: alicloud.qd,
  * });
- * const defaultTransitRouterPeerAttachment = new alicloud.cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", {
+ * const defaultTransitRouterPeerAttachment = new alicloud.cen.TransitRouterPeerAttachment("default", {
  *     cenId: defaultBandwidthPackageAttachment.instanceId,
  *     transitRouterId: defaultTransitRouter.transitRouterId,
- *     peerTransitRouterId: peerTransitRouter.transitRouterId,
+ *     peerTransitRouterId: peer.transitRouterId,
  *     peerTransitRouterRegionId: "cn-qingdao",
  *     cenBandwidthPackageId: defaultBandwidthPackageAttachment.bandwidthPackageId,
  *     bandwidth: 5,
  *     transitRouterAttachmentDescription: name,
  *     transitRouterAttachmentName: name,
- * }, {
- *     provider: alicloud.hz,
  * });
- * const defaultTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain", {
+ * const defaultTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("default", {
  *     transitRouterId: defaultTransitRouterPeerAttachment.transitRouterId,
  *     transitRouterMulticastDomainName: name,
  *     transitRouterMulticastDomainDescription: name,
- * }, {
- *     provider: alicloud.hz,
  * });
- * const peerTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("peerTransitRouterMulticastDomain", {
+ * const peerTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("peer", {
  *     transitRouterId: defaultTransitRouterPeerAttachment.peerTransitRouterId,
  *     transitRouterMulticastDomainName: name,
  *     transitRouterMulticastDomainDescription: name,
- * }, {
- *     provider: alicloud.qd,
  * });
- * const defaultTransitRouterMulticastDomainPeerMember = new alicloud.cen.TransitRouterMulticastDomainPeerMember("defaultTransitRouterMulticastDomainPeerMember", {
+ * const defaultTransitRouterMulticastDomainPeerMember = new alicloud.cen.TransitRouterMulticastDomainPeerMember("default", {
  *     transitRouterMulticastDomainId: defaultTransitRouterMulticastDomain.id,
  *     peerTransitRouterMulticastDomainId: peerTransitRouterMulticastDomain.id,
  *     groupIpAddress: "224.0.0.1",
- * }, {
- *     provider: alicloud.hz,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

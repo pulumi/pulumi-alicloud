@@ -32,23 +32,23 @@ namespace Pulumi.AliCloud.Vpc
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var examplePhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     var example = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
     ///     {
     ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
-    ///     var vlanId = new Random.RandomInteger("vlanId", new()
+    ///     var vlanId = new Random.Index.Integer("vlan_id", new()
     ///     {
     ///         Max = 2999,
     ///         Min = 1,
     ///     });
     /// 
-    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("exampleVirtualBorderRouter", new()
+    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("example", new()
     ///     {
     ///         LocalGatewayIp = "10.0.0.1",
     ///         PeerGatewayIp = "10.0.0.2",
     ///         PeeringSubnetMask = "255.255.255.252",
-    ///         PhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         PhysicalConnectionId = example.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
     ///         VirtualBorderRouterName = name,
     ///         VlanId = vlanId.Id,
     ///         MinRxInterval = 1000,
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Vpc
     ///         DetectMultiplier = 10,
     ///     });
     /// 
-    ///     var exampleBgpNetwork = new AliCloud.Vpc.BgpNetwork("exampleBgpNetwork", new()
+    ///     var exampleBgpNetwork = new AliCloud.Vpc.BgpNetwork("example", new()
     ///     {
     ///         DstCidrBlock = "192.168.0.0/24",
     ///         RouterId = exampleVirtualBorderRouter.Id,

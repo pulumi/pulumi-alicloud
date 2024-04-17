@@ -47,12 +47,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var attachmentAcl = new Acl(&#34;attachmentAcl&#34;, AclArgs.builder()        
+ *         var attachment = new Acl(&#34;attachment&#34;, AclArgs.builder()        
+ *             .name(&#34;forSlbAclEntryAttachment&#34;)
  *             .ipVersion(&#34;ipv4&#34;)
  *             .build());
  * 
  *         var attachmentAclEntryAttachment = new AclEntryAttachment(&#34;attachmentAclEntryAttachment&#34;, AclEntryAttachmentArgs.builder()        
- *             .aclId(attachmentAcl.id())
+ *             .aclId(attachment.id())
  *             .entry(&#34;168.10.10.0/24&#34;)
  *             .comment(&#34;second&#34;)
  *             .build());

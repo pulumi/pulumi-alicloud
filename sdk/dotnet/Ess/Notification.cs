@@ -28,42 +28,42 @@ namespace Pulumi.AliCloud.Ess
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var myName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}");
+    ///     var myName = $"{name}-{defaultInteger.Result}";
     /// 
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    ///     var defaultGetAccount = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = myName,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = myName,
     ///     });
     /// 
-    ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new()
+    ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("default", new()
     ///     {
     ///         MinSize = 1,
     ///         MaxSize = 1,
@@ -79,9 +79,12 @@ namespace Pulumi.AliCloud.Ess
     ///         },
     ///     });
     /// 
-    ///     var defaultQueue = new AliCloud.Mns.Queue("defaultQueue");
+    ///     var defaultQueue = new AliCloud.Mns.Queue("default", new()
+    ///     {
+    ///         Name = myName,
+    ///     });
     /// 
-    ///     var defaultNotification = new AliCloud.Ess.Notification("defaultNotification", new()
+    ///     var defaultNotification = new AliCloud.Ess.Notification("default", new()
     ///     {
     ///         ScalingGroupId = defaultScalingGroup.Id,
     ///         NotificationTypes = new[]
@@ -89,12 +92,12 @@ namespace Pulumi.AliCloud.Ess
     ///             "AUTOSCALING:SCALE_OUT_SUCCESS",
     ///             "AUTOSCALING:SCALE_OUT_ERROR",
     ///         },
-    ///         NotificationArn = Output.Tuple(defaultRegions, defaultAccount, defaultQueue.Name).Apply(values =&gt;
+    ///         NotificationArn = Output.Tuple(@default, defaultGetAccount, defaultQueue.Name).Apply(values =&gt;
     ///         {
-    ///             var defaultRegions = values.Item1;
-    ///             var defaultAccount = values.Item2;
+    ///             var @default = values.Item1;
+    ///             var defaultGetAccount = values.Item2;
     ///             var name = values.Item3;
-    ///             return $"acs:ess:{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:queue/{name}";
+    ///             return $"acs:ess:{@default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{defaultGetAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:queue/{name}";
     ///         }),
     ///     });
     /// 

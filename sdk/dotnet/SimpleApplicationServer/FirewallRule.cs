@@ -31,21 +31,21 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultImages = AliCloud.SimpleApplicationServer.GetImages.Invoke();
+    ///     var @default = AliCloud.SimpleApplicationServer.GetImages.Invoke();
     /// 
-    ///     var defaultServerPlans = AliCloud.SimpleApplicationServer.GetServerPlans.Invoke();
+    ///     var defaultGetServerPlans = AliCloud.SimpleApplicationServer.GetServerPlans.Invoke();
     /// 
-    ///     var defaultInstance = new AliCloud.SimpleApplicationServer.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.SimpleApplicationServer.Instance("default", new()
     ///     {
     ///         PaymentType = "Subscription",
-    ///         PlanId = defaultServerPlans.Apply(getServerPlansResult =&gt; getServerPlansResult.Plans[0]?.Id),
+    ///         PlanId = defaultGetServerPlans.Apply(getServerPlansResult =&gt; getServerPlansResult.Plans[0]?.Id),
     ///         InstanceName = name,
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         ImageId = @default.Apply(@default =&gt; @default.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id)),
     ///         Period = 1,
     ///         DataDiskSize = 100,
     ///     });
     /// 
-    ///     var defaultFirewallRule = new AliCloud.SimpleApplicationServer.FirewallRule("defaultFirewallRule", new()
+    ///     var defaultFirewallRule = new AliCloud.SimpleApplicationServer.FirewallRule("default", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
     ///         RuleProtocol = "Tcp",

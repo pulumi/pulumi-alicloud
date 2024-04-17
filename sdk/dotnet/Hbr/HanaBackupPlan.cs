@@ -29,24 +29,24 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     var example = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
     ///         Status = "OK",
     ///     });
     /// 
-    ///     var exampleVault = new AliCloud.Hbr.Vault("exampleVault", new()
+    ///     var exampleVault = new AliCloud.Hbr.Vault("example", new()
     ///     {
     ///         VaultName = "terraform-example",
     ///     });
     /// 
-    ///     var exampleHanaInstance = new AliCloud.Hbr.HanaInstance("exampleHanaInstance", new()
+    ///     var exampleHanaInstance = new AliCloud.Hbr.HanaInstance("example", new()
     ///     {
     ///         AlertSetting = "INHERITED",
     ///         HanaName = "terraform-example",
     ///         Host = "1.1.1.1",
     ///         InstanceNumber = 1,
     ///         Password = "YouPassword123",
-    ///         ResourceGroupId = exampleResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ResourceGroupId = example.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
     ///         Sid = "HXE",
     ///         UseSsl = false,
     ///         UserName = "admin",
@@ -54,14 +54,14 @@ namespace Pulumi.AliCloud.Hbr
     ///         VaultId = exampleVault.Id,
     ///     });
     /// 
-    ///     var exampleHanaBackupPlan = new AliCloud.Hbr.HanaBackupPlan("exampleHanaBackupPlan", new()
+    ///     var exampleHanaBackupPlan = new AliCloud.Hbr.HanaBackupPlan("example", new()
     ///     {
     ///         BackupPrefix = "DIFF_DATA_BACKUP",
     ///         BackupType = "COMPLETE",
     ///         ClusterId = exampleHanaInstance.HanaInstanceId,
     ///         DatabaseName = "SYSTEMDB",
     ///         PlanName = "terraform-example",
-    ///         ResourceGroupId = exampleResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ResourceGroupId = example.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
     ///         Schedule = "I|1602673264|P1D",
     ///         VaultId = exampleHanaInstance.VaultId,
     ///     });

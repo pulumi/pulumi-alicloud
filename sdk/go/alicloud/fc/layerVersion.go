@@ -33,23 +33,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
-//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("terraform-example-%v", result), nil
-//				}).(pulumi.StringOutput),
+//			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
+//				Bucket: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-//			defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
+//			defaultBucketObject, err := oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
 //				Bucket:  defaultBucket.ID(),
 //				Key:     pulumi.String("index.py"),
 //				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
@@ -58,9 +56,7 @@ import (
 //				return err
 //			}
 //			_, err = fc.NewLayerVersion(ctx, "example", &fc.LayerVersionArgs{
-//				LayerName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("terraform-example-%v", result), nil
-//				}).(pulumi.StringOutput),
+//				LayerName: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
 //				CompatibleRuntimes: pulumi.StringArray{
 //					pulumi.String("python2.7"),
 //				},

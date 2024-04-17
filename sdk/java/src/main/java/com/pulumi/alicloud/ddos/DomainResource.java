@@ -57,7 +57,8 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var domain = config.get(&#34;domain&#34;).orElse(&#34;tf-example.alibaba.com&#34;);
- *         var defaultDdosCooInstance = new DdosCooInstance(&#34;defaultDdosCooInstance&#34;, DdosCooInstanceArgs.builder()        
+ *         var default_ = new DdosCooInstance(&#34;default&#34;, DdosCooInstanceArgs.builder()        
+ *             .name(name)
  *             .bandwidth(&#34;30&#34;)
  *             .baseBandwidth(&#34;30&#34;)
  *             .serviceBandwidth(&#34;100&#34;)
@@ -70,7 +71,7 @@ import javax.annotation.Nullable;
  *         var defaultDomainResource = new DomainResource(&#34;defaultDomainResource&#34;, DomainResourceArgs.builder()        
  *             .domain(domain)
  *             .rsType(0)
- *             .instanceIds(defaultDdosCooInstance.id())
+ *             .instanceIds(default_.id())
  *             .realServers(&#34;177.167.32.11&#34;)
  *             .httpsExt(&#34;{\&#34;Http2\&#34;:1,\&#34;Http2https\&#34;:0,\&#34;Https2http\&#34;:0}&#34;)
  *             .proxyTypes(DomainResourceProxyTypeArgs.builder()

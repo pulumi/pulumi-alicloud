@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.CS
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var exampleRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance", new()
+    ///     var example = new AliCloud.CR.RegistryEnterpriseInstance("example", new()
     ///     {
     ///         PaymentType = "Subscription",
     ///         Period = 1,
@@ -43,17 +43,19 @@ namespace Pulumi.AliCloud.CS
     ///         InstanceName = name,
     ///     });
     /// 
-    ///     var exampleRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace", new()
+    ///     var exampleRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("example", new()
     ///     {
-    ///         InstanceId = exampleRegistryEnterpriseInstance.Id,
+    ///         InstanceId = example.Id,
+    ///         Name = name,
     ///         AutoCreate = false,
     ///         DefaultVisibility = "PUBLIC",
     ///     });
     /// 
-    ///     var exampleRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("exampleRegistryEnterpriseRepo", new()
+    ///     var exampleRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("example", new()
     ///     {
-    ///         InstanceId = exampleRegistryEnterpriseInstance.Id,
+    ///         InstanceId = example.Id,
     ///         Namespace = exampleRegistryEnterpriseNamespace.Name,
+    ///         Name = name,
     ///         Summary = "this is summary of my new repo",
     ///         RepoType = "PUBLIC",
     ///         Detail = "this is a public repo",

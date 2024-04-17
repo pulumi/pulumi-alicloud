@@ -71,15 +71,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var corporate = new AccountPasswordPolicy(&#34;corporate&#34;, AccountPasswordPolicyArgs.builder()        
- *             .hardExpiry(true)
- *             .maxLoginAttempts(3)
- *             .maxPasswordAge(12)
  *             .minimumPasswordLength(9)
- *             .passwordReusePrevention(5)
  *             .requireLowercaseCharacters(false)
+ *             .requireUppercaseCharacters(false)
  *             .requireNumbers(false)
  *             .requireSymbols(false)
- *             .requireUppercaseCharacters(false)
+ *             .hardExpiry(true)
+ *             .maxPasswordAge(12)
+ *             .passwordReusePrevention(5)
+ *             .maxLoginAttempts(3)
  *             .build());
  * 
  *     }

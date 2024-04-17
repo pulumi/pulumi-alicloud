@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -70,13 +70,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
- *             .projectName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
+ *             .projectName(String.format(&#34;example-value-%s&#34;, default_.result()))
  *             .build());
  * 
  *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
@@ -85,6 +85,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+ *             .name(String.format(&#34;fcservicerole-%s&#34;, default_.result()))
  *             .document(&#34;&#34;&#34;
  *   {
  *       &#34;Statement&#34;: [
@@ -112,6 +113,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .name(String.format(&#34;example-value-%s&#34;, default_.result()))
  *             .description(&#34;example-value&#34;)
  *             .role(defaultRole.arn())
  *             .logConfig(ServiceLogConfigArgs.builder()
@@ -123,7 +125,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .bucket(String.format(&#34;terraform-example-%s&#34;, default_.result()))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can&#39;t upload by content.
@@ -140,6 +142,7 @@ import javax.annotation.Nullable;
  * 
  *         var foo = new Function(&#34;foo&#34;, FunctionArgs.builder()        
  *             .service(defaultService.name())
+ *             .name(&#34;terraform-example&#34;)
  *             .description(&#34;example&#34;)
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())

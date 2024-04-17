@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.resourcemanager.ControlPolicy;
  * import com.pulumi.alicloud.resourcemanager.ControlPolicyArgs;
  * import com.pulumi.alicloud.resourcemanager.Folder;
@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var exampleControlPolicy = new ControlPolicy(&#34;exampleControlPolicy&#34;, ControlPolicyArgs.builder()        
+ *         var example = new ControlPolicy(&#34;example&#34;, ControlPolicyArgs.builder()        
  *             .controlPolicyName(name)
  *             .description(name)
  *             .effectScope(&#34;RAM&#34;)
@@ -83,11 +83,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleFolder = new Folder(&#34;exampleFolder&#34;, FolderArgs.builder()        
- *             .folderName(default_.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .folderName(String.format(&#34;%s-%s&#34;, name,default_.result()))
  *             .build());
  * 
  *         var exampleControlPolicyAttachment = new ControlPolicyAttachment(&#34;exampleControlPolicyAttachment&#34;, ControlPolicyAttachmentArgs.builder()        
- *             .policyId(exampleControlPolicy.id())
+ *             .policyId(example.id())
  *             .targetId(exampleFolder.id())
  *             .build());
  * 

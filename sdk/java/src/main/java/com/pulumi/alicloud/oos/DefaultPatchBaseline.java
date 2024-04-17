@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultPatchBaseline = new PatchBaseline(&#34;defaultPatchBaseline&#34;, PatchBaselineArgs.builder()        
+ *         var default_ = new PatchBaseline(&#34;default&#34;, PatchBaselineArgs.builder()        
  *             .operationSystem(&#34;Windows&#34;)
  *             .patchBaselineName(&#34;terraform-example&#34;)
  *             .description(&#34;terraform-example&#34;)
@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultDefaultPatchBaseline = new DefaultPatchBaseline(&#34;defaultDefaultPatchBaseline&#34;, DefaultPatchBaselineArgs.builder()        
- *             .patchBaselineName(defaultPatchBaseline.id())
+ *             .patchBaselineName(default_.id())
  *             .build());
  * 
  *     }

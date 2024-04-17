@@ -935,11 +935,11 @@ public final class BastionhostFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var instanceInstances = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
+     *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
      *             .descriptionRegex(&#34;^bastionhost&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, alicloud_bastionhost_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export(&#34;instance&#34;, instanceAlicloudBastionhostInstances.stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -980,11 +980,11 @@ public final class BastionhostFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var instanceInstances = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
+     *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
      *             .descriptionRegex(&#34;^bastionhost&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, alicloud_bastionhost_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export(&#34;instance&#34;, instanceAlicloudBastionhostInstances.stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -1025,11 +1025,11 @@ public final class BastionhostFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var instanceInstances = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
+     *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
      *             .descriptionRegex(&#34;^bastionhost&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, alicloud_bastionhost_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export(&#34;instance&#34;, instanceAlicloudBastionhostInstances.stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -1070,11 +1070,11 @@ public final class BastionhostFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var instanceInstances = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
+     *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
      *             .descriptionRegex(&#34;^bastionhost&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, alicloud_bastionhost_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export(&#34;instance&#34;, instanceAlicloudBastionhostInstances.stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -1115,11 +1115,11 @@ public final class BastionhostFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var instanceInstances = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
+     *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
      *             .descriptionRegex(&#34;^bastionhost&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, alicloud_bastionhost_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export(&#34;instance&#34;, instanceAlicloudBastionhostInstances.stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```
@@ -1160,11 +1160,11 @@ public final class BastionhostFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var instanceInstances = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
+     *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
      *             .descriptionRegex(&#34;^bastionhost&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, alicloud_bastionhost_instances.instance().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export(&#34;instance&#34;, instanceAlicloudBastionhostInstances.stream().map(element -&gt; element.id()).collect(toList()));
      *     }
      * }
      * ```

@@ -151,8 +151,8 @@ def get_zones(available_slb_address_ip_version: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    zones_ids = alicloud.slb.get_zones(available_slb_address_ip_version="ipv4",
-        available_slb_address_type="vpc")
+    zones_ids = alicloud.slb.get_zones(available_slb_address_type="vpc",
+        available_slb_address_ip_version="ipv4")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -209,8 +209,8 @@ def get_zones_output(available_slb_address_ip_version: Optional[pulumi.Input[Opt
     import pulumi
     import pulumi_alicloud as alicloud
 
-    zones_ids = alicloud.slb.get_zones(available_slb_address_ip_version="ipv4",
-        available_slb_address_type="vpc")
+    zones_ids = alicloud.slb.get_zones(available_slb_address_type="vpc",
+        available_slb_address_ip_version="ipv4")
     ```
     <!--End PulumiCodeChooser -->
 

@@ -47,13 +47,13 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			example, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//			exampleGetZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
 //				Engine:                pulumi.StringRef("MySQL"),
 //				EngineVersion:         pulumi.StringRef("8.0"),
 //				InstanceChargeType:    pulumi.StringRef("PostPaid"),
@@ -63,8 +63,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
-//				ZoneId:                pulumi.StringRef(exampleZones.Zones[0].Id),
+//			exampleGetInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
+//				ZoneId:                pulumi.StringRef(exampleGetZones.Zones[0].Id),
 //				Engine:                pulumi.StringRef("MySQL"),
 //				EngineVersion:         pulumi.StringRef("8.0"),
 //				InstanceChargeType:    pulumi.StringRef("PostPaid"),
@@ -74,33 +74,34 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(exampleGetZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
 //				VpcId: exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
+//			exampleInstance, err := rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
-//				InstanceType:          pulumi.String(exampleInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       pulumi.String(exampleInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				InstanceName:          pulumi.String(name),
 //				VswitchId:             exampleSwitch.ID(),
@@ -113,7 +114,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleRdsAccount, err := rds.NewRdsAccount(ctx, "exampleRdsAccount", &rds.RdsAccountArgs{
+//			exampleRdsAccount, err := rds.NewRdsAccount(ctx, "example", &rds.RdsAccountArgs{
 //				DbInstanceId:    exampleInstance.ID(),
 //				AccountName:     pulumi.String("test_mysql"),
 //				AccountPassword: pulumi.String("N1cetest"),
@@ -121,13 +122,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleDatabase, err := rds.NewDatabase(ctx, "exampleDatabase", &rds.DatabaseArgs{
+//			exampleDatabase, err := rds.NewDatabase(ctx, "example", &rds.DatabaseArgs{
 //				InstanceId: exampleInstance.ID(),
+//				Name:       pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rds.NewAccountPrivilege(ctx, "exampleAccountPrivilege", &rds.AccountPrivilegeArgs{
+//			_, err = rds.NewAccountPrivilege(ctx, "example", &rds.AccountPrivilegeArgs{
 //				InstanceId:  exampleInstance.ID(),
 //				AccountName: exampleRdsAccount.Name,
 //				Privilege:   pulumi.String("ReadWrite"),
@@ -138,11 +140,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dts.NewSubscriptionJob(ctx, "exampleSubscriptionJob", &dts.SubscriptionJobArgs{
+//			_, err = dts.NewSubscriptionJob(ctx, "example", &dts.SubscriptionJobArgs{
 //				DtsJobName:                 pulumi.String(name),
 //				PaymentType:                pulumi.String("PayAsYouGo"),
 //				SourceEndpointEngineName:   pulumi.String("MySQL"),
-//				SourceEndpointRegion:       pulumi.String(exampleRegions.Regions[0].Id),
+//				SourceEndpointRegion:       pulumi.String(example.Regions[0].Id),
 //				SourceEndpointInstanceType: pulumi.String("RDS"),
 //				SourceEndpointInstanceId:   exampleInstance.ID(),
 //				SourceEndpointDatabaseName: exampleDatabase.Name,

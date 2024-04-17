@@ -16,16 +16,16 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultCommonBandwithPackage = new alicloud.vpc.CommonBandwithPackage("defaultCommonBandwithPackage", {
+ * const _default = new alicloud.vpc.CommonBandwithPackage("default", {
  *     bandwidth: "3",
  *     internetChargeType: "PayByBandwidth",
  * });
- * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("default", {
  *     bandwidth: "3",
  *     internetChargeType: "PayByTraffic",
  * });
- * const defaultCommonBandwithPackageAttachment = new alicloud.vpc.CommonBandwithPackageAttachment("defaultCommonBandwithPackageAttachment", {
- *     bandwidthPackageId: defaultCommonBandwithPackage.id,
+ * const defaultCommonBandwithPackageAttachment = new alicloud.vpc.CommonBandwithPackageAttachment("default", {
+ *     bandwidthPackageId: _default.id,
  *     instanceId: defaultEipAddress.id,
  *     bandwidthPackageBandwidth: "2",
  *     ipType: "EIP",

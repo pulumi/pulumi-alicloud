@@ -15,6 +15,517 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### 1. Create A Cluster
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.emr.getMainVersions({});
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.emr.getInstanceTypes({
+ *     destinationResource: "InstanceType",
+ *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
+ *     supportLocalStorage: false,
+ *     instanceChargeType: "PostPaid",
+ *     supportNodeTypes: [
+ *         "MASTER",
+ *         "CORE",
+ *         "TASK",
+ *     ],
+ * }));
+ * const dataDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ *     destinationResource: "DataDisk",
+ *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
+ *     instanceChargeType: "PostPaid",
+ *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
+ *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ * }));
+ * const systemDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ *     destinationResource: "SystemDisk",
+ *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
+ *     instanceChargeType: "PostPaid",
+ *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
+ *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ * }));
+ * const vpc: alicloud.vpc.Network[] = [];
+ * for (const range = {value: 0}; range.value < (vpcId == "" ? 1 : 0); range.value++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {
+ *         name: vpcName,
+ *         cidrBlock: vpcCidr,
+ *     }));
+ * }
+ * const defaultSecurityGroup: alicloud.ecs.SecurityGroup[] = [];
+ * for (const range = {value: 0}; range.value < (securityGroupId == "" ? 1 : 0); range.value++) {
+ *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range.value}`, {
+ *         name: securityGroupName,
+ *         vpcId: vpcId == "" ? vpc[0].id : vpcId,
+ *     }));
+ * }
+ * // VSwitch Resource for Module
+ * const vswitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < (vswitchId == "" ? 1 : 0); range.value++) {
+ *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
+ *         availabilityZone: availabilityZone == "" ? defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.zoneId) : availabilityZone,
+ *         vswitchName: vswitchName,
+ *         cidrBlock: vswitchCidr,
+ *         vpcId: vpcId == "" ? vpc[0].id : vpcId,
+ *     }));
+ * }
+ * // Ram role Resource for Module
+ * const defaultRole = new alicloud.ram.Role("default", {
+ *     name: ramName,
+ *     document: `    {
+ *         "Statement": [
+ *         {
+ *             "Action": "sts:AssumeRole",
+ *             "Effect": "Allow",
+ *             "Principal": {
+ *             "Service": [
+ *                 "emr.aliyuncs.com",
+ *                 "ecs.aliyuncs.com"
+ *             ]
+ *             }
+ *         }
+ *         ],
+ *         "Version": "1"
+ *     }
+ * `,
+ *     description: "this is a role test.",
+ *     force: true,
+ * });
+ * const defaultCluster = new alicloud.emr.Cluster("default", {
+ *     name: "terraform-create-cluster-test",
+ *     emrVer: _default.then(_default => _default.mainVersions?.[0]?.emrVersion),
+ *     clusterType: _default.then(_default => _default.mainVersions?.[0]?.clusterTypes?.[0]),
+ *     hostGroups: [
+ *         {
+ *             hostGroupName: "master_group",
+ *             hostGroupType: "MASTER",
+ *             nodeCount: "2",
+ *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
+ *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
+ *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCount: "1",
+ *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
+ *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *         },
+ *         {
+ *             hostGroupName: "core_group",
+ *             hostGroupType: "CORE",
+ *             nodeCount: "3",
+ *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
+ *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
+ *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCount: "4",
+ *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
+ *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *         },
+ *         {
+ *             hostGroupName: "task_group",
+ *             hostGroupType: "TASK",
+ *             nodeCount: "2",
+ *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
+ *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
+ *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCount: "4",
+ *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
+ *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *         },
+ *     ],
+ *     highAvailabilityEnable: true,
+ *     zoneId: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.zoneId),
+ *     securityGroupId: securityGroupId == "" ? defaultSecurityGroup[0].id : securityGroupId,
+ *     isOpenPublicIp: true,
+ *     chargeType: "PostPaid",
+ *     vswitchId: vswitchId == "" ? vswitch[0].id : vswitchId,
+ *     userDefinedEmrEcsRole: defaultRole.name,
+ *     sshEnable: true,
+ *     masterPwd: "ABCtest1234!",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ### 2. Scale Up
+ * The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
+ *
+ * In the case of scaling up cluster, we should add the nodeCount of some host group.
+ *
+ * > **NOTE:** Scaling up is only applicable to CORE and TASK group. Cost time of scaling up will vary with the number of scaling-up nodes.
+ * Scaling down is only applicable to TASK group. If you want to scale down CORE group, please submit tickets or contact EMR support team.
+ *
+ * As the following case, we scale up the TASK group 2 nodes by increasing host_group.node_count by 2.
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.emr.getMainVersions({});
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.emr.getInstanceTypes({
+ *     destinationResource: "InstanceType",
+ *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
+ *     supportLocalStorage: false,
+ *     instanceChargeType: "PostPaid",
+ *     supportNodeTypes: [
+ *         "MASTER",
+ *         "CORE",
+ *         "TASK",
+ *     ],
+ * }));
+ * const dataDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ *     destinationResource: "DataDisk",
+ *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
+ *     instanceChargeType: "PostPaid",
+ *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
+ *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ * }));
+ * const systemDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ *     destinationResource: "SystemDisk",
+ *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
+ *     instanceChargeType: "PostPaid",
+ *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
+ *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ * }));
+ * const vpc: alicloud.vpc.Network[] = [];
+ * for (const range = {value: 0}; range.value < (vpcId == "" ? 1 : 0); range.value++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {
+ *         name: vpcName,
+ *         cidrBlock: vpcCidr,
+ *     }));
+ * }
+ * const defaultSecurityGroup: alicloud.ecs.SecurityGroup[] = [];
+ * for (const range = {value: 0}; range.value < (securityGroupId == "" ? 1 : 0); range.value++) {
+ *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range.value}`, {
+ *         name: securityGroupName,
+ *         vpcId: vpcId == "" ? vpc[0].id : vpcId,
+ *     }));
+ * }
+ * // VSwitch Resource for Module
+ * const vswitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < (vswitchId == "" ? 1 : 0); range.value++) {
+ *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
+ *         availabilityZone: availabilityZone == "" ? defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.zoneId) : availabilityZone,
+ *         vswitchName: vswitchName,
+ *         cidrBlock: vswitchCidr,
+ *         vpcId: vpcId == "" ? vpc[0].id : vpcId,
+ *     }));
+ * }
+ * // Ram role Resource for Module
+ * const defaultRole = new alicloud.ram.Role("default", {
+ *     name: ramName,
+ *     document: `    {
+ *         "Statement": [
+ *         {
+ *             "Action": "sts:AssumeRole",
+ *             "Effect": "Allow",
+ *             "Principal": {
+ *             "Service": [
+ *                 "emr.aliyuncs.com",
+ *                 "ecs.aliyuncs.com"
+ *             ]
+ *             }
+ *         }
+ *         ],
+ *         "Version": "1"
+ *     }
+ * `,
+ *     description: "this is a role test.",
+ *     force: true,
+ * });
+ * const defaultCluster = new alicloud.emr.Cluster("default", {
+ *     name: "terraform-resize-cluster-test",
+ *     emrVer: _default.then(_default => _default.mainVersions?.[0]?.emrVersion),
+ *     clusterType: _default.then(_default => _default.mainVersions?.[0]?.clusterTypes?.[0]),
+ *     hostGroups: [
+ *         {
+ *             hostGroupName: "master_group",
+ *             hostGroupType: "MASTER",
+ *             nodeCount: "2",
+ *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
+ *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
+ *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCount: "1",
+ *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
+ *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *         },
+ *         {
+ *             hostGroupName: "core_group",
+ *             hostGroupType: "CORE",
+ *             nodeCount: "3",
+ *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
+ *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
+ *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCount: "4",
+ *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
+ *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *         },
+ *         {
+ *             hostGroupName: "task_group",
+ *             hostGroupType: "TASK",
+ *             nodeCount: "4",
+ *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
+ *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
+ *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCount: "4",
+ *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
+ *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *         },
+ *     ],
+ *     highAvailabilityEnable: true,
+ *     zoneId: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.zoneId),
+ *     securityGroupId: securityGroupId == "" ? defaultSecurityGroup[0].id : securityGroupId,
+ *     isOpenPublicIp: true,
+ *     chargeType: "PostPaid",
+ *     vswitchId: vswitchId == "" ? vswitch[0].id : vswitchId,
+ *     userDefinedEmrEcsRole: defaultRole.name,
+ *     sshEnable: true,
+ *     masterPwd: "ABCtest1234!",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ### 3. Scale Down
+ *
+ * In the case of scaling down a cluster, we need to specified the host group and the instance list.
+ *
+ * > **NOTE:** Graceful decommission of hadoop cluster has been supported Available in 1.168.0+.
+ *
+ * The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.emr.getMainVersions({});
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.emr.getInstanceTypes({
+ *     destinationResource: "InstanceType",
+ *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
+ *     supportLocalStorage: false,
+ *     instanceChargeType: "PostPaid",
+ *     supportNodeTypes: [
+ *         "MASTER",
+ *         "CORE",
+ *         "TASK",
+ *     ],
+ * }));
+ * const dataDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ *     destinationResource: "DataDisk",
+ *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
+ *     instanceChargeType: "PostPaid",
+ *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
+ *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ * }));
+ * const systemDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ *     destinationResource: "SystemDisk",
+ *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
+ *     instanceChargeType: "PostPaid",
+ *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
+ *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ * }));
+ * const vpc: alicloud.vpc.Network[] = [];
+ * for (const range = {value: 0}; range.value < (vpcId == "" ? 1 : 0); range.value++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {
+ *         name: vpcName,
+ *         cidrBlock: vpcCidr,
+ *     }));
+ * }
+ * const defaultSecurityGroup: alicloud.ecs.SecurityGroup[] = [];
+ * for (const range = {value: 0}; range.value < (securityGroupId == "" ? 1 : 0); range.value++) {
+ *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range.value}`, {
+ *         name: securityGroupName,
+ *         vpcId: vpcId == "" ? vpc[0].id : vpcId,
+ *     }));
+ * }
+ * // VSwitch Resource for Module
+ * const vswitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < (vswitchId == "" ? 1 : 0); range.value++) {
+ *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
+ *         availabilityZone: availabilityZone == "" ? defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.zoneId) : availabilityZone,
+ *         vswitchName: vswitchName,
+ *         cidrBlock: vswitchCidr,
+ *         vpcId: vpcId == "" ? vpc[0].id : vpcId,
+ *     }));
+ * }
+ * // Ram role Resource for Module
+ * const defaultRole = new alicloud.ram.Role("default", {
+ *     name: ramName,
+ *     document: `    {
+ *         "Statement": [
+ *         {
+ *             "Action": "sts:AssumeRole",
+ *             "Effect": "Allow",
+ *             "Principal": {
+ *             "Service": [
+ *                 "emr.aliyuncs.com",
+ *                 "ecs.aliyuncs.com"
+ *             ]
+ *             }
+ *         }
+ *         ],
+ *         "Version": "1"
+ *     }
+ * `,
+ *     description: "this is a role test.",
+ *     force: true,
+ * });
+ * const defaultCluster = new alicloud.emr.Cluster("default", {
+ *     name: "terraform-resize-cluster-test",
+ *     emrVer: _default.then(_default => _default.mainVersions?.[0]?.emrVersion),
+ *     clusterType: _default.then(_default => _default.mainVersions?.[0]?.clusterTypes?.[0]),
+ *     hostGroups: [
+ *         {
+ *             hostGroupName: "master_group",
+ *             hostGroupType: "MASTER",
+ *             nodeCount: "2",
+ *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
+ *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
+ *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCount: "1",
+ *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
+ *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *         },
+ *         {
+ *             hostGroupName: "core_group",
+ *             hostGroupType: "CORE",
+ *             nodeCount: "3",
+ *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
+ *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
+ *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCount: "4",
+ *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
+ *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *         },
+ *         {
+ *             hostGroupName: "task_group",
+ *             hostGroupType: "TASK",
+ *             nodeCount: "2",
+ *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
+ *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
+ *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCount: "4",
+ *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
+ *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *         },
+ *     ],
+ *     highAvailabilityEnable: true,
+ *     zoneId: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.zoneId),
+ *     securityGroupId: securityGroupId == "" ? defaultSecurityGroup[0].id : securityGroupId,
+ *     isOpenPublicIp: true,
+ *     chargeType: "PostPaid",
+ *     vswitchId: vswitchId == "" ? vswitch[0].id : vswitchId,
+ *     userDefinedEmrEcsRole: defaultRole.name,
+ *     sshEnable: true,
+ *     masterPwd: "ABCtest1234!",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ### 4. Create a emr gateway cluster
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.emr.getMainVersions({});
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.emr.getInstanceTypes({
+ *     destinationResource: "InstanceType",
+ *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
+ *     supportLocalStorage: false,
+ *     instanceChargeType: "PostPaid",
+ *     supportNodeTypes: ["GATEWAY"],
+ * }));
+ * const dataDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ *     destinationResource: "DataDisk",
+ *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
+ *     instanceChargeType: "PostPaid",
+ *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
+ *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ * }));
+ * const systemDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ *     destinationResource: "SystemDisk",
+ *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
+ *     instanceChargeType: "PostPaid",
+ *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
+ *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ * }));
+ * const vpc: alicloud.vpc.Network[] = [];
+ * for (const range = {value: 0}; range.value < (vpcId == "" ? 1 : 0); range.value++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {
+ *         name: vpcName,
+ *         cidrBlock: vpcCidr,
+ *     }));
+ * }
+ * const defaultSecurityGroup: alicloud.ecs.SecurityGroup[] = [];
+ * for (const range = {value: 0}; range.value < (securityGroupId == "" ? 1 : 0); range.value++) {
+ *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range.value}`, {
+ *         name: securityGroupName,
+ *         vpcId: vpcId == "" ? vpc[0].id : vpcId,
+ *     }));
+ * }
+ * // VSwitch Resource for Module
+ * const vswitch: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < (vswitchId == "" ? 1 : 0); range.value++) {
+ *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
+ *         availabilityZone: availabilityZone == "" ? defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.zoneId) : availabilityZone,
+ *         vswitchName: vswitchName,
+ *         cidrBlock: vswitchCidr,
+ *         vpcId: vpcId == "" ? vpc[0].id : vpcId,
+ *     }));
+ * }
+ * // Ram role Resource for Module
+ * const defaultRole = new alicloud.ram.Role("default", {
+ *     name: ramName,
+ *     document: `    {
+ *         "Statement": [
+ *         {
+ *             "Action": "sts:AssumeRole",
+ *             "Effect": "Allow",
+ *             "Principal": {
+ *             "Service": [
+ *                 "emr.aliyuncs.com",
+ *                 "ecs.aliyuncs.com"
+ *             ]
+ *             }
+ *         }
+ *         ],
+ *         "Version": "1"
+ *     }
+ * `,
+ *     description: "this is a role test.",
+ *     force: true,
+ * });
+ * const gateway = new alicloud.emr.Cluster("gateway", {
+ *     name: "terraform-gateway-cluster-test",
+ *     emrVer: _default.then(_default => _default.mainVersions?.[0]?.emrVersion),
+ *     clusterType: "GATEWAY",
+ *     hostGroups: [{
+ *         hostGroupName: "master_group",
+ *         hostGroupType: "GATEWAY",
+ *         nodeCount: "1",
+ *         instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
+ *         diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
+ *         diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *         diskCount: "1",
+ *         sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
+ *         sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *     }],
+ *     highAvailabilityEnable: true,
+ *     zoneId: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.zoneId),
+ *     securityGroupId: securityGroupId == "" ? defaultSecurityGroup[0].id : securityGroupId,
+ *     isOpenPublicIp: true,
+ *     chargeType: "PostPaid",
+ *     vswitchId: vswitchId == "" ? vswitch[0].id : vswitchId,
+ *     userDefinedEmrEcsRole: defaultRole.name,
+ *     sshEnable: true,
+ *     masterPwd: "ABCtest1234!",
+ *     relatedClusterId: relatedClusterId,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Aliclioud E-MapReduce cluster can be imported using the id e.g.

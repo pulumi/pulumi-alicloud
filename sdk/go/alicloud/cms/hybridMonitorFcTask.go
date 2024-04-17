@@ -42,11 +42,11 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNamespace, err := cms.NewNamespace(ctx, "defaultNamespace", &cms.NamespaceArgs{
+//			defaultNamespace, err := cms.NewNamespace(ctx, "default", &cms.NamespaceArgs{
 //				Description:   pulumi.String(name),
 //				Namespace:     pulumi.String(name),
 //				Specification: pulumi.String("cms.s1.large"),
@@ -54,7 +54,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cms.NewHybridMonitorFcTask(ctx, "defaultHybridMonitorFcTask", &cms.HybridMonitorFcTaskArgs{
+//			_, err = cms.NewHybridMonitorFcTask(ctx, "default", &cms.HybridMonitorFcTaskArgs{
 //				Namespace: defaultNamespace.ID(),
 //				YarmConfig: pulumi.String(`products:
 //   - namespace: acs_ecs_dashboard
@@ -76,7 +76,7 @@ import (
 //
 // `),
 //
-//				TargetUserId: pulumi.String(defaultAccount.Id),
+//				TargetUserId: pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err

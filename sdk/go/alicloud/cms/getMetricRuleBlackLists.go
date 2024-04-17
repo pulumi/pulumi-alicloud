@@ -31,7 +31,7 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _, err := cms.GetMetricRuleBlackLists(ctx, &cms.GetMetricRuleBlackListsArgs{
 // Ids: interface{}{
-// alicloud_cms_metric_rule_black_lists.Default.Id,
+// defaultAlicloudCmsMetricRuleBlackLists.Id,
 // },
 // Category: pulumi.StringRef("ecs"),
 // Namespace: pulumi.StringRef("acs_ecs_dashboard"),
@@ -39,7 +39,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("alicloudCmsRuleBlackListExampleId", data.Alicloud_cms_metric_rule_black_lists.Lists[0].Id)
+// ctx.Export("alicloudCmsRuleBlackListExampleId", lists[0].Id)
 // return nil
 // })
 // }

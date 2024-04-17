@@ -305,13 +305,13 @@ class Order(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         order = alicloud.marketplace.Order("order",
-            coupon_id="",
-            duration=1,
-            package_version="yuncode2713600001",
-            pay_type="prepay",
-            pricing_cycle="Month",
             product_code="cmapi033136",
-            quantity=1)
+            pay_type="prepay",
+            quantity=1,
+            duration=1,
+            pricing_cycle="Month",
+            package_version="yuncode2713600001",
+            coupon_id="")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -351,13 +351,13 @@ class Order(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         order = alicloud.marketplace.Order("order",
-            coupon_id="",
-            duration=1,
-            package_version="yuncode2713600001",
-            pay_type="prepay",
-            pricing_cycle="Month",
             product_code="cmapi033136",
-            quantity=1)
+            pay_type="prepay",
+            quantity=1,
+            duration=1,
+            pricing_cycle="Month",
+            package_version="yuncode2713600001",
+            coupon_id="")
         ```
         <!--End PulumiCodeChooser -->
 

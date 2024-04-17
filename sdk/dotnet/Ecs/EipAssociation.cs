@@ -34,49 +34,50 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
+    ///     var example = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
     ///     });
     /// 
-    ///     var exampleInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var exampleGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         AvailabilityZone = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         AvailabilityZone = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 1,
     ///         MemorySize = 2,
     ///     });
     /// 
-    ///     var exampleImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var exampleGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "10.4.0.0/24",
     ///         VpcId = exampleNetwork.Id,
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
     ///     {
+    ///         Name = name,
     ///         VpcId = exampleNetwork.Id,
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Ecs.Instance("exampleInstance", new()
+    ///     var exampleInstance = new AliCloud.Ecs.Instance("example", new()
     ///     {
-    ///         AvailabilityZone = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         AvailabilityZone = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         InstanceName = name,
-    ///         ImageId = exampleImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceType = exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         ImageId = exampleGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = exampleGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         SecurityGroups = new[]
     ///         {
     ///             exampleSecurityGroup.Id,
@@ -89,12 +90,12 @@ namespace Pulumi.AliCloud.Ecs
     ///         },
     ///     });
     /// 
-    ///     var exampleEipAddress = new AliCloud.Ecs.EipAddress("exampleEipAddress", new()
+    ///     var exampleEipAddress = new AliCloud.Ecs.EipAddress("example", new()
     ///     {
     ///         AddressName = name,
     ///     });
     /// 
-    ///     var exampleEipAssociation = new AliCloud.Ecs.EipAssociation("exampleEipAssociation", new()
+    ///     var exampleEipAssociation = new AliCloud.Ecs.EipAssociation("example", new()
     ///     {
     ///         AllocationId = exampleEipAddress.Id,
     ///         InstanceId = exampleInstance.Id,

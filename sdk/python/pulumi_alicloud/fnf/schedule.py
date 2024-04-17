@@ -276,7 +276,7 @@ class Schedule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_flow = alicloud.fnf.Flow("exampleFlow",
+        example = alicloud.fnf.Flow("example",
             definition=\"\"\"  version: v1beta1
           type: flow
           steps:
@@ -284,12 +284,13 @@ class Schedule(pulumi.CustomResource):
               name: helloworld
         \"\"\",
             description="tf-exampleFnFFlow983041",
+            name="tf-exampleSchedule",
             type="FDL")
-        example_schedule = alicloud.fnf.Schedule("exampleSchedule",
+        example_schedule = alicloud.fnf.Schedule("example",
             cron_expression="30 9 * * * *",
             description="tf-exampleFnFSchedule983041",
             enable=True,
-            flow_name=example_flow.name,
+            flow_name=example.name,
             payload="{\\"tf-example\\": \\"example success\\"}",
             schedule_name="tf-exampleFnFSchedule983041")
         ```
@@ -334,7 +335,7 @@ class Schedule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_flow = alicloud.fnf.Flow("exampleFlow",
+        example = alicloud.fnf.Flow("example",
             definition=\"\"\"  version: v1beta1
           type: flow
           steps:
@@ -342,12 +343,13 @@ class Schedule(pulumi.CustomResource):
               name: helloworld
         \"\"\",
             description="tf-exampleFnFFlow983041",
+            name="tf-exampleSchedule",
             type="FDL")
-        example_schedule = alicloud.fnf.Schedule("exampleSchedule",
+        example_schedule = alicloud.fnf.Schedule("example",
             cron_expression="30 9 * * * *",
             description="tf-exampleFnFSchedule983041",
             enable=True,
-            flow_name=example_flow.name,
+            flow_name=example.name,
             payload="{\\"tf-example\\": \\"example success\\"}",
             schedule_name="tf-exampleFnFSchedule983041")
         ```

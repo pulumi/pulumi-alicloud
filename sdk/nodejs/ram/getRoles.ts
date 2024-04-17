@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const rolesDs = alicloud.ram.getRoles({
- *     nameRegex: ".*test.*",
  *     outputFile: "roles.txt",
+ *     nameRegex: ".*test.*",
  *     policyName: "AliyunACSDefaultAccess",
  *     policyType: "Custom",
  * });
@@ -105,8 +105,8 @@ export interface GetRolesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const rolesDs = alicloud.ram.getRoles({
- *     nameRegex: ".*test.*",
  *     outputFile: "roles.txt",
+ *     nameRegex: ".*test.*",
  *     policyName: "AliyunACSDefaultAccess",
  *     policyType: "Custom",
  * });

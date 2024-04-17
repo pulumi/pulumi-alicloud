@@ -41,29 +41,29 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultNatGateway, err := vpc.NewNatGateway(ctx, "defaultNatGateway", &vpc.NatGatewayArgs{
+//			defaultNatGateway, err := vpc.NewNatGateway(ctx, "default", &vpc.NatGatewayArgs{
 //				VpcId:          defaultNetwork.ID(),
 //				NatGatewayName: pulumi.String(name),
 //				PaymentType:    pulumi.String("PayAsYouGo"),
@@ -73,20 +73,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
 //				AddressName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewEipAssociation(ctx, "defaultEipAssociation", &ecs.EipAssociationArgs{
+//			_, err = ecs.NewEipAssociation(ctx, "default", &ecs.EipAssociationArgs{
 //				AllocationId: defaultEipAddress.ID(),
 //				InstanceId:   defaultNatGateway.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewSnatEntry(ctx, "defaultSnatEntry", &vpc.SnatEntryArgs{
+//			_, err = vpc.NewSnatEntry(ctx, "default", &vpc.SnatEntryArgs{
 //				SnatTableId:     defaultNatGateway.SnatTableIds,
 //				SourceVswitchId: defaultSwitch.ID(),
 //				SnatIp:          defaultEipAddress.IpAddress,

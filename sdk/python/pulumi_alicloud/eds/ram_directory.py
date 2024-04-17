@@ -232,16 +232,16 @@ class RamDirectory(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.eds.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.eds.get_zones()
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
+            zone_id=default.ids[0],
             vswitch_name=name)
-        default_ram_directory = alicloud.eds.RamDirectory("defaultRamDirectory",
+        default_ram_directory = alicloud.eds.RamDirectory("default",
             desktop_access_type="INTERNET",
             enable_admin_access=True,
             ram_directory_name=name,
@@ -291,16 +291,16 @@ class RamDirectory(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.eds.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.eds.get_zones()
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
+            zone_id=default.ids[0],
             vswitch_name=name)
-        default_ram_directory = alicloud.eds.RamDirectory("defaultRamDirectory",
+        default_ram_directory = alicloud.eds.RamDirectory("default",
             desktop_access_type="INTERNET",
             enable_admin_access=True,
             ram_directory_name=name,

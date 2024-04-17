@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var myNamespaces = AliCloud.CR.GetNamespaces.Invoke(new()
         ///     {
         ///         NameRegex = "my-namespace",
@@ -60,6 +61,7 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var myNamespaces = AliCloud.CR.GetNamespaces.Invoke(new()
         ///     {
         ///         NameRegex = "my-namespace",

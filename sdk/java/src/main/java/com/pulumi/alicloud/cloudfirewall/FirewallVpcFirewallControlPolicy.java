@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultAccount = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount();
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .cenInstanceName(name)
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .destPortType(&#34;port&#34;)
  *             .proto(&#34;TCP&#34;)
  *             .release(true)
- *             .memberUid(defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .memberUid(default_.id())
  *             .vpcFirewallId(defaultInstance.id())
  *             .build());
  * 

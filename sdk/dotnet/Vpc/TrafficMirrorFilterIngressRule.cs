@@ -29,14 +29,14 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTrafficMirrorFilter = new AliCloud.Vpc.TrafficMirrorFilter("exampleTrafficMirrorFilter", new()
+    ///     var example = new AliCloud.Vpc.TrafficMirrorFilter("example", new()
     ///     {
     ///         TrafficMirrorFilterName = "example_value",
     ///     });
     /// 
-    ///     var exampleTrafficMirrorFilterIngressRule = new AliCloud.Vpc.TrafficMirrorFilterIngressRule("exampleTrafficMirrorFilterIngressRule", new()
+    ///     var exampleTrafficMirrorFilterIngressRule = new AliCloud.Vpc.TrafficMirrorFilterIngressRule("example", new()
     ///     {
-    ///         TrafficMirrorFilterId = exampleTrafficMirrorFilter.Id,
+    ///         TrafficMirrorFilterId = example.Id,
     ///         Priority = 1,
     ///         RuleAction = "accept",
     ///         Protocol = "UDP",

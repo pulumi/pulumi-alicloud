@@ -40,30 +40,27 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			bucketSrc, err := oss.NewBucket(ctx, "bucketSrc", &oss.BucketArgs{
-//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("example-src-%v", result), nil
-//				}).(pulumi.StringOutput),
+//			bucketSrc, err := oss.NewBucket(ctx, "bucket_src", &oss.BucketArgs{
+//				Bucket: pulumi.String(fmt.Sprintf("example-src-%v", _default.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			bucketDest, err := oss.NewBucket(ctx, "bucketDest", &oss.BucketArgs{
-//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("example-dest-%v", result), nil
-//				}).(pulumi.StringOutput),
+//			bucketDest, err := oss.NewBucket(ctx, "bucket_dest", &oss.BucketArgs{
+//				Bucket: pulumi.String(fmt.Sprintf("example-dest-%v", _default.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
+//				Name: pulumi.String(fmt.Sprintf("example-role-%v", _default.Result)),
 //				Document: pulumi.String(`		{
 //			  "Statement": [
 //				{
@@ -88,9 +85,7 @@ import (
 //		return err
 //	}
 //	policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-//		PolicyName: _default.Result.ApplyT(func(result int) (string, error) {
-//			return fmt.Sprintf("example-policy-%v", result), nil
-//		}).(pulumi.StringOutput),
+//		PolicyName: pulumi.String(fmt.Sprintf("example-policy-%v", _default.Result)),
 //		PolicyDocument: pulumi.String(`		{
 //	  "Statement": [
 //		{

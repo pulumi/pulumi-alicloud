@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
  * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
  * import com.pulumi.alicloud.cen.Instance;
@@ -63,24 +63,24 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         final var defaultPhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *         final var defaultGetPhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
  *             .nameRegex(&#34;^preserved-NODELETING&#34;)
  *             .build());
  * 
- *         var vlanId = new RandomInteger(&#34;vlanId&#34;, RandomIntegerArgs.builder()        
+ *         var vlanId = new Integer(&#34;vlanId&#34;, IntegerArgs.builder()        
  *             .max(2999)
  *             .min(1)
  *             .build());
  * 
- *         var exampleVirtualBorderRouter = new VirtualBorderRouter(&#34;exampleVirtualBorderRouter&#34;, VirtualBorderRouterArgs.builder()        
+ *         var example = new VirtualBorderRouter(&#34;example&#34;, VirtualBorderRouterArgs.builder()        
  *             .localGatewayIp(&#34;10.0.0.1&#34;)
  *             .peerGatewayIp(&#34;10.0.0.2&#34;)
  *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
- *             .physicalConnectionId(defaultPhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
+ *             .physicalConnectionId(defaultGetPhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
  *             .virtualBorderRouterName(name)
  *             .vlanId(vlanId.id())
  *             .minRxInterval(1000)
@@ -95,16 +95,16 @@ import javax.annotation.Nullable;
  * 
  *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
  *             .instanceId(exampleInstance.id())
- *             .childInstanceId(exampleVirtualBorderRouter.id())
+ *             .childInstanceId(example.id())
  *             .childInstanceType(&#34;VBR&#34;)
- *             .childInstanceRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .childInstanceRegionId(default_.regions()[0].id())
  *             .build());
  * 
  *         var exampleVbrHealthCheck = new VbrHealthCheck(&#34;exampleVbrHealthCheck&#34;, VbrHealthCheckArgs.builder()        
  *             .cenId(exampleInstance.id())
  *             .healthCheckSourceIp(&#34;192.168.1.2&#34;)
  *             .healthCheckTargetIp(&#34;10.0.0.2&#34;)
- *             .vbrInstanceId(exampleVirtualBorderRouter.id())
+ *             .vbrInstanceId(example.id())
  *             .vbrInstanceRegionId(exampleInstanceAttachment.childInstanceRegionId())
  *             .healthCheckInterval(2)
  *             .healthyThreshold(8)

@@ -20,14 +20,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
+ * const _default = new alicloud.ga.Accelerator("default", {
  *     duration: 1,
  *     autoUseCoupon: true,
  *     spec: "1",
  * });
- * const defaultDomain = new alicloud.ga.Domain("defaultDomain", {
+ * const defaultDomain = new alicloud.ga.Domain("default", {
  *     domain: "changes.com.cn",
- *     acceleratorId: defaultAccelerator.id,
+ *     acceleratorId: _default.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

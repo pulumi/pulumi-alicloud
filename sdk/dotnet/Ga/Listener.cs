@@ -29,14 +29,14 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
+    ///     var @default = new AliCloud.Ga.Accelerator("default", new()
     ///     {
     ///         Duration = 1,
     ///         AutoUseCoupon = true,
     ///         Spec = "1",
     ///     });
     /// 
-    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
+    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("default", new()
     ///     {
     ///         Bandwidth = 100,
     ///         Type = "Basic",
@@ -46,13 +46,13 @@ namespace Pulumi.AliCloud.Ga
     ///         Ratio = 30,
     ///     });
     /// 
-    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("default", new()
     ///     {
-    ///         AcceleratorId = defaultAccelerator.Id,
+    ///         AcceleratorId = @default.Id,
     ///         BandwidthPackageId = defaultBandwidthPackage.Id,
     ///     });
     /// 
-    ///     var defaultListener = new AliCloud.Ga.Listener("defaultListener", new()
+    ///     var defaultListener = new AliCloud.Ga.Listener("default", new()
     ///     {
     ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
     ///         PortRanges = new[]

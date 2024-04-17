@@ -22,18 +22,18 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.eds.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const default = alicloud.eds.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     zoneId: _default.then(_default => _default.ids?.[0]),
  *     vswitchName: name,
  * });
- * const defaultRamDirectory = new alicloud.eds.RamDirectory("defaultRamDirectory", {
+ * const defaultRamDirectory = new alicloud.eds.RamDirectory("default", {
  *     desktopAccessType: "INTERNET",
  *     enableAdminAccess: true,
  *     ramDirectoryName: name,

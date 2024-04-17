@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			example, err := mse.GetClusters(ctx, &mse.GetClustersArgs{
 //				Ids: []string{
 //					"mse-cn-0d9xxxx",

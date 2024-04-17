@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var @default = AliCloud.Dms.GetUserTenants.Invoke(new()
         ///     {
         ///         Status = "ACTIVE",
@@ -59,6 +60,7 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var @default = AliCloud.Dms.GetUserTenants.Invoke(new()
         ///     {
         ///         Status = "ACTIVE",

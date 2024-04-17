@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultAccount = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount();
  * 
  *         var source = new Namespace(&#34;source&#34;, NamespaceArgs.builder()        
  *             .namespace(name)
@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  * 
  *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite(&#34;defaultServiceHybridDoubleWrite&#34;, ServiceHybridDoubleWriteArgs.builder()        
  *             .sourceNamespace(source.id())
- *             .sourceUserId(defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .sourceUserId(default_.id())
  *             .namespace(defaultNamespace.id())
- *             .userId(defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .userId(default_.id())
  *             .build());
  * 
  *     }

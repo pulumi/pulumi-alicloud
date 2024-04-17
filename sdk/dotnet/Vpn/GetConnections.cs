@@ -29,13 +29,13 @@ namespace Pulumi.AliCloud.Vpn
         /// {
         ///     var foo = AliCloud.Vpn.GetConnections.Invoke(new()
         ///     {
-        ///         CustomerGatewayId = "fake-cgw-id",
         ///         Ids = new[]
         ///         {
         ///             "fake-conn-id",
         ///         },
-        ///         OutputFile = "/tmp/vpnconn",
         ///         VpnGatewayId = "fake-vpn-id",
+        ///         CustomerGatewayId = "fake-cgw-id",
+        ///         OutputFile = "/tmp/vpnconn",
         ///     });
         /// 
         /// });
@@ -63,13 +63,13 @@ namespace Pulumi.AliCloud.Vpn
         /// {
         ///     var foo = AliCloud.Vpn.GetConnections.Invoke(new()
         ///     {
-        ///         CustomerGatewayId = "fake-cgw-id",
         ///         Ids = new[]
         ///         {
         ///             "fake-conn-id",
         ///         },
-        ///         OutputFile = "/tmp/vpnconn",
         ///         VpnGatewayId = "fake-vpn-id",
+        ///         CustomerGatewayId = "fake-cgw-id",
+        ///         OutputFile = "/tmp/vpnconn",
         ///     });
         /// 
         /// });

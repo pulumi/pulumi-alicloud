@@ -141,10 +141,10 @@ def get_connections(customer_gateway_id: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    foo = alicloud.vpn.get_connections(customer_gateway_id="fake-cgw-id",
-        ids=["fake-conn-id"],
-        output_file="/tmp/vpnconn",
-        vpn_gateway_id="fake-vpn-id")
+    foo = alicloud.vpn.get_connections(ids=["fake-conn-id"],
+        vpn_gateway_id="fake-vpn-id",
+        customer_gateway_id="fake-cgw-id",
+        output_file="/tmp/vpnconn")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -194,10 +194,10 @@ def get_connections_output(customer_gateway_id: Optional[pulumi.Input[Optional[s
     import pulumi
     import pulumi_alicloud as alicloud
 
-    foo = alicloud.vpn.get_connections(customer_gateway_id="fake-cgw-id",
-        ids=["fake-conn-id"],
-        output_file="/tmp/vpnconn",
-        vpn_gateway_id="fake-vpn-id")
+    foo = alicloud.vpn.get_connections(ids=["fake-conn-id"],
+        vpn_gateway_id="fake-vpn-id",
+        customer_gateway_id="fake-cgw-id",
+        output_file="/tmp/vpnconn")
     ```
     <!--End PulumiCodeChooser -->
 

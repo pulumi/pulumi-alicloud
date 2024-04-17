@@ -23,14 +23,14 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.threatdetection.ClientFileProtect("default", {
- *     alertLevel: 0,
- *     fileOps: ["CREATE"],
- *     filePaths: ["/usr/local"],
- *     procPaths: ["/usr/local"],
- *     ruleAction: "pass",
- *     ruleName: "rule_example",
  *     status: 0,
+ *     filePaths: ["/usr/local"],
+ *     fileOps: ["CREATE"],
+ *     ruleAction: "pass",
+ *     procPaths: ["/usr/local"],
+ *     alertLevel: 0,
  *     switchId: "FILE_PROTECT_RULE_SWITCH_TYPE_1693474122929",
+ *     ruleName: "rule_example",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

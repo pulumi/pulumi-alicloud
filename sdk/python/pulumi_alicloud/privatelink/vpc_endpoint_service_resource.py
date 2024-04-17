@@ -235,31 +235,33 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("example",
             service_description=name,
             connect_bandwidth=103,
             auto_accept_connection=False)
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example_network = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vswitch_name=name,
             cidr_block="10.1.0.0/16",
             vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("exampleApplicationLoadBalancer",
+            zone_id=example.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example_network.id)
+        example_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("example",
             load_balancer_name=name,
             vswitch_id=example_switch.id,
             load_balancer_spec="slb.s2.small",
             address_type="intranet")
-        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint",
+        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("example",
             service_id=example_vpc_endpoint_service.id,
             security_group_ids=[example_security_group.id],
             vpc_id=example_network.id,
             vpc_endpoint_name=name)
-        example_vpc_endpoint_service_resource = alicloud.privatelink.VpcEndpointServiceResource("exampleVpcEndpointServiceResource",
+        example_vpc_endpoint_service_resource = alicloud.privatelink.VpcEndpointServiceResource("example",
             service_id=example_vpc_endpoint_service.id,
             resource_id=example_application_load_balancer.id,
             resource_type="slb")
@@ -313,31 +315,33 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService",
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("example",
             service_description=name,
             connect_bandwidth=103,
             auto_accept_connection=False)
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example_network = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vswitch_name=name,
             cidr_block="10.1.0.0/16",
             vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("exampleApplicationLoadBalancer",
+            zone_id=example.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example_network.id)
+        example_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("example",
             load_balancer_name=name,
             vswitch_id=example_switch.id,
             load_balancer_spec="slb.s2.small",
             address_type="intranet")
-        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint",
+        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("example",
             service_id=example_vpc_endpoint_service.id,
             security_group_ids=[example_security_group.id],
             vpc_id=example_network.id,
             vpc_endpoint_name=name)
-        example_vpc_endpoint_service_resource = alicloud.privatelink.VpcEndpointServiceResource("exampleVpcEndpointServiceResource",
+        example_vpc_endpoint_service_resource = alicloud.privatelink.VpcEndpointServiceResource("example",
             service_id=example_vpc_endpoint_service.id,
             resource_id=example_application_load_balancer.id,
             resource_type="slb")

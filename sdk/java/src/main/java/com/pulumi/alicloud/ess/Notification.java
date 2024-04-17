@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
@@ -40,6 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ess.ScalingGroup;
  * import com.pulumi.alicloud.ess.ScalingGroupArgs;
  * import com.pulumi.alicloud.mns.Queue;
+ * import com.pulumi.alicloud.mns.QueueArgs;
  * import com.pulumi.alicloud.ess.Notification;
  * import com.pulumi.alicloud.ess.NotificationArgs;
  * import java.util.List;
@@ -57,20 +58,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         final var myName = defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result));
+ *         final var myName = String.format(&#34;%s-%s&#34;, name,defaultInteger.result());
  * 
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         final var defaultAccount = AlicloudFunctions.getAccount();
+ *         final var defaultGetAccount = AlicloudFunctions.getAccount();
  * 
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
@@ -83,7 +84,7 @@ import javax.annotation.Nullable;
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .vswitchName(myName)
  *             .build());
  * 
@@ -97,14 +98,16 @@ import javax.annotation.Nullable;
  *             .vswitchIds(defaultSwitch.id())
  *             .build());
  * 
- *         var defaultQueue = new Queue(&#34;defaultQueue&#34;);
+ *         var defaultQueue = new Queue(&#34;defaultQueue&#34;, QueueArgs.builder()        
+ *             .name(myName)
+ *             .build());
  * 
  *         var defaultNotification = new Notification(&#34;defaultNotification&#34;, NotificationArgs.builder()        
  *             .scalingGroupId(defaultScalingGroup.id())
  *             .notificationTypes(            
  *                 &#34;AUTOSCALING:SCALE_OUT_SUCCESS&#34;,
  *                 &#34;AUTOSCALING:SCALE_OUT_ERROR&#34;)
- *             .notificationArn(defaultQueue.name().applyValue(name -&gt; String.format(&#34;acs:ess:%s:%s:queue/%s&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
+ *             .notificationArn(defaultQueue.name().applyValue(name -&gt; String.format(&#34;acs:ess:%s:%s:queue/%s&#34;, default_.regions()[0].id(),defaultGetAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
  *             .build());
  * 
  *     }

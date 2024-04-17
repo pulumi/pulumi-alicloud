@@ -40,7 +40,7 @@ import (
 //			}
 //			_, err := mhub.NewApp(ctx, "default", &mhub.AppArgs{
 //				AppName:     pulumi.String(name),
-//				ProductId:   pulumi.Any(alicloud_mhub_product.Default.Id),
+//				ProductId:   pulumi.Any(defaultAlicloudMhubProduct.Id),
 //				PackageName: pulumi.String("com.test.android"),
 //				Type:        pulumi.String("2"),
 //			})

@@ -61,6 +61,7 @@ import javax.annotation.Nullable;
  *             .routerId(foo.routerId())
  *             .role(&#34;InitiatingSide&#34;)
  *             .specification(&#34;Large.2&#34;)
+ *             .name(&#34;test1&#34;)
  *             .description(&#34;test1&#34;)
  *             .build());
  * 

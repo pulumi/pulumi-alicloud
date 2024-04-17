@@ -20,19 +20,19 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "route-tables-datasource-example-name";
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
+ * const fooNetwork = new alicloud.vpc.Network("foo", {
  *     cidrBlock: "172.16.0.0/12",
  *     vpcName: name,
  * });
- * const fooRouteTable = new alicloud.vpc.RouteTable("fooRouteTable", {
- *     description: name,
- *     routeTableName: name,
+ * const fooRouteTable = new alicloud.vpc.RouteTable("foo", {
  *     vpcId: fooNetwork.id,
+ *     routeTableName: name,
+ *     description: name,
  * });
- * const fooRouteTables = alicloud.vpc.getRouteTablesOutput({
+ * const foo = alicloud.vpc.getRouteTablesOutput({
  *     ids: [fooRouteTable.id],
  * });
- * export const routeTableIds = fooRouteTables.apply(fooRouteTables => fooRouteTables.ids);
+ * export const routeTableIds = foo.apply(foo => foo.ids);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -169,19 +169,19 @@ export interface GetRouteTablesResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "route-tables-datasource-example-name";
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
+ * const fooNetwork = new alicloud.vpc.Network("foo", {
  *     cidrBlock: "172.16.0.0/12",
  *     vpcName: name,
  * });
- * const fooRouteTable = new alicloud.vpc.RouteTable("fooRouteTable", {
- *     description: name,
- *     routeTableName: name,
+ * const fooRouteTable = new alicloud.vpc.RouteTable("foo", {
  *     vpcId: fooNetwork.id,
+ *     routeTableName: name,
+ *     description: name,
  * });
- * const fooRouteTables = alicloud.vpc.getRouteTablesOutput({
+ * const foo = alicloud.vpc.getRouteTablesOutput({
  *     ids: [fooRouteTable.id],
  * });
- * export const routeTableIds = fooRouteTables.apply(fooRouteTables => fooRouteTables.ids);
+ * export const routeTableIds = foo.apply(foo => foo.ids);
  * ```
  * <!--End PulumiCodeChooser -->
  */

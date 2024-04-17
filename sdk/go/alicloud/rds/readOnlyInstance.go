@@ -41,36 +41,37 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//			example, err := rds.GetZones(ctx, &rds.GetZonesArgs{
 //				Engine:        pulumi.StringRef("MySQL"),
 //				EngineVersion: pulumi.StringRef("5.6"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//			_, err = ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
 //				VpcId: exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
+//			exampleInstance, err := rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 //				Engine:             pulumi.String("MySQL"),
 //				EngineVersion:      pulumi.String("5.6"),
 //				InstanceType:       pulumi.String("rds.mysql.t1.small"),
@@ -86,7 +87,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rds.NewReadOnlyInstance(ctx, "exampleReadOnlyInstance", &rds.ReadOnlyInstanceArgs{
+//			_, err = rds.NewReadOnlyInstance(ctx, "example", &rds.ReadOnlyInstanceArgs{
 //				ZoneId:             exampleInstance.ZoneId,
 //				MasterDbInstanceId: exampleInstance.ID(),
 //				EngineVersion:      exampleInstance.EngineVersion,

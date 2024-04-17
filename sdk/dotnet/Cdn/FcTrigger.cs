@@ -29,9 +29,9 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
@@ -41,13 +41,13 @@ namespace Pulumi.AliCloud.Cdn
     ///         EventMetaName = "LogFileCreated",
     ///         EventMetaVersion = "1.0.0",
     ///         Notes = "example_value",
-    ///         RoleArn = $"acs:ram::{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:role/aliyuncdneventnotificationrole",
-    ///         SourceArn = $"acs:cdn:*:{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:domain/example.com",
-    ///         TriggerArn = Output.Tuple(defaultRegions, defaultAccount).Apply(values =&gt;
+    ///         RoleArn = @default.Apply(@default =&gt; $"acs:ram::{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}:role/aliyuncdneventnotificationrole"),
+    ///         SourceArn = @default.Apply(@default =&gt; $"acs:cdn:*:{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}:domain/example.com"),
+    ///         TriggerArn = Output.Tuple(defaultGetRegions, @default).Apply(values =&gt;
     ///         {
-    ///             var defaultRegions = values.Item1;
-    ///             var defaultAccount = values.Item2;
-    ///             return $"acs:fc:{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:services/FCTestService/functions/printEvent/triggers/testtrigger";
+    ///             var defaultGetRegions = values.Item1;
+    ///             var @default = values.Item2;
+    ///             return $"acs:fc:{defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{@default.Apply(getAccountResult =&gt; getAccountResult.Id)}:services/FCTestService/functions/printEvent/triggers/testtrigger";
     ///         }),
     ///     });
     /// 

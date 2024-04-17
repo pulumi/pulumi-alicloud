@@ -47,22 +47,20 @@ import (
 //			if param := cfg.Get("displayName"); param != "" {
 //				displayName = param
 //			}
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleFolders, err := resourcemanager.GetFolders(ctx, nil, nil)
+//			example, err := resourcemanager.GetFolders(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = resourcemanager.NewAccount(ctx, "exampleAccount", &resourcemanager.AccountArgs{
-//				DisplayName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", displayName, result), nil
-//				}).(pulumi.StringOutput),
-//				FolderId: pulumi.String(exampleFolders.Ids[0]),
+//			_, err = resourcemanager.NewAccount(ctx, "example", &resourcemanager.AccountArgs{
+//				DisplayName: pulumi.String(fmt.Sprintf("%v-%v", displayName, _default.Result)),
+//				FolderId:    pulumi.String(example.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

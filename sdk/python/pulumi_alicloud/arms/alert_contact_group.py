@@ -114,14 +114,14 @@ class AlertContactGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_alert_contact = alicloud.arms.AlertContact("exampleAlertContact",
+        example = alicloud.arms.AlertContact("example",
             alert_contact_name="example_value",
             ding_robot_webhook_url="https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
             email="someone@example.com",
             phone_num="1381111****")
-        example_alert_contact_group = alicloud.arms.AlertContactGroup("exampleAlertContactGroup",
+        example_alert_contact_group = alicloud.arms.AlertContactGroup("example",
             alert_contact_group_name="example_value",
-            contact_ids=[example_alert_contact.id])
+            contact_ids=[example.id])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -160,14 +160,14 @@ class AlertContactGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_alert_contact = alicloud.arms.AlertContact("exampleAlertContact",
+        example = alicloud.arms.AlertContact("example",
             alert_contact_name="example_value",
             ding_robot_webhook_url="https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
             email="someone@example.com",
             phone_num="1381111****")
-        example_alert_contact_group = alicloud.arms.AlertContactGroup("exampleAlertContactGroup",
+        example_alert_contact_group = alicloud.arms.AlertContactGroup("example",
             alert_contact_group_name="example_value",
-            contact_ids=[example_alert_contact.id])
+            contact_ids=[example.id])
         ```
         <!--End PulumiCodeChooser -->
 

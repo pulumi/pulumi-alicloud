@@ -23,13 +23,14 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const bucketSrc = new alicloud.oss.Bucket("bucketSrc", {bucket: pulumi.interpolate`example-src-${_default.result}`});
- * const bucketDest = new alicloud.oss.Bucket("bucketDest", {bucket: pulumi.interpolate`example-dest-${_default.result}`});
+ * const bucketSrc = new alicloud.oss.Bucket("bucket_src", {bucket: `example-src-${_default.result}`});
+ * const bucketDest = new alicloud.oss.Bucket("bucket_dest", {bucket: `example-dest-${_default.result}`});
  * const role = new alicloud.ram.Role("role", {
+ *     name: `example-role-${_default.result}`,
  *     document: `		{
  * 		  "Statement": [
  * 			{
@@ -49,7 +50,7 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * const policy = new alicloud.ram.Policy("policy", {
- *     policyName: pulumi.interpolate`example-policy-${_default.result}`,
+ *     policyName: `example-policy-${_default.result}`,
  *     policyDocument: `		{
  * 		  "Statement": [
  * 			{

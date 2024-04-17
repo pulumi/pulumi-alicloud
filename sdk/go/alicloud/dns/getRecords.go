@@ -32,10 +32,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			recordsDs, err := dns.GetRecords(ctx, &dns.GetRecordsArgs{
 //				DomainName:      "xiaozhu.top",
-//				HostRecordRegex: pulumi.StringRef("^@"),
 //				IsLocked:        pulumi.BoolRef(false),
-//				OutputFile:      pulumi.StringRef("records.txt"),
 //				Type:            pulumi.StringRef("A"),
+//				HostRecordRegex: pulumi.StringRef("^@"),
+//				OutputFile:      pulumi.StringRef("records.txt"),
 //			}, nil)
 //			if err != nil {
 //				return err

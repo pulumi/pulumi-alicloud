@@ -166,16 +166,16 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        example_dhcp_options_set = alicloud.vpc.DhcpOptionsSet("exampleDhcpOptionsSet",
+        example_dhcp_options_set = alicloud.vpc.DhcpOptionsSet("example",
             dhcp_options_set_name=name,
             dhcp_options_set_description=name,
             domain_name="example.com",
             domain_name_servers="100.100.2.136")
-        example_dhcp_options_set_attachment = alicloud.vpc.DhcpOptionsSetAttachment("exampleDhcpOptionsSetAttachment",
-            vpc_id=example_network.id,
+        example_dhcp_options_set_attachment = alicloud.vpc.DhcpOptionsSetAttachment("example",
+            vpc_id=example.id,
             dhcp_options_set_id=example_dhcp_options_set.id)
         ```
         <!--End PulumiCodeChooser -->
@@ -220,16 +220,16 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        example_dhcp_options_set = alicloud.vpc.DhcpOptionsSet("exampleDhcpOptionsSet",
+        example_dhcp_options_set = alicloud.vpc.DhcpOptionsSet("example",
             dhcp_options_set_name=name,
             dhcp_options_set_description=name,
             domain_name="example.com",
             domain_name_servers="100.100.2.136")
-        example_dhcp_options_set_attachment = alicloud.vpc.DhcpOptionsSetAttachment("exampleDhcpOptionsSetAttachment",
-            vpc_id=example_network.id,
+        example_dhcp_options_set_attachment = alicloud.vpc.DhcpOptionsSetAttachment("example",
+            vpc_id=example.id,
             dhcp_options_set_id=example_dhcp_options_set.id)
         ```
         <!--End PulumiCodeChooser -->

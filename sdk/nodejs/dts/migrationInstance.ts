@@ -20,15 +20,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultRegions = alicloud.getRegions({
+ * const default = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultMigrationInstance = new alicloud.dts.MigrationInstance("defaultMigrationInstance", {
+ * const defaultMigrationInstance = new alicloud.dts.MigrationInstance("default", {
  *     paymentType: "PayAsYouGo",
  *     sourceEndpointEngineName: "MySQL",
- *     sourceEndpointRegion: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     sourceEndpointRegion: _default.then(_default => _default.regions?.[0]?.id),
  *     destinationEndpointEngineName: "MySQL",
- *     destinationEndpointRegion: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     destinationEndpointRegion: _default.then(_default => _default.regions?.[0]?.id),
  *     instanceClass: "small",
  *     syncArchitecture: "oneway",
  * });

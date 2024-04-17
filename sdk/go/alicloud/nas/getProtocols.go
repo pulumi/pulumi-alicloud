@@ -31,9 +31,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := nas.GetProtocols(ctx, &nas.GetProtocolsArgs{
-//				OutputFile: pulumi.StringRef("protocols.txt"),
 //				Type:       "Performance",
 //				ZoneId:     pulumi.StringRef("cn-beijing-e"),
+//				OutputFile: pulumi.StringRef("protocols.txt"),
 //			}, nil)
 //			if err != nil {
 //				return err

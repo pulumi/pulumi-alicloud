@@ -22,17 +22,20 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example-sls";
- * const thisAccount = alicloud.getAccount({});
- * const thisRegions = alicloud.getRegions({
+ * const this = alicloud.getAccount({});
+ * const thisGetRegions = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultProject = new alicloud.log.Project("defaultProject", {});
- * const defaultStore = new alicloud.log.Store("defaultStore", {project: defaultProject.name});
- * const defaultDelivery = new alicloud.cfg.Delivery("defaultDelivery", {
+ * const _default = new alicloud.log.Project("default", {name: name});
+ * const defaultStore = new alicloud.log.Store("default", {
+ *     name: name,
+ *     project: _default.name,
+ * });
+ * const defaultDelivery = new alicloud.cfg.Delivery("default", {
  *     configurationItemChangeNotification: true,
  *     nonCompliantNotification: true,
  *     deliveryChannelName: name,
- *     deliveryChannelTargetArn: pulumi.all([thisRegions, thisAccount, defaultProject.name, defaultStore.name]).apply(([thisRegions, thisAccount, defaultProjectName, defaultStoreName]) => `acs:log:${thisRegions.ids?.[0]}:${thisAccount.id}:project/${defaultProjectName}/logstore/${defaultStoreName}`),
+ *     deliveryChannelTargetArn: pulumi.all([thisGetRegions, _this, _default.name, defaultStore.name]).apply(([thisGetRegions, _this, defaultName, defaultStoreName]) => `acs:log:${thisGetRegions.ids?.[0]}:${_this.id}:project/${defaultName}/logstore/${defaultStoreName}`),
  *     deliveryChannelType: "SLS",
  *     description: name,
  * });

@@ -32,12 +32,12 @@ namespace Pulumi.AliCloud.Sae
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -45,12 +45,7 @@ namespace Pulumi.AliCloud.Sae
     /// 
     ///     var example = new AliCloud.Sae.Namespace("example", new()
     ///     {
-    ///         NamespaceId = Output.Tuple(defaultRegions, defaultRandomInteger.Result).Apply(values =&gt;
-    ///         {
-    ///             var defaultRegions = values.Item1;
-    ///             var result = values.Item2;
-    ///             return $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example{result}";
-    ///         }),
+    ///         NamespaceId = @default.Apply(@default =&gt; $"{@default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example{defaultInteger.Result}"),
     ///         NamespaceName = name,
     ///         NamespaceDescription = name,
     ///         EnableMicroRegistration = false,

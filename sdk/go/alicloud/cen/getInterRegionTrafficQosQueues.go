@@ -31,9 +31,9 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := cen.GetInterRegionTrafficQosQueues(ctx, &cen.GetInterRegionTrafficQosQueuesArgs{
 // Ids: interface{}{
-// alicloud_cen_inter_region_traffic_qos_queue.Default.Id,
+// defaultAlicloudCenInterRegionTrafficQosQueue.Id,
 // },
-// NameRegex: pulumi.StringRef(alicloud_cen_inter_region_traffic_qos_queue.Default.Name),
+// NameRegex: pulumi.StringRef(defaultAlicloudCenInterRegionTrafficQosQueue.Name),
 // TrafficQosPolicyId: "qos-xxxxxxx",
 // }, nil);
 // if err != nil {

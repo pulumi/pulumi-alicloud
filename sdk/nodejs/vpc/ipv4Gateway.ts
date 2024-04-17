@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testacc-example";
- * const defaultResourceGroup = new alicloud.resourcemanager.ResourceGroup("defaultResourceGroup", {
+ * const _default = new alicloud.resourcemanager.ResourceGroup("default", {
  *     displayName: "tf-testAcc-rg665",
  *     resourceGroupName: name,
  * });
@@ -30,14 +30,14 @@ import * as utilities from "../utilities";
  *     displayName: "tf-testAcc-rg298",
  *     resourceGroupName: `${name}1`,
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: `${name}2`,
  *     cidrBlock: "10.0.0.0/8",
  * });
- * const defaultIpv4Gateway = new alicloud.vpc.Ipv4Gateway("defaultIpv4Gateway", {
+ * const defaultIpv4Gateway = new alicloud.vpc.Ipv4Gateway("default", {
  *     ipv4GatewayName: name,
  *     ipv4GatewayDescription: "tf-testAcc-Ipv4Gateway",
- *     resourceGroupId: defaultResourceGroup.id,
+ *     resourceGroupId: _default.id,
  *     vpcId: defaultNetwork.id,
  * });
  * ```

@@ -263,8 +263,10 @@ def get_instance_types(availability_zone: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     types_ds = alicloud.ecs.get_instance_types(cpu_core_count=1,
         memory_size=2)
+    # Create ECS instance with the first matched instance_type
     instance = alicloud.ecs.Instance("instance", instance_type=types_ds.instance_types[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -366,8 +368,10 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     types_ds = alicloud.ecs.get_instance_types(cpu_core_count=1,
         memory_size=2)
+    # Create ECS instance with the first matched instance_type
     instance = alicloud.ecs.Instance("instance", instance_type=types_ds.instance_types[0].id)
     ```
     <!--End PulumiCodeChooser -->

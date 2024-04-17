@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.dcdn.Domain;
  * import com.pulumi.alicloud.dcdn.DomainArgs;
  * import com.pulumi.alicloud.dcdn.inputs.DomainSourceArgs;
@@ -58,13 +58,13 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;tf-example.com&#34;);
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var exampleDomain = new Domain(&#34;exampleDomain&#34;, DomainArgs.builder()        
- *             .domainName(default_.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, domainName,result)))
+ *         var example = new Domain(&#34;example&#34;, DomainArgs.builder()        
+ *             .domainName(String.format(&#34;%s-%s&#34;, domainName,default_.result()))
  *             .scope(&#34;overseas&#34;)
  *             .sources(DomainSourceArgs.builder()
  *                 .content(&#34;1.1.1.1&#34;)
@@ -76,13 +76,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleWafDomain = new WafDomain(&#34;exampleWafDomain&#34;, WafDomainArgs.builder()        
- *             .domainName(exampleDomain.domainName())
+ *             .domainName(example.domainName())
  *             .clientIpTag(&#34;X-Forwarded-For&#34;)
  *             .build());
  * 
  *         var exampleWafPolicy = new WafPolicy(&#34;exampleWafPolicy&#34;, WafPolicyArgs.builder()        
  *             .defenseScene(&#34;waf_group&#34;)
- *             .policyName(default_.result().applyValue(result -&gt; String.format(&#34;%s_%s&#34;, name,result)))
+ *             .policyName(String.format(&#34;%s_%s&#34;, name,default_.result()))
  *             .policyType(&#34;custom&#34;)
  *             .status(&#34;on&#34;)
  *             .build());

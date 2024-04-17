@@ -44,41 +44,41 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("^default-NODELETING$"),
 //				CidrBlock: pulumi.StringRef("10.4.0.0/16"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
 //				CidrBlock: pulumi.StringRef("10.4.0.0/24"),
-//				VpcId:     pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId:    pulumi.StringRef(defaultZones.Zones[0].Id),
+//				VpcId:     pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId:    pulumi.StringRef(_default.Zones[0].Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: pulumi.String(defaultNetworks.Ids[0]),
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := bastionhost.NewInstance(ctx, "defaultInstance", &bastionhost.InstanceArgs{
+//			defaultInstance, err := bastionhost.NewInstance(ctx, "default", &bastionhost.InstanceArgs{
 //				Description: pulumi.String(name),
 //				LicenseCode: pulumi.String("bhah_ent_50_asset"),
 //				PlanCode:    pulumi.String("cloudbastion"),
 //				Storage:     pulumi.String("5"),
 //				Bandwidth:   pulumi.String("5"),
 //				Period:      pulumi.Int(1),
-//				VswitchId:   pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:   pulumi.String(defaultGetSwitches.Ids[0]),
 //				SecurityGroupIds: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
@@ -86,7 +86,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bastionhost.NewHostGroup(ctx, "defaultHostGroup", &bastionhost.HostGroupArgs{
+//			_, err = bastionhost.NewHostGroup(ctx, "default", &bastionhost.HostGroupArgs{
 //				HostGroupName: pulumi.String(name),
 //				InstanceId:    defaultInstance.ID(),
 //			})

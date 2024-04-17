@@ -48,49 +48,49 @@ import (
 //			}
 //			masterZone := _default.Resources[0].MasterZones[0]
 //			slaveZone := _default.Resources[0].SlaveZones[1]
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleMaster, err := vpc.NewSwitch(ctx, "exampleMaster", &vpc.SwitchArgs{
+//			exampleMaster, err := vpc.NewSwitch(ctx, "example_master", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.1.0/24"),
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       example.ID(),
 //				ZoneId:      pulumi.String(masterZone),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSlave, err := vpc.NewSwitch(ctx, "exampleSlave", &vpc.SwitchArgs{
+//			exampleSlave, err := vpc.NewSwitch(ctx, "example_slave", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       example.ID(),
 //				ZoneId:      pulumi.String(slaveZone),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			exampleInstance, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(name),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
 //				TransitRouterName: pulumi.String(name),
 //				CenId:             exampleInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTransitRouterVpcAttachment, err := cen.NewTransitRouterVpcAttachment(ctx, "exampleTransitRouterVpcAttachment", &cen.TransitRouterVpcAttachmentArgs{
+//			exampleTransitRouterVpcAttachment, err := cen.NewTransitRouterVpcAttachment(ctx, "example", &cen.TransitRouterVpcAttachmentArgs{
 //				CenId:           exampleInstance.ID(),
 //				TransitRouterId: exampleTransitRouter.TransitRouterId,
-//				VpcId:           exampleNetwork.ID(),
+//				VpcId:           example.ID(),
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
 //						ZoneId:    pulumi.String(masterZone),
@@ -107,15 +107,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleRouteTable, err := vpc.NewRouteTable(ctx, "exampleRouteTable", &vpc.RouteTableArgs{
-//				VpcId:          exampleNetwork.ID(),
+//			exampleRouteTable, err := vpc.NewRouteTable(ctx, "example", &vpc.RouteTableArgs{
+//				VpcId:          example.ID(),
 //				RouteTableName: pulumi.String(name),
 //				Description:    pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewChildInstanceRouteEntryToAttachment(ctx, "exampleChildInstanceRouteEntryToAttachment", &cen.ChildInstanceRouteEntryToAttachmentArgs{
+//			_, err = cen.NewChildInstanceRouteEntryToAttachment(ctx, "example", &cen.ChildInstanceRouteEntryToAttachmentArgs{
 //				TransitRouterAttachmentId: exampleTransitRouterVpcAttachment.TransitRouterAttachmentId,
 //				CenId:                     exampleInstance.ID(),
 //				DestinationCidrBlock:      pulumi.String("10.0.0.0/24"),

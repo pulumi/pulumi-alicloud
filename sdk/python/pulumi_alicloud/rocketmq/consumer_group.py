@@ -249,7 +249,7 @@ class ConsumerGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
         create_vpc = alicloud.vpc.Network("createVpc",
             description="example",
             cidr_block="172.16.0.0/12",
@@ -257,7 +257,7 @@ class ConsumerGroup(pulumi.CustomResource):
         create_vswitch = alicloud.vpc.Switch("createVswitch",
             description="example",
             vpc_id=create_vpc.id,
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             cidr_block="172.16.0.0/24",
             vswitch_name=name)
         create_instance = alicloud.rocketmq.RocketMQInstance("createInstance",
@@ -286,7 +286,7 @@ class ConsumerGroup(pulumi.CustomResource):
             series_code="professional",
             payment_type="PayAsYouGo",
             period_unit="Month")
-        default_consumer_group = alicloud.rocketmq.ConsumerGroup("defaultConsumerGroup",
+        default_consumer_group = alicloud.rocketmq.ConsumerGroup("default",
             consumer_group_id=name,
             instance_id=create_instance.id,
             consume_retry_policy=alicloud.rocketmq.ConsumerGroupConsumeRetryPolicyArgs(
@@ -340,7 +340,7 @@ class ConsumerGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
         create_vpc = alicloud.vpc.Network("createVpc",
             description="example",
             cidr_block="172.16.0.0/12",
@@ -348,7 +348,7 @@ class ConsumerGroup(pulumi.CustomResource):
         create_vswitch = alicloud.vpc.Switch("createVswitch",
             description="example",
             vpc_id=create_vpc.id,
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             cidr_block="172.16.0.0/24",
             vswitch_name=name)
         create_instance = alicloud.rocketmq.RocketMQInstance("createInstance",
@@ -377,7 +377,7 @@ class ConsumerGroup(pulumi.CustomResource):
             series_code="professional",
             payment_type="PayAsYouGo",
             period_unit="Month")
-        default_consumer_group = alicloud.rocketmq.ConsumerGroup("defaultConsumerGroup",
+        default_consumer_group = alicloud.rocketmq.ConsumerGroup("default",
             consumer_group_id=name,
             instance_id=create_instance.id,
             consume_retry_policy=alicloud.rocketmq.ConsumerGroupConsumeRetryPolicyArgs(

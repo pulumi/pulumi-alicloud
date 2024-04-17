@@ -48,6 +48,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Resource(&#34;example&#34;, ResourceArgs.builder()        
+ *             .type(&#34;userdefine&#34;)
+ *             .name(&#34;user.tf.resource&#34;)
  *             .description(&#34;user tf resource desc&#34;)
  *             .extInfo(&#34;{}&#34;)
  *             .schema(&#34;&#34;&#34;
@@ -70,9 +72,7 @@ import javax.annotation.Nullable;
  *         }
  *       ]
  *     }
- *   
  *             &#34;&#34;&#34;)
- *             .type(&#34;userdefine&#34;)
  *             .build());
  * 
  *     }

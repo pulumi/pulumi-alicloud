@@ -53,12 +53,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultGrafanaWorkspace = new GrafanaWorkspace(&#34;defaultGrafanaWorkspace&#34;, GrafanaWorkspaceArgs.builder()        
  *             .grafanaVersion(&#34;9.0.x&#34;)
  *             .description(name)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(default_.ids()[0])
  *             .grafanaWorkspaceEdition(&#34;standard&#34;)
  *             .grafanaWorkspaceName(name)
  *             .tags(Map.ofEntries(

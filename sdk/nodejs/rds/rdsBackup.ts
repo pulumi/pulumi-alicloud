@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
+ * const example = new alicloud.rds.Instance("example", {
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  *     instanceType: "rds.mysql.t1.small",
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     instanceChargeType: "Postpaid",
  *     dbInstanceStorageType: "local_ssd",
  * });
- * const exampleRdsBackup = new alicloud.rds.RdsBackup("exampleRdsBackup", {dbInstanceId: exampleInstance.id});
+ * const exampleRdsBackup = new alicloud.rds.RdsBackup("example", {dbInstanceId: example.id});
  * ```
  * <!--End PulumiCodeChooser -->
  *

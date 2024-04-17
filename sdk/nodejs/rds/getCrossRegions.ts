@@ -18,8 +18,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const crossRegions = alicloud.rds.getCrossRegions({});
- * export const firstRdsCrossRegions = data.alicloud_rds_cross_regions.regions.ids[0];
+ * export const firstRdsCrossRegions = regions.ids[0];
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -69,8 +70,9 @@ export interface GetCrossRegionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const crossRegions = alicloud.rds.getCrossRegions({});
- * export const firstRdsCrossRegions = data.alicloud_rds_cross_regions.regions.ids[0];
+ * export const firstRdsCrossRegions = regions.ids[0];
  * ```
  * <!--End PulumiCodeChooser -->
  */

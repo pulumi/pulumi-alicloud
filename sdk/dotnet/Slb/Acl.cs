@@ -47,6 +47,7 @@ namespace Pulumi.AliCloud.Slb
     /// {
     ///     var acl = new AliCloud.Slb.Acl("acl", new()
     ///     {
+    ///         Name = "terraformslbaclconfig",
     ///         IpVersion = "ipv4",
     ///     });
     /// 

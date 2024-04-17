@@ -33,12 +33,12 @@ namespace Pulumi.AliCloud.Ebs
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var zoneId = config.Get("zoneId") ?? "cn-shanghai-l";
     ///     var regionId = config.Get("regionId") ?? "cn-shanghai";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultSolutionInstance = new AliCloud.Ebs.SolutionInstance("defaultSolutionInstance", new()
+    ///     var defaultSolutionInstance = new AliCloud.Ebs.SolutionInstance("default", new()
     ///     {
     ///         SolutionInstanceName = name,
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///         Description = "description",
     ///         SolutionId = "mysql",
     ///         Parameters = new[]

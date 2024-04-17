@@ -20,42 +20,42 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.rds.getZones({
+ * const default = alicloud.rds.getZones({
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     dbInstanceStorageType: "local_ssd",
  *     category: "HighAvailability",
  * });
- * const defaultInstanceClasses = defaultZones.then(defaultZones => alicloud.rds.getInstanceClasses({
- *     zoneId: defaultZones.ids?.[0],
+ * const defaultGetInstanceClasses = _default.then(_default => alicloud.rds.getInstanceClasses({
+ *     zoneId: _default.ids?.[0],
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     dbInstanceStorageType: "local_ssd",
  *     category: "HighAvailability",
  * }));
  * const regions = alicloud.rds.getCrossRegions({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     zoneId: _default.then(_default => _default.ids?.[0]),
  *     vswitchName: name,
  * });
- * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.rds.Instance("default", {
  *     engine: "MySQL",
  *     engineVersion: "8.0",
- *     instanceType: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
  *     instanceChargeType: "Postpaid",
  *     category: "HighAvailability",
  *     instanceName: name,
  *     vswitchId: defaultSwitch.id,
  *     dbInstanceStorageType: "local_ssd",
  * });
- * const defaultRdsInstanceCrossBackupPolicy = new alicloud.rds.RdsInstanceCrossBackupPolicy("defaultRdsInstanceCrossBackupPolicy", {
+ * const defaultRdsInstanceCrossBackupPolicy = new alicloud.rds.RdsInstanceCrossBackupPolicy("default", {
  *     instanceId: defaultInstance.id,
  *     crossBackupRegion: regions.then(regions => regions.ids?.[0]),
  * });

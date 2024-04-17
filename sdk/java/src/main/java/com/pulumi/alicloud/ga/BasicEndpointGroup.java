@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
  *         final var endpointGroupRegion = config.get(&#34;endpointGroupRegion&#34;).orElse(&#34;cn-beijing&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
  *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        

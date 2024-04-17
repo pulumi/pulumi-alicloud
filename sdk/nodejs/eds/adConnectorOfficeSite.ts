@@ -22,14 +22,14 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {
+ * const _default = new alicloud.cen.Instance("default", {
  *     cenInstanceName: name,
  *     protectionLevel: "REDUCED",
  * });
- * const defaultAdConnectorOfficeSite = new alicloud.eds.AdConnectorOfficeSite("defaultAdConnectorOfficeSite", {
+ * const defaultAdConnectorOfficeSite = new alicloud.eds.AdConnectorOfficeSite("default", {
  *     adConnectorOfficeSiteName: name,
  *     bandwidth: 100,
- *     cenId: defaultInstance.id,
+ *     cenId: _default.id,
  *     cidrBlock: "10.0.0.0/12",
  *     desktopAccessType: "INTERNET",
  *     dnsAddresses: ["127.0.0.2"],

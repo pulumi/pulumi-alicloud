@@ -36,36 +36,37 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				Name:      pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "defaultApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+//			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(name),
 //				VswitchId:        defaultSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultListener, err := slb.NewListener(ctx, "defaultListener", &slb.ListenerArgs{
+//			defaultListener, err := slb.NewListener(ctx, "default", &slb.ListenerArgs{
 //				LoadBalancerId:         defaultApplicationLoadBalancer.ID(),
 //				BackendPort:            pulumi.Int(22),
 //				FrontendPort:           pulumi.Int(22),
@@ -76,15 +77,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultServerGroup, err := slb.NewServerGroup(ctx, "defaultServerGroup", &slb.ServerGroupArgs{
+//			defaultServerGroup, err := slb.NewServerGroup(ctx, "default", &slb.ServerGroupArgs{
 //				LoadBalancerId: defaultApplicationLoadBalancer.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = slb.NewRule(ctx, "defaultRule", &slb.RuleArgs{
+//			_, err = slb.NewRule(ctx, "default", &slb.RuleArgs{
 //				LoadBalancerId: defaultApplicationLoadBalancer.ID(),
 //				FrontendPort:   defaultListener.FrontendPort,
+//				Name:           pulumi.String(name),
 //				Domain:         pulumi.String("*.aliyun.com"),
 //				Url:            pulumi.String("/image"),
 //				ServerGroupId:  defaultServerGroup.ID(),

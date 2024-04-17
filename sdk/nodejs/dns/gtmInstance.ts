@@ -24,9 +24,9 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const domainName = config.get("domainName") || "alicloud-provider.com";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {alarmContactGroupName: "tf_example"});
- * const defaultGtmInstance = new alicloud.dns.GtmInstance("defaultGtmInstance", {
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("default", {alarmContactGroupName: "tf_example"});
+ * const defaultGtmInstance = new alicloud.dns.GtmInstance("default", {
  *     instanceName: "tf_example",
  *     paymentType: "Subscription",
  *     period: 1,
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     publicCnameMode: "SYSTEM_ASSIGN",
  *     ttl: 60,
  *     cnameType: "PUBLIC",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
  *     alertGroups: [defaultAlarmContactGroup.alarmContactGroupName],
  *     publicUserDomainName: domainName,
  *     alertConfigs: [{

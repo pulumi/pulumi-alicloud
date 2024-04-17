@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const fooAccessGroup = new alicloud.nas.AccessGroup("fooAccessGroup", {
+ * const foo = new alicloud.nas.AccessGroup("foo", {
  *     accessGroupName: "tf-NasConfigName",
  *     accessGroupType: "Vpc",
  *     description: "tf-testAccNasConfig",
  * });
- * const fooAccessRule = new alicloud.nas.AccessRule("fooAccessRule", {
- *     accessGroupName: fooAccessGroup.accessGroupName,
+ * const fooAccessRule = new alicloud.nas.AccessRule("foo", {
+ *     accessGroupName: foo.accessGroupName,
  *     sourceCidrIp: "168.1.1.0/16",
  *     rwAccessType: "RDWR",
  *     userAccessType: "no_squash",

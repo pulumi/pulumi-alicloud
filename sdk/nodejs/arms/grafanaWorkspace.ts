@@ -22,11 +22,11 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultGrafanaWorkspace = new alicloud.arms.GrafanaWorkspace("defaultGrafanaWorkspace", {
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultGrafanaWorkspace = new alicloud.arms.GrafanaWorkspace("default", {
  *     grafanaVersion: "9.0.x",
  *     description: name,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
  *     grafanaWorkspaceEdition: "standard",
  *     grafanaWorkspaceName: name,
  *     tags: {

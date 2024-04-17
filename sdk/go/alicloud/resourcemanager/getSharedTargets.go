@@ -38,19 +38,19 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultAccounts, err := resourcemanager.GetAccounts(ctx, nil, nil)
+//			_default, err := resourcemanager.GetAccounts(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultResourceShare, err := resourcemanager.NewResourceShare(ctx, "defaultResourceShare", &resourcemanager.ResourceShareArgs{
+//			defaultResourceShare, err := resourcemanager.NewResourceShare(ctx, "default", &resourcemanager.ResourceShareArgs{
 //				ResourceShareName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSharedTarget, err := resourcemanager.NewSharedTarget(ctx, "defaultSharedTarget", &resourcemanager.SharedTargetArgs{
+//			defaultSharedTarget, err := resourcemanager.NewSharedTarget(ctx, "default", &resourcemanager.SharedTargetArgs{
 //				ResourceShareId: defaultResourceShare.ID(),
-//				TargetId:        pulumi.String(defaultAccounts.Ids[0]),
+//				TargetId:        pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

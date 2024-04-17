@@ -377,9 +377,9 @@ class AclRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_acl = alicloud.rocketmq.Acl("defaultAcl")
-        default_acl_rule = alicloud.rocketmq.AclRule("defaultAclRule",
-            acl_id=default_acl.id,
+        default = alicloud.rocketmq.Acl("default", name=name)
+        default_acl_rule = alicloud.rocketmq.AclRule("default",
+            acl_id=default.id,
             description=name,
             policy="accept",
             ip_protocol="ALL",
@@ -441,9 +441,9 @@ class AclRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_acl = alicloud.rocketmq.Acl("defaultAcl")
-        default_acl_rule = alicloud.rocketmq.AclRule("defaultAclRule",
-            acl_id=default_acl.id,
+        default = alicloud.rocketmq.Acl("default", name=name)
+        default_acl_rule = alicloud.rocketmq.AclRule("default",
+            acl_id=default.id,
             description=name,
             policy="accept",
             ip_protocol="ALL",

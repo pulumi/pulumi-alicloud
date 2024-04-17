@@ -57,12 +57,12 @@ import (
 //
 // `),
 //
+//				TemplateName: pulumi.String("test-name"),
+//				VersionName:  pulumi.String("test"),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("acceptance Test"),
 //				},
-//				TemplateName: pulumi.String("test-name"),
-//				VersionName:  pulumi.String("test"),
 //			})
 //			if err != nil {
 //				return err

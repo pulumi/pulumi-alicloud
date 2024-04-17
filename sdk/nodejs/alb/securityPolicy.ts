@@ -21,12 +21,12 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.alb.SecurityPolicy("default", {
+ *     securityPolicyName: "tf_example",
+ *     tlsVersions: ["TLSv1.0"],
  *     ciphers: [
  *         "ECDHE-ECDSA-AES128-SHA",
  *         "AES256-SHA",
  *     ],
- *     securityPolicyName: "tf_example",
- *     tlsVersions: ["TLSv1.0"],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

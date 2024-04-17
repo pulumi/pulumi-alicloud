@@ -709,9 +709,9 @@ class GtmInstance(pulumi.CustomResource):
         domain_name = config.get("domainName")
         if domain_name is None:
             domain_name = "alicloud-provider.com"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name="tf_example")
-        default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("default", alarm_contact_group_name="tf_example")
+        default_gtm_instance = alicloud.dns.GtmInstance("default",
             instance_name="tf_example",
             payment_type="Subscription",
             period=1,
@@ -722,7 +722,7 @@ class GtmInstance(pulumi.CustomResource):
             public_cname_mode="SYSTEM_ASSIGN",
             ttl=60,
             cname_type="PUBLIC",
-            resource_group_id=default_resource_groups.groups[0].id,
+            resource_group_id=default.groups[0].id,
             alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
             public_user_domain_name=domain_name,
             alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
@@ -791,9 +791,9 @@ class GtmInstance(pulumi.CustomResource):
         domain_name = config.get("domainName")
         if domain_name is None:
             domain_name = "alicloud-provider.com"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name="tf_example")
-        default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("default", alarm_contact_group_name="tf_example")
+        default_gtm_instance = alicloud.dns.GtmInstance("default",
             instance_name="tf_example",
             payment_type="Subscription",
             period=1,
@@ -804,7 +804,7 @@ class GtmInstance(pulumi.CustomResource):
             public_cname_mode="SYSTEM_ASSIGN",
             ttl=60,
             cname_type="PUBLIC",
-            resource_group_id=default_resource_groups.groups[0].id,
+            resource_group_id=default.groups[0].id,
             alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
             public_user_domain_name=domain_name,
             alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(

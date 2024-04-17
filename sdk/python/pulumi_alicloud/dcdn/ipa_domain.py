@@ -215,13 +215,13 @@ class IpaDomain(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default = alicloud.resourcemanager.get_resource_groups()
         example = alicloud.dcdn.IpaDomain("example",
-            domain_name=default_random_integer.result.apply(lambda result: f"example-{result}.com"),
-            resource_group_id=default_resource_groups.groups[0].id,
+            domain_name=f"example-{default_integer['result']}.com",
+            resource_group_id=default.groups[0].id,
             scope="overseas",
             status="online",
             sources=[alicloud.dcdn.IpaDomainSourceArgs(
@@ -273,13 +273,13 @@ class IpaDomain(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default = alicloud.resourcemanager.get_resource_groups()
         example = alicloud.dcdn.IpaDomain("example",
-            domain_name=default_random_integer.result.apply(lambda result: f"example-{result}.com"),
-            resource_group_id=default_resource_groups.groups[0].id,
+            domain_name=f"example-{default_integer['result']}.com",
+            resource_group_id=default.groups[0].id,
             scope="overseas",
             status="online",
             sources=[alicloud.dcdn.IpaDomainSourceArgs(

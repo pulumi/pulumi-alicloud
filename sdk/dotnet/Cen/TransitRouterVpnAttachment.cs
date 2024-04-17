@@ -33,26 +33,27 @@ namespace Pulumi.AliCloud.Cen
     ///     var name = config.Get("name") ?? "tf_example";
     ///     var @default = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
     /// 
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     var example = new AliCloud.Cen.Instance("example", new()
     ///     {
     ///         CenInstanceName = name,
     ///     });
     /// 
-    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("example", new()
     ///     {
-    ///         CenId = exampleInstance.Id,
+    ///         CenId = example.Id,
     ///         TransitRouterDescription = name,
     ///         TransitRouterName = name,
     ///     });
     /// 
-    ///     var exampleCustomerGateway = new AliCloud.Vpn.CustomerGateway("exampleCustomerGateway", new()
+    ///     var exampleCustomerGateway = new AliCloud.Vpn.CustomerGateway("example", new()
     ///     {
+    ///         Name = name,
     ///         IpAddress = "42.104.22.210",
     ///         Asn = "45014",
     ///         Description = name,
     ///     });
     /// 
-    ///     var exampleGatewayVpnAttachment = new AliCloud.Vpn.GatewayVpnAttachment("exampleGatewayVpnAttachment", new()
+    ///     var exampleGatewayVpnAttachment = new AliCloud.Vpn.GatewayVpnAttachment("example", new()
     ///     {
     ///         CustomerGatewayId = exampleCustomerGateway.Id,
     ///         NetworkType = "public",
@@ -99,7 +100,7 @@ namespace Pulumi.AliCloud.Cen
     ///         VpnAttachmentName = name,
     ///     });
     /// 
-    ///     var exampleTransitRouterCidr = new AliCloud.Cen.TransitRouterCidr("exampleTransitRouterCidr", new()
+    ///     var exampleTransitRouterCidr = new AliCloud.Cen.TransitRouterCidr("example", new()
     ///     {
     ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
     ///         Cidr = "192.168.0.0/16",
@@ -108,7 +109,7 @@ namespace Pulumi.AliCloud.Cen
     ///         PublishCidrRoute = true,
     ///     });
     /// 
-    ///     var exampleTransitRouterVpnAttachment = new AliCloud.Cen.TransitRouterVpnAttachment("exampleTransitRouterVpnAttachment", new()
+    ///     var exampleTransitRouterVpnAttachment = new AliCloud.Cen.TransitRouterVpnAttachment("example", new()
     ///     {
     ///         AutoPublishRouteEnabled = false,
     ///         TransitRouterAttachmentDescription = name,

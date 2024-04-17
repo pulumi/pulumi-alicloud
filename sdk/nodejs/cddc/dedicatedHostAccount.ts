@@ -24,18 +24,18 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const defaultZones = alicloud.cddc.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const default = alicloud.cddc.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     zoneId: _default.then(_default => _default.ids?.[0]),
  * });
- * const defaultDedicatedHostGroup = new alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup", {
+ * const defaultDedicatedHostGroup = new alicloud.cddc.DedicatedHostGroup("default", {
  *     engine: "MySQL",
  *     vpcId: defaultNetwork.id,
  *     cpuAllocationRatio: 101,
@@ -46,16 +46,16 @@ import * as utilities from "../utilities";
  *     dedicatedHostGroupDesc: name,
  *     openPermission: true,
  * });
- * const defaultHostEcsLevelInfos = defaultZones.then(defaultZones => alicloud.cddc.getHostEcsLevelInfos({
+ * const defaultGetHostEcsLevelInfos = _default.then(_default => alicloud.cddc.getHostEcsLevelInfos({
  *     dbType: "mysql",
- *     zoneId: defaultZones.ids?.[0],
+ *     zoneId: _default.ids?.[0],
  *     storageType: "cloud_essd",
  * }));
- * const defaultDedicatedHost = new alicloud.cddc.DedicatedHost("defaultDedicatedHost", {
+ * const defaultDedicatedHost = new alicloud.cddc.DedicatedHost("default", {
  *     hostName: name,
  *     dedicatedHostGroupId: defaultDedicatedHostGroup.id,
- *     hostClass: defaultHostEcsLevelInfos.then(defaultHostEcsLevelInfos => defaultHostEcsLevelInfos.infos?.[0]?.resClassCode),
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     hostClass: defaultGetHostEcsLevelInfos.then(defaultGetHostEcsLevelInfos => defaultGetHostEcsLevelInfos.infos?.[0]?.resClassCode),
+ *     zoneId: _default.then(_default => _default.ids?.[0]),
  *     vswitchId: defaultSwitch.id,
  *     paymentType: "Subscription",
  *     tags: {
@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  *         For: "CDDC_DEDICATED",
  *     },
  * });
- * const defaultDedicatedHostAccount = new alicloud.cddc.DedicatedHostAccount("defaultDedicatedHostAccount", {
+ * const defaultDedicatedHostAccount = new alicloud.cddc.DedicatedHostAccount("default", {
  *     accountName: name,
  *     accountPassword: "Password1234",
  *     dedicatedHostId: defaultDedicatedHost.dedicatedHostId,

@@ -21,12 +21,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.ros.Template("example", {
+ *     templateName: "example_value",
  *     templateBody: `    {
  *     	"ROSTemplateFormatVersion": "2015-09-01"
  *     }
- *     
  * `,
- *     templateName: "example_value",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

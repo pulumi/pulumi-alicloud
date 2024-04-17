@@ -22,7 +22,8 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultDdosCooInstance = new alicloud.ddos.DdosCooInstance("defaultDdosCooInstance", {
+ * const _default = new alicloud.ddos.DdosCooInstance("default", {
+ *     name: name,
  *     bandwidth: "30",
  *     baseBandwidth: "30",
  *     serviceBandwidth: "100",
@@ -31,8 +32,8 @@ import * as utilities from "../utilities";
  *     period: 1,
  *     productType: "ddoscoo",
  * });
- * const defaultPort = new alicloud.ddos.Port("defaultPort", {
- *     instanceId: defaultDdosCooInstance.id,
+ * const defaultPort = new alicloud.ddos.Port("default", {
+ *     instanceId: _default.id,
  *     frontendPort: "7001",
  *     backendPort: "7002",
  *     frontendProtocol: "tcp",

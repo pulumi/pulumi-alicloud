@@ -50,6 +50,16 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var default_ = new ImageEventOperation(&#34;default&#34;, ImageEventOperationArgs.builder()        
+ *             .eventType(&#34;maliciousFile&#34;)
+ *             .operationCode(&#34;whitelist&#34;)
+ *             .eventKey(&#34;alibabacloud_ak&#34;)
+ *             .scenarios(&#34;&#34;&#34;
+ * {
+ *   &#34;type&#34;:&#34;default&#34;,
+ *   &#34;value&#34;:&#34;&#34;
+ * }
+ *             &#34;&#34;&#34;)
+ *             .eventName(&#34;阿里云AK&#34;)
  *             .conditions(&#34;&#34;&#34;
  * [
  *   {
@@ -58,18 +68,6 @@ import javax.annotation.Nullable;
  *       &#34;value&#34;:&#34;0083a31cc0083a31ccf7c10367a6e783e&#34;
  *   }
  * ]
- * 
- *             &#34;&#34;&#34;)
- *             .eventKey(&#34;alibabacloud_ak&#34;)
- *             .eventName(&#34;阿里云AK&#34;)
- *             .eventType(&#34;maliciousFile&#34;)
- *             .operationCode(&#34;whitelist&#34;)
- *             .scenarios(&#34;&#34;&#34;
- * {
- *   &#34;type&#34;:&#34;default&#34;,
- *   &#34;value&#34;:&#34;&#34;
- * }
- * 
  *             &#34;&#34;&#34;)
  *             .build());
  * 

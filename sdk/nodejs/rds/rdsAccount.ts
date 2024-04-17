@@ -22,34 +22,34 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const defaultZones = alicloud.rds.getZones({
+ * const default = alicloud.rds.getZones({
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  * });
- * const defaultInstanceClasses = defaultZones.then(defaultZones => alicloud.rds.getInstanceClasses({
- *     zoneId: defaultZones.ids?.[0],
+ * const defaultGetInstanceClasses = _default.then(_default => alicloud.rds.getInstanceClasses({
+ *     zoneId: _default.ids?.[0],
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  * }));
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     zoneId: _default.then(_default => _default.ids?.[0]),
  *     vswitchName: name,
  * });
- * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.rds.Instance("default", {
  *     engine: "MySQL",
  *     engineVersion: "5.6",
- *     instanceType: defaultInstanceClasses.then(defaultInstanceClasses => defaultInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
  *     instanceStorage: 10,
  *     vswitchId: defaultSwitch.id,
  *     instanceName: name,
  * });
- * const defaultRdsAccount = new alicloud.rds.RdsAccount("defaultRdsAccount", {
+ * const defaultRdsAccount = new alicloud.rds.RdsAccount("default", {
  *     dbInstanceId: defaultInstance.id,
  *     accountName: name,
  *     accountPassword: "Example1234",

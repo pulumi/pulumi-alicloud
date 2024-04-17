@@ -121,11 +121,11 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_domain = alicloud.dcdn.Domain("exampleDomain",
-            domain_name=default.result.apply(lambda result: f"{domain_name}-{result}"),
+        example = alicloud.dcdn.Domain("example",
+            domain_name=f"{domain_name}-{default['result']}",
             scope="overseas",
             sources=[alicloud.dcdn.DomainSourceArgs(
                 content="1.1.1.1",
@@ -134,15 +134,15 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
                 type="ipaddr",
                 weight="10",
             )])
-        example_waf_domain = alicloud.dcdn.WafDomain("exampleWafDomain",
-            domain_name=example_domain.domain_name,
+        example_waf_domain = alicloud.dcdn.WafDomain("example",
+            domain_name=example.domain_name,
             client_ip_tag="X-Forwarded-For")
-        example_waf_policy = alicloud.dcdn.WafPolicy("exampleWafPolicy",
+        example_waf_policy = alicloud.dcdn.WafPolicy("example",
             defense_scene="waf_group",
-            policy_name=default.result.apply(lambda result: f"{name}_{result}"),
+            policy_name=f"{name}_{default['result']}",
             policy_type="custom",
             status="on")
-        example_waf_policy_domain_attachment = alicloud.dcdn.WafPolicyDomainAttachment("exampleWafPolicyDomainAttachment",
+        example_waf_policy_domain_attachment = alicloud.dcdn.WafPolicyDomainAttachment("example",
             domain_name=example_waf_domain.domain_name,
             policy_id=example_waf_policy.id)
         ```
@@ -191,11 +191,11 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_domain = alicloud.dcdn.Domain("exampleDomain",
-            domain_name=default.result.apply(lambda result: f"{domain_name}-{result}"),
+        example = alicloud.dcdn.Domain("example",
+            domain_name=f"{domain_name}-{default['result']}",
             scope="overseas",
             sources=[alicloud.dcdn.DomainSourceArgs(
                 content="1.1.1.1",
@@ -204,15 +204,15 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
                 type="ipaddr",
                 weight="10",
             )])
-        example_waf_domain = alicloud.dcdn.WafDomain("exampleWafDomain",
-            domain_name=example_domain.domain_name,
+        example_waf_domain = alicloud.dcdn.WafDomain("example",
+            domain_name=example.domain_name,
             client_ip_tag="X-Forwarded-For")
-        example_waf_policy = alicloud.dcdn.WafPolicy("exampleWafPolicy",
+        example_waf_policy = alicloud.dcdn.WafPolicy("example",
             defense_scene="waf_group",
-            policy_name=default.result.apply(lambda result: f"{name}_{result}"),
+            policy_name=f"{name}_{default['result']}",
             policy_type="custom",
             status="on")
-        example_waf_policy_domain_attachment = alicloud.dcdn.WafPolicyDomainAttachment("exampleWafPolicyDomainAttachment",
+        example_waf_policy_domain_attachment = alicloud.dcdn.WafPolicyDomainAttachment("example",
             domain_name=example_waf_domain.domain_name,
             policy_id=example_waf_policy.id)
         ```

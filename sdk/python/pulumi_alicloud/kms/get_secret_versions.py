@@ -136,8 +136,9 @@ def get_secret_versions(enable_details: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    kms_secret_versions_ds = alicloud.kms.get_secret_versions(enable_details=True,
-        secret_name="secret_name")
+    # Declare the data source
+    kms_secret_versions_ds = alicloud.kms.get_secret_versions(secret_name="secret_name",
+        enable_details=True)
     pulumi.export("firstSecretData", kms_secret_versions_ds.versions[0].secret_data)
     ```
     <!--End PulumiCodeChooser -->
@@ -191,8 +192,9 @@ def get_secret_versions_output(enable_details: Optional[pulumi.Input[Optional[bo
     import pulumi
     import pulumi_alicloud as alicloud
 
-    kms_secret_versions_ds = alicloud.kms.get_secret_versions(enable_details=True,
-        secret_name="secret_name")
+    # Declare the data source
+    kms_secret_versions_ds = alicloud.kms.get_secret_versions(secret_name="secret_name",
+        enable_details=True)
     pulumi.export("firstSecretData", kms_secret_versions_ds.versions[0].secret_data)
     ```
     <!--End PulumiCodeChooser -->

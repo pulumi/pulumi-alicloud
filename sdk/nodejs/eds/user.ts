@@ -21,10 +21,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.eds.User("default", {
- *     email: "tf.example@abc.com",
  *     endUserId: "terraform_example123",
- *     password: "Example_123",
+ *     email: "tf.example@abc.com",
  *     phone: "18888888888",
+ *     password: "Example_123",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

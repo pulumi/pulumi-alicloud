@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTrafficMirrorFilter = new TrafficMirrorFilter(&#34;exampleTrafficMirrorFilter&#34;, TrafficMirrorFilterArgs.builder()        
+ *         var example = new TrafficMirrorFilter(&#34;example&#34;, TrafficMirrorFilterArgs.builder()        
  *             .trafficMirrorFilterName(&#34;example_value&#34;)
  *             .build());
  * 
  *         var exampleTrafficMirrorFilterIngressRule = new TrafficMirrorFilterIngressRule(&#34;exampleTrafficMirrorFilterIngressRule&#34;, TrafficMirrorFilterIngressRuleArgs.builder()        
- *             .trafficMirrorFilterId(exampleTrafficMirrorFilter.id())
+ *             .trafficMirrorFilterId(example.id())
  *             .priority(&#34;1&#34;)
  *             .ruleAction(&#34;accept&#34;)
  *             .protocol(&#34;UDP&#34;)

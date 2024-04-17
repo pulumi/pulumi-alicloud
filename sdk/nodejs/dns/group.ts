@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Add a new Domain group.
- * const group = new alicloud.dns.Group("group", {});
+ * const group = new alicloud.dns.Group("group", {name: "testgroup"});
  * ```
  * <!--End PulumiCodeChooser -->
  */

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * const default = alicloud.ebs.getDedicatedBlockStorageClusters({
  *     ids: ["example_id"],
- *     nameRegex: alicloud_ebs_dedicated_block_storage_cluster["default"].name,
+ *     nameRegex: defaultAlicloudEbsDedicatedBlockStorageCluster.name,
  * });
  * export const alicloudEbsDedicatedBlockStorageClusterExampleId = _default.then(_default => _default.clusters?.[0]?.id);
  * ```
@@ -92,7 +92,7 @@ export interface GetDedicatedBlockStorageClustersResult {
  *
  * const default = alicloud.ebs.getDedicatedBlockStorageClusters({
  *     ids: ["example_id"],
- *     nameRegex: alicloud_ebs_dedicated_block_storage_cluster["default"].name,
+ *     nameRegex: defaultAlicloudEbsDedicatedBlockStorageCluster.name,
  * });
  * export const alicloudEbsDedicatedBlockStorageClusterExampleId = _default.then(_default => _default.clusters?.[0]?.id);
  * ```

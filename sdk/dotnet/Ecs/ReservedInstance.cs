@@ -25,20 +25,20 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var @default = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
     ///         InstanceTypeFamily = "ecs.g6",
     ///     });
     /// 
-    ///     var defaultReservedInstance = new AliCloud.Ecs.ReservedInstance("defaultReservedInstance", new()
+    ///     var defaultReservedInstance = new AliCloud.Ecs.ReservedInstance("default", new()
     ///     {
-    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         InstanceType = @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id)),
     ///         InstanceAmount = 1,
     ///         PeriodUnit = "Month",
     ///         OfferingType = "All Upfront",
     ///         ReservedInstanceName = "terraform-example",
     ///         Description = "ReservedInstance",
-    ///         ZoneId = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0])),
     ///         Scope = "Zone",
     ///     });
     /// 

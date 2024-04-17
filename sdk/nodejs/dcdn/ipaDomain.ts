@@ -23,14 +23,14 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const default = alicloud.resourcemanager.getResourceGroups({});
  * const example = new alicloud.dcdn.IpaDomain("example", {
- *     domainName: pulumi.interpolate`example-${defaultRandomInteger.result}.com`,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     domainName: `example-${defaultInteger.result}.com`,
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
  *     scope: "overseas",
  *     status: "online",
  *     sources: [{

@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultInstance, err := ens.NewInstance(ctx, "defaultInstance", &ens.InstanceArgs{
+//			_, err := ens.NewInstance(ctx, "default", &ens.InstanceArgs{
 //				SystemDisk: &ens.InstanceSystemDiskArgs{
 //					Size: pulumi.Int(20),
 //				},
@@ -60,9 +60,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ens.NewImage(ctx, "defaultImage", &ens.ImageArgs{
+//			_, err = ens.NewImage(ctx, "default", &ens.ImageArgs{
 //				ImageName:              pulumi.String(name),
-//				InstanceId:             defaultInstance.ID(),
+//				InstanceId:             _default.ID(),
 //				DeleteAfterImageUpload: pulumi.String("false"),
 //			})
 //			if err != nil {

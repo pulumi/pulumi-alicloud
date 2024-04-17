@@ -28,19 +28,19 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.cassandra.Cluster("default", {
- *     autoRenew: false,
  *     clusterName: "cassandra-cluster-name-tf",
  *     dataCenterName: "dc-1",
- *     diskSize: 160,
- *     diskType: "cloud_ssd",
+ *     autoRenew: false,
  *     instanceType: "cassandra.c.large",
- *     ipWhite: "127.0.0.1",
- *     maintainEndTime: "20:00Z",
- *     maintainStartTime: "18:00Z",
  *     majorVersion: "3.11",
  *     nodeCount: 2,
  *     payType: "PayAsYouGo",
  *     vswitchId: "vsw-xxxx",
+ *     diskSize: 160,
+ *     diskType: "cloud_ssd",
+ *     maintainStartTime: "18:00Z",
+ *     maintainEndTime: "20:00Z",
+ *     ipWhite: "127.0.0.1",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

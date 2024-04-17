@@ -39,6 +39,7 @@ namespace Pulumi.AliCloud.Ecs
     ///     // Create a new ECS instance for a VPC
     ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
     ///     {
+    ///         Name = name,
     ///         Description = "foo",
     ///         VpcId = vpc.Id,
     ///     });

@@ -677,8 +677,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
-     *             .ids(alicloud_ecs_capacity_reservation.default().id())
-     *             .nameRegex(alicloud_ecs_capacity_reservation.default().name())
+     *             .ids(defaultAlicloudEcsCapacityReservation.id())
+     *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
      *             .instanceType(&#34;ecs.c6.large&#34;)
      *             .platform(&#34;linux&#34;)
      *             .build());
@@ -723,8 +723,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
-     *             .ids(alicloud_ecs_capacity_reservation.default().id())
-     *             .nameRegex(alicloud_ecs_capacity_reservation.default().name())
+     *             .ids(defaultAlicloudEcsCapacityReservation.id())
+     *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
      *             .instanceType(&#34;ecs.c6.large&#34;)
      *             .platform(&#34;linux&#34;)
      *             .build());
@@ -769,8 +769,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
-     *             .ids(alicloud_ecs_capacity_reservation.default().id())
-     *             .nameRegex(alicloud_ecs_capacity_reservation.default().name())
+     *             .ids(defaultAlicloudEcsCapacityReservation.id())
+     *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
      *             .instanceType(&#34;ecs.c6.large&#34;)
      *             .platform(&#34;linux&#34;)
      *             .build());
@@ -815,8 +815,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
-     *             .ids(alicloud_ecs_capacity_reservation.default().id())
-     *             .nameRegex(alicloud_ecs_capacity_reservation.default().name())
+     *             .ids(defaultAlicloudEcsCapacityReservation.id())
+     *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
      *             .instanceType(&#34;ecs.c6.large&#34;)
      *             .platform(&#34;linux&#34;)
      *             .build());
@@ -861,8 +861,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
-     *             .ids(alicloud_ecs_capacity_reservation.default().id())
-     *             .nameRegex(alicloud_ecs_capacity_reservation.default().name())
+     *             .ids(defaultAlicloudEcsCapacityReservation.id())
+     *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
      *             .instanceType(&#34;ecs.c6.large&#34;)
      *             .platform(&#34;linux&#34;)
      *             .build());
@@ -907,8 +907,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
-     *             .ids(alicloud_ecs_capacity_reservation.default().id())
-     *             .nameRegex(alicloud_ecs_capacity_reservation.default().name())
+     *             .ids(defaultAlicloudEcsCapacityReservation.id())
+     *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
      *             .instanceType(&#34;ecs.c6.large&#34;)
      *             .platform(&#34;linux&#34;)
      *             .build());
@@ -1228,9 +1228,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostType(&#34;ddh.g5&#34;)
      *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .dedicatedHostType(&#34;ddh.g5&#34;)
      *             .status(&#34;Available&#34;)
      *             .build());
      * 
@@ -1273,9 +1274,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostType(&#34;ddh.g5&#34;)
      *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .dedicatedHostType(&#34;ddh.g5&#34;)
      *             .status(&#34;Available&#34;)
      *             .build());
      * 
@@ -1318,9 +1320,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostType(&#34;ddh.g5&#34;)
      *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .dedicatedHostType(&#34;ddh.g5&#34;)
      *             .status(&#34;Available&#34;)
      *             .build());
      * 
@@ -1363,9 +1366,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostType(&#34;ddh.g5&#34;)
      *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .dedicatedHostType(&#34;ddh.g5&#34;)
      *             .status(&#34;Available&#34;)
      *             .build());
      * 
@@ -1408,9 +1412,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostType(&#34;ddh.g5&#34;)
      *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .dedicatedHostType(&#34;ddh.g5&#34;)
      *             .status(&#34;Available&#34;)
      *             .build());
      * 
@@ -1453,9 +1458,10 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostType(&#34;ddh.g5&#34;)
      *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .dedicatedHostType(&#34;ddh.g5&#34;)
      *             .status(&#34;Available&#34;)
      *             .build());
      * 
@@ -6351,7 +6357,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
-     *             .ids(alicloud_ecs_elasticity_assurance.default().id())
+     *             .ids(defaultAlicloudEcsElasticityAssurance.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
@@ -6394,7 +6400,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
-     *             .ids(alicloud_ecs_elasticity_assurance.default().id())
+     *             .ids(defaultAlicloudEcsElasticityAssurance.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
@@ -6437,7 +6443,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
-     *             .ids(alicloud_ecs_elasticity_assurance.default().id())
+     *             .ids(defaultAlicloudEcsElasticityAssurance.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
@@ -6480,7 +6486,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
-     *             .ids(alicloud_ecs_elasticity_assurance.default().id())
+     *             .ids(defaultAlicloudEcsElasticityAssurance.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
@@ -6523,7 +6529,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
-     *             .ids(alicloud_ecs_elasticity_assurance.default().id())
+     *             .ids(defaultAlicloudEcsElasticityAssurance.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
@@ -6566,7 +6572,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getElasticityAssurances(GetElasticityAssurancesArgs.builder()
-     *             .ids(alicloud_ecs_elasticity_assurance.default().id())
+     *             .ids(defaultAlicloudEcsElasticityAssurance.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
@@ -6884,8 +6890,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^centos_6&#34;)
      *             .owners(&#34;system&#34;)
+     *             .nameRegex(&#34;^centos_6&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
@@ -6927,8 +6933,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^centos_6&#34;)
      *             .owners(&#34;system&#34;)
+     *             .nameRegex(&#34;^centos_6&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
@@ -6970,8 +6976,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^centos_6&#34;)
      *             .owners(&#34;system&#34;)
+     *             .nameRegex(&#34;^centos_6&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
@@ -7013,8 +7019,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^centos_6&#34;)
      *             .owners(&#34;system&#34;)
+     *             .nameRegex(&#34;^centos_6&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
@@ -7056,8 +7062,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^centos_6&#34;)
      *             .owners(&#34;system&#34;)
+     *             .nameRegex(&#34;^centos_6&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
@@ -7099,8 +7105,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^centos_6&#34;)
      *             .owners(&#34;system&#34;)
+     *             .nameRegex(&#34;^centos_6&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
@@ -7586,11 +7592,13 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .cpuCoreCount(1)
      *             .memorySize(2)
      *             .build());
      * 
+     *         // Create ECS instance with the first matched instance_type
      *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
      *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
      *             .build());
@@ -7637,11 +7645,13 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .cpuCoreCount(1)
      *             .memorySize(2)
      *             .build());
      * 
+     *         // Create ECS instance with the first matched instance_type
      *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
      *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
      *             .build());
@@ -7688,11 +7698,13 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .cpuCoreCount(1)
      *             .memorySize(2)
      *             .build());
      * 
+     *         // Create ECS instance with the first matched instance_type
      *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
      *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
      *             .build());
@@ -7739,11 +7751,13 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .cpuCoreCount(1)
      *             .memorySize(2)
      *             .build());
      * 
+     *         // Create ECS instance with the first matched instance_type
      *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
      *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
      *             .build());
@@ -7790,11 +7804,13 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .cpuCoreCount(1)
      *             .memorySize(2)
      *             .build());
      * 
+     *         // Create ECS instance with the first matched instance_type
      *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
      *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
      *             .build());
@@ -7841,11 +7857,13 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .cpuCoreCount(1)
      *             .memorySize(2)
      *             .build());
      * 
+     *         // Create ECS instance with the first matched instance_type
      *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
      *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
      *             .build());
@@ -8153,7 +8171,7 @@ public final class EcsFunctions {
      *             .keyName(&#34;keyPairDatasource&#34;)
      *             .build());
      * 
-     *         final var defaultKeyPairs = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *         final var default = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
      *             .nameRegex(defaultKeyPair.keyName())
      *             .build());
      * 
@@ -8202,7 +8220,7 @@ public final class EcsFunctions {
      *             .keyName(&#34;keyPairDatasource&#34;)
      *             .build());
      * 
-     *         final var defaultKeyPairs = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *         final var default = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
      *             .nameRegex(defaultKeyPair.keyName())
      *             .build());
      * 
@@ -8251,7 +8269,7 @@ public final class EcsFunctions {
      *             .keyName(&#34;keyPairDatasource&#34;)
      *             .build());
      * 
-     *         final var defaultKeyPairs = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *         final var default = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
      *             .nameRegex(defaultKeyPair.keyName())
      *             .build());
      * 
@@ -8300,7 +8318,7 @@ public final class EcsFunctions {
      *             .keyName(&#34;keyPairDatasource&#34;)
      *             .build());
      * 
-     *         final var defaultKeyPairs = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *         final var default = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
      *             .nameRegex(defaultKeyPair.keyName())
      *             .build());
      * 
@@ -8349,7 +8367,7 @@ public final class EcsFunctions {
      *             .keyName(&#34;keyPairDatasource&#34;)
      *             .build());
      * 
-     *         final var defaultKeyPairs = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *         final var default = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
      *             .nameRegex(defaultKeyPair.keyName())
      *             .build());
      * 
@@ -8398,7 +8416,7 @@ public final class EcsFunctions {
      *             .keyName(&#34;keyPairDatasource&#34;)
      *             .build());
      * 
-     *         final var defaultKeyPairs = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
+     *         final var default = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
      *             .nameRegex(defaultKeyPair.keyName())
      *             .build());
      * 
@@ -8459,42 +8477,44 @@ public final class EcsFunctions {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
      *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .build());
      * 
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
      *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
-     *             .vpcId(vpc.id())
      *             .vswitchName(name)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .vpcId(vpc.id())
      *             .build());
      * 
      *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
      *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
+     *             .name(String.format(&#34;%s%d&#34;, name))
+     *             .vswitchId(vswitch.id())
+     *             .securityGroups(group.id())
      *             .description(&#34;Basic test&#34;)
      *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .securityGroups(group.id())
      *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
-     *             .vswitchId(vswitch.id())
      *             .build());
      * 
      *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .securityGroups(group.id())
+     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
      *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
      *             .instanceName(name)
-     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
-     *             .internetMaxBandwidthOut(10)
-     *             .securityGroups(group.id())
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
      *             .vswitchId(vswitch.id())
+     *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
      *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
@@ -8502,19 +8522,19 @@ public final class EcsFunctions {
      *             .networkInterfaceId(interface_.id())
      *             .build());
      * 
-     *         final var defaultNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
+     *         final var defaultGetNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
      *             .ids(attachment.networkInterfaceId())
-     *             .instanceId(instance.id())
      *             .nameRegex(name)
-     *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .securityGroupId(group.id())
      *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
-     *             .type(&#34;Secondary&#34;)
      *             .vpcId(vpc.id())
      *             .vswitchId(vswitch.id())
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroupId(group.id())
+     *             .type(&#34;Secondary&#34;)
+     *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;eni0Name&#34;, defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultNetworkInterfaces -&gt; defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export(&#34;eni0Name&#34;, defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -&gt; defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
      *     }
      * }
      * ```
@@ -8589,42 +8609,44 @@ public final class EcsFunctions {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
      *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .build());
      * 
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
      *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
-     *             .vpcId(vpc.id())
      *             .vswitchName(name)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .vpcId(vpc.id())
      *             .build());
      * 
      *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
      *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
+     *             .name(String.format(&#34;%s%d&#34;, name))
+     *             .vswitchId(vswitch.id())
+     *             .securityGroups(group.id())
      *             .description(&#34;Basic test&#34;)
      *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .securityGroups(group.id())
      *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
-     *             .vswitchId(vswitch.id())
      *             .build());
      * 
      *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .securityGroups(group.id())
+     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
      *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
      *             .instanceName(name)
-     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
-     *             .internetMaxBandwidthOut(10)
-     *             .securityGroups(group.id())
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
      *             .vswitchId(vswitch.id())
+     *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
      *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
@@ -8632,19 +8654,19 @@ public final class EcsFunctions {
      *             .networkInterfaceId(interface_.id())
      *             .build());
      * 
-     *         final var defaultNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
+     *         final var defaultGetNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
      *             .ids(attachment.networkInterfaceId())
-     *             .instanceId(instance.id())
      *             .nameRegex(name)
-     *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .securityGroupId(group.id())
      *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
-     *             .type(&#34;Secondary&#34;)
      *             .vpcId(vpc.id())
      *             .vswitchId(vswitch.id())
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroupId(group.id())
+     *             .type(&#34;Secondary&#34;)
+     *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;eni0Name&#34;, defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultNetworkInterfaces -&gt; defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export(&#34;eni0Name&#34;, defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -&gt; defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
      *     }
      * }
      * ```
@@ -8719,42 +8741,44 @@ public final class EcsFunctions {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
      *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .build());
      * 
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
      *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
-     *             .vpcId(vpc.id())
      *             .vswitchName(name)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .vpcId(vpc.id())
      *             .build());
      * 
      *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
      *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
+     *             .name(String.format(&#34;%s%d&#34;, name))
+     *             .vswitchId(vswitch.id())
+     *             .securityGroups(group.id())
      *             .description(&#34;Basic test&#34;)
      *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .securityGroups(group.id())
      *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
-     *             .vswitchId(vswitch.id())
      *             .build());
      * 
      *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .securityGroups(group.id())
+     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
      *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
      *             .instanceName(name)
-     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
-     *             .internetMaxBandwidthOut(10)
-     *             .securityGroups(group.id())
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
      *             .vswitchId(vswitch.id())
+     *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
      *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
@@ -8762,19 +8786,19 @@ public final class EcsFunctions {
      *             .networkInterfaceId(interface_.id())
      *             .build());
      * 
-     *         final var defaultNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
+     *         final var defaultGetNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
      *             .ids(attachment.networkInterfaceId())
-     *             .instanceId(instance.id())
      *             .nameRegex(name)
-     *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .securityGroupId(group.id())
      *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
-     *             .type(&#34;Secondary&#34;)
      *             .vpcId(vpc.id())
      *             .vswitchId(vswitch.id())
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroupId(group.id())
+     *             .type(&#34;Secondary&#34;)
+     *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;eni0Name&#34;, defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultNetworkInterfaces -&gt; defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export(&#34;eni0Name&#34;, defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -&gt; defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
      *     }
      * }
      * ```
@@ -8849,42 +8873,44 @@ public final class EcsFunctions {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
      *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .build());
      * 
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
      *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
-     *             .vpcId(vpc.id())
      *             .vswitchName(name)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .vpcId(vpc.id())
      *             .build());
      * 
      *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
      *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
+     *             .name(String.format(&#34;%s%d&#34;, name))
+     *             .vswitchId(vswitch.id())
+     *             .securityGroups(group.id())
      *             .description(&#34;Basic test&#34;)
      *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .securityGroups(group.id())
      *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
-     *             .vswitchId(vswitch.id())
      *             .build());
      * 
      *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .securityGroups(group.id())
+     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
      *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
      *             .instanceName(name)
-     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
-     *             .internetMaxBandwidthOut(10)
-     *             .securityGroups(group.id())
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
      *             .vswitchId(vswitch.id())
+     *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
      *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
@@ -8892,19 +8918,19 @@ public final class EcsFunctions {
      *             .networkInterfaceId(interface_.id())
      *             .build());
      * 
-     *         final var defaultNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
+     *         final var defaultGetNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
      *             .ids(attachment.networkInterfaceId())
-     *             .instanceId(instance.id())
      *             .nameRegex(name)
-     *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .securityGroupId(group.id())
      *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
-     *             .type(&#34;Secondary&#34;)
      *             .vpcId(vpc.id())
      *             .vswitchId(vswitch.id())
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroupId(group.id())
+     *             .type(&#34;Secondary&#34;)
+     *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;eni0Name&#34;, defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultNetworkInterfaces -&gt; defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export(&#34;eni0Name&#34;, defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -&gt; defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
      *     }
      * }
      * ```
@@ -8979,42 +9005,44 @@ public final class EcsFunctions {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
      *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .build());
      * 
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
      *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
-     *             .vpcId(vpc.id())
      *             .vswitchName(name)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .vpcId(vpc.id())
      *             .build());
      * 
      *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
      *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
+     *             .name(String.format(&#34;%s%d&#34;, name))
+     *             .vswitchId(vswitch.id())
+     *             .securityGroups(group.id())
      *             .description(&#34;Basic test&#34;)
      *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .securityGroups(group.id())
      *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
-     *             .vswitchId(vswitch.id())
      *             .build());
      * 
      *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .securityGroups(group.id())
+     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
      *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
      *             .instanceName(name)
-     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
-     *             .internetMaxBandwidthOut(10)
-     *             .securityGroups(group.id())
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
      *             .vswitchId(vswitch.id())
+     *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
      *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
@@ -9022,19 +9050,19 @@ public final class EcsFunctions {
      *             .networkInterfaceId(interface_.id())
      *             .build());
      * 
-     *         final var defaultNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
+     *         final var defaultGetNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
      *             .ids(attachment.networkInterfaceId())
-     *             .instanceId(instance.id())
      *             .nameRegex(name)
-     *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .securityGroupId(group.id())
      *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
-     *             .type(&#34;Secondary&#34;)
      *             .vpcId(vpc.id())
      *             .vswitchId(vswitch.id())
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroupId(group.id())
+     *             .type(&#34;Secondary&#34;)
+     *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;eni0Name&#34;, defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultNetworkInterfaces -&gt; defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export(&#34;eni0Name&#34;, defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -&gt; defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
      *     }
      * }
      * ```
@@ -9109,42 +9137,44 @@ public final class EcsFunctions {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
      *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
      *             .build());
      * 
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
      *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
-     *             .vpcId(vpc.id())
      *             .vswitchName(name)
+     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .vpcId(vpc.id())
      *             .build());
      * 
      *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
      *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
+     *             .name(String.format(&#34;%s%d&#34;, name))
+     *             .vswitchId(vswitch.id())
+     *             .securityGroups(group.id())
      *             .description(&#34;Basic test&#34;)
      *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .securityGroups(group.id())
      *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
-     *             .vswitchId(vswitch.id())
      *             .build());
      * 
      *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .securityGroups(group.id())
+     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
+     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
      *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
      *             .instanceName(name)
-     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
-     *             .internetMaxBandwidthOut(10)
-     *             .securityGroups(group.id())
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
      *             .vswitchId(vswitch.id())
+     *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
      *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
@@ -9152,19 +9182,19 @@ public final class EcsFunctions {
      *             .networkInterfaceId(interface_.id())
      *             .build());
      * 
-     *         final var defaultNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
+     *         final var defaultGetNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
      *             .ids(attachment.networkInterfaceId())
-     *             .instanceId(instance.id())
      *             .nameRegex(name)
-     *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .securityGroupId(group.id())
      *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
-     *             .type(&#34;Secondary&#34;)
      *             .vpcId(vpc.id())
      *             .vswitchId(vswitch.id())
+     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .securityGroupId(group.id())
+     *             .type(&#34;Secondary&#34;)
+     *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;eni0Name&#34;, defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultNetworkInterfaces -&gt; defaultNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export(&#34;eni0Name&#34;, defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -&gt; defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
      *     }
      * }
      * ```
@@ -9227,15 +9257,18 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var securityGroupId = config.get(&#34;securityGroupId&#34;);
+     *         // Or get it from the alicloud_security_groups data source.
+     *         // Please note that the data source arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .nameRegex(&#34;api&#34;)
      *             .build());
      * 
+     *         // Filter the security group rule by group
      *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
-     *             .direction(&#34;ingress&#34;)
      *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id()))
-     *             .ipProtocol(&#34;tcp&#34;)
      *             .nicType(&#34;internet&#34;)
+     *             .direction(&#34;ingress&#34;)
+     *             .ipProtocol(&#34;tcp&#34;)
      *             .build());
      * 
      *         // Pass port_range to the backend service
@@ -9288,15 +9321,18 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var securityGroupId = config.get(&#34;securityGroupId&#34;);
+     *         // Or get it from the alicloud_security_groups data source.
+     *         // Please note that the data source arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .nameRegex(&#34;api&#34;)
      *             .build());
      * 
+     *         // Filter the security group rule by group
      *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
-     *             .direction(&#34;ingress&#34;)
      *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id()))
-     *             .ipProtocol(&#34;tcp&#34;)
      *             .nicType(&#34;internet&#34;)
+     *             .direction(&#34;ingress&#34;)
+     *             .ipProtocol(&#34;tcp&#34;)
      *             .build());
      * 
      *         // Pass port_range to the backend service
@@ -9349,15 +9385,18 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var securityGroupId = config.get(&#34;securityGroupId&#34;);
+     *         // Or get it from the alicloud_security_groups data source.
+     *         // Please note that the data source arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .nameRegex(&#34;api&#34;)
      *             .build());
      * 
+     *         // Filter the security group rule by group
      *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
-     *             .direction(&#34;ingress&#34;)
      *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id()))
-     *             .ipProtocol(&#34;tcp&#34;)
      *             .nicType(&#34;internet&#34;)
+     *             .direction(&#34;ingress&#34;)
+     *             .ipProtocol(&#34;tcp&#34;)
      *             .build());
      * 
      *         // Pass port_range to the backend service
@@ -9410,15 +9449,18 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var securityGroupId = config.get(&#34;securityGroupId&#34;);
+     *         // Or get it from the alicloud_security_groups data source.
+     *         // Please note that the data source arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .nameRegex(&#34;api&#34;)
      *             .build());
      * 
+     *         // Filter the security group rule by group
      *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
-     *             .direction(&#34;ingress&#34;)
      *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id()))
-     *             .ipProtocol(&#34;tcp&#34;)
      *             .nicType(&#34;internet&#34;)
+     *             .direction(&#34;ingress&#34;)
+     *             .ipProtocol(&#34;tcp&#34;)
      *             .build());
      * 
      *         // Pass port_range to the backend service
@@ -9463,6 +9505,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Filter security groups and print the results into a file
      *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .nameRegex(&#34;^web-&#34;)
      *             .outputFile(&#34;web_access.json&#34;)
@@ -9513,6 +9556,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Filter security groups and print the results into a file
      *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .nameRegex(&#34;^web-&#34;)
      *             .outputFile(&#34;web_access.json&#34;)
@@ -9563,6 +9607,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Filter security groups and print the results into a file
      *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .nameRegex(&#34;^web-&#34;)
      *             .outputFile(&#34;web_access.json&#34;)
@@ -9613,6 +9658,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Filter security groups and print the results into a file
      *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .nameRegex(&#34;^web-&#34;)
      *             .outputFile(&#34;web_access.json&#34;)
@@ -9663,6 +9709,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Filter security groups and print the results into a file
      *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .nameRegex(&#34;^web-&#34;)
      *             .outputFile(&#34;web_access.json&#34;)
@@ -9713,6 +9760,7 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Filter security groups and print the results into a file
      *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .nameRegex(&#34;^web-&#34;)
      *             .outputFile(&#34;web_access.json&#34;)

@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         var defaultBasicAccelerator = new BasicAccelerator(&#34;defaultBasicAccelerator&#34;, BasicAcceleratorArgs.builder()        
+ *         var default_ = new BasicAccelerator(&#34;default&#34;, BasicAcceleratorArgs.builder()        
  *             .duration(1)
  *             .pricingCycle(&#34;Month&#34;)
  *             .bandwidthBillingType(&#34;CDT&#34;)
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBasicIpSet = new BasicIpSet(&#34;defaultBasicIpSet&#34;, BasicIpSetArgs.builder()        
- *             .acceleratorId(defaultBasicAccelerator.id())
+ *             .acceleratorId(default_.id())
  *             .accelerateRegionId(region)
  *             .ispType(&#34;BGP&#34;)
  *             .bandwidth(&#34;5&#34;)

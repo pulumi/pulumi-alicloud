@@ -152,12 +152,12 @@ def get_topics(enable_details: Optional[bool] = None,
     topic = config.get("topic")
     if topic is None:
         topic = "onsTopicDatasourceName"
-    default_instance = alicloud.rocketmq.Instance("defaultInstance",
+    default = alicloud.rocketmq.Instance("default",
         instance_name=name,
         remark="default_ons_instance_remark")
-    default_topic = alicloud.rocketmq.Topic("defaultTopic",
+    default_topic = alicloud.rocketmq.Topic("default",
         topic_name=topic,
-        instance_id=default_instance.id,
+        instance_id=default.id,
         message_type=0,
         remark="dafault_ons_topic_remark")
     topics_ds = alicloud.rocketmq.get_topics_output(instance_id=default_topic.instance_id,
@@ -223,12 +223,12 @@ def get_topics_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
     topic = config.get("topic")
     if topic is None:
         topic = "onsTopicDatasourceName"
-    default_instance = alicloud.rocketmq.Instance("defaultInstance",
+    default = alicloud.rocketmq.Instance("default",
         instance_name=name,
         remark="default_ons_instance_remark")
-    default_topic = alicloud.rocketmq.Topic("defaultTopic",
+    default_topic = alicloud.rocketmq.Topic("default",
         topic_name=topic,
-        instance_id=default_instance.id,
+        instance_id=default.id,
         message_type=0,
         remark="dafault_ons_topic_remark")
     topics_ds = alicloud.rocketmq.get_topics_output(instance_id=default_topic.instance_id,

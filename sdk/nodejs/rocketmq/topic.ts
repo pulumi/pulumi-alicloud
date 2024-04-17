@@ -24,12 +24,15 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "onsInstanceName";
  * const topic = config.get("topic") || "onsTopicName";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {remark: "default_ons_instance_remark"});
- * const defaultTopic = new alicloud.rocketmq.Topic("defaultTopic", {
+ * const defaultInstance = new alicloud.rocketmq.Instance("default", {
+ *     name: `${name}-${_default.result}`,
+ *     remark: "default_ons_instance_remark",
+ * });
+ * const defaultTopic = new alicloud.rocketmq.Topic("default", {
  *     topicName: topic,
  *     instanceId: defaultInstance.id,
  *     messageType: 0,

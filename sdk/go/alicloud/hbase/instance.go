@@ -48,27 +48,28 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := hbase.GetZones(ctx, nil, nil)
+//			_default, err := hbase.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("^default-NODELETING$"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Zones[0].Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = hbase.NewInstance(ctx, "defaultInstance", &hbase.InstanceArgs{
-//				ZoneId:               pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchId:            pulumi.String(defaultSwitches.Ids[0]),
-//				VpcId:                pulumi.String(defaultNetworks.Ids[0]),
+//			_, err = hbase.NewInstance(ctx, "default", &hbase.InstanceArgs{
+//				Name:                 pulumi.String(name),
+//				ZoneId:               pulumi.String(_default.Zones[0].Id),
+//				VswitchId:            pulumi.String(defaultGetSwitches.Ids[0]),
+//				VpcId:                pulumi.String(defaultGetNetworks.Ids[0]),
 //				Engine:               pulumi.String("hbaseue"),
 //				EngineVersion:        pulumi.String("2.0"),
 //				MasterInstanceType:   pulumi.String("hbase.sn2.2xlarge"),

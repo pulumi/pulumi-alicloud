@@ -36,7 +36,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rocketmq.NewAcl(ctx, "default", nil)
+//			_, err := rocketmq.NewAcl(ctx, "default", &rocketmq.AclArgs{
+//				Name: pulumi.String("terraform-example"),
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -269,6 +269,7 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
      *             .engine(&#34;MySQL&#34;)
      *             .build());
@@ -312,6 +313,7 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
      *             .engine(&#34;MySQL&#34;)
      *             .build());
@@ -355,6 +357,7 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
      *             .engine(&#34;MySQL&#34;)
      *             .build());
@@ -398,6 +401,7 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
      *             .engine(&#34;MySQL&#34;)
      *             .build());
@@ -444,10 +448,10 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = RdsFunctions.getClassDetails(GetClassDetailsArgs.builder()
-     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
      *             .commodityCode(&#34;bards&#34;)
-     *             .engine(&#34;MySQL&#34;)
+     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
      *             .engineVersion(&#34;8.0&#34;)
+     *             .engine(&#34;MySQL&#34;)
      *             .build());
      * 
      *     }
@@ -491,10 +495,10 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = RdsFunctions.getClassDetails(GetClassDetailsArgs.builder()
-     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
      *             .commodityCode(&#34;bards&#34;)
-     *             .engine(&#34;MySQL&#34;)
+     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
      *             .engineVersion(&#34;8.0&#34;)
+     *             .engine(&#34;MySQL&#34;)
      *             .build());
      * 
      *     }
@@ -538,10 +542,10 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = RdsFunctions.getClassDetails(GetClassDetailsArgs.builder()
-     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
      *             .commodityCode(&#34;bards&#34;)
-     *             .engine(&#34;MySQL&#34;)
+     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
      *             .engineVersion(&#34;8.0&#34;)
+     *             .engine(&#34;MySQL&#34;)
      *             .build());
      * 
      *     }
@@ -585,10 +589,10 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = RdsFunctions.getClassDetails(GetClassDetailsArgs.builder()
-     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
      *             .commodityCode(&#34;bards&#34;)
-     *             .engine(&#34;MySQL&#34;)
+     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
      *             .engineVersion(&#34;8.0&#34;)
+     *             .engine(&#34;MySQL&#34;)
      *             .build());
      * 
      *     }
@@ -1087,9 +1091,10 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var crossRegions = RdsFunctions.getCrossRegions();
      * 
-     *         ctx.export(&#34;firstRdsCrossRegions&#34;, data.alicloud_rds_cross_regions().regions().ids()[0]);
+     *         ctx.export(&#34;firstRdsCrossRegions&#34;, regions.ids()[0]);
      *     }
      * }
      * ```
@@ -1128,9 +1133,10 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var crossRegions = RdsFunctions.getCrossRegions();
      * 
-     *         ctx.export(&#34;firstRdsCrossRegions&#34;, data.alicloud_rds_cross_regions().regions().ids()[0]);
+     *         ctx.export(&#34;firstRdsCrossRegions&#34;, regions.ids()[0]);
      *     }
      * }
      * ```
@@ -1169,9 +1175,10 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var crossRegions = RdsFunctions.getCrossRegions();
      * 
-     *         ctx.export(&#34;firstRdsCrossRegions&#34;, data.alicloud_rds_cross_regions().regions().ids()[0]);
+     *         ctx.export(&#34;firstRdsCrossRegions&#34;, regions.ids()[0]);
      *     }
      * }
      * ```
@@ -1210,9 +1217,10 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var crossRegions = RdsFunctions.getCrossRegions();
      * 
-     *         ctx.export(&#34;firstRdsCrossRegions&#34;, data.alicloud_rds_cross_regions().regions().ids()[0]);
+     *         ctx.export(&#34;firstRdsCrossRegions&#34;, regions.ids()[0]);
      *     }
      * }
      * ```
@@ -1251,9 +1259,10 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var crossRegions = RdsFunctions.getCrossRegions();
      * 
-     *         ctx.export(&#34;firstRdsCrossRegions&#34;, data.alicloud_rds_cross_regions().regions().ids()[0]);
+     *         ctx.export(&#34;firstRdsCrossRegions&#34;, regions.ids()[0]);
      *     }
      * }
      * ```
@@ -1292,9 +1301,10 @@ public final class RdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var crossRegions = RdsFunctions.getCrossRegions();
      * 
-     *         ctx.export(&#34;firstRdsCrossRegions&#34;, data.alicloud_rds_cross_regions().regions().ids()[0]);
+     *         ctx.export(&#34;firstRdsCrossRegions&#34;, regions.ids()[0]);
      *     }
      * }
      * ```
@@ -1514,8 +1524,8 @@ public final class RdsFunctions {
      *             .nameRegex(&#34;data-\\d+&#34;)
      *             .status(&#34;Running&#34;)
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;),
-     *                 Map.entry(&#34;type&#34;, &#34;database&#34;)
+     *                 Map.entry(&#34;type&#34;, &#34;database&#34;),
+     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;)
      *             ))
      *             .build());
      * 
@@ -1563,8 +1573,8 @@ public final class RdsFunctions {
      *             .nameRegex(&#34;data-\\d+&#34;)
      *             .status(&#34;Running&#34;)
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;),
-     *                 Map.entry(&#34;type&#34;, &#34;database&#34;)
+     *                 Map.entry(&#34;type&#34;, &#34;database&#34;),
+     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;)
      *             ))
      *             .build());
      * 
@@ -1612,8 +1622,8 @@ public final class RdsFunctions {
      *             .nameRegex(&#34;data-\\d+&#34;)
      *             .status(&#34;Running&#34;)
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;),
-     *                 Map.entry(&#34;type&#34;, &#34;database&#34;)
+     *                 Map.entry(&#34;type&#34;, &#34;database&#34;),
+     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;)
      *             ))
      *             .build());
      * 
@@ -1661,8 +1671,8 @@ public final class RdsFunctions {
      *             .nameRegex(&#34;data-\\d+&#34;)
      *             .status(&#34;Running&#34;)
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;),
-     *                 Map.entry(&#34;type&#34;, &#34;database&#34;)
+     *                 Map.entry(&#34;type&#34;, &#34;database&#34;),
+     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;)
      *             ))
      *             .build());
      * 
@@ -1710,8 +1720,8 @@ public final class RdsFunctions {
      *             .nameRegex(&#34;data-\\d+&#34;)
      *             .status(&#34;Running&#34;)
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;),
-     *                 Map.entry(&#34;type&#34;, &#34;database&#34;)
+     *                 Map.entry(&#34;type&#34;, &#34;database&#34;),
+     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;)
      *             ))
      *             .build());
      * 
@@ -1759,8 +1769,8 @@ public final class RdsFunctions {
      *             .nameRegex(&#34;data-\\d+&#34;)
      *             .status(&#34;Running&#34;)
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;),
-     *                 Map.entry(&#34;type&#34;, &#34;database&#34;)
+     *                 Map.entry(&#34;type&#34;, &#34;database&#34;),
+     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;)
      *             ))
      *             .build());
      * 
@@ -1807,8 +1817,8 @@ public final class RdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getModifyParameterLogs(GetModifyParameterLogsArgs.builder()
      *             .dbInstanceId(&#34;example_value&#34;)
-     *             .endTime(&#34;2022-06-08T13:56Z&#34;)
      *             .startTime(&#34;2022-06-04T13:56Z&#34;)
+     *             .endTime(&#34;2022-06-08T13:56Z&#34;)
      *             .build());
      * 
      *     }
@@ -1853,8 +1863,8 @@ public final class RdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getModifyParameterLogs(GetModifyParameterLogsArgs.builder()
      *             .dbInstanceId(&#34;example_value&#34;)
-     *             .endTime(&#34;2022-06-08T13:56Z&#34;)
      *             .startTime(&#34;2022-06-04T13:56Z&#34;)
+     *             .endTime(&#34;2022-06-08T13:56Z&#34;)
      *             .build());
      * 
      *     }
@@ -1899,8 +1909,8 @@ public final class RdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getModifyParameterLogs(GetModifyParameterLogsArgs.builder()
      *             .dbInstanceId(&#34;example_value&#34;)
-     *             .endTime(&#34;2022-06-08T13:56Z&#34;)
      *             .startTime(&#34;2022-06-04T13:56Z&#34;)
+     *             .endTime(&#34;2022-06-08T13:56Z&#34;)
      *             .build());
      * 
      *     }
@@ -1945,8 +1955,8 @@ public final class RdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getModifyParameterLogs(GetModifyParameterLogsArgs.builder()
      *             .dbInstanceId(&#34;example_value&#34;)
-     *             .endTime(&#34;2022-06-08T13:56Z&#34;)
      *             .startTime(&#34;2022-06-04T13:56Z&#34;)
+     *             .endTime(&#34;2022-06-08T13:56Z&#34;)
      *             .build());
      * 
      *     }

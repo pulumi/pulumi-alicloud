@@ -31,28 +31,29 @@ namespace Pulumi.AliCloud.Eci
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultZones = AliCloud.Eci.GetZones.Invoke();
+    ///     var @default = AliCloud.Eci.GetZones.Invoke();
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.0.0.0/8",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "10.1.0.0/16",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneIds[0]),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneIds[0])),
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
+    ///         Name = name,
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var defaultContainerGroup = new AliCloud.Eci.ContainerGroup("defaultContainerGroup", new()
+    ///     var defaultContainerGroup = new AliCloud.Eci.ContainerGroup("default", new()
     ///     {
     ///         ContainerGroupName = name,
     ///         Cpu = 8,

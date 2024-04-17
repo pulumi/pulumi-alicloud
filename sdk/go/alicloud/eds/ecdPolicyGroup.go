@@ -35,28 +35,28 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := eds.NewEcdPolicyGroup(ctx, "default", &eds.EcdPolicyGroupArgs{
+//				PolicyGroupName: pulumi.String("terraform-example"),
+//				Clipboard:       pulumi.String("read"),
+//				LocalDrive:      pulumi.String("read"),
+//				UsbRedirect:     pulumi.String("off"),
+//				Watermark:       pulumi.String("off"),
 //				AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
 //					&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
-//						CidrIp:      pulumi.String("1.2.3.45/24"),
 //						Description: pulumi.String("terraform-example"),
+//						CidrIp:      pulumi.String("1.2.3.45/24"),
 //					},
 //				},
 //				AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
 //					&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
-//						CidrIp:      pulumi.String("1.2.3.4/24"),
-//						Description: pulumi.String("terraform-example"),
-//						IpProtocol:  pulumi.String("TCP"),
-//						Policy:      pulumi.String("accept"),
-//						PortRange:   pulumi.String("80/80"),
-//						Priority:    pulumi.String("1"),
 //						Type:        pulumi.String("inflow"),
+//						Policy:      pulumi.String("accept"),
+//						Description: pulumi.String("terraform-example"),
+//						PortRange:   pulumi.String("80/80"),
+//						IpProtocol:  pulumi.String("TCP"),
+//						Priority:    pulumi.String("1"),
+//						CidrIp:      pulumi.String("1.2.3.4/24"),
 //					},
 //				},
-//				Clipboard:       pulumi.String("read"),
-//				LocalDrive:      pulumi.String("read"),
-//				PolicyGroupName: pulumi.String("terraform-example"),
-//				UsbRedirect:     pulumi.String("off"),
-//				Watermark:       pulumi.String("off"),
 //			})
 //			if err != nil {
 //				return err

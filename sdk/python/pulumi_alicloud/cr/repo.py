@@ -233,11 +233,13 @@ class Repo(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_namespace = alicloud.cr.Namespace("exampleNamespace",
+        example = alicloud.cr.Namespace("example",
+            name=name,
             auto_create=False,
             default_visibility="PUBLIC")
-        example_repo = alicloud.cr.Repo("exampleRepo",
-            namespace=example_namespace.name,
+        example_repo = alicloud.cr.Repo("example",
+            namespace=example.name,
+            name=name,
             summary="this is summary of my new repo",
             repo_type="PUBLIC",
             detail="this is a public repo")
@@ -286,11 +288,13 @@ class Repo(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_namespace = alicloud.cr.Namespace("exampleNamespace",
+        example = alicloud.cr.Namespace("example",
+            name=name,
             auto_create=False,
             default_visibility="PUBLIC")
-        example_repo = alicloud.cr.Repo("exampleRepo",
-            namespace=example_namespace.name,
+        example_repo = alicloud.cr.Repo("example",
+            namespace=example.name,
+            name=name,
             summary="this is summary of my new repo",
             repo_type="PUBLIC",
             detail="this is a public repo")

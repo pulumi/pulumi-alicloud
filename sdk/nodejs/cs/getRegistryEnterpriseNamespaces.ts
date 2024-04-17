@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const myNamespaces = alicloud.cs.getRegistryEnterpriseNamespaces({
  *     instanceId: "cri-xxx",
  *     nameRegex: "my-namespace",
@@ -99,6 +100,7 @@ export interface GetRegistryEnterpriseNamespacesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const myNamespaces = alicloud.cs.getRegistryEnterpriseNamespaces({
  *     instanceId: "cri-xxx",
  *     nameRegex: "my-namespace",

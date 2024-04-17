@@ -32,20 +32,20 @@ namespace Pulumi.AliCloud.Vpc
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
     ///         Status = "OK",
     ///     });
     /// 
-    ///     var defaultPublicIpAddressPool = new AliCloud.Vpc.PublicIpAddressPool("defaultPublicIpAddressPool", new()
+    ///     var defaultPublicIpAddressPool = new AliCloud.Vpc.PublicIpAddressPool("default", new()
     ///     {
     ///         Description = name,
     ///         PublicIpAddressPoolName = name,
     ///         Isp = "BGP",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///     });
     /// 
-    ///     var defaultPublicIpAddressPoolCidrBlock = new AliCloud.Vpc.PublicIpAddressPoolCidrBlock("defaultPublicIpAddressPoolCidrBlock", new()
+    ///     var defaultPublicIpAddressPoolCidrBlock = new AliCloud.Vpc.PublicIpAddressPoolCidrBlock("default", new()
     ///     {
     ///         PublicIpAddressPoolId = defaultPublicIpAddressPool.Id,
     ///         CidrBlock = "47.118.126.0/25",

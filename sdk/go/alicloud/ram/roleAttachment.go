@@ -34,22 +34,22 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 // AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
 // AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 // }, nil);
 // if err != nil {
 // return err
 // }
-// defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+// defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
 // CpuCoreCount: pulumi.IntRef(2),
 // MemorySize: pulumi.Float64Ref(4),
 // }, nil);
 // if err != nil {
 // return err
 // }
-// defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 // NameRegex: pulumi.StringRef("^ubuntu_18.*64"),
 // MostRecent: pulumi.BoolRef(true),
 // Owners: pulumi.StringRef("system"),
@@ -62,29 +62,30 @@ import (
 // if param := cfg.Get("name"); param != ""{
 // name = param
 // }
-// defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 // VpcName: pulumi.String(name),
 // CidrBlock: pulumi.String("172.16.0.0/16"),
 // })
 // if err != nil {
 // return err
 // }
-// defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 // VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("172.16.0.0/24"),
-// ZoneId: pulumi.String(defaultZones.Zones[0].Id),
+// ZoneId: pulumi.String(_default.Zones[0].Id),
 // VswitchName: pulumi.String(name),
 // })
 // if err != nil {
 // return err
 // }
-// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+// Name: pulumi.String(name),
 // VpcId: defaultNetwork.ID(),
 // })
 // if err != nil {
 // return err
 // }
-// _, err = ecs.NewSecurityGroupRule(ctx, "defaultSecurityGroupRule", &ecs.SecurityGroupRuleArgs{
+// _, err = ecs.NewSecurityGroupRule(ctx, "default", &ecs.SecurityGroupRuleArgs{
 // Type: pulumi.String("ingress"),
 // IpProtocol: pulumi.String("tcp"),
 // NicType: pulumi.String("intranet"),
@@ -99,8 +100,8 @@ import (
 // }
 // foo, err := ecs.NewInstance(ctx, "foo", &ecs.InstanceArgs{
 // VswitchId: defaultSwitch.ID(),
-// ImageId: pulumi.String(defaultImages.Images[0].Id),
-// InstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+// ImageId: pulumi.String(defaultGetImages.Images[0].Id),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(5),
@@ -113,6 +114,7 @@ import (
 // return err
 // }
 // role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
+// Name: pulumi.String("terraform-example"),
 //
 //	Document: pulumi.String(`  {
 //	    "Statement": [

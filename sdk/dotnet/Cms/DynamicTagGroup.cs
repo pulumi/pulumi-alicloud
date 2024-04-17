@@ -29,18 +29,18 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
+    ///     var @default = new AliCloud.Cms.AlarmContactGroup("default", new()
     ///     {
     ///         AlarmContactGroupName = "example_value",
     ///         Describe = "example_value",
     ///         EnableSubscribed = true,
     ///     });
     /// 
-    ///     var defaultDynamicTagGroup = new AliCloud.Cms.DynamicTagGroup("defaultDynamicTagGroup", new()
+    ///     var defaultDynamicTagGroup = new AliCloud.Cms.DynamicTagGroup("default", new()
     ///     {
     ///         ContactGroupLists = new[]
     ///         {
-    ///             defaultAlarmContactGroup.Id,
+    ///             @default.Id,
     ///         },
     ///         TagKey = "your_tag_key",
     ///         MatchExpresses = new[]

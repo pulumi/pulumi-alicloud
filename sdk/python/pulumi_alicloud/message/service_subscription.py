@@ -292,12 +292,12 @@ class ServiceSubscription(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_service_topic = alicloud.message.ServiceTopic("defaultServiceTopic",
+        default = alicloud.message.ServiceTopic("default",
             topic_name=name,
             max_message_size=12357,
             logging_enabled=True)
-        default_service_subscription = alicloud.message.ServiceSubscription("defaultServiceSubscription",
-            topic_name=default_service_topic.topic_name,
+        default_service_subscription = alicloud.message.ServiceSubscription("default",
+            topic_name=default.topic_name,
             subscription_name=name,
             endpoint="http://example.com",
             push_type="http",
@@ -354,12 +354,12 @@ class ServiceSubscription(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_service_topic = alicloud.message.ServiceTopic("defaultServiceTopic",
+        default = alicloud.message.ServiceTopic("default",
             topic_name=name,
             max_message_size=12357,
             logging_enabled=True)
-        default_service_subscription = alicloud.message.ServiceSubscription("defaultServiceSubscription",
-            topic_name=default_service_topic.topic_name,
+        default_service_subscription = alicloud.message.ServiceSubscription("default",
+            topic_name=default.topic_name,
             subscription_name=name,
             endpoint="http://example.com",
             push_type="http",

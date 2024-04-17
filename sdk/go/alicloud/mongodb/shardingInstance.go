@@ -47,20 +47,20 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := mongodb.GetZones(ctx, nil, nil)
+//			_default, err := mongodb.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			index := len(defaultZones.Zones) - 1
-//			zoneId := defaultZones.Zones[index].Id
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			index := len(_default.Zones) - 1
+//			zoneId := _default.Zones[index].Id
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
@@ -69,10 +69,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = mongodb.NewShardingInstance(ctx, "defaultShardingInstance", &mongodb.ShardingInstanceArgs{
+//			_, err = mongodb.NewShardingInstance(ctx, "default", &mongodb.ShardingInstanceArgs{
 //				EngineVersion: pulumi.String("4.2"),
 //				VswitchId:     defaultSwitch.ID(),
 //				ZoneId:        pulumi.String(zoneId),
+//				Name:          pulumi.String(name),
 //				MongoLists: mongodb.ShardingInstanceMongoListArray{
 //					&mongodb.ShardingInstanceMongoListArgs{
 //						NodeClass: pulumi.String("dds.mongos.mid"),

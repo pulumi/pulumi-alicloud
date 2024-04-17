@@ -31,7 +31,7 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := cloudfirewall.GetVpcFirewallCens(ctx, &cloudfirewall.GetVpcFirewallCensArgs{
 // Ids: interface{}{
-// alicloud_cloud_firewall_vpc_firewall_cen.Default.Id,
+// defaultAlicloudCloudFirewallVpcFirewallCen.Id,
 // },
 // CenId: pulumi.StringRef("cen-cjok7uyb5w2b27573v"),
 // MemberUid: pulumi.StringRef("1415189284827022"),

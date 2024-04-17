@@ -22,18 +22,18 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultNetwork = new alicloud.ens.Network("defaultNetwork", {
+ * const _default = new alicloud.ens.Network("default", {
  *     networkName: name,
  *     description: name,
  *     cidrBlock: "192.168.2.0/24",
  *     ensRegionId: "cn-chenzhou-telecom_unicom_cmcc",
  * });
- * const defaultVswitch = new alicloud.ens.Vswitch("defaultVswitch", {
+ * const defaultVswitch = new alicloud.ens.Vswitch("default", {
  *     description: name,
  *     cidrBlock: "192.168.2.0/24",
  *     vswitchName: name,
  *     ensRegionId: "cn-chenzhou-telecom_unicom_cmcc",
- *     networkId: defaultNetwork.id,
+ *     networkId: _default.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

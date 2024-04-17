@@ -23,10 +23,10 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
  * const name = config.get("name") || "tf-example";
- * const defaultAccelerators = alicloud.ga.getAccelerators({
+ * const default = alicloud.ga.getAccelerators({
  *     status: "active",
  * });
- * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("default", {
  *     bandwidth: 100,
  *     type: "Basic",
  *     bandwidthType: "Basic",
@@ -37,28 +37,30 @@ import * as utilities from "../utilities";
  *     autoPay: true,
  *     autoUseCoupon: true,
  * });
- * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
- *     acceleratorId: defaultAccelerators.then(defaultAccelerators => defaultAccelerators.ids?.[0]),
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("default", {
+ *     acceleratorId: _default.then(_default => _default.ids?.[0]),
  *     bandwidthPackageId: defaultBandwidthPackage.id,
  * });
- * const defaultListener = new alicloud.ga.Listener("defaultListener", {
+ * const defaultListener = new alicloud.ga.Listener("default", {
  *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
  *     clientAffinity: "SOURCE_IP",
  *     protocol: "UDP",
+ *     name: name,
  *     portRanges: [{
  *         fromPort: 60,
  *         toPort: 70,
  *     }],
  * });
- * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("default", {
  *     bandwidth: "10",
  *     internetChargeType: "PayByBandwidth",
  *     addressName: name,
  * });
- * const defaultEndpointGroup = new alicloud.ga.EndpointGroup("defaultEndpointGroup", {
+ * const defaultEndpointGroup = new alicloud.ga.EndpointGroup("default", {
  *     acceleratorId: defaultListener.acceleratorId,
  *     listenerId: defaultListener.id,
  *     description: name,
+ *     name: name,
  *     thresholdCount: 4,
  *     trafficPercentage: 20,
  *     endpointGroupRegion: "cn-hangzhou",
@@ -76,11 +78,11 @@ import * as utilities from "../utilities";
  *         weight: 20,
  *     }],
  * });
- * const defaultEndpointGroups = alicloud.ga.getEndpointGroupsOutput({
+ * const defaultGetEndpointGroups = alicloud.ga.getEndpointGroupsOutput({
  *     acceleratorId: defaultEndpointGroup.acceleratorId,
  *     ids: [defaultEndpointGroup.id],
  * });
- * export const firstGaEndpointGroupId = defaultEndpointGroups.apply(defaultEndpointGroups => defaultEndpointGroups.groups?.[0]?.id);
+ * export const firstGaEndpointGroupId = defaultGetEndpointGroups.apply(defaultGetEndpointGroups => defaultGetEndpointGroups.groups?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -179,10 +181,10 @@ export interface GetEndpointGroupsResult {
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
  * const name = config.get("name") || "tf-example";
- * const defaultAccelerators = alicloud.ga.getAccelerators({
+ * const default = alicloud.ga.getAccelerators({
  *     status: "active",
  * });
- * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("default", {
  *     bandwidth: 100,
  *     type: "Basic",
  *     bandwidthType: "Basic",
@@ -193,28 +195,30 @@ export interface GetEndpointGroupsResult {
  *     autoPay: true,
  *     autoUseCoupon: true,
  * });
- * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
- *     acceleratorId: defaultAccelerators.then(defaultAccelerators => defaultAccelerators.ids?.[0]),
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("default", {
+ *     acceleratorId: _default.then(_default => _default.ids?.[0]),
  *     bandwidthPackageId: defaultBandwidthPackage.id,
  * });
- * const defaultListener = new alicloud.ga.Listener("defaultListener", {
+ * const defaultListener = new alicloud.ga.Listener("default", {
  *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
  *     clientAffinity: "SOURCE_IP",
  *     protocol: "UDP",
+ *     name: name,
  *     portRanges: [{
  *         fromPort: 60,
  *         toPort: 70,
  *     }],
  * });
- * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("default", {
  *     bandwidth: "10",
  *     internetChargeType: "PayByBandwidth",
  *     addressName: name,
  * });
- * const defaultEndpointGroup = new alicloud.ga.EndpointGroup("defaultEndpointGroup", {
+ * const defaultEndpointGroup = new alicloud.ga.EndpointGroup("default", {
  *     acceleratorId: defaultListener.acceleratorId,
  *     listenerId: defaultListener.id,
  *     description: name,
+ *     name: name,
  *     thresholdCount: 4,
  *     trafficPercentage: 20,
  *     endpointGroupRegion: "cn-hangzhou",
@@ -232,11 +236,11 @@ export interface GetEndpointGroupsResult {
  *         weight: 20,
  *     }],
  * });
- * const defaultEndpointGroups = alicloud.ga.getEndpointGroupsOutput({
+ * const defaultGetEndpointGroups = alicloud.ga.getEndpointGroupsOutput({
  *     acceleratorId: defaultEndpointGroup.acceleratorId,
  *     ids: [defaultEndpointGroup.id],
  * });
- * export const firstGaEndpointGroupId = defaultEndpointGroups.apply(defaultEndpointGroups => defaultEndpointGroups.groups?.[0]?.id);
+ * export const firstGaEndpointGroupId = defaultGetEndpointGroups.apply(defaultGetEndpointGroups => defaultGetEndpointGroups.groups?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */

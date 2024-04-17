@@ -30,14 +30,15 @@ namespace Pulumi.AliCloud.Ots
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Ots.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Ots.Instance("default", new()
     ///     {
+    ///         Name = $"{name}-{@default.Result}",
     ///         Description = name,
     ///         AccessedBy = "Any",
     ///         Tags = 
@@ -47,7 +48,7 @@ namespace Pulumi.AliCloud.Ots
     ///         },
     ///     });
     /// 
-    ///     var defaultTable = new AliCloud.Ots.Table("defaultTable", new()
+    ///     var defaultTable = new AliCloud.Ots.Table("default", new()
     ///     {
     ///         InstanceName = defaultInstance.Name,
     ///         TableName = "tf_example",
@@ -75,7 +76,7 @@ namespace Pulumi.AliCloud.Ots
     ///         },
     ///     });
     /// 
-    ///     var defaultSearchIndex = new AliCloud.Ots.SearchIndex("defaultSearchIndex", new()
+    ///     var defaultSearchIndex = new AliCloud.Ots.SearchIndex("default", new()
     ///     {
     ///         InstanceName = defaultInstance.Name,
     ///         TableName = defaultTable.TableName,

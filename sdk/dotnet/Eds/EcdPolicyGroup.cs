@@ -31,32 +31,32 @@ namespace Pulumi.AliCloud.Eds
     /// {
     ///     var @default = new AliCloud.Eds.EcdPolicyGroup("default", new()
     ///     {
+    ///         PolicyGroupName = "terraform-example",
+    ///         Clipboard = "read",
+    ///         LocalDrive = "read",
+    ///         UsbRedirect = "off",
+    ///         Watermark = "off",
     ///         AuthorizeAccessPolicyRules = new[]
     ///         {
     ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
     ///             {
-    ///                 CidrIp = "1.2.3.45/24",
     ///                 Description = "terraform-example",
+    ///                 CidrIp = "1.2.3.45/24",
     ///             },
     ///         },
     ///         AuthorizeSecurityPolicyRules = new[]
     ///         {
     ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
     ///             {
-    ///                 CidrIp = "1.2.3.4/24",
-    ///                 Description = "terraform-example",
-    ///                 IpProtocol = "TCP",
-    ///                 Policy = "accept",
-    ///                 PortRange = "80/80",
-    ///                 Priority = "1",
     ///                 Type = "inflow",
+    ///                 Policy = "accept",
+    ///                 Description = "terraform-example",
+    ///                 PortRange = "80/80",
+    ///                 IpProtocol = "TCP",
+    ///                 Priority = "1",
+    ///                 CidrIp = "1.2.3.4/24",
     ///             },
     ///         },
-    ///         Clipboard = "read",
-    ///         LocalDrive = "read",
-    ///         PolicyGroupName = "terraform-example",
-    ///         UsbRedirect = "off",
-    ///         Watermark = "off",
     ///     });
     /// 
     /// });

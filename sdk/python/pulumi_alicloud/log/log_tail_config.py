@@ -292,21 +292,25 @@ class LogTailConfig(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        example_log_tail_config = alicloud.log.LogTailConfig("exampleLogTailConfig",
-            project=example_project.name,
+        example_log_tail_config = alicloud.log.LogTailConfig("example",
+            project=example.name,
             logstore=example_store.name,
             input_type="file",
+            name="terraform-example",
             output_type="LogService",
             input_detail=\"\"\"  	{
         		"logPath": "/logPath",
@@ -368,21 +372,25 @@ class LogTailConfig(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        example_log_tail_config = alicloud.log.LogTailConfig("exampleLogTailConfig",
-            project=example_project.name,
+        example_log_tail_config = alicloud.log.LogTailConfig("example",
+            project=example.name,
             logstore=example_store.name,
             input_type="file",
+            name="terraform-example",
             output_type="LogService",
             input_detail=\"\"\"  	{
         		"logPath": "/logPath",

@@ -62,17 +62,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         var vPCID = new Network(&#34;vPCID&#34;, NetworkArgs.builder()        
+ *         var vPCID = new Network(&#34;VPCID&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
  * 
- *         var vSWITCHID = new Switch(&#34;vSWITCHID&#34;, SwitchArgs.builder()        
- *             .vpcId(vPCID.id())
+ *         var vSWITCHID = new Switch(&#34;VSWITCHID&#34;, SwitchArgs.builder()        
+ *             .vpcId(VPCID.id())
  *             .zoneId(&#34;cn-hangzhou-k&#34;)
  *             .vswitchName(name)
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
@@ -81,8 +81,8 @@ import javax.annotation.Nullable;
  *         var createInstance = new DBClusterLakeVersion(&#34;createInstance&#34;, DBClusterLakeVersionArgs.builder()        
  *             .storageResource(&#34;0ACU&#34;)
  *             .zoneId(&#34;cn-hangzhou-k&#34;)
- *             .vpcId(vPCID.id())
- *             .vswitchId(vSWITCHID.id())
+ *             .vpcId(VPCID.id())
+ *             .vswitchId(VSWITCHID.id())
  *             .dbClusterDescription(name)
  *             .computeResource(&#34;16ACU&#34;)
  *             .dbClusterVersion(&#34;5.0&#34;)

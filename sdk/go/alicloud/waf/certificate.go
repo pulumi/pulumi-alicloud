@@ -36,19 +36,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := waf.NewCertificate(ctx, "default", &waf.CertificateArgs{
-//				Certificate:     pulumi.String("your_certificate"),
 //				CertificateName: pulumi.String("your_certificate_name"),
-//				Domain:          pulumi.String("your_domain_name"),
 //				InstanceId:      pulumi.String("your_instance_id"),
+//				Domain:          pulumi.String("your_domain_name"),
 //				PrivateKey:      pulumi.String("your_private_key"),
+//				Certificate:     pulumi.String("your_certificate"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = waf.NewCertificate(ctx, "default2", &waf.CertificateArgs{
-//				CertificateId: pulumi.String("your_certificate_id"),
-//				Domain:        pulumi.String("your_domain_name"),
 //				InstanceId:    pulumi.String("your_instance_id"),
+//				Domain:        pulumi.String("your_domain_name"),
+//				CertificateId: pulumi.String("your_certificate_id"),
 //			})
 //			if err != nil {
 //				return err

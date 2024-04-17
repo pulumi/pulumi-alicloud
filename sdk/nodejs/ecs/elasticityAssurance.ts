@@ -11,6 +11,39 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.196.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultGetZones = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ * });
+ * const defaultGetInstanceTypes = alicloud.ecs.getInstanceTypes({
+ *     instanceTypeFamily: "ecs.c6",
+ * });
+ * const defaultElasticityAssurance = new alicloud.ecs.ElasticityAssurance("default", {
+ *     instanceAmount: 1,
+ *     description: "before",
+ *     zoneIds: [defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id)],
+ *     privatePoolOptionsName: "test_before",
+ *     period: 1,
+ *     privatePoolOptionsMatchCriteria: "Open",
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     periodUnit: "Month",
+ *     assuranceTimes: "Unlimited",
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Ecs Elasticity Assurance can be imported using the id, e.g.

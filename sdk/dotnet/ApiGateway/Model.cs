@@ -29,14 +29,15 @@ namespace Pulumi.AliCloud.ApiGateway
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultGroup = new AliCloud.ApiGateway.Group("defaultGroup", new()
+    ///     var @default = new AliCloud.ApiGateway.Group("default", new()
     ///     {
+    ///         Name = "example_value",
     ///         Description = "example_value",
     ///     });
     /// 
-    ///     var defaultModel = new AliCloud.ApiGateway.Model("defaultModel", new()
+    ///     var defaultModel = new AliCloud.ApiGateway.Model("default", new()
     ///     {
-    ///         GroupId = defaultGroup.Id,
+    ///         GroupId = @default.Id,
     ///         ModelName = "example_value",
     ///         Schema = "{\"type\":\"object\",\"properties\":{\"id\":{\"format\":\"int64\",\"maximum\":100,\"exclusiveMaximum\":true,\"type\":\"integer\"},\"name\":{\"maxLength\":10,\"type\":\"string\"}}}",
     ///         Description = "example_value",

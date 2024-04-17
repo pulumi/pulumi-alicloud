@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Mhub
         ///     var @default = new AliCloud.Mhub.App("default", new()
         ///     {
         ///         AppName = name,
-        ///         ProductId = alicloud_mhub_product.Default.Id,
+        ///         ProductId = defaultAlicloudMhubProduct.Id,
         ///         PackageName = "com.test.android",
         ///         Type = "2",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Mhub
         ///     var @default = new AliCloud.Mhub.App("default", new()
         ///     {
         ///         AppName = name,
-        ///         ProductId = alicloud_mhub_product.Default.Id,
+        ///         ProductId = defaultAlicloudMhubProduct.Id,
         ///         PackageName = "com.test.android",
         ///         Type = "2",
         ///     });

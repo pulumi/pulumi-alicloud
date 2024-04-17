@@ -29,20 +29,20 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
+        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("default", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
         ///         DesktopAccessType = "Internet",
         ///         OfficeSiteName = "example_value",
         ///     });
         /// 
-        ///     var defaultNetworkPackage = new AliCloud.Eds.NetworkPackage("defaultNetworkPackage", new()
+        ///     var defaultNetworkPackage = new AliCloud.Eds.NetworkPackage("default", new()
         ///     {
         ///         Bandwidth = 10,
         ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
         ///     });
         /// 
-        ///     var defaultNetworkPackages = AliCloud.Eds.GetNetworkPackages.Invoke(new()
+        ///     var @default = AliCloud.Eds.GetNetworkPackages.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Eds
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["ecdNetworkPackageId1"] = defaultNetworkPackages.Apply(getNetworkPackagesResult =&gt; getNetworkPackagesResult.Packages[0]?.Id),
+        ///         ["ecdNetworkPackageId1"] = @default.Apply(@default =&gt; @default.Apply(getNetworkPackagesResult =&gt; getNetworkPackagesResult.Packages[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -79,20 +79,20 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
+        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("default", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
         ///         DesktopAccessType = "Internet",
         ///         OfficeSiteName = "example_value",
         ///     });
         /// 
-        ///     var defaultNetworkPackage = new AliCloud.Eds.NetworkPackage("defaultNetworkPackage", new()
+        ///     var defaultNetworkPackage = new AliCloud.Eds.NetworkPackage("default", new()
         ///     {
         ///         Bandwidth = 10,
         ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
         ///     });
         /// 
-        ///     var defaultNetworkPackages = AliCloud.Eds.GetNetworkPackages.Invoke(new()
+        ///     var @default = AliCloud.Eds.GetNetworkPackages.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Eds
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["ecdNetworkPackageId1"] = defaultNetworkPackages.Apply(getNetworkPackagesResult =&gt; getNetworkPackagesResult.Packages[0]?.Id),
+        ///         ["ecdNetworkPackageId1"] = @default.Apply(@default =&gt; @default.Apply(getNetworkPackagesResult =&gt; getNetworkPackagesResult.Packages[0]?.Id)),
         ///     };
         /// });
         /// ```

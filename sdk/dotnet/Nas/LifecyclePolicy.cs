@@ -29,15 +29,15 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new()
+    ///     var example = new AliCloud.Nas.FileSystem("example", new()
     ///     {
     ///         ProtocolType = "NFS",
     ///         StorageType = "Capacity",
     ///     });
     /// 
-    ///     var exampleLifecyclePolicy = new AliCloud.Nas.LifecyclePolicy("exampleLifecyclePolicy", new()
+    ///     var exampleLifecyclePolicy = new AliCloud.Nas.LifecyclePolicy("example", new()
     ///     {
-    ///         FileSystemId = exampleFileSystem.Id,
+    ///         FileSystemId = example.Id,
     ///         LifecyclePolicyName = "terraform-example",
     ///         LifecycleRuleName = "DEFAULT_ATIME_14",
     ///         StorageType = "InfrequentAccess",

@@ -195,10 +195,10 @@ class PublishTask(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_agents = alicloud.chatbot.get_agents()
-        default_publish_task = alicloud.chatbot.PublishTask("defaultPublishTask",
+        default = alicloud.chatbot.get_agents()
+        default_publish_task = alicloud.chatbot.PublishTask("default",
             biz_type="faq",
-            agent_key=default_agents.agents[0].agent_key)
+            agent_key=default.agents[0].agent_key)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -238,10 +238,10 @@ class PublishTask(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_agents = alicloud.chatbot.get_agents()
-        default_publish_task = alicloud.chatbot.PublishTask("defaultPublishTask",
+        default = alicloud.chatbot.get_agents()
+        default_publish_task = alicloud.chatbot.PublishTask("default",
             biz_type="faq",
-            agent_key=default_agents.agents[0].agent_key)
+            agent_key=default.agents[0].agent_key)
         ```
         <!--End PulumiCodeChooser -->
 

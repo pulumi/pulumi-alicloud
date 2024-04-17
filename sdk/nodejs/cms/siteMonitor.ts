@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  *
  * const basic = new alicloud.cms.SiteMonitor("basic", {
  *     address: "http://www.alibabacloud.com",
+ *     taskName: "tf-example",
+ *     taskType: "HTTP",
  *     interval: 5,
  *     ispCities: [{
  *         city: "546",
@@ -43,10 +45,7 @@ import * as utilities from "../utilities";
  *     ],
  *     "time_out": 30000
  * }
- *
  * `,
- *     taskName: "tf-example",
- *     taskType: "HTTP",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

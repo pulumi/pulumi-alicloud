@@ -23,26 +23,26 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultApplication = new alicloud.oos.Application("defaultApplication", {
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
- *     applicationName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultApplication = new alicloud.oos.Application("default", {
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
+ *     applicationName: `${name}-${defaultInteger.result}`,
  *     description: name,
  *     tags: {
  *         Created: "TF",
  *     },
  * });
- * const defaultRegions = alicloud.getRegions({
+ * const defaultGetRegions = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultApplicationGroup = new alicloud.oos.ApplicationGroup("defaultApplicationGroup", {
+ * const defaultApplicationGroup = new alicloud.oos.ApplicationGroup("default", {
  *     applicationGroupName: name,
  *     applicationName: defaultApplication.id,
- *     deployRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     deployRegionId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.id),
  *     description: name,
  *     importTagKey: "example_key",
  *     importTagValue: "example_value",

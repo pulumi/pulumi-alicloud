@@ -145,9 +145,9 @@ class AlertResource(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_user = alicloud.log.AlertResource("exampleUser",
-            lang="cn",
-            type="user")
+        example_user = alicloud.log.AlertResource("example_user",
+            type="user",
+            lang="cn")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -185,9 +185,9 @@ class AlertResource(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_user = alicloud.log.AlertResource("exampleUser",
-            lang="cn",
-            type="user")
+        example_user = alicloud.log.AlertResource("example_user",
+            type="user",
+            lang="cn")
         ```
         <!--End PulumiCodeChooser -->
 

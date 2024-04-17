@@ -47,17 +47,17 @@ import (
 //			if param := cfg.Get("domainName"); param != "" {
 //				domainName = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
+//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
 //				AlarmContactGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultGtmInstance, err := dns.NewGtmInstance(ctx, "defaultGtmInstance", &dns.GtmInstanceArgs{
+//			defaultGtmInstance, err := dns.NewGtmInstance(ctx, "default", &dns.GtmInstanceArgs{
 //				InstanceName:         pulumi.String(name),
 //				PaymentType:          pulumi.String("Subscription"),
 //				Period:               pulumi.Int(1),
@@ -68,7 +68,7 @@ import (
 //				PublicCnameMode:      pulumi.String("SYSTEM_ASSIGN"),
 //				Ttl:                  pulumi.Int(60),
 //				CnameType:            pulumi.String("PUBLIC"),
-//				ResourceGroupId:      pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId:      pulumi.String(_default.Groups[0].Id),
 //				AlertGroups: pulumi.StringArray{
 //					defaultAlarmContactGroup.AlarmContactGroupName,
 //				},
@@ -85,7 +85,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultAddressPool, err := dns.NewAddressPool(ctx, "defaultAddressPool", &dns.AddressPoolArgs{
+//			defaultAddressPool, err := dns.NewAddressPool(ctx, "default", &dns.AddressPoolArgs{
 //				AddressPoolName: pulumi.String(name),
 //				InstanceId:      defaultGtmInstance.ID(),
 //				LbaStrategy:     pulumi.String("RATIO"),
@@ -103,7 +103,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dns.NewMonitorConfig(ctx, "defaultMonitorConfig", &dns.MonitorConfigArgs{
+//			_, err = dns.NewMonitorConfig(ctx, "default", &dns.MonitorConfigArgs{
 //				AddrPoolId:        defaultAddressPool.ID(),
 //				EvaluationCount:   pulumi.Int(1),
 //				Interval:          pulumi.Int(60),

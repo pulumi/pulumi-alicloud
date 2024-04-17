@@ -31,12 +31,12 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tfexample";
-    ///     var defaultHoneypotImages = AliCloud.ThreatDetection.GetHoneypotImages.Invoke(new()
+    ///     var @default = AliCloud.ThreatDetection.GetHoneypotImages.Invoke(new()
     ///     {
     ///         NameRegex = "^ruoyi",
     ///     });
     /// 
-    ///     var defaultHoneypotNode = new AliCloud.ThreatDetection.HoneypotNode("defaultHoneypotNode", new()
+    ///     var defaultHoneypotNode = new AliCloud.ThreatDetection.HoneypotNode("default", new()
     ///     {
     ///         NodeName = name,
     ///         AvailableProbeNum = 20,
@@ -46,11 +46,11 @@ namespace Pulumi.AliCloud.ThreatDetection
     ///         },
     ///     });
     /// 
-    ///     var defaultHoneypotPreset = new AliCloud.ThreatDetection.HoneypotPreset("defaultHoneypotPreset", new()
+    ///     var defaultHoneypotPreset = new AliCloud.ThreatDetection.HoneypotPreset("default", new()
     ///     {
     ///         PresetName = name,
     ///         NodeId = defaultHoneypotNode.Id,
-    ///         HoneypotImageName = defaultHoneypotImages.Apply(getHoneypotImagesResult =&gt; getHoneypotImagesResult.Images[0]?.HoneypotImageName),
+    ///         HoneypotImageName = @default.Apply(@default =&gt; @default.Apply(getHoneypotImagesResult =&gt; getHoneypotImagesResult.Images[0]?.HoneypotImageName)),
     ///         Meta = new AliCloud.ThreatDetection.Inputs.HoneypotPresetMetaArgs
     ///         {
     ///             PortraitOption = true,

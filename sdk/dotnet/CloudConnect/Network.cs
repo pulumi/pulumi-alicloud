@@ -35,6 +35,7 @@ namespace Pulumi.AliCloud.CloudConnect
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.CloudConnect.Network("default", new()
     ///     {
+    ///         Name = name,
     ///         Description = name,
     ///         CidrBlock = "192.168.0.0/24",
     ///         IsDefault = true,

@@ -33,19 +33,19 @@ namespace Pulumi.AliCloud.MongoDB
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultZones = AliCloud.MongoDB.GetZones.Invoke();
+    ///     var @default = AliCloud.MongoDB.GetZones.Invoke();
     /// 
-    ///     var index = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones).Length.Apply(length =&gt; length - 1);
+    ///     var index = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length.Apply(length =&gt; length - 1);
     /// 
-    ///     var zoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones)[index].Id;
+    ///     var zoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[index].Id);
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "172.17.3.0/24",
@@ -53,11 +53,12 @@ namespace Pulumi.AliCloud.MongoDB
     ///         ZoneId = zoneId,
     ///     });
     /// 
-    ///     var defaultShardingInstance = new AliCloud.MongoDB.ShardingInstance("defaultShardingInstance", new()
+    ///     var defaultShardingInstance = new AliCloud.MongoDB.ShardingInstance("default", new()
     ///     {
     ///         ZoneId = zoneId,
     ///         VswitchId = defaultSwitch.Id,
     ///         EngineVersion = "4.2",
+    ///         Name = name,
     ///         ShardLists = new[]
     ///         {
     ///             new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs

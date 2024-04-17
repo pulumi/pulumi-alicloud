@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -38,6 +38,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
+    ///         Name = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///         Tags = 
     ///         {
@@ -62,14 +63,15 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var examplePolicy = new AliCloud.Log.Project("examplePolicy", new()
+    ///     var examplePolicy = new AliCloud.Log.Project("example_policy", new()
     ///     {
+    ///         Name = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///         Policy = @"{
     ///   ""Statement"": [
@@ -90,7 +92,6 @@ namespace Pulumi.AliCloud.Log
     ///   ],
     ///   ""Version"": ""1""
     /// }
-    /// 
     /// ",
     ///     });
     /// 

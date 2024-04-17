@@ -143,8 +143,9 @@ class Topic(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         topic = alicloud.mns.Topic("topic",
-            logging_enabled=False,
-            maximum_message_size=65536)
+            name="tf-example-mnstopic",
+            maximum_message_size=65536,
+            logging_enabled=False)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -179,8 +180,9 @@ class Topic(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         topic = alicloud.mns.Topic("topic",
-            logging_enabled=False,
-            maximum_message_size=65536)
+            name="tf-example-mnstopic",
+            maximum_message_size=65536,
+            logging_enabled=False)
         ```
         <!--End PulumiCodeChooser -->
 

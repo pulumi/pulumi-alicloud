@@ -20,17 +20,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultSystemGroup = new alicloud.videosurveillance.SystemGroup("defaultSystemGroup", {
+ * const defaultSystemGroup = new alicloud.videosurveillance.SystemGroup("default", {
  *     groupName: "groupname",
  *     inProtocol: "rtmp",
  *     outProtocol: "flv",
  *     playDomain: "your_plan_domain",
  *     pushDomain: "your_push_domain",
  * });
- * const defaultSystemGroups = alicloud.videosurveillance.getSystemGroupsOutput({
+ * const default = alicloud.videosurveillance.getSystemGroupsOutput({
  *     ids: [defaultSystemGroup.id],
  * });
- * export const vsGroup = defaultSystemGroups.apply(defaultSystemGroups => defaultSystemGroups.ids?.[0]);
+ * export const vsGroup = _default.apply(_default => _default.ids?.[0]);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -109,17 +109,17 @@ export interface GetSystemGroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultSystemGroup = new alicloud.videosurveillance.SystemGroup("defaultSystemGroup", {
+ * const defaultSystemGroup = new alicloud.videosurveillance.SystemGroup("default", {
  *     groupName: "groupname",
  *     inProtocol: "rtmp",
  *     outProtocol: "flv",
  *     playDomain: "your_plan_domain",
  *     pushDomain: "your_push_domain",
  * });
- * const defaultSystemGroups = alicloud.videosurveillance.getSystemGroupsOutput({
+ * const default = alicloud.videosurveillance.getSystemGroupsOutput({
  *     ids: [defaultSystemGroup.id],
  * });
- * export const vsGroup = defaultSystemGroups.apply(defaultSystemGroups => defaultSystemGroups.ids?.[0]);
+ * export const vsGroup = _default.apply(_default => _default.ids?.[0]);
  * ```
  * <!--End PulumiCodeChooser -->
  */

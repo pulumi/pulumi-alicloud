@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const exampleRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance", {
+ * const example = new alicloud.cr.RegistryEnterpriseInstance("example", {
  *     paymentType: "Subscription",
  *     period: 1,
  *     renewPeriod: 0,
@@ -30,11 +30,11 @@ import * as utilities from "../utilities";
  *     instanceType: "Advanced",
  *     instanceName: name,
  * });
- * const exampleChartNamespace = new alicloud.cr.ChartNamespace("exampleChartNamespace", {
- *     instanceId: exampleRegistryEnterpriseInstance.id,
+ * const exampleChartNamespace = new alicloud.cr.ChartNamespace("example", {
+ *     instanceId: example.id,
  *     namespaceName: name,
  * });
- * const exampleChartRepository = new alicloud.cr.ChartRepository("exampleChartRepository", {
+ * const exampleChartRepository = new alicloud.cr.ChartRepository("example", {
  *     repoNamespaceName: exampleChartNamespace.namespaceName,
  *     instanceId: exampleChartNamespace.instanceId,
  *     repoName: name,

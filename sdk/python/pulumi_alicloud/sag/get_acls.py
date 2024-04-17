@@ -119,9 +119,9 @@ def get_acls(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_acls = alicloud.sag.get_acls(ids=[alicloud_sag_acls["default"]["id"]],
+    default = alicloud.sag.get_acls(ids=[default_alicloud_sag_acls["id"]],
         name_regex="^tf-testAcc.*")
-    default_acl = alicloud.rocketmq.Acl("defaultAcl")
+    default_acl = alicloud.rocketmq.Acl("default", name="tf-testAccSagAclName")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -166,9 +166,9 @@ def get_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_acls = alicloud.sag.get_acls(ids=[alicloud_sag_acls["default"]["id"]],
+    default = alicloud.sag.get_acls(ids=[default_alicloud_sag_acls["id"]],
         name_regex="^tf-testAcc.*")
-    default_acl = alicloud.rocketmq.Acl("defaultAcl")
+    default_acl = alicloud.rocketmq.Acl("default", name="tf-testAccSagAclName")
     ```
     <!--End PulumiCodeChooser -->
 

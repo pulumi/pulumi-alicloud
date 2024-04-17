@@ -29,25 +29,26 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {
         ///     var config = new Config();
         ///     var instanceName = config.Get("instanceName") ?? "alikafkaInstanceName";
-        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
         /// 
-        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
         ///     });
         /// 
-        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
         ///     {
         ///         VpcId = defaultNetwork.Id,
         ///         CidrBlock = "172.16.0.0/24",
-        ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
         ///     });
         /// 
-        ///     var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new()
+        ///     var defaultInstance = new AliCloud.AliKafka.Instance("default", new()
         ///     {
+        ///         Name = instanceName,
         ///         PartitionNum = 50,
         ///         DiskType = 1,
         ///         DiskSize = 500,
@@ -91,25 +92,26 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {
         ///     var config = new Config();
         ///     var instanceName = config.Get("instanceName") ?? "alikafkaInstanceName";
-        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
         /// 
-        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
         ///     });
         /// 
-        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
         ///     {
         ///         VpcId = defaultNetwork.Id,
         ///         CidrBlock = "172.16.0.0/24",
-        ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
         ///     });
         /// 
-        ///     var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new()
+        ///     var defaultInstance = new AliCloud.AliKafka.Instance("default", new()
         ///     {
+        ///         Name = instanceName,
         ///         PartitionNum = 50,
         ///         DiskType = 1,
         ///         DiskSize = 500,

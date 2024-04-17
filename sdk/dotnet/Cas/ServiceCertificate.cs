@@ -30,14 +30,15 @@ namespace Pulumi.AliCloud.Cas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
-    ///         Max = 99999,
     ///         Min = 10000,
+    ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultServiceCertificate = new AliCloud.Cas.ServiceCertificate("defaultServiceCertificate", new()
+    ///     var defaultServiceCertificate = new AliCloud.Cas.ServiceCertificate("default", new()
     ///     {
+    ///         CertificateName = $"tf-example-{@default.Result}",
     ///         Cert = @"-----BEGIN CERTIFICATE-----
     /// MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
     /// TjEVMBMGA1UEAwwMKi50ZnRlc3QudG9wMRAwDgYDVQQIDAdCZWlKaW5nMRAwDgYD
@@ -59,9 +60,7 @@ namespace Pulumi.AliCloud.Cas
     /// TTc40xwvQROekWUyxeJL7xaHuylUHE0bxsiIfx5bZsBizRjprIwGlj85CSPuTZyP
     /// DPfaiZAN/61h5HNAnxLltOZfqabKYYw7l9LBDg==
     /// -----END CERTIFICATE-----
-    /// 
     /// ",
-    ///         CertificateName = defaultRandomInteger.Result.Apply(result =&gt; $"tf-example-{result}"),
     ///         Key = @"-----BEGIN PRIVATE KEY-----
     /// MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDOST00lQfs8tJA
     /// rhFGsZBjl1Wx+2SGcqH0eEjrKueWjBYgM9LU9kc5T/mBDvE9Q8Z0pBXlLvHzBE6c
@@ -90,7 +89,6 @@ namespace Pulumi.AliCloud.Cas
     /// CIFqfEL5NriQelqrFsvgHsmD+MpvDoSWm5C8IrTubtlNyWUzXSVT4OIwzPobzPqG
     /// LILJ+e7bLw8RrM0HfgFnl8c=
     /// -----END PRIVATE KEY-----
-    /// 
     /// ",
     ///     });
     /// 

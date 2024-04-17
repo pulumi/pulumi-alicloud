@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.dcdn.IpaDomain;
@@ -53,16 +53,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var example = new IpaDomain(&#34;example&#34;, IpaDomainArgs.builder()        
- *             .domainName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;example-%s.com&#34;, result)))
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .domainName(String.format(&#34;example-%s.com&#34;, defaultInteger.result()))
+ *             .resourceGroupId(default_.groups()[0].id())
  *             .scope(&#34;overseas&#34;)
  *             .status(&#34;online&#34;)
  *             .sources(IpaDomainSourceArgs.builder()

@@ -38,20 +38,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("Gpdb"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				Name:      pulumi.String("vpc-123456"),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String("vpc-123456"),
@@ -59,7 +60,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gpdb.NewElasticInstance(ctx, "adbPgInstance", &gpdb.ElasticInstanceArgs{
+//			_, err = gpdb.NewElasticInstance(ctx, "adb_pg_instance", &gpdb.ElasticInstanceArgs{
 //				Engine:                pulumi.String("gpdb"),
 //				EngineVersion:         pulumi.String("6.0"),
 //				SegStorageType:        pulumi.String("cloud_essd"),

@@ -116,8 +116,8 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
-     *             .nameRegex(&#34;lifecyclehook_name&#34;)
      *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .nameRegex(&#34;lifecyclehook_name&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
@@ -160,8 +160,8 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
-     *             .nameRegex(&#34;lifecyclehook_name&#34;)
      *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .nameRegex(&#34;lifecyclehook_name&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
@@ -204,8 +204,8 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
-     *             .nameRegex(&#34;lifecyclehook_name&#34;)
      *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .nameRegex(&#34;lifecyclehook_name&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
@@ -248,8 +248,8 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
-     *             .nameRegex(&#34;lifecyclehook_name&#34;)
      *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .nameRegex(&#34;lifecyclehook_name&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
@@ -292,8 +292,8 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
-     *             .nameRegex(&#34;lifecyclehook_name&#34;)
      *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .nameRegex(&#34;lifecyclehook_name&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
@@ -336,8 +336,8 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
-     *             .nameRegex(&#34;lifecyclehook_name&#34;)
      *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .nameRegex(&#34;lifecyclehook_name&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
@@ -550,11 +550,11 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .ids(            
      *                 &#34;scaling_configuration_id1&#34;,
      *                 &#34;scaling_configuration_id2&#34;)
      *             .nameRegex(&#34;scaling_configuration_name&#34;)
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
@@ -595,11 +595,11 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .ids(            
      *                 &#34;scaling_configuration_id1&#34;,
      *                 &#34;scaling_configuration_id2&#34;)
      *             .nameRegex(&#34;scaling_configuration_name&#34;)
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
@@ -640,11 +640,11 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .ids(            
      *                 &#34;scaling_configuration_id1&#34;,
      *                 &#34;scaling_configuration_id2&#34;)
      *             .nameRegex(&#34;scaling_configuration_name&#34;)
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
@@ -685,11 +685,11 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .ids(            
      *                 &#34;scaling_configuration_id1&#34;,
      *                 &#34;scaling_configuration_id2&#34;)
      *             .nameRegex(&#34;scaling_configuration_name&#34;)
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
@@ -730,11 +730,11 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .ids(            
      *                 &#34;scaling_configuration_id1&#34;,
      *                 &#34;scaling_configuration_id2&#34;)
      *             .nameRegex(&#34;scaling_configuration_name&#34;)
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
@@ -775,11 +775,11 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .ids(            
      *                 &#34;scaling_configuration_id1&#34;,
      *                 &#34;scaling_configuration_id2&#34;)
      *             .nameRegex(&#34;scaling_configuration_name&#34;)
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
@@ -1084,11 +1084,11 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .ids(            
      *                 &#34;scaling_rule_id1&#34;,
      *                 &#34;scaling_rule_id2&#34;)
      *             .nameRegex(&#34;scaling_rule_name&#34;)
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
@@ -1129,11 +1129,11 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .ids(            
      *                 &#34;scaling_rule_id1&#34;,
      *                 &#34;scaling_rule_id2&#34;)
      *             .nameRegex(&#34;scaling_rule_name&#34;)
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
@@ -1174,11 +1174,11 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .ids(            
      *                 &#34;scaling_rule_id1&#34;,
      *                 &#34;scaling_rule_id2&#34;)
      *             .nameRegex(&#34;scaling_rule_name&#34;)
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
@@ -1219,11 +1219,11 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .ids(            
      *                 &#34;scaling_rule_id1&#34;,
      *                 &#34;scaling_rule_id2&#34;)
      *             .nameRegex(&#34;scaling_rule_name&#34;)
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
@@ -1264,11 +1264,11 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .ids(            
      *                 &#34;scaling_rule_id1&#34;,
      *                 &#34;scaling_rule_id2&#34;)
      *             .nameRegex(&#34;scaling_rule_name&#34;)
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
@@ -1309,11 +1309,11 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
+     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .ids(            
      *                 &#34;scaling_rule_id1&#34;,
      *                 &#34;scaling_rule_id2&#34;)
      *             .nameRegex(&#34;scaling_rule_name&#34;)
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
@@ -1356,8 +1356,8 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
-     *             .nameRegex(&#34;scheduled_task_name&#34;)
      *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
+     *             .nameRegex(&#34;scheduled_task_name&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
@@ -1400,8 +1400,8 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
-     *             .nameRegex(&#34;scheduled_task_name&#34;)
      *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
+     *             .nameRegex(&#34;scheduled_task_name&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
@@ -1444,8 +1444,8 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
-     *             .nameRegex(&#34;scheduled_task_name&#34;)
      *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
+     *             .nameRegex(&#34;scheduled_task_name&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
@@ -1488,8 +1488,8 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
-     *             .nameRegex(&#34;scheduled_task_name&#34;)
      *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
+     *             .nameRegex(&#34;scheduled_task_name&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
@@ -1532,8 +1532,8 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
-     *             .nameRegex(&#34;scheduled_task_name&#34;)
      *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
+     *             .nameRegex(&#34;scheduled_task_name&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
@@ -1576,8 +1576,8 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
-     *             .nameRegex(&#34;scheduled_task_name&#34;)
      *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
+     *             .nameRegex(&#34;scheduled_task_name&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));

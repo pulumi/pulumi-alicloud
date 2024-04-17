@@ -181,7 +181,7 @@ def get_flowlogs(cen_id: Optional[str] = None,
 
     default = alicloud.cen.get_flowlogs(ids=["flowlog-tig1xxxxx"],
         name_regex="^foo")
-    pulumi.export("firstCenFlowlogId", data["alicloud_cen_instances"]["default"]["flowlogs"][0]["id"])
+    pulumi.export("firstCenFlowlogId", default_alicloud_cen_instances["flowlogs"][0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -247,7 +247,7 @@ def get_flowlogs_output(cen_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     default = alicloud.cen.get_flowlogs(ids=["flowlog-tig1xxxxx"],
         name_regex="^foo")
-    pulumi.export("firstCenFlowlogId", data["alicloud_cen_instances"]["default"]["flowlogs"][0]["id"])
+    pulumi.export("firstCenFlowlogId", default_alicloud_cen_instances["flowlogs"][0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 

@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
- * const defaultBasicAccelerator = new alicloud.ga.BasicAccelerator("defaultBasicAccelerator", {
+ * const _default = new alicloud.ga.BasicAccelerator("default", {
  *     duration: 1,
  *     basicAcceleratorName: "terraform-example",
  *     description: "terraform-example",
@@ -30,14 +30,14 @@ import * as utilities from "../utilities";
  *     autoUseCoupon: "true",
  *     autoPay: true,
  * });
- * const defaultBasicIpSet = new alicloud.ga.BasicIpSet("defaultBasicIpSet", {
- *     acceleratorId: defaultBasicAccelerator.id,
+ * const defaultBasicIpSet = new alicloud.ga.BasicIpSet("default", {
+ *     acceleratorId: _default.id,
  *     accelerateRegionId: region,
  *     ispType: "BGP",
  *     bandwidth: 5,
  * });
- * const defaultBasicAccelerateIp = new alicloud.ga.BasicAccelerateIp("defaultBasicAccelerateIp", {
- *     acceleratorId: defaultBasicAccelerator.id,
+ * const defaultBasicAccelerateIp = new alicloud.ga.BasicAccelerateIp("default", {
+ *     acceleratorId: _default.id,
  *     ipSetId: defaultBasicIpSet.id,
  * });
  * ```

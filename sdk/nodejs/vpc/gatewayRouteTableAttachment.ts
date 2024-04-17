@@ -20,22 +20,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const example = new alicloud.vpc.Network("example", {
  *     cidrBlock: "172.16.0.0/12",
  *     vpcName: "terraform-example",
  * });
- * const exampleRouteTable = new alicloud.vpc.RouteTable("exampleRouteTable", {
- *     vpcId: exampleNetwork.id,
+ * const exampleRouteTable = new alicloud.vpc.RouteTable("example", {
+ *     vpcId: example.id,
  *     routeTableName: "terraform-example",
  *     description: "terraform-example",
  *     associateType: "Gateway",
  * });
- * const exampleIpv4Gateway = new alicloud.vpc.Ipv4Gateway("exampleIpv4Gateway", {
+ * const exampleIpv4Gateway = new alicloud.vpc.Ipv4Gateway("example", {
  *     ipv4GatewayName: "terraform-example",
- *     vpcId: exampleNetwork.id,
+ *     vpcId: example.id,
  *     enabled: true,
  * });
- * const exampleGatewayRouteTableAttachment = new alicloud.vpc.GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment", {
+ * const exampleGatewayRouteTableAttachment = new alicloud.vpc.GatewayRouteTableAttachment("example", {
  *     ipv4GatewayId: exampleIpv4Gateway.id,
  *     routeTableId: exampleRouteTable.id,
  * });

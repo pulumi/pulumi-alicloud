@@ -28,10 +28,10 @@ namespace Pulumi.AliCloud.MongoDB
         /// {
         ///     var mongo = AliCloud.MongoDB.GetInstances.Invoke(new()
         ///     {
-        ///         AvailabilityZone = "eu-central-1a",
-        ///         InstanceClass = "dds.mongo.mid",
-        ///         InstanceType = "replicate",
         ///         NameRegex = "dds-.+\\d+",
+        ///         InstanceType = "replicate",
+        ///         InstanceClass = "dds.mongo.mid",
+        ///         AvailabilityZone = "eu-central-1a",
         ///     });
         /// 
         /// });
@@ -58,10 +58,10 @@ namespace Pulumi.AliCloud.MongoDB
         /// {
         ///     var mongo = AliCloud.MongoDB.GetInstances.Invoke(new()
         ///     {
-        ///         AvailabilityZone = "eu-central-1a",
-        ///         InstanceClass = "dds.mongo.mid",
-        ///         InstanceType = "replicate",
         ///         NameRegex = "dds-.+\\d+",
+        ///         InstanceType = "replicate",
+        ///         InstanceClass = "dds.mongo.mid",
+        ///         AvailabilityZone = "eu-central-1a",
         ///     });
         /// 
         /// });

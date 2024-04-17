@@ -37,39 +37,39 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//			_default, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
 //				InstanceTypeFamily: pulumi.StringRef("ecs.g5"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			defaultGetZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("Instance"),
-//				AvailableInstanceType:     pulumi.StringRef(defaultInstanceTypes.Ids[0]),
+//				AvailableInstanceType:     pulumi.StringRef(_default.Ids[0]),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//			defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
 //				Status: pulumi.StringRef("OK"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewCapacityReservation(ctx, "defaultCapacityReservation", &ecs.CapacityReservationArgs{
+//			_, err = ecs.NewCapacityReservation(ctx, "default", &ecs.CapacityReservationArgs{
 //				Description:             pulumi.String("terraform-example"),
 //				Platform:                pulumi.String("linux"),
 //				CapacityReservationName: pulumi.String("terraform-example"),
 //				EndTimeType:             pulumi.String("Unlimited"),
-//				ResourceGroupId:         pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:         pulumi.String(defaultGetResourceGroups.Ids[0]),
 //				InstanceAmount:          pulumi.Int(1),
-//				InstanceType:            pulumi.String(defaultInstanceTypes.Ids[0]),
+//				InstanceType:            pulumi.String(_default.Ids[0]),
 //				MatchCriteria:           pulumi.String("Open"),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("terraform-example"),
 //				},
 //				ZoneIds: pulumi.StringArray{
-//					pulumi.String(defaultZones.Zones[0].Id),
+//					pulumi.String(defaultGetZones.Zones[0].Id),
 //				},
 //			})
 //			if err != nil {

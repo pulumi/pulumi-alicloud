@@ -21,11 +21,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.ecs.EcsDeploymentSet("default", {
- *     deploymentSetName: "example_value",
- *     description: "example_value",
+ *     strategy: "Availability",
  *     domain: "Default",
  *     granularity: "Host",
- *     strategy: "Availability",
+ *     deploymentSetName: "example_value",
+ *     description: "example_value",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

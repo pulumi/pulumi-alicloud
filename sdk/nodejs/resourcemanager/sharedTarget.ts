@@ -23,9 +23,9 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tfexample";
  * const default = alicloud.resourcemanager.getAccounts({});
- * const exampleResourceShare = new alicloud.resourcemanager.ResourceShare("exampleResourceShare", {resourceShareName: name});
- * const exampleSharedTarget = new alicloud.resourcemanager.SharedTarget("exampleSharedTarget", {
- *     resourceShareId: exampleResourceShare.id,
+ * const example = new alicloud.resourcemanager.ResourceShare("example", {resourceShareName: name});
+ * const exampleSharedTarget = new alicloud.resourcemanager.SharedTarget("example", {
+ *     resourceShareId: example.id,
  *     targetId: _default.then(_default => _default.ids?.[0]),
  * });
  * ```

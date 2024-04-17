@@ -32,17 +32,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.Provider;
- * import com.pulumi.alicloud.ProviderArgs;
  * import com.pulumi.alicloud.hbr.HbrFunctions;
  * import com.pulumi.alicloud.hbr.inputs.GetReplicationVaultRegionsArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.hbr.Vault;
  * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.hbr.ReplicationVault;
  * import com.pulumi.alicloud.hbr.ReplicationVaultArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -58,26 +55,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var sourceRegion = config.get(&#34;sourceRegion&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         var source = new Provider(&#34;source&#34;, ProviderArgs.builder()        
- *             .region(sourceRegion)
- *             .build());
+ *         final var default = HbrFunctions.getReplicationVaultRegions();
  * 
- *         final var defaultReplicationVaultRegions = HbrFunctions.getReplicationVaultRegions();
- * 
- *         var replication = new Provider(&#34;replication&#34;, ProviderArgs.builder()        
- *             .region(defaultReplicationVaultRegions.applyValue(getReplicationVaultRegionsResult -&gt; getReplicationVaultRegionsResult.regions()[0].replicationRegionId()))
- *             .build());
- * 
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
  *         var defaultVault = new Vault(&#34;defaultVault&#34;, VaultArgs.builder()        
- *             .vaultName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.source())
- *                 .build());
+ *             .vaultName(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
+ *             .build());
  * 
  *         var defaultReplicationVault = new ReplicationVault(&#34;defaultReplicationVault&#34;, ReplicationVaultArgs.builder()        
  *             .replicationSourceRegionId(sourceRegion)
@@ -85,9 +72,7 @@ import javax.annotation.Nullable;
  *             .vaultName(&#34;terraform-example&#34;)
  *             .vaultStorageClass(&#34;STANDARD&#34;)
  *             .description(&#34;terraform-example&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.replication())
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

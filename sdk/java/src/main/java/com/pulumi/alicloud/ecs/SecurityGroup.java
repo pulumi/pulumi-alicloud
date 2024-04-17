@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new SecurityGroup(&#34;default&#34;, SecurityGroupArgs.builder()        
+ *             .name(&#34;terraform-example&#34;)
  *             .description(&#34;New security group&#34;)
  *             .build());
  * 
@@ -95,6 +96,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *             .name(&#34;terraform-example&#34;)
  *             .vpcId(vpc.id())
  *             .build());
  * 

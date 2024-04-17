@@ -33,8 +33,8 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["masterId"] = data.Alicloud_cen_transit_router_available_resources.Default.Resources[0].Master_zones[0],
-        ///         ["slaveId"] = data.Alicloud_cen_transit_router_available_resources.Default.Resources[0].Slave_zones[0],
+        ///         ["masterId"] = @default.Resources[0].MasterZones[0],
+        ///         ["slaveId"] = @default.Resources[0].SlaveZones[0],
         ///     };
         /// });
         /// ```
@@ -65,8 +65,8 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["masterId"] = data.Alicloud_cen_transit_router_available_resources.Default.Resources[0].Master_zones[0],
-        ///         ["slaveId"] = data.Alicloud_cen_transit_router_available_resources.Default.Resources[0].Slave_zones[0],
+        ///         ["masterId"] = @default.Resources[0].MasterZones[0],
+        ///         ["slaveId"] = @default.Resources[0].SlaveZones[0],
         ///     };
         /// });
         /// ```

@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
+//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
 //				CidrBlock:         pulumi.String("172.16.0.0/12"),
 //				DesktopAccessType: pulumi.String("Internet"),
 //				OfficeSiteName:    pulumi.String("your_office_site_name"),
@@ -40,13 +40,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultBundles, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
+//			_default, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
 //				BundleType: pulumi.StringRef("SYSTEM"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "defaultEcdPolicyGroup", &eds.EcdPolicyGroupArgs{
+//			defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "default", &eds.EcdPolicyGroupArgs{
 //				PolicyGroupName: pulumi.String("your_policy_group_name"),
 //				Clipboard:       pulumi.String("readwrite"),
 //				LocalDrive:      pulumi.String("read"),
@@ -71,7 +71,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultUser, err := eds.NewUser(ctx, "defaultUser", &eds.UserArgs{
+//			defaultUser, err := eds.NewUser(ctx, "default", &eds.UserArgs{
 //				EndUserId: pulumi.String("your_end_user_id"),
 //				Email:     pulumi.String("your_email"),
 //				Phone:     pulumi.String("your_phone"),
@@ -80,10 +80,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultDesktop, err := eds.NewDesktop(ctx, "defaultDesktop", &eds.DesktopArgs{
+//			defaultDesktop, err := eds.NewDesktop(ctx, "default", &eds.DesktopArgs{
 //				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
 //				PolicyGroupId: defaultEcdPolicyGroup.ID(),
-//				BundleId:      pulumi.String(defaultBundles.Bundles[0].Id),
+//				BundleId:      pulumi.String(_default.Bundles[0].Id),
 //				DesktopName:   pulumi.String("your_desktop_name"),
 //				EndUserIds: pulumi.StringArray{
 //					defaultUser.ID(),

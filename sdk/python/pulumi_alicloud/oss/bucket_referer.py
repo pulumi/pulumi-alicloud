@@ -250,13 +250,13 @@ class BucketReferer(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        create_bucket = alicloud.oss.Bucket("createBucket",
+        create_bucket = alicloud.oss.Bucket("CreateBucket",
             storage_class="Standard",
-            bucket=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
-        default_bucket_referer = alicloud.oss.BucketReferer("defaultBucketReferer",
+            bucket=f"{name}-{default['result']}")
+        default_bucket_referer = alicloud.oss.BucketReferer("default",
             allow_empty_referer=True,
             referer_blacklists=["*.forbidden.com"],
             bucket=create_bucket.bucket,
@@ -313,13 +313,13 @@ class BucketReferer(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        create_bucket = alicloud.oss.Bucket("createBucket",
+        create_bucket = alicloud.oss.Bucket("CreateBucket",
             storage_class="Standard",
-            bucket=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
-        default_bucket_referer = alicloud.oss.BucketReferer("defaultBucketReferer",
+            bucket=f"{name}-{default['result']}")
+        default_bucket_referer = alicloud.oss.BucketReferer("default",
             allow_empty_referer=True,
             referer_blacklists=["*.forbidden.com"],
             bucket=create_bucket.bucket,

@@ -189,6 +189,42 @@ def get_instances(enable_details: Optional[bool] = None,
 
     > **NOTE:** Available in v1.158.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.ecp.get_zones()
+    default_get_instance_types = alicloud.ecp.get_instance_types()
+    count_size = len(default.zones)
+    zone_id = default.zones[count_size - 1].zone_id
+    instance_type_count_size = len(default_get_instance_types.instance_types)
+    instance_type = default_get_instance_types.instance_types[instance_type_count_size - 1].instance_type
+    default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        zone_id=zone_id)
+    group = alicloud.ecs.SecurityGroup("group",
+        name=name,
+        vpc_id=default_get_networks.ids[0])
+    default_key_pair = alicloud.ecp.KeyPair("default",
+        key_pair_name=name,
+        public_key_body="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
+    default_instance = alicloud.ecp.Instance("default",
+        instance_name=name,
+        description=name,
+        force=True,
+        key_pair_name=default_key_pair.key_pair_name,
+        vswitch_id=default_get_switches.ids[0],
+        image_id="android_9_0_0_release_2851157_20211201.vhd",
+        instance_type=default_get_instance_types.instance_types[instance_type_count_size - 1].instance_type,
+        payment_type="PayAsYouGo")
+    ```
+    <!--End PulumiCodeChooser -->
+
 
     :param Sequence[str] ids: A list of Ecp Instances IDs.
     :param str image_id: The ID Of The Image.
@@ -253,6 +289,42 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     This data source provides the Ecp Instances of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.158.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.ecp.get_zones()
+    default_get_instance_types = alicloud.ecp.get_instance_types()
+    count_size = len(default.zones)
+    zone_id = default.zones[count_size - 1].zone_id
+    instance_type_count_size = len(default_get_instance_types.instance_types)
+    instance_type = default_get_instance_types.instance_types[instance_type_count_size - 1].instance_type
+    default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        zone_id=zone_id)
+    group = alicloud.ecs.SecurityGroup("group",
+        name=name,
+        vpc_id=default_get_networks.ids[0])
+    default_key_pair = alicloud.ecp.KeyPair("default",
+        key_pair_name=name,
+        public_key_body="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
+    default_instance = alicloud.ecp.Instance("default",
+        instance_name=name,
+        description=name,
+        force=True,
+        key_pair_name=default_key_pair.key_pair_name,
+        vswitch_id=default_get_switches.ids[0],
+        image_id="android_9_0_0_release_2851157_20211201.vhd",
+        instance_type=default_get_instance_types.instance_types[instance_type_count_size - 1].instance_type,
+        payment_type="PayAsYouGo")
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ecp Instances IDs.

@@ -491,18 +491,18 @@ class NasBackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example2")
-        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
+        default = alicloud.hbr.Vault("default", vault_name="terraform-example2")
+        default_file_system = alicloud.nas.FileSystem("default",
             protocol_type="NFS",
             storage_type="Performance",
             description="terraform-example",
             encrypt_type=1)
-        default_nas_backup_plan = alicloud.hbr.NasBackupPlan("defaultNasBackupPlan",
+        default_nas_backup_plan = alicloud.hbr.NasBackupPlan("default",
             nas_backup_plan_name="terraform-example",
             file_system_id=default_file_system.id,
             schedule="I|1602673264|PT2H",
             backup_type="COMPLETE",
-            vault_id=default_vault.id,
+            vault_id=default.id,
             retention="2",
             paths=["/"])
         ```
@@ -556,18 +556,18 @@ class NasBackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example2")
-        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
+        default = alicloud.hbr.Vault("default", vault_name="terraform-example2")
+        default_file_system = alicloud.nas.FileSystem("default",
             protocol_type="NFS",
             storage_type="Performance",
             description="terraform-example",
             encrypt_type=1)
-        default_nas_backup_plan = alicloud.hbr.NasBackupPlan("defaultNasBackupPlan",
+        default_nas_backup_plan = alicloud.hbr.NasBackupPlan("default",
             nas_backup_plan_name="terraform-example",
             file_system_id=default_file_system.id,
             schedule="I|1602673264|PT2H",
             backup_type="COMPLETE",
-            vault_id=default_vault.id,
+            vault_id=default.id,
             retention="2",
             paths=["/"])
         ```

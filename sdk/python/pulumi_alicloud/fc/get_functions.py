@@ -123,8 +123,8 @@ def get_functions(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    functions_ds = alicloud.fc.get_functions(name_regex="sample_fc_function",
-        service_name="sample_service")
+    functions_ds = alicloud.fc.get_functions(service_name="sample_service",
+        name_regex="sample_fc_function")
     pulumi.export("firstFcFunctionName", functions_ds.functions[0].name)
     ```
     <!--End PulumiCodeChooser -->
@@ -169,8 +169,8 @@ def get_functions_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     import pulumi
     import pulumi_alicloud as alicloud
 
-    functions_ds = alicloud.fc.get_functions(name_regex="sample_fc_function",
-        service_name="sample_service")
+    functions_ds = alicloud.fc.get_functions(service_name="sample_service",
+        name_regex="sample_fc_function")
     pulumi.export("firstFcFunctionName", functions_ds.functions[0].name)
     ```
     <!--End PulumiCodeChooser -->

@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Hbr
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -41,12 +41,12 @@ namespace Pulumi.AliCloud.Hbr
     ///     var defaultyk84Hc = new AliCloud.Hbr.Vault("defaultyk84Hc", new()
     ///     {
     ///         VaultType = "STANDARD",
-    ///         VaultName = @default.Result.Apply(result =&gt; $"example-value-{result}"),
+    ///         VaultName = $"example-value-{@default.Result}",
     ///     });
     /// 
     ///     var defaultoqWvHQ = new AliCloud.Hbr.Policy("defaultoqWvHQ", new()
     ///     {
-    ///         PolicyName = @default.Result.Apply(result =&gt; $"example-value-{result}"),
+    ///         PolicyName = $"example-value-{@default.Result}",
     ///         Rules = new[]
     ///         {
     ///             new AliCloud.Hbr.Inputs.PolicyRuleArgs

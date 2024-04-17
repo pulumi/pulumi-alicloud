@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
+//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
 //				CidrBlock:         pulumi.String("172.16.0.0/12"),
 //				DesktopAccessType: pulumi.String("Internet"),
 //				OfficeSiteName:    pulumi.String("your_simple_office_site_name"),
@@ -40,13 +40,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultBundles, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
+//			_default, err := eds.GetBundles(ctx, &eds.GetBundlesArgs{
 //				BundleType: pulumi.StringRef("SYSTEM"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "defaultEcdPolicyGroup", &eds.EcdPolicyGroupArgs{
+//			defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "default", &eds.EcdPolicyGroupArgs{
 //				PolicyGroupName: pulumi.String("your_policy_group_name"),
 //				Clipboard:       pulumi.String("readwrite"),
 //				LocalDrive:      pulumi.String("read"),
@@ -71,16 +71,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultDesktop, err := eds.NewDesktop(ctx, "defaultDesktop", &eds.DesktopArgs{
+//			defaultDesktop, err := eds.NewDesktop(ctx, "default", &eds.DesktopArgs{
 //				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
 //				PolicyGroupId: defaultEcdPolicyGroup.ID(),
-//				BundleId:      pulumi.String(defaultBundles.Bundles[1].Id),
+//				BundleId:      pulumi.String(_default.Bundles[1].Id),
 //				DesktopName:   pulumi.String("your_desktop_name"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultImage, err := eds.NewImage(ctx, "defaultImage", &eds.ImageArgs{
+//			defaultImage, err := eds.NewImage(ctx, "default", &eds.ImageArgs{
 //				ImageName:   pulumi.String("your_image_name"),
 //				DesktopId:   defaultDesktop.ID(),
 //				Description: pulumi.String("example_value"),

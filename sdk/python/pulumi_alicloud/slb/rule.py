@@ -799,30 +799,33 @@ class Rule(pulumi.CustomResource):
         slb_rule_name = config.get("slbRuleName")
         if slb_rule_name is None:
             slb_rule_name = "terraform-example"
-        rule_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        rule_network = alicloud.vpc.Network("ruleNetwork",
+        rule = alicloud.get_zones(available_resource_creation="VSwitch")
+        rule_network = alicloud.vpc.Network("rule",
             vpc_name=slb_rule_name,
             cidr_block="172.16.0.0/16")
-        rule_switch = alicloud.vpc.Switch("ruleSwitch",
+        rule_switch = alicloud.vpc.Switch("rule",
             vpc_id=rule_network.id,
             cidr_block="172.16.0.0/16",
-            zone_id=rule_zones.zones[0].id,
+            zone_id=rule.zones[0].id,
             vswitch_name=slb_rule_name)
-        rule_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("ruleApplicationLoadBalancer",
+        rule_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("rule",
             load_balancer_name=slb_rule_name,
             vswitch_id=rule_switch.id,
             instance_charge_type="PayByCLCU")
-        rule_listener = alicloud.slb.Listener("ruleListener",
+        rule_listener = alicloud.slb.Listener("rule",
             load_balancer_id=rule_application_load_balancer.id,
             backend_port=22,
             frontend_port=22,
             protocol="http",
             bandwidth=5,
             health_check_connect_port=20)
-        rule_server_group = alicloud.slb.ServerGroup("ruleServerGroup", load_balancer_id=rule_application_load_balancer.id)
-        rule_rule = alicloud.slb.Rule("ruleRule",
+        rule_server_group = alicloud.slb.ServerGroup("rule",
+            load_balancer_id=rule_application_load_balancer.id,
+            name=slb_rule_name)
+        rule_rule = alicloud.slb.Rule("rule",
             load_balancer_id=rule_application_load_balancer.id,
             frontend_port=rule_listener.frontend_port,
+            name=slb_rule_name,
             domain="*.aliyun.com",
             url="/image",
             server_group_id=rule_server_group.id,
@@ -917,30 +920,33 @@ class Rule(pulumi.CustomResource):
         slb_rule_name = config.get("slbRuleName")
         if slb_rule_name is None:
             slb_rule_name = "terraform-example"
-        rule_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        rule_network = alicloud.vpc.Network("ruleNetwork",
+        rule = alicloud.get_zones(available_resource_creation="VSwitch")
+        rule_network = alicloud.vpc.Network("rule",
             vpc_name=slb_rule_name,
             cidr_block="172.16.0.0/16")
-        rule_switch = alicloud.vpc.Switch("ruleSwitch",
+        rule_switch = alicloud.vpc.Switch("rule",
             vpc_id=rule_network.id,
             cidr_block="172.16.0.0/16",
-            zone_id=rule_zones.zones[0].id,
+            zone_id=rule.zones[0].id,
             vswitch_name=slb_rule_name)
-        rule_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("ruleApplicationLoadBalancer",
+        rule_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("rule",
             load_balancer_name=slb_rule_name,
             vswitch_id=rule_switch.id,
             instance_charge_type="PayByCLCU")
-        rule_listener = alicloud.slb.Listener("ruleListener",
+        rule_listener = alicloud.slb.Listener("rule",
             load_balancer_id=rule_application_load_balancer.id,
             backend_port=22,
             frontend_port=22,
             protocol="http",
             bandwidth=5,
             health_check_connect_port=20)
-        rule_server_group = alicloud.slb.ServerGroup("ruleServerGroup", load_balancer_id=rule_application_load_balancer.id)
-        rule_rule = alicloud.slb.Rule("ruleRule",
+        rule_server_group = alicloud.slb.ServerGroup("rule",
+            load_balancer_id=rule_application_load_balancer.id,
+            name=slb_rule_name)
+        rule_rule = alicloud.slb.Rule("rule",
             load_balancer_id=rule_application_load_balancer.id,
             frontend_port=rule_listener.frontend_port,
+            name=slb_rule_name,
             domain="*.aliyun.com",
             url="/image",
             server_group_id=rule_server_group.id,

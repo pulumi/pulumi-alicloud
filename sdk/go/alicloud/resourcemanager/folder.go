@@ -45,17 +45,15 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = resourcemanager.NewFolder(ctx, "example", &resourcemanager.FolderArgs{
-//				FolderName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//				FolderName: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
 //			})
 //			if err != nil {
 //				return err

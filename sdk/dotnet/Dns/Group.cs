@@ -26,7 +26,10 @@ namespace Pulumi.AliCloud.Dns
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Add a new Domain group.
-    ///     var @group = new AliCloud.Dns.Group("group");
+    ///     var @group = new AliCloud.Dns.Group("group", new()
+    ///     {
+    ///         Name = "testgroup",
+    ///     });
     /// 
     /// });
     /// ```

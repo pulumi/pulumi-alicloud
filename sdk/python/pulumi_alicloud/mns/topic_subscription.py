@@ -252,14 +252,16 @@ class TopicSubscription(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         topic = alicloud.mns.Topic("topic",
-            logging_enabled=False,
-            maximum_message_size=65536)
+            name="tf-example-mnstopic",
+            maximum_message_size=65536,
+            logging_enabled=False)
         subscription = alicloud.mns.TopicSubscription("subscription",
-            endpoint="http://www.xxx.com/xxx",
+            topic_name="tf-example-mnstopic",
+            name="tf-example-mnstopic-sub",
             filter_tag="test",
-            notify_content_format="XML",
+            endpoint="http://www.xxx.com/xxx",
             notify_strategy="BACKOFF_RETRY",
-            topic_name="tf-example-mnstopic")
+            notify_content_format="XML")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -300,14 +302,16 @@ class TopicSubscription(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         topic = alicloud.mns.Topic("topic",
-            logging_enabled=False,
-            maximum_message_size=65536)
+            name="tf-example-mnstopic",
+            maximum_message_size=65536,
+            logging_enabled=False)
         subscription = alicloud.mns.TopicSubscription("subscription",
-            endpoint="http://www.xxx.com/xxx",
+            topic_name="tf-example-mnstopic",
+            name="tf-example-mnstopic-sub",
             filter_tag="test",
-            notify_content_format="XML",
+            endpoint="http://www.xxx.com/xxx",
             notify_strategy="BACKOFF_RETRY",
-            topic_name="tf-example-mnstopic")
+            notify_content_format="XML")
         ```
         <!--End PulumiCodeChooser -->
 

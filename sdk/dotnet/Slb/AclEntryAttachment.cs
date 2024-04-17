@@ -27,14 +27,15 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var attachmentAcl = new AliCloud.Slb.Acl("attachmentAcl", new()
+    ///     var attachment = new AliCloud.Slb.Acl("attachment", new()
     ///     {
+    ///         Name = "forSlbAclEntryAttachment",
     ///         IpVersion = "ipv4",
     ///     });
     /// 
-    ///     var attachmentAclEntryAttachment = new AliCloud.Slb.AclEntryAttachment("attachmentAclEntryAttachment", new()
+    ///     var attachmentAclEntryAttachment = new AliCloud.Slb.AclEntryAttachment("attachment", new()
     ///     {
-    ///         AclId = attachmentAcl.Id,
+    ///         AclId = attachment.Id,
     ///         Entry = "168.10.10.0/24",
     ///         Comment = "second",
     ///     });

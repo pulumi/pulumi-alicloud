@@ -20,9 +20,10 @@ import * as utilities from "../utilities";
  *
  * // Create a new action trail.
  * const foo = new alicloud.actiontrail.TrailDeprecated("foo", {
+ *     name: "action-trail",
  *     eventRw: "Write-test",
- *     ossBucketName: alicloud_oss_bucket.bucket.id,
- *     roleName: alicloud_ram_role_policy_attachment.attach.role_name,
+ *     ossBucketName: bucket.id,
+ *     roleName: attach.roleName,
  *     ossKeyPrefix: "at-product-account-audit-B",
  * });
  * ```

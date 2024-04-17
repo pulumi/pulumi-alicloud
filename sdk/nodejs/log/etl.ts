@@ -23,13 +23,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
- * const exampleStore = new alicloud.log.Store("exampleStore", {
- *     project: exampleProject.name,
+ * const example = new alicloud.log.Project("example", {
+ *     name: `terraform-example-${_default.result}`,
+ *     description: "terraform-example",
+ * });
+ * const exampleStore = new alicloud.log.Store("example", {
+ *     project: example.name,
+ *     name: "example-store",
  *     retentionPeriod: 3650,
  *     shardCount: 3,
  *     autoSplit: true,
@@ -37,7 +41,8 @@ import * as utilities from "../utilities";
  *     appendMeta: true,
  * });
  * const example2 = new alicloud.log.Store("example2", {
- *     project: exampleProject.name,
+ *     project: example.name,
+ *     name: "example-store2",
  *     retentionPeriod: 3650,
  *     shardCount: 3,
  *     autoSplit: true,
@@ -45,16 +50,17 @@ import * as utilities from "../utilities";
  *     appendMeta: true,
  * });
  * const example3 = new alicloud.log.Store("example3", {
- *     project: exampleProject.name,
+ *     project: example.name,
+ *     name: "example-store3",
  *     retentionPeriod: 3650,
  *     shardCount: 3,
  *     autoSplit: true,
  *     maxSplitShardCount: 60,
  *     appendMeta: true,
  * });
- * const exampleEtl = new alicloud.log.Etl("exampleEtl", {
+ * const exampleEtl = new alicloud.log.Etl("example", {
  *     etlName: "terraform-example",
- *     project: exampleProject.name,
+ *     project: example.name,
  *     displayName: "terraform-example",
  *     description: "terraform-example",
  *     accessKeyId: "access_key_id",
@@ -67,7 +73,7 @@ import * as utilities from "../utilities";
  *             accessKeyId: "example2_access_key_id",
  *             accessKeySecret: "example2_access_key_secret",
  *             endpoint: "cn-hangzhou.log.aliyuncs.com",
- *             project: exampleProject.name,
+ *             project: example.name,
  *             logstore: example2.name,
  *         },
  *         {
@@ -75,7 +81,7 @@ import * as utilities from "../utilities";
  *             accessKeyId: "example3_access_key_id",
  *             accessKeySecret: "example3_access_key_secret",
  *             endpoint: "cn-hangzhou.log.aliyuncs.com",
- *             project: exampleProject.name,
+ *             project: example.name,
  *             logstore: example3.name,
  *         },
  *     ],

@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const default = alicloud.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     enableIpv6: true,
  *     cidrBlock: "172.16.0.0/12",
@@ -31,46 +31,48 @@ import * as utilities from "../utilities";
  * const vsw = new alicloud.vpc.Switch("vsw", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
+ *     name: name,
  *     ipv6CidrBlockMask: 22,
  * });
  * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     name: name,
  *     description: "foo",
  *     vpcId: defaultNetwork.id,
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
  *     systemDiskCategory: "cloud_efficiency",
  *     cpuCoreCount: 4,
  *     minimumEniIpv6AddressQuantity: 1,
  * }));
- * const defaultImages = alicloud.ecs.getImages({
+ * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const vpcInstance = new alicloud.ecs.Instance("vpcInstance", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * const vpcInstance = new alicloud.ecs.Instance("vpc_instance", {
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
  *     ipv6AddressCount: 1,
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *     systemDiskCategory: "cloud_efficiency",
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
  *     instanceName: name,
  *     vswitchId: vsw.id,
  *     internetMaxBandwidthOut: 10,
  *     securityGroups: [group].map(__item => __item.id),
  * });
- * const exampleIpv6Gateway = new alicloud.vpc.Ipv6Gateway("exampleIpv6Gateway", {
+ * const example = new alicloud.vpc.Ipv6Gateway("example", {
  *     ipv6GatewayName: "example_value",
  *     vpcId: defaultNetwork.id,
  * });
- * const defaultIpv6Addresses = alicloud.vpc.getIpv6AddressesOutput({
+ * const defaultGetIpv6Addresses = alicloud.vpc.getIpv6AddressesOutput({
  *     associatedInstanceId: vpcInstance.id,
  *     status: "Available",
  * });
- * const exampleIpv6InternetBandwidth = new alicloud.vpc.Ipv6InternetBandwidth("exampleIpv6InternetBandwidth", {
- *     ipv6AddressId: defaultIpv6Addresses.apply(defaultIpv6Addresses => defaultIpv6Addresses.addresses?.[0]?.id),
- *     ipv6GatewayId: exampleIpv6Gateway.ipv6GatewayId,
+ * const exampleIpv6InternetBandwidth = new alicloud.vpc.Ipv6InternetBandwidth("example", {
+ *     ipv6AddressId: defaultGetIpv6Addresses.apply(defaultGetIpv6Addresses => defaultGetIpv6Addresses.addresses?.[0]?.id),
+ *     ipv6GatewayId: example.ipv6GatewayId,
  *     internetChargeType: "PayByBandwidth",
  *     bandwidth: 20,
  * });

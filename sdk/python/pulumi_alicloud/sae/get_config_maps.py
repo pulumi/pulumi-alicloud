@@ -123,17 +123,18 @@ def get_config_maps(ids: Optional[Sequence[str]] = None,
     config_map_name = config.get("configMapName")
     if config_map_name is None:
         config_map_name = "examplename"
-    example_namespace = alicloud.sae.Namespace("exampleNamespace",
+    example = alicloud.sae.Namespace("example",
         namespace_id="cn-hangzhou:yourname",
         namespace_name="example_value",
         namespace_description="your_description")
-    example_config_map = alicloud.sae.ConfigMap("exampleConfigMap",
+    example_config_map = alicloud.sae.ConfigMap("example",
         data=json.dumps({
             "env.home": "/root",
             "env.shell": "/bin/sh",
         }),
-        namespace_id=example_namespace.namespace_id)
-    name_regex = alicloud.sae.get_config_maps_output(namespace_id=example_namespace.namespace_id,
+        name=config_map_name,
+        namespace_id=example.namespace_id)
+    name_regex = alicloud.sae.get_config_maps_output(namespace_id=example.namespace_id,
         name_regex="^example")
     pulumi.export("saeConfigMapId", name_regex.maps[0].id)
     ```
@@ -188,17 +189,18 @@ def get_config_maps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     config_map_name = config.get("configMapName")
     if config_map_name is None:
         config_map_name = "examplename"
-    example_namespace = alicloud.sae.Namespace("exampleNamespace",
+    example = alicloud.sae.Namespace("example",
         namespace_id="cn-hangzhou:yourname",
         namespace_name="example_value",
         namespace_description="your_description")
-    example_config_map = alicloud.sae.ConfigMap("exampleConfigMap",
+    example_config_map = alicloud.sae.ConfigMap("example",
         data=json.dumps({
             "env.home": "/root",
             "env.shell": "/bin/sh",
         }),
-        namespace_id=example_namespace.namespace_id)
-    name_regex = alicloud.sae.get_config_maps_output(namespace_id=example_namespace.namespace_id,
+        name=config_map_name,
+        namespace_id=example.namespace_id)
+    name_regex = alicloud.sae.get_config_maps_output(namespace_id=example.namespace_id,
         name_regex="^example")
     pulumi.export("saeConfigMapId", name_regex.maps[0].id)
     ```

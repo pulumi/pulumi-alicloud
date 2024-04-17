@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     flow: 6,
  *     core: 2,
  * });
- * export const simpleApplicationServerPlanId1 = data.alicloud_simple_application_server_plans.ids.plans[0].id;
+ * export const simpleApplicationServerPlanId1 = ids.plans[0].id;
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -124,7 +124,7 @@ export interface GetServerPlansResult {
  *     flow: 6,
  *     core: 2,
  * });
- * export const simpleApplicationServerPlanId1 = data.alicloud_simple_application_server_plans.ids.plans[0].id;
+ * export const simpleApplicationServerPlanId1 = ids.plans[0].id;
  * ```
  * <!--End PulumiCodeChooser -->
  */

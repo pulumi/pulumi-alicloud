@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAlertContact = new AlertContact(&#34;exampleAlertContact&#34;, AlertContactArgs.builder()        
+ *         var example = new AlertContact(&#34;example&#34;, AlertContactArgs.builder()        
  *             .alertContactName(&#34;example_value&#34;)
  *             .dingRobotWebhookUrl(&#34;https://oapi.dingtalk.com/robot/send?access_token=91f2f6****&#34;)
  *             .email(&#34;someone@example.com&#34;)
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleAlertContactGroup = new AlertContactGroup(&#34;exampleAlertContactGroup&#34;, AlertContactGroupArgs.builder()        
  *             .alertContactGroupName(&#34;example_value&#34;)
- *             .contactIds(exampleAlertContact.id())
+ *             .contactIds(example.id())
  *             .build());
  * 
  *     }

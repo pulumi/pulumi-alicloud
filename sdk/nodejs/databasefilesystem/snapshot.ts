@@ -23,44 +23,47 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const zoneId = "cn-hangzhou-i";
- * const exampleInstanceTypes = alicloud.ecs.getInstanceTypes({
+ * const example = alicloud.ecs.getInstanceTypes({
  *     availabilityZone: zoneId,
  *     instanceTypeFamily: "ecs.g7se",
  * });
- * const exampleImages = Promise.all([exampleInstanceTypes, exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes).length]).then(([exampleInstanceTypes, length]) => alicloud.ecs.getImages({
- *     instanceType: exampleInstanceTypes.instanceTypes[length - 1].id,
+ * const exampleGetImages = Promise.all([example, example.then(example => example.instanceTypes).length]).then(([example, length]) => alicloud.ecs.getImages({
+ *     instanceType: example.instanceTypes[length - 1].id,
  *     nameRegex: "^aliyun_2_1903_x64_20G_alibase_20231221.vhd",
  *     owners: "system",
  * }));
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const default = alicloud.vpc.getNetworks({
  *     nameRegex: "^default-NODELETING$",
  * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
+ * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
+ *     vpcId: _default.ids?.[0],
  *     zoneId: zoneId,
  * }));
- * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
- * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     name: name,
+ *     vpcId: _default.then(_default => _default.ids?.[0]),
+ * });
+ * const defaultInstance = new alicloud.ecs.Instance("default", {
  *     availabilityZone: zoneId,
  *     instanceName: name,
- *     imageId: exampleImages.then(exampleImages => exampleImages.images?.[0]?.id),
- *     instanceType: Promise.all([exampleInstanceTypes, exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes).length]).then(([exampleInstanceTypes, length]) => exampleInstanceTypes.instanceTypes[length - 1].id),
+ *     imageId: exampleGetImages.then(exampleGetImages => exampleGetImages.images?.[0]?.id),
+ *     instanceType: Promise.all([example, example.then(example => example.instanceTypes).length]).then(([example, length]) => example.instanceTypes[length - 1].id),
  *     securityGroups: [exampleSecurityGroup.id],
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     systemDiskCategory: "cloud_essd",
  * });
- * const defaultDatabasefilesystem_instanceInstance = new alicloud.databasefilesystem.Instance("defaultDatabasefilesystem/instanceInstance", {
+ * const defaultInstance2 = new alicloud.databasefilesystem.Instance("default", {
  *     category: "enterprise",
  *     zoneId: defaultInstance.availabilityZone,
  *     performanceLevel: "PL1",
  *     fsName: name,
  *     size: 100,
  * });
- * const defaultInstanceAttachment = new alicloud.databasefilesystem.InstanceAttachment("defaultInstanceAttachment", {
+ * const defaultInstanceAttachment = new alicloud.databasefilesystem.InstanceAttachment("default", {
  *     ecsId: defaultInstance.id,
- *     instanceId: defaultDatabasefilesystem / instanceInstance.id,
+ *     instanceId: defaultInstance2.id,
  * });
- * const exampleSnapshot = new alicloud.databasefilesystem.Snapshot("exampleSnapshot", {
+ * const exampleSnapshot = new alicloud.databasefilesystem.Snapshot("example", {
  *     instanceId: defaultInstanceAttachment.instanceId,
  *     snapshotName: name,
  *     description: name,

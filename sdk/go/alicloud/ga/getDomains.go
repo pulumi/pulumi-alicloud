@@ -14,6 +14,63 @@ import (
 // This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
 //
 // > **NOTE:** Available in 1.197.0+
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := ga.GetAccelerators(ctx, &ga.GetAcceleratorsArgs{
+// Status: pulumi.StringRef("active"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// var defaultAccelerator []*ga.Accelerator
+//
+//	for index := 0; index < %!v(PANIC=Format method: fatal: A failure has occurred: unlowered conditional expression @ example.pp:7,13-53); index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := ga.NewAccelerator(ctx, fmt.Sprintf("default-%v", key0), &ga.AcceleratorArgs{
+// Duration: pulumi.Int(1),
+// AutoUseCoupon: pulumi.Bool(true),
+// Spec: pulumi.String("1"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultAccelerator = append(defaultAccelerator, __res)
+// }
+// var tmp0 *string
+// if len(_default.Accelerators) > 0 {
+// tmp0 = _default.Accelerators[0].Id
+// } else {
+// tmp0 = defaultAccelerator[0].ID()
+// }
+// _ := tmp0;
+// defaultGetDomains, err := ga.GetDomains(ctx, &ga.GetDomainsArgs{
+// AcceleratorId: pulumi.StringRef(acceleratorIdLocals),
+// Domain: pulumi.StringRef("your_domain"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("alicloudGaDomainExampleId", defaultGetDomains.Domains[0].Id)
+// return nil
+// })
+// }
+// ```
+// <!--End PulumiCodeChooser -->
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainsResult

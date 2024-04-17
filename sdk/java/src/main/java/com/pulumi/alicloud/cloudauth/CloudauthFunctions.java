@@ -52,12 +52,12 @@ public final class CloudauthFunctions {
      *             .bizType(&#34;example-value&#34;)
      *             .build());
      * 
-     *         final var defaultFaceConfigs = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
+     *         final var default = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
      *             .ids(defaultFaceConfig.id())
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export(&#34;faceConfig&#34;, defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult).applyValue(defaultFaceConfigs -&gt; defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult.configs()[0])));
+     *         ctx.export(&#34;faceConfig&#34;, default_.applyValue(default_ -&gt; default_.configs()[0]));
      *     }
      * }
      * ```
@@ -105,12 +105,12 @@ public final class CloudauthFunctions {
      *             .bizType(&#34;example-value&#34;)
      *             .build());
      * 
-     *         final var defaultFaceConfigs = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
+     *         final var default = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
      *             .ids(defaultFaceConfig.id())
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export(&#34;faceConfig&#34;, defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult).applyValue(defaultFaceConfigs -&gt; defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult.configs()[0])));
+     *         ctx.export(&#34;faceConfig&#34;, default_.applyValue(default_ -&gt; default_.configs()[0]));
      *     }
      * }
      * ```
@@ -158,12 +158,12 @@ public final class CloudauthFunctions {
      *             .bizType(&#34;example-value&#34;)
      *             .build());
      * 
-     *         final var defaultFaceConfigs = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
+     *         final var default = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
      *             .ids(defaultFaceConfig.id())
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export(&#34;faceConfig&#34;, defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult).applyValue(defaultFaceConfigs -&gt; defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult.configs()[0])));
+     *         ctx.export(&#34;faceConfig&#34;, default_.applyValue(default_ -&gt; default_.configs()[0]));
      *     }
      * }
      * ```
@@ -211,12 +211,12 @@ public final class CloudauthFunctions {
      *             .bizType(&#34;example-value&#34;)
      *             .build());
      * 
-     *         final var defaultFaceConfigs = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
+     *         final var default = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
      *             .ids(defaultFaceConfig.id())
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export(&#34;faceConfig&#34;, defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult).applyValue(defaultFaceConfigs -&gt; defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult.configs()[0])));
+     *         ctx.export(&#34;faceConfig&#34;, default_.applyValue(default_ -&gt; default_.configs()[0]));
      *     }
      * }
      * ```
@@ -264,12 +264,12 @@ public final class CloudauthFunctions {
      *             .bizType(&#34;example-value&#34;)
      *             .build());
      * 
-     *         final var defaultFaceConfigs = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
+     *         final var default = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
      *             .ids(defaultFaceConfig.id())
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export(&#34;faceConfig&#34;, defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult).applyValue(defaultFaceConfigs -&gt; defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult.configs()[0])));
+     *         ctx.export(&#34;faceConfig&#34;, default_.applyValue(default_ -&gt; default_.configs()[0]));
      *     }
      * }
      * ```
@@ -317,12 +317,12 @@ public final class CloudauthFunctions {
      *             .bizType(&#34;example-value&#34;)
      *             .build());
      * 
-     *         final var defaultFaceConfigs = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
+     *         final var default = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
      *             .ids(defaultFaceConfig.id())
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export(&#34;faceConfig&#34;, defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult).applyValue(defaultFaceConfigs -&gt; defaultFaceConfigs.applyValue(getFaceConfigsResult -&gt; getFaceConfigsResult.configs()[0])));
+     *         ctx.export(&#34;faceConfig&#34;, default_.applyValue(default_ -&gt; default_.configs()[0]));
      *     }
      * }
      * ```

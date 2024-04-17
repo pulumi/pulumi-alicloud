@@ -39,28 +39,29 @@ namespace Pulumi.AliCloud.Slb
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var listenerApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("listenerApplicationLoadBalancer", new()
+    ///     var listener = new AliCloud.Slb.ApplicationLoadBalancer("listener", new()
     ///     {
-    ///         LoadBalancerName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         LoadBalancerName = $"{name}-{@default.Result}",
     ///         InternetChargeType = "PayByTraffic",
     ///         AddressType = "internet",
     ///         InstanceChargeType = "PayByCLCU",
     ///     });
     /// 
-    ///     var listenerAcl = new AliCloud.Slb.Acl("listenerAcl", new()
+    ///     var listenerAcl = new AliCloud.Slb.Acl("listener", new()
     ///     {
+    ///         Name = $"{name}-{@default.Result}",
     ///         IpVersion = "ipv4",
     ///     });
     /// 
-    ///     var listenerListener = new AliCloud.Slb.Listener("listenerListener", new()
+    ///     var listenerListener = new AliCloud.Slb.Listener("listener", new()
     ///     {
-    ///         LoadBalancerId = listenerApplicationLoadBalancer.Id,
+    ///         LoadBalancerId = listener.Id,
     ///         BackendPort = 80,
     ///         FrontendPort = 80,
     ///         Protocol = "http",

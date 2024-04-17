@@ -40,15 +40,15 @@ namespace Pulumi.AliCloud.Ram
     /// {
     ///     var corporate = new AliCloud.Ram.AccountPasswordPolicy("corporate", new()
     ///     {
-    ///         HardExpiry = true,
-    ///         MaxLoginAttempts = 3,
-    ///         MaxPasswordAge = 12,
     ///         MinimumPasswordLength = 9,
-    ///         PasswordReusePrevention = 5,
     ///         RequireLowercaseCharacters = false,
+    ///         RequireUppercaseCharacters = false,
     ///         RequireNumbers = false,
     ///         RequireSymbols = false,
-    ///         RequireUppercaseCharacters = false,
+    ///         HardExpiry = true,
+    ///         MaxPasswordAge = 12,
+    ///         PasswordReusePrevention = 5,
+    ///         MaxLoginAttempts = 3,
     ///     });
     /// 
     /// });

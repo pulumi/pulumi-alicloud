@@ -137,6 +137,7 @@ def get_repos(enable_details: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     my_repos = alicloud.cr.get_repos(name_regex="my-repos",
         output_file="my-repo-json")
     pulumi.export("output", my_repos.repos)
@@ -186,6 +187,7 @@ def get_repos_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     my_repos = alicloud.cr.get_repos(name_regex="my-repos",
         output_file="my-repo-json")
     pulumi.export("output", my_repos.repos)

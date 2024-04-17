@@ -34,32 +34,16 @@ namespace Pulumi.AliCloud.Cen
     ///     var config = new Config();
     ///     var sourceRegion = config.Get("sourceRegion") ?? "cn-hangzhou";
     ///     var destinationRegion = config.Get("destinationRegion") ?? "cn-shanghai";
-    ///     var hz = new AliCloud.Provider("hz", new()
-    ///     {
-    ///         Region = sourceRegion,
-    ///     });
-    /// 
-    ///     var sh = new AliCloud.Provider("sh", new()
-    ///     {
-    ///         Region = destinationRegion,
-    ///     });
-    /// 
-    ///     var exampleHzNetwork = new AliCloud.Vpc.Network("exampleHzNetwork", new()
+    ///     var exampleHz = new AliCloud.Vpc.Network("example_hz", new()
     ///     {
     ///         VpcName = "tf_example",
     ///         CidrBlock = "192.168.0.0/16",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Hz,
     ///     });
     /// 
-    ///     var exampleShNetwork = new AliCloud.Vpc.Network("exampleShNetwork", new()
+    ///     var exampleSh = new AliCloud.Vpc.Network("example_sh", new()
     ///     {
     ///         VpcName = "tf_example",
     ///         CidrBlock = "172.16.0.0/12",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Sh,
     ///     });
     /// 
     ///     var example = new AliCloud.Cen.Instance("example", new()
@@ -68,18 +52,18 @@ namespace Pulumi.AliCloud.Cen
     ///         Description = "an example for cen",
     ///     });
     /// 
-    ///     var exampleHzInstanceAttachment = new AliCloud.Cen.InstanceAttachment("exampleHzInstanceAttachment", new()
+    ///     var exampleHzInstanceAttachment = new AliCloud.Cen.InstanceAttachment("example_hz", new()
     ///     {
     ///         InstanceId = example.Id,
-    ///         ChildInstanceId = exampleHzNetwork.Id,
+    ///         ChildInstanceId = exampleHz.Id,
     ///         ChildInstanceType = "VPC",
     ///         ChildInstanceRegionId = sourceRegion,
     ///     });
     /// 
-    ///     var exampleShInstanceAttachment = new AliCloud.Cen.InstanceAttachment("exampleShInstanceAttachment", new()
+    ///     var exampleShInstanceAttachment = new AliCloud.Cen.InstanceAttachment("example_sh", new()
     ///     {
     ///         InstanceId = example.Id,
-    ///         ChildInstanceId = exampleShNetwork.Id,
+    ///         ChildInstanceId = exampleSh.Id,
     ///         ChildInstanceType = "VPC",
     ///         ChildInstanceRegionId = destinationRegion,
     ///     });
@@ -109,11 +93,11 @@ namespace Pulumi.AliCloud.Cen
     ///         DestinationInstanceIdsReverseMatch = false,
     ///         SourceRouteTableIds = new[]
     ///         {
-    ///             exampleHzNetwork.RouteTableId,
+    ///             exampleHz.RouteTableId,
     ///         },
     ///         DestinationRouteTableIds = new[]
     ///         {
-    ///             exampleShNetwork.RouteTableId,
+    ///             exampleSh.RouteTableId,
     ///         },
     ///         SourceChildInstanceTypes = new[]
     ///         {
@@ -125,7 +109,7 @@ namespace Pulumi.AliCloud.Cen
     ///         },
     ///         DestinationCidrBlocks = new[]
     ///         {
-    ///             exampleShNetwork.CidrBlock,
+    ///             exampleSh.CidrBlock,
     ///         },
     ///         CidrMatchMode = "Include",
     ///         RouteTypes = new[]

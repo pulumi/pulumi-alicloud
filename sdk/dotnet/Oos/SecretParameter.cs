@@ -29,16 +29,16 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var example = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var exampleKey = new AliCloud.Kms.Key("exampleKey", new()
+    ///     var exampleKey = new AliCloud.Kms.Key("example", new()
     ///     {
     ///         Description = "terraform-example",
     ///         Status = "Enabled",
     ///         PendingWindowInDays = 7,
     ///     });
     /// 
-    ///     var exampleSecretParameter = new AliCloud.Oos.SecretParameter("exampleSecretParameter", new()
+    ///     var exampleSecretParameter = new AliCloud.Oos.SecretParameter("example", new()
     ///     {
     ///         SecretParameterName = "terraform-example",
     ///         Value = "terraform-example",
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Oos
     ///             { "Created", "TF" },
     ///             { "For", "OosSecretParameter" },
     ///         },
-    ///         ResourceGroupId = exampleResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ResourceGroupId = example.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
     ///     });
     /// 
     /// });

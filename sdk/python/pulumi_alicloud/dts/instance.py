@@ -1045,17 +1045,17 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_regions = alicloud.get_regions(current=True)
-        default_instance = alicloud.dts.Instance("defaultInstance",
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_regions = alicloud.get_regions(current=True)
+        default_instance = alicloud.dts.Instance("default",
             type="sync",
-            resource_group_id=default_resource_groups.ids[0],
+            resource_group_id=default.ids[0],
             payment_type="Subscription",
             instance_class="large",
             source_endpoint_engine_name="MySQL",
-            source_region=default_regions.regions[0].id,
+            source_region=default_get_regions.regions[0].id,
             destination_endpoint_engine_name="MySQL",
-            destination_region=default_regions.regions[0].id)
+            destination_region=default_get_regions.regions[0].id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1180,17 +1180,17 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_regions = alicloud.get_regions(current=True)
-        default_instance = alicloud.dts.Instance("defaultInstance",
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_regions = alicloud.get_regions(current=True)
+        default_instance = alicloud.dts.Instance("default",
             type="sync",
-            resource_group_id=default_resource_groups.ids[0],
+            resource_group_id=default.ids[0],
             payment_type="Subscription",
             instance_class="large",
             source_endpoint_engine_name="MySQL",
-            source_region=default_regions.regions[0].id,
+            source_region=default_get_regions.regions[0].id,
             destination_endpoint_engine_name="MySQL",
-            destination_region=default_regions.regions[0].id)
+            destination_region=default_get_regions.regions[0].id)
         ```
         <!--End PulumiCodeChooser -->
 

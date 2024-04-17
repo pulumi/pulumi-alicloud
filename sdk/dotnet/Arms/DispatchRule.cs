@@ -29,22 +29,22 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAlertContact = new AliCloud.Arms.AlertContact("defaultAlertContact", new()
+    ///     var @default = new AliCloud.Arms.AlertContact("default", new()
     ///     {
     ///         AlertContactName = "example_value",
     ///         Email = "example_value@aaa.com",
     ///     });
     /// 
-    ///     var defaultAlertContactGroup = new AliCloud.Arms.AlertContactGroup("defaultAlertContactGroup", new()
+    ///     var defaultAlertContactGroup = new AliCloud.Arms.AlertContactGroup("default", new()
     ///     {
     ///         AlertContactGroupName = "example_value",
     ///         ContactIds = new[]
     ///         {
-    ///             defaultAlertContact.Id,
+    ///             @default.Id,
     ///         },
     ///     });
     /// 
-    ///     var defaultDispatchRule = new AliCloud.Arms.DispatchRule("defaultDispatchRule", new()
+    ///     var defaultDispatchRule = new AliCloud.Arms.DispatchRule("default", new()
     ///     {
     ///         DispatchRuleName = "example_value",
     ///         DispatchType = "CREATE_ALERT",
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Arms
     ///                 {
     ///                     new AliCloud.Arms.Inputs.DispatchRuleNotifyRuleNotifyObjectArgs
     ///                     {
-    ///                         NotifyObjectId = defaultAlertContact.Id,
+    ///                         NotifyObjectId = @default.Id,
     ///                         NotifyType = "ARMS_CONTACT",
     ///                         Name = "example_value",
     ///                     },

@@ -20,11 +20,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleZones = alicloud.getZones({});
- * const exampleEcsDedicatedHostCluster = new alicloud.ecs.EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster", {
+ * const example = alicloud.getZones({});
+ * const exampleEcsDedicatedHostCluster = new alicloud.ecs.EcsDedicatedHostCluster("example", {
  *     dedicatedHostClusterName: "example_value",
  *     description: "example_value",
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
  *     tags: {
  *         Create: "TF",
  *         For: "DDH_Cluster_Test",

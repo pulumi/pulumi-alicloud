@@ -21,8 +21,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.ga.Accelerator("example", {
- *     autoUseCoupon: true,
  *     duration: 1,
+ *     autoUseCoupon: true,
  *     spec: "1",
  * });
  * ```

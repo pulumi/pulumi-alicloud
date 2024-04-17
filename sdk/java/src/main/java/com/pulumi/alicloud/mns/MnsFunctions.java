@@ -587,8 +587,8 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subscriptions = MnsFunctions.getTopicSubscriptions(GetTopicSubscriptionsArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
      *             .topicName(&#34;topic_name&#34;)
+     *             .namePrefix(&#34;tf-&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstTopicSubscriptionId&#34;, subscriptions.applyValue(getTopicSubscriptionsResult -&gt; getTopicSubscriptionsResult.subscriptions()[0].id()));
@@ -631,8 +631,8 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subscriptions = MnsFunctions.getTopicSubscriptions(GetTopicSubscriptionsArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
      *             .topicName(&#34;topic_name&#34;)
+     *             .namePrefix(&#34;tf-&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstTopicSubscriptionId&#34;, subscriptions.applyValue(getTopicSubscriptionsResult -&gt; getTopicSubscriptionsResult.subscriptions()[0].id()));
@@ -675,8 +675,8 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subscriptions = MnsFunctions.getTopicSubscriptions(GetTopicSubscriptionsArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
      *             .topicName(&#34;topic_name&#34;)
+     *             .namePrefix(&#34;tf-&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstTopicSubscriptionId&#34;, subscriptions.applyValue(getTopicSubscriptionsResult -&gt; getTopicSubscriptionsResult.subscriptions()[0].id()));
@@ -719,8 +719,8 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subscriptions = MnsFunctions.getTopicSubscriptions(GetTopicSubscriptionsArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
      *             .topicName(&#34;topic_name&#34;)
+     *             .namePrefix(&#34;tf-&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstTopicSubscriptionId&#34;, subscriptions.applyValue(getTopicSubscriptionsResult -&gt; getTopicSubscriptionsResult.subscriptions()[0].id()));

@@ -1009,27 +1009,23 @@ class RouteMap(pulumi.CustomResource):
         destination_region = config.get("destinationRegion")
         if destination_region is None:
             destination_region = "cn-shanghai"
-        hz = alicloud.Provider("hz", region=source_region)
-        sh = alicloud.Provider("sh", region=destination_region)
-        example_hz_network = alicloud.vpc.Network("exampleHzNetwork",
+        example_hz = alicloud.vpc.Network("example_hz",
             vpc_name="tf_example",
-            cidr_block="192.168.0.0/16",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        example_sh_network = alicloud.vpc.Network("exampleShNetwork",
+            cidr_block="192.168.0.0/16")
+        example_sh = alicloud.vpc.Network("example_sh",
             vpc_name="tf_example",
-            cidr_block="172.16.0.0/12",
-            opts=pulumi.ResourceOptions(provider=alicloud["sh"]))
+            cidr_block="172.16.0.0/12")
         example = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_hz_instance_attachment = alicloud.cen.InstanceAttachment("exampleHzInstanceAttachment",
+        example_hz_instance_attachment = alicloud.cen.InstanceAttachment("example_hz",
             instance_id=example.id,
-            child_instance_id=example_hz_network.id,
+            child_instance_id=example_hz.id,
             child_instance_type="VPC",
             child_instance_region_id=source_region)
-        example_sh_instance_attachment = alicloud.cen.InstanceAttachment("exampleShInstanceAttachment",
+        example_sh_instance_attachment = alicloud.cen.InstanceAttachment("example_sh",
             instance_id=example.id,
-            child_instance_id=example_sh_network.id,
+            child_instance_id=example_sh.id,
             child_instance_type="VPC",
             child_instance_region_id=destination_region)
         default = alicloud.cen.RouteMap("default",
@@ -1045,11 +1041,11 @@ class RouteMap(pulumi.CustomResource):
             source_instance_ids_reverse_match=False,
             destination_instance_ids=[example_sh_instance_attachment.child_instance_id],
             destination_instance_ids_reverse_match=False,
-            source_route_table_ids=[example_hz_network.route_table_id],
-            destination_route_table_ids=[example_sh_network.route_table_id],
+            source_route_table_ids=[example_hz.route_table_id],
+            destination_route_table_ids=[example_sh.route_table_id],
             source_child_instance_types=["VPC"],
             destination_child_instance_types=["VPC"],
-            destination_cidr_blocks=[example_sh_network.cidr_block],
+            destination_cidr_blocks=[example_sh.cidr_block],
             cidr_match_mode="Include",
             route_types=["System"],
             match_asns=["65501"],
@@ -1133,27 +1129,23 @@ class RouteMap(pulumi.CustomResource):
         destination_region = config.get("destinationRegion")
         if destination_region is None:
             destination_region = "cn-shanghai"
-        hz = alicloud.Provider("hz", region=source_region)
-        sh = alicloud.Provider("sh", region=destination_region)
-        example_hz_network = alicloud.vpc.Network("exampleHzNetwork",
+        example_hz = alicloud.vpc.Network("example_hz",
             vpc_name="tf_example",
-            cidr_block="192.168.0.0/16",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        example_sh_network = alicloud.vpc.Network("exampleShNetwork",
+            cidr_block="192.168.0.0/16")
+        example_sh = alicloud.vpc.Network("example_sh",
             vpc_name="tf_example",
-            cidr_block="172.16.0.0/12",
-            opts=pulumi.ResourceOptions(provider=alicloud["sh"]))
+            cidr_block="172.16.0.0/12")
         example = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_hz_instance_attachment = alicloud.cen.InstanceAttachment("exampleHzInstanceAttachment",
+        example_hz_instance_attachment = alicloud.cen.InstanceAttachment("example_hz",
             instance_id=example.id,
-            child_instance_id=example_hz_network.id,
+            child_instance_id=example_hz.id,
             child_instance_type="VPC",
             child_instance_region_id=source_region)
-        example_sh_instance_attachment = alicloud.cen.InstanceAttachment("exampleShInstanceAttachment",
+        example_sh_instance_attachment = alicloud.cen.InstanceAttachment("example_sh",
             instance_id=example.id,
-            child_instance_id=example_sh_network.id,
+            child_instance_id=example_sh.id,
             child_instance_type="VPC",
             child_instance_region_id=destination_region)
         default = alicloud.cen.RouteMap("default",
@@ -1169,11 +1161,11 @@ class RouteMap(pulumi.CustomResource):
             source_instance_ids_reverse_match=False,
             destination_instance_ids=[example_sh_instance_attachment.child_instance_id],
             destination_instance_ids_reverse_match=False,
-            source_route_table_ids=[example_hz_network.route_table_id],
-            destination_route_table_ids=[example_sh_network.route_table_id],
+            source_route_table_ids=[example_hz.route_table_id],
+            destination_route_table_ids=[example_sh.route_table_id],
             source_child_instance_types=["VPC"],
             destination_child_instance_types=["VPC"],
-            destination_cidr_blocks=[example_sh_network.cidr_block],
+            destination_cidr_blocks=[example_sh.cidr_block],
             cidr_match_mode="Include",
             route_types=["System"],
             match_asns=["65501"],

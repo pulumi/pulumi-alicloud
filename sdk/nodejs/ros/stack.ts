@@ -24,6 +24,10 @@ import * as utilities from "../utilities";
  *
  * const example = new alicloud.ros.Stack("example", {
  *     stackName: "tf-testaccstack",
+ *     templateBody: `    {
+ *     	"ROSTemplateFormatVersion": "2015-09-01"
+ *     }
+ * `,
  *     stackPolicyBody: `    {
  *     	"Statement": [{
  *     		"Action": "Update:Delete",
@@ -32,12 +36,6 @@ import * as utilities from "../utilities";
  *     		"Principal": "*"
  *     	}]
  *     }
- *     
- * `,
- *     templateBody: `    {
- *     	"ROSTemplateFormatVersion": "2015-09-01"
- *     }
- *     
  * `,
  * });
  * ```

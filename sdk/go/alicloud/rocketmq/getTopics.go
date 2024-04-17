@@ -40,16 +40,16 @@ import (
 //			if param := cfg.Get("topic"); param != "" {
 //				topic = param
 //			}
-//			defaultInstance, err := rocketmq.NewInstance(ctx, "defaultInstance", &rocketmq.InstanceArgs{
+//			_, err := rocketmq.NewInstance(ctx, "default", &rocketmq.InstanceArgs{
 //				InstanceName: pulumi.String(name),
 //				Remark:       pulumi.String("default_ons_instance_remark"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultTopic, err := rocketmq.NewTopic(ctx, "defaultTopic", &rocketmq.TopicArgs{
+//			defaultTopic, err := rocketmq.NewTopic(ctx, "default", &rocketmq.TopicArgs{
 //				TopicName:   pulumi.String(topic),
-//				InstanceId:  defaultInstance.ID(),
+//				InstanceId:  _default.ID(),
 //				MessageType: pulumi.Int(0),
 //				Remark:      pulumi.String("dafault_ons_topic_remark"),
 //			})

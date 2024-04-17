@@ -35,15 +35,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAcl, err := ga.NewAcl(ctx, "defaultAcl", &ga.AclArgs{
+//			_, err := ga.NewAcl(ctx, "default", &ga.AclArgs{
 //				AclName:          pulumi.String("terraform-example"),
 //				AddressIpVersion: pulumi.String("IPv4"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ga.NewAclEntryAttachment(ctx, "defaultAclEntryAttachment", &ga.AclEntryAttachmentArgs{
-//				AclId:            defaultAcl.ID(),
+//			_, err = ga.NewAclEntryAttachment(ctx, "default", &ga.AclEntryAttachmentArgs{
+//				AclId:            _default.ID(),
 //				Entry:            pulumi.String("192.168.1.1/32"),
 //				EntryDescription: pulumi.String("terraform-example"),
 //			})

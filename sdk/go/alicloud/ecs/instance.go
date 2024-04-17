@@ -50,6 +50,7 @@ import (
 // }
 // // Create a new ECS instance for a VPC
 // group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+// Name: pulumi.String(name),
 // Description: pulumi.String("foo"),
 // VpcId: vpc.ID(),
 // })

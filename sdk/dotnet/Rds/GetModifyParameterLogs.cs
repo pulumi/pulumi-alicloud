@@ -32,8 +32,8 @@ namespace Pulumi.AliCloud.Rds
         ///     var example = AliCloud.Rds.GetModifyParameterLogs.Invoke(new()
         ///     {
         ///         DbInstanceId = "example_value",
-        ///         EndTime = "2022-06-08T13:56Z",
         ///         StartTime = "2022-06-04T13:56Z",
+        ///         EndTime = "2022-06-08T13:56Z",
         ///     });
         /// 
         /// });
@@ -64,8 +64,8 @@ namespace Pulumi.AliCloud.Rds
         ///     var example = AliCloud.Rds.GetModifyParameterLogs.Invoke(new()
         ///     {
         ///         DbInstanceId = "example_value",
-        ///         EndTime = "2022-06-08T13:56Z",
         ///         StartTime = "2022-06-04T13:56Z",
+        ///         EndTime = "2022-06-08T13:56Z",
         ///     });
         /// 
         /// });

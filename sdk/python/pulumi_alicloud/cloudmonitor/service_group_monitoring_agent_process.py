@@ -233,17 +233,17 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+        default = alicloud.cms.AlarmContactGroup("default",
             alarm_contact_group_name=name,
             contacts=[
                 "user",
                 "user1",
                 "user2",
             ])
-        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup",
+        default_monitor_group = alicloud.cms.MonitorGroup("default",
             monitor_group_name=name,
-            contact_groups=[default_alarm_contact_group.id])
-        default_service_group_monitoring_agent_process = alicloud.cloudmonitor.ServiceGroupMonitoringAgentProcess("defaultServiceGroupMonitoringAgentProcess",
+            contact_groups=[default.id])
+        default_service_group_monitoring_agent_process = alicloud.cloudmonitor.ServiceGroupMonitoringAgentProcess("default",
             group_id=default_monitor_group.id,
             process_name=name,
             match_express_filter_relation="or",
@@ -313,17 +313,17 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+        default = alicloud.cms.AlarmContactGroup("default",
             alarm_contact_group_name=name,
             contacts=[
                 "user",
                 "user1",
                 "user2",
             ])
-        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup",
+        default_monitor_group = alicloud.cms.MonitorGroup("default",
             monitor_group_name=name,
-            contact_groups=[default_alarm_contact_group.id])
-        default_service_group_monitoring_agent_process = alicloud.cloudmonitor.ServiceGroupMonitoringAgentProcess("defaultServiceGroupMonitoringAgentProcess",
+            contact_groups=[default.id])
+        default_service_group_monitoring_agent_process = alicloud.cloudmonitor.ServiceGroupMonitoringAgentProcess("default",
             group_id=default_monitor_group.id,
             process_name=name,
             match_express_filter_relation="or",

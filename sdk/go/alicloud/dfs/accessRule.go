@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultAccessGroup, err := dfs.NewAccessGroup(ctx, "defaultAccessGroup", &dfs.AccessGroupArgs{
+//			_, err := dfs.NewAccessGroup(ctx, "default", &dfs.AccessGroupArgs{
 //				Description:     pulumi.String("example"),
 //				NetworkType:     pulumi.String("VPC"),
 //				AccessGroupName: pulumi.String(name),
@@ -49,12 +49,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dfs.NewAccessRule(ctx, "defaultAccessRule", &dfs.AccessRuleArgs{
+//			_, err = dfs.NewAccessRule(ctx, "default", &dfs.AccessRuleArgs{
 //				Description:    pulumi.String("example"),
 //				RwAccessType:   pulumi.String("RDWR"),
 //				Priority:       pulumi.Int(1),
 //				NetworkSegment: pulumi.String("192.168.81.1"),
-//				AccessGroupId:  defaultAccessGroup.ID(),
+//				AccessGroupId:  _default.ID(),
 //			})
 //			if err != nil {
 //				return err

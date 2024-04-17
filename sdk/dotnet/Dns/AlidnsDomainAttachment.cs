@@ -25,15 +25,15 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultDomainGroup = new AliCloud.Dns.DomainGroup("defaultDomainGroup", new()
+    ///     var @default = new AliCloud.Dns.DomainGroup("default", new()
     ///     {
     ///         DomainGroupName = "tf-example",
     ///     });
     /// 
-    ///     var defaultAlidnsDomain = new AliCloud.Dns.AlidnsDomain("defaultAlidnsDomain", new()
+    ///     var defaultAlidnsDomain = new AliCloud.Dns.AlidnsDomain("default", new()
     ///     {
     ///         DomainName = "starmove.com",
-    ///         GroupId = defaultDomainGroup.Id,
+    ///         GroupId = @default.Id,
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Dns
     ///         },
     ///     });
     /// 
-    ///     var defaultAlidnsInstance = new AliCloud.Dns.AlidnsInstance("defaultAlidnsInstance", new()
+    ///     var defaultAlidnsInstance = new AliCloud.Dns.AlidnsInstance("default", new()
     ///     {
     ///         DnsSecurity = "basic",
     ///         DomainNumbers = "3",
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Dns
     ///         RenewalStatus = "ManualRenewal",
     ///     });
     /// 
-    ///     var defaultAlidnsDomainAttachment = new AliCloud.Dns.AlidnsDomainAttachment("defaultAlidnsDomainAttachment", new()
+    ///     var defaultAlidnsDomainAttachment = new AliCloud.Dns.AlidnsDomainAttachment("default", new()
     ///     {
     ///         InstanceId = defaultAlidnsInstance.Id,
     ///         DomainNames = new[]

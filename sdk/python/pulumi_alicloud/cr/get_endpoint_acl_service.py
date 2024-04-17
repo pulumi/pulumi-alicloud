@@ -110,8 +110,8 @@ def get_endpoint_acl_service(enable: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.cr.get_endpoint_acl_service(enable=True,
-        endpoint_type="internet",
+    example = alicloud.cr.get_endpoint_acl_service(endpoint_type="internet",
+        enable=True,
         instance_id="example_id",
         module_name="Registry")
     ```
@@ -166,8 +166,8 @@ def get_endpoint_acl_service_output(enable: Optional[pulumi.Input[bool]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.cr.get_endpoint_acl_service(enable=True,
-        endpoint_type="internet",
+    example = alicloud.cr.get_endpoint_acl_service(endpoint_type="internet",
+        enable=True,
         instance_id="example_id",
         module_name="Registry")
     ```

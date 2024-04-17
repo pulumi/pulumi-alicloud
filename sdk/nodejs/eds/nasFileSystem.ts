@@ -23,15 +23,15 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
+ * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("default", {
  *     cidrBlock: "172.16.0.0/12",
  *     enableAdminAccess: false,
  *     desktopAccessType: "Internet",
- *     officeSiteName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
+ *     officeSiteName: `${name}-${_default.result}`,
  * });
  * const example = new alicloud.eds.NasFileSystem("example", {
  *     nasFileSystemName: name,

@@ -30,18 +30,18 @@ namespace Pulumi.AliCloud.Ros
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
-    ///         Max = 99999,
     ///         Min = 10000,
+    ///         Max = 99999,
     ///     });
     /// 
     ///     var example = new AliCloud.Ros.ChangeSet("example", new()
     ///     {
     ///         ChangeSetName = "example_value",
+    ///         StackName = $"tf-example-{@default.Result}",
     ///         ChangeSetType = "CREATE",
     ///         Description = "Test From Terraform",
-    ///         StackName = @default.Result.Apply(result =&gt; $"tf-example-{result}"),
     ///         TemplateBody = "{\"ROSTemplateFormatVersion\":\"2015-09-01\"}",
     ///     });
     /// 

@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///     {
     ///         Description = "example",
     ///         VpcId = createVpc.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         CidrBlock = "172.16.0.0/24",
     ///         VswitchName = name,
     ///     });
@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.RocketMQ
     ///         PeriodUnit = "Month",
     ///     });
     /// 
-    ///     var defaultRocketMQTopic = new AliCloud.RocketMQ.RocketMQTopic("defaultRocketMQTopic", new()
+    ///     var defaultRocketMQTopic = new AliCloud.RocketMQ.RocketMQTopic("default", new()
     ///     {
     ///         Remark = "example",
     ///         InstanceId = createInstance.Id,

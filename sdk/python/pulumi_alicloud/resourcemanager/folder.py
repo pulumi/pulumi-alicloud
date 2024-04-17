@@ -120,10 +120,10 @@ class Folder(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example = alicloud.resourcemanager.Folder("example", folder_name=default.result.apply(lambda result: f"{name}-{result}"))
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        example = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -168,10 +168,10 @@ class Folder(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.RandomInteger("default",
-            max=99999,
-            min=10000)
-        example = alicloud.resourcemanager.Folder("example", folder_name=default.result.apply(lambda result: f"{name}-{result}"))
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        example = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")
         ```
         <!--End PulumiCodeChooser -->
 

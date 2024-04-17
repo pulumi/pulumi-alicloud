@@ -29,81 +29,50 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var bj = new AliCloud.Provider("bj", new()
-    ///     {
-    ///         Region = "cn-beijing",
-    ///     });
-    /// 
-    ///     var hz = new AliCloud.Provider("hz", new()
-    ///     {
-    ///         Region = "cn-hangzhou",
-    ///     });
-    /// 
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     var @default = new AliCloud.Cen.Instance("default", new()
     ///     {
     ///         CenInstanceName = "tf-example",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Hz,
     ///     });
     /// 
-    ///     var defaultBandwidthPackage = new AliCloud.Cen.BandwidthPackage("defaultBandwidthPackage", new()
+    ///     var defaultBandwidthPackage = new AliCloud.Cen.BandwidthPackage("default", new()
     ///     {
     ///         Bandwidth = 5,
     ///         GeographicRegionAId = "China",
     ///         GeographicRegionBId = "China",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Hz,
     ///     });
     /// 
-    ///     var defaultBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("default", new()
     ///     {
-    ///         InstanceId = defaultInstance.Id,
+    ///         InstanceId = @default.Id,
     ///         BandwidthPackageId = defaultBandwidthPackage.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Hz,
     ///     });
     /// 
-    ///     var hzTransitRouter = new AliCloud.Cen.TransitRouter("hzTransitRouter", new()
+    ///     var hz = new AliCloud.Cen.TransitRouter("hz", new()
     ///     {
     ///         CenId = defaultBandwidthPackageAttachment.InstanceId,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Hz,
     ///     });
     /// 
-    ///     var bjTransitRouter = new AliCloud.Cen.TransitRouter("bjTransitRouter", new()
+    ///     var bj = new AliCloud.Cen.TransitRouter("bj", new()
     ///     {
-    ///         CenId = hzTransitRouter.CenId,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Bj,
+    ///         CenId = hz.CenId,
     ///     });
     /// 
-    ///     var defaultTransitRouterPeerAttachment = new AliCloud.Cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", new()
+    ///     var defaultTransitRouterPeerAttachment = new AliCloud.Cen.TransitRouterPeerAttachment("default", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
-    ///         TransitRouterId = hzTransitRouter.TransitRouterId,
+    ///         CenId = @default.Id,
+    ///         TransitRouterId = hz.TransitRouterId,
     ///         PeerTransitRouterRegionId = "cn-beijing",
-    ///         PeerTransitRouterId = bjTransitRouter.TransitRouterId,
+    ///         PeerTransitRouterId = bj.TransitRouterId,
     ///         CenBandwidthPackageId = defaultBandwidthPackageAttachment.BandwidthPackageId,
     ///         Bandwidth = 5,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Hz,
     ///     });
     /// 
-    ///     var defaultInterRegionTrafficQosPolicy = new AliCloud.Cen.InterRegionTrafficQosPolicy("defaultInterRegionTrafficQosPolicy", new()
+    ///     var defaultInterRegionTrafficQosPolicy = new AliCloud.Cen.InterRegionTrafficQosPolicy("default", new()
     ///     {
-    ///         TransitRouterId = hzTransitRouter.TransitRouterId,
+    ///         TransitRouterId = hz.TransitRouterId,
     ///         TransitRouterAttachmentId = defaultTransitRouterPeerAttachment.TransitRouterAttachmentId,
     ///         InterRegionTrafficQosPolicyName = "tf-example-name",
     ///         InterRegionTrafficQosPolicyDescription = "tf-example-description",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Hz,
     ///     });
     /// 
     /// });

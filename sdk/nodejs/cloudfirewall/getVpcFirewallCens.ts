@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.cloudfirewall.getVpcFirewallCens({
- *     ids: [alicloud_cloud_firewall_vpc_firewall_cen["default"].id],
+ *     ids: [defaultAlicloudCloudFirewallVpcFirewallCen.id],
  *     cenId: "cen-cjok7uyb5w2b27573v",
  *     memberUid: "1415189284827022",
  *     status: "closed",
@@ -150,7 +150,7 @@ export interface GetVpcFirewallCensResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.cloudfirewall.getVpcFirewallCens({
- *     ids: [alicloud_cloud_firewall_vpc_firewall_cen["default"].id],
+ *     ids: [defaultAlicloudCloudFirewallVpcFirewallCen.id],
  *     cenId: "cen-cjok7uyb5w2b27573v",
  *     memberUid: "1415189284827022",
  *     status: "closed",

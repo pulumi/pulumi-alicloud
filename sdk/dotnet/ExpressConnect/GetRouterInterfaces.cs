@@ -31,9 +31,9 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_router_interface.Default.Id,
+        ///             defaultAlicloudRouterInterface.Id,
         ///         },
-        ///         NameRegex = alicloud_router_interface.Default.Name,
+        ///         NameRegex = defaultAlicloudRouterInterface.Name,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -67,9 +67,9 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_router_interface.Default.Id,
+        ///             defaultAlicloudRouterInterface.Id,
         ///         },
-        ///         NameRegex = alicloud_router_interface.Default.Name,
+        ///         NameRegex = defaultAlicloudRouterInterface.Name,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

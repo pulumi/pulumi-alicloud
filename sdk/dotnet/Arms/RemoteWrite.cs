@@ -31,38 +31,39 @@ namespace Pulumi.AliCloud.Arms
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "10.4.0.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = Output.Tuple(defaultZones, defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones).Length).Apply(values =&gt;
+    ///         ZoneId = Output.Tuple(@default, @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length).Apply(values =&gt;
     ///         {
-    ///             var defaultZones = values.Item1;
+    ///             var @default = values.Item1;
     ///             var length = values.Item2;
-    ///             return defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones)[length - 1].Id;
+    ///             return @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[length - 1].Id;
     ///         }),
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
+    ///         Name = name,
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultPrometheus = new AliCloud.Arms.Prometheus("defaultPrometheus", new()
+    ///     var defaultPrometheus = new AliCloud.Arms.Prometheus("default", new()
     ///     {
     ///         ClusterType = "ecs",
     ///         GrafanaInstanceId = "free",
@@ -70,7 +71,7 @@ namespace Pulumi.AliCloud.Arms
     ///         VswitchId = defaultSwitch.Id,
     ///         SecurityGroupId = defaultSecurityGroup.Id,
     ///         ClusterName = defaultNetwork.Id.Apply(id =&gt; $"{name}-{id}"),
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
@@ -78,7 +79,7 @@ namespace Pulumi.AliCloud.Arms
     ///         },
     ///     });
     /// 
-    ///     var defaultRemoteWrite = new AliCloud.Arms.RemoteWrite("defaultRemoteWrite", new()
+    ///     var defaultRemoteWrite = new AliCloud.Arms.RemoteWrite("default", new()
     ///     {
     ///         ClusterId = defaultPrometheus.Id,
     ///         RemoteWriteYaml = @"remote_write:

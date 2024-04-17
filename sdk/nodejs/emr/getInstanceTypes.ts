@@ -20,11 +20,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.emr.getInstanceTypes({
- *     clusterType: "HADOOP",
  *     destinationResource: "InstanceType",
  *     instanceChargeType: "PostPaid",
- *     instanceType: "ecs.g5.2xlarge",
  *     supportLocalStorage: false,
+ *     clusterType: "HADOOP",
+ *     instanceType: "ecs.g5.2xlarge",
  *     supportNodeTypes: [
  *         "MASTER",
  *         "CORE",
@@ -130,11 +130,11 @@ export interface GetInstanceTypesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.emr.getInstanceTypes({
- *     clusterType: "HADOOP",
  *     destinationResource: "InstanceType",
  *     instanceChargeType: "PostPaid",
- *     instanceType: "ecs.g5.2xlarge",
  *     supportLocalStorage: false,
+ *     clusterType: "HADOOP",
+ *     instanceType: "ecs.g5.2xlarge",
  *     supportNodeTypes: [
  *         "MASTER",
  *         "CORE",

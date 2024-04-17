@@ -52,11 +52,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultInstances = Wafv3Functions.getInstances();
+ *         final var default = Wafv3Functions.getInstances();
  * 
  *         var defaultDefenseTemplate = new DefenseTemplate(&#34;defaultDefenseTemplate&#34;, DefenseTemplateArgs.builder()        
  *             .status(&#34;1&#34;)
- *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+ *             .instanceId(default_.ids()[0])
  *             .defenseTemplateName(name)
  *             .templateType(&#34;user_custom&#34;)
  *             .templateOrigin(&#34;custom&#34;)

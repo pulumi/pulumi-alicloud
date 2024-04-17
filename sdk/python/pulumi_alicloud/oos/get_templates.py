@@ -225,13 +225,14 @@ def get_templates(category: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.oos.get_templates(has_trigger=False,
-        name_regex="test",
-        share_type="Private",
+    # Declare the data source
+    example = alicloud.oos.get_templates(name_regex="test",
         tags={
             "Created": "TF",
             "For": "template Test",
-        })
+        },
+        share_type="Private",
+        has_trigger=False)
     pulumi.export("firstTemplateName", example.templates[0].template_name)
     ```
     <!--End PulumiCodeChooser -->
@@ -318,13 +319,14 @@ def get_templates_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.oos.get_templates(has_trigger=False,
-        name_regex="test",
-        share_type="Private",
+    # Declare the data source
+    example = alicloud.oos.get_templates(name_regex="test",
         tags={
             "Created": "TF",
             "For": "template Test",
-        })
+        },
+        share_type="Private",
+        has_trigger=False)
     pulumi.export("firstTemplateName", example.templates[0].template_name)
     ```
     <!--End PulumiCodeChooser -->

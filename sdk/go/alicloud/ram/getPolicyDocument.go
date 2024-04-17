@@ -194,6 +194,7 @@ import (
 //				return err
 //			}
 //			_, err = ram.NewRole(ctx, "role", &ram.RoleArgs{
+//				Name:     pulumi.String("tf-example-role-ram"),
 //				Document: pulumi.String(ramExample.Document),
 //				Force:    pulumi.Bool(true),
 //			})
@@ -246,6 +247,7 @@ import (
 //				return err
 //			}
 //			_, err = ram.NewRole(ctx, "role", &ram.RoleArgs{
+//				Name:     pulumi.String("tf-example-role-service"),
 //				Document: pulumi.String(serviceExample.Document),
 //				Force:    pulumi.Bool(true),
 //			})
@@ -307,6 +309,7 @@ import (
 //				return err
 //			}
 //			_, err = ram.NewRole(ctx, "role", &ram.RoleArgs{
+//				Name:     pulumi.String("tf-example-role-federated"),
 //				Document: pulumi.String(federatedExample.Document),
 //				Force:    pulumi.Bool(true),
 //			})

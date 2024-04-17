@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.hbr.getOtsBackupPlans({
  *     nameRegex: "^my-otsBackupPlan",
  * });
- * export const hbrOtsBackupPlanId = data.alicloud_hbr_ots_backup_plans.plans[0].id;
+ * export const hbrOtsBackupPlanId = plans[0].id;
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -105,7 +105,7 @@ export interface GetOtsBackupPlansResult {
  * const ids = alicloud.hbr.getOtsBackupPlans({
  *     nameRegex: "^my-otsBackupPlan",
  * });
- * export const hbrOtsBackupPlanId = data.alicloud_hbr_ots_backup_plans.plans[0].id;
+ * export const hbrOtsBackupPlanId = plans[0].id;
  * ```
  * <!--End PulumiCodeChooser -->
  */

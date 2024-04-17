@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const kmsKeysDs = alicloud.kms.getKeys({
  *     descriptionRegex: "Hello KMS",
  *     outputFile: "kms_keys.json",
@@ -101,6 +102,7 @@ export interface GetKeysResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const kmsKeysDs = alicloud.kms.getKeys({
  *     descriptionRegex: "Hello KMS",
  *     outputFile: "kms_keys.json",

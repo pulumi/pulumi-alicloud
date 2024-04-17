@@ -836,18 +836,20 @@ class RdsDbProxy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
+        default = alicloud.rds.get_zones(engine="MySQL",
             engine_version="5.6")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.rds.Instance("defaultInstance",
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
             engine_version="5.7",
             instance_type="rds.mysql.c1.large",
@@ -856,7 +858,7 @@ class RdsDbProxy(pulumi.CustomResource):
             instance_name=name,
             vswitch_id=default_switch.id,
             db_instance_storage_type="local_ssd")
-        default_read_only_instance = alicloud.rds.ReadOnlyInstance("defaultReadOnlyInstance",
+        default_read_only_instance = alicloud.rds.ReadOnlyInstance("default",
             zone_id=default_instance.zone_id,
             master_db_instance_id=default_instance.id,
             engine_version=default_instance.engine_version,
@@ -864,7 +866,7 @@ class RdsDbProxy(pulumi.CustomResource):
             instance_type=default_instance.instance_type,
             instance_name=f"{name}readonly",
             vswitch_id=default_switch.id)
-        default_rds_db_proxy = alicloud.rds.RdsDbProxy("defaultRdsDbProxy",
+        default_rds_db_proxy = alicloud.rds.RdsDbProxy("default",
             instance_id=default_instance.id,
             instance_network_type="VPC",
             vpc_id=default_instance.vpc_id,
@@ -971,18 +973,20 @@ class RdsDbProxy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
+        default = alicloud.rds.get_zones(engine="MySQL",
             engine_version="5.6")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.rds.Instance("defaultInstance",
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
             engine_version="5.7",
             instance_type="rds.mysql.c1.large",
@@ -991,7 +995,7 @@ class RdsDbProxy(pulumi.CustomResource):
             instance_name=name,
             vswitch_id=default_switch.id,
             db_instance_storage_type="local_ssd")
-        default_read_only_instance = alicloud.rds.ReadOnlyInstance("defaultReadOnlyInstance",
+        default_read_only_instance = alicloud.rds.ReadOnlyInstance("default",
             zone_id=default_instance.zone_id,
             master_db_instance_id=default_instance.id,
             engine_version=default_instance.engine_version,
@@ -999,7 +1003,7 @@ class RdsDbProxy(pulumi.CustomResource):
             instance_type=default_instance.instance_type,
             instance_name=f"{name}readonly",
             vswitch_id=default_switch.id)
-        default_rds_db_proxy = alicloud.rds.RdsDbProxy("defaultRdsDbProxy",
+        default_rds_db_proxy = alicloud.rds.RdsDbProxy("default",
             instance_id=default_instance.id,
             instance_network_type="VPC",
             vpc_id=default_instance.vpc_id,

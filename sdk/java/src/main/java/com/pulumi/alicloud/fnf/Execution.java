@@ -53,7 +53,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-fnfflow&#34;);
- *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+ *         var default_ = new Role(&#34;default&#34;, RoleArgs.builder()        
+ *             .name(name)
  *             .document(&#34;&#34;&#34;
  *   {
  *     &#34;Statement&#34;: [
@@ -81,8 +82,9 @@ import javax.annotation.Nullable;
  *       name: custom_wait
  *       duration: $.wait
  *             &#34;&#34;&#34;)
- *             .roleArn(defaultRole.arn())
+ *             .roleArn(default_.arn())
  *             .description(&#34;Test for terraform fnf_flow.&#34;)
+ *             .name(name)
  *             .type(&#34;FDL&#34;)
  *             .build());
  * 

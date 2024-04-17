@@ -170,11 +170,14 @@ def get_security_group_rules(direction: Optional[str] = None,
 
     config = pulumi.Config()
     security_group_id = config.require_object("securityGroupId")
+    # Or get it from the alicloud_security_groups data source.
+    # Please note that the data source arguments must be enough to filter results to one security group.
     groups_ds = alicloud.ecs.get_security_groups(name_regex="api")
-    ingress_rules_ds = alicloud.ecs.get_security_group_rules(direction="ingress",
-        group_id=groups_ds.groups[0].id,
-        ip_protocol="tcp",
-        nic_type="internet")
+    # Filter the security group rule by group
+    ingress_rules_ds = alicloud.ecs.get_security_group_rules(group_id=groups_ds.groups[0].id,
+        nic_type="internet",
+        direction="ingress",
+        ip_protocol="tcp")
     # Pass port_range to the backend service
     backend = alicloud.ecs.Instance("backend", user_data=f"config_service.sh --portrange={ingress_rules_ds.rules[0].port_range}")
     ```
@@ -235,11 +238,14 @@ def get_security_group_rules_output(direction: Optional[pulumi.Input[Optional[st
 
     config = pulumi.Config()
     security_group_id = config.require_object("securityGroupId")
+    # Or get it from the alicloud_security_groups data source.
+    # Please note that the data source arguments must be enough to filter results to one security group.
     groups_ds = alicloud.ecs.get_security_groups(name_regex="api")
-    ingress_rules_ds = alicloud.ecs.get_security_group_rules(direction="ingress",
-        group_id=groups_ds.groups[0].id,
-        ip_protocol="tcp",
-        nic_type="internet")
+    # Filter the security group rule by group
+    ingress_rules_ds = alicloud.ecs.get_security_group_rules(group_id=groups_ds.groups[0].id,
+        nic_type="internet",
+        direction="ingress",
+        ip_protocol="tcp")
     # Pass port_range to the backend service
     backend = alicloud.ecs.Instance("backend", user_data=f"config_service.sh --portrange={ingress_rules_ds.rules[0].port_range}")
     ```

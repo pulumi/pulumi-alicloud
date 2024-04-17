@@ -24,18 +24,18 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tfexample";
- * const defaultHoneypotImages = alicloud.threatdetection.getHoneypotImages({
+ * const default = alicloud.threatdetection.getHoneypotImages({
  *     nameRegex: "^ruoyi",
  * });
- * const defaultHoneypotNode = new alicloud.threatdetection.HoneypotNode("defaultHoneypotNode", {
+ * const defaultHoneypotNode = new alicloud.threatdetection.HoneypotNode("default", {
  *     nodeName: name,
  *     availableProbeNum: 20,
  *     securityGroupProbeIpLists: ["0.0.0.0/0"],
  * });
- * const defaultHoneypotPreset = new alicloud.threatdetection.HoneypotPreset("defaultHoneypotPreset", {
+ * const defaultHoneypotPreset = new alicloud.threatdetection.HoneypotPreset("default", {
  *     presetName: name,
  *     nodeId: defaultHoneypotNode.id,
- *     honeypotImageName: defaultHoneypotImages.then(defaultHoneypotImages => defaultHoneypotImages.images?.[0]?.honeypotImageName),
+ *     honeypotImageName: _default.then(_default => _default.images?.[0]?.honeypotImageName),
  *     meta: {
  *         portraitOption: true,
  *         burp: "open",

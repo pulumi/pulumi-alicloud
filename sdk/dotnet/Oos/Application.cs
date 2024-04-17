@@ -32,18 +32,18 @@ namespace Pulumi.AliCloud.Oos
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultApplication = new AliCloud.Oos.Application("defaultApplication", new()
+    ///     var defaultApplication = new AliCloud.Oos.Application("default", new()
     ///     {
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
-    ///         ApplicationName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
+    ///         ApplicationName = $"{name}-{defaultInteger.Result}",
     ///         Description = name,
     ///         Tags = 
     ///         {

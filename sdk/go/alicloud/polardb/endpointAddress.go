@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNodeClasses, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
+//			_default, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
 //				DbType:    pulumi.StringRef("MySQL"),
 //				DbVersion: pulumi.StringRef("8.0"),
 //				PayType:   "PostPaid",
@@ -43,26 +43,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultNodeClasses.Classes[0].ZoneId),
+//				ZoneId:      pulumi.String(_default.Classes[0].ZoneId),
 //				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultCluster, err := polardb.NewCluster(ctx, "defaultCluster", &polardb.ClusterArgs{
+//			defaultCluster, err := polardb.NewCluster(ctx, "default", &polardb.ClusterArgs{
 //				DbType:      pulumi.String("MySQL"),
 //				DbVersion:   pulumi.String("8.0"),
-//				DbNodeClass: pulumi.String(defaultNodeClasses.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
+//				DbNodeClass: pulumi.String(_default.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
 //				PayType:     pulumi.String("PostPaid"),
 //				VswitchId:   defaultSwitch.ID(),
 //				Description: pulumi.String("terraform-example"),
@@ -70,13 +70,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultEndpoints := polardb.GetEndpointsOutput(ctx, polardb.GetEndpointsOutputArgs{
+//			defaultGetEndpoints := polardb.GetEndpointsOutput(ctx, polardb.GetEndpointsOutputArgs{
 //				DbClusterId: defaultCluster.ID(),
 //			}, nil)
-//			_, err = polardb.NewEndpointAddress(ctx, "defaultEndpointAddress", &polardb.EndpointAddressArgs{
+//			_, err = polardb.NewEndpointAddress(ctx, "default", &polardb.EndpointAddressArgs{
 //				DbClusterId: defaultCluster.ID(),
-//				DbEndpointId: defaultEndpoints.ApplyT(func(defaultEndpoints polardb.GetEndpointsResult) (*string, error) {
-//					return &defaultEndpoints.Endpoints[0].DbEndpointId, nil
+//				DbEndpointId: defaultGetEndpoints.ApplyT(func(defaultGetEndpoints polardb.GetEndpointsResult) (*string, error) {
+//					return &defaultGetEndpoints.Endpoints[0].DbEndpointId, nil
 //				}).(pulumi.StringPtrOutput),
 //				ConnectionPrefix: pulumi.String("polardbexample"),
 //				NetType:          pulumi.String("Public"),

@@ -41,13 +41,13 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultHoneypotImages, err := threatdetection.GetHoneypotImages(ctx, &threatdetection.GetHoneypotImagesArgs{
+//			_default, err := threatdetection.GetHoneypotImages(ctx, &threatdetection.GetHoneypotImagesArgs{
 //				NameRegex: pulumi.StringRef("^ruoyi"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultHoneypotNode, err := threatdetection.NewHoneypotNode(ctx, "defaultHoneypotNode", &threatdetection.HoneypotNodeArgs{
+//			defaultHoneypotNode, err := threatdetection.NewHoneypotNode(ctx, "default", &threatdetection.HoneypotNodeArgs{
 //				NodeName:          pulumi.String(name),
 //				AvailableProbeNum: pulumi.Int(20),
 //				SecurityGroupProbeIpLists: pulumi.StringArray{
@@ -57,9 +57,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = threatdetection.NewHoneyPot(ctx, "defaultHoneyPot", &threatdetection.HoneyPotArgs{
-//				HoneypotImageName: pulumi.String(defaultHoneypotImages.Images[0].HoneypotImageName),
-//				HoneypotImageId:   pulumi.String(defaultHoneypotImages.Images[0].HoneypotImageId),
+//			_, err = threatdetection.NewHoneyPot(ctx, "default", &threatdetection.HoneyPotArgs{
+//				HoneypotImageName: pulumi.String(_default.Images[0].HoneypotImageName),
+//				HoneypotImageId:   pulumi.String(_default.Images[0].HoneypotImageId),
 //				HoneypotName:      pulumi.String(name),
 //				NodeId:            defaultHoneypotNode.ID(),
 //			})

@@ -53,15 +53,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ram.NewAccountPasswordPolicy(ctx, "corporate", &ram.AccountPasswordPolicyArgs{
-//				HardExpiry:                 pulumi.Bool(true),
-//				MaxLoginAttempts:           pulumi.Int(3),
-//				MaxPasswordAge:             pulumi.Int(12),
 //				MinimumPasswordLength:      pulumi.Int(9),
-//				PasswordReusePrevention:    pulumi.Int(5),
 //				RequireLowercaseCharacters: pulumi.Bool(false),
+//				RequireUppercaseCharacters: pulumi.Bool(false),
 //				RequireNumbers:             pulumi.Bool(false),
 //				RequireSymbols:             pulumi.Bool(false),
-//				RequireUppercaseCharacters: pulumi.Bool(false),
+//				HardExpiry:                 pulumi.Bool(true),
+//				MaxPasswordAge:             pulumi.Int(12),
+//				PasswordReusePrevention:    pulumi.Int(5),
+//				MaxLoginAttempts:           pulumi.Int(3),
 //			})
 //			if err != nil {
 //				return err

@@ -38,23 +38,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vod.NewDomain(ctx, "defaultDomain", &vod.DomainArgs{
-//				DomainName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("example-%v.com", result), nil
-//				}).(pulumi.StringOutput),
-//				Scope: pulumi.String("domestic"),
+//			_, err = vod.NewDomain(ctx, "default", &vod.DomainArgs{
+//				DomainName: pulumi.String(fmt.Sprintf("example-%v.com", _default.Result)),
+//				Scope:      pulumi.String("domestic"),
 //				Sources: vod.DomainSourceArray{
 //					&vod.DomainSourceArgs{
+//						SourceType:    pulumi.String("domain"),
 //						SourceContent: pulumi.String("outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com"),
 //						SourcePort:    pulumi.String("443"),
-//						SourceType:    pulumi.String("domain"),
 //					},
 //				},
 //				Tags: pulumi.Map{

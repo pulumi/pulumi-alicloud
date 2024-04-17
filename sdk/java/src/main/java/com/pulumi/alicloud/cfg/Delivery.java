@@ -37,6 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
  * import com.pulumi.alicloud.log.StoreArgs;
  * import com.pulumi.alicloud.cfg.Delivery;
@@ -56,26 +57,29 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-sls&#34;);
- *         final var thisAccount = AlicloudFunctions.getAccount();
+ *         final var this = AlicloudFunctions.getAccount();
  * 
- *         final var thisRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var thisGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var defaultProject = new Project(&#34;defaultProject&#34;);
+ *         var default_ = new Project(&#34;default&#34;, ProjectArgs.builder()        
+ *             .name(name)
+ *             .build());
  * 
  *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
- *             .project(defaultProject.name())
+ *             .name(name)
+ *             .project(default_.name())
  *             .build());
  * 
  *         var defaultDelivery = new Delivery(&#34;defaultDelivery&#34;, DeliveryArgs.builder()        
  *             .configurationItemChangeNotification(true)
  *             .nonCompliantNotification(true)
  *             .deliveryChannelName(name)
- *             .deliveryChannelTargetArn(Output.tuple(defaultProject.name(), defaultStore.name()).applyValue(values -&gt; {
- *                 var defaultProjectName = values.t1;
+ *             .deliveryChannelTargetArn(Output.tuple(default_.name(), defaultStore.name()).applyValue(values -&gt; {
+ *                 var defaultName = values.t1;
  *                 var defaultStoreName = values.t2;
- *                 return String.format(&#34;acs:log:%s:%s:project/%s/logstore/%s&#34;, thisRegions.applyValue(getRegionsResult -&gt; getRegionsResult.ids()[0]),thisAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),defaultProjectName,defaultStoreName);
+ *                 return String.format(&#34;acs:log:%s:%s:project/%s/logstore/%s&#34;, thisGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.ids()[0]),this_.id(),defaultName,defaultStoreName);
  *             }))
  *             .deliveryChannelType(&#34;SLS&#34;)
  *             .description(name)

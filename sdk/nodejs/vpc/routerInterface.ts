@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  *     routerId: foo.routerId,
  *     role: "InitiatingSide",
  *     specification: "Large.2",
+ *     name: "test1",
  *     description: "test1",
  * });
  * ```

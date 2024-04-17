@@ -381,7 +381,7 @@ class Role(pulumi.CustomResource):
 
         # Create a new RAM Role.
         role = alicloud.ram.Role("role",
-            description="this is a role test.",
+            name="terraform-example",
             document=\"\"\"  {
             "Statement": [
               {
@@ -397,8 +397,8 @@ class Role(pulumi.CustomResource):
             ],
             "Version": "1"
           }
-          
-        \"\"\")
+        \"\"\",
+            description="this is a role test.")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -443,7 +443,7 @@ class Role(pulumi.CustomResource):
 
         # Create a new RAM Role.
         role = alicloud.ram.Role("role",
-            description="this is a role test.",
+            name="terraform-example",
             document=\"\"\"  {
             "Statement": [
               {
@@ -459,8 +459,8 @@ class Role(pulumi.CustomResource):
             ],
             "Version": "1"
           }
-          
-        \"\"\")
+        \"\"\",
+            description="this is a role test.")
         ```
         <!--End PulumiCodeChooser -->
 

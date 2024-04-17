@@ -232,12 +232,12 @@ class ClientKey(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        a_ap0 = alicloud.kms.ApplicationAccessPoint("aAP0",
+        aap0 = alicloud.kms.ApplicationAccessPoint("AAP0",
             policies=["aa"],
             description="aa",
             application_access_point_name=name)
         default = alicloud.kms.ClientKey("default",
-            aap_name=a_ap0.application_access_point_name,
+            aap_name=aap0.application_access_point_name,
             password="YouPassword123!",
             not_before="2023-09-01T14:11:22Z",
             not_after="2028-09-01T14:11:22Z",
@@ -289,12 +289,12 @@ class ClientKey(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        a_ap0 = alicloud.kms.ApplicationAccessPoint("aAP0",
+        aap0 = alicloud.kms.ApplicationAccessPoint("AAP0",
             policies=["aa"],
             description="aa",
             application_access_point_name=name)
         default = alicloud.kms.ClientKey("default",
-            aap_name=a_ap0.application_access_point_name,
+            aap_name=aap0.application_access_point_name,
             password="YouPassword123!",
             not_before="2023-09-01T14:11:22Z",
             not_after="2028-09-01T14:11:22Z",

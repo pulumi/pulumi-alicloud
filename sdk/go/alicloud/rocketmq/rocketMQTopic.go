@@ -43,7 +43,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -60,7 +60,7 @@ import (
 //			createVswitch, err := vpc.NewSwitch(ctx, "createVswitch", &vpc.SwitchArgs{
 //				Description: pulumi.String("example"),
 //				VpcId:       createVpc.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String(name),
 //			})
@@ -97,7 +97,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rocketmq.NewRocketMQTopic(ctx, "defaultRocketMQTopic", &rocketmq.RocketMQTopicArgs{
+//			_, err = rocketmq.NewRocketMQTopic(ctx, "default", &rocketmq.RocketMQTopicArgs{
 //				Remark:      pulumi.String("example"),
 //				InstanceId:  createInstance.ID(),
 //				MessageType: pulumi.String("NORMAL"),

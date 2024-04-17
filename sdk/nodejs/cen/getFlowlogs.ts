@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     ids: ["flowlog-tig1xxxxx"],
  *     nameRegex: "^foo",
  * });
- * export const firstCenFlowlogId = data.alicloud_cen_instances["default"].flowlogs[0].id;
+ * export const firstCenFlowlogId = defaultAlicloudCenInstances.flowlogs[0].id;
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -140,7 +140,7 @@ export interface GetFlowlogsResult {
  *     ids: ["flowlog-tig1xxxxx"],
  *     nameRegex: "^foo",
  * });
- * export const firstCenFlowlogId = data.alicloud_cen_instances["default"].flowlogs[0].id;
+ * export const firstCenFlowlogId = defaultAlicloudCenInstances.flowlogs[0].id;
  * ```
  * <!--End PulumiCodeChooser -->
  */

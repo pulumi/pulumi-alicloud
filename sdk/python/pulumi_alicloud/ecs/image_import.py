@@ -290,17 +290,17 @@ class ImageImport(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         this = alicloud.ecs.ImageImport("this",
-            architecture="x86_64",
             description="test import image",
+            architecture="x86_64",
+            image_name="test-import-image",
+            license_type="Auto",
+            platform="Ubuntu",
+            os_type="linux",
             disk_device_mappings=[alicloud.ecs.ImageImportDiskDeviceMappingArgs(
                 disk_image_size=5,
                 oss_bucket="testimportimage",
                 oss_object="root.img",
-            )],
-            image_name="test-import-image",
-            license_type="Auto",
-            os_type="linux",
-            platform="Ubuntu")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -353,17 +353,17 @@ class ImageImport(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         this = alicloud.ecs.ImageImport("this",
-            architecture="x86_64",
             description="test import image",
+            architecture="x86_64",
+            image_name="test-import-image",
+            license_type="Auto",
+            platform="Ubuntu",
+            os_type="linux",
             disk_device_mappings=[alicloud.ecs.ImageImportDiskDeviceMappingArgs(
                 disk_image_size=5,
                 oss_bucket="testimportimage",
                 oss_object="root.img",
-            )],
-            image_name="test-import-image",
-            license_type="Auto",
-            os_type="linux",
-            platform="Ubuntu")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

@@ -14,6 +14,55 @@ import (
 // This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
 //
 // > **NOTE:** Available since v1.195.0.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "example_value";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// defaultAntiBruteForceRule, err := threatdetection.NewAntiBruteForceRule(ctx, "default", &threatdetection.AntiBruteForceRuleArgs{
+// AntiBruteForceRuleName: pulumi.String(name),
+// ForbiddenTime: pulumi.Int(360),
+// UuidLists: pulumi.StringArray{
+// pulumi.String("7567806c-4ec5-4597-9543-7c9543381a13"),
+// },
+// FailCount: pulumi.Int(80),
+// Span: pulumi.Int(10),
+// })
+// if err != nil {
+// return err
+// }
+// _default := defaultAntiBruteForceRule.ID().ApplyT(func(id string) (threatdetection.GetAntiBruteForceRulesResult, error) {
+// return threatdetection.GetAntiBruteForceRulesOutput(ctx, threatdetection.GetAntiBruteForceRulesOutputArgs{
+// Ids: []string{
+// id,
+// },
+// NameRegex: defaultAntiBruteForceRule.Name,
+// }, nil), nil
+// }).(threatdetection.GetAntiBruteForceRulesResultOutput)
+// ctx.Export("alicloudThreatDetectionAntiBruteForceRuleExampleId", _default.ApplyT(func(_default threatdetection.GetAntiBruteForceRulesResult) (*string, error) {
+// return &default.Rules[0].Id, nil
+// }).(pulumi.StringPtrOutput))
+// return nil
+// })
+// }
+// ```
+// <!--End PulumiCodeChooser -->
 func GetAntiBruteForceRules(ctx *pulumi.Context, args *GetAntiBruteForceRulesArgs, opts ...pulumi.InvokeOption) (*GetAntiBruteForceRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAntiBruteForceRulesResult

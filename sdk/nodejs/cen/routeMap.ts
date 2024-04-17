@@ -25,33 +25,27 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const sourceRegion = config.get("sourceRegion") || "cn-hangzhou";
  * const destinationRegion = config.get("destinationRegion") || "cn-shanghai";
- * const hz = new alicloud.Provider("hz", {region: sourceRegion});
- * const sh = new alicloud.Provider("sh", {region: destinationRegion});
- * const exampleHzNetwork = new alicloud.vpc.Network("exampleHzNetwork", {
+ * const exampleHz = new alicloud.vpc.Network("example_hz", {
  *     vpcName: "tf_example",
  *     cidrBlock: "192.168.0.0/16",
- * }, {
- *     provider: alicloud.hz,
  * });
- * const exampleShNetwork = new alicloud.vpc.Network("exampleShNetwork", {
+ * const exampleSh = new alicloud.vpc.Network("example_sh", {
  *     vpcName: "tf_example",
  *     cidrBlock: "172.16.0.0/12",
- * }, {
- *     provider: alicloud.sh,
  * });
  * const example = new alicloud.cen.Instance("example", {
  *     cenInstanceName: "tf_example",
  *     description: "an example for cen",
  * });
- * const exampleHzInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleHzInstanceAttachment", {
+ * const exampleHzInstanceAttachment = new alicloud.cen.InstanceAttachment("example_hz", {
  *     instanceId: example.id,
- *     childInstanceId: exampleHzNetwork.id,
+ *     childInstanceId: exampleHz.id,
  *     childInstanceType: "VPC",
  *     childInstanceRegionId: sourceRegion,
  * });
- * const exampleShInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleShInstanceAttachment", {
+ * const exampleShInstanceAttachment = new alicloud.cen.InstanceAttachment("example_sh", {
  *     instanceId: example.id,
- *     childInstanceId: exampleShNetwork.id,
+ *     childInstanceId: exampleSh.id,
  *     childInstanceType: "VPC",
  *     childInstanceRegionId: destinationRegion,
  * });
@@ -68,11 +62,11 @@ import * as utilities from "../utilities";
  *     sourceInstanceIdsReverseMatch: false,
  *     destinationInstanceIds: [exampleShInstanceAttachment.childInstanceId],
  *     destinationInstanceIdsReverseMatch: false,
- *     sourceRouteTableIds: [exampleHzNetwork.routeTableId],
- *     destinationRouteTableIds: [exampleShNetwork.routeTableId],
+ *     sourceRouteTableIds: [exampleHz.routeTableId],
+ *     destinationRouteTableIds: [exampleSh.routeTableId],
  *     sourceChildInstanceTypes: ["VPC"],
  *     destinationChildInstanceTypes: ["VPC"],
- *     destinationCidrBlocks: [exampleShNetwork.cidrBlock],
+ *     destinationCidrBlocks: [exampleSh.cidrBlock],
  *     cidrMatchMode: "Include",
  *     routeTypes: ["System"],
  *     matchAsns: ["65501"],

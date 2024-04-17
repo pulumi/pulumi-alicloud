@@ -45,32 +45,32 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultPhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//			defaultGetPhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
 //				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			vlanId, err := random.NewRandomInteger(ctx, "vlanId", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(2999),
-//				Min: pulumi.Int(1),
+//			vlanId, err := random.NewInteger(ctx, "vlan_id", &random.IntegerArgs{
+//				Max: 2999,
+//				Min: 1,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "exampleVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
+//			example, err := expressconnect.NewVirtualBorderRouter(ctx, "example", &expressconnect.VirtualBorderRouterArgs{
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-//				PhysicalConnectionId:    pulumi.String(defaultPhysicalConnections.Connections[0].Id),
+//				PhysicalConnectionId:    pulumi.String(defaultGetPhysicalConnections.Connections[0].Id),
 //				VirtualBorderRouterName: pulumi.String(name),
-//				VlanId:                  vlanId.ID(),
+//				VlanId:                  vlanId.Id,
 //				MinRxInterval:           pulumi.Int(1000),
 //				MinTxInterval:           pulumi.Int(1000),
 //				DetectMultiplier:        pulumi.Int(10),
@@ -78,27 +78,27 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			exampleInstance, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(name),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &cen.InstanceAttachmentArgs{
+//			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "example", &cen.InstanceAttachmentArgs{
 //				InstanceId:            exampleInstance.ID(),
-//				ChildInstanceId:       exampleVirtualBorderRouter.ID(),
+//				ChildInstanceId:       example.ID(),
 //				ChildInstanceType:     pulumi.String("VBR"),
-//				ChildInstanceRegionId: pulumi.String(defaultRegions.Regions[0].Id),
+//				ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewVbrHealthCheck(ctx, "exampleVbrHealthCheck", &cen.VbrHealthCheckArgs{
+//			_, err = cen.NewVbrHealthCheck(ctx, "example", &cen.VbrHealthCheckArgs{
 //				CenId:               exampleInstance.ID(),
 //				HealthCheckSourceIp: pulumi.String("192.168.1.2"),
 //				HealthCheckTargetIp: pulumi.String("10.0.0.2"),
-//				VbrInstanceId:       exampleVirtualBorderRouter.ID(),
+//				VbrInstanceId:       example.ID(),
 //				VbrInstanceRegionId: exampleInstanceAttachment.ChildInstanceRegionId,
 //				HealthCheckInterval: pulumi.Int(2),
 //				HealthyThreshold:    pulumi.Int(8),

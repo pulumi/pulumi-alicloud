@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultVpc = new alicloud.vpc.Network("defaultVpc", {
@@ -34,10 +34,10 @@ import * as utilities from "../utilities";
  * const defaultyVSwitch = new alicloud.vpc.Switch("defaultyVSwitch", {
  *     vpcId: defaultVpc.id,
  *     cidrBlock: "172.16.2.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultCluster = new alicloud.ackone.Cluster("defaultCluster", {network: {
+ * const defaultCluster = new alicloud.ackone.Cluster("default", {network: {
  *     vpcId: defaultVpc.id,
  *     vswitches: [defaultyVSwitch.id],
  * }});

@@ -36,9 +36,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cms.NewNamespace(ctx, "example", &cms.NamespaceArgs{
-//				Description:   pulumi.String("tf-example"),
 //				Namespace:     pulumi.String("tf-example"),
 //				Specification: pulumi.String("cms.s1.large"),
+//				Description:   pulumi.String("tf-example"),
 //			})
 //			if err != nil {
 //				return err

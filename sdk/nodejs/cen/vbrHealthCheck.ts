@@ -24,42 +24,42 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultRegions = alicloud.getRegions({
+ * const default = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultPhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
+ * const defaultGetPhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
  *     nameRegex: "^preserved-NODELETING",
  * });
- * const vlanId = new random.RandomInteger("vlanId", {
+ * const vlanId = new random.index.Integer("vlan_id", {
  *     max: 2999,
  *     min: 1,
  * });
- * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter", {
+ * const example = new alicloud.expressconnect.VirtualBorderRouter("example", {
  *     localGatewayIp: "10.0.0.1",
  *     peerGatewayIp: "10.0.0.2",
  *     peeringSubnetMask: "255.255.255.252",
- *     physicalConnectionId: defaultPhysicalConnections.then(defaultPhysicalConnections => defaultPhysicalConnections.connections?.[0]?.id),
+ *     physicalConnectionId: defaultGetPhysicalConnections.then(defaultGetPhysicalConnections => defaultGetPhysicalConnections.connections?.[0]?.id),
  *     virtualBorderRouterName: name,
  *     vlanId: vlanId.id,
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
  * });
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ * const exampleInstance = new alicloud.cen.Instance("example", {
  *     cenInstanceName: name,
  *     protectionLevel: "REDUCED",
  * });
- * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleInstanceAttachment", {
+ * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("example", {
  *     instanceId: exampleInstance.id,
- *     childInstanceId: exampleVirtualBorderRouter.id,
+ *     childInstanceId: example.id,
  *     childInstanceType: "VBR",
- *     childInstanceRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     childInstanceRegionId: _default.then(_default => _default.regions?.[0]?.id),
  * });
- * const exampleVbrHealthCheck = new alicloud.cen.VbrHealthCheck("exampleVbrHealthCheck", {
+ * const exampleVbrHealthCheck = new alicloud.cen.VbrHealthCheck("example", {
  *     cenId: exampleInstance.id,
  *     healthCheckSourceIp: "192.168.1.2",
  *     healthCheckTargetIp: "10.0.0.2",
- *     vbrInstanceId: exampleVirtualBorderRouter.id,
+ *     vbrInstanceId: example.id,
  *     vbrInstanceRegionId: exampleInstanceAttachment.childInstanceRegionId,
  *     healthCheckInterval: 2,
  *     healthyThreshold: 8,

@@ -31,32 +31,32 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultImages = AliCloud.SimpleApplicationServer.GetImages.Invoke();
+    ///     var @default = AliCloud.SimpleApplicationServer.GetImages.Invoke();
     /// 
-    ///     var defaultServerPlans = AliCloud.SimpleApplicationServer.GetServerPlans.Invoke();
+    ///     var defaultGetServerPlans = AliCloud.SimpleApplicationServer.GetServerPlans.Invoke();
     /// 
-    ///     var defaultInstance = new AliCloud.SimpleApplicationServer.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.SimpleApplicationServer.Instance("default", new()
     ///     {
     ///         PaymentType = "Subscription",
-    ///         PlanId = defaultServerPlans.Apply(getServerPlansResult =&gt; getServerPlansResult.Plans[0]?.Id),
+    ///         PlanId = defaultGetServerPlans.Apply(getServerPlansResult =&gt; getServerPlansResult.Plans[0]?.Id),
     ///         InstanceName = name,
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         ImageId = @default.Apply(@default =&gt; @default.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id)),
     ///         Period = 1,
     ///         DataDiskSize = 100,
     ///     });
     /// 
-    ///     var defaultServerDisks = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
+    ///     var defaultGetServerDisks = AliCloud.SimpleApplicationServer.GetServerDisks.Invoke(new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
     ///     });
     /// 
-    ///     var defaultSnapshot = new AliCloud.SimpleApplicationServer.Snapshot("defaultSnapshot", new()
+    ///     var defaultSnapshot = new AliCloud.SimpleApplicationServer.Snapshot("default", new()
     ///     {
-    ///         DiskId = defaultServerDisks.Apply(getServerDisksResult =&gt; getServerDisksResult.Ids[0]),
+    ///         DiskId = defaultGetServerDisks.Apply(getServerDisksResult =&gt; getServerDisksResult.Ids[0]),
     ///         SnapshotName = name,
     ///     });
     /// 
-    ///     var defaultCustomImage = new AliCloud.SimpleApplicationServer.CustomImage("defaultCustomImage", new()
+    ///     var defaultCustomImage = new AliCloud.SimpleApplicationServer.CustomImage("default", new()
     ///     {
     ///         CustomImageName = name,
     ///         InstanceId = defaultInstance.Id,

@@ -50,13 +50,13 @@ import (
 //			if param := cfg.Get("regionId"); param != "" {
 //				regionId = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ebs.NewSolutionInstance(ctx, "defaultSolutionInstance", &ebs.SolutionInstanceArgs{
+//			_, err = ebs.NewSolutionInstance(ctx, "default", &ebs.SolutionInstanceArgs{
 //				SolutionInstanceName: pulumi.String(name),
-//				ResourceGroupId:      pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:      pulumi.String(_default.Ids[0]),
 //				Description:          pulumi.String("description"),
 //				SolutionId:           pulumi.String("mysql"),
 //				Parameters: ebs.SolutionInstanceParameterArray{

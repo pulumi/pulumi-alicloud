@@ -22,21 +22,21 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultImages = alicloud.eds.getImages({
+ * const default = alicloud.eds.getImages({
  *     imageType: "SYSTEM",
  *     osType: "Windows",
  *     desktopInstanceType: "eds.hf.4c8g",
  * });
- * const defaultDesktopTypes = alicloud.eds.getDesktopTypes({
+ * const defaultGetDesktopTypes = alicloud.eds.getDesktopTypes({
  *     instanceTypeFamily: "eds.hf",
  *     cpuCount: 4,
  *     memorySize: 8192,
  * });
- * const defaultBundle = new alicloud.eds.Bundle("defaultBundle", {
+ * const defaultBundle = new alicloud.eds.Bundle("default", {
  *     description: name,
- *     desktopType: defaultDesktopTypes.then(defaultDesktopTypes => defaultDesktopTypes.ids?.[0]),
+ *     desktopType: defaultGetDesktopTypes.then(defaultGetDesktopTypes => defaultGetDesktopTypes.ids?.[0]),
  *     bundleName: name,
- *     imageId: defaultImages.then(defaultImages => defaultImages.ids?.[0]),
+ *     imageId: _default.then(_default => _default.ids?.[0]),
  *     userDiskSizeGibs: [70],
  *     rootDiskSizeGib: 80,
  *     rootDiskPerformanceLevel: "PL1",

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.threatdetection.getWebLockConfigs({
- *     ids: [alicloud_threat_detection_web_lock_config["default"].id],
+ *     ids: [defaultAlicloudThreatDetectionWebLockConfig.id],
  * });
  * export const alicloudThreatDetectionWebLockConfigExampleId = _default.then(_default => _default.configs?.[0]?.id);
  * ```
@@ -110,7 +110,7 @@ export interface GetWebLockConfigsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.threatdetection.getWebLockConfigs({
- *     ids: [alicloud_threat_detection_web_lock_config["default"].id],
+ *     ids: [defaultAlicloudThreatDetectionWebLockConfig.id],
  * });
  * export const alicloudThreatDetectionWebLockConfigExampleId = _default.then(_default => _default.configs?.[0]?.id);
  * ```

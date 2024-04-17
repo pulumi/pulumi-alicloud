@@ -15,6 +15,27 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * export = async () => {
+ *     const config = new pulumi.Config();
+ *     const name = config.get("name") || "tf-example";
+ *     const default = await alicloud.cloudsso.getDirectories({});
+ *     const defaultDirectory: alicloud.cloudsso.Directory[] = [];
+ *     for (const range = {value: 0}; range.value < (_default.ids.length > 0 ? 0 : 1); range.value++) {
+ *         defaultDirectory.push(new alicloud.cloudsso.Directory(`default-${range.value}`, {directoryName: name}));
+ *     }
+ * }
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Cloud SSO Directory can be imported using the id, e.g.

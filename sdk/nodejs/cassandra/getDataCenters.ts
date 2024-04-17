@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const cassandra = alicloud.cassandra.getDataCenters({
- *     clusterId: "cds-xxxxx",
  *     nameRegex: "tf_testAccCassandra_dc",
+ *     clusterId: "cds-xxxxx",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -104,8 +104,8 @@ export interface GetDataCentersResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const cassandra = alicloud.cassandra.getDataCenters({
- *     clusterId: "cds-xxxxx",
  *     nameRegex: "tf_testAccCassandra_dc",
+ *     clusterId: "cds-xxxxx",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

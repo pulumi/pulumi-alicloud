@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			examplePolicy, err := tag.NewPolicy(ctx, "examplePolicy", &tag.PolicyArgs{
+//			example, err := tag.NewPolicy(ctx, "example", &tag.PolicyArgs{
 //				PolicyName:    pulumi.String(name),
 //				PolicyDesc:    pulumi.String(name),
 //				UserType:      pulumi.String("USER"),
@@ -55,8 +55,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = tag.NewPolicyAttachment(ctx, "examplePolicyAttachment", &tag.PolicyAttachmentArgs{
-//				PolicyId:   examplePolicy.ID(),
+//			_, err = tag.NewPolicyAttachment(ctx, "example", &tag.PolicyAttachmentArgs{
+//				PolicyId:   example.ID(),
 //				TargetId:   pulumi.String(_default.Id),
 //				TargetType: pulumi.String("USER"),
 //			})

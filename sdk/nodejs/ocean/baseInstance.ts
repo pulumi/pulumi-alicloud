@@ -22,14 +22,14 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.getZones({});
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultBaseInstance = new alicloud.ocean.BaseInstance("defaultBaseInstance", {
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ * const default = alicloud.getZones({});
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultBaseInstance = new alicloud.ocean.BaseInstance("default", {
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.ids?.[0]),
  *     zones: [
- *         Promise.all([defaultZones, defaultZones.then(defaultZones => defaultZones.ids).length]).then(([defaultZones, length]) => defaultZones.ids[length - 2]),
- *         Promise.all([defaultZones, defaultZones.then(defaultZones => defaultZones.ids).length]).then(([defaultZones, length]) => defaultZones.ids[length - 3]),
- *         Promise.all([defaultZones, defaultZones.then(defaultZones => defaultZones.ids).length]).then(([defaultZones, length]) => defaultZones.ids[length - 4]),
+ *         Promise.all([_default, _default.then(_default => _default.ids).length]).then(([_default, length]) => _default.ids[length - 2]),
+ *         Promise.all([_default, _default.then(_default => _default.ids).length]).then(([_default, length]) => _default.ids[length - 3]),
+ *         Promise.all([_default, _default.then(_default => _default.ids).length]).then(([_default, length]) => _default.ids[length - 4]),
  *     ],
  *     autoRenew: false,
  *     diskSize: 100,

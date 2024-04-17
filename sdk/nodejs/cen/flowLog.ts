@@ -23,19 +23,23 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Create a cen flowlog resource and use it to publish a route entry pointing to an ECS.
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {});
- * const defaultProject = new alicloud.log.Project("defaultProject", {description: "create by terraform"});
- * const defaultStore = new alicloud.log.Store("defaultStore", {
+ * const _default = new alicloud.cen.Instance("default", {name: "my-cen"});
+ * const defaultProject = new alicloud.log.Project("default", {
+ *     name: "sls-for-flowlog",
+ *     description: "create by terraform",
+ * });
+ * const defaultStore = new alicloud.log.Store("default", {
  *     project: defaultProject.name,
+ *     name: "sls-for-flowlog",
  *     retentionPeriod: 3650,
  *     shardCount: 3,
  *     autoSplit: true,
  *     maxSplitShardCount: 60,
  *     appendMeta: true,
  * });
- * const defaultFlowLog = new alicloud.cen.FlowLog("defaultFlowLog", {
+ * const defaultFlowLog = new alicloud.cen.FlowLog("default", {
  *     flowLogName: "my-flowlog",
- *     cenId: defaultInstance.id,
+ *     cenId: _default.id,
  *     projectName: defaultProject.name,
  *     logStoreName: defaultStore.name,
  * });

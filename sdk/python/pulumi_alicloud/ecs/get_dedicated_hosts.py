@@ -214,8 +214,9 @@ def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    dedicated_hosts_ds = alicloud.ecs.get_dedicated_hosts(dedicated_host_type="ddh.g5",
-        name_regex="tf-testAcc",
+    # Declare the data source
+    dedicated_hosts_ds = alicloud.ecs.get_dedicated_hosts(name_regex="tf-testAcc",
+        dedicated_host_type="ddh.g5",
         status="Available")
     pulumi.export("firstDedicatedHostsId", dedicated_hosts_ds.hosts[0].id)
     ```
@@ -291,8 +292,9 @@ def get_dedicated_hosts_output(dedicated_host_id: Optional[pulumi.Input[Optional
     import pulumi
     import pulumi_alicloud as alicloud
 
-    dedicated_hosts_ds = alicloud.ecs.get_dedicated_hosts(dedicated_host_type="ddh.g5",
-        name_regex="tf-testAcc",
+    # Declare the data source
+    dedicated_hosts_ds = alicloud.ecs.get_dedicated_hosts(name_regex="tf-testAcc",
+        dedicated_host_type="ddh.g5",
         status="Available")
     pulumi.export("firstDedicatedHostsId", dedicated_hosts_ds.hosts[0].id)
     ```

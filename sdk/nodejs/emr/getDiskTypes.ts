@@ -20,9 +20,9 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.emr.getDiskTypes({
- *     clusterType: "HADOOP",
  *     destinationResource: "DataDisk",
  *     instanceChargeType: "PostPaid",
+ *     clusterType: "HADOOP",
  *     instanceType: "ecs.g5.xlarge",
  *     zoneId: "cn-huhehaote-a",
  * });
@@ -110,9 +110,9 @@ export interface GetDiskTypesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.emr.getDiskTypes({
- *     clusterType: "HADOOP",
  *     destinationResource: "DataDisk",
  *     instanceChargeType: "PostPaid",
+ *     clusterType: "HADOOP",
  *     instanceType: "ecs.g5.xlarge",
  *     zoneId: "cn-huhehaote-a",
  * });

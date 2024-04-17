@@ -24,15 +24,15 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const corporate = new alicloud.ram.AccountPasswordPolicy("corporate", {
- *     hardExpiry: true,
- *     maxLoginAttempts: 3,
- *     maxPasswordAge: 12,
  *     minimumPasswordLength: 9,
- *     passwordReusePrevention: 5,
  *     requireLowercaseCharacters: false,
+ *     requireUppercaseCharacters: false,
  *     requireNumbers: false,
  *     requireSymbols: false,
- *     requireUppercaseCharacters: false,
+ *     hardExpiry: true,
+ *     maxPasswordAge: 12,
+ *     passwordReusePrevention: 5,
+ *     maxLoginAttempts: 3,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

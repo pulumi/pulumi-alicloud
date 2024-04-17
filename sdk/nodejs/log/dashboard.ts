@@ -20,20 +20,24 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
- * const exampleStore = new alicloud.log.Store("exampleStore", {
- *     project: exampleProject.name,
+ * const example = new alicloud.log.Project("example", {
+ *     name: `terraform-example-${_default.result}`,
+ *     description: "terraform-example",
+ * });
+ * const exampleStore = new alicloud.log.Store("example", {
+ *     project: example.name,
+ *     name: "example-store",
  *     shardCount: 3,
  *     autoSplit: true,
  *     maxSplitShardCount: 60,
  *     appendMeta: true,
  * });
- * const exampleDashboard = new alicloud.log.Dashboard("exampleDashboard", {
- *     projectName: exampleProject.name,
+ * const exampleDashboard = new alicloud.log.Dashboard("example", {
+ *     projectName: example.name,
  *     dashboardName: "terraform-example",
  *     displayName: "terraform-example",
  *     attribute: `  {

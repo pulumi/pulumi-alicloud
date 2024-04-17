@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
@@ -34,11 +34,11 @@ import * as utilities from "../utilities";
  * });
  * const env_ecs = new alicloud.arms.Environment("env-ecs", {
  *     environmentType: "ECS",
- *     environmentName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ *     environmentName: `terraform-example-${_default.result}`,
  *     bindResourceId: vpc.id,
  *     environmentSubType: "ECS",
  * });
- * const defaultEnvCustomJob = new alicloud.arms.EnvCustomJob("defaultEnvCustomJob", {
+ * const defaultEnvCustomJob = new alicloud.arms.EnvCustomJob("default", {
  *     status: "run",
  *     environmentId: env_ecs.id,
  *     envCustomJobName: name,

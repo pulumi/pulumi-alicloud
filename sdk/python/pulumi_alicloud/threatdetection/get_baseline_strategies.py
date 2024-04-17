@@ -130,6 +130,28 @@ def get_baseline_strategies(custom_type: Optional[str] = None,
 
     > **NOTE:** Available in 1.195.0+
 
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_baseline_strategy = alicloud.threatdetection.BaselineStrategy("default",
+        custom_type="custom",
+        end_time="08:00:00",
+        baseline_strategy_name="apispec",
+        cycle_days=3,
+        target_type="groupId",
+        start_time="05:00:00",
+        risk_sub_type_name="hc_exploit_redis")
+    default = default_baseline_strategy.id.apply(lambda id: alicloud.threatdetection.get_baseline_strategies_output(ids=[id],
+        name_regex=default_baseline_strategy.name,
+        custom_type="custom"))
+    pulumi.export("alicloudThreatDetectionBaselineStrategyExampleId", default_alicloud_threat_detection_baseline_strategys["strategys"][0]["id"])
+    ```
+    <!--End PulumiCodeChooser -->
+
 
     :param str custom_type: The type of policy. Value:-**common**: standard policy-**custom**: custom policy
     :param Sequence[str] ids: A list of Baseline Strategy IDs.
@@ -167,6 +189,28 @@ def get_baseline_strategies_output(custom_type: Optional[pulumi.Input[Optional[s
     This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
 
     > **NOTE:** Available in 1.195.0+
+
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default_baseline_strategy = alicloud.threatdetection.BaselineStrategy("default",
+        custom_type="custom",
+        end_time="08:00:00",
+        baseline_strategy_name="apispec",
+        cycle_days=3,
+        target_type="groupId",
+        start_time="05:00:00",
+        risk_sub_type_name="hc_exploit_redis")
+    default = default_baseline_strategy.id.apply(lambda id: alicloud.threatdetection.get_baseline_strategies_output(ids=[id],
+        name_regex=default_baseline_strategy.name,
+        custom_type="custom"))
+    pulumi.export("alicloudThreatDetectionBaselineStrategyExampleId", default_alicloud_threat_detection_baseline_strategys["strategys"][0]["id"])
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str custom_type: The type of policy. Value:-**common**: standard policy-**custom**: custom policy

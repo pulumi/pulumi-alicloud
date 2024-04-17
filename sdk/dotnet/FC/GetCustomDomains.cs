@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.FC
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstFcCustomDomainName"] = data.Alicloud_fc_custom_domains.Fc_domains_ds.Domains[0].Domain_name,
+        ///         ["firstFcCustomDomainName"] = fcDomainsDs.Domains[0].DomainName,
         ///     };
         /// });
         /// ```
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.FC
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstFcCustomDomainName"] = data.Alicloud_fc_custom_domains.Fc_domains_ds.Domains[0].Domain_name,
+        ///         ["firstFcCustomDomainName"] = fcDomainsDs.Domains[0].DomainName,
         ///     };
         /// });
         /// ```

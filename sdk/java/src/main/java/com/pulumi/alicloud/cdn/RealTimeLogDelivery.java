@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.cdn.DomainNew;
  * import com.pulumi.alicloud.cdn.DomainNewArgs;
  * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
@@ -57,14 +57,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var defaultDomainNew = new DomainNew(&#34;defaultDomainNew&#34;, DomainNewArgs.builder()        
  *             .scope(&#34;overseas&#34;)
- *             .domainName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;mycdndomain-%s.alicloud-provider.cn&#34;, result)))
+ *             .domainName(String.format(&#34;mycdndomain-%s.alicloud-provider.cn&#34;, defaultInteger.result()))
  *             .cdnType(&#34;web&#34;)
  *             .sources(DomainNewSourceArgs.builder()
  *                 .type(&#34;ipaddr&#34;)
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
- *             .projectName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .projectName(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
  *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *             .domain(defaultDomainNew.domainName())
  *             .logstore(defaultStore.logstoreName())
  *             .project(defaultProject.projectName())
- *             .slsRegion(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .slsRegion(default_.regions()[0].id())
  *             .build());
  * 
  *     }

@@ -22,18 +22,18 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const example = new alicloud.vpc.Network("example", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const exampleDhcpOptionsSet = new alicloud.vpc.DhcpOptionsSet("exampleDhcpOptionsSet", {
+ * const exampleDhcpOptionsSet = new alicloud.vpc.DhcpOptionsSet("example", {
  *     dhcpOptionsSetName: name,
  *     dhcpOptionsSetDescription: name,
  *     domainName: "example.com",
  *     domainNameServers: "100.100.2.136",
  * });
- * const exampleDhcpOptionsSetAttachment = new alicloud.vpc.DhcpOptionsSetAttachment("exampleDhcpOptionsSetAttachment", {
- *     vpcId: exampleNetwork.id,
+ * const exampleDhcpOptionsSetAttachment = new alicloud.vpc.DhcpOptionsSetAttachment("example", {
+ *     vpcId: example.id,
  *     dhcpOptionsSetId: exampleDhcpOptionsSet.id,
  * });
  * ```

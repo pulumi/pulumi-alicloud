@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.vpc.Network;
@@ -57,30 +57,30 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .vpcName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
  *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
  * 
  *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
- *             .clusterName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
  *             .clusterType(&#34;2&#34;)
  *             .networkMode(&#34;2&#34;)
- *             .logicalRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .logicalRegionId(default_.regions()[0].id())
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
- *             .applicationName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .applicationName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
  *             .clusterId(defaultCluster.id())
  *             .packageType(&#34;JAR&#34;)
  *             .build());

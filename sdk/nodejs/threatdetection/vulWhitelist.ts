@@ -21,9 +21,9 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.threatdetection.VulWhitelist("default", {
- *     reason: "tf-example-reason",
- *     targetInfo: "{\"type\":\"GroupId\",\"uuids\":[],\"groupIds\":[10782678]}",
  *     whitelist: "[{\"aliasName\":\"RHSA-2021:2260: libwebp 安全更新\",\"name\":\"RHSA-2021:2260: libwebp 安全更新\",\"type\":\"cve\"}]",
+ *     targetInfo: "{\"type\":\"GroupId\",\"uuids\":[],\"groupIds\":[10782678]}",
+ *     reason: "tf-example-reason",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

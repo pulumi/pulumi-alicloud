@@ -51,8 +51,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new Plugin(&#34;default&#34;, PluginArgs.builder()        
  *             .description(&#34;tf_example&#34;)
- *             .pluginData(&#34;{\&#34;allowOrigins\&#34;: \&#34;api.foo.com\&#34;,\&#34;allowMethods\&#34;: \&#34;GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH\&#34;,\&#34;allowHeaders\&#34;: \&#34;Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Type,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-ca-deviceid\&#34;,\&#34;exposeHeaders\&#34;: \&#34;Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca-Error-Message\&#34;,\&#34;maxAge\&#34;: 172800,\&#34;allowCredentials\&#34;: true}&#34;)
  *             .pluginName(&#34;tf_example&#34;)
+ *             .pluginData(&#34;{\&#34;allowOrigins\&#34;: \&#34;api.foo.com\&#34;,\&#34;allowMethods\&#34;: \&#34;GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH\&#34;,\&#34;allowHeaders\&#34;: \&#34;Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Type,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-ca-deviceid\&#34;,\&#34;exposeHeaders\&#34;: \&#34;Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca-Error-Message\&#34;,\&#34;maxAge\&#34;: 172800,\&#34;allowCredentials\&#34;: true}&#34;)
  *             .pluginType(&#34;cors&#34;)
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),

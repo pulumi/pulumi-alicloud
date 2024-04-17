@@ -34,7 +34,7 @@ import (
 //				Ids: []string{
 //					"example_id",
 //				},
-//				NameRegex: pulumi.StringRef(alicloud_ebs_dedicated_block_storage_cluster.Default.Name),
+//				NameRegex: pulumi.StringRef(defaultAlicloudEbsDedicatedBlockStorageCluster.Name),
 //			}, nil)
 //			if err != nil {
 //				return err

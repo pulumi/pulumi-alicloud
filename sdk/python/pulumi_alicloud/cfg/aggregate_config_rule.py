@@ -590,17 +590,17 @@ class AggregateConfigRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_accounts = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
-        default_aggregator = alicloud.cfg.Aggregator("defaultAggregator",
+        default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
+        default_aggregator = alicloud.cfg.Aggregator("default",
             aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id=default_accounts.accounts[0].account_id,
-                account_name=default_accounts.accounts[0].display_name,
+                account_id=default.accounts[0].account_id,
+                account_name=default.accounts[0].display_name,
                 account_type="ResourceDirectory",
             )],
             aggregator_name=name,
             description=name,
             aggregator_type="CUSTOM")
-        default_aggregate_config_rule = alicloud.cfg.AggregateConfigRule("defaultAggregateConfigRule",
+        default_aggregate_config_rule = alicloud.cfg.AggregateConfigRule("default",
             aggregate_config_rule_name="contains-tag",
             aggregator_id=default_aggregator.id,
             config_rule_trigger_types="ConfigurationItemChangeNotification",
@@ -668,17 +668,17 @@ class AggregateConfigRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_accounts = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
-        default_aggregator = alicloud.cfg.Aggregator("defaultAggregator",
+        default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
+        default_aggregator = alicloud.cfg.Aggregator("default",
             aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id=default_accounts.accounts[0].account_id,
-                account_name=default_accounts.accounts[0].display_name,
+                account_id=default.accounts[0].account_id,
+                account_name=default.accounts[0].display_name,
                 account_type="ResourceDirectory",
             )],
             aggregator_name=name,
             description=name,
             aggregator_type="CUSTOM")
-        default_aggregate_config_rule = alicloud.cfg.AggregateConfigRule("defaultAggregateConfigRule",
+        default_aggregate_config_rule = alicloud.cfg.AggregateConfigRule("default",
             aggregate_config_rule_name="contains-tag",
             aggregator_id=default_aggregator.id,
             config_rule_trigger_types="ConfigurationItemChangeNotification",

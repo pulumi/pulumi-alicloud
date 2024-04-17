@@ -150,12 +150,12 @@ class DiskInstanceAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_disk = alicloud.ens.Disk("defaultDisk",
+        default = alicloud.ens.Disk("default",
             size=20,
             ens_region_id="cn-chenzhou-telecom_unicom_cmcc",
             payment_type="PayAsYouGo",
             category="cloud_efficiency")
-        default_instance = alicloud.ens.Instance("defaultInstance",
+        default_instance = alicloud.ens.Instance("default",
             system_disk=alicloud.ens.InstanceSystemDiskArgs(
                 size=20,
             ),
@@ -171,10 +171,10 @@ class DiskInstanceAttachment(pulumi.CustomResource):
             schedule_area_level="Region",
             period_unit="Month",
             period=1)
-        default_disk_instance_attachment = alicloud.ens.DiskInstanceAttachment("defaultDiskInstanceAttachment",
+        default_disk_instance_attachment = alicloud.ens.DiskInstanceAttachment("default",
             instance_id=default_instance.id,
             delete_with_instance="false",
-            disk_id=default_disk.id)
+            disk_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -218,12 +218,12 @@ class DiskInstanceAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_disk = alicloud.ens.Disk("defaultDisk",
+        default = alicloud.ens.Disk("default",
             size=20,
             ens_region_id="cn-chenzhou-telecom_unicom_cmcc",
             payment_type="PayAsYouGo",
             category="cloud_efficiency")
-        default_instance = alicloud.ens.Instance("defaultInstance",
+        default_instance = alicloud.ens.Instance("default",
             system_disk=alicloud.ens.InstanceSystemDiskArgs(
                 size=20,
             ),
@@ -239,10 +239,10 @@ class DiskInstanceAttachment(pulumi.CustomResource):
             schedule_area_level="Region",
             period_unit="Month",
             period=1)
-        default_disk_instance_attachment = alicloud.ens.DiskInstanceAttachment("defaultDiskInstanceAttachment",
+        default_disk_instance_attachment = alicloud.ens.DiskInstanceAttachment("default",
             instance_id=default_instance.id,
             delete_with_instance="false",
-            disk_id=default_disk.id)
+            disk_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 

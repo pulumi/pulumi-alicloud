@@ -99,10 +99,10 @@ def get_kubernetes_addon_metadata(cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.cs.get_kubernetes_addon_metadata(cluster_id=var["cluster_id"],
+    default = alicloud.cs.get_kubernetes_addon_metadata(cluster_id=cluster_id,
         name="nginx-ingress-controller",
         version="v1.1.2-aliyun.2")
-    pulumi.export("addonConfigSchema", data["alicloud_cs_kubernetes_addons"]["default"]["config_schema"])
+    pulumi.export("addonConfigSchema", default_alicloud_cs_kubernetes_addons["configSchema"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -143,10 +143,10 @@ def get_kubernetes_addon_metadata_output(cluster_id: Optional[pulumi.Input[str]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.cs.get_kubernetes_addon_metadata(cluster_id=var["cluster_id"],
+    default = alicloud.cs.get_kubernetes_addon_metadata(cluster_id=cluster_id,
         name="nginx-ingress-controller",
         version="v1.1.2-aliyun.2")
-    pulumi.export("addonConfigSchema", data["alicloud_cs_kubernetes_addons"]["default"]["config_schema"])
+    pulumi.export("addonConfigSchema", default_alicloud_cs_kubernetes_addons["configSchema"])
     ```
     <!--End PulumiCodeChooser -->
 

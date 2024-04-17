@@ -29,24 +29,24 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     var example = new AliCloud.Cen.Instance("example", new()
     ///     {
     ///         CenInstanceName = "tf_example",
     ///         Description = "an example for cen",
     ///     });
     /// 
-    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("example", new()
     ///     {
     ///         TransitRouterName = "tf_example",
-    ///         CenId = exampleInstance.Id,
+    ///         CenId = example.Id,
     ///     });
     /// 
-    ///     var exampleTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", new()
+    ///     var exampleTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("example", new()
     ///     {
     ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
     ///     });
     /// 
-    ///     var exampleTransitRouteTableAggregation = new AliCloud.Cen.TransitRouteTableAggregation("exampleTransitRouteTableAggregation", new()
+    ///     var exampleTransitRouteTableAggregation = new AliCloud.Cen.TransitRouteTableAggregation("example", new()
     ///     {
     ///         TransitRouteTableId = exampleTransitRouterRouteTable.TransitRouterRouteTableId,
     ///         TransitRouteTableAggregationCidr = "10.0.0.0/8",

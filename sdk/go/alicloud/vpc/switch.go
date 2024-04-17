@@ -38,24 +38,24 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			foo, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//			fooNetwork, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+//			_, err = vpc.NewSwitch(ctx, "foo", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				VpcId:       fooNetwork.ID(),
-//				ZoneId:      pulumi.String(fooZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(foo.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -94,7 +94,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			cidrBlocks, err := vpc.NewIpv4CidrBlock(ctx, "cidrBlocks", &vpc.Ipv4CidrBlockArgs{
+//			cidrBlocks, err := vpc.NewIpv4CidrBlock(ctx, "cidr_blocks", &vpc.Ipv4CidrBlockArgs{
 //				VpcId:              vpc.ID(),
 //				SecondaryCidrBlock: pulumi.String("192.163.0.0/16"),
 //			})
@@ -139,30 +139,30 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			foo, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//			fooNetwork, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooIpv4CidrBlock, err := vpc.NewIpv4CidrBlock(ctx, "fooIpv4CidrBlock", &vpc.Ipv4CidrBlockArgs{
+//			fooIpv4CidrBlock, err := vpc.NewIpv4CidrBlock(ctx, "foo", &vpc.Ipv4CidrBlockArgs{
 //				VpcId:              fooNetwork.ID(),
 //				SecondaryCidrBlock: pulumi.String("192.163.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+//			_, err = vpc.NewSwitch(ctx, "foo", &vpc.SwitchArgs{
 //				VpcId:     fooIpv4CidrBlock.VpcId,
 //				CidrBlock: pulumi.String("192.163.0.0/24"),
-//				ZoneId:    pulumi.String(fooZones.Zones[0].Id),
+//				ZoneId:    pulumi.String(foo.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err

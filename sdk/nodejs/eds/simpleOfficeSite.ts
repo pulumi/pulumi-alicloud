@@ -21,15 +21,15 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
- *     max: 99999,
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
+ *     max: 99999,
  * });
- * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
+ * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("default", {
  *     cidrBlock: "172.16.0.0/12",
- *     desktopAccessType: "Internet",
  *     enableAdminAccess: true,
- *     officeSiteName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ *     desktopAccessType: "Internet",
+ *     officeSiteName: `terraform-example-${_default.result}`,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

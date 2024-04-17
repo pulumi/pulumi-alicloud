@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
+//			_, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
 //				CidrBlock:            pulumi.String("172.16.0.0/12"),
 //				DesktopAccessType:    pulumi.String("Internet"),
 //				OfficeSiteName:       pulumi.String("your_office_site_name"),
@@ -41,9 +41,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNasFileSystem, err := eds.NewNasFileSystem(ctx, "defaultNasFileSystem", &eds.NasFileSystemArgs{
+//			defaultNasFileSystem, err := eds.NewNasFileSystem(ctx, "default", &eds.NasFileSystemArgs{
 //				Description:       pulumi.String("your_description"),
-//				OfficeSiteId:      defaultSimpleOfficeSite.ID(),
+//				OfficeSiteId:      _default.ID(),
 //				NasFileSystemName: pulumi.String("your_nas_file_system_name"),
 //			})
 //			if err != nil {

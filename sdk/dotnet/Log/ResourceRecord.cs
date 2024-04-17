@@ -29,9 +29,10 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleResource = new AliCloud.Log.Resource("exampleResource", new()
+    ///     var example = new AliCloud.Log.Resource("example", new()
     ///     {
     ///         Type = "userdefine",
+    ///         Name = "user.tf.resource",
     ///         Description = "user tf resource desc",
     ///         ExtInfo = "{}",
     ///         Schema = @"    {
@@ -56,9 +57,9 @@ namespace Pulumi.AliCloud.Log
     /// ",
     ///     });
     /// 
-    ///     var exampleResourceRecord = new AliCloud.Log.ResourceRecord("exampleResourceRecord", new()
+    ///     var exampleResourceRecord = new AliCloud.Log.ResourceRecord("example", new()
     ///     {
-    ///         ResourceName = exampleResource.Id,
+    ///         ResourceName = example.Id,
     ///         RecordId = "user_tf_resource_1",
     ///         Tag = "resource tag",
     ///         Value = @"    {

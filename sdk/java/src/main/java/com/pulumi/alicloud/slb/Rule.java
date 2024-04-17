@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var slbRuleName = config.get(&#34;slbRuleName&#34;).orElse(&#34;terraform-example&#34;);
- *         final var ruleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var rule = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *         var ruleSwitch = new Switch(&#34;ruleSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(ruleNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
- *             .zoneId(ruleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(rule.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .vswitchName(slbRuleName)
  *             .build());
  * 
@@ -107,11 +107,13 @@ import javax.annotation.Nullable;
  * 
  *         var ruleServerGroup = new ServerGroup(&#34;ruleServerGroup&#34;, ServerGroupArgs.builder()        
  *             .loadBalancerId(ruleApplicationLoadBalancer.id())
+ *             .name(slbRuleName)
  *             .build());
  * 
  *         var ruleRule = new Rule(&#34;ruleRule&#34;, RuleArgs.builder()        
  *             .loadBalancerId(ruleApplicationLoadBalancer.id())
  *             .frontendPort(ruleListener.frontendPort())
+ *             .name(slbRuleName)
  *             .domain(&#34;*.aliyun.com&#34;)
  *             .url(&#34;/image&#34;)
  *             .serverGroupId(ruleServerGroup.id())

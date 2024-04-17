@@ -45,8 +45,8 @@ public final class DrdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;drdsabc123456&#34;)
      *             .nameRegex(&#34;drds-\\d+&#34;)
+     *             .ids(&#34;drdsabc123456&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
@@ -90,8 +90,8 @@ public final class DrdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;drdsabc123456&#34;)
      *             .nameRegex(&#34;drds-\\d+&#34;)
+     *             .ids(&#34;drdsabc123456&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
@@ -135,8 +135,8 @@ public final class DrdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;drdsabc123456&#34;)
      *             .nameRegex(&#34;drds-\\d+&#34;)
+     *             .ids(&#34;drdsabc123456&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
@@ -180,8 +180,8 @@ public final class DrdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;drdsabc123456&#34;)
      *             .nameRegex(&#34;drds-\\d+&#34;)
+     *             .ids(&#34;drdsabc123456&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
@@ -225,8 +225,8 @@ public final class DrdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;drdsabc123456&#34;)
      *             .nameRegex(&#34;drds-\\d+&#34;)
+     *             .ids(&#34;drdsabc123456&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
@@ -270,8 +270,8 @@ public final class DrdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;drdsabc123456&#34;)
      *             .nameRegex(&#34;drds-\\d+&#34;)
+     *             .ids(&#34;drdsabc123456&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));

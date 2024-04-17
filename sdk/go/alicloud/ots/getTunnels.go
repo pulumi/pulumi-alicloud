@@ -34,9 +34,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tunnelsDs, err := ots.GetTunnels(ctx, &ots.GetTunnelsArgs{
 //				InstanceName: "sample-instance",
+//				TableName:    "sample-table",
 //				NameRegex:    pulumi.StringRef("sample-tunnel"),
 //				OutputFile:   pulumi.StringRef("tunnels.txt"),
-//				TableName:    "sample-table",
 //			}, nil)
 //			if err != nil {
 //				return err

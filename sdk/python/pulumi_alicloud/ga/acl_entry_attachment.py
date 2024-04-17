@@ -162,11 +162,11 @@ class AclEntryAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_acl = alicloud.ga.Acl("defaultAcl",
+        default = alicloud.ga.Acl("default",
             acl_name="tf-example-value",
             address_ip_version="IPv4")
-        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
-            acl_id=default_acl.id,
+        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("default",
+            acl_id=default.id,
             entry="192.168.1.1/32",
             entry_description="tf-example-value")
         ```
@@ -208,11 +208,11 @@ class AclEntryAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_acl = alicloud.ga.Acl("defaultAcl",
+        default = alicloud.ga.Acl("default",
             acl_name="tf-example-value",
             address_ip_version="IPv4")
-        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
-            acl_id=default_acl.id,
+        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("default",
+            acl_id=default.id,
             entry="192.168.1.1/32",
             entry_description="tf-example-value")
         ```

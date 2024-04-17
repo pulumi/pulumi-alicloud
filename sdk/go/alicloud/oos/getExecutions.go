@@ -30,12 +30,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			example, err := oos.GetExecutions(ctx, &oos.GetExecutionsArgs{
 //				Ids: []string{
 //					"execution_id",
 //				},
-//				Status:       pulumi.StringRef("Success"),
 //				TemplateName: pulumi.StringRef("name"),
+//				Status:       pulumi.StringRef("Success"),
 //			}, nil)
 //			if err != nil {
 //				return err

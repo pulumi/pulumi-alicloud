@@ -13,6 +13,61 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.152.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const domainName = config.get("domainName") || "alicloud-provider.com";
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("default", {alarmContactGroupName: name});
+ * const defaultGtmInstance = new alicloud.dns.GtmInstance("default", {
+ *     instanceName: name,
+ *     paymentType: "Subscription",
+ *     period: 1,
+ *     renewalStatus: "ManualRenewal",
+ *     packageEdition: "standard",
+ *     healthCheckTaskCount: 100,
+ *     smsNotificationCount: 1000,
+ *     publicCnameMode: "SYSTEM_ASSIGN",
+ *     ttl: 60,
+ *     cnameType: "PUBLIC",
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
+ *     alertGroups: [defaultAlarmContactGroup.alarmContactGroupName],
+ *     publicUserDomainName: domainName,
+ *     alertConfigs: [{
+ *         smsNotice: true,
+ *         noticeType: "ADDR_ALERT",
+ *         emailNotice: true,
+ *         dingtalkNotice: true,
+ *     }],
+ * });
+ * const defaultAddressPool = new alicloud.dns.AddressPool("default", {
+ *     addressPoolName: name,
+ *     instanceId: defaultGtmInstance.id,
+ *     lbaStrategy: "RATIO",
+ *     type: "IPV4",
+ *     addresses: [{
+ *         attributeInfo: `    {
+ *       "lineCodeRectifyType": "RECTIFIED",
+ *       "lineCodes": ["os_namerica_us"]
+ *     }
+ * `,
+ *         remark: "address_remark",
+ *         address: "1.1.1.1",
+ *         mode: "SMART",
+ *         lbaWeight: 1,
+ *     }],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Alidns Address Pool can be imported using the id, e.g.

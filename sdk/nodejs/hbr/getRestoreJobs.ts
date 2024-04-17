@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultEcsBackupPlans = alicloud.hbr.getEcsBackupPlans({
+ * const default = alicloud.hbr.getEcsBackupPlans({
  *     nameRegex: "plan-name",
  * });
- * const defaultRestoreJobs = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getRestoreJobs({
+ * const defaultGetRestoreJobs = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getRestoreJobs({
  *     restoreType: "ECS_FILE",
- *     vaultIds: [defaultEcsBackupPlans.plans?.[0]?.vaultId],
- *     targetInstanceIds: [defaultEcsBackupPlans1.plans?.[0]?.instanceId],
+ *     vaultIds: [_default.plans?.[0]?.vaultId],
+ *     targetInstanceIds: [_default1.plans?.[0]?.instanceId],
  * }));
  * ```
  * <!--End PulumiCodeChooser -->
@@ -123,13 +123,13 @@ export interface GetRestoreJobsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultEcsBackupPlans = alicloud.hbr.getEcsBackupPlans({
+ * const default = alicloud.hbr.getEcsBackupPlans({
  *     nameRegex: "plan-name",
  * });
- * const defaultRestoreJobs = Promise.all([defaultEcsBackupPlans, defaultEcsBackupPlans]).then(([defaultEcsBackupPlans, defaultEcsBackupPlans1]) => alicloud.hbr.getRestoreJobs({
+ * const defaultGetRestoreJobs = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getRestoreJobs({
  *     restoreType: "ECS_FILE",
- *     vaultIds: [defaultEcsBackupPlans.plans?.[0]?.vaultId],
- *     targetInstanceIds: [defaultEcsBackupPlans1.plans?.[0]?.instanceId],
+ *     vaultIds: [_default.plans?.[0]?.vaultId],
+ *     targetInstanceIds: [_default1.plans?.[0]?.instanceId],
  * }));
  * ```
  * <!--End PulumiCodeChooser -->

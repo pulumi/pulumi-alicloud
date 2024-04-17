@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;Instance&#34;)
  *             .build());
  * 
- *         final var exampleInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var exampleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
@@ -73,29 +73,31 @@ import javax.annotation.Nullable;
  *             .vswitchName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;10.4.0.0/24&#34;)
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(&#34;terraform-example&#34;)
  *             .description(&#34;New security group&#34;)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         final var exampleImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
  *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .availabilityZone(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .availabilityZone(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .instanceName(&#34;terraform-example&#34;)
- *             .imageId(exampleImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(exampleGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
  *             .securityGroups(exampleSecurityGroup.id())
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
  *         var exampleVpcAccess = new VpcAccess(&#34;exampleVpcAccess&#34;, VpcAccessArgs.builder()        
+ *             .name(&#34;terraform-example&#34;)
  *             .vpcId(exampleNetwork.id())
  *             .instanceId(exampleInstance.id())
  *             .port(8080)

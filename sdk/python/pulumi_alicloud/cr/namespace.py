@@ -151,6 +151,7 @@ class Namespace(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         example = alicloud.cr.Namespace("example",
+            name=name,
             auto_create=False,
             default_visibility="PUBLIC")
         ```
@@ -197,6 +198,7 @@ class Namespace(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         example = alicloud.cr.Namespace("example",
+            name=name,
             auto_create=False,
             default_visibility="PUBLIC")
         ```

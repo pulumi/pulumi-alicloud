@@ -301,28 +301,28 @@ class BasicEndpointGroup(pulumi.CustomResource):
         endpoint_group_region = config.get("endpointGroupRegion")
         if endpoint_group_region is None:
             endpoint_group_region = "cn-beijing"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name="terraform-example",
             cidr_block="172.17.3.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            zone_id=default.zones[0].id)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("default",
             load_balancer_name="terraform-example",
             vswitch_id=default_switch.id,
             load_balancer_spec="slb.s2.small",
             address_type="intranet")
-        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
+        default_basic_accelerator = alicloud.ga.BasicAccelerator("default",
             duration=1,
             basic_accelerator_name="terraform-example",
             description="terraform-example",
             bandwidth_billing_type="CDT",
             auto_use_coupon="true",
             auto_pay=True)
-        default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup",
+        default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("default",
             accelerator_id=default_basic_accelerator.id,
             endpoint_group_region=endpoint_group_region,
             endpoint_type="SLB",
@@ -380,28 +380,28 @@ class BasicEndpointGroup(pulumi.CustomResource):
         endpoint_group_region = config.get("endpointGroupRegion")
         if endpoint_group_region is None:
             endpoint_group_region = "cn-beijing"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name="terraform-example",
             cidr_block="172.17.3.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            zone_id=default.zones[0].id)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("default",
             load_balancer_name="terraform-example",
             vswitch_id=default_switch.id,
             load_balancer_spec="slb.s2.small",
             address_type="intranet")
-        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
+        default_basic_accelerator = alicloud.ga.BasicAccelerator("default",
             duration=1,
             basic_accelerator_name="terraform-example",
             description="terraform-example",
             bandwidth_billing_type="CDT",
             auto_use_coupon="true",
             auto_pay=True)
-        default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup",
+        default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("default",
             accelerator_id=default_basic_accelerator.id,
             endpoint_group_region=endpoint_group_region,
             endpoint_type="SLB",

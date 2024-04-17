@@ -31,9 +31,9 @@ namespace Pulumi.AliCloud.Vpc
         ///         {
         ///             "fake-cert-id",
         ///         },
-        ///         NameRegex = "^foo",
-        ///         OutputFile = "/tmp/clientcert",
         ///         SslVpnServerId = "fake-server-id",
+        ///         OutputFile = "/tmp/clientcert",
+        ///         NameRegex = "^foo",
         ///     });
         /// 
         /// });
@@ -63,9 +63,9 @@ namespace Pulumi.AliCloud.Vpc
         ///         {
         ///             "fake-cert-id",
         ///         },
-        ///         NameRegex = "^foo",
-        ///         OutputFile = "/tmp/clientcert",
         ///         SslVpnServerId = "fake-server-id",
+        ///         OutputFile = "/tmp/clientcert",
+        ///         NameRegex = "^foo",
         ///     });
         /// 
         /// });

@@ -36,13 +36,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := alb.NewSecurityPolicy(ctx, "default", &alb.SecurityPolicyArgs{
-//				Ciphers: pulumi.StringArray{
-//					pulumi.String("ECDHE-ECDSA-AES128-SHA"),
-//					pulumi.String("AES256-SHA"),
-//				},
 //				SecurityPolicyName: pulumi.String("tf_example"),
 //				TlsVersions: pulumi.StringArray{
 //					pulumi.String("TLSv1.0"),
+//				},
+//				Ciphers: pulumi.StringArray{
+//					pulumi.String("ECDHE-ECDSA-AES128-SHA"),
+//					pulumi.String("AES256-SHA"),
 //				},
 //			})
 //			if err != nil {

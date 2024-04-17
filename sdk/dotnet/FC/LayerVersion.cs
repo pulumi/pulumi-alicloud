@@ -24,19 +24,19 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
-    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         BucketName = $"terraform-example-{@default.Result}",
     ///     });
     /// 
     ///     // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new()
+    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("default", new()
     ///     {
     ///         Bucket = defaultBucket.Id,
     ///         Key = "index.py",
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.FC
     /// 
     ///     var example = new AliCloud.FC.LayerVersion("example", new()
     ///     {
-    ///         LayerName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         LayerName = $"terraform-example-{@default.Result}",
     ///         CompatibleRuntimes = new[]
     ///         {
     ///             "python2.7",

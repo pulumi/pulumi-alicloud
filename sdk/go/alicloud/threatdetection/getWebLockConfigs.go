@@ -31,7 +31,7 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := threatdetection.GetWebLockConfigs(ctx, &threatdetection.GetWebLockConfigsArgs{
 // Ids: interface{}{
-// alicloud_threat_detection_web_lock_config.Default.Id,
+// defaultAlicloudThreatDetectionWebLockConfig.Id,
 // },
 // }, nil);
 // if err != nil {

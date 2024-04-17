@@ -24,9 +24,9 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.ens.Disk("default", {
  *     category: "cloud_ssd",
- *     ensRegionId: "cn-chongqing-11",
- *     paymentType: "PayAsYouGo",
  *     size: 20,
+ *     paymentType: "PayAsYouGo",
+ *     ensRegionId: "cn-chongqing-11",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

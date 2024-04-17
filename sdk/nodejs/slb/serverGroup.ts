@@ -33,25 +33,28 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const slbServerGroupName = config.get("slbServerGroupName") || "forSlbServerGroup";
- * const serverGroupZones = alicloud.getZones({
+ * const serverGroup = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const serverGroupNetwork = new alicloud.vpc.Network("serverGroupNetwork", {
+ * const serverGroupNetwork = new alicloud.vpc.Network("server_group", {
  *     vpcName: slbServerGroupName,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const serverGroupSwitch = new alicloud.vpc.Switch("serverGroupSwitch", {
+ * const serverGroupSwitch = new alicloud.vpc.Switch("server_group", {
  *     vpcId: serverGroupNetwork.id,
  *     cidrBlock: "172.16.0.0/16",
- *     zoneId: serverGroupZones.then(serverGroupZones => serverGroupZones.zones?.[0]?.id),
+ *     zoneId: serverGroup.then(serverGroup => serverGroup.zones?.[0]?.id),
  *     vswitchName: slbServerGroupName,
  * });
- * const serverGroupApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("serverGroupApplicationLoadBalancer", {
+ * const serverGroupApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("server_group", {
  *     loadBalancerName: slbServerGroupName,
  *     vswitchId: serverGroupSwitch.id,
  *     instanceChargeType: "PayByCLCU",
  * });
- * const serverGroupServerGroup = new alicloud.slb.ServerGroup("serverGroupServerGroup", {loadBalancerId: serverGroupApplicationLoadBalancer.id});
+ * const serverGroupServerGroup = new alicloud.slb.ServerGroup("server_group", {
+ *     loadBalancerId: serverGroupApplicationLoadBalancer.id,
+ *     name: slbServerGroupName,
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

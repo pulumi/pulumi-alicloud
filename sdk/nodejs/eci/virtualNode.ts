@@ -24,19 +24,22 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.eci.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const default = alicloud.eci.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.0.0.0/8",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.1.0.0/16",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneIds?.[0]),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneIds?.[0]),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("default", {
  *     isp: "BGP",
  *     addressName: name,
  *     netmode: "public",
@@ -44,14 +47,14 @@ import * as utilities from "../utilities";
  *     securityProtectionTypes: ["AntiDDoS_Enhanced"],
  *     paymentType: "PayAsYouGo",
  * });
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultVirtualNode = new alicloud.eci.VirtualNode("defaultVirtualNode", {
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultVirtualNode = new alicloud.eci.VirtualNode("default", {
  *     securityGroupId: defaultSecurityGroup.id,
  *     virtualNodeName: name,
  *     vswitchId: defaultSwitch.id,
  *     enablePublicNetwork: false,
  *     eipInstanceId: defaultEipAddress.id,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[0]?.id),
  *     kubeConfig: "kube_config",
  *     tags: {
  *         Created: "TF",

@@ -31,11 +31,11 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// {
     ///     var example = new AliCloud.CloudFirewall.ControlPolicy("example", new()
     ///     {
-    ///         AclAction = "accept",
     ///         ApplicationName = "ANY",
+    ///         AclAction = "accept",
     ///         Description = "example",
-    ///         Destination = "100.1.1.0/24",
     ///         DestinationType = "net",
+    ///         Destination = "100.1.1.0/24",
     ///         Direction = "out",
     ///         Proto = "ANY",
     ///         Source = "1.2.3.0/24",

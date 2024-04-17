@@ -23,13 +23,13 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.threatdetection.MaliciousFileWhitelistConfig("default", {
- *     eventName: "123",
- *     field: "fileMd6",
- *     fieldValue: "sadfas",
  *     operator: "strEquals",
- *     source: "agentless",
- *     targetType: "SELECTION_KEY",
+ *     field: "fileMd6",
  *     targetValue: "123",
+ *     targetType: "SELECTION_KEY",
+ *     eventName: "123",
+ *     source: "agentless",
+ *     fieldValue: "sadfas",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -56,21 +56,23 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfacc&#34;);
- *         final var defaultGateways = VpnFunctions.getGateways();
+ *         final var default = VpnFunctions.getGateways();
  * 
  *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+ *             .name(name)
  *             .ipAddress(&#34;192.168.1.1&#34;)
  *             .build());
  * 
  *         var defaultConnection = new Connection(&#34;defaultConnection&#34;, ConnectionArgs.builder()        
+ *             .name(name)
  *             .customerGatewayId(defaultCustomerGateway.id())
- *             .vpnGatewayId(defaultGateways.applyValue(getGatewaysResult -&gt; getGatewaysResult.ids()[0]))
+ *             .vpnGatewayId(default_.ids()[0])
  *             .localSubnets(&#34;192.168.2.0/24&#34;)
  *             .remoteSubnets(&#34;192.168.3.0/24&#34;)
  *             .build());
  * 
  *         var defaultPbrRouteEntry = new PbrRouteEntry(&#34;defaultPbrRouteEntry&#34;, PbrRouteEntryArgs.builder()        
- *             .vpnGatewayId(defaultGateways.applyValue(getGatewaysResult -&gt; getGatewaysResult.ids()[0]))
+ *             .vpnGatewayId(default_.ids()[0])
  *             .routeSource(&#34;192.168.1.0/24&#34;)
  *             .routeDest(&#34;10.0.0.0/24&#34;)
  *             .nextHop(defaultConnection.id())

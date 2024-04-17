@@ -47,15 +47,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			msServerGroupZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			msServerGroup, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			msServerGroupInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(msServerGroupZones.Zones[0].Id),
+//			msServerGroupGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(msServerGroup.Zones[0].Id),
 //				EniAmount:        pulumi.IntRef(2),
 //			}, nil)
 //			if err != nil {
@@ -74,24 +74,25 @@ import (
 //			if param := cfg.Get("slbMasterSlaveServerGroup"); param != "" {
 //				slbMasterSlaveServerGroup = param
 //			}
-//			mainNetwork, err := vpc.NewNetwork(ctx, "mainNetwork", &vpc.NetworkArgs{
+//			main, err := vpc.NewNetwork(ctx, "main", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(slbMasterSlaveServerGroup),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			mainSwitch, err := vpc.NewSwitch(ctx, "mainSwitch", &vpc.SwitchArgs{
-//				VpcId:       mainNetwork.ID(),
+//			mainSwitch, err := vpc.NewSwitch(ctx, "main", &vpc.SwitchArgs{
+//				VpcId:       main.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
-//				ZoneId:      pulumi.String(msServerGroupZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(msServerGroup.Zones[0].Id),
 //				VswitchName: pulumi.String(slbMasterSlaveServerGroup),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			groupSecurityGroup, err := ecs.NewSecurityGroup(ctx, "groupSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: mainNetwork.ID(),
+//			group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(slbMasterSlaveServerGroup),
+//				VpcId: main.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -100,16 +101,16 @@ import (
 //			for index := 0; index < 2; index++ {
 //				key0 := index
 //				_ := index
-//				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("msServerGroupInstance-%v", key0), &ecs.InstanceArgs{
+//				__res, err := ecs.NewInstance(ctx, fmt.Sprintf("ms_server_group-%v", key0), &ecs.InstanceArgs{
 //					ImageId:      pulumi.String(image.Images[0].Id),
-//					InstanceType: pulumi.String(msServerGroupInstanceTypes.InstanceTypes[0].Id),
+//					InstanceType: pulumi.String(msServerGroupGetInstanceTypes.InstanceTypes[0].Id),
 //					InstanceName: pulumi.String(slbMasterSlaveServerGroup),
 //					SecurityGroups: pulumi.StringArray{
-//						groupSecurityGroup.ID(),
+//						group.ID(),
 //					},
 //					InternetChargeType:      pulumi.String("PayByTraffic"),
 //					InternetMaxBandwidthOut: pulumi.Int(10),
-//					AvailabilityZone:        pulumi.String(msServerGroupZones.Zones[0].Id),
+//					AvailabilityZone:        pulumi.String(msServerGroup.Zones[0].Id),
 //					InstanceChargeType:      pulumi.String("PostPaid"),
 //					SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //					VswitchId:               mainSwitch.ID(),
@@ -119,7 +120,7 @@ import (
 //				}
 //				msServerGroupInstance = append(msServerGroupInstance, __res)
 //			}
-//			msServerGroupApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "msServerGroupApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+//			msServerGroupApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "ms_server_group", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(slbMasterSlaveServerGroup),
 //				VswitchId:        mainSwitch.ID(),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
@@ -127,25 +128,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			msServerGroupEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "msServerGroupEcsNetworkInterface", &ecs.EcsNetworkInterfaceArgs{
+//			msServerGroupEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "ms_server_group", &ecs.EcsNetworkInterfaceArgs{
 //				NetworkInterfaceName: pulumi.String(slbMasterSlaveServerGroup),
 //				VswitchId:            mainSwitch.ID(),
 //				SecurityGroupIds: pulumi.StringArray{
-//					groupSecurityGroup.ID(),
+//					group.ID(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewEcsNetworkInterfaceAttachment(ctx, "msServerGroupEcsNetworkInterfaceAttachment", &ecs.EcsNetworkInterfaceAttachmentArgs{
+//			_, err = ecs.NewEcsNetworkInterfaceAttachment(ctx, "ms_server_group", &ecs.EcsNetworkInterfaceAttachmentArgs{
 //				InstanceId:         msServerGroupInstance[0].ID(),
 //				NetworkInterfaceId: msServerGroupEcsNetworkInterface.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			groupMasterSlaveServerGroup, err := slb.NewMasterSlaveServerGroup(ctx, "groupMasterSlaveServerGroup", &slb.MasterSlaveServerGroupArgs{
+//			groupMasterSlaveServerGroup, err := slb.NewMasterSlaveServerGroup(ctx, "group", &slb.MasterSlaveServerGroupArgs{
 //				LoadBalancerId: msServerGroupApplicationLoadBalancer.ID(),
+//				Name:           pulumi.String(slbMasterSlaveServerGroup),
 //				Servers: slb.MasterSlaveServerGroupServerArray{
 //					&slb.MasterSlaveServerGroupServerArgs{
 //						ServerId:   msServerGroupInstance[0].ID(),

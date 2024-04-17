@@ -10,6 +10,31 @@ import * as utilities from "../utilities";
  * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
  *
  * > **NOTE:** Available in 1.195.0+
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultBaselineStrategy = new alicloud.threatdetection.BaselineStrategy("default", {
+ *     customType: "custom",
+ *     endTime: "08:00:00",
+ *     baselineStrategyName: "apispec",
+ *     cycleDays: 3,
+ *     targetType: "groupId",
+ *     startTime: "05:00:00",
+ *     riskSubTypeName: "hc_exploit_redis",
+ * });
+ * const default = defaultBaselineStrategy.id.apply(id => alicloud.threatdetection.getBaselineStrategiesOutput({
+ *     ids: [id],
+ *     nameRegex: defaultBaselineStrategy.name,
+ *     customType: "custom",
+ * }));
+ * export const alicloudThreatDetectionBaselineStrategyExampleId = defaultAlicloudThreatDetectionBaselineStrategys.strategys[0].id;
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBaselineStrategies(args?: GetBaselineStrategiesArgs, opts?: pulumi.InvokeOptions): Promise<GetBaselineStrategiesResult> {
     args = args || {};
@@ -78,6 +103,31 @@ export interface GetBaselineStrategiesResult {
  * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
  *
  * > **NOTE:** Available in 1.195.0+
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultBaselineStrategy = new alicloud.threatdetection.BaselineStrategy("default", {
+ *     customType: "custom",
+ *     endTime: "08:00:00",
+ *     baselineStrategyName: "apispec",
+ *     cycleDays: 3,
+ *     targetType: "groupId",
+ *     startTime: "05:00:00",
+ *     riskSubTypeName: "hc_exploit_redis",
+ * });
+ * const default = defaultBaselineStrategy.id.apply(id => alicloud.threatdetection.getBaselineStrategiesOutput({
+ *     ids: [id],
+ *     nameRegex: defaultBaselineStrategy.name,
+ *     customType: "custom",
+ * }));
+ * export const alicloudThreatDetectionBaselineStrategyExampleId = defaultAlicloudThreatDetectionBaselineStrategys.strategys[0].id;
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getBaselineStrategiesOutput(args?: GetBaselineStrategiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBaselineStrategiesResult> {
     return pulumi.output(args).apply((a: any) => getBaselineStrategies(a, opts))

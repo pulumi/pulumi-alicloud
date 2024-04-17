@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultAccelerator = new Accelerator(&#34;defaultAccelerator&#34;, AcceleratorArgs.builder()        
+ *         var default_ = new Accelerator(&#34;default&#34;, AcceleratorArgs.builder()        
  *             .duration(1)
  *             .autoUseCoupon(true)
  *             .spec(&#34;1&#34;)
@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
  *             .domain(&#34;changes.com.cn&#34;)
- *             .acceleratorId(defaultAccelerator.id())
+ *             .acceleratorId(default_.id())
  *             .build());
  * 
  *     }

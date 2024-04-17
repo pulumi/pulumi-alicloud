@@ -279,6 +279,7 @@ class Command(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ecs.Command("example",
+            name="tf-testAcc",
             command_content="bHMK",
             description="For Terraform Test",
             type="RunShellScript",
@@ -327,6 +328,7 @@ class Command(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ecs.Command("example",
+            name="tf-testAcc",
             command_content="bHMK",
             description="For Terraform Test",
             type="RunShellScript",

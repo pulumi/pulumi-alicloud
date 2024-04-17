@@ -171,14 +171,14 @@ class Policy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
         defaultyk84_hc = alicloud.hbr.Vault("defaultyk84Hc",
             vault_type="STANDARD",
-            vault_name=default.result.apply(lambda result: f"example-value-{result}"))
+            vault_name=f"example-value-{default['result']}")
         defaultoq_wv_hq = alicloud.hbr.Policy("defaultoqWvHQ",
-            policy_name=default.result.apply(lambda result: f"example-value-{result}"),
+            policy_name=f"example-value-{default['result']}",
             rules=[alicloud.hbr.PolicyRuleArgs(
                 rule_type="BACKUP",
                 backup_type="COMPLETE",
@@ -232,14 +232,14 @@ class Policy(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
         defaultyk84_hc = alicloud.hbr.Vault("defaultyk84Hc",
             vault_type="STANDARD",
-            vault_name=default.result.apply(lambda result: f"example-value-{result}"))
+            vault_name=f"example-value-{default['result']}")
         defaultoq_wv_hq = alicloud.hbr.Policy("defaultoqWvHQ",
-            policy_name=default.result.apply(lambda result: f"example-value-{result}"),
+            policy_name=f"example-value-{default['result']}",
             rules=[alicloud.hbr.PolicyRuleArgs(
                 rule_type="BACKUP",
                 backup_type="COMPLETE",

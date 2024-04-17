@@ -167,8 +167,8 @@ def get_endpoint_groups(accelerator_id: Optional[str] = None,
     name = config.get("name")
     if name is None:
         name = "tf-example"
-    default_accelerators = alicloud.ga.get_accelerators(status="active")
-    default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+    default = alicloud.ga.get_accelerators(status="active")
+    default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
         bandwidth=100,
         type="Basic",
         bandwidth_type="Basic",
@@ -178,25 +178,27 @@ def get_endpoint_groups(accelerator_id: Optional[str] = None,
         bandwidth_package_name=name,
         auto_pay=True,
         auto_use_coupon=True)
-    default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-        accelerator_id=default_accelerators.ids[0],
+    default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
+        accelerator_id=default.ids[0],
         bandwidth_package_id=default_bandwidth_package.id)
-    default_listener = alicloud.ga.Listener("defaultListener",
+    default_listener = alicloud.ga.Listener("default",
         accelerator_id=default_bandwidth_package_attachment.accelerator_id,
         client_affinity="SOURCE_IP",
         protocol="UDP",
+        name=name,
         port_ranges=[alicloud.ga.ListenerPortRangeArgs(
             from_port=60,
             to_port=70,
         )])
-    default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+    default_eip_address = alicloud.ecs.EipAddress("default",
         bandwidth="10",
         internet_charge_type="PayByBandwidth",
         address_name=name)
-    default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
+    default_endpoint_group = alicloud.ga.EndpointGroup("default",
         accelerator_id=default_listener.accelerator_id,
         listener_id=default_listener.id,
         description=name,
+        name=name,
         threshold_count=4,
         traffic_percentage=20,
         endpoint_group_region="cn-hangzhou",
@@ -213,9 +215,9 @@ def get_endpoint_groups(accelerator_id: Optional[str] = None,
             type="PublicIp",
             weight=20,
         )])
-    default_endpoint_groups = alicloud.ga.get_endpoint_groups_output(accelerator_id=default_endpoint_group.accelerator_id,
+    default_get_endpoint_groups = alicloud.ga.get_endpoint_groups_output(accelerator_id=default_endpoint_group.accelerator_id,
         ids=[default_endpoint_group.id])
-    pulumi.export("firstGaEndpointGroupId", default_endpoint_groups.groups[0].id)
+    pulumi.export("firstGaEndpointGroupId", default_get_endpoint_groups.groups[0].id)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -282,8 +284,8 @@ def get_endpoint_groups_output(accelerator_id: Optional[pulumi.Input[str]] = Non
     name = config.get("name")
     if name is None:
         name = "tf-example"
-    default_accelerators = alicloud.ga.get_accelerators(status="active")
-    default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+    default = alicloud.ga.get_accelerators(status="active")
+    default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
         bandwidth=100,
         type="Basic",
         bandwidth_type="Basic",
@@ -293,25 +295,27 @@ def get_endpoint_groups_output(accelerator_id: Optional[pulumi.Input[str]] = Non
         bandwidth_package_name=name,
         auto_pay=True,
         auto_use_coupon=True)
-    default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-        accelerator_id=default_accelerators.ids[0],
+    default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
+        accelerator_id=default.ids[0],
         bandwidth_package_id=default_bandwidth_package.id)
-    default_listener = alicloud.ga.Listener("defaultListener",
+    default_listener = alicloud.ga.Listener("default",
         accelerator_id=default_bandwidth_package_attachment.accelerator_id,
         client_affinity="SOURCE_IP",
         protocol="UDP",
+        name=name,
         port_ranges=[alicloud.ga.ListenerPortRangeArgs(
             from_port=60,
             to_port=70,
         )])
-    default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+    default_eip_address = alicloud.ecs.EipAddress("default",
         bandwidth="10",
         internet_charge_type="PayByBandwidth",
         address_name=name)
-    default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
+    default_endpoint_group = alicloud.ga.EndpointGroup("default",
         accelerator_id=default_listener.accelerator_id,
         listener_id=default_listener.id,
         description=name,
+        name=name,
         threshold_count=4,
         traffic_percentage=20,
         endpoint_group_region="cn-hangzhou",
@@ -328,9 +332,9 @@ def get_endpoint_groups_output(accelerator_id: Optional[pulumi.Input[str]] = Non
             type="PublicIp",
             weight=20,
         )])
-    default_endpoint_groups = alicloud.ga.get_endpoint_groups_output(accelerator_id=default_endpoint_group.accelerator_id,
+    default_get_endpoint_groups = alicloud.ga.get_endpoint_groups_output(accelerator_id=default_endpoint_group.accelerator_id,
         ids=[default_endpoint_group.id])
-    pulumi.export("firstGaEndpointGroupId", default_endpoint_groups.groups[0].id)
+    pulumi.export("firstGaEndpointGroupId", default_get_endpoint_groups.groups[0].id)
     ```
     <!--End PulumiCodeChooser -->
 

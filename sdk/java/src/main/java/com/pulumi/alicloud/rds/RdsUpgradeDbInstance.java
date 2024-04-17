@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
  *             .engine(&#34;PostgreSQL&#34;)
  *             .engineVersion(&#34;13.0&#34;)
  *             .instanceChargeType(&#34;PostPaid&#34;)
@@ -70,8 +70,8 @@ import javax.annotation.Nullable;
  *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
  *             .build());
  * 
- *         final var exampleInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .engine(&#34;PostgreSQL&#34;)
  *             .engineVersion(&#34;13.0&#34;)
  *             .category(&#34;HighAvailability&#34;)
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .instanceChargeType(&#34;PostPaid&#34;)
  *             .build());
  * 
- *         final var exampleCrossRegions = RdsFunctions.getCrossRegions();
+ *         final var exampleGetCrossRegions = RdsFunctions.getCrossRegions();
  * 
  *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(&#34;terraform-example&#34;)
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .vswitchName(&#34;terraform-example&#34;)
  *             .build());
  * 
@@ -97,8 +97,8 @@ import javax.annotation.Nullable;
  *             .engine(&#34;PostgreSQL&#34;)
  *             .engineVersion(&#34;13.0&#34;)
  *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
- *             .instanceType(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
  *             .instanceChargeType(&#34;Postpaid&#34;)
  *             .instanceName(&#34;terraform-example&#34;)
  *             .vswitchId(exampleSwitch.id())

@@ -224,14 +224,16 @@ class DiskAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Create a new ECS disk-attachment and use it attach one disk to a new instance.
-        ecs_sg = alicloud.ecs.SecurityGroup("ecsSg", description="New security group")
-        ecs_disk = alicloud.ecs.Disk("ecsDisk",
+        ecs_sg = alicloud.ecs.SecurityGroup("ecs_sg",
+            name="terraform-test-group",
+            description="New security group")
+        ecs_disk = alicloud.ecs.Disk("ecs_disk",
             availability_zone="cn-beijing-a",
             size=50,
             tags={
                 "Name": "TerraformTest-disk",
             })
-        ecs_instance = alicloud.ecs.Instance("ecsInstance",
+        ecs_instance = alicloud.ecs.Instance("ecs_instance",
             image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
             instance_type="ecs.n4.small",
             availability_zone="cn-beijing-a",
@@ -241,7 +243,7 @@ class DiskAttachment(pulumi.CustomResource):
             tags={
                 "Name": "TerraformTest-instance",
             })
-        ecs_disk_att = alicloud.ecs.DiskAttachment("ecsDiskAtt",
+        ecs_disk_att = alicloud.ecs.DiskAttachment("ecs_disk_att",
             disk_id=ecs_disk.id,
             instance_id=ecs_instance.id)
         ```
@@ -281,14 +283,16 @@ class DiskAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Create a new ECS disk-attachment and use it attach one disk to a new instance.
-        ecs_sg = alicloud.ecs.SecurityGroup("ecsSg", description="New security group")
-        ecs_disk = alicloud.ecs.Disk("ecsDisk",
+        ecs_sg = alicloud.ecs.SecurityGroup("ecs_sg",
+            name="terraform-test-group",
+            description="New security group")
+        ecs_disk = alicloud.ecs.Disk("ecs_disk",
             availability_zone="cn-beijing-a",
             size=50,
             tags={
                 "Name": "TerraformTest-disk",
             })
-        ecs_instance = alicloud.ecs.Instance("ecsInstance",
+        ecs_instance = alicloud.ecs.Instance("ecs_instance",
             image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
             instance_type="ecs.n4.small",
             availability_zone="cn-beijing-a",
@@ -298,7 +302,7 @@ class DiskAttachment(pulumi.CustomResource):
             tags={
                 "Name": "TerraformTest-instance",
             })
-        ecs_disk_att = alicloud.ecs.DiskAttachment("ecsDiskAtt",
+        ecs_disk_att = alicloud.ecs.DiskAttachment("ecs_disk_att",
             disk_id=ecs_disk.id,
             instance_id=ecs_instance.id)
         ```

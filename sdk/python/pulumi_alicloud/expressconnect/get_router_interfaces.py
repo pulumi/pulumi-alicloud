@@ -156,8 +156,8 @@ def get_router_interfaces(filters: Optional[Sequence[pulumi.InputType['GetRouter
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.expressconnect.get_router_interfaces(ids=[alicloud_router_interface["default"]["id"]],
-        name_regex=alicloud_router_interface["default"]["name"])
+    default = alicloud.expressconnect.get_router_interfaces(ids=[default_alicloud_router_interface["id"]],
+        name_regex=default_alicloud_router_interface["name"])
     pulumi.export("alicloudRouterInterfaceExampleId", default.interfaces[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -213,8 +213,8 @@ def get_router_interfaces_output(filters: Optional[pulumi.Input[Optional[Sequenc
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.expressconnect.get_router_interfaces(ids=[alicloud_router_interface["default"]["id"]],
-        name_regex=alicloud_router_interface["default"]["name"])
+    default = alicloud.expressconnect.get_router_interfaces(ids=[default_alicloud_router_interface["id"]],
+        name_regex=default_alicloud_router_interface["name"])
     pulumi.export("alicloudRouterInterfaceExampleId", default.interfaces[0].id)
     ```
     <!--End PulumiCodeChooser -->

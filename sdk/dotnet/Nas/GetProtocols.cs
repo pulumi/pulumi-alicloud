@@ -29,9 +29,9 @@ namespace Pulumi.AliCloud.Nas
         /// {
         ///     var @default = AliCloud.Nas.GetProtocols.Invoke(new()
         ///     {
-        ///         OutputFile = "protocols.txt",
         ///         Type = "Performance",
         ///         ZoneId = "cn-beijing-e",
+        ///         OutputFile = "protocols.txt",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -63,9 +63,9 @@ namespace Pulumi.AliCloud.Nas
         /// {
         ///     var @default = AliCloud.Nas.GetProtocols.Invoke(new()
         ///     {
-        ///         OutputFile = "protocols.txt",
         ///         Type = "Performance",
         ///         ZoneId = "cn-beijing-e",
+        ///         OutputFile = "protocols.txt",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

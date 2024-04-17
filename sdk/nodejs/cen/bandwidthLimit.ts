@@ -25,47 +25,41 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const region1 = config.get("region1") || "eu-central-1";
  * const region2 = config.get("region2") || "ap-southeast-1";
- * const ec = new alicloud.Provider("ec", {region: region1});
- * const as = new alicloud.Provider("as", {region: region2});
  * const vpc1 = new alicloud.vpc.Network("vpc1", {
  *     vpcName: "tf-example",
  *     cidrBlock: "192.168.0.0/16",
- * }, {
- *     provider: alicloud.ec,
  * });
  * const vpc2 = new alicloud.vpc.Network("vpc2", {
  *     vpcName: "tf-example",
  *     cidrBlock: "172.16.0.0/12",
- * }, {
- *     provider: alicloud.as,
  * });
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ * const example = new alicloud.cen.Instance("example", {
  *     cenInstanceName: "tf_example",
  *     description: "an example for cen",
  * });
  * const example1 = new alicloud.cen.InstanceAttachment("example1", {
- *     instanceId: exampleInstance.id,
+ *     instanceId: example.id,
  *     childInstanceId: vpc1.id,
  *     childInstanceType: "VPC",
  *     childInstanceRegionId: region1,
  * });
  * const example2 = new alicloud.cen.InstanceAttachment("example2", {
- *     instanceId: exampleInstance.id,
+ *     instanceId: example.id,
  *     childInstanceId: vpc2.id,
  *     childInstanceType: "VPC",
  *     childInstanceRegionId: region2,
  * });
- * const exampleBandwidthPackage = new alicloud.cen.BandwidthPackage("exampleBandwidthPackage", {
+ * const exampleBandwidthPackage = new alicloud.cen.BandwidthPackage("example", {
  *     bandwidth: 5,
  *     cenBandwidthPackageName: "tf_example",
  *     geographicRegionAId: "Europe",
  *     geographicRegionBId: "Asia-Pacific",
  * });
- * const exampleBandwidthPackageAttachment = new alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", {
- *     instanceId: exampleInstance.id,
+ * const exampleBandwidthPackageAttachment = new alicloud.cen.BandwidthPackageAttachment("example", {
+ *     instanceId: example.id,
  *     bandwidthPackageId: exampleBandwidthPackage.id,
  * });
- * const exampleBandwidthLimit = new alicloud.cen.BandwidthLimit("exampleBandwidthLimit", {
+ * const exampleBandwidthLimit = new alicloud.cen.BandwidthLimit("example", {
  *     instanceId: exampleBandwidthPackageAttachment.instanceId,
  *     regionIds: [
  *         example1.childInstanceRegionId,

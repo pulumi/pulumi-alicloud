@@ -347,7 +347,7 @@ class VswitchCidrReservation(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_vpc = alicloud.vpc.Network("defaultVpc",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
@@ -355,8 +355,8 @@ class VswitchCidrReservation(pulumi.CustomResource):
             vpc_id=default_vpc.id,
             cidr_block="10.0.0.0/20",
             vswitch_name=f"{name}1",
-            zone_id=default_zones.zones[0].id)
-        default_vswitch_cidr_reservation = alicloud.vpc.VswitchCidrReservation("defaultVswitchCidrReservation",
+            zone_id=default.zones[0].id)
+        default_vswitch_cidr_reservation = alicloud.vpc.VswitchCidrReservation("default",
             ip_version="IPv4",
             vswitch_id=default_v_switch.id,
             cidr_reservation_description=name,
@@ -410,7 +410,7 @@ class VswitchCidrReservation(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_vpc = alicloud.vpc.Network("defaultVpc",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
@@ -418,8 +418,8 @@ class VswitchCidrReservation(pulumi.CustomResource):
             vpc_id=default_vpc.id,
             cidr_block="10.0.0.0/20",
             vswitch_name=f"{name}1",
-            zone_id=default_zones.zones[0].id)
-        default_vswitch_cidr_reservation = alicloud.vpc.VswitchCidrReservation("defaultVswitchCidrReservation",
+            zone_id=default.zones[0].id)
+        default_vswitch_cidr_reservation = alicloud.vpc.VswitchCidrReservation("default",
             ip_version="IPv4",
             vswitch_id=default_v_switch.id,
             cidr_reservation_description=name,

@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var examplePrefixList = new AliCloud.Vpc.PrefixList("examplePrefixList", new()
+    ///     var example = new AliCloud.Vpc.PrefixList("example", new()
     ///     {
     ///         Entrys = new[]
     ///         {
@@ -42,26 +42,26 @@ namespace Pulumi.AliCloud.Cen
     ///         },
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("example", new()
     ///     {
     ///         CenInstanceName = "tf_example",
     ///         Description = "an example for cen",
     ///     });
     /// 
-    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("example", new()
     ///     {
     ///         TransitRouterName = "tf_example",
     ///         CenId = exampleInstance.Id,
     ///     });
     /// 
-    ///     var exampleTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", new()
+    ///     var exampleTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("example", new()
     ///     {
     ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
     ///     });
     /// 
-    ///     var exampleTransitRouterPrefixListAssociation = new AliCloud.Cen.TransitRouterPrefixListAssociation("exampleTransitRouterPrefixListAssociation", new()
+    ///     var exampleTransitRouterPrefixListAssociation = new AliCloud.Cen.TransitRouterPrefixListAssociation("example", new()
     ///     {
-    ///         PrefixListId = examplePrefixList.Id,
+    ///         PrefixListId = example.Id,
     ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
     ///         TransitRouterTableId = exampleTransitRouterRouteTable.TransitRouterRouteTableId,
     ///         NextHop = "BlackHole",

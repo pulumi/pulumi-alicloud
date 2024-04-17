@@ -133,17 +133,20 @@ class RouteTableAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
+        foo = alicloud.vpc.Network("foo",
+            cidr_block="172.16.0.0/12",
+            name=name)
         default = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vpc_id=foo_network.id,
+        foo_switch = alicloud.vpc.Switch("foo",
+            vpc_id=foo.id,
             cidr_block="172.16.0.0/21",
-            zone_id=default.zones[0].id)
-        foo_route_table = alicloud.vpc.RouteTable("fooRouteTable",
-            vpc_id=foo_network.id,
+            zone_id=default.zones[0].id,
+            name=name)
+        foo_route_table = alicloud.vpc.RouteTable("foo",
+            vpc_id=foo.id,
             route_table_name=name,
             description="route_table_attachment")
-        foo_route_table_attachment = alicloud.vpc.RouteTableAttachment("fooRouteTableAttachment",
+        foo_route_table_attachment = alicloud.vpc.RouteTableAttachment("foo",
             vswitch_id=foo_switch.id,
             route_table_id=foo_route_table.id)
         ```
@@ -188,17 +191,20 @@ class RouteTableAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/12")
+        foo = alicloud.vpc.Network("foo",
+            cidr_block="172.16.0.0/12",
+            name=name)
         default = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vpc_id=foo_network.id,
+        foo_switch = alicloud.vpc.Switch("foo",
+            vpc_id=foo.id,
             cidr_block="172.16.0.0/21",
-            zone_id=default.zones[0].id)
-        foo_route_table = alicloud.vpc.RouteTable("fooRouteTable",
-            vpc_id=foo_network.id,
+            zone_id=default.zones[0].id,
+            name=name)
+        foo_route_table = alicloud.vpc.RouteTable("foo",
+            vpc_id=foo.id,
             route_table_name=name,
             description="route_table_attachment")
-        foo_route_table_attachment = alicloud.vpc.RouteTableAttachment("fooRouteTableAttachment",
+        foo_route_table_attachment = alicloud.vpc.RouteTableAttachment("foo",
             vswitch_id=foo_switch.id,
             route_table_id=foo_route_table.id)
         ```

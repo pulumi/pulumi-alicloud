@@ -1302,43 +1302,47 @@ class BackupPlan(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_zones = alicloud.rds.get_zones(engine="MySQL",
             engine_version="8.0",
             instance_charge_type="PostPaid",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.zones[0].id,
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_get_zones.zones[0].id,
             engine="MySQL",
             engine_version="8.0",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd",
             instance_charge_type="PostPaid")
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        vswitch_id = default_switches.ids[0]
-        zone_id = default_zones.ids[0]
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
-        default_instance = alicloud.rds.Instance("defaultInstance",
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default_get_zones.zones[0].id)
+        vswitch_id = default_get_switches.ids[0]
+        zone_id = default_get_zones.ids[0]
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_get_networks.ids[0])
+        default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
             vswitch_id=vswitch_id,
             instance_name=name)
-        default_database = alicloud.rds.Database("defaultDatabase", instance_id=default_instance.id)
-        default_rds_account = alicloud.rds.RdsAccount("defaultRdsAccount",
+        default_database = alicloud.rds.Database("default",
+            instance_id=default_instance.id,
+            name="tfdatabase")
+        default_rds_account = alicloud.rds.RdsAccount("default",
             db_instance_id=default_instance.id,
             account_name="tfnormal000",
             account_password="Test12345")
-        default_account_privilege = alicloud.rds.AccountPrivilege("defaultAccountPrivilege",
+        default_account_privilege = alicloud.rds.AccountPrivilege("default",
             instance_id=default_instance.id,
             account_name=default_rds_account.account_name,
             privilege="ReadWrite",
             db_names=[default_database.name])
-        default_backup_plan = alicloud.dbs.BackupPlan("defaultBackupPlan",
+        default_backup_plan = alicloud.dbs.BackupPlan("default",
             backup_plan_name=name,
             payment_type="PayAsYouGo",
             instance_class="xlarge",
@@ -1348,7 +1352,7 @@ class BackupPlan(pulumi.CustomResource):
             storage_region="cn-hangzhou",
             instance_type="RDS",
             source_endpoint_instance_type="RDS",
-            resource_group_id=default_resource_groups.ids[0],
+            resource_group_id=default.ids[0],
             source_endpoint_region="cn-hangzhou",
             source_endpoint_instance_id=default_instance.id,
             source_endpoint_user_name=default_account_privilege.account_name,
@@ -1436,43 +1440,47 @@ class BackupPlan(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
+        default = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_get_zones = alicloud.rds.get_zones(engine="MySQL",
             engine_version="8.0",
             instance_charge_type="PostPaid",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.zones[0].id,
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_get_zones.zones[0].id,
             engine="MySQL",
             engine_version="8.0",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd",
             instance_charge_type="PostPaid")
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        vswitch_id = default_switches.ids[0]
-        zone_id = default_zones.ids[0]
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
-        default_instance = alicloud.rds.Instance("defaultInstance",
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default_get_zones.zones[0].id)
+        vswitch_id = default_get_switches.ids[0]
+        zone_id = default_get_zones.ids[0]
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_get_networks.ids[0])
+        default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
             vswitch_id=vswitch_id,
             instance_name=name)
-        default_database = alicloud.rds.Database("defaultDatabase", instance_id=default_instance.id)
-        default_rds_account = alicloud.rds.RdsAccount("defaultRdsAccount",
+        default_database = alicloud.rds.Database("default",
+            instance_id=default_instance.id,
+            name="tfdatabase")
+        default_rds_account = alicloud.rds.RdsAccount("default",
             db_instance_id=default_instance.id,
             account_name="tfnormal000",
             account_password="Test12345")
-        default_account_privilege = alicloud.rds.AccountPrivilege("defaultAccountPrivilege",
+        default_account_privilege = alicloud.rds.AccountPrivilege("default",
             instance_id=default_instance.id,
             account_name=default_rds_account.account_name,
             privilege="ReadWrite",
             db_names=[default_database.name])
-        default_backup_plan = alicloud.dbs.BackupPlan("defaultBackupPlan",
+        default_backup_plan = alicloud.dbs.BackupPlan("default",
             backup_plan_name=name,
             payment_type="PayAsYouGo",
             instance_class="xlarge",
@@ -1482,7 +1490,7 @@ class BackupPlan(pulumi.CustomResource):
             storage_region="cn-hangzhou",
             instance_type="RDS",
             source_endpoint_instance_type="RDS",
-            resource_group_id=default_resource_groups.ids[0],
+            resource_group_id=default.ids[0],
             source_endpoint_region="cn-hangzhou",
             source_endpoint_instance_id=default_instance.id,
             source_endpoint_user_name=default_account_privilege.account_name,

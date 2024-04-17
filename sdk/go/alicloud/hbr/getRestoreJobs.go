@@ -31,7 +31,7 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// defaultEcsBackupPlans, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
+// _default, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
 // NameRegex: pulumi.StringRef("plan-name"),
 // }, nil);
 // if err != nil {
@@ -40,10 +40,10 @@ import (
 // _, err = hbr.GetRestoreJobs(ctx, &hbr.GetRestoreJobsArgs{
 // RestoreType: "ECS_FILE",
 // VaultIds: interface{}{
-// defaultEcsBackupPlans.Plans[0].VaultId,
+// _default.Plans[0].VaultId,
 // },
 // TargetInstanceIds: interface{}{
-// defaultEcsBackupPlans.Plans[0].InstanceId,
+// _default.Plans[0].InstanceId,
 // },
 // }, nil);
 // if err != nil {

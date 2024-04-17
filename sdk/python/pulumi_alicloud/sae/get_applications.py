@@ -173,20 +173,20 @@ def get_applications(app_name: Optional[str] = None,
     name = config.get("name")
     if name is None:
         name = "tf-testacc"
-    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
     vpc = alicloud.vpc.Network("vpc",
         vpc_name="tf_testacc",
         cidr_block="172.16.0.0/12")
     vsw = alicloud.vpc.Switch("vsw",
         vpc_id=vpc.id,
         cidr_block="172.16.0.0/24",
-        zone_id=default_zones.zones[0].id,
+        zone_id=default.zones[0].id,
         vswitch_name=name)
-    default_namespace = alicloud.sae.Namespace("defaultNamespace",
+    default_namespace = alicloud.sae.Namespace("default",
         namespace_description=name,
         namespace_id="cn-hangzhou:tfacctest",
         namespace_name=name)
-    default_application = alicloud.sae.Application("defaultApplication",
+    default_application = alicloud.sae.Application("default",
         app_description="tf-testaccDescription",
         app_name="tf-testaccAppName131",
         namespace_id=default_namespace.id,
@@ -197,8 +197,8 @@ def get_applications(app_name: Optional[str] = None,
         replicas=5,
         cpu=500,
         memory=2048)
-    default_applications = alicloud.sae.get_applications_output(ids=[default_application.id])
-    pulumi.export("saeApplicationId", default_applications.applications[0].id)
+    default_get_applications = alicloud.sae.get_applications_output(ids=[default_application.id])
+    pulumi.export("saeApplicationId", default_get_applications.applications[0].id)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -273,20 +273,20 @@ def get_applications_output(app_name: Optional[pulumi.Input[Optional[str]]] = No
     name = config.get("name")
     if name is None:
         name = "tf-testacc"
-    default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
     vpc = alicloud.vpc.Network("vpc",
         vpc_name="tf_testacc",
         cidr_block="172.16.0.0/12")
     vsw = alicloud.vpc.Switch("vsw",
         vpc_id=vpc.id,
         cidr_block="172.16.0.0/24",
-        zone_id=default_zones.zones[0].id,
+        zone_id=default.zones[0].id,
         vswitch_name=name)
-    default_namespace = alicloud.sae.Namespace("defaultNamespace",
+    default_namespace = alicloud.sae.Namespace("default",
         namespace_description=name,
         namespace_id="cn-hangzhou:tfacctest",
         namespace_name=name)
-    default_application = alicloud.sae.Application("defaultApplication",
+    default_application = alicloud.sae.Application("default",
         app_description="tf-testaccDescription",
         app_name="tf-testaccAppName131",
         namespace_id=default_namespace.id,
@@ -297,8 +297,8 @@ def get_applications_output(app_name: Optional[pulumi.Input[Optional[str]]] = No
         replicas=5,
         cpu=500,
         memory=2048)
-    default_applications = alicloud.sae.get_applications_output(ids=[default_application.id])
-    pulumi.export("saeApplicationId", default_applications.applications[0].id)
+    default_get_applications = alicloud.sae.get_applications_output(ids=[default_application.id])
+    pulumi.export("saeApplicationId", default_get_applications.applications[0].id)
     ```
     <!--End PulumiCodeChooser -->
 

@@ -470,8 +470,6 @@ class PhysicalConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        hz = alicloud.Provider("hz", region="cn-hangzhou")
-        sgp = alicloud.Provider("sgp", region="ap-southeast-1")
         domestic = alicloud.expressconnect.PhysicalConnection("domestic",
             access_point_id="ap-cn-hangzhou-yh-B",
             line_operator="CT",
@@ -480,8 +478,7 @@ class PhysicalConnection(pulumi.CustomResource):
             type="VPC",
             description="my domestic connection",
             port_type="1000Base-LX",
-            bandwidth="100",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+            bandwidth="100")
         international = alicloud.expressconnect.PhysicalConnection("international",
             access_point_id="ap-sg-singpore-A",
             line_operator="Other",
@@ -490,8 +487,7 @@ class PhysicalConnection(pulumi.CustomResource):
             type="VPC",
             description="my domestic connection",
             port_type="1000Base-LX",
-            bandwidth="100",
-            opts=pulumi.ResourceOptions(provider=alicloud["sgp"]))
+            bandwidth="100")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -554,8 +550,6 @@ class PhysicalConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        hz = alicloud.Provider("hz", region="cn-hangzhou")
-        sgp = alicloud.Provider("sgp", region="ap-southeast-1")
         domestic = alicloud.expressconnect.PhysicalConnection("domestic",
             access_point_id="ap-cn-hangzhou-yh-B",
             line_operator="CT",
@@ -564,8 +558,7 @@ class PhysicalConnection(pulumi.CustomResource):
             type="VPC",
             description="my domestic connection",
             port_type="1000Base-LX",
-            bandwidth="100",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+            bandwidth="100")
         international = alicloud.expressconnect.PhysicalConnection("international",
             access_point_id="ap-sg-singpore-A",
             line_operator="Other",
@@ -574,8 +567,7 @@ class PhysicalConnection(pulumi.CustomResource):
             type="VPC",
             description="my domestic connection",
             port_type="1000Base-LX",
-            bandwidth="100",
-            opts=pulumi.ResourceOptions(provider=alicloud["sgp"]))
+            bandwidth="100")
         ```
         <!--End PulumiCodeChooser -->
 

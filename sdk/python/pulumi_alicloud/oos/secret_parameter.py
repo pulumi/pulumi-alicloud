@@ -311,12 +311,12 @@ class SecretParameter(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        example_key = alicloud.kms.Key("exampleKey",
+        example = alicloud.resourcemanager.get_resource_groups()
+        example_key = alicloud.kms.Key("example",
             description="terraform-example",
             status="Enabled",
             pending_window_in_days=7)
-        example_secret_parameter = alicloud.oos.SecretParameter("exampleSecretParameter",
+        example_secret_parameter = alicloud.oos.SecretParameter("example",
             secret_parameter_name="terraform-example",
             value="terraform-example",
             type="Secret",
@@ -326,7 +326,7 @@ class SecretParameter(pulumi.CustomResource):
                 "Created": "TF",
                 "For": "OosSecretParameter",
             },
-            resource_group_id=example_resource_groups.groups[0].id)
+            resource_group_id=example.groups[0].id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -371,12 +371,12 @@ class SecretParameter(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        example_key = alicloud.kms.Key("exampleKey",
+        example = alicloud.resourcemanager.get_resource_groups()
+        example_key = alicloud.kms.Key("example",
             description="terraform-example",
             status="Enabled",
             pending_window_in_days=7)
-        example_secret_parameter = alicloud.oos.SecretParameter("exampleSecretParameter",
+        example_secret_parameter = alicloud.oos.SecretParameter("example",
             secret_parameter_name="terraform-example",
             value="terraform-example",
             type="Secret",
@@ -386,7 +386,7 @@ class SecretParameter(pulumi.CustomResource):
                 "Created": "TF",
                 "For": "OosSecretParameter",
             },
-            resource_group_id=example_resource_groups.groups[0].id)
+            resource_group_id=example.groups[0].id)
         ```
         <!--End PulumiCodeChooser -->
 

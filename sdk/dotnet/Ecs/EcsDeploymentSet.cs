@@ -31,11 +31,11 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var @default = new AliCloud.Ecs.EcsDeploymentSet("default", new()
     ///     {
-    ///         DeploymentSetName = "example_value",
-    ///         Description = "example_value",
+    ///         Strategy = "Availability",
     ///         Domain = "Default",
     ///         Granularity = "Host",
-    ///         Strategy = "Availability",
+    ///         DeploymentSetName = "example_value",
+    ///         Description = "example_value",
     ///     });
     /// 
     /// });

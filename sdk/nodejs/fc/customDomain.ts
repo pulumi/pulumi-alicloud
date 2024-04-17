@@ -22,13 +22,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const defaultProject = new alicloud.log.Project("defaultProject", {});
- * const defaultStore = new alicloud.log.Store("defaultStore", {project: defaultProject.name});
- * const defaultRole = new alicloud.ram.Role("defaultRole", {
+ * const defaultProject = new alicloud.log.Project("default", {name: `example-value-${_default.result}`});
+ * const defaultStore = new alicloud.log.Store("default", {
+ *     project: defaultProject.name,
+ *     name: "example-value",
+ * });
+ * const defaultRole = new alicloud.ram.Role("default", {
+ *     name: `fcservicerole-${_default.result}`,
  *     document: `  {
  *       "Statement": [
  *         {
@@ -47,12 +51,13 @@ import * as utilities from "../utilities";
  *     description: "this is a example",
  *     force: true,
  * });
- * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment", {
+ * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("default", {
  *     roleName: defaultRole.name,
  *     policyName: "AliyunLogFullAccess",
  *     policyType: "System",
  * });
- * const defaultService = new alicloud.fc.Service("defaultService", {
+ * const defaultService = new alicloud.fc.Service("default", {
+ *     name: `example-value-${_default.result}`,
  *     description: "example-value",
  *     role: defaultRole.arn,
  *     logConfig: {
@@ -62,9 +67,9 @@ import * as utilities from "../utilities";
  *         enableRequestMetrics: true,
  *     },
  * });
- * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
+ * const defaultBucket = new alicloud.oss.Bucket("default", {bucket: `terraform-example-${_default.result}`});
  * // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
- * const defaultBucketObject = new alicloud.oss.BucketObject("defaultBucketObject", {
+ * const defaultBucketObject = new alicloud.oss.BucketObject("default", {
  *     bucket: defaultBucket.id,
  *     key: "index.py",
  *     content: `import logging 
@@ -73,8 +78,9 @@ import * as utilities from "../utilities";
  * logger.info('hello world') 
  * return 'hello world'`,
  * });
- * const defaultFunction = new alicloud.fc.Function("defaultFunction", {
+ * const defaultFunction = new alicloud.fc.Function("default", {
  *     service: defaultService.name,
+ *     name: "terraform-example",
  *     description: "example",
  *     ossBucket: defaultBucket.id,
  *     ossKey: defaultBucketObject.key,
@@ -82,7 +88,7 @@ import * as utilities from "../utilities";
  *     runtime: "python2.7",
  *     handler: "hello.handler",
  * });
- * const defaultCustomDomain = new alicloud.fc.CustomDomain("defaultCustomDomain", {
+ * const defaultCustomDomain = new alicloud.fc.CustomDomain("default", {
  *     domainName: "terraform.functioncompute.com",
  *     protocol: "HTTP",
  *     routeConfigs: [{

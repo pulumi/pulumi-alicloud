@@ -115,8 +115,8 @@ def get_topic_subscriptions(name_prefix: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    subscriptions = alicloud.mns.get_topic_subscriptions(name_prefix="tf-",
-        topic_name="topic_name")
+    subscriptions = alicloud.mns.get_topic_subscriptions(topic_name="topic_name",
+        name_prefix="tf-")
     pulumi.export("firstTopicSubscriptionId", subscriptions.subscriptions[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -159,8 +159,8 @@ def get_topic_subscriptions_output(name_prefix: Optional[pulumi.Input[Optional[s
     import pulumi
     import pulumi_alicloud as alicloud
 
-    subscriptions = alicloud.mns.get_topic_subscriptions(name_prefix="tf-",
-        topic_name="topic_name")
+    subscriptions = alicloud.mns.get_topic_subscriptions(topic_name="topic_name",
+        name_prefix="tf-")
     pulumi.export("firstTopicSubscriptionId", subscriptions.subscriptions[0].id)
     ```
     <!--End PulumiCodeChooser -->

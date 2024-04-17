@@ -33,14 +33,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//			_default, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("default-NODELETING"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId: pulumi.StringRef(_default.Ids[0]),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,12 +51,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultGateway, err := cloudstoragegateway.NewGateway(ctx, "defaultGateway", &cloudstoragegateway.GatewayArgs{
+//			defaultGateway, err := cloudstoragegateway.NewGateway(ctx, "default", &cloudstoragegateway.GatewayArgs{
 //				Description:            pulumi.String("tf-acctestDesalone"),
 //				GatewayClass:           pulumi.String("Standard"),
 //				Type:                   pulumi.String("File"),
 //				PaymentType:            pulumi.String("PayAsYouGo"),
-//				VswitchId:              pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:              pulumi.String(defaultGetSwitches.Ids[0]),
 //				ReleaseAfterExpiration: pulumi.Bool(false),
 //				PublicNetworkBandwidth: pulumi.Int(40),
 //				StorageBundleId:        example.ID(),
@@ -66,7 +66,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultGatewaySmbUser, err := cloudstoragegateway.NewGatewaySmbUser(ctx, "defaultGatewaySmbUser", &cloudstoragegateway.GatewaySmbUserArgs{
+//			defaultGatewaySmbUser, err := cloudstoragegateway.NewGatewaySmbUser(ctx, "default", &cloudstoragegateway.GatewaySmbUserArgs{
 //				Username:  pulumi.String("your_username"),
 //				Password:  pulumi.String("password"),
 //				GatewayId: defaultGateway.ID(),

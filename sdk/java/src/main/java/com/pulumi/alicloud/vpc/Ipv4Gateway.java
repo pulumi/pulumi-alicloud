@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc-example&#34;);
- *         var defaultResourceGroup = new ResourceGroup(&#34;defaultResourceGroup&#34;, ResourceGroupArgs.builder()        
+ *         var default_ = new ResourceGroup(&#34;default&#34;, ResourceGroupArgs.builder()        
  *             .displayName(&#34;tf-testAcc-rg665&#34;)
  *             .resourceGroupName(name)
  *             .build());
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *         var defaultIpv4Gateway = new Ipv4Gateway(&#34;defaultIpv4Gateway&#34;, Ipv4GatewayArgs.builder()        
  *             .ipv4GatewayName(name)
  *             .ipv4GatewayDescription(&#34;tf-testAcc-Ipv4Gateway&#34;)
- *             .resourceGroupId(defaultResourceGroup.id())
+ *             .resourceGroupId(default_.id())
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 

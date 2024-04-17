@@ -36,13 +36,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
+//			_, err := hbr.NewVault(ctx, "default", &hbr.VaultArgs{
 //				VaultName: pulumi.String("terraform-example2"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
+//			defaultFileSystem, err := nas.NewFileSystem(ctx, "default", &nas.FileSystemArgs{
 //				ProtocolType: pulumi.String("NFS"),
 //				StorageType:  pulumi.String("Performance"),
 //				Description:  pulumi.String("terraform-example"),
@@ -51,12 +51,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = hbr.NewNasBackupPlan(ctx, "defaultNasBackupPlan", &hbr.NasBackupPlanArgs{
+//			_, err = hbr.NewNasBackupPlan(ctx, "default", &hbr.NasBackupPlanArgs{
 //				NasBackupPlanName: pulumi.String("terraform-example"),
 //				FileSystemId:      defaultFileSystem.ID(),
 //				Schedule:          pulumi.String("I|1602673264|PT2H"),
 //				BackupType:        pulumi.String("COMPLETE"),
-//				VaultId:           defaultVault.ID(),
+//				VaultId:           _default.ID(),
 //				Retention:         pulumi.String("2"),
 //				Paths: pulumi.StringArray{
 //					pulumi.String("/"),

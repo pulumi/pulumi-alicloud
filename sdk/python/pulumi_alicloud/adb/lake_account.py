@@ -267,26 +267,26 @@ class LakeAccount(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        v_pcid = alicloud.vpc.Network("vPCID",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        vpcid = alicloud.vpc.Network("VPCID",
             vpc_name=name,
             cidr_block="172.16.0.0/12")
-        v_switchid = alicloud.vpc.Switch("vSWITCHID",
-            vpc_id=v_pcid.id,
+        vswitchid = alicloud.vpc.Switch("VSWITCHID",
+            vpc_id=vpcid.id,
             zone_id="cn-hangzhou-k",
             vswitch_name=name,
             cidr_block="172.16.0.0/24")
-        create_instance = alicloud.adb.DBClusterLakeVersion("createInstance",
+        create_instance = alicloud.adb.DBClusterLakeVersion("CreateInstance",
             storage_resource="0ACU",
             zone_id="cn-hangzhou-k",
-            vpc_id=v_pcid.id,
-            vswitch_id=v_switchid.id,
+            vpc_id=vpcid.id,
+            vswitch_id=vswitchid.id,
             db_cluster_description=name,
             compute_resource="16ACU",
             db_cluster_version="5.0",
             payment_type="PayAsYouGo",
             security_ips="127.0.0.1")
-        default_lake_account = alicloud.adb.LakeAccount("defaultLakeAccount",
+        default_lake_account = alicloud.adb.LakeAccount("default",
             db_cluster_id=create_instance.id,
             account_type="Super",
             account_name="tfnormal",
@@ -368,26 +368,26 @@ class LakeAccount(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        v_pcid = alicloud.vpc.Network("vPCID",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        vpcid = alicloud.vpc.Network("VPCID",
             vpc_name=name,
             cidr_block="172.16.0.0/12")
-        v_switchid = alicloud.vpc.Switch("vSWITCHID",
-            vpc_id=v_pcid.id,
+        vswitchid = alicloud.vpc.Switch("VSWITCHID",
+            vpc_id=vpcid.id,
             zone_id="cn-hangzhou-k",
             vswitch_name=name,
             cidr_block="172.16.0.0/24")
-        create_instance = alicloud.adb.DBClusterLakeVersion("createInstance",
+        create_instance = alicloud.adb.DBClusterLakeVersion("CreateInstance",
             storage_resource="0ACU",
             zone_id="cn-hangzhou-k",
-            vpc_id=v_pcid.id,
-            vswitch_id=v_switchid.id,
+            vpc_id=vpcid.id,
+            vswitch_id=vswitchid.id,
             db_cluster_description=name,
             compute_resource="16ACU",
             db_cluster_version="5.0",
             payment_type="PayAsYouGo",
             security_ips="127.0.0.1")
-        default_lake_account = alicloud.adb.LakeAccount("defaultLakeAccount",
+        default_lake_account = alicloud.adb.LakeAccount("default",
             db_cluster_id=create_instance.id,
             account_type="Super",
             account_name="tfnormal",

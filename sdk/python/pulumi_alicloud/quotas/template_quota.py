@@ -378,15 +378,15 @@ class TemplateQuota(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.quotas.TemplateQuota("default",
-            desire_value=1001,
+            quota_action_code="q_desktop-count",
+            product_code="gws",
+            notice_type=3,
             dimensions=[alicloud.quotas.TemplateQuotaDimensionArgs(
                 key="regionId",
                 value="cn-hangzhou",
             )],
+            desire_value=1001,
             env_language="zh",
-            notice_type=3,
-            product_code="gws",
-            quota_action_code="q_desktop-count",
             quota_category="CommonQuota")
         ```
         <!--End PulumiCodeChooser -->
@@ -445,15 +445,15 @@ class TemplateQuota(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.quotas.TemplateQuota("default",
-            desire_value=1001,
+            quota_action_code="q_desktop-count",
+            product_code="gws",
+            notice_type=3,
             dimensions=[alicloud.quotas.TemplateQuotaDimensionArgs(
                 key="regionId",
                 value="cn-hangzhou",
             )],
+            desire_value=1001,
             env_language="zh",
-            notice_type=3,
-            product_code="gws",
-            quota_action_code="q_desktop-count",
             quota_category="CommonQuota")
         ```
         <!--End PulumiCodeChooser -->

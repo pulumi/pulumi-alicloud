@@ -22,18 +22,18 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const exampleZones = alicloud.getZones({
+ * const example = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
  * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
  *     vswitchName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
  *     vpcId: exampleNetwork.id,
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
  * });
  * const _default = new alicloud.mse.Cluster("default", {
  *     connectionType: "slb",
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *     mseVersion: "mse_dev",
  *     clusterType: "Nacos-Ans",
  * });
- * const exampleEngineNamespace = new alicloud.mse.EngineNamespace("exampleEngineNamespace", {
+ * const exampleEngineNamespace = new alicloud.mse.EngineNamespace("example", {
  *     clusterId: _default.id,
  *     namespaceShowName: name,
  *     namespaceId: name,

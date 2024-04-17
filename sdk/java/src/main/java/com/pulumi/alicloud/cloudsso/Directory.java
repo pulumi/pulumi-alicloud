@@ -24,6 +24,51 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+ * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
+ * import com.pulumi.alicloud.cloudsso.Directory;
+ * import com.pulumi.alicloud.cloudsso.DirectoryArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var default = CloudssoFunctions.getDirectories();
+ * 
+ *         for (var i = 0; i &lt; default_.ids().length() &gt; 0 ? 0 : 1; i++) {
+ *             new Directory(&#34;defaultDirectory-&#34; + i, DirectoryArgs.builder()            
+ *                 .directoryName(name)
+ *                 .build());
+ * 
+ *         
+ * }
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Cloud SSO Directory can be imported using the id, e.g.

@@ -22,54 +22,45 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const sh = new alicloud.Provider("sh", {region: "cn-shanghai"});
- * const hz = new alicloud.Provider("hz", {region: "cn-hangzhou"});
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "Instance",
  * });
- * const defaultInstanceTypes = alicloud.ecs.getInstanceTypes({
+ * const defaultGetInstanceTypes = alicloud.ecs.getInstanceTypes({
  *     instanceTypeFamily: "ecs.sn1ne",
  * });
- * const defaultImages = alicloud.ecs.getImages({
+ * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
  *     owners: "system",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
- * }, {
- *     provider: alicloud.hz,
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- * }, {
- *     provider: alicloud.hz,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id}, {
- *     provider: alicloud.hz,
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: "terraform-example",
+ *     vpcId: defaultNetwork.id,
  * });
- * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * const defaultInstance = new alicloud.ecs.Instance("default", {
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
  *     instanceName: "terraform-example",
  *     securityGroups: [defaultSecurityGroup.id],
  *     vswitchId: defaultSwitch.id,
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.ids?.[0]),
- *     imageId: defaultImages.then(defaultImages => defaultImages.ids?.[0]),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.ids?.[0]),
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.ids?.[0]),
  *     internetMaxBandwidthOut: 10,
- * }, {
- *     provider: alicloud.hz,
  * });
- * const defaultImage = new alicloud.ecs.Image("defaultImage", {
+ * const defaultImage = new alicloud.ecs.Image("default", {
  *     instanceId: defaultInstance.id,
  *     imageName: "terraform-example",
  *     description: "terraform-example",
- * }, {
- *     provider: alicloud.hz,
  * });
- * const defaultImageCopy = new alicloud.ecs.ImageCopy("defaultImageCopy", {
+ * const defaultImageCopy = new alicloud.ecs.ImageCopy("default", {
  *     sourceImageId: defaultImage.id,
  *     sourceRegionId: "cn-hangzhou",
  *     imageName: "terraform-example",
@@ -77,8 +68,6 @@ import * as utilities from "../utilities";
  *     tags: {
  *         FinanceDept: "FinanceDeptJoshua",
  *     },
- * }, {
- *     provider: alicloud.sh,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

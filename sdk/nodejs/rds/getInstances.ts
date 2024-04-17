@@ -23,8 +23,8 @@ import * as utilities from "../utilities";
  *     nameRegex: "data-\\d+",
  *     status: "Running",
  *     tags: {
- *         size: "tiny",
  *         type: "database",
+ *         size: "tiny",
  *     },
  * });
  * export const firstDbInstanceId = dbInstancesDs.then(dbInstancesDs => dbInstancesDs.instances?.[0]?.id);
@@ -174,8 +174,8 @@ export interface GetInstancesResult {
  *     nameRegex: "data-\\d+",
  *     status: "Running",
  *     tags: {
- *         size: "tiny",
  *         type: "database",
+ *         size: "tiny",
  *     },
  * });
  * export const firstDbInstanceId = dbInstancesDs.then(dbInstancesDs => dbInstancesDs.instances?.[0]?.id);

@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Ram
     ///     // Create a new RAM Policy.
     ///     var policy = new AliCloud.Ram.Policy("policy", new()
     ///     {
-    ///         Description = "this is a policy test",
+    ///         PolicyName = "policyName",
     ///         PolicyDocument = @"  {
     ///     ""Statement"": [
     ///       {
@@ -51,9 +51,8 @@ namespace Pulumi.AliCloud.Ram
     ///     ],
     ///       ""Version"": ""1""
     ///   }
-    ///   
     /// ",
-    ///         PolicyName = "policyName",
+    ///         Description = "this is a policy test",
     ///     });
     /// 
     /// });

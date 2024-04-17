@@ -29,26 +29,26 @@ namespace Pulumi.AliCloud.Mse
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
+    ///     var example = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
     ///     {
     ///         VswitchName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///         VpcId = exampleNetwork.Id,
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var exampleCluster = new AliCloud.Mse.Cluster("exampleCluster", new()
+    ///     var exampleCluster = new AliCloud.Mse.Cluster("example", new()
     ///     {
     ///         ClusterSpecification = "MSE_SC_1_2_60_c",
     ///         ClusterType = "ZooKeeper",
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Mse
     ///         VpcId = exampleNetwork.Id,
     ///     });
     /// 
-    ///     var exampleZnode = new AliCloud.Mse.Znode("exampleZnode", new()
+    ///     var exampleZnode = new AliCloud.Mse.Znode("example", new()
     ///     {
     ///         ClusterId = exampleCluster.ClusterId,
     ///         Data = "terraform-example",

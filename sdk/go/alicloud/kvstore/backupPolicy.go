@@ -40,30 +40,30 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := kvstore.GetZones(ctx, nil, nil)
+//			_default, err := kvstore.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := kvstore.NewInstance(ctx, "defaultInstance", &kvstore.InstanceArgs{
+//			defaultInstance, err := kvstore.NewInstance(ctx, "default", &kvstore.InstanceArgs{
 //				DbInstanceName: pulumi.String(name),
 //				VswitchId:      defaultSwitch.ID(),
-//				ZoneId:         pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:         pulumi.String(_default.Zones[0].Id),
 //				InstanceClass:  pulumi.String("redis.master.large.default"),
 //				InstanceType:   pulumi.String("Redis"),
 //				EngineVersion:  pulumi.String("5.0"),
@@ -82,7 +82,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kvstore.NewBackupPolicy(ctx, "defaultBackupPolicy", &kvstore.BackupPolicyArgs{
+//			_, err = kvstore.NewBackupPolicy(ctx, "default", &kvstore.BackupPolicyArgs{
 //				InstanceId: defaultInstance.ID(),
 //				BackupPeriods: pulumi.StringArray{
 //					pulumi.String("Tuesday"),

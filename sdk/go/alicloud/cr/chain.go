@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "defaultRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
+//			_, err := cr.NewRegistryEnterpriseInstance(ctx, "default", &cr.RegistryEnterpriseInstanceArgs{
 //				PaymentType:   pulumi.String("Subscription"),
 //				Period:        pulumi.Int(1),
 //				RenewPeriod:   pulumi.Int(0),
@@ -53,17 +53,19 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "defaultRegistryEnterpriseNamespace", &cs.RegistryEnterpriseNamespaceArgs{
-//				InstanceId:        defaultRegistryEnterpriseInstance.ID(),
+//			defaultRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "default", &cs.RegistryEnterpriseNamespaceArgs{
+//				InstanceId:        _default.ID(),
+//				Name:              pulumi.String(name),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultRegistryEnterpriseRepo, err := cs.NewRegistryEnterpriseRepo(ctx, "defaultRegistryEnterpriseRepo", &cs.RegistryEnterpriseRepoArgs{
-//				InstanceId: defaultRegistryEnterpriseInstance.ID(),
+//			defaultRegistryEnterpriseRepo, err := cs.NewRegistryEnterpriseRepo(ctx, "default", &cs.RegistryEnterpriseRepoArgs{
+//				InstanceId: _default.ID(),
 //				Namespace:  defaultRegistryEnterpriseNamespace.Name,
+//				Name:       pulumi.String(name),
 //				Summary:    pulumi.String("this is summary of my new repo"),
 //				RepoType:   pulumi.String("PUBLIC"),
 //				Detail:     pulumi.String("this is a public repo"),
@@ -71,14 +73,93 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cr.NewChain(ctx, "defaultChain", &cr.ChainArgs{
-//				ChainName:         pulumi.String(name),
-//				Description:       pulumi.String(name),
-//				InstanceId:        defaultRegistryEnterpriseNamespace.InstanceId,
-//				RepoName:          defaultRegistryEnterpriseRepo.Name,
-//				RepoNamespaceName: defaultRegistryEnterpriseNamespace.Name,
+//			_, err = cr.NewChain(ctx, "default", &cr.ChainArgs{
 //				ChainConfigs: cr.ChainChainConfigArray{
 //					&cr.ChainChainConfigArgs{
+//						Nodes: cr.ChainChainConfigNodeArray{
+//							&cr.ChainChainConfigNodeArgs{
+//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
+//									&cr.ChainChainConfigNodeNodeConfigArgs{
+//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
+//											nil,
+//										},
+//									},
+//								},
+//								Enable:   pulumi.Bool(true),
+//								NodeName: pulumi.String("DOCKER_IMAGE_BUILD"),
+//							},
+//							&cr.ChainChainConfigNodeArgs{
+//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
+//									&cr.ChainChainConfigNodeNodeConfigArgs{
+//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
+//											nil,
+//										},
+//									},
+//								},
+//								Enable:   pulumi.Bool(true),
+//								NodeName: pulumi.String("DOCKER_IMAGE_PUSH"),
+//							},
+//							&cr.ChainChainConfigNodeArgs{
+//								Enable:   pulumi.Bool(true),
+//								NodeName: pulumi.String("VULNERABILITY_SCANNING"),
+//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
+//									&cr.ChainChainConfigNodeNodeConfigArgs{
+//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
+//											&cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs{
+//												IssueLevel: pulumi.String("MEDIUM"),
+//												IssueCount: pulumi.String("1"),
+//												Action:     pulumi.String("BLOCK_DELETE_TAG"),
+//												Logic:      pulumi.String("AND"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//							&cr.ChainChainConfigNodeArgs{
+//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
+//									&cr.ChainChainConfigNodeNodeConfigArgs{
+//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
+//											nil,
+//										},
+//									},
+//								},
+//								Enable:   pulumi.Bool(true),
+//								NodeName: pulumi.String("ACTIVATE_REPLICATION"),
+//							},
+//							&cr.ChainChainConfigNodeArgs{
+//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
+//									&cr.ChainChainConfigNodeNodeConfigArgs{
+//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
+//											nil,
+//										},
+//									},
+//								},
+//								Enable:   pulumi.Bool(true),
+//								NodeName: pulumi.String("TRIGGER"),
+//							},
+//							&cr.ChainChainConfigNodeArgs{
+//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
+//									&cr.ChainChainConfigNodeNodeConfigArgs{
+//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
+//											nil,
+//										},
+//									},
+//								},
+//								Enable:   pulumi.Bool(false),
+//								NodeName: pulumi.String("SNAPSHOT"),
+//							},
+//							&cr.ChainChainConfigNodeArgs{
+//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
+//									&cr.ChainChainConfigNodeNodeConfigArgs{
+//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
+//											nil,
+//										},
+//									},
+//								},
+//								Enable:   pulumi.Bool(false),
+//								NodeName: pulumi.String("TRIGGER_SNAPSHOT"),
+//							},
+//						},
 //						Routers: cr.ChainChainConfigRouterArray{
 //							&cr.ChainChainConfigRouterArgs{
 //								Froms: cr.ChainChainConfigRouterFromArray{
@@ -153,92 +234,13 @@ import (
 //								},
 //							},
 //						},
-//						Nodes: cr.ChainChainConfigNodeArray{
-//							&cr.ChainChainConfigNodeArgs{
-//								Enable:   pulumi.Bool(true),
-//								NodeName: pulumi.String("DOCKER_IMAGE_BUILD"),
-//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
-//									&cr.ChainChainConfigNodeNodeConfigArgs{
-//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
-//											nil,
-//										},
-//									},
-//								},
-//							},
-//							&cr.ChainChainConfigNodeArgs{
-//								Enable:   pulumi.Bool(true),
-//								NodeName: pulumi.String("DOCKER_IMAGE_PUSH"),
-//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
-//									&cr.ChainChainConfigNodeNodeConfigArgs{
-//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
-//											nil,
-//										},
-//									},
-//								},
-//							},
-//							&cr.ChainChainConfigNodeArgs{
-//								Enable:   pulumi.Bool(true),
-//								NodeName: pulumi.String("VULNERABILITY_SCANNING"),
-//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
-//									&cr.ChainChainConfigNodeNodeConfigArgs{
-//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
-//											&cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs{
-//												IssueLevel: pulumi.String("MEDIUM"),
-//												IssueCount: pulumi.String("1"),
-//												Action:     pulumi.String("BLOCK_DELETE_TAG"),
-//												Logic:      pulumi.String("AND"),
-//											},
-//										},
-//									},
-//								},
-//							},
-//							&cr.ChainChainConfigNodeArgs{
-//								Enable:   pulumi.Bool(true),
-//								NodeName: pulumi.String("ACTIVATE_REPLICATION"),
-//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
-//									&cr.ChainChainConfigNodeNodeConfigArgs{
-//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
-//											nil,
-//										},
-//									},
-//								},
-//							},
-//							&cr.ChainChainConfigNodeArgs{
-//								Enable:   pulumi.Bool(true),
-//								NodeName: pulumi.String("TRIGGER"),
-//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
-//									&cr.ChainChainConfigNodeNodeConfigArgs{
-//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
-//											nil,
-//										},
-//									},
-//								},
-//							},
-//							&cr.ChainChainConfigNodeArgs{
-//								Enable:   pulumi.Bool(false),
-//								NodeName: pulumi.String("SNAPSHOT"),
-//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
-//									&cr.ChainChainConfigNodeNodeConfigArgs{
-//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
-//											nil,
-//										},
-//									},
-//								},
-//							},
-//							&cr.ChainChainConfigNodeArgs{
-//								Enable:   pulumi.Bool(false),
-//								NodeName: pulumi.String("TRIGGER_SNAPSHOT"),
-//								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
-//									&cr.ChainChainConfigNodeNodeConfigArgs{
-//										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
-//											nil,
-//										},
-//									},
-//								},
-//							},
-//						},
 //					},
 //				},
+//				ChainName:         pulumi.String(name),
+//				Description:       pulumi.String(name),
+//				InstanceId:        defaultRegistryEnterpriseNamespace.InstanceId,
+//				RepoName:          defaultRegistryEnterpriseRepo.Name,
+//				RepoNamespaceName: defaultRegistryEnterpriseNamespace.Name,
 //			})
 //			if err != nil {
 //				return err
