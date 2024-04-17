@@ -13,6 +13,8 @@ import (
 
 // This data source provides the ots instances of the current Alibaba Cloud user.
 //
+// > **NOTE:** Available since v1.40.0.
+//
 // ## Example Usage
 //
 // <!--Start PulumiCodeChooser -->
@@ -29,7 +31,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instancesDs, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
-//				NameRegex:  pulumi.StringRef("sample-instance"),
 //				OutputFile: pulumi.StringRef("instances.txt"),
 //			}, nil)
 //			if err != nil {

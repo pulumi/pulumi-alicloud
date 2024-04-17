@@ -22,15 +22,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // These resource primary keys should be replaced with your actual values.
  * const _default = new alicloud.cloudfirewall.FirewallVpcFirewallCen("default", {
- *     cenId: "cen-cjok7uyb5w2b27573v",
+ *     cenId: "cen-xxx",
  *     localVpc: {
- *         networkInstanceId: "vpc-a2d4wzzfuumzuq6uog5w4",
+ *         networkInstanceId: "vpc-xxx",
  *     },
- *     memberUid: "1415189284827022",
+ *     memberUid: "14151*****827022",
  *     status: "open",
  *     vpcFirewallName: "tf-vpc-firewall-name",
- *     vpcRegion: "ap-south-1",
+ *     vpcRegion: "cn-hangzhou",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

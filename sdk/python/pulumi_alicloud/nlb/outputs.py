@@ -339,11 +339,11 @@ class ServerGroupHealthCheck(dict):
                - **false**: closed.
         :param Sequence[str] health_check_http_codes: Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\\_2xx**, **http\\_3xx**, **http\\_4xx**, and **http\\_5xx**.
                > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
-        :param int health_check_interval: Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+        :param int health_check_interval: Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
         :param str health_check_type: Health check protocol. Valid values: **TCP** or **HTTP**.
         :param str health_check_url: Health check path.
                > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
-        :param int healthy_threshold: After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+        :param int healthy_threshold: After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
         :param str http_check_method: The health check method. Valid values: **GET** or **HEAD**.
                > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
         :param int unhealthy_threshold: After the health check fails for many times in a row, the health check status of the backend server is determined from **Success** to **Failure**. Valid values: **2** to **10**.
@@ -421,7 +421,7 @@ class ServerGroupHealthCheck(dict):
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> Optional[int]:
         """
-        Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+        Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -446,7 +446,7 @@ class ServerGroupHealthCheck(dict):
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[int]:
         """
-        After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+        After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
         """
         return pulumi.get(self, "healthy_threshold")
 

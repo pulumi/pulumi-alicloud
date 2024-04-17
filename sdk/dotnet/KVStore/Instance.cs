@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> ConnectionStringPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The coupon code.
+        /// The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         /// </summary>
         [Output("couponNo")]
         public Output<string?> CouponNo { get; private set; } = null!;
@@ -546,7 +546,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? ConnectionStringPrefix { get; set; }
 
         /// <summary>
-        /// The coupon code.
+        /// The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         /// </summary>
         [Input("couponNo")]
         public Input<string>? CouponNo { get; set; }
@@ -979,7 +979,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? ConnectionStringPrefix { get; set; }
 
         /// <summary>
-        /// The coupon code.
+        /// The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         /// </summary>
         [Input("couponNo")]
         public Input<string>? CouponNo { get; set; }

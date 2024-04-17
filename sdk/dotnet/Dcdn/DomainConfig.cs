@@ -141,6 +141,12 @@ namespace Pulumi.AliCloud.Dcdn
         public Output<string> FunctionName { get; private set; } = null!;
 
         /// <summary>
+        /// By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+        /// </summary>
+        [Output("parentId")]
+        public Output<string> ParentId { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the Config.
         /// </summary>
         [Output("status")]
@@ -216,6 +222,12 @@ namespace Pulumi.AliCloud.Dcdn
         [Input("functionName", required: true)]
         public Input<string> FunctionName { get; set; } = null!;
 
+        /// <summary>
+        /// By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+        /// </summary>
+        [Input("parentId")]
+        public Input<string>? ParentId { get; set; }
+
         public DomainConfigArgs()
         {
         }
@@ -253,6 +265,12 @@ namespace Pulumi.AliCloud.Dcdn
         /// </summary>
         [Input("functionName")]
         public Input<string>? FunctionName { get; set; }
+
+        /// <summary>
+        /// By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+        /// </summary>
+        [Input("parentId")]
+        public Input<string>? ParentId { get; set; }
 
         /// <summary>
         /// The status of the Config.

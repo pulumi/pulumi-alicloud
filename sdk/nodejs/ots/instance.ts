@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultInstance = new alicloud.ots.Instance("defaultInstance", {
  *     description: name,
- *     accessedBy: "Vpc",
+ *     networkTypeAcls: ["VPC"],
  *     tags: {
  *         Created: "TF",
  *         For: "Building table",
@@ -74,7 +74,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The network limitation of accessing instance. Valid values:
      */
-    public readonly accessedBy!: pulumi.Output<string | undefined>;
+    public readonly accessedBy!: pulumi.Output<string>;
     /**
      * The description of the instance. Currently, it does not support modifying.
      */
@@ -87,6 +87,19 @@ export class Instance extends pulumi.CustomResource {
      * The name of the instance.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The set of request sources that are allowed access. Valid optional values:
+     */
+    public readonly networkSourceAcls!: pulumi.Output<string[]>;
+    /**
+     * The set of network types that are allowed access. Valid optional values:
+     */
+    public readonly networkTypeAcls!: pulumi.Output<string[]>;
+    /**
+     * The resource group the instance belongs to.
+     * Default to Alibaba Cloud default resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the instance.
      */
@@ -109,6 +122,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkSourceAcls"] = state ? state.networkSourceAcls : undefined;
+            resourceInputs["networkTypeAcls"] = state ? state.networkTypeAcls : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
@@ -116,6 +132,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkSourceAcls"] = args ? args.networkSourceAcls : undefined;
+            resourceInputs["networkTypeAcls"] = args ? args.networkTypeAcls : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -144,6 +163,19 @@ export interface InstanceState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The set of request sources that are allowed access. Valid optional values:
+     */
+    networkSourceAcls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The set of network types that are allowed access. Valid optional values:
+     */
+    networkTypeAcls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The resource group the instance belongs to.
+     * Default to Alibaba Cloud default resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * A mapping of tags to assign to the instance.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
@@ -169,6 +201,19 @@ export interface InstanceArgs {
      * The name of the instance.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The set of request sources that are allowed access. Valid optional values:
+     */
+    networkSourceAcls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The set of network types that are allowed access. Valid optional values:
+     */
+    networkTypeAcls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The resource group the instance belongs to.
+     * Default to Alibaba Cloud default resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the instance.
      */

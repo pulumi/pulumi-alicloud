@@ -35,15 +35,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// These resource primary keys should be replaced with your actual values.
 //			_, err := cloudfirewall.NewFirewallVpcFirewallCen(ctx, "default", &cloudfirewall.FirewallVpcFirewallCenArgs{
-//				CenId: pulumi.String("cen-cjok7uyb5w2b27573v"),
+//				CenId: pulumi.String("cen-xxx"),
 //				LocalVpc: &cloudfirewall.FirewallVpcFirewallCenLocalVpcArgs{
-//					NetworkInstanceId: pulumi.String("vpc-a2d4wzzfuumzuq6uog5w4"),
+//					NetworkInstanceId: pulumi.String("vpc-xxx"),
 //				},
-//				MemberUid:       pulumi.String("1415189284827022"),
+//				MemberUid:       pulumi.String("14151*****827022"),
 //				Status:          pulumi.String("open"),
 //				VpcFirewallName: pulumi.String("tf-vpc-firewall-name"),
-//				VpcRegion:       pulumi.String("ap-south-1"),
+//				VpcRegion:       pulumi.String("cn-hangzhou"),
 //			})
 //			if err != nil {
 //				return err

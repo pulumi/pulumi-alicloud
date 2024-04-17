@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Nlb.Inputs
         }
 
         /// <summary>
-        /// Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+        /// Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
         /// </summary>
         [Input("healthCheckInterval")]
         public Input<int>? HealthCheckInterval { get; set; }
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Nlb.Inputs
         public Input<string>? HealthCheckUrl { get; set; }
 
         /// <summary>
-        /// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+        /// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
         /// </summary>
         [Input("healthyThreshold")]
         public Input<int>? HealthyThreshold { get; set; }

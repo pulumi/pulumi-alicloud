@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         /// </summary>
         public readonly ImmutableArray<string> HealthCheckHttpCodes;
         /// <summary>
-        /// Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+        /// Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
         /// </summary>
         public readonly int? HealthCheckInterval;
         /// <summary>
@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         /// </summary>
         public readonly string? HealthCheckUrl;
         /// <summary>
-        /// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+        /// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
         /// </summary>
         public readonly int? HealthyThreshold;
         /// <summary>

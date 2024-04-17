@@ -81,18 +81,18 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to PreCheck this request only. Value:
-     * - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
+     * Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating a VPC. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates a VPC.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Whether to PreCheck this request only. Value:
-     * - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
+     * @return Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating a VPC. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates a VPC.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -116,6 +116,13 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> enableIpv6() {
         return Optional.ofNullable(this.enableIpv6);
+    }
+
+    @Import(name="ipv4IpamPoolId")
+    private @Nullable Output<String> ipv4IpamPoolId;
+
+    public Optional<Output<String>> ipv4IpamPoolId() {
+        return Optional.ofNullable(this.ipv4IpamPoolId);
     }
 
     /**
@@ -174,24 +181,24 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -242,24 +249,24 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Deprecated since v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
-     * 
-     * @deprecated
      * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
+     * @deprecated
+     * Field &#39;router_table_id&#39; has been deprecated since provider version 1.221.0. New field &#39;route_table_id&#39; instead.
+     * 
      */
-    @Deprecated /* Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead. */
+    @Deprecated /* Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead. */
     @Import(name="routerTableId")
     private @Nullable Output<String> routerTableId;
 
     /**
-     * @return (Deprecated since v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+     * @return Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
      * @deprecated
-     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+     * Field &#39;router_table_id&#39; has been deprecated since provider version 1.221.0. New field &#39;route_table_id&#39; instead.
      * 
      */
-    @Deprecated /* Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead. */
+    @Deprecated /* Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead. */
     public Optional<Output<String>> routerTableId() {
         return Optional.ofNullable(this.routerTableId);
     }
@@ -268,10 +275,10 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
      * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      * @deprecated
-     * Field &#39;SecondaryCidrBlocks&#39; has been deprecated from provider version 1.206.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      */
-    @Deprecated /* Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
+    @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
     @Import(name="secondaryCidrBlocks")
     private @Nullable Output<List<String>> secondaryCidrBlocks;
 
@@ -279,23 +286,23 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
      * @return Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      * @deprecated
-     * Field &#39;SecondaryCidrBlocks&#39; has been deprecated from provider version 1.206.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      */
-    @Deprecated /* Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
+    @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
     public Optional<Output<List<String>>> secondaryCidrBlocks() {
         return Optional.ofNullable(this.secondaryCidrBlocks);
     }
 
     /**
-     * The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
+     * The status of the VPC.   **Pending**: The VPC is being configured. **Available**: The VPC is available.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
+     * @return The status of the VPC.   **Pending**: The VPC is being configured. **Available**: The VPC is available.
      * 
      */
     public Optional<Output<String>> status() {
@@ -360,6 +367,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.dryRun = $.dryRun;
         this.enableIpv6 = $.enableIpv6;
+        this.ipv4IpamPoolId = $.ipv4IpamPoolId;
         this.ipv6CidrBlock = $.ipv6CidrBlock;
         this.ipv6CidrBlocks = $.ipv6CidrBlocks;
         this.ipv6Isp = $.ipv6Isp;
@@ -478,9 +486,9 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Whether to PreCheck this request only. Value:
-         * - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-         * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
+         * @param dryRun Whether to PreCheck only this request. Value:
+         * - **true**: The check request is sent without creating a VPC. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+         * - **false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates a VPC.
          * 
          * @return builder
          * 
@@ -491,9 +499,9 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Whether to PreCheck this request only. Value:
-         * - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-         * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
+         * @param dryRun Whether to PreCheck only this request. Value:
+         * - **true**: The check request is sent without creating a VPC. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+         * - **false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates a VPC.
          * 
          * @return builder
          * 
@@ -525,6 +533,15 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableIpv6(Boolean enableIpv6) {
             return enableIpv6(Output.of(enableIpv6));
+        }
+
+        public Builder ipv4IpamPoolId(@Nullable Output<String> ipv4IpamPoolId) {
+            $.ipv4IpamPoolId = ipv4IpamPoolId;
+            return this;
+        }
+
+        public Builder ipv4IpamPoolId(String ipv4IpamPoolId) {
+            return ipv4IpamPoolId(Output.of(ipv4IpamPoolId));
         }
 
         /**
@@ -611,30 +628,30 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.119.0. New field &#39;vpc_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.119.0. New field &#39;vpc_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -703,30 +720,30 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerTableId (Deprecated since v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+         * @param routerTableId Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+         * Field &#39;router_table_id&#39; has been deprecated since provider version 1.221.0. New field &#39;route_table_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead. */
+        @Deprecated /* Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead. */
         public Builder routerTableId(@Nullable Output<String> routerTableId) {
             $.routerTableId = routerTableId;
             return this;
         }
 
         /**
-         * @param routerTableId (Deprecated since v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+         * @param routerTableId Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+         * Field &#39;router_table_id&#39; has been deprecated since provider version 1.221.0. New field &#39;route_table_id&#39; instead.
          * 
          */
-        @Deprecated /* Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead. */
+        @Deprecated /* Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead. */
         public Builder routerTableId(String routerTableId) {
             return routerTableId(Output.of(routerTableId));
         }
@@ -737,10 +754,10 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;SecondaryCidrBlocks&#39; has been deprecated from provider version 1.206.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+         * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
          * 
          */
-        @Deprecated /* Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
+        @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
         public Builder secondaryCidrBlocks(@Nullable Output<List<String>> secondaryCidrBlocks) {
             $.secondaryCidrBlocks = secondaryCidrBlocks;
             return this;
@@ -752,10 +769,10 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;SecondaryCidrBlocks&#39; has been deprecated from provider version 1.206.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+         * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
          * 
          */
-        @Deprecated /* Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
+        @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
         public Builder secondaryCidrBlocks(List<String> secondaryCidrBlocks) {
             return secondaryCidrBlocks(Output.of(secondaryCidrBlocks));
         }
@@ -766,16 +783,16 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;SecondaryCidrBlocks&#39; has been deprecated from provider version 1.206.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+         * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
          * 
          */
-        @Deprecated /* Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
+        @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
         public Builder secondaryCidrBlocks(String... secondaryCidrBlocks) {
             return secondaryCidrBlocks(List.of(secondaryCidrBlocks));
         }
 
         /**
-         * @param status The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
+         * @param status The status of the VPC.   **Pending**: The VPC is being configured. **Available**: The VPC is available.
          * 
          * @return builder
          * 
@@ -786,7 +803,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
+         * @param status The status of the VPC.   **Pending**: The VPC is being configured. **Available**: The VPC is available.
          * 
          * @return builder
          * 

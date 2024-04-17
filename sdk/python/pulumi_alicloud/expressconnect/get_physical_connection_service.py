@@ -72,7 +72,7 @@ def get_physical_connection_service(enable: Optional[str] = None,
 
     For information about Express Connect and how to use it, see [What is Express Connect](https://www.alibabacloud.com/help/doc-detail/275179.htm).
 
-    > **NOTE:** Available in v1.132.0+
+    > **NOTE:** Available since v1.132.0
 
     ## Example Usage
 
@@ -109,7 +109,7 @@ def get_physical_connection_service_output(enable: Optional[pulumi.Input[Optiona
 
     For information about Express Connect and how to use it, see [What is Express Connect](https://www.alibabacloud.com/help/doc-detail/275179.htm).
 
-    > **NOTE:** Available in v1.132.0+
+    > **NOTE:** Available since v1.132.0
 
     ## Example Usage
 

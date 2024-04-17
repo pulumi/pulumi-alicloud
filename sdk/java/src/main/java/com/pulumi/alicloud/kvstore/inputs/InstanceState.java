@@ -256,14 +256,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The coupon code.
+     * The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
      * 
      */
     @Import(name="couponNo")
     private @Nullable Output<String> couponNo;
 
     /**
-     * @return The coupon code.
+     * @return The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
      * 
      */
     public Optional<Output<String>> couponNo() {
@@ -1489,7 +1489,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param couponNo The coupon code.
+         * @param couponNo The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
          * 
          * @return builder
          * 
@@ -1500,7 +1500,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param couponNo The coupon code.
+         * @param couponNo The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
          * 
          * @return builder
          * 

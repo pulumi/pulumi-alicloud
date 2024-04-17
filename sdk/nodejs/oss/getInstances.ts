@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the ots instances of the current Alibaba Cloud user.
  *
+ * > **NOTE:** Available since v1.40.0.
+ *
  * ## Example Usage
  *
  * <!--Start PulumiCodeChooser -->
@@ -17,7 +19,6 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const instancesDs = alicloud.ots.getInstances({
- *     nameRegex: "sample-instance",
  *     outputFile: "instances.txt",
  * });
  * export const firstInstanceId = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.id);
@@ -103,6 +104,8 @@ export interface GetInstancesResult {
 /**
  * This data source provides the ots instances of the current Alibaba Cloud user.
  *
+ * > **NOTE:** Available since v1.40.0.
+ *
  * ## Example Usage
  *
  * <!--Start PulumiCodeChooser -->
@@ -111,7 +114,6 @@ export interface GetInstancesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const instancesDs = alicloud.ots.getInstances({
- *     nameRegex: "sample-instance",
  *     outputFile: "instances.txt",
  * });
  * export const firstInstanceId = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.id);

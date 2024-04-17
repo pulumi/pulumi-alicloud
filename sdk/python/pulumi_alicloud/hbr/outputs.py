@@ -13,6 +13,10 @@ from . import outputs
 __all__ = [
     'OtsBackupPlanOtsDetail',
     'OtsBackupPlanRule',
+    'PolicyBindingAdvancedOptions',
+    'PolicyBindingAdvancedOptionsUdmDetail',
+    'PolicyRule',
+    'PolicyRuleRetentionRule',
     'RestoreJobOtsDetail',
     'ServerBackupPlanDetail',
     'GetBackupJobsFilterResult',
@@ -157,6 +161,311 @@ class OtsBackupPlanRule(dict):
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
         return pulumi.get(self, "schedule")
+
+
+@pulumi.output_type
+class PolicyBindingAdvancedOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "udmDetail":
+            suggest = "udm_detail"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyBindingAdvancedOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyBindingAdvancedOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyBindingAdvancedOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 udm_detail: Optional['outputs.PolicyBindingAdvancedOptionsUdmDetail'] = None):
+        """
+        :param 'PolicyBindingAdvancedOptionsUdmDetailArgs' udm_detail: ECS Backup Advanced options. See `udm_detail` below.
+        """
+        if udm_detail is not None:
+            pulumi.set(__self__, "udm_detail", udm_detail)
+
+    @property
+    @pulumi.getter(name="udmDetail")
+    def udm_detail(self) -> Optional['outputs.PolicyBindingAdvancedOptionsUdmDetail']:
+        """
+        ECS Backup Advanced options. See `udm_detail` below.
+        """
+        return pulumi.get(self, "udm_detail")
+
+
+@pulumi.output_type
+class PolicyBindingAdvancedOptionsUdmDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationKmsKeyId":
+            suggest = "destination_kms_key_id"
+        elif key == "diskIdLists":
+            suggest = "disk_id_lists"
+        elif key == "excludeDiskIdLists":
+            suggest = "exclude_disk_id_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyBindingAdvancedOptionsUdmDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyBindingAdvancedOptionsUdmDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyBindingAdvancedOptionsUdmDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_kms_key_id: Optional[str] = None,
+                 disk_id_lists: Optional[Sequence[str]] = None,
+                 exclude_disk_id_lists: Optional[Sequence[str]] = None):
+        """
+        :param str destination_kms_key_id: Custom KMS key ID of encrypted copy.
+        :param Sequence[str] disk_id_lists: The list of backup disks. If it is empty, all disks are backed up.
+        :param Sequence[str] exclude_disk_id_lists: List of cloud disk IDs that are not backed up.
+        """
+        if destination_kms_key_id is not None:
+            pulumi.set(__self__, "destination_kms_key_id", destination_kms_key_id)
+        if disk_id_lists is not None:
+            pulumi.set(__self__, "disk_id_lists", disk_id_lists)
+        if exclude_disk_id_lists is not None:
+            pulumi.set(__self__, "exclude_disk_id_lists", exclude_disk_id_lists)
+
+    @property
+    @pulumi.getter(name="destinationKmsKeyId")
+    def destination_kms_key_id(self) -> Optional[str]:
+        """
+        Custom KMS key ID of encrypted copy.
+        """
+        return pulumi.get(self, "destination_kms_key_id")
+
+    @property
+    @pulumi.getter(name="diskIdLists")
+    def disk_id_lists(self) -> Optional[Sequence[str]]:
+        """
+        The list of backup disks. If it is empty, all disks are backed up.
+        """
+        return pulumi.get(self, "disk_id_lists")
+
+    @property
+    @pulumi.getter(name="excludeDiskIdLists")
+    def exclude_disk_id_lists(self) -> Optional[Sequence[str]]:
+        """
+        List of cloud disk IDs that are not backed up.
+        """
+        return pulumi.get(self, "exclude_disk_id_lists")
+
+
+@pulumi.output_type
+class PolicyRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ruleType":
+            suggest = "rule_type"
+        elif key == "archiveDays":
+            suggest = "archive_days"
+        elif key == "backupType":
+            suggest = "backup_type"
+        elif key == "keepLatestSnapshots":
+            suggest = "keep_latest_snapshots"
+        elif key == "replicationRegionId":
+            suggest = "replication_region_id"
+        elif key == "retentionRules":
+            suggest = "retention_rules"
+        elif key == "ruleId":
+            suggest = "rule_id"
+        elif key == "vaultId":
+            suggest = "vault_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rule_type: str,
+                 archive_days: Optional[int] = None,
+                 backup_type: Optional[str] = None,
+                 keep_latest_snapshots: Optional[int] = None,
+                 replication_region_id: Optional[str] = None,
+                 retention: Optional[int] = None,
+                 retention_rules: Optional[Sequence['outputs.PolicyRuleRetentionRule']] = None,
+                 rule_id: Optional[str] = None,
+                 schedule: Optional[str] = None,
+                 vault_id: Optional[str] = None):
+        """
+        :param str rule_type: Rule Type.
+        :param int archive_days: This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+        :param str backup_type: This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+        :param int keep_latest_snapshots: This parameter is required only when **RuleType** is set to **BACKUP**.
+        :param str replication_region_id: Only when the **RuleType** value is.
+        :param int retention: Retention time, in days.
+        :param Sequence['PolicyRuleRetentionRuleArgs'] retention_rules: This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retention_rules` below.
+        :param str rule_id: Rule ID.
+        :param str schedule: This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+        :param str vault_id: Vault ID.
+        """
+        pulumi.set(__self__, "rule_type", rule_type)
+        if archive_days is not None:
+            pulumi.set(__self__, "archive_days", archive_days)
+        if backup_type is not None:
+            pulumi.set(__self__, "backup_type", backup_type)
+        if keep_latest_snapshots is not None:
+            pulumi.set(__self__, "keep_latest_snapshots", keep_latest_snapshots)
+        if replication_region_id is not None:
+            pulumi.set(__self__, "replication_region_id", replication_region_id)
+        if retention is not None:
+            pulumi.set(__self__, "retention", retention)
+        if retention_rules is not None:
+            pulumi.set(__self__, "retention_rules", retention_rules)
+        if rule_id is not None:
+            pulumi.set(__self__, "rule_id", rule_id)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+        if vault_id is not None:
+            pulumi.set(__self__, "vault_id", vault_id)
+
+    @property
+    @pulumi.getter(name="ruleType")
+    def rule_type(self) -> str:
+        """
+        Rule Type.
+        """
+        return pulumi.get(self, "rule_type")
+
+    @property
+    @pulumi.getter(name="archiveDays")
+    def archive_days(self) -> Optional[int]:
+        """
+        This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+        """
+        return pulumi.get(self, "archive_days")
+
+    @property
+    @pulumi.getter(name="backupType")
+    def backup_type(self) -> Optional[str]:
+        """
+        This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+        """
+        return pulumi.get(self, "backup_type")
+
+    @property
+    @pulumi.getter(name="keepLatestSnapshots")
+    def keep_latest_snapshots(self) -> Optional[int]:
+        """
+        This parameter is required only when **RuleType** is set to **BACKUP**.
+        """
+        return pulumi.get(self, "keep_latest_snapshots")
+
+    @property
+    @pulumi.getter(name="replicationRegionId")
+    def replication_region_id(self) -> Optional[str]:
+        """
+        Only when the **RuleType** value is.
+        """
+        return pulumi.get(self, "replication_region_id")
+
+    @property
+    @pulumi.getter
+    def retention(self) -> Optional[int]:
+        """
+        Retention time, in days.
+        """
+        return pulumi.get(self, "retention")
+
+    @property
+    @pulumi.getter(name="retentionRules")
+    def retention_rules(self) -> Optional[Sequence['outputs.PolicyRuleRetentionRule']]:
+        """
+        This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retention_rules` below.
+        """
+        return pulumi.get(self, "retention_rules")
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> Optional[str]:
+        """
+        Rule ID.
+        """
+        return pulumi.get(self, "rule_id")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[str]:
+        """
+        This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> Optional[str]:
+        """
+        Vault ID.
+        """
+        return pulumi.get(self, "vault_id")
+
+
+@pulumi.output_type
+class PolicyRuleRetentionRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "advancedRetentionType":
+            suggest = "advanced_retention_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyRuleRetentionRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyRuleRetentionRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyRuleRetentionRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 advanced_retention_type: Optional[str] = None,
+                 retention: Optional[int] = None):
+        """
+        :param str advanced_retention_type: Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+        :param int retention: Retention time, in days.
+        """
+        if advanced_retention_type is not None:
+            pulumi.set(__self__, "advanced_retention_type", advanced_retention_type)
+        if retention is not None:
+            pulumi.set(__self__, "retention", retention)
+
+    @property
+    @pulumi.getter(name="advancedRetentionType")
+    def advanced_retention_type(self) -> Optional[str]:
+        """
+        Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+        """
+        return pulumi.get(self, "advanced_retention_type")
+
+    @property
+    @pulumi.getter
+    def retention(self) -> Optional[int]:
+        """
+        Retention time, in days.
+        """
+        return pulumi.get(self, "retention")
 
 
 @pulumi.output_type

@@ -176,6 +176,20 @@ public class DomainConfig extends com.pulumi.resources.CustomResource {
         return this.functionName;
     }
     /**
+     * By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+     * 
+     */
+    @Export(name="parentId", refs={String.class}, tree="[0]")
+    private Output<String> parentId;
+
+    /**
+     * @return By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+     * 
+     */
+    public Output<String> parentId() {
+        return this.parentId;
+    }
+    /**
      * The status of the Config.
      * 
      */

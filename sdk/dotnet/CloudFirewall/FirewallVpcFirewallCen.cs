@@ -29,17 +29,18 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // These resource primary keys should be replaced with your actual values.
     ///     var @default = new AliCloud.CloudFirewall.FirewallVpcFirewallCen("default", new()
     ///     {
-    ///         CenId = "cen-cjok7uyb5w2b27573v",
+    ///         CenId = "cen-xxx",
     ///         LocalVpc = new AliCloud.CloudFirewall.Inputs.FirewallVpcFirewallCenLocalVpcArgs
     ///         {
-    ///             NetworkInstanceId = "vpc-a2d4wzzfuumzuq6uog5w4",
+    ///             NetworkInstanceId = "vpc-xxx",
     ///         },
-    ///         MemberUid = "1415189284827022",
+    ///         MemberUid = "14151*****827022",
     ///         Status = "open",
     ///         VpcFirewallName = "tf-vpc-firewall-name",
-    ///         VpcRegion = "ap-south-1",
+    ///         VpcRegion = "cn-hangzhou",
     ///     });
     /// 
     /// });

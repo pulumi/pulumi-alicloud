@@ -4235,6 +4235,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "hbr/policy",
+  "fqn": "pulumi_alicloud.hbr",
+  "classes": {
+   "alicloud:hbr/policy:Policy": "Policy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "hbr/policyBinding",
+  "fqn": "pulumi_alicloud.hbr",
+  "classes": {
+   "alicloud:hbr/policyBinding:PolicyBinding": "PolicyBinding"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "hbr/replicationVault",
   "fqn": "pulumi_alicloud.hbr",
   "classes": {

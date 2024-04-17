@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The instance quota which indicating the maximum number of tables.
+        /// (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
         /// </summary>
         public readonly int EntityQuota;
         /// <summary>
@@ -38,17 +38,37 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+        /// (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// The maximum adjustable read capacity unit of the instance.
+        /// (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
         /// </summary>
-        public readonly int ReadCapacity;
+        public readonly ImmutableArray<string> NetworkSourceAcls;
+        /// <summary>
+        /// (Available since v1.221.0) The set of network types that are allowed access. Possible values: `CLASSIC`, `VPC`, `INTERNET`.
+        /// </summary>
+        public readonly ImmutableArray<string> NetworkTypeAcls;
+        /// <summary>
+        /// (Available since v1.221.0) instance policy, json string.
+        /// </summary>
+        public readonly string Policy;
+        /// <summary>
+        /// (Available since v1.221.0) instance policy version.
+        /// </summary>
+        public readonly int PolicyVersion;
+        /// <summary>
+        /// (Available since v1.221.0) The resource group the instance belongs to.
+        /// </summary>
+        public readonly string ResourceGroupId;
         /// <summary>
         /// Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
+        /// </summary>
+        public readonly int TableQuota;
         /// <summary>
         /// A map of tags assigned to the instance. It must be in the format:
         /// &lt;!--Start PulumiCodeChooser --&gt;
@@ -78,10 +98,6 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// The user id of the instance.
         /// </summary>
         public readonly string UserId;
-        /// <summary>
-        /// The maximum adjustable write capacity unit of the instance.
-        /// </summary>
-        public readonly int WriteCapacity;
 
         [OutputConstructor]
         private GetInstancesInstanceResult(
@@ -99,15 +115,23 @@ namespace Pulumi.AliCloud.Oss.Outputs
 
             string network,
 
-            int readCapacity,
+            ImmutableArray<string> networkSourceAcls,
+
+            ImmutableArray<string> networkTypeAcls,
+
+            string policy,
+
+            int policyVersion,
+
+            string resourceGroupId,
 
             string status,
 
+            int tableQuota,
+
             ImmutableDictionary<string, object> tags,
 
-            string userId,
-
-            int writeCapacity)
+            string userId)
         {
             ClusterType = clusterType;
             CreateTime = createTime;
@@ -116,11 +140,15 @@ namespace Pulumi.AliCloud.Oss.Outputs
             Id = id;
             Name = name;
             Network = network;
-            ReadCapacity = readCapacity;
+            NetworkSourceAcls = networkSourceAcls;
+            NetworkTypeAcls = networkTypeAcls;
+            Policy = policy;
+            PolicyVersion = policyVersion;
+            ResourceGroupId = resourceGroupId;
             Status = status;
+            TableQuota = tableQuota;
             Tags = tags;
             UserId = userId;
-            WriteCapacity = writeCapacity;
         }
     }
 }

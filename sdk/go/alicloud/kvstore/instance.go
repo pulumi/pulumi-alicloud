@@ -55,7 +55,7 @@ type Instance struct {
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix pulumi.StringPtrOutput `pulumi:"connectionStringPrefix"`
-	// The coupon code.
+	// The coupon code. **NOTE:** The default value `youhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
 	CouponNo pulumi.StringPtrOutput `pulumi:"couponNo"`
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName pulumi.StringOutput `pulumi:"dbInstanceName"`
@@ -246,7 +246,7 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
-	// The coupon code.
+	// The coupon code. **NOTE:** The default value `youhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
 	CouponNo *string `pulumi:"couponNo"`
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName *string `pulumi:"dbInstanceName"`
@@ -401,7 +401,7 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix pulumi.StringPtrInput
-	// The coupon code.
+	// The coupon code. **NOTE:** The default value `youhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
 	CouponNo pulumi.StringPtrInput
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName pulumi.StringPtrInput
@@ -552,7 +552,7 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
-	// The coupon code.
+	// The coupon code. **NOTE:** The default value `youhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
 	CouponNo *string `pulumi:"couponNo"`
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName *string `pulumi:"dbInstanceName"`
@@ -694,7 +694,7 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix pulumi.StringPtrInput
-	// The coupon code.
+	// The coupon code. **NOTE:** The default value `youhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
 	CouponNo pulumi.StringPtrInput
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName pulumi.StringPtrInput
@@ -971,7 +971,7 @@ func (o InstanceOutput) ConnectionStringPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ConnectionStringPrefix }).(pulumi.StringPtrOutput)
 }
 
-// The coupon code.
+// The coupon code. **NOTE:** The default value `youhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
 func (o InstanceOutput) CouponNo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.CouponNo }).(pulumi.StringPtrOutput)
 }

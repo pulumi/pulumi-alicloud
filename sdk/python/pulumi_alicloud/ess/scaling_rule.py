@@ -24,6 +24,9 @@ class ScalingRuleArgs:
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
                  estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
+                 min_adjustment_magnitude: Optional[pulumi.Input[int]] = None,
+                 scale_in_evaluation_count: Optional[pulumi.Input[int]] = None,
+                 scale_out_evaluation_count: Optional[pulumi.Input[int]] = None,
                  scaling_rule_name: Optional[pulumi.Input[str]] = None,
                  scaling_rule_type: Optional[pulumi.Input[str]] = None,
                  step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]] = None,
@@ -44,6 +47,9 @@ class ScalingRuleArgs:
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
+        :param pulumi.Input[int] min_adjustment_magnitude: The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+        :param pulumi.Input[int] scale_in_evaluation_count: The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        :param pulumi.Input[int] scale_out_evaluation_count: The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         :param pulumi.Input[str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
         :param pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]] step_adjustments: Steps for StepScalingRule. See `step_adjustment` below.
@@ -64,6 +70,12 @@ class ScalingRuleArgs:
             pulumi.set(__self__, "estimated_instance_warmup", estimated_instance_warmup)
         if metric_name is not None:
             pulumi.set(__self__, "metric_name", metric_name)
+        if min_adjustment_magnitude is not None:
+            pulumi.set(__self__, "min_adjustment_magnitude", min_adjustment_magnitude)
+        if scale_in_evaluation_count is not None:
+            pulumi.set(__self__, "scale_in_evaluation_count", scale_in_evaluation_count)
+        if scale_out_evaluation_count is not None:
+            pulumi.set(__self__, "scale_out_evaluation_count", scale_out_evaluation_count)
         if scaling_rule_name is not None:
             pulumi.set(__self__, "scaling_rule_name", scaling_rule_name)
         if scaling_rule_type is not None:
@@ -176,6 +188,42 @@ class ScalingRuleArgs:
         pulumi.set(self, "metric_name", value)
 
     @property
+    @pulumi.getter(name="minAdjustmentMagnitude")
+    def min_adjustment_magnitude(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+        """
+        return pulumi.get(self, "min_adjustment_magnitude")
+
+    @min_adjustment_magnitude.setter
+    def min_adjustment_magnitude(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_adjustment_magnitude", value)
+
+    @property
+    @pulumi.getter(name="scaleInEvaluationCount")
+    def scale_in_evaluation_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        """
+        return pulumi.get(self, "scale_in_evaluation_count")
+
+    @scale_in_evaluation_count.setter
+    def scale_in_evaluation_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale_in_evaluation_count", value)
+
+    @property
+    @pulumi.getter(name="scaleOutEvaluationCount")
+    def scale_out_evaluation_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        """
+        return pulumi.get(self, "scale_out_evaluation_count")
+
+    @scale_out_evaluation_count.setter
+    def scale_out_evaluation_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale_out_evaluation_count", value)
+
+    @property
     @pulumi.getter(name="scalingRuleName")
     def scaling_rule_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -235,6 +283,9 @@ class _ScalingRuleState:
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
                  estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
+                 min_adjustment_magnitude: Optional[pulumi.Input[int]] = None,
+                 scale_in_evaluation_count: Optional[pulumi.Input[int]] = None,
+                 scale_out_evaluation_count: Optional[pulumi.Input[int]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
                  scaling_rule_name: Optional[pulumi.Input[str]] = None,
                  scaling_rule_type: Optional[pulumi.Input[str]] = None,
@@ -256,6 +307,9 @@ class _ScalingRuleState:
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
+        :param pulumi.Input[int] min_adjustment_magnitude: The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+        :param pulumi.Input[int] scale_in_evaluation_count: The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        :param pulumi.Input[int] scale_out_evaluation_count: The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling rule.
         :param pulumi.Input[str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
@@ -278,6 +332,12 @@ class _ScalingRuleState:
             pulumi.set(__self__, "estimated_instance_warmup", estimated_instance_warmup)
         if metric_name is not None:
             pulumi.set(__self__, "metric_name", metric_name)
+        if min_adjustment_magnitude is not None:
+            pulumi.set(__self__, "min_adjustment_magnitude", min_adjustment_magnitude)
+        if scale_in_evaluation_count is not None:
+            pulumi.set(__self__, "scale_in_evaluation_count", scale_in_evaluation_count)
+        if scale_out_evaluation_count is not None:
+            pulumi.set(__self__, "scale_out_evaluation_count", scale_out_evaluation_count)
         if scaling_group_id is not None:
             pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         if scaling_rule_name is not None:
@@ -392,6 +452,42 @@ class _ScalingRuleState:
         pulumi.set(self, "metric_name", value)
 
     @property
+    @pulumi.getter(name="minAdjustmentMagnitude")
+    def min_adjustment_magnitude(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+        """
+        return pulumi.get(self, "min_adjustment_magnitude")
+
+    @min_adjustment_magnitude.setter
+    def min_adjustment_magnitude(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_adjustment_magnitude", value)
+
+    @property
+    @pulumi.getter(name="scaleInEvaluationCount")
+    def scale_in_evaluation_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        """
+        return pulumi.get(self, "scale_in_evaluation_count")
+
+    @scale_in_evaluation_count.setter
+    def scale_in_evaluation_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale_in_evaluation_count", value)
+
+    @property
+    @pulumi.getter(name="scaleOutEvaluationCount")
+    def scale_out_evaluation_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        """
+        return pulumi.get(self, "scale_out_evaluation_count")
+
+    @scale_out_evaluation_count.setter
+    def scale_out_evaluation_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale_out_evaluation_count", value)
+
+    @property
     @pulumi.getter(name="scalingGroupId")
     def scaling_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -464,6 +560,9 @@ class ScalingRule(pulumi.CustomResource):
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
                  estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
+                 min_adjustment_magnitude: Optional[pulumi.Input[int]] = None,
+                 scale_in_evaluation_count: Optional[pulumi.Input[int]] = None,
+                 scale_out_evaluation_count: Optional[pulumi.Input[int]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
                  scaling_rule_name: Optional[pulumi.Input[str]] = None,
                  scaling_rule_type: Optional[pulumi.Input[str]] = None,
@@ -569,6 +668,9 @@ class ScalingRule(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
+        :param pulumi.Input[int] min_adjustment_magnitude: The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+        :param pulumi.Input[int] scale_in_evaluation_count: The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        :param pulumi.Input[int] scale_out_evaluation_count: The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling rule.
         :param pulumi.Input[str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
@@ -687,6 +789,9 @@ class ScalingRule(pulumi.CustomResource):
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
                  estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
+                 min_adjustment_magnitude: Optional[pulumi.Input[int]] = None,
+                 scale_in_evaluation_count: Optional[pulumi.Input[int]] = None,
+                 scale_out_evaluation_count: Optional[pulumi.Input[int]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
                  scaling_rule_name: Optional[pulumi.Input[str]] = None,
                  scaling_rule_type: Optional[pulumi.Input[str]] = None,
@@ -708,6 +813,9 @@ class ScalingRule(pulumi.CustomResource):
             __props__.__dict__["disable_scale_in"] = disable_scale_in
             __props__.__dict__["estimated_instance_warmup"] = estimated_instance_warmup
             __props__.__dict__["metric_name"] = metric_name
+            __props__.__dict__["min_adjustment_magnitude"] = min_adjustment_magnitude
+            __props__.__dict__["scale_in_evaluation_count"] = scale_in_evaluation_count
+            __props__.__dict__["scale_out_evaluation_count"] = scale_out_evaluation_count
             if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
             __props__.__dict__["scaling_group_id"] = scaling_group_id
@@ -734,6 +842,9 @@ class ScalingRule(pulumi.CustomResource):
             disable_scale_in: Optional[pulumi.Input[bool]] = None,
             estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
             metric_name: Optional[pulumi.Input[str]] = None,
+            min_adjustment_magnitude: Optional[pulumi.Input[int]] = None,
+            scale_in_evaluation_count: Optional[pulumi.Input[int]] = None,
+            scale_out_evaluation_count: Optional[pulumi.Input[int]] = None,
             scaling_group_id: Optional[pulumi.Input[str]] = None,
             scaling_rule_name: Optional[pulumi.Input[str]] = None,
             scaling_rule_type: Optional[pulumi.Input[str]] = None,
@@ -760,6 +871,9 @@ class ScalingRule(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
+        :param pulumi.Input[int] min_adjustment_magnitude: The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+        :param pulumi.Input[int] scale_in_evaluation_count: The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        :param pulumi.Input[int] scale_out_evaluation_count: The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling rule.
         :param pulumi.Input[str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
@@ -778,6 +892,9 @@ class ScalingRule(pulumi.CustomResource):
         __props__.__dict__["disable_scale_in"] = disable_scale_in
         __props__.__dict__["estimated_instance_warmup"] = estimated_instance_warmup
         __props__.__dict__["metric_name"] = metric_name
+        __props__.__dict__["min_adjustment_magnitude"] = min_adjustment_magnitude
+        __props__.__dict__["scale_in_evaluation_count"] = scale_in_evaluation_count
+        __props__.__dict__["scale_out_evaluation_count"] = scale_out_evaluation_count
         __props__.__dict__["scaling_group_id"] = scaling_group_id
         __props__.__dict__["scaling_rule_name"] = scaling_rule_name
         __props__.__dict__["scaling_rule_type"] = scaling_rule_type
@@ -854,6 +971,30 @@ class ScalingRule(pulumi.CustomResource):
         A CloudMonitor metric name.
         """
         return pulumi.get(self, "metric_name")
+
+    @property
+    @pulumi.getter(name="minAdjustmentMagnitude")
+    def min_adjustment_magnitude(self) -> pulumi.Output[Optional[int]]:
+        """
+        The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+        """
+        return pulumi.get(self, "min_adjustment_magnitude")
+
+    @property
+    @pulumi.getter(name="scaleInEvaluationCount")
+    def scale_in_evaluation_count(self) -> pulumi.Output[int]:
+        """
+        The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        """
+        return pulumi.get(self, "scale_in_evaluation_count")
+
+    @property
+    @pulumi.getter(name="scaleOutEvaluationCount")
+    def scale_out_evaluation_count(self) -> pulumi.Output[int]:
+        """
+        The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        """
+        return pulumi.get(self, "scale_out_evaluation_count")
 
     @property
     @pulumi.getter(name="scalingGroupId")

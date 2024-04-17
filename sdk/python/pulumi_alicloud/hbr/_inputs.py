@@ -12,6 +12,10 @@ from .. import _utilities
 __all__ = [
     'OtsBackupPlanOtsDetailArgs',
     'OtsBackupPlanRuleArgs',
+    'PolicyBindingAdvancedOptionsArgs',
+    'PolicyBindingAdvancedOptionsUdmDetailArgs',
+    'PolicyRuleArgs',
+    'PolicyRuleRetentionRuleArgs',
     'RestoreJobOtsDetailArgs',
     'ServerBackupPlanDetailArgs',
     'GetBackupJobsFilterArgs',
@@ -126,6 +130,289 @@ class OtsBackupPlanRuleArgs:
     @schedule.setter
     def schedule(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schedule", value)
+
+
+@pulumi.input_type
+class PolicyBindingAdvancedOptionsArgs:
+    def __init__(__self__, *,
+                 udm_detail: Optional[pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgs']] = None):
+        """
+        :param pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgs'] udm_detail: ECS Backup Advanced options. See `udm_detail` below.
+        """
+        if udm_detail is not None:
+            pulumi.set(__self__, "udm_detail", udm_detail)
+
+    @property
+    @pulumi.getter(name="udmDetail")
+    def udm_detail(self) -> Optional[pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgs']]:
+        """
+        ECS Backup Advanced options. See `udm_detail` below.
+        """
+        return pulumi.get(self, "udm_detail")
+
+    @udm_detail.setter
+    def udm_detail(self, value: Optional[pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgs']]):
+        pulumi.set(self, "udm_detail", value)
+
+
+@pulumi.input_type
+class PolicyBindingAdvancedOptionsUdmDetailArgs:
+    def __init__(__self__, *,
+                 destination_kms_key_id: Optional[pulumi.Input[str]] = None,
+                 disk_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exclude_disk_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] destination_kms_key_id: Custom KMS key ID of encrypted copy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] disk_id_lists: The list of backup disks. If it is empty, all disks are backed up.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_disk_id_lists: List of cloud disk IDs that are not backed up.
+        """
+        if destination_kms_key_id is not None:
+            pulumi.set(__self__, "destination_kms_key_id", destination_kms_key_id)
+        if disk_id_lists is not None:
+            pulumi.set(__self__, "disk_id_lists", disk_id_lists)
+        if exclude_disk_id_lists is not None:
+            pulumi.set(__self__, "exclude_disk_id_lists", exclude_disk_id_lists)
+
+    @property
+    @pulumi.getter(name="destinationKmsKeyId")
+    def destination_kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom KMS key ID of encrypted copy.
+        """
+        return pulumi.get(self, "destination_kms_key_id")
+
+    @destination_kms_key_id.setter
+    def destination_kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_kms_key_id", value)
+
+    @property
+    @pulumi.getter(name="diskIdLists")
+    def disk_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of backup disks. If it is empty, all disks are backed up.
+        """
+        return pulumi.get(self, "disk_id_lists")
+
+    @disk_id_lists.setter
+    def disk_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "disk_id_lists", value)
+
+    @property
+    @pulumi.getter(name="excludeDiskIdLists")
+    def exclude_disk_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of cloud disk IDs that are not backed up.
+        """
+        return pulumi.get(self, "exclude_disk_id_lists")
+
+    @exclude_disk_id_lists.setter
+    def exclude_disk_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_disk_id_lists", value)
+
+
+@pulumi.input_type
+class PolicyRuleArgs:
+    def __init__(__self__, *,
+                 rule_type: pulumi.Input[str],
+                 archive_days: Optional[pulumi.Input[int]] = None,
+                 backup_type: Optional[pulumi.Input[str]] = None,
+                 keep_latest_snapshots: Optional[pulumi.Input[int]] = None,
+                 replication_region_id: Optional[pulumi.Input[str]] = None,
+                 retention: Optional[pulumi.Input[int]] = None,
+                 retention_rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]]] = None,
+                 rule_id: Optional[pulumi.Input[str]] = None,
+                 schedule: Optional[pulumi.Input[str]] = None,
+                 vault_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] rule_type: Rule Type.
+        :param pulumi.Input[int] archive_days: This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+        :param pulumi.Input[str] backup_type: This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+        :param pulumi.Input[int] keep_latest_snapshots: This parameter is required only when **RuleType** is set to **BACKUP**.
+        :param pulumi.Input[str] replication_region_id: Only when the **RuleType** value is.
+        :param pulumi.Input[int] retention: Retention time, in days.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]] retention_rules: This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retention_rules` below.
+        :param pulumi.Input[str] rule_id: Rule ID.
+        :param pulumi.Input[str] schedule: This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+        :param pulumi.Input[str] vault_id: Vault ID.
+        """
+        pulumi.set(__self__, "rule_type", rule_type)
+        if archive_days is not None:
+            pulumi.set(__self__, "archive_days", archive_days)
+        if backup_type is not None:
+            pulumi.set(__self__, "backup_type", backup_type)
+        if keep_latest_snapshots is not None:
+            pulumi.set(__self__, "keep_latest_snapshots", keep_latest_snapshots)
+        if replication_region_id is not None:
+            pulumi.set(__self__, "replication_region_id", replication_region_id)
+        if retention is not None:
+            pulumi.set(__self__, "retention", retention)
+        if retention_rules is not None:
+            pulumi.set(__self__, "retention_rules", retention_rules)
+        if rule_id is not None:
+            pulumi.set(__self__, "rule_id", rule_id)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+        if vault_id is not None:
+            pulumi.set(__self__, "vault_id", vault_id)
+
+    @property
+    @pulumi.getter(name="ruleType")
+    def rule_type(self) -> pulumi.Input[str]:
+        """
+        Rule Type.
+        """
+        return pulumi.get(self, "rule_type")
+
+    @rule_type.setter
+    def rule_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rule_type", value)
+
+    @property
+    @pulumi.getter(name="archiveDays")
+    def archive_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+        """
+        return pulumi.get(self, "archive_days")
+
+    @archive_days.setter
+    def archive_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "archive_days", value)
+
+    @property
+    @pulumi.getter(name="backupType")
+    def backup_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+        """
+        return pulumi.get(self, "backup_type")
+
+    @backup_type.setter
+    def backup_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_type", value)
+
+    @property
+    @pulumi.getter(name="keepLatestSnapshots")
+    def keep_latest_snapshots(self) -> Optional[pulumi.Input[int]]:
+        """
+        This parameter is required only when **RuleType** is set to **BACKUP**.
+        """
+        return pulumi.get(self, "keep_latest_snapshots")
+
+    @keep_latest_snapshots.setter
+    def keep_latest_snapshots(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "keep_latest_snapshots", value)
+
+    @property
+    @pulumi.getter(name="replicationRegionId")
+    def replication_region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Only when the **RuleType** value is.
+        """
+        return pulumi.get(self, "replication_region_id")
+
+    @replication_region_id.setter
+    def replication_region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replication_region_id", value)
+
+    @property
+    @pulumi.getter
+    def retention(self) -> Optional[pulumi.Input[int]]:
+        """
+        Retention time, in days.
+        """
+        return pulumi.get(self, "retention")
+
+    @retention.setter
+    def retention(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention", value)
+
+    @property
+    @pulumi.getter(name="retentionRules")
+    def retention_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]]]:
+        """
+        This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retention_rules` below.
+        """
+        return pulumi.get(self, "retention_rules")
+
+    @retention_rules.setter
+    def retention_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]]]):
+        pulumi.set(self, "retention_rules", value)
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rule ID.
+        """
+        return pulumi.get(self, "rule_id")
+
+    @rule_id.setter
+    def rule_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rule_id", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input[str]]:
+        """
+        This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule", value)
+
+    @property
+    @pulumi.getter(name="vaultId")
+    def vault_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Vault ID.
+        """
+        return pulumi.get(self, "vault_id")
+
+    @vault_id.setter
+    def vault_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vault_id", value)
+
+
+@pulumi.input_type
+class PolicyRuleRetentionRuleArgs:
+    def __init__(__self__, *,
+                 advanced_retention_type: Optional[pulumi.Input[str]] = None,
+                 retention: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] advanced_retention_type: Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+        :param pulumi.Input[int] retention: Retention time, in days.
+        """
+        if advanced_retention_type is not None:
+            pulumi.set(__self__, "advanced_retention_type", advanced_retention_type)
+        if retention is not None:
+            pulumi.set(__self__, "retention", retention)
+
+    @property
+    @pulumi.getter(name="advancedRetentionType")
+    def advanced_retention_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+        """
+        return pulumi.get(self, "advanced_retention_type")
+
+    @advanced_retention_type.setter
+    def advanced_retention_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "advanced_retention_type", value)
+
+    @property
+    @pulumi.getter
+    def retention(self) -> Optional[pulumi.Input[int]]:
+        """
+        Retention time, in days.
+        """
+        return pulumi.get(self, "retention")
+
+    @retention.setter
+    def retention(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention", value)
 
 
 @pulumi.input_type

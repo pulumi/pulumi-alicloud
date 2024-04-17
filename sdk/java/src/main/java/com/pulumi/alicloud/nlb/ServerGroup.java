@@ -113,18 +113,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:nlb/serverGroup:ServerGroup")
 public class ServerGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Protocol version. Value:
-     * - **ipv4**:IPv4 type.
-     * - **DualStack**: Double Stack type.
+     * The protocol version. Valid values: `Ipv4` (default), `DualStack`.
      * 
      */
     @Export(name="addressIpVersion", refs={String.class}, tree="[0]")
     private Output<String> addressIpVersion;
 
     /**
-     * @return Protocol version. Value:
-     * - **ipv4**:IPv4 type.
-     * - **DualStack**: Double Stack type.
+     * @return The protocol version. Valid values: `Ipv4` (default), `DualStack`.
      * 
      */
     public Output<String> addressIpVersion() {
@@ -163,18 +159,14 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.connectionDrain;
     }
     /**
-     * Whether to open the connection gracefully interrupted. Value:
-     * - **true**: on.
-     * - **false**: closed.
+     * Specifies whether to enable connection draining.
      * 
      */
     @Export(name="connectionDrainEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> connectionDrainEnabled;
 
     /**
-     * @return Whether to open the connection gracefully interrupted. Value:
-     * - **true**: on.
-     * - **false**: closed.
+     * @return Specifies whether to enable connection draining.
      * 
      */
     public Output<Boolean> connectionDrainEnabled() {
@@ -209,102 +201,84 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.healthCheck;
     }
     /**
-     * Whether to enable the client address retention function. Value:
-     * - **true**: on.
-     * - **false**: closed.
-     * &gt; **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
+     * Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
      * 
      */
     @Export(name="preserveClientIpEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> preserveClientIpEnabled;
 
     /**
-     * @return Whether to enable the client address retention function. Value:
-     * - **true**: on.
-     * - **false**: closed.
-     * &gt; **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
+     * @return Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
      * 
      */
     public Output<Boolean> preserveClientIpEnabled() {
         return this.preserveClientIpEnabled;
     }
     /**
-     * The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+     * The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
-     * @return The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+     * @return The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
      * 
      */
     public Output<String> protocol() {
         return this.protocol;
     }
     /**
-     * The ID of the resource group to which the server group belongs.
+     * The ID of the resource group to which the security group belongs.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group to which the server group belongs.
+     * @return The ID of the resource group to which the security group belongs.
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * Scheduling algorithm. Value:
-     * - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
-     * - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
-     * - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
-     * - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
+     * The routing algorithm. Valid values:
      * 
      */
     @Export(name="scheduler", refs={String.class}, tree="[0]")
     private Output<String> scheduler;
 
     /**
-     * @return Scheduling algorithm. Value:
-     * - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
-     * - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
-     * - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
-     * - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
+     * @return The routing algorithm. Valid values:
      * 
      */
     public Output<String> scheduler() {
         return this.scheduler;
     }
     /**
-     * The name of the server group.
+     * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Export(name="serverGroupName", refs={String.class}, tree="[0]")
     private Output<String> serverGroupName;
 
     /**
-     * @return The name of the server group.
+     * @return The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Output<String> serverGroupName() {
         return this.serverGroupName;
     }
     /**
-     * Server group type. Value:
-     * - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
-     * - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
+     * The type of the server group. Valid values:
      * 
      */
     @Export(name="serverGroupType", refs={String.class}, tree="[0]")
     private Output<String> serverGroupType;
 
     /**
-     * @return Server group type. Value:
-     * - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
-     * - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
+     * @return The type of the server group. Valid values:
      * 
      */
     public Output<String> serverGroupType() {

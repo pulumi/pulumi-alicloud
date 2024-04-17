@@ -309,15 +309,16 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        # These resource primary keys should be replaced with your actual values.
         default = alicloud.cloudfirewall.FirewallVpcFirewallCen("default",
-            cen_id="cen-cjok7uyb5w2b27573v",
+            cen_id="cen-xxx",
             local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallCenLocalVpcArgs(
-                network_instance_id="vpc-a2d4wzzfuumzuq6uog5w4",
+                network_instance_id="vpc-xxx",
             ),
-            member_uid="1415189284827022",
+            member_uid="14151*****827022",
             status="open",
             vpc_firewall_name="tf-vpc-firewall-name",
-            vpc_region="ap-south-1")
+            vpc_region="cn-hangzhou")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -361,15 +362,16 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        # These resource primary keys should be replaced with your actual values.
         default = alicloud.cloudfirewall.FirewallVpcFirewallCen("default",
-            cen_id="cen-cjok7uyb5w2b27573v",
+            cen_id="cen-xxx",
             local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallCenLocalVpcArgs(
-                network_instance_id="vpc-a2d4wzzfuumzuq6uog5w4",
+                network_instance_id="vpc-xxx",
             ),
-            member_uid="1415189284827022",
+            member_uid="14151*****827022",
             status="open",
             vpc_firewall_name="tf-vpc-firewall-name",
-            vpc_region="ap-south-1")
+            vpc_region="cn-hangzhou")
         ```
         <!--End PulumiCodeChooser -->
 

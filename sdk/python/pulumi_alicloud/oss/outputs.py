@@ -1935,21 +1935,30 @@ class GetInstancesInstanceResult(dict):
                  id: str,
                  name: str,
                  network: str,
-                 read_capacity: int,
+                 network_source_acls: Sequence[str],
+                 network_type_acls: Sequence[str],
+                 policy: str,
+                 policy_version: int,
+                 resource_group_id: str,
                  status: str,
+                 table_quota: int,
                  tags: Mapping[str, Any],
-                 user_id: str,
-                 write_capacity: int):
+                 user_id: str):
         """
         :param str cluster_type: The cluster type of the instance. Possible values: `SSD`, `HYBRID`.
         :param str create_time: The create time of the instance.
         :param str description: The description of the instance.
-        :param int entity_quota: The instance quota which indicating the maximum number of tables.
+        :param int entity_quota: (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
         :param str id: ID of the instance.
         :param str name: Instance name.
-        :param str network: The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
-        :param int read_capacity: The maximum adjustable read capacity unit of the instance.
+        :param str network: (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+        :param Sequence[str] network_source_acls: (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
+        :param Sequence[str] network_type_acls: (Available since v1.221.0) The set of network types that are allowed access. Possible values: `CLASSIC`, `VPC`, `INTERNET`.
+        :param str policy: (Available since v1.221.0) instance policy, json string.
+        :param int policy_version: (Available since v1.221.0) instance policy version.
+        :param str resource_group_id: (Available since v1.221.0) The resource group the instance belongs to.
         :param str status: Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
+        :param int table_quota: (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
         :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
                <!--Start PulumiCodeChooser -->
                ```python
@@ -1963,7 +1972,6 @@ class GetInstancesInstanceResult(dict):
                ```
                <!--End PulumiCodeChooser -->
         :param str user_id: The user id of the instance.
-        :param int write_capacity: The maximum adjustable write capacity unit of the instance.
         """
         pulumi.set(__self__, "cluster_type", cluster_type)
         pulumi.set(__self__, "create_time", create_time)
@@ -1972,11 +1980,15 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "read_capacity", read_capacity)
+        pulumi.set(__self__, "network_source_acls", network_source_acls)
+        pulumi.set(__self__, "network_type_acls", network_type_acls)
+        pulumi.set(__self__, "policy", policy)
+        pulumi.set(__self__, "policy_version", policy_version)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "table_quota", table_quota)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "user_id", user_id)
-        pulumi.set(__self__, "write_capacity", write_capacity)
 
     @property
     @pulumi.getter(name="clusterType")
@@ -2006,7 +2018,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="entityQuota")
     def entity_quota(self) -> int:
         """
-        The instance quota which indicating the maximum number of tables.
+        (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
         """
         return pulumi.get(self, "entity_quota")
 
@@ -2030,17 +2042,49 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def network(self) -> str:
         """
-        The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+        (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
         """
         return pulumi.get(self, "network")
 
     @property
-    @pulumi.getter(name="readCapacity")
-    def read_capacity(self) -> int:
+    @pulumi.getter(name="networkSourceAcls")
+    def network_source_acls(self) -> Sequence[str]:
         """
-        The maximum adjustable read capacity unit of the instance.
+        (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
         """
-        return pulumi.get(self, "read_capacity")
+        return pulumi.get(self, "network_source_acls")
+
+    @property
+    @pulumi.getter(name="networkTypeAcls")
+    def network_type_acls(self) -> Sequence[str]:
+        """
+        (Available since v1.221.0) The set of network types that are allowed access. Possible values: `CLASSIC`, `VPC`, `INTERNET`.
+        """
+        return pulumi.get(self, "network_type_acls")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> str:
+        """
+        (Available since v1.221.0) instance policy, json string.
+        """
+        return pulumi.get(self, "policy")
+
+    @property
+    @pulumi.getter(name="policyVersion")
+    def policy_version(self) -> int:
+        """
+        (Available since v1.221.0) instance policy version.
+        """
+        return pulumi.get(self, "policy_version")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        (Available since v1.221.0) The resource group the instance belongs to.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter
@@ -2049,6 +2093,14 @@ class GetInstancesInstanceResult(dict):
         Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="tableQuota")
+    def table_quota(self) -> int:
+        """
+        (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
+        """
+        return pulumi.get(self, "table_quota")
 
     @property
     @pulumi.getter
@@ -2076,14 +2128,6 @@ class GetInstancesInstanceResult(dict):
         The user id of the instance.
         """
         return pulumi.get(self, "user_id")
-
-    @property
-    @pulumi.getter(name="writeCapacity")
-    def write_capacity(self) -> int:
-        """
-        The maximum adjustable write capacity unit of the instance.
-        """
-        return pulumi.get(self, "write_capacity")
 
 
 @pulumi.output_type

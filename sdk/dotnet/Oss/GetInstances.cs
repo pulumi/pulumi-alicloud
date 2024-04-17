@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Oss
         /// <summary>
         /// This data source provides the ots instances of the current Alibaba Cloud user.
         /// 
+        /// &gt; **NOTE:** Available since v1.40.0.
+        /// 
         /// ## Example Usage
         /// 
         /// &lt;!--Start PulumiCodeChooser --&gt;
@@ -28,7 +30,6 @@ namespace Pulumi.AliCloud.Oss
         /// {
         ///     var instancesDs = AliCloud.Ots.GetInstances.Invoke(new()
         ///     {
-        ///         NameRegex = "sample-instance",
         ///         OutputFile = "instances.txt",
         ///     });
         /// 
@@ -46,6 +47,8 @@ namespace Pulumi.AliCloud.Oss
         /// <summary>
         /// This data source provides the ots instances of the current Alibaba Cloud user.
         /// 
+        /// &gt; **NOTE:** Available since v1.40.0.
+        /// 
         /// ## Example Usage
         /// 
         /// &lt;!--Start PulumiCodeChooser --&gt;
@@ -59,7 +62,6 @@ namespace Pulumi.AliCloud.Oss
         /// {
         ///     var instancesDs = AliCloud.Ots.GetInstances.Invoke(new()
         ///     {
-        ///         NameRegex = "sample-instance",
         ///         OutputFile = "instances.txt",
         ///     });
         /// 

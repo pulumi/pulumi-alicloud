@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// For information about Express Connect and how to use it, see [What is Express Connect](https://www.alibabacloud.com/help/doc-detail/275179.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+
+        /// &gt; **NOTE:** Available since v1.132.0
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// For information about Express Connect and how to use it, see [What is Express Connect](https://www.alibabacloud.com/help/doc-detail/275179.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.132.0+
+        /// &gt; **NOTE:** Available since v1.132.0
         /// 
         /// ## Example Usage
         /// 

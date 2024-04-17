@@ -130,6 +130,8 @@ type DomainConfig struct {
 	FunctionArgs DomainConfigFunctionArgArrayOutput `pulumi:"functionArgs"`
 	// The name of the domain config.
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
+	// By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+	ParentId pulumi.StringOutput `pulumi:"parentId"`
 	// The status of the Config.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -181,6 +183,8 @@ type domainConfigState struct {
 	FunctionArgs []DomainConfigFunctionArg `pulumi:"functionArgs"`
 	// The name of the domain config.
 	FunctionName *string `pulumi:"functionName"`
+	// By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+	ParentId *string `pulumi:"parentId"`
 	// The status of the Config.
 	Status *string `pulumi:"status"`
 }
@@ -194,6 +198,8 @@ type DomainConfigState struct {
 	FunctionArgs DomainConfigFunctionArgArrayInput
 	// The name of the domain config.
 	FunctionName pulumi.StringPtrInput
+	// By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+	ParentId pulumi.StringPtrInput
 	// The status of the Config.
 	Status pulumi.StringPtrInput
 }
@@ -209,6 +215,8 @@ type domainConfigArgs struct {
 	FunctionArgs []DomainConfigFunctionArg `pulumi:"functionArgs"`
 	// The name of the domain config.
 	FunctionName string `pulumi:"functionName"`
+	// By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+	ParentId *string `pulumi:"parentId"`
 }
 
 // The set of arguments for constructing a DomainConfig resource.
@@ -219,6 +227,8 @@ type DomainConfigArgs struct {
 	FunctionArgs DomainConfigFunctionArgArrayInput
 	// The name of the domain config.
 	FunctionName pulumi.StringInput
+	// By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+	ParentId pulumi.StringPtrInput
 }
 
 func (DomainConfigArgs) ElementType() reflect.Type {
@@ -326,6 +336,11 @@ func (o DomainConfigOutput) FunctionArgs() DomainConfigFunctionArgArrayOutput {
 // The name of the domain config.
 func (o DomainConfigOutput) FunctionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainConfig) pulumi.StringOutput { return v.FunctionName }).(pulumi.StringOutput)
+}
+
+// By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
+func (o DomainConfigOutput) ParentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainConfig) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
 }
 
 // The status of the Config.

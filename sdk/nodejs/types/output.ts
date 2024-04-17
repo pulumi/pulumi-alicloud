@@ -32379,6 +32379,82 @@ export namespace hbr {
         schedule?: string;
     }
 
+    export interface PolicyBindingAdvancedOptions {
+        /**
+         * ECS Backup Advanced options. See `udmDetail` below.
+         */
+        udmDetail: outputs.hbr.PolicyBindingAdvancedOptionsUdmDetail;
+    }
+
+    export interface PolicyBindingAdvancedOptionsUdmDetail {
+        /**
+         * Custom KMS key ID of encrypted copy.
+         */
+        destinationKmsKeyId?: string;
+        /**
+         * The list of backup disks. If it is empty, all disks are backed up.
+         */
+        diskIdLists?: string[];
+        /**
+         * List of cloud disk IDs that are not backed up.
+         */
+        excludeDiskIdLists?: string[];
+    }
+
+    export interface PolicyRule {
+        /**
+         * This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+         */
+        archiveDays: number;
+        /**
+         * This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+         */
+        backupType?: string;
+        /**
+         * This parameter is required only when **RuleType** is set to **BACKUP**.
+         */
+        keepLatestSnapshots?: number;
+        /**
+         * Only when the **RuleType** value is.
+         */
+        replicationRegionId?: string;
+        /**
+         * Retention time, in days.
+         */
+        retention?: number;
+        /**
+         * This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retentionRules` below.
+         */
+        retentionRules?: outputs.hbr.PolicyRuleRetentionRule[];
+        /**
+         * Rule ID.
+         */
+        ruleId: string;
+        /**
+         * Rule Type.
+         */
+        ruleType: string;
+        /**
+         * This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+         */
+        schedule?: string;
+        /**
+         * Vault ID.
+         */
+        vaultId?: string;
+    }
+
+    export interface PolicyRuleRetentionRule {
+        /**
+         * Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+         */
+        advancedRetentionType?: string;
+        /**
+         * Retention time, in days.
+         */
+        retention?: number;
+    }
+
     export interface RestoreJobOtsDetail {
         /**
          * Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
@@ -36208,14 +36284,14 @@ export namespace nlb {
          * - **true**: on.
          * - **false**: closed.
          */
-        healthCheckEnabled?: boolean;
+        healthCheckEnabled: boolean;
         /**
          * Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
          * > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
          */
         healthCheckHttpCodes: string[];
         /**
-         * Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+         * Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
          */
         healthCheckInterval: number;
         /**
@@ -36228,7 +36304,7 @@ export namespace nlb {
          */
         healthCheckUrl: string;
         /**
-         * After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+         * After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
          */
         healthyThreshold: number;
         /**
@@ -37535,7 +37611,7 @@ export namespace oss {
          */
         description: string;
         /**
-         * The instance quota which indicating the maximum number of tables.
+         * (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
          */
         entityQuota: number;
         /**
@@ -37547,17 +37623,37 @@ export namespace oss {
          */
         name: string;
         /**
-         * The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+         * (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
          */
         network: string;
         /**
-         * The maximum adjustable read capacity unit of the instance.
+         * (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
          */
-        readCapacity: number;
+        networkSourceAcls: string[];
+        /**
+         * (Available since v1.221.0) The set of network types that are allowed access. Possible values: `CLASSIC`, `VPC`, `INTERNET`.
+         */
+        networkTypeAcls: string[];
+        /**
+         * (Available since v1.221.0) instance policy, json string.
+         */
+        policy: string;
+        /**
+         * (Available since v1.221.0) instance policy version.
+         */
+        policyVersion: number;
+        /**
+         * (Available since v1.221.0) The resource group the instance belongs to.
+         */
+        resourceGroupId: string;
         /**
          * Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
          */
         status: string;
+        /**
+         * (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
+         */
+        tableQuota: number;
         /**
          * A map of tags assigned to the instance. It must be in the format:
          * <!--Start PulumiCodeChooser -->
@@ -37579,10 +37675,6 @@ export namespace oss {
          * The user id of the instance.
          */
         userId: string;
-        /**
-         * The maximum adjustable write capacity unit of the instance.
-         */
-        writeCapacity: number;
     }
 
     export interface GetTablesTable {
@@ -37671,7 +37763,7 @@ export namespace ots {
          */
         description: string;
         /**
-         * The instance quota which indicating the maximum number of tables.
+         * (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
          */
         entityQuota: number;
         /**
@@ -37683,17 +37775,37 @@ export namespace ots {
          */
         name: string;
         /**
-         * The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+         * (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
          */
         network: string;
         /**
-         * The maximum adjustable read capacity unit of the instance.
+         * (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
          */
-        readCapacity: number;
+        networkSourceAcls: string[];
+        /**
+         * (Available since v1.221.0) The set of network types that are allowed access. Possible values: `CLASSIC`, `VPC`, `INTERNET`.
+         */
+        networkTypeAcls: string[];
+        /**
+         * (Available since v1.221.0) instance policy, json string.
+         */
+        policy: string;
+        /**
+         * (Available since v1.221.0) instance policy version.
+         */
+        policyVersion: number;
+        /**
+         * (Available since v1.221.0) The resource group the instance belongs to.
+         */
+        resourceGroupId: string;
         /**
          * Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
          */
         status: string;
+        /**
+         * (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
+         */
+        tableQuota: number;
         /**
          * A map of tags assigned to the instance. It must be in the format:
          * <!--Start PulumiCodeChooser -->
@@ -37715,10 +37827,6 @@ export namespace ots {
          * The user id of the instance.
          */
         userId: string;
-        /**
-         * The maximum adjustable write capacity unit of the instance.
-         */
-        writeCapacity: number;
     }
 
     export interface GetSearchIndexesIndex {

@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -57,7 +58,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .description(name)
- *             .accessedBy(&#34;Vpc&#34;)
+ *             .networkTypeAcls(&#34;VPC&#34;)
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
  *                 Map.entry(&#34;For&#34;, &#34;Building table&#34;)
@@ -85,14 +86,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accessedBy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accessedBy;
+    private Output<String> accessedBy;
 
     /**
      * @return The network limitation of accessing instance. Valid values:
      * 
      */
-    public Output<Optional<String>> accessedBy() {
-        return Codegen.optional(this.accessedBy);
+    public Output<String> accessedBy() {
+        return this.accessedBy;
     }
     /**
      * The description of the instance. Currently, it does not support modifying.
@@ -135,6 +136,50 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The set of request sources that are allowed access. Valid optional values:
+     * 
+     */
+    @Export(name="networkSourceAcls", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> networkSourceAcls;
+
+    /**
+     * @return The set of request sources that are allowed access. Valid optional values:
+     * 
+     */
+    public Output<List<String>> networkSourceAcls() {
+        return this.networkSourceAcls;
+    }
+    /**
+     * The set of network types that are allowed access. Valid optional values:
+     * 
+     */
+    @Export(name="networkTypeAcls", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> networkTypeAcls;
+
+    /**
+     * @return The set of network types that are allowed access. Valid optional values:
+     * 
+     */
+    public Output<List<String>> networkTypeAcls() {
+        return this.networkTypeAcls;
+    }
+    /**
+     * The resource group the instance belongs to.
+     * Default to Alibaba Cloud default resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The resource group the instance belongs to.
+     * Default to Alibaba Cloud default resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * A mapping of tags to assign to the instance.

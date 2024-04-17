@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -78,6 +79,53 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The set of request sources that are allowed access. Valid optional values:
+     * 
+     */
+    @Import(name="networkSourceAcls")
+    private @Nullable Output<List<String>> networkSourceAcls;
+
+    /**
+     * @return The set of request sources that are allowed access. Valid optional values:
+     * 
+     */
+    public Optional<Output<List<String>>> networkSourceAcls() {
+        return Optional.ofNullable(this.networkSourceAcls);
+    }
+
+    /**
+     * The set of network types that are allowed access. Valid optional values:
+     * 
+     */
+    @Import(name="networkTypeAcls")
+    private @Nullable Output<List<String>> networkTypeAcls;
+
+    /**
+     * @return The set of network types that are allowed access. Valid optional values:
+     * 
+     */
+    public Optional<Output<List<String>>> networkTypeAcls() {
+        return Optional.ofNullable(this.networkTypeAcls);
+    }
+
+    /**
+     * The resource group the instance belongs to.
+     * Default to Alibaba Cloud default resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The resource group the instance belongs to.
+     * Default to Alibaba Cloud default resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * A mapping of tags to assign to the instance.
      * 
      */
@@ -99,6 +147,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.instanceType = $.instanceType;
         this.name = $.name;
+        this.networkSourceAcls = $.networkSourceAcls;
+        this.networkTypeAcls = $.networkTypeAcls;
+        this.resourceGroupId = $.resourceGroupId;
         this.tags = $.tags;
     }
 
@@ -202,6 +253,91 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param networkSourceAcls The set of request sources that are allowed access. Valid optional values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkSourceAcls(@Nullable Output<List<String>> networkSourceAcls) {
+            $.networkSourceAcls = networkSourceAcls;
+            return this;
+        }
+
+        /**
+         * @param networkSourceAcls The set of request sources that are allowed access. Valid optional values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkSourceAcls(List<String> networkSourceAcls) {
+            return networkSourceAcls(Output.of(networkSourceAcls));
+        }
+
+        /**
+         * @param networkSourceAcls The set of request sources that are allowed access. Valid optional values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkSourceAcls(String... networkSourceAcls) {
+            return networkSourceAcls(List.of(networkSourceAcls));
+        }
+
+        /**
+         * @param networkTypeAcls The set of network types that are allowed access. Valid optional values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkTypeAcls(@Nullable Output<List<String>> networkTypeAcls) {
+            $.networkTypeAcls = networkTypeAcls;
+            return this;
+        }
+
+        /**
+         * @param networkTypeAcls The set of network types that are allowed access. Valid optional values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkTypeAcls(List<String> networkTypeAcls) {
+            return networkTypeAcls(Output.of(networkTypeAcls));
+        }
+
+        /**
+         * @param networkTypeAcls The set of network types that are allowed access. Valid optional values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkTypeAcls(String... networkTypeAcls) {
+            return networkTypeAcls(List.of(networkTypeAcls));
+        }
+
+        /**
+         * @param resourceGroupId The resource group the instance belongs to.
+         * Default to Alibaba Cloud default resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The resource group the instance belongs to.
+         * Default to Alibaba Cloud default resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**

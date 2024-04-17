@@ -125,6 +125,16 @@ export type OtsBackupPlan = import("./otsBackupPlan").OtsBackupPlan;
 export const OtsBackupPlan: typeof import("./otsBackupPlan").OtsBackupPlan = null as any;
 utilities.lazyLoad(exports, ["OtsBackupPlan"], () => require("./otsBackupPlan"));
 
+export { PolicyArgs, PolicyState } from "./policy";
+export type Policy = import("./policy").Policy;
+export const Policy: typeof import("./policy").Policy = null as any;
+utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
+
+export { PolicyBindingArgs, PolicyBindingState } from "./policyBinding";
+export type PolicyBinding = import("./policyBinding").PolicyBinding;
+export const PolicyBinding: typeof import("./policyBinding").PolicyBinding = null as any;
+utilities.lazyLoad(exports, ["PolicyBinding"], () => require("./policyBinding"));
+
 export { ReplicationVaultArgs, ReplicationVaultState } from "./replicationVault";
 export type ReplicationVault = import("./replicationVault").ReplicationVault;
 export const ReplicationVault: typeof import("./replicationVault").ReplicationVault = null as any;
@@ -166,6 +176,10 @@ const _module = {
                 return new OssBackupPlan(name, <any>undefined, { urn })
             case "alicloud:hbr/otsBackupPlan:OtsBackupPlan":
                 return new OtsBackupPlan(name, <any>undefined, { urn })
+            case "alicloud:hbr/policy:Policy":
+                return new Policy(name, <any>undefined, { urn })
+            case "alicloud:hbr/policyBinding:PolicyBinding":
+                return new PolicyBinding(name, <any>undefined, { urn })
             case "alicloud:hbr/replicationVault:ReplicationVault":
                 return new ReplicationVault(name, <any>undefined, { urn })
             case "alicloud:hbr/restoreJob:RestoreJob":
@@ -187,6 +201,8 @@ pulumi.runtime.registerResourceModule("alicloud", "hbr/hanaInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/nasBackupPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/ossBackupPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/otsBackupPlan", _module)
+pulumi.runtime.registerResourceModule("alicloud", "hbr/policy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "hbr/policyBinding", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/replicationVault", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/restoreJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "hbr/serverBackupPlan", _module)

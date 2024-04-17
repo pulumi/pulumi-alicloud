@@ -47,7 +47,9 @@ import (
 //			}
 //			_, err = ots.NewInstance(ctx, "defaultInstance", &ots.InstanceArgs{
 //				Description: pulumi.String(name),
-//				AccessedBy:  pulumi.String("Vpc"),
+//				NetworkTypeAcls: pulumi.StringArray{
+//					pulumi.String("VPC"),
+//				},
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("Building table"),
@@ -74,13 +76,20 @@ type Instance struct {
 	pulumi.CustomResourceState
 
 	// The network limitation of accessing instance. Valid values:
-	AccessedBy pulumi.StringPtrOutput `pulumi:"accessedBy"`
+	AccessedBy pulumi.StringOutput `pulumi:"accessedBy"`
 	// The description of the instance. Currently, it does not support modifying.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
 	// The name of the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The set of request sources that are allowed access. Valid optional values:
+	NetworkSourceAcls pulumi.StringArrayOutput `pulumi:"networkSourceAcls"`
+	// The set of network types that are allowed access. Valid optional values:
+	NetworkTypeAcls pulumi.StringArrayOutput `pulumi:"networkTypeAcls"`
+	// The resource group the instance belongs to.
+	// Default to Alibaba Cloud default resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the instance.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 }
@@ -123,6 +132,13 @@ type instanceState struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// The name of the instance.
 	Name *string `pulumi:"name"`
+	// The set of request sources that are allowed access. Valid optional values:
+	NetworkSourceAcls []string `pulumi:"networkSourceAcls"`
+	// The set of network types that are allowed access. Valid optional values:
+	NetworkTypeAcls []string `pulumi:"networkTypeAcls"`
+	// The resource group the instance belongs to.
+	// Default to Alibaba Cloud default resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the instance.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -136,6 +152,13 @@ type InstanceState struct {
 	InstanceType pulumi.StringPtrInput
 	// The name of the instance.
 	Name pulumi.StringPtrInput
+	// The set of request sources that are allowed access. Valid optional values:
+	NetworkSourceAcls pulumi.StringArrayInput
+	// The set of network types that are allowed access. Valid optional values:
+	NetworkTypeAcls pulumi.StringArrayInput
+	// The resource group the instance belongs to.
+	// Default to Alibaba Cloud default resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the instance.
 	Tags pulumi.MapInput
 }
@@ -153,6 +176,13 @@ type instanceArgs struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// The name of the instance.
 	Name *string `pulumi:"name"`
+	// The set of request sources that are allowed access. Valid optional values:
+	NetworkSourceAcls []string `pulumi:"networkSourceAcls"`
+	// The set of network types that are allowed access. Valid optional values:
+	NetworkTypeAcls []string `pulumi:"networkTypeAcls"`
+	// The resource group the instance belongs to.
+	// Default to Alibaba Cloud default resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the instance.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -167,6 +197,13 @@ type InstanceArgs struct {
 	InstanceType pulumi.StringPtrInput
 	// The name of the instance.
 	Name pulumi.StringPtrInput
+	// The set of request sources that are allowed access. Valid optional values:
+	NetworkSourceAcls pulumi.StringArrayInput
+	// The set of network types that are allowed access. Valid optional values:
+	NetworkTypeAcls pulumi.StringArrayInput
+	// The resource group the instance belongs to.
+	// Default to Alibaba Cloud default resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the instance.
 	Tags pulumi.MapInput
 }
@@ -259,8 +296,8 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 }
 
 // The network limitation of accessing instance. Valid values:
-func (o InstanceOutput) AccessedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AccessedBy }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) AccessedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AccessedBy }).(pulumi.StringOutput)
 }
 
 // The description of the instance. Currently, it does not support modifying.
@@ -276,6 +313,22 @@ func (o InstanceOutput) InstanceType() pulumi.StringPtrOutput {
 // The name of the instance.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The set of request sources that are allowed access. Valid optional values:
+func (o InstanceOutput) NetworkSourceAcls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.NetworkSourceAcls }).(pulumi.StringArrayOutput)
+}
+
+// The set of network types that are allowed access. Valid optional values:
+func (o InstanceOutput) NetworkTypeAcls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.NetworkTypeAcls }).(pulumi.StringArrayOutput)
+}
+
+// The resource group the instance belongs to.
+// Default to Alibaba Cloud default resource group.
+func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // A mapping of tags to assign to the instance.
